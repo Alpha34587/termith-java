@@ -1,5 +1,6 @@
-package runner;
+package cli;
 
+import runner.Termith;
 import tool.TeiImporter;
 
 import javax.xml.transform.TransformerException;
