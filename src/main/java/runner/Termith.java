@@ -14,22 +14,27 @@ import java.util.concurrent.*;
 public class Termith {
     ExecutorService executorService;
     TeiImporter teiImporter;
-    ConcurrentHashMap<String, StringBuffer> initializeFiles;
+    boolean trace;
+    ConcurrentHashMap<String, StringBuffer> initializeFiles = new ConcurrentHashMap<>();
 
-    public Termith(TeiImporter teiImporter) {
-        this.teiImporter = teiImporter;
-        initializeFiles  = new ConcurrentHashMap<>();
+    public Termith() {}
+
+    public Termith(Builder builder){
+        teiImporter = builder.teiImporter;
+        trace = builder.trace;
     }
 
-    public void run() throws IOException, InterruptedException, TransformerException {
+    public void Run() throws IOException, InterruptedException, TransformerException {
 
         executorService = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
 
         teiImporter.getCorpus().forEach((f) -> {
             try {
                 File file = (File) f;
-                initializeFiles.put(file.getName(),
-                        executorService.submit(new Initializer(file)).get());
+                initializeFiles.put(
+                        file.getName(),
+                        executorService.submit(new Initializer(file)).get()
+                );
             }
             catch (InterruptedException | ExecutionException e) {
                 e.printStackTrace();
@@ -38,7 +43,28 @@ public class Termith {
 
         executorService.shutdown();
         while (!executorService.isTerminated()){}
+        int a = 0;
+    }
 
+    public static class Builder
+    {
+        TeiImporter teiImporter;
+        boolean trace = false;
+
+        public Builder TeiImporter(String path) throws IOException {
+            TeiImporter teiImporter = new TeiImporter(path);
+            this.teiImporter = teiImporter;
+            return this;
+        }
+
+        public Builder Trace(boolean activate){
+            return this;
+        }
+
+        public Termith Build() {
+            Termith termith =  new Termith(this);
+            return termith;
+        }
     }
 
     }
