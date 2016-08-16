@@ -1,4 +1,4 @@
-package tool;
+package module.tool;
 
 import java.io.File;
 import java.io.IOException;

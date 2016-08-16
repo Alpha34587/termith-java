@@ -1,4 +1,4 @@
-package module;
+package module.initializer;
 
 import javax.xml.transform.*;
 import javax.xml.transform.stream.StreamResult;

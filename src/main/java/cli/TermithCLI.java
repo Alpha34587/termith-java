@@ -2,7 +2,7 @@ package cli;
 
 import org.apache.commons.cli.*;
 import runner.Termith;
-import tool.TeiImporter;
+import module.tool.TeiImporter;
 
 import javax.xml.transform.TransformerException;
 import java.io.IOException;
@@ -47,17 +47,21 @@ public class TermithCLI {
         try {
             CommandLine line = parser.parse( options, args );
             if (options.hasOption("trace")) {
+
                 termith = new Termith.Builder()
-                        .TeiImporter(line.getOptionValue("i"))
-                        .Trace(true)
-                        .Build();
-                termith.Run();
+                        .teiImporter(line.getOptionValue("i"))
+                        .trace(true)
+                        .export(line.getOptionValue("o"))
+                        .build();
+                termith.run();
             }
             else {
+
                 termith = new Termith.Builder()
-                        .TeiImporter(line.getOptionValue("i"))
-                        .Build();
-                termith.Run();
+                        .teiImporter(line.getOptionValue("i"))
+                        .export(line.getOptionValue("o"))
+                        .build();
+                termith.run();
             }
         } catch (ParseException e) {
             e.printStackTrace();

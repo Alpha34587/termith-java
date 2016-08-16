@@ -1,6 +1,6 @@
 package pipeline;
 
-import module.TextExtractor;
+import module.initializer.TextExtractor;
 
 import java.io.File;
 import java.util.concurrent.Callable;
@@ -8,18 +8,23 @@ import java.util.concurrent.Callable;
 /**
  * Created by Simon Meoni on 25/07/16.
  */
-public class Initializer implements Callable<StringBuffer>{
+public class Initializer implements Callable<Initializer>{
     File file;
-
+    StringBuffer plaintText;
     public Initializer(File file) {
         this.file = file;
+
+    }
+
+    public StringBuffer getPlaintText() {
+        return plaintText;
     }
 
     @Override
-    public StringBuffer call() throws Exception {
+    public Initializer call() throws Exception {
         System.out.println("[" + Thread.currentThread().getName() + "]" +" Initialize file : " + file.getName());
         TextExtractor textExtractor = new TextExtractor(file);
-        return textExtractor.XsltTransformation();
-
+        this.plaintText = textExtractor.XsltTransformation();
+        return this;
     }
 }

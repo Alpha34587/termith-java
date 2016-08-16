@@ -1,6 +1,7 @@
 package runner;
 
-import tool.TeiImporter;
+import module.tool.Exporter;
+import module.tool.TeiImporter;
 import pipeline.Initializer;
 
 import javax.xml.transform.TransformerException;
@@ -12,29 +13,37 @@ import java.util.concurrent.*;
  * Created by Simon Meoni on 25/07/16.
  */
 public class Termith {
-    ExecutorService executorService;
-    TeiImporter teiImporter;
-    boolean trace;
-    ConcurrentHashMap<String, StringBuffer> initializeFiles = new ConcurrentHashMap<>();
+
+    private ExecutorService executorService;
+    private TeiImporter teiImporter;
+    private boolean trace;
+    private ConcurrentHashMap<String, Initializer> initializedFiles = new ConcurrentHashMap<>();
+    private String outputPath;
 
     public Termith() {}
 
     public Termith(Builder builder){
         teiImporter = builder.teiImporter;
         trace = builder.trace;
+        outputPath = builder.outputPath;
     }
 
-    public void Run() throws IOException, InterruptedException, TransformerException {
+    public ConcurrentHashMap<String, Initializer> getInitializedFiles() {
+        return initializedFiles;
+    }
+
+    public void run() throws IOException, InterruptedException, TransformerException {
 
         executorService = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
 
         teiImporter.getCorpus().forEach((f) -> {
             try {
                 File file = (File) f;
-                initializeFiles.put(
+                initializedFiles.put(
                         file.getName(),
                         executorService.submit(new Initializer(file)).get()
                 );
+
             }
             catch (InterruptedException | ExecutionException e) {
                 e.printStackTrace();
@@ -43,25 +52,36 @@ public class Termith {
 
         executorService.shutdown();
         while (!executorService.isTerminated()){}
-        int a = 0;
+
+
+        if (outputPath != null){
+            Exporter.export(outputPath,trace,this);
+        }
+
     }
 
     public static class Builder
     {
         TeiImporter teiImporter;
         boolean trace = false;
+        String outputPath = null;
 
-        public Builder TeiImporter(String path) throws IOException {
-            TeiImporter teiImporter = new TeiImporter(path);
-            this.teiImporter = teiImporter;
+        public Builder teiImporter(String path) throws IOException {
+            this.teiImporter = new TeiImporter(path);
             return this;
         }
 
-        public Builder Trace(boolean activate){
+        public Builder trace(boolean activate){
+            this.trace = activate;
             return this;
         }
 
-        public Termith Build() {
+        public Builder export(String outputPath){
+            this.outputPath = outputPath;
+            return this;
+        }
+
+        public Termith build() {
             Termith termith =  new Termith(this);
             return termith;
         }
