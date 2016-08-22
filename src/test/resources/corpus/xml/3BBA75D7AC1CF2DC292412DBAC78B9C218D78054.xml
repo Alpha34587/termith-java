@@ -1,0 +1,994 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Version 1.2 générée le 6-4-2016-->
+<TEI xmlns:tei="http://www.tei-c.org/ns/1.0" xmlns="http://www.tei-c.org/ns/1.0" xml:lang="en">
+  <teiHeader>
+		<fileDesc>
+			<titleStmt>
+				<title/>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+			</publicationStmt>
+			<sourceDesc>
+				<p/>
+			</sourceDesc>
+		</fileDesc>
+	</teiHeader>
+  <text>
+    <body>
+      <div>
+        <p>
+Hearing Research 144 (2000) 73^88
+www.elsevier.com/locate/heares
+
+Head-related transfer functions of the Rhesus monkey
+Michael L. Spezio *, Cli¡ord H. Keller, Richard T. Marrocco, Terry T. Takahashi
+Institute of Neuroscience, University of Oregon, Eugene, OR 97403, USA
+Received 20 July 1999; received in revised form 12 February 2000; accepted 14 February 2000
+
+Abstract
+Head-related transfer functions (HRTFs) are direction-specific acoustic filters formed by the head, the pinnae and the ear canals.
+They can be used to assess acoustical cues available for sound localization and to construct virtual auditory environments. We
+measured the HRTFs of three anesthetized Rhesus monkeys (Macaca mulatta) from 591 locations in the frontal hemisphere ranging
+from 390³ (left) to 90³ (right) in azimuth and 360³ (down) to 90³ (up) in elevation for frequencies between 0.5 and 15 kHz. Acoustic
+validation of the HRTFs shows good agreement between free field and virtual sound sources. Monaural spectra exhibit deep notches
+at frequencies above 9 kHz, providing putative cues for elevation discrimination. Interaural level differences (ILDs) and interaural
+time differences (ITDs) generally vary monotonically with azimuth between 0.5 and 8 kHz, suggesting that these two cues can be
+used to discriminate azimuthal position. Comparison with published subsets of HRTFs from squirrel monkeys (Saimiri sciureus)
+shows good agreement. Comparison with published human HRTFs from the frontal hemisphere demonstrates overall similarity in
+the patterns of ILD and ITD, suggesting that the Rhesus monkey is a good acoustic model for these two sound localization cues in
+humans. Finally, the measured ITDs in the horizontal plane agree well between 340³ and 40³ in azimuth with those calculated from
+a spherical head model with a radius of 52 mm, one-half the interaural distance of the monkey. ß 2000 Elsevier Science B.V. All
+rights reserved.
+Key words: Sound localization; Virtual auditory space; Binaural cue; Spectral cue; Ear canal; Auditory perception
+
+1. Introduction
+Macaque monkeys have long been recognized as signi¢cant animal models of human perception and cognition, including auditory function. Work on auditory
+processing in several species of macaque includes studies of hearing loss (He¡ner and He¡ner, 1986), behavior and neurophysiology of sound localization (Jay and
+Sparks, 1987 ; Jay and Sparks, 1984; He¡ner, 1997 ;
+He¡ner and He¡ner, 1990; Houben and Gourevitch,
+1979 ; Brown et al., 1980; Brown et al., 1978), attentional/intentional auditory processing (Hocherman et
+al., 1976 ; Stricanne et al., 1996; Mazzoni et al., 1996)
+and processing of complex sounds (Rauschecker, 1998 ;
+
+* Corresponding author. Tel.: +1 (541) 346-4544;
+Fax: +1 (541) 346-4548; E-mail: mlspezio@darkwing.uoregon.edu
+
+Rauschecker, 1997; Rauschecker et al., 1997). Despite
+this interest in the auditory function of macaques, there
+are no extensive descriptions of the auditory cues available to these important models of human auditory
+function. The work presented here attempts to ¢ll this
+lacuna by presenting a detailed description of the headrelated transfer functions (HRTFs) of the Rhesus monkey (Macaca mulatta). HRTFs are direction-speci¢c
+acoustic ¢lters formed by the head, the pinnae and
+the ear canals. They can be used to assess available
+acoustic cues for sound localization and to construct
+virtual auditory environments that can be used in psychophysical and/or neurophysiological experiments.
+Several measurements of human HRTFs have been reported (Shaw and Teranishi, 1968 ; Middlebrooks et al.,
+1989 ; Wightman and Kistler, 1989), but no comparison
+with those of the Rhesus monkey has yet been made.
+Herein we report HRTFs from three female adult Rhesus monkeys from 591 locations in the frontal hemisphere. Results from an initial stage of this work have
+been published in abstract form (Keller et al., 1998b).
+
+0378-5955 / 00 / $ ^ see front matter ß 2000 Elsevier Science B.V. All rights reserved.
+PII: S 0 3 7 8 - 5 9 5 5 ( 0 0 ) 0 0 0 5 0 - 2
+
+HEARES 3434 12-5-00 Cyaan Magenta Geel Zwart
+
+74
+
+M.L. Spezio et al. / Hearing Research 144 (2000) 73^88
+
+2. Materials and methods
+Three adult female Rhesus monkeys (M. mulatta),
+aged 17^20 years and weighing 6^7 kg, were used in
+this study. Positive castings of an anesthetized monkey's external auditory meatus were made by ¢lling
+the ears with an ear mold compound (A-Zilicone, Oticon) that could be removed for further analysis once it
+solidi¢ed.
+The method of measuring HRTFs with broadband
+noise bursts, described here, is based on methods used
+in the measurement of human HRTFs by Mellert and
+colleagues (Mellert et al., 1974; Mehrgardt and Mellert,
+1977), by Wightman and Kistler (1989) and by Blauert
+and colleagues (Blauert, 1997). Our results also should
+be comparable to similar work done with cats (Musicant et al., 1990 ; Brugge et al., 1994), guinea pigs (Hartung and Sterbing, 1997) and barn owls (Keller et al.,
+1998a). All procedures involving monkeys were approved by the Institutional Animal Care and Use Committee of the University of Oregon, in compliance with
+the Animal Welfare Act and other pertinent regulations
+under the US Public Health Service.
+A monkey was premedicated with atropine (0.3 mg,
+IM) to reduce £uid production 10^15 min prior to anesthetization with ketamine (100 mg, IM) and diazepam
+(5 mg, IM). The anesthetized monkey was placed on a
+surgical table over a hot water blanket and maintained
+on 1^2% iso£urane (v/v) in O2 via mask, as needed.
+Anesthesia prevents the normal equilibration of middle
+ear pressure by inactivating the Eustachian tubes in
+birds (Keller et al., 1998a ; Larsen and Dooling, 1996)
+and ferrets (Carlile, 1990a,b). Preliminary studies
+showed this to be the case in the monkey as well, and
+thus small incisions in the tympanum of each ear were
+necessary to allow equilibration of middle ear pressure
+during the HRTF measurements. In our initial experiments, we made the incisions after the monkey was
+positioned in the anechoic chamber used for HRTF
+measurements, so that we could compare HRTFs recorded before and after incision. After we determined
+that the e¡ect of incision was non-directional (Section
+3.2), incisions were made prior to transferring the monkey to the anechoic chamber. To make the incisions,
+each ear canal was ¢rst cleaned with a cotton swab.
+To facilitate visualization of the tympanum during incision, a piece of cellophane (18 mmU10 mm) was
+rolled into a cylinder and inserted into the ear canal.
+This kept the hairs lining the ear canal from obstructing
+the view of the tympanum. A small incision was then
+made in the upper anterior region, an area visualized
+with the aid of a dissecting microscope and a pediatric
+otospeculum. Monkeys responded normally to auditory
+stimuli within 48 h of completion of the entire procedure.
+
+Once incisions were made, an intravenous drip of
+lactated Ringer's solution or 5% dextrose solution was
+begun, the monkey was given additional ketamine (50
+mg, IM) and diazepam (2.5 mg, IM), taken o¡ iso£urane and transferred to the anechoic chamber. Before
+being placed in the anechoic chamber, the monkey
+was intubated tracheally using standard procedures
+and given 1% iso£urane (v/v) in O2 . When the HRTF
+measurements were underway, the iso£urane was reduced to 0.7^0.9% iso£urane (v/v) in O2 . The monkey
+was positioned in the anechoic chamber such that the
+intersection of the interaural axis and the midline was
+in the center of an imaginary sphere formed by the
+positions of the speaker in the experiment (Fig. 1A).
+Laser beams directed from directly above (90³ elevation) and in front (0³ azimuth, 0³ elevation) of the
+monkey allowed accurate positioning of the head. The
+lasers from above and in front formed spots on top of
+the monkey's head and above the monkey's nose, respectively, with the intersection occurring near to the
+center of the interaural axis. The monkey's head was
+held in place by a socket attached to its cranium using
+dental cement, as previously described (Marrocco et al.,
+1987). The intubation tube always extended from the
+right side of the mouth. Both the tube and the headpost
+were acoustically padded during the experiment. A patient monitor was used to record heart rate, blood oxygen saturation level, respiration rate and temperature.
+During the experiment, atropine (0.05 mg/kg, IV) or
+glycopyrrolate (0.06 mg, IV) was given as needed to
+counteract £uid production.
+Monkeys are known to move their pinnae in response
+to sound (Jay and Sparks, 1987) and it is also known
+that pinna position and shape modulate HRTFs in cats
+and humans (Populin and Yin, 1998 ; Hofman et al.,
+1998). The pinnae in this study were not mechanically
+¢xed, but they did not move throughout a recording
+session. They took a relaxed position in which the angle
+between the line de¢ned by the superior portion of the
+helix (Middlebrooks, 1999a) and the midline was between 0³ and 10³ and the angle between the line de¢ned
+by the superior portion of the helix and the interaural
+axis was between 80³ and 90³.
+Digital signals were converted to analog form and
+transduced by a 3.5 inch loudspeaker (Eclipse 8232)
+that could be moved in elevation along a C-shaped
+hoop (radius = 90 cm) subtending 180³ of vertical arc
+(Fig. 1A). The hoop could be rotated in azimuth
+through 180³. This allowed presentation of sounds at
+nearly any location in the frontal hemisphere. Loudspeaker position was accurate to þ 0.5³ in elevation
+and in azimuth.
+The sounds used to measure the HRTFs were digitally generated in the frequency domain (Tucker Davis
+Technologies (TDT) AP2) and consisted of repeated, 46
+
+HEARES 3434 12-5-00 Cyaan Magenta Geel Zwart
+
+M.L. Spezio et al. / Hearing Research 144 (2000) 73^88
+
+ms noise bursts with a £at amplitude spectrum and
+random phase spectrum between 0.5 and 22.5 kHz.
+These sounds were transformed to the time domain,
+converted to an analog voltage (90 000 samples per second, TDT PD1), attenuated (TDT PA4), ampli¢ed
+(TDT HB6) and transduced by an Eclipse 8232 loudspeaker. The transduced signals measured 77 dB SPL at
+the position of the monkey's head (A-weighted, peak
+amplitude, Bruel and Kjaer 2235 SPL meter, micro«
+phone model 4176) and retained a relatively £at magnitude spectrum of þ 10 dB between 1 and 20 kHz.
+For sound measurements in the ear canal, we used
+miniature Knowles microphones (EM4046) ¢tted with a
+3.2 cm long probe tube (Clay Adams PE160, ID
+1.14 mm, OD 1.57 mm) inserted into the ear canal to
+within 8 mm of the ear drum. Microphone signals were
+preampli¢ed through a custom-built, phase-compensated ampli¢er, converted to digital form (oversampled
+at 90 000 samples per second to avoid aliasing, TDT
+PD1) and averaged in synchrony with the repeated
+noise bursts (n = 100). The FFT of the digitized microphone output was divided by the FFT of the digitized
+input sound to yield the recorded raw data.
+Data collection involved recording a catalogue of left
+and right microphone signals for 591 locations across
+the frontal hemisphere from 360³ (down) to 90³ (up) in
+elevation and 390³ (left) to 90³ (right) in azimuth, at a
+resolution of 5³ in double polar coordinates. Data processing to yield HRTFs involved the following digital
+processing steps in MATLAB (versions 5.2 and 5.3):
+(1) Each raw data spectrum was transformed into the
+time domain using the inverse fast Fourier transform.
+(2) The energy was calculated within a 250-point rectangular window as it was translated across the 1024point raw impulse response. This allowed identi¢cation
+of the earliest point at which the energy reached a maximum for each impulse response. All impulse responses
+
+75
+
+were shifted toward t = 0 by the shortest latency detected in the full catalogue by this method. Each impulse response was then truncated to 250 points following its point of maximal energy (to remove re£ections
+and noise) and then padded with zeros (Proakis and
+Manolakis, 1996, pp. 400^401) to 512 points.
+(3) For analysis of the HRTFs, we removed the ¢ltering e¡ects of the loudspeaker and microphones-withprobe-tubes. The loudspeaker to microphone transfer
+functions were measured with the microphones at the
+center of the hoop without the monkey present, where
+the head normally is during HRTF measurements. The
+transfer function for either the left or right microphone
+was removed by convolution of the impulse response
+with an FIR least-squares inverse ¢lter (Proakis and
+Manolakis, 1996) constructed to pass the inverse of
+that transfer function. The resulting 512-point inverse
+¢lters showed a nearly linear phase change with frequency. The impulse response of each inverse ¢lter
+was checked for su¤ciency by convolution with the
+impulse response that it was intended to remove. The
+resultant error in the frequency domain was typically
+less than þ 0.1 dB between 1 and 15 kHz.
+To con¢rm the acoustical validity of the HRTFs, we
+presented HRTF-¢ltered signals via Etymotic ER-1 earphones placed into the outer part of the ear canals and
+compared these with signals presented in the `free ¢eld'.
+For sound presentation by earphones, we removed successively from the recorded HRTFs ¢rst the e¡ects of
+the transfer function of the loudspeaker, and then the
+e¡ects of the transfer function of the earphone-ear canal-microphone. The transfer function of the loudspeaker was measured with a Bru and Kjaer 2235
+«el
+sound level meter (microphone model 4176) placed
+1 cm from the loudspeaker. The transfer function of
+the earphone-ear canal-microphone was measured
+with the microphones in place in the ear canal. During
+
+Fig. 1. Experimental setup and coordinate system. A: Schematic drawing of the semi-circular hoop with speaker. Monkey's head is positioned
+in the center of the hoop (r = 90 cm). B: The nine standard speaker positions, in double polar coordinates, used to assess variability between
+measurements due to di¡erences in the conditions under which the measurements were made.
+
+HEARES 3434 12-5-00 Cyaan Magenta Geel Zwart
+
+76
+
+M.L. Spezio et al. / Hearing Research 144 (2000) 73^88
+
+analysis, sounds presented in the free ¢eld were convolved with an inverse ¢lter to remove the loudspeaker-microphone transfer function. Each inverse ¢lter was constructed, tested and applied as above (step
+3). However, during playback, we used a sampling rate
+of 30 kHz because our hardware was incapable of processing the very long head-related impulse responses
+(HRIRs, time domain forms of the HRTFs) generated
+at a 90 kHz sampling rate. To do this, we resampled the
+90 kHz HRIRs at 30 kHz and used these for on-line
+digital signal processing (TDT PD1).
+(4) Proper unwrapping of phase across frequency and
+space for visualization of interaural time di¡erences
+(ITDs) required further zero-padding (Proakis and
+Manolakis, 1996, pp. 400^401) the 512-point HRIRs
+to allow a 2048-point FFT.
+Each ¢nal catalogue consisted of 590 or 591 left/right
+pairs of 512-point HRIRs. To assess the variability of
+the data in this study, we will often use the nine standard speaker locations shown from the monkey's point
+of view, in double polar coordinates in Fig. 1B.
+3. Results
+3.1. The ear canal
+The ear canal of the Rhesus monkey is a long and
+narrow structure extending approximately 20 mm from
+its entrance to the most distal portion of the tympanum. The canal begins as a larger tube (4.5 mmU
+3 mmU5 mm long; Fig. 2B) that narrows to a tube
+with an inner diameter of approximately 3 mm (Fig.
+2C). This transition is marked by a bend of approximately 15³ (Fig. 2F), and the tube extends for 13^15
+mm to a £atter region (3.5 mmU2 mm ; Fig. 2E) bor-
+
+Fig. 2. Otoplastic mold of the left ear canal of monkey 1. The orientation shown is as if the monkey was looking out from the page.
+The portion of the mold labeled A is a handle that was used to extract the mold from the ear canal after solidi¢cation. See Section
+3.1 for other details.
+
+dering the tympanum. The tympanum itself (Fig. 2D) is
+6 mm in diameter with a central umbo of 1 mm diameter.
+The probe tubes (3.2 cm long) on the Knowles microphones were always positioned so that less than 2 cm
+remained outside the ear canal. Thus, the end of a
+probe tube was never more than 8 mm from the distal
+edge of the tympanum. The location of the probe tubes
+is important because the sound pressure inside the ear
+canal is not uniform. Sound pressure waves at wavelengths less than or equal to 1/4 the length of the ear
+canal generate standing waves within the ear canal
+(Blauert, 1997, pp. 65^70, Teranishi and Shaw, 1968).
+The sound pressure measured by the probe tube, in
+addition to being modulated by the location of the
+sound source, will be a¡ected by the tube's position
+with respect to the standing waves. This complicates
+comparisons between datasets since our precision in
+probe tube placement between experiments is þ 1 mm.
+To eliminate e¡ects of probe tube position due to these
+standing waves and to facilitate comparisons between
+datasets, we use directional transfer functions (DTFs)
+in our comparisons (Middlebrooks and Green, 1990). A
+set of DTFs is computed from a set of HRTFs by
+subtracting the RMS log magnitude spectrum across
+all locations from one ear from the log magnitude spectra of all locations from that same ear.
+3.2. Tympanum incision
+In an anesthetized animal, failure of the middle
+ear pressure to equilibrate with ambient air pressure
+dynamically changes the shape of the tympanum
+and results in concomitant dynamic changes in the
+HRTFs (Keller et al., 1998a ; Carlile, 1990a,b). To
+estimate the magnitude of these changes in the anesthetized monkey, we computed the spectral di¡erences
+between HRTFs measured 5^6 h apart (i.e.
+HRTFend of run 3HRTFbeginning of run ) for each of the
+nine standard locations (Fig. 1B). During these measurements, neither the monkeys nor the microphones
+were moved, but we observed spectral di¡erences as
+large as þ 5 dB between 1.5 and 10 kHz over the course
+of our measurements (Fig. 3A). These spectral di¡erences were consistent across the nine locations and thus
+we considered that they could be due to changes in the
+pressure di¡erence across the tympanum.
+HRTF measurements taken after making small incisions in the tympanum support this hypothesis, as seen
+in Fig. 3B. Here, we show di¡erence spectra computed
+from measurements taken after the tympanum incision
+and again 5^6 h later at the end of a recording session.
+It is clear that the HRTFs are quite stable if the middle
+ear is vented via tympanum incision. The ¢gure also
+shows that magnitude di¡erences of þ 1 dB can be ex-
+
+HEARES 3434 12-5-00 Cyaan Magenta Geel Zwart
+
+M.L. Spezio et al. / Hearing Research 144 (2000) 73^88
+
+77
+
+3.3. Acoustical validation
+
+Fig. 3. Di¡erence spectra show the requirement and e¡ects of tympanum incision. A: Di¡erence spectra between measurements 5^6 h
+apart in the absence of tympanum incisions, measured at each of
+the nine standard locations (Fig. 1B) for monkey 2. B: Di¡erence
+spectra between measurements 5^6 h apart in the presence of tympanum incisions, measured at each of the nine standard locations,
+for monkey 2. C: Di¡erence spectra between measurements taken
+directly before and directly after tympanum incisions, at the nine
+standard locations, for monkey 3.
+
+pected over the course of our measurements. The large
+di¡erences seen at higher frequencies are due to the
+misalignment of deep spectral notches (Section 4.1)
+whose presence was independent of tympanum incision.
+This misalignment is caused by small di¡erences in
+speaker position during repeated measurements and is
+not related to the presence or absence of the tympanum
+incisions.
+Tympanum incisions lead to changes in middle ear
+pressure that modify HRTFs in a similar manner as
+seen in Fig. 3A. Di¡erence spectra for the nine locations taken before and after the tympanum incision (i.e.
+HRTFafter incision 3HRTFbefore incision ), hence 30^60 min
+apart, are shown in Fig. 3C. At the time of the incision,
+the monkey had typically been receiving iso£urane
+anesthesia for 30^60 min, likely resulting in a pressure
+imbalance between the middle ear and ear canal. Fig.
+3C shows that the tympanum incision resulted in a
+substantial non-directional change in HRTFs that we
+attribute to the equilibration of these two pressures.
+
+The use of virtual auditory space in experimental
+approaches assumes that the virtual sound sources employed are reliable models of their corresponding free
+¢eld stimuli. This assumption was tested by comparing
+broadband noise bursts presented from the free ¢eld
+with those delivered over earphones using the corresponding measured and processed HRIRs. We used
+miniature Knowles microphones to record these sound
+pairs inside the ear canal. All HRIRs were corrected for
+the transfer functions of the speaker, microphones and
+ear canals, as described in Section 2. Microphone position was held constant throughout the measurement
+(n.b. see below). Di¡erence spectra for both the magnitude and phase of the free ¢eld minus the virtual ¢eld
+were computed for each of the nine standard locations.
+One-third-octave band smoothing was applied to each
+magnitude spectrum before di¡erence spectra were calculated. The 1/3-octave window approximates the critical band of humans (Hartmann, 1998, pp. 249^250)
+and Rhesus monkeys (Gourevitch, 1970).
+Between 1 and 9 kHz, the free ¢eld and virtual magnitude spectra are almost identical at each of the nine
+standard locations. Fig. 4 plots the di¡erence spectra
+(i.e. free ¢eld3virtual) and shows the close correspondence of the traces from each of the nine locations.
+Deviations from 0 dB in Fig. 4 are small and consistent
+across speaker locations. The markedly directional differences above 9 kHz could be due to misalignments of
+deep spectral notches caused by slight di¡erences in
+loudspeaker position or by shifts in microphone posi-
+
+Fig. 4. Acoustic validation of HRTFs, monkey 2. Di¡erence spectra
+were calculated as described in Section 2 (virtual3free ¢eld), for
+each of the nine standard locations, for the left and right ears.
+
+HEARES 3434 12-5-00 Cyaan Magenta Geel Zwart
+
+78
+
+M.L. Spezio et al. / Hearing Research 144 (2000) 73^88
+
+tion due to insertion of the earphones. The small size of
+the ear canals (ID = 3 mm) made these measurements
+challenging, and it was not possible to avoid contact
+between earphone and microphone tubes. The results
+shown in Fig. 4 are typical for both monkeys 1 and 2
+(HRIRs from monkey 3 were not tested for validity).
+3.4. HRTF structure-monaural spectra, interaural level
+di¡erence (ILD), ITD
+HRTFs allow for the evaluation of prominent acoustical cues for sound localization. Monaural cues for
+sound localization are location-dependent di¡erences
+in the transformation of magnitudes of an incident
+auditory signal in one ear. These di¡erences can be
+seen by plotting monaural spectra, the spatial dependence of gain at a number of speci¢ed frequencies
+(i.e. monaural gain functions), and the frequency dependence of the location of maximal gain (i.e. the
+acoustic axis). Binaural cues for sound localization are
+interaural di¡erences in the transformation of magnitudes ILDs) and in the time of arrival (ITDs) of an
+incident auditory signal. This section presents our
+data regarding both monaural and binaural cues for
+sound localization in the monkey.
+Monaural spectra are especially useful for showing
+how the shape of the outer ear and ear canal transforms
+the magnitudes of incident auditory signals in an elevation-dependent manner. Monaural spectra of monkey 2
+for each ear for locations at 0³ azimuth and at eleva-
+
+Fig. 5. Elevation-dependent variations in monaural magnitude spectra of monkey 2, for locations at 0³ azimuth. A: Left ear. B: Right
+ear. Both ears show deep notches at about 9 kHz at lower elevations progressing to higher frequency bands as elevation increases.
+The scale bar shown (bottom middle) is 40 dB.
+
+Fig. 6. The elevational dependence of notch center frequency between 10 and 16 kHz for locations þ 20³ in azimuth at the elevations shown. Frequencies needed to satisfy two criteria in order to
+be considered notch center frequencies. First, a frequency was required to be the point of minimal gain in a monaural spectrum.
+Second, the mean di¡erence between the minimal gain and the gains
+at frequencies 88 Hz to either side of the frequency of minimal gain
+was required to be v10 dB. A: Monkey 2, showing that in this subject the notch center frequency tended to increase with increasing elevation. B: Monkey 1, showing that the notch center frequency
+does not vary systematically with elevation for this subject. Data
+for both right (b) and left (R) ears are plotted.
+
+tions ranging from 360³ to 90³ are shown in Fig. 5.
+Signi¢cant elevation-dependent spectral di¡erences can
+be seen at frequencies above 8 kHz, and these di¡erences are most evident in the placement of deep spectral
+notches, occurring most often at frequencies above
+10 kHz. We also see this prevalence of notches in monaural spectra of monkey 3, while we observe fewer
+notches in monaural spectra of monkey 1. In spectra
+of both monkeys 2 and 3, these notches increase in
+center frequency from about 8 kHz at low elevations
+to about 15 kHz at the highest elevations, for locations
+þ 20³ in azimuth. This dependence of notch center frequency on elevation is shown for monkey 2 in Fig. 6A.
+Here, frequencies needed to satisfy two criteria in order
+to be considered notch center frequencies. First, a frequency was required to be the point of minimal gain in
+a monaural spectrum. Second, the mean di¡erence between the minimal gain and the gains at frequencies
+88 Hz to either side of the putatively identi¢ed notch
+was required to be v10 dB. Fig. 6B shows that for
+monaural spectra of monkey 1, where notches are less
+prevalent, there is not a strong elevational dependence
+of notch center frequency.
+We cannot unambiguously identify the sources of the
+notches in our monaural spectra. Notches similar to
+those we observe can be caused by re£ections from
+
+HEARES 3434 12-5-00 Cyaan Magenta Geel Zwart
+
+M.L. Spezio et al. / Hearing Research 144 (2000) 73^88
+
+79
+
+Fig. 7. Monaural gain functions for monkey 2. Each diamond shows data from locations ranging from 390³ to 90³ in azimuth and 360³ to
+90³ in elevation. The colorbar associated with each left/right pair of diamond plots depicts the gain on a dB scale. The elevational shift of the
+acoustic axis is discernible. Zero dB contours are shown in magenta.
+
+HEARES 3434 12-5-00 Cyaan Magenta Geel Zwart
+
+80
+
+M.L. Spezio et al. / Hearing Research 144 (2000) 73^88
+
+the pinnae (Populin and Yin, 1998) and by re£ective
+surfaces on experimental apparatus. However, if our
+experimental apparatus was responsible for the notches
+we observe, we would expect to see a similar pattern of
+notches across animals, which we did not. This suggests
+that individual features of the head and pinnae could in
+fact be responsible for the observed notches. Although
+we cannot rule out the possibility that the di¡erences
+are due to di¡erences in cranial headpost implants,
+these were well-padded in our experiments with acoustically absorbent material.
+The presence of notches in monaural spectra requires
+that qualitative comparisons to assess similarity between datasets are restricted to frequencies below 10
+kHz. This is due to the fact that the position of a notch
+on the frequency axis is highly sensitive to speaker position. For example, for the barn owl, a notch's center
+frequency can shift by as much as 150 Hz per degree of
+change in speaker position (Keller et al., 1998a). In our
+experiments, speaker position was accurate to þ 0.5³
+while head placement was accurate to within 2³. Both
+sources of error when combined yield fairly large magnitude di¡erences across similar trials in the frequency
+range where notches occur (ca. 9^15 kHz), presumably
+due to changes in notch center frequency caused by
+small changes in speaker and/or head position.
+Monaural gain functions show how space is acoustically structured at individual frequencies by the shape
+of the outer ear and ear canal. Monaural gain functions
+for monkey 2 are shown in Fig. 7, and they are representative of all three monkeys. Each diamond plot
+shows elevation (360³ to 90³) on the ordinate and azimuth (390³ to 90³) on the abscissa, in double polar
+coordinates. Colors correspond to the gain on a dB
+scale, with reddish and bluish colors indicating positive
+and negative gain, respectively. These gain functions are
+plotted for the unsmoothed DTFs. At frequencies between 0.5^10 kHz, there is a nearly monotonic increase
+in gain as source position moves ipsilaterally. At higher
+frequencies, a more localized structure is observed, a
+result of the monaural spectral notches.
+The acoustic axis is de¢ned for each frequency as the
+direction of maximal gain for that particular frequency.
+Acoustic axes were calculated from 1/3-octave bandwidth-smoothed DTFs. Results are shown for monkey
+2, and are typical of the monkeys used in this study. As
+shown in Fig. 8A, the frequency-dependent shifts in the
+azimuth of the acoustic axes for the left and right ears
+are roughly symmetrical across the midline. There is a
+gradual lateral to medial shift in azimuth for maximal
+gain from 0.5 to 3 kHz. This shift levels out at 330³^
+340³ and 45³^50³ from the midline on the left and
+right, respectively, for frequencies between 3 and 8
+kHz. Near 8 kHz, an abrupt medial to lateral shift
+occurs, and the acoustic axes are fairly stable at about
+
+Fig. 8. Acoustic axis, monkey 2. A: The pattern of azimuthal position of the acoustic axis from 0.5 to 15 kHz. Data from the right
+ear (a) are plotted above and those of the left ear (b) are plotted
+below. B: The pattern of elevational position of the acoustic axis
+from 0.5 to 15 kHz. Data from the right (a) and left (b) ears are
+both plotted and show considerable similarity.
+
+þ 70³ from the midline out to 15 kHz. Fig. 8B plots the
+elevation of the acoustic axis. There is a progressive
+shift from above to below the horizontal plane from
+0.5 to about 5.7 kHz. A V40³ discrete shift upward
+then takes place that slowly increases in elevation until
+about 10 kHz. This is followed by a V40³ discrete shift
+
+HEARES 3434 12-5-00 Cyaan Magenta Geel Zwart
+
+M.L. Spezio et al. / Hearing Research 144 (2000) 73^88
+
+81
+
+Fig. 9. ILDs for monkeys 1 and 2. Results from one measurement of monkey 1 and two measurements of monkey 2 (2.1 and 2.2) are shown.
+The diamonds represent locations in frontal space between 390³ and 90³ in azimuth (horizontal axis) and 360³ and 90³ in elevation (vertical
+axis), in double polar coordinates. Positive values designate that the gain in the right ear is louder. The colorbar associated with each triplet of
+diamond plots depicts the level di¡erence on a dB scale. Zero dB contours are shown in magenta.
+
+HEARES 3434 12-5-00 Cyaan Magenta Geel Zwart
+
+82
+
+M.L. Spezio et al. / Hearing Research 144 (2000) 73^88
+
+Fig. 10. ITDs for monkeys 1 and 2. Results from two measurements of monkey 2 and one measurement of monkey 1 are shown. The diamonds represent locations in frontal space between 390³ and 90³ in azimuth (horizontal axis) and 360³ and 90³ in elevation (vertical axis), in
+double polar coordinates. Positive values designate right leading. The colorbar associated with each triplet of diamond plots depicts the time
+di¡erence in Ws (left ear3right ear). ITD = 0 Ws contours are shown in magenta.
+
+HEARES 3434 12-5-00 Cyaan Magenta Geel Zwart
+
+M.L. Spezio et al. / Hearing Research 144 (2000) 73^88
+
+downward and a slow progression back up toward horizontal as the frequency nears 15 kHz. The large shift in
+the elevation of the acoustic axis observed in both ears
+at about 10 kHz is due to the pattern of notches. In the
+absence of the notches, the gain functions exhibit a
+broad region of space that is within þ 1 dB of maximal
+gain (e.g. Fig. 7, 7998 Hz). This region is bifurcated and
+then further disrupted by the notches at higher frequencies (e.g. Fig. 7, 9976 Hz).
+Plots of ILDs calculated from the unsmoothed DTFs
+of monkeys 1 and 2 (two measurements on two di¡erent days for monkey 2) are shown in Fig. 9. As with the
+monaural gain functions, these plots have elevation on
+the ordinate and azimuth on the abscissa, and the colors correspond to the magnitude of level di¡erence
+(right ear3left ear) for each measured location, on a
+dB scale. Positive and negative ILDs result from auditory signals that are at a higher level in the right ear
+and left ear, respectively. Comparison of the left and
+center columns in Fig. 9 shows that there is good reproducibility between measurements in a single monkey, both in overall spatial pattern and in absolute
+ILDs. The RMS di¡erence between the two measurements for monkey 2 is less than 6 dB for frequencies
+between 1 and 10 kHz over all 591 locations. This variability is not markedly a¡ected by quadrant, nor does
+it increase the farther a sound source moves from center
+(0³,0³). These RMS di¡erences in ILD are 2-fold higher
+between monkeys over the same frequency and location
+range.
+ITD plots (Fig. 10) are shown in the same format as
+were the plots for the monaural gain functions and the
+ILDs. Colors on this plot indicate the di¡erence in arrival times (in Ws) for the sound at the right and left
+ears. Positive and negative values indicate that the
+sound is leading in the right ear and the left ear, respectively. ITDs are minimal near the midline and vary
+monotonically with azimuth and are very similar across
+measurements within the same monkey and between
+monkeys. The maximal ITD averaged across frequencies from datasets from monkeys 1^3 was 473 þ 7 Ws,
+corresponding to about 5.3 Ws/³ azimuth.
+4. Discussion
+4.1. Variability due to the notches at high frequency
+Our objectives in measuring HRTFs of the Rhesus
+monkey were to gain an understanding of the acoustic
+cues available to the monkey for sound localization and
+to develop the technology for the simulation of free
+¢eld auditory sources during psychophysical and neurophysiological experiments. Both of these objectives require replicability across measurements in the same an-
+
+83
+
+Fig. 11. Frequency scaling using the standard deviations of DTF
+di¡erences. Each plot shows the standard deviation of di¡erences in
+DTF magnitude between monkey 2 and another monkey, after the
+frequencies of the monaural gain function of monkey 2 have been
+scaled up or down relative those of the other monkey. Ratios of frequencies (i.e. frequency scaling factor) are plotted on the abscissa.
+To achieve better overall agreement of DTF spectra, those for monkey 2 would be scaled upward in frequency to match those of monkey 1 (dashed line), and downward in frequency to match those of
+monkey 3 (solid line). See text for more details.
+
+imal and some level of agreement across measurements
+between animals. Repeated monaural measurements at
+the nine standard locations within the same monkey
+varied in magnitude by only þ 2.5 dB except at frequencies occupied by the spectral notches. Measurements
+between monkeys showed greater variability. However,
+our intersubject di¡erences were similar to those seen
+for human HRTFs (Middlebrooks et al., 1989).
+We examined the variability between monkeys by
+applying the method of frequency scaling (Middlebrooks et al., 1989; Middlebrooks, 1999a). The scaling
+factor expands or contracts one subject's DTF magnitude spectra along the frequency axis relative to those
+of a reference subject to obtain a better agreement between the two sets of DTFs. Middlebrooks and coworkers found that such scaling can reduce variability
+between DTFs from human subjects and can improve
+subjects' virtual localization when using non-individualized DTFs (Middlebrooks, 1999b). They also showed
+that the scaling factor correlated most highly with maximum ITD, head width and pinna cavity height (Middlebrooks, 1999a). In general, DTFs of larger subjects (i.e. larger ITD) needed to be scaled upward
+in frequency to enhance agreement with DTFs of
+smaller subjects (i.e. smaller ITD) (Middlebrooks,
+1999a).
+In the following analysis, monkey 2 served as the
+reference subject and we calculated the level di¡erences
+between monkey 2 and monkeys 1 and 3, respectively,
+
+HEARES 3434 12-5-00 Cyaan Magenta Geel Zwart
+
+84
+
+M.L. Spezio et al. / Hearing Research 144 (2000) 73^88
+
+for a given frequency at each of 590 locations. We
+followed Middlebrooks et al. (1989) in using the standard deviation of DTF di¡erences as a measure of intersubject variability. We used eight reference frequencies and corresponding variable test frequencies. We
+subtracted the DTF magnitudes for monkey 2 at the
+speci¢ed reference frequencies (2^10 kHz, 1 kHz increments) from those of monkeys 1 and 3 at variable
+frequencies 0.5^1.5 times the reference frequency (in
+22 Hz increments, for 590 locations). We then calculated the standard deviation of the di¡erence distribution across all locations for each variable frequency.
+Minimal standard deviations occurring at a ratio (variable frequency :reference frequency) of one indicate
+that no frequency shift is necessary. We found that
+the frequency ratios (using monkey 2 as the reference
+subject) that gave minimal standard deviation for both
+ears for all locations at the eight reference frequencies
+were 1.05 and 0.98 for monkeys 1 and 3, respectively
+(Fig. 11). Thus, DTFs of monkey 2 would need to be
+scaled slightly higher to optimally match those of monkey 1 and slightly lower to optimally match those of
+monkey 3. Interestingly, the maximal ITD for monkey
+2 (474 ms) falls between a lower value for monkey 1
+(464 ms) and a higher value for monkey 3 (479 ms), so
+our analysis is consistent with Middlebrooks' (1999a)
+observation for human subjects. Repeating the analysis
+using RMS di¡erences between subjects, following Middlebrooks (1999a), resulted in the same pattern of scale
+factor and maximal ITD for the three monkeys. Signi¢cantly, the ranges of the standard deviations for our
+data agree well with the ranges reported by Middlebrooks et al. (1989) for six human subjects across 356 locations. Ours are slightly more variable at 10 kHz, presumably due to notches in the data from 9 to 15 kHz
+(Fig. 5 and see discussion below).
+Sources of variability in measuring HRTFs from a
+single monkey include di¡erences in the positions of
+the speaker, pinnae and head. Variability in measuring
+HRTFs from two di¡erent monkeys includes these
+sources as well as morphological di¡erences. In the frequency domain, the largest variability in gain is in the
+
+9^15 kHz range. As previously discussed (Fig. 5), this is
+due to the spectral notches that vary in frequency by
+location and to the fact that speaker position is only
+accurate to þ 0.5³ while head position is only accurate
+to within 2³.
+To determine how much of the variability across
+measurements could be attributed to the spectral
+notches, we compared spectra obtained in several conditions at each of the nine standard locations. To this
+end, we compared the di¡erences between each condition using unsmoothed and 1/3-octave level-smoothed
+spectra. By con¢ning the analysis to the frequency
+range where the notches are most pervasive (i.e. 9^15
+kHz), we can attribute a reduction in variability of the
+smoothed spectra as being due to the elimination of the
+notches.
+As a ¢rst step, we normalized the gain for each recording session by subtracting the log magnitudes of
+the HRTFs obtained at (0³,0³) from those at each of
+the other eight standard locations, within a single condition. For the smoothing condition, we smoothed the
+resulting normalized HRTFs between 0 and 20 kHz and
+analyzed the frequency band between 9 and 15 kHz.
+For example, to compare recordings from monkey 1
+and monkey 2.1, we calculated a di¡erence spectrum
+for each of the eight locations using either the unsmoothed or smoothed data. The RMS di¡erence
+across frequencies was calculated for each di¡erence
+spectrum and these values were averaged across the
+eight locations to give an estimate of mean variability
+between sets of normalized HRTFs.
+Table 1 shows the three conditions of comparison in
+three separate columns. The ¢rst column compares two
+measurements of the nine locations from monkey 2 in
+the same session, where the ¢rst measurement was taken at the beginning of the session and the second measurement was taken at the end of the session, after
+collecting data for all 591 locations. In this case, the
+measurements were separated by about 5^6 h. The second column of Table 1 compares two measurements of
+the nine locations from monkey 2, carried out on two
+di¡erent days. The third column of Table 1 compares
+
+Table 1
+E¡ect of smoothing on the variability in the 9^15 kHz band over eight standard locations
+Monkey 2 vs. monkey 2, single
+session
+No smoothinga
+left ear
+right ear
+1/3-Octave band-smoothed
+left ear
+right ear
+
+Monkey 2 vs. monkey 2, two
+separate sessions
+
+Monkey 2 vs. monkey 1,
+two sessions
+
+3
+6
+
+5
+6
+
+9
+11
+
+1
+2
+
+2
+2
+
+5
+3
+
+a
+RMS maximal absolute level di¡erences (dB) over eight standard locations (i.e. all locations except at (0,0)), between two measurements of
+each of the eight locations (see Section 4.1). One-third-octave band smoothing was carried out between 0 and 20 kHz prior to calculating differences for frequencies between 9 and 15 kHz.
+
+HEARES 3434 12-5-00 Cyaan Magenta Geel Zwart
+
+M.L. Spezio et al. / Hearing Research 144 (2000) 73^88
+
+85
+
+Fig. 12. ILDs for monkey 2 and for the human subject SOS (Wightman and Kistler, 1989). Data are plotted for azimuths ranging between
+390³ and 90³ on the abscissa and elevations ranging between 350³ and 90³ on the ordinate. Colors indicate the magnitude of the ILDs on a
+dB scale according to the accompanying colorbars. The data are plotted with di¡erent color scales to highlight the similarity between the monkey and human ILD patterns. Zero dB contours are shown in magenta.
+
+HEARES 3434 12-5-00 Cyaan Magenta Geel Zwart
+
+86
+
+M.L. Spezio et al. / Hearing Research 144 (2000) 73^88
+
+measurements from monkey 1 with those from monkey
+2, taken on separate days.
+From the data in Table 1, it is apparent that the
+HRTFs from the right ear are slightly more variable
+than those from the left, consistent with the observation
+that the notches are more prevalent in the right ear
+(Fig. 5). Our data indicate that variability within and
+between datasets from the same monkey (Table 1, columns 1 and 2) and between di¡erent monkeys (Table 1,
+column 3) can be largely explained by the spectral
+notches (i.e. the RMS di¡erences are signi¢cantly reduced by 1/3-octave bandwidth smoothing). After
+smoothing, the within monkey RMS di¡erences range
+from 1 to 2 dB, while those between monkeys decrease
+from about 10 dB to 3^5 dB. This analysis suggests that
+smoothing will facilitate the use of non-individualized
+HRTFs in neurophysiological and psychophysical experiments that require frequencies above 9 kHz, for
+locations within about 30³ of straight ahead.
+4.2. Comparison with HRTFs from squirrel monkeys and
+humans
+The only other published HRTF-like data from monkeys were reported by Harrison and Downey (1970) for
+the squirrel monkey (Saimiri sciureus). Their data cover
+the horizontal plane in 15³ increments for tones of 4, 10
+and 20 kHz (Harrison and Downey, 1970). Plots of
+ILD vs. azimuth using these data are similar to our
+own ILD data at identical frequencies, except that we
+observe 10^50% greater maximal ILDs compared to
+Harrison and Downey. The di¡erence between our
+data and those of Harrison and Downey is most signi¢cant for the 4 kHz condition. Whereas the plot of
+ILD vs. azimuth at 4 kHz for the squirrel monkey is
+relatively £at ( þ 2^3 dB) and does not follow the plots
+at 10 and 20 kHz, the corresponding 4 kHz plot for the
+Rhesus monkey peaks at dILDd s 10 dB and follows the
+plots at the higher frequencies (not shown). These differences could be due to dissimilar shadowing caused by
+di¡erences in head size between the two species. However, unlike our recordings from within the ear canal,
+Harrison and Downey recorded the transformed signal
+external to the ear canal. Thus, the di¡erences between
+the two measurements could be merely the result of
+di¡erences in microphone position.
+Due to the importance of the Rhesus monkey as a
+human model in auditory research, we compared interaural level and time di¡erences from our data with
+those present in the human HRTF catalogue measured
+by Wightman and Kistler, from subject SOS, that is
+supplied with the Tucker Davis Technologies' Sound
+Stage0 software (Wightman and Kistler, 1989). A representative comparison of ILDs at several frequencies is
+shown in Fig. 12. Data for monkey 2 (replotted from
+
+Fig. 13. Comparison of experimental results with models of ITD dependence upon azimuth. The models of Woodworth (1938) and
+Kuhn (1977) are plotted with ITDs measured at low frequencies (A)
+and high frequencies (B), as azimuth ranges from 390³ to 90³. A
+clear transition in the data occurs between 1 and 2 kHz.
+
+Fig. 9, center column) and human subject SOS are plotted for azimuths ranging between 390³ and 90³ on the
+abscissa and elevations ranging between 350³ and 90³
+on the ordinate. Colors indicate the magnitude of the
+ILDs, calculated from DTFs, on a dB scale according
+to the accompanying colorbars. Note that the color
+scales used for the monkey and human data are di¡er-
+
+HEARES 3434 12-5-00 Cyaan Magenta Geel Zwart
+
+M.L. Spezio et al. / Hearing Research 144 (2000) 73^88
+
+ent in order to emphasize the clear similarity in overall
+ILD pattern. In both species, absolute ILD generally
+increases as distance from the midline increases. In
+the comparison near 10 kHz, the contour of 0 dB
+ILD (shown in magenta) is notably similar for elevations between 315³ and 330³, and there are similar
+local minima and maxima for the comparisons near
+4 and 8 kHz. Not surprisingly, the corresponding ITD
+plots for this same comparison look very similar (not
+shown), both demonstrating a monotonic increase in
+MITDM as the distance from the midline increases. The
+di¡erence in head size between Rhesus monkeys and
+humans, however, leads to a maximal MITDM of V470
+Ws and V700 Ws, respectively.
+4.3. Comparisons of measured ITDs with models of ITD
+dependence on azimuth
+Several models are available that predict the dependence of ITD on azimuthal position based upon the size
+of the head, and it is of interest to compare these predictions to our measured values. Woodworth (1938)
+modeled the head as a sphere and calculated the ITD
+resulting from the interaural path di¡erence as follows:
+ITDrY a   raca  sina 
+
+1
+
+where r is the head radius, a is the angle of incidence of
+the wavefront with the median plane and c is the speed
+of sound (Woodworth, 1938). An empirically based
+model of azimuthal variation of ITD in humans was
+developed by Kuhn (1977). This model takes into account that ITD is also slightly dependent on frequency.
+The model includes two functions of ITD, one for frequencies below 1250 Hz and the other for higher frequencies (Kuhn, 1977):
+ITDrY a   3racsina Y f 91250 Hz
+
+2
+
+ITDrY a   2racsina Y f v1250 Hz
+
+3
+
+This model has been used to compare behavioral ITD
+thresholds with localization thresholds of pure tones by
+Rhesus monkeys on the assumption that Kuhn's human
+model also describes ITD variation with location in the
+Rhesus monkey (Houben and Gourevitch, 1979).
+We compared our data with predictions from these
+models, assuming a head radius of 52 mm, one-half the
+interaural distance of monkey 2 (Fig. 13). It is clear
+from the ¢gure that MITDM increases nearly monotonically as the sound source moves in azimuth away from
+the center. In Fig. 13A, it is seen that Kuhn's low-frequency model (Eq. 2) describes this shift well for frequencies at or below 1000 Hz for positions ranging
+between 390³ and 20³ in azimuth. For higher frequen-
+
+87
+
+cies and azimuths between 340³ and 40³, Woodworth's
+model (Eq. 1) is in better agreement (Fig. 13B). Note
+that a slightly better agreement with Woodworth's
+model is obtained if we assume an e¡ective head radius
+of 59 mm, appreciably larger than the value obtained
+from the interaural distance.
+Acknowledgements
+The authors gratefully acknowledge Dr. Jagdeep Bala
+for assistance in experiments with monkey 1; Dr. Joyce
+Brackenbusch for advice on tympanum incision; Dr.
+Jack Vanderlip, Dr. James Gent, Tracie Bork and
+Monte Matthews for assistance in animal care for the
+experiments ; and Klaus Hartung for assistance in data
+reduction methodology and helpful comments. Knowles
+Electronics Co. generously donated miniature microphones. This work was supported by Grants from the
+National Institute of Deafness and Communication
+Disorders (DC03925 to T.T.) and an Institutional National Research Service Award from the National Institutes of General Medical Sciences (5-T32-GMO7257).
+
+References
+Blauert, J., 1997. Spatial Hearing. MIT Press, Cambridge, MA.
+Brown, C.H., Beecher, M.D., Moody, D.B., Stebbins, W.C., 1978.
+Localization of primate calls by old world monkeys. Science
+201, 753^754.
+Brown, C.H., Beecher, M.D., Moody, D.B., Stebbins, W.C., 1980.
+Localization of noise bands by Old World monkeys. J. Acoust.
+Soc. Am. 68, 127^132.
+Brugge, J.F., Reale, R.A., Hind, J.E., Chan, J.C., Musicant, A.D.,
+Poon, P.W., 1994. Simulation of free-¢eld sound sources and its
+application to studies of cortical mechanisms of sound localization
+in the cat. Hear. Res. 73, 67^84.
+Carlile, S., 1990a. The auditory periphery of the ferret. I: Directional
+response properties and the pattern of interaural level di¡erences.
+J. Acoust. Soc. Am. 88, 2180^2195.
+Carlile, S., 1990b. The auditory periphery of the ferret. II: The spectral transformations of the external ear and their implications for
+sound localization. J. Acoust. Soc. Am. 88, 2196^2204.
+Gourevitch, G., 1970. Detectability of tones in quiet and noise by rats
+and monkeys. In: Stebbins, W.C. (Ed.), Animal Psychophysics.
+Appleton-Century-Crofts, New York, pp. 67^97.
+Harrison, J.M., Downey, P., 1970. Intensity changes at the ear as a
+function of the azimuth of a tone source: a comparative study.
+J. Acoust. Soc. Am. 47, 1509^1518.
+Hartmann, W.M., 1998. Signals, Sound, and Sensation. Springer,
+New York.
+Hartung, K. and Sterbing, S.J., 1997. Generation of virtual sound
+sources for the electrophysiological characterization of auditory
+spatial tuning in the guinea pig. In: Syka, J. (Ed.), Acoustical
+Signal Processing in the Central Auditory System. Plenum Press,
+New York, pp. 407^412.
+He¡ner, H.E., 1997. The role of macaque auditory cortex in sound
+localization. Acta Otolaryngol. 532 (Suppl.), 22^27.
+He¡ner, H.E., He¡ner, R.S., 1986. Hearing loss in Japanese macaques
+
+HEARES 3434 12-5-00 Cyaan Magenta Geel Zwart
+
+88
+
+M.L. Spezio et al. / Hearing Research 144 (2000) 73^88
+
+following bilateral auditory cortex lesions. J. Neurophysiol. 55,
+256^271.
+He¡ner, H.E., He¡ner, R.S., 1990. E¡ect of bilateral auditory cortex
+lesions on sound localization in Japanese macaques. J. Neurophysiol. 64, 915^931.
+Hocherman, S., Benson, D.A., Goldstein, M.H., Jr., He¡ner, H.E.,
+Hienz, R.D., 1976. Evoked unit activity in auditory cortex of
+monkeys performing a selective attention task. Brain Res. 117,
+51^68.
+Hofman, P.M., Van Riswick, J.G., Van Opstal, A.J., 1998. Relearning
+sound localization with new ears. Nat. Neurosci. 1, 417^421.
+Houben, D., Gourevitch, G., 1979. Auditory lateralization in monkeys: an examination of two cues serving directional hearing.
+J. Acoust. Soc. Am. 66, 1057^1063.
+Jay, M.F., Sparks, D.L., 1984. Auditory receptive ¢elds in primate
+superior colliculus shift with changes in eye position. Nature 309,
+345^347.
+Jay, M.F., Sparks, D.L., 1987. Sensorimotor integration in the primate superior colliculus. II. Coordinates of auditory signals.
+J. Neurophysiol. 57, 35^55.
+Keller, C.H., Hartung, K., Takahashi, T.T., 1998a. Head-related
+transfer functions of the barn owl: measurement and neural responses. Hear. Res. 118, 13^34.
+Keller, C.H., Marrocco, R.T., Spezio, M.L. and Takahashi, T.T.,
+1998. Head-Related Transfer Functions of the Rhesus Monkey.
+Abstracts of the meeting of the Society for Neuroscience, Los
+Angeles, CA.
+Kuhn, G.F., 1977. Model for the interaural time di¡erences in the
+azimuthal plane. J. Acoust. Soc. Am. 62, 157^167.
+Larsen, O., Dooling, R., 1996. Intracranial air pressure modi¢es hearing in birds. Abstr. Meet. ARO 19, 205.
+Marrocco, R.T., Lane, R.F., McClurkin, J.W., Blaha, C.D., Alkire,
+M.F., 1987. Release of cortical catecholamines by visual stimulation requires activity in thalamocortical a¡erents of monkey and
+cat. J. Neurosci. 7, 2756^2767.
+Mazzoni, P., Bracewell, R.M., Barash, S., Andersen, R.A., 1996. Spatially tuned auditory responses in area LIP of macaques performing delayed memory saccades to acoustic targets. J. Neurophysiol.
+75, 1233^1241.
+Mehrgardt, S., Mellert, V., 1977. Transformation characteristics of
+the external human ear. J. Acoust. Soc. Am. 61, 1567^1576.
+Mellert, V., Siebrasse, K.F., Mehrgardt, S., 1974. Determination of
+
+the transfer function of the external ear by an impulse response
+measurement. J. Acoust. Soc. Am. 56, 1913^1915.
+Middlebrooks, J.C., 1999a. Individual di¡erences in external-ear
+transfer functions reduced by scaling in frequency. J. Acoust.
+Soc. Am. 106, 1480^1492.
+Middlebrooks, J.C., 1999b. Virtual localization improved by scaling
+non-individualized external-ear transfer functions in frequency.
+J. Acoust. Soc. Am. 106, 1493^1510.
+Middlebrooks, J.C., Green, D.M., 1990. Directional dependence of
+interaural envelope delays. J. Acoust. Soc. Am. 87, 2149^2162.
+Middlebrooks, J.C., Makous, J.C., Green, D.M., 1989. Directional
+sensitivity of sound-pressure levels in the human ear canal.
+J. Acoust. Soc. Am. 86, 89^108.
+Musicant, A.D., Chan, J.C., Hind, J.E., 1990. Direction-dependent
+spectral properties of cat external ear: new data and cross-species
+comparisons. J. Acoust. Soc. Am. 87, 757^781.
+Populin, L.C., Yin, T.C.T., 1998. Pinna movements of the cat during
+sound localization. J. Neurosci. 18, 4233^4243.
+Proakis, J.G. and Manolakis, D.G., 1996. Digital Signal Processing:
+Principles, Algorithms, and Applications. Prentice Hall, Upper
+Saddle River, NJ.
+Rauschecker, J.P., 1997. Processing of complex sounds in the auditory
+cortex of cat, monkey, and man. Acta Otolaryngol. 532 (Suppl.),
+34^38.
+Rauschecker, J.P., 1998. Parallel processing in the auditory cortex of
+primates. Audiol. Neurootol. 3, 86^103.
+Rauschecker, J.P., Tian, B., Pons, T., Mishkin, M., 1997. Serial and
+parallel processing in rhesus monkey auditory cortex. J. Comp.
+Neurol. 382, 89^103.
+Shaw, E.A., Teranishi, R., 1968. Sound pressure generated in an external-ear replica and real human ears by a nearby point source.
+J. Acoust. Soc. Am. 44, 240^249.
+Stricanne, B., Andersen, R.A., Mazzoni, P., 1996. Eye-centered, headcentered, and intermediate coding of remembered sound locations
+in area LIP. J. Neurophysiol. 76, 2071^2076.
+Teranishi, R., Shaw, E.A., 1968. External-ear acoustic models with
+simple geometry. J. Acoust. Soc. Am. 44, 257^263.
+Wightman, F.L., Kistler, D.J., 1989. Headphone simulation of free¢eld listening. I: Stimulus synthesis. J. Acoust. Soc. Am. 85, 858^
+867.
+Woodworth, R.S., 1938. Experimental Psychology. H. Holt and Company, New York.
+
+HEARES 3434 12-5-00 Cyaan Magenta Geel Zwart
+
+</p>
+      </div>
+    </body>
+    
+	<back/>
+  </text>
+</TEI>

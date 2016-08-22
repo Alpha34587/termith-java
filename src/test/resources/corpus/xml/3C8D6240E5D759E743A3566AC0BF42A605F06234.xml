@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Version 1.2 générée le 4-4-2016-->
+<TEI xmlns:tei="http://www.tei-c.org/ns/1.0" xmlns="http://www.tei-c.org/ns/1.0" xml:lang="en">
+  <teiHeader>
+		<fileDesc>
+			<titleStmt>
+				<title/>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+			</publicationStmt>
+			<sourceDesc>
+				<p/>
+			</sourceDesc>
+		</fileDesc>
+	</teiHeader>
+  <text>
+    <body>
+      <div>
+        <p>
+H.D. Osiewacz, C. Borghouts / Experimental Gerontology 35 (2000) 677±686
+
+Experimental Gerontology 35 (2000) 677±686
+
+677
+
+www.elsevier.nl/locate/expgero
+
+Cellular copper homeostasis, mitochondrial DNA
+instabilities, and lifespan control in the ®lamentous
+fungus Podospora anserina
+H.D. Osiewacz*, C. Borghouts
+Botanisches Institut, Molekulare Entwicklungsbiologie und Biotechnologie,
+È
+Johann Wolfgang Goethe-Universitat, Marie-Curie-Str. 9, D-60439 Frankfurt am Main, Germany
+Received 3 May 2000; accepted 6 June 2000
+
+Abstract
+In the fungal aging model Podospora anserina, lifespan is controlled by mitochondrial and
+nuclear genetic traits. Different nuclear genes are known to affect the integrity of the mitochondrial
+DNA (mtDNA). One gene of this type is Grisea encoding a copper-modulated transcription factor
+involved in the control of cellular copper homeostasis. The characterization of a long-lived mutant
+with a loss-of-function mutation in this gene revealed that the last step in the pathway, homologous
+recombination, leading to the characteristic age-related mtDNA reorganizations is copper-dependent. In growing parts of the culture, the stabilization of the mtDNA has an important impact on the
+biogenesis of functional mitochondria, on their capacity to remodel damaged respiratory chains and
+on longevity. q 2000 Published by Elsevier Science Inc.
+Keywords: Podospora anserina; Mitochondrial DNA; Homologous recombination; Respiration; Aging; Cellular
+copper homeostasis
+
+1. Introduction
+Experimental aging research using the ®lamentous fungus Podospora anserina as a
+model system has a long tradition. Already in the early 1950s, Rizet reported that all wild
+isolates of this fungus, in contrast to almost all other ®lamentous fungi, senesce after
+prolonged vegetative propagation (Rizet, 1953). During aging, the growth rate of the
+culture, the so-called mycelium, decreases and the pigmentation changes. Finally, the
+®lamentous ªcellsº of the mycelium, the hyphae, die at their tips. Extensive analyses of
+this ªsenescence syndromeº revealed that it is under the control of both environmental as
+* Corresponding author. Tel.: 14969-798-292-64/63; fax: 14969-798-293-63.
+E-mail address: osiewacz@em.uni-frankfurt.de (H.D. Osiewacz).
+0531-5565/00/$ - see front matter q 2000 Published by Elsevier Science Inc.
+PII: S 0531-556 5(00)00142-X
+
+678
+
+H.D. Osiewacz, C. Borghouts / Experimental Gerontology 35 (2000) 677±686
+
+Fig. 1. Instability of the mtDNA of P. anserina as the result of homologous recombination between direct repeats.
+(A) Transposition of the pl-intron to either an ectopic site or to the site downstream of the ®rst CoxI exon leads to
+the generation of dispersed or tandem repeats of the pl-intron. The acceptor site of the intron in the CoxI gene is
+indicated by IBS (intron binding site), the sequence at the ectopic site by IBS p (intron-like binding site).
+Recombination processes between duplicated sequences lead to the generation of different mtDNA subcircles.
+(B) Recombination processes between dispersed short direct repeats of a particular region of the mtDNA result in
+the formation of b-senDNAs (Jamet-Vierny et al., 1997). This circular DNA species contains a central common
+region containing an origin (Ori) of replication and variable ¯anking sequences.
+
+well as genetic factors. Nuclear genes and extranuclear genetic traits were found to be
+involved (Marcou, 1961; Esser and Keller, 1976; Tudzynski and Esser, 1979). A covalently closed circular DNA species, named plDNA or a-sen DNA, was identi®ed as the
+extranuclear component (Stahl et al., 1978; Cummings et al., 1979a). In juvenile cultures,
+plDNA is an integral part of the high molecular weight mtDNA and represents the ®rst
+È
+intron (pl-intron) of the cytochrome oxidase subunit I gene (CoxI) (Kuck et al., 1981;
+Osiewacz and Esser, 1984). During aging, the pl-intron becomes liberated and ampli®ed.
+At the same time, large parts of the mtDNA are deleted. These reorganizations occur
+
+H.D. Osiewacz, C. Borghouts / Experimental Gerontology 35 (2000) 677±686
+
+679
+
+almost quantitatively since in senescent cultures most mtDNA molecules are extensively
+È
+rearranged (Kuck et al., 1981).
+It is striking that senescent cultures of all investigated geographical races, wild-type
+È
+strains collected from different regions of Europe, contain ampli®ed plDNA (Kuck et al.,
+1985a). In contrast, various long-lived mutants were reported which either do not contain
+ampli®ed plDNA or the ampli®cation of this genetic element is delayed (Tudzynski et al.,
+È
+1982; Vierny et al., 1982; Kuck et al., 1985b; Schulte et al., 1988; Osiewacz et al., 1989).
+Taken together, the data suggested a signi®cant or even a causative role of plDNA in aging
+of P. anserina.
+
+2. Transposition of the mobile intron leads to increased mtDNA instabilities
+The pl-intron contains an open reading frame (ORF) coding for a protein with signi®cant homology to mRNA maturases and reverse transcriptases (Osiewacz and Esser, 1984;
+Michel and Lang, 1985). Overexpression of this ORF led to a demonstration of a reverse
+transcriptase activity of the pl-intron encoded protein (Fassbender et al., 1994). Moreover,
+the same activity was identi®ed in crude extracts of middle-aged Podospora cultures
+(Steinhilber and Cummings, 1986). The identi®cation of a stable splicing intermediate,
+an RNA forming a lariat structure (Schmidt et al., 1990), together with the demonstration
+of a pl-intron copy at a position at which this sequence normally does not occur, led to the
+suggestion that this intron is able to transpose. One hypothetical model explains this
+process to proceed via reverse transcription of a pl-RNA intermediate followed by the
+integration of the resulting DNA into the mtDNA (Sellem et al., 1993). As an alternative to
+this ªreverse splicingº process, the pl-intron transposition was suggested to occur after the
+generation of a double strand break at the acceptor site and a replication process using the
+pl-intron RNA as a template (Sainsard-Chanet et al., 1994). Integration of the pl-intron
+either occurs directly downstream of the ®rst CoxI exon or at an ectopic acceptor site. As a
+consequence, additional copies of the 2.5 kbp intron sequence can be found in tandem as
+well as dispersed in the same mtDNA molecule (Fig. 1A) (Sellem et al., 1993; Borghouts
+et al., 2000). Subsequent homologous recombination processes between these duplicated
+sequences appear to account for the formation of plDNA molecules and to various mtDNA
+subcircles generated during aging. Depending on whether or not these circles contain a
+functional origin of replication they are retained or become lost (Fig. 1A).
+In addition to homologous recombination processes between duplicated copies of the
+pl-intron, recombination between short endogenous direct repeats plays a signi®cant role
+in the reorganization of the mtDNA regularly occurring during senescence of P. anserina
+cultures. Again, if these sequences contain a functional origin of replication, they can be
+isolated as stable mtDNA subcircles. The most prominent circle of this type is the so called
+b-senDNA, a DNA species of variable size which often, but not systematically, accumulates in P. anserina cultures (Cummings et al., 1979b; Cummings et al., 1985; JametVierny et al., 1997). Size variability of these circles is due to the presence of different pairs
+of short direct repeats located adjacent to the internal ªcommon regionº of this sequence
+(Fig. 1B) (Jamet-Vierny et al., 1997).
+
+680
+H.D. Osiewacz, C. Borghouts / Experimental Gerontology 35 (2000) 677±686
+
+Fig. 2. Different pathways leading to mtDNA rearrangements steps in P. anserina. Repeated sequences are either present as short endogenous repeats in the mtDNA or are
+generated as the result of the transposition of the mobile pl-intron. Transposition of the intron is thought to proceed via the expression of the CoxI gene (CoI), reverse
+transcription of a pl-RNA intermediate and integration into the IBS site in the CoxI gene (homing-like transposition) or into an IBS p site at an ectopic site in the mtDNA.
+The last step in this pathway, recombination between homologous sequences, is dependent on the availability of copper. In mutant grisea, this step is affected.
+
+H.D. Osiewacz, C. Borghouts / Experimental Gerontology 35 (2000) 677±686
+
+681
+
+3. mtDNA instability is dependent on copper
+The selection of nuclear mutants in which the lifespan is modi®ed raised the
+intriguing question whether these mutations affect age-related mitochondrial functions. Interestingly, in the three independently selected nuclear mutants grisea, as65, and su12-C1 life is extended but ®nite although these mutants do not amplify
+plDNA (Borghouts et al., 1997; Silar et al., 1997). In addition, recently a mitochondrial mutant was characterized in which the pl-intron is precisely deleted. Consequently, no plDNA can be ampli®ed. Although characterized by a twofold increased
+lifespan, the mutant senesces (Begel et al., 1999). Collectively, these data indicate
+that the ampli®cation of plDNA is not a prerequisite for aging but that this mobile
+genetic element is able to modulate the rate of aging.
+One intriguing question arising from the characteristics of the above mentioned
+nuclear mutants relates to the molecular mechanisms leading to the stabilization of
+the mtDNA. At present, the answer is not clear in all cases. However, some insight
+is derived from the characterization of long-lived mutant grisea. These analyses
+revealed that grisea is a copper-uptake mutant (Marbach et al., 1994; Borghouts
+et al., 1997; Borghouts et al., 2000). Copper-uptake is affected due to a loss-offunction mutation in nuclear gene Grisea. The product of this gene is a coppermodulated transcription factor involved in cellular copper homeostasis (Osiewacz
+and Nuber, 1996; Borghouts et al., 1997; Borghouts and Osiewacz, 1998). It senses
+cellular copper levels and controls the expression of a high-af®nity copper transporter gene. Due to the mutation in Grisea, this transporter is not expressed resulting in
+reduced cellular copper levels.
+Since the mtDNA is stabilized in this mutant, mtDNA reorganizations appear to
+be dependent on the availability of copper. However, which one of the different
+steps introduced above (Fig. 2) are dependent on the presence of this metal? A
+systematic analysis of the corresponding pathway revealed that the transcription of
+the CoxI gene as the ®rst step in the transposition via an RNA intermediate and
+reverse transcription is not affected in the mutant and thus is copper-independent
+(Borghouts et al., 2000). The existence of a copper-dependent transcriptional control
+was rather likely since such a control was previously demonstrated for a number of
+other genes encoding copper-binding proteins like Cu/Zn dismutase, metallothionein,
+and plastocyanin (Hamer, 1986; Carri et al., 1991; Hill et al., 1991; Thiele 1992;
+È
+Steinkuhler et al., 1994; Hill and Michalczyk, 1995). Also the next step, the transposition of the pl-intron to the ectopic site as well as to the CoxI gene (ªhominglikeº transposition) was found to be independent of copper. In PCR experiments the
+transposed pl-intron sequences was identi®ed at both sites in the wild-type strain
+and in the grisea mutant. In marked contrast, there was a signi®cant difference in
+the generation of b-sen DNA molecules in cultures of the wild-type strain and the
+mutant grown in standard growth medium. Whereas b-sen DNA, generated by
+homologous recombination between short direct repeats (Fig. 1B), was frequently
+found to accumulate in the wild-type strain, this was not the case in the mutant.
+Supplementation of the growth medium with additional copper reverted this mutant
+phenotype to wild-type characteristics. Under these conditions, the cellular copper
+
+682
+
+H.D. Osiewacz, C. Borghouts / Experimental Gerontology 35 (2000) 677±686
+
+Fig. 3. A functional mitochondrial respiratory chain is composed of components encoded by both, the nuclear and
+the mitochondrial genome (mtDNA). During aging, the mtDNA of the wild-type becomes extensively reorganized. Large parts of the mtDNA are deleted. Consequently, mitochondria are unable to remodel components of
+the respiratory chain which were damaged by ROS. Moreover, division of these mitochondria results in the
+multiplication of dysfunctional mitochondria. These organelles accumulate at the growth front of senescent
+P.anserina cultures.
+
+level in the mutant appears to be normalized via the uptake of copper by low
+af®nity copper transporters. Collectively, the data suggest a copper-dependence of
+the homologous recombination process in mitochondria of P. anserina and an indirect effect of the nuclear gene Grisea on the stability of the mtDNA.
+Apart from the effect on the integrity of the mtDNA, a decrease in cellular copper has a
+number of additional consequences. First, copper-de®ciency leads to a defect in mitochondrial energy transduction since the cytochrome oxidase of the respiratory chain requires
+copper as a cofactor. This defect leads to the induction of an alternative, cytochrome
+oxidase independent respiratory pathway (Osiewacz and Kimpel, 1999). Second, the
+generation of aggressive reactive oxygen species (ROS) via Fenton chemistry appears
+to be reduced. Third, the activity of copper-dependent enzymes other than COX is
+affected. Some of them, like laccase, tyrosinase, or the Cu/Zn superoxide dismutase,
+
+H.D. Osiewacz, C. Borghouts / Experimental Gerontology 35 (2000) 677±686
+
+683
+
+may be of relevance in respect to longevity since they are either involved in the generation
+of ROS or are part of a defense system directed against oxidative stress.
+4. Mitochondrial dysfunction as the result of mtDNA instabilities
+During vegetative propagation P. anserina cultures grow continuously by extension and
+branching of the hyphal tips at the growth front. After a strain speci®c growth period, it is
+this area of a culture that becomes senescent. In this region, mitochondria are severely
+affected in their energy transduction machinery. What are the reasons for this phenotype?
+The available experimental data suggest the following scenario (Fig. 3). During growth,
+the newly formed parts of the mycelium need to obtain a suf®cient number of functional
+mitochondria to meet their energy demands. Mitochondria are generated by division. In
+older cultures, the generation of functional mitochondria is not possible since the mtDNA
+encoding 13 proteins of the respiratory chain, 2 subunits of mitochondrial ribosomes, and
+25 tRNAs (Cummings et al., 1990) is extensively rearranged. Consequently, at the growth
+front of older cultures, dysfunctional mitochondria accumulate. If, for any reason, the
+mtDNA remains stable over time, the generation of functional mitochondria is possible.
+Intact mtDNA is not only important in the growing part of the mycelium at the hyphal
+tips but also in areas not growing any more. Here, molecular damage necessarily occurs
+over time since ROS are continuously generated by the mitochondrial respiratory chain.
+Remodeling of respiratory chains damaged by ROS is only possible when nuclear encoded
+as well as mitochondrial encoded subunits are available (Fig. 3). In addition, severely
+damaged mitochondria may be degraded and replaced by new and functional organelles.
+5. Conclusions and perspectives
+In P. anserina cellular copper has an impact on the integrity of the mtDNA. A nuclear
+gene Grisea involved in the control of copper homeostasis indirectly affects mtDNA
+stability. Also in other systems, the integrity of the mtDNA is controlled by nuclear
+genes and their gene products. In humans, a role of topoisomerase II was suggested in
+the generation of large-scale deletions found in patients with clinical characteristics of
+external opthalomoplegia (PEO) or Kearns-Sayre syndrome (KSS). Putative topoisomerase II sites were identi®ed in the vicinity of mtDNA breakpoints (Mita et al., 1990; Blok
+et al., 1995). These sequences may predispose certain parts of the mtDNA to deletions. In
+Neurospora crassa, another ®lamentous ascomycete, the nuclear nd gene was found to be
+involved in recombination events between short direct repeats of the mtDNA (SeidelRogol et al., 1989; Bertrand et al., 1993). In the yeast Saccharomyces cerevisiae, the sitespeci®c endonuclease Endo.SceI, encoded by a nuclear and a mitochondrial gene, was
+reported to induce homologous recombination of the mtDNA between direct repeats
+(Nakagawa et al., 1991; Nakagawa et al., 1992). Finally, the accumulation of diverse
+mtDNA deletions in patients with Wilson's disease, an inherited disease characterized
+by the accumulation of copper in liver mitochondria, also suggests a link between cellular
+copper, oxidative stress and mtDNA instability (Mansouri et al., 1997). It is very likely
+that many other nuclear genes are involved in maintenance of the mtDNA and thus
+
+684
+
+H.D. Osiewacz, C. Borghouts / Experimental Gerontology 35 (2000) 677±686
+
+represent important factors of the complex nuclear-mitochondrial network involved in
+lifespan control. It will be of interest to unravel the details of the molecular basis and
+the underlying mechanisms of this network and to see whether similar pathways are
+operating in the different biological systems.
+Acknowledgements
+We wish to thank the Deutsche Forschungsgemeinschaft (Bonn, Germany) for the
+continuous support of the experimental work.
+References
+Begel, O., Boulay, J., Albert, B., Dufour, E., Sainsard-Chanet, A., 1999. Mitochondrial group II introns, cytochrome c oxidase, and senescence in Podospora anserina. Mol. Cell. Biol. 19, 4093±4100.
+Bertrand, H., Wu, U., Seidel-Rogol, B., 1993. Hyperactive recombination in the mitochondrial DNA of the
+natural death nuclear mutant of Neurospora crassa. Mol. Cell. Biol. 13, 6788.
+Blok, R.B., Thorburn, D.R., Thompson, G.N., Dahl, H.H., 1995. A topoisomerase II cleavage site is associated
+with novel mitochondrial deletions. Hum. Genet. 95, 75±81.
+Borghouts, C., Kerschner, S., Osiewacz, H.D., 2000. Copper-dependence of mitochondrial DNA rearrangements
+in Podospora anserina. Curr. Genet. 37, 268±275.
+Borghouts, C., Kimpel, E., Osiewacz, H.D., 1997. Mitochondrial DNA rearrangements of Podospora anserina
+are under the control of the nuclear gene grisea. Proc. Natl Acad. Sci. USA 94, 10 768±10 773.
+Borghouts, C., Osiewacz, H.D., 1998. GRISEA, a copper-modulated transcription factor from Podospora anserina involved in senescence and morphogenesis, is an ortholog of MAC1 in Saccharomyces cerevisiae. Mol.
+Gen. Genet. 260, 492±502.
+Carri, M.T., Galiazzo, F., Ciriolo, M.R., Rotilio, G., 1991. Evidence for co-regulation of Cu, Zn superoxide
+dismutase and metallothionein gene expression in yeast through transcriptional control by copper via the ACE
+1 factor. FEBS Lett. 278, 263±266.
+Cummings, D.J., Belcour, L., Grandchamp, C., 1979a. Mitochondrial DNA from Podospora anserina. I. Isolation
+and characterization. Mol. Gen. Genet. 171, 229±238.
+Cummings, D.J., Belcour, L., Grandchamp, C., 1979b. Mitochondrial DNA from Podospora anserina. II. Properties of mutant DNA and multimeric circular DNA from senescent cultures. Mol. Gen. Genet. 171, 239±250.
+Cummings, D.J., MacNeil, I.A., Domenico, J., Matsuura, E.T., 1985. Excision-ampli®cation of mitochondrial
+DNA during senescence in Podospora anserina. DNA sequence analysis of three unique plasmids. J. Mol.
+Biol. 185, 659±680.
+Cummings, D.J., McNally, K.L., Domenico, J.M., Matsuura, E.T., 1990. The complete DNA sequence of the
+mitochondrial genome of Podospora anserina. Curr. Genet. 17, 375±402.
+Esser, K., Keller, W., 1976. Genes inhibiting senescence in the ascomycete Podospora anserina. Mol. Gen.
+Genet. 144, 107±110.
+È
+Fassbender, S., Bruhl, K.H., Ciriacy, M., Kuck, U., 1994. Reverse transcriptase activity of an intron encoded
+polypeptide. EMBO J. 13, 2075±2083.
+Hamer, D.H., 1986. Metallothionein. Annu. Rev. Biochem. 55, 913±951.
+Hill, K.L., Li, H.H., Singer, J., Merchant, S., 1991. Isolation and structural characterization of the Chlamydomonas reinhardtii gene for cytochrome c6. Analysis of the kinetics and metal speci®city of its copper
+responsive expression. J. Biol. Chem. 266, 15 060±15 067.
+Hill, K.L., Michalczyk, A., 1995. Coordinate expression of coproporphyrinogen oxidase and cytochrome c6 in the
+green alga Chlamydomonas reinhardtii in response to changes in copper availability. EMBO J. 14, 865±877.
+Jamet-Vierny, C., Boulay, J., Briand, J.F., 1997. Intramolecular cross-overs generate deleted mitochondrial DNA
+molecules in Podospora anserina. Curr. Genet. 31, 162±170.
+
+H.D. Osiewacz, C. Borghouts / Experimental Gerontology 35 (2000) 677±686
+
+685
+
+È
+Kuck, U., Kappelhoff, B., Esser, K., 1985a. Despite mtDNA polymorphism the mobile intron (plDNA) of the COI
+gene is present in different races of Podospora anserina. Curr. Genet. 10, 59±67.
+È
+Kuck, U., Osiewacz, H.D., Schmidt, U., Kappelhoff, B., Schulte, E., Stahl, U., Esser, K., 1985b. The onset of
+senescence is affected by DNA rearrangements of a discontinuous mitochondrial gene in Podospora anserina.
+Curr. Genet. 9, 373±382.
+È
+Kuck, U., Stahl, U., Esser, K., 1981. Plasmid-like DNA is part of mitochondrial DNA in Podospora anserina.
+Curr. Genet. 3, 151±156.
+Mansouri, A., Gaou, I., Fromenty, B., Berson, A., Letteron, P., Degott, C., Erlinger, S., Pessayre, D., 1997.
+Premature oxidative aging of hepatic mitochondrial DNA in Wilson's disease. Gastroenterology 113, 599±
+605.
+Marbach, K., Fernandez-Larrea, J., Stahl, U., 1994. Reversion of a long-living, undifferentiated mutant of
+Podospora anserina by copper. Curr. Genet. 26, 184±186.
+Marcou, D., 1961. Notion de longevite et nature cytoplasmatique du determinant de senescence chez quelques
+champignons. Ann. Sci. Natur. Bot., 653±764.
+Michel, F., Lang, B.F., 1985. Mitochondrial class II introns encode proteins related to the reverse transcriptases of
+retroviruses. Nature 316, 641±643.
+Mita, S., Rizzuto, R., Moraes, C.T., Shanske, S., Arnaudo, E., Fabrizi, G.M., Koga, Y., DiMauro, S., Schon, E.A.,
+1990. Recombination via ¯anking direct repeats is a major cause of large-scale deletions in human mitochondrial DNA. Nucleic Acids Res. 18, 561±567.
+Nakagawa, K., Morishima, N., Shibata, T., 1991. A maturase-like subunit of the sequence-speci®c endonuclease
+Endo.SceI from yeast mitochondria. J. Biol. Chem. 266, 1977±1984.
+Nakagawa, K., Morishima, N., Shibata, T., 1992. An endonuclease with multiple cutting sides. Endo.SceI,
+initiates genetic recombination at its cutting site in yeast mitochondria. EMBO J. 11, 2707±2715.
+Osiewacz, H.D., Esser, K., 1984. The mitochondrial plasmid of Podospora anserina: a mobile intron of a
+mitochondrial gene. Curr. Genet. 8, 299±305.
+Osiewacz, H.D., Hermanns, J., Marcou, D., Trif®, M., Esser, K., 1989. Mitochondrial DNA rearrangements are
+correlated with a delayed ampli®cation of the mobile intron (plDNA) in a long-lived mutant of Podospora
+anserina. Mutat. Res. 219, 9±15.
+Osiewacz, H.D., Kimpel, E., 1999. Mitochondrial-nuclear interactions and lifespan control in fungi. Exp. Gerontol. 34, 901±909.
+Osiewacz, H.D., Nuber, U., 1996. GRISEA, a putative copper-activated transcription factor from Podospora
+anserina involved in differentiation and senescence. Mol. Gen. Genet. 252, 115±124.
+Rizet, G., 1953. Sur L'impossibilite d'obtenir la multiplication vegetative interromue et illimite de l'ascomycete
+Podospora anserina. C R Acad. Si. Paris 237, 838±855.
+Sainsard-Chanet, A., Begel, O., Belcour, L., 1994. DNA double-strand break in vivo at the 3' extremity of exons
+located upstream of group II introns. Senescence and circular DNA introns in Podospora mitochondria. J.
+Mol. Biol. 242, 630±643.
+Schmidt, U., Riederer, B., Morl, M., Schmelzer, C., Stahl, U., 1990. Self-splicing of the mobile group II intron of
+the ®lamentous fungus Podospora anserina (COI I1) in vitro. EMBO J. 9, 2289±2298.
+È
+Schulte, E., Kuck, U., Esser, K., 1988. Extrachromosomal mutants from Podospora anserina: permanent vegetative growth in spite of multiple recombination events in the mitochondrial genome. Mol. Gen. Genet., 342±
+349.
+Seidel-Rogol, B., King, J., Bertrand, H., 1989. Unstable mitochondrial DNA in natural-death nuclear mutants of
+Neurospora crassa. Mol. Cell. Biol. 9, 4259±4264.
+Sellem, C.H., Lecellier, G., Belcour, L., 1993. Transposition of a group II intron. Nature 366, 176±178.
+Silar, P., Koll, F., Rossignol, M., 1997. Cytosolic ribosomal mutations that abolish accumulation of circular intron
+in the mitochondria without preventing senescence of Podospora anserina. Genetics 145, 697±705.
+È
+Stahl, U., Lemke, P.A., Tudzynski, P., Kuck, U., Esser, K., 1978. Evidence for plasmid like DNA in a ®lamentous
+fungus, the ascomycete Podospora anserina. Mol Gen Genet 162, 341±343.
+Steinhilber, W., Cummings, D.J., 1986. A DNA polymerase activity with characteristics of a reverse transcriptase
+in Podospora anserina. Curr. Genet. 10, 389±392.
+È
+Steinkuhler, C., Carri, M.T., Micheli, G., Knoepfel, L., Rotilio, G., 1994. Copper-dependent metabolism of Cu.Zn
+dismutase in human K562 cells. Lack of speci®c transcriptional activation and accumulation of partially
+inactivated enzyme. Biochem J. 302, 687±694.
+
+686
+
+H.D. Osiewacz, C. Borghouts / Experimental Gerontology 35 (2000) 677±686
+
+Thiele, D.J., 1992. Metal-regulated transcription in eukaryotes. Nucleic. Acids Res. 20, 1183±1191.
+Tudzynski, P., Esser, K., 1979. Chromosomal and extrachromosomal control of senescence in the ascomycete
+Podospora anserina. Mol. Gen. Genet. 173, 71±84.
+Tudzynski, P., Stahl, U., Esser, K., 1982. Development of a eukaryotic cloning system in Podospora anserina. I.
+Long-lived mutants as potential recipients. Curr. Genet. 6, 222±222.
+Vierny, C., Keller, A.M., Begel, O., Belcour, L., 1982. A sequence of mitochondrial DNA is associated with the
+onset of senescence in a fungus. Nature 297, 157±159.
+
+</p>
+      </div>
+    </body>
+    
+	<back/>
+  </text>
+</TEI>

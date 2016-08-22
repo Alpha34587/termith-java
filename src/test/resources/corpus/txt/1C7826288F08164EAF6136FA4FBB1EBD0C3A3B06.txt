@@ -1,0 +1,1411 @@
+
+    
+      
+        Caskie, G.I.L., Sutton, M.C., & Margrett, J.A. (2010). The relation of hypertension to changes in adl/iadl limitations of mexican american older adults. Journal of Gerontology: Psychological Sciences,
+65B(3), 296–305, doi:10.1093/geronb/gbq001. Advance Access published on January 28, 2010.
+
+The Relation of Hypertension to Changes in ADL/IADL
+Limitations of Mexican American Older Adults
+Grace I. L. Caskie,1 MaryAnn C. Sutton,1 and Jennifer A. Margrett2
+1Department
+
+of Education and Human Services, Lehigh University, Bethlehem, Pennsylvania.
+of Human Development and Family Studies, Iowa State University, Ames.
+
+2Department
+
+Hypertension, highly prevalent and often undiagnosed among older Mexican Americans, is associated with greater
+limitations in activities of daily living (ADLs) and instrumental activities of daily living (IADLs) that can lead to
+greater dependency for older adults. Using data from the Hispanic Established Populations for Epidemiologic
+Studies of the Elderly study, the rate of increase in ADL/IADL limitations for a 7-year period was examined for
+3,046 older Mexican Americans classified either as reporting hypertension at baseline, first reporting hypertension
+at subsequent waves, or never reporting hypertension. Latent growth models indicated increased ADL/IADL
+limitations over time; individuals with hypertension evidenced greater increases than those without hypertension.
+Age, comorbidities, and depression were positively related to greater ADL/IADL limitations at baseline for all
+groups; only age was consistently related to ADL/IADL change over time. Development of hypertension may increase the risk of ADL/IADL decline, but early diagnosis and treatment may attenuate this effect.
+Key Words:  ADLs—Cardiovascular disease—IADLs—Longitudinal change—Minority and diverse populations.
+
+D
+
+eclines in older adults’ ability to perform tasks associated with personal care and routine household
+needs can lead to a loss of independence and decreased
+quality of life. Liu, Coughlin, and McBride (1991) reported
+that older adults with greater limitations in activities of daily
+living (ADLs) are less likely to continue to live independently and utilize assisted-living arrangements earlier. Models of the disablement process (Nagi, 1979; Verbrugge &
+Jette, 1994) postulate that impairments resulting from pathology (e.g., disease) lead to limitations in physical activities (e.g., walking), which subsequently alter individuals’
+ability to perform these tasks of daily living. Research is
+needed to investigate disparities in health risk factors that
+can result in functional impairment. The current study investigates the impact of hypertension, which is more prevalent among Hispanics, in order to quantify the impact of this
+risk factor on Mexican American elders’ ability to perform
+ADLs and instrumental activities of daily living (IADLs).
+Despite inconsistent terminology in describing the construct that ADLs and IADLs measure (e.g., “disability” by
+Nagi, 1979; Verbrugge & Jette, 1994; “functional limitations” by Johnson & Wolinsky, 1993; and “functional status”
+by Liang et al., 2008), the tasks assessed by ADL and IADL
+measures are relatively consistent in the literature. ADL tasks
+include basic self-care activities, such as bathing and eating
+(Katz, Ford, Moskowitz, Jackson, & Jaffe, 1963), and IADL
+tasks are those activities necessary to run a household, including meal preparation and keeping track of finances
+(Lawton & Brody, 1969). Previous longitudinal analyses
+have indicated that ADL/IADL limitations increase with age
+(e.g., Bowen & Gonzalez, 2008; Kahng, Dunkle, & Jackson,
+2004; Liang et al.). Although Spector, Katz, Murphy, and
+296
+
+Fulton (1987) suggested that older adults generally become
+dependent in IADLs before ADLs, loss of basic ADL abilities may have more serious consequences. For example, individuals with greater dependency in ADLs, but not IADLs,
+have higher mortality rates and greater likelihood of utilizing
+an assisted-living facility (Liu, Manton, & Aragon, 2000).
+Multiple studies support a link between poorer health status
+and ADL/IADL limitations in the older adult community. In
+particular, cardiovascular health problems, including hypertension, have been shown to have a more prominent harmful
+effect on ADL/IADL limitations than do other types of health
+conditions that may affect older adults (e.g., osteoporosis;
+Johnson & Wolinsky, 1993). Pinsky and colleagues (1985)
+found that ever having a hypertension diagnosis was predictive of greater disability status for both men and women.
+Similar findings by Wu, Huang, Wu, McCrone, and Lai
+(2007) indicated that hypertension was among one of the
+highest risk factors for severe disability (defined as two or
+more ADL limitations) in a sample of community-dwelling
+older adults. In a literature review by Stuck and colleagues
+(1999), hypertension was one of the medical conditions most
+closely associated with functional status decline, with 13
+independent studies reporting significant risk of functional
+status decline for those self-reporting hypertension.
+More than half of American adults older than 60 years are
+estimated to have hypertension (Ostchega, Yoon, Hughes, &
+Louis, 2008), and this rate rises to three fourths by age 70
+(U.S. Department of Health and Human Services, 2008).
+For Mexican Americans aged 65 years and older, the rate of
+hypertension reaches approximately 60% (Satish, StroupBenham, Espino, Markides, & Goodwin, 1998). Thus, the
+impact of hypertension on the ADL/IADL limitations
+
+© The Author 2010. Published by Oxford University Press on behalf of The Gerontological Society of America.
+All rights reserved. For permissions, please e-mail: journals.permissions@oxfordjournals.org.
+Received January 29, 2009; Accepted January 2, 2010
+Decision Editor: Rosemary Blieszner, PhD
+
+HYPERTENSION AND ADL  IADL LIMITATIONS
+/
+
+experienced by older adults may be especially great for older
+adults in general and for Mexican American older adults in
+particular. For adults, hypertension is generally defined as a
+blood pressure more than 140/90 mm Hg (e.g., Hajjar &
+Kotchen, 2003; Wang & Wang, 2004) and is diagnosed by
+physicians only after at least two separate blood pressure
+readings more than this level (Carretero & Oparil, 2000;
+U.S. Department of Health and Human Services, 2008). If
+hypertension is left untreated, serious cardiovascular health
+threats can occur, including heart attacks and strokes, and, as
+a result, hypertension is associated with increased mortality
+rates over time (Hajjar & Kotchen).
+Despite the potential health complications associated
+with hypertension and the high prevalence of this condition
+within the Mexican American community, little research
+has focused on the links between hypertension and ADL/
+IADL limitations for Mexican Americans. Kington and
+Smith (1997) found that chronic diseases, including
+hypertension, led to greater functional decline for African
+American and Hispanic older adults than for Whites, but
+this relationship disappeared when controlling for socioeconomic status. In addition, Mexican Americans older than 65
+years are among the groups least likely to achieve hypertension control through medication adherence and lifestyle alterations (Wang & Wang, 2004); for example, approximately
+13% of Mexican Americans did not alter their diet or exercise routine, and 31% did not take blood pressure medication. Thus, Mexican Americans could be at substantial risk
+for decrements in overall well-being due to a hypertension
+diagnosis.
+Stuck and colleagues (1999) called for additional
+research on the underlying causes of change in functional
+status decline (defined as a combination of ADL/IADL and
+physical function limitations) among older adults, such as
+the impact of chronic diseases like hypertension. Given the
+lack of research on the effects of hypertension in the Mexican
+American community, it is important to look at subsequent
+changes in ADL/IADL limitations in this group. In addition, because hypertension is often a precursor to more
+serious cardiovascular problems, the timing of if and when
+an older adult develops hypertension may influence the
+increase in ADL/IADL limitations. Because hypertension
+may be comorbid with other chronic health conditions that
+affect ADL and IADL limitations (e.g., Kington & Smith,
+1997; Stuck et al.), the comorbidity of arthritis, diabetes,
+heart attack, and stroke was examined in the current study
+as a predictor of ADL/IADL limitations. Other correlates of
+ADL/IADL limitations were also examined, including depressive symptomatology, acculturation, and demographic
+characteristics. Past research has indicated that depression
+is related to greater ADL/IADL limitations (Fifield, Tennen,
+Reisine, & McQuillan, 1998; Friedman, Lyness, Delavan,
+Li, & Barker, 2008; Starkstein, Mayberg, Leiguarda,
+Preziosi, & Robinson, 1992). However, risk for ADL/IADL
+limitations can be lower with increased physical activity
+
+297
+
+levels (Miller, Rejeski, Reboussin, Ten Have, & Ettinger,
+2000). Although physical activity was not directly assessed
+in the current study, previous studies of Latino samples have
+found that more acculturated individuals are more likely to
+report exercising regularly (Cantero, Richardson, BaezcondeGarbanati, & Marks, 1999) and meet recommendations
+for moderate and vigorous physical activity (Evenson,
+Sarmiento, & Ayala, 2004) and less likely to report a sedentary lifestyle (Pérez-Stable, Marín, & VanOss Marín, 1994).
+Finally, reports of ADL limitations have been found to be
+higher for women, to increase with age, and to be lower for
+more educated individuals (e.g., Amaducci et al., 1998;
+Liang et al., 2008; Millán-Calenti et al., 2009).
+Thus, the present study examined change over time in
+ADL and IADL limitations for a group of communitydwelling Mexican American older adults. We hypothesized
+that significant increases in ADL and IADL limitations
+would be found over time, given the previous research
+demonstrating this trend. Furthermore, three groups were
+compared: those with hypertension at baseline, those with
+hypertension at a later time point, and those who never had
+hypertension. We hypothesized that significant differences
+would be found in the ADL and IADL trajectories based on
+the timing of development of hypertension such that the two
+groups with hypertension would experience greater increases
+in ADL/IADL limitations over time. Finally, we examined
+demographic variables and other potential correlates of ADL
+and IADL performance, hypothesizing that more comorbid
+chronic conditions, more depressive symptoms, lower acculturation, being female, greater age, and less education would
+be related to greater ADL and IADL limitations.
+Methods
+
+Participants
+The current study utilized the longitudinal Hispanic
+Established Populations for Epidemiologic Studies of the
+Elderly (EPESE) database (Markides, 1999, 2001, 2004;
+Markides & Ray, 2005), which is archived for secondary
+data analysis with the Inter-university Consortium for
+Political and Social Research. The archived database contained variables collected for a sample of 3,050 Mexican
+Americans aged 65 years or older. The current analysis
+deleted four participants from the archived database due to
+the lack of ADL data at any of the time points. The analysis
+sample (N = 3,046) was an average of 73 years old (SD =
+6.8; range = 65–99) and had an average of 4.9 years of education (SD = 3.9; range = 0–20); in addition, it included
+1,290 men and 1,756 women. Descriptive statistics for the
+demographic variables are presented in Table 1.
+The Hispanic EPESE used a probability sampling method
+to obtain a representative sample of noninstitutionalized
+Mexican American elders from Texas, New Mexico, Colorado,
+Arizona, and California; an 86% response rate was obtained
+of those initially contacted to participate in the study. All
+
+298
+
+Caskie et al.
+
+Table 1.  Descriptive Statistics for All Covariates: Total Sample and HBP Subgroups
+Covariate
+Age,a,b M (SD)
+Education (years), M (SD)
+Sexc
+  % Female
+Comorbidities,a,d M (SD)
+CES-D, M (SD)
+English usage, M (SD)
+
+Total sample (N = 3,046)
+
+Baseline HBP (n = 1,718)
+
+Later HBP (n = 654)
+
+No HBP (n = 674)
+
+73.0 (6.7)
+4.9 (3.9)
+
+72.8 (6.6)
+4.8 (3.8)
+
+72.4 (6.2)
+4.9 (3.9)
+
+74.1 (7.6)
+5.0 (4.1)
+
+57.6
+0.9 (0.9)
+9.94 (9.59)
+9.32 (8.76)
+
+61.4
+1.0 (0.9)
+10.27 (9.73)
+9.12 (8.59)
+
+56.0
+0.7 (0.8)
+9.67 (9.47)
+9.36 (8.93)
+
+49.7
+0.7 (0.8)
+9.29 (9.32)
+9.78 (9.02)
+
+Notes: The comorbidities variable reflects the presence of zero to four self-reported health conditions at baseline: arthritis, diabetes, heart attack, and stroke.
+CES-D = Center for Epidemiological Studies—Depression Scale; HBP = high blood pressure.
+a Significant Bonferroni comparison for Baseline HBP versus No HBP comparison (p < .001).
+b Significant Bonferroni comparison for Later HBP versus No HBP comparison (p < .001).
+c Significant chi-square value (p < .001).
+d Significant Bonferroni comparison for Baseline HBP versus Later HBP comparison (p < .001).
+
+data were collected through face-to-face interviews conducted
+in the homes of participants with interviewers who were fluent in both Spanish and English; the majority of interviews
+were conducted in Spanish. The average time to complete the
+full interview was 1 hr and 45 min. (See Black et al., 2003, for
+additional information about the Hispanic EPESE methodology.) The first wave of data collection took place between
+1993 and 1994 (Wave 1/Baseline). The original sample was
+contacted again for follow-up interviews in 1995–1996 (Wave
+2), 1998–1999 (Wave 3), and 2000–2001 (Wave 4).
+Measures
+Hypertension status.—Hypertension status was assessed
+using a combination of: (a) self-reported hypertension (“Has
+a doctor ever told you that you have high blood pressure?”),
+(b) self-reported hypertension medications (“Are you currently taking any medication for high blood pressure?”), (c)
+the average of two systolic blood pressure values, and (d)
+the average of two diastolic blood pressure values. Participants who answered affirmatively to both of the self-report
+questions or who self-reported hypertension and had either
+an average systolic pressure at or more than 140 mm Hg or
+an average diastolic pressure at or more than 90 mm Hg
+were classified as having hypertension (Markides, 1999).
+Using this variable calculated at each of the four waves, participants were then classified into one of the following three
+groups: those with high blood pressure (HBP) at baseline
+(i.e., Wave 1), those with HBP at a later time point (i.e.,
+Waves 2, 3, or 4), and those never having HBP. The sample
+sizes for these three groups were as follows: (a) Baseline
+HBP (n = 1,718), (b) Later HBP (n = 654), and (c) No HBP
+(n = 674).
+Activities of daily living.—Participants were asked if they
+needed any assistance with the following seven activities:
+walking across a small room, bathing, personal grooming,
+dressing, eating, getting out of bed and into a chair, and
+toileting (Branch, Katz, Kniepmann, & Papsidero, 1984;
+Katz et al., 1963). The ADL total score is the total number
+
+of areas with limitations as reported by the participant; thus,
+higher scores indicate greater need for assistance. Descriptive statistics for all measures are given in Table 2.
+Instrumental activities of daily living.—The IADL
+scale assessed limitations in a total of eight areas: using
+the telephone, traveling alone, shopping, preparing meals,
+doing light housework, taking medication, keeping track
+of personal finances, and heavy housework (Lawton &
+Brody, 1969). Similar to the ADL measure, the total score
+for IADLs represented the total number of areas for which
+the participant reported needing assistance (yes = 1, no = 0),
+Table 2.  Descriptive Statistics for the ADL and IADL Measures
+Over Time
+Total Sample
+ADLs
+  Wave 1
+   M (SD)
+   N
+  Wave 2
+   M (SD)
+   N
+  Wave 3
+   M (SD)
+   N
+  Wave 4
+   M (SD)
+   N
+IADLs
+  Wave 1
+   M (SD)
+   N
+  Wave 2
+   M (SD)
+   N
+  Wave 3
+   M (SD)
+   N
+  Wave 4
+   M (SD)
+   N
+
+Baseline HBP
+
+Later HBP
+
+No HBP
+
+0.5 (1.6)
+3,041
+
+0.5 (1.5)
+1,718
+
+0.4 (1.3)
+651
+
+0.8 (2.0)
+672
+
+0.6 (1.7)
+2,435
+
+0.6 (1.7)
+1,359
+
+0.5 (1.6)
+632
+
+0.9 (2.1)
+444
+
+0.9 (2.0)
+1,970
+
+1.0 (2.0)
+1,102
+
+0.9 (2.0)
+550
+
+0.9 (2.0)
+318
+
+1.0 (2.0)
+1,665
+
+1.0 (2.1)
+914
+
+1.0 (2.0)
+489
+
+0.8 (1.8)
+262
+
+1.5 (2.2)
+3,042
+
+1.5 (2.1)
+1,715
+
+1.3 (2.0)
+654
+
+1.9 (2.6)
+673
+
+1.7 (2.5)
+2,437
+
+1.7 (2.4)
+1,360
+
+1.5 (2.3)
+632
+
+2.0 (2.9)
+445
+
+2.0 (2.7)
+1,978
+
+2.1 (2.7)
+1,104
+
+1.9 (2.8)
+556
+
+1.8 (2.7)
+318
+
+2.0 (2.7)
+1,672
+
+2.0 (2.7)
+916
+
+2.0 (2.8)
+491
+
+1.8 (2.6)
+265
+
+Notes: ADL and IADL values represent number of reported limitations. The
+possible range for ADLs was 0–7 and for IADLs was 0–8. ADLs = activities of
+daily living; HBP = high blood pressure; IADLs = instrumental activities of
+daily living.
+
+HYPERTENSION AND ADL  IADL LIMITATIONS
+/
+
+with higher total scores indicating greater need for
+assistance.
+Demographic covariates.—Three demographic variables
+were controlled for in the analyses: sex, age, and education.
+Participants were asked to specify their sex, age in years,
+and the highest grade of school completed.
+Comorbidity.—Comorbidity was assessed as the number
+of four health conditions (arthritis, diabetes, heart attack,
+and stroke) self-reported by participants at baseline.
+Depressive symptoms.—Depressive symptoms at baseline
+were measured by the Center for Epidemiological Studies—
+Depression Scale (CES-D; Radloff, 1977). The CES-D
+includes a total of 20 items measured on a 4-point scale
+(coded 0–3), assessing the presence (e.g., I felt sad) and
+absence (e.g., I was happy) of specific depressive symptoms
+over the past week. Possible scores range from 0 to 60.
+English language usage.—English language usage has
+been used previously as a measure of acculturation (Masel,
+Rudkin, & Peek, 2006). This nine-item scale assessed selfreported competencies in understanding, speaking, and reading English (each coded 0–3); frequency of English usage
+with children, friends, neighbors, and at family gatherings
+(each coded 0–4); and use of television and radio programs
+in English (each coded 0–4). Possible scores range from 0 to
+33; greater scores indicate greater English usage at baseline.
+Data Analysis
+To estimate the rate of change over time in ADLs and
+IADLs and investigate possible nonlinearity of the curve,
+latent growth models were used to estimate both linear and
+quadratic change over time. The linear growth model included an intercept and linear slope to represent, respectively, the average performance at Wave 1 and the average
+rate of linear change. In the quadratic model, an additional
+quadratic parameter was estimated to represent the average
+rate of quadratic change, sometimes described as the rate of
+acceleration or deceleration of the curve. All factor loadings
+from the intercept to the four observed data points were
+fixed to 1; for the linear slope factor, these paths were set to
+0, 2, 5, and 7, representing the number of years elapsed
+since Wave 1. Factor loadings for the quadratic slope were
+set to 0, 4, 25, and 49. Thus, the mean linear and quadratic
+slopes are interpreted, respectively, as the average rates of
+linear and quadratic change for 1 year. Because latent
+growth modeling was used, the assumption of equal measurement errors was also able to be tested for both models
+(Willett & Sayer, 1994). Measurement error, loosely conceptualized as the random variance between observed and
+true scores on a construct, is typically assumed to be independent and homoscedastic (i.e., equal) over time. How-
+
+299
+
+ever, as Sayer and Cumsille (2001) explain, observing
+heterogeneous error variances over time is typical in developmental research because developmental changes in the
+construct under study are often accompanied by increases
+in variance in the construct over time.
+Several fit indices assessed model fit. In addition to the
+chi-square statistic, known to be overly sensitive with large
+samples such as in the current study, three additional fit indices were also examined: the comparative fit index (CFI),
+the Tucker–Lewis index (TLI), and the root mean square
+error of approximation (RMSEA). Values of .95 or better on
+the CFI and TLI and values of .05 or less on the RMSEA
+indicated good fit (Hu & Bentler, 1999). Amos 16.0 software (SPSS, Inc., Chicago, IL) (Arbuckle, 2007) was used
+to estimate the latent growth models; this program uses full
+information maximum likelihood estimation, which accommodates missing data.
+The first step of the analysis estimated two unconditional
+(i.e., no-predictor) growth models for the total sample (i.e.,
+linear and quadratic models) to investigate the form of the
+curve and establish base rates of change in the total sample.
+Next, three multigroup models were estimated to allow parameter estimates to be compared across the three HBP
+groups (i.e., Baseline HBP, Later HBP, No HBP). The first
+multigroup model allowed both the intercept and slope of
+the three HBP groups to be freely estimated. This full model
+was then compared, using a chi-square difference test, with
+two restricted models: (a) where intercepts were constrained
+to equality across the three HBP groups and (b) where slopes
+were constrained to equality across the three HBP groups.
+These comparisons tested, respectively, the hypothesis of
+HBP group differences in baseline ADL and IADL limitations and the hypothesis of HBP group differences in rate
+of change in ADLs and IADLs for the 7-year period covered by the Hispanic EPESE database. Finally, covariates
+(i.e., age, sex, education, baseline comorbidities, depressive
+symptoms, and English language usage) were added to the
+models to investigate their influence on group differences in
+ADL and IADL change and their relationship to baseline
+performance and change over time in ADLs and IADLs.
+Results
+
+Growth Models for ADL and IADL Limitations: Total
+Sample
+Using data from the total sample (N = 3,046), linear and
+quadratic growth models were first estimated for ADLs and
+IADLs to determine the appropriate form of the trajectories,
+assuming a homogeneous error structure. As shown in Table 3,
+both models fit equally well; however, little benefit appeared to
+be gained by increasing the complexity of the model to include
+the quadratic term. For ADLs, mean quadratic growth was
+very small though statistically significant (p = .025), and the
+variance for the quadratic term could not be estimated and was
+set to 0. For IADLs, both the mean and variance for quadratic
+
+300
+
+Caskie et al.
+
+Table 3.  Fit Indices for the Unconditional Linear and Quadratic
+Growth Models for ADLs and IADLs
+Model
+ADLs
+  Linear model
+  Quadratic model
+IADLs
+  Linear model
+  Quadratic model
+
+c2
+
+df
+
+CFI
+
+TLI
+
+Table 4.  Parameter Estimates From the Linear Growth Models for
+ADLs and IADLs: Total Sample
+
+RMSEA
+
+104.41***
+99.46***
+
+8
+7a
+
+.96
+.96
+
+.95
+.95
+
+.06
+.07
+
+82.24***
+42.21***
+
+8
+4
+
+.98
+.99
+
+.97
+.97
+
+.06
+.06
+
+Notes: ADLs = activities of daily living; CFI = comparative fit index; IADLs =
+instrumental activities of daily living; RMSEA = root mean square error of
+approximation; TLI = Tucker–Lewis index.
+a The quadratic slope and its covariances with the intercept and the linear
+slope were fixed to 0 in this model to produce an admissible solution.
+***p < .001.
+
+growth were nonsignificant (p = .521 and p = .238, respectively). Thus, the linear model was used in further analyses.
+Next, the assumption of homogeneous error variances over
+time was tested (Willett & Sayer, 1994) by comparing linear
+models with homogeneous (i.e., equal over time) and heteroscedastic (i.e., unequal over time) measurement error structures. Parameter estimates and fit indices for both models are
+reported in Table 4. The equal error variances model was rejected in favor of the unequal error variances model for both
+ADLs, Dc2(3) = 82.64, p < .001, and IADLs, Dc2(3) = 58.06,
+p < .001, indicating that the measurement error variance for
+these measures was not constant across the four time points.
+For both measures, the linear rate of change for the total
+sample was statistically significant and positive, although
+relatively small (ADLs: 0.12 per year; IADLs: 0.15 per
+year). These slopes equate to an average increase of almost
+one additional ADL limitation (0.12 × 7 = .84) and one
+IADL limitation (0.15 × 7 = 1.05) during the 7 years between the baseline and Wave 4 assessments. Thus, ADL
+limitations were estimated to increase from a baseline average of 0.50 to 1.34, and IADL limitations were estimated to
+increase from a baseline average of 1.53 to 2.58. Significant
+interindividual variability was observed for ADL and IADL
+outcomes in both intercept (baseline value) and slope (linear rate of change).
+Growth Models for ADL and IADL Limitations: By HBP
+Group
+Given the significant variability in intercepts and slopes
+observed for both ADLs and IADLs, multiple-group latent
+growth models were estimated to investigate HBP status
+(i.e., Baseline HBP, Later HBP, or No HBP) as a possible
+explanation for this variability. To test for group differences
+at baseline, the unconstrained intercepts and slopes model
+was compared with the constrained Intercepts Only model
+for each of the two outcomes. The chi-square difference
+tests indicated significant baseline differences between the
+HBP groups for both ADL, Dc2(2) = 30.837, p < .001, and
+IADL, Dc2(2) = 24.421, p < .001, limitations. Next, group
+differences in the linear rate of change were examined by
+comparing the unconstrained Intercepts and Slopes model
+
+ADLs
+
+Parameter
+Intercept mean
+Intercept variance
+Slope mean
+Slope variance
+Intercept–slope
+  correlation
+Wave 1 error
+  variance
+Wave 2 error
+  variance
+Wave 3 error
+  variance
+Wave 4 error
+  variance
+Chi-square
+df
+CFI
+TLI
+RMSEA
+
+IADLs
+
+Equal
+errors
+model
+
+Unequal
+errors
+model
+
+Equal
+errors
+model
+
+Unequal
+errors
+model
+
+0.49***
+1.36***
+0.13***
+0.05***
+0.25***
+
+0.50***
+1.63***
+0.12***
+0.05***
+0.03
+
+1.51***
+3.10***
+0.16***
+0.06***
+0.30***
+
+1.53***
+3.51***
+0.15***
+0.07***
+0.09
+
+1.24***
+
+0.81***
+
+2.22***
+
+1.48***
+
+1.24***
+
+1.22***
+
+2.22***
+
+2.37***
+
+1.24***
+
+1.66***
+
+2.22***
+
+2.66***
+
+1.24***
+
+1.13***
+
+2.22***
+
+2.11***
+
+82.24***
+8
+.98
+.97
+.06
+
+24.18***
+5
+.99
+.99
+.04
+
+104.41***
+8
+.96
+.95
+.06
+
+21.77**
+5
+.99
+.99
+.03
+
+Notes: ADLs = activities of daily living; CFI = comparative fit index; IADLs =
+instrumental activities of daily living; RMSEA = root mean square error of
+approximation; TLI = Tucker–Lewis index.
+**p < .01; ***p < .001.
+
+with the constrained Slopes Only model for ADLs and
+IADLs. Significant group differences in slopes were found
+for ADLs, Dc2(2) = 6.668, p =.036, but not for IADLs,
+Dc2(2) = 1.536, p = .464. Thus, the best-fitting models were
+the unconstrained intercepts and slopes model for ADLs
+and the constrained slopes Only model for IADLs. The
+model fit statistics for the three models analyzed for ADLs
+and for IADLs are shown in Table 5, and the parameter
+Table 5.  Fit Indices for the Linear Growth Models for ADLs and
+IADLs: By HBP Group
+Model
+ADLs
+  Unconstrained
+   intercepts and
+   slopes
+  Constrained
+   intercepts only
+  Constrained
+   slopes only
+IADLs
+  Unconstrained
+   intercepts and
+   slopes
+  Constrained
+   intercepts only
+  Constrained
+   slopes only
+
+c2
+
+df
+
+CFI
+
+TLI
+
+RMSEA
+
+47.691***
+
+15
+
+.987
+
+.973
+
+.027
+
+78.528***
+
+17
+
+.975
+
+.955
+
+.034
+
+54.360***
+
+17
+
+.985
+
+.973
+
+.027
+
+32.449**
+
+15
+
+.994
+
+.989
+
+.020
+
+56.870***
+
+17
+
+.987
+
+.977
+
+.028
+
+33.984**
+
+17
+
+.995
+
+.990
+
+.018
+
+Notes: ADLs = activities of daily living; CFI = comparative fit index; HBP =
+high blood pressure; IADLs = instrumental activities of daily living; RMSEA =
+root mean square error of approximation; TLI = Tucker–Lewis index.
+**p < .01; ***p < .001.
+
+301
+
+HYPERTENSION AND ADL  IADL LIMITATIONS
+/
+
+Table 6.  Parameter Estimates Across HBP Groups for ADLs and IADLs: Best-Fitting Unconditional Models
+ADLs: Unconstrained intercepts and slopes
+Parameter
+Intercept mean
+Intercept variance
+Slope mean
+Slope Variance
+Intercept–slope correlation
+Wave 1 error variance
+Wave 2 error variance
+Wave 3 error variance
+Wave 4 error variance
+
+IADLs: Constrained slopes only
+
+Baseline HBP
+(n = 1,718)
+
+Later HBP
+(n = 654)
+
+No HBP
+(n = 674)
+
+Baseline HBP
+(n = 1,718)
+
+Later HBP
+(n = 654)
+
+No HBP
+(n = 674)
+
+0.45***
+1.32***
+0.13***
+0.05***
+0.13*
+0.80***
+1.17***
+1.80***
+1.33***
+
+0.33***
+1.00***
+0.12***
+0.06***
+−0.01
+0.62***
+1.30***
+1.60***
+1.08***
+
+0.82***
+2.83***
+0.08***
+0.04***
+0.03
+1.21***
+1.17***
+1.28***
+0.57***
+
+1.51***
+3.04***
+0.15***
+0.08***
+0.07
+1.39***
+2.43***
+2.66***
+1.84***
+
+1.25***
+2.54***
+0.15***
+0.08***
+0.14
+1.64***
+2.25***
+2.65***
+2.05***
+
+1.85***
+5.64***
+0.15***
+0.02
+0.28
+1.38***
+2.47***
+2.83***
+3.18***
+
+Notes: ADLs = activities of daily living; HBP = high blood pressure; IADLs = instrumental activities of daily living.
+*p < .05; ***p < .001.
+
+estimates for the best-fitting unconditional models are
+shown in Table 6.
+For all three HBP groups, significant increases for 7 years
+(i.e., slopes) were found for both ADL and IADL limitations, with significant between-group differences in these
+rates of change for ADLs only. The estimate of change in
+IADLs was identical to the finding in the total sample. For
+ADLs, the Later HBP group had the largest slope, indicating the largest increase in ADL limitations after baseline,
+and the No HBP group had the lowest rate of change.
+Finally, baseline ADL and IADL limitations were not significantly correlated with ADL or IADL slope, except in the
+ADL model for the group with hypertension at baseline
+(r = .13, p < .05).
+Controlling for Covariates of ADL and IADL Limitations
+In the final models, demographic covariates (age, education, and sex), comorbidities, depressive symptoms, and
+English language usage were added to the multiple-group
+latent growth models. Controlling for these covariates, chisquare difference tests again indicated significant differences at baseline between the HBP groups for ADLs (p <
+.001) and IADLs (p = .012) and in slope (p = .036) for ADLs;
+a significant difference (p = .043) was now found when
+IADL slopes were constrained across group. Follow-up
+model comparisons showed that the IADL slopes for Baseline HBP and Later HBP were significantly greater than the
+No HBP group’s slope. Estimates for the growth parameters
+from the conditional models are shown in Table 7.
+For all three groups, age was significantly related to ADL
+limitation at baseline (p < .001), IADL limitation at baseline
+(p < .001), ADL slope (p < .001), and IADL slope (p <
+.001). Greater age was related to more ADL and IADL limitations at baseline and greater rates of change over time.
+Education was significantly related to changes in IADL
+limitations (p = .013) only for Baseline HBP; less education
+was related to greater rates of change in IADL limitations.
+Sex was a significant predictor only of IADL impairment at
+baseline (p = .03) for Baseline HBP; women had higher
+
+IADL limitations at baseline than men. The number of comorbidities was a significant predictor of ADL and IADL
+limitations at baseline (p < .001 for Baseline HBP and No
+HBP; p = .003 for Later HBP), but was only significantly
+related to ADL slope in the Baseline HBP group (p = .003)
+and IADL slope in the No HBP group (p = .030). Greater
+comorbidities at baseline were related to more baseline
+ADL and IADL limitations; furthermore, for those with hypertension at baseline, having more comorbid conditions
+was related to a greater rate of increase in ADL limitations,
+and for those never reporting hypertension, to greater rate of
+increase in IADL limitations. Greater depressive symptoms
+(p < .001) were related to greater ADL and IADL limitations at baseline for all groups and to less change over time in
+IADLs (p = .030) for the Later HBP group. Greater English
+language usage was related to fewer ADL and IADL limitations at baseline for the Baseline HBP (p = .002; p < .001)
+and No HBP (p = .013; p < .001) groups and to lower ADL
+slopes for the No HBP group (p = .048).
+Discussion
+The current study utilized latent growth curve modeling
+to examine changes in ADL/IADL limitations for a sample
+of Mexican American elders for a 7-year period as well as
+the relation of hypertension status and other covariates to
+ADL/IADL trajectories. Investigation of the potential effects of hypertension status on performance of ADL/IADL
+tasks is particularly important as: (a) hypertension is a
+known correlate of decline in functioning and negative outcomes (e.g., physical disability, heart attack, stroke) and (b)
+Hispanic elders, including Mexican Americans, demonstrate an elevated risk for hypertension. This longitudinal
+analysis adds to the limited research available documenting
+changes in Mexican American elders’ ADL/IADL limitations over time and examines predictors of ADL/IADL
+limitations that are relevant to this ethnic group.
+As hypothesized, the results of the present study indicated that significant increases in ADL and IADL limitations were experienced for the 7 years in which the research
+
+302
+
+Caskie et al.
+
+Table 7.  Parameter Estimates Across HBP Groups for ADLs and IADLs: Best-Fitting Conditional Models
+ADLs: Unconstrained
+intercepts and slopes
+Parameter
+Intercept mean
+Intercept variance
+Slope mean
+Slope Variance
+Intercept-slope correlation
+Wave 1 error variance
+Wave 2 error variance
+Wave 3 error variance
+Wave 4 error variance
+
+IADLs: Constrained slopes for
+baseline and later HBP only
+
+Baseline HBP
+(n = 1,718)
+
+Later HBP
+(n = 654)
+
+No HBP
+(n = 674)
+
+Baseline HBP
+(n = 1,718)
+
+Later HBP
+(n = 654)
+
+No HBP
+(n = 674)
+
+0.18**
+1.03***
+0.09***
+0.05***
+−0.01
+0.77***
+1.22***
+1.80***
+1.28***
+
+0.19*
+0.78***
+0.13***
+0.05***
+−0.13
+0.59***
+1.32***
+1.66***
+0.99***
+
+0.50***
+1.85***
+0.04
+0.03***
+−0.11
+1.25***
+1.13***
+1.25***
+0.58***
+
+0.90***
+1.80***
+0.17***
+0.07***
+−0.14*
+1.33***
+2.48***
+2.64***
+1.83***
+
+1.09***
+1.40***
+0.17***
+0.07***
+0.03
+1.56***
+2.33***
+2.64***
+2.04***
+
+1.36***
+3.05***
+0.08**
+0.01
+−0.08
+1.37***
+2.44***
+2.90***
+3.11***
+
+Notes: ADLs = activities of daily living; HBP = high blood pressure; IADLs = instrumental activities of daily living.
+*p < .05; **p < .01; ***p < .001.
+
+was conducted. This finding is in agreement with the literature on this topic, which has shown that ADL/IADL limitations tend to increase over time in older adults (e.g., Liang
+et al., 2008). More IADL limitations than ADL limitations
+were observed, supporting previous findings by Spector and
+colleagues (1987). Also consistent with expectations, differences in the rate of increase in ADL/IADL limitations
+were observed as a function of hypertension status. Individuals without hypertension demonstrated lower increases
+over time in the number of ADL and IADL limitations than
+individuals who met hypertensive criteria. This finding suggests that a hypertension diagnosis may lead to more rapid
+declines in the ability to perform ADLs in the older adult
+Mexican American population. These results support previous research (e.g., Hajjar, Lackland, Cupples, & Lipsitz,
+2007; Pinsky et al., 1985) showing that hypertensive individuals are more likely to experience difficulties performing ADLs/IADLs than are nonhypertensive individuals.
+Examination of the effects of covariates on ADL/IADL
+trajectories revealed several findings. Consistent with prior
+research, greater age was related to more ADL and IADL
+limitations at baseline and greater rates of change over time.
+Less education was related to greater IADL change for individuals with hypertension at baseline. It is possible that the
+greater cognitive demands of the IADL tasks (e.g., financial
+management) combined with the physical toll of hypertension may explain this increased rate of impairment for individuals with less education. This group also had significantly
+higher comorbidities at baseline than the other two groups,
+which may have contributed to their greater increases in
+IADL limitations. Women had higher IADL limitations at
+baseline compared with men in the group with hypertension
+at baseline. Sex differences in IADLs may be explained by
+differences in socioeconomic status, division of labor, and
+education between men and women, particularly when
+comparing the current older adult cohort with younger
+cohorts (Liang et al., 2008). For all three groups, number
+of comorbidities (i.e., arthritis, diabetes, heart attack, and
+stroke) was a significant predictor of baseline ADL and
+
+IADL limitations. However, the relation of comorbid conditions to change in ADLs/IADLs was fairly limited; having
+more comorbid conditions was significantly related only to
+greater increases in ADL limitations for individuals reporting hypertension at baseline and to greater increases in
+IADL limitations for individuals never reporting hypertension. The finding for the group with hypertension at baseline may reflect an additive effect of having multiple
+conditions, resulting in possible decreases in physical activity or polypharmacy. The group never reporting hypertension experienced greater attrition at each wave than other
+groups, which may have resulted in a healthier remaining
+subsample who did not experience IADL declines until after baseline.
+In summary, this study demonstrated significant increases
+in ADL and IADL limitations for a 7-year period. Greater
+increases were observed for IADL limitations as opposed to
+ADL limitations, although the amount differed based on
+when or if an individual met the criteria for hypertension.
+Individuals who met these criteria showed higher rates of
+increase in ADL and IADL limitations than those without
+hypertension, though for ADLs, these increases were
+smaller for individuals meeting hypertensive criteria at entry into the study than for individuals meeting hypertensive
+criteria during the study, when controlling for demographic,
+health, and psychological covariates. Thus, development of
+HBP appears to put individuals at risk for functional decline, but earlier diagnosis or treatment may be protective.
+However, we also found that having a greater number of
+comorbid conditions (i.e., arthritis, diabetes, heart attack,
+and stroke) increased the rate of ADL limitations for individuals with hypertension at entry to the study. In comparison, increased comorbidities at baseline were related to
+greater increases in IADL limitations for individuals not
+meeting hypertensive criteria during the study.
+The present study is limited in several ways. First, it is
+important to note that the current findings are specific to a
+Mexican American population of older adults and should
+not be generalized to all Hispanic individuals or other
+
+HYPERTENSION AND ADL  IADL LIMITATIONS
+/
+
+ethnic groups. The second caveat relates to the accurate assessment of hypertension, which is a critical issue, particularly among this population. Of those Mexican Americans
+with hypertension, up to half may be unaware that they have
+this health condition (Glover, Greenlund, Ayala, & Croft,
+2005; Satish, Markides, Zhang, & Goodwin, 1997; Wang &
+Wang, 2004) and, even among those aware of having hypertension, some individuals may not respond accurately to
+self-report health measures, such as those utilized in this
+study (Bush, Miller, Golden, & Hale, 1989). A strength of
+the current study is the inclusion of both subjective (i.e.,
+self-reported diagnosis and medications) and objective (i.e.,
+actual blood pressure readings) indicators of hypertension;
+however, a physician’s diagnosis was not available. A third
+issue is that hypertension control was not examined directly
+in our analyses. Some research indicates that the use of antihypertensive medications can help to prevent or delay subsequent ADL/IADL limitations in older adults (e.g., Elias &
+Elias, 2007; Hajjar et al., 2007). In addition, Hispanic older
+adults have been shown to be less likely to achieve control of
+their condition compared with other groups, often due to
+lower antihypertensive medication use (Sudano & Baker,
+2001; Wang & Wang). Sudano and Baker speculated that
+Hispanics’ lower antihypertensive medications use may be
+related to limited English proficiency, influencing the level
+of care they receive and their understanding of physician
+recommendations. This sample’s English proficiency was
+relatively limited, which may have influenced their level of
+hypertension control. Finally, we did not have a direct measure of physical activity, but examined acculturation as a
+correlate of physical activity (Cantero et al., 1999; Evenson
+et al., 2004; Pérez-Stable et al., 1994). Future research
+should include variables that assess antihypertension medication use as well as other methods of hypertension control
+(e.g., lifestyle change) in Hispanic older adults. Other
+measures that would also be beneficial to include in future
+studies include a direct measure of physical activity and
+examination of medical records to determine objectively the
+length of time for which individuals entering the study with
+diagnosed hypertension may have had this health condition.
+This study contributes to the existing body of literature
+by examining the relationship between hypertension and
+ADLs over time in an understudied ethnic minority older
+adult population. The demonstrated increases over time in
+ADL and IADL limitations for Mexican Americans are
+important for public health and social service agencies as
+well as researchers to consider in light of the growing
+numbers of older Mexican Americans, whose increased
+needs for assistance with ADLs as a consequence of hypertension would likely increase demands not only on
+public resources but also their kin networks (Angel & Angel, 1998). Over-reliance by Hispanic elders on social support networks could lead to increased psychological
+distress and decreased quality of life for the elders (CruzaGuet, Spokane, Caskie, Szapocznik, & Brown, 2008).
+
+303
+
+Additional research is needed to compare various ethnic
+minority groups of older adults with hypertension and the
+subsequent rates of change in ADL and IADL limitations
+that they experience over time to better understand health
+disparities of these groups. Such a study could also compare socioeconomic status and its relationship with functional decline over time (e.g., Kington & Smith, 1997).
+Future research in this area may also explore additional
+psychological variables, such as social support, which
+may influence the relationship between hypertension and
+changes in ADLs and IADLs over time.
+Correspondence
+Address correspondence to Grace I. L. Caskie, PhD, Department of
+Education and Human Services, Lehigh University, 111 Research Drive,
+Bethlehem, PA 18015. Email: caskie@lehigh.edu.
+References
+Amaducci, L., Maggi, S., Langlois, J., Minicuci, N., Baldereschi, M.,
+Di Carlo, A., & Grigoletto, F. (1998). Education and risk of physical
+disability and mortality among men and women aged 65 to 84: The
+Italian Longitudinal Study on Aging. Journal of Gerontology: Medical Sciences, 53A, M484–M490.
+Angel, J. L., & Angel, R. J. (1998). Aging trends—Mexican Americans in
+the southwestern USA. Journal of Cross-Cultural Gerontology, 13,
+281–290.
+Arbuckle, J. L. (2007). Amos 16.0 user’s guide. Chicago: SPSS.
+Black, S. A., Ray, L. A., Angel, R. J., Espino, D. V., Miranda, M., &
+Markides, K. S. (2003). Resource book of the Hispanic Established
+Populations for Epidemiologic Studies of the Elderly. Ann Arbor,
+MI: National Archive of Computerized Data on Aging.
+Bowen, M. E., & Gonzalez, H. M. (2008). Racial/ethnic differences in the
+relationship between the use of health care services and functional
+disability: The Health and Retirement Study (1992-2004). The Gerontologist, 48, 659–667.
+Branch, L. G., Katz, S., Kniepmann, K., & Papsidero, J. A. (1984). A prospective study of functional status among community elders. American
+Journal of Public Health, 74, 266–268.
+Bush, T. L., Miller, S. R., Golden, A. L., & Hale, W. E. (1989). Self-report and medical record report agreement of selected medical conditions in the elderly. American Journal of Public Health, 79,
+1554–1556.
+Cantero, P., Richardson, J., Baezconde-Garbanati, L., & Marks, G. (1999).
+The association between acculturation and health practices among
+middle-aged and elderly Latinas. Ethnicity & Disease, 9, 166–180.
+Carretero, O. A., & Oparil, S. (2000). Essential hypertension part I: Definition and etiology. Circulation, 101, 329–335.
+Cruza-Guet, M. C., Spokane, A. R., Caskie, G. I. L., Szapocznik, J., &
+Brown, S. C. (2008). The relationship between social support and
+psychological distress among Hispanic elders. Journal of Counseling
+Psychology, 55, 427–441.
+Elias, M. F., & Elias, P. K. (2007). Blood pressure and disability. Hypertension, 50, 1006–1008.
+Evenson, K. R., Sarmiento, O. L., & Ayala, G. X. (2004). Acculturation
+and physical activity among North Carolina Latina immigrants. Social Science & Medicine, 59, 2509–2522.
+Fifield, J., Tennen, H., Reisine, S., & McQuillan, J. (1998). Depression and
+the long-term risk of pain, fatigue, and disability in patients with
+rheumatoid arthritis. Arthritis & Rheumatism, 41, 1851–1857.
+Friedman, B., Lyness, J. M., Delavan, R. L., Li, C., & Barker, W. H.
+(2008). Major depression and disability in primary care patients
+with heart failure. Journal of Geriatric Psychiatry and Neurology,
+21, 111–122.
+
+304
+
+Caskie et al.
+
+Glover, M. J., Greenlund, K. J., Ayala, C., & Croft, J. B. (2005). Racial ethnic
+disparities in prevalence, treatment, and control of hypertension—
+United States, 1999-2002. Morbidity and Mortality Weekly Report, 54,
+7–9. Retrieved February 9, 2007, from http://www.cdc.gov/
+MMWR/preview/mmwrhtml/mm5401a3.htm
+Hajjar, I., & Kotchen, T. A. (2003). Trends in the prevalence, awareness,
+treatment, and control of hypertension in the United States, 19882000. Journal of the American Medical Association, 290, 199–206.
+Hajjar, I., Lackland, D. T., Cupples, L. A., & Lipsitz, L. A. (2007). Association between concurrent and remote blood pressure and disability
+in older adults. Hypertension, 50, 1026–1103.
+Hu, L., & Bentler, P. M. (1999). Cutoff criteria for fit indexes in covariance
+structure analysis: Conventional versus new alternatives. Structural
+Equation Modeling, 6, 1–55.
+Johnson, R. J., & Wolinsky, F. D. (1993). The structure of health status
+among older adults: Disease, disability, functional limitation, and
+perceived health. Journal of Health and Social Behavior, 34,
+105–121.
+Kahng, S. K., Dunkle, R. E., & Jackson, J. S. (2004). The relationship between the trajectory of body mass index and health trajectory among
+older adults: Multilevel modeling analyses. Research on Aging, 26,
+31–61.
+Katz, S., Ford, A. B., Moskowitz, R. W., Jackson, B. A., & Jaffe, M. W.
+(1963). Studies of illness in the aged. The index of ADL: A standardized measure of biological and psychosocial function. Journal of the
+American Medical Association, 185, 914–923.
+Kington, R. S., & Smith, J. P. (1997). Socioeconomic status and racial and
+ethnic differences in functional status associated with chronic diseases. American Journal of Public Health, 87, 805–810.
+Lawton, M. P., & Brody, E. M. (1969). Assessment of older people: Selfmaintaining and instrumental activities of daily living. The Gerontologist, 9, 179–186.
+Liang, J., Bennet, J. M., Shaw, B. A., Quiñones, A. R., Ye, W., Xu, X., &
+Ofstedal, M. B. (2008). Gender differences in functional status in
+middle and older age: Are there any age variations? Journal of Gerontology: Social Sciences, 63B, S282–S292.
+Liu, K., Coughlin, T., & McBride, T. (1991). Predicting nursing-home admission and length of stay: A duration analysis. Medical Care, 29,
+125–141.
+Liu, K., Manton, K. G., & Aragon, C. (2000). Changes in home care use by
+disabled elderly persons: 1982-1994. Journal of Gerontology: Social
+Sciences, 55B, S245–S253.
+Markides, K. S. (1999). Hispanic Established Populations for the Epidemiologic Studies of the Elderly, 1993-1994: Arizona, California,
+Colorado, New Mexico, and Texas [Data file]. Galveston, TX: University of Texas, Medical Branch. Available from Inter-University
+Consortium for Political and Social Research [ICPSR] Web site, http:
+//www.icpsr.umich.edu/NACDA/. Ann Arbor, MI: National Archive
+of Computerized Data on Aging [distributor].
+Markides, K. S. (2001). Hispanic Established Populations for the Epidemiologic Studies of the Elderly, Wave II 1995-1996: Arizona, California, Colorado, New Mexico, and Texas [Data file]. Galveston,
+TX: University of Texas, Medical Branch. Available from InterUniversity Consortium for Political and Social Research [ICPSR]
+Web site, http://www.icpsr.umich.edu/NACDA/. Ann Arbor, MI:
+National Archive of Computerized Data on Aging [distributor].
+Markides, K. S. (2004). Hispanic Established Populations for the Epidemiologic Studies of the Elderly, Wave III 1998-1999: Arizona, California,
+Colorado, New Mexico, and Texas [Data file]. Galveston, TX: University of Texas, Medical Branch. Available from Inter-University
+Consortium for Political and Social Research [ICPSR] Web site, http:
+//www.icpsr.umich.edu/NACDA/. Ann Arbor, MI: National Archive
+of Computerized Data on Aging [distributor].
+Markides, K. S., & Ray, L. A. (2005). Hispanic Established Populations
+for the Epidemiologic Studies of the Elderly, Wave III 2000-2001:
+Arizona, California, Colorado, New Mexico, and Texas [Data file].
+
+Galveston, TX: University of Texas, Medical Branch. Available
+from Inter-University Consortium for Political and Social Research
+[ICPSR] Web site, http://www.icpsr.umich.edu/NACDA/. Ann Arbor, MI: National Archive of Computerized Data on Aging [distributor].
+Masel, M. C., Rudkin, L. L., & Peek, M. K. (2006). Examining the role
+of acculturation in health behaviors of older Mexican Americans.
+American Journal of Health Behavior, 30, 684–699.
+Millán-Calenti, J. C., Tubío, J., Pita-Fernández, S., González-Abraldes, I.,
+Lorenzo, T., Fernández-Arruty, T., & Maseda, A. (2009). Prevalence
+of functional disability in activities of daily living (ADL), instrumental activities of daily living (IADL) and associated factors, as predictors of morbidity and mortality. Archives of Gerontology and
+Geriatrics. doi:10.1016/j.archger.2009.04.017.
+Miller, M. E., Rejeski, W. J., Reboussin, B. A., Ten Have, T. R., & Ettinger,
+W. H. (2000). Physical activity, functional limitations, and disability
+in older adults. Journal of the American Geriatrics Society, 48,
+1264–1272.
+Nagi, S. Z. (1979). The concept and measurement of disability. In
+E. D. Berkowitz (Ed.), Disability policies and government programs
+(pp. 1–15). New York: Praeger.
+Ostchega, Y., Yoon, S. S., Hughes, J., & Louis, T. (2008). Hypertension
+awareness, treatment, and control—Continued disparities in adults:
+United States, 2005–2006. Hyattsville, MD: Centers for Disease Control
+and Prevention. Retrieved October 1, 2008, from www.cdc.gov/nchs/
+data/databriefs/db03.pdf
+Pérez-Stable, E. J., Marín, G., & VanOss Marín, B. (1994). Behavioral
+risk factors: A comparison of Latinos and Non-Latino Whites in
+San Francisco. American Journal of Public Health, 84, 971–976.
+Pinsky, J. L., Branch, L. G., Jette, A. M., Haynes, S. G., Feinleib, M.,
+Cornoni-Huntley, J. C., & Bailey, K. R. (1985). Framingham Disability Study: Relationship of disability to cardiovascular risk factors
+among persons free of diagnosed cardiovascular disease. American
+Journal of Epidemiology, 122, 644–656.
+Radloff, L. S. (1977). The CES-D Scale: A self-report depression scale for
+research in the general population. Applied Psychological Measurement, 1, 385–401.
+Satish, S., Markides, K. S., Zhang, D., & Goodwin, J. S. (1997). Factors
+influencing unawareness of hypertension among older Mexican
+Americans. Preventive Medicine, 26, 645–650.
+Satish, S., Stroup-Benham, C. A., Espino, D. V., Markides, K. S., &
+Goodwin, J. S. (1998). Undertreatment of hypertension in older
+Mexican Americans. Journal of the American Geriatrics Society,
+46, 405–410.
+Sayer, A. G., & Cumsille, P. E. (2001). Second-order latent growth models.
+In L. M. Collins & A. G. Sayer (Eds.), New methods for the analysis
+of change (pp. 179–200). Washington, DC: American Psychological
+Association.
+Spector, W. D., Katz, S., Murphy, J. B., & Fulton, J. P. (1987). The hierarchical relationship between activities of daily living and instrumental activities of daily living. Journal of Chronic Disease, 40,
+481–489.
+Starkstein, S. E., Mayberg, H. S., Leiguarda, R., Preziosi, T. J., & Robinson,
+R. G. (1992). A prospective longitudinal study of depression, cognitive decline, and physical impairments in patients with Parkinson’s
+disease. Journal of Neurology, Neurosurgery, and Psychiatry, 55,
+377–382.
+Stuck, A. E., Walthert, J. M., Nikolaus, T., Büla, C. J., Hohmann, C., &
+Beck, J. C. (1999). Risk factors for functional status decline in
+community-living elderly people: A systematic literature review.
+Social Science & Medicine, 48, 445–469.
+Sudano, J. J., & Baker, D. W. (2001). Antihypertensive medication use in
+Hispanic adults: A comparison with black adults and white adults.
+Medical Care, 39, 575–587.
+U.S. Department of Health and Human Services. (2008). The Seventh
+Report of the Joint National Committee on Prevention, Detection,
+
+HYPERTENSION AND ADL  IADL LIMITATIONS
+/
+
+Evaluation, and Treatment of High Blood Pressure. Bethesda, MD:
+Author.
+Verbrugge, L. M., & Jette, A. M. (1994). The disablement process. Social
+Science & Medicine, 38, 1–14.
+Wang, Y., & Wang, Q. J. (2004). The prevalence of prehypertension and hypertension among US adults according to the new Joint National Committee guidelines. Archives of International Medicine, 164, 2126–2134.
+
+305
+
+Willett, J. B., & Sayer, A. G. (1994). Using covariance structure analysis to
+detect correlates and predictors of individual change over time. Psychological Bulletin, 116, 363–381.
+Wu, Y., Huang, H., Wu, B., McCrone, S., & Lai, H. (2007). Age distribution
+and risk factors for the onset of severe disability among communitydwelling older adults with functional limitations. Journal of Applied
+Gerontology, 26(3), 258–273.
+
+      
+    
+    
+	
+  

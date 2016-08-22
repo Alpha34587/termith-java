@@ -1,0 +1,576 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Version 1.2 générée le 6-4-2016-->
+<TEI xmlns:tei="http://www.tei-c.org/ns/1.0" xmlns="http://www.tei-c.org/ns/1.0" xml:lang="en">
+  <teiHeader>
+		<fileDesc>
+			<titleStmt>
+				<title/>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+			</publicationStmt>
+			<sourceDesc>
+				<p/>
+			</sourceDesc>
+		</fileDesc>
+	</teiHeader>
+  <text>
+    <body>
+      <div>
+        <p>
+Neurobiology of Aging 22 (2001) 721–727
+
+www.elsevier.com/locate/neuaging
+
+Reduced effectiveness of A␤1– 42 immunization in APP transgenic
+mice with signiﬁcant amyloid deposition
+Pritam Das, M. Paul. Murphy, Linda H. Younkin, Steven. G. Younkin, Todd E. Golde*
+Department of Neurosciences, Mayo Clinic Jacksonville, 4500 San Pablo Road, Jacksonville Florida 32224, USA
+Received 26 March 2001; accepted 16 April 2001
+
+Abstract
+Vaccinations with A␤1– 42 have been shown to reduce amyloid burden in transgenic models of Alzheimer’s disease (AD). We have
+further tested the efﬁcacy of A␤1– 42 immunization in the Tg2576 mouse model of AD by immunizing one group of mice with minimal
+A␤ deposition, one group of mice with modest A␤ deposition, and one group with signiﬁcant A␤ deposition. The effects of immunization
+on A␤ deposition were examined using biochemical and immunohistochemical methods. In Tg2576 mice immunized prior to signiﬁcant
+amyloid deposition, A␤1– 42 immunization was highly effective. Biochemically extracted A␤40 and A␤42 levels were signiﬁcantly reduced
+and immunohistochemical plaque load was also reduced. Immunization of mice with modest amounts of pre-existing A␤ deposits selectively
+reduced A␤42 without altering A␤40, although plaque load was reduced. In contrast, in Tg2576 mice with signiﬁcant pre-existing A␤ loads,
+A␤1– 42 immunization only minimally decreased A␤42 levels, whereas no alteration in A␤40 levels or in plaque load was observed. These
+results indicate that in Tg2576 mice, A␤1– 42 immunization is more effective at preventing additional A␤ accumulation and does not result
+in signiﬁcant clearance of pre-existing A␤ deposits. © 2001 Elsevier Science Inc. All rights reserved.
+Keywords: A␤ vaccination; A␤40; A␤42; Tg2576 mice; Alzheimer’s disease; Amyloid plaques
+
+1. Introduction
+Amyloid-beta peptides (A␤) appear to play a causal role
+in the neuropathology of Alzheimer’s disease (AD) [3,13,
+14,15]. While most therapeutic strategies have focused on
+the identiﬁcation of molecular targets and the development
+of small molecule inhibitors of A␤ production and/or ﬁbril
+formation, recent work by Schenk et al. [12] has shifted
+attention to the therapeutic potential of increasing A␤ clearance by inducing a robust humoral immune response to A␤
+in the PDAPP transgenic mouse model of AD [2]. Specifically, this group immunized 6-week old PDAPP mice that
+have no A␤ deposits, and 11-month-old mice that have
+modest A␤ deposits. Using ﬁbrillar A␤1– 42 as an immunogen, they found that in those animals, which developed a
+high anti-A␤ antibody titer, there was a signiﬁcant reduction in biochemically detected A␤ load, plaque burden,
+neuritic dystrophy and gliosis. Signiﬁcantly, this study not
+only showed that A␤ immunization prevented A␤ deposi-
+
+* Corresponding author. Tel.: ϩ904-953-1086; fax: ϩ904-953-7370.
+E-mail address: golde.todd@mayo.edu (T.E. Golde).
+
+tion in young PDAPP mice, but also attenuated A␤ deposition in mice that were not immunized until they had
+developed A␤ deposits. These studies have now been extended to other protocols. In one study, passive transfer of
+anti-A␤ speciﬁc antibodies were shown to reduce amyloid
+burden in the PDAPP transgenic mice, providing strong
+evidence that the efﬁcacy of A␤ immunization could be
+attributed directly to the production of anti-A␤ antibodies
+[1]. In another study in PDAPP mice, nasal administration
+of A␤40 and A␤42 was shown to reduce amyloid plaque
+burden [9]. More recently, two groups have independently
+shown that following immunization with A␤1– 42 in different APP transgenic mouse models, there was improvement
+in cognitive deﬁcits in the transgenic mice, as ascertained by
+a reference memory version of the Morris water maze test
+[7] or a radial-arm water maze test of working memory [11].
+Although vaccination with A␤1– 42 invariably resulted in
+improvement of memory deﬁcits, in some cases the immunohistochemical plaque load was only moderately reduced
+and changes in A␤ levels were not observed [7,11].
+In this paper, we have used the Tg2576 mouse model of
+AD [4] to test the efﬁcacy of A␤1– 42 immunization in mice
+with varying degrees of amyloid burden at the time of
+
+0197-4580/01/$ – see front matter © 2001 Elsevier Science Inc. All rights reserved.
+PII: S 0 1 9 7 - 4 5 8 0 ( 0 1 ) 0 0 2 4 5 - 7
+
+722
+
+P. Das et al. / Neurobiology of Aging 22 (2001) 721–727
+
+immunization. Tg2576 mice develop isolated dense-cored
+plaques that contain both A␤40 and A␤42 beginning at 7– 8
+months of age. By 10 –11 months of age plaque number is
+increased so that a few cores are typically present in each
+section. Plaque formation continues progressively in these
+mice so that by 15–16 months, A␤ plaques in the Tg2576
+brain accumulate to levels similar to those seen in AD brain
+[4,8]. Biochemical assessment of A␤ deposition closely
+parallels the appearance of plaques, as accumulation of
+SDS-insoluble formic acid requiring A␤ invariably occurs
+by 8 months of age, but can be detected as early as 6 months
+of age. As Tg2576 mice age, both SDS-soluble and SDSinsoluble formic acid extractable A␤ accumulate exponentially between 6 –12 months of age and continue to increase
+thereafter. For our experiments, we tested the effects of
+immunization on three different age groups of Tg2576 mice
+that have markedly different levels of preexisting A␤ deposits: 7– 8 month old mice (early-amyloid), 10 –11 month
+old mice (moderate-amyloid), and 18-month-old (heavyamyloid). Mice were immunized with ﬁbrillar A␤1– 42 and
+the anti-A␤ immune response and effects of this response
+on A␤ deposition were analyzed by biochemical and immunohistochemical techniques. Our results demonstrate
+that A␤1– 42 immunization of Tg2576 mice is effective in
+reducing amyloid burden in young mice (early-amyloid
+groups) but does not signiﬁcantly alter amyloid burden in
+older (heavy-amyloid) Tg2576 mice. Furthermore, in contrast with reports on the PDAPP mice [12], immunization of
+Tg2576 mice with A␤1– 42 appears to be more effective in
+reducing A␤42 than A␤40. This selectivity is most apparent
+in the older Tg2576 mice with heavy amyloid loads, where
+A␤1– 42 immunization only reduced A␤42 levels without
+altering A␤40 levels or plaque load.
+
+2. Methods
+2.1. Peptides
+A␤1– 42 peptide (derived from the human A␤ sequence)
+was purchased from American Peptide Company, CA. For
+preparation of aggregate forms of A␤1– 42, 2 mg of lyophilized peptide was added to 1 ml 1ϫ PBS, vortexed and
+incubated overnight at 37°C as described previously [12].
+2.2. Immunizations
+For immunizations, freshly prepared peptide (100␮g/
+immunization) was emulsiﬁed in 1:1 (vol/vol) of Freund’s
+adjuvant (Diffco Labs, MI). Tg2576 mice (n ϭ 4) were
+immunized intraperitoneally (i.p.) with 100␮g A␤1– 42
+peptide in CFA (1st injection) and boosted with 100␮g
+peptide in IFA on DAY 14 and monthly thereafter for 4
+months (the 18-month-old, heavy-amyloid group was immunized for 3 months). Control groups (n ϭ 4) were im-
+
+munized with PBS/adjuvant alone for the same time periods
+as described above.
+2.3. Mouse IgG ELISA
+To test whether Tg2576 mice generate anti-peptide antibody responses, serum titers of immunized mice were
+determined by standard ELISA techniques. Brieﬂy, microtitre plates (Maxi Sorp, Dynatech) were coated with aggregated A␤42 and control peptides (1 ug/well). After washings, serial dilutions of sera were added and incubated
+overnight at 4°C. Following washes with PBS/0.1% tween20, serum IgG was detected using a goat anti-mouse conjugated with HRP (Sigma Chemicals, MO) and TMB substrate (KPL). Antibody titer concentrations were determined
+using serial dilutions of monoclonal antibody 4G8 as the
+standard.
+2.4. Capture ELISA for analysis of biochemically
+extracted A␤
+At sacriﬁce the brains of mice were divided by midsaggital dissection, and one hemibrain used for biochemical
+analysis. Each hemibrain was sequentially extracted in a
+2-step procedure described previously [8,13]. Brieﬂy, each
+hemibrain (150 mg/ml wet weight) was sonicated in 2%
+SDS with protease inhibitors and centrifuged at 100,000ϫ g
+for 1hr at 4°C. Following centrifugation, the resultant supernatant was collected, representing the SDS-soluble fraction. The resultant pellet was then extracted in 70% formic
+acid (FA), centrifuged and the resultant supernatant collected (the FA fraction). The following antibodies against
+A␤ were used in the sandwich capture ELISA: Polyclonal
+3160 (anti-A␤40) was used for capture and BA-27 (speciﬁc
+for A␤1– 40) and BC-05 (speciﬁc for A␤1– 42) were used
+for detection.
+2.5. Quantitative immunohistology of amyloid plaques
+Hemibrains of mice were ﬁxed in 4% paraformaldehyde
+in 0.1 M phosphate buffer (PBS, pH 7.6) and then stained
+for A␤ plaques as follows. Parafﬁn sections (5 ␮m) were
+pretreated with 70% formic acid for 5 min and immersed in
+0.3% of H2O2 for 30 min to block intrinsic peroxidase. They
+were then incubated with 2% blocking serum in PBS for one
+hour, with primary antibody (Monoclonal Bam-10 clone
+(A␤1– 40 speciﬁc, Sigma Chemicals) at 1:10,000 dilution
+overnight, and then with horseradish peroxidase conjugated
+anti-mouse secondary antibody (1:200; Amersham) for one
+hour. Immunoreactivity was visualized by DAB according
+to manufactures speciﬁcations (Vector labs). Computer assisted quantiﬁcation of A␤ plaques was performed using
+Sigma Scanpro program (Jandel Scientiﬁc). Serial coronal
+sections stained as above were captured and the threshold
+for plaque staining was determined and kept constant
+throughout the analysis. For analysis of plaque burden in the
+
+P. Das et al. / Neurobiology of Aging 22 (2001) 721–727
+
+723
+
+Fig. 1. A␤ levels in brains of A␤1– 42 immunized Tg2576 mice. Mice were sacriﬁced following treatment and brain tissue was subject to a two-step
+SDS/Formic Acid extraction. Both SDS soluble (SDS) and SDS-insoluble formic-acid (FA) fractions were analyzed by capture ELISA as described in
+methods: (A) 7– 8 month old group FA extracted A␤42 (*P ϭ 0.01) and FA A␤40 (**P ϭ 0.02); (B) 7– 8 month-old group SDS-soluble A␤42 and SDS
+A␤40 (**P ϭ 0.04): (C) 10 –11 month old group FA extracted A␤42 (*P ϭ 0.03) and FA A␤40; (D) 10 –11 month-old group SDS A␤42 (*P ϭ 0.01) and
+SDS A␤40: (E) 18 month-old group FA extracted A␤42 (*P ϭ 0.07) and FA A␤40 (F) 18 month-old group SDS A␤42 (*P ϭ 0.03) and SDS A␤40.
+
+10 –11 month old group, immunostained plaques were
+quantiﬁed (% area and plaque counts) in the neocortex of
+the same plane of section for each mouse. For analysis of
+plaque burden in the 18 month-old group, immunostained
+plaques were quantiﬁed in both the hippocampus and the
+adjacent parietal neocortex. All the above analyses were
+performed in a blinded fashion.
+2.6. Statistical analysis
+Statistical differences between treatment groups were
+analyzed using the Mann-Whitney nonparametric test.
+
+3. Results
+3.1. Biochemically extracted A␤ is selectively altered in
+brains of A␤1– 42 immunized Tg2576 mice
+For analysis of amyloid burden, brain tissue was harvested at the end of the experimentation period and A␤
+content determined in each hemibrain by sandwich ELISA
+[8]. SDS-soluble (SDS) and SDS-insoluble formic-acid extractable (FA) fractions were analyzed. As shown in Fig.
+1A, in the 7– 8 month old Tg2576 mice (early-amyloid)
+immunized with A␤1– 42, there was signiﬁcant decrease in
+
+724
+
+P. Das et al. / Neurobiology of Aging 22 (2001) 721–727
+
+A␤42 in the FA fractions, representing an 81% reduction
+versus control group (P ϭ 0.01) and 45% less A␤42 in the
+SDS fractions (Fig. 1B). Similarly, the levels of A␤40 were
+dramatically reduced in the FA-fractions (Fig. 1A, representing an 85% reduction, P ϭ 0.02), and SDS fractions
+(Fig 1B, 75% reduction, P ϭ 0.04). In the second group of
+A␤42 immunized mice (10 –11 month old, moderate-amyloid), there was also signiﬁcant reduction of A␤42 in the FA
+fractions (Fig. 1C, 37% less vs. controls, P ϭ 0.03) as well
+as in the SDS fractions (Fig. 1D, representing an 45%
+reduction, P ϭ 0.01). A slight reduction in A␤40 levels was
+observed in both the FA fractions (Fig. 1C) and the SDS
+fractions (Fig. 1D) in these mice, but these reductions were
+not signiﬁcant. In the last group of mice (heavy-amyloid,
+18-month old) immunized with A␤1– 42, the levels of A␤42
+were slightly reduced, in both the FA fractions (Fig. 1E,
+25% reduction, P ϭ 0.07) as well as the SDS fraction (Fig.
+1F, 27% reduction, P ϭ 0.03). Although there was only a
+25% reduction in A␤42 in the FA fraction of the 18-monthold mice, this reduction is in fact quite large in absolute
+amounts. For example, there was approximately 2000 pM/g
+of FA42 reduced in the A␤1– 42 immunized 18-month-old
+Tg2576 mice compared to approximately 310 pM/g of
+FA42 being reduced in the A␤1– 42 immunized 10 –11
+month-old Tg2576 mice. Lastly, in this age group, there
+were no signiﬁcant changes in the A␤40 levels between
+both treatment groups, in either the FA fractions (Fig. 1E) or
+SDS fractions (Fig. 1F).
+3.2. A␤1– 42 immunization reduces A␤ plaque deposits in
+young Tg2576 mice but not in older mice
+Coronal sections of mouse hemibrains from each of the
+three experimental groups were analyzed for changes in
+immunostained A␤ plaques using quantitative image analysis. For the early-amyloid group (7– 8 month-old Tg2576
+mice) quantitative image analysis of plaque burden (%
+mean plaque area) was not informative. At the time of
+sacriﬁce (11–12 months of age), these mice have only small,
+isolated plaques in various regions of the brain and quantitative changes between the treatment groups were minimal
+and therefore difﬁcult to interpret. However, by simple
+plaque counts (performed in a blinded fashion), only one
+mouse in the immunized group (n ϭ 4) had a single isolated
+plaque in the coronal sections examined whereas in sections
+of all 4 mice in the control group, at least one or more A␤
+plaques were detected (mean plaque count 0.05 Ϯ 0.1/
+section in immunized group vs 0.35 Ϯ 0.2/section in controls, P ϭ 0.04). Representative immunostained sections are
+shown in Fig. 3A (control) and Fig. 3B (immunized). In the
+second group of mice (10 –11 month old at immunization,
+moderate-amyloid load), quantitative image analysis (Fig.
+2A) revealed that there was a signiﬁcant decrease (P ϭ
+0.05) in plaque burden in the cerebral cortex of the A␤1– 42
+immunized mice (0.15 Ϯ 0.07% mean area) verses the
+control group (0.73 Ϯ 0.29% mean area). Similarly, a com-
+
+parison of plaque counts between the A␤1– 42 immunized
+mice versus control mice, revealed a highly signiﬁcant decrease (Fig. 2B, P ϭ 0.005) in plaque numbers in the
+A␤1– 42 immunized mice (mean plaque count 3.75 Ϯ 0.47
+vs 6.25 Ϯ 0.47 in controls). Representative immunostained
+sections from these mice are shown in Fig. 3C, 3D. In the
+last group of Tg2576 mice (heavy-amyloid group), quantitative image analysis revealed no statistical differences in
+plaque burden in the hippocampus of the A␤1– 42 immunized mice (2.75 Ϯ 0.41% mean area, Fig. 2C) versus the
+control group (2.61 Ϯ 0.41% mean area). Similarly, there
+were no signiﬁcant differences in plaque burden in the neo
+cortex of the A␤1– 42 immunized mice (4.90 Ϯ 0.79%
+mean area, Fig. 2D) versus the control group (5.59 Ϯ 1.25%
+mean area, representative immunostained section shown in
+Fig. 3E, 3F). In addition, there were no detectable differences in plaque number (not shown).
+3.3. A␤1– 42 immunized Tg2576 mice generate high antiA␤ antibody titers
+One critical parameter that we wished to ascertain was
+whether decrease in amyloid burden in the A␤1– 42 immunized Tg2576 mice correlated with the generation of anti-A␤ antibody responses. As shown in Table 1, all mice
+from the different age groups immunized with A␤1– 42
+generated robust antibody titers against A␤1– 42 (ranging
+from 7–15␮g/ml) on day 30 and these titers were maintained throughout the experimentation period. Pre-immune
+sera (day 0) and control mice immunized with adjuvant
+alone did not generate any detectable anti-A␤ antibody
+responses. The speciﬁc isotype of anti-A␤ antibodies was
+determined by ELISA using isotype-speciﬁc secondary antibodies against IgA, IgG and IgM. The primary isotype
+species in the A␤1– 42 immunized Tg2576 mice was IgG2b
+(Table 1), which is characteristic of a Th1 pro-inﬂammatory
+response [6]. Furthermore, the anti-A␤ antibodies generated
+in A␤1– 42 immunized mice strongly cross-react with A␤40
+(titers levels ranging from 5–17␮g/ml), to a lower extent
+against A␤1–16 and did not cross-react with sAPP as determined by ELISA (data not shown). We also wanted to
+determine whether the circulating anti-A␤ antibodies from
+the A␤1– 42 immunized Tg2576 mice were capable of labeling amyloid plaques. As shown in Fig. 4, sera from
+immunized mice (1:10,000 dilution), representing the 18month old group, intensely label plaques in Tg2576 mouse
+brains whereas sera from adjuvant immunized control mice
+do not.
+
+4. Discussion
+In this report, we have analyzed the effectiveness of
+A␤1– 42 immunizations in three different age groups of
+Tg2576 mice with differing loads of amyloid burden. Immunization of the 7– 8 month-old mice (early-amyloid
+
+P. Das et al. / Neurobiology of Aging 22 (2001) 721–727
+
+725
+
+Fig. 2. Quantitative analysis of immune-stained amyloid plaque burden in Tg2576 mice immunized with A␤1– 42. (A) Amyloid plaque burden (% area) is
+reduced in the 10 –11 month old Tg2576 mice immunized with A␤1– 42 (*P ϭ 0.05). (B) Amyloid plaque burden, as determined by plaque counts is
+signiﬁcantly reduced in the 10 –11 month-old Tg2576 mice immunized with A␤1– 42 (*P ϭ 0.005). Amyloid plaque burden (% area) is not signiﬁcantly
+altered in the hippocampus (C) or the adjacent parietal neo cortex (D) in the 18-month-old Tg2576 mice immunized with A␤1– 42.
+
+group) resulted in signiﬁcant attenuation of both A␤40 and
+A␤42 deposition as well as plaque accumulation. Immunization of 10 –11 month-old mice with moderate plaque
+deposits resulted in a large decrease in immunostained
+plaque load and number, a modest reduction of A␤42 accumulation, but had minimal effect on A␤40 accumulation.
+These ﬁndings conﬁrm previous reports [7,11,12], which
+demonstrate that immunization with A␤1– 42 prior to signiﬁcant plaque load results in modest to signiﬁcant reductions in amyloid burden. Moreover, these studies on Tg2576
+mice further demonstrate that the effects of A␤ immunization are not restricted to a single mouse model of AD. In
+contrast to the results obtained on mice with low or modest
+levels of A␤ deposition at the time of immunization, immunization of 18 month-old mice (heavy-amyloid group)
+had no effect on amyloid plaque load and A␤40 levels, and
+only a moderate decrease in A␤42 was observed.
+Several mechanisms have been proposed to account for
+the effect of A␤1– 42 immunization on A␤ load. First,
+anti-A␤ antibodies that are generated could enter the brain,
+bind to soluble A␤ and prevent the formation or accumulation of ﬁbrillar A␤ in dense-cored plaques. Second, an-
+
+ti-A␤ antibodies might actually disrupt preexisting A␤
+ﬁbrils, thereby promoting A␤ clearance. Third, anti-A␤
+antibodies may activate CNS microglial cells to phagocytose either soluble or ﬁbrillar A␤ via Fc receptors. Finally,
+any of these mechanisms may act synergistically to reduce
+A␤ burden or immunization could alter A␤ through other
+mechanisms. Based on our data, which shows that immunization is more effective in attenuating A␤ deposition in
+Tg2576 mice prior to signiﬁcant amyloid deposition but
+ineffective in reducing plaque load in mice with heavy
+amyloid deposits, it would appear that A␤ immunization is
+more effective in reducing additional accumulation of A␤
+than it is in promoting clearance of established plaques.
+A number of factors could account for the different
+effects on A␤ deposition on the various age groups of mice
+that were immunized. In our initial characterization, we
+found no signiﬁcant difference in maximum titer, temporal
+course of immune response or isotype response between the
+different age groups. Thus, while we cannot completely
+discount differences in humoral responses between the various age groups, we believe that differences in antibody
+production are unlikely to account for the lack of efﬁcacy in
+
+726
+
+P. Das et al. / Neurobiology of Aging 22 (2001) 721–727
+
+Fig. 4. (A) Sera from a representative 18-month-old Tg2576 mouse immunized with A␤1– 42 (1:10,000 dilution) intensely labels both diffuse and
+dense cored plaques in a non- immunized 18 month old Tg2576 mouse
+brain. (B) Sera from a non-immunized Tg2576 mouse do not label plaques
+in the same mouse brain used above. Magniﬁcation ϭ 40x.
+
+possible to increase the efﬁcacy of immunization by using
+alternate immunization strategies that increase anti-A␤ titers or perhaps increasing the length of time between immunization and termination of the experiment.
+With regard to the levels of biochemically extracted A␤,
+our results are quite striking in that immunization with
+A␤1– 42 appears to selectively alter A␤42 levels and not
+A␤40 levels in mice with modest or heavy amyloid loads.
+This selective reduction in A␤42 was not reported in previous studies and is not easily explained. Although it is
+possible that immunization with aggregated A␤1– 42 preferentially targets A␤42 epitopes, there is no evidence for
+production of A␤42 selective antibodies as anti-A␤40 and
+anti-A␤42 titers generated are equivalent. As A␤40 levels
+are much higher than A␤42 levels in the Tg2576 mouse
+brain [4,8], it is possible that the lack of effect on A␤40
+simply represents a threshold effect in which there is insufﬁcient antibody produced to alter A␤40 levels. However,
+such a selective effect is somewhat counterintuitive, as one
+would expect that since equivalent antibody titers are
+present, A␤40 and A␤42 should be altered to an equivalent
+extent. A more likely explanation is that the selective reduction in A␤42 is due to preferential recognition or clearance of A␤42 by anti-A␤ antibodies. The relevance of this
+apparent disparity in A␤ reduction remains to be determined, since it is generally agreed that A␤42 is the more
+toxic species [10,14,15] and reduction of A␤40 may not
+necessarily be of any clinical beneﬁt. In any case, additional
+studies will be needed to resolve this issue.
+In all previous reports on A␤ immunization, immunization was initiated prior to signiﬁcant A␤ deposition. In our
+study, we ﬁnd that i) the efﬁcacy of vaccination decreases
+
+Fig. 3. Representative pictures of A␤ plaques labeled with monoclonal
+Bam10 clone (anti-A␤40) in the neo cortex of (A) control 7– 8 month old
+Tg2576 mice (B) A␤1– 42 immunized 7– 8 month old Tg2576 mice (C)
+control 10 –11 month old Tg2576 mice (D) A␤1– 42 immunized 10 –11
+month old Tg2576 mice (E) control 18-month old mice and (F) A␤1– 42
+immunized 18-month old mice. Magniﬁcation ϭ 40x.
+
+the older animals. If there truly is no difference in the
+antibody response, it is reasonable to suggest that the effect
+of A␤ immunization is in part dependent on the amount of
+A␤ present in the brain at the time of immunization. As only
+small amounts of antibody (less than 0.1% of peripheral
+serum levels can cross the blood brain barrier [1,5], such
+levels may not be sufﬁcient to bind and alter the large
+amounts of A␤ that is present in older Tg2576 mice. It is
+also possible that the A␤ deposits change in some fashion
+with age becoming more resistant to antibody mediated
+interactions; however, there is no evidence for this currently. Finally, it is possible that other age associated factors, such as altered microglial response, may alter the
+efﬁcacy of immunization in older animals. Clearly, if the
+efﬁcacy of immunization is dependent on the relationship
+between antibody titer and pre-existing A␤ load, it may be
+Table 1
+Anti-A␤42 antibody titers in A␤1-42 immunized Tg2576 mice
+Tg2576
+mice
+
+Anti-A␤42 titer
+(Day 30)
+
+Ig Isotype
+IgG1
+
+IgG2a
+
+IgG2b
+
+IgG3
+
+IgM
+
+IgA
+
+7–8 month
+10–11 month
+18 month
+
+10–15␮g/ml
+11–15␮g/ml
+7–15␮g/ml
+
+ϩ/Ϫ
+ϩ/Ϫ
+Ϫ
+
+ϩ
+ϩ
+ϩ
+
+ϩϩϩ
+ϩϩϩ
+ϩϩϩ
+
+ϩ
+ϩ
+Ϫ
+
+Ϫ
+Ϫ
+Ϫ
+
+Ϫ
+Ϫ
+Ϫ
+
+P. Das et al. / Neurobiology of Aging 22 (2001) 721–727
+
+with increasing pre-existing A␤ load and ii) in mice with
+modest to heavy preexisting amyloid loads, A␤42 is selectively reduced while A␤40 levels appear to be unchanged. It
+will be of great interest to see if similar results are obtained
+in other mouse models of AD. It is possible that variations
+exist within different mouse strains with regard to the immune response, which may inﬂuence the efﬁcacy of A␤
+immunization. With respect to using A␤ deposition as an
+endpoint, our studies suggest that in the Tg2576 mouse, A␤
+immunization is likely to be more effective in preventing
+A␤ deposition than in clearing existing deposits. As clinical
+study of A␤ immunization in humans will almost certainly
+begin in patients with clinical symptoms of AD, these studies may inﬂuence both the design and interpretation of
+human studies, as they imply that immunization may be of
+more beneﬁt as a preventative treatment rather than as a
+therapeutic treatment.
+Further support for the immunization approach has come
+from two recent reports that suggest A␤1– 42 immunization
+has a beneﬁcial effect on AD-like memory impairment in
+different transgenic mouse models of AD [7,11]. These
+recent publications have demonstrated that, although somewhat subtle, the behavioral deﬁcits in APP transgenic mice
+immunized prior to signiﬁcant A␤ accumulation can be
+ameliorated by a therapeutic intervention that targets A␤.
+Additional experimentation will be needed to determine
+whether behavioral deﬁcits are attenuated by immunization
+in transgenic mice with heavy amyloid loads and whether
+any behavioral improvements correlates with reduction in
+A␤42 that we have observed in this study.
+
+[2]
+
+[3]
+
+[4]
+
+[5]
+
+[6]
+[7]
+
+[8]
+
+[9]
+
+[10]
+
+Acknowledgments
+We would like to thank Dr. Dennis Dickson for help with
+immunohistology, Virginia Phillips and Linda Rousseau for
+cutting sections and Dr. Eckman and colleagues for ELISA
+plate preparation. This work was supported by a Beeson
+Award from AFAR, an Ellison Medical Foundation New
+Scholars award, Smith fellowship to P.D and M.P.M, and
+the NIH (AG18454) (T.E.G.), (AG06656) (S.G.Y.). M.P.M
+is a John Douglas French Foundation Scholar. BC05 and
+BA27 were gifts of Takeda Industries.
+
+References
+[1] Bard F, Cannon C, Barbour R, Burke RL, Games D, Grajeda H,
+Guido T, Hu K, Huang J, Johnson-Wood K, Khan K, Kholodenko D,
+
+[11]
+
+[12]
+
+[13]
+
+[14]
+[15]
+
+727
+
+Lee M, Lieberburg I, Motter R, Nguyen M, Soriano F, Vasquez N,
+Weiss K, Welch B, Seubert P, Schenk D, Yednock T. Peripherally
+administered antibodies against amyloid beta-peptide enter the central
+nervous system and reduce pathology in a mouse model of Alzheimer
+disease. Nat Med 2000;6:916 –9.
+Games D, Adams D, Alessandrini R, Barbour R, Berthelette P,
+Blackwell C, Carr T, Clemens J, Donaldson T, Gillespie F, Guido T,
+Hagoplan S, Johnson-Wood K., Khan K, Lee M, Leibowitz P, Lieberburg I, Little S, Masliah E, McConlogue L, Montoya-Zavala M,
+Mucke L, Paganini L, Penniman E, Power M, Schenk D, Seubert P,
+Snyder B, Sorlano F, Tan H, Vitale J, Wadsworth S, Wolozin B, Zhao
+J. Alzheimer-type neuropathology in transgenic mice overexpressing
+V717F ␤-amyloid precursor protein. Nature 1995;373:523–7.
+Golde TE, Eckman CB, Younkin SG. Biochemical detection of Abeta
+isoforms: implications for pathogenesis, diagnosis, and treatment of
+Alzheimer’s disease. Biochim Biophys Acta 2000;1502:172– 87.
+Hsiao K, Chapman P, Nilsen S, Eckman C, Harigaya Y, Younkin S,
+Yang F, Cole G. Correlative memory deﬁcits, Abeta elevation, and
+amyloid plaques in transgenic mice. Science 1996;274:99 –102.
+Hunter SF, Miller DJ, Rodriguez M. Monoclonal remyelinationpromoting natural autoantibody SCH 94.03: pharmacokinetics and in
+vivo targets within demyelinated spinal cord in a mouse model of
+multiple sclerosis. J Neurol Sci 1997;150:103–13.
+Janeway CA. A tale of two T cells. Immunity 1998;8:391– 4.
+Janus C, Pearson J, McLaurin J, Mathews PM, Jiang Y, Schmidt SD,
+Chishti MA, Horne P, Heslin D, French J, Mount HTJ, Nixon A,
+Mercken M, Bergeron C, Fraser PE, St George-Hyslop P, Westaway
+D. Abeta peptide immunization reduces behavioural impairment and
+plaques in a model of Alzheimer’s disease. Nature 2000;408:979 – 82.
+Kawarabayashi T, Younkin LH, Saido TC, Shoji M, Ashe KS,
+Younkin SG. Age-dependent changes in brain, CSF, and plasma
+amyloid protein in the Tg2576 transgenic mouse model of Alzheimer’s disease. J Neurosci 2001;21:372– 81.
+Lemere CA, Maron R, Spooner ET, Grenfell TJ, Mori C, Desai R,
+Hancock WW, Weiner HL, Selkoe DJ. Nasal A beta treatment induces anti-A beta antibody production, and decreases cerebral amyloid burden in PD-APP mice. Ann N Y Acad Sci 2000;920:328 –31.
+Lorenzo A, Yankner BA. Amyloid ﬁbril toxicity in Alzheimer’s
+disease and diabetes. Ann N Y Acad Sci 1996;777:89 –95.
+Morgan D, Diamond DM, Gottschall PE, Ugen KE, Dickey C, Hardy
+J, Duff K, Jantzen P, DiCarlo G, Wilcock D, Connor K, Hatcher J,
+Hope C, Gordon M, Arendash GW. A beta peptide vaccination
+prevents memory loss in an animal model of Alzheimer’s disease.
+Nature 2000;408:982–5.
+Schenk D, Barbour R, Dunn W, Gordon, Grajeda H, Guido T, Hu K,
+Huang J, Johnson-Wood K, Khan K, Kholodenko D, Lee M, Liao Z,
+Lieberburg I, Motter R, Mutter L, Soriano F, Shopp G, Vasquez N,
+Vandevert C, Walker S, Wogulis M, Yednock T, Games D, Seubert
+P. Immunization with amyloid-beta attenuates Alzheimer-diseaselike pathology in the PDAPP mouse. Nature 1999;400:173–7.
+Suzuki N, Cheung TT, Cai X-D, Odaka A, Otvos L, Eckman C,
+Golde TE, Younkin SG. An increased percentage of long amyloid ␤
+protein is secreted by familial amyloid ␤ protein precursor (␤APP717)
+mutants. Science 1994;264:1336 – 40.
+Yankner BA. Mechanisms of neuronal degeneration in Alzheimer’s
+disease. Neuron 1996;16:921–32.
+Younkin SG. The role of Abeta 42 in Alzheimer’s disease. J Physiology 1998;92:289 –92.
+
+</p>
+      </div>
+    </body>
+    
+	<back/>
+  </text>
+</TEI>

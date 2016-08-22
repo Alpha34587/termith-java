@@ -1,0 +1,440 @@
+
+    
+      
+        
+Experimental Gerontology 34 (1999) 549 –557
+
+Age-related changes in the signaling and function
+of vascular smooth muscle cells
+Martha S. Lundberg, Michael T. Crow*
+Vascular Biology Unit, Laboratory of Cardiovascular Science, Gerontology Research Center, National
+Institute on Aging, National Institutes of Health, Baltimore, MD 21224, USA
+Received 22 March 1999; accepted 29 March 1999
+
+Abstract
+Aging is an independent risk factor for the development of atheroscelrosis, a vascular abnormality
+that plays a signiﬁcant role in the development of many cardiovascular disorders. Animal experiments
+have demonstrated that aging predisposes the vasculature to advanced atherosclerotic disease and vessel
+injury and that this predisposition is a function of age-associated changes in the vessel wall itself. Because
+vascular smooth muscle cells play important roles in the pathogenesis of many vascular disorders,
+identifying age-associated differences in the way these cells respond to extracellular clues has been an
+area of active research. Currently, the most remarkable differences in intracellular signaling between
+vascular smooth muscle cells isolated from young and old animals are related to the control of cell
+migration through the CamKII pathways and the accelerated transition of older vascular smooth muscle
+cells from the contractile to the synthetic phenotype. These differences may be due to alternative
+signaling pathways revealed by the inability of older cells to respond to inhibitors, such as transforming
+growth factor (TGF)-␤1, or to altered interactions with the extracellular matrix resulting from ageassociated shifts in integrin expression or changes in the matrix composition of blood vessels. The exact
+role that these alterations have in explaining age-associated differences in the response of the vessel wall
+to injury and its increased susceptibility to developing advanced atherosclerotic lesions remains to be
+determined but will be guided by studies on intracellular signaling mechanisms. © 1999 Elsevier
+Science Inc. All rights reserved.
+Keywords: Atherosclerosis; Vascular injury; Vascular smooth muscle cells; Intima; Neointima; TGF-␤1; bFGF;
+PDGF; Calcium; Calmodulin-dependent protein kinases; Integrins
+
+* Corresponding author. Tel.: ϩ011-410-558-8207; fax: ϩ011-410-558-8150.
+E-mail address: crowm@grc.nia.nih.gov (M.T. Crow)
+
+0531-5565/99/$ – see front matter © 1999 Elsevier Science Inc. All rights reserved.
+PII: S 0 5 3 1 - 5 5 6 5 ( 9 9 ) 0 0 0 3 6 - 4
+
+550
+
+M.S. Lundberg, M.T. Crow / Experimental Gerontology 34 (1999) 549 –557
+
+1. Introduction
+Cardiovascular disease is the leading cause of death and a major source of disability
+among the elderly population. Vascular abnormalities, such as atherosclerosis, are a
+signiﬁcant factor in the development of many cardiovascular diseases. Epidemiological
+studies have shown that aging is an independent risk factor for the development of
+atherosclerosis (Kannel and Gordon, 1980), a vascular abnormality that plays a signiﬁcant
+role in the development of many cardiovascular disorders. Animal experiments, in which
+genetic variations are minimized and exposure to atherosclerosis-inducing stimuli can be
+precisely controlled, support the notion that aging by itself predisposes the vasculature to
+advanced atherosclerotic disease. Spagnoli and colleagues (1991) showed that New
+Zealand white rabbits responded differently to a lipid- and cholesterol-rich diet depending
+on their age. In particular, younger rabbits developed fewer vascular lesions than their
+older counterparts, despite the fact that the duration of exposure to the atherogenic
+stimulus was the same and that changes in blood lipid proﬁles due to the diet were also
+indistinguishable between the two age groups. In addition, the majority of lesions in older
+rabbits were at a signiﬁcantly more advanced stage of development than in the younger
+animals. Similar quantitative and qualitative differences in the susceptibility to dietinduced atherosclerosis have been reported in adult and juvenile primates (Weingand et
+al., 1986). Together, these results indicate that the higher incidence and greater severity of
+vascular lesions in older animals are the result of biological changes in the organism
+related to aging.
+
+2. Smooth muscle cells and vascular abnormalities
+In its more advanced stages, the atherosclerotic lesion is a complex structure of living
+and dead cells, cellular debris, and macromolecular deposits of lipids, extracellular matrix
+components, and minerals (reviewed in Bilato and Crow, 1996). Its cellular composition
+is likely to consist of blood cells recruited from the circulation, vascular smooth muscle
+cells (VSMCs) already present in the intima (the actual site of lesion development in the
+vessel-see below), and cells recruited from the underlying medial or adventitial cell layers.
+A complete understanding of lesion development, however, is seriously hampered by the
+fact that the exact origins of all the cells that comprise these lesions have not been
+unambiguously established. A large body of circumstantial evidence, however, suggests
+important roles for monocytes recruited from the circulation and VSMCs from the medial
+and intimal cell layers (Schwartz et al., 1995; Bilato and Crow, 1996).
+The typical arterial vessel wall is composed of three distinct cellular layers. Moving
+from luminal side inward, the ﬁrst cellular layer is the intima in which the endothelium
+resides. In rats, this is the only layer of cells in the intima throughout most of their adult
+life. In other animals, including humans, other cells are also present in the intima and are
+located beneath the endothelium. Based on the expression of gene markers, some of these
+cells may be of smooth muscle cell origin and are accordingly referred to as intimal
+VSMCs (Schwartz et al., 1995). The size of the intima increases dramatically when the
+vessel wall is traumatized, such as following mechanical injury inﬂicted by aggressive
+inﬂation of a balloon catheter. The exaggerated intima that develops under these conditions is called the neointima. In rats, the neointima consists almost exclusively of
+VSMC-like cells, the properties of which are described below. In other animals, including
+
+M.S. Lundberg, M.T. Crow / Experimental Gerontology 34 (1999) 549 –557
+
+551
+
+humans, the neointima also involves macrophage and leukocyte inﬁltration (Tanaka et al.,
+1993). The intima is separated from the medial cell layer by the internal elastic basal
+lamina. The medial layer consists of variable numbers of elastic laminae and medial
+VSMCs, each cell being surrounded by an individual basement membrane (Pauly et al.,
+1992). The medial cell layer is separated from the adventitial cell layer, which contains
+ﬁbroblast-like cells and blood vessels, by the external elastic lamina.
+In the intact vessel, medial VSMCs are relatively quiescent with respect to proliferation
+and are highly specialized as contractile cells to control lumen diameter and thereby
+regulate blood ﬂow in response to nervous, hormonal, and local inﬂuences. When these
+cells are isolated from the vessel and placed in cell culture, they gradually lose their
+specialized or differentiated properties and become proliferative and highly motile. In
+addition, the cells’ gene expression and protein synthesis machinery are redirected from
+the production of specialized contractile elements to that of supporting cell proliferation
+and extracellular matrix deposition. This process of switching from the contractile/
+differentiated mode to a proliferating/synthetic cell type has been given the name,
+phenotypic modulation (Campbell and Campbell, 1990). The switch from the contractile
+to the synthetic phenotype begins as soon as medial VSMCs are isolated from the intact
+vessel. The process can be somewhat delayed by manipulating the extracellular environment of the isolated VSMCs when they are placed in cell culture. This suggests that the
+unique features of the extracellular environment of medial VSMCs including their association with an organized elastin matrix and the individual basement membrane surrounding each cell is responsible, in part, for inducing or maintaining the contractile phenotype
+(Thyberg et al., 1990). Attempts to return synthetic VSMCs to the contractile phenotype
+by embedding them in reconstituted basement membranes have been only partially
+successful (Pauly et al., 1992). It is of some interest and possible relevance that medial
+VSMCs isolated from the vessels of older animals modulate to the synthetic state more
+rapidly than those isolated from younger animals (Bilato and Crow, 1996).
+The role that phenotypic modulation plays in vascular abnormalities and the vessel
+wall’s response to trauma, however, is questionable. Smooth actin-positive cells can be
+found in atherosclerotic lesions and are abundantly present in human restenotic lesions or
+the neointima caused by balloon catheter injury in animals (Schwartz et al., 1995), an
+experimental model for human restenosis. Are these cells synthetic medial VSMCs that
+have migrated into the lesions from the media? In the case of neointima that forms in
+response to vessel injury, the answer seems to be no. Although both synthetic medial
+VSMCs and neointimal VSMCs are non-contractile and proliferate when placed in cell
+culture, they exhibit strikingly different morphological features and patterns of gene
+expression (see Schwartz et al., 1995; Pauly et al., 1998). Furthermore, these differences
+are maintained in culture for many generations, indicating that these phenotypes are not
+readily interconvertible.
+Cells with some of the characteristics of neointimal VSMCs can be isolated as a minor
+subpopulation from the medial cell layer (Bochaton–Piallat et al., 1996), suggesting that
+these are cells preferentially recruited to the intima upon injury. This be a necessary step
+for neointimal formation in the balloon injured vessels of young adult rats, since the intima
+in these animals consists solely of the endothelium and its underlying basement membrane. It is also likely to occur in other animals, including man, since balloon catheter
+inﬂation or vessel atherectomy generally removes the complete intima. Interestingly,
+medial VSMCs isolated from arterial vessels of late embryonic or fetal rats are virtually
+indistinguishable from neointimal VSMCs (Majesky et al., 1992). Neointimal VSMCs
+
+552
+
+M.S. Lundberg, M.T. Crow / Experimental Gerontology 34 (1999) 549 –557
+
+may, therefore, arise either from a minor subpopulation of VSMCs in the media that have
+retained fetal characteristics or from the general population of medial VSMCs that have
+reverted to the fetal phenotype upon injury of the vessel. Reversion to a fetal phenotype
+in response to cellular stress has been noted in many different cell types, including
+cardiomyocytes (reviewed in Crow et al., 1996). What makes neointimal/intimal VSMCs
+unique in this regard is that the phenotype is stable and persists both in vivo and in cell
+culture.
+
+3. Age-associated differences in VSMC signaling during the response to
+vessel injury
+Experiments published more than 10 years ago established that the response to vessel
+injury is much greater in vessels of older animals (Hariri et al., 1986). In these studies, two
+types of vessel injury were compared. In the ﬁrst, the vessel underwent severe mechanical
+injury caused by the rapid and repeated overinﬂation of a balloon catheter. This manipulation resulted in endothelial denudation, platelet binding and activation at the denuded
+interface, and massive mechanical injury to the underlying medial cell layer resulting in
+rupture of the elastic laminae and medial cell death. Vessels from either young or old
+animals mounted a similar response to this type of injury and produced a large neointima
+at the site of injury.
+The second type of injury involved gently denuding the vessel of its endothelial cell
+layer with a ﬁne wire coil. This injury resulted in platelet binding and activation to the
+denuded vessel wall but produced no signiﬁcant injury to the underlying medial cell layer.
+Under these circumstances, the response of younger versus older vessels were markedly
+different. Vessels in young animals failed to show an increased intima, while vessels in
+older animals displayed a neointima similar to that seen with the more invasive balloon
+catheter injury. Subsequent experiments in which vessels from young and old animals
+were transplanted into different aged hosts established that the age-associated differences
+in the response to injury were intrinsic to the vessel and unaffected by the age of the donor.
+One explanation for the differences in responsiveness between young and old vessels
+has emerged from further analyses of the response to balloon catheter injury in younger
+animals. These studies established that both platelet-derived growth factor (PDGF) and
+basic ﬁbroblast growth factor (bFGF) are required for the development of the neointima
+(Lindner et al., 1991). The source of PDGF is activated platelets adhering to the denuded
+vessel wall, whereas bFGF is released by mechanical stress to VSMCs residing in the
+media. Infusion of neutralizing antibodies to either PDGF or bFGF blocks neointimal
+development in response to balloon injury in young animals (Ferns et al., 1991; Lindner
+et al., 1991). In young vessels, therefore, gentle denudation is not sufﬁcient to evoke
+neointimal development because there is no bFGF release from the medial cell layer.
+Subsequently, it has been shown that infusion of bFGF, though itself not enough to elicit
+neointimal development, enabled young vessels to develop such lesions following gentle
+denudation (Lindner et al., 1991).
+Cell culture experiments examining the role of bFGF in PDGF-directed chemotaxis of
+VSMCs from our laboratory have provided a possible mechanism for this dual growth
+factor requirement (Bilato et al., 1995). These studies demonstrated that, although bFGF
+itself was not a chemoattractant, it was required for PDGF to activate the enzyme,
+calcium/calmodulin-dependent protein kinase II (CamKII). Activation of this enzyme was
+
+M.S. Lundberg, M.T. Crow / Experimental Gerontology 34 (1999) 549 –557
+
+553
+
+previously shown by the laboratory to be required for PDGF-directed migration of
+VSMCs isolated from young adult rats and to be an important point of integration for
+cellular signals and interaction with the environment (Pauly et al., 1995). The signaling
+requirements for PDGF-directed migration in VSMCs isolated from “older” rats (18 –20
+months), however, was quite different than that characterized in the “young” VSMCs and
+utilized a mechanism that did not require CamKII activation. Consequently, the migration
+of these VSMCs toward PDGF was unaffected by inhibitors of CamKII and neutralizing
+antibodies to bFGF (Crow and Bilato, 1996). These results suggested that the difference
+in the response of young and old rats to gentle arterial endothelium denudation was due,
+in part, to the fact that the signaling pathway regulating migration of VSMCs from older
+animals was able to bypass the requirement for CamKII activation and, therefore, the need
+for bFGF release from the underlying medial VSMCs. How older VSMCs are able to
+bypass this obligatory integration point is unclear and may involve changes in expression
+of inhibitors of migration, such as transforming growth factor (TGF) ␤ (see below), or
+different patterns of integrin expression.
+Integrins have been shown to be critical for regulating intracellular signaling pathways
+governing complex biological functions, such as cell migration and proliferation. This last
+consideration may of particularly importance to emerging therapies for the treatment of
+vascular disorders based on integrin blockade. One of these involves inhibition of ␤3
+integrin function, which is thought to target not only thrombolytic events via the ␣IIb␤3
+receptor on platelets, but also VSMC function through its ␣v␤3 receptor. We recently
+showed that PDGF-migration of VSMCs was inhibited by antagonists of the ␣v␤3 receptor
+and involved ␣v␤3 regulation (via bFGF) of CamKII activation (Bilato et al., 1997). Not
+surprisingly, migration of VSMCs isolated from old rats was unaffected by these antagonists (Bilato and Crow, 1996). If these results in the rat are applicable to humans, then
+the effectiveness of anti-␣v␤3 therapy may signiﬁcantly reduce vascular disorders in the
+elderly.
+Other changes in VSMC may also play a role in the enhanced responsiveness of older
+vessels to injury. Older VSMCs express more PDGF receptors (Sarzani et al., 1991) and
+migrate at a signiﬁcantly greater rate than VSMCs isolated from young adult rats (Li et al.,
+1997). In addition, although earlier studies concentrated on examining the role for CamKII
+in the regulation of VSMC function, it is now clear from numerous studies that activation
+of the mitogen-activated protein kinases (MAPKs), erk1/2, are also important for PDGFstimulated migration (Graf et al., 1997; Lundberg et al., 1998). Our laboratory has shown
+further that MAPK-mediated cell migration occurs through both CamKII-dependent and
+-independent mechanisms (Lundberg et al., 1998). About half of all cellular MAPK
+activity generated by mitogens is microtubule-associated (Reszka et al., 1995), which is
+thought to phosphorylate microtubule-associated proteins, such as tau (Drewes et al.,
+1992). This, in turn, may destabilize microtubules and promote cell movement. Ageassociated changes in cytoskeletal proteins occur, and of particular interest, is the upregulation of tubulin, a major component of microtubules (Li et al., 1997). Based on the
+current data, it is reasonable to hypothesize that age-related increases in tubulin and
+VSMC migration may allow a shift in the signal transduction pathway toward MAPKmediated microtubule destabilization and away from that regulated by CamKII activation.
+VSMCs from older animals are also relatively insensitive to the inhibitory inﬂuences
+of TGF-␤1. These VSMCs exhibit a reduced capacity to bind TGF-␤1 on the cell surface
+and an increased ability to actively degrade it (McCaffrey and Falcone, 1993). The
+mechanism(s) underlying this age-associated defect is unknown, but it has been shown
+
+554
+
+M.S. Lundberg, M.T. Crow / Experimental Gerontology 34 (1999) 549 –557
+
+that VSMCs from human atherosclerotic and restenotic lesions can acquire resistance to
+the anti-proliferative effects of TGF␤1 as a result of the selective loss of functional type
+II receptors (McCaffrey et al., 1995). Because expression of type I receptors are unaffected and these receptors are preferentially involved in extracellular matrix production,
+the response of these cells to TGF␤1 switches from growth arrest to increased ﬁbrosis and
+uncontrolled growth. Transfection of type II receptors restores the anti-proliferative
+response in cultured cells, suggesting that intracellular signaling pathways associated with
+these receptors are intact. More recently, this selective loss in type II TGF-␤ receptors in
+atherosclerotic lesions has been attributed to microsatellite instability (McCaffrey et al.,
+1997). Loss of growth control through a genetic mechanism may account for the monoclonal expansion that has been observed in human atherosclerotic lesions (see Schwartz et
+al., 1995). It is unlikely, however, to account for the age-associated differences seen in
+response to mechanical vessel injury, unless a signiﬁcant fraction of cells in the vessel
+wall have already undergone mutation before the injury is induced.
+
+4. Changes in the vascular wall with aging that may affect VSMC signaling
+and responsiveness
+Though intimal thickening can be experimentally induced by trauma, it also occurs
+during the normal course of vessel aging. In rats, the intima increases up to ﬁvefold
+compare to young animals. This increase is due predominantly to the accumulation of
+VSMCs as well as monocytes (Guyton et al., 1983; Li et al., 1999). Both of these cells
+types are absent from the intima of young rats, which contains only the endothelium and
+its underlying basement membrane support. A similar thickening of the tunica intima has
+been reported in humans (Virmani et al., 1991). Thickening of the intima due to VSMC
+accumulation is likely signiﬁcant, since regions of intimal thickening are prone to the
+development of atherosclerosis (reviewed in Schwartz et al., 1995).
+Changes in the structural architecture of the vessel wall also occur with aging and these
+changes may be important factors in age-associated increase in the the overall increase in
+the intima. Extracellular matrix reorganization occurs with aging, such that the volume
+density of collagen increases with age, whereas that of elastin decreases (Forneri et al.,
+1992). In addition, collagen ﬁbrils become organized into multi-branched bundles,
+whereas elastin ﬁbers, which are organized as thick and continuous lamella early in adult
+life, become disorganized, thinner, and often fragmented with age (Guyton et al., 1983;
+Forneri et al., 1992). These changes in the relative content and organization of collagen
+and elastin result in increased ﬁbrosis and contribute to the stiffening of the vascular wall
+(Lakatta, 1993), an event associated with hypertrophy and the eventual heart failure. The
+changes in TGF␤ responsiveness described above may be partially responsible for this
+shift toward increased ﬁbrosis with aging. In addition, increased TGF␤ expression has
+recently been demonstrated in aging vessels (Li et al., 1999).
+Changes in elastin biosynthesis and degradation are also likely to play an important role
+in vascular remodeling and intracellular signaling with aging. Recent genetic studies in
+which the elastin gene had been deleted from the mouse genome resulted in extensive
+intimal thickening, indicating that the importance of elastin extends beyond its role in
+stabilizing arterial structure to regulating VSMCs proliferation and migration during
+development (Li et al., 1998). Fragmentation and loss of elastin may have similar if not
+as dramatic effects. Both the accumulation of glycosaminoglycans, which interferes with
+
+M.S. Lundberg, M.T. Crow / Experimental Gerontology 34 (1999) 549 –557
+
+555
+
+elastin assembly as can the proteolytic degradation of elastin by elastases and metalloproteinases increase with aging (Li et al., 1999). In addition, it has been shown that elastin
+fragments can act as speciﬁc ligands for receptor-mediated signaling in cells (Senior et al.,
+1984).
+Paralleling the increase in TFG␤1 levels in the aging vasculature are marked increases
+in ﬁbronectin levels (Li et al., 1999). These changes undoubtedly contribute to the shift
+from an elastic to a ﬁbrotic/stiff vessel. Fibronectin also accelerates the switch from
+contractile to synthetic phenotype that occurs when medial VSMCs are placed in culture
+(Thyberg et al., 1990). Interestingly, both ﬁbronectin and TGF-␤ expression are regulated
+by angiotensin II and chronic administration of angiotensin-converting enzyme (ACE)
+inhibitors substantially reduce and delay many of the age-associated extracellular matrix
+and intimal changes described above (Michel et al., 1994). Whether ACE inhibition would
+affect the response of such “rejuvenated” older vessels to injury is not known but would
+be valuable in sorting out whether changes in VSMC intracellular signaling pathways with
+aging are the cause or effect of vessel wall alterations with aging.
+Finally, another factor that may affect VSMC signaling with advancing age are the
+effects of advanced glycation endproducts (AGEs). AGEs are the products of nonenzymatic but irreversible glycation and oxidation of proteins and lipids (reviewed in
+Schmidt et al., 1994). AGEs accumulate on proteins with long half lives, such as collagen
+and elastin, and occur at an accelerated rate in diabetes. AGEs exert their effects on
+vascular cells through both direct and indirect mechanisms. Indirectly, they can modify
+and crosslink extracellular matrix proteins, contributing to increased stiffness of the vessel
+with age. Directly, they induce a pro-oxidant stress on the cell through a variety of cell
+surface receptors (Yan et al., 1994). One of these is a member of the immunoglobulin
+superfamily, referred to as RAGE (receptor for advanced glycation endproducts). Expression of RAGE is elevated in atherosclerotic lesions and in the neointima that forms in
+response to vessel injury (Crow et al., 1999). AGE-RAGE interactions lead to a proinﬂammatory pattern of gene expression which is likely to contribute to and exacerbate
+atherosclerotic lesion development. The development of reagents to block AGE-RAGE
+interactions and AGE formation will undoubtedly help determine the relative importance
+of AGEs and RAGE to all vascular abnormalities and especially those whose incidence is
+markedly elevated in aging vessels.
+
+5. Discussion
+Currently, the most remarkable differences in intracellular signaling between VSMCs
+isolated from young and old animals are related to the control of cell migration through
+the CamKII pathways and the accelerated transition of older VSMCs from the contractile
+to the synthetic phenotype. These differences may be due to alternative signaling pathways revealed by the inability of older VSMCs to respond to inhibitors, such as TGF-␤1,
+or to altered interactions with the extracellular matrix resulting from age-associated shifts
+in integrin expression. The exact role that these alterations have in explaining ageassociated differences in the response of the vessel wall to injury and its increased
+susceptibility to developing advanced atherosclerotic lesions remains to be determined but
+will be guided by such studies on intracellular signaling mechanisms.
+
+556
+
+M.S. Lundberg, M.T. Crow / Experimental Gerontology 34 (1999) 549 –557
+
+References
+Bilato, C., Pauly, R. R., Melillo, G., Monticone, R., Gorelick–Feldman, D., Gluzband, Y. A., Sollott, S. J.,
+Ziman, B., Lakatta, E. G., & Crow, M. T. (1995). Intracellular signaling pathways required for rat vascular
+smooth muscle cell migration. Interactions between basic ﬁbroblast growth factor and platelet-derived
+growth factor. J Clin Invest, 96, 1905–1915.
+Bilato, C., Curto, K. A., Monticone, R. E., Pauly, R. R., White, A. J., & Crow, M. T. (1997). The inhibition of
+vascular smooth muscle cell migration by peptide and antibody antagonists of the ␣v␤3 integrin complex is
+reversed by activated calcium/calmodulin-dependent protein kinase II. J Clin Invest, 100, 693–704.
+Bilato, C. & Crow, M. T. (1996). Atherosclerosis and the vascular biology of aging. Aging Clin Exp Res, 8,
+221–234.
+Bochaton–Piallat, M.-L., Ropraz, P., Gabbiani, F., & Gabbiani, G. (1996). Phenotypic heterogeneity of rat
+arterial smooth muscle cell clones. Implications for the development of experimental intimal thickening.
+Arterioscler Thromb Vasc Biol, 16, 815– 820.
+Campbell, G. R. & Campbell, J. H. (1990). The phenotypes of smooth muscle expressed in human atheroma. Ann
+NY Acad Sci, 598, 143–158.
+Crow, M. T., Boluyt, M. O., & Lakatta, E. G., (1996). Molecular and cellular aspects of cardiovascular aging.
+In N. J. Holbrook, G. R. Martin, R. A. Lockshin (Eds.). Cellular Aging and Cell Death (pp. 81–107). New
+York: Wiley-Liss, Inc.
+Drewes, G., Lichtenberg–Kraag, B., Doering, F., Mandelkow, E., Biernat, J., Goris, J., Doree, M., & Mandelkow, E. (1992). Mitogen activated protein (MAP) kinase transforms tau protein into an Alzheimer-like
+state. EMBO J, 11, 2131–2138.
+Ferns, G. A. A., Raines, E. W., Ross, R., & Reidy, M. A. (1991). Inhibition of neointimal smooth muscle cell
+accumulation after angioplasty by an antibody to PDGF. Science, 253, 1129 –1132.
+Forneri, C., Quaglino, D., & Mori, G. (1992). Role of the extracellular matrix in age-related modiﬁcations of the
+rat aorta. Arterioscler Thromb Vasc Biol, 12, 1008 –1016.
+Graf, K., Xi, X.-P., Yang, D., Fleck, E., Hsueh, W. A., & Law, R. E. (1997). Mitogen-activated protein kinase
+activation is involved in platelet-derived growth factor-directed migration by vascular smooth muscle cells.
+Hypertension, 29, 334 –339.
+Guyton, J. R., Lindsay, K. L., & Dao, D.T. (1983). Comparison of aortic intima and inner media in young adult
+versus aging rats. Am J Pathol, 111, 234 –246.
+Hariri, R. J., Alonso, D. R., Hajjar, D. P., Coletti, D., & Weksler, M. E. (1986). Aging and arteriosclerosis. I.
+Development of myointimal hyperplasia after endothelial injury. J Exp Med, 164, 1171–1178.
+Juhasz, O., Hiraoka H., Cheng, L., Stern, D., Schmidt, A. M., & Crowe, M. T. (1997). Advanced glycation
+endproducts (AGEs) stimulate the expression and secretion of monocyte chemoattractant protein-1 in
+vascular smooth muscle cells through a receptor-mediated mechanism. J Circulation, 96:1–363.
+Kannel, W. B. & Gordon, T. (1980). Cardiovascular risk factors in the aged: the Framingham study. In S. G.
+Haynes, M. Feinlieb (Eds). Epidemiology of Aging (pp. 65–98). NIH Publication 80-969.
+Lakatta, E. G. (1993). Cardiovascular regulatory mechanisms in advanced age. Physiol Rev, 73, 413– 467.
+Li, D. Y., Brooke, B., Davis, E. C., Mecham, R. P., Sorensen, L. K., Boak, B. B., Eichwald, E., & Keating, M. T.
+(1998). Elastin is an essential determinant of arterial morphogenesis. Nature (London), 393, 276 –280.
+Li, Z., Cheng, H., Lederer W. J., Froehlich, J., & Lakatta, E. G. (1997). Enhanced proliferation and migration
+and altered cytoskeletal and contractile proteins in aortic early passage smooth muscle cells from old rats.
+Exp Mol Pathol, 64, 1–11.
+Li, Z., Froehlich, J., Galis, Z. S., & Lakatta, E. G. (1999). Increased expression of matrix metalloproteinase-2
+in the thickened intima of aged rats. Hypertension, 33, 116 –123.
+Lindner, V., Lappi, D. A., Baird, A., Majack, R. A., & Reidy, M. A. (1991). Role of basic ﬁbroblast growth
+factor in vascular lesion formation. Circ Res, 68, 106 –113.
+Lundberg, M. S., Curto, K. A., Bilato, C., Monticone, R. E., & Crow, M. T. (1998). Regulation of vascular
+smooth muscle cell migration by mitogen-activated protein kinase and calcium/calmodulin-dependent
+protein kinase II signaling pathways. J. Mol Cell Cardiol, 30, 2377–2389.
+Majesky, M. W., Giachelli, C. M., Reidy, M. A., Schwartz, S. M. (1992). Rat carotid neointimal smooth muscle
+cells reexpress a developmentally regulated mRNA phenotype during repair of arterial injury. Circ Res, 71,
+759 –768.
+McCaffrey, T. A. & Falcone, D. J. (1993). Evidence for an age-related dysfunction in the anti proliferative
+response to transforming growth factor-␤ in vascular smooth muscle cells. Mol Biol Cell, 4, 315–322.
+
+M.S. Lundberg, M.T. Crow / Experimental Gerontology 34 (1999) 549 –557
+
+557
+
+McCaffrey, T. A., Consigli, S., Du, B., Falcone, D. J., Sanborn, T. A., Spokojny, A. M., & Bush, H. L. Jr. (1995).
+Decreased type II/type I TGF-␤ receptor ration in cells derived from human atherosclerotic lesions. J Clin
+Invest, 96, 2667–2675.
+McCaffrey, T. A., Du, B., Consigli, S., Szabo, P., Bray, P. J., Hartner, L., Weksler, B. B., Sanborn, T. A.,
+Bergman, G., Bush, H. L. Jr. (1997). Genomic instability in the type II TGF-␤1 receptor gene in atherosclerotic and restenotic vascular cells. J Clin Invest, 100, 2182–2188.
+Michel, J. B., Heudes, D., Michel, O., Poitevin, P., Phillippe, M., Scalbert, E., Corman, B., & Levy, B. I. (1994).
+Effect of chronic ANG-I-converting denzyme inhibition on aging processes. II. Large arteries. Am. J.
+Physiol. 267:R124 –135.
+Pauly, R. R., Passaniti, A., Crow, M. T., Kinsella, J. L., Papadopoulos, N., Monticone, R., Lakatta, E. G., &
+Martin, G. R. (1992). Experimental models that mimic the differentiation and dedifferentiation of vascular
+cells. Circulation, 86, III68 –73.
+Pauly, R. R., Bilato, C., Cheng, L., Monticone, R., & Crow, M. T. (1998). Vascular smooth muscle cell cultures.
+In C. Emerson & H. L. Sweeney (Eds.), Methods in Cell Biology, Vol 52 (pp. 133–154). New York:
+Academic Press.
+Pauly, R. R., Bilato, C., Sollott, S. J., Monticone, R., Kelly, P. T., Lakatta, E. G., & Crow, M. T. (1995). Role
+of calcium/calmodulin-dependent protein kinase II in the regulation of vascular smooth muscle cell migration. Circulation, 91, 1107–1115.
+Rezka, A. A., Seger, R., Dilitz, C. D., Krebs, E. G., & Fisher, E. H. (1995). Association of mitogen-activated
+protein kinase with the microtubule cytoskeleton. Proc Natl Acad Sci USA, 92, 8881– 8885.
+Sarzani, R., Arnaldi, G., Takasaki I., Brecher P., & Chobanian, A. V. (1991). Effects of hypertension and aging
+on platelet-derived growth factor and platelet-derived growth factor receptor expression in rat aorta and heart.
+Hypertension, 18, 93–99.
+Schmidt, A. M., Hori, O., Brett, J., Yan, S. D., Wautier, J. L., & Stern, D. (1994). Cellular receptors for advanced
+glycation end products. Implications for induction of oxidant stress and cellular dysfunction in the pathogenesis of vascular lesions. Aterioscle. Thromb. 14:1521–1528.
+Schwartz, S. M., de Blois, D., & O’Brien, E. R. M. (1995). The intima: soil for atherosclerosis and restenosis.
+Circ Res, 77, 445– 465.
+Spagnoli, L. G., Orlandi A., Mauriello, A., Snateusanio G., de Angelis, C., Lucreziotti, R., & Ramacci, M. T.
+(1991). Aging and atherosclerosis in the rabbit. 1. Distribution, prevalence and morphology of atherosclerotic
+lesions. Atherosclerosis, 89, 11–24.
+Senior, R. M., Grifﬁn, G. L., Mecham, R. P., Wrenn, D. S., Prasad, K. U., & Urry, D. W. (1984). Val-gly-valala-pro-gly, a repeating peptide in elastin, is chemotactic for ﬁbroblasts and monocytes. J Cell Biol, 99,
+870 – 874.
+Tanaka, H., Sukhova, G. K., Swanson, S. J., Clinton, S. K., Ganz, P., Cybulsky, M. I., & Libby, P. (1993).
+Sustained activation of vascular cells and leukocytes in the rabbit aorta after balloon injury. Circulation, 88,
+1788 –1803.
+Thyberg, J., Hedin, U., Sjolund, M., Palmberg, L., & Bottger, B. A. (1990). Regulation of differentiated
+properties and proliferation of arterial smooth muscle cells. Arteriosclerosis, 10, 966 –990.
+Virmani, R., Avolio A. P., Mergner, W. J., Robinowitz, M., Herderick, E. E., Cornhill, J. F., Guo, S. Y., Liu,
+T. H., Ou, D. Y., & O’Rourke, M. (1991). Effect of aging on aortic morphology in populaions with high and
+low prevalence of hypertension and atherosclerosis. Am J Pathol, 139, 1119 –1129.
+Weingand, K. W., Clarkson, T. B., Adnams, M. R., & Bostrom A. D. (1986). Effects of age and/or puberty on
+coronary artery atherosclerosis in cynomolous monkeys. Atherosclerosis, 62, 137–144.
+Yan, S. D., Schmidt, A. M., Anderson, G. M., Zhang, J., Brett, J., Zou, Y. S., Pinsky, D., & Stern, D. (1994).
+Enhanced cellular oxidant stress by the interaction of advanced glycation end products with their receptors/
+binding proteins. J. Biol. Chem. 269:9889 –9897.
+
+
+
+      
+    
+    
+	
+  

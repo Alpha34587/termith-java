@@ -1,0 +1,1076 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Version 1.2 générée le 6-4-2016-->
+<TEI xmlns:tei="http://www.tei-c.org/ns/1.0" xmlns="http://www.tei-c.org/ns/1.0" xml:lang="en">
+  <teiHeader>
+		<fileDesc>
+			<titleStmt>
+				<title/>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+			</publicationStmt>
+			<sourceDesc>
+				<p/>
+			</sourceDesc>
+		</fileDesc>
+	</teiHeader>
+  <text>
+    <body>
+      <div>
+        <p>
+Mechanisms of Ageing and Development
+95 (1997) 13 – 29
+
+Effects of vinconate on age-related alterations in
+[3H]MK-801, [3H]glycine, sodium-dependent
+D-[3H]aspartate, [3H]FK-506 and [3H]PN200-110
+binding in rats
+Tsutomu Araki a,*, Hiroyuki Kato a, Sumiko Nagaki b,
+Katsuro Shuto b, Takehiko Fujiwara c, Yasuto Itoyama a
+a
+
+Department of Neurology, Tohoku Uni6ersity School of Medicine, 1 -1 Seiryo-machi, Aoba-ku,
+Sendai 980, Japan
+b
+Pharmacological Research Laboratory, Research Laboratories, Tokyo Tanabe Company Limited,
+Tokyo, Japan
+c
+Di6ision of Nuclear Medicine, Cyclotron Radioisotope Center, Tohoku Uni6ersity, Sendai, Japan
+Received 16 August 1996; accepted 16 November 1996
+
+Abstract
+We investigated the effects of age and (9 )-methyl-3-ethyl-2,3,3a,4-tetrahydro-1H-indolo[3,2,1-de] [1,5] naphthyridine-6-carboxylate hydrochloride (vinconate), an indolonaphthyridine derivative, on calcium channels, neurotransmitter receptor systems and
+immunophilin in Fischer rat brain using quantitative receptor autoradiography. [3H]MK801, [3H]glycine, sodium-dependent D-[3H]aspartate, [3H]FK-506 and [3H]PN200-110 were
+used to label N-methyl-D-aspartate (NMDA) receptors, glycine receptors, excitatory amino
+acid transport sites, FK-506 binding proteins (FKBP) and voltage-dependent L-type calcium
+channels, respectively. [3H]Glycine and sodium-dependent D-[3H]aspartate binding signiﬁcantly decreased in the frontal cortex, parietal cortex, striatum, nucleus accumbens,
+hippocampus, thalamus, substantia nigra and cerebellum of 24 month old rats in comparison
+with 6 month old animals. In contrast, [3H]MK-801, [3H]FK-506 and [3H]PN200-110 binding
+showed no signiﬁcant change in the brain of 24 month old rats. Intraperitoneal chronic
+treatment with vinconate (10 and 30 mg/kg, once a day for 4 weeks) dose-dependently
+ameliorated the signiﬁcant reduction in [3H]glycine and sodium-dependent D-[3H]aspartate
+* Corresponding author. Tel.: + 81 22 7177189; fax: +81 22 7177192.
+0047-6374/97/$17.00 © 1997 Elsevier Science Ireland Ltd. All rights reserved.
+PII S 0 0 4 7 - 6 3 7 4 ( 9 6 ) 0 1 8 3 1 - 3
+
+14
+
+T. Araki et al. / Mechanisms of Ageing and De6elopment 95 (1997) 13–29
+
+binding in the brain of 24 month old rats. These results demonstrate that glycine receptors
+and excitatory amino acid transport sites are more susceptible to aging processes than
+NMDA receptors, immunophilin and voltage-dependent L-type calcium channels. Furthermore, our ﬁndings suggest that vinconate may have a beneﬁcial effect on age-related changes
+in glycine receptors and excitatory amino acid transport sites. © 1997 Elsevier Science
+Ireland Ltd.
+Keywords: Aging; Vinconate; Glycine; NMDA; Excitatory amino acid transport sites;
+FK-506; Immunophilin; Calcium channel; Brain; Rat
+
+1. Introduction
+A number of clinical and experimental studies of neurotransmitter receptor
+systems in various brain areas have been reported. Recent evidence has demonstrated that advanced age was associated with major changes in cognitive and
+functional impairments in the central nervous system (CNS). The relationship between the deterioration of neurotransmitter system and impairment of
+cognitive functions such as learning and memory is also suggested by several
+experimental studies [1,2]. Therefore, it is conceivable that the age-related decline of cognitive function is closely linked to impairments of neurotransmitter
+systems.
+It is recognized that glutamate and glycine are the major neurotransmitters in
+the mammalian CNS [3,4]. The glycine has recently been shown to enhance the
+excitatory action of N-methyl-D-aspartate (NMDA), glutamate and other agonists at NMDA receptors [5,6]. The cloning of functional NMDA receptors has
+demonstrated that both glutamate- and glycine-recognition sites reside on the
+same protein [7]. Receptor autoradiography with [3H]glycine also revealed that
+the regional distribution of the strychnine-insensitive glycine receptor was very
+similar to that of the NMDA receptors [8,9]. These observations seem to indicate that glycine plays an important role in regulating the activity of the NMDA
+receptors which are considered to play some role in age-related neurogenerative
+disorders such as Alzheimer’s and Huntington’s diseases [10–13].
+On the other hand, the action of endogenous excitatory amino acids such as
+glutamate and aspartate within a synapse is terminated by speciﬁc and high
+afﬁnity transport into presynaptic terminals or glia [14–16]. The ability of the
+excitatory transport system to maintain extracellular levels of excitatory amino
+acids is known to play an important role in the pathogenesis of the damage to
+various brain regions [17,18]. Sodium-dependent excitatory transport is thought
+to account for the majority of the transport of excitatory amino acids at glutamatergic and aspartatergic synapses [19–21]. Therefore, the effect of aging on
+sodium-dependent transport systems is of interest to the speciﬁcity of age-related
+neurological and cognitive deﬁcits.
+
+T. Araki et al. / Mechanisms of Ageing and De6elopment 95 (1997) 13–29
+
+15
+
+Calcium is implicated in numerous function and plays a central role as an
+intracellular messenger. The voltage-dependent calcium channels are the main
+pathways of entrance of calcium from an extracellular space. The brain is highly
+dependent upon several regulated processes for the maintenaces of its homeostasis.
+Therefore, abnormal intracellular calcium homeostasis has been proposed to be
+involved in neuronal dysfunction in aging processes [22,23] and in conditions such
+as stroke and Alzheimer’s disease [24,25].
+Interestingly, a recent study suggested that immunosuppressant FK-506 can
+protect against the neuronal damage after focal ischemia in rats [26] and inhibit
+MPTP (1-methyl-4-phenyl-1,2,3,6-tetrahydropyridine)-induced dopamine depletion
+in the striatum of mice [27]. Dawson et al. [28] also reported that FK-506 can
+inhibit neurotoxicity of NMDA in primary cortical cultures by enhancing the
+phosphorylation of nitric oxide (NOS). From these ﬁndings, it is conceivable that
+FK-506 may play a role in regulating age-related neurological deﬁcits such as
+stroke and Parkinson’s disease.
+Vinconate is an indolonaphthyridine derivative and is known to signiﬁcantly
+prolong the duration of consciousness and delayed the appearance of electroencephalographic disturbances under hypoxic conditions [29]. This drug is also known
+to improve psychomotor activity, cognitive function, attention and concentration in
+elderly subjects [30]. In experimental animals, the beneﬁcial effects of vinconate
+have been conﬁrmed by behavioral studies using amnesia models induced by basal
+forebrain and medial septal lesions [31,32]. Furthermore, we previously reported
+that vinconate can prevent ischemic brain damage in experimental animals [33,34].
+These observations seem to suggest that vinconate may be effective for the
+treatment of age-related neurological disorders such as stroke and neuropsychiatric
+symptoms associated with senile dementia.
+In the present study, therefore, we focused upon NMDA, glycine, glutamate
+transport system, immunosuppressant and voltage-dependent calcium channels, and
+analyzed regional age-related changes of these binding sites in the rat brain.
+Furthermore, we examined the effects of chronic treatment with vinconate against
+age-related alterations of these binding sites in the rat brains which are considered
+to be impaired in cognitive function and psychomotor performance, using receptor
+autoradiography.
+
+2. Materials and methods
+
+2.1. Experimental animals
+Male Fischer 344 rats, 6 months and 24 months of age, were used in this study.
+Animals were killed by decapitation under a light ether. The brains were removed
+quickly, frozen in powdered dry ice, and stored at − 80°C until assay. Sagittal
+sections 12 vm in thickness were cut on a cryostat and thaw-mounted onto
+gelatin-coated slides. Adjacent brain sections were stained with cresyl violet.
+Animals were divided into four groups: (1) 6 month old group; (2) 24 month old
+
+16
+
+T. Araki et al. / Mechanisms of Ageing and De6elopment 95 (1997) 13–29
+
+group; (3) 10 mg/kg vinconate-treated group (Tokyo Tanabe, Japan); and (4) 30
+mg/kg vinconate-treated group. The rats in groups (2)–(4) were 24 months old.
+Vinconate or vehicle (distilled water) was administered i.p. once a day for 4 weeks
+before decapitation in each group. Each group contained 6–7 animals. In addition,
+there were no signiﬁcant differences among the three 24 month old rat groups
+(2) – (4) in body weight.
+
+2.2. Receptor autoradiography
+2.2.1. [ 3H]MK-801 binding
+Autoradiographic distribution of MK-801 binding sites was determined according to the method of Bowery et al. [35] with minor modiﬁcations [36]. Brain
+sections were rinsed in 50 mM Tris–HCl buffer (pH 7.4) containing 190 mM
+sucrose and dried under a cold air stream. The sections were then incubated with
+30 nM [3H]MK-801 (New England Nuclear, speciﬁc activity 20.3 Ci/mmol) in the
+buffer for 20 min at room temperature. Then the sections were washed in fresh
+buffer twice for 20 s at room temperature. Non-speciﬁc binding was determined
+with 100 vM unlabeled MK-801 (Research Biochemicals).
+2.2.2. [ 3H]Glycine binding
+Autoradiographic localization of glycine binding sites was determined according
+to the method of Miyoshi et al. [7] with minor modiﬁcations [37]. Brain sections
+were preincubated with 0.04% Triton X-100 for 10 min at 2°C to allow dissociation
+of endogenous inhibitors. After washing, the sections were incubated with 80 nM
+[3H]glycine (New England Nuclear, speciﬁc activity 38.8 Ci/mmol) in 50 mM
+Tris – acetate buffer (pH 7.4) for 15 min at 2°C. Then the sections were washed
+three times in ice-cold fresh buffer for 10 s. Non-speciﬁc binding was determined
+using 1 vM unlabeled glycine (Sigma).
+2.2.3. Sodium-dependent D -[ 3H]aspartate (excitatory amino acid transport system)
+binding
+Autoradiographic distribution of sodium-dependent D-aspartate binding sites was
+determined using the method of Anderson et al. [38,39] with minor modiﬁcations.
+Brain sections were preincubated for 10 min at 30°C in 50 mM Tris–HCl buffer
+(pH 7.4). The sections were then incubated with 100 nM D-[3H]aspartate (New
+England Nuclear, speciﬁc activity 12.8 Ci/mmol) in 50 mM Tris–HCl buffer (pH
+7.4) including 300 mM NaCl for 10 min at 2°C. After incubation, the sections were
+washed four times in fresh ice-cold buffer for a total of 30 s. Non-speciﬁc binding
+was determined with 100 vM D,L-threo-i-hydroxyaspartate (Sigma).
+2.2.4. [ 3H]FK-506 (Immunosuppressant) binding
+Autoradiographic localization of FK-506 binding sites was detected according to
+the method of Steiner et al. [40] with minor modiﬁcations. Brain sections were
+preincubated for 60 min at room temperature in 50 mM HEPES buffer (pH 7.4)
+including 2 mg/ml BSA and 0.02% Tween-20. The sections were then incubated
+
+T. Araki et al. / Mechanisms of Ageing and De6elopment 95 (1997) 13–29
+
+17
+
+with 1 nM [3H]FK-506 (New England Nuclear, speciﬁc activity 95.4 Ci/mmol) in 50
+mM HEPES containing 2 mg/ml BSA and 0.02% Tween-20 for 60 min at room
+temperature. After incubation, the sections were washed four times for 5 min in
+fresh ice-cold buffer. Non-speciﬁc binding was determined using 1 vm unlabeled
+FK-506 (Fujisawa).
+
+2.2.5. [ 3H]PN200 -110 (Voltage-dependent calcium channel blocker) binding
+Autoradiographic distribution of PN200-110 binding sites was determined according to the method of Cortes et al. [41] with minor modiﬁcations [42]. Brain
+sections were incubated with 0.1 nM [3H]PN200-110 (New England Nuclear,
+speciﬁc activity 71.5 Ci/mmol) in 170 mM Tris–HCl buffer (pH 7.4) for 60 min at
+room temperature. The sections were then washed in fresh ice-cold buffer for 20
+min. Non-speciﬁc binding was determined using 1 vM unlabeled nitrendipine
+(Sigma).
+2.3. Data analysis
+The above brain sections were rapidly dried under a cold air stream and were
+exposed to Hyperﬁlm-3H (Amersham) for 3–4 weeks in X-ray cassettes with a set
+of [3H]microscales (Amersham). The optical density of the brain areas was measured with a computer-assisted image analyzer, as described previously [37,43,44].
+The relationship between the optical density and radioactivity was obtained with
+reference to the 3H-microscales co-exposed with the brain sections. Values were
+expressed as the means 9S.D. Statistical comparisons were made using an analysis
+of variance (ANOVA) followed by Dunnett’s multiple comparison test.
+
+3. Results
+Representative autoradiograms of [3H]MK-801, [3H]glycine, sodium-dependent
+D-[3H]aspartate, [3H]FK-506 and [3H]PN200-110 binding are shown in Figs. 1 and
+2. Effects of vinconate on regional age-related changes of [3H]MK-801, [3H]glycine,
+sodium-dependent D-[3H]aspartate, [3H]FK-506 and [3H]PN200-110 binding are
+summarized in Tables 1 – 5.
+
+3.1. [ 3H]MK-801 binding
+In 6 month old rats, [3H]MK-801 binding was greatest in the hippocampal CA1
+sector and dentate gyrus. The frontal cortex, parietal cortex, striatum, nucleus
+accumbens, hippocampal CA3 sector and thalamus also had a relatively high
+density of [3H]MK-801 binding. The substantia nigra and cerebellum showed a low
+density of [3H]MK-801 binding. In 24 month old rats, no signiﬁcant alteration in
+[3H]MK-801 binding was observed in all brain regions as compared with 6 month
+old animals, although all regions showed the tendency of decrease of the binding.
+Chronic treatment with vinconate at a dose 10 or 30 mg/kg also showed no
+
+18
+
+T. Araki et al. / Mechanisms of Ageing and De6elopment 95 (1997) 13–29
+
+signiﬁcant change in [3H]MK-801 binding in the brain of 24 month old rats
+(Table 1).
+
+3.2. [ 3H]Glycine binding
+In 6 month old rats, the highest [3H]glycine binding was evident in the hippocampal CA1 sector and dentate gyrus. The frontal cortex, parietal cortex, striatum,
+nucleus accumbens, hippocampal CA3 sector and thalamus had a relatively high
+density of [3H]glycine binding. The substantia nigra and cerebellum showed a
+relatively low density of [3H]glycine binding. In 24 month old rats, a signiﬁcant
+decrease in [3H]glycine binding was observed in all brain regions as compared with
+6 month old animals. In contrast, chronic treatment with vinconate at a dose of 10
+mg/kg ameliorated a conspicuous reduction in [3H]glycine binding in the hippocampal CA1 sector and dentate gyrus of 24 month old rats. Chronic vinconate
+treatment at the higher dose also ameliorated a signiﬁcant reduction in [3H]glycine
+binding in all brain regions of 24 month old rats (Table 2).
+
+Fig. 1. Autoradiographic distribution of [3H]MK-801 and [3H]glycine binding in 6 month old rat brain.
+MK; [3H]MK-801 binding, GLY; [3H]Glycine binding.
+
+T. Araki et al. / Mechanisms of Ageing and De6elopment 95 (1997) 13–29
+
+19
+
+Fig. 2. Autoradiographic distribution of sodium-dependent D-[3H]aspartate, [3H]FK-506 and
+[3H]PN200-110 binding in 6 month old rat brain. ASP; sodium-dependent D-[3H]aspartate binding, FK;
+[3H]FK-506 binding, PN; [3H]PN200-110 binding
+
+3.3. Sodium-dependent
+
+D -[
+
+3
+
+H]aspartate binding
+
+In 6 month old rats, sodium-dependent D-[3H]aspartate binding was greatest in
+the hippocampal CA1, dentate gyrus and molecular layer of cerebellum. The
+substantia nigra had a low density of sodium-dependent D-[3H]aspartate binding.
+Other regions showed a relatively high density of sodium-dependent D-[3H]aspartate
+binding. In 24 month old rats, a conspicuous reduction in sodium-dependent
+D-[3H]aspartate binding was observed in all brain areas as compared with 6 month
+old animals. Chronic treatment with vinconate at a dose of 10 mg/kg ameliorated
+a signiﬁcant reduction in sodium-dependent D-[3H]aspartate binding in the frontal
+cortex, parietal cortex, striatum, nucleus accumbens, hippocampal CA1 sector,
+dentate gyrus and cerebellum of 24 month old rats. Chronic vinconate treatment at
+the higher dose signiﬁcantly ameliorated a conspicuous reduction in sodium-dependent D-[3H]aspartate binding in all brain areas of 24 month old rats (Table 3).
+
+20
+
+T. Araki et al. / Mechanisms of Ageing and De6elopment 95 (1997) 13–29
+
+3.4. [ 3H]FK-506 binding
+In 6 month old rats, the highest [3H]FK-506 binding was evident in the
+hippocampus, especially the hippocampal CA1 sector. The striatum and nucleus
+accumbens had a relatively high density of [3H]FK-506 binding. [3H]FK-506
+binding was also evident in the frontal cortex, parietal cortex, thalamus, substantia
+nigra and molecular layer of cerebellum. The granule cell layer of cerebellum had
+a low density of [3H]FK-506 binding. In 24 month old rats, no signiﬁcant change
+in [3H]FK-506 binding was observed in all brain areas. Chronic treatment with
+vinconate at a dose of 10 or 30 mg/kg also showed no signiﬁcant alteration in
+[3H]FK-506 binding in most brain areas of 24 month old rats. Chronic vinconate
+treatment at the higher dose showed a signiﬁcant increase in [3H]FK-506 binding
+only in the frontal cortex of 24 month old rats (Table 4).
+
+3.5. [ 3H]PN200 -110 binding
+In 6 month old, [3H]PN200-110 binding was greatest in the dentate gyrus. The
+frontal cortex, parietal cortex and hippocampal CA1 and CA3 sectors had a
+relatively high density of [3H]PN200-110 binding. The striatum, nucleus accumbens
+and thalamus showed a mediate density of [3H]PN200-110 binding. However, the
+substantia nigra and cerebellum showed a low density of [3H]PN200-110 binding. In
+24 month old rats, no signiﬁcant change was observed in all brain areas as
+compared with 6 month old animals. Chronic treatment with vinconate at a dose of
+Table 1
+Effect of vinconate on [3H]MK-801 binding in the rat brain
+Regions
+
+6-month-old
+
+24-month-old
+Vehicle
+
+Vinconate
+10 mg/kg
+
+30 mg/kg
+
+Frontal cortex
+Parietal cortex
+Striatum
+Nucleus accumbens
+
+2349 77
+2429 82
+1929 37
+2029 47
+
+199 9 32
+204 9 67
+162 9 33
+204 9 49
+
+219 9 56
+190 969
+153 954
+179 9 55
+
+206 9 19
+217 935
+166 9 61
+176 9 52
+
+Hippocampus
+CA1 sector
+CA3 sector
+Dentate gyrus
+
+387963
+207946
+3119 50
+
+357 991
+179 985
+265 966
+
+347 9 103
+169 9 48
+253 9 71
+
+354 963
+192 9 43
+310 9 43
+
+Thalamus
+Substantia nigra
+Cerebellum
+
+161936
+679 35
+759 33
+
+136 9 56
+35 9 35
+74 9 30
+
+142 9 27
+24 9 31
+67 925
+
+149 950
+55 967
+80 9 23
+
+Optical density was converted to fmol/mg tissue. Values were expressed as means9 S.D.*PB0.05,
+**PB0.01 vs. vehicle-treated group (Dunnett’s multiple comparison test).
+
+T. Araki et al. / Mechanisms of Ageing and De6elopment 95 (1997) 13–29
+
+21
+
+Table 2
+Effect of vinconate on [3H]glycine binding in the rat brain
+Regions
+
+6 month old
+
+24 month old
+Vehicle
+
+Vinconate
+10 mg/kg
+
+30 mg/kg
+
+Frontal cortex
+Parietal cortex
+Striatum
+Nucleus accumbens
+
+1239 25**
+119917**
+949 10**
+140 936**
+
+65 9 13
+65 913
+51 97
+64 924
+
+83 9 24
+85 922
+64 921
+94 9 37
+
+112 926**
+106 916**
+81 9 13**
+118 925**
+
+Hippocampus
+CA1 sector
+CA3 sector
+Dentate gyrus
+
+3009 26**
+124913**
+290929**
+
+133 9 26
+69 9 7
+135 922
+
+225 9 99*
+96 9 47
+230 9101*
+
+273 9 45**
+110 9 20*
+275 964**
+
+Thalamus
+Substantia nigra
+
+106 9 6**
+5296**
+
+60 98
+26 94
+
+82 932
+39 9 14
+
+107 916**
+53 911**
+
+28 9 6
+62 97
+
+32 97
+74 917
+
+39 9 7*
+87 912**
+
+Cerebellum
+Molecular layer
+Granule cell layer
+
+40917**
+89 9 9**
+
+Optical density was converted to fmol/mg tissue. Values were expressed as means9S.D.
+*PB0.05, **PB0.01 vs. vehicle-treated group (Dunnett’s multiple comparison test).
+
+10 or 30 mg/kg also showed no signiﬁcant change in [3H]PN200-110 binding in all
+brain regions of 24 month old rats (Table 5).
+
+4. Discussion
+The present study demonstrated that age-related reductions in [3H]glycine and
+sodium-dependent D-[3H]aspartate binding were found among various brain regions, whereas [3H]PN200-110, [3H]MK-801 and [3H]FK-506 binding showed no
+signiﬁcant change in rat brains. Furthermore, our study suggested that a novel
+indolonaphthyridine derivative, vinconate, signiﬁcantly ameliorated the age-related
+reductions in [3H]glycine and sodium-dependent D-[3H]aspartate binding in most
+brain areas in a dose-dependent manner.
+NMDA receptors are considered to play a critical role in many neurophysiological processes that underlie cognitive function [45–47]. It is also known that the
+dysfunction of NMDA receptors is associated with learning and memory deﬁcits
+[48]. Recent studies suggest that age-related changes in NMDA receptors or
+glutamatergic system may relate to the impairments of cognitive function with
+aging [49 – 51]. These observations are of interest with regard to the speciﬁcity of
+any age-related deﬁcits of NMDA receptors as well as cognitive function.
+
+22
+
+T. Araki et al. / Mechanisms of Ageing and De6elopment 95 (1997) 13–29
+
+Several authors have reported the presence of a receptor for the amino acid
+glycine in mammalian brain [8,52].The glycine receptor is known to be closely
+linked to the NMDA receptors, as glycine can potently enhance the actions of the
+NMDA and glutamate but no kainate or quisqualate in an electrophysiological
+study [6]. Autoradiographic studies have also demonstrated an association between
+glycine and NMDA receptors, based on the close similarity in anatomical distributions [8,9,52,53]. These observations suggest that glycine is involved in glutamatergic neurotransmission through NMDA receptor-associated glycine binding sites.
+Furthermore, a previous study demonstrated a severe decline in glycine receptors in
+aged rat brains. Therefore, glycine receptors as well as NMDA receptors may play
+a signiﬁcant role in aging processes.
+In the present study, no signiﬁcant change in [3H]MK-801 binding was found in
+brain of 24 month old rats, as compared with 6 month old animals. Furthermore,
+chronic treatment with vinconate showed no signiﬁcant alteration in [3H]MK-801
+binding in 24 month old rat brains. In contrast, an age-related reduction in
+[3H]glycine binding was observed in various brain regions. Chronic treatment with
+vinconate dose-dependently ameliorated the reduction in [3H]glycine binding in 24
+month old rat brains. These ﬁndings are, at least in part, consistent with the
+previous reports of Miyoshi et al. [7] who demonstrated a conspicuous decrease in
+[3H]glycine binding to various brain regions in aged rats. In contrast, our results
+with [3H]MK-801 binding was out of accord with the previous ﬁnding [54]. The
+Table 3
+Effect of vinconate on sodium-dependent
+Regions
+
+D-[3H]aspartate
+
+6-month-old
+
+binding in the rat brain
+
+24-month-old
+Vehicle
+
+Vinconate
+10 mg/kg
+
+30 mg/kg
+
+Frontal cortex
+Parietal cortex
+Striatum
+Nucleus accumbens
+
+449992*
+5179 107**
+4669119**
+419951**
+
+316 959
+329 950
+277 941
+263 954
+
+475 9130*
+513 9146**
+394 986*
+433 9 79**
+
+521 991**
+616 975**
+482 978**
+511 945**
+
+Hippocampus
+CA1 sector
+CA3 sector
+Dentate gyrus
+
+7789126**
+6619110**
+7179 79**
+
+508 9113
+380 9 56
+453 9 128
+
+701 9 138*
+472 9 83
+603 9 111*
+
+873 9114**
+605 9121**
+756 9103**
+
+Thalamus
+Substantia nigra
+
+4049 45**
+1979 11**
+
+229 9 46
+99 929
+
+252 9 67
+108 942
+
+350 947**
+184 9 13**
+
+Cerebellum
+Molecular layer
+Granule cell layer
+
+7429 152**
+3429 79**
+
+316 9 95
+197 9 31
+
+454 987*
+334 9 47**
+
+651 952**
+453 981**
+
+Optical density was converted to fmol/mg tissue. Values were expressed as means9 S.D.
+*PB0.05, **PB0.01 vs. vehicle-treated group (Dunnett’s multiple comparison test).
+
+T. Araki et al. / Mechanisms of Ageing and De6elopment 95 (1997) 13–29
+
+23
+
+Table 4
+Effect of vinconate on [3H]FK-506 binding in the rat brain
+Regions
+
+6-month-old
+
+24-month-old
+Vehicle
+
+Vinconate
+10 mg/kg
+
+30 mg/kg
+
+Frontal cortex
+Parietal cortex
+Striatum
+Nucleus accumbens
+
+879 17
+869 18
+113929
+118 9 30
+
+79 9 6
+94 913
+101 910
+139 9 23
+
+90 9 15
+89 9 15
+114 9 16
+153 9 22
+
+989 12.9*
+98 913
+108 910
+145 913
+
+Hippocampus
+CA1 sector
+CA3 sector
+Dentate gyrus
+Thalamus
+Substantia nigra
+
+140921
+1109 22
+105913
+72910
+94938
+
+137 914
+107 912
+106 911
+70 910
+136 9 30
+
+146 9 18
+111 912
+117 914
+75 9 10
+162 937
+
+1459 10
+111 918
+117 98
+69 910
+128 9 17
+
+71914
+439 7
+
+61 9 11
+36 96
+
+70 9 6
+44 9 7
+
+66 98
+39 911
+
+Cerebellum
+Molecular layer
+Granule cell layer
+
+Optical density was converted to fmol/mg tissue. Values were expressed as means9S.D.
+*PB0.05, **PB0.01 vs. vehicle-treated group (Dunnett’s multiple comparison test).
+
+precise reason for this difference is difﬁcult to explain by the present study.
+However, several authors suggested that [3H]glutamate binding was increased in the
+brain of aged rats and monkey [55,56]. Thus evidence for age-related changes in
+glutamate receptors is contradictory. Although the detailed reason for our ﬁndings
+is presently unclear, the present study demonstrates that the NMDA receptor itself
+doses not change, whereas the glycine receptor is affected in the brain during aging.
+On the other hand, vinconate is reported to attenuate ischemia-induced release of
+glutamate and aspartate in the rat hippocampus [57]. Furthermore, this drug is
+known to have no effect on the binding of [3H]MK-801 in the rat brain [58]. From
+these observations and our present results, we speculate that vinconate may
+ameliorate the age-related decrease in [3H]glycine binding via regulation of NMDAassociated glycine binding sites.
+The presence in the brain of a speciﬁc uptake system for glutamate and aspartate
+is the most important mechanism for regulating the synaptic activity of these
+excitatory amino acid neurotransmitters. The glutamate is rapidly removed from
+the synaptic cleft by reuptake into glutamatergic nerve terminals and glia cells [14].
+In particular, sodium-dependent excitatory amino acid transport system plays a
+major role in the clearance of excitatory amino acids such as glutamate and
+aspartate. However, the dysfunction of the transport system may contribute to
+extracellular overﬂow of these amino acids. Therefore, excitotoxic neuronal damage
+caused by massive levels of excitatory amino acids is thought to be a contributing
+factor in the neuronal cell loss associated with neurological disorders such as
+
+24
+
+T. Araki et al. / Mechanisms of Ageing and De6elopment 95 (1997) 13–29
+
+epilepsy, ischemia, hypoglycemia, Parkinson’s disease and Alzheimer’s disease
+[18,19,59 – 61]. The present study showed that a signiﬁcant decrease in sodium-dependent D-[3H]aspartate binding was found in all brain areas of 24 month old rats,
+as compared with 6 month old rats. Chronic treatment with vinconate dose-dependently ameliorated the signiﬁcant reduction in sodium-dependent D-[3H]aspartate
+binding in the brain of 24 month old rats. These results demonstrate that sodiumdependent D-[3H]aspartate binding is susceptible to aging processes. Furthermore,
+our ﬁndings suggest that vinconate can attenuate a signiﬁcant decrease in sodiumdependent D-[3H]aspartate binding in the brain of 24 month old rats. However,
+further studies are needed to clarify the detailed mechanism for our ﬁndings.
+The immunophilins are known to be highly concentrated in the brain in discrete
+neuronal structures where they are co-localized with the calcium-activated phosphatase calcineurin [40]. A previous study demonstrated that immunosuppressant
+drugs, FK-506 and cyclosporin A, can inhibit calcineurin activity [62]. Steiner et al.
+[40] also reported that FK-506 and cyclosporin A can enhance the phosphorylation
+of endogenous protein substrates in the rat brain tissue and in cultured PC 12 cells,
+indicating that these drugs may inhibit phosphatase activity by interacting with the
+immunophilin – calcineurin complexes. Interestingly, a recent study suggested that
+FK-506 can enhance the phosphorylation of nitric oxide synthase (NOS) and
+protect against glutamate neurotoxicity in cell cultures [28]. This ﬁnding seems to
+suggest that FK-506 bound to FKBP inhibits calcineurin activity, thereby increasing NOS phosphorylation and diminishing the NOS catalytic activity. Therefore,
+FKBP may play a role in regulating glutamate neurotoxicity or glutamatergic
+neurotransmission in the brain. However, the change of FKBP on aging processes
+Table 5
+Effect of vinconate on [3H]PN200-110 binding in the rat brain
+Regions
+
+6-month-old
+
+24-month-old
+Vehicle
+
+Vinconate
+10 mg/kg
+
+30 mg/kg
+
+Frontal cortex
+Parietal cortex
+Striatum
+Nucleus accumbens
+
+9.19 2.1
+10.39 2.4
+7.29 0.9
+5.49 1.2
+
+7.0 91.7
+8.2 9 2.4
+7.5 9 2.0
+7.5 91.5
+
+8.2 91.2
+8.4 9 1.6
+7.9 9 1.2
+8.4 92.0
+
+7.4 9 1.0
+7.4 9 2.2
+7.9 91.4
+8.7 91.8
+
+Hippocampus
+CA1 sector
+CA3 sector
+Dentate gyrus
+Thalamus
+Substantia nigra
+Cerebellum
+
+9.89 1.9
+11.39 1.9
+16.69 3.3
+8.89 1.5
+2.29 0.9
+3.39 1.0
+
+8.5 92.8
+10.1 92.0
+16.1 93.1
+8.7 91.9
+1.2 91.0
+2.2 90.8
+
+8.6 91.8
+10.9 9 2.7
+16.6 92.4
+9.6 91.4
+1.8 91.1
+2.3 90.8
+
+7.3 92.7
+8.9 92.2
+14.1 93.7
+9.1 91.9
+2.1 9 1.0
+2.3 9 1.6
+
+Optical density was converted to fmol/mg tissue. Values were expressed as means9S.D.
+*PB0.05, **PB0.01 vs. vehicle-treated group (Dunnett’s multiple comparison test).
+
+T. Araki et al. / Mechanisms of Ageing and De6elopment 95 (1997) 13–29
+
+25
+
+is presently unclear, although the localization is predominantly evident in the brain.
+The present study showed that [3H]FK-506 binding revealed no signiﬁcant change
+in the brain of 24 month old rats. Furthermore, chronic treatment with vinconate
+showed a mild elevation in [3H]FK-506 binding only in the frontal cortex of 24
+month old rats. However, other regions showed no signiﬁcant change in [3H]FK506 binding in vinconate-treated 24 month old rats. These ﬁndings seem to suggest
+that immunophilin is resistant to aging processes. However, Steiner et al. [40] have
+demonstrated the comparable levels of [3H]FK-506 binding in membrane and
+soluble fractions in the brain. Furthermore, they suggest that the properties of
+[3H]FK-506 binding are closely similar in membrane and soluble fractions in all
+brain regions and peripheral tissues. Therefore, it is necessary to investigate the
+regional pattern of each soluble fraction for the further understanding of age-related changes in [3H]FK-506 binding in the brain.
+Calcium ions play critical roles in various neuronal functions and altered calcium
+homeostasis is known to be an important contributing factor in the expression of a
+number of neuronal functions altered during aging, such as neurotransmitter
+release, enzymatic functions and transport systems [63]. The brain is particularly
+rich in high-afﬁnity voltage-dependent L-type calcium channel binding sites associated with neuronal elements [64]. Previous studies suggest that calcium-dependent
+acetylcholine release is decreased in the brain aged mice [65] and perturbations in
+normal calcium metabolism are correlated to cognitive function in aged rabbits [66].
+Furthermore, several authors have reported that brain aging is accompanied by a
+reduction in calcium uptake [67,68]. Therefore, an alteration in the ability of
+neurons to allow calcium entry may be responsible for the decline in neurotransmitter release observed in various brain regions during aging [69]. In the present study,
+however, no signiﬁcant change in [3H]PN200-110 binding was found in the brain of
+24 month old rats, as compared with 6 month old animals. Furthermore, chronic
+treatment with vinconate showed no signiﬁcant alteration in [3H]PN200-110 binding in 24 month old rat brains. A recent interesting study suggests that neuronal
+losses known to occur in age-related neurological disorders such as Alzheimer’s,
+Parkinson’s and Huntington’s diseases are apparently not accompanied with parallel decrements in [3H]PN200-110 and [3H]D-888 binding to L-type calcium channels
+[70]. This ﬁnding is in accord with our present results. In the brain, however, the
+existence of at least four, L, N, P, T different sub-types of calcium channels has
+been demonstrated [71 – 73]. It is also suggested that each sub-type mediates speciﬁc
+neuronal functions such as neurotransmitter release, tropism and cytotoxicity
+[71,73 – 76]. Therefore, it is necessary to investigate the regional pattern of each
+sub-type of calcium channels for the further understanding of age-related changes
+in the brain using receptor autoradiographic and biochemical techniques.
+In conclusion, the present study showed that [3H]glycine and sodium-dependent
+D-[3H]aspartate binding signiﬁcantly decreased in 24 month old rat brains and that
+chronic treatment with vinconate ameliorated these reductions. In contrast, no
+age-related change was observed in [3H]PN200-110, [3H]MK-801 and [3H]FK-506
+binding. These results suggest that vinconate may be a candidate for a drug for
+age-related neurological disorders.
+
+26
+
+T. Araki et al. / Mechanisms of Ageing and De6elopment 95 (1997) 13–29
+
+References
+[1] D.J. Hepler, D.S. Olton, G.L. Wenk and J.T. Coyle, Lesions in nucleus basalis magnocellularis and
+medial septal area produce quantitatively similar memory impairments. J. Neurosci., 5 (1985)
+866–873.
+[2] G. Smith, Animal models of Alzheimer’s disease: experimental cholinergic denervation. Brain Res.
+Re6., 13 (1988) 103–118.
+[3] M.H. Aprison and N.S. Nadai, Glycine: inhibition from the sacrum to the medulla. In F. Fonnum
+(ed.), In Amino Acids as Chemical Transmitters, Plenum Press, New York, 1977, pp 531 – 570.
+[4] H. Betz, Glycine receptors: heterogenous and widespread in the mammalian brain. Trends Neurosci., 14 (1991) 458–461.
+[5] M. Bertolino, S. Viccini, J. Mazzetta and E. Costa, Phencyclidine and glycine modulate NMDA-activated high conductance cationic channels by acting at different sites. Neurosci. Lett., 84 (1988)
+351–355.
+[6] J.W. Johnson and P. Ascher, Glycine potentiates the NMDA response in cultured mouse brain
+neurons. Nature, 325 (1987) 529 – 531.
+[7] R. Miyoshi, S. Kito, I. Doudou and T. Nomoto, Age-related changes of strychinine – insensitive
+glycine receptors in rat brain as studied by in vitro autoradiography. Synapse, 6 (1990) 338 – 343.
+[8] D.R. Bristow, N.G. Bowery and G.N. Woodruf, Light microscopic autoradiographic localization of
+[3H]glycine and [3H]strychnine binding sites in rat brain. Eur. J. Pharmacol., 126 (1986) 303 – 307.
+[9] C.W. Cotman, D.T. Monaghan, O.P. Ottersen and J. Storm-Mathisen, Anatomical organization of
+the excitatory amino acid receptors and their pathways. Trends Neurosci., 10 (1987) 273 – 280.
+[10] L.S. Dure, A.B. Young and J.B. Penney, Excitatory amino acid binding sites in the caudate nucleus
+and frontal cortex of Huntington’s disease, Ann. Neurol., 30 (1991) 785 – 793.
+[11] J.T. Greenamyre, J.B. Penny, C.J. D’Amato, S.P. Hicks and I. Shoulson, Alteration in L-glutamate
+binding in Alzheimer’s and Huntington’s diseases. Science, 227 (1985) 1496 – 1499.
+[12] J.T. Greenamyre, J.B. Penney, C.J. D’Amato and A.B. Young, Dementia of Alzheimer’s type:
+changes in hippocampal L-[3H]glutamate binding. J. Neurochem., 48 (1987) 543 – 551.
+[13] M.D.C. Simpson, M.C. Royston, J.F.W. Deakin, A.J. Cross, D.M.A. Mann and P. Slater,
+Regional changes in [3H]D-aspartate and [3H]TCP binding sites in Alzheimer’s disease brains. Brain
+Res., 462 (1988) 76–82.
+[14] F. Fonnum, Glutamate: a neurotransmitter in mammalian brain. J. Neurochem., 41 (1984) 1 – 11.
+[15] F.A. Henn, M.N. Goldstein and A. Hamberger, Uptake of the neurotransmitter candidate
+glutamate by glia. Nature, 239 (1974) 663 – 664.
+[16] W.J. Logan and S.H. Snyder, Unique high afﬁnity uptake systems for glycine, glutamic and aspartic
+acid in central nervous tissue of the rat. Nature, 234 (1971) 297 – 299.
+[17] W.A. Pulsinelli, J.B. Brierley and F. Plum, Temporal proﬁle of neuroranal damage in a model of
+transient forebrain ischemia. Ann. Neurol., 11 (1982) 491 – 498.
+[18] B.K. Siesjo and T. Wieloch, Epileptic brain damage: pathophysiology and neurochemical pathol¨
+ogy. Ad6. Neurobiol., 22 (1986) 813 – 847.
+[19] K.J. Anderson, D.T. Monaghan, R.J. Bridges, A.L. Tavoularis and C.W. Cotman, Autoradiographic characterization of putative excitatory acid transport sites. Neuroscience, 38 (1990) 311 –
+322.
+[20] V.J. Balcar, J. Borg and P. Mandel, High afﬁnity uptake of L-glutamate and L-aspartate by rat
+brain slices. J. Neurochem., 19 (1972) 2657 – 2666.
+[21] A. Schouboe, Transport and metabolism of glutamate and GABA in neurons and glia cells. Int.
+Re6. Neurobiol., 22 (1981) 1–45.
+[22] P.W. Landﬁeld, Increased calcium current hypothesis of brain aging. Neurobiol. Aging, 8 (1987)
+346–347.
+[23] M.P. Mattson, P.B. Cheng, D. Davis, K. Bryant, I. Lifberburg and R.E. Rydel, i-amyloid peptides
+destabilize calcium homeostasis and render human cortical neurons vulnerable to excitotoxicity. J.
+Neurosci., 12 (1992) 376–389.
+
+T. Araki et al. / Mechanisms of Ageing and De6elopment 95 (1997) 13–29
+
+27
+
+[24] B.K. Siesjo, F. Bengtsson, W. Grampp and S. Theander, Calcium, excitotoxins and neuronal death
+¨
+in the brain. Ann. NY Acad. Sci., 568 (1989) 234 – 251.
+[25] J.R. Moyer Jr., L.T. Thompson, J.P. Black and J.F. Disterhoft, Niemodipine increases excitability
+of rabit CA1 pyramidal neurons in an age- and concentration-dependent manner. J. Neurophysiol.,
+68 (1992) 2100–2109.
+[26] J. Sharkey and S.P. Butcher, Immunophilins mediate the neuroprotective effects of FK506 in focal
+cerebral ischemia. Nature, 371 (1994) 336 – 339.
+[27] Y. Kitamura, Y. Itano, T. Kubo and Y. Nomura, Suppressive effect of FK-506, a novel
+immunosuppressant, against MPTP-induced dopamine depletion in the striatum of young C57BL/6
+mice. J. Neuroimmunol., 50 (1994) 221 – 224.
+[28] T.M. Dawson, J.P. Steiner, V.L. Dawson, J.L.Dinerman, G.R. Uhl and S.H. Snyder, Immunosuppressant FK506 enhances phosphorylation of nitric oxide synthase and protects against glutamate
+neurotoxicity. Proc. Natl. Acad. Sci. USA, 90 (1993) 9808 – 9812.
+[29] C. Thiebauld, J. Van Mullen, L. Lintermans and P. Sprumont, Testing a hypobaric chamber drugs
+claimed to improve brain function. Lancet, 2 (1983) 225 – 226.
+[30] B. Saletu, J. Grunberger, L. Linzmayer and R. Wittek, Classiﬁcation and determination of anew
+antihypoxidotic drug, vinconate, by pharmaco-EEG and psychometry. Arch. Gerontol. Geriatr., 3
+(1984) 127–146.
+[31] H. Kinosita, T. Kameyama, T. Hasegawa and T. Nabeshima, Effects of vinconate, a novel vinca
+alkaloid, on spatial learning deﬁcits induced by the basal forebrain lesion in rats. Pharmacol.
+Biochem. Beha6., 42 (1992)19–23.
+[32] H. Kinosita, T. Kameyama, T. Hasegawa and T. Nabeshima, Effects of vinconate on spatial
+learning impairments induced by medial septallesion in rats. Life Sci., 51 (1992) 267 – 273.
+[33] T. Araki, K. Nishioka, S. Yuki and K. Kogure, Vinconate prevents ischemic neuronal damage in
+the rat hippocampus. Acta Neurol. Scand., 81 (1990) 173 – 176.
+[34] T. Araki, K. Kogure and M. Murakami, Prevention of abnormal calcium accumulation in
+postischemic gerbil brain by vinconate. Acta Neurol. Scand., 83 (1991) 155 – 160.
+[35] N.G. Bowery, E.H.F. Wong and A.L. Hundson, Quantitative autoradiography of [3H]MK-801
+binding sites in mammalian brain. Br. J. Pharmacol., 93 (1988) 944 – 954.
+[36] T. Araki, H. Kato, K. Kogure and Y. Kanai, Long – term changes in gerbil brain neurotransmitter
+system receptors following transient cerebral ischaemia. Br. J. Pharmacol., 107 (1992) 437 – 442.
+[37] T. Araki, H. Kato, T. Fujiwara, K. Kogure and Y. Itoyama, Post-ischemic changes of [3H]glycine
+binding in the gerbil brain after cerebral ischemia. Eur. J. Pharmacol., 278 (1995) 91 – 96.
+[38] K.J. Anderson, R.J. Bridges and C.W. Cowman, Increased density of excitatory amino acid
+transport sites in the hippocampal formation following an entohinal lesion. Brain Res., 562 (1991)
+285–290.
+[39] K.J. Anderson, B. Nellgarad and T. Wieloch, Ischemia-induced upregulation of excitatory amino
+acid transport sites. Brain Res., 622 (1993) 93 – 98.
+[40] J.P. Steiner, T.M. Dawson, M. Fotuhi, C.E. Glatt, A.D. Snowman, N. Cohen and S.H. Snyder,
+High brain densities of the immunophilin FKBP colocalized with calcineurin. Nature, 358 (1992)
+584–587.
+[41] R. Cortes, P. Supavilai, M. Karobath and J.M. Palacios, Calcium antagonist binding sites in the rat
+brain: quantitative autoradiographic mapping using 1,4-dihydropyridines [3H]PN200-110 and
+[3H]PY108-068. J. Neural Transm., 60 (1984) 169 – 197.
+[42] T. Araki, H. Kato, K. Kogure and T. Saito, Postischemic alteration of muscarinic acetylcholine,
+adenosine A1 and calcium antagonist binding sites in selectively vulnerable areas: an autoradiographic study of gerbil brain. J. Neurol. Sci., 106 (1991) 206 – 212.
+[43] T. Araki, H. Kato, H. Hara and K. Kogure, Postischemic binding of gerbil [3H]phorbol 12,13-dibutyrate and [3H]inositol 1,4,5-triphosphate in the gerbil brain: an autoradiographic study. Neuroscience, 46 (1992) 973–980.
+[44] T. Araki, H. Kato, T. Fujiwara and Y. Itoyama, Age-related changes in bindings of second
+messengers in the rat brain. Brain Res., 704 (1995) 227 – 232.
+[45] I. Izquierdo, Role of NMDA receptors in memory. Trends Pharmacol. Sci., 12 (1991) 128 – 129.
+
+28
+
+T. Araki et al. / Mechanisms of Ageing and De6elopment 95 (1997) 13–29
+
+[46] B.J. McCabe and G. Horn, Learning and memory: regional changes in N-methyl-D-aspartate
+receptors in the chick brain after imprinting. Proc. Natl. Acad. Sci. USA, 85 (1988) 2849 – 2853.
+[47] K. Scheuer, S. Stoll, R. Paschke, R. Weigel and W.E. Muller, N-Methyl-D-aspartate receptor
+density and membrane ﬂuidity as possible determinants of the decline of passive avoidance
+performance in aging. Pharmacol. Biochem. Beha6., 50 (1995) 65 – 70.
+[48] W.F. Maragos, J.T. Greenamyre, J.B. Penny and A.B. Young, Glutamate dysfunction in
+Alzheimer’s disease: an hypothesis. Trends Neurosci., 10 (1987) 65 – 67.
+[49] A.S. Clark, K.R. Magnusson and C.W. Cotman, In vitro autoradiography of hippocampal
+excitatory amino acid binding in aged Fischer 344 rats: relationship to performance on the Morris
+water maze. Beha6. Neurosci., 106 (1992) 324 – 335.
+[50] W.E. Muller, K. Scheuer and S. Stoll, Glutamatergic treatment strategies for age-related memory
+disorders. Life Sci., 55 (1994) 2147 – 2153.
+[51] W.Q. Zhang, W. Mundy, L. Thai, P.M. Hudson, M. Gallagher, H.A. Tilson and J.S. Hong,
+Decreased glutamate release correlates with elevated dynorphin content in the hippocamus of aged
+rats with spatial learning deﬁcits. Hippocampus, 1 (1991) 391 – 397.
+[52] J.W. McDonald, J.B. Penny, M.V. Johnston and A.B. Young, Characterization and regional
+distribution of strychnine-insensitive [3H]glycine binding sites in rat brain by quantitative receptor
+autoradiography. Neuroscience, 35 (1990) 653 – 668.
+[53] D.T. Monaghan and C.W. Cotman, Distribution of N-methyl-D-aspartate-sensitive L-[3H]glutamate
+binding sites in rat brain. J. Neurosci., 5 (1985) 2909 – 2919.
+[54] K.R. Magnusson and C.W. Cotman, Age-related changes in excitatory amino acid receptors in two
+mouse strains. Neurobiol. Aging, 14 (1993) 197 – 206.
+[55] M. Baudry, D.S. Arst and G. Lynch, Increased [3H]glutamate receptor binding in aged rats. Brain
+Res., 223 (1981) 195–198.
+[56] G.L. Wenk, D.J. Pierce, R.G. Struble, D.L. Price and L.C. Cork, Age-related changes in multiple
+neurotransmitter systems in the monkey brain. Neurobiol. Aging, 10 (1989) 11 – 19.
+[57] T. Iino, M. Katsura and K. Kuriyama, Protective effect of vinconate on ischemia-induced neuronal
+damage in the rat hippocampus. Eur. J. Pharmacol., 224 (1992) 117 – 124.
+[58] M. Katura, T. Iino and K. Kuriyama, ( 9 )-Methyl-2,3,3a,4-tetrahydro-1H-indolo [3,2,1de][1,5]naphthyridine-6-carboxylate monohydrochloride facilitates phosphatidylinositol hydrolysis:
+possible involvement of muscarinc and non-muscarinic mechanisms. J. Pharmacol. Exp. Ther., 267
+(1993) 192–196.
+[59] G. Di Chiara and M. Morelli, Dopamine-acetylcholine-glutamate interactions in the striatum; a
+working hypothesis. Ad6. Neurol., 60 (1993) 102 – 106.
+[60] S.M. Rothman and J.W. Olney, Glutamate and the pathology of hypoxic/ischemic brain damage.
+Ann. Neurol., 19 (1986) 105–111.
+[61] R.J. Thomas, Excitatory amino acids in health and disease. J. Am. Geriatr. Soc., 43 (1995)
+1279–1289.
+[62] J. Liu, J.D.JR. Farmer, W.S. Lane, J. Friedman, I. Weissman and S.L. Schreiber, Calcineurin is a
+common target of cyclophilin– cyclosporin A and FKBP-FK506 complexes. Cell, 66 (1991) 807 –
+815.
+[63] G.E. Gibson and C. Peterson, Calcium and the aging nervous system. Neurobiol. Aging, 8 (1987)
+329–343.
+[64] R.J. Miller and S.B. Freedman, Are dihydropyridines binding sites voltage sensitive calcium
+channels? Life Sci., 34 (1984) 1205 – 1221.
+[65] G.E. Gibson and C. Peterson, Aging decreaes oxidative metabolism and the release and synthesis
+of acetylcholine. J. Neurochem., 37 (1982) 978 – 984.
+[66] R.A. Deyo, K.T. Straube and J.F. Disterhoft, Nimodipine facilitates associative learning in aging
+rabbits. Science, 243 (1989) 809 – 811.
+[67] A. Martinez, J. Vitorica, E. Bogonez and J. Satrustegui, Differential affects of age on the pathways
+of calcium inﬂux into nerve terminals. Brain Res., 435 (1987) 249 – 257.
+[68] J. Vitorica and J. Satrustegui, Involvement of mitochondria in the age-dependent decrease in
+calcium uptake in rat brain synaptosomes. Brain Res., 378 (1986) 36 – 48.
+
+T. Araki et al. / Mechanisms of Ageing and De6elopment 95 (1997) 13–29
+
+29
+
+[69] S. Govoni, R.A. Rius, F. Battaini, A. Bianchi and M. Trabucchi, Age-related reduced afﬁnity in
+[3H]nitrendipine labeling of brain voltage-dependent calcium channels. Brain Res., 333 (1985)
+374–377.
+[70] A.P. Sen, P. Boska and R. Quirion, Brain calcium channel related dihydropyridine and phenylalkylamine binding sites in Alzheimer’s, Parkinson’s and Huntington’s diseases. Brain Res., 611 (1993)
+216–221.
+[71] R.J. Miller, Multiple calcium channels and neuronal function. Science, 235 (1987) 46 – 62.
+[72] M.C. Nowycky, A.P. Fox and R.W. Tsien, Three types of neuronal calcium channel with different
+calcium agonist sensitivity. Nature, 316 (1985) 440 – 443.
+[73] O.D. Uchitel, D.A. Protti, V. Sanchez, B.D. Cherkrey, M. Sugimori and R. Llinas, P-types
+voltage-dependent calcium channel mediates presynaptic calcium efﬂux and transmitter release in
+mammalian synapses. Proc. Natl. Acad. Sci. USA, 89 (1992) 3330 – 3333.
+[74] D.W. Choi, Calcium-mediated neurotoxicity: relationship to speciﬁc channel types and role in
+ischemic damage. Trends Neurosci., 11 (1988) 465 – 469.
+[75] D.A. Greenberg, Calcium channels and calcium channel antagonists. Ann. Neurol., 21 (1987)
+317–330.
+[76] G. Zerning, Clinical future for Ca2 + antagonists looks more promising. Trends Pharmacol. Sci., 12
+(1991) 439–442.
+
+.
+
+</p>
+      </div>
+    </body>
+    
+	<back/>
+  </text>
+</TEI>

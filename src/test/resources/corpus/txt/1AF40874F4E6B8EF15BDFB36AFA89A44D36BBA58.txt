@@ -1,0 +1,959 @@
+
+    
+      
+        
+Improving the Clinical
+Recognition ofVery Mild
+Dementia Using Multiple
+Levels of Assessment
+A1,dreas Strahle, M.D., A. Richert, M.D.
+H. Maier, M.S., H. Gutzmann, M.D.
+Neuropsychological test batteries alone are often unable to
+differentiate very lni/d clenlentia fronz. both nor/nal aging anel
+111i/d cienlentia ofthe Alzheil11er type (DAT). The tluthors hypothesizecl that sonle ofthe eliffleu/ties ofneuropsychological tests in
+the icientification of velY 111ilcl denlentia coulet he overC0111e b)'
+the inclusion of ae/elitional levels of assess/nent (activities of
+(laily living, psychopathology, anelsubjective cOlnplainls). Three
+groups (vel)' Inild de/nentia, lnilel-to-1110derate DAT, ancl
+healthy control subjects) of CO 1111ntl1zity-dlvelling olelerpersons
+lvere assesseel 011 cognitive and n.ol'lcognitive variables. Results
+inelicated that noncogllilive variables i111proved prediction of
+group assignment. For accurate identification of all patients
+with very lnilel clelnentia, in adclition to neuropsychological
+variables, subjective cOl1zplaints of il11pairecl orientation and
+disturbances of apperception llJere necessalY and sufficient.
+(American Journal of Geriatric Psychiatry 1995; 3:34-42)
+
+T
+
+he cogn~tive performance) 1,2 neurologic
+features,3 electrophysiologic" and radiographic findings,S and neurochemical
+changes6 of healthy older persons and individuals with very mild dementia often overlap considerably. The labels "very mild" or
+uquestionable dementia"1.2 7 are used for
+those individuals with mild cognitive impairment thought to represent a very early stage
+of demenUa. Longitudinal studies of the
+t
+
+natural course of their disease confirm that
+these individuals mostly do-or in fact will
+have-den1entia. A minority of subjects with
+questionable or very mild dementia may
+have nonprogressive, benign changes, perhaps representing "benign senescent forgetfulness"s or Uage-associated memory
+impairment. u9 lO
+Accurate recognition of very mild
+stages of delnentia is important in research
+t
+
+Received May 2, 1994; revised July 28, 1994; accepted August 9. 1994. From the Berlin Menlory Clinic, Germany.
+Address correspondence to Andreas Strohle. M.D., Max Planck Institute of Psychiatry, Clinical Institute, Krdepelinstr.
+2-10,80804 Miinchen, Germany.
+Copyright © 1995 American Association for Geriatric }>sychiatry
+
+34
+
+VOLUME 3 • NUMBER 1 • WINTER 1995
+
+Strohle et al.
+
+and clinical practice. Early diagnosis may
+enhance maximuln effectiveness of remedial treatn1ent efforts designed to con1pensate for the progressive deterioration that is
+characteristic of this disease. Individuals
+with mild dementia and healthy older adults
+can be distinguished using psychometric
+Inethods. 11-13 However, there is a high degree of overlap in the performance of patients with very lnild dementia and both
+healthy control subjects and those with mild
+dementia of the Alzheimer type (OAT). 2
+This finding indicates that the absolute levels of perfonnance on psycholnetric tests
+alone is not helpful in identifying very mild
+clementia.
+Because good collateral informants are
+often not available to provide inforn1ation
+on past performance, indicators of earlier
+levels of performance are used instead in
+research on aging (e.g., "hold" tests of the
+Wechsler Adult Intelligence Scale [WArS],
+such as the Infonnation subtest). I-Iowever,
+these indicators may also be affected by
+dementia. Because of this important scientific limitation, Storandt and I-lilF called for
+a national effort sinlilar to that of baseline
+mammogralns used in the later detection of
+breast cancer to get baseline levels of psychOlnetric perfonuance while people are in
+their midyears. A different approach to this
+diagnostic problem is the inclusion of different levels of assessment in the identification
+of very mild denlentia, a solution that has
+been proposed by Berrios. 14 Subjective
+complaints of the patient, impairments in
+activities of daily living (ADL), and psychiatric symptoms are noncognitive variables
+that may indicate early stages of dementia.
+It is true that many of these changes are
+psychologically complex and difficult to assess; nevertheless these symptoms are likely
+to carry information that may suggest early
+stages of dementia. 14
+The purpose of the present study was
+twofold. We first hypothesized that the discrimination of very mild dementia from normal aging and from mild-to-moderate DAT
+would benefit from the inclusion of differTI·IE AMERICAN JOURNAL OF GEIUATRIC PSYCHIATRY
+
+ent levels of assessment. Second, we
+wanted to know which noncognitive variables would best distinguish between
+healthy control subjects, patients with nlildto-moderate DAT, and patients with very
+mild dementia.
+
+MEmODS
+Subjects
+All participants in the study were initially evaluated at the Berlin Memory Clinic
+and participated in our long-term study of
+clelnentia. 15 The Clinical Dementia Rating
+Scale (CDR),16 the Global Deterioration
+Scale (GDS),17 the lvIini-Mental State Examination (MMSE),18 and the Clinical Global
+Impression (CGI)19 were used to assign patients and control subjects to the different
+groups.
+Diagnostic criteria are shown in Table
+1. DAT patients had to fulfill DSM-III-R20
+criteria for delnentia and NINCDS/ADRDA
+criteria2J for probable Alzheimerts disease
+(AD). Criteria for patients with very mild
+dementia were comparable to those of Berg
+and coworkers,22 which have been proven
+to be reliable in follow-up studies' and by
+means of pathology verification.? Diagnosis
+and staging were performed by case conferences attended by all four participating
+physicians after all information was collected. Because the physicians were responsible for both the medical and the
+neuropsychological assessment, they were
+not blind with respect to the diagnoses.
+There were 53 participants (20 men, 33
+women; mean age == 71.74 ± 6.42 years) included in the analyses (Table 2). Seventeen
+had mild-to-moderate OAT (6 men, 11
+women; mean age = 74.8 ± 6.1 years); 18
+had very mild dementia (5 men, 13 women;
+nlean age = 70.4 ± 8.1 years); and 18 were
+healdlY control subjects (9 men, 9 women;
+mean age = 69.8 ± 3.5 years). There were
+nonsignificant trends for the control group
+35
+
+Clinical Recognition of Very Miltl Denlentia
+
+to be younger (F I21 = 3.15; p= 0.053) and to
+include more nlale participants (;<2121 = 1.95;
+p= 0.38). All participants were residing in
+the community.
+
+particularly sensitive to treatment effects.
+The National Institute of Mental Health DeInentia Mood Assessment Scale (DMAS)26 is
+intended to objectively assess mood
+changes in cognitively impaired subjects.
+
+Psychopathological Assessment
+The AGP-system 23 is an extensive
+standardized docunlentation systenl for psychopathology. In its structure it is mainly
+based on the AMDP systenl,2~ with some
+Inodifications to meet the needs of a gerontopsychiatric population. Only psychopathological alterations that were present in
+at least 15% of the sanlple were used in this
+study. The Montgomery Asberg Depression
+Rating Scale (MADR)25 was designed to be
+TABLE 1. Diagnostic criteria
+INCLUSION CRITERIA (all must be present):
+Dementia of the Alzheimer type (DAT)
+DSM-III-R criteria for delnentia
+13-23
+CDn: 1 or 2
+GDS: 3-5
+NINCDS: probable AD
+MMSE~
+
+Very mild dementia
+Melnory and other cognitive deficits not sufficient
+for the diagnosis of denlentia
+Problems in coping \vith denlands of everyday life
+MMSE: 24-27
+CDR: 0,5
+GOS: 2
+CGI: > 2
+Ilealthy control subjects
+
+No menlory or other cognitive deficit
+No psychiatric abnornlalities
+MMSE: 27-30
+CDR: 0 orO, 5
+GDS: 1 or 2
+CGI: 2
+EXCLUSION CRlTEIUA (all must be absent):
+Other neurologic or psychiatric disorders
+Other nlcdical disorders or phannacotherapy that
+nla y reduce cognition
+Inlpaired perception
+hnpaired cOlntnunic"tion abilities
+Intake of stimulants or nootfopies
+Note: MMSE = Mini-Mental State Ex31n; CDR =
+Clinicdl Denlentia Rating Scale; GDS ;::; Global
+Deterioration Scale; CGI = Clinical Global Impression
+
+scale.
+
+36
+
+Neuropsychological Assessment
+The "Mlinchner Verbaler GecHichtnistest" (MVG) (Ilmberger, 1988)27 is an
+experin1ental Gennan adaption of the California Verbal Learning Test (CVLT),28 which
+consists of five learning trials of a 16-word
+target list and several different recall and
+recognition tasks. To assess verbal fluency
+(Verbal Fluency Test, VFT) we used a letter
+fluency task. 29 To assess nonverbal learning
+and melnoty, we used three tests of the
+Gernlan version of the Cambridge Neuropsychological Test Automated Battety
+(CANTAB).30 These tests are cOlnprehensive
+in teflns of the range of functions they
+assess, and they have been shown to be
+sensitive to deficits as well as to progressive
+decline in patients early in the course of
+DAT31t 32 and Parkinson's disease. 33 •34 Also,
+many of these tests have recently been used
+to assess performance in neurosurgical patients with localized lesions of the frontal
+and temporal lobes. 35 •36 The stimuli were
+generated by microcomputer (Acorn BBe
+Personal Computer) and presented on a
+14-inch mediuln resolution color monitor
+(Microvitec) fitted with a touch screen.
+Three different areas of nonverbal learning
+and memory were assessed: 1) Visuospatial
+memory (CANTAB-STAR-POSITION); 2) Visual pattern menlory CCANTAB-STARSHAPE); 3) Conditional learning in a
+delayed response paradigm (CANTABDREP).
+
+Subjective Complaints
+Subjective cOlnplaints of the participants were recorded if they could be attached to the following cognitive areas:
+Inenl0ry, orientation, thinking and higher
+cortical functioning (praxis, speech, gnosis).
+VOLUME 3 • NUMBER 1 • \VlNTER 1995
+
+Strahle et al.
+
+For the purpose of this study, subjective
+c0111plaints were rated as being present or
+absent.
+
+diets the dependent variable.
+Variables that did not significantly (at P
+~ 0.05) predict group nlembership were excluded fronl further analyses to reduce the
+large nU111ber of variables. There were 55
+variables left for group comparisons of DAT
+patients and patients with very lnild dementia, 14 for the group comparisons of patients
+with very Inild denlentia and control subjects, and 21 for the group cOluparisons of
+DAT patients and control subjects. Because
+control subjects did not have psychiatric
+abnormalities (see Table 1) there are no
+clata fro111 the psychopathological level of
+assesslnent for analyses. All cOlnputations
+were perfornled with SPSS-PC, Version
+4.01. 36
+
+Behavioral Assessment (IADL)
+To assess "instru111ental activities of
+daily living," (IADL) we used the classic
+scale of Lawton and Brody37 and added five
+ADL dill1ensions (orientation, luenl0ry, attention, social interaction, and engagelTIent)
+taken froln the Multidimensional Obselvation Scale for Elderly Subjects38 and the
+Multilevel AsseSSll1ent Instrull1ent. 39
+
+Statistical Analysis
+Because the required assunlptions for
+linear cliscrinlinant analysis (nlultivariate
+nornlality of the independent variable, with
+equal variance and covariance ll1atrices in
+the two groups) were not fullfilled in our
+sanlple, logistic regression analysis40 was
+lIsed to identify the variables that discrinlinate best between groups. We used the
+forward stepwise variable selection
+111ethod; P "inn was set at 0.05, and P "out"
+at 0.10. The chi-square statistic of the
+n10del describes how well the model pre-
+
+RESULTS
+Results are reported for three different COlTIparisons: DAT subjects vs. very mild delnentia subjects, very mild delnentia subjects vs.
+control subjects, and DAT subjects vs. control subjects. For each c0111parison, we first
+report the percentage of participants correctly classified when each set of variables
+of the different levels of asseSSlnent Cpsy-
+
+TABLE 2. Descriptive data for three groups of study participants
+
+"
+
+17
+18
+18
+
+OAT
+Very Illild denlcntia
+Control subjects
+a Values arc [l1eans ± SD. MMSE
+
+= Mini-Mental State
+
+Age, yearstt
+
+Gender (w/m)
+
+MMSE:l
+
+74.8±6.l
+70.4 ±S.l
+
+11/6
+13/5
+9/9
+
+20.4 ± 3.9
+26.0 ± 1.5
+28.3 ± 1.1
+
+69.8 ± 3.5
+EX4lrll
+
+scare.
+
+TABLE 3. Percentagc of participants correctly classified using each set of variables separatcly
+DAT vs. Very Mild
+Dementia
+Psychopathology
+I3ehavioral ([ADL)
+Subjective C0l11plaints
+Neuropsychology
+
+VcryMlld
+
+Dementia vs.
+
+Control Subjects
+
+DATvs.
+Control Subjects
+
+97.1
+97.1
+
+69.5
+
+94.3
+
+82.9
+
+80.6
+
+100
+
+Note: - indicates that no data \vere available. • No variable rnade a significant contribution to the prediction of
+diagnostic category.
+
+THE M1EIUCAN JOURNAL OF GERIATRIC PSYCHIATRY
+
+37
+
+Clinical Recognition of VelY Milel Denlentia
+
+chopathology, impairnlents in ADLs, subjective complaints, and neuropsychology) was
+considered separately for classification. Second, we report the variables that best predicted group luembership when all sets of
+variables were considered sinluitaneously.
+The results of logistic regression analyses
+and descriptive statistics will be shown in
+detail only for the analyses where all participants were classified correctly.
+DAT vs. Very Mild Dementia
+Psychopathological variables as well as
+variables describing IADLs correctly predicted group Inelnbership for 97.1 % of
+cases. Neuropsychological variables correctly classified 94.20/0 of cases. Subjective
+cOlnplaints were not llseful; none of these
+variables nlade a significant contribution in
+predicting group menlbership (see Table 3).
+When all sets of variables were used
+sinlultaneously, three variables were
+needed to correctly classify all cases. Two
+of these variables were verbal learning
+items; the third was a psychopathological
+variable. At the first step, logistic regression
+analysis included the AGP variable "Distur-
+
+bances of Apperception" in the model, and
+91.4% of patients could be classified correctly. In the following two steps, the MVG
+variables "Correct Recall TrialS" and URetroactive Interference" were included in the
+model and the percentage of patients classified correctly increased to 1000/0 (see Table
+4). Compared with patients with very mild
+deluentia, OAT patients nl0re often had
+disturbances of apperception, a greater susceptibility to "retroactive interference," and
+fewer items remembered at Trial 5 of the
+Gernlan version of the CVLT, indicating that
+their verbal learning abilities were impaired
+(see Tables 5 and 6).
+
+Very Mild Dementia vs.
+Control Subjects
+Neuropsychological variables correctly
+predicted diagnostic category in 80.6% of
+cases, and variables reflecting subjective
+c0I11plaints correctly classified 69.5% of
+cases (see Table 3).
+When all available levels of assessnlent
+were used sinlultaneouslYt five variables
+were needed to correctly classify all cases.
+Three of these variables were nonverbal
+
+TABLE 4. Results of logistic regression analyses with correct classification of all DAT patients, patients with very mild dementia, and control subjects
+Increase in X.2
+
+p<
+
+Step
+
+Variable
+
+1
+2
+
+AGP: Disturbances of Apperception
+MVG: Correct Hecall Tri~ll 5
+
+28.327
+7.480
+
+0.001
+0.01
+
+rvIVG: Retroactive Interference
+
+12.684
+
+0.001
+
+Correctly
+Classified
+
+0/0
+
+DAT vs. Very MUd Dementia
+
+3
+
+91.43
+91,43
+100
+
+Very Mild Dementia vs. Control Subjects
+1
+2
+
+DREP: Errors 3 Patterns
+MVG: Intnlsion Errors
+
+3
+
+Subjective complaints of orientational difficulties
+STAH/POSITION: Correct
+DUEP: Sets solved
+
+4
+
+5
+
+10.118
+
+72.22
+
+0.001
+0.001
+0.01
+0.05
+0.001
+
+6.683
+
+6.355
+
+15,490
+
+86.11
+100
+
+0.001
+0.001
+
+11.341
+
+97.14
+100
+
+80.56
+94.44
+
+DAT V5. Control Subjects
+1
+2
+
+tvrVG: Correct Recall Trial 5
+fvIVG: Discrirninability
+
+37.213
+11.279
+
+No/eo' OAT:::: denlcntia of the Alzheiluer type; AGP systenl;23 rvlVG = IIMi.inchner Verbaler GedHchtnistest; 1127
+DREP = conditional learning in a delayed response paradigrn CCanlbridge Neuropsychological Test Automated
+Battery [CANTAB-DREP)); STAIVPOSITION = vislIospatial meln0l)' (CANTAB-STAU-POSITION).
+
+38
+
+VOLUME
+
+3•
+
+NUMBER 1 • WINTER 1995
+
+Strohle et al.
+
+menlOty items; the others were one verbal
+memory item and one itenl describing subjective complaints of orientation problems
+(see Table 4). Compared with control subjects, patients with very mild dementia had
+a higher frequency of complaints of difficulties of orientation; they produced luore errors at the CANTAB-DREP task with three
+patterns; and they solved fewer sets in the
+CANTAB-DREP task. Both variables are indicative of inlpairecl ViSllospatial conditional learning. They also reluenlbered
+fewer positions correctly in the CANTABPOSITION task, indicating that they had
+inlpaired visuospatial luenl0ry; and they
+nlade nlore intrusion errors in the Gernlan
+version of the CVLT (see Tables 5 and 6).
+
+DAT vs. Control Subjects
+Variables reflecting subjective co 111plaints correctly predicted diagnostic categOly in 82.9% of cases. Neuropsychological
+variables predicted all cases correctly. At the
+first step of logistic regression analysis,'ll the
+MVG itenl "Correct Recall Trial SU was included in the nl0del, and 97.10/0 of OAT
+patients and control subjects could be classified correctly (see Table 4). In the second
+step of the logistic regression analysis the
+MVG itenl "Discrill1inability" was included
+in the Inodel, and the percentage of DAT
+t
+
+TABLE 5. Subjective complaints of orientational
+problems and disturbances of apperception in DAT patients, patients with
+very mild dementia, and control subjects
+
+Participants With Subjective Complaints of
+Orientational Problems, 0/0
+DAT
+
+70.6
+
+Very J11i1d denlcntia
+44.4
+Control subjects
+5.6
+Participants With Disturbances
+of Apperception, %
+DAT
+Very mild denlcntia
+
+Control subjects
+
+94.1
+11.2
+(no data aV~lilablc)
+
+Note: DAT = denlcntia of the AJzheitner type.
+
+THE AMERICAN JOURNAL OF GERIATRIC PSYCHIATRY
+
+patients and control subjects being classified correctly increased to 100°1'0. Compared
+with control subjects, patients with mild-to1110derate DAT remembered fewer items at
+Trial 5 of the Gennan version of the CVLT,
+indicating that these OAT patients showed
+hnpaired verbal learning abilities. They also
+produced more errors on the recognition
+task of the MVG 27 (Table 6).
+When all sets of variables were llsed
+sinlultaneouslYt the results of the analysis
+with neuropsychological variables (see
+Table 4) were replicated.
+
+DISCUSSION
+Previously reported results using neuropsychological variables to lueasure the
+distinction between patients with mild-tomoderate OAT and control subjects show
+sinli1ar high rates of correct prediction of
+diagnostic category.7-9,42,-13 Results differ with
+regard to the variables that discrinlinate best
+between groUpSt depending to S0111e extent
+on the neuropsychological instruments
+llsed. In clinical practice, the differentiation
+of Inild-to-moderate OAT from noeolal aging
+does not pose great problems. However,
+individuals with very Inild dementia and
+healthy control subjects often overlap considerably in cognitive performance. 2 At present these two groups cannot sufficiently be
+distinguished using neuropsychological
+variables alone. Our results indicate that the
+discrimination of very mild detnentia from
+nornlal aging t on the one side, and from
+luild-ta-moderate OAT, on the other, was
+improved when additional levels of assess111ent were included.
+For the differentiation of patients with
+very luild denlentia from control subjects,
+the inclusion of subjective cOlnplaints of
+orientation difficulties resulted in an improvement in the rate of correctly classified
+participants frOITI 80.6% to 1000/0. Whereas
+subjective memory conlplaints appear to be
+strongly correlated with depressive symptomatology,44-46 subjective complaints of
+39
+
+Clinical Recognition qf VelY Milel Den1entia
+
+orientation difficulties have not been studied extensively despite the finding that spatial orientation problelTIS may be an early
+sign of DAT. 47
+If psychopathological variables are included in the discrimination of patients with
+mild-to-tTIoderate OAT and patients with
+very mild dementia, the rate of correctly
+predicted diagnostic category increased
+fronl 94.3% to 1000/0. The existence of
+disturbances of apperception was a good
+predictor of mild-to-ITIoderate DAT. Disturbances of apperception could be regarded
+as Uthe inability to grasp the ITIeaning and
+significance of experience or to see the
+ll1eaningful connections between thenl, in a
+
+broader sense, the inability to integrate new
+experiences with one's own past experience (p. 49).,,23 More research is needed to
+investigate different aspects of disturbances
+of apperception in the course of denlentia.
+Further studies are required to evaluate
+validity, reliability, and specificity of subjective orientation problel11s and disturbances
+of apperception. Their usefulness in the
+identification of very 111ild dementia has to
+be evaluated in a different, larger, and diagnostically nl0re honl0geneous saluple of
+patients with very 111ild denlentia.
+One caveat in the interpretation of the
+reported findings should be noted. Our results are based on exploratory data-analytic
+
+TABLE 6. Neuropsychological variables that predicted diagnostic category of all participants correctly
+Mean ±SD
+
+Minimum
+
+Maximum
+
+MVG: Correct Trial 5
+DAT
+Very luild dClllcntia
+
+Control subjects
+DAT
+Very 1l1ild dClllenlia
+
+Control subjects
+
+4.29 ± 2.54
+
+10.11 ± 1.88
+12.17 ± 2.12
+2.88± 1.65
+1.33± 2.33
+-o.22± 1.86
+
+1
+
+6
+
+9
+MVG: Retroactive Interference
+
+11
+13
+15
+
+7
+
+0
+
+-2
+
+7
+
+-3
+
+3
+
+MVG: Intrusion Errors
+DAT
+Very
+
+luild dernentia
+
+Control subjects
+
+1259± 12.79
+8.06±8.8!
+2.78± 2.73
+
+44
+
+0
+0
+0
+
+32
+
+10
+
+MVG: Discriminability
+DAT
+Very luild dCI11cntia
+
+Control subjects
+
+64.35 ± 20.75
+78.94 ± 29,46
+
+95.94 ± 4,41
+
+86
+
+0
+0
+
+100
+100
+
+84
+
+CANTAB-DREP: Errors 3 Patterns
+DAT
+Very tl1i1d denlcntia
+Control subjects
+
+7.18 ± 7.22
+1.89 ± 1.02
+
+O.83±O.86
+
+25
+4
+3
+
+0
+
+0
+0
+
+CANTAB-DREP: Sets solved
+DAT
+Very 1l1ild delncntia
+Control subjects
+
+SA 1 ± 2.18
+8.28 ± 0.89
+8.89±OA7
+
+1
+
+9
+
+6
+
+9
+9
+
+7
+CANTAB-STARIPOSITION: Correct
+
+DAT
+Very luild dClllcntia
+
+Control subjects
+
+11.12±2.03
+13.11 ± 2.63
+15.22 ± 1.83
+
+16
+17
+
+8
+
+8
+12
+
+18
+
+Nole.· DAT;;; deluentia of the Alzheilner type; ~lVG = ~liinchner Verbalcr Gcdnchtnistest;27 CANTAB-DHEP;:::
+Neuropsychological Test Autoillatcd Battery conditional learning in a delayed rcsponse paradigln;
+CANTAB-STAR/POSITION = ViSliospatial 1l1ClllOry.
+C~unbridge
+
+40
+
+VOtU~tE
+
+3 • NUlvlBER 1 • \'\IINTER 1995
+
+Strahle et al.
+
+techniques and a slnall salnple size. The
+replication of our findings using a different,
+larger sample would strengthen our confidence that the inclusion of different levels
+of asseSSlnent itnproves the diagnostic accuracy for very luild dementia.
+
+\Ve are indebted to A. I-lincl Rifai, M.D., for
+critical revielV ofthis 111al1liscript. 17tis work
+was supportecl in part by grants of Scheri12g
+AG, Bergkanzen, Gernlan.y.
+
+References
+1. Rubin EH, Morris Je, Gnlnt EA, et 411: Very mild
+senile del11entia of the AlzheiJncr type, I: clinical
+assessruent. Arch Ncurol 1989; 46:379-382
+2. Storandt M, Hill itO: Very luild senile dcnlentia of
+the Alzheilncr type, II: psycholnclric tcst perfornlance. Arch Neural 1989; 46:383-386
+3. I-luff J, nailer F, Lucchclli F, et al: The neurologic
+eX~1I11ination in patients \vith probable Alzheitncrts
+disease. Arch Neural 1987; 44:929-932
+4. Coben LA, Danziger \VI, Storandt tvl: A longitudinal
+EEG study of luild senile dCluentia of the Alzhehncr
+type: changes at 1 year and 2.5 years. Electroencephalogr Clin Neurophysiol 1985; 61:101-
+
+112
+5. Gado M, Hughes CP, Danziger \V, ct al: Aging,
+dClllentia, and brain atrophy: a longitudinal cornputed tOlllographic study. AJNR 1983; 4:69~-702
+6. Procter A\VI, Lo\vc SL, Pahner Atvl, ct al: Topographical distribution of neurochClnical changes in
+Alzheinler's disease. J Neural Sci 1988; 84:125-140
+7. Morris Je, McKeel D\'(/, Storanot tv1, ct al: Very nlild
+Alzhchncr's disease: infonnant-based clinical, psycholuctric and pathologic distinction frol11 nonnal
+aging. Neurology 1991; 41:469--478
+8. Kral VA: Senescent forgetfulness: benign and nlUlignant. Canad foiled Ass J 1962; 86:257-260
+9. Crook T, Bartus itT, Ferris SH, el al: Age-associated
+1l1enlory inlpainnent: proposed diagnostic criteria
+and I11eaSUres of clinical change: a report of a
+National Institutc of ~1cntal Health \Vork Group.
+Dcvelopnlcntal Neuropsychology 1986; 2:261-276
+10. Reisberg B, Ferris SH, Franssen E, et al: Age-associated 1l1ClllOry hnpainnent: the clinical syndrolue.
+Developnlcntal Neuropsychology 1986; 2:401-412
+11. Storandt tv1, Bot\vinick J, DanZiger \VL, et al: Psychonletric dirferentation of lllild senile dClllcntia of
+the ALzheinlcr type. Arch Neuro11984; 41:497--499
+12. Tierney Me, BOt\vinick J, DanZiger \VL, ct al:
+Psychoilletric differentiation of denlentia: replication and extension of the findings of Storandt and
+co\vorkers. Arch Neural 1987; 44:720-722
+13. Eslinger I'J, Danlasio ARt Benton AL, ct al: Neuropsychologic detection of abnonllal nlental decline in older persons. JAMA 1985; 253:670-674
+14. Berrios GE: Non-cognitive synlptonls and the diagnosis of denlcntia: I-listorical and clinical aspects.
+Dr J Psychiatr 1989; 154 (sllppI.4):11-16
+15. Gutzluann H, Dahlke F, Richert A, et al:
+
+THE AlvIERICAN JOURNAL OF GERIATIUC PSYCHIATRY
+
+l.angzeitverlauf dCJllentieller ErkrankungenOberlegllngen ZUlU Design, in Gcrontopsychiatrie
+#16. Edited by Knlousek M, Kretschnl;lr C. Synlposiunl del" EAG. Ncuss, Germany, Janssen GnlbI-I,
+1992, pp. 163-178
+16. Hughes CP, Berg L, Danziger \'<'1.., et al: A nc\v
+clinical scale for the staging of delnentia. Br J
+Psychiatry 1982; 140:566-572
+17. Rcisberg B, Ferris SH, de Leon MJ, et al: The Global
+Deterioration Scale for assessnlcnl of pritll~lJY degenerative dClnentia. Anl J Psychiatry 1982;
+139:1136-1139
+18. Folstcin !vIP', Foistcin SE, IvlcHugh PH: Mini-McntalState: a practical J11cthod for grading cognitive state
+of patients for the clinician. J Psychiat Res 1975;
+12:189-198
+19. National Institute of Mental I-Iealth: ell's: Clinical
+Global hnpressions. Beltz, \'<'einheirn, Gcmlany,
+1986
+20. Anlerican Psychiatric Association: Diagnostic and
+Statistical Manual of Mental Disorders, 3rd Edition,
+Revised. \Vashington, DC, Alnerican Psychiatric
+Association, 1987
+21. McKhann G, Drnclullan D, Folstein lvi, et al: Clinical
+dhlgnosis of Alzhcilller's disease: a report of the
+NINCDS/ADHDA \vork group under the auspices
+of Departnlent of Health and I-Illlllan Services Task
+Force on Alzheinlcr's Disease. Neurology 1984;
+34:939-944
+22. Berg L, Hughes CP, Coben LA, et al: Mild deInentia
+of the Alzhcirncr type: research diagnostic criteria,
+recruitnlent, and description of a study population.
+J Neural Ncufosurg Psychiatry 1982; 45:962-968
+23. Guy \V, Ban T (cds): The AGP Systenl: Illanual for
+the doculnentation of psychopathology, in
+Gerontopsychiatry. Berlin, Gernlany, Springer,
+1985
+24. Guy \VI, Ban T (eel'i): The AMDI' Systenl: Manual
+for the DOCllJllentation of Psychopathology. Berlin,
+Gennany, Springer, 1985
+25. Montgolnery SA, Asberg M: A ne\v depression scale
+designed to be sensitive to change. Br J Psychiatry
+1979; 134:382-389
+26. Sunderland T, Altennan IS, Yount D, et al: A nc\v
+scale for the aSSeSSl11ent of dcpressed 11lood in
+denlented patients. AnlJ Psychiatry 1988; 145:955959
+27. Ihllberger J: IvU\nchner Verbaler GedHchtnistest.
+
+41
+
+Clin.ical Recognition of Very Mild Den2entia
+
+Institut fOr Mcdizinische Psychologic, Miinchen,
+Gennany, 1988
+28. Delis DC, Kramer JI-I, Kaplan E, ct al: California
+Verbal Learning Test, San Antonio, TXt Psychological Corporation, 1987
+29. Denton AL. Ocr Benton-Test, Handbuch, 3rd Edition. Edited by Spreen O. Bern, S\vitzerhtnd, I-luber,
+1986
+30. Morris ltG, Evenden je, Sahakian BJ, et al: COIUputer-aided assessment of dementia: COmpaf"'dtive
+studies of neuropsychological deficits in Alzheinlcr-typc dcnlentia and Parkinson's diseuse, in
+Cognitive Neurochemistry. Edited by Stuhl SM,
+Iversen SD, Goodman EC. Oxford, UK, Oxford
+University Press, 1987, pp 21-36
+31. Sah;tkian BJ, Morris RG, Evenden JI.., et al: A
+cOlupacttive study of visuospatial nlenlory :lnd
+learning in Alzheitncr-type denlcntia and
+Parkinson's diseasc. Br:lin 1988; 111:695-718
+32. Sahakian 13j, Do\vnes JJ, Eagger S, ct al: Sparing of
+attentional relative to Innenlonic function in a
+subgroup of patients \vith dClncntia of the AlzhciIller type. Neuropsychologia 1990; 28: 1197-1213
+33. Do\vnesJJ, Hobcrts AC, Sahakian BJ, et al: Inlpaired
+extra-dimensional shift pcrfoffilance in Inedicated
+and unillcdicated Parkinson's disease: evidcnce for
+a specific attcntional dysfunction. Ncuropsychologia 1989; 27:1329-1343
+34. Morris RG. Do\vncsJJ, Sahakian BJ, et al: Planning
+and spatial \vorking IllClllory in Parkinson's disc41se.J Neural Neurosurg Psychi:tt 1988; 51:757-766
+35. O\ven AM, Do\vnes JJ, Sahakian BJ, et al: Phtnning
+and spatial \vorking 1l1Clnory after frontal lobe
+lesions in IUeln. Ncuropsychologia 1990; 28:10211034
+36. O\ven MI, Roberts AC, Polkey CE, ct al: Extra-diInension411 vs. intra-dilnensional sel-shifting perfornlance follo\ving frontal lobe excisions or
+anlygdalo-hippoc(lrupectonly in Illan. Neu-
+
+42
+
+ropsychologia 1991; 29:993-1006
+37.I..a\vton MP, Brody EM: Assessment of older people: selfoonlaintaining and instrumental activities of
+daily living. Gerontologist 1969; 9: 179-186
+38. Helmes E, Csapo KG, ShortJA: Standardization and
+validation of the MullidinlcnsionaI Observation
+Scale for Elderly Subjects (MOSES). J Gerontol
+1987j 42:395-405
+39. Ul\vton MP, Moss M, Fulconler M, et :tl: A researchand serviceooorientcd nutltilcvel aSSCSSOlent instrunlcnt. J Gerontol 1982; 37:91-99
+40. Hostner D\'Q, LenlCsho\v S: Applied Logistic Regression. Ne\v York, \Viley, 1989
+41. Norusis MJ: SPSS/PC+ Advanced Statistics 4.0. Logistic Hegression Analysis. Chicilgo, IL, SPSS Inc.,
+1991
+42. \Velsh K, Dutters N, Hughes J, et al: Detection of
+abnorlnal nlel110ry decline in 1l1ild cases of
+Alzheilner's disease using CEHAD neuropsychological Illcasures. Arch Neurol 1991;
+48:278-281
+43. Hobinson-\Vhelcn SR, Storandt M: Imillcdiate and
+delayed prose recall anlong normal ,lnd detllcnted
+adults. Arch Neural 1992; 49:32-34
+44. Kahn IU., Zarit S, Hilbert NM, et 411: lvlenlory cOlnplaint and impairnlcnt in the aged. Arch Gen
+Psychiatry 1975i 32:1569-1573
+45. Bolla KIt Lindgren KN, Bonaccorsy C, et al: lvlclllOry
+cOlnplaints in older adults: fact or fiction? Arch
+Neurol 1991; 48:61-64
+46. McGlone J, Gupta S, Hlllllphrey D, et al: Screcning
+for early denlenlia lIsing Illcmory c0l11plaints fronl
+p~ttients and relatives. Arch NCllrol 1990; 47:11891193
+47. [~cisbcrg B, Ferris SH, I-lorn H, ct at: Patterns of
+early age-associated cognitive decline. Paper presented at thc 12th Internation;ll Congress of Gerontology, Hanlbllrg, Germany, 1981
+
+VOLUME 3 • NUMBER 1 • \'(IINTEU 1995
+
+
+
+      
+    
+    
+	
+  

@@ -1,0 +1,559 @@
+
+    
+      
+        Journal of Gerontology: BIOLOGICAL SCIENCES
+Cite journal as: J Gerontol A Biol Sci Med Sci
+2009. Vol. 64A, No. 4, 435–442
+doi:10.1093/gerona/gln074
+
+© The Author 2009. Published by Oxford University Press on behalf of The Gerontological Society of America.
+All rights reserved. For permissions, please e-mail: journals.permissions@oxfordjournals.org.
+Advance Access publication on February 17, 2009
+
+Functional and Morphological Evidence of Age-Related
+Denervation in Rat Laryngeal Muscles
+Colleen A. McMullen and Francisco H. Andrade
+Department of Physiology, University of Kentucky, Lexington.
+Laryngeal muscle dysfunction compromises voice, swallowing, and airway protection in elderly adults. Laryngeal muscles and their motor neurons and their motor neurons communicate via the neuromuscular junction (NMJ). We tested the
+hypothesis that aging disrupts NMJ organization and function in the laryngeal thyroarytenoid (TA) and posterior cricoarytenoid (PCA) muscles We determined NMJ density and size and acetylcholine receptor (AChR) subunit mRNAs in
+TA and PCA muscles from 6-, 18-, and 30- month old-rats. NMJ function was determined with tubocurarine (TC) and
+contractions during nerve and muscle stimulation. NMJ size, abundance, and clustering decreased in 30-month TA and
+PCA muscles. AChRe mTNA and protein increased with age in both muscles. AChRg mRNA increased with age in
+both muscles while protein content increased in TA only. Aging PCA and TA were more sensitive to TC, demonstrating
+functional evidence of denervation. These results demonstrate that NMJs become smaller and less abundant in aging TA
+and PCA muscles.
+Key Words: Larynx—Aging—Neuromuscular junction.
+
+T
+
+HE larynx is the gateway to the lungs. It plays a key
+role in phonation, ventilation, swallowing, straining,
+and airway protective reﬂexes. In the elderly population, atrophy of the larynx compromises voice quality and impairs
+the ability to communicate and remain socially engaged.
+Laryngeal dysfunction may also cause dysphagia and increased risk of aspiration, which are important causes of
+morbidity and mortality in the elderly population.
+Two groups of skeletal muscles move the larynx. The
+extrinsic muscles move the whole larynx and change its position on the neck. The small intrinsic muscles, very specialized
+skeletal muscles, control the size and the shape of the laryngeal inlet and the tension of the vocal folds. The biomechanics of the larynx are complex but most of the intrinsic
+muscles can be classiﬁed as adductors because they appose
+the vocal folds and close the glottis. Two muscles, the posterior cricoarytenoid (PCA; the primary vocal fold abductor)
+and the thyroarytenoid (TA; a vocal fold adductor), were
+selected for this study due to their opposing activity. The
+selection of these two muscles allowed us to determine how
+laryngeal muscles with different functional roles change as
+age increases. The paired TA muscles rotate the arytenoid
+cartilages medially to approximate the vocal folds. These
+muscles also control bulking, shortening, and tensing of the
+vocal folds. The paired PCA muscles increase the transverse
+dimension of the glottis and are important in maintaining
+low resistance during times of increased ventilation because
+the vocal folds act passively to obstruct airﬂow.
+Other investigators have found signs of denervation and
+reinervation in aged laryngeal muscles, including smaller
+end plates and increased variability in end plate architecture
+(1). Because of their strategic role for ventilation, swallowing, and airway protection, it is likely that even small de-
+
+fects in laryngeal muscle function may translate to higher
+mortality and morbidity. For example, age-related loss of
+neuromuscular junction (NMJ) architecture is a likely cause
+of laryngeal muscle dysfunction. A few studies have reported on the anatomy of motor units in the vocal muscles
+of mammals other than human, whereas others have analyzed the distribution of the motor innervation of the rat larynx; however, these studies did not focus on aging (2–4).
+The present study examined the effects of aging on the NMJ
+structure and function in rat laryngeal muscles. We hypothesized that aging disrupts the organization and stability of
+the NMJs leading to functional denervation in the rat intrinsic laryngeal muscles.
+Materials and Methods
+
+Animals
+This study was approved by the Institutional Animal Care
+and Use Committee at the University of Kentucky. Male
+Fischer 344 × Brown Norway F1 hybrid rats (6, 18, and
+30 months of age) were obtained from the National Institute
+on Aging Aged Rodent Colony: We used 8 rats per age for
+histology and immunocytochemistry, 8 rats per age for
+functional studies, 4 rats per age for electron microscopy,
+and 18 rats per age for gene expression analysis. The age
+groups were selected to represent three points in the life
+span curve of this strain: 6 months (early ﬂat portion of low
+mortality), 18 months (initial increase in mortality), and 30
+months (linear decrease of survival curve) (5). Upon arrival,
+the animals were kept in microisolator cages with Harlan
+Teklad rodent food and water provided ad libitum. Prior to
+the collection of tissues, the rats were anesthetized with ketamine hydrochloride or xylazine hydrochloride (100 mg/8
+435
+
+436
+
+MCMULLEN AND ANDRADE
+
+mg per kg body weight injected i.p.) and killed by exsanguination following a medial thoracotomy.
+Histology
+Whole larynges were dissected, covered with optimal
+cutting temperature embedding medium, and frozen in 2methylbutane cooled to its freezing point in liquid nitrogen.
+Ten-micron-thick frozen coronal and transversal sections
+were used to examine TA and PCA muscles, respectively.
+Sections were collected serially so that the middle sections
+on each slide would correspond to the midsection of each
+laryngeal muscle. NMJs were decorated with ﬂuorescein
+isothiocyanate–labeled a-bungarotoxin (Invitrogen, Carlsbad,
+CA) and phalloidin (Invitrogen) as a control using the manufacturer’s recommended protocol. Sections were imaged
+with a Nikon E600 microscope equipped with a Spot RT
+Slider camera and Spot RT software (v 4.0) and with a Leica laser scanning confocal microscope. Data for NMJ
+quantity were collected using the Nikon E600 microscope,
+whereas data for NMJ end plate size were collected with a
+Leica confocal microscope. We analyzed 210 sections per
+age from PCA and 160 sections per age from TA muscles.
+The observers (J.B., T.N.) were blind to the experimental
+condition of the rats. NMJ end plate size was measured
+using NIH ImageJ software (6) by analyzing the circumference of the total end plate region. Twenty percent of
+histological images used were randomly selected and examined by two raters. Interrater reliability was assessed
+using the intraclass correlation coefﬁcient (two-way, mixedmodel, single measure). Results demonstrated a high degree of agreement between raters (intraclass correlation
+coefﬁcient = .978).
+Electron Microscopy
+Anesthetized rats were perfused with phosphate-buffered
+saline (PBS), followed by 2% paraformaldehyde and 4%
+glutaraldehyde in 0.1 M cacodylate buffer (pH 7.4) and 130
+mM NaCl. PCA and TA muscles were dissected, postﬁxed
+in 1% osmium tetroxide, stained in uranyl acetate, dehydrated in methanol and propylene oxide, and embedded in
+
+epoxy resin. Thin (70 nm) sections were stained with uranyl
+acetate and lead citrate, and photographed with a Philips
+Tecnai 12 transmission electron microscope.
+Acetylcholine Receptor Subunit Gene Expression
+Total RNA was isolated from PCA and TA muscles
+with nucleic acid puriﬁcation lysis solution (Applied Biosystems, Foster City, CA) following the manufacturer’s
+protocol with the ABI Prism® 6100 Nucleic Acid PrepStation. Muscles from six animals were pooled to obtain
+sufﬁcient tissue mass for each RNA sample. Reverse transcription was performed using SuperScript II RNaseHReverse Transcriptase (Invitrogen) with random hexamers.
+Message abundance for the acetylcholine receptor (AChR)
+subunits was measured with real-time quantitative polymerase chain reaction. Primers for the messenger RNAs
+(mRNAs) of interest were designed using the software
+package Primer Express 2.0 (Applied Biosystems) from
+GenBank nucleotide sequences (Table 1). Complementary
+DNA samples (2 mg each) were analyzed in triplicate with
+the ABI Prism 7500 Sequence Detection System using
+SYBR Green. b-Actin was used as the calibrator housekeeping gene. The relative abundance of target mRNAs
+was determined with the comparative cycle threshold
+method (7,8).
+Immunoblotting
+Tissue samples were homogenized in a buffer containing
+26 mM Tris–HCl, 0.3 M sucrose, 30 mM dithiothreitol, and
+1% Triton X-100; pH was adjusted to 8.0. Protein samples
+(50 mg per lane) were separated by sodium dodecyl sulfate
+polyacrylamide gel electrophoresis and transferred to polyvinylidene ﬂuoride microporus membranes. Membranes
+were blocked and incubated with the primary antibody to
+subunits AChRe and AChRg (Abcam, Cambridge, MA). After washing the membranes with PBS and 0.1% Tween, they
+were incubated for 1 hour with Alexa Fluor 680–conjugated
+goat anti-mouse or anti-rabbit secondary antibody (1:7,500;
+Invitrogen) and then washed again with PBS and 0.1%
+Tween. Membranes were ﬁnally rinsed with PBS and
+
+Table 1. List of Designed Primer Sets for Quantitative Polymerase Chain Reaction
+GenBank No.
+
+Gene Name
+
+Primer Sequences
+
+Base Pair
+
+NM_024485
+
+AChRa
+
+68
+
+NM_012528
+
+AChRb
+
+NM_019298
+
+AChRd
+
+NM_017194
+
+AChRe
+
+NM_019145
+
+AChRg
+
+NM_031144
+
+b-actin
+
+5′ GCT CTG TGG TGG CCA TCA A 3′
+5′ ACT CTC CGC TCT CCA TGA AGT T 3′
+5′ AGC GTT GTG GTC CTC AAC CTT G 3′
+5′ CGG ACC CAA AAG GGC ATT 3′
+5′ GCT TCA TTT AGA GCA GGC ATG 3′
+5′ GCA CAA GCT CAA GGA CAA TTC TC 3′
+5′ CCA ACG ACT CAC GCC ACA T 3′
+5′ GCG CGG CAG TAG CTC TAA TAA 3′
+5′ GCG ACT CCA GAA TGG CTC TT 3′
+5′ TCG CTT CGA GGA AAA CAG A 3′
+5′ CCC TGG CTC CTA GCA CCA T 3′
+5′ GAG CCA CCA ATC CAC ACA GA 3′
+
+64
+71
+59
+77
+69
+
+AGING NEUROMUSCULAR JUNCTION DYSFUNCTION
+
+scanned using the Odyssey Infrared Imaging System (LI-COR
+Biosciences, Lincoln, NE). Density of resulting bands was
+quantiﬁed using NIH ImageJ software (6).
+Contractile Function
+To study function in vitro, TA and PCA muscles were
+dissected intact including cartilage fragments at the origin
+and insertion. The isolated muscles were placed in a tissue
+bath with platinum ﬁeld electrodes and ﬁlled with a physiological salt solution: (in mM) 137 NaCl, 5 KCl, 2.0 CaCl2,
+1.0 MgSO4, 1.0 Na2HPO4, 24 NaHCO3, and 11 glucose,
+bubbled with 95% O2–5% CO2 to maintain pH at 7.4°C at
+25°C. The muscles were ﬁrmly attached to a force transducer (AE801; SensoNor, Horten, Norway) and the arm of
+a servomotor (Aurora Scientiﬁc Inc., Aurora, Canada) and
+stretched to the length giving maximum force in response to
+electrical stimulation (optimal length, L0). Force signals
+(newtons) were sampled on line and normalized to muscle
+
+437
+
+cross-sectional area (cm2). We used the sensitivity to the
+neuromuscular blocker tubocurarine (TC) to estimate the
+degree of functional denervation in the aging laryngeal
+muscles (9). Brieﬂy, TC concentration in the bathing medium was increased stepwise while we measured the ratio
+of force in response to nerve stimulation (0.2 msecond pulse
+duration) to force in response to direct muscle stimulation
+(0.5 msecond pulse duration). As TC concentration increases, the effectiveness of nerve stimulation decreases as
+a result of the neuromuscular transmission block. Functional denervation is then detected as enhanced sensitivity
+to TC and a faster decline in the nerve stimulation over direct muscle stimulation ratio (9).
+Data Analysis
+Quantitative results are presented as means and standard
+error of the mean (SEM). Statistical signiﬁcance was determined by analysis of variance; post-hoc multiple comparisons
+
+Figure 1. Age-related loss of NMJ density and size. (A) Representative ﬂuorescence microscopy images of NMJs from PCA and TA muscle sections from different animals labeled with a-bungarotoxin and phalloidin showing that NMJ number decreased from 6 to 30 months. TA, top panel; PCA, bottom panel (scale bars =
+25 mm). (B) Mean NMJ size and standard deviations (mm). NMJs are signiﬁcantly smaller at 30 months in PCA muscles than at 6 months (left). In TA muscles, NMJs
+are signiﬁcantly smaller at 18 and 30 months compared with 6 months (right). *p < .05 vs 6 months. NMJ = neuromuscular junction; PCA = posterior cricoarytenoid;
+TA = thyroarytenoid.
+
+438
+
+MCMULLEN AND ANDRADE
+
+Figure 2. NMJ clusters decrease with age in PCA and TA muscles. (A) Representative confocal microscopy images of PCA double labeled with a-bungarotoxin
+(green) demonstrating decreased clustering of NMJs at 30 months. Six months shown on the top panel, 30 months bottom panel (scale bar = 20 mm). (B) NMJ clusters (three or more NMJs within 5 mm) are signiﬁcantly decreased at 30 months in both muscles. Mean ± SD. *p < .01 vs 6 months. NMJ = neuromuscular junction;
+PCA = posterior cricoarytenoid; TA = thyroarytenoid.
+
+were done with Student–Newman–Keuls tests (10,11). The
+signiﬁcance level for rejection of the null hypothesis was set
+at p ≤ .05 for all comparisons.
+Results
+
+End Plate Size Decreased in the Aging Intrinsic
+Laryngeal Muscles
+NMJ end plate density signiﬁcantly decreased with age in
+both PCA and TA muscles from 6 to 30 months (Figure 1A).
+NMJ size decreased signiﬁcantly in PCA at 30 months of
+age compared with 6 months (Figure 1B, left). There was no
+difference at 18 months. In TA muscles, NMJ size decreased
+signiﬁcantly at both 18 and 30 months compared with 6
+months (Figure 1B, right). NMJ quantity also decreased
+with age. In PCA muscles, there were signiﬁcantly less
+NMJs at 18 and 30 months compared with 6 months
+(6 months 8.1 ± 1.9, 18 months 4.3 ± 2.8, 30 months 5.0 ± 2.9
+per ﬁeld). In TA muscles, NMJs at 18 months were signiﬁcantly decreased compared with 6 months of age (p ≤ .05),
+whereas at 30 months the decrease was not statistically signiﬁcant (p ≤ .05) (6 months 5.2 ± 2.7, 18 months 2.3 ± 1.5,
+30 months 4 ± 2.4 per ﬁeld). Aging decreased clustering of
+NMJs in the intrinsic laryngeal muscles. Clusters were deﬁned as three or more NMJs located no more than 5 mm
+apart (Figure 2B). Clustering signiﬁcantly decreased with
+age in both muscles (p = .01) (Figure 2B). Normal axons
+and terminals were easily identiﬁed at 6 months of age in
+TA muscles, whereas at 30 months there was greater receptor dispersion. The NMJs of the PCA muscles also showed
+a less elaborate organization with age (Figure 2A). Receptor
+
+clusters examined with electron microscopy showed an increased proportion of NMJs that are unoccupied by axon
+terminals (see Figure 3). This recapitulates previous ﬁndings in rat TA muscle (1) and demonstrates the same phenomenon in PCA muscle.
+Age Alters AChR Subunit Expression in the Laryngeal
+Muscles
+The decrease in end plate size and quantity of the NMJs
+with age may reﬂect the changed expression of genes normally associated with AChR subunits. We compared transcript levels of the AChR subunits (a, b, e, g, and d) in PCA
+and TA. mRNA content of the AChR subunits did indeed
+change with age. In PCA muscles, there were increases of
+mRNA for AChRa, -g, and -d subunits at 30 months compared with 6 months (Figure 4). In TA muscles, mRNA content of the AChRe and -g subunits increased at 30 months
+versus 6 months, whereas expression of AChRd decreased
+with age (Figure 5). Protein content determined by western
+blot increased in TA for both AChRg and -e subunits with
+age (Figure 5). In PCA muscles, protein content of AChRe
+increased with age, whereas AChRg decreased (Figure 4).
+Aging Laryngeal Muscles Are Weaker and More
+Sensitive to TA
+We measured the contractile properties of rat laryngeal
+muscles in vitro to determine whether age inﬂuences their
+function. The maximal tetanic force (P0) that PCA and TA
+muscles can generate decreased about 15% by 30 months of
+age (right vertical axes, Figures 6 and 7). Then, we used the
+
+AGING NEUROMUSCULAR JUNCTION DYSFUNCTION
+
+439
+
+Figure 3. NMJs of TA and PCA muscles become less complex with age. Representative electron micrographs of 6-, 18-, and 30-month TA (top) and PCA muscles
+(bottom). Arrows show decreased sprouting (or axonal terminal withdrawal) with age (scale bar = 0.4 mm). NMJ = neuromuscular junction; PCA = posterior
+cricoarytenoid; TA = thyroarytenoid.
+
+neuromuscular blocker TC to determine the degree of functional denervation in aging laryngeal muscles: A more signiﬁcant decrease in force produced in response to nerve
+stimulation at any TC concentration indicates greater TC
+sensitivity and, in consequence, is evidence of functional
+denervation. For both laryngeal muscles at all ages, the ratio
+of force in response to nerve stimulation to force during direct muscle stimulation (NS/MS) decreased as TC concentration increased in the bathing medium until neuromuscular
+transmission was completely abolished and NS/MS became
+0 (left vertical axis, Figures 6 and 7). For 6-month-old rats,
+the NS/MS of PCA muscles remained greater than 0 up to
+5 mM TC, and it was 0 at 10 and 20 mM. In contrast, the
+decrease in NS/MS in PCA muscles from 30-month-old rats
+was signiﬁcantly greater than at 6 months starting at the
+lowest concentration used (0.5 mM), and NS/MS became
+less than 10% at 1 mM and about 0 at 2 mM TC (Figure 6).
+The response to TC was similar in the TA muscles. At
+6 months of age, these muscles sustained NS/MS greater than
+0 up to 5 mM TC. Similarly, the TA muscles from 30-monthold rats were more sensitive to TC and their NS/MS decreased
+signiﬁcantly more even at the lowest concentrations, becoming less than 10% at 2 mM and 0 at 5 mM (Figure 7).
+
+Discussion
+We found evidence of decreased NMJ density in aging rat
+laryngeal muscles. The decrease in NMJ abundance demonstrates loss of morphologically deﬁned innervation points in
+PCA and TA muscles from 30-month-old rats. This loss of
+end plate size and number could reﬂect loss of AChR density or changes due to the denervation of aging. Age also
+changed the NMJ ultrastructure: Greater NMJ complexity
+was seen at 6 months compared with 30 months. The motor
+activity of the larynx is complex: Even reﬂex-like behavior
+such as swallowing may depend on high-level inputs (12).
+Perhaps not surprisingly, it appears that age affects laryngeal function to a greater extent than ventilatory function
+(13). Gross laryngeal atrophy is a common ﬁnding in the
+elderly population and is a likely cause of idiopathic voice
+and swallowing alterations in older patients (14–16). There
+is also a preferential age-related loss of type I ﬁbers in human laryngeal muscles, not the typical type II ﬁber loss seen
+in aging limb skeletal muscles (17). Due to the paucity of
+nondiseased human samples and small size of the laryngeal
+muscles in rodents (the most commonly used animal models), few studies to date have explored the normal structure
+and function of the laryngeal NMJ (1,10). These reports
+
+440
+
+MCMULLEN AND ANDRADE
+
+Figure 4. Messenger RNA and protein content of AChR subunits change in posterior cricoarytenoid muscles with age. (A) Transcript levels for AChR subunits
+were normalized to 6 months as the baseline. Results are fold changes of the corresponding AChR subunit. “*” indicates signiﬁcantly different from 6 months. (B)
+AChRg protein content decreased at 30 months (left), whereas AChRe increased at 30 months (right). “*” indicates statistical signiﬁcance from 6 months. Inset shows
+representative western blots for both subunits at the three ages. AChR = acetylcholine receptor.
+
+have mostly focused on NMJ structure; scant attention has
+been paid to its molecular underpinnings. There is strong
+clinical evidence of laryngeal dysfunction in the old, but
+only a handful of studies have reported mostly morphological changes consistent with denervation and reinnervation
+in aged laryngeal muscles, including distal axonal degeneration, smaller end plates, and increased variability in end
+plate architecture (1,18). Connor and associates (1) demonstrated that axon terminals and AChR vesicular clusters
+decrease in TA muscles from old rats.
+The safety factor for neuromuscular transmission on the
+postsynaptic end plate depends on the density and subunit
+composition of AChRs, junctional fold morphology, and
+density of voltage-gated ion channels (19). Aging alters
+AChRs subunit expression and decreases end plate size and
+number in both PCA and TA muscles. This change is not
+due to alterations in ﬁber size with age as these muscles
+change differentially with aging: TA ﬁber size decreases
+
+(20) with age, whereas PCA ﬁber size increases (data not
+shown). The relation between end plate size and ﬁber diameter ensures effective transmission. Size matching would
+then be impaired in the PCA muscles due to the increase in
+ﬁber diameter.
+Loss of normal AChR subunit stoichiometry may alter
+normal NMJ structure and function. The g to e switch is exceptional because the remaining subunits do not require substitution and remain through out fetal and adult life. Age
+preferentially changed AChRe and AChRg mRNA and protein levels. The expression of the adult subunit is initiated by
+the myonuclei in the vicinity of the end plate, in response to
+neuronal activation (21). AChRe knockout mice show delays in ﬁber-type transitions and reduction in motor activity
+(22). The selective upregulation of the AChRg subunit follows axonal injury and age-related denervation in other skeletal muscles (23). Increased ACHRg usually correlates with
+a loss of junctional folds; this may reﬂect an age-related
+
+Figure 5. mRNA and protein content of AChR subunits change in TA muscles with age. (A) Results are fold changes of the corresponding mRNA in TA muscles
+at 18 and 30 months compared with 6 months. “*” indicates statistical signiﬁcance from 6 months. (B) Protein content of both AChRg (left) and AChRe (right) subunits
+increased with age in TA muscles. “*” indicates statistical signiﬁcance from 6 months. Inset shows representative western blots for both subunits at the three ages.
+AChR = acetylcholine receptor; mRNA = messenger RNA; TA = thyroarytenoid.
+
+AGING NEUROMUSCULAR JUNCTION DYSFUNCTION
+
+441
+
+Figure 6. PCA muscles from older rats are weaker and more sensitive to
+TC. Maximal tetanic force produced by PCA muscles (newtons/cm2, right vertical axis) was less at 30 months compared with 6 months (■ and □, respectively, **p < .05 vs 6 months). The ratio of force produced in response to nerve
+stimulation to force resulting from direct muscle stimulation (NS/MS, left vertical axis) in PCA muscles from 6- and 30-month-old rats (∆ and ▼, respectively). For 6-month PCA muscles, NS/MS decreased monotonically as TC
+concentration increased; neuromuscular blockade was effectively 100% with 5
+mm TC. PCA muscles from 30-month-old rats were more sensitive to TC: The
+decrease in NS/MS decreased more at lower concentrations, reaching almost
+100% block by 2 mM (*p < .05 vs 6 months). PCA = posterior cricoarytenoid;
+TC = tubocurarine.
+
+Figure 7. TA muscles from older rats are weaker and more sensitive to TC.
+Maximal tetanic force produced by TA muscles (newtons/cm2, right vertical
+axis) was signiﬁcantly less at 30 months compared with 6 months (■ and □,
+respectively, **p < .05 vs 6 months). The ratio of force produced in response
+to nerve stimulation to force resulting from direct muscle stimulation (NS/
+MS, left vertical axis) in TA muscles from 6 and 30-month-old rats (∆ and ▼,
+respectively). For 6-month TA muscles, NS/MS decreased monotonically as
+TC concentration increased; neuromuscular blockade was effectively 100%
+with 10 mm TC. TA muscles from 30-month-old rats were more sensitive to
+TC: The decrease in NS/MS decreased more at lower concentrations, reaching almost 100% block by 2 mM (*p < .05 vs 6 months). TA = thyroarytenoid;
+TC = tubocurarine.
+
+decrease in rapsyn (24). This ﬁnding is also characteristic of
+aging skeletal muscles and AChRe knockout (24–26). The
+difference between mRNA expression and protein content
+in PCA muscles reﬂects a discrepancy in transcription to
+translation. The remaining subunit mRNAs were also altered by age. Mutations in these subunits, although less frequent than e and d mutations, also lead to dysfunctional
+neuromuscular signal transduction (27). AChRd changed
+with age in both muscles; this subunit is thought to maintain
+subunit communication that is critical for channel gating
+(28). AChRa mRNA also changed with age in both muscles. This is the muscle subunit whose mutations initiate an
+increased synaptic delay time, leading to extended postsynaptic activity (29). The complex process of NMJ function
+also requires many other proteins such as agrin (involved in
+NMJ clustering) and rapsyn (implicated in AChR assembly). It is unclear at this time if signaling function of these
+and other proteins is sustained in the aging PCA and TA
+muscles.
+PCA and TA muscles from 30-month-old rats were signiﬁcantly more sensitive to TC: Their NS/MS decreased
+more and complete neuromuscular block was achieved at
+lower TC concentrations than in muscles from 6-month-old
+rats. These results are consistent with less effective neuromuscular transmission in the laryngeal muscles from 30month-old rats and are evidence of functional denervation.
+In other words, neuromuscular transmission is more likely to
+fail in the laryngeal muscles from older rats under the described experimental conditions. Although greater sensitivity to TC per se does not localize the site(s) of neuromuscular
+
+transmission failure, it ﬁts with the observed decrease in
+neuromuscular junction abundance and smaller end plate
+size (Figures 1 and 2) and supports the conclusion that the
+safety factor for neuromuscular transmission is compromised in old laryngeal muscles. We also found that the PCA
+and TA muscles from old rats are weaker (lower maximal
+tetanic forces), extending previous results (20). It should be
+noted that Gambino and associates (17) found that age had
+no effect on the NMJs of human PCA muscles. In contrast,
+NMJ end plate size decreases with age in rat TA muscle (1).
+This may point to differences between the two laryngeal
+muscles also demonstrated in this study. In addition, the results obtained by Gambino and associates may be confounded by small sample size and the “blurring” of the age
+groups, leading to underestimation of potential age effects.
+Laryngeal muscle weakness would worsen the effects of
+functional denervation as faster motor neuron ﬁring frequency and greater motor unit recruitment would be needed
+to achieve the required force. A subject might perceive these
+conditions as greater effort, although the connection between motor unit activity or recruitment and the subjective
+sensation of mechanical effort is not yet clear. A report by
+Neto and Marques (30) showed no motor neuron loss within
+the intrinsic laryngeal muscles. The authors concluded that
+there is a functional defect at the NMJ. This study supports
+our conclusion that it is the NMJ itself changing in aging
+laryngeal muscles.
+Present results demonstrate that aging disrupts NMJ organization and impairs neuromuscular transmission in the
+PCA and TA muscles. Most notable is the decrease in NMJs
+
+442
+
+MCMULLEN AND ANDRADE
+
+with age, which is in the opposite direction than aging hind
+limb muscles (25). The lack of mechanistic studies to date
+reinforces the need to explore laryngeal NMJ structure and
+function and their response to aging and neuromuscular diseases to obtain an understanding at the molecular level of
+how aging disrupts NMJ organization and stability. Future
+studies will evaluate how aging alters the molecular mechanisms that initiate and sustain NMJ assembly in the intrinsic
+laryngeal muscles.
+Acknowledgments
+The authors thank Joey Bose and Tom Newcomb for technical assistance, and Joseph C. Stemple and Lisa B. Thomas for valuable advice and
+discussion. This work was supported by National Institutes of Health grant
+DC-007983 (to C.A.M.).
+Correspondence
+Address correspondence to Colleen A. McMullen, MA, Department of
+Physiology, University of Kentucky, MS508, 800 Rose Street, Lexington,
+KY 40536-0298. Email: cmcmu2@email.uky.edu
+References
+1. Connor NP, Suzuki T, Lee K, Sewall GK, Heisey DM. Neuromuscular junction changes in aged rat thyroarytenoid muscle. Ann Otol
+Rhinol Laryngol. 2002;111:579–586.
+2. Clemente MP, Lima-Rodrigues M. Distribution of motor end-plates
+in intrinsic laryngeal muscles of the rat: a comparative study with
+man. In: Clemente MP, ed. Voice Update. New York, NY:Elsevier;
+1996:269–274.
+3. Inagi K, Schultz E, Ford CN. An anatomic study of the rat larynx:
+establishing the rat model for neuromuscular function. Otolaryngol
+Head Neck Surg. 1998;118:74–81.
+4. Lima-Rodrigues M, Valle-Fernades A, Nunes R, Almeida A. Distribution of neuromuscular junctions in laryngeal and syringeal muscles
+in vertebrates. Anat Rec A Discov Mol Cell Evol Biol. 2006;
+288A:543–551.
+5. Turturro A, Witt WW, Lewis S, Hass BS, Lipman RD, Hart RW.
+Growth curves and survival characteristics of the animals used in the
+Biomarkers of Aging Program. J Gerontol A Biol Sci Med Sci. 1999;
+54:B492–B501.
+6. Staal J, Abràmof MD, Niemeijer M, Viergever MA, van Ginneken B.
+Ridge-based vessel segmentation in color images of the retina. IEEE
+Trans Med Imaging. 2004;23:501–509.
+7. Giulietti A, Overbergh L, Valckx D, Decallonne B, Bouillon R, Mathieu C. An overview of real-time quantitative PCR applications to
+quantify cytokine gene expression. Methods. 2001;25:386–401.
+8. Livak KJ, Schmittgen TD. Analysis of relative gene expression data
+using real-time quantitative PCR and the 2 DDCt method. Methods.
+2001;25:402–408.
+9. Olsberg CA, Maxwell LC, Mikiten TM, Krolick KA. Analysis of
+contractile properties of muscles from rats immunized with puriﬁed
+acetylcholine receptor. J Neuroimmunol. 1987;1:253–266.
+10. Currant-Everett D. Multiple comparisons: philosophies and illustrations. Am J Physiol Regul Integr Comp Physiol. 2000;279:R1–R8.
+11. Zar JH. 1984. Biostatistical Analysis, 2nd ed. Englewood Cliffs, NJ:
+Prentice-Hall.
+
+12. Gay T, Rendell JK, Spiro J. Oral and laryngeal muscle coordination
+during swallowing. Laryngoscope. 1994;104:341–349.
+13. Baker KK, Olson-Raming LO, Sapir S, Luschei ES, Smith ME. Control of vocal loudness in young and old adults. J Speech Lang Hear
+Res. 2001;44:297–305.
+14. Honjo I, Isshiki N. Laryngoscopic and voice characteristics of aged
+persons. Arch Otolaryngol. 1980;106:149–150.
+15. Lundy DS, Silva C, Casiano RR, Lu FL, Xue JW. Cause of hoarseness
+in elderly patients. Otolaryngol Head Neck Surg. 1998;118:481–485.
+16. Schindler JS, Kelly JH. Swallowing disorders in the elderly. Laryngoscope. 2002;112:589–602.
+17. Gambino DR, Malmgren LT, Gacek RR. Age-related changes in the
+neuromuscular junctions in the human posterior cricoarytenoid muscles: a quantitative study. Laryngoscope. 1990;100:262–268.
+18. Perie S, St Guily JL, Callard P, Sebille A. Innervation of adult human
+laryngeal muscle ﬁbers. J Neurol Sci. 1997;149:81–86.
+19. Kaminski HJ, Suarez JI, Ruff RL. Neuromuscular junction physiology in myasthenia gravis: isoforms of the acetylcholine receptor in
+extraocular muscle and the contribution of sodium channels to the
+safety factor. Neurology. 1997;48:8S–17S.
+20. McMullen CA, Andrade FH. Contractile dysfunction and altered
+metabolic proﬁle of the aging rat thyroarytenoid muscle. J Appl
+Physiol. 2006;100:602–608.
+21. Sanes JR, Litchman JW. Development of the vertebrate neuromuscular junction. Annu Rev Neurosci. 1999;22:389–442.
+22. Jin TE, Werning A, Witzemann V. Changes in acetylcholine receptor
+function induce shifts in muscle ﬁber type composition. FEBS J.
+2008;275:2042–2054.
+23. Adams GR, McCue SA, Zeng M, Baldwin KM. Time course of myosin heavy chain transitions in neonatal rats: importance of innervation and thyroid state. Am J Physiol. 1999;276:R954–R961.
+24. Messias AC, Mudd J, Cunningham JM, Steinbach JH, Merlie JP,
+Sanes JR. Deﬁcient development and maintenance of postsynaptic
+specializations in mutant mice lacking an “adult” acetylcholine
+receptor subunit. Development. 1997;124:5075–5086.
+25. Elkerdany MK, Fahim MA. Age changes in neuromuscular junctions
+of masseter muscle. Anat Rec. 1993;237:291–295.
+26. Schwarz HG, Giese G, Muller H, Koenen M, Witzemann V. Different
+functions of fetal and adult AChR subtypes for the formation and maintenance of neuromuscular synapses revealed in epsilon-subunit-deﬁcient
+mice. Eur J Neurosci. 2000;12:3107–3116.
+27. Müller JS, Baumeister SK, Schara U, et al. CHRND mutation causes
+a congenital myasthenic syndrome by impairing co-clustering of the
+acetylcholine receptor with rapsyn. Brain. 2006;129:2784–2793.
+28. Shen X, Fukuda T, Ohno K, Sine SM, Engel AG. Congenital myasthenia–related AChR d subunit mutation interferes with intersubunit
+communication essential for channel gating. J Clin Invest. 2008;
+118:1867–1876.
+29. Lefebvre JL, Ono F, Puglielli C, et al. Increased neuromuscular activity causes axonal defects and muscular degeneration. Development.
+2004;131:2605–2618.
+30. Neto SH, Marques MJ. Estimation of the number and size of motor
+units in intrinsic laryngeal muscles using morphometric methods.
+Clin Anat. 2008;21:401–406.
+Received December 15, 2008
+Accepted December 15, 2008
+Decision Editor: Huber R. Warner, PhD
+
+      
+    
+    
+	
+  

@@ -1,0 +1,2145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Version 1.2 générée le 14-4-2016-->
+<TEI xmlns:tei="http://www.tei-c.org/ns/1.0" xmlns="http://www.tei-c.org/ns/1.0" xml:lang="en">
+  <teiHeader>
+		<fileDesc>
+			<titleStmt>
+				<title/>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+			</publicationStmt>
+			<sourceDesc>
+				<p/>
+			</sourceDesc>
+		</fileDesc>
+	</teiHeader>
+  <text>
+    <body>
+      <div>
+        <p>ARTICLE
+
+Absence of Cancer Diagnosis and Treatment in
+Elderly Medicaid-Insured Nursing Home Residents
+Cathy J. Bradley, Jan P. Clement, Chunchieh Lin
+
+Background
+
+Little is known about the effect cancer has on the lives of nursing home patients and the quality of care,
+including palliative care, delivered to them.
+
+Methods
+
+Using a statewide population-based dataset assembled from the Michigan Tumor Registry and Medicare
+records, we identified 1907 elderly Medicaid-insured nursing home residents who were diagnosed with
+cancer between 1997 and 2000. Logistic regression models were used to estimate odds ratios (ORs) and
+relative risks (RRs) according to age, race, sex, income, comorbidity, and cancer site for late or unstaged
+cancer at diagnosis, death within 3 months of diagnosis, receipt of hospice care, and—for patients diagnosed with early-stage breast, colorectal, lung, or prostate cancer—the likelihood of cancer-directed surgery. All statistical tests were two-sided.
+
+Results
+
+Nursing home residents diagnosed with cancer had a preponderance of late or unstaged disease (62%),
+high mortality within 3 months of diagnosis (48%), and low hospice use if they had distant-stage cancer
+(28%). Only 22% received cancer-directed surgery, 61% of which was confined to breast cancer patients,
+and only 6% of patients received chemotherapy and/or radiation. Older age was positively associated with
+late or unstaged cancer and with death within 3 months of diagnosis. Patients aged 71–75 years were
+more likely to have cancer-directed surgery than patients aged 86 years and older (OR = 2.83, 95% confidence interval [CI] = 1.26 to 6.32; RR = 1.37, 95% CI = 1.08 to 1.75). African American patients were less
+likely to receive surgery (OR = 0.51, 95% CI = 0.26 to 0.99; RR = 0.80, 95% CI = 0.62 to 1.03) than white
+patients. Other demographic characteristics and comorbid conditions had little predictive value with
+regard to cancer treatment or hospice use in nursing home patients.
+
+Conclusions
+
+Very few cancer services are provided to Medicaid-insured nursing home patients, despite the fact that
+many of these patients likely experienced cancer-related symptoms and marked physical decline before
+diagnosis and death. A middle ground between what would be considered guideline treatment practices
+and the apparent absence of diagnosis and treatment is needed.
+J Natl Cancer Inst 2008;100:21–31
+
+The prevalence of cancer in nursing home patients is approximately
+1 in 10 (1), but elderly nursing home patients have received little
+attention in cancer outcomes research. Instead, most studies that
+have addressed cancer diagnosis, treatment efficacy, guideline care,
+survival, and even disparities in cancer detection, treatment, and
+survival have focused on younger populations residing in the community (2–7). As the US population ages, more and more people
+will become nursing home residents (8), many of whom will be
+diagnosed with, and eventually die from, cancer (9,10). Little is
+known about the effect cancer has on the lives of nursing home
+patients and the quality of care, including palliative care, delivered
+to them (11,12).
+Late cancer stage at diagnosis and the absence of cancer treatment is associated with race and ethnicity (13–19), low socioeconomic status (20–22), and the presence of comorbid conditions
+(23–25), including dementia and Alzheimer disease (26,27).
+However, in elderly nursing home residents, these factors
+may have less inﬂuence on cancer detection and treatment than
+does life expectancy (28), the ability to withstand and beneﬁt from
+jnci.oxfordjournals.org
+
+treatment, and the presence of a patient advocate (eg, family
+member).
+Nationwide, Medicaid is the predominant payer for long-term
+residential nursing home care, with approximately 36% of Medicaid
+payments for nursing home care (29). Patients insured by both
+Medicare and Medicaid (often referred to as dually eligible) have
+very low incomes––73% have annual income below $10 000 compared with 12% of all other Medicare beneﬁciaries (30). These
+
+Affiliations of authors: Department of Health Administration (CJB, JPC, CL)
+and Massey Cancer Center (CJB), Virginia Commonwealth University,
+Richmond, VA.
+Correspondence to: Cathy J. Bradley, PhD, Department of Health
+Administration and Massey Cancer Center, Virginia Commonwealth
+University, Grant House, 1008 Clay Street, PO Box 980203, Richmond, VA
+23298-0203 (e-mail: cjbradley@vcu.edu).
+See “Funding” and “Notes” following “References.”
+DOI: 10.1093/jnci/djm271
+© The Author 2007. Published by Oxford University Press. All rights reserved.
+For Permissions, please e-mail: journals.permissions@oxfordjournals.org.
+
+JNCI
+
+|
+
+Articles 21
+
+CONT E X T A N D C A VEAT S
+Prior knowledge
+The extent and quality of cancer care provided to nursing home
+patients have not been carefully assessed.
+Study design
+Regression models based on federal (Medicaid and Medicare) and
+state (Michigan Tumor Registry) databases were used to analyze
+the frequency of cancer-related medical care among nursing home
+residents according to age, race, and other variables.
+Contribution
+The study provides quantitative information needed to assess the
+extent of cancer care delivered to nursing home residents.
+Implications
+A preponderance of late or unstaged disease, high mortality within
+a few months of cancer diagnosis, and low rates of hospice use
+and cancer treatment warrant the attention of the medical
+community.
+Limitations
+Information on patient or family preferences for treatment was
+not available and the study was restricted to Michigan Medicaid
+patients and thus not representative of the entire nursing home
+population.
+
+patients tend to be the frailest of the frail elderly, and more than
+30% of them require assistance to perform three or more activities
+of daily living (31). Despite these residents’ need for care and its
+potential beneﬁts, the ability of nursing homes to respond with
+high-quality service is often lacking (32,33) and nursing home staff
+may not recognize and treat cancer and/or its symptoms in the
+residents.
+We examined cancer care delivered to nursing home patients,
+the vast majority of whom are adults aged 80 years or older.
+Using a unique statewide population-based dataset, we assessed
+four cancer care outcomes in Medicaid-insured nursing home
+patients. The ﬁrst was stage of cancer at diagnosis (including prevalence of cancer for which the exact stage was not determined),
+under the assumption that cancer stage is the single best indicator
+of prognosis (34). Here, we examined not only the prevalence of
+late-stage cancer but also the prevalence of cancers for which the
+exact stage had not been determined. A diagnosis of late- or invasive but unknown-stage cancer inﬂuences the type and extent of
+cancer treatment recommended and is an indication that early
+detection techniques (ie, screening) may not have been employed
+before disease symptoms. Although it is possible that some of the
+cancers that are “unstaged” could be early-stage disease, the mortality following diagnosis suggests that these cancers are advanced.
+Staging is predictive of treatment delivery because diagnostic tests
+required for staging are generally performed in patients for whom
+treatment is planned (34). The second outcome was death within
+3 months of diagnosis. The third was receipt of hospice care, which
+past studies have found to be surprisingly low (29%) in nursing
+home cancer patients (1). Finally, assuming that some cancers will
+be diagnosed at a stage at which surgery can provide extended survival and/or improved quality of life, we examined as a fourth outcome the likelihood of cancer-directed surgery. We limited the
+22 Articles
+
+|
+
+JNCI
+
+analysis of this outcome to patients diagnosed with early-stage
+breast, colorectal, lung, or prostate cancer—sites for which surgery
+has been shown to be efﬁcacious for early-stage disease. Using the
+four outcomes, we sought to understand the patterns of care provided to nursing home cancer patients.
+
+Subjects and Methods
+Data
+We used statewide Medicaid and Medicare data merged with the
+Michigan Tumor Registry to extract a study sample of patients with
+a first primary cancer diagnosis. External audit findings have found
+that the Michigan Cancer Surveillance Program, which maintains
+the Michigan Tumor Registry, successfully abstracts greater than
+95% of all cancer cases diagnosed in the state. This study was
+approved by institutional review boards at the Michigan Department
+of Community Health, Michigan State University, and Virginia
+Commonwealth University.
+Patients in the Tumor Registry were matched to the Michigan
+state segment of the Medicare Denominator File for the years
+1996 through 2000 using the patients’ Social Security numbers.
+Vital status was available in the tumor registry for all patients
+through December 2003. From the statewide Medicare ﬁles, we
+extracted all claims for inpatient, outpatient, physician, and hospice services during the study period for all patients that correctly
+matched to the Michigan state segment of the Medicare
+Denominator File (approximately 89% of patients) and enrolled in
+Medicare Parts A and B and in a fee-for-service plan. Medicare
+Part A covers inpatient care in hospitals, short-term skilled nursing
+facilities, and hospice care, whereas Part B covers medical services
+like doctors’ visits, outpatient care, and other medical services.
+Michigan proved to be an ideal state for merging cancer registry
+and Medicare data because less than 3% of Michigan Medicare
+beneﬁciaries were enrolled in managed care. Therefore, Medicare
+claims were available for the vast majority of Medicare-insured
+Michigan residents.
+Medicaid-insured patients were identiﬁed by matching the
+Medicaid eligibility ﬁles against the tumor registry, using either
+deterministic or probabilistic methods. The total number of
+incorrect matches produced by either method was approximately
+1%, and the correct prediction rate of those identiﬁed as being
+Medicaid insured was 93%. Nursing home residency was determined from the Medicaid monthly eligibility ﬁle and the Medicaid
+nursing home claim ﬁle. To be considered nursing home residents,
+patients had to have claims for nursing home services within
+6 months before the month of diagnosis. Comparable nursing
+home residency data were not available for Medicare beneﬁciaries
+who were not also enrolled in Medicaid. The process for linking
+the Tumor Registry, Medicare, and Medicaid datasets is described
+more fully elsewhere (35).
+To this linked tumor registry, Medicare, and Medicaid ﬁle,
+we added data from the 1990 Census Summary File using patient
+address information recorded in the tumor registry. The Census
+Summary File provided information on median income that
+households within a census tract earned, which is correlated with
+cancer stage (36). We used the data from the 1990 census instead
+of the 2000 census because we obtained a better match to patients
+Vol. 100, Issue 1
+
+|
+
+January 2, 2008
+
+in our sample. For patients with data in both the 1990 and 2000
+census ﬁles, their census tract characteristics (eg, income and education) were qualitatively similar.
+Sample Selection
+We limited the sample to nursing home residents diagnosed with
+cancer between January 1, 1997, and December 31, 2000, to have
+at least 1 year of claims history before the month of diagnosis
+with which to estimate patients’ comorbidity burden. A total of
+1907 nursing residents were identified. Our sample included 142
+patients who became eligible for Medicaid following the diagnosis
+of cancer. We created a dichotomous variable to identify these
+patients because their Medicaid enrollment was most likely spurred
+by their cancer diagnosis. Therefore, they may be systematically
+different from nursing home cancer patients who are insured by
+Medicaid at the time of diagnosis.
+Using logistic regressions that controlled for covariates, we
+estimated adjusted odds ratios (ORs) for the following dependent
+variables: late or invasive but unknown stage of cancer, death
+within 3 months of diagnosis, receipt of hospice services, and
+receipt of cancer-directed surgery.
+Cancer stage was identiﬁed from the tumor registry. The
+tumor registry records an invasive but unknown stage for
+all patients with invasive disease but for whom a stage was not
+identiﬁed. The tumor registry also records regional or distantstage disease, which is deﬁned according to the Surveillance,
+Epidemiology, and End Results (SEER) summary stage. Certain
+cancers, such as leukemia, lymphoma, pancreatic cancer, and brain
+cancer, are typically not staged. Therefore, we removed patients
+with these cancers from the analysis of cancer stage.
+Because nearly half of the patients in our sample died 3 months
+following a cancer diagnosis (48%) and approximately 85% died by
+December 2003, we chose death within 3 months following diagnosis as the second outcome.
+Given the high mortality rate among patients in the nursing
+home sample, we chose as a third outcome the use of hospice
+services before death. The criterion for hospice use was one or
+more claims for hospice services in the Medicare claim ﬁle. We
+limited the sample to patients with distant or invasive but
+unknown-stage cancer because they are least likely to beneﬁt from
+treatment with curative intent, have short life expectancies, and
+are, therefore, optimal candidates for hospice care.
+The fourth outcome was the prevalence of cancer-directed
+treatment. Cancer-directed treatments were deﬁned as surgery,
+chemotherapy, or radiation. We examined these treatments and
+found that the vast majority of nursing home patients (93%) did
+not receive chemotherapy or radiation. Therefore, in a multivariable analysis, we assessed the likelihood of cancer-directed surgery
+only and not other forms of treatment. For this analysis, we limited
+the sample to patients diagnosed with cancer at the most common
+sites—breast, colon/rectum, lung, and prostate–who had in situ,
+local, or regional-stage disease. Surgery can alleviate symptoms
+and possibly extend life for patients with these cancer sites and
+stages. The International Classiﬁcation of Diseases (ICD), Current
+Procedural Terminology, Healthcare Common Procedural Coding System
+(HCPCS) codes used to identify cancer treatments are given in the
+appendix.
+jnci.oxfordjournals.org
+
+Statistical Analysis
+We controlled for patient characteristics and census tract income.
+Patient characteristics included age (66–70, 71–75, 76–80, 81–85,
+and ≥86 years), race (white and African American or other), sex, and
+comorbidity. To estimate patient comorbidity burden, we used the
+Deyo et al. (37) and Klabunde et al. (38) adaptation of the Charlson
+Comorbidity Index (39), which has been used to explain the probability and extent of cancer treatment (38). However, in elderly cancer patients, the Charlson Comorbidity score does not adequately
+reflect functional ability or predict tolerance to treatment (40,41).
+We identified patients diagnosed with Alzheimer disease or dementia using the following ICD-9 codes: 331.0 (Alzheimer disease)
+(26,27); 331.x (frontotemporal dementia, senile degeneration of the
+brain, hydrocephalus [communicating and obstructive], and cerebral degeneration); 290.0 (dementias and senile psychotic conditions); and 797 (senility without mention of psychosis).
+Variables for census tract income were obtained from the
+1990 Census Summary File. The income categories (in dollars)
+were: ≤25 000, 25 001–35 000, 35 001–45 000, and &gt;45 000. We
+also created a variable to indicate missing income information.
+Income information was considered to be missing if the patient’s
+address was either absent or incorrectly coded in the dataset.
+Census tract income was missing for fewer than 9% of the
+patients.
+All analyses were conducted using SAS, version 9.1. The statistical signiﬁcance of the association of the independent variables
+with the dependent variable was assessed with the chi-square likelihood ratio test. Adjusted odds ratios and relative risks (RRs) and
+95% conﬁdence intervals (CIs) were estimated for equations that
+predicted the likelihood of late or unstaged cancer, death within
+3 months following diagnosis, hospice use, and cancer-directed
+surgery. The odds ratios and relative risks were qualitatively similar. Therefore, we focus the discussion on the odds ratios but
+report relative risks in the tables. All reported P values correspond
+to two-sided tests. The threshold for statistical signiﬁcance was
+set at an alpha level of .05. To put the distribution of cancer stage
+at diagnosis for nursing home residents in perspective, we compared their distribution of cancer stage at diagnosis with the cancer
+stage distribution in Michigan dual eligible community residents
+and Medicare-only beneﬁciaries diagnosed during the same time
+period.
+
+Results
+A little more than one-third of the patients were aged 86 years or
+older (Table 1). The majority of the patients were white, were
+female, resided in census tracts with household incomes less than
+$35 000, and had one or more comorbid conditions. Approximately
+one-fourth of the patients were diagnosed with Alzheimer disease
+and/or dementia.
+Cancers were most prevalent at the following sites: breast
+(14%), colon/rectum (17%), lung (15%), and prostate (10%). The
+majority (62%) of cancers were diagnosed with a SEER summary
+stage of distant or invasive but unknown. Invasive but unknownstage disease accounted for 43% of all cancer diagnoses. Given the
+prevalence of unstaged cancers, one might have expected a higher
+proportion in the sample of leukemia or other hematologic cancers
+JNCI
+
+|
+
+Articles 23
+
+Table 1. Characteristics of elderly Medicaid nursing home patients with cancer, Michigan 1997–2000*
+Characteristic
+
+All patients
+
+Medicaid insured
+at diagnosis
+
+Medicaid insured
+following diagnosis
+
+Total, n (%)
+Age in y, n (%)
+66–70
+71–75
+76–80
+81–85
+≥86
+Race, n (%)
+White
+African American or other
+Sex, n (%)
+Male
+Female
+Census tract median annual income in $, n (%)
+≤25 000
+25 001–35 000
+35 001–45 000
+≥45 001
+Missing income data
+Charlson comorbidity, n (%)
+No Medicare claims
+0
+1
+2
+≥3
+Alzheimer disease, n (%)
+Cancer site, n (%)
+Breast
+Colorectal
+Lung
+Prostate
+Other gastrointestinal
+Pancreas
+Urinary bladder
+Leukemia
+Other
+Stage, n (%)
+In situ
+Local
+Regional
+Distant
+Invasive but unknown stage
+Deaths within 3 mo following diagnosis, n (%)
+Months from diagnosis to death, mean (SD)‡
+
+1907 (100)
+
+1765 (92.6)
+
+142 (7.5)
+
+132
+246
+334
+479
+716
+
+(6.9)
+(12.9)
+(17.5)
+(25.1)
+(37.6)
+
+122
+231
+302
+443
+667
+
+(6.9)
+(13.1)
+(17.1)
+(25.1)
+(37.8)
+
+10
+15
+32
+36
+49
+
+P†
+
+(7.0)
+(10.6)
+(22.5)
+(25.4)
+(34.5)
+
+.518
+
+1462 (76.7)
+445 (23.3)
+
+1338 (75.8)
+427 (24.2)
+
+124 (87.3)
+18 (12.7)
+
+.002
+
+660 (34.6)
+1247 (65.4)
+
+607 (34.4)
+1158 (65.6)
+
+53 (37.3)
+89 (62.7)
+
+.480
+
+726
+660
+249
+127
+145
+
+(38.1)
+(34.6)
+(13.1)
+(6.7)
+(7.6)
+
+669
+610
+235
+115
+136
+
+(37.9)
+(34.6)
+(13.3)
+(6.5)
+(7.7)
+
+57
+50
+14
+12
+9
+
+(40.1)
+(35.2)
+(9.9)
+(8.5)
+(6.3)
+
+.557
+
+67
+632
+546
+326
+336
+515
+
+(3.5)
+(33.1)
+(28.6)
+(17.1)
+(17.6)
+(27.0)
+
+65
+563
+507
+306
+324
+483
+
+(3.7)
+(31.9)
+(28.7)
+(17.3)
+(18.4)
+(27.4)
+
+2
+69
+39
+20
+12
+32
+
+(1.4)
+(48.6)
+(27.5)
+(14.1)
+(8.5)
+(22.5)
+
+&lt;.001
+
+269
+315
+289
+193
+79
+75
+69
+62
+556
+
+(14.1)
+(16.5)
+(15.2)
+(10.1)
+(4.1)
+(3.9)
+(3.6)
+(3.3)
+(29.2)
+
+249
+280
+276
+176
+78
+70
+66
+57
+513
+
+(14.1)
+(15.9)
+(15.6)
+(10.0)
+(4.4)
+(4.0)
+(3.7)
+(3.2)
+(29.1)
+
+20
+35
+13
+17
+1
+5
+3
+5
+43
+
+(14.1)
+(24.7)
+(9.2)
+(12.0)
+(0.7)
+(3.5)
+(2.1)
+(3.5)
+(30.3)
+
+.045
+
+42
+433
+252
+356
+824
+923
+8.95
+
+(2.2)
+(22.7)
+(13.2)
+(18.7)
+(43.2)
+(48.4)
+(13.40)
+
+40
+393
+229
+326
+777
+912
+8.23
+
+(2.3)
+(22.3)
+(13.0)
+(18.5)
+(44.0)
+(51.7)
+(12.92)
+
+(1.4)
+(28.2)
+(16.2)
+(21.1)
+(33.1)
+(7.8)
+(15.91)
+
+.107
+
+2
+40
+23
+30
+47
+11
+17.97
+
+.212
+
+&lt;.001
+&lt;.001
+
+* SD = standard deviation.
+† Tests of statistical significance compared patients eligible for Medicaid before cancer diagnosis with patients eligible for Medicaid following a cancer diagnosis
+and were determined using chi-square tests for categorical variables.
+‡ Sample sizes are: all patients, n = 1770; Medicaid insured at diagnosis, n = 1640; Medicaid insured following diagnosis, n = 130.
+
+that are not staged, but instead relatively few patients were diagnosed with these diseases. Finally, the vast majority of the patients
+(85%) had died by the end of the study period in December 2003,
+and 48% had died within 3 months of diagnosis. Mean survival
+following diagnosis was 9 months.
+Patients who enrolled in Medicaid following a cancer diagnosis
+were similar to patients who enrolled in Medicaid before their
+diagnosis with the following exceptions: they were more likely to
+be white, to have fewer comorbid conditions, and to be diagnosed
+with colorectal cancer than patients who enrolled in Medicaid
+24 Articles
+
+|
+
+JNCI
+
+before diagnosis. Patients who enrolled in Medicaid after diagnosis
+survived an average of 18 months, compared with 8 months for
+those enrolled in Medicaid before diagnosis. Patients that enrolled
+in Medicaid following diagnosis, by deﬁnition, had to survive long
+enough to be enrolled in Medicaid, that is, 3 months or more following diagnosis.
+We compared the stage at diagnosis among nursing home residents with other Michigan community dual-eligible beneﬁciaries
+and Medicare-only beneﬁciaries who were also diagnosed with
+cancer during the same time period (Fig. 1). Relative to other
+Vol. 100, Issue 1
+
+|
+
+January 2, 2008
+
+elderly residents, a much larger proportion of nursing home residents had unstaged cancers and few had in situ or local-stage cancers. Nursing home residency is unknown in the Medicare-only
+beneﬁciaries included in Fig. 1, and nursing home residents in the
+Medicare sample would tend to diminish the differences between
+this group and Medicaid nursing home residents.
+There were no differences in the receipt of treatment or
+hospice use by Medicaid enrollment category. Therefore, we
+report the number and percentages for the full sample, excluding
+those patients without any medical claims (Table 2).
+Only 7% of all patients received chemotherapy and/or radiation.
+Among patients with breast, colorectal, lung, or prostate cancer,
+22% received cancer-directed surgery. Patients with local-stage
+disease were most likely to have surgery. The majority of surgeries
+(61%) were performed on women with breast cancer; surgeries
+were performed to a much lesser extent (23%) on patients with
+colorectal cancer. Only 28% of all patients received hospice care.
+We calculated the odds ratios, relative risks, and 95% conﬁdence intervals for late or invasive but unknown cancer stage,
+death within 3 months following diagnosis, and receipt of hospice
+service according to age, race, sex, census tract income, comorbidity score, Alzheimer disease, and cancer site and stage (Table 3).
+Relative to patients aged 86 years and older, patients aged
+76–80 years and patients aged 81–85 years were less likely to be
+diagnosed with late or unstaged cancer at diagnosis (OR = 0.57,
+95% CI = 0.41 to 0.79, and OR = 0.63, 95% CI = 0.47 to 0.84,
+respectively). Relative to women with breast cancer, patients with
+colorectal (OR = 1.63, 95% CI = 1.13 to 2.37), lung (OR = 5.25,
+95% CI = 3.28 to 8.39), prostate (OR = 1.69, 95% CI = 1.03 to
+2.77), and other (OR = 2.43, 95% CI = 1.72 to 3.44) cancers were
+more likely to be diagnosed with late or unstaged cancer. In contrast, patients with urinary bladder cancer were much less likely to
+have their cancer diagnosed at late stage than were women with
+
+Fig. 1. Distribution of SEER summary stage in cancers detected in
+Medicaid-insured nursing home residents, Medicaid community residents, and patients insured by Medicare without Medicaid insurance.
+Dotted bar = in situ cancer; right hatched bar = local cancer; horizontal
+line bar = regional; vertical line bar = distant; and left hatched bar =
+invasive but unknown stage.
+
+breast cancer (OR = 0.25, 95% CI = 0.14 to 0.46). Thus, age and
+cancer site were statistically signiﬁcantly associated with late or
+unstaged cancer.
+All patients younger than 81 years were less likely to die within
+3 months of diagnosis than those aged 81 years or older (P &lt; .05).
+Alzheimer disease was positively associated with death within
+3 months following diagnosis (OR = 1.33, 95% CI = 1.04 to 1.70).
+Patients with colorectal, lung, pancreas, and other gastrointestinal
+cancers and patients diagnosed with leukemia or cancer at other
+sites were more likely to die within 3 months of diagnosis than
+were women with breast cancer. Patients with regional, distant, or
+invasive but unknown-stage disease were more likely to die within
+3 months of diagnosis than were patients with in situ or local-stage
+cancer (OR = 1.70, 95% CI = 1.15 to 2.51; OR = 6.06, 95% CI =
+4.20 to 8.77; and OR = 9.12, 95% CI = 6.76 to 12.3,
+respectively).
+
+Table 2. Cancer-directed treatment provided to elderly Medicaid nursing home patients with cancer, Michigan 1997–2000*
+Cancer
+characteristics
+
+All patients, n (%)
+
+Stage
+In situ
+Local
+Regional
+Distant
+Invasive but
+unknown
+Site
+Breast
+Colorectal
+Lung
+Prostate
+Other
+gastrointestinal
+Pancreas
+Urinary bladder
+Leukemia
+Other
+Total
+
+41
+420
+245
+341
+
+(2.2)
+(22.8)
+(13.3)
+(18.5)
+
+Patients who received Patients who received Patients who received Patients with a common
+chemotherapy, n (%)
+radiation, n (%)
+hospice, n (%)
+cancer †, n (%)
+4
+31
+21
+23
+
+(3.7)
+(29.0)
+(19.6)
+(21.5)
+
+0
+33
+36
+31
+
+(0.0)
+(27.3)
+(29.8)
+(25.6)
+
+8
+81
+76
+109
+
+(1.6)
+(15.9)
+(14.9)
+(21.4)
+
+15
+258
+159
+157
+
+(1.5)
+(25.1)
+(15.5)
+(15.3)
+
+793 (43.1)
+
+28 (26.2)
+
+21 (17.4)
+
+236 (46.3)
+
+438 (42.7)
+
+254
+308
+279
+186
+
+(13.8)
+(16.7)
+(15.2)
+(10.1)
+
+3
+8
+17
+41
+
+(2.8)
+(7.5)
+(15.9)
+(38.3)
+
+9
+5
+34
+7
+
+(7.4)
+(4.1)
+(28.1)
+(5.8)
+
+47
+86
+100
+37
+
+(9.2)
+(16.9)
+(19.6)
+(7.3)
+
+254
+308
+279
+186
+
+77
+75
+69
+58
+534
+1840
+
+(4.2)
+(4.1)
+(3.8)
+(3.2)
+(29.0)
+(100)
+
+0
+0
+10
+4
+24
+107
+
+(0.0)
+(0.0)
+(9.4)
+(3.8)
+(22.4)
+(5.8)
+
+4
+1
+4
+3
+54
+121
+
+(3.3)
+(0.8)
+(3.3)
+(2.5)
+(44.6)
+(6.6)
+
+24
+28
+20
+12
+156
+510
+
+(4.7)
+(5.5)
+(3.9)
+(2.4)
+(30.6)
+(27.7)
+
+8
+123
+60
+10
+
+(3.5)
+(53.7)
+(26.2)
+(4.4)
+
+28 (12.2)
+
+(24.7)
+(30.0)
+(27.2)
+(18.1)
+
+140
+52
+14
+23
+
+N/A
+N/A
+N/A
+N/A
+N/A
+1027 (100)
+
+(61.1)
+(22.7)
+(6.1)
+(10.0)
+
+N/A
+N/A
+N/A
+N/A
+N/A
+229 (22.3)
+
+* Excludes cancer patients without claims (n = 67 for the full sample and n = 39 breast, colorectal, lung, or prostate cancer sample). N/A = not applicable.
+† The left column shows cancer stage and site for all patients (n = 1027) with one of the common cancers (breast, colorectal, lung, and prostate cancer); the right
+column shows these for the 229 patients with a common cancer who received surgery.
+
+jnci.oxfordjournals.org
+
+JNCI
+
+|
+
+Articles 25
+
+26 Articles
+
+|
+
+JNCI
+
+Vol. 100, Issue 1
+
+|
+
+January 2, 2008
+
+(Table continues)
+
+Medicaid-insured
+when diagnosed
+Medicaid-insured
+after diagnosis
+Age, y
+66–70
+71–75
+76–80
+81–85
+≥86
+Race
+White
+African American/
+other
+Sex
+Male
+Female
+Census tract
+median annual
+income, $
+≤25 000
+25 001–35 000
+35 001–45 000
+≥45 001
+Missing
+Charlson
+comorbidity
+0
+1
+2
+≥3
+Alzheimer disease
+Yes
+No
+Cancer site
+Breast
+Colorectal
+Lung
+Prostate
+Other
+gastrointestinal
+Pancreas
+
+Independent
+variables
+
+.261
+
+.568
+.723
+.101
+.735
+
+.492
+.857
+.218
+
+1.0 (referent)
+1.08 (0.83 to 1.41)
+0.94 (0.65 to 1.35)
+1.57 (0.92 to 2.71)
+0.93 (0.60 to 1.44)
+
+1.0 (referent)
+0.90 (0.68 to 1.20)
+0.97 (0.69 to 1.36)
+0.81 (0.58 to 1.13)
+
+N/A
+
+1.0 (referent)
+1.63 (1.13 to 2.37) .010
+5.25 (3.28 to 8.39) &lt;.001
+1.69 (1.03 to 2.77) .038
+1.76 (0.99 to 3.14) .055
+
+.803
+
+.067
+
+1.0 (referent)
+1.32 (0.98 to 1.77)
+
+0.97 (0.75 to 1.25)
+1.0 (referent)
+
+.915
+
+0.70 (0.44 to 1.14)
+0.83 (0.57 to 1.21)
+0.57 (0.41 to 0.79)
+0.63 (0.47 to 0.84)
+1.0 (referent)
+
+1.0 (referent)
+0.99 (0.75 to 1.30)
+
+.152
+.333
+.001
+.002
+
+0.79 (0.52 to 1.19)
+
+.780
+
+.567
+.887
+.217
+
+.593
+.725
+.057
+.733
+
+.094
+
+.925
+
+.148
+.299
+.002
+.002
+
+.287
+
+P‡
+
+N/A
+
+1.0 (referent)
+1.15 (1.03 to 1.29) .016
+1.44 (1.30 to 1.60) &lt;.001
+1.14 (0.98 to 1.32) .084
+1.17 (0.99 to 1.38) .062
+
+0.99 (0.93 to 1.06)
+1.0 (referent)
+
+1.0 (referent)
+0.98 (0.91 to 1.05)
+0.99 (0.92 to 1.08)
+0.95 (0.87 to 1.03)
+
+1.0 (referent)
+1.02 (0.95 to 1.09)
+0.98 (0.89 to 1.08)
+1.10 (1.00 to 1.22)
+0.98 (0.87 to 1.10)
+
+1.0 (referent)
+1.06 (0.99 to 1.14)
+
+1.0 (referent)
+1.00 (0.94 to 1.07)
+
+0.92 (0.83 to 1.03)
+0.96 (0.88 to 1.04)
+0.87 (0.80 to 0.95)
+0.89 (0.83 to 0.96)
+1.0 (referent)
+
+0.94 (0.83 to 1.06)
+
+1.0 (referent)
+
+RR (95% CI)
+
+P‡
+
+OR (95% CI)
+
+1.0 (referent)
+
+Late or unstaged
+cancer at
+diagnosis,†
+(n = 1704)
+
+Late or unstaged
+cancer at
+diagnosis,†
+(n = 1704)
+P‡
+
+.026
+
+.952
+.744
+.236
+
+.780
+.160
+.612
+.862
+
+.168
+
+.047
+
+.008
+.005
+.005
+.295
+
+7.44 (3.68 to 15.1) &lt;.001
+
+1.0 (referent)
+1.66 (1.10 to 2.49) .015
+3.52 (2.29 to 5.44) &lt;.001
+1.34 (0.79 to 2.25) .279
+8.08 (4.26 to 15.3) &lt;.001
+
+1.33 (1.04 to 1.70)
+1.0 (referent)
+
+1.0 (referent)
+0.99 (0.76 to 1.30)
+1.05 (0.77 to 1.45)
+1.21 (0.88 to 1.66)
+
+1.0 (referent)
+0.96 (0.75 to 1.25)
+1.29 (0.91 to 1.83)
+0.89 (0.57 to 1.39)
+1.04 (0.68 to 1.60)
+
+1.0 (referent)
+0.83 (0.63 to 1.09)
+
+1.0 (referent)
+0.77 (0.59 to 1.00)
+
+0.54 (0.34 to 0.86)
+0.60 (0.42 to 0.85)
+0.64 (0.47 to 0.87)
+0.86 (0.65 to 1.14)
+1.0 (referent)
+
+0.07 (0.03 to 0.13) &lt;.001
+
+1.0 (referent)
+
+OR (95% CI)
+
+Death within
+3 mo following
+diagnosis
+(n = 1907)
+P‡
+
+(0.65 to 0.96)
+(0.70 to 0.94)
+(0.74 to 0.95)
+(0.86 to 1.05)
+(referent)
+
+(referent)
+(0.91 to 1.12)
+(0.91 to 1.16)
+(0.97 to 1.22)
+
+(referent)
+(0.89 to 1.08)
+(0.96 to 1.22)
+(0.82 to 1.14)
+(0.84 to 1.18)
+
+(referent)
+(1.06 to 1.56) 0.011
+(1.42 to 2.06) &lt;.001
+(0.95 to 1.49) 0.137
+(1.74 to 2.73) &lt;.001
+
+0.030
+
+0.880
+0.634
+0.156
+
+.740
+.196
+.663
+.991
+
+.128
+
+.060
+
+.020
+.006
+.005
+.274
+
+1.96 (1.59 to 2.41) &lt;.001
+
+1.0
+1.29
+1.71
+1.19
+2.18
+
+1.10 (1.01 to 1.21)
+1.0 (referent)
+
+1.0
+1.01
+1.03
+1.09
+
+1.0
+0.98
+1.08
+0.96
+1.00
+
+1.0 (referent)
+0.92 (0.84 to 1.02)
+
+1.0 (referent)
+0.90 (0.81 to 1.00)
+
+0.79
+0.81
+0.84
+0.95
+1.0
+
+0.17 (0.10 to 0.30) &lt;.001
+
+1.0 (referent)
+
+RR (95% CI)
+
+Death within
+3 mo following
+diagnosis
+(n = 1907)
+
+N/A
+
+N/A
+N/A
+N/A
+N/A
+N/A
+
+1.03 (0.77 to 1.37)
+1.0 (referent)
+
+1.0 (referent)
+1.23 (0.89 to 1.71)
+1.62 (1.12 to 2.35)
+1.28 (0.87 to 1.90)
+
+1.0 (referent)
+1.40 (1.03 to 1.91)
+1.11 (0.72 to 1.70)
+1.34 (0.81 to 2.23)
+0.96 (0.56 to 1.64)
+
+1.0 (referent)
+1.08 (0.82 to 1.43)
+
+1.0 (referent)
+1.57 (1.16 to 2.13)
+
+1.24 (0.72 to 2.14)
+1.35 (0.88 to 2.07)
+1.18 (0.81 to 1.70)
+1.12 (0.80 to 1.56)
+1.0 (referent)
+
+0.98 (0.58 to 1.67)
+
+1.0 (referent)
+
+OR (95% CI)
+
+Hospice use,§
+(n = 1134)
+
+.851
+
+.215
+.010
+.213
+
+.031
+.637
+.258
+.868
+
+.581
+
+.004
+
+.437
+.167
+.390
+.519
+
+.945
+
+P‡
+
+P‡
+
+.439
+.160
+.388
+.511
+
+.031
+.642
+.246
+.850
+
+N/A
+
+N/A
+N/A
+N/A
+N/A
+N/A
+
+1.02 (0.84 to 1.24) .863
+1.0 (referent)
+
+1.0 (referent)
+1.16 (0.92 to 1.46) .218
+1.39 (1.08 to 1.77) .009
+1.19 (1.91 to 1.56) .201
+
+1.0 (referent)
+1.26 (1.02 to 1.55)
+1.07 (0.80 to 1.45)
+1.22 (0.87 to 1.72)
+0.96 (0.65 to 1.43)
+
+1.0 (referent)
+1.05 (0.87 to 1.28) .587
+
+1.0 (referent)
+1.35 (1.11 to 1.64) .003
+
+1.16 (0.80 to 1.67)
+1.22 (0.92 to 1.62)
+1.12 (0.87 to 1.44)
+1.08 (0.86 to 1.36)
+1.0 (referent)
+
+0.99 (0.67 to 1.44) .941
+
+1.0 (referent)
+
+RR (95% CI)
+
+Hospice use,§
+(n = 1134)
+
+Table 3. Likelihood (as odds ratios and relative risks with 95% confidence intervals) of late-stage cancer diagnosis, death within 3 months of diagnosis, and hospice use in elderly
+Medicaid nursing home patients with cancer, Michigan, 1997–2000*
+
+jnci.oxfordjournals.org
+
+JNCI
+
+|
+
+Articles 27
+
+Late or unstaged
+cancer at
+diagnosis,†
+(n = 1704)
+
+OR (95% CI)
+
+P‡
+
+N/A
+N/A
+N/A
+N/A
+
+N/A
+N/A
+N/A
+N/A
+
+0.25 (0.14 to 0.46) &lt;.001 0.45 (0.30 to 0.66) &lt;.001
+N/A
+N/A
+2.43 (1.72 to 3.44) &lt;.001 1.27 (1.15 to 1.40) &lt;.001
+
+P‡
+
+RR (95% CI)
+
+Late or unstaged
+cancer at
+diagnosis,†
+(n = 1704)
+P‡
+
+1.0 (referent)
+1.70 (1.15 to 2.51) .007
+6.06 (4.20 to 8.77) &lt;.001
+9.12 (6.76 to 12.3) &lt;.001
+
+1.24 (0.61 to 2.53) .549
+2.07 (1.06 to 4.06) .034
+2.26 (1.57 to 3.25) &lt;.001
+
+OR (95% CI)
+
+Death within
+3 mo following
+diagnosis
+(n = 1907)
+P‡
+
+1.0 (referent)
+1.49 (1.14 to 1.94) .003
+2.88 (2.32 to 3.56) &lt;.001
+3.27 (2.69 to 3.97) &lt;.001
+
+1.07 (0.70 to 1.62) 0.756
+1.42 (1.08 to 1.86)
+.012
+1.47 (1.24 to 1.75) &lt;.001
+
+RR (95% CI)
+
+Death within
+3 mo following
+diagnosis
+(n = 1907)
+
+N/A
+N/A
+N/A
+N/A
+
+N/A
+N/A
+N/A
+
+OR (95% CI)
+
+Hospice use,§
+(n = 1134)
+
+§ Excludes patients without claims.
+
+‡ Statistical significance is determined by dividing the maximum likelihood coefficient by its standard error (Z) with two-tailed, statistical significance level set at P &gt; |Z|.
+
+† Excludes patients with pancreatic (n = 75), leukemic (n = 62), lymphomas (n = 44), and brain (n = 22) cancers.
+
+* OR = odds ratio; RR = relative risk; CI = confidence interval; N/A = not applicable.
+
+Urinary bladder
+Leukemic
+Other
+Stage
+In situ/local
+Regional
+Distant
+Invasive but
+unknown
+stage
+
+Independent
+variables
+
+Table 3 (continued).
+
+P‡
+
+N/A
+N/A
+N/A
+N/A
+
+N/A
+N/A
+N/A
+
+RR (95% CI)
+
+Hospice use,§
+(n = 1134)
+P‡
+
+Table 4. Logistic regression predicting the likelihood (as odds
+ratios and relative risks with 95% confidence intervals) of
+cancer-directed surgery in elderly Medicaid nursing home
+patients diagnosed with breast, lung, colorectal, or prostate
+cancer, Michigan, 1997–2000*
+Cancer-directed
+surgery,
+OR (95% CI)
+
+Independent
+variables
+Medicaid insured
+when diagnosed
+Medicaid insured
+following diagnosis
+Age, y
+66–70
+71–75
+76–80
+81–85
+≥86
+Race
+White
+African American/
+other
+Sex
+Male
+Female
+Census tract median
+annual income, $
+≤25 000
+25 001–35 000
+35 001–45 000
+≥45 001
+Missing income data
+Charlson comorbidity
+0
+1
+2
+3 or more
+Alzheimer disease
+Yes
+No
+Cancer sites
+Breast
+Colorectal
+Lung
+Prostate
+Other
+Stage
+In situ/local
+Regional
+
+P†
+
+1.0 (referent)
+
+Cancer-directed
+surgery,
+RR (95% CI)
+
+P†
+
+1.0 (referent)
+
+0.53 (0.22 to 1.29)
+
+.160 0.79 (0.56 to 1.13)
+
+.196
+
+2.86
+2.83
+1.07
+0.96
+1.0
+
+.059
+.011
+.867
+.917
+
+.029
+.010
+.777
+.853
+
+(0.96 to 8.54)
+(1.26 to 6.32)
+(0.50 to 2.30)
+(0.47 to 1.98)
+(referent)
+
+1.0 (referent)
+
+1.49
+1.37
+1.04
+0.98
+1.0
+
+(1.04 to 2.14)
+(1.08 to 1.75)
+(0.79 to 1.38)
+(0.80 to 1.21)
+(referent)
+
+Discussion
+
+1.0 (referent)
+
+0.51 (0.26 to 0.99)
+
+.048 0.80 (0.62 to 1.03)
+
+.079
+
+1.0 (referent)
+0.80 (0.40 to 1.61)
+
+1.0 (referent)
+.534 0.84 (0.52 to 1.36)
+
+.482
+
+1.0
+0.66
+1.29
+0.98
+1.47
+
+(referent)
+(0.35 to 1.26)
+(0.56 to 2.99)
+(0.21 to 4.55)
+(0.52 to 4.15)
+
+.210
+.553
+.980
+.468
+
+(referent)
+(0.74 to 1.09)
+(0.89 to 1.53)
+(0.70 to 1.47)
+(0.88 to 1.59)
+
+.294
+.273
+.936
+.253
+
+1.0
+0.91
+0.59
+0.87
+
+(referent)
+(0.46 to 1.80)
+(0.26 to 1.35)
+(0.41 to 1.83)
+
+1.0 (referent)
+.789 0.99 (0.82 to 1.20)
+.212 0.83 (0.60 to 1.14)
+.705 0.98 (0.76 to 1.26)
+
+.911
+.246
+.857
+
+1.30 (0.71 to 2.35)
+1.0 (referent)
+
+.394 1.09 (0.90 to 1.33)
+1.0 (referent)
+
+1.0
+0.03
+0.01
+0.03
+
+1.0
+0.90
+1.17
+1.02
+1.19
+
+.366
+
+(referent)
+1.0 (referent)
+(0.02 to 0.07) &lt;.001 0.30 (0.21 to 0.41) &lt;.001
+(0.00 to 0.02) &lt;.001 0.10 (0.05 to 0.20) &lt;.001
+(0.01 to 0.08) &lt;.001 0.28 (0.15 to 0.51) &lt;.001
+N/A
+N/A
+
+1.0 (referent)
+0.67 (0.37 to 1.21)
+
+1.0 (referent)
+.188 0.91 (0.76 to 1.09)
+
+.308
+
+* The sample consisted of 432 patients and excluded 39 cancer patients
+without claims for medical services. OR = odds ratio; RR = relative risk;
+CI = confidence interval; N/A = not applicable.
+† Statistical significance is determined by dividing the maximum likelihood
+coefficient by its standard error (Z) with two-tailed, statistical significance
+level set at P &gt; |Z|.
+
+Because 48% of the patients died within 3 months of diagnosis, hospice care may have been appropriate for many of the
+patients in our sample. To examine hospice use among the most
+likely patient candidates, we limited the analysis to patients with
+distant or invasive, but unknown-stage cancer because these
+patients are not treated with intent to cure. A consistent predictive relationship between hospice use and variables for patient
+age, comorbidity, Medicaid eligibility, and census tract income
+was not observed. However, African American/other than white
+race was positively associated with hospice use (OR = 1.57, 95%
+CI = 1.16 to 2.13).
+28 Articles
+
+|
+
+JNCI
+
+We calculated the likelihood of cancer-directed surgery for
+patients diagnosed with in situ, local, or regional-stage breast,
+colorectal, lung, or prostate cancer (Table 4). Patients aged
+71–75 years were more likely to have cancer-directed surgery than
+patients aged 86 years and older (OR = 2.83, 95% CI = 1.26 to 6.32;
+RR = 1.37, 95% CI = 1.08 to 1.75). The odds ratio for patients aged
+66–70 years was also greater than 1 and approached statistical signiﬁcance (OR = 2.86, 95% CI = 0.96 to 8.54). African Americans/races
+other than white were less likely to receive cancer-directed surgery
+than whites (OR = 0.51, 95% CI = 0.26 to 0.99), although race was
+not statistically signiﬁcant in the relative risk estimations (RR = 0.80,
+95% CI = 0.62 to 1.03). Patients with colorectal, lung, or prostate
+cancer were considerably less likely to receive cancer-directed surgery than were women with breast cancer.
+
+This study reports patterns of cancer diagnosis, survival, hospice
+use, and treatment for a population-based sample of Medicaidinsured nursing home patients. These nursing home patients had a
+preponderance of late or unstaged disease, high mortality within
+only a few months of diagnosis, low hospice use, and very little
+cancer-directed treatment—even among patients with early-stage
+cancer where treatment can alleviate symptoms (eg, bleeding and
+discomfort associated with colon cancer) and possibly extend life.
+Older age was positively associated with late-stage diagnosis and
+death within 3 months of diagnosis and negatively associated with
+cancer-directed surgery. African American/other race was positively associated with hospice use. Unlike what has been observed
+in studies that were not specific to nursing home patients (2–7),
+demographic characteristics and comorbid conditions were not
+associated with cancer detection, treatment, survival, or hospice use
+in nursing home residents.
+Late and unstaged cancer was far more prevalent in nursing
+home patients than in other elderly patients residing in
+Michigan. This ﬁnding may be explained in part by the clinical
+characteristics of the nursing home patients. A study of screening mammography in frail elderly women found that they were
+more likely to be harmed (eg, unnecessary biopsy, emotional
+stress) than helped by breast cancer screening (28). Other factors speciﬁc to nursing homes may contribute to late staging. A
+survey of Directors of Nursing in 41 nursing homes in the
+Midwest found that the majority of facilities lacked policies
+regarding breast and prostate cancer screening (10). This lack
+of policy guidelines may reﬂect the questionable beneﬁts and
+potential harm associated with screening elderly patients. It is
+also possible that nursing homes are challenged in their ability
+to provide day-to-day care. Therefore, cancer-related services
+may receive a low priority. Whatever the reason for the low
+rates of screening and staging, the apparent practice of ignoring
+cancer in nursing home patients is not likely to be in their best
+interests. If cancer is not adequately diagnosed, it may not be
+recognized as the source of pain or discomfort expressed by
+nursing home patients. As a result, its symptoms may not be
+treated appropriately.
+Almost half of the cancer patients in our sample died within
+3 months of diagnosis. In nearly all cases, cancer was noted as the
+Vol. 100, Issue 1
+
+|
+
+January 2, 2008
+
+underlying cause of death. Such a high short-term mortality rate,
+which could reﬂect late stage at diagnosis or the absence of treatment, would be considered to be unacceptable in other patient
+populations. Furthermore, accompanying the high mortality rate
+was a low rate of hospice use. In other studies, hospice use has been
+associated with appropriate pain management (1) and increased
+satisfaction with end-of-life care (42).
+Only a fraction of patients with early-stage breast, colorectal, prostate, or lung cancer received cancer-directed surgery,
+and it was primarily given to women with breast cancer.
+Consistent with other studies of elderly African American cancer patients (43–45), people of African American/nonwhite race
+in general were less likely to receive surgery than were white
+patients, but the reason (whether quality of care, patient preference, or comorbid conditions) for this difference is unknown.
+Although the majority of patients were not treated with intent
+to cure, patients’ clinical and social circumstances may have
+been such that invasive treatments would have been not only
+futile but also detrimental.
+This study has several limitations. First, it was speciﬁc to
+Michigan and, as such, may not be applicable to other states or
+regions. However, identiﬁcation of Medicaid-insured nursing
+home patients, their cancer attributes (site, stage, date of diagnosis), and complete treatment information can only be done at the
+state level. Second, had we been able to identify private-pay nursing homes patients, we may have observed differences in diagnosis,
+mortality, and treatment patterns by payer type. Although such an
+analysis may have been informative, the differences according to
+payer type may be driven more by selection into a payer group
+(Medicaid vs private payer) than the characteristics of the payer
+(eg, low reimbursement rates). In other words, to qualify for
+Medicaid, patients have to be medically needy. Medically needy
+patients have very low incomes (often below $10 000 per year),
+may have few assets and experience social conditions (eg, low educational attainment) that are correlated with poor health. These
+conditions, rather than Medicaid reimbursement, may account for
+the type of care received. Although our ﬁndings are speciﬁc to
+Medicaid patients, this population accounts for approximately half
+of all nursing home patients (46).
+Third, we did not have information on patient and family preferences for treatment or caregiver availability. Studies suggest that
+the preferences of cancer patients’ and/or their physicians’ for
+treatment vary by patient age (9) with preferences leaning toward
+less aggressive or palliative care for older adults. Information on
+the presence of a caregiver who could act as a patient advocate may
+have offered insight into the preferences of the family and their
+ability to assist the cancer patient.
+Fourth, this study did not take into account organizational
+characteristics such as availability of services, size, and practice patterns that are predictive of nursing home quality and hospice use
+(47). Finally, care patterns may have changed since the study time
+period (1997–2000). However, such changes are unlikely because
+payment and stafﬁng resources for nursing home care have not
+become more plentiful in the last decade, and although there have
+been efforts to improve quality of care in nursing homes, these
+efforts address basic day-to-day care such as preventing pressure
+ulcers (48).
+jnci.oxfordjournals.org
+
+From these observational data, we cannot draw deﬁnitive conclusions about the quality of cancer care delivered to nursing home
+patients. Nevertheless, our study suggests that very few cancer
+services in the area of detection, treatment, and hospice care are
+provided to Medicaid-insured nursing home patients even though
+many of these patients would have experienced cancer-related
+symptoms (eg, pain, obstruction, fatigue, and weight loss) and
+marked physical decline before diagnosis and death (49). Further
+investigation is needed to establish guidelines for cancer-related
+care, including cancer detection, for frail elderly patients. Control
+of pain symptoms, in particular, has been shown to be inadequate
+among nursing home cancer patients (1) and should be the focus
+of future investigations. As part of the establishment of guidelines
+for elderly patients, the economic and social implications of change
+in clinical practice need to be investigated.
+Finally, one interpretation of our ﬁndings might be that nursing home patients with cancer are “better off” because cancer,
+unlike some other diseases, appears to quickly end lives that may
+be plagued by considerable suffering. This opinion should be
+viewed in the context of society’s continual struggle with when to
+end patients’ medical treatments and the viewpoint that nursing
+homes serve patients awaiting death. However, the absence of
+treatment may not reduce suffering. Nursing homes, unlike hospices, are not designed to cater exclusively to the dying. Also,
+unlike hospices, nursing homes provide care for patients with
+chronic conditions other than cancer (eg, cardiovascular disease,
+diabetes). Yet, cancer appears to be ignored, suggesting that guidelines for the recognition and treatment of cancer in frail elderly
+patients are needed and should be communicated to health care
+professionals, patients, and caregivers. An aging population, coupled with trends in cancer diagnosis and treatment, will shift more
+cancer care (particularly the care of second primary cancers) to
+nursing homes and make investigations into the care of nursing
+home cancer patients particularly relevant. At present, nursing
+homes may be unequipped to recognize and care for their residents
+with cancer.
+References
+1. Johnson V, Teno JM, Bourbonniere M, Mor V. Palliative care needs of
+cancer patients in U.S. nursing homes. J Palliat Med. 2005;8:273–279.
+2. Albano J, Ward E, Jemal A, et al. Cancer mortality in the United States by
+education level and race. J Natl Cancer Inst. 2007;99:1384–1394.
+3. Howard G, Anderson R, Russell G, Howard V, Burke G. Race, socioeconomic status, and cause-speciﬁc mortality. Ann Epidemiol. 2000;10:
+214–223.
+4. Griggs J, Culakova E, Sorbero M, et al. Effect of patient socioeconomic
+status and body mass index on the quality of breast cancer adjuvant chemotherapy. J Clin Oncol. 2007;25:277–284.
+5. Bradley C, Given C, Luo Z, Dahman B, Virnig B. Diagnosis of advanced
+cancer among elderly Medicare and Medicaid patients. Med Care.
+2007;45:410–419.
+6. Edwards B, Brown M, Wingo P, et al. Annual report to the nation on the
+status of cancer; 1975–2002, featuring population-based trends in cancer
+treatment. J Natl Cancer Inst. 2005;97:1407–1427.
+7. Hoffman R, Harlan L, Klabunde K, et al. Racial differences in initial treatment for clinically localized prostate cancer. J Gen Intern Med. 2003;
+18:845–853.
+8. Cartier C. From home to hospital and back again: economic restructuring,
+end of life, and the gendered problems of place-switching health services.
+Soc Sci Med. 2003;56:2289–2301.
+JNCI
+
+|
+
+Articles 29
+
+9. Yancik R. Cancer burden in the aged: an epidemiological and demographic overview of cancer. Cancer. 1997;80:1261–1266.
+10. Bourbonniere M, Cleave J. Cancer care in nursing homes. Semin Oncol
+Nurs. 2006;22:51–57.
+11. Gagnon B, Mayo NE, Hanley J, MacDonald N. Pattern of care at the end
+of life: does age make a difference in what happens to women with breast
+cancer? J Clin Oncol. 2004;22:3458–3465.
+12. Teno JM, Weitzen S, Fennell ML, et al. Dying trajectory in the last year
+of life: does cancer trajectory ﬁt other diseases? J Palliat Med.
+2001;4:457–464.
+13. Li CI. Racial and ethnic disparities in breast cancer stage, treatment, and
+survival in the United States. Ethn Dis. 2005;15(2 suppl 2):S5–S9.
+14. Madison T, Schottenfeld D, James SA, et al. Endometrial cancer: socioeconomic status and racial/ethnic differences in stage at diagnosis, treatment, and survival. Am J Public Health. 2004;12:2104–2111.
+15. Joslyn SA, Foote ML, Nasseri K, et al. Racial and ethnic disparities in
+breast cancer rates by age: NAACCR Breast Cancer Project. Breast Cancer
+Res Treat. 2005;92:97–105.
+16. Chang KJ, Parasher G, Christie C, et al. Risk of pancreatic adenocarcinoma: disparity between African Americans and other race/ethnic groups.
+Cancer. 2005;103(2):349–357.
+17. Henson DE, Chu KC, Levine PH. Histologic grade, stage, and survival in
+breast carcinoma: comparison of African American and Caucasian women.
+Cancer. 2003;98(5):908–917.
+18. Girvan-Oakley I, Kolonel LN, Gallahger RP, et al. State at diagnosis and
+survival in a multiethnic cohort. Am J Public Health. 2003;93(10):1753–1759.
+19. Schwartz KL, Crossley-May H, Vigneau FD, et al. Race, socioeconomic
+status and stage at diagnosis for ﬁve common malignancies. Cancer Causes
+Control. 2003;14:761–766.
+20. Farley TA, Flannery JT. Late-stage diagnosis of breast cancer in women
+of lower socioeconomic status: public health implications. Am J Public
+Health. 1989;79(11):1508–1512.
+21. Bradley CJ, Given CW, Roberts C. Race, socioeconomic status, and breast
+cancer treatment and survival. J Natl Cancer Inst. 2002;94(7):490–496.
+22. Satariano WA, Ragland DR. The effect of comorbidity on 3-year survival
+of women with primary breast cancer. Ann Intern Med. 1994;120:
+104–110.
+23. Vaeth PA, Satariano WA, Ragland DR. Limiting comorbid conditions and
+breast cancer stage at diagnosis. J Gerontol A Biol Sci Med Sci.
+2000;55:M593–M600.
+24. West DW, Satariano WA, Ragland DR, et al. Comorbidity and breast
+cancer survival: a comparison between black and white women. Ann
+Epidemiol. 1996;6:413–419.
+25. Fleming S, Pursley H, Newman B, et al. Comorbidity as a predictor of
+stage of illness for patients with breast cancer. Med Care. 2005;42(2):
+132–140.
+26. Gorin SS, Heck J, Albert S, et al. Treatment for breast cancer in patients
+with Alzheimer’s disease. J Am Geriatr Soc. 2005;53(11)1897–1904.
+27. Gupta SK, Lamont EB. Patterns of presentation, diagnosis, and treatment
+in older patients with colon cancer and comorbid dementia. J Am Geriatr
+Soc. 2004;52:1681–1687.
+28. Walter LC, Eng C, Covinsky K. Screening mammography for frail older
+women: what are the burdens? J Gen Intern Med. 2001;16:779–784.
+29. Kaiser Family State Health Facts. http://www.statehealthfacts.org/
+comparetable.jsp?ind=178&amp;cat=4. Accessed December 3, 2007.
+30. Kaiser Commission on Medicaid Facts. Medicaid and the Uninsured.
+Publication 4091-04. July 2005. http://www.st.org/medicaid/upload/409104%20Final(v2).pdf. Accessed December 3, 2007.
+31. Murray L, Shatto A. Dually eligible Medicare beneﬁciaries. Health Care
+Financ Rev. 1998;20(2):131–140.
+
+30 Articles
+
+|
+
+JNCI
+
+32. Institute of Medicine. Improving the Quality of Long-term Care.
+Washington (DC): National Academy Press; 2001.
+33. U.S. General Accounting Ofﬁce. Nursing Homes: Care Problems Persist
+Despite Federal and State Oversight. Report to the Special Committee on
+Aging, U.S. Senate. Publication GAO/HEHE-99-46. Washington (DC):
+U.S. General Accounting Ofﬁce; 1999.
+34. National Cancer Institute. Staging: Questions and Answers. http://www.cancer.
+gov/cancertopics/factsheet/Detection/staging. Accessed December 3, 2007.
+35. Bradley C, Given C, Luo Z, et al. Medicaid, Medicare, and state tumor
+registries: a linkage strategy. Med Decis Making. 2007;27(4):352–363.
+36. Breen N, Figueroa JB. Stage of breast and cervical cancer diagnosis in disadvantaged neighborhoods: a prevention policy perspective. Am J Prev
+Med. 1996;12(5):319–326.
+37. Deyo RA, Cherkin DC, Ciol MA. Adapting a clinical comorbidity index
+for use with ICD-9-CM administrative databases. J Clin Epidemiol.
+1992;45:613–619.
+38. Klabunde CE, Potosky AL, Legler JM, et al. Development of a comorbidity
+index using physician claims data. J Clin Epidemiol. 2000;53:1258–1267.
+39. Charlson ME, Pompei P, Ales KL, et al. A new method of classifying
+prognostic comorbidity in longitudinal studies: development and validation. J Chronic Dis. 1987;40:373–383.
+40. Froehner M, Koch R, Litz R, et al. Comparison of the American Society of
+Anesthesiologists physical status classiﬁcation with the Charlson score as
+predictors of survival after radical prostatectomy. Urology. 2003;62:698–701.
+41. Extermann M. Measuring comorbidity in older cancer patients. Eur J
+Cancer. 2000;36:453–471.
+42. Casarett D, Karlawish J, Morales K, et al. Improving the use of hospice
+services in nursing homes: a randomized controlled trial. JAMA. 2005;
+294:211–217.
+43. Baldwin LM, Dobie SA, Billingsley K, et al. Explaining black–white differences in receipt of recommended colon cancer treatment. J Natl Cancer
+Inst. 2005;97(16):1211–1220.
+44. Demissie K, Oluwole O, Balasubramanian B, et al. Racial differences in
+the treatment of colorectal cancer: a comparison of surgical and radiation
+therapy between whites and blacks. Ann Epidemiol. 2004;14:215–221.
+45. Bach P, Cramer L, Warren J, Begg C. Racial differences in the treatment
+of early stage lung cancer. N Engl J Med. 1999;241:1198–1205.
+46. Mor V, Intrator O, Laliberte L. Factors affecting conversion rates to
+Medicaid among new admissions to nursing homes. Health Serv Res.
+1993;28:1–25.
+47. Keating N, Herrinton L, Zaslavsky A, et al. Variations in hospice use
+among cancer patients. J Natl Cancer Inst. 2006;98:1053–1059.
+48. Capitaman J, Leutz W, Bishop C, Casler R. Long-Term Care
+Quality: Historical Overview and Current Initiatives. Washington (DC):
+National Commission for Quality Long-term Care, 2007. http://www.
+qualitylongtermcarecommission.org/reports.html. Accessed January 2007.
+49. Lunney JR, Lynn J, Foley DJ, et al. Patterns of functional decline at the
+end of life. JAMA. 2003;289:2387–2392.
+
+Funding
+This research was supported by National Cancer Institute grant, R01CA101835-01 In-Depth Examination of Disparities in Cancer Outcomes,
+Cathy J. Bradley, Principal Investigator.
+
+Notes
+The authors take full responsibility for the study design, data collection, analysis
+and interpretation of the data, the decision to submit the manuscript for publication, and the writing of the manuscript.
+Manuscript received May 31, 2007; revised October 11, 2007; accepted
+November 16, 2007.
+
+Vol. 100, Issue 1
+
+|
+
+January 2, 2008
+
+Appendix: Description of Codes Used to Identify Surgery, Chemotherapy, and Radiation
+Procedure
+Breast cancer surgery
+Colorectal cancer surgery
+Prostate cancer surgery
+Lung cancer surgery
+
+Chemotherapy
+
+Radiation
+
+jnci.oxfordjournals.org
+
+Code
+HCPCS 19120-19126, 19160-19162, 19180, 19180, 19200, 19210, 19220, 19240 and HCPCS 19100-19499,
+19112, 19140, 19141 if accompanied by ICD-9 diagnosis code of 1740-1749, 2330, 19881
+HCPCS 44140-44149, 44150-44169, 44110, 44111, 44139, 44383, 44392, 45100, 45300-45305, 45325, 45330,
+45331, 45355, 45378, 45380, 45388, 57454
+HCPCS 55801, 55810, 55812, 55815, 55821, 55831, 55840, 55842, 55845, 55855 and HCPCS 52620-52629,
+52630-52639, 52640-52649, 52601, 52614, 55725 if accompanied by ICD-9 diagnosis codes 1850, 2234,19882
+HCPCS 31640, 31641, 31645, 31646, 32440-32445, 32480-32488, 32500-32525, 32663, 2154 and 32002, 32005,
+32020, 32035, 32036, 32140, 32150, 32200, 32201, 32215, 32220, 32225, 32310, 32320, 32491, 32540,
+32650, 32651, 32652, 32656, 32662, 32664, 32800, 32810, 32815, 32820, 32900, 32905, 32906, 32940, 32960
+if accompanied by ICD-9 diagnosis codes 1622-1629, 1970, 2312
+HCPCS 96400 through 96599; 51720, Q0083 through Q0085, Q1036, J0970, J1000, J1380, J1390, J1410, J1950,
+J8510, J8520, J8521, J8530 through J8999, J9000 through J9999, and ICD-9 procedure code 9925, and
+HCPCS Q9900 through Q9999, X9250 through X9269, X9380 through X9399. 90790, 90792, 90793, 90796,
+96009, 96010, 96095, 97083, J0640, J7150, Q0093, Q0094, S0070, W0885, W1581, W2965, W3412, and X9566
+if accompanied by ICD-9 diagnosis codes V58.1, V66.2, V67.2, E9331
+HCPCS 77000 through 77999 and HCPCS A96000, A9605, 76096, 1922, 76370, 76950, 76960 if accompanied by
+ICD-9 diagnosis codes V58.0, V66.1, V67.1, E8792 and ICD-9 procedure code 92.20 through 92.29, 92.30
+though 92.39 if accompanied by ICD-9 diagnosis codes V58.0, V66.1, V67.1, E8792
+
+JNCI
+
+|
+
+Articles 31</p>
+      </div>
+    </body>
+    
+	<back/>
+  </text>
+</TEI>

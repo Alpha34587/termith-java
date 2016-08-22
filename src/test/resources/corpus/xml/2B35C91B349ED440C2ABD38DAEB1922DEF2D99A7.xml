@@ -1,0 +1,2113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Version 1.2 générée le 14-4-2016-->
+<TEI xmlns:tei="http://www.tei-c.org/ns/1.0" xmlns="http://www.tei-c.org/ns/1.0" xml:lang="en">
+  <teiHeader>
+		<fileDesc>
+			<titleStmt>
+				<title/>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+			</publicationStmt>
+			<sourceDesc>
+				<p/>
+			</sourceDesc>
+		</fileDesc>
+	</teiHeader>
+  <text>
+    <body>
+      <div>
+        <p>Epidemiologic Reviews
+ª The Author 2009. Published by the Johns Hopkins Bloomberg School of Public Health.
+All rights reserved. For permissions, please e-mail: journals.permissions@oxfordjournals.org.
+
+Vol. 31, 2009
+DOI: 10.1093/epirev/mxp001
+Advance Access publication May 23, 2009
+
+Is Segregation Bad for Your Health?
+
+Michael R. Kramer and Carol R. Hogue
+
+Accepted for publication April 7, 2009.
+
+For decades, racial residential segregation has been observed to vary with health outcomes for African Americans, although only recently has interest increased in the public health literature. Utilizing a systematic review of
+the health and social science literature, the authors consider the segregation-health association through the lens of
+4 questions of interest to epidemiologists: How is segregation best measured? Is the segregation-health association socially or biologically plausible? What evidence is there of segregation-health associations? Is segregation
+a modiﬁable risk factor? Thirty-nine identiﬁed studies test an association between segregation and health outcomes. The health effects of segregation are relatively consistent, but complex. Isolation segregation is associated
+with poor pregnancy outcomes and increased mortality for blacks, but several studies report health-protective
+effects of living in clustered black neighborhoods net of social and economic isolation. The majority of reviewed
+studies are cross-sectional and use coarse measures of segregation. Future work should extend recent developments in measuring and conceptualizing segregation in a multilevel framework, build upon the ﬁndings and
+challenges in the neighborhood-effects literature, and utilize longitudinal data sources to illuminate opportunities
+for public health action to reduce racial disparities in disease.
+demography; ethnic groups; health status disparities; public health; social isolation; socioeconomic factors; United
+States
+
+questions of interest to epidemiologists: How is segregation
+best measured? Is the segregation-health association socially or biologically plausible? What evidence is there of
+segregation-health associations? Is segregation a modiﬁable
+risk factor?
+With an eye toward these 4 areas of measurement, mechanism, association, and policy implications, we searched
+MEDLINE, CINAHL, EMBASE, ERIC, PsycINFO, and
+the Web of Science databases in September 2008 using
+variants of the term ‘‘residential’’ combined with variants
+of the term ‘‘segregation,’’ resulting in 2,564 citations. Important literature exists (and more is needed) to enable
+understanding of economic segregation, segregation of
+Hispanics and Asians, and the role of segregation in rural
+areas, but these topics were not the subject of this literature review. The largest body of literature concerns health
+and the residential segregation of blacks and whites in
+metropolitan areas of the United States; we therefore focused primarily on these studies and reports. A brief review of the history of black-white segregation in the
+United States precedes attention to the 4 questions structuring this paper.
+
+INTRODUCTION
+
+In 1950, Dr. Alfred Yankauer observed that the infant
+mortality rate for black babies and white babies in New York
+City increased as the concentration of blacks in the mother’s
+neighborhood of residence increased (1). While social scientists had been observing racial and ethnic residential settlement patterns for some time before this, Yankauer was the
+ﬁrst to link racial residential segregation with population
+health. Only in the past 15 years has public health interest
+rekindled in considering whether segregation can explain
+longstanding racial and economic disparities in health, as
+evidenced by the growth in the number of publications in
+biomedical and social science journals (Figure 1).
+David Williams has called segregation a ‘‘fundamental
+cause’’ of health disparities because of the manner in which
+it differentially sorts individuals into social and economic
+environments on the basis of race and class (2). Widespread
+health disparities in the United States remain difﬁcult to
+explain (3, 4), and thus far difﬁcult to ameliorate, making
+claims of a ‘‘fundamental cause’’ appealing. This review
+assesses the evidence for this claim by considering 4 broad
+
+Correspondence to Dr. Michael R. Kramer, Rollins School of Public Health, Emory University, 1518 Clifton Road, Room 257C, Atlanta, GA 30322
+(e-mail: mkram02@sph.emory.edu).
+
+178
+
+Epidemiol Rev 2009;31:178–194
+
+Is Segregation Unhealthy?
+
+179
+
+Figure 1. Numbers of ‘‘segregation’’ and ‘‘health’’ citations in the MEDLINE, CINAHL, EMBASE, ERIC, PsycINFO, and Web of Science databases as of September 2008.
+
+HISTORY OF SEGREGATION IN THE UNITED STATES
+
+Residential segregation is the degree to which groups of
+people categorized on a variety of scales (race, ethnicity,
+income) occupy different space within urban areas, and
+the process that creates this differential spatial distribution
+(5). Segregation in US cities is neither new nor unique to any
+one ethnic or racial group. New European immigrants to US
+urban areas frequently resided in relatively homogenous
+ethnic enclaves, a process that may be a critical component
+of assimilation (6). This segregation of new immigrants
+typically subsides within a generation as economic opportunity and upward mobility lead to fuller integration. Yet,
+for black Americans, segregation increased throughout
+much of the 20th century.
+Cutler et al. (7) portray black-white residential segregation in the 20th century in 3 distinct periods. The ﬁrst, the
+birth of the ghetto, spanned from 1890 to 1940 (Cutler et al.
+distinguish ‘‘ghetto’’ as a largely black, segregated area, as
+opposed to a slum, which denotes quality of living conditions). Large-scale migration of rural southern blacks to
+urban areas in the Northeast was driven by changes in agricultural practices in the South and demand for manual labor
+in the industrial North. While the average urban black in
+1890 lived in a neighborhood that was 27% black, by 1940
+this black percentage had increased to 43% (7). This period
+of increasing racial density parallels the pattern of any new
+immigrant group and results largely from an afﬁnity of newcomers to live near other newcomers. Congregating in
+neighborhoods offered opportunity for job leads, connections to cultural and religious institutions, and social support. Limited evidence of housing markets during this
+period suggests this early segregation may have been driven
+as much by black choice as by structured limitation to other
+options.
+The period from 1940 to 1970 was one of consolidation
+and expansion of the urban black ghetto. While further miEpidemiol Rev 2009;31:178–194
+
+gration of rural blacks into southern and northern urban
+areas continued to expand the size of the black population
+in many cities, racial tensions were increasing (8). In a process Cutler et al. call collective action racism, housing markets
+were manipulated by law, restrictive covenant, and overt
+acts of intimidation by whites to maintain and increase separation. According to one estimate, 80% of housing deeds in
+some areas included restrictive covenants regarding race (7,
+9). Massey and Denton (10) argue that it was this period of
+sanctioned and institutionalized racism, which they likened
+to South-African apartheid, that formed the segregation that
+persists to today. By most measures, black-white residential
+segregation peaked in 1970, when the average urban black
+person lived in a neighborhood that was 68% black (7).
+Since 1970, segregation has decreased modestly. This
+trend resulted mostly from the movement of some black
+families to previously all-white areas rather than from the
+integration of largely black areas. While segregation may
+have decreased overall, the results of previous decades have
+persisted in terms of isolation and poverty concentration for
+many urban black residents. There are some areas (particularly in the South and West) in which middle-class black
+families have integrated into white neighborhoods, while
+poor black families have become increasingly isolated physically and economically in areas that suffer from infrastructure disinvestment (11).
+The Civil Rights Act (Fair Housing Act) of 1968 prohibited discrimination in housing sales and rentals and thus
+theoretically stopped the collective-action racism that
+shaped segregation during the preceding decades. Nevertheless, ongoing ﬁnancial and interview audit studies demonstrate that redlining (the illegal process of systematically
+denying loans to certain portions of a city) and outright
+racial discrimination persist today in shaping urban housing
+markets (12). Cutler et al. (7) argue that, in this third historical period from 1970 forward, decentralized racism became the operative process maintaining segregation.
+
+180 Kramer and Hogue
+
+During this phase, white avoidance (due to racism or to
+escape from economically crumbling central cities) may
+be most operative in maintaining segregation, as evidenced
+by whites paying more for comparable housing in predominantly white neighborhoods and survey data that blacks
+more than whites desire greater residential integration
+(64% of blacks vs. 40% of whites in 2007) (13).
+This brief review of the history of 20th-century segregation in the United States points out 2 important features
+relevant to the health researcher. First, the black-white urban
+residential segregation seen today is distinct from any other
+ethnic or group segregation in the United States, and perhaps elsewhere in the world, and therefore reﬂects a process
+of social stratiﬁcation that is both historically situated and
+uniquely American. Second, because the mechanisms driving segregation varied over time, the health implications of
+segregation may vary temporally as well. For example, the
+health effects associated with the early 20th century ethnic
+enclaves of new black immigrants to the North were likely
+different from those experienced by residents of the hypersegregated cities in the latter 3 decades of the 20th century,
+where poverty concentration and infrastructure decay
+dominate.
+MEASURING RESIDENTIAL SEGREGATION
+
+The nonrandom clustering of social groups in space is not
+inherently good or bad. To affect population health, segregation must have more to it than the departure from random
+distribution of housing, and yet it is precisely this patterning
+of residents that is typically measured in segregation indices. One challenge in conceptualizing segregation is that its
+social and health-relevant effects are often described in
+terms of the process of segregation—a series of forces that
+differentially allot individuals into residential environments
+and economic opportunities on the basis of race (10, 14)—
+as opposed to the condition or state of segregation, which is
+the description of spatial residential patterns at a point in
+time (15). Many studies essentially estimate the degree to
+which measuring the state approximates what we believe
+the process to be.
+The crudest measure of segregation (used by Yankauer
+(1) in 1950, and by many investigators currently) is the
+proportion of a group (e.g., whites) in a given neighborhood
+(e.g., census tract), often termed neighborhood racial composition. It is easily operationalized and appears intuitive to
+the reader, but it says nothing about the distribution of people in space, is invariant to population density in a neighborhood, and does not specify a reference against which to
+measure the neighborhood (e.g., a neighborhood that is
+30% black means different things in a city that is 1% black
+and one that is 30% black). In other words, the composition
+of a given neighborhood is independent of the residential
+patterning of the larger city.
+For these reasons, most social scientists utilize measures
+that acknowledge 2 scales of geography: subareas (e.g.,
+neighborhoods) situated within larger overall geographic
+areas (e.g., cities or metropolitan areas). Segregation is then
+expressed as a comparison of the subareas to the overall
+area, commonly in the form of a population-weighted aver-
+
+age across all neighborhoods. Although central cities, counties, and even states have been used as the larger geographic
+context, the Metropolitan Statistical Area could arguably be
+the best larger context in which to situate neighborhoods.
+The notion of sorting individuals into residential environments is largely a function of housing markets, and the
+consequences of segregation discussed below are largely
+related to labor markets. Metropolitan Statistical Areas are
+units constructed by the Ofﬁce of Management and Budget
+to deﬁne counties clustered around a central city deﬁned by
+their degree of economic integration (16); in other words,
+one goal of the Metropolitan Statistical Area deﬁnition is to
+describe a discrete regional housing and labor market (17).
+Segregation is most commonly conceived of as having 5
+dimensions described by Massey and Denton (5): evenness
+(the degree to which groups are evenly distributed in space),
+isolation (the probability for interaction between members
+of same vs. different racial groups in a given neighborhood),
+concentration (the spatial density of a minority group in an
+area), centralization (the degree to which a group is primarily located in the city core), and clustering (the grouping of
+racially similar neighborhoods in space). Numerous indices
+are intended to proxy each dimension, but 2 frequently encountered in the segregation literature are the dissimilarity
+index—which measures evenness—and the isolation index
+(sometimes represented as xP*x). The dissimilarity index
+can be interpreted as the proportion of the minority group
+that would have to move to another neighborhood to achieve
+complete integration. This index ranges from 0 (complete
+integration or evenness) to 1 (complete segregation). The
+isolation index, on the other hand, measures the probability
+that 2 individuals randomly drawn from the same neighborhood are of the same race, essentially estimating exposure or
+isolation of one group to another. It also ranges from 0 (complete exposure) to 1 (complete isolation).
+While the indices discussed by Massey and Denton (5)
+dominate segregation research, critiques of the measures
+exist (18). One important criticism is the reliance on census
+tracts as proxies for neighborhoods. Although tracts have
+been demonstrated to be reasonable small-area approximations for understanding health disparities (19, 20), in the
+case of the inherently spatial concept of segregation, tracts
+may be too arbitrary in terms of their boundaries and scale
+(21–23). Speciﬁcally, mechanisms by which segregation impacts social and health outcomes may be operative at a different scale than is represented by the census tract.
+Several investigators have proposed newer ‘‘spatial’’ versions of the traditional indices that utilize geographic information system software to estimate segregation by
+varying neighborhood scales without relying on the tract
+boundaries (21, 23–26). Approaches have included creation
+of new indices as well as extending traditional indices such
+as the isolation index and dissimilarity index to account for
+scale and spatial orientation of one neighborhood to the
+next. Early results demonstrate that both the absolute estimation of segregation and the relative ranking of cities
+change when segregation is measured at different scales
+(23, 27), suggesting potential misclassiﬁcation of exposure
+if the scale measured is not conceptually wed to the intended
+hypothesis.
+Epidemiol Rev 2009;31:178–194
+
+Is Segregation Unhealthy?
+
+181
+
+Figure 2. Possible pathways between segregation and health. SES, socioeconomic status.
+
+One interesting result of eliminating the arbitrary reliance
+on census tracts as the default scale of neighborhoods is that
+the 5 dimensions of segregation collapse into 2 (18, 21).
+Reardon (21) argues that the distinction between evenness
+and neighborhood clustering is simply a matter of the scale
+at which measures are calculated. Similarly, centralization
+and concentration can be seen as special cases of the general
+spectrum of evenness versus clustering of households,
+which results in spatial evenness and spatial isolation as
+2 general dimensions of residential segregation. Few studies
+have utilized a spatial measure of segregation (28, 29), and it
+remains to be seen whether these measures will prove to be
+meaningfully different tools for understanding the association between segregation and health.
+Although most studies identiﬁed used segregation measures for 2 groups, indices do exist for alternate conceptualizations. With increasingly multicultural cities, researchers’
+interest may lie in the residential patterns of multiple racial
+and ethnic groups simultaneously or the black-white patterns in the context of other groups (30). Multigroup segregation indices are logical extensions of the 2-group indices
+mentioned above (31, 32). Segregation can also be measured
+along an ordinal scale, as would be the case for understanding segregation across levels of family income (33, 34).
+
+POTENTIAL SOCIAL/BIOLOGIC PATHWAYS FROM
+SEGREGATION TO POPULATION HEALTH
+
+A primary concern of epidemiologists regarding any
+exposure-disease relation is its biologic (or social) plausibility:
+through what causal pathway could an association be mediated? Four interconnected mechanisms (Figure 2) are comEpidemiol Rev 2009;31:178–194
+
+monly hypothesized: 1) residential segregation begets
+individual socioeconomic status, which itself is related to
+health; 2) segregation perpetuates and reproduces unhealthy
+neighborhood environments; 3) segregation modiﬁes social
+capital for a city overall or for speciﬁc racial groups within
+a city; and 4) segregation modiﬁes individual risk behaviors
+or exposure to stressful stimuli (2, 35–37). Segregation is
+often construed to affect minority communities differently
+from majority communities, and, as such, these mechanisms
+relate to possible mechanisms for varying racial disparities
+in health. Evidence for each mechanism is reviewed in turn
+below.
+Segregation and individual socioeconomic status
+
+A leading hypothesis is that the toxic effects of residential
+segregation are due in part to the association of racial segregation with economically related consequences (11).
+Strong evidence exists for an interaction of racial and economic segregation through spatial concentration of minority
+poor people in urban areas. The majority of poor people in
+the United States are white, yet most poor whites live in
+economically integrated neighborhoods. In contrast, most
+poor blacks live in poor neighborhoods (38). The propensity
+for poor blacks to live in high-poverty neighborhoods has
+been termed ‘‘double jeopardy’’ (39). In the United States in
+2000, 1.4% of white children lived in poor families inside
+poor neighborhoods, while 16.8% of black children experienced this double jeopardy. The average black child spends
+50% of his or her ﬁrst 18 years of life in high-poverty neighborhoods, while the average white child spends 5% (40).
+One of the most direct consequences of this spatial concentration of the poor is reduced educational opportunities,
+
+182 Kramer and Hogue
+
+because school options are primarily a function of neighborhood of residence. If all schools were equal, this issue would
+be inconsequential, yet there is substantial evidence that
+poor urban schools perform worse than suburban schools
+on nearly all markers of quality, including curricular variety,
+test scores, teacher and administrator experience, high
+school completion, and the social environment including
+violence, drugs, and teen pregnancy (2, 41, 42). In a study
+on the racial gap in Scholastic Aptitude Test (SAT) scores,
+metropolitan-level segregation explained one quarter of the
+gap (approximately 45 points) (43). Growing up in morecompared with less-segregated neighborhoods negatively
+affects adult educational attainment (44) and may inﬂuence
+the academic performance of those who enter college (45).
+One approach to estimating the causal component of segregation on the education gap is to use an instrumental variable analysis, in which a variable causally associated with
+segregation, but unlikely to be associated with education, is
+substituted in models. Cutler and Glaeser (46) used number
+of rivers in a metropolitan area as an instrumental variable
+for segregation, acknowledging the likely causal manner in
+which topographic features such as rivers reduce intracity
+migration and increase segregation. They found that segregation measured with the dissimilarity index was negatively
+associated with adults having obtained high school and college degrees, and that the pattern of association held when
+segregation was instrumented by rivers.
+Segregation also reduces employment opportunities and
+lowers income through a spatial mismatch of workers and
+jobs. When education and skills are controlled for, black
+residents in highly segregated cities are more likely to be
+unemployed than black persons living in less-segregated
+cities (47) and to spend more time searching for jobs
+(48), and they are less likely to be self-employed (11, 49,
+50). These effects are particularly strong for extremes of the
+isolation and clustering dimensions. A review of urban employment and industry over 40 years concluded that the
+degree of spatial mismatch was less explanatory of racial
+disparities in employment than was the overall decrease in
+urban manufacturing (51). However, another study testing
+the spatial mismatch theory used employment records of the
+US Postal Service, which, as an institution, has had large
+processing facilities geographically ﬁxed in urban centers
+throughout the post–World War II decades (52). In this analysis, degree of metropolitan segregation was unassociated
+with racial composition of the US Postal Service workforce
+in the 1940s–1960s. When centrally located urban jobs declined with the exodus of manufacturing in the 1970s, the
+degree of city segregation and black employment at central
+postal facilities became correlated, suggesting that racial
+segregation in the past 30 years is associated with decreased
+access to employment opportunity for many black families.
+While poor blacks disproportionately experience the negative effects of segregation (53), middle-class blacks may
+also suffer from residential segregation through limited
+housing choices (54, 55), limited wealth accumulation
+(56), and restrictions on upward mobility (57). Middle-class
+blacks are more likely than poor blacks to live in lesssegregated neighborhoods, yet they often do not achieve
+income-matched parity with whites in terms of neighbor-
+
+hood quality, with blacks living in neighborhoods that are
+older and have lower tax bases, and living among whites
+who have a lower mean income than they do (58). In fact,
+for blacks (compared with Hispanics or Asians), degree of
+residential segregation is relatively independent of individual socioeconomic status (59).
+Segregation and neighborhood socioeconomic
+environment
+
+Although segregation may limit individuals’ economic
+opportunities, it could also produce neighborhoods that
+are in and of themselves unhealthy. This hypothesized pathway links the segregation-health literature with the increasingly rich neighborhood effects–health literature in
+a manner that may complement each. In recent years, a large
+body of research has struggled to distinguish between the
+population health impacts of neighborhood context versus
+neighborhood composition (60–62). One important criticism of this literature is the limited ability to account for
+selection into neighborhoods, a plausible confounder of the
+contextual-health association (63). However, metropolitanlevel segregation may serve as one such distal sorting
+mechanism that accounts for the differential assignment of
+neighborhood environment.
+Segregation may propagate negative social environments
+in multiple ways. Highly segregated cities suffer from
+higher levels of violent and property crime (64–66). This
+association seems particularly true for cities with high income inequality, poverty concentration, and segregation on
+the isolation dimension, suggesting that social isolation and
+corresponding economic inequality may be particularly important in this regard (65, 67, 68). Neighborhood health is
+thereby worsened, not only by risk of victimization but also
+by alterations to individual behavior and social networks
+associated with living in a dangerous environment (69,
+70). Finally, a combination of increased crime and systematic differences in policing and arrests results in high male
+incarceration rates in many segregated black urban communities (71, 72). This large-scale incarceration of young black
+men affects the health of the men but has also been implicated in destabilizing family support systems, thereby impacting the health of women and children (73, 74).
+Both isolation and concentration probably enhance the
+spread of infectious disease such as tuberculosis (75, 76),
+human immunodeﬁciency virus (77), and gonorrhea (78)
+and possibly lead to racially disparate exposure to environmental toxins. There is conﬂicting evidence on differential
+toxic exposure, with 2 studies suggesting an increased
+health risk for poor and minority communities from toxin
+releases in highly segregated cities (79–81) but 1 study observing racial differences in exposure to toxic hazards that
+were not explainable by degree of segregation (82).
+Also of concern is differential access to local health-relevant
+resources. Segregated and poor neighborhoods tend to have
+fewer options for purchasing healthy food and more options
+for purchasing alcohol (83–87). Simply residing in economically deprived neighborhoods may also be associated with
+important health outcomes such as obesity and heart disease
+(88–90). There is mixed evidence regarding whether Medicaid
+Epidemiol Rev 2009;31:178–194
+
+Is Segregation Unhealthy?
+
+participation by physicians varies with degree of residential
+segregation, with 2 studies suggesting it does (91, 92) but 2
+others suggesting that the effect is small to none (93, 94).
+Segregation and social capital
+
+Social capital has been deﬁned as the degree of social
+trust, extent of social networks, and willingness to provide
+mutual aid and reciprocity between individuals in a given
+area (95, 96). Kawachi (97) and others have proposed that
+variations in social capital may explain geographic variations in population health, with a relative health-protective
+effect of living in a social-capital-rich area. Although Putnam (95) suggests that increased social capital is associated
+with increased equality, it has been argued that the social
+capital in a given area does not necessarily cross race or
+class lines and in some cases may be inversely associated
+with indicators of racial equity (98).
+Whether degree of metropolitan segregation increases or
+decreases social capital is unclear. There is some evidence
+that high-isolation segregation and concomitant poverty
+concentration decrease black social capital and reduce interracial trust (99–101). However, a body of evidence also
+suggests health-protective effects for blacks who live in
+racially homogenous ethnic enclaves, a phenomenon attributed to enhanced social support and ties. For example, Bell
+et al. (102) found that isolation segregation increases risk of
+low-birth-weight infants but that, when conditioning on isolation, higher clustering segregation reduces risk of low
+birth weight. It is posited that, given the adverse environment posed by isolation segregation, increased clustering
+may provide social support and enhance political power
+for black communities. Laveist (103, 104) suggests that
+the black political empowerment that sometimes results
+from high-clustering segregation can counter the negative
+effects of segregation on health outcomes.
+Segregation and individual behaviors and exposures
+
+It is also plausible that some effect of segregation on
+health could be mediated through individual-level behaviors
+and exposures patterned by the socioeconomic and neighborhood environmental effects previously described. While
+much research has looked at individual behaviors to understand racial disparities in health generally, relatively few
+studies have considered individual behaviors as mediating
+variables between segregation and health. Increasing residential segregation is associated with eating less fruit (105)
+and being less physically active (106). For black women,
+living in neighborhoods with either relatively low or relatively high segregation has been associated with increased
+smoking during pregnancy (107). Black women typically
+smoke less than whites during pregnancy (108), and the
+authors attribute the increased smoking to inﬂuence of the
+majority group in the integrated neighborhoods and response to stressors in the segregated neighborhoods.
+A different category of individual exposure now receiving
+increased attention is the role of psychosocial stress (109–
+111)—including adverse life events and perceived racism
+Epidemiol Rev 2009;31:178–194
+
+183
+
+(112)—in chronically ‘‘weathering’’ immune and neuroendocrine systems, thereby increasing susceptibility to disease
+(113, 114). Whereas segregation can be seen as a form of
+institutionalized racism (115), it may interact with personally mediated racism or discrimination, thus representing
+a truly individual-level exposure. This hypothesis has perhaps been most widely tested in understanding determinants
+of pregnancy outcomes, in which increased segregation and
+perceived racism have been found to increase risk for black
+women (102, 116, 117).
+Reﬁning causal pathways through the lens of the
+dimensions of segregation
+
+Each of the 5 dimensions of segregation described by
+Massey and Denton (5) serves as a proxy for overlapping,
+but distinct types of residential patterning. To the degree that
+the dimensions diverge, health researchers have an opportunity to test more reﬁned causal hypotheses for the effects
+of segregation on health. Going hand in hand with this notion is the expectation that researchers clearly describe a hypothesized causal path by which the effects may be
+mediated. Different health outcomes are sensitive to different mechanisms; thus, the dimension of segregation that is
+most relevant is likely to vary by outcome of interest.
+For example, Acevedo-Garcia (76) suggests that segregation on the concentration and isolation dimensions may be
+conducive to the spread of infectious diseases, whereas
+Dickerson (47) reports that clustering and evenness are most
+predictive of the degree of black unemployment. Either unevenness or the contiguous clustering of predominantly
+black neighborhoods could similarly associate with these
+negative exposures; however, conditional on degree of isolation, they may represent the ethnic enclave effect, which
+provides social support and increases relative political
+power (103, 118). As previously discussed, this possibly
+protective effect of one kind of segregation, conditioning
+on others, suggests a richer complexity that can be leveraged
+in hypothesizing causal pathways. One other pattern deserving of attention is the hypersegregated area, where segregation is deemed high on all 5 dimensions, possibly incurring
+a unique health effect not seen in cities considered high
+regarding only some dimensions (119, 120).
+SEGREGATION-HEALTH ASSOCIATIONS
+
+We identiﬁed 39 studies that used quantitative approaches
+to measuring an association between racial segregation and
+a health outcome (Table 1). The vast majority demonstrated
+statistically signiﬁcant observed associations, although the
+evidence for a causal association is limited by study designs.
+Seventeen studies (most conducted before 2000) were crosssectional ecologic (1, 75, 78, 103, 112, 121–132), 16 studies
+were cross-sectional multilevel (accounting for various
+individual-level covariates while acknowledging segregation as an inherently contextual variable) (28, 29, 37, 69,
+102, 120, 133–142), 5 utilized follow-up data collected
+either prospectively or retrospectively (143–147), and 1 utilized a time-series, cross-sectional ecologic design (148). In
+terms of health outcomes, the majority of the earlier studies
+
+184 Kramer and Hogue
+
+Table 1. Population Studies of Racial Residential Segregation and Health, United States
+Author, Year (Reference No.)
+
+Study Design (Population)
+
+Hearst, 2008 (142)
+
+Cross-sectional, multilevel
+(infants born to black
+mothers in 64 central
+cities with 250,000
+population)
+
+Inagami, 2006 (121)
+
+Measure of Segregation
+(Geographic Unit
+(Neighborhood Unit))a
+
+Outcome
+
+Results
+
+Mortality studies
+Isolation dichotomized at
+Infant mortality
+0.6 into ‘‘segregated’’ or
+‘‘not segregated’’ (central
+city (census tracts))
+
+Cross-sectional, ecologic
+(black, white, and
+Hispanic adults in New
+York City, 1999–2000)
+
+Laveist, 2003 (143)
+
+Cooper, 2001 (122)
+
+Jackson, 2000 (144)
+
+‘‘Black areas’’ (70%
+All-cause mortality
+black), ‘‘white areas’’
+(70% white); ‘‘Hispanic
+area’’ (70% Hispanic)
+(New York City (zip code
+areas))
+Prospective cohort
+Multidimensional
+Survival over 13 years
+(National Survey of Black
+segregation index
+of follow-up
+Americans respondents
+compiled from selfenrolled in 1979–1980)
+reported segregation in
+school, work, residence,
+and church
+Cross-sectional, ecologic
+(white adults and black
+adults in 267 MSAs,
+1989–1991)
+Retrospective cohort
+(National Longitudinal
+Mortality Study, enrolled
+in 1978–1985)
+
+Dissimilarity (metropolitan
+area (census tract))
+
+Premature mortality
+(prior to age 65 years)
+
+% Black in 1980 in census
+tract of residence at
+enrollment
+
+All-cause mortality
+
+Collins, 1999 (112)
+
+Cross-sectional, ecologic
+Isolation and dissimilarity
+(black adults and white
+(metropolitan area
+adults in cities with
+(census block group))
+&gt;100,000 total population
+and &gt;10% black, 1990)
+
+Fang, 1998 (123)
+
+Cross-sectional, ecologic
+(non-Hispanic black
+adults and white adults,
+New York City, 1988–
+1994)
+
+‘‘Black areas’’ (75%
+All-cause and causeblack), ‘‘white areas’’
+speciﬁc mortality
+(75% white) (New York
+City (zip code areas))
+
+Guest, 1998 (124)
+
+Cross-sectional, ecologic
+(blacks and nonblacks in
+Chicago, Illinois, 1989–
+1991)
+
+Isolation (Chicago
+(census tract))
+
+Hart, 1998 (125)
+
+Cross-sectional, ecologic
+Dissimilarity (metropolitan
+(black adults and white
+area (census tract))
+adults aged 25–64 years
+in 124 MSAs with
+&gt;200,000 population,
+1990–1991)
+Prospective cohort
+% Black in census tract
+(National Health Interview
+Survey respondents,
+1986–1990)
+
+LeClere, 1997 (145)
+
+Age-adjusted all-cause,
+leading cause, and
+homicide mortality
+
+Infant and adult mortality
+
+Metropolitan age- and
+race-adjusted mortality
+rates
+
+Survival over follow-up
+(maximum 6 years of
+follow-up)
+
+Propensity score matched
+analysis demonstrated
+no signiﬁcant infant
+mortality rate difference in
+segregated vs.
+nonsegregated cities
+Mortality lowest for blacks,
+whites, and Hispanics
+living in neighborhoods of
+the same ethnicity
+
+Segregation in 3-level
+ordinal variable, with
+increasing segregationassociated mortality;
+adjusted HR ¼ 1.2 (95%
+CI: 1.02, 1.41) for 1-unit
+change in segregation
+Increasing dissimilarity
+associated with
+premature mortality
+2- to 3-fold increased
+mortality rate for blacks
+aged 25–44 years living in
+predominantly black
+neighborhoods compared
+with &lt;10% black
+neighborhoods;
+associations modest to
+null for older blacks and
+for whites
+Isolation associated with
+increased all-cause,
+cancer, and heart disease
+mortality in blacks;
+associated with higher
+cancer rates in white
+males
+Higher mortality for older
+blacks living in
+predominantly white
+areas; higher mortality for
+whites living in
+predominantly black
+areas; lower mortality for
+blacks living in
+predominantly black
+areas
+Nonsigniﬁcant, positive
+effect between increasing
+black isolation and black
+infant and working adult
+mortality; no effect for
+nonblacks
+Higher dissimilarity
+associated with higher
+black mortality for males
+and females, but no
+association for whites
+Increasing concentration of
+blacks in census tract
+associated with lower
+survival for whites and
+blacks, with moderate
+dose response
+
+Table continues
+
+Epidemiol Rev 2009;31:178–194
+
+Is Segregation Unhealthy?
+
+185
+
+Table 1. Continued
+Author, Year (Reference No.)
+
+Polednak, 1996 (148)
+
+Bird, 1995 (126)
+
+Laveist, 1993 (103)
+
+Polednak, 1993 (127)
+
+Polednak, 1991 (128)
+
+Yankauer, 1950 (1)
+
+Kramer, 2008 (129)
+
+Osypuk, 2008 (120)
+
+Vinikoor, 2008 (134)
+
+Grady, 2007 (29)
+
+Study Design (Population)
+
+Measure of Segregation
+(Geographic Unit
+(Neighborhood Unit))a
+
+Outcome
+
+Results
+
+Time-series, ecologic
+Dissimilarity with MSAs
+Yearly black infant and
+For the highest quintile of
+(black births and white
+divided into quintiles of
+white infant mortality rates
+segregated cities: higher
+births in 38 MSAs with 1
+segregation (metropolitan
+for 1982–1991
+than average black infant
+million population, 1982–
+area (census tract))
+mortality for every year;
+1991)
+for the lowest quintile:
+lower black infant
+mortality for 1982–1988,
+but similar black infant
+mortality risk between the
+lowest and highest
+quintiles in 1988–1991;
+no effect for whites
+Cross-sectional, ecologic
+Dissimilarity (state
+Infant mortality
+Dissimilarity associated
+(metropolitan area
+(black infants and white
+with black but not white
+infants born in 1986–1988
+(census tract)))
+infant mortality
+in 34 US states)
+Cross-sectional, ecologic
+Dissimilarity (metropolitan
+Black-white disparity (risk
+Increase in the black-white
+(births to black women
+area (census tract))
+ratio) for infant mortality
+gap as dissimilarity
+and white women in
+for each city
+increases
+MSAs with &gt;50,000
+population and &gt;10%
+black, 1981–1985)
+Cross-sectional, ecologic
+Dissimilarity (metropolitan
+Black-white adult mortality Increasing dissimilarity
+(black adults and white
+area (census tract))
+risk difference
+associated with
+adults in 38 MSAs with 1
+increasing black-white
+million population, 1982–
+mortality gap
+1986)
+Cross-sectional, ecologic
+Dissimilarity (metropolitan
+Black-white infant mortality Increasing dissimilarity
+(black births and white
+area (census tract))
+risk difference
+associated with larger
+births in 38 MSAs with 1
+difference between black
+million population, 1982–
+infant and white infant
+1986)
+mortality
+Cross-sectional, ecologic
+% Black in 318 ‘‘residential Infant mortality
+Increase in black infant and
+(black women and white
+areas’’ of New York City
+white infant mortality as
+women delivering in New
+proportion black in
+York City, 1945–1947)
+neighborhood of
+residence increased
+Pregnancy outcome studies
+Cross-sectional, ecologic
+Isolation and dissimilarity
+Very preterm birth
+Increased risk of very
+(black women and white
+(metropolitan area
+(&lt;32 weeks)
+preterm birth with isolation
+women with livebirths in
+(census tract))
+but decreased risk with
+168 MSAs, 2002–2004)
+unevenness for black
+women; no effect for white
+women
+Cross-sectional, multilevel Hypersegregation deﬁned
+Preterm birth
+Increased odds of preterm
+(black women and white
+as highly segregated on
+(&lt;37 weeks)
+birth to black women in
+women delivering
+4 of 5 dimensions
+hypersegregated cities
+livebirths in 237 MSAs,
+(metropolitan area
+compared with not; black2000)
+(census tract))
+white disparities also
+larger in hypersegregated
+cities
+Cross-sectional, multilevel Predominantly black
+Low birth weight
+Income incongruity (living
+(black women delivering
+census tracts (&gt;75%) vs.
+(&lt;2,500 g); preterm
+in a higher median
+livebirths in Wake and
+mixed census tracts
+birth (&lt;37 weeks)
+income tract than
+Durham Counties, North
+(75%)
+expected based on
+Carolina, 1999–2001)
+individual education and
+marital status) protective
+against low birth weight
+and preterm birth in
+predominantly black
+neighborhoods but not in
+mixed tracts
+Cross-sectional, multilevel Local spatial segregation
+Low birth weight
+Increased isolation
+(foreign- and US-born
+index (New York City
+(&lt;2,500 g)
+associated with increased
+black women delivering
+(census tract))
+low birth weight risk for
+livebirths in New York
+US-born black women
+City, 2000)
+after control for individual
+and neighborhood
+poverty; for foreign-born
+women, excess risk
+explained by individual
+risk factors
+
+Table continues
+
+Epidemiol Rev 2009;31:178–194
+
+186 Kramer and Hogue
+
+Table 1. Continued
+Author, Year (Reference No.)
+
+Masi, 2007 (135)
+
+Bell, 2006 (102)
+
+Grady, 2006 (28)
+
+Pickett, 2005 (37)
+
+Ellen, 2000 (136)
+
+Sucoff, 1998 (146)
+
+Haas, 2008 (133)
+
+Cooper, 2007 (130)
+
+Do, 2007 (137)
+
+Rodriguez, 2007 (147)
+
+Study Design (Population)
+
+Measure of Segregation
+(Geographic Unit
+(Neighborhood Unit))a
+
+Outcome
+
+Results
+
+Cross-sectional, multilevel Census tracts categorized
+(black, white, and
+as &lt;10% black, 10%–
+Hispanic women
+90% black, &gt;90% black
+delivering live singleton
+births in Chicago, Illinois,
+in 1991)
+
+Birth weight (continuous);
+No association of racial
+preterm birth (&lt;37 weeks)
+concentration on birth
+weight or preterm birth for
+black women; modest
+association for white
+women, with higher risk in
+predominantly black
+tracts
+Cross-sectional, multilevel Isolation and spatial
+Birth weight (continuous);
+Decreased birth weight
+(livebirths to black women
+proximity (metropolitan
+preterm birth (&lt;37
+(68 g) and increased
+in 225 US MSAs, 2002)
+area (census tract))
+weeks); intrauterine
+preterm birth for high vs.
+growth restriction
+very low isolation
+(OR ¼ 1.27); high vs.
+very low clustering
+associated with higher
+birth weight (25 g) and
+lower preterm birth
+(OR ¼ 0.86)
+Cross-sectional, multilevel Local spatial segregation
+Low birth weight
+Segregation associated
+(black women with
+index (New York City
+(&lt;2,500 g)
+with low birth weight
+livebirths in New York
+(census tract))
+independent of
+City, 2000)
+neighborhood poverty
+and individual SES
+Cross-sectional, multilevel Predominantly black
+Low birth weight
+Income incongruity (living
+(black women delivering
+census tracts (&gt;90%) vs.
+(&lt;2,500 g); preterm
+in a higher median
+livebirths in Chicago,
+mixed census tracts
+birth (&lt;37 weeks)
+income tract than
+Illinois, 1991)
+(90%)
+expected based on
+individual education and
+marital status) protective
+against low birth weight
+and preterm birth in
+predominantly black
+neighborhoods, but not in
+mixed tracts
+Low birth weight
+Increasing segregation
+Cross-sectional, multilevel Dissimilarity and
+(&lt;2,500 g)
+associated with increased
+(black women and white
+centralization
+risk of low birth weight for
+women delivering in 261
+(metropolitan area
+black women but not
+MSAs with &gt;100,000
+(census tract))
+white women
+population and &gt;5,000
+black, 1990)
+Retrospective cohort (black Neighborhoods (tracts)
+Time to teenage
+Black girls in highly
+female Panel Study of
+categorized by racial
+premarital ﬁrst birth
+segregated
+Income Dynamics
+concentration
+neighborhoods 50% more
+participants born in 1953–
+likely than black girls in
+1968)
+racially mixed tracts to
+have premarital births
+before age 20 years
+Other health outcomes
+Cross-sectional, multilevel Isolation (counties (census Early- vs. late-stage
+Black-white disparity in
+(black, white, and
+tract)); categorized into
+diagnosis of primary lung,
+early-stage diagnosis
+Hispanic adults aged &gt;65
+high- vs. low-segregated
+colorectal, breast, or
+smallest in highyears in the SEER
+counties
+prostate cancer
+segregation, low-income
+database, 1992–2002)
+neighborhoods
+Cross-sectional, ecologic
+Isolation and concentration Injection drug use
+Isolation, but not
+(blacks in MSAs with
+(metropolitan area
+prevalence
+concentration, associated
+500,000 population in
+(census tract))
+with black injection drug
+1993)
+use prevalence
+Cross-sectional, multilevel % Black or % Hispanic
+Body mass index
+Proportion black and
+(NHANES III participants,
+(census tract)
+Hispanic in
+1988–1994)
+a neighborhood
+marginally associated
+with body mass index in
+black and Hispanic males
+but not females
+Retrospective cohort (black % Black in patient zip code Time to death or kidney
+Increased mortality for
+adults and white adults
+area divided into quartiles
+transplant
+whites but not blacks as
+beginning dialysis
+black concentration
+between 1995 and 2002)
+increased; time to
+transplantation longer for
+both blacks and whites
+living in predominantly
+black neighborhoods
+
+Table continues
+
+Epidemiol Rev 2009;31:178–194
+
+Is Segregation Unhealthy?
+
+187
+
+Table 1. Continued
+Author, Year (Reference No.)
+
+Study Design (Population)
+
+Measure of Segregation
+(Geographic Unit
+(Neighborhood Unit))a
+
+Chang, 2006 (138)
+
+Cross-sectional, multilevel
+(black respondents and
+white respondents to
+BRFSS, 2000)
+
+Isolation index
+(metropolitan area
+(census tract))
+
+Mobley, 2006 (69)
+
+Cross-sectional, multilevel
+(uninsured, low-income
+women enrolled from 5
+US states)
+
+Isolation index, although
+scale of neighborhood
+and broader area not
+deﬁned
+
+Robert, 2006 (139)
+
+Cross-sectional, multilevel Dissimilarity and isolation
+(black adults and white
+(counties (census tract))
+adults aged &gt;65 years
+from the Americans
+Changing Lives survey
+and the National Survey
+of Families and
+Households, 1986–1988)
+Cross-sectional, multilevel % Minority by zip code
+(adults in New York City
+area, categorized into
+Social Indicator Survey,
+tertiles
+1999–2002)
+
+White, 2006 (140)
+
+Subramanian, 2005 (141)
+
+Fabio, 2004 (131)
+
+Cross-sectional, multilevel Dissimilarity and isolation
+(black adults and white
+(metropolitan area
+adults living in MSAs with
+(census tract))
+&gt;100,000 population and
+&gt;5,000 black, 2000)
+Cross-sectional, ecologic
+Gini coefﬁcient of racial
+(Pennsylvania, 1995–
+unevenness (counties
+1997)
+(census tract))
+
+Outcome
+
+Results
+
+Body mass index
+One standard deviation
+(continuous) % with body
+increase in isolation
+mass index 30 kg/m2
+associated with a 0.42
+increase in body mass
+index, and obesity
+OR ¼ 1.14 for blacks; no
+association for whites
+Body mass index 10-year
+No association between
+predicted heart disease
+segregation and body
+risk
+mass index for any group,
+and reduced coronary
+heart disease risk for
+blacks and Hispanics as
+segregation increased
+Self-rated health
+No association for whites or
+blacks between
+segregation and selfrated health
+
+Self-rated health (fair/poor
+vs. excellent/very good/
+good)
+
+Self-rated health (fair/poor
+vs. excellent/very good/
+good)
+
+Intentional injury diagnosis
+on hospital discharge
+
+Skinner, 2003 (132)
+
+Cross-sectional, ecologic
+(black beneﬁciaries and
+white beneﬁciaries of
+Medicare, 1998–2000)
+
+Dissimilarity (metropolitan
+area (census tract))
+
+Rates of knee arthroplasty
+
+Thomas, 2003 (78)
+
+Cross-sectional, ecologic
+(counties in 14
+southeastern US states,
+1986–1995)
+
+Dissimilarity and isolation
+(counties (census tract))
+
+County gonorrhea rates
+categorized as
+endemically high or
+endemically low
+
+Acevedo-Garcia, 2001 (75)
+
+Cross-sectional, ecologic
+(New Jersey adults)
+
+Isolation and concentration
+(New Jersey (zip code
+area))
+
+Annual incidence of
+tuberculosis by race
+
+Poor self-rated health
+associated with higher
+density minority in zip
+code area (aOR ¼ 1.7,
+95% CI: 1.1, 2.7)
+High isolation associated
+with increased odds of
+poor self-rated health
+among blacks but not
+whites
+Increasing segregation
+(unevenness) associated
+with increased intentional
+injury discharge
+Smaller difference in black
+and white knee
+arthroplasty for women
+living in low-segregation
+cities (rate
+difference ¼ 0.46/1,000)
+vs. high-segregation cities
+(rate difference ¼ 1.05/
+1,000); no effect for men
+Black isolation index &gt;0.2
+associated with
+endemically high counties
+controlling for proportion
+black and poverty
+indicators (aOR ¼ 248,
+95% CI: 22, 999)
+Higher isolation associated
+with tuberculosis in
+blacks, and, to a lesser
+extent, Hispanics; no
+association for whites
+
+Abbreviations: aOR, adjusted odds ratio; BRFSS, Behavioral Risk Factor Surveillance System; CI, conﬁdence interval; HR, hazard ratio; MSA,
+Metropolitan Statistical Area; NHANES, National Health and Nutrition Examination Survey; OR, odds ratio; SEER, Surveillance, Epidemiology, and
+End Results.
+a
+Geographic units for measuring segregation are displayed in terms of the nesting of 2 scales: (macro area (neighborhood subarea)).
+
+focused on infant and adult mortality, while studies of the
+past decade broadened to include a wide variety of reproductive, infectious, and chronic disease endpoints.
+A third of the studies conducted in the past decade relied
+on racial composition of neighborhoods to deﬁne segregation rather than indices that place those neighborhood comEpidemiol Rev 2009;31:178–194
+
+positions in the context of the wider city. As previously
+noted, the proportion of blacks in a neighborhood is an incomplete description of residential patterns, although
+several studies used custom-deﬁned thresholds of proportion black to describe ‘‘predominantly black’’ and
+‘‘predominantly white’’ neighborhoods (37, 121, 123, 134,
+
+188 Kramer and Hogue
+
+135), which may coarsely serve as a proxy for citywide
+segregation.
+Of the remaining two-thirds of the studies, the dissimilarity index was the most common measure, although several studies also used the isolation index. Acevedo-Garcia
+(36) suggests that health researchers have opted for the ease
+of interpreting the dissimilarity index without appreciating
+the conceptual complexities represented by differing measures. The dissimilarity index may be the conceptually
+weakest in terms of understanding ill-health effects of segregation, whereas isolation and concentration may be stronger in patterning unhealthy environments and exposures. In
+fact, it is segregation measured on the evenness scale that
+sometimes appears to be health protective (102, 121, 123,
+129), although, in most of these cases, it was evenness,
+controlling for isolation, suggesting that the hypothesized
+ethnic enclave effect is visible only after conditioning on
+isolation.
+Studies varied greatly in model speciﬁcations. Because
+the hypothesized effect of segregation is mediated through
+many socioeconomic and behavioral processes, distinguishing between a variable that confounds the association and
+one that is a mediator is by no means simple. Increasingly,
+studies of the past few years have explicitly stated the underlying conceptual model tested and have discussed conditioning and interacting effects of individual and
+neighborhood variables with segregation (28, 29, 37, 69,
+102, 107, 120, 130, 134–139, 141, 142, 149).
+While there are important geographic variations in white
+health outcomes, the spatial determinants of health appear to
+be quite different for whites and blacks (126, 129). With few
+exceptions (112, 123, 135, 145, 147), the sometimesprofound effects of segregation on black health outcomes
+are absent for whites in the same cities. When a negative
+association has been found, it is usually among poor whites
+living in predominantly black neighborhoods.
+ARE SEGREGATION-RELATED HEALTH EFFECTS
+MODIFIABLE?
+
+There is an intrinsic beneﬁt in better understanding pathways to population health, regardless of whether the pathways are easily modiﬁable. However, there is a more
+pressing public health beneﬁt in focusing on exposures that
+are at least potentially modiﬁable. Theoretically, residential
+segregation is a modiﬁable exposure, yet effective instrumental attempts to reduce segregation in the United States
+have yet to be developed.
+The Fair Housing Act of 1968 is the only coordinated
+policy initiative taken to reduce racial residential segregation, and its scope is arguably incomplete (150). There were
+small, but steady declines in racial residential segregation
+between 1970 and 2000 (40, 151), although one study noted
+that black-white segregation declined at the micro level only
+but that macro segregation has been unchanged (27). Despite possible improvements over 30 years, black Americans
+remain the most segregated minority group in the United
+States.
+In terms of intervention research on housing or neighborhood choice and health or social outcomes, 2 studies are
+
+frequently cited. The 1976 court decree establishing the
+Gautreaux Assisted Housing Program in Chicago, Illinois,
+was in response to a preceding housing discrimination lawsuit against the Chicago Housing Authority claiming systematic discrimination in public housing. The Gautreaux
+program represents a natural experiment wherein 7,000
+housing vouchers were made available to residents of highly
+segregated Chicago neighborhoods with the requirement
+that recipients be placed in racially integrated, low- to
+moderate-poverty neighborhoods (152). Subsequent studies
+of the placement cohort found that, 10–20 years later, the
+majority continued to live in lower poverty, less-segregated
+neighborhoods than prior to placement (153); secondgeneration boys placed in the suburbs had fewer drug
+offenses (154); and, among males relocating to areas with
+higher proportions of college graduates, all-cause and
+homicide-related mortality was lower (155).
+In the federally funded, randomized Moving To Opportunity (MTO) trial, public-housing-eligible families were
+assigned either housing counseling with a voucher requiring
+placement in a low-poverty neighborhood, a voucher without geographic restriction, or no voucher (156). While early
+evidence supported positive economic effects for treatment
+families (157), those gains may not persist with time (158,
+159). In terms of health outcomes, there is some evidence
+that families that moved to low-poverty neighborhoods experienced signiﬁcantly improved mental health (160) and
+lower obesity rates (161), but other health outcomes such
+as asthma and self-reported health were not different from
+those of controls.
+In separate reviews of housing-mobility programs and
+health effects, Acevedo-Garcia et al. (162) and Anderson
+et al. (45) suggest that there is modest support for rental
+voucher programs as one approach to improve housing
+safety, reduce risk of crime victimization, and improve
+adult and child mental health. The paucity of evidence
+for other outcomes is in large part due to the absence of
+health outcomes as originally measured indicators in either
+study.
+Research that continues to pursue the effects of public
+housing policy interventions on population health is important. Another approach is to view the causal chain from
+segregation to health as a series of opportunities for intervention, with an overarching goal of increasing access to
+‘‘opportunity neighborhoods’’ for all (39). This option
+opens up opportunities to alter negative effects of segregation that could range from assisting in opening housing
+markets so that moves out of concentrated poverty are
+possible (45, 153, 162) to addressing characteristics of segregated neighborhoods that are unhealthy, as seen in the
+built-environment literature (163, 164). One caution, however, is that researchers seeking to remedy the effects of
+segregation remain cognizant of the distinction between the
+process of segregation (e.g., institutionalized racism or inequitable access to health-promoting opportunities) and
+the state or condition of segregation (living near black families or far from white families) (115). It is most probable that
+any injurious attributes of segregation result from inequity
+in the process rather than the condition of close proximity
+to black families (or distance from white families) per se.
+Epidemiol Rev 2009;31:178–194
+
+Is Segregation Unhealthy?
+
+DISCUSSION
+
+The weight of the available evidence is that the process of
+racial residential segregation is associated with generally
+deleterious health of African Americans, and particularly
+for poor pregnancy outcomes, but this evidence is limited
+in many regards. Although segregation and social outcomes
+have been studied for decades, analyzing segregation as
+a useful construct in epidemiologic research is still in its
+infancy. In 2003, Acevedo-Garcia et al. (36) reviewed the
+state of residential segregation and health research, making
+4 recommendations: develop multilevel research designs,
+expand segregation research beyond black-white to include
+other ethnic and racial groups, consider interaction between
+racial and economic segregation, and further develop the
+conceptual framework in which to understand segregation
+and health. Much progress has been made in response to
+these goals, but much work remains in order to understand
+how to best measure segregation, understand mechanisms
+by which distal social forces become proximal social and
+biologic outcomes, and test amenable paths to intervention.
+Future research should consider several issues.
+First, continued development of methodological and conceptual tools to better understand residential segregation is
+necessary. While many recent studies use multilevel thinking in both conceptual and statistical approaches, clarity is
+still needed regarding the relevant scale of effect (e.g., of the
+measured neighborhood), levels of interest, and mediating
+variables. The interesting ﬁndings of variable segregation
+effects across different dimensions such as clustering and
+isolation should encourage researchers to further investigate
+the multidimensional nature of residential patterns and
+health. Similarly, use of newer spatial indices of segregation
+as well as multigroup indices may provide more insight than
+repetitive use of the US Census–derived dissimilarity index.
+Although this review focuses primarily on racial residential
+segregation, it is clear that poverty concentration and economic segregation are closely linked with racial settlement
+patterns. Research considering the interaction of economic
+and racial segregation is still needed.
+Second, the existing segregation-health literature can be
+decomposed into 2 broad categories: 1) segregation as an
+exposure in intercity studies and 2) segregation as a local
+exposure in intracity research. This distinction is extremely
+important. The body of work using single cities to explore
+the health effects of segregation is an extension of the
+neighborhood-effects literature (46); it posits that the neighborhood context in mostly black neighborhoods is different
+from that in mixed-race or predominantly white neighborhoods and therefore impacts health. This approach has the
+strength of ﬁner spatial resolution of individuals nested
+within neighborhoods, but Oakes (63) has argued that counterfactual reasoning in research on neighborhood effects and
+health outcomes may suffer from unmeasured confounding
+by forces that select individuals into neighborhoods. In other
+words, individuals are not randomly assigned to neighborhoods within a city; thus, groups may not be exchangeable.
+Intercity research, on the other hand, has tended to look
+at the average health of residents of metropolitan areas
+(although typically controlling for individual-level covariEpidemiol Rev 2009;31:178–194
+
+189
+
+ates such as age, gender, and risk behaviors) and uses the
+heterogeneity of segregation across metropolitan areas to
+make inferences about the impact of segregation net of
+individual characteristics. This approach posits that living
+in a city with higher segregation (e.g., greater exposure to
+institutionalized racism) negatively impacts the health of
+all black residents, regardless of the racial composition of
+their neighborhood of residence. While this approach offers a partial solution to the selection problem (e.g., segregation may be one of the previously unmeasured forces
+that differentially sort individuals), most such studies lose
+the spatial resolution to know how outcomes varied by
+neighborhood within metropolitan areas. Further extending the multilevel framework to include individuals nested
+within neighborhoods nested within an ample number of
+heterogeneous metropolitan areas could offer promising
+new insight.
+Finally, the segregation-health literature could be greatly
+enhanced by utilizing longitudinal in addition to crosssectional study designs. Longitudinal designs could be applied to individuals, neighborhoods, or metropolitan areas,
+each with different implications. Most of the pathways hypothesized between segregation and health act across the
+life course, but there is almost no literature that accounts
+for different levels of cumulative exposure across the life
+course and very little literature with prospective information
+on health outcomes. For some poor and minority individuals, living in highly segregated environments may not be
+a time-varying exposure but rather a life-long constant
+(38). However, there is evidence that intercity and intracity
+migration varies by race and economics and with regard to
+metropolitan segregation, suggesting that longitudinal comparisons could be meaningfully made between those living in
+high- versus low-segregated cities (30). Alternatively, neighborhoods or metropolitan areas could be followed longitudinally to better understand the relation between residential
+patterning and health. Such time-series approaches might be
+particularly fruitful in areas characterized by progressive gentriﬁcation or decay over time. Similarly, time-series, crosssectional analysis of health patterns in cities across the decades
+could document health changes associated with changing
+segregation.
+The vast majority of black Americans live in urban settings, many but not all of which are highly segregated. It is
+vitally important to understand how much of their health
+disparities are a result of speciﬁc dimensions of segregation
+and whether these disparities can be reduced either by policies that reduce segregation or interventions that reduce the
+impact of segregation.
+
+ACKNOWLEDGMENTS
+
+Author afﬁliation: Women’s and Children’s Center, Department of Epidemiology, Rollins School of Public Health,
+Emory University, Atlanta, Georgia (Michael R. Kramer,
+Carol R. Hogue).
+This work was supported by a Health Resource and
+Service Administration Maternal and Child Health training
+
+190 Kramer and Hogue
+
+grant (T03MC07651 to M. K.) and a National Institute of
+Health Reproductive, Perinatal, and Pediatric Health Training grant (T32 HD052460 to M. K.).
+Conﬂict of interest: none declared.
+
+18.
+
+19.
+REFERENCES
+1. Yankauer A. The relationship of fetal and infant mortality to
+residential segregation: an inquiry into social epidemiology.
+Am Sociol Rev. 1950;15(5):644–648.
+2. Williams DR, Collins C. Racial residential segregation:
+a fundamental cause of racial disparities in health. Public
+Health Rep. 2001;116(5):404–416.
+3. Keppel KG. Ten largest racial and ethnic health disparities in
+the United States based on Healthy People 2010 Objectives.
+Am J Epidemiol. 2007;166(1):97–103.
+4. Centers for Disease Control and Prevention. Healthy
+People 2010: Midcourse Review. Atlanta, GA: Centers for
+Disease Control and Prevention; 2007. (http://www.healthy
+people.gov/Data/midcourse/). (Accessed September 1, 2008).
+5. Massey DS, Denton NA. The dimensions of residential segregation. Soc Forces. 1988;67(2):281–315.
+6. Glazer N, Moynihan DP. Beyond the Melting Pot: The
+Negroes, Puerto Ricans, Jews, Italians, and Irish of New York
+City. 2nd ed. Cambridge, MA: MIT Press; 1970.
+7. Cutler DM, Glaeser EL, Vigdor JL. The rise and decline of
+the American ghetto. J Polit Econ. 1999;107(3):455–506.
+8. Massey DS. Origins of economic disparities: the historical
+role of housing segregation. In: Carr JH, Kutty NK, eds.
+Segregation: The Rising Costs for America. New York, NY:
+Routledge; 2008:39–80.
+9. Clark TC, Perlman PB. Prejudice and Property: An Historic
+Brief Against Racial Covenants. Washington, DC: Public
+Affairs Press; 1948.
+10. Massey DS, Denton NA. American Apartheid: Segregation
+and the Making of the Underclass. Cambridge, MA: Harvard
+University Press; 1993.
+11. Massey DS, Fischer MJ. How segregation concentrates
+poverty. Ethn Racial Stud. 2000;23(4):670–691.
+12. Yinger J. Closed Doors, Opportunities Lost: The Continuing
+Costs of Housing Discrimination. New York, NY: Russell
+Sage Foundation; 1995.
+13. Kohut A, Taylor P, Keeter S. Optimism About Black Progress
+Declines: Blacks See Growing Values Gap Between Poor and
+Middle Class. Washington, DC: Pew Research Center; 2007.
+(http://pewresearch.org/pubs/634/black-public-opinion).
+(Accessed August 2008).
+14. Gans HJ. Involuntary segregation and the ghetto: disconnecting process and place. City Community. 2008;7(4):
+353–357.
+15. Reardon SF. A conceptual framework for measuring segregation and its association with population outcomes. In:
+Oakes JM, Kaufman JS, eds. Methods in Social Epidemiology. San Francisco, CA: Jossey-Bass; 2006:169–192.
+16. Ofﬁce of Management and Budget. Final Report and Recommendations From the Metropolitan Area Standards
+Review Committee to the Ofﬁce of Management and Budget
+Concerning Changes to the Standards for Deﬁning Metropolitan Areas. Washington, DC: US Federal Register; 2000.
+(http://www.whitehouse.gov/OMB/fedreg/2000.html).
+(Accessed December 2007).
+17. Acevedo-Garcia D, Osypuk TL. Invited commentary: residential segregation and health—the complexity of modeling
+
+20.
+
+21.
+22.
+23.
+
+24.
+25.
+26.
+
+27.
+
+28.
+29.
+
+30.
+
+31.
+32.
+33.
+
+34.
+35.
+36.
+
+separate social contexts. Am J Epidemiol. 2008;168(11):
+1255–1258.
+Johnston R, Poulsen M, Forrest J. Ethnic and racial segregation in US metropolitan areas, 1980–2000—the dimensions of segregation revisited. Urban Aff Rev. 2007;42(4):
+479–504.
+Krieger N, Chen J, Waterman P, et al. Choosing area based
+socioeconomic measures to monitor social inequalities in low
+birth weight and childhood lead poisoning: the Public Health
+Disparities Geocoding Project (US). J Epidemiol Community
+Health. 2003;57(3):186–199.
+Krieger N, Waterman P, Lemieux K, et al. On the wrong
+side of the tracts? Evaluating the accuracy of geocoding in
+public health research. Am J Public Health. 2001;91(7):
+1114–1116.
+Reardon SF, O’Sullivan D. Measures of spatial segregation.
+Sociol Methodol. 2004;34:121–162.
+Wong DWS. Comparing traditional and spatial segregation
+measures: a spatial scale perspective. Urban Geogr. 2004;
+25(1):66–82.
+Lee BA, Reardon SF, Firebaugh G, et al. Beyond the census
+tract: patterns and determinants of racial residential segregation at multiple scales. Am Sociol Rev. 2008;73(5):
+766–791.
+Wong DW. Formulating a general spatial segregation measure. Prof Geogr. 2005;57(2):285–294.
+Wong DWS. Spatial measures of segregation and GIS. Urban
+Geogr. 2002;23(1):85–92.
+Aguilera A, Ugalde E. A spatially extended model for residential segregation [electronic article]. Discrete Dynamics in
+Nature and Society. 2007. (http://www.hindawi.com/
+getarticle.aspx?doi¼10.1155/2007/48589). (Accessed
+September 2008).
+Reardon SF, Farrell CR, Matthews S, et al. Race and space in
+the 1990’s: changes in the spatial scale of racial residential
+segregation, 1990–2000. Presented at the Annual Meeting of
+the Population Association of America, New York, New
+York, March 29–31, 2007.
+Grady SC. Racial disparities in low birthweight and the
+contribution of residential segregation: a multilevel analysis.
+Soc Sci Med. 2006;63(12):3013–3029.
+Grady SC, McLafferty S. Segregation, nativity, and health:
+reproductive health inequalities for immigrant and nativeborn black women in New York City. Urban Geogr. 2007;
+28(4):377–397.
+South SJ, Crowder K, Pais J. Inter-neighborhood migration
+and spatial assimilation in a multi-ethnic world: comparing
+Latinos, Blacks and Anglos. Soc Forces. 2008;87(1):
+415–443.
+Reardon SF, Firebaugh G. Measures of multigroup segregation. Sociol Methodol. 2002;32(1):33–67.
+Grannis R. Discussion: segregation indices and their functional inputs. Sociol Methodol. 2002;32(1):69–84.
+Reardon SF, Firebaugh G, O’Sullivan D, et al. A new approach to measuring socio-spatial economic segregation.
+Presented at the 29th General Conference of the International
+Association for Research in Income and Wealth, Joensuu,
+Finland. August 20–26, 2006.
+Jargowsky PA. Take the money and run: economic segregation in US metropolitan areas. Am Sociol Rev. 1996;61(6):
+984–998.
+Culhane JF, Elo IT. Neighborhood context and reproductive
+health. Am J Obstet Gynecol. 2005;192(5 suppl):S22–S29.
+Acevedo-Garcia D, Lochner KA, Osypuk TL, et al. Future
+directions in residential segregation and health research:
+Epidemiol Rev 2009;31:178–194
+
+Is Segregation Unhealthy?
+
+37.
+38.
+39.
+
+40.
+41.
+42.
+43.
+44.
+45.
+
+46.
+47.
+48.
+49.
+50.
+51.
+52.
+53.
+54.
+55.
+56.
+57.
+
+a multilevel approach. Am J Public Health. 2003;93(2):
+215–221.
+Pickett KE, Collins JW Jr, Masi CM, et al. The effects of
+racial density and income incongruity on pregnancy outcomes. Soc Sci Med. 2005;60(10):2229–2238.
+Wilson WJ. The Truly Disadvantaged: The Inner City, the
+Underclass, and Public Policy. Chicago, IL: University of
+Chicago Press; 1990.
+Acevedo-Garcia D, Osypuk TL, McArdle N, et al. Toward
+a policy-relevant analysis of geographic and racial/ethnic
+disparities in child health. Health Aff (Millwood). 2008;
+27(2):321–333.
+Timberlake JM. Racial and ethnic inequality in the duration
+of children’s exposure to neighborhood poverty and afﬂuence. Soc Probl. 2007;54(3):319–342.
+Orﬁeld G, Eaton SE. Dismantling Desegregation: The Quiet
+Reversal of Brown v. Board of Education. New York, NY:
+New Press; 1996.
+Lleras C. Race, racial concentration, and the dynamics of
+educational inequality across urban and suburban schools.
+Am Educ Res J. 2008;45(4):886–912.
+Card D, Rothstein J. Racial segregation and the blackwhite test score gap. J Public Econ. 2007;91(11–12):
+2158–2184.
+Howell-Moroney M. The geography of opportunity and unemployment: an integrated model of residential segregation
+and spatial mismatch. J Urban Aff. 2005;27(4):353–377.
+Anderson LM, Charles JS, Fullilove MT, et al. Providing
+affordable family housing and reducing residential segregation by income. A systematic review. Am J Prev Med. 2003;
+24(3 suppl):47–67.
+Cutler DM, Glaeser EL. Are ghettos good or bad? Q J Econ.
+1997;112(3):827–872.
+Dickerson NT. Black employment, segregation, and the social organization of metropolitan labor markets. Econ Geogr.
+2007;83(3):283–307.
+Dawkins CJ, Shen Q, Sanchez TW. Race, space, and unemployment duration. J Urban Econ. 2005;58(1):91–113.
+Fairchild GB. The inﬂuence of residential segregation and its
+correlates on ethnic enterprise in urban areas. J Bus Venturing. 2008;23(5):513–527.
+Fairchild GB. Residential segregation inﬂuences on the
+likelihood of black and white self-employment. J Bus
+Venturing. 2008;23(1):46–74.
+Quillian L. The decline of male employment in low-income
+black neighborhoods, 1950–1990. Soc Sci Res. 2003;32(2):
+220–250.
+Boustan LP, Margo RA. Race, segregation, and postal employment: new evidence on spatial mismatch. J Urban Econ.
+2009;65(1):1–10.
+Fischer MJ. The relative importance of income and race in
+determining residential outcomes in U.S. urban areas,
+1970–2000. Urban Aff Rev. 2003;38:669–696.
+Krysan M. Does race matter in the search for housing? An
+exploratory study of search strategies, experiences, and locations. Soc Sci Res. 2008;37(2):581–603.
+Massey DS, Lundy G. Use of black English and racial discrimination in urban housing markets—new methods and
+ﬁndings. Urban Aff Rev. 2001;36(4):452–469.
+Hodge ME, Dawkins MC, Reeves JH. A case study of
+mortgage reﬁnancing discrimination: African American intergenerational wealth. Sociol Inq. 2007;77(1):23–43.
+Massey DS, Condran GA. The effect of residential segregation on black social and economic well-being. Popul Index.
+1986;52(3):429.
+
+Epidemiol Rev 2009;31:178–194
+
+191
+
+58. Alba RD, Logan JR, Stults BJ. How segregated are middleclass African Americans? Soc Probl. 2000;47(4):543–558.
+59. Darden JT, Bagaka’s JG, Ji SJ. Racial residential segregation
+and the concentration of low- and high-income households in
+the 45 largest U.S. metropolitan areas. J Dev Soc. 1997;13(2):
+171–194.
+60. Cummins S, Curtis S, Diez-Roux AV, et al. Understanding
+and representing ‘place’ in health research: a relational approach. Soc Sci Med. 2007;65(9):1825–1838.
+61. Diez Roux AV. Investigating neighborhood and area
+effects on health. Am J Public Health. 2001;91(11):
+1783–1789.
+62. Riva M, Gauvin L, Barnett TA. Toward the next generation of
+research into small area effects on health: a synthesis of
+multilevel investigations published since July 1998. J Epidemiol Community Health. 2007;61(10):853–861.
+63. Oakes JM. The (mis)estimation of neighborhood effects:
+causal inference for a practicable social epidemiology. Soc
+Sci Med. 2004;58(10):1929–1952.
+64. O’Flaherty B, Sethi R. Crime and segregation. J Econ Behav
+Organ. 2007;64(3–4):391–405.
+65. Velez MB, Krivo LJ, Peterson RD. Structural inequality and
+homicide: an assessment of the black-white gap in killings.
+Criminology. 2003;41(3):645–672.
+66. Peterson RD, Krivo LJ. Racial segregation and black urban
+homicide. Soc Forces. 1993;71(4):1001–1026.
+67. Peterson RD, Krivo LJ, Velez MB. Segregation and youth
+criminal violence: a review and agenda. In: White S, ed.
+Handbook of Youth and Justice. Dordrecht, The Netherlands:
+Kluwer Academic Publishers; 2001:277–286.
+68. Shihadeh ES, Flynn N. Segregation and crime: the effect of
+black social isolation on the rates of black urban violence.
+Soc Forces. 1996;74(4):1325–1352.
+69. Mobley LR, Root ED, Finkelstein EA, et al. Environment,
+obesity, and cardiovascular disease risk in low-income
+women. Am J Prev Med. 2006;30(4):327–332.
+70. Normoyle JB. Fear of crime and satisfaction among elderly
+public housing residents: the impact of residential segregation. Basic Appl Soc Psych. 1987;8(3):193–207.
+71. Steffensmeier D, Ulmer J, Kramer J. The interaction of race,
+gender, and age in criminal sentencing: the punishment cost
+of being young, black, and male. Criminology. 1998;36(4):
+763–797.
+72. Akins S. Racial segregation and property crime: examining
+the mediating effect of police strength. Justice Q. 2003;
+20(4):675–695.
+73. Wilbur MB, Marani JE, Appugliese D, et al. Socioemotional
+effects of fathers’ incarceration on low-income, urban,
+school-aged children. Pediatrics. 2007;120(3):e678–e685.
+74. Heinonen S, Kirkinen P. Pregnancy outcome after previous
+stillbirth resulting from causes other than maternal conditions
+and fetal abnormalities. Birth. 2000;27(1):33–37.
+75. Acevedo-Garcia D. Zip code-level risk factors for tuberculosis: neighborhood environment and residential segregation
+in New Jersey, 1985–1992. Am J Public Health. 2001;91(5):
+734–741.
+76. Acevedo-Garcia D. Residential segregation and the epidemiology of infectious diseases. Soc Sci Med. 2000;51(8):
+1143–1161.
+77. Lane SD, Rubinstein RA, Keefe RH, et al. Structural violence
+and racial disparity in HIV transmission. J Health Care Poor
+Underserved. 2004;15(3):319–335.
+78. Thomas JC, Gafﬁeld ME. Social structure, race, and gonorrhea rates in the southeastern United States. Ethn Dis. 2003;
+13(3):362–368.
+
+192 Kramer and Hogue
+
+79. Morello-Frosch R, Jesdale BM. Separate and unequal: residential segregation and estimated cancer risks associated
+with ambient air toxics in U.S. metropolitan areas. Environ
+Health Perspect. 2006;114(3):386–393.
+80. Morello-Frosch R, Lopez R. The riskscape and the color line:
+examining the role of segregation in environmental health
+disparities. Environ Res. 2006;102(2):181–196.
+81. Daniels G, Friedman S. Spatial inequality and the distribution
+of industrial toxic releases: evidence from the 1990 TRI. Soc
+Sci Q. 1999;80(2):244–262.
+82. Downey L. US metropolitan-area variation in environmental
+inequality outcomes. Urban Stud. 2007;44(5–6):953–977.
+83. Morland K, Filomena S. Disparities in the availability of
+fruits and vegetables between racially segregated urban
+neighbourhoods. Public Health Nutrition. 2007;10(12):
+1481–1489.
+84. Morland K, Wing S, Diez Roux A, et al. Neighborhood
+characteristics associated with the location of food stores and
+food service places. Am J Prev Med. 2002;22(1):23–29.
+85. Zenk SN, Schulz AJ, Israel BA, et al. Neighborhood racial
+composition, neighborhood poverty, and the spatial accessibility of supermarkets in metropolitan Detroit. Am J Public
+Health. 2005;95(4):660–667.
+86. Zenk SN, Schulz AJ, Israel BA, et al. Fruit and vegetable
+access differs by community racial composition and socioeconomic position in Detroit, Michigan. Ethn Dis. 2006;
+16(1):275–280.
+87. LaVeist TA. On the study of race, racism, and health: a shift
+from description to explanation. Int J Health Serv. 2000;
+30(1):217–219.
+88. Diez Roux AV, Merkin SS, Arnett D, et al. Neighborhood of
+residence and incidence of coronary heart disease. N Engl J
+Med. 2001;345(2):99–106.
+89. Chaix B. Geographic life environments and coronary heart
+disease: a literature review, theoretical contributions, methodological updates, and a research agenda. Annu Rev Public
+Health. Advance Access: January 14, 2009. (DOI: 10.1146/
+annurev.publhealth.031308.100158).
+90. Cummins S, Macintyre S. Food environments and
+obesity—neighbourhood or nation? Int J Epidemiol. 2006;
+35(1):100–104.
+91. Adams EK. Factors affecting physician provision of preventive care to Medicaid children. Health Care Financ Rev.
+2001;22(4):9–26.
+92. Adams EK. Effect of increased Medicaid fees on physician
+participation and enrollee service utilization in Tennessee,
+1985–1988. Inquiry. 1994;31(2):173–187.
+93. Gifford B. Obstetricians’ receptiveness to teen prenatal patients who are Medicaid recipients. Health Serv Res. 1997;
+32(3):265–282.
+94. Greene J, Blustein J, Weitzman BC. Race, segregation, and
+physicians’ participation in Medicaid. Milbank Q. 2006;
+84(2):239–272.
+95. Putnam RD. Bowling Alone: The Collapse and Revival of
+American Community. New York, NY: Simon &amp; Schuster; 2000.
+96. Baum FE, Ziersch AM. Social capital. J Epidemiol Community Health. 2003;57(5):320–323.
+97. Kawachi I. Social capital and community effects on population and individual health. Ann N Y Acad Sci. 1999;896:
+120–130.
+98. Hero RE. Social capital and racial inequality in America.
+Perspect Polit. 2003;1:113–122.
+99. Marschall MJ, Stolle D. Race and the city: neighborhood
+context and the development of generalized trust. Polit
+Behav. 2004;26(2):125–153.
+
+100. Sampson RJ, Wilson WJ. Toward a theory of race, crime, and
+urban inequality. In: Hagan J, Peterson RD, eds. Crime and
+Inequality. Stanford, CA: Stanford University Press; 1995:
+37–54.
+101. Briggs XS. Bridging networks, social capital, and racial
+segregation in America [electronic article]. John F. Kennedy
+School of Government Harvard University Faculty research
+working paper series; 2003. (http://econpapers.repec.org/
+paper/eclharjfk/rwp02-011.htm) (Accessed September
+2008).
+102. Bell JF, Zimmerman FJ, Almgren GR, et al. Birth outcomes
+among urban African-American women: a multilevel analysis of the role of racial residential segregation. Soc Sci Med.
+2006;63(12):3030–3045.
+103. Laveist TA. Segregation, poverty, and empowerment: health
+consequences for African Americans. Milbank Q. 1993;
+71(1):41–64.
+104. Laveist TA. The political empowerment and health-status of
+African-Americans—mapping a new territory. AJS. 1992;
+97(4):1080–1095.
+105. Dubowitz T, Subramanian SV, Acevedo-Garcia D, et al. Individual and neighborhood differences in diet among lowincome foreign and US-born women. Womens Health Issues.
+2008;18(3):181–190.
+106. Lopez R. Black-white residential segregation and physical
+activity. Ethn Dis. 2006;16(2):495–502.
+107. Bell JF, Zimmerman FJ, Mayer JD, et al. Associations between residential segregation and smoking during pregnancy
+among urban African-American women. J Urban Health.
+2007;84(3):372–388.
+108. D’Angelo D, Williams L, Morrow B, et al. Preconception and
+interconception health status of women who recently gave
+birth to a live-born infant—Pregnancy Risk Assessment
+Monitoring System (PRAMS), United States, 26 reporting
+areas, 2004. MMWR Surveill Summ. 2007;56(10):1–35.
+109. Gee GC, Payne-Sturges DC. Environmental health disparities: a framework integrating psychosocial and environmental concepts. Environ Health Perspect. 2004;112(17):
+1645–1653.
+110. Schulz A, Parker E, Israel DB, et al. Social context, stressors,
+and disparities in women’s health. J Am Med Womens Assoc.
+2001;56(4):143–149.
+111. Schulz A, Williams D, Israel B, et al. Unfair treatment,
+neighborhood effects, and mental health in the Detroit
+metropolitan area. J Health Soc Behav. 2000;41(3):
+314–332.
+112. Collins CA. Racism and health: segregation and causes of
+death amenable to medical intervention in major U.S. cities.
+Ann N Y Acad Sci. 1999;896:396–398.
+113. Geronimus AT. The weathering hypothesis and the health of
+African-American women and infants: evidence and speculations. Ethn Dis. 1992;2(3):207–221.
+114. McEwen BS, Wingﬁeld JC. The concept of allostasis in biology and biomedicine. Horm Behav. 2003;43(1):2–15.
+115. Jones CP. Invited commentary: ‘‘race,’’ racism, and the
+practice of epidemiology. Am J Epidemiol. 2001;154(4):
+299–304; discussion 305–306.
+116. Collins JW Jr, David RJ, Handler A, et al. Very low birthweight in African American infants: the role of maternal
+exposure to interpersonal racial discrimination. Am J Public
+Health. 2004;94(12):2132–2138.
+117. Collins JW Jr, David RJ, Symons R, et al. African-American
+mothers’ perception of their residential environment, stressful life events, and very low birthweight. Epidemiology.
+1998;9(3):286–289.
+Epidemiol Rev 2009;31:178–194
+
+Is Segregation Unhealthy?
+
+118. Pickett KE, Wilkinson RG. People like us: ethnic group
+density effects on health. Ethn Health. 2008;13(4):321–334.
+119. Massey DS, Denton NA. Hypersegregation in United-States
+metropolitan areas—black and Hispanic segregation along 5
+dimensions. Demography. 1989;26(3):373–391.
+120. Osypuk TL, Acevedo-Garcia D. Are racial disparities in
+preterm birth larger in hypersegregated areas? Am J Epidemiol. 2008;167(11):1295–1304.
+121. Inagami S, Borrell LN, Wong MD, et al. Residential segregation and Latino, black and white mortality in New York
+City. J Urban Health. 2006;83(3):406–420.
+122. Cooper RS, Kennelly JF, Durazo-Arvizu R, et al. Relationship between premature mortality and socioeconomic factors
+in black and white populations of US metropolitan areas.
+Public Health Rep. 2001;116(5):464–473.
+123. Fang J, Madhavan S, Bosworth W, et al. Residential segregation and mortality in New York City. Soc Sci Med. 1998;
+47(4):469–476.
+124. Guest AM, Almgren G, Hussey JM. The ecology of race and
+socioeconomic distress: infant and working-age mortality in
+Chicago. Demography. 1998;35(1):23–34.
+125. Hart KD, Kunitz SJ, Sell RR, et al. Metropolitan governance,
+residential segregation, and mortality among African Americans. Am J Public Health. 1998;88(3):434–438.
+126. Bird ST. Separate black and white infant mortality models:
+differences in the importance of structural variables. Soc Sci
+Med. 1995;41(11):1507–1512.
+127. Polednak AP. Poverty, residential segregation, and black/
+white mortality ratios in urban areas. J Health Care Poor
+Underserved. 1993;4(4):363–373.
+128. Polednak AP. Black-white differences in infant mortality in
+38 standard metropolitan statistical areas. Am J Public
+Health. 1991;81(11):1480–1482.
+129. Kramer MR, Hogue CR. Place matters: variation in the black/
+white very preterm birth rate across US metropolitan areas,
+2002–2004. Public Health Rep. 2008;123(5):576–585.
+130. Cooper HL, Friedman SR, Tempalski B, et al. Residential
+segregation and injection drug use prevalence among Black
+adults in US metropolitan areas. Am J Public Health. 2007;
+97(2):344–352.
+131. Fabio A, Li W, Strotmeyer S, et al. Racial segregation and
+county level intentional injury in Pennsylvania: analysis of
+hospital discharge data for 1997–1999. J Epidemiol Community Health. 2004;58(4):346–351.
+132. Skinner J, Weinstein JN, Sporer SM, et al. Racial, ethnic,
+and geographic disparities in rates of knee arthroplasty
+among Medicare patients. N Engl J Med. 2003;349(14):
+1350–1359.
+133. Haas JS, Earle CC, Orav JE, et al. Racial segregation and
+disparities in cancer stage for seniors. J Gen Intern Med.
+2008;23(5):699–705.
+134. Vinikoor LC, Kaufman JS, MacLehose RF, et al. Effects of
+racial density and income incongruity on pregnancy outcomes in less segregated communities. Soc Sci Med. 2008;
+66(2):255–259.
+135. Masi CM, Hawkley LC, Piotrowski ZH, et al. Neighborhood
+economic disadvantage, violent crime, group density, and
+pregnancy outcomes in a diverse, urban population. Soc Sci
+Med. 2007;65(12):2440–2457.
+136. Ellen IG. Is segregation bad for your health? The case of low
+birth weight. Brookings-Wharton Papers on Urban Affairs.
+2000:203–229. (http://muse.jhu.edu/journals/brookingswharton_papers_on_urban_affairs/v2000/2000.1ellen.html).
+137. Do DP, Dubowitz T, Bird CE, et al. Neighborhood context
+and ethnicity differences in body mass index: a multilevel
+Epidemiol Rev 2009;31:178–194
+
+138.
+139.
+140.
+141.
+
+142.
+143.
+144.
+145.
+146.
+147.
+
+148.
+149.
+150.
+151.
+
+152.
+153.
+
+154.
+155.
+
+156.
+
+193
+
+analysis using the NHANES III survey (1988–1994). Econ
+Hum Biol. 2007;5(2):179–203.
+Chang VW. Racial residential segregation and weight status
+among US adults. Soc Sci Med. 2006;63(5):1289–1303.
+Robson S, Cameron CA, Roberts CL. Birth outcomes for
+teenage women in New South Wales, 1998–2003. Aust N Z J
+Obstet Gynaecol. 2006;46(4):305–310.
+Turton P, Badenhorst W, Hughes P, et al. Psychological impact of stillbirth on fathers in the subsequent pregnancy and
+puerperium. Br J Psychiatry. 2006;188:165–172.
+Subramanian SV, Acevedo-Garcia D, Osypuk TL. Racial
+residential segregation and geographic heterogeneity in
+black/white disparity in poor self-rated health in the US:
+a multilevel statistical analysis. Soc Sci Med. 2005;60(8):
+1667–1679.
+Hearst MO, Oakes JM, Johnson PJ. The effect of racial residential segregation on black infant mortality. Am J Epidemiol. 2008;168(11):1247–1254.
+LaVeist TA. Racial segregation and longevity among African
+Americans: an individual-level analysis. Health Serv Res.
+2003;38(6):1719–1733.
+Jackson SA, Anderson RT, Johnson NJ, et al. The relation of
+residential segregation to all-cause mortality: a study in black
+and white. Am J Public Health. 2000;90(4):615–617.
+LeClere FB, Rogers RG, Peters KD. Ethnicity and mortality
+in the United States: individual and community correlates.
+Soc Forces. 1997;76(1):169–198.
+Sucoff CA, Upchurch DM. Neighborhood context and the
+risk of childbearing among metropolitan-area black adolescents. Am Sociol Rev. 1998;63(4):571–585.
+Rodriguez RA, Sen S, Mehta K, et al. Geography matters:
+relationships among urban residential segregation, dialysis
+facilities, and patient outcomes. Ann Intern Med. 2007;
+146(7):493–501.
+Polednak AP. Trends in US urban black infant mortality, by
+degree of residential segregation. Am J Public Health. 1996;
+86(5):723–726.
+Grady SC, Ramirez IJ. Mediating medical risk factors in the
+residential segregation and low birthweight relationship by
+race in New York City. Health Place. 2008;14(4):661–677.
+Larkin BP. The forty year ‘‘ﬁrst step’’: the fair housing act as
+an incomplete tool to suburban integration. Columbia Law
+Rev. 2007;107(7):1617–1654.
+Iceland J, Weinberg DH, Steinmetz E. Racial and Ethnic
+Residential Segregation in the United States: 1980–2000.
+Washington, DC: US Government Printing Ofﬁce; 2002. (US
+Census Bureau, series CENSR-3).
+Davis M. The Gautreaux Assisted Housing Program. In:
+Kingsley GT, Turner MA, eds. Housing Markets and Residential
+Mobility. Washington, DC: Urban Institute Press; 1993.
+Keels M, Duncan GJ, Deluca S, et al. Fifteen years later: can
+residential mobility programs provide a long-term escape
+from neighborhood segregation, crime, and poverty?
+Demography. 2005;42(1):51–73.
+Keels M. Second-generation effects of Chicago’s Gautreaux
+residential mobility program on children’s participation in
+crime. J Res Adolesc. 2008;18(2):305–351.
+Votruba ME, Kling JR. Effects of neighborhood characteristics on the mortality of black male youth: evidence
+from Gautreaux, Chicago. Soc Sci Med. 2009;68(5):
+814–823.
+Goering J, Kraft J, Feins J, et al. Moving to Opportunity for
+Fair Housing Demonstration Program: Current Status and
+Initial Findings. Washington, DC: US Department of Housing and Urban Development; 1999.
+
+194 Kramer and Hogue
+
+157. Rosenbaum E, Harris LE. Residential mobility and opportunities: early impacts of the moving to opportunity demonstration program in Chicago. Housing Policy Debate. 2001;
+12(2):321–346.
+158. Clarkwest A. Neo-materialist theory and the temporal relationship between income inequality and longevity change.
+Soc Sci Med. 2008;66(9):1871–1881.
+159. Ludwig J, Liebman JB, Kling JR, et al. What can we learn
+about neighborhood effects from the Moving to Opportunity
+experiment? AJS. 2008;114(1):144–188.
+160. Holzman C, Leventhal JM, Qiu H, et al. Factors linked to
+bacterial vaginosis in nonpregnant women. Am J Public
+Health. 2001;91(10):1664–1670.
+
+161. Goodman E, Adler NE, Daniels SR, et al. Impact of
+objective and subjective social status on obesity in a biracial cohort of adolescents. Obes Res. 2003;11(8):1018–
+1026.
+162. Acevedo-Garcia D, Osypuk TL, Werbel RE, et al. Does
+housing mobility policy improve health? Housing Policy
+Debate. 2004;15(1):49–98.
+163. Berrigan D, McKinnon RA. Built environment and health.
+Prev Med. 2008;47(3):239–240.
+164. Corburn J, Bhatia R. Health impact assessment of San
+Francisco: incorporating the social determinants of health in
+environmental planning. J Environ Plann Manag. 2007;
+50(3):323–341.
+
+Epidemiol Rev 2009;31:178–194</p>
+      </div>
+    </body>
+    
+	<back/>
+  </text>
+</TEI>
