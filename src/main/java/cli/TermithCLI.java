@@ -2,18 +2,17 @@ package cli;
 
 import org.apache.commons.cli.*;
 import runner.Termith;
-import module.tool.TeiImporter;
 
 import javax.xml.transform.TransformerException;
 import java.io.IOException;
+import java.util.concurrent.ExecutionException;
 
 /**
  * Created by Simon Meoni on 25/07/16.
  */
 public class TermithCLI {
-    static TeiImporter teiImporter;
-    static Termith termith;
-    static Options options = new Options();
+    private static Termith termith;
+    private static Options options = new Options();
 
     public static void main(String[] args) throws IOException, InterruptedException, TransformerException{
         CommandLineParser parser = new DefaultParser();
@@ -34,36 +33,57 @@ public class TermithCLI {
                 .required(true)
                 .build();
 
+        Option lang = Option.builder("l")
+                .longOpt("lang")
+                .argName("language")
+                .hasArg()
+                .desc("specify the language of the corpus")
+                .required(true)
+                .build();
+
         Option trace = Option.builder("t")
                 .longOpt("trace")
                 .hasArg(false)
                 .desc("write all the phase in the output folder")
                 .build();
 
+        Option treetagger = Option.builder("tt")
+                .longOpt("treetagger")
+                .argName("TreeTagger path")
+                .hasArg(true)
+                .desc("set TreeTagger path")
+                .build();
+
         options.addOption(in);
         options.addOption(out);
         options.addOption(trace);
+        options.addOption(treetagger);
+        options.addOption(lang);
 
         try {
             CommandLine line = parser.parse( options, args );
             if (options.hasOption("trace")) {
 
                 termith = new Termith.Builder()
-                        .teiImporter(line.getOptionValue("i"))
+                        .lang(line.getOptionValue("l"))
+                        .baseFolder(line.getOptionValue("i"))
+                        .treeTaggerHome(line.getOptionValue("tt"))
                         .trace(true)
                         .export(line.getOptionValue("o"))
                         .build();
-                termith.run();
+                termith.execute();
             }
             else {
 
                 termith = new Termith.Builder()
-                        .teiImporter(line.getOptionValue("i"))
+                        .lang(line.getOptionValue("l"))
+                        .baseFolder(line.getOptionValue("i"))
+                        .treeTaggerHome(line.getOptionValue("tt"))
                         .export(line.getOptionValue("o"))
                         .build();
-                termith.run();
+                termith.execute();
             }
-        } catch (ParseException e) {
+        } catch (ParseException | ExecutionException e) {
             e.printStackTrace();
         }
     }

@@ -1,4 +1,6 @@
-package module.initializer;
+package module;
+
+import thread.TermithXmlInjector;
 
 import javax.xml.transform.*;
 import javax.xml.transform.stream.StreamResult;
@@ -6,12 +8,15 @@ import javax.xml.transform.stream.StreamSource;
 import java.io.File;
 import java.io.IOException;
 import java.io.StringWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Created by Simon Meoni on 25/07/16.
  */
 public class TextExtractor {
-    File file;
+    private static Logger LOGGER = Logger.getLogger(TextExtractor.class.getName());
+    private File file;
 
     public TextExtractor(File file) {
         this.file = file;

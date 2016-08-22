@@ -1,73 +1,107 @@
 package runner;
 
-import module.tool.Exporter;
-import module.tool.TeiImporter;
-import pipeline.Initializer;
+import eu.project.ttc.tools.TermSuitePipeline;
+import thread.Initializer;
+import thread.TermithXmlInjector;
 
 import javax.xml.transform.TransformerException;
-import java.io.File;
 import java.io.IOException;
-import java.util.concurrent.*;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Created by Simon Meoni on 25/07/16.
  */
 public class Termith {
 
-    private ExecutorService executorService;
-    private TeiImporter teiImporter;
-    private boolean trace;
-    private ConcurrentHashMap<String, Initializer> initializedFiles = new ConcurrentHashMap<>();
+    private static Logger LOGGER = Logger.getLogger(Termith.class.getName());
+
     private String outputPath;
+    private String lang;
+    private String treeTaggerHome;
+
+    private ExecutorService executorService;
+    private Path base;
+    private boolean trace;
+    private Initializer initializer;
+    private TermithXmlInjector termithXmlInjector;
+    private TermSuitePipeline termSuitePipeline;
 
     public Termith() {}
 
-    public Termith(Builder builder){
-        teiImporter = builder.teiImporter;
+    /***
+     * return the outputPath parameter
+     * @return
+     */
+    public String getOutputPath() {
+        return outputPath;
+    }
+
+    /***
+     * return the language of the corpus
+     * @return
+     */
+    public String getLang() {
+        return lang;
+    }
+
+
+    /***
+     * this is a part of the builder pattern
+     * @param builder
+     */
+    private Termith(Builder builder){
+        base = builder.base;
         trace = builder.trace;
         outputPath = builder.outputPath;
+        treeTaggerHome = builder.treeTaggerHome;
+        lang = builder.lang;
     }
 
-    public ConcurrentHashMap<String, Initializer> getInitializedFiles() {
-        return initializedFiles;
-    }
+    /**
+     * This method execute the different tasks of the process
+     * @throws IOException
+     * @throws InterruptedException
+     * @throws TransformerException
+     * @throws ExecutionException
+     */
+    public void execute() throws IOException, InterruptedException, TransformerException, ExecutionException {
 
-    public void run() throws IOException, InterruptedException, TransformerException {
-
-        executorService = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
-
-        teiImporter.getCorpus().forEach((f) -> {
-            try {
-                File file = (File) f;
-                initializedFiles.put(
-                        file.getName(),
-                        executorService.submit(new Initializer(file)).get()
-                );
-
-            }
-            catch (InterruptedException | ExecutionException e) {
-                e.printStackTrace();
-            }
-        });
-
-        executorService.shutdown();
-        while (!executorService.isTerminated()){}
-
-
-        if (outputPath != null){
-            Exporter.export(outputPath,trace,this);
+        int poolSize = Runtime.getRuntime().availableProcessors();
+        LOGGER.log(Level.INFO, "Pool size set to: " + poolSize);
+        LOGGER.log(Level.INFO, "Starting First Phase: Text extraction");
+        initializer = new Initializer(poolSize, base);
+        try {
+            initializer.execute();
+        } catch ( Exception e ) {
+            //TODO stop execution due to previous errors.
         }
 
+        LOGGER.log(Level.INFO, "Starting Second Phase: TermSuite + XML injection");
+        TermithXmlInjector termithXmlInjector = new TermithXmlInjector(poolSize,
+                initializer.getExtractedText(), treeTaggerHome, lang);
+        try {
+            termithXmlInjector.execute();
+        } catch (Exception e) {
+            //TODO stop execution due to previous errors.
+
+        }
     }
 
     public static class Builder
     {
-        TeiImporter teiImporter;
+        Path base;
         boolean trace = false;
         String outputPath = null;
+        String lang;
+        String treeTaggerHome;
 
-        public Builder teiImporter(String path) throws IOException {
-            this.teiImporter = new TeiImporter(path);
+        public Builder baseFolder(String path) throws IOException {
+            this.base = Paths.get(path);
             return this;
         }
 
@@ -81,10 +115,19 @@ public class Termith {
             return this;
         }
 
+        public Builder lang(String lang){
+            this.lang = lang;
+            return this;
+        }
+
+        public Builder treeTaggerHome(String treeTaggerHome){
+            this.treeTaggerHome = treeTaggerHome;
+            return this;
+        }
+
         public Termith build() {
             Termith termith =  new Termith(this);
             return termith;
         }
     }
-
-    }
+}
