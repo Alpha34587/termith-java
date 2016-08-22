@@ -9,11 +9,10 @@ import java.io.IOException;
 import java.nio.file.*;
 import java.util.Map;
 import java.util.concurrent.*;
-import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import static java.nio.file.StandardWatchEventKinds.*;
+import static java.nio.file.StandardWatchEventKinds.ENTRY_CREATE;
 
 /**
  * Created by Simon Meoni on 18/08/16.
