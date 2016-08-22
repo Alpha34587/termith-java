@@ -28,6 +28,7 @@ public class TextExtractor {
         Source xslt = new StreamSource(new File("src/main/resources/xsl/ExtractText.xsl"));
         Source input = new StreamSource(file);
         Transformer transformer = factory.newTransformer(xslt);
+        LOGGER.log(Level.INFO,"apply " + xslt.toString() + "to xml file" + input.toString());
         StringWriter stringWriter = new StringWriter();
         StreamResult streamResult = new StreamResult(stringWriter);
         transformer.transform(input, streamResult);
