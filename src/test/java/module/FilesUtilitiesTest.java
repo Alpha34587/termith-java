@@ -31,7 +31,7 @@ public class FilesUtilitiesTest {
     }
 
     @Test
-    public void CheckIfFilesExists() {
+    public void testIfFilesExists() {
         Path path1 = Paths.get(path + "/test1.txt");
         Path path2 = Paths.get(path + "/test3.txt");
         Assert.assertTrue("the file " + path1.toString() + " must be exists ", Files.exists(path1));
@@ -39,7 +39,7 @@ public class FilesUtilitiesTest {
     }
 
     @Test
-    public void CheckFilesContent() {
+    public void testFilesContent() {
         testMap.forEach((name, content) -> {
             try {
                 System.out.println(content);
