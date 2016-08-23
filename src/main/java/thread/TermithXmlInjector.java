@@ -55,7 +55,7 @@ public class TermithXmlInjector {
                 new TextTermSuiteWorker(treeTaggerHome, this.corpus + "/txt", lang)
         );
         JsonRetrieverWorker jsonRetrieverWorker = new JsonRetrieverWorker(Paths.get(this.corpus + "/json"),
-                executorService, termsuiteTask);
+                executorService);
         executorService.submit(jsonRetrieverWorker);
         termsuiteTask.get();
         jsonRetrieverWorker.stop();
@@ -70,14 +70,12 @@ public class TermithXmlInjector {
         Path dir;
         WatchKey key;
         ExecutorService executorService;
-        Future<?> task;
 
-        JsonRetrieverWorker(Path dir, ExecutorService executorService, Future<?> task) throws IOException {
+        JsonRetrieverWorker(Path dir, ExecutorService executorService) throws IOException {
             LOGGER.log(Level.INFO, "Initialized File Watching Service");
             this.dir = dir;
             this.key = dir.register(watcher, ENTRY_CREATE);
             this.executorService = executorService;
-            this.task = task;
         }
 
         @Override
@@ -144,7 +142,6 @@ public class TermithXmlInjector {
         private Logger LOGGER = Logger.getLogger(JsonRetrieverWorker.class.getName());
         File json;
         ConcurrentHashMap<String, Initializer> intialializedFiles;
-
         MorphoSyntaxInjectorWorker(File json) {
             this.json = json;
         }
@@ -153,6 +150,7 @@ public class TermithXmlInjector {
         public void run() {
             LOGGER.log(Level.INFO,"MorphoSyntaxInjectorWorker Started, processing: " + json.getAbsolutePath());
             //TODO Implement 9th phase of TermITH process
+
             LOGGER.log(Level.INFO,"MorphoSyntaxInjectorWorker Terminated");
         }
     }
