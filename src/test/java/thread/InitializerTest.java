@@ -1,15 +1,40 @@
 package thread;
 
+import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import java.nio.file.Paths;
 
 /**
  * Created by Simon Meoni on 22/08/16.
  */
 public class InitializerTest {
+    Initializer initializerMonoThread;
+    Initializer initializerMultiThread;
+    @Before
+    public void setup(){
+        initializerMonoThread = new Initializer(
+                1,
+                Paths.get("src/test/resources/corpus/xml")
+        );
+
+        initializerMultiThread = new Initializer(
+                8,
+                Paths.get("src/test/resources/corpus/xml")
+        );
+    }
+
     @Test
-    public void execute() throws Exception {
+    public void testMultiThreadsExecution() throws Exception {
+        initializerMonoThread.execute();
+        initializerMultiThread.execute();
+        initializerMultiThread.getExtractedText().forEach((filename,content) ->
+                Assert.assertEquals("the text file must be equal",
+                        initializerMonoThread.getExtractedText().get(filename).toString(),
+                        content.toString()
+                )
+        );
 
     }
 
