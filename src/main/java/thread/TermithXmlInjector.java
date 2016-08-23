@@ -20,7 +20,7 @@ import static java.nio.file.StandardWatchEventKinds.ENTRY_CREATE;
  */
 public class TermithXmlInjector {
 
-    private static Logger LOGGER = Logger.getLogger(TermithXmlInjector.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(TermithXmlInjector.class.getName());
     private static int DEFAULT_POOL_SIZE = Runtime.getRuntime().availableProcessors();
 
     private int poolSize;
@@ -71,7 +71,7 @@ public class TermithXmlInjector {
     private class JsonRetrieverWorker implements Runnable {
 
         private final Map<String, StringBuffer> extraxtedText;
-        private Logger LOGGER = Logger.getLogger(JsonRetrieverWorker.class.getName());
+        private final Logger LOGGER = Logger.getLogger(JsonRetrieverWorker.class.getName());
         WatchService watcher = FileSystems.getDefault().newWatchService();
         Path dir;
         WatchKey key;
@@ -96,7 +96,6 @@ public class TermithXmlInjector {
                     return;
                 }
                 for (WatchEvent<?> event: key.pollEvents()) {
-                    WatchEvent.Kind<?> kind = event.kind();
                     WatchEvent<Path> ev = (WatchEvent<Path>)event;
                     Path filename = dir.resolve(ev.context());
                     LOGGER.log(Level.INFO, "New file retrieve: " + filename);
@@ -148,7 +147,7 @@ public class TermithXmlInjector {
 
     private class MorphoSyntaxInjectorWorker implements Runnable{
 
-        private Logger LOGGER = Logger.getLogger(JsonRetrieverWorker.class.getName());
+        private final Logger LOGGER = Logger.getLogger(JsonRetrieverWorker.class.getName());
         private StringBuffer txt;
         StringBuffer xml;
         File json;
