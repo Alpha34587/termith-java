@@ -1,6 +1,5 @@
 package runner;
 
-import eu.project.ttc.tools.TermSuitePipeline;
 import thread.Initializer;
 import thread.TermithXmlInjector;
 
@@ -9,7 +8,6 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -18,37 +16,13 @@ import java.util.logging.Logger;
  */
 public class Termith {
 
-    private static Logger LOGGER = Logger.getLogger(Termith.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(Termith.class.getName());
 
     private String outputPath;
     private String lang;
     private String treeTaggerHome;
-
-    private ExecutorService executorService;
     private Path base;
     private boolean trace;
-    private Initializer initializer;
-    private TermithXmlInjector termithXmlInjector;
-    private TermSuitePipeline termSuitePipeline;
-
-    public Termith() {}
-
-    /***
-     * return the outputPath parameter
-     * @return
-     */
-    public String getOutputPath() {
-        return outputPath;
-    }
-
-    /***
-     * return the language of the corpus
-     * @return
-     */
-    public String getLang() {
-        return lang;
-    }
-
 
     /***
      * this is a part of the builder pattern
@@ -60,6 +34,23 @@ public class Termith {
         outputPath = builder.outputPath;
         treeTaggerHome = builder.treeTaggerHome;
         lang = builder.lang;
+    }
+
+    /***
+     * return the outputPath parameter
+     * @return
+     */
+    public String getOutputPath() {
+        return outputPath;
+    }
+
+
+    /***
+     * return the language of the corpus
+     * @return
+     */
+    public String getLang() {
+        return lang;
     }
 
     /**
@@ -74,7 +65,7 @@ public class Termith {
         int poolSize = Runtime.getRuntime().availableProcessors();
         LOGGER.log(Level.INFO, "Pool size set to: " + poolSize);
         LOGGER.log(Level.INFO, "Starting First Phase: Text extraction");
-        initializer = new Initializer(poolSize, base);
+        Initializer initializer = new Initializer(poolSize, base);
         try {
             initializer.execute();
         } catch ( Exception e ) {
@@ -86,7 +77,6 @@ public class Termith {
                 initializer.getExtractedText(), initializer.getXmlCorpus(), treeTaggerHome, lang);
         try {
             termithXmlInjector.execute();
-            int a = 0;
         } catch (Exception e) {
             //TODO stop execution due to previous errors.
 
@@ -127,8 +117,7 @@ public class Termith {
         }
 
         public Termith build() {
-            Termith termith =  new Termith(this);
-            return termith;
+            return  new Termith(this);
         }
     }
 }
