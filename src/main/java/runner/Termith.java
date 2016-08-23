@@ -83,9 +83,10 @@ public class Termith {
 
         LOGGER.log(Level.INFO, "Starting Second Phase: TermSuite + XML injection");
         TermithXmlInjector termithXmlInjector = new TermithXmlInjector(poolSize,
-                initializer.getExtractedText(), treeTaggerHome, lang);
+                initializer.getExtractedText(), initializer.getXmlCorpus(), treeTaggerHome, lang);
         try {
             termithXmlInjector.execute();
+            int a = 0;
         } catch (Exception e) {
             //TODO stop execution due to previous errors.
 

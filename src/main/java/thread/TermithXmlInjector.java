@@ -2,6 +2,7 @@ package thread;
 
 import eu.project.ttc.tools.TermSuitePipeline;
 import module.FilesUtilities;
+import module.MorphoSyntaxInjector;
 import module.TermSuitePipelineBuilder;
 
 import java.io.File;
@@ -25,21 +26,25 @@ public class TermithXmlInjector {
     private int poolSize;
     private Path corpus;
     private Map<String, StringBuffer> extractedText;
+    private Map<String, StringBuffer> xmlCorpus;
     private ExecutorService executorService;
     private String treeTaggerHome;
     private String lang;
 
-    public TermithXmlInjector (Map<String, StringBuffer> extractedText, String treeTaggerHome, String lang)
+    public TermithXmlInjector(Map<String, StringBuffer> extractedText, Map<String, StringBuffer> xmlCorpus,
+                              String treeTaggerHome, String lang)
             throws IOException {
-        this(DEFAULT_POOL_SIZE, extractedText, treeTaggerHome, lang);
+        this(DEFAULT_POOL_SIZE, extractedText, xmlCorpus, treeTaggerHome, lang);
     }
 
     public TermithXmlInjector(int poolSize, Map<String, StringBuffer> extractedText,
+                              Map<String, StringBuffer> xmlCorpus,
                               String treeTaggerHome, String lang) throws IOException {
         this.poolSize = poolSize;
         this.treeTaggerHome = treeTaggerHome;
         this.executorService = Executors.newFixedThreadPool(poolSize);
         this.extractedText = extractedText;
+        this.xmlCorpus = xmlCorpus;
         this.corpus = Paths.get(FilesUtilities.createTemporaryFolder("corpus"));
         this.lang = lang;
 
@@ -54,7 +59,7 @@ public class TermithXmlInjector {
         Future<TermSuitePipeline> termsuiteTask = executorService.submit(
                 new TextTermSuiteWorker(treeTaggerHome, this.corpus + "/txt", lang)
         );
-        JsonRetrieverWorker jsonRetrieverWorker = new JsonRetrieverWorker(Paths.get(this.corpus + "/json"),
+        JsonRetrieverWorker jsonRetrieverWorker = new JsonRetrieverWorker(Paths.get(this.corpus + "/json"), extractedText,
                 executorService);
         executorService.submit(jsonRetrieverWorker);
         termsuiteTask.get();
@@ -65,17 +70,19 @@ public class TermithXmlInjector {
 
     private class JsonRetrieverWorker implements Runnable {
 
+        private final Map<String, StringBuffer> extraxtedText;
         private Logger LOGGER = Logger.getLogger(JsonRetrieverWorker.class.getName());
         WatchService watcher = FileSystems.getDefault().newWatchService();
         Path dir;
         WatchKey key;
         ExecutorService executorService;
 
-        JsonRetrieverWorker(Path dir, ExecutorService executorService) throws IOException {
+        JsonRetrieverWorker(Path dir, Map<String, StringBuffer> extractedText, ExecutorService executorService) throws IOException {
             LOGGER.log(Level.INFO, "Initialized File Watching Service");
             this.dir = dir;
             this.key = dir.register(watcher, ENTRY_CREATE);
             this.executorService = executorService;
+            this.extraxtedText = extractedText;
         }
 
         @Override
@@ -93,7 +100,9 @@ public class TermithXmlInjector {
                     WatchEvent<Path> ev = (WatchEvent<Path>)event;
                     Path filename = dir.resolve(ev.context());
                     LOGGER.log(Level.INFO, "New file retrieve: " + filename);
-                    executorService.execute(new MorphoSyntaxInjectorWorker(filename.toFile()));
+                    String basename = filename.getFileName().toString().replace(".json", "");
+                    executorService.execute(new MorphoSyntaxInjectorWorker(filename.toFile(),
+                            extractedText.get(basename),xmlCorpus.get(basename)));
                 }
                 boolean valid = key.reset();
                 if (!valid) {
@@ -140,17 +149,22 @@ public class TermithXmlInjector {
     private class MorphoSyntaxInjectorWorker implements Runnable{
 
         private Logger LOGGER = Logger.getLogger(JsonRetrieverWorker.class.getName());
+        private StringBuffer txt;
+        StringBuffer xml;
         File json;
-        ConcurrentHashMap<String, Initializer> intialializedFiles;
-        MorphoSyntaxInjectorWorker(File json) {
+
+        MorphoSyntaxInjectorWorker(File json,StringBuffer txt, StringBuffer xml) {
             this.json = json;
+            this.txt = txt;
+            this.xml = xml;
         }
 
         @Override
         public void run() {
             LOGGER.log(Level.INFO,"MorphoSyntaxInjectorWorker Started, processing: " + json.getAbsolutePath());
             //TODO Implement 9th phase of TermITH process
-
+            MorphoSyntaxInjector morphoSyntaxInjector = new MorphoSyntaxInjector(json, txt, xml);
+            morphoSyntaxInjector.execute();
             LOGGER.log(Level.INFO,"MorphoSyntaxInjectorWorker Terminated");
         }
     }

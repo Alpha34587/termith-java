@@ -11,20 +11,15 @@ import java.util.concurrent.ConcurrentHashMap;
 public class MorphoSyntaxInjector {
 
     private File json;
-    private File txt;
-    private File xml;
+    private StringBuffer txt;
+    private StringBuffer xml;
 
-    public MorphoSyntaxInjector(File json, File txt, File xml) {
+    public MorphoSyntaxInjector(File json, StringBuffer txt, StringBuffer xml) {
         this.json = json;
         this.txt = txt;
         this.xml = xml;
     }
 
-    public void tokenize() {
-
-    }
-
-    public void standOffInjection(){
-
+    public void execute() {
     }
 }

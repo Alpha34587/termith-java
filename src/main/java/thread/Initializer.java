@@ -20,7 +20,7 @@ public class Initializer {
     private ExecutorService executor;
     private Path base;
     private Map<String, StringBuffer> extractedText;
-
+    private Map<String, StringBuffer> xmlCorpus;
 
     public Initializer(Path base) {
         this(DEFAULT_POOL_SIZE, base);
@@ -30,11 +30,14 @@ public class Initializer {
         this.base = base;
         executor = Executors.newFixedThreadPool(poolSize);
         extractedText = new ConcurrentHashMap<>();
+        xmlCorpus = new ConcurrentHashMap<>();
     }
 
     public Map<String, StringBuffer> getExtractedText() {
         return extractedText;
     }
+
+    public Map<String, StringBuffer> getXmlCorpus() { return xmlCorpus; }
 
     public void execute() throws Exception {
         LOGGER.log(Level.INFO, "Starting initilization of files of folder: " + this.base);
@@ -59,6 +62,9 @@ public class Initializer {
                 TextExtractor textExtractor = new TextExtractor(path.toFile());
                 StringBuffer buffer = textExtractor.XsltTransformation();
                 extractedText.put(path.getFileName().toString().replace(".xml", ""), buffer);
+                xmlCorpus.put(path.getFileName().toString().replace(".xml", ""), new StringBuffer(
+                        String.join("\n",Files.readAllLines(path))
+                ));
                 LOGGER.log(Level.INFO, "Extraction done for file: " + this.path);
             } catch (Exception e) {
                 e.printStackTrace();
