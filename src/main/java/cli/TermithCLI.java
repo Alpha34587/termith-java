@@ -36,7 +36,7 @@ public class TermithCLI {
         Option lang = Option.builder("l")
                 .longOpt("lang")
                 .argName("language")
-                .hasArg()
+                .hasArg(true)
                 .desc("specify the language of the corpus")
                 .required(true)
                 .build();
@@ -51,6 +51,7 @@ public class TermithCLI {
                 .longOpt("treetagger")
                 .argName("TreeTagger path")
                 .hasArg(true)
+                .required(true)
                 .desc("set TreeTagger path")
                 .build();
 
