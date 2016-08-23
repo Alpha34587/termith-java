@@ -49,7 +49,7 @@ public class TermSuitePipelineBuilder {
                 .aeContextualizer(3, true)
                 .setExportJsonWithContext(false)
                 .setExportJsonWithOccurrences(true)
-                .haeJsonExporter(textPath.replace("txt","") + "/" + "terminlogy.json")
+                .haeJsonExporter(textPath.replace("txt","") + "/" + "terminology.json")
                 .haeTbxExporter(textPath.replace("txt","") + "/" + "terminology.tbx");
     }
 }
