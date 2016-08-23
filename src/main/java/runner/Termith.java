@@ -91,26 +91,53 @@ public class Termith {
         String lang;
         String treeTaggerHome;
 
+        /**
+         * This method set the input folder path
+         * @param path
+         * @return
+         * @throws IOException
+         */
         public Builder baseFolder(String path) throws IOException {
             this.base = Paths.get(path);
             return this;
         }
 
+        /**
+         * this method set a boolean that used to activate or not the trace : each step of the process will be export to
+         * the result folder
+         * @param activate
+         * @return
+         */
         public Builder trace(boolean activate){
             this.trace = activate;
             return this;
         }
 
+        /**
+         * set the output path of the result
+         * @param outputPath
+         * @return
+         */
         public Builder export(String outputPath){
             this.outputPath = outputPath;
             return this;
         }
 
+        /**
+         * set the lang
+         * @param lang
+         * @return
+         */
         public Builder lang(String lang){
             this.lang = lang;
             return this;
         }
 
+        /**
+         * set the TreeTagger path
+         * @param treeTaggerHome
+         * @return
+         */
         public Builder treeTaggerHome(String treeTaggerHome){
             this.treeTaggerHome = treeTaggerHome;
             return this;
