@@ -137,7 +137,7 @@ public class TermithXmlInjector {
                     this.treeTaggerHome
             );
             LOGGER.info("Run Termsuite Pipeline");
-            termSuitePipelineBuilder.getTermsuitePipeline().run();
+            termSuitePipelineBuilder.start();
             LOGGER.info("Finished execution of Termsuite Pipeline, result in :" +
                     textPath.replace("/txt",""));
             return termSuitePipelineBuilder.getTermsuitePipeline();

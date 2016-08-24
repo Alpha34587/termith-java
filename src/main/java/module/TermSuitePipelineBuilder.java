@@ -12,6 +12,12 @@ public class TermSuitePipelineBuilder {
     private TermSuitePipeline termsuitePipeline;
     private String jsonPath;
 
+    /**
+     * create a termsuite pipeline with decided parameter for the termith project
+     * @param lang the specified language
+     * @param textPath the path of input text corpus
+     * @param treeTaggerHome the path for Tagger
+     */
     public TermSuitePipelineBuilder(String lang, String textPath, String treeTaggerHome) {
 
         TermSuiteCLIUtils.setGlobalLogLevel("info");
@@ -43,6 +49,13 @@ public class TermSuitePipelineBuilder {
                 .setExportJsonWithOccurrences(true)
                 .haeJsonExporter(textPath.replace("txt","") + "/" + "terminology.json")
                 .haeTbxExporter(textPath.replace("txt","") + "/" + "terminology.tbx");
+    }
+
+    /**
+     * run the termsuite pipeline
+     */
+    public void start(){
+        this.termsuitePipeline.run();
     }
 
     public TermSuitePipeline getTermsuitePipeline() {
