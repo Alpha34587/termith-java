@@ -54,7 +54,9 @@ public class Termith {
     }
 
     /**
-     * This method execute the different tasks of the process
+     * This method execute the different tasks of the process. it executes two main phase sequentially :
+     * 1) the text extraction 2) the analyze of termsuite and the injection of morphosyntaxes for each file of the corpus.
+     * The second phase need to have the extracted text on input.
      * @throws IOException
      * @throws InterruptedException
      * @throws TransformerException
@@ -143,6 +145,10 @@ public class Termith {
             return this;
         }
 
+        /**
+         * This method is used to finalize the building of the Termith Object
+         * @return
+         */
         public Termith build() {
             return  new Termith(this);
         }
