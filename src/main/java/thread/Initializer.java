@@ -14,7 +14,8 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Created by Simon Meoni on 25/07/16.
+ * @author Simon Meoni
+ * Created on 25/07/16.
  */
 public class Initializer {
 

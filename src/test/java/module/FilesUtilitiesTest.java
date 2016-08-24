@@ -12,7 +12,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by Simon Meoni on 22/08/16.
+ * @author Simon Meoni
+ * Created on 22/08/16.
  */
 public class FilesUtilitiesTest {
     String path;

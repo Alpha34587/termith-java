@@ -7,7 +7,8 @@ import org.junit.Test;
 import java.nio.file.Paths;
 
 /**
- * Created by Simon Meoni on 22/08/16.
+ * @author Simon Meoni
+ * Created on 22/08/16.
  */
 public class InitializerTest {
     Initializer initializerMonoThread;

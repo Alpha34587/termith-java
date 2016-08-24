@@ -9,7 +9,8 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 /**
- * Created by Simon Meoni on 22/08/16.
+ * @author Simon Meoni
+ * Created on 22/08/16.
  */
 public class TextExtractorTest {
     TextExtractor textExtractor;

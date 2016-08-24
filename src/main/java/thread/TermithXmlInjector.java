@@ -16,7 +16,8 @@ import java.util.concurrent.*;
 import static java.nio.file.StandardWatchEventKinds.ENTRY_CREATE;
 
 /**
- * Created by Simon Meoni on 18/08/16.
+ * @author Simon Meoni
+ * Created on 18/08/16.
  */
 public class TermithXmlInjector {
 

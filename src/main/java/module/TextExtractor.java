@@ -14,7 +14,8 @@ import java.io.IOException;
 import java.io.StringWriter;
 
 /**
- * Created by Simon Meoni on 25/07/16.
+ * @author Simon Meoni
+ * Created on 25/07/16.
  */
 public class TextExtractor {
     private static final Logger LOGGER = LoggerFactory.getLogger(TextExtractor.class.getName());

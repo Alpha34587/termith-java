@@ -4,7 +4,8 @@ import org.junit.Assert;
 import org.junit.Test;
 
 /**
- * Created by Simon Meoni on 22/08/16.
+ * @author Simon Meoni
+ * Created on 22/08/16.
  */
 public class ExporterTest {
     @Test

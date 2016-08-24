@@ -3,7 +3,8 @@ package module;
 import java.io.File;
 
 /**
- * Created by Simon Meoni on 17/08/16.
+ * @author Simon Meoni
+ * Created on 17/08/16.
  */
 public class MorphoSyntaxInjector {
 

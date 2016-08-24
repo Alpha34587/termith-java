@@ -9,7 +9,8 @@ import javax.xml.transform.TransformerException;
 import java.io.IOException;
 
 /**
- * Created by Simon Meoni on 25/07/16.
+ * @author Simon Meoni
+ * Created on 25/07/16.
  */
 class TermithCLI {
     private static Options options = new Options();

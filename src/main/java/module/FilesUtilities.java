@@ -10,7 +10,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Map;
 /**
- * Created by Simon Meoni on 16/08/16.
+ * @author Simon Meoni
+ * Created on 16/08/16.
  */
 public class FilesUtilities {
     private static final Logger LOGGER = LoggerFactory.getLogger(FilesUtilities.class.getName());

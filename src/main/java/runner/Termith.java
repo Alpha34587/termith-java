@@ -12,7 +12,8 @@ import java.nio.file.Paths;
 import static java.lang.System.exit;
 
 /**
- * Created by Simon Meoni on 25/07/16.
+ * @author Simon Meoni
+ * Created on 25/07/16.
  */
 public class Termith {
 

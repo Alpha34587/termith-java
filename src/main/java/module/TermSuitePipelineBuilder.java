@@ -6,7 +6,8 @@ import eu.project.ttc.tools.TermSuitePipeline;
 import eu.project.ttc.tools.cli.TermSuiteCLIUtils;
 
 /**
- * Created by Simon Meoni on 16/08/16.
+ * @author Simon Meoni
+ * Created on 16/08/16.
  */
 public class TermSuitePipelineBuilder {
     private TermSuitePipeline termsuitePipeline;
