@@ -3,7 +3,7 @@ package runner;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import thread.Initializer;
-import thread.TermiSuiteTeiInjector;
+import thread.TermSuiteTeiInjector;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -77,10 +77,10 @@ public class Termith {
         }
 
         LOGGER.info("Starting Second Phase: TermSuite + XML injection");
-        TermiSuiteTeiInjector termiSuiteTeiInjector = new TermiSuiteTeiInjector(poolSize,
+        TermSuiteTeiInjector termSuiteTeiInjector = new TermSuiteTeiInjector(poolSize,
                 initializer.getExtractedText(), initializer.getXmlCorpus(), treeTaggerHome, lang);
         try {
-            termiSuiteTeiInjector.execute();
+            termSuiteTeiInjector.execute();
         } catch (Exception e) {
             LOGGER.error("Error during execution of the termsuite and injection phase : ", e);
             exit(1);

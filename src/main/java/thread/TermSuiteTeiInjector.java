@@ -15,15 +15,15 @@ import java.util.concurrent.*;
 import static java.nio.file.StandardWatchEventKinds.ENTRY_CREATE;
 
 /**
- * the class TermiSuiteTeiInjector is one of a second phase of the termith process. It splits into two main process who
+ * the class TermSuiteTeiInjector is one of a second phase of the termith process. It splits into two main process who
  * run asynchronously : each morphosyntax json file are retrieve by a file watcher. the file watcher service
  * execute workers who tokenizes a text and report the morphosyntax information of specific file.
  * @author Simon Meoni
  * Created on 18/08/16.
  */
-public class TermiSuiteTeiInjector {
+public class TermSuiteTeiInjector {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(TermiSuiteTeiInjector.class.getName());
+    private static final Logger LOGGER = LoggerFactory.getLogger(TermSuiteTeiInjector.class.getName());
     private static final int DEFAULT_POOL_SIZE = Runtime.getRuntime().availableProcessors();
 
     private Path corpus;
@@ -43,14 +43,14 @@ public class TermiSuiteTeiInjector {
      * @param lang the language of the corpus
      * @throws IOException
      */
-    public TermiSuiteTeiInjector(Map<String, StringBuffer> extractedText, Map<String, StringBuffer> xmlCorpus,
-                                 String treeTaggerHome, String lang)
+    public TermSuiteTeiInjector(Map<String, StringBuffer> extractedText, Map<String, StringBuffer> xmlCorpus,
+                                String treeTaggerHome, String lang)
             throws IOException {
         this(DEFAULT_POOL_SIZE, extractedText, xmlCorpus, treeTaggerHome, lang);
     }
 
     /**
-     * @see TermiSuiteTeiInjector
+     * @see TermSuiteTeiInjector
      * @param poolSize specify the number of worker
      * @param extractedText the plain extract previously previously
      * @param xmlCorpus the base corpus send to TermithXmlAnalyzer
@@ -58,9 +58,9 @@ public class TermiSuiteTeiInjector {
      * @param lang the language of the corpus
      * @throws IOException
      */
-    public TermiSuiteTeiInjector(int poolSize, Map<String, StringBuffer> extractedText,
-                                 Map<String, StringBuffer> xmlCorpus,
-                                 String treeTaggerHome, String lang) throws IOException {
+    public TermSuiteTeiInjector(int poolSize, Map<String, StringBuffer> extractedText,
+                                Map<String, StringBuffer> xmlCorpus,
+                                String treeTaggerHome, String lang) throws IOException {
         this.treeTaggerHome = treeTaggerHome;
         this.executorService = Executors.newFixedThreadPool(poolSize);
         this.extractedText = extractedText;
@@ -78,7 +78,7 @@ public class TermiSuiteTeiInjector {
     }
 
     /**
-     * Execute the Termsuite task and the TermiSuiteTeiInjector
+     * Execute the Termsuite task and the TermSuiteTeiInjector
      * @throws InterruptedException
      * @throws IOException
      * @throws ExecutionException
@@ -89,6 +89,7 @@ public class TermiSuiteTeiInjector {
         );
         JsonRetrieverWorker jsonRetrieverWorker = new JsonRetrieverWorker(Paths.get(this.corpus + "/json"));
         executorService.submit(jsonRetrieverWorker);
+        LOGGER.info("waiting Termsuite executor to finish");
         termsuiteTask.get();
         jsonRetrieverWorker.stop();
         executorService.shutdown();
@@ -105,7 +106,6 @@ public class TermiSuiteTeiInjector {
         WatchService watcher = FileSystems.getDefault().newWatchService();
         Path dir;
         WatchKey key;
-        ExecutorService executorService;
 
         JsonRetrieverWorker(Path dir) throws IOException {
             Logger.info("Initialized File Watching Service");
@@ -124,7 +124,7 @@ public class TermiSuiteTeiInjector {
                     this.key = watcher.take();
 
                 } catch (InterruptedException e) {
-                    Logger.error("File watcher service crashed",e);
+                    Logger.error("File watcher service crashed", e);
                     Thread.currentThread().interrupt();
                 }
                 for (WatchEvent<?> event: key.pollEvents()) {
@@ -202,8 +202,8 @@ public class TermiSuiteTeiInjector {
     }
 
     /**
-     * This class execute a TermiSuiteTeiInjector
-     * @see TermiSuiteTeiInjector
+     * This class execute a TermSuiteTeiInjector
+     * @see TermSuiteTeiInjector
      */
     private class TeiMorphoSyntaxGeneratorWorker implements Runnable{
 
@@ -213,7 +213,7 @@ public class TermiSuiteTeiInjector {
         private File json;
 
         /**
-         * The constructor of the class. this parameter is used to instanced a TermiSuiteTeiInjector
+         * The constructor of the class. this parameter is used to instanced a TermSuiteTeiInjector
          * @param json
          * @param txt
          * @param xml
@@ -226,7 +226,7 @@ public class TermiSuiteTeiInjector {
 
         /**
          * run a task who execute the process of analyzes of TeiMorphoSyntaxGeneratorWorker
-         * @see TermiSuiteTeiInjector
+         * @see TermSuiteTeiInjector
          */
         @Override
         public void run() {
