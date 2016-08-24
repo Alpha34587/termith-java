@@ -19,6 +19,12 @@ class TermithCLI {
         throw new IllegalAccessError("Utility class");
     }
 
+    /**
+     * @param args shell args
+     * @throws IOException
+     * @throws InterruptedException
+     * @throws TransformerException
+     */
     public static void main(String[] args) throws IOException, InterruptedException, TransformerException{
         CommandLineParser parser = new DefaultParser();
 
