@@ -20,7 +20,9 @@ public class TermSuitePipelineBuilder {
      * @param textPath the path of input text corpus
      * @param treeTaggerHome the path for Tagger
      */
-    public TermSuitePipelineBuilder(String lang, String textPath, String treeTaggerHome) {
+    public TermSuitePipelineBuilder(String lang, String textPath, String treeTaggerHome,
+                                    String tbxTerminology,
+                                    String jsonTerminology) {
 
         TermSuiteCLIUtils.setGlobalLogLevel("info");
         this.jsonPath = textPath.replace("/txt","/json");
@@ -49,8 +51,8 @@ public class TermSuitePipelineBuilder {
                 .aeContextualizer(3, true)
                 .setExportJsonWithContext(false)
                 .setExportJsonWithOccurrences(true)
-                .haeJsonExporter(textPath.replace("txt","") + "/" + "terminology.json")
-                .haeTbxExporter(textPath.replace("txt","") + "/" + "terminology.tbx");
+                .haeJsonExporter(jsonTerminology.toString())
+                .haeTbxExporter(tbxTerminology.toString());
     }
 
     /**

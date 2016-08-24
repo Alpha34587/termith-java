@@ -2,6 +2,7 @@ package thread;
 
 import eu.project.ttc.tools.TermSuitePipeline;
 import module.FilesUtilities;
+import module.TeiMorphologySyntaxGenerator;
 import module.TermSuitePipelineBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.*;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.*;
 
@@ -29,11 +31,14 @@ public class TermSuiteTeiInjector {
     private Path corpus;
     private Map<String, StringBuffer> extractedText;
     private Map<String, StringBuffer> xmlCorpus;
-    private Map<String, StringBuffer> tokenizeTeiBody;
-    private Map<String, StringBuffer> morphoSyntaxStandOff;
     private ExecutorService executorService;
     private String treeTaggerHome;
     private String lang;
+
+    private List<Path> terminologies;
+    private Map<String, StringBuffer> morphoSyntaxStandOff;
+    private Map<String, StringBuffer> tokenizeTeiBody;
+
 
     /**
      * this is the main builder of termithXmlInjector
@@ -69,6 +74,8 @@ public class TermSuiteTeiInjector {
         this.lang = lang;
         this.morphoSyntaxStandOff = new ConcurrentHashMap<>();
         this.tokenizeTeiBody = new ConcurrentHashMap<>();
+        this.terminologies = new CopyOnWriteArrayList<>();
+
 
         LOGGER.info("temporary folder created: " + this.corpus);
         Files.createDirectories(Paths.get(this.corpus + "/json"));
@@ -188,15 +195,22 @@ public class TermSuiteTeiInjector {
         @Override
         public TermSuitePipeline call() throws Exception {
             LOGGER.info("Build Termsuite Pipeline");
+
+            terminologies.add(Paths.get(textPath.replace("txt","") + "/" + "terminology.json"));
+            terminologies.add(Paths.get(textPath.replace("txt","") + "/" + "terminology.tbx"));
+
             TermSuitePipelineBuilder termSuitePipelineBuilder = new TermSuitePipelineBuilder(
                     lang,
                     this.textPath,
-                    this.treeTaggerHome
+                    this.treeTaggerHome,
+                    terminologies.get(0).toString(),
+                    terminologies.get(1).toString()
             );
             LOGGER.info("Run Termsuite Pipeline");
             termSuitePipelineBuilder.start();
             LOGGER.info("Finished execution of Termsuite Pipeline, result in :" +
                     textPath.replace("/txt",""));
+
             return termSuitePipelineBuilder.getTermsuitePipeline();
         }
     }
@@ -232,8 +246,8 @@ public class TermSuiteTeiInjector {
         public void run() {
             LOGGER.info("TeiMorphoSyntaxGeneratorWorker Started, processing: " + json.getAbsolutePath());
             //TODO Implement 9th phase of TermITH process
-            module.TeiMorphologySyntaxGenerator teiMorphologySyntaxGenerator =
-                    new module.TeiMorphologySyntaxGenerator(json, txt, xml);
+            TeiMorphologySyntaxGenerator teiMorphologySyntaxGenerator =
+                    new TeiMorphologySyntaxGenerator(json, txt, xml);
             teiMorphologySyntaxGenerator.execute();
             LOGGER.info("TeiMorphoSyntaxGeneratorWorker Terminated");
         }
