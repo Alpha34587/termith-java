@@ -10,6 +10,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Map;
 /**
+ * FileUtilities group several static method in order to manipulate the file system during the different process of
+ * Termith
  * @author Simon Meoni
  * Created on 16/08/16.
  */

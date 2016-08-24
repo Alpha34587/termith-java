@@ -6,13 +6,13 @@ import java.io.File;
  * @author Simon Meoni
  * Created on 17/08/16.
  */
-public class MorphoSyntaxInjector {
+public class TeiMorphologySyntaxGenerator {
 
     private File json;
     private StringBuffer txt;
     private StringBuffer xml;
 
-    public MorphoSyntaxInjector(File json, StringBuffer txt, StringBuffer xml) {
+    public TeiMorphologySyntaxGenerator(File json, StringBuffer txt, StringBuffer xml) {
         this.json = json;
         this.txt = txt;
         this.xml = xml;

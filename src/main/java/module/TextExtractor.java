@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.io.StringWriter;
 
 /**
+ * The textExtractor class is used extract the plain text of an XML file
  * @author Simon Meoni
  * Created on 25/07/16.
  */

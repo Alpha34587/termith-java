@@ -6,6 +6,7 @@ import eu.project.ttc.tools.TermSuitePipeline;
 import eu.project.ttc.tools.cli.TermSuiteCLIUtils;
 
 /**
+ * This class can build a termsuite pipeline adapted to the termith project
  * @author Simon Meoni
  * Created on 16/08/16.
  */

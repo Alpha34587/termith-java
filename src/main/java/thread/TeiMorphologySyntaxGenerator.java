@@ -2,7 +2,6 @@ package thread;
 
 import eu.project.ttc.tools.TermSuitePipeline;
 import module.FilesUtilities;
-import module.MorphoSyntaxInjector;
 import module.TermSuitePipelineBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,12 +15,15 @@ import java.util.concurrent.*;
 import static java.nio.file.StandardWatchEventKinds.ENTRY_CREATE;
 
 /**
+ * the class TeiMorphologySyntaxGenerator is one of a second phase of the termith process. It splits into two main process who
+ * run asynchronously : each morphosyntax json file are retrieve by a file watcher. the file watcher service
+ * execute workers who tokenizes a text and report the morphosyntax information of specific file.
  * @author Simon Meoni
  * Created on 18/08/16.
  */
-public class TermithXmlInjector {
+public class TeiMorphologySyntaxGenerator {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(TermithXmlInjector.class.getName());
+    private static final Logger LOGGER = LoggerFactory.getLogger(TeiMorphologySyntaxGenerator.class.getName());
     private static final int DEFAULT_POOL_SIZE = Runtime.getRuntime().availableProcessors();
 
     private Path corpus;
@@ -31,15 +33,32 @@ public class TermithXmlInjector {
     private String treeTaggerHome;
     private String lang;
 
-    public TermithXmlInjector(Map<String, StringBuffer> extractedText, Map<String, StringBuffer> xmlCorpus,
-                              String treeTaggerHome, String lang)
+    /**
+     * this is the main builder of termithXmlInjector
+     * @param extractedText the plain extract previously previously
+     * @param xmlCorpus the base corpus send to TermithXmlAnalyzer
+     * @param treeTaggerHome the path of TreeTagger used by TermsuitePipelineBuilder
+     * @param lang the language of the corpus
+     * @throws IOException
+     */
+    public TeiMorphologySyntaxGenerator(Map<String, StringBuffer> extractedText, Map<String, StringBuffer> xmlCorpus,
+                                        String treeTaggerHome, String lang)
             throws IOException {
         this(DEFAULT_POOL_SIZE, extractedText, xmlCorpus, treeTaggerHome, lang);
     }
 
-    public TermithXmlInjector(int poolSize, Map<String, StringBuffer> extractedText,
-                              Map<String, StringBuffer> xmlCorpus,
-                              String treeTaggerHome, String lang) throws IOException {
+    /**
+     * @see TeiMorphologySyntaxGenerator
+     * @param poolSize specify the number of worker
+     * @param extractedText the plain extract previously previously
+     * @param xmlCorpus the base corpus send to TermithXmlAnalyzer
+     * @param treeTaggerHome the path of TreeTagger used by TermsuitePipelineBuilder
+     * @param lang the language of the corpus
+     * @throws IOException
+     */
+    public TeiMorphologySyntaxGenerator(int poolSize, Map<String, StringBuffer> extractedText,
+                                        Map<String, StringBuffer> xmlCorpus,
+                                        String treeTaggerHome, String lang) throws IOException {
         this.treeTaggerHome = treeTaggerHome;
         this.executorService = Executors.newFixedThreadPool(poolSize);
         this.extractedText = extractedText;
@@ -54,6 +73,12 @@ public class TermithXmlInjector {
         FilesUtilities.createFiles(this.corpus + "/txt", extractedText, "txt");
     }
 
+    /**
+     * Execute the Termsuite task and the TeiMorphologySyntaxGenerator
+     * @throws InterruptedException
+     * @throws IOException
+     * @throws ExecutionException
+     */
     public void execute() throws InterruptedException, IOException, ExecutionException {
         Future<TermSuitePipeline> termsuiteTask = executorService.submit(
                 new TextTermSuiteWorker(treeTaggerHome, this.corpus + "/txt", lang)
@@ -67,6 +92,10 @@ public class TermithXmlInjector {
         executorService.awaitTermination(1L,TimeUnit.DAYS);
     }
 
+    /**
+     * This class is a file watcher service who retrieve the file generate by termsuite and send it to a
+     * TeiMorphoSyntaxGeneratorWorker task
+     */
     private class JsonRetrieverWorker implements Runnable {
 
         private final Map<String, StringBuffer> extraxtedText;
@@ -84,6 +113,9 @@ public class TermithXmlInjector {
             this.extraxtedText = extractedText;
         }
 
+        /**
+         * run the file watching
+         */
         @Override
         public void run() {
             Logger.info("File Watcher Service Started");
@@ -100,7 +132,7 @@ public class TermithXmlInjector {
                     Path filename = dir.resolve(ev.context());
                     Logger.info("New file retrieve: " + filename);
                     String basename = filename.getFileName().toString().replace(".json", "");
-                    executorService.execute(new MorphoSyntaxInjectorWorker(filename.toFile(),
+                    executorService.execute(new TeiMorphoSyntaxGeneratorWorker(filename.toFile(),
                             extractedText.get(basename),xmlCorpus.get(basename)));
                 }
                 boolean valid = key.reset();
@@ -111,6 +143,10 @@ public class TermithXmlInjector {
             }
         }
 
+        /**
+         * Stop the process
+         * @throws IOException
+         */
         public void stop() throws IOException {
             Logger.info("File Watcher Service Terminated");
             watcher.close();
@@ -118,17 +154,32 @@ public class TermithXmlInjector {
 
     }
 
+    /**
+     * run a Thread who execute a TermsuitePipeline task
+     */
     private class TextTermSuiteWorker implements Callable<TermSuitePipeline> {
         String textPath;
         String treeTaggerHome;
         String lang;
 
+        /**
+         * the constructor of TextTermsuiteWorker
+         * @see TermSuitePipelineBuilder
+         * @param treeTaggerHome
+         * @param textPath
+         * @param lang
+         */
         TextTermSuiteWorker(String treeTaggerHome, String textPath, String lang) {
             this.textPath = textPath;
             this.treeTaggerHome = treeTaggerHome;
             this.lang = lang;
         }
 
+        /**
+         * Execute a termsuitePipelineBuilder process and return the result
+         * @return return a the result of the termsuite process
+         * @throws Exception
+         */
         @Override
         public TermSuitePipeline call() throws Exception {
             LOGGER.info("Build Termsuite Pipeline");
@@ -145,26 +196,40 @@ public class TermithXmlInjector {
         }
     }
 
-    private class MorphoSyntaxInjectorWorker implements Runnable{
+    /**
+     * This class execute a TeiMorphologySyntaxGenerator
+     * @see TeiMorphologySyntaxGenerator
+     */
+    private class TeiMorphoSyntaxGeneratorWorker implements Runnable{
 
         private final Logger LOGGER = LoggerFactory.getLogger(JsonRetrieverWorker.class.getName());
         private StringBuffer txt;
         StringBuffer xml;
         File json;
 
-        MorphoSyntaxInjectorWorker(File json,StringBuffer txt, StringBuffer xml) {
+        /**
+         * The constructor of the class. this parameter is used to instanced a TeiMorphologySyntaxGenerator
+         * @param json
+         * @param txt
+         * @param xml
+         */
+        TeiMorphoSyntaxGeneratorWorker(File json, StringBuffer txt, StringBuffer xml) {
             this.json = json;
             this.txt = txt;
             this.xml = xml;
         }
 
+        /**
+         * run a task who execute the process of analyzes of TeiMorphoSyntaxGeneratorWorker
+         * @see TeiMorphologySyntaxGenerator
+         */
         @Override
         public void run() {
-            LOGGER.info("MorphoSyntaxInjectorWorker Started, processing: " + json.getAbsolutePath());
+            LOGGER.info("TeiMorphoSyntaxGeneratorWorker Started, processing: " + json.getAbsolutePath());
             //TODO Implement 9th phase of TermITH process
-            MorphoSyntaxInjector morphoSyntaxInjector = new MorphoSyntaxInjector(json, txt, xml);
-            morphoSyntaxInjector.execute();
-            LOGGER.info("MorphoSyntaxInjectorWorker Terminated");
+            module.TeiMorphologySyntaxGenerator teiMorphologySyntaxGenerator = new module.TeiMorphologySyntaxGenerator(json, txt, xml);
+            teiMorphologySyntaxGenerator.execute();
+            LOGGER.info("TeiMorphoSyntaxGeneratorWorker Terminated");
         }
     }
 }

@@ -14,6 +14,8 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 /**
+ * This is the first phase of the termith process. The objective is to extract the text in order to send it to
+ * a termsuite process.
  * @author Simon Meoni
  * Created on 25/07/16.
  */
@@ -72,7 +74,10 @@ public class Initializer {
         executor.awaitTermination(1L, TimeUnit.DAYS);
     }
 
-
+    /**
+     * the initializerWorker have a run method who call a textExtractor object
+     * @see TextExtractor
+     */
     private class InitialiazerWorker implements Runnable {
 
         private Path path;

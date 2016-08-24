@@ -3,7 +3,7 @@ package runner;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import thread.Initializer;
-import thread.TermithXmlInjector;
+import thread.TeiMorphologySyntaxGenerator;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -12,6 +12,9 @@ import java.nio.file.Paths;
 import static java.lang.System.exit;
 
 /**
+ * This is the API class who run the different process of the termITH project. an object termITH is instanced with the
+ * inner builder class
+ * @see Builder
  * @author Simon Meoni
  * Created on 25/07/16.
  */
@@ -74,10 +77,10 @@ public class Termith {
         }
 
         LOGGER.info("Starting Second Phase: TermSuite + XML injection");
-        TermithXmlInjector termithXmlInjector = new TermithXmlInjector(poolSize,
+        TeiMorphologySyntaxGenerator teiMorphologySyntaxGenerator = new TeiMorphologySyntaxGenerator(poolSize,
                 initializer.getExtractedText(), initializer.getXmlCorpus(), treeTaggerHome, lang);
         try {
-            termithXmlInjector.execute();
+            teiMorphologySyntaxGenerator.execute();
         } catch (Exception e) {
             LOGGER.error("Error during execution of the termsuite and injection phase : ", e);
             exit(1);
@@ -85,6 +88,9 @@ public class Termith {
         }
     }
 
+    /**
+     * This class is used to instance a termITH object
+     */
     public static class Builder
     {
         Path base;
@@ -147,6 +153,7 @@ public class Termith {
 
         /**
          * This method is used to finalize the building of the Termith Object
+         * @see Termith
          * @return return termith object
          */
         public Termith build() {
