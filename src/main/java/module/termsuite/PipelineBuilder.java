@@ -1,4 +1,4 @@
-package module;
+package module.termsuite;
 
 import eu.project.ttc.engines.cleaner.TermProperty;
 import eu.project.ttc.engines.desc.TermSuiteCollection;
@@ -10,7 +10,7 @@ import eu.project.ttc.tools.cli.TermSuiteCLIUtils;
  * @author Simon Meoni
  * Created on 16/08/16.
  */
-public class TermSuitePipelineBuilder {
+public class PipelineBuilder {
     private TermSuitePipeline termsuitePipeline;
     private String jsonPath;
 
@@ -20,9 +20,9 @@ public class TermSuitePipelineBuilder {
      * @param textPath the path of input text corpus
      * @param treeTaggerHome the path for Tagger
      */
-    public TermSuitePipelineBuilder(String lang, String textPath, String treeTaggerHome,
-                                    String tbxTerminology,
-                                    String jsonTerminology) {
+    public PipelineBuilder(String lang, String textPath, String treeTaggerHome,
+                           String tbxTerminology,
+                           String jsonTerminology) {
 
         TermSuiteCLIUtils.setGlobalLogLevel("info");
         this.jsonPath = textPath.replace("/txt","/json");

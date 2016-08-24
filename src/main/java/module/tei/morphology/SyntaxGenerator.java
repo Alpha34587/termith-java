@@ -1,4 +1,6 @@
-package module;
+package module.tei.morphology;
+
+import module.termsuite.JsonReader;
 
 import java.io.File;
 
@@ -6,16 +8,16 @@ import java.io.File;
  * @author Simon Meoni
  * Created on 17/08/16.
  */
-public class TeiMorphologySyntaxGenerator {
+public class SyntaxGenerator {
 
     private File json;
     private StringBuffer txt;
     private StringBuffer xml;
     private StringBuffer tokenizeBody;
     private StringBuffer standoff;
-    private TermsuiteJsonReader termsuiteJsonReader;
+    private JsonReader jsonReader;
 
-    public TeiMorphologySyntaxGenerator(File json, StringBuffer txt, StringBuffer xml) {
+    public SyntaxGenerator(File json, StringBuffer txt, StringBuffer xml) {
         this.json = json;
         this.txt = txt;
         this.xml = xml;

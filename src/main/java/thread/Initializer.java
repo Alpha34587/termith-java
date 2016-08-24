@@ -1,6 +1,6 @@
 package thread;
 
-import module.TextExtractor;
+import module.extractor.TextExtractor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

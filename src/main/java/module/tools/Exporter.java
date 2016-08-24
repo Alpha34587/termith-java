@@ -1,4 +1,4 @@
-package module;
+package module.tools;
 
 import runner.Termith;
 

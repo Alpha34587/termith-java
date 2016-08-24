@@ -1,9 +1,9 @@
 package thread;
 
 import eu.project.ttc.tools.TermSuitePipeline;
-import module.FilesUtilities;
-import module.TeiMorphologySyntaxGenerator;
-import module.TermSuitePipelineBuilder;
+import module.tei.morphology.SyntaxGenerator;
+import module.termsuite.PipelineBuilder;
+import module.tools.FilesUtilities;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,8 +18,8 @@ import static java.nio.file.StandardWatchEventKinds.ENTRY_CREATE;
 
 /**
  * the class TermSuiteTeiInjector is one of a second phase of the termith process. It splits into two main process who
- * run asynchronously : each morphosyntax json file are retrieve by a file watcher. the file watcher service
- * execute workers who tokenizes a text and report the morphosyntax information of specific file.
+ * run asynchronously : each morphology json file are retrieve by a file watcher. the file watcher service
+ * execute workers who tokenizes a text and report the morphology information of specific file.
  * @author Simon Meoni
  * Created on 18/08/16.
  */
@@ -176,7 +176,7 @@ public class TermSuiteTeiInjector {
 
         /**
          * the constructor of TextTermsuiteWorker
-         * @see TermSuitePipelineBuilder
+         * @see PipelineBuilder
          * @param treeTaggerHome
          * @param textPath
          * @param lang
@@ -199,7 +199,7 @@ public class TermSuiteTeiInjector {
             terminologies.add(Paths.get(textPath.replace("txt","") + "/" + "terminology.json"));
             terminologies.add(Paths.get(textPath.replace("txt","") + "/" + "terminology.tbx"));
 
-            TermSuitePipelineBuilder termSuitePipelineBuilder = new TermSuitePipelineBuilder(
+            PipelineBuilder pipelineBuilder = new PipelineBuilder(
                     lang,
                     this.textPath,
                     this.treeTaggerHome,
@@ -207,11 +207,11 @@ public class TermSuiteTeiInjector {
                     terminologies.get(1).toString()
             );
             LOGGER.info("Run Termsuite Pipeline");
-            termSuitePipelineBuilder.start();
+            pipelineBuilder.start();
             LOGGER.info("Finished execution of Termsuite Pipeline, result in :" +
                     textPath.replace("/txt",""));
 
-            return termSuitePipelineBuilder.getTermsuitePipeline();
+            return pipelineBuilder.getTermsuitePipeline();
         }
     }
 
@@ -246,9 +246,9 @@ public class TermSuiteTeiInjector {
         public void run() {
             LOGGER.info("TeiMorphoSyntaxGeneratorWorker Started, processing: " + json.getAbsolutePath());
             //TODO Implement 9th phase of TermITH process
-            TeiMorphologySyntaxGenerator teiMorphologySyntaxGenerator =
-                    new TeiMorphologySyntaxGenerator(json, txt, xml);
-            teiMorphologySyntaxGenerator.execute();
+            SyntaxGenerator syntaxGenerator =
+                    new SyntaxGenerator(json, txt, xml);
+            syntaxGenerator.execute();
             LOGGER.info("TeiMorphoSyntaxGeneratorWorker Terminated");
         }
     }
