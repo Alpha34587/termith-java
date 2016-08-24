@@ -1,18 +1,23 @@
 package cli;
 
 import org.apache.commons.cli.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import runner.Termith;
 
 import javax.xml.transform.TransformerException;
 import java.io.IOException;
-import java.util.concurrent.ExecutionException;
 
 /**
  * Created by Simon Meoni on 25/07/16.
  */
-public class TermithCLI {
-    private static Termith termith;
+class TermithCLI {
     private static Options options = new Options();
+    private static final Logger LOGGER = LoggerFactory.getLogger(TermithCLI.class.getName());
+
+    private TermithCLI() {
+        throw new IllegalAccessError("Utility class");
+    }
 
     public static void main(String[] args) throws IOException, InterruptedException, TransformerException{
         CommandLineParser parser = new DefaultParser();
@@ -63,6 +68,7 @@ public class TermithCLI {
 
         try {
             CommandLine line = parser.parse( options, args );
+            Termith termith;
             if (options.hasOption("trace")) {
 
                 termith = new Termith.Builder()
@@ -84,8 +90,8 @@ public class TermithCLI {
                         .build();
                 termith.execute();
             }
-        } catch (ParseException | ExecutionException e) {
-            e.printStackTrace();
+        } catch (ParseException e) {
+            LOGGER.info("There are some problems during parsing arguments : ",e);
         }
     }
 }

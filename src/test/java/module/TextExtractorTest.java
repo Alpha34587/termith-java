@@ -22,7 +22,7 @@ public class TextExtractorTest {
     public void testXsltTransformation() throws Exception {
         Assert.assertEquals("the extracted text must be equal",
                 String.join("\n", Files.readAllLines(Paths.get("src/test/resources/corpus/txt/file1.txt"))),
-                textExtractor.XsltTransformation().toString()
+                textExtractor.xsltTransformation().toString()
         );
     }
 

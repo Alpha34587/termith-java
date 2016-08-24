@@ -2,13 +2,8 @@ package module;
 
 import eu.project.ttc.engines.cleaner.TermProperty;
 import eu.project.ttc.engines.desc.TermSuiteCollection;
-import eu.project.ttc.models.TermIndex;
 import eu.project.ttc.tools.TermSuitePipeline;
 import eu.project.ttc.tools.cli.TermSuiteCLIUtils;
-
-import java.io.File;
-import java.nio.file.Files;
-import java.nio.file.Path;
 
 /**
  * Created by Simon Meoni on 16/08/16.
@@ -16,11 +11,8 @@ import java.nio.file.Path;
 public class TermSuitePipelineBuilder {
     private TermSuitePipeline termsuitePipeline;
     private String jsonPath;
-    public TermSuitePipeline getTermsuitePipeline() {
-        return termsuitePipeline;
-    }
 
-    public TermSuitePipelineBuilder(String lang, String textPath, String TreeTaggerHome) {
+    public TermSuitePipelineBuilder(String lang, String textPath, String treeTaggerHome) {
 
         TermSuiteCLIUtils.setGlobalLogLevel("info");
         this.jsonPath = textPath.replace("/txt","/json");
@@ -31,7 +23,7 @@ public class TermSuitePipelineBuilder {
                         textPath,
                         "UTF-8")
                 .aeWordTokenizer()
-                .setTreeTaggerHome(TreeTaggerHome)
+                .setTreeTaggerHome(treeTaggerHome)
                 .aeTreeTagger()
                 .aeUrlFilter()
                 .aeStemmer()
@@ -52,4 +44,9 @@ public class TermSuitePipelineBuilder {
                 .haeJsonExporter(textPath.replace("txt","") + "/" + "terminology.json")
                 .haeTbxExporter(textPath.replace("txt","") + "/" + "terminology.tbx");
     }
+
+    public TermSuitePipeline getTermsuitePipeline() {
+        return termsuitePipeline;
+    }
+
 }

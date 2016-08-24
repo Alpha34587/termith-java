@@ -1,22 +1,22 @@
 package runner;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import thread.Initializer;
 import thread.TermithXmlInjector;
 
-import javax.xml.transform.TransformerException;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.concurrent.ExecutionException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
+import static java.lang.System.exit;
 
 /**
  * Created by Simon Meoni on 25/07/16.
  */
 public class Termith {
 
-    private static final Logger LOGGER = Logger.getLogger(Termith.class.getName());
+    private static final Logger LOGGER = LoggerFactory.getLogger(Termith.class.getName());
 
     private String outputPath;
     private String lang;
@@ -26,7 +26,7 @@ public class Termith {
 
     /***
      * this is a part of the builder pattern
-     * @param builder
+     * @param builder Builder object
      */
     private Termith(Builder builder){
         base = builder.base;
@@ -38,7 +38,7 @@ public class Termith {
 
     /***
      * return the outputPath parameter
-     * @return
+     * @return return the path of the result of the analyze
      */
     public String getOutputPath() {
         return outputPath;
@@ -47,7 +47,7 @@ public class Termith {
 
     /***
      * return the language of the corpus
-     * @return
+     * @return return the language of the corpus
      */
     public String getLang() {
         return lang;
@@ -57,30 +57,29 @@ public class Termith {
      * This method execute the different tasks of the process. it executes two main phase sequentially :
      * 1) the text extraction 2) the analyze of termsuite and the injection of morphosyntaxes for each file of the corpus.
      * The second phase need to have the extracted text on input.
-     * @throws IOException
-     * @throws InterruptedException
-     * @throws TransformerException
-     * @throws ExecutionException
+     * @throws IOException this exception never occurs
      */
-    public void execute() throws IOException, InterruptedException, TransformerException, ExecutionException {
+    public void execute() throws IOException {
 
         int poolSize = Runtime.getRuntime().availableProcessors();
-        LOGGER.log(Level.INFO, "Pool size set to: " + poolSize);
-        LOGGER.log(Level.INFO, "Starting First Phase: Text extraction");
+        LOGGER.info("Pool size set to: " + poolSize);
+        LOGGER.info("Starting First Phase: Text extraction");
         Initializer initializer = new Initializer(poolSize, base);
         try {
             initializer.execute();
         } catch ( Exception e ) {
-            //TODO stop execution due to previous errors.
+            LOGGER.error("Error during execution of the extraction text phase : ",e);
+            exit(1);
         }
 
-        LOGGER.log(Level.INFO, "Starting Second Phase: TermSuite + XML injection");
+        LOGGER.info("Starting Second Phase: TermSuite + XML injection");
         TermithXmlInjector termithXmlInjector = new TermithXmlInjector(poolSize,
                 initializer.getExtractedText(), initializer.getXmlCorpus(), treeTaggerHome, lang);
         try {
             termithXmlInjector.execute();
         } catch (Exception e) {
-            //TODO stop execution due to previous errors.
+            LOGGER.error("Error during execution of the termsuite and injection phase : ", e);
+            exit(1);
 
         }
     }
@@ -95,8 +94,8 @@ public class Termith {
 
         /**
          * This method set the input folder path
-         * @param path
-         * @return
+         * @param path path of the base corpus
+         * @return return the path of the base corpus
          * @throws IOException
          */
         public Builder baseFolder(String path) throws IOException {
@@ -107,8 +106,8 @@ public class Termith {
         /**
          * this method set a boolean that used to activate or not the trace : each step of the process will be export to
          * the result folder
-         * @param activate
-         * @return
+         * @param activate boolean use to activate the "trace" mode
+         * @return value of the activate boolean
          */
         public Builder trace(boolean activate){
             this.trace = activate;
@@ -117,8 +116,8 @@ public class Termith {
 
         /**
          * set the output path of the result
-         * @param outputPath
-         * @return
+         * @param outputPath the output path
+         * @return return output path
          */
         public Builder export(String outputPath){
             this.outputPath = outputPath;
@@ -127,8 +126,8 @@ public class Termith {
 
         /**
          * set the lang
-         * @param lang
-         * @return
+         * @param lang set language
+         * @return return string language
          */
         public Builder lang(String lang){
             this.lang = lang;
@@ -137,8 +136,8 @@ public class Termith {
 
         /**
          * set the TreeTagger path
-         * @param treeTaggerHome
-         * @return
+         * @param treeTaggerHome TreeTagger path
+         * @return return TreeTagger path
          */
         public Builder treeTaggerHome(String treeTaggerHome){
             this.treeTaggerHome = treeTaggerHome;
@@ -147,7 +146,7 @@ public class Termith {
 
         /**
          * This method is used to finalize the building of the Termith Object
-         * @return
+         * @return return termith object
          */
         public Termith build() {
             return  new Termith(this);

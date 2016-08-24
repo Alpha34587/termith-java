@@ -1,9 +1,6 @@
 package module;
 
-import thread.Initializer;
-
 import java.io.File;
-import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Created by Simon Meoni on 17/08/16.

@@ -4,14 +4,14 @@ import eu.project.ttc.tools.TermSuitePipeline;
 import module.FilesUtilities;
 import module.MorphoSyntaxInjector;
 import module.TermSuitePipelineBuilder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.*;
 import java.util.Map;
 import java.util.concurrent.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import static java.nio.file.StandardWatchEventKinds.ENTRY_CREATE;
 
@@ -20,10 +20,9 @@ import static java.nio.file.StandardWatchEventKinds.ENTRY_CREATE;
  */
 public class TermithXmlInjector {
 
-    private static final Logger LOGGER = Logger.getLogger(TermithXmlInjector.class.getName());
-    private static int DEFAULT_POOL_SIZE = Runtime.getRuntime().availableProcessors();
+    private static final Logger LOGGER = LoggerFactory.getLogger(TermithXmlInjector.class.getName());
+    private static final int DEFAULT_POOL_SIZE = Runtime.getRuntime().availableProcessors();
 
-    private int poolSize;
     private Path corpus;
     private Map<String, StringBuffer> extractedText;
     private Map<String, StringBuffer> xmlCorpus;
@@ -40,7 +39,6 @@ public class TermithXmlInjector {
     public TermithXmlInjector(int poolSize, Map<String, StringBuffer> extractedText,
                               Map<String, StringBuffer> xmlCorpus,
                               String treeTaggerHome, String lang) throws IOException {
-        this.poolSize = poolSize;
         this.treeTaggerHome = treeTaggerHome;
         this.executorService = Executors.newFixedThreadPool(poolSize);
         this.extractedText = extractedText;
@@ -48,10 +46,10 @@ public class TermithXmlInjector {
         this.corpus = Paths.get(FilesUtilities.createTemporaryFolder("corpus"));
         this.lang = lang;
 
-        LOGGER.log(Level.INFO, "temporary folder created: " + this.corpus);
+        LOGGER.info("temporary folder created: " + this.corpus);
         Files.createDirectories(Paths.get(this.corpus + "/json"));
         Files.createDirectories(Paths.get(this.corpus + "/txt"));
-        LOGGER.log(Level.INFO, "create temporary text files in " + this.corpus + "/txt folder");
+        LOGGER.info("create temporary text files in " + this.corpus + "/txt folder");
         FilesUtilities.createFiles(this.corpus + "/txt", extractedText, "txt");
     }
 
@@ -71,14 +69,14 @@ public class TermithXmlInjector {
     private class JsonRetrieverWorker implements Runnable {
 
         private final Map<String, StringBuffer> extraxtedText;
-        private final Logger LOGGER = Logger.getLogger(JsonRetrieverWorker.class.getName());
+        private final Logger Logger = LoggerFactory.getLogger(JsonRetrieverWorker.class.getName());
         WatchService watcher = FileSystems.getDefault().newWatchService();
         Path dir;
         WatchKey key;
         ExecutorService executorService;
 
         JsonRetrieverWorker(Path dir, Map<String, StringBuffer> extractedText, ExecutorService executorService) throws IOException {
-            LOGGER.log(Level.INFO, "Initialized File Watching Service");
+            Logger.info("Initialized File Watching Service");
             this.dir = dir;
             this.key = dir.register(watcher, ENTRY_CREATE);
             this.executorService = executorService;
@@ -87,32 +85,33 @@ public class TermithXmlInjector {
 
         @Override
         public void run() {
-            LOGGER.log(Level.INFO,"File Watcher Service Started");
+            Logger.info("File Watcher Service Started");
             for (;;) {
                 try {
                     this.key = watcher.take();
 
-                } catch (InterruptedException x) {
-                    return;
+                } catch (InterruptedException e) {
+                    Logger.error("File watcher service crashed",e);
+                    Thread.currentThread().interrupt();
                 }
                 for (WatchEvent<?> event: key.pollEvents()) {
                     WatchEvent<Path> ev = (WatchEvent<Path>)event;
                     Path filename = dir.resolve(ev.context());
-                    LOGGER.log(Level.INFO, "New file retrieve: " + filename);
+                    Logger.info("New file retrieve: " + filename);
                     String basename = filename.getFileName().toString().replace(".json", "");
                     executorService.execute(new MorphoSyntaxInjectorWorker(filename.toFile(),
                             extractedText.get(basename),xmlCorpus.get(basename)));
                 }
                 boolean valid = key.reset();
                 if (!valid) {
-                    LOGGER.log(Level.INFO,"Interrupt File Watcher Service");
+                    Logger.info("Interrupt File Watcher Service");
                     break;
                 }
             }
         }
 
         public void stop() throws IOException {
-            LOGGER.log(Level.INFO,"File Watcher Service Terminated");
+            Logger.info("File Watcher Service Terminated");
             watcher.close();
         }
 
@@ -131,15 +130,15 @@ public class TermithXmlInjector {
 
         @Override
         public TermSuitePipeline call() throws Exception {
-            LOGGER.log(Level.INFO,"Build Termsuite Pipeline");
+            LOGGER.info("Build Termsuite Pipeline");
             TermSuitePipelineBuilder termSuitePipelineBuilder = new TermSuitePipelineBuilder(
                     lang,
                     this.textPath,
                     this.treeTaggerHome
             );
-            LOGGER.log(Level.INFO,"Run Termsuite Pipeline");
+            LOGGER.info("Run Termsuite Pipeline");
             termSuitePipelineBuilder.getTermsuitePipeline().run();
-            LOGGER.log(Level.INFO, "Finished execution of Termsuite Pipeline, result in :" +
+            LOGGER.info("Finished execution of Termsuite Pipeline, result in :" +
                     textPath.replace("/txt",""));
             return termSuitePipelineBuilder.getTermsuitePipeline();
         }
@@ -147,7 +146,7 @@ public class TermithXmlInjector {
 
     private class MorphoSyntaxInjectorWorker implements Runnable{
 
-        private final Logger LOGGER = Logger.getLogger(JsonRetrieverWorker.class.getName());
+        private final Logger LOGGER = LoggerFactory.getLogger(JsonRetrieverWorker.class.getName());
         private StringBuffer txt;
         StringBuffer xml;
         File json;
@@ -160,11 +159,11 @@ public class TermithXmlInjector {
 
         @Override
         public void run() {
-            LOGGER.log(Level.INFO,"MorphoSyntaxInjectorWorker Started, processing: " + json.getAbsolutePath());
+            LOGGER.info("MorphoSyntaxInjectorWorker Started, processing: " + json.getAbsolutePath());
             //TODO Implement 9th phase of TermITH process
             MorphoSyntaxInjector morphoSyntaxInjector = new MorphoSyntaxInjector(json, txt, xml);
             morphoSyntaxInjector.execute();
-            LOGGER.log(Level.INFO,"MorphoSyntaxInjectorWorker Terminated");
+            LOGGER.info("MorphoSyntaxInjectorWorker Terminated");
         }
     }
 }
