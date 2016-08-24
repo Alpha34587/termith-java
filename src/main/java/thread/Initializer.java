@@ -8,7 +8,10 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Map;
-import java.util.concurrent.*;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by Simon Meoni on 25/07/16.
@@ -23,10 +26,19 @@ public class Initializer {
     private Map<String, StringBuffer> extractedText;
     private Map<String, StringBuffer> xmlCorpus;
 
+    /**
+     * a constructor of initialize who take on parameter a folder path with xml files
+     * @param base the input folder
+     */
     public Initializer(Path base) {
         this(DEFAULT_POOL_SIZE, base);
     }
 
+    /**
+     * this constructor can be specify the number of worker for this process
+     * @param poolSize number of worker
+     * @param base the input of folder
+     */
     public Initializer(int poolSize, Path base) {
         this.base = base;
         executor = Executors.newFixedThreadPool(poolSize);
@@ -34,12 +46,23 @@ public class Initializer {
         xmlCorpus = new ConcurrentHashMap<>();
     }
 
+    /**
+     * @return return the list of extracted text extracts by the process
+     */
     public Map<String, StringBuffer> getExtractedText() {
         return extractedText;
     }
 
+    /**
+     * @return return the base corpus
+     */
     public Map<String, StringBuffer> getXmlCorpus() { return xmlCorpus; }
 
+    /**
+     * execute the extraction text task with the help of inner InitializerWorker class
+     * @throws IOException
+     * @throws InterruptedException
+     */
     public void execute() throws IOException, InterruptedException {
         LOGGER.info("Starting initilization of files of folder: " + this.base);
         Files.list(base).forEach(p -> executor.submit(new InitialiazerWorker((Path) p)));
@@ -48,14 +71,22 @@ public class Initializer {
         executor.awaitTermination(1L, TimeUnit.DAYS);
     }
 
+
     private class InitialiazerWorker implements Runnable {
 
         private Path path;
 
+        /**
+         * constructor of the class the parameter path is the path of the file that we want to treated
+         * @param path
+         */
         InitialiazerWorker(Path path) {
             this.path = path;
         }
 
+        /**
+         * this override method run call the extractor text method
+         */
         @Override
         public void run() {
             try {
