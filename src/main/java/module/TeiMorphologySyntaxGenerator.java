@@ -13,6 +13,7 @@ public class TeiMorphologySyntaxGenerator {
     private StringBuffer xml;
     private StringBuffer tokenizeBody;
     private StringBuffer standoff;
+    private TermsuiteJsonReader termsuiteJsonReader;
 
     public TeiMorphologySyntaxGenerator(File json, StringBuffer txt, StringBuffer xml) {
         this.json = json;
@@ -25,7 +26,4 @@ public class TeiMorphologySyntaxGenerator {
     public void execute() {
 
     }
-
-    class TeiMorphologySyntaxTokenizer{}
-    class TeiMorphologySyntaxStandOffPackager{}
 }
