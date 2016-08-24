@@ -3,7 +3,10 @@ package module;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.xml.transform.*;
+import javax.xml.transform.Source;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 import java.io.File;
@@ -17,10 +20,19 @@ public class TextExtractor {
     private static final Logger LOGGER = LoggerFactory.getLogger(TextExtractor.class.getName());
     private File file;
 
+    /**
+     * builder for textExtractor
+     * @param file Treated xml/tei file
+     */
     public TextExtractor(File file) {
         this.file = file;
     }
 
+    /**
+     * this method apply an xsl stylesheet to a file given in parameter. it extracts the plain text of the xml file
+     * @return the extracted text
+     * @throws IOException
+     */
     public StringBuffer xsltTransformation() throws IOException {
 
         TransformerFactory factory = TransformerFactory.newInstance();
