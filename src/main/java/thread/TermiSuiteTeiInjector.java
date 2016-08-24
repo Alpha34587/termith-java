@@ -15,20 +15,22 @@ import java.util.concurrent.*;
 import static java.nio.file.StandardWatchEventKinds.ENTRY_CREATE;
 
 /**
- * the class TeiMorphologySyntaxGenerator is one of a second phase of the termith process. It splits into two main process who
+ * the class TermiSuiteTeiInjector is one of a second phase of the termith process. It splits into two main process who
  * run asynchronously : each morphosyntax json file are retrieve by a file watcher. the file watcher service
  * execute workers who tokenizes a text and report the morphosyntax information of specific file.
  * @author Simon Meoni
  * Created on 18/08/16.
  */
-public class TeiMorphologySyntaxGenerator {
+public class TermiSuiteTeiInjector {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(TeiMorphologySyntaxGenerator.class.getName());
+    private static final Logger LOGGER = LoggerFactory.getLogger(TermiSuiteTeiInjector.class.getName());
     private static final int DEFAULT_POOL_SIZE = Runtime.getRuntime().availableProcessors();
 
     private Path corpus;
     private Map<String, StringBuffer> extractedText;
     private Map<String, StringBuffer> xmlCorpus;
+    private Map<String, StringBuffer> tokenizeTeiBody;
+    private Map<String, StringBuffer> morphoSyntaxStandOff;
     private ExecutorService executorService;
     private String treeTaggerHome;
     private String lang;
@@ -41,14 +43,14 @@ public class TeiMorphologySyntaxGenerator {
      * @param lang the language of the corpus
      * @throws IOException
      */
-    public TeiMorphologySyntaxGenerator(Map<String, StringBuffer> extractedText, Map<String, StringBuffer> xmlCorpus,
-                                        String treeTaggerHome, String lang)
+    public TermiSuiteTeiInjector(Map<String, StringBuffer> extractedText, Map<String, StringBuffer> xmlCorpus,
+                                 String treeTaggerHome, String lang)
             throws IOException {
         this(DEFAULT_POOL_SIZE, extractedText, xmlCorpus, treeTaggerHome, lang);
     }
 
     /**
-     * @see TeiMorphologySyntaxGenerator
+     * @see TermiSuiteTeiInjector
      * @param poolSize specify the number of worker
      * @param extractedText the plain extract previously previously
      * @param xmlCorpus the base corpus send to TermithXmlAnalyzer
@@ -56,15 +58,17 @@ public class TeiMorphologySyntaxGenerator {
      * @param lang the language of the corpus
      * @throws IOException
      */
-    public TeiMorphologySyntaxGenerator(int poolSize, Map<String, StringBuffer> extractedText,
-                                        Map<String, StringBuffer> xmlCorpus,
-                                        String treeTaggerHome, String lang) throws IOException {
+    public TermiSuiteTeiInjector(int poolSize, Map<String, StringBuffer> extractedText,
+                                 Map<String, StringBuffer> xmlCorpus,
+                                 String treeTaggerHome, String lang) throws IOException {
         this.treeTaggerHome = treeTaggerHome;
         this.executorService = Executors.newFixedThreadPool(poolSize);
         this.extractedText = extractedText;
         this.xmlCorpus = xmlCorpus;
         this.corpus = Paths.get(FilesUtilities.createTemporaryFolder("corpus"));
         this.lang = lang;
+        this.morphoSyntaxStandOff = new ConcurrentHashMap<>();
+        this.tokenizeTeiBody = new ConcurrentHashMap<>();
 
         LOGGER.info("temporary folder created: " + this.corpus);
         Files.createDirectories(Paths.get(this.corpus + "/json"));
@@ -74,7 +78,7 @@ public class TeiMorphologySyntaxGenerator {
     }
 
     /**
-     * Execute the Termsuite task and the TeiMorphologySyntaxGenerator
+     * Execute the Termsuite task and the TermiSuiteTeiInjector
      * @throws InterruptedException
      * @throws IOException
      * @throws ExecutionException
@@ -83,8 +87,7 @@ public class TeiMorphologySyntaxGenerator {
         Future<TermSuitePipeline> termsuiteTask = executorService.submit(
                 new TextTermSuiteWorker(treeTaggerHome, this.corpus + "/txt", lang)
         );
-        JsonRetrieverWorker jsonRetrieverWorker = new JsonRetrieverWorker(Paths.get(this.corpus + "/json"), extractedText,
-                executorService);
+        JsonRetrieverWorker jsonRetrieverWorker = new JsonRetrieverWorker(Paths.get(this.corpus + "/json"));
         executorService.submit(jsonRetrieverWorker);
         termsuiteTask.get();
         jsonRetrieverWorker.stop();
@@ -98,19 +101,16 @@ public class TeiMorphologySyntaxGenerator {
      */
     private class JsonRetrieverWorker implements Runnable {
 
-        private final Map<String, StringBuffer> extraxtedText;
         private final Logger Logger = LoggerFactory.getLogger(JsonRetrieverWorker.class.getName());
         WatchService watcher = FileSystems.getDefault().newWatchService();
         Path dir;
         WatchKey key;
         ExecutorService executorService;
 
-        JsonRetrieverWorker(Path dir, Map<String, StringBuffer> extractedText, ExecutorService executorService) throws IOException {
+        JsonRetrieverWorker(Path dir) throws IOException {
             Logger.info("Initialized File Watching Service");
             this.dir = dir;
             this.key = dir.register(watcher, ENTRY_CREATE);
-            this.executorService = executorService;
-            this.extraxtedText = extractedText;
         }
 
         /**
@@ -132,8 +132,13 @@ public class TeiMorphologySyntaxGenerator {
                     Path filename = dir.resolve(ev.context());
                     Logger.info("New file retrieve: " + filename);
                     String basename = filename.getFileName().toString().replace(".json", "");
-                    executorService.execute(new TeiMorphoSyntaxGeneratorWorker(filename.toFile(),
-                            extractedText.get(basename),xmlCorpus.get(basename)));
+                    executorService.execute(
+                            new TeiMorphoSyntaxGeneratorWorker(
+                                    filename.toFile(),
+                                    extractedText.get(basename),
+                                    xmlCorpus.get(basename)
+                            )
+                    );
                 }
                 boolean valid = key.reset();
                 if (!valid) {
@@ -197,18 +202,18 @@ public class TeiMorphologySyntaxGenerator {
     }
 
     /**
-     * This class execute a TeiMorphologySyntaxGenerator
-     * @see TeiMorphologySyntaxGenerator
+     * This class execute a TermiSuiteTeiInjector
+     * @see TermiSuiteTeiInjector
      */
     private class TeiMorphoSyntaxGeneratorWorker implements Runnable{
 
         private final Logger LOGGER = LoggerFactory.getLogger(JsonRetrieverWorker.class.getName());
         private StringBuffer txt;
-        StringBuffer xml;
-        File json;
+        private StringBuffer xml;
+        private File json;
 
         /**
-         * The constructor of the class. this parameter is used to instanced a TeiMorphologySyntaxGenerator
+         * The constructor of the class. this parameter is used to instanced a TermiSuiteTeiInjector
          * @param json
          * @param txt
          * @param xml
@@ -221,13 +226,14 @@ public class TeiMorphologySyntaxGenerator {
 
         /**
          * run a task who execute the process of analyzes of TeiMorphoSyntaxGeneratorWorker
-         * @see TeiMorphologySyntaxGenerator
+         * @see TermiSuiteTeiInjector
          */
         @Override
         public void run() {
             LOGGER.info("TeiMorphoSyntaxGeneratorWorker Started, processing: " + json.getAbsolutePath());
             //TODO Implement 9th phase of TermITH process
-            module.TeiMorphologySyntaxGenerator teiMorphologySyntaxGenerator = new module.TeiMorphologySyntaxGenerator(json, txt, xml);
+            module.TeiMorphologySyntaxGenerator teiMorphologySyntaxGenerator =
+                    new module.TeiMorphologySyntaxGenerator(json, txt, xml);
             teiMorphologySyntaxGenerator.execute();
             LOGGER.info("TeiMorphoSyntaxGeneratorWorker Terminated");
         }
