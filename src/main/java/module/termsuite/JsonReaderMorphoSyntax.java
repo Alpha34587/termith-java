@@ -19,43 +19,45 @@ import static eu.project.ttc.readers.JsonCasConstants.*;
  */
 class JsonReaderMorphoSyntax {
 
-    boolean inWa = false;
-    private Queue<Token> tokenQueue;
-    private Token token;
-
     private final static Logger LOGGER = LoggerFactory.getLogger(JsonReaderMorphoSyntax.class);
-    JsonToken jsonToken = null;
-    static JsonFactory factory = new JsonFactory();
+    private static JsonFactory factory = new JsonFactory();
+    private Queue<Token> tokenQueue;
+    private File file;
 
 
-    public JsonReaderMorphoSyntax() {
-        this.tokenQueue = new LinkedList<>();
-    }
+    JsonReaderMorphoSyntax(){}
 
-    public JsonReaderMorphoSyntax(Queue<Token> tokenQueue) {
+    JsonReaderMorphoSyntax(File file) {this(new LinkedList<>(), file);}
+
+    private JsonReaderMorphoSyntax(Queue<Token> tokenQueue, File file) {
         this.tokenQueue = tokenQueue;
+        this.file = file;
     }
 
     Queue<Token> getTokenQueue() {
         return tokenQueue;
     }
 
-    public void setTokenQueue(Queue<Token> tokenQueue) {
+    void setTokenQueue(Queue<Token> tokenQueue) {
         this.tokenQueue = tokenQueue;
     }
 
-    public void parsing(File file) {
+    void parsing() {
         try {
-            token = new Token();
-            JsonParser parser = factory.createParser(file);
-            browseJson(parser);
+            browseJson();
             clean();
         } catch (IOException e) {
             LOGGER.error("An error occurred during TermSuite Json Cas parsing", e);
         }
     }
 
-    private void browseJson(JsonParser parser) throws IOException {
+    private void browseJson() throws IOException {
+        JsonParser parser = factory.createParser(file);
+
+        JsonToken jsonToken;
+        Token token = new Token();
+        boolean inWa = false;
+
         while ((jsonToken = parser.nextToken()) != null) {
 
             if (inWa){
@@ -65,7 +67,7 @@ class JsonReaderMorphoSyntax {
                     tokenQueue.add(token);
                     token = new Token();
                 }
-                fillTokenStack(parser, jsonToken);
+                fillTokenStack(parser, jsonToken, token);
             }
 
             else if ("word_annotations".equals(parser.getParsingContext().getCurrentName())) {
@@ -74,7 +76,7 @@ class JsonReaderMorphoSyntax {
         }
     }
 
-    private void fillTokenStack(JsonParser parser, JsonToken jsonToken) throws IOException {
+    private void fillTokenStack(JsonParser parser, JsonToken jsonToken, Token token) throws IOException {
         if (jsonToken.equals(JsonToken.FIELD_NAME)){
             switch (parser.getCurrentName()){
                 case F_LEMMA :

@@ -17,8 +17,8 @@ import java.util.Queue;
  *         Created on 25/08/16.
  */
 public class JsonReaderMorphoSyntaxTest {
-    JsonReaderMorphoSyntax jsonReader = new JsonReaderMorphoSyntax();
-    JsonReaderMorphoSyntax cleanJsonReader = new JsonReaderMorphoSyntax();
+    JsonReaderMorphoSyntax jsonReader;
+    JsonReaderMorphoSyntax cleanJsonReader;
 
     Queue<JsonReaderMorphoSyntax.Token> tokenStack = new LinkedList<>();
     Queue<JsonReaderMorphoSyntax.Token> tokenStack2 = new LinkedList<>();
@@ -30,13 +30,16 @@ public class JsonReaderMorphoSyntaxTest {
     @Before
     public void setUp(){
         //Parsing Test
+        cleanJsonReader = new JsonReaderMorphoSyntax();
+        jsonReader = new JsonReaderMorphoSyntax(new File("src/test/resources/file.reader.json/file1.json"));
+
         JsonReaderMorphoSyntax.Token token1 = new JsonReaderMorphoSyntax.Token("NN", "hearing", 22, 29);
         JsonReaderMorphoSyntax.Token token2 = new JsonReaderMorphoSyntax.Token("N", "research", 30, 38);
         JsonReaderMorphoSyntax.Token token3 = new JsonReaderMorphoSyntax.Token("CD", "125", 39, 42);
         tokenStack.add(token1);
         tokenStack.add(token2);
         tokenStack.add(token3);
-        jsonReader.parsing(new File("src/test/resources/file.reader.json/file1.json"));
+        jsonReader.parsing();
 
         //Clean Test
         offsets.add(new Pair<>(0,5));
@@ -104,6 +107,4 @@ public class JsonReaderMorphoSyntaxTest {
             }
         }
     }
-
-
 }
