@@ -1,6 +1,5 @@
-package module;
+package module.extractor;
 
-import module.extractor.TextExtractor;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

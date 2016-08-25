@@ -1,4 +1,4 @@
-package module;
+package tools;
 
 import module.tools.FilesUtilities;
 import org.junit.Assert;
