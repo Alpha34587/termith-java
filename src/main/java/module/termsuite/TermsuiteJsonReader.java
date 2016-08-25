@@ -17,19 +17,19 @@ import static eu.project.ttc.readers.JsonCasConstants.*;
  * @author Simon Meoni
  *         Created on 25/08/16.
  */
-class JsonReaderMorphoSyntax {
+class TermsuiteJsonReader {
 
-    private final static Logger LOGGER = LoggerFactory.getLogger(JsonReaderMorphoSyntax.class);
+    private final static Logger LOGGER = LoggerFactory.getLogger(TermsuiteJsonReader.class);
     private static JsonFactory factory = new JsonFactory();
     private Queue<Token> tokenQueue;
     private File file;
 
 
-    JsonReaderMorphoSyntax(){}
+    TermsuiteJsonReader(){}
 
-    JsonReaderMorphoSyntax(File file) {this(new LinkedList<>(), file);}
+    TermsuiteJsonReader(File file) {this(new LinkedList<>(), file);}
 
-    private JsonReaderMorphoSyntax(Queue<Token> tokenQueue, File file) {
+    private TermsuiteJsonReader(Queue<Token> tokenQueue, File file) {
         this.tokenQueue = tokenQueue;
         this.file = file;
     }

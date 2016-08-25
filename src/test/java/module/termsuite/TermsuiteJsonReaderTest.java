@@ -16,30 +16,30 @@ import java.util.Queue;
  * @author Simon Meoni
  *         Created on 25/08/16.
  */
-public class JsonReaderMorphoSyntaxTest {
-    JsonReaderMorphoSyntax jsonReader;
-    JsonReaderMorphoSyntax cleanJsonReader;
+public class TermsuiteJsonReaderTest {
+    TermsuiteJsonReader termsuiteJsonReader;
+    TermsuiteJsonReader cleanTermsuiteJsonReader;
 
-    Queue<JsonReaderMorphoSyntax.Token> tokenStack = new LinkedList<>();
-    Queue<JsonReaderMorphoSyntax.Token> tokenStack2 = new LinkedList<>();
+    Queue<TermsuiteJsonReader.Token> tokenStack = new LinkedList<>();
+    Queue<TermsuiteJsonReader.Token> tokenStack2 = new LinkedList<>();
     Queue<Pair<Integer, Integer>> offsets = new LinkedList<>();
 
 
-    Logger logger = LoggerFactory.getLogger(JsonReaderMorphoSyntaxTest.class);
+    Logger logger = LoggerFactory.getLogger(TermsuiteJsonReaderTest.class);
 
     @Before
     public void setUp(){
         //Parsing Test
-        cleanJsonReader = new JsonReaderMorphoSyntax();
-        jsonReader = new JsonReaderMorphoSyntax(new File("src/test/resources/file.reader.json/file1.json"));
+        cleanTermsuiteJsonReader = new TermsuiteJsonReader();
+        termsuiteJsonReader = new TermsuiteJsonReader(new File("src/test/resources/file.reader.json/file1.json"));
 
-        JsonReaderMorphoSyntax.Token token1 = new JsonReaderMorphoSyntax.Token("NN", "hearing", 22, 29);
-        JsonReaderMorphoSyntax.Token token2 = new JsonReaderMorphoSyntax.Token("N", "research", 30, 38);
-        JsonReaderMorphoSyntax.Token token3 = new JsonReaderMorphoSyntax.Token("CD", "125", 39, 42);
+        TermsuiteJsonReader.Token token1 = new TermsuiteJsonReader.Token("NN", "hearing", 22, 29);
+        TermsuiteJsonReader.Token token2 = new TermsuiteJsonReader.Token("N", "research", 30, 38);
+        TermsuiteJsonReader.Token token3 = new TermsuiteJsonReader.Token("CD", "125", 39, 42);
         tokenStack.add(token1);
         tokenStack.add(token2);
         tokenStack.add(token3);
-        jsonReader.parsing();
+        termsuiteJsonReader.parsing();
 
         //Clean Test
         offsets.add(new Pair<>(0,5));
@@ -49,29 +49,29 @@ public class JsonReaderMorphoSyntaxTest {
         offsets.add(new Pair<>(11,15));
         offsets.add(new Pair<>(16,18));
 
-        JsonReaderMorphoSyntax.Token token4 = new JsonReaderMorphoSyntax.Token("", "", 0, 5);
-        JsonReaderMorphoSyntax.Token token5 = new JsonReaderMorphoSyntax.Token("", "", 6, 7);
-        JsonReaderMorphoSyntax.Token token6 = new JsonReaderMorphoSyntax.Token("", "", 6, 9);
-        JsonReaderMorphoSyntax.Token token7 = new JsonReaderMorphoSyntax.Token("", "", 9, 10);
-        JsonReaderMorphoSyntax.Token token8 = new JsonReaderMorphoSyntax.Token("", "", 11, 16);
-        JsonReaderMorphoSyntax.Token token9 = new JsonReaderMorphoSyntax.Token("", "", 16, 18);
+        TermsuiteJsonReader.Token token4 = new TermsuiteJsonReader.Token("", "", 0, 5);
+        TermsuiteJsonReader.Token token5 = new TermsuiteJsonReader.Token("", "", 6, 7);
+        TermsuiteJsonReader.Token token6 = new TermsuiteJsonReader.Token("", "", 6, 9);
+        TermsuiteJsonReader.Token token7 = new TermsuiteJsonReader.Token("", "", 9, 10);
+        TermsuiteJsonReader.Token token8 = new TermsuiteJsonReader.Token("", "", 11, 16);
+        TermsuiteJsonReader.Token token9 = new TermsuiteJsonReader.Token("", "", 16, 18);
         tokenStack2.add(token4);
         tokenStack2.add(token5);
         tokenStack2.add(token6);
         tokenStack2.add(token7);
         tokenStack2.add(token8);
         tokenStack2.add(token9);
-        cleanJsonReader.setTokenQueue(tokenStack2);
-        cleanJsonReader.clean();
+        cleanTermsuiteJsonReader.setTokenQueue(tokenStack2);
+        cleanTermsuiteJsonReader.clean();
     }
 
     @Test
     public void parsingTest(){
-        while (!tokenStack.isEmpty() || !jsonReader.getTokenQueue().isEmpty()) {
+        while (!tokenStack.isEmpty() || !termsuiteJsonReader.getTokenQueue().isEmpty()) {
             try {
 
-                JsonReaderMorphoSyntax.Token expected = tokenStack.poll();
-                JsonReaderMorphoSyntax.Token current = jsonReader.getTokenQueue().poll();
+                TermsuiteJsonReader.Token expected = tokenStack.poll();
+                TermsuiteJsonReader.Token current = termsuiteJsonReader.getTokenQueue().poll();
                 Assert.assertEquals("tokenStack must be equals :", expected.getBegin(),
                         current.getBegin());
                 Assert.assertEquals("tokenStack must be equals :", expected.getEnd(),
@@ -91,11 +91,11 @@ public class JsonReaderMorphoSyntaxTest {
 
     @Test
     public void cleanTest() throws Exception {
-        while (!offsets.isEmpty() || !cleanJsonReader.getTokenQueue().isEmpty()) {
+        while (!offsets.isEmpty() || !cleanTermsuiteJsonReader.getTokenQueue().isEmpty()) {
             try {
 
                 Pair<Integer, Integer> expected = offsets.poll();
-                JsonReaderMorphoSyntax.Token current = cleanJsonReader.getTokenQueue().poll();
+                TermsuiteJsonReader.Token current = cleanTermsuiteJsonReader.getTokenQueue().poll();
                 Assert.assertEquals("begin value must be equal :", expected.a.intValue(),
                         current.getBegin());
                 Assert.assertEquals("end value must be equal :", expected.b.intValue(),
