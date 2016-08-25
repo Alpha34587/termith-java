@@ -5,4 +5,5 @@ package module.termsuite;
  *         Created on 25/08/16.
  */
 public class JsonReaderMorphoSyntax extends JsonReader {
+
 }
