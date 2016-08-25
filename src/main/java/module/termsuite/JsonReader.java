@@ -1,6 +1,6 @@
 package module.termsuite;
 
-import eu.project.ttc.readers.TermSuiteJsonCasDeserializer;
+import java.io.File;
 
 /**
  * This class is used to convert the Json files of termsuite into java object, there are two type of files who can generate by it :
@@ -9,31 +9,9 @@ import eu.project.ttc.readers.TermSuiteJsonCasDeserializer;
  * @author Simon Meoni
  *         Created on 24/08/16.
  */
-public abstract class JsonReader extends TermSuiteJsonCasDeserializer{
+public interface JsonReader {
 
-    public enum terminologyJsonAttribute {
+    public void parsing(File file);
 
-    }
 
-    public enum morphosyntaxJsonAttribute {
-
-    }
-
-    public void parsing(){
-
-    }
-
-    public class Token {
-        public String pos;
-        public String lemma;
-        public int begin;
-        public int end;
-
-        public Token(String pos, String lemma, int begin, int end) {
-            this.pos = pos;
-            this.lemma = lemma;
-            this.begin = begin;
-            this.end = end;
-        }
-    }
 }
