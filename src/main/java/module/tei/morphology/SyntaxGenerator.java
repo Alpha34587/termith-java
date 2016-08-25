@@ -1,7 +1,5 @@
 package module.tei.morphology;
 
-import module.termsuite.JsonReader;
-
 import java.io.File;
 
 /**
@@ -15,7 +13,6 @@ public class SyntaxGenerator {
     private StringBuffer xml;
     private StringBuffer tokenizeBody;
     private StringBuffer standoff;
-    private JsonReader jsonReader;
 
     public SyntaxGenerator(File json, StringBuffer txt, StringBuffer xml) {
         this.json = json;

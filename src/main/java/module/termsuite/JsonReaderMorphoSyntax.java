@@ -49,7 +49,7 @@ class JsonReaderMorphoSyntax {
             token = new Token();
             JsonParser parser = factory.createParser(file);
             browseJson(parser);
-
+            clean();
         } catch (IOException e) {
             LOGGER.error("An error occurred during TermSuite Json Cas parsing", e);
         }
@@ -96,27 +96,29 @@ class JsonReaderMorphoSyntax {
     }
 
     public void clean(){
-//        for (JsonReaderMorphoSyntax.Token tag : tokenQueue) {
-//
-//            int index = tokenQueue.indexOf(tag);
-//            if (index > 0) {
-//                if (tag.begin == tags.get(index - 1).end) {
-//                    tags.get(index - 1).end--;
-//                }
-//                if (tag.begin < tags.get(index - 1).end) {
-//                    tag.begin = tags.get(index - 1).end + 1;
-//                }
-//            }
-//        }
+        Token lastToken = new Token();
 
+        for (Token token : tokenQueue) {
+
+            if (token.begin != 0) {
+                if (token.begin == lastToken.end) {
+                    lastToken.end--;
+                }
+                if (token.begin < lastToken.end) {
+                    token.begin = lastToken.end + 1;
+                }
+            }
+            lastToken = token;
+        }
     }
 
     static class Token {
-        public String pos;
 
+        public String pos;
         private String lemma;
         private int begin;
         private int end;
+
         Token(String pos, String lemma, int begin, int end) {
             this.pos = pos;
             this.lemma = lemma;
