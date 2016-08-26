@@ -1,5 +1,7 @@
 package module.tei.morphology;
 
+import module.termsuite.TermsuiteJsonReader;
+
 import java.io.File;
 
 /**
@@ -8,14 +10,15 @@ import java.io.File;
  */
 public class SyntaxGenerator {
 
-    private File json;
+    private TermsuiteJsonReader termsuiteJsonReader;
     private StringBuffer txt;
     private StringBuffer xml;
     private StringBuffer tokenizeBody;
     private StringBuffer standoff;
 
     public SyntaxGenerator(File json, StringBuffer txt, StringBuffer xml) {
-        this.json = json;
+        this.termsuiteJsonReader = new TermsuiteJsonReader(json);
+        termsuiteJsonReader.parsing();
         this.txt = txt;
         this.xml = xml;
         this.tokenizeBody = new StringBuffer();
@@ -23,6 +26,7 @@ public class SyntaxGenerator {
     }
 
     public void execute() {
-
+        SyntaxParser syntaxParser = new SyntaxParser(txt,xml,termsuiteJsonReader);
+        syntaxParser.execute();
     }
 }

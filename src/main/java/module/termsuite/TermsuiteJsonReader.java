@@ -23,6 +23,7 @@ public class TermsuiteJsonReader {
     private static JsonFactory factory = new JsonFactory();
     private Queue<Token> tokenQueue;
     private File file;
+    private Token pollToken;
 
 
     public TermsuiteJsonReader(){
@@ -34,6 +35,10 @@ public class TermsuiteJsonReader {
     private TermsuiteJsonReader(Queue<Token> tokenQueue, File file) {
         this.tokenQueue = tokenQueue;
         this.file = file;
+    }
+
+    public boolean isTokenQueueEmpty(){
+        return tokenQueue.peek() == null;
     }
 
     Queue<Token> getTokenQueue() {
@@ -77,6 +82,35 @@ public class TermsuiteJsonReader {
             }
         }
     }
+
+    public void pollToken(){
+        this.pollToken =  tokenQueue.poll();
+    }
+
+    public int getCurrentTokenEnd(){
+        if (pollToken != null)
+            return pollToken.getEnd();
+        else
+            return -1;
+    }
+
+    public void setCurrentTokenBegin(int i){
+        if (pollToken != null)
+            pollToken.setBegin(i);
+    }
+
+    public void setCurrentTokenEnd(int i){
+        if (pollToken != null)
+            pollToken.setBegin(i);
+    }
+
+    public int getCurrentTokenBegin(){
+        if (pollToken != null)
+            return pollToken.getBegin();
+        else
+            return -1;
+    }
+
 
     private void fillTokenStack(JsonParser parser, JsonToken jsonToken, Token token) throws IOException {
         if (jsonToken.equals(JsonToken.FIELD_NAME)){

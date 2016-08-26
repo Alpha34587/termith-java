@@ -246,8 +246,7 @@ public class TermSuiteTeiInjector {
         public void run() {
             LOGGER.info("TeiMorphoSyntaxGeneratorWorker Started, processing: " + json.getAbsolutePath());
             //TODO Implement 9th phase of TermITH process
-            SyntaxGenerator syntaxGenerator =
-                    new SyntaxGenerator(json, txt, xml);
+            SyntaxGenerator syntaxGenerator = new SyntaxGenerator(json, txt, xml);
             syntaxGenerator.execute();
             LOGGER.info("TeiMorphoSyntaxGeneratorWorker Terminated");
         }
