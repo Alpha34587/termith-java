@@ -17,7 +17,7 @@ import static eu.project.ttc.readers.JsonCasConstants.*;
  * @author Simon Meoni
  *         Created on 25/08/16.
  */
-class TermsuiteJsonReader {
+public class TermsuiteJsonReader {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(TermsuiteJsonReader.class);
     private static JsonFactory factory = new JsonFactory();
@@ -25,9 +25,11 @@ class TermsuiteJsonReader {
     private File file;
 
 
-    TermsuiteJsonReader(){}
+    public TermsuiteJsonReader(){
+        this.tokenQueue = new LinkedList<>();
+    }
 
-    TermsuiteJsonReader(File file) {this(new LinkedList<>(), file);}
+    public TermsuiteJsonReader(File file) {this(new LinkedList<>(), file);}
 
     private TermsuiteJsonReader(Queue<Token> tokenQueue, File file) {
         this.tokenQueue = tokenQueue;
@@ -42,7 +44,7 @@ class TermsuiteJsonReader {
         this.tokenQueue = tokenQueue;
     }
 
-    void parsing() {
+    public void parsing() {
         try {
             browseJson();
             clean();
@@ -97,7 +99,7 @@ class TermsuiteJsonReader {
         }
     }
 
-    public void clean(){
+    void clean(){
         Token lastToken = new Token();
 
         for (Token token : tokenQueue) {
@@ -114,7 +116,11 @@ class TermsuiteJsonReader {
         }
     }
 
-    static class Token {
+    public void createToken(String pos, String lemma, int begin, int end){
+        tokenQueue.add(new Token(pos, lemma, begin, end));
+    }
+
+    class Token {
 
         public String pos;
         private String lemma;

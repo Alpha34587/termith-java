@@ -17,28 +17,25 @@ import java.util.Queue;
  *         Created on 25/08/16.
  */
 public class TermsuiteJsonReaderTest {
-    TermsuiteJsonReader termsuiteJsonReader;
-    TermsuiteJsonReader cleanTermsuiteJsonReader;
+    private TermsuiteJsonReader termsuiteJsonReader;
+    private TermsuiteJsonReader cleanTermsuiteJsonReader;
+    private TermsuiteJsonReader expectedJsonReader;
 
-    Queue<TermsuiteJsonReader.Token> tokenStack = new LinkedList<>();
-    Queue<TermsuiteJsonReader.Token> tokenStack2 = new LinkedList<>();
-    Queue<Pair<Integer, Integer>> offsets = new LinkedList<>();
+    private Queue<Pair<Integer, Integer>> offsets = new LinkedList<>();
 
 
-    Logger logger = LoggerFactory.getLogger(TermsuiteJsonReaderTest.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(TermsuiteJsonReaderTest.class);
 
     @Before
     public void setUp(){
         //Parsing Test
         cleanTermsuiteJsonReader = new TermsuiteJsonReader();
         termsuiteJsonReader = new TermsuiteJsonReader(new File("src/test/resources/file.reader.json/file1.json"));
+        expectedJsonReader = new TermsuiteJsonReader();
 
-        TermsuiteJsonReader.Token token1 = new TermsuiteJsonReader.Token("NN", "hearing", 22, 29);
-        TermsuiteJsonReader.Token token2 = new TermsuiteJsonReader.Token("N", "research", 30, 38);
-        TermsuiteJsonReader.Token token3 = new TermsuiteJsonReader.Token("CD", "125", 39, 42);
-        tokenStack.add(token1);
-        tokenStack.add(token2);
-        tokenStack.add(token3);
+        expectedJsonReader.createToken("NN", "hearing", 22, 29);
+        expectedJsonReader.createToken("N", "research", 30, 38);
+        expectedJsonReader.createToken("CD", "125", 39, 42);
         termsuiteJsonReader.parsing();
 
         //Clean Test
@@ -49,28 +46,21 @@ public class TermsuiteJsonReaderTest {
         offsets.add(new Pair<>(11,15));
         offsets.add(new Pair<>(16,18));
 
-        TermsuiteJsonReader.Token token4 = new TermsuiteJsonReader.Token("", "", 0, 5);
-        TermsuiteJsonReader.Token token5 = new TermsuiteJsonReader.Token("", "", 6, 7);
-        TermsuiteJsonReader.Token token6 = new TermsuiteJsonReader.Token("", "", 6, 9);
-        TermsuiteJsonReader.Token token7 = new TermsuiteJsonReader.Token("", "", 9, 10);
-        TermsuiteJsonReader.Token token8 = new TermsuiteJsonReader.Token("", "", 11, 16);
-        TermsuiteJsonReader.Token token9 = new TermsuiteJsonReader.Token("", "", 16, 18);
-        tokenStack2.add(token4);
-        tokenStack2.add(token5);
-        tokenStack2.add(token6);
-        tokenStack2.add(token7);
-        tokenStack2.add(token8);
-        tokenStack2.add(token9);
-        cleanTermsuiteJsonReader.setTokenQueue(tokenStack2);
+        cleanTermsuiteJsonReader.createToken("", "", 0, 5);
+        cleanTermsuiteJsonReader.createToken("", "", 6, 7);
+        cleanTermsuiteJsonReader.createToken("", "", 6, 9);
+        cleanTermsuiteJsonReader.createToken("", "", 9, 10);
+        cleanTermsuiteJsonReader.createToken("", "", 11, 16);
+        cleanTermsuiteJsonReader.createToken("", "", 16, 18);
         cleanTermsuiteJsonReader.clean();
     }
 
     @Test
     public void parsingTest(){
-        while (!tokenStack.isEmpty() || !termsuiteJsonReader.getTokenQueue().isEmpty()) {
+        while (!expectedJsonReader.getTokenQueue().isEmpty() || !termsuiteJsonReader.getTokenQueue().isEmpty()) {
             try {
 
-                TermsuiteJsonReader.Token expected = tokenStack.poll();
+                TermsuiteJsonReader.Token expected = expectedJsonReader.getTokenQueue().poll();
                 TermsuiteJsonReader.Token current = termsuiteJsonReader.getTokenQueue().poll();
                 Assert.assertEquals("tokenStack must be equals :", expected.getBegin(),
                         current.getBegin());
@@ -84,7 +74,7 @@ public class TermsuiteJsonReaderTest {
             }
             catch (EmptyStackException e){
                 Assert.fail("stacks have not the same size");
-                logger.error("stacks have not the same size :", e);
+                LOGGER.error("stacks have not the same size :", e);
             }
         }
     }
@@ -103,7 +93,7 @@ public class TermsuiteJsonReaderTest {
             }
             catch (EmptyStackException e){
                 Assert.fail("stacks have not the same size");
-                logger.error("stacks have not the same size :", e);
+                LOGGER.error("stacks have not the same size :", e);
             }
         }
     }
