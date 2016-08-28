@@ -3,7 +3,6 @@ package module.tei.morphology;
 import module.termsuite.TermsuiteJsonReader;
 
 import java.util.LinkedList;
-import java.util.Objects;
 import java.util.Queue;
 
 /**
@@ -64,12 +63,12 @@ public class SyntaxParser {
         fillXmlCharacterQueue();
         while (!xmlCharacterQueue.isEmpty()) {
             ch = xmlCharacterQueue.poll();
-            if (tokenizeBuffer.length() != 0
-                    && tokenizeBuffer.charAt(tokenizeBuffer.length() - 1) == '<'
-                    && ch == '!')
-                waitUntilCommentEnd(xmlIndex);
+            if (tokenizeBuffer.length() > offset
+                    && xmlCharacterQueue.peek() == '!'
+                    && ch == '<')
+                waitUntilCommentEnd(ch);
 
-            else if (ch == '<'){
+            if (ch == '<') {
                 id = waitUntilTagEnd(ch,offset,id);
             }
 
@@ -80,11 +79,12 @@ public class SyntaxParser {
         }
     }
 
-    private void waitUntilCommentEnd(int xmlIndex) {
-
-        while (xmlCharacterQueue.poll() != '>' &&
-                Objects.equals(xml.substring(xmlIndex, xmlIndex + 3), "-->")){
-
+    private void waitUntilCommentEnd(Character ch) {
+        String str = "";
+        while (str.contains("-->")) {
+            tokenizeBuffer.append(ch);
+            str += ch;
+            xmlCharacterQueue.poll();
         }
     }
 
@@ -123,7 +123,7 @@ public class SyntaxParser {
         tokenizeBuffer.append(ch).append("<w xml:id=\"" + "t").append(id).append("\">");
     }
 
-    public void  waitUntilSymbolEnd(){
+    public void checkIfSymbol() {
 
     }
 
@@ -131,14 +131,17 @@ public class SyntaxParser {
         if (offset == termsuiteJsonReader.getCurrentTokenBegin()){
             tokenizeBuffer.append("<w xml:id=\"" + "t").append(id).append("\">").append(ch);
             termsuiteJsonReader.setCurrentTokenBegin(-1);
+            checkIfSymbol();
         }
         else if (offset == termsuiteJsonReader.getCurrentTokenEnd()){
             tokenizeBuffer.append("</w>").append(ch);
+            checkIfSymbol();
             termsuiteJsonReader.pollToken();
             return id + 1;
-        }
-        else
+        } else {
             tokenizeBuffer.append(ch);
+            checkIfSymbol();
+        }
         return id;
 
     }

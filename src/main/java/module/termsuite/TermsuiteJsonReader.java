@@ -38,7 +38,7 @@ public class TermsuiteJsonReader {
     }
 
     public boolean isTokenQueueEmpty(){
-        return tokenQueue.peek() == null;
+        return pollToken == null;
     }
 
     Queue<Token> getTokenQueue() {
@@ -110,7 +110,6 @@ public class TermsuiteJsonReader {
         else
             return -1;
     }
-
 
     private void fillTokenStack(JsonParser parser, JsonToken jsonToken, Token token) throws IOException {
         if (jsonToken.equals(JsonToken.FIELD_NAME)){
