@@ -30,9 +30,8 @@ public class TermsuiteJsonReaderTest {
     public void setUp(){
         //Parsing Test
         cleanTermsuiteJsonReader = new TermsuiteJsonReader();
-        termsuiteJsonReader = new TermsuiteJsonReader(new File("src/test/resources/file.reader.json/file1.json"));
+        termsuiteJsonReader = new TermsuiteJsonReader(new File("src/test/resources/file/reader/json/file1.json"));
         expectedJsonReader = new TermsuiteJsonReader();
-
         expectedJsonReader.createToken("NN", "hearing", 22, 29);
         expectedJsonReader.createToken("N", "research", 30, 38);
         expectedJsonReader.createToken("CD", "125", 39, 42);
