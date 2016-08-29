@@ -217,12 +217,12 @@ public class SyntaxParserTest {
         alignmentTermsuiteJsonReader.createToken("N", "fromage", 18, 25);
         alignmentTermsuiteJsonReader.createToken("N", "assez", 26, 31);
         alignmentTermsuiteJsonReader.createToken("N", "délicieux", 33, 42);
-        alignmentTermsuiteJsonReader.createToken("N", "&", 46, 47);
+        alignmentTermsuiteJsonReader.createToken("N", "&", 48, 49);
         alignmentTokenInjector = new SyntaxParser(
-                new StringBuffer("le chien\nmange un fromage assez\n\ndélicieux\n\n\n\n&"),
+                new StringBuffer("le chien\nmange un fromage assez\n\ndélicieux  \n\n\n\n&"),
                 new StringBuffer("<text><head>le chien</head><p>mange " +
                         "<div>un froma<sup>ge</sup> assez" +
-                        "</div></p><p>d&eacute;licieux</p>\n\n\n&amp;</text>"),
+                        "</div></p><p>d&eacute;licieux  </p>\n\n\n&amp;</text>"),
                 alignmentTermsuiteJsonReader
         );
     }
@@ -338,7 +338,7 @@ public class SyntaxParserTest {
                         "<w xml:id=\"t5\">froma</w>" +
                         "<sup><w xml:id=\"t6\">ge</w></sup> " +
                         "<w xml:id=\"t7\">assez</w></div></p>" +
-                        "<p><w xml:id=\"t8\">d&eacute;licieux</w></p>\n\n\n" +
+                        "<p><w xml:id=\"t8\">d&eacute;licieux</w>  </p>\n\n\n" +
                         "<w xml:id=\"t9\">&amp;</w>" +
                         "</text>",
                 alignmentTokenInjector.getTokenizeBuffer().toString());
