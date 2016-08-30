@@ -17,6 +17,7 @@ public class SyntaxGenerator {
     private StringBuffer standoff;
 
     public SyntaxGenerator(File json, StringBuffer txt, StringBuffer xml) {
+
         this.termsuiteJsonReader = new TermsuiteJsonReader(json);
         termsuiteJsonReader.parsing();
         this.txt = txt;
@@ -30,6 +31,7 @@ public class SyntaxGenerator {
     }
 
     public void execute() {
+
         SyntaxParser syntaxParser = new SyntaxParser(txt,xml,termsuiteJsonReader);
         syntaxParser.execute();
         this.tokenizeBody = syntaxParser.getTokenizeBuffer();

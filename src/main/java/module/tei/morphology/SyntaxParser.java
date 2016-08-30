@@ -1,6 +1,8 @@
 package module.tei.morphology;
 
 import module.termsuite.TermsuiteJsonReader;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.LinkedList;
 import java.util.Queue;
@@ -11,23 +13,24 @@ import java.util.Queue;
  */
 public class SyntaxParser {
 
+    private final static Logger LOGGER = LoggerFactory.getLogger(SyntaxParser.class);
+    private StringBuffer xml;
+    private StringBuffer txt;
+    private StringBuffer tokenizeBuffer;
+    private TermsuiteJsonReader termsuiteJsonReader;
+    private Queue<Character> xmlCharacterQueue;
+    private Integer[] offset = new Integer[2];
+
     //TODO return a list of tag with {begin, end and the Tag id for each token
-    public SyntaxParser(StringBuffer txt, StringBuffer xml, TermsuiteJsonReader termsuiteJsonReader) {
+    SyntaxParser(StringBuffer txt, StringBuffer xml, TermsuiteJsonReader termsuiteJsonReader) {
         this.xml = xml;
         this.txt = txt;
         this.termsuiteJsonReader = termsuiteJsonReader;
         this.tokenizeBuffer = new StringBuffer();
+
     }
-    private StringBuffer xml;
-    private StringBuffer txt;
 
-    private TermsuiteJsonReader termsuiteJsonReader;
-    private StringBuffer tokenizeBuffer;
-
-
-    private Integer[] offset = new Integer[2];
-    private Queue<Character> xmlCharacterQueue;
-    public SyntaxParser(StringBuffer xml){
+    SyntaxParser(StringBuffer xml){
         this.xml = xml;
     }
 
@@ -35,7 +38,7 @@ public class SyntaxParser {
         return xml;
     }
 
-    public StringBuffer getTokenizeBuffer() {
+    StringBuffer getTokenizeBuffer() {
         return tokenizeBuffer;
     }
 
@@ -48,7 +51,7 @@ public class SyntaxParser {
         teiWordTokenizer();
     }
 
-    public void teiBodyspliter(){
+    void teiBodyspliter(){
         xml = new StringBuffer(xml.toString().split("(?=(<text>|<text\\s.*>))")[1]);
 
     }
@@ -60,7 +63,8 @@ public class SyntaxParser {
         }
     }
 
-    public void teiWordTokenizer() {
+    void teiWordTokenizer() {
+        LOGGER.info("Tokenization Started");
         offset[0] = 0;
         offset[1] = 1;
         int id = 1;
@@ -83,6 +87,7 @@ public class SyntaxParser {
                 termsuiteJsonReader.pollToken();
             }
         }
+        LOGGER.info("Tokenization Ended");
     }
 
     private void countOffset() {
@@ -91,7 +96,7 @@ public class SyntaxParser {
     }
 
 
-    public int waitUntilTagEnd(Character ch, int id) {
+    private int waitUntilTagEnd(Character ch, int id) {
 
         if (termsuiteJsonReader.getCurrentTokenBegin() == -2){
             tokenizeBuffer.append("</w>");
@@ -114,7 +119,7 @@ public class SyntaxParser {
         return id;
     }
 
-    public void checkIfSymbol(Character ch) {
+    private void checkIfSymbol(Character ch) {
         if (ch == '&'){
             while ((ch = xmlCharacterQueue.poll()) != ';'){
                 tokenizeBuffer.append(ch);
@@ -143,7 +148,7 @@ public class SyntaxParser {
 
     }
 
-    public void checkTextAlignment(Character ch){
+    private void checkTextAlignment(Character ch){
         if (offset[0] < txt.length() - 1 && txt.charAt(offset[0]) == '\n') {
             while (ch != txt.charAt(offset[0]))
                 countOffset();

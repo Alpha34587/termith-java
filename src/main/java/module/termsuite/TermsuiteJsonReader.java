@@ -53,11 +53,12 @@ public class TermsuiteJsonReader {
         try {
             browseJson();
         } catch (IOException e) {
-            LOGGER.error("An error occurred during TermSuite Json Cas parsing", e);
+            LOGGER.error("An error occurred during TermSuite Json Cas parsing - Tokenization Ended", e);
         }
     }
 
     private void browseJson() throws IOException {
+        LOGGER.info("Json browsing started");
         JsonParser parser = factory.createParser(file);
 
         JsonToken jsonToken;
@@ -80,6 +81,8 @@ public class TermsuiteJsonReader {
                 inWa = true;
             }
         }
+        LOGGER.info("Json browsing ended");
+
     }
 
     public void pollToken(){
@@ -128,23 +131,6 @@ public class TermsuiteJsonReader {
                 default:
                     break;
             }
-        }
-    }
-
-    void clean(){
-        Token lastToken = new Token();
-
-        for (Token token : tokenQueue) {
-
-            if (token.begin != 0) {
-                if (token.begin == lastToken.end) {
-                    lastToken.end--;
-                }
-                if (token.begin < lastToken.end) {
-                    token.begin = lastToken.end + 1;
-                }
-            }
-            lastToken = token;
         }
     }
 

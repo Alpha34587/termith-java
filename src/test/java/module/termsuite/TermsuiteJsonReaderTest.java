@@ -44,14 +44,6 @@ public class TermsuiteJsonReaderTest {
         offsets.add(new Pair<>(9,10));
         offsets.add(new Pair<>(11,15));
         offsets.add(new Pair<>(16,18));
-
-        cleanTermsuiteJsonReader.createToken("", "", 0, 5);
-        cleanTermsuiteJsonReader.createToken("", "", 6, 7);
-        cleanTermsuiteJsonReader.createToken("", "", 6, 9);
-        cleanTermsuiteJsonReader.createToken("", "", 9, 10);
-        cleanTermsuiteJsonReader.createToken("", "", 11, 16);
-        cleanTermsuiteJsonReader.createToken("", "", 16, 18);
-        cleanTermsuiteJsonReader.clean();
     }
 
     @Test
@@ -78,22 +70,4 @@ public class TermsuiteJsonReaderTest {
         }
     }
 
-    @Test
-    public void cleanTest() throws Exception {
-        while (!offsets.isEmpty() || !cleanTermsuiteJsonReader.getTokenQueue().isEmpty()) {
-            try {
-
-                Pair<Integer, Integer> expected = offsets.poll();
-                TermsuiteJsonReader.Token current = cleanTermsuiteJsonReader.getTokenQueue().poll();
-                Assert.assertEquals("begin value must be equal :", expected.a.intValue(),
-                        current.getBegin());
-                Assert.assertEquals("end value must be equal :", expected.b.intValue(),
-                        current.getEnd());
-            }
-            catch (EmptyStackException e){
-                Assert.fail("stacks have not the same size");
-                LOGGER.error("stacks have not the same size :", e);
-            }
-        }
-    }
 }
