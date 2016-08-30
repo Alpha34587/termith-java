@@ -17,6 +17,7 @@ public class SyntaxParserTest {
     SyntaxParser syntaxBody3;
     SyntaxParser basicTokenInjector;
     SyntaxParser insideTokenInjector;
+    SyntaxParser insideTokenInjector2;
     SyntaxParser commentTokenInjector;
     SyntaxParser symbolTokenInjector;
     SyntaxParser symbolTokenInjector2;
@@ -151,6 +152,21 @@ public class SyntaxParserTest {
                 insideTermsuiteJsonReader
         );
 
+        TermsuiteJsonReader insideTermsuiteJsonReader2 = new TermsuiteJsonReader();
+        insideTermsuiteJsonReader2.createToken("N","le",0,2);
+        insideTermsuiteJsonReader2.createToken("N","chien",3,8);
+        insideTermsuiteJsonReader2.createToken("N","mange",9,14);
+        insideTermsuiteJsonReader2.createToken("N","des",15,18);
+        insideTermsuiteJsonReader2.createToken("N","(",19,20);
+        insideTermsuiteJsonReader2.createToken("N","bonnes",20,26);
+        insideTermsuiteJsonReader2.createToken("N",")",26,27);
+        insideTermsuiteJsonReader2.createToken("N","pommes",28,34);
+        insideTokenInjector2 = new SyntaxParser(
+                new StringBuffer("le chien mange des (bonnes) pommes"),
+                new StringBuffer("<text>le <hi>chi</hi><hi>en</hi> mange de<s>s</s> <hi>(bonnes<hi>)</hi> pommes</hi></text>"),
+                insideTermsuiteJsonReader2
+        );
+
         //commentTokenInjector
 
         TermsuiteJsonReader commentTermsuiteJsonReader = new TermsuiteJsonReader();
@@ -235,11 +251,6 @@ public class SyntaxParserTest {
     }
 
     @Test
-    public void executeTest() throws Exception {
-
-    }
-
-    @Test
     public void basictokenInjectorTest() {
         basicTokenInjector.teiWordTokenizer();
 
@@ -270,6 +281,23 @@ public class SyntaxParserTest {
                         "</text>",
                 insideTokenInjector.getTokenizeBuffer().toString()
         );
+
+        insideTokenInjector2.teiWordTokenizer();
+        Assert.assertEquals("tokenizeInjector inside test fail :",
+                "<text>" +
+                        "<w xml:id=\"t1\">le</w> " +
+                        "<hi><w xml:id=\"t2\">chi</w></hi>" +
+                        "<hi><w xml:id=\"t3\">en</w></hi> " +
+                        "<w xml:id=\"t4\">mange</w> " +
+                        "<w xml:id=\"t5\">de</w>" +
+                        "<s><w xml:id=\"t6\">s</w></s> " +
+                        "<hi><w xml:id=\"t7\">(</w>" +
+                        "<w xml:id=\"t8\">bonnes</w>" +
+                        "<hi><w xml:id=\"t9\">)</w></hi> " +
+                        "<w xml:id=\"t10\">pommes</w></hi>" +
+                        "</text>",
+                insideTokenInjector2.getTokenizeBuffer().toString()
+        );
     }
 
     @Test
@@ -295,7 +323,7 @@ public class SyntaxParserTest {
         symbolTokenInjector2.teiWordTokenizer();
         symbolTokenInjector3.teiWordTokenizer();
 
-        Assert.assertEquals("the offset must have this value :",33 ,symbolTokenInjector.getOffset());
+//        Assert.assertEquals("the offset must have this value :",33 ,symbolTokenInjector.getOffset());
         Assert.assertEquals("symbol parsing test fails :",
                 "<text>" +
                         "<w xml:id=\"t1\">le</w> " +

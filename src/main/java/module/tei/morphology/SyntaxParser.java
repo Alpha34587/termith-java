@@ -11,24 +11,24 @@ import java.util.Queue;
  */
 public class SyntaxParser {
 
-    private StringBuffer xml;
-    private StringBuffer txt;
-    private TermsuiteJsonReader termsuiteJsonReader;
-
-    private StringBuffer tokenizeBuffer;
-    private int offset = 0;
-
-
-    private Queue<Character> xmlCharacterQueue;
-    public SyntaxParser(StringBuffer xml){
-        this.xml = xml;
-    }
-
+    //TODO return a list of tag with {begin, end and the Tag id for each token
     public SyntaxParser(StringBuffer txt, StringBuffer xml, TermsuiteJsonReader termsuiteJsonReader) {
         this.xml = xml;
         this.txt = txt;
         this.termsuiteJsonReader = termsuiteJsonReader;
         this.tokenizeBuffer = new StringBuffer();
+    }
+    private StringBuffer xml;
+    private StringBuffer txt;
+
+    private TermsuiteJsonReader termsuiteJsonReader;
+    private StringBuffer tokenizeBuffer;
+
+
+    private Integer[] offset = new Integer[2];
+    private Queue<Character> xmlCharacterQueue;
+    public SyntaxParser(StringBuffer xml){
+        this.xml = xml;
     }
 
     public StringBuffer getXml() {
@@ -39,7 +39,7 @@ public class SyntaxParser {
         return tokenizeBuffer;
     }
 
-    public int getOffset() {
+    public Integer[] getOffset() {
         return offset;
     }
 
@@ -61,75 +61,57 @@ public class SyntaxParser {
     }
 
     public void teiWordTokenizer() {
+        offset[0] = 0;
+        offset[1] = 1;
         int id = 1;
         termsuiteJsonReader.pollToken();
         Character ch;
         fillXmlCharacterQueue();
         while (!xmlCharacterQueue.isEmpty()) {
             ch = xmlCharacterQueue.poll();
-            if (tokenizeBuffer.length() > offset
-                    && xmlCharacterQueue.peek() == '!'
-                    && ch == '<') {
-                waitUntilCommentEnd(ch);
-            }
-
             if (ch == '<') {
-                id = waitUntilTagEnd(ch,offset,id);
+               id = waitUntilTagEnd(ch,id);
             }
-
             else {
                 checkTextAlignment(ch);
-                id = tokenInjector(ch, offset, id);
-                offset++;
+                id = tokenInjector(ch, id);
+                countOffset();
+
+            }
+
+            if (offset[0] > termsuiteJsonReader.getCurrentTokenEnd()){
+                termsuiteJsonReader.pollToken();
             }
         }
     }
 
-    private void waitUntilCommentEnd(Character ch) {
-        String str = "";
-        while (str.contains("-->")) {
-            tokenizeBuffer.append(ch);
-            str += ch;
-            xmlCharacterQueue.poll();
-        }
+    private void countOffset() {
+            offset[0] += 1;
+            offset[1] += 1;
     }
 
-    public int waitUntilTagEnd(Character ch, int offset,int id) {
 
-        if (termsuiteJsonReader.isTokenQueueEmpty()){
-            tokenInjector(ch,offset,id);
-        }
+    public int waitUntilTagEnd(Character ch, int id) {
 
-        else if (termsuiteJsonReader.getCurrentTokenBegin() == -1 &&
-                tokenizeBuffer.charAt(tokenizeBuffer.length() -1) != '>'){
-            id = forceCloseInjection(ch, id,offset);
-        }
-        else {
-            tokenizeBuffer.append(ch);
-        }
-        while ((ch = xmlCharacterQueue.poll()) != '>'){
-            tokenizeBuffer.append(ch);
+        if (termsuiteJsonReader.getCurrentTokenBegin() == -2){
+            tokenizeBuffer.append("</w>");
+            id++;
         }
 
-        if (termsuiteJsonReader.getCurrentTokenBegin() == -1
-                && !termsuiteJsonReader.isTokenQueueEmpty()
-                && xmlCharacterQueue.peek() != '<')
-            forceOpenInjection(ch,id);
-        else
+        while(ch != '>' ||
+                (!xmlCharacterQueue.isEmpty() && xmlCharacterQueue.peek() == '<') ){
             tokenizeBuffer.append(ch);
+            ch = xmlCharacterQueue.poll();
+        }
+
+        tokenizeBuffer.append(ch);
+        checkIfSymbol(ch);
+
+        if(termsuiteJsonReader.getCurrentTokenBegin() == -2){
+            tokenizeBuffer.append("<w xml:id=\"" + "t").append(id).append("\">");
+        }
 
         return id;
-    }
-
-    private int forceCloseInjection(Character ch, int id, int offset) {
-        tokenizeBuffer.append("</w>").append(ch);
-        if (termsuiteJsonReader.getCurrentTokenEnd() == offset)
-            termsuiteJsonReader.pollToken();
-        return id + 1;
-    }
-
-    private void forceOpenInjection(Character ch, int id) {
-        tokenizeBuffer.append(ch).append("<w xml:id=\"" + "t").append(id).append("\">");
     }
 
     public void checkIfSymbol(Character ch) {
@@ -142,29 +124,29 @@ public class SyntaxParser {
 
     }
 
-    private int tokenInjector(Character ch, int offset, int id) {
-        if (offset == termsuiteJsonReader.getCurrentTokenBegin()){
-            tokenizeBuffer.append("<w xml:id=\"" + "t").append(id).append("\">").append(ch);
-            termsuiteJsonReader.setCurrentTokenBegin(-1);
-            checkIfSymbol(ch);
+    private int tokenInjector(Character ch, int id) {
+
+        if (offset[0] == termsuiteJsonReader.getCurrentTokenBegin()){
+            tokenizeBuffer.append("<w xml:id=\"" + "t").append(id).append("\">");
+            termsuiteJsonReader.setCurrentTokenBegin(-2);
         }
-        else if (offset == termsuiteJsonReader.getCurrentTokenEnd()){
-            tokenizeBuffer.append("</w>").append(ch);
-            checkIfSymbol(ch);
+
+        tokenizeBuffer.append(ch);
+        checkIfSymbol(ch);
+
+        if (offset[1] == termsuiteJsonReader.getCurrentTokenEnd()){
+            tokenizeBuffer.append("</w>");
             termsuiteJsonReader.pollToken();
             return id + 1;
-        } else {
-            tokenizeBuffer.append(ch);
-            checkIfSymbol(ch);
         }
         return id;
 
     }
 
     public void checkTextAlignment(Character ch){
-        if (offset < txt.length() - 1 && txt.charAt(offset) == '\n') {
-            while (ch != txt.charAt(offset))
-                offset++;
+        if (offset[0] < txt.length() - 1 && txt.charAt(offset[0]) == '\n') {
+            while (ch != txt.charAt(offset[0]))
+                countOffset();
             }
     }
 }

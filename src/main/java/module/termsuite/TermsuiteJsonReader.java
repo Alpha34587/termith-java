@@ -20,7 +20,7 @@ import static eu.project.ttc.readers.JsonCasConstants.*;
 public class TermsuiteJsonReader {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(TermsuiteJsonReader.class);
-    private static JsonFactory factory = new JsonFactory();
+    private final JsonFactory factory = new JsonFactory();
     private Queue<Token> tokenQueue;
     private File file;
     private Token pollToken;
@@ -52,7 +52,6 @@ public class TermsuiteJsonReader {
     public void parsing() {
         try {
             browseJson();
-            clean();
         } catch (IOException e) {
             LOGGER.error("An error occurred during TermSuite Json Cas parsing", e);
         }

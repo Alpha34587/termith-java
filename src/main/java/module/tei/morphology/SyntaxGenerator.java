@@ -25,8 +25,13 @@ public class SyntaxGenerator {
         this.standoff = new StringBuffer();
     }
 
+    public StringBuffer getTokenizeBody() {
+        return tokenizeBody;
+    }
+
     public void execute() {
         SyntaxParser syntaxParser = new SyntaxParser(txt,xml,termsuiteJsonReader);
         syntaxParser.execute();
+        this.tokenizeBody = syntaxParser.getTokenizeBuffer();
     }
 }
