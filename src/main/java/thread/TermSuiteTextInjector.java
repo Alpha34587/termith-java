@@ -91,11 +91,13 @@ public class TermSuiteTextInjector {
      * @throws ExecutionException
      */
     public void execute() throws InterruptedException, IOException, ExecutionException {
-        Future<TermSuitePipeline> termsuiteTask = executorService.submit(
-                new TextTermSuiteWorker(treeTaggerHome, this.corpus + "/txt", lang)
-        );
+
         JsonRetrieverWorker jsonRetrieverWorker = new JsonRetrieverWorker(Paths.get(this.corpus + "/json"));
+        TextTermSuiteWorker textTermSuiteWorker = new TextTermSuiteWorker(treeTaggerHome, this.corpus + "/txt", lang);
+
+        Future<TermSuitePipeline> termsuiteTask = executorService.submit(textTermSuiteWorker);
         executorService.submit(jsonRetrieverWorker);
+
         LOGGER.info("waiting Termsuite executor to finish");
         termsuiteTask.get();
         jsonRetrieverWorker.stop();
