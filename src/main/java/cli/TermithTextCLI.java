@@ -12,11 +12,11 @@ import java.io.IOException;
  * @author Simon Meoni
  * Created on 25/07/16.
  */
-class TermithCLI {
+class TermithTextCLI {
     private static Options options = new Options();
-    private static final Logger LOGGER = LoggerFactory.getLogger(TermithCLI.class.getName());
+    private static final Logger LOGGER = LoggerFactory.getLogger(TermithTextCLI.class.getName());
 
-    private TermithCLI() {
+    private TermithTextCLI() {
         throw new IllegalAccessError("Utility class");
     }
 
