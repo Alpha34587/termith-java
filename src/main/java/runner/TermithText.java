@@ -18,9 +18,9 @@ import static java.lang.System.exit;
  * @author Simon Meoni
  * Created on 25/07/16.
  */
-public class Termith {
+public class TermithText {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(Termith.class.getName());
+    private static final Logger LOGGER = LoggerFactory.getLogger(TermithText.class.getName());
 
     private String outputPath;
     private String lang;
@@ -32,7 +32,7 @@ public class Termith {
      * this is a part of the builder pattern
      * @param builder Builder object
      */
-    private Termith(Builder builder){
+    private TermithText(Builder builder){
         base = builder.base;
         trace = builder.trace;
         outputPath = builder.outputPath;
@@ -152,12 +152,12 @@ public class Termith {
         }
 
         /**
-         * This method is used to finalize the building of the Termith Object
-         * @see Termith
+         * This method is used to finalize the building of the TermithText Object
+         * @see TermithText
          * @return return termith object
          */
-        public Termith build() {
-            return  new Termith(this);
+        public TermithText build() {
+            return  new TermithText(this);
         }
     }
 }

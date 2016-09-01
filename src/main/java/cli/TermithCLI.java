@@ -3,7 +3,7 @@ package cli;
 import org.apache.commons.cli.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import runner.Termith;
+import runner.TermithText;
 
 import javax.xml.transform.TransformerException;
 import java.io.IOException;
@@ -75,27 +75,27 @@ class TermithCLI {
 
         try {
             CommandLine line = parser.parse( options, args );
-            Termith termith;
+            TermithText termithText;
             if (options.hasOption("trace")) {
 
-                termith = new Termith.Builder()
+                termithText = new TermithText.Builder()
                         .lang(line.getOptionValue("l"))
                         .baseFolder(line.getOptionValue("i"))
                         .treeTaggerHome(line.getOptionValue("tt"))
                         .trace(true)
                         .export(line.getOptionValue("o"))
                         .build();
-                termith.execute();
+                termithText.execute();
             }
             else {
 
-                termith = new Termith.Builder()
+                termithText = new TermithText.Builder()
                         .lang(line.getOptionValue("l"))
                         .baseFolder(line.getOptionValue("i"))
                         .treeTaggerHome(line.getOptionValue("tt"))
                         .export(line.getOptionValue("o"))
                         .build();
-                termith.execute();
+                termithText.execute();
             }
         } catch (ParseException e) {
             LOGGER.info("There are some problems during parsing arguments : ",e);
