@@ -17,15 +17,15 @@ import java.util.concurrent.*;
 import static java.nio.file.StandardWatchEventKinds.ENTRY_CREATE;
 
 /**
- * the class TermSuiteTeiInjector is one of a second phase of the termith process. It splits into two main process who
+ * the class TermSuiteTextInjector is one of a second phase of the termith process. It splits into two main process who
  * run asynchronously : each morphology json file are retrieve by a file watcher. the file watcher service
  * execute workers who tokenizes a text and report the morphology information of specific file.
  * @author Simon Meoni
  * Created on 18/08/16.
  */
-public class TermSuiteTeiInjector {
+public class TermSuiteTextInjector {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(TermSuiteTeiInjector.class.getName());
+    private static final Logger LOGGER = LoggerFactory.getLogger(TermSuiteTextInjector.class.getName());
     private static final int DEFAULT_POOL_SIZE = Runtime.getRuntime().availableProcessors();
 
     private Path corpus;
@@ -48,14 +48,14 @@ public class TermSuiteTeiInjector {
      * @param lang the language of the corpus
      * @throws IOException
      */
-    public TermSuiteTeiInjector(Map<String, StringBuffer> extractedText, Map<String, StringBuffer> xmlCorpus,
-                                String treeTaggerHome, String lang)
+    public TermSuiteTextInjector(Map<String, StringBuffer> extractedText, Map<String, StringBuffer> xmlCorpus,
+                                 String treeTaggerHome, String lang)
             throws IOException {
         this(DEFAULT_POOL_SIZE, extractedText, xmlCorpus, treeTaggerHome, lang);
     }
 
     /**
-     * @see TermSuiteTeiInjector
+     * @see TermSuiteTextInjector
      * @param poolSize specify the number of worker
      * @param extractedText the plain extract previously previously
      * @param xmlCorpus the base corpus send to TermithXmlAnalyzer
@@ -63,9 +63,9 @@ public class TermSuiteTeiInjector {
      * @param lang the language of the corpus
      * @throws IOException
      */
-    public TermSuiteTeiInjector(int poolSize, Map<String, StringBuffer> extractedText,
-                                Map<String, StringBuffer> xmlCorpus,
-                                String treeTaggerHome, String lang) throws IOException {
+    public TermSuiteTextInjector(int poolSize, Map<String, StringBuffer> extractedText,
+                                 Map<String, StringBuffer> xmlCorpus,
+                                 String treeTaggerHome, String lang) throws IOException {
         this.treeTaggerHome = treeTaggerHome;
         this.executorService = Executors.newFixedThreadPool(poolSize);
         this.extractedText = extractedText;
@@ -85,7 +85,7 @@ public class TermSuiteTeiInjector {
     }
 
     /**
-     * Execute the Termsuite task and the TermSuiteTeiInjector
+     * Execute the Termsuite task and the TermSuiteTextInjector
      * @throws InterruptedException
      * @throws IOException
      * @throws ExecutionException
@@ -216,8 +216,8 @@ public class TermSuiteTeiInjector {
     }
 
     /**
-     * This class execute a TermSuiteTeiInjector
-     * @see TermSuiteTeiInjector
+     * This class execute a TermSuiteTextInjector
+     * @see TermSuiteTextInjector
      */
     private class TeiMorphoSyntaxGeneratorWorker implements Runnable{
 
@@ -227,7 +227,7 @@ public class TermSuiteTeiInjector {
         private File json;
 
         /**
-         * The constructor of the class. this parameter is used to instanced a TermSuiteTeiInjector
+         * The constructor of the class. this parameter is used to instanced a TermSuiteTextInjector
          * @param json
          * @param txt
          * @param xml
@@ -240,7 +240,7 @@ public class TermSuiteTeiInjector {
 
         /**
          * run a task who execute the process of analyzes of TeiMorphoSyntaxGeneratorWorker
-         * @see TermSuiteTeiInjector
+         * @see TermSuiteTextInjector
          */
         @Override
         public void run() {

@@ -3,7 +3,7 @@ package runner;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import thread.Initializer;
-import thread.TermSuiteTeiInjector;
+import thread.TermSuiteTextInjector;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -23,16 +23,16 @@ public class TermithText {
     private static final Logger LOGGER = LoggerFactory.getLogger(TermithText.class.getName());
 
     private String outputPath;
-    private String lang;
-    private String treeTaggerHome;
-    private Path base;
+    String lang;
+    String treeTaggerHome;
+    Path base;
     private boolean trace;
 
     /***
      * this is a part of the builder pattern
      * @param builder Builder object
      */
-    private TermithText(Builder builder){
+    TermithText(Builder builder){
         base = builder.base;
         trace = builder.trace;
         outputPath = builder.outputPath;
@@ -77,10 +77,10 @@ public class TermithText {
         }
 
         LOGGER.info("Starting Second Phase: TermSuite + XML injection");
-        TermSuiteTeiInjector termSuiteTeiInjector = new TermSuiteTeiInjector(poolSize,
+        TermSuiteTextInjector termSuiteTextInjector = new TermSuiteTextInjector(poolSize,
                 initializer.getExtractedText(), initializer.getXmlCorpus(), treeTaggerHome, lang);
         try {
-            termSuiteTeiInjector.execute();
+            termSuiteTextInjector.execute();
         } catch (Exception e) {
             LOGGER.error("Error during execution of the termsuite and injection phase : ", e);
             exit(1);
