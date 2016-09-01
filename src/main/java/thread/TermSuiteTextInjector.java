@@ -84,6 +84,9 @@ public class TermSuiteTextInjector {
         FilesUtilities.createFiles(this.corpus + "/txt", extractedText, "txt");
     }
 
+    public TermSuiteTextInjector() {
+    }
+
     /**
      * Execute the Termsuite task and the TermSuiteTextInjector
      * @throws InterruptedException
@@ -107,7 +110,7 @@ public class TermSuiteTextInjector {
 
     /**
      * This class is a file watcher service who retrieve the file generate by termsuite and send it to a
-     * TeiMorphoSyntaxGeneratorWorker task
+     * TeiMorphoSyntaxWorker task
      */
     private class JsonRetrieverWorker implements Runnable {
 
@@ -142,7 +145,7 @@ public class TermSuiteTextInjector {
                     Logger.info("New file retrieve: " + filename);
                     String basename = filename.getFileName().toString().replace(".json", "");
                     executorService.execute(
-                            new TeiMorphoSyntaxGeneratorWorker(
+                            new TeiMorphoSyntaxWorker(
                                     filename.toFile(),
                                     extractedText.get(basename),
                                     xmlCorpus.get(basename)
@@ -221,7 +224,7 @@ public class TermSuiteTextInjector {
      * This class execute a TermSuiteTextInjector
      * @see TermSuiteTextInjector
      */
-    private class TeiMorphoSyntaxGeneratorWorker implements Runnable{
+    class TeiMorphoSyntaxWorker implements Runnable{
 
         private final Logger LOGGER = LoggerFactory.getLogger(JsonRetrieverWorker.class.getName());
         private StringBuffer txt;
@@ -234,23 +237,23 @@ public class TermSuiteTextInjector {
          * @param txt
          * @param xml
          */
-        TeiMorphoSyntaxGeneratorWorker(File json, StringBuffer txt, StringBuffer xml) {
+        TeiMorphoSyntaxWorker(File json, StringBuffer txt, StringBuffer xml) {
             this.json = json;
             this.txt = txt;
             this.xml = xml;
         }
 
         /**
-         * run a task who execute the process of analyzes of TeiMorphoSyntaxGeneratorWorker
+         * run a task who execute the process of analyzes of TeiMorphoSyntaxWorker
          * @see TermSuiteTextInjector
          */
         @Override
         public void run() {
-            LOGGER.info("TeiMorphoSyntaxGeneratorWorker Started, processing: " + json.getAbsolutePath());
+            LOGGER.info("TeiMorphoSyntaxWorker Started, processing: " + json.getAbsolutePath());
             SyntaxGenerator syntaxGenerator = new SyntaxGenerator(json, txt, xml);
             syntaxGenerator.execute();
             tokenizeTeiBody.put(json.getName().replace("json",""), syntaxGenerator.getTokenizeBody());
-            LOGGER.info("TeiMorphoSyntaxGeneratorWorker Terminated");
+            LOGGER.info("TeiMorphoSyntaxWorker Terminated");
         }
     }
 }

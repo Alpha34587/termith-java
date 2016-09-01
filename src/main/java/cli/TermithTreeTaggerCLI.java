@@ -3,7 +3,7 @@ package cli;
 import org.apache.commons.cli.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import runner.TermithText;
+import runner.TermithTreeTagger;
 
 import javax.xml.transform.TransformerException;
 import java.io.IOException;
@@ -75,10 +75,10 @@ public class TermithTreeTaggerCLI {
 
         try {
             CommandLine line = parser.parse( options, args );
-            TermithText termithTreeTagger;
+            TermithTreeTagger termithTreeTagger;
             if (options.hasOption("trace")) {
 
-                termithTreeTagger = new TermithText.Builder()
+                termithTreeTagger = new TermithTreeTagger.Builder()
                         .lang(line.getOptionValue("l"))
                         .baseFolder(line.getOptionValue("i"))
                         .treeTaggerHome(line.getOptionValue("tt"))
@@ -89,7 +89,7 @@ public class TermithTreeTaggerCLI {
             }
             else {
 
-                termithTreeTagger = new TermithText.Builder()
+                termithTreeTagger = new TermithTreeTagger.Builder()
                         .lang(line.getOptionValue("l"))
                         .baseFolder(line.getOptionValue("i"))
                         .treeTaggerHome(line.getOptionValue("tt"))

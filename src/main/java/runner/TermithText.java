@@ -22,11 +22,11 @@ public class TermithText {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(TermithText.class.getName());
 
-    private String outputPath;
+    String outputPath;
     String lang;
     String treeTaggerHome;
     Path base;
-    private boolean trace;
+    boolean trace;
 
     /***
      * this is a part of the builder pattern
@@ -38,6 +38,9 @@ public class TermithText {
         outputPath = builder.outputPath;
         treeTaggerHome = builder.treeTaggerHome;
         lang = builder.lang;
+    }
+
+    public TermithText() {
     }
 
     /***
