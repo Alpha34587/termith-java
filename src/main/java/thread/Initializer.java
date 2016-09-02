@@ -29,6 +29,11 @@ public class Initializer {
     private Map<String, StringBuffer> extractedText;
     private Map<String, StringBuffer> xmlCorpus;
 
+    public Initializer() {
+        extractedText = new ConcurrentHashMap<>();
+        xmlCorpus = new ConcurrentHashMap<>();
+    }
+
     /**
      * a constructor of initialize who take on parameter a folder path with xml files
      * @param base the input folder
@@ -54,6 +59,26 @@ public class Initializer {
      */
     public Map<String, StringBuffer> getExtractedText() {
         return extractedText;
+    }
+
+
+    /**
+     * add a text manually to the corpus
+     * @param id the name of the corpus
+     * @param content the content of the corpus
+     */
+    public void addText(String id, StringBuffer content){extractedText.put(id,content);}
+
+
+    /**
+     * @return return the size of the total corpus
+     */
+    public int getTotalSize() {
+        int totalOffset = -1;
+        for (StringBuffer text : extractedText.values())
+            totalOffset = totalOffset + text.length() + 1;
+
+        return totalOffset;
     }
 
     /**
