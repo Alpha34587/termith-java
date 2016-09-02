@@ -1,5 +1,10 @@
 package module.treetagger;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.stream.Collector;
+
 /**
  * @author Simon Meoni
  *         Created on 01/09/16.
@@ -7,20 +12,34 @@ package module.treetagger;
 public class TreeTaggerWrapper {
 
     private final StringBuffer txt;
+    private TreeTaggerParameter treeTaggerParameter;
+    private String treeTaggerHome;
 
-    private final StringBuilder ttOut;
+    private StringBuilder ttOut;
 
-    public TreeTaggerWrapper(StringBuffer txt) {
+    public TreeTaggerWrapper(StringBuffer txt, String treeTaggerHome, TreeTaggerParameter treeTaggerParameter) {
 
         this.txt = txt;
+        this.treeTaggerHome = treeTaggerHome;
         this.ttOut = new StringBuilder();
+        this.treeTaggerParameter = treeTaggerParameter;
     }
 
     public StringBuilder getTtOut() {
         return ttOut;
     }
 
-    public void execute() {
+    public void execute() throws IOException {
+        String command = "echo \"salut\ncaca\" | " + treeTaggerParameter.parse();
+        Process p = Runtime.getRuntime().exec(new String[]{"bash","-c","echo \"txt\" | " + treeTaggerParameter.parse()});
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(p.getInputStream()));
+        ttOut  =
+                bufferedReader.lines().map(String::toString).collect(Collector.of(
+                        StringBuilder::new,
+                        (stringBuilder, str) -> stringBuilder.append(str).append("\n"),
+                        StringBuilder::append)
+                );
+
 
     }
 }

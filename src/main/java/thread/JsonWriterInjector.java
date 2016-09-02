@@ -79,8 +79,13 @@ public class JsonWriterInjector extends TermSuiteTextInjector {
         @Override
         public void run() {
             LOGGER.info("new treetagger to json task started");
-            TreeTaggerToJson treeTaggerToJson = new TreeTaggerToJson(txt,totalSize);
-            treeTaggerToJson.execute();
+            TreeTaggerToJson treeTaggerToJson = new TreeTaggerToJson(txt,totalSize,treeTaggerHome,lang);
+
+            try {
+                treeTaggerToJson.execute();
+            } catch (IOException e) {
+                LOGGER.info("error during parsing TreeTagger data", e);
+            }
             LOGGER.info("treetagger to json task ended");
             //TODO put here a tokenizer module
         }
