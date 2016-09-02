@@ -29,6 +29,7 @@ public class JsonWriterInjector extends TermSuiteTextInjector {
     private final Path corpus;
     private final String lang;
     private final CopyOnWriteArrayList terminologies;
+
     public JsonWriterInjector(Map<String, StringBuffer> extractedText, Map<String, StringBuffer> xmlCorpus,
                               String treeTaggerHome, String lang)
             throws IOException {
@@ -79,7 +80,7 @@ public class JsonWriterInjector extends TermSuiteTextInjector {
             LOGGER.info("new treetaggerjson task started");
             TreeTaggerToJson treeTaggerToJson = new TreeTaggerToJson();
             treeTaggerToJson.execute();
-            //executorService.submit(new TeiMorphoSyntaxWorker());
+            //TODO put here a tokenizer module
             LOGGER.info("treetaggerjson task ended");
         }
     }
