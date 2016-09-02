@@ -48,8 +48,7 @@ public class TermithTreeTagger extends TermithText {
         }
 
         LOGGER.info("Starting Second Phase: Json Writer");
-        JsonWriterInjector jsonWriterInjector = new JsonWriterInjector(initializer.getExtractedText(),
-                initializer.getXmlCorpus(), treeTaggerHome, lang);
+        JsonWriterInjector jsonWriterInjector = new JsonWriterInjector(initializer, treeTaggerHome, lang);
         try {
             jsonWriterInjector.execute();
         } catch ( Exception e ) {

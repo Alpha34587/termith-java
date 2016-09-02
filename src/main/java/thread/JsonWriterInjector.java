@@ -22,27 +22,23 @@ public class JsonWriterInjector extends TermSuiteTextInjector {
     private static final int DEFAULT_POOL_SIZE = Runtime.getRuntime().availableProcessors();
     private final String treeTaggerHome;
     private final ExecutorService executorService;
-    private final Map<String, StringBuffer> extractedText;
-    private final Map<String, StringBuffer> xmlCorpus;
+    private final Initializer initializer;
     private Map<String, Path> JsonTreeTagger;
-
     private final Path corpus;
     private final String lang;
     private final CopyOnWriteArrayList terminologies;
 
-    public JsonWriterInjector(Map<String, StringBuffer> extractedText, Map<String, StringBuffer> xmlCorpus,
+    public JsonWriterInjector(Initializer initializer,
                               String treeTaggerHome, String lang)
             throws IOException {
-        this(DEFAULT_POOL_SIZE, extractedText, xmlCorpus,treeTaggerHome, lang);
+        this(DEFAULT_POOL_SIZE, initializer, treeTaggerHome, lang);
     }
 
-    public JsonWriterInjector(int poolSize, Map<String, StringBuffer> extractedText,
-                              Map<String, StringBuffer> xmlCorpus,
+    public JsonWriterInjector(int poolSize, Initializer initializer,
                               String treeTaggerHome, String lang) throws IOException {
         this.treeTaggerHome = treeTaggerHome;
         this.executorService = Executors.newFixedThreadPool(poolSize);
-        this.extractedText = extractedText;
-        this.xmlCorpus = xmlCorpus;
+        this.initializer = initializer;
         this.corpus = Paths.get(FilesUtilities.createTemporaryFolder("corpus"));
         this.lang = lang;
         this.terminologies = new CopyOnWriteArrayList<>();
@@ -52,7 +48,7 @@ public class JsonWriterInjector extends TermSuiteTextInjector {
         Files.createDirectories(Paths.get(this.corpus + "/json"));
         Files.createDirectories(Paths.get(this.corpus + "/txt"));
         LOGGER.info("create temporary text files in " + this.corpus + "/txt folder");
-        FilesUtilities.createFiles(this.corpus + "/txt", extractedText, "txt");
+        FilesUtilities.createFiles(this.corpus + "/txt", initializer.getExtractedText(), "txt");
     }
 
     public Path getCorpus() {
@@ -64,24 +60,29 @@ public class JsonWriterInjector extends TermSuiteTextInjector {
     }
 
     public void execute() throws InterruptedException  {
-        extractedText.values().forEach(txt -> executorService.submit(new TreeTaggerToJsonWorker(txt)));
+        initializer.getExtractedText().values().forEach(txt -> executorService.submit(new
+                TreeTaggerToJsonWorker(txt, initializer.getTotalSize()))
+        );
         executorService.shutdown();
         executorService.awaitTermination(1L,TimeUnit.DAYS);
     }
 
     private class TreeTaggerToJsonWorker implements Runnable {
         StringBuffer txt;
-        public TreeTaggerToJsonWorker(StringBuffer txt) {
+        int totalSize;
+        public TreeTaggerToJsonWorker(StringBuffer txt, int totalSize) {
+
             this.txt = txt;
+            this.totalSize = totalSize;
         }
 
         @Override
         public void run() {
-            LOGGER.info("new treetaggerjson task started");
-            TreeTaggerToJson treeTaggerToJson = new TreeTaggerToJson();
+            LOGGER.info("new treetagger to json task started");
+            TreeTaggerToJson treeTaggerToJson = new TreeTaggerToJson(txt,totalSize);
             treeTaggerToJson.execute();
+            LOGGER.info("treetagger to json task ended");
             //TODO put here a tokenizer module
-            LOGGER.info("treetaggerjson task ended");
         }
     }
 }
