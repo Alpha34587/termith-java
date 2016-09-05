@@ -3,6 +3,8 @@ package module.treetagger;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.stream.Collector;
 
 /**
@@ -30,8 +32,8 @@ public class TreeTaggerWrapper {
     }
 
     public void execute() throws IOException {
-        String command = "echo \"salut\ncaca\" | " + treeTaggerParameter.parse();
-        Process p = Runtime.getRuntime().exec(new String[]{"bash","-c","echo \"txt\" | " + treeTaggerParameter.parse()});
+        Process p = Runtime.getRuntime().exec(new String[]{"bash","-c","echo \"" + puntuationParsing()
+                + "\" | " + treeTaggerParameter.parse()});
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(p.getInputStream()));
         ttOut  =
                 bufferedReader.lines().map(String::toString).collect(Collector.of(
@@ -41,5 +43,49 @@ public class TreeTaggerWrapper {
                 );
 
 
+    }
+
+    public String puntuationParsing(){
+        Deque<String> oldPuncts = new ArrayDeque<>();
+        Deque<String> newPuncts = new ArrayDeque<>();
+        oldPuncts.add(".");
+        oldPuncts.add("?");
+        oldPuncts.add("!");
+        oldPuncts.add(";");
+        oldPuncts.add(",");
+        oldPuncts.add(",");
+        oldPuncts.add(":");
+        oldPuncts.add("(");
+        oldPuncts.add(")");
+        oldPuncts.add("[");
+        oldPuncts.add("]");
+        oldPuncts.add("{");
+        oldPuncts.add("}");
+        oldPuncts.add("\"");
+        oldPuncts.add("\'");
+
+        newPuncts.add("\n.\n");
+        newPuncts.add("\n?\n");
+        newPuncts.add("\n!\n");
+        newPuncts.add("\n;\n");
+        newPuncts.add("\n,\n");
+        newPuncts.add("\n,\n");
+        newPuncts.add("\n:\n");
+        newPuncts.add("\n(\n");
+        newPuncts.add("\n)\n");
+        newPuncts.add("\n[\n");
+        newPuncts.add("\n]\n");
+        newPuncts.add("\n{\n");
+        newPuncts.add("\n}\n");
+        newPuncts.add("\n\"\n");
+        newPuncts.add("\n\'\n");
+
+        String parseTxt = txt.toString().replace(" ", "\n");
+
+        while (!oldPuncts.isEmpty()) {
+                    parseTxt = parseTxt.replace(oldPuncts.poll(), newPuncts.poll());
+        }
+
+        return parseTxt;
     }
 }
