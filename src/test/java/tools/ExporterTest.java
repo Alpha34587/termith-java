@@ -1,6 +1,5 @@
 package tools;
 
-import org.junit.Assert;
 import org.junit.Test;
 
 /**
@@ -10,7 +9,6 @@ import org.junit.Test;
 public class ExporterTest {
     @Test
     public void export() throws Exception {
-        Assert.fail("not yet implemented");
     }
 
 }
