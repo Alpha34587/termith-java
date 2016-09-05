@@ -10,6 +10,10 @@ public class TtJsonFile {
 
     ArrayList<JsonTag> jsonTagList;
 
+    public ArrayList<JsonTag> getJsonTagList() {
+        return jsonTagList;
+    }
+
     public TtJsonFile() {
         this.jsonTagList = new ArrayList<>();
     }

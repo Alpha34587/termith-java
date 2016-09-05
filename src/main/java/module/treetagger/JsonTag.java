@@ -6,12 +6,30 @@ package module.treetagger;
  */
 public class JsonTag {
 
-    int begin;
-    int end;
-    String lemma;
-    String tag;
+    private int begin;
+    private int end;
+
+    private String lemma;
+
+    private String tag;
 
     public JsonTag(){}
+
+    public int getBegin() {
+        return begin;
+    }
+
+    public int getEnd() {
+        return end;
+    }
+
+    public String getLemma() {
+        return lemma;
+    }
+
+    public String getTag() {
+        return tag;
+    }
 
     public void setOffset(int begin, int end) {
         this.begin = begin;

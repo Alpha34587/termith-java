@@ -13,37 +13,74 @@ public class Serialize {
     private Deque<String> tokenDeque;
     private final int totalSize;
     private TtJsonFile ttJsonFile;
+    private StringBuffer txt;
 
-    public Serialize(StringBuilder tokenDeque, int totalSize) {
+    public Serialize(StringBuilder tokenDeque, StringBuffer txt, int totalSize) {
         this.tokenDeque = new ArrayDeque();
         populateTokenDeque(tokenDeque);
+        this.txt = txt;
         this.totalSize = totalSize;
+        this.ttJsonFile = new TtJsonFile();
+    }
+
+    public TtJsonFile getTtJsonFile() {
+        return ttJsonFile;
     }
 
     private void populateTokenDeque(StringBuilder tokenDeque) {
+        for (String token : tokenDeque.toString().split("\n")) {
+            this.tokenDeque.add(token);
+        }
     }
 
     public void execute() throws IOException {
         Integer[] offset = new Integer[]{0,1};
-        JsonTag jsonTag = new JsonTag();
 
         while (!tokenDeque.isEmpty()){
             String[] line = tokenDeque.poll().split("\t");
-            findOffset(offset,line[0]);
-            normalizeMultex(line[1]);
-            addLemma(line[2]);
+            JsonTag jsonTag = new JsonTag();
+            offset = findOffset(offset,line[0]);
+            jsonTag.setOffset(offset[0],offset[1]);
+            jsonTag.setTag(addTagCat(line[1]));
+            jsonTag.setLemma(addLemma(line[2]));
+            ttJsonFile.addJsonTag(jsonTag);
+            offset[1] = offset[0] + 1;
 
         }
     }
 
-    private void addLemma(String s) {
+    public String addLemma(String token) {
+        return token;
     }
 
-    private void normalizeMultex(String s) {
+    public String addTagCat(String tag) {
+        return tag;
     }
 
-    private void findOffset(Integer[] offset, String s) {
-    }
+    public Integer[] findOffset(Integer[] offset, String token) {
+        char[] letterCharArray = token.toCharArray();
+        boolean findBegin = false;
+        int begin = -1;
+        int end = -1;
+        int cpt = 0;
+        while (end == -1){
+            char ch = letterCharArray[cpt];
 
+            if (!findBegin && txt.charAt(offset[0]) == ch) {
+                findBegin = true;
+                begin = offset[0];
+            }
+
+            if (cpt == letterCharArray.length -1  && txt.charAt(offset[0]) == ch)
+                end = offset[1];
+
+            if (findBegin)
+                cpt++;
+            offset[0]++;
+            offset[1]++;
+        }
+
+        return new Integer[]{begin,end};
+    }
 
 }
