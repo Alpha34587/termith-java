@@ -139,6 +139,14 @@ public class Initializer {
         executor.awaitTermination(1L, TimeUnit.DAYS);
     }
 
+
+    /**
+     * return the UIMA cumulSize of a document
+     */
+    public int getCumulSize() {
+        return -1;
+    }
+
     /**
      * the initializerWorker have a run method who call a textExtractor object
      * @see TextExtractor
