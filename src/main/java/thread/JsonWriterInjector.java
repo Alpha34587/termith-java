@@ -61,7 +61,14 @@ public class JsonWriterInjector extends TermSuiteTextInjector {
 
     public void execute() throws InterruptedException  {
         initializer.getExtractedText().values().forEach(txt -> executorService.submit(new
-                TreeTaggerToJsonWorker(txt, initializer.getTotalSize()))
+                TreeTaggerToJsonWorker(txt,
+                initializer.getTotalSize(),
+                initializer.getDocIndex(),
+                initializer.getDocumentOffset(),
+                initializer.getNumOfDocs(),
+                initializer.getCumulSize(),
+                initializer.isLastDoc()
+                ))
         );
         executorService.shutdown();
         executorService.awaitTermination(1L,TimeUnit.DAYS);
@@ -69,17 +76,43 @@ public class JsonWriterInjector extends TermSuiteTextInjector {
 
     private class TreeTaggerToJsonWorker implements Runnable {
         StringBuffer txt;
-        int totalSize;
-        public TreeTaggerToJsonWorker(StringBuffer txt, int totalSize) {
+        private final int totalSize;
+        private final int cumulDocSize;
+        private final int docIndex;
+        private final int documentOffset;
+        private final int numOfDocs;
+        private final boolean lastDoc;
+
+        public TreeTaggerToJsonWorker(StringBuffer txt, int totalSize,
+                                      int docIndex,
+                                      int documentOffset,
+                                      int numOfDocs,
+                                      int cumulDocSize, boolean
+                                              lastDoc) {
 
             this.txt = txt;
             this.totalSize = totalSize;
+            this.docIndex = docIndex;
+            this.documentOffset = documentOffset;
+            this.numOfDocs = numOfDocs;
+            this.cumulDocSize = totalSize;
+            this.lastDoc = lastDoc;
         }
 
         @Override
         public void run() {
             LOGGER.info("new treetagger to json task started");
-            TreeTaggerToJson treeTaggerToJson = new TreeTaggerToJson(txt,totalSize,treeTaggerHome,lang);
+            TreeTaggerToJson treeTaggerToJson = new TreeTaggerToJson(
+                    txt,
+                    treeTaggerHome,
+                    lang,
+                    totalSize,
+                    docIndex,
+                    documentOffset,
+                    numOfDocs,
+                    cumulDocSize,
+                    lastDoc
+            );
 
             try {
                 treeTaggerToJson.execute();
