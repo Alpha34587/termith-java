@@ -12,6 +12,7 @@ import java.nio.file.Paths;
  */
 public class InitializerTest {
     Initializer initializerMonoThread;
+
     Initializer initializerMultiThread;
     Initializer initializerOddSize;
     Initializer initializerEvenSize;
@@ -38,6 +39,33 @@ public class InitializerTest {
         initializerEvenSize.addText("2", new StringBuffer("le \t\tpetit chat mange un gantele"));
 
     }
+
+
+    @Test
+    public void getDocumentSize() throws Exception {
+
+    }
+
+    @Test
+    public void getNumOfDocs() throws Exception {
+
+    }
+
+    @Test
+    public void getDocumentOffset() throws Exception {
+
+    }
+
+    @Test
+    public void getDocIndex() throws Exception {
+
+    }
+
+    @Test
+    public void isLastDoc() throws Exception {
+
+    }
+
     @Test
     public void testMultiThreadsExecution() throws Exception {
         initializerMonoThread.execute();

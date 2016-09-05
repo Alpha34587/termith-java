@@ -82,6 +82,46 @@ public class Initializer {
     }
 
     /**
+     * return the size of a document
+     * @return
+     */
+    public int getDocumentSize(){
+        return -1;
+    }
+
+    /**
+     * return the number of document of the corpus
+     * @return
+     */
+    public int getNumOfDocs(){
+        return -1;
+    }
+
+    /**
+     * return the uima offset of a document
+     * @return
+     */
+    public int getDocumentOffset(){
+        return -1;
+    }
+
+    /**
+     * return the index number of a document
+     * @return
+     */
+    public int getDocIndex(){
+        return -1;
+    }
+
+    /**
+     * return true if the document is the last document of the extractedText field
+     * @return
+     */
+    public boolean isLastDoc(){
+        return false;
+    }
+
+    /**
      * @return return the base corpus
      */
     public Map<String, StringBuffer> getXmlCorpus() { return xmlCorpus; }
