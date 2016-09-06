@@ -60,8 +60,9 @@ public class JsonWriterInjector extends TermSuiteTextInjector {
     }
 
     public void execute() throws InterruptedException  {
-        initializer.getExtractedText().values().forEach(txt -> executorService.submit(new
+        initializer.getExtractedText().forEach((key,txt) -> executorService.submit(new
                 TreeTaggerToJsonWorker(txt,
+                corpus + "/json/" + key + ".json",
                 initializer.getTotalSize(),
                 initializer.getDocIndex(),
                 initializer.getDocumentOffset(),
@@ -70,12 +71,14 @@ public class JsonWriterInjector extends TermSuiteTextInjector {
                 initializer.isLastDoc()
                 ))
         );
+        LOGGER.info("Waiting executors to finish");
         executorService.shutdown();
         executorService.awaitTermination(1L,TimeUnit.DAYS);
     }
 
     private class TreeTaggerToJsonWorker implements Runnable {
         StringBuffer txt;
+        String filePath;
         private final int totalSize;
         private final int cumulDocSize;
         private final int docIndex;
@@ -83,7 +86,7 @@ public class JsonWriterInjector extends TermSuiteTextInjector {
         private final int numOfDocs;
         private final boolean lastDoc;
 
-        public TreeTaggerToJsonWorker(StringBuffer txt, int totalSize,
+        public TreeTaggerToJsonWorker(StringBuffer txt, String filePath, int totalSize,
                                       int docIndex,
                                       int documentOffset,
                                       int numOfDocs,
@@ -91,6 +94,7 @@ public class JsonWriterInjector extends TermSuiteTextInjector {
                                               lastDoc) {
 
             this.txt = txt;
+            this.filePath = filePath;
             this.totalSize = totalSize;
             this.docIndex = docIndex;
             this.documentOffset = documentOffset;
@@ -104,6 +108,7 @@ public class JsonWriterInjector extends TermSuiteTextInjector {
             LOGGER.info("new treetagger to json task started");
             TreeTaggerToJson treeTaggerToJson = new TreeTaggerToJson(
                     txt,
+                    filePath,
                     treeTaggerHome,
                     lang,
                     totalSize,
@@ -118,6 +123,8 @@ public class JsonWriterInjector extends TermSuiteTextInjector {
                 treeTaggerToJson.execute();
             } catch (IOException e) {
                 LOGGER.info("error during parsing TreeTagger data", e);
+            } catch (InterruptedException e) {
+                LOGGER.info("error during Tree Tagger Process");
             }
             LOGGER.info("treetagger to json task ended");
             //TODO put here a tokenizer module
