@@ -1,0 +1,48 @@
+{
+  "word_annotations" : [ {
+    "tag" : "NP",
+    "lemma" : "Journal",
+    "begin" : 5,
+    "end" : 12
+  }, {
+    "tag" : "IN",
+    "lemma" : "of",
+    "begin" : 13,
+    "end" : 15
+  }, {
+    "tag" : "NP",
+    "lemma" : "gerontology",
+    "begin" : 16,
+    "end" : 27
+  }, {
+    "tag" : ":",
+    "lemma" : ":",
+    "begin" : 27,
+    "end" : 28
+  }, {
+    "tag" : "JJ",
+    "lemma" : "psychological",
+    "begin" : 29,
+    "end" : 42
+  }, {
+    "tag" : "JJ",
+    "lemma" : "patient",
+    "begin" : 43,
+    "end" : 50
+  }, {
+    "tag" : "JJ",
+    "lemma" : "(",
+    "begin" : 51,
+    "end" : 52
+  }, {
+    "tag" : "JJ",
+    "lemma" : "1998@",
+    "begin" : 52,
+    "end" : 57
+  }, {
+    "tag" : "JJ",
+    "lemma" : ")",
+    "begin" : 57,
+    "end" : 58
+  } ]
+}

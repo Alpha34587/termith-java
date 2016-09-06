@@ -1,8 +1,13 @@
 package module.treetagger;
 
+import com.fasterxml.jackson.core.JsonFactory;
+import com.fasterxml.jackson.core.JsonGenerator;
+
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
 import java.util.ArrayDeque;
-import java.util.Deque;
 
 /**
  * @author Simon Meoni
@@ -10,14 +15,16 @@ import java.util.Deque;
  */
 public class Serialize {
 
-    private Deque<String> tokenDeque;
+    private ArrayDeque tokenDeque;
+    private String filePath;
     private final int totalSize;
     private TtJsonFile ttJsonFile;
     private StringBuffer txt;
 
-    public Serialize(StringBuilder tokenDeque, StringBuffer txt, int totalSize) {
+    public Serialize(StringBuilder tokenDeque, String filePath, StringBuffer txt, int totalSize) {
         this.tokenDeque = new ArrayDeque();
         populateTokenDeque(tokenDeque);
+        this.filePath = filePath;
         this.txt = txt;
         this.totalSize = totalSize;
         this.ttJsonFile = new TtJsonFile();
@@ -34,30 +41,54 @@ public class Serialize {
     }
 
     public void execute() throws IOException {
+        FileOutputStream fos = new FileOutputStream(filePath);
+        Writer writer = new OutputStreamWriter(fos, "UTF-8");
+        JsonFactory jfactory = new JsonFactory();
+        JsonGenerator jg = jfactory.createGenerator(writer);
+        jg.useDefaultPrettyPrinter();
+        jg.writeStartObject();
+        writeSdi();
+        writeTag(jg);
+        writeText(jg);
+        jg.writeEndObject();
+        jg.flush();
+        writer.close();
+    }
+
+    private void writeText(JsonGenerator jg) {
+    }
+
+    private void writeSdi() {
+    }
+
+    public void writeTag(JsonGenerator jg) throws IOException {
         Integer[] offset = new Integer[]{0,1};
-
+        jg.writeFieldName("word_annotations");
+        jg.writeStartArray();
         while (!tokenDeque.isEmpty()){
-            String[] line = tokenDeque.poll().split("\t");
-            JsonTag jsonTag = new JsonTag();
-            offset = findOffset(offset,line[0]);
-            jsonTag.setOffset(offset[0],offset[1]);
-            jsonTag.setTag(addTagCat(line[1]));
-            jsonTag.setLemma(addLemma(line[2]));
-            ttJsonFile.addJsonTag(jsonTag);
-            offset[1] = offset[0] + 1;
+            String[] line = tokenDeque.poll().toString().split("\t");
 
+            jg.writeStartObject();
+            addTagCat(line[1],jg);
+            addLemma(line[2],jg);
+            offset = addOffsets(offset,line[0],jg);
+            jg.writeEndObject();
         }
+        jg.writeEndArray();
+
     }
 
-    public String addLemma(String token) {
-        return token;
+    public void addLemma(String token, JsonGenerator jg) throws IOException {
+        jg.writeFieldName("lemma");
+        jg.writeString(token);
     }
 
-    public String addTagCat(String tag) {
-        return tag;
+    public void addTagCat(String tag, JsonGenerator jg) throws IOException {
+        jg.writeFieldName("tag");
+        jg.writeString(tag);
     }
 
-    public Integer[] findOffset(Integer[] offset, String token) {
+    public Integer[] addOffsets(Integer[] offset, String token, JsonGenerator jGenerator) throws IOException {
         char[] letterCharArray = token.toCharArray();
         boolean findBegin = false;
         int begin = -1;
@@ -79,8 +110,11 @@ public class Serialize {
             offset[0]++;
             offset[1]++;
         }
-
-        return new Integer[]{begin,end};
+        jGenerator.writeFieldName("begin");
+        jGenerator.writeNumber(begin);
+        jGenerator.writeFieldName("end");
+        jGenerator.writeNumber(end);
+        return new Integer[]{end ,end + 1};
     }
 
 }
