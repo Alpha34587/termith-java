@@ -45,7 +45,7 @@ public class SerializeTest {
 
         jsonResFile = temporaryFolder.newFile("test1.json");
 
-        serializeLemma = new Serialize(tokenLemma, jsonResFile.getAbsolutePath(), lemma,0);
+        serializeLemma = new Serialize(tokenLemma, "", jsonResFile.getAbsolutePath(), lemma,0);
     }
 
     @Test
