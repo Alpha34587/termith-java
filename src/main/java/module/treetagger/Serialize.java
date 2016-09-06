@@ -49,10 +49,24 @@ public class Serialize {
         jg.writeStartObject();
         writeSdi();
         writeTag(jg);
+        writeTermOcc(jg);
+        writeFe(jg);
         writeText(jg);
         jg.writeEndObject();
         jg.flush();
         writer.close();
+    }
+
+    private void writeTermOcc(JsonGenerator jg) throws IOException {
+        jg.writeFieldName("term_occ_annotations");
+        jg.writeStartArray();
+        jg.writeEndArray();
+    }
+
+    private void writeFe(JsonGenerator jg) throws IOException {
+        jg.writeFieldName("fixed_expressions");
+        jg.writeStartArray();
+        jg.writeEndArray();
     }
 
     private void writeText(JsonGenerator jg) throws IOException {
