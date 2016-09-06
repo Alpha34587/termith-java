@@ -18,7 +18,6 @@ public class Serialize {
     private ArrayDeque tokenDeque;
     private String filePath;
     private final int totalSize;
-    private TtJsonFile ttJsonFile;
     private StringBuffer txt;
     private String txtPath;
 
@@ -29,11 +28,6 @@ public class Serialize {
         this.txt = txt;
         this.txtPath = txtPath;
         this.totalSize = totalSize;
-        this.ttJsonFile = new TtJsonFile();
-    }
-
-    public TtJsonFile getTtJsonFile() {
-        return ttJsonFile;
     }
 
     private void populateTokenDeque(StringBuilder tokenDeque) {
