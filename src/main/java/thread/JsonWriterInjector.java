@@ -62,6 +62,7 @@ public class JsonWriterInjector extends TermSuiteTextInjector {
     public void execute() throws InterruptedException  {
         initializer.getExtractedText().forEach((key,txt) -> executorService.submit(new
                 TreeTaggerToJsonWorker(txt,
+                corpus + "/txt/" + key + ".txt",
                 corpus + "/json/" + key + ".json",
                 initializer.getTotalSize(),
                 initializer.getDocIndex(),
@@ -77,6 +78,7 @@ public class JsonWriterInjector extends TermSuiteTextInjector {
     }
 
     private class TreeTaggerToJsonWorker implements Runnable {
+        private final String txtPath;
         StringBuffer txt;
         String filePath;
         private final int totalSize;
@@ -86,14 +88,15 @@ public class JsonWriterInjector extends TermSuiteTextInjector {
         private final int numOfDocs;
         private final boolean lastDoc;
 
-        public TreeTaggerToJsonWorker(StringBuffer txt, String filePath, int totalSize,
+        public TreeTaggerToJsonWorker(StringBuffer txt, String filePath,
+                                      String txtPath,int totalSize,
                                       int docIndex,
                                       int documentOffset,
                                       int numOfDocs,
-                                      int cumulDocSize, boolean
-                                              lastDoc) {
+                                      int cumulDocSize, boolean lastDoc) {
 
             this.txt = txt;
+            this.txtPath = txtPath;
             this.filePath = filePath;
             this.totalSize = totalSize;
             this.docIndex = docIndex;
@@ -108,6 +111,7 @@ public class JsonWriterInjector extends TermSuiteTextInjector {
             LOGGER.info("new treetagger to json task started");
             TreeTaggerToJson treeTaggerToJson = new TreeTaggerToJson(
                     txt,
+                    txtPath,
                     filePath,
                     treeTaggerHome,
                     lang,

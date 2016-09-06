@@ -20,12 +20,14 @@ public class Serialize {
     private final int totalSize;
     private TtJsonFile ttJsonFile;
     private StringBuffer txt;
+    private String txtPath;
 
-    public Serialize(StringBuilder tokenDeque, String filePath, StringBuffer txt, int totalSize) {
+    public Serialize(StringBuilder tokenDeque, String txtPath,String filePath, StringBuffer txt, int totalSize) {
         this.tokenDeque = new ArrayDeque();
         populateTokenDeque(tokenDeque);
         this.filePath = filePath;
         this.txt = txt;
+        this.txtPath = txtPath;
         this.totalSize = totalSize;
         this.ttJsonFile = new TtJsonFile();
     }
@@ -47,7 +49,7 @@ public class Serialize {
         JsonGenerator jg = jfactory.createGenerator(writer);
         jg.useDefaultPrettyPrinter();
         jg.writeStartObject();
-        writeSdi();
+        writeSdi(jg);
         writeTag(jg);
         writeTermOcc(jg);
         writeFe(jg);
@@ -75,7 +77,12 @@ public class Serialize {
 
     }
 
-    private void writeSdi() {
+    private void writeSdi(JsonGenerator jg) throws IOException {
+        jg.writeFieldName("sdi");
+        jg.writeStartObject();
+        jg.writeFieldName("uri");
+        jg.writeString(txtPath);
+        jg.writeEndObject();
     }
 
     public void writeTag(JsonGenerator jg) throws IOException {

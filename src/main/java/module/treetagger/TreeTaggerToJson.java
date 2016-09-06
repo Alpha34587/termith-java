@@ -15,6 +15,7 @@ public class TreeTaggerToJson {
     private final StringBuffer txt;
     private final int totalSize;
     private final String filePath;
+    private final String txtPath;
     private String treeTaggerHome;
     private String lang;
     private final int docIndex;
@@ -23,11 +24,13 @@ public class TreeTaggerToJson {
     private final int cumulDocSize;
     private final boolean lastDoc;
 
-    public TreeTaggerToJson(StringBuffer txt, String filePath, String treeTaggerHome, String lang,
+    public TreeTaggerToJson(StringBuffer txt, String filePath, String txtPath
+            ,String treeTaggerHome, String lang,
                             int totalSize, int docIndex, int documentOffset,
                             int numOfDocs, int cumulDocSize, boolean lastDoc){
         this.txt = txt;
         this.filePath = filePath;
+        this.txtPath = txtPath;
         this.totalSize = totalSize;
         this.treeTaggerHome = treeTaggerHome;
         this.lang = lang;
@@ -42,7 +45,7 @@ public class TreeTaggerToJson {
         TreeTaggerWrapper treeTaggerWrapper = new TreeTaggerWrapper(txt,treeTaggerHome,
                 new TreeTaggerParameter(false,lang, treeTaggerHome));
         treeTaggerWrapper.execute();
-        Serialize serialize = new Serialize(treeTaggerWrapper.getTtOut(),filePath,txt,totalSize);
+        Serialize serialize = new Serialize(treeTaggerWrapper.getTtOut(),txtPath,filePath,txt,totalSize);
         serialize.execute();
         LOGGER.info("write file " + filePath);
     }
