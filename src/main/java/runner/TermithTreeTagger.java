@@ -48,7 +48,7 @@ public class TermithTreeTagger extends TermithText {
         }
 
         LOGGER.info("Starting Second Phase: Json Writer");
-        JsonWriterInjector jsonWriterInjector = new JsonWriterInjector(initializer, treeTaggerHome, lang);
+        JsonWriterInjector jsonWriterInjector = new JsonWriterInjector(poolSize,initializer, treeTaggerHome, lang);
         try {
             jsonWriterInjector.execute();
         } catch ( Exception e ) {
@@ -58,7 +58,7 @@ public class TermithTreeTagger extends TermithText {
 
         LOGGER.info("Starting Third Phase: TermSuite + XML injection");
         TermSuiteJsonInjector termSuiteJsonInjector = new TermSuiteJsonInjector(
-                jsonWriterInjector.getJsonTreeTagger(), initializer.getXmlCorpus(), treeTaggerHome, lang,
+                poolSize, jsonWriterInjector.getJsonTreeTagger(), initializer.getXmlCorpus(), treeTaggerHome, lang,
                 jsonWriterInjector.getCorpus());
         try {
             termSuiteJsonInjector.execute();
