@@ -55,7 +55,10 @@ public class Serialize {
         writer.close();
     }
 
-    private void writeText(JsonGenerator jg) {
+    private void writeText(JsonGenerator jg) throws IOException {
+        jg.writeFieldName("covered_text");
+        jg.writeString(txt.toString());
+
     }
 
     private void writeSdi() {
