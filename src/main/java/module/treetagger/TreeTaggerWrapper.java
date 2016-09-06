@@ -1,10 +1,9 @@
 package module.treetagger;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.ArrayDeque;
 import java.util.Deque;
+import java.util.UUID;
 import java.util.stream.Collector;
 
 /**
@@ -31,9 +30,10 @@ public class TreeTaggerWrapper {
         return ttOut;
     }
 
-    public void execute() throws IOException {
-        Process p = Runtime.getRuntime().exec(new String[]{"bash","-c","echo \"" + puntuationParsing()
-                + "\" | " + treeTaggerParameter.parse()});
+    public void execute() throws IOException, InterruptedException {
+        Process p = Runtime.getRuntime().exec(new String[]{"bash","-c", treeTaggerParameter.parse() + " "
+                + writeFile(parsingText())});
+
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(p.getInputStream()));
         ttOut  =
                 bufferedReader.lines().map(String::toString).collect(Collector.of(
@@ -41,11 +41,18 @@ public class TreeTaggerWrapper {
                         (stringBuilder, str) -> stringBuilder.append(str).append("\n"),
                         StringBuilder::append)
                 );
-
-
     }
 
-    public String puntuationParsing(){
+    private String writeFile(String parsingText) throws IOException {
+        File temp = File.createTempFile(UUID.randomUUID().toString(), ".tt");
+        BufferedWriter bw = new BufferedWriter(new FileWriter(temp));
+        bw.write(parsingText);
+        bw.flush();
+        bw.close();
+        return temp.getAbsolutePath();
+    }
+
+    public String parsingText(){
         Deque<String> oldPuncts = new ArrayDeque<>();
         Deque<String> newPuncts = new ArrayDeque<>();
         oldPuncts.add(".");
@@ -80,8 +87,8 @@ public class TreeTaggerWrapper {
         newPuncts.add("\n\"\n");
         newPuncts.add("\n\'\n");
 
-        String parseTxt = txt.toString().replace(" ", "\n");
-
+        String parseTxt = txt.toString().trim();
+        parseTxt = parseTxt.replace(" ", "\n");
         while (!oldPuncts.isEmpty()) {
                     parseTxt = parseTxt.replace(oldPuncts.poll(), newPuncts.poll());
         }
