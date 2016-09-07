@@ -1,0 +1,54 @@
+{
+"sdi" : {
+  "uri" : "test",
+  "off_in_s" : 0,
+  "document_index" : 1,
+  "nb_documents" : 3,
+  "document_size" : 24,
+  "cumul_doc_size" : 24,
+  "corpus_size" : 132,
+  "last_segment" : false,
+  "begin" : 0,
+  "end" : 23
+},
+
+"word_annotations" : [ {
+  "cat" : "noun",
+  "lemma" : "le",
+  "tag" : "NN",
+  "begin" : 0,
+  "end" : 2
+},
+{
+  "cat" : "noun",
+  "lemma" : "chat",
+  "tag" : "NN",
+  "begin" : 3,
+  "end" : 7
+},
+{
+  "cat" : "noun",
+  "lemma" : "mange",
+  "tag" : "V",
+  "begin" : 8,
+  "end" : 13
+},
+{
+  "cat" : "noun",
+  "lemma" : "une",
+  "tag" : "NN",
+  "begin" : 14,
+  "end" : 17
+},
+{
+  "cat" : "noun",
+  "lemma" : "pomme",
+  "tag" : "NN",
+  "begin" : 15,
+  "end" : 20
+}
+
+]
+
+
+}

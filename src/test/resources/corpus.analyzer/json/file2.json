@@ -1,0 +1,58 @@
+{
+"sdi" : {
+  "uri" : "test",
+  "off_in_s" : 0,
+  "document_index" : 2,
+  "nb_documents" : 3,
+  "document_size" : 76,
+  "cumul_doc_size" : 100,
+  "corpus_size" : 132,
+  "last_segment" : false,
+  "begin" : 0,
+  "end" : 48
+},
+
+"word_annotations" : [ {
+  "cat" : "noun",
+  "lemma" : "le",
+  "tag" : "NN",
+  "begin" : 6,
+  "end" : 8
+},
+{
+  "cat" : "noun",
+  "lemma" : "chien",
+  "tag" : "NN",
+  "begin" : 9,
+  "end" : 14
+},
+{
+  "cat" : "noun",
+  "lemma" : "marche",
+  "tag" : "V",
+  "begin" : 15,
+  "end" : 21
+},
+{
+  "cat" : "prep",
+  "lemma" : "dans",
+  "tag" : "P",
+  "begin" : 29,
+  "end" : 33
+},
+{
+  "cat" : "noun",
+  "lemma" : "la",
+  "tag" : "NN",
+  "begin" : 41,
+  "end" : 43
+},
+{
+  "cat" : "noun",
+  "lemma" : "savane",
+  "tag" : "NN",
+  "begin" : 42,
+  "end" : 48
+}
+]
+}
