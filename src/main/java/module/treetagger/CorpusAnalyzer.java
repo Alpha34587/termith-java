@@ -10,7 +10,8 @@ public class CorpusAnalyzer {
 
     int documentSize;
     int nbOfDocs;
-    int documentOffset;
+    int begin;
+    int end;
     int docIndex;
     int cumulSize;
     int totalSize;
@@ -18,12 +19,13 @@ public class CorpusAnalyzer {
 
     public CorpusAnalyzer(){}
 
-    public CorpusAnalyzer(Initializer initializer){
-        this.documentSize = documentSize(initializer);
+    public CorpusAnalyzer(Initializer initializer, String id, int docIndex){
+        this.documentSize = documentSize(initializer, id);
         this.nbOfDocs = nbOfDocs(initializer);
-        this.documentOffset = documentOffset(initializer);
-        this.docIndex = docIndex(initializer);
-        this.cumulSize = cumulSize(initializer);
+        this.begin = 0;
+        this.end = end(initializer, id);
+        this.docIndex = docIndex;
+        this.cumulSize = cumulSize(initializer, id);
         this.totalSize = totalSize(initializer);
         this.isLastDoc = isLastDoc(initializer);
     }
@@ -32,19 +34,21 @@ public class CorpusAnalyzer {
      * @return return the size of the total corpus
      */
     public int totalSize(Initializer initializer) {
-        int totalOffset = -1;
-        for (StringBuffer text : initializer.getExtractedText().values())
-            totalOffset = totalOffset + text.length() + 1;
-
-        return totalOffset;
+        int totalSize = 0;
+        byte[] bytesCt;
+        for (StringBuffer text : initializer.getExtractedText().values()){
+            totalSize += text.toString().getBytes().length + 1;
+        }
+        return totalSize;
     }
 
     /**
      * return the size of a document
      * @return
      */
-    public int documentSize(Initializer initializer){
-        return -1;
+    public int documentSize(Initializer initializer, String id){
+        return initializer.getExtractedText().get(id)
+                .toString().getBytes().length + 1;
     }
 
     /**
@@ -52,24 +56,17 @@ public class CorpusAnalyzer {
      * @return
      */
     public int nbOfDocs(Initializer initializer){
-        return -1;
+        return initializer.getExtractedText().size();
     }
 
     /**
      * return the uima offset of a document
      * @return
      */
-    public int documentOffset(Initializer initializer){
-        return -1;
+    public int end(Initializer initializer, String id){
+        return initializer.getExtractedText().get(id).toString().length();
     }
 
-    /**
-     * return the index number of a document
-     * @return
-     */
-    public int docIndex(Initializer initializer){
-        return -1;
-    }
 
     /**
      * return true if the document is the last document of the extractedText field
@@ -82,7 +79,7 @@ public class CorpusAnalyzer {
     /**
      * return the UIMA cumulSize of a document
      */
-    public int cumulSize(Initializer initializer) {
+    public int cumulSize(Initializer initializer, String id) {
         return -1;
     }
 

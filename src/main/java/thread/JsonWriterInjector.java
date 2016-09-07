@@ -61,12 +61,12 @@ public class JsonWriterInjector extends TermSuiteTextInjector {
     }
 
     public void execute() throws InterruptedException  {
-        initializer.getExtractedText().forEach((key,txt) -> executorService.submit(new
-                TreeTaggerToJsonWorker(txt,
-                corpus + "/txt/" + key + ".txt",
-                corpus + "/json/" + key + ".json",
-                new CorpusAnalyzer(initializer)
-                ))
+        initializer.getExtractedText().forEach((key,txt) -> {
+                    int index = 1;
+                    executorService.submit(new TreeTaggerToJsonWorker(txt, corpus + "/txt/" + key + ".txt",
+                            corpus + "/json/" + key + ".json", new CorpusAnalyzer(initializer,key,index)));
+                    index++;
+                }
         );
         LOGGER.info("Waiting executors to finish");
         executorService.shutdown();

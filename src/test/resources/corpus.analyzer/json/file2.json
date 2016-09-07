@@ -9,50 +9,50 @@
   "corpus_size" : 132,
   "last_segment" : false,
   "begin" : 0,
-  "end" : 48
+  "end" : 75
 },
 
 "word_annotations" : [ {
   "cat" : "noun",
   "lemma" : "le",
   "tag" : "NN",
-  "begin" : 6,
-  "end" : 8
+  "begin" : 9,
+  "end" : 11
 },
 {
   "cat" : "noun",
   "lemma" : "chien",
   "tag" : "NN",
-  "begin" : 9,
-  "end" : 14
+  "begin" : 12,
+  "end" : 17
 },
 {
   "cat" : "noun",
   "lemma" : "marche",
   "tag" : "V",
-  "begin" : 15,
-  "end" : 21
+  "begin" : 18,
+  "end" : 24
 },
 {
   "cat" : "prep",
   "lemma" : "dans",
   "tag" : "P",
-  "begin" : 29,
-  "end" : 33
+  "begin" : 39,
+  "end" : 43
 },
 {
   "cat" : "noun",
   "lemma" : "la",
   "tag" : "NN",
-  "begin" : 41,
-  "end" : 43
+  "begin" : 66,
+  "end" : 68
 },
 {
   "cat" : "noun",
   "lemma" : "savane",
   "tag" : "NN",
-  "begin" : 42,
-  "end" : 48
+  "begin" : 69,
+  "end" : 75
 }
 ]
 }

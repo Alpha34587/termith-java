@@ -197,7 +197,6 @@ public class TermSuiteTextInjector {
          * @return return a the result of the termsuite process
          * @throws Exception
          */
-        @Override
         public TermSuitePipeline call() throws Exception {
             LOGGER.info("Build Termsuite Pipeline");
 

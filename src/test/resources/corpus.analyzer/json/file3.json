@@ -9,7 +9,7 @@
   "corpus_size" : 132,
   "last_segment" : true,
   "begin" : 0,
-  "end" : 29
+  "end" : 31
 },
 
 "word_annotations" : [ {
@@ -23,29 +23,29 @@
   "cat" : "noun",
   "lemma" : "chat",
   "tag" : "NN",
-  "begin" : 3,
-  "end" : 7
+  "begin" : 5,
+  "end" : 9
 },
 {
   "cat" : "noun",
   "lemma" : "mange",
   "tag" : "V",
-  "begin" : 8,
-  "end" : 13
+  "begin" : 10,
+  "end" : 15
 },
 {
   "cat" : "prep",
   "lemma" : "une",
   "tag" : "P",
-  "begin" : 18,
-  "end" : 21
+  "begin" : 20,
+  "end" : 23
 },
 {
   "cat" : "noun",
   "lemma" : "voiture",
   "tag" : "NN",
-  "begin" : 22,
-  "end" : 29
+  "begin" : 24,
+  "end" : 31
 }
 ]
 }
