@@ -2,32 +2,62 @@ package module.treetagger;
 
 import thread.Initializer;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * @author Simon Meoni
- *         Created on 06/09/16.
+ *         Created on 07/09/16.
  */
 public class CorpusAnalyzer {
 
-    int documentSize;
-    int nbOfDocs;
-    int begin;
-    int end;
-    int docIndex;
-    int cumulSize;
-    int totalSize;
-    boolean isLastDoc;
 
-    public CorpusAnalyzer(){}
 
-    public CorpusAnalyzer(Initializer initializer, String id, int docIndex){
-        this.documentSize = documentSize(initializer, id);
-        this.nbOfDocs = nbOfDocs(initializer);
-        this.begin = 0;
-        this.end = end(initializer, id);
-        this.docIndex = docIndex;
-        this.cumulSize = cumulSize(initializer, id);
-        this.totalSize = totalSize(initializer);
-        this.isLastDoc = isLastDoc(initializer);
+    private Map<String,TextAnalyzer> analyzedTexts;
+    private int totalSize;
+    private int cumulSize;
+    private boolean lastDocs;
+    private int index;
+    public CorpusAnalyzer(){};
+
+    public CorpusAnalyzer(Initializer initializer){
+        analyzedTexts = new HashMap<>();
+        totalSize = totalSize(initializer);
+        cumulSize = 0;
+        lastDocs = false;
+        index = 1;
+
+        initializer.getExtractedText().forEach((id,content) ->
+                {
+
+                    int documentSize = documentSize(initializer,id);
+                    int nbDocs = nbOfDocs(initializer);
+                    cumulSize += documentSize;
+                    if (index == nbDocs){
+                        lastDocs = true;
+                    }
+
+                    TextAnalyzer textAnalyzer =
+                            new TextAnalyzer(
+                                    documentSize(initializer,id),
+                                    nbDocs,
+                                    end(initializer,id),
+                                    index,
+                                    cumulSize,
+                                    totalSize,
+                                    lastDocs
+                            );
+
+                    index++;
+                    analyzedTexts.put(id,textAnalyzer);
+                });
+    }
+
+    /**
+     * @return return analyzedText fields
+     */
+    public Map<String, TextAnalyzer> getAnalyzedTexts() {
+        return analyzedTexts;
     }
 
     /**
@@ -87,4 +117,5 @@ public class CorpusAnalyzer {
      * the initializerWorker have a run method who call a textExtractor object
      * @see TextExtractor
      */
+
 }

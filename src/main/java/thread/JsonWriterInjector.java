@@ -2,6 +2,7 @@ package thread;
 
 import module.tools.FilesUtilities;
 import module.treetagger.CorpusAnalyzer;
+import module.treetagger.TextAnalyzer;
 import module.treetagger.TreeTaggerToJson;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -61,10 +62,12 @@ public class JsonWriterInjector extends TermSuiteTextInjector {
     }
 
     public void execute() throws InterruptedException  {
+        CorpusAnalyzer corpusAnalyzer = new CorpusAnalyzer(initializer);
         initializer.getExtractedText().forEach((key,txt) -> {
                     int index = 1;
                     executorService.submit(new TreeTaggerToJsonWorker(txt, corpus + "/txt/" + key + ".txt",
-                            corpus + "/json/" + key + ".json", new CorpusAnalyzer(initializer,key,index)));
+                            corpus + "/json/" + key + ".json",
+                            corpusAnalyzer.getAnalyzedTexts().get(key)));
                     index++;
                 }
         );
@@ -77,15 +80,15 @@ public class JsonWriterInjector extends TermSuiteTextInjector {
         private final String txtPath;
         StringBuffer txt;
         String filePath;
-        CorpusAnalyzer corpusAnalyzer;
+        TextAnalyzer textAnalyzer;
 
         public TreeTaggerToJsonWorker(StringBuffer txt, String filePath,
-                                      String txtPath, CorpusAnalyzer corpusAnalyzer) {
+                                      String txtPath, TextAnalyzer textAnalyzer) {
 
             this.txt = txt;
             this.txtPath = txtPath;
             this.filePath = filePath;
-            this.corpusAnalyzer = corpusAnalyzer;
+            this.textAnalyzer = textAnalyzer;
         }
 
         @Override
@@ -97,7 +100,7 @@ public class JsonWriterInjector extends TermSuiteTextInjector {
                     filePath,
                     treeTaggerHome,
                     lang,
-                    corpusAnalyzer
+                    textAnalyzer
             );
 
             try {

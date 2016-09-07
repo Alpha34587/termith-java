@@ -19,16 +19,16 @@ public class Serialize {
     private String filePath;
     private StringBuffer txt;
     private String txtPath;
-    private CorpusAnalyzer corpusAnalyzer;
+    private TextAnalyzer textAnalyzer;
 
     public Serialize(StringBuilder tokenDeque, String txtPath,String filePath, StringBuffer txt
-            , CorpusAnalyzer corpusAnalyzer) {
+            , TextAnalyzer textAnalyzer) {
         this.tokenDeque = new ArrayDeque();
         populateTokenDeque(tokenDeque);
         this.filePath = filePath;
         this.txt = txt;
         this.txtPath = txtPath;
-        this.corpusAnalyzer = corpusAnalyzer;
+        this.textAnalyzer = textAnalyzer;
     }
 
     private void populateTokenDeque(StringBuilder tokenDeque) {

@@ -17,23 +17,23 @@ public class TreeTaggerToJson {
     private final String txtPath;
     private final String treeTaggerHome;
     private final String lang;
-    private final CorpusAnalyzer corpusAnalyzer;
+    private final TextAnalyzer textAnalyzer;
 
     public TreeTaggerToJson(StringBuffer txt, String filePath, String txtPath
-            ,String treeTaggerHome, String lang, CorpusAnalyzer corpusAnalyzer){
+            ,String treeTaggerHome, String lang, TextAnalyzer textAnalyzer){
         this.txt = txt;
         this.filePath = filePath;
         this.txtPath = txtPath;
         this.treeTaggerHome = treeTaggerHome;
         this.lang = lang;
-        this.corpusAnalyzer = corpusAnalyzer;
+        this.textAnalyzer = textAnalyzer;
     }
 
     public void execute() throws IOException, InterruptedException {
         TreeTaggerWrapper treeTaggerWrapper = new TreeTaggerWrapper(txt,treeTaggerHome,
                 new TreeTaggerParameter(false,lang, treeTaggerHome));
         treeTaggerWrapper.execute();
-        Serialize serialize = new Serialize(treeTaggerWrapper.getTtOut(),txtPath,filePath,txt,corpusAnalyzer);
+        Serialize serialize = new Serialize(treeTaggerWrapper.getTtOut(),txtPath,filePath,txt, textAnalyzer);
         serialize.execute();
         LOGGER.info("write file " + filePath);
     }
