@@ -1,6 +1,7 @@
 package thread;
 
 import module.tools.FilesUtilities;
+import module.treetagger.CorpusAnalyzer;
 import module.treetagger.TreeTaggerToJson;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -64,12 +65,7 @@ public class JsonWriterInjector extends TermSuiteTextInjector {
                 TreeTaggerToJsonWorker(txt,
                 corpus + "/txt/" + key + ".txt",
                 corpus + "/json/" + key + ".json",
-                initializer.getTotalSize(),
-                initializer.getDocIndex(),
-                initializer.getDocumentOffset(),
-                initializer.getNumOfDocs(),
-                initializer.getCumulSize(),
-                initializer.isLastDoc()
+                new CorpusAnalyzer(initializer)
                 ))
         );
         LOGGER.info("Waiting executors to finish");
@@ -81,29 +77,15 @@ public class JsonWriterInjector extends TermSuiteTextInjector {
         private final String txtPath;
         StringBuffer txt;
         String filePath;
-        private final int totalSize;
-        private final int cumulDocSize;
-        private final int docIndex;
-        private final int documentOffset;
-        private final int numOfDocs;
-        private final boolean lastDoc;
+        CorpusAnalyzer corpusAnalyzer;
 
         public TreeTaggerToJsonWorker(StringBuffer txt, String filePath,
-                                      String txtPath,int totalSize,
-                                      int docIndex,
-                                      int documentOffset,
-                                      int numOfDocs,
-                                      int cumulDocSize, boolean lastDoc) {
+                                      String txtPath, CorpusAnalyzer corpusAnalyzer) {
 
             this.txt = txt;
             this.txtPath = txtPath;
             this.filePath = filePath;
-            this.totalSize = totalSize;
-            this.docIndex = docIndex;
-            this.documentOffset = documentOffset;
-            this.numOfDocs = numOfDocs;
-            this.cumulDocSize = totalSize;
-            this.lastDoc = lastDoc;
+            this.corpusAnalyzer = corpusAnalyzer;
         }
 
         @Override
@@ -115,12 +97,7 @@ public class JsonWriterInjector extends TermSuiteTextInjector {
                     filePath,
                     treeTaggerHome,
                     lang,
-                    totalSize,
-                    docIndex,
-                    documentOffset,
-                    numOfDocs,
-                    cumulDocSize,
-                    lastDoc
+                    corpusAnalyzer
             );
 
             try {

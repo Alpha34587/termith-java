@@ -71,57 +71,6 @@ public class Initializer {
 
 
     /**
-     * @return return the size of the total corpus
-     */
-    public int getTotalSize() {
-        int totalOffset = -1;
-        for (StringBuffer text : extractedText.values())
-            totalOffset = totalOffset + text.length() + 1;
-
-        return totalOffset;
-    }
-
-    /**
-     * return the size of a document
-     * @return
-     */
-    public int getDocumentSize(){
-        return -1;
-    }
-
-    /**
-     * return the number of document of the corpus
-     * @return
-     */
-    public int getNumOfDocs(){
-        return -1;
-    }
-
-    /**
-     * return the uima offset of a document
-     * @return
-     */
-    public int getDocumentOffset(){
-        return -1;
-    }
-
-    /**
-     * return the index number of a document
-     * @return
-     */
-    public int getDocIndex(){
-        return -1;
-    }
-
-    /**
-     * return true if the document is the last document of the extractedText field
-     * @return
-     */
-    public boolean isLastDoc(){
-        return false;
-    }
-
-    /**
      * @return return the base corpus
      */
     public Map<String, StringBuffer> getXmlCorpus() { return xmlCorpus; }
@@ -139,18 +88,6 @@ public class Initializer {
         executor.awaitTermination(1L, TimeUnit.DAYS);
     }
 
-
-    /**
-     * return the UIMA cumulSize of a document
-     */
-    public int getCumulSize() {
-        return -1;
-    }
-
-    /**
-     * the initializerWorker have a run method who call a textExtractor object
-     * @see TextExtractor
-     */
     private class InitialiazerWorker implements Runnable {
 
         private Path path;

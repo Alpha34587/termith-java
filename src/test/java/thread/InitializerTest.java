@@ -11,11 +11,10 @@ import java.nio.file.Paths;
  * Created on 22/08/16.
  */
 public class InitializerTest {
-    Initializer initializerMonoThread;
+    private Initializer initializerMonoThread;
 
-    Initializer initializerMultiThread;
-    Initializer initializerOddSize;
-    Initializer initializerEvenSize;
+    private Initializer initializerMultiThread;
+
     @Before
     public void setup(){
         initializerMonoThread = new Initializer(
@@ -27,45 +26,7 @@ public class InitializerTest {
                 8,
                 Paths.get("src/test/resources/corpus/xml")
         );
-
-        initializerOddSize = new Initializer();
-        initializerOddSize.addText("1", new StringBuffer("le petit chat mange un gant"));
-        initializerOddSize.addText("2", new StringBuffer("le \t\tpetit chat mange un gantelet"));
-        initializerOddSize.addText("3", new StringBuffer("le petit\n  chat mange une pizza\n"));
-        initializerOddSize.addText("4", new StringBuffer("le petit chat mange un gant;.&&&"));
-
-        initializerEvenSize = new Initializer();
-        initializerEvenSize.addText("1", new StringBuffer("le petit chat mange un gant;.&&&\n"));
-        initializerEvenSize.addText("2", new StringBuffer("le \t\tpetit chat mange un gantele"));
-
     }
-
-
-    @Test
-    public void getDocumentSize() throws Exception {
-
-    }
-
-    @Test
-    public void getNumOfDocs() throws Exception {
-
-    }
-
-    @Test
-    public void getDocumentOffset() throws Exception {
-
-    }
-
-    @Test
-    public void getDocIndex() throws Exception {
-
-    }
-
-    @Test
-    public void isLastDoc() throws Exception {
-
-    }
-
     @Test
     public void testMultiThreadsExecution() throws Exception {
         initializerMonoThread.execute();
@@ -78,11 +39,4 @@ public class InitializerTest {
         );
 
     }
-
-    @Test
-    public void getTotalSize() throws Exception {
-        Assert.assertEquals("the integer must be equals to :",127, initializerOddSize.getTotalSize());
-        Assert.assertEquals("the integer must be equals to :",66, initializerEvenSize.getTotalSize());
-    }
-
 }

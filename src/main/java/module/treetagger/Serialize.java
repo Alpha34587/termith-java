@@ -17,17 +17,18 @@ public class Serialize {
 
     private ArrayDeque tokenDeque;
     private String filePath;
-    private final int totalSize;
     private StringBuffer txt;
     private String txtPath;
+    private CorpusAnalyzer corpusAnalyzer;
 
-    public Serialize(StringBuilder tokenDeque, String txtPath,String filePath, StringBuffer txt, int totalSize) {
+    public Serialize(StringBuilder tokenDeque, String txtPath,String filePath, StringBuffer txt
+            , CorpusAnalyzer corpusAnalyzer) {
         this.tokenDeque = new ArrayDeque();
         populateTokenDeque(tokenDeque);
         this.filePath = filePath;
         this.txt = txt;
         this.txtPath = txtPath;
-        this.totalSize = totalSize;
+        this.corpusAnalyzer = corpusAnalyzer;
     }
 
     private void populateTokenDeque(StringBuilder tokenDeque) {

@@ -13,39 +13,27 @@ public class TreeTaggerToJson {
 
     private final Logger LOGGER = LoggerFactory.getLogger(TreeTaggerToJson.class.getName());
     private final StringBuffer txt;
-    private final int totalSize;
     private final String filePath;
     private final String txtPath;
-    private String treeTaggerHome;
-    private String lang;
-    private final int docIndex;
-    private final int documentOffset;
-    private final int numOfDocs;
-    private final int cumulDocSize;
-    private final boolean lastDoc;
+    private final String treeTaggerHome;
+    private final String lang;
+    private final CorpusAnalyzer corpusAnalyzer;
 
     public TreeTaggerToJson(StringBuffer txt, String filePath, String txtPath
-            ,String treeTaggerHome, String lang,
-                            int totalSize, int docIndex, int documentOffset,
-                            int numOfDocs, int cumulDocSize, boolean lastDoc){
+            ,String treeTaggerHome, String lang, CorpusAnalyzer corpusAnalyzer){
         this.txt = txt;
         this.filePath = filePath;
         this.txtPath = txtPath;
-        this.totalSize = totalSize;
         this.treeTaggerHome = treeTaggerHome;
         this.lang = lang;
-        this.docIndex = docIndex;
-        this.documentOffset = documentOffset;
-        this.numOfDocs = numOfDocs;
-        this.cumulDocSize = cumulDocSize;
-        this.lastDoc = lastDoc;
+        this.corpusAnalyzer = corpusAnalyzer;
     }
 
     public void execute() throws IOException, InterruptedException {
         TreeTaggerWrapper treeTaggerWrapper = new TreeTaggerWrapper(txt,treeTaggerHome,
                 new TreeTaggerParameter(false,lang, treeTaggerHome));
         treeTaggerWrapper.execute();
-        Serialize serialize = new Serialize(treeTaggerWrapper.getTtOut(),txtPath,filePath,txt,totalSize);
+        Serialize serialize = new Serialize(treeTaggerWrapper.getTtOut(),txtPath,filePath,txt,corpusAnalyzer);
         serialize.execute();
         LOGGER.info("write file " + filePath);
     }
