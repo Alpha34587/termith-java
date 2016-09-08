@@ -1,5 +1,7 @@
 package module.treetagger;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import thread.Initializer;
 
 import java.util.HashMap;
@@ -12,7 +14,7 @@ import java.util.Map;
 public class CorpusAnalyzer {
 
 
-
+    private static final Logger LOGGER = LoggerFactory.getLogger(CorpusAnalyzer.class.getName());
     private Map<String,TextAnalyzer> analyzedTexts;
     private int totalSize;
     private int cumulSize;
@@ -21,6 +23,7 @@ public class CorpusAnalyzer {
     public CorpusAnalyzer(){};
 
     public CorpusAnalyzer(Initializer initializer){
+        LOGGER.info("CorpusAnalyzer object building started");
         analyzedTexts = new HashMap<>();
         totalSize = totalSize(initializer);
         cumulSize = 0;
@@ -51,6 +54,7 @@ public class CorpusAnalyzer {
                     index++;
                     analyzedTexts.put(id,textAnalyzer);
                 });
+        LOGGER.info("CorpusAnalyzer object building ended");
     }
 
     /**
@@ -96,26 +100,4 @@ public class CorpusAnalyzer {
     public int end(Initializer initializer, String id){
         return initializer.getExtractedText().get(id).toString().length();
     }
-
-
-    /**
-     * return true if the document is the last document of the extractedText field
-     * @return
-     */
-    public boolean isLastDoc(Initializer initializer){
-        return false;
-    }
-
-    /**
-     * return the UIMA cumulSize of a document
-     */
-    public int cumulSize(Initializer initializer, String id) {
-        return -1;
-    }
-
-    /**
-     * the initializerWorker have a run method who call a textExtractor object
-     * @see TextExtractor
-     */
-
 }
