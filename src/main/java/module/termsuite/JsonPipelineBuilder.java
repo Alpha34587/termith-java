@@ -6,36 +6,28 @@ import eu.project.ttc.tools.TermSuitePipeline;
 import eu.project.ttc.tools.cli.TermSuiteCLIUtils;
 
 /**
- * This class can build a termsuite pipeline adapted to the termith project
  * @author Simon Meoni
- * Created on 16/08/16.
+ *         Created on 08/09/16.
  */
-public class PipelineBuilder {
+public class JsonPipelineBuilder {
+
     private TermSuitePipeline termsuitePipeline;
-    private String jsonPath;
 
     /**
      * create a termsuite pipeline with decided parameter for the termith project
      * @param lang the specified language
-     * @param textPath the path of input text corpus
-     * @param treeTaggerHome the path for Tagger
      */
-    public PipelineBuilder(String lang, String textPath, String treeTaggerHome,
+    public JsonPipelineBuilder(String lang, String jsonPath,
                            String tbxTerminology,
                            String jsonTerminology) {
 
         TermSuiteCLIUtils.setGlobalLogLevel("info");
-        this.jsonPath = textPath.replace("/txt","/json");
         this.termsuitePipeline = TermSuitePipeline.create(lang)
                 .setResourceFilePath(getClass().getResource("/termsuite-lang/termsuite-resources.jar").getPath())
                 .setCollection(
-                        TermSuiteCollection.TXT,
-                        textPath,
+                        TermSuiteCollection.JSON,
+                        jsonPath,
                         "UTF-8")
-                .aeWordTokenizer()
-                .setTreeTaggerHome(treeTaggerHome)
-                .aeTreeTagger()
-                .haeTermsuiteJsonCasExporter(jsonPath)
                 .aeUrlFilter()
                 .aeStemmer()
                 .aeStopWordsFilter()
