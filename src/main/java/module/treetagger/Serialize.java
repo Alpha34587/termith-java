@@ -76,7 +76,25 @@ public class Serialize {
         jg.writeFieldName("sdi");
         jg.writeStartObject();
         jg.writeFieldName("uri");
-        jg.writeString(txtPath);
+        jg.writeString("file:/"+ txtPath);
+        jg.writeFieldName("off_in_s");
+        jg.writeNumber(0);
+        jg.writeFieldName("document_index");
+        jg.writeNumber(textAnalyzer.getDocIndex());
+        jg.writeFieldName("nb_documents");
+        jg.writeNumber(textAnalyzer.getNbOfDocs());
+        jg.writeFieldName("document_size");
+        jg.writeNumber(textAnalyzer.getDocumentSize());
+        jg.writeFieldName("cumul_doc_size");
+        jg.writeNumber(textAnalyzer.getCumulSize());
+        jg.writeFieldName("corpus_size");
+        jg.writeNumber(textAnalyzer.getTotalSize());
+        jg.writeFieldName("last_segment");
+        jg.writeBoolean(textAnalyzer.getIsLastDoc());
+        jg.writeFieldName("begin");
+        jg.writeNumber(textAnalyzer.getBegin());
+        jg.writeFieldName("end");
+        jg.writeNumber(textAnalyzer.getEnd());
         jg.writeEndObject();
     }
 

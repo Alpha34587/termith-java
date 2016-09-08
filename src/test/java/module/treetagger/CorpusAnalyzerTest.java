@@ -67,13 +67,13 @@ public class CorpusAnalyzerTest {
     public void cumulSize() throws Exception {
         CorpusAnalyzer corpusAnalyzer = new CorpusAnalyzer(initializerCorpus);
         Assert.assertEquals("the cumul size must be equals to :", 24,
-                corpusAnalyzer.getAnalyzedTexts().get("1").cumulSize
+                corpusAnalyzer.getAnalyzedTexts().get("1").getCumulSize()
         );
         Assert.assertEquals("the cumul size must be equals to :", 100,
-                corpusAnalyzer.getAnalyzedTexts().get("2").cumulSize
+                corpusAnalyzer.getAnalyzedTexts().get("2").getCumulSize()
         );
         Assert.assertEquals("the cumul size  must be equals to :", 132,
-                corpusAnalyzer.getAnalyzedTexts().get("3").cumulSize
+                corpusAnalyzer.getAnalyzedTexts().get("3").getCumulSize()
         );
     }
 }

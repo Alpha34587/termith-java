@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
+import thread.Initializer;
 
 import java.io.File;
 import java.io.IOException;
@@ -19,15 +20,21 @@ public class SerializeTest {
 
     private StringBuilder tokenLemma;
     private StringBuffer lemma;
+    private Initializer initializer;
+    private Serialize serializeLemma;
+    private Serialize serializeTag;
+    private File jsonResFile;
 
-    Serialize serializeLemma;
-    Serialize serializeTag;
-    File jsonResFile;
     @Rule
     public TemporaryFolder temporaryFolder = new TemporaryFolder();
 
     @Before
     public void setUp() throws IOException {
+
+        initializer = new Initializer();
+        initializer.addText("1",
+                new StringBuffer("\n \n \nJournal of Gerontology: PSYCHOLOGICAL patient (1998@)"));
+        CorpusAnalyzer corpusAnalyzer = new CorpusAnalyzer(initializer);
 
         tokenLemma = new StringBuilder(
                 "Journal\tNP\tJournal\n" +
@@ -45,7 +52,9 @@ public class SerializeTest {
 
         jsonResFile = temporaryFolder.newFile("test1.json");
 
-        serializeLemma = new Serialize(tokenLemma, "", jsonResFile.getAbsolutePath(), lemma, new TextAnalyzer());
+
+        serializeLemma = new Serialize(tokenLemma, "test1.json",
+                jsonResFile.getAbsolutePath(), lemma, corpusAnalyzer.getAnalyzedTexts().get("1"));
     }
 
     @Test

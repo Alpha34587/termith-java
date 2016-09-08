@@ -1,4 +1,16 @@
 {
+  "sdi" : {
+    "uri" : "file:/test1.json",
+    "off_in_s" : 0,
+    "document_index" : 1,
+    "nb_documents" : 1,
+    "document_size" : 59,
+    "cumul_doc_size" : 59,
+    "corpus_size" : 59,
+    "last_segment" : true,
+    "begin" : 0,
+    "end" : 58
+  },
   "word_annotations" : [ {
     "tag" : "NP",
     "lemma" : "Journal",

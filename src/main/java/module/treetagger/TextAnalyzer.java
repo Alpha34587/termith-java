@@ -6,15 +6,15 @@ package module.treetagger;
  */
 public class TextAnalyzer {
 
-    int documentSize;
+    private int documentSize;
 
-    int nbOfDocs;
-    int begin;
-    int end;
-    int docIndex;
-    int cumulSize;
-    int totalSize;
-    boolean isLastDoc;
+    private int nbOfDocs;
+    private int begin;
+    private int end;
+    private int docIndex;
+    private int cumulSize;
+    private int totalSize;
+    private boolean isLastDoc;
     public TextAnalyzer(){}
 
     public TextAnalyzer(int documentSize,
@@ -34,8 +34,35 @@ public class TextAnalyzer {
         this.isLastDoc = isLastDoc;
     }
 
+    public int getDocumentSize() {
+        return documentSize;
+    }
 
+    public int getNbOfDocs() {
+        return nbOfDocs;
+    }
 
+    public int getBegin() {
+        return begin;
+    }
 
+    public int getEnd() {
+        return end;
+    }
 
+    public int getDocIndex() {
+        return docIndex;
+    }
+
+    public int getCumulSize() {
+        return cumulSize;
+    }
+
+    public int getTotalSize() {
+        return totalSize;
+    }
+
+    public boolean getIsLastDoc() {
+        return isLastDoc;
+    }
 }
