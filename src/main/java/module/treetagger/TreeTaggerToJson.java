@@ -13,16 +13,16 @@ public class TreeTaggerToJson {
 
     private final Logger LOGGER = LoggerFactory.getLogger(TreeTaggerToJson.class.getName());
     private final StringBuffer txt;
-    private final String filePath;
+    private final String jsonPath;
     private final String txtPath;
     private final String treeTaggerHome;
     private final String lang;
     private final TextAnalyzer textAnalyzer;
 
-    public TreeTaggerToJson(StringBuffer txt, String filePath, String txtPath
-            ,String treeTaggerHome, String lang, TextAnalyzer textAnalyzer){
+    public TreeTaggerToJson(StringBuffer txt, String jsonPath, String txtPath
+            , String treeTaggerHome, String lang, TextAnalyzer textAnalyzer){
         this.txt = txt;
-        this.filePath = filePath;
+        this.jsonPath = jsonPath;
         this.txtPath = txtPath;
         this.treeTaggerHome = treeTaggerHome;
         this.lang = lang;
@@ -33,8 +33,8 @@ public class TreeTaggerToJson {
         TreeTaggerWrapper treeTaggerWrapper = new TreeTaggerWrapper(txt,treeTaggerHome,
                 new TreeTaggerParameter(false,lang, treeTaggerHome));
         treeTaggerWrapper.execute();
-        Serialize serialize = new Serialize(treeTaggerWrapper.getTtOut(),txtPath,filePath,txt, textAnalyzer);
+        Serialize serialize = new Serialize(treeTaggerWrapper.getTtOut(),txtPath, jsonPath,txt, textAnalyzer);
         serialize.execute();
-        LOGGER.info("write file " + filePath);
+        LOGGER.info("write file " + jsonPath);
     }
 }
