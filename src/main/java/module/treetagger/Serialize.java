@@ -9,8 +9,6 @@ import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.util.ArrayDeque;
 
-import static module.treetagger.TagNormalizer.TT_TAG;
-
 /**
  * @author Simon Meoni
  *         Created on 01/09/16.
@@ -120,7 +118,7 @@ public class Serialize {
 
     private void addCat(String token, JsonGenerator jg) throws IOException {
         jg.writeFieldName("cat");
-        jg.writeString(TT_TAG.get(token));
+        jg.writeString(TagNormalizer.normalize(token));
     }
 
     public void addLemma(String token, JsonGenerator jg) throws IOException {

@@ -3,6 +3,7 @@ package thread;
 import module.tei.morphology.SyntaxGenerator;
 import module.tools.FilesUtilities;
 import module.treetagger.CorpusAnalyzer;
+import module.treetagger.TagNormalizer;
 import module.treetagger.TextAnalyzer;
 import module.treetagger.TreeTaggerToJson;
 import org.slf4j.Logger;
@@ -53,6 +54,7 @@ public class JsonWriterInjector extends TermSuiteTextInjector {
         this.terminologies = new CopyOnWriteArrayList<>();
         this.JsonTreeTagger = new ConcurrentHashMap<>();
         this.tokenizeTeiBody = new ConcurrentHashMap<>();
+        TagNormalizer.initTag(lang);
 
         LOGGER.info("temporary folder created: " + this.corpus);
         Files.createDirectories(Paths.get(this.corpus + "/json"));
