@@ -31,6 +31,7 @@ public class SerializeTest {
     @Before
     public void setUp() throws IOException {
 
+        TagNormalizer.initTag("en");
         initializer = new Initializer();
         initializer.addText("1",
                 new StringBuffer("\n \n \nJournal of Gerontology: PSYCHOLOGICAL patient (1998@)"));
