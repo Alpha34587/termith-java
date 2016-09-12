@@ -200,8 +200,8 @@ public class TermSuiteTextInjector {
         public TermSuitePipeline call() throws Exception {
             LOGGER.info("Build Termsuite Pipeline");
 
-            terminologies.add(Paths.get(textPath.replace("txt","") + "/" + "terminology.json"));
             terminologies.add(Paths.get(textPath.replace("txt","") + "/" + "terminology.tbx"));
+            terminologies.add(Paths.get(textPath.replace("txt","") + "/" + "terminology.json"));
 
             PipelineBuilder pipelineBuilder = new PipelineBuilder(
                     lang,

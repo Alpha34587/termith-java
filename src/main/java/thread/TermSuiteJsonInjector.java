@@ -67,8 +67,8 @@ public class TermSuiteJsonInjector {
         @Override
         public void run() {
             LOGGER.info("Build Termsuite Pipeline");
-            terminologies.add(Paths.get(jsonCorpus.replace("json","") + "/" + "terminology.json"));
             terminologies.add(Paths.get(jsonCorpus.replace("json","") + "/" + "terminology.tbx"));
+            terminologies.add(Paths.get(jsonCorpus.replace("json","") + "/" + "terminology.json"));
 
             JsonPipelineBuilder pipelineBuilder = new JsonPipelineBuilder(
                     lang,
