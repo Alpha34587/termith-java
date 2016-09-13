@@ -1,6 +1,7 @@
 package cli;
 
 import models.TermithIndex;
+import module.tools.Exporter;
 import org.apache.commons.cli.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -96,8 +97,9 @@ class TermithTextCLI {
                         .export(line.getOptionValue("o"))
                         .build();
             }
-
             new TermithText(termithIndex).execute();
+            Exporter exporter = new Exporter(termithIndex);
+            exporter.execute();
         } catch (ParseException e) {
             LOGGER.info("There are some problems during parsing arguments : ",e);
         }

@@ -127,7 +127,7 @@ public class JsonWriterInjector extends TermSuiteTextInjector {
                         json,txt,xml
                 );
                 syntaxGenerator.execute();
-                tokenizeTeiBody.put(json.getName().replace("json",""), syntaxGenerator.getTokenizeBody());
+                tokenizeTeiBody.put(json.getName().replace(".json",""), syntaxGenerator.getTokenizeBody());
                 LOGGER.info("tokenize xml body ended");
             } catch (IOException e) {
                 LOGGER.info("error during parsing TreeTagger data", e);
