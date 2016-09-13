@@ -2,8 +2,16 @@ package module.termsuite;
 
 import eu.project.ttc.engines.cleaner.TermProperty;
 import eu.project.ttc.engines.desc.TermSuiteCollection;
+import eu.project.ttc.engines.exporter.TermsuiteJsonCasExporter;
 import eu.project.ttc.tools.TermSuitePipeline;
-import eu.project.ttc.tools.cli.TermSuiteCLIUtils;
+import org.apache.uima.analysis_engine.AnalysisEngineDescription;
+import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
+import org.apache.uima.fit.factory.AnalysisEngineFactory;
+import org.apache.uima.jcas.JCas;
+import org.apache.uima.resource.ResourceInitializationException;
+
+import java.util.Observable;
+import java.util.Observer;
 
 /**
  * This class can build a termsuite pipeline adapted to the termith project
@@ -11,31 +19,43 @@ import eu.project.ttc.tools.cli.TermSuiteCLIUtils;
  * Created on 16/08/16.
  */
 public class PipelineBuilder {
+
+    private static JsonTermsuiteObserver termsuiteObserver = new JsonTermsuiteObserver();
+    private static JsonTermsuiteObservable jsonTermsuiteObservable = new JsonTermsuiteObservable();
     private TermSuitePipeline termsuitePipeline;
     private String jsonPath;
+    private Observer observer;
 
     /**
      * create a termsuite pipeline with decided parameter for the termith project
      * @param lang the specified language
      * @param textPath the path of input text corpus
      * @param treeTaggerHome the path for Tagger
+     * @param jsonTermsuiteObserver
      */
     public PipelineBuilder(String lang, String textPath, String treeTaggerHome,
                            String tbxTerminology,
-                           String jsonTerminology) {
-
-        TermSuiteCLIUtils.setGlobalLogLevel("info");
+                           String jsonTerminology, JsonTermsuiteObserver jsonTermsuiteObserver) throws ResourceInitializationException {
         this.jsonPath = textPath.replace("/txt","/json");
+
+        AnalysisEngineDescription ae = AnalysisEngineFactory.createEngineDescription(
+                CustomTermsuiteJsonCasExporter.class,
+                CustomTermsuiteJsonCasExporter.OUTPUT_DIRECTORY,
+                this.jsonPath
+        );
+
+        jsonTermsuiteObservable.addObserver(jsonTermsuiteObserver);
+//        TermSuiteCLIUtils.setGlobalLogLevel("info");
         this.termsuitePipeline = TermSuitePipeline.create(lang)
                 .setResourceFilePath(getClass().getResource("/termsuite-lang/termsuite-resources.jar").getPath())
                 .setCollection(
                         TermSuiteCollection.TXT,
                         textPath,
                         "UTF-8")
-                .aeWordTokenizer()
                 .setTreeTaggerHome(treeTaggerHome)
+                .aeWordTokenizer()
                 .aeTreeTagger()
-                .haeTermsuiteJsonCasExporter(jsonPath)
+                .customAE(ae, "custom Json ae")
                 .aeUrlFilter()
                 .aeStemmer()
                 .aeStopWordsFilter()
@@ -51,8 +71,8 @@ public class PipelineBuilder {
                 .aeContextualizer(3, true)
                 .setExportJsonWithContext(false)
                 .setExportJsonWithOccurrences(true)
-                .haeJsonExporter(jsonTerminology.toString())
-                .haeTbxExporter(tbxTerminology.toString());
+                .haeJsonExporter(jsonTerminology)
+                .haeTbxExporter(tbxTerminology);
     }
 
     /**
@@ -66,4 +86,21 @@ public class PipelineBuilder {
         return termsuitePipeline;
     }
 
+
+    public static class CustomTermsuiteJsonCasExporter extends TermsuiteJsonCasExporter {
+
+        @Override
+        public void process(JCas aJCas) throws AnalysisEngineProcessException {
+            super.process(aJCas);
+            jsonTermsuiteObservable.update(this.directoryFile + "/" + this.getExportFilePath(aJCas, "json"));
+        }
+    }
+
+
+    private static class JsonTermsuiteObservable extends Observable {
+        public void update(String path) {
+            setChanged();
+            notifyObservers(path);
+        }
+    }
 }

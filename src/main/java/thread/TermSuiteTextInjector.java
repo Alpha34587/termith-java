@@ -2,6 +2,7 @@ package thread;
 
 import eu.project.ttc.tools.TermSuitePipeline;
 import module.tei.morphology.SyntaxGenerator;
+import module.termsuite.JsonTermsuiteObserver;
 import module.termsuite.PipelineBuilder;
 import module.tools.FilesUtilities;
 import org.slf4j.Logger;
@@ -9,12 +10,13 @@ import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.Map;
+import java.util.Observable;
 import java.util.concurrent.*;
-
-import static java.nio.file.StandardWatchEventKinds.ENTRY_CREATE;
 
 /**
  * the class TermSuiteTextInjector is one of a second phase of the termith process. It splits into two main process who
@@ -95,81 +97,16 @@ public class TermSuiteTextInjector {
      */
     public void execute() throws InterruptedException, IOException, ExecutionException {
 
-        JsonRetrieverWorker jsonRetrieverWorker = new JsonRetrieverWorker(Paths.get(this.corpus + "/json"));
         TextTermSuiteWorker textTermSuiteWorker = new TextTermSuiteWorker(treeTaggerHome, this.corpus + "/txt", lang);
 
         Future<TermSuitePipeline> termsuiteTask = executorService.submit(textTermSuiteWorker);
-        executorService.submit(jsonRetrieverWorker);
 
         LOGGER.info("waiting Termsuite executor to finish");
         termsuiteTask.get();
-        jsonRetrieverWorker.stop();
         executorService.shutdown();
         executorService.awaitTermination(1L,TimeUnit.DAYS);
     }
 
-    /**
-     * This class is a file watcher service who retrieve the file generate by termsuite and send it to a
-     * TeiMorphoSyntaxWorker task
-     */
-    private class JsonRetrieverWorker implements Runnable {
-
-        private final Logger Logger = LoggerFactory.getLogger(JsonRetrieverWorker.class.getName());
-        WatchService watcher = FileSystems.getDefault().newWatchService();
-        Path dir;
-        WatchKey key;
-
-        JsonRetrieverWorker(Path dir) throws IOException {
-            Logger.info("Initialized File Watching Service");
-            this.dir = dir;
-            this.key = dir.register(watcher, ENTRY_CREATE);
-        }
-
-        /**
-         * run the file watching
-         */
-        @Override
-        public void run() {
-            Logger.info("File Watcher Service Started");
-            for (;;) {
-                try {
-                    this.key = watcher.take();
-
-                } catch (InterruptedException e) {
-                    Logger.error("File watcher service crashed", e);
-                    Thread.currentThread().interrupt();
-                }
-                for (WatchEvent<?> event: key.pollEvents()) {
-                    WatchEvent<Path> ev = (WatchEvent<Path>)event;
-                    Path filename = dir.resolve(ev.context());
-                    Logger.info("New file retrieve: " + filename);
-                    String basename = filename.getFileName().toString().replace(".json", "");
-                    executorService.execute(
-                            new TeiMorphoSyntaxWorker(
-                                    filename.toFile(),
-                                    extractedText.get(basename),
-                                    xmlCorpus.get(basename)
-                            )
-                    );
-                }
-                boolean valid = key.reset();
-                if (!valid) {
-                    Logger.info("Interrupt File Watcher Service");
-                    break;
-                }
-            }
-        }
-
-        /**
-         * Stop the process
-         * @throws IOException
-         */
-        public void stop() throws IOException {
-            Logger.info("File Watcher Service Terminated");
-            watcher.close();
-        }
-
-    }
 
     /**
      * run a Thread who execute a TermsuitePipeline task
@@ -202,14 +139,18 @@ public class TermSuiteTextInjector {
 
             terminologies.add(Paths.get(textPath.replace("txt","") + "/" + "terminology.tbx"));
             terminologies.add(Paths.get(textPath.replace("txt","") + "/" + "terminology.json"));
+            TeiMorphoSyntaxObserver teiMorphoSyntaxObserver = new TeiMorphoSyntaxObserver();
+
 
             PipelineBuilder pipelineBuilder = new PipelineBuilder(
                     lang,
                     this.textPath,
                     this.treeTaggerHome,
                     terminologies.get(0).toString(),
-                    terminologies.get(1).toString()
+                    terminologies.get(1).toString(),
+                    teiMorphoSyntaxObserver
             );
+
             LOGGER.info("Run Termsuite Pipeline");
             pipelineBuilder.start();
             LOGGER.info("Finished execution of Termsuite Pipeline, result in :" +
@@ -219,13 +160,28 @@ public class TermSuiteTextInjector {
         }
     }
 
+    class TeiMorphoSyntaxObserver extends JsonTermsuiteObserver {
+        @Override
+        public void update(Observable observable, Object o) {
+            LOGGER.debug("json file wrote : " + o);
+//                             executorService.execute(
+//                        new TeiMorphoSyntaxWorker(
+//                                filename.toFile(),
+//                                extractedText.get(basename),
+//                                xmlCorpus.get(basename)
+//                        )
+//                );
+
+        }
+
+    }
     /**
      * This class execute a TermSuiteTextInjector
      * @see TermSuiteTextInjector
      */
     class TeiMorphoSyntaxWorker implements Runnable{
 
-        private final Logger LOGGER = LoggerFactory.getLogger(JsonRetrieverWorker.class.getName());
+        private final Logger LOGGER = LoggerFactory.getLogger(JsonTermsuiteObserver.class.getName());
         private StringBuffer txt;
         private StringBuffer xml;
         private File json;
