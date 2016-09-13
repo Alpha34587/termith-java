@@ -10,6 +10,8 @@ import org.apache.uima.fit.factory.AnalysisEngineFactory;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceInitializationException;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -45,7 +47,6 @@ public class PipelineBuilder {
         );
 
         jsonTermsuiteObservable.addObserver(jsonTermsuiteObserver);
-//        TermSuiteCLIUtils.setGlobalLogLevel("info");
         this.termsuitePipeline = TermSuitePipeline.create(lang)
                 .setResourceFilePath(getClass().getResource("/termsuite-lang/termsuite-resources.jar").getPath())
                 .setCollection(
@@ -92,13 +93,13 @@ public class PipelineBuilder {
         @Override
         public void process(JCas aJCas) throws AnalysisEngineProcessException {
             super.process(aJCas);
-            jsonTermsuiteObservable.update(this.directoryFile + "/" + this.getExportFilePath(aJCas, "json"));
+            jsonTermsuiteObservable.update(Paths.get(this.directoryFile + "/" + this.getExportFilePath(aJCas, "json")));
         }
     }
 
 
     private static class JsonTermsuiteObservable extends Observable {
-        public void update(String path) {
+        public void update(Path path) {
             setChanged();
             notifyObservers(path);
         }

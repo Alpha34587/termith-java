@@ -40,6 +40,7 @@ public class TermSuiteTextInjector {
     private List<Path> terminologies;
     private Map<String, StringBuffer> morphoSyntaxStandOff;
     private Map<String, StringBuffer> tokenizeTeiBody;
+    private CountDownLatch doneSignal;
 
 
     /**
@@ -77,6 +78,7 @@ public class TermSuiteTextInjector {
         this.morphoSyntaxStandOff = new ConcurrentHashMap<>();
         this.tokenizeTeiBody = new ConcurrentHashMap<>();
         this.terminologies = new CopyOnWriteArrayList<>();
+        this.doneSignal = new CountDownLatch(extractedText.size());
 
 
         LOGGER.info("temporary folder created: " + this.corpus);
@@ -101,8 +103,12 @@ public class TermSuiteTextInjector {
 
         Future<TermSuitePipeline> termsuiteTask = executorService.submit(textTermSuiteWorker);
 
-        LOGGER.info("waiting Termsuite executor to finish");
+
+        LOGGER.info("waiting tokenize tasks to finish");
+        doneSignal.await();
+        LOGGER.info("tokenize tasks is finished");
         termsuiteTask.get();
+        LOGGER.info("waiting Termsuite executor to finish");
         executorService.shutdown();
         executorService.awaitTermination(1L,TimeUnit.DAYS);
     }
@@ -164,14 +170,16 @@ public class TermSuiteTextInjector {
         @Override
         public void update(Observable observable, Object o) {
             LOGGER.debug("json file wrote : " + o);
-//                             executorService.execute(
-//                        new TeiMorphoSyntaxWorker(
-//                                filename.toFile(),
-//                                extractedText.get(basename),
-//                                xmlCorpus.get(basename)
-//                        )
-//                );
-
+            Path path = (Path) o;
+            String basename = path.getFileName().toString().split("\\.")[0];
+            executorService.execute(
+                    new TeiMorphoSyntaxWorker(
+                            path.toFile(),
+                            extractedText.get(basename),
+                            xmlCorpus.get(basename)
+                    )
+            );
+            doneSignal.countDown();
         }
 
     }
