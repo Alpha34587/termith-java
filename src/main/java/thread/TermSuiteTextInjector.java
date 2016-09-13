@@ -61,23 +61,23 @@ us
      * @throws IOException
      */
     public TermSuiteTextInjector(int poolSize, TermithIndex termithIndex) throws IOException {
-        this.treeTaggerHome = termithIndex.getTreeTaggerHome();
-        this.executorService = Executors.newFixedThreadPool(poolSize);
-        this.extractedText = termithIndex.getExtractedText();
-        this.xmlCorpus = termithIndex.getXmlCorpus();
-        this.corpus = Paths.get(FilesUtilities.createTemporaryFolder("corpus"));
-        this.lang = termithIndex.getLang();
-        this.morphoSyntaxStandOff = termithIndex.getMorphoSyntaxStandOff();
-        this.tokenizeTeiBody = termithIndex.getTokenizeTeiBody();
-        this.terminologies = termithIndex.getTerminologies();
-        this.doneSignal = new CountDownLatch(extractedText.size());
+        treeTaggerHome = termithIndex.getTreeTaggerHome();
+        executorService = Executors.newFixedThreadPool(poolSize);
+        extractedText = termithIndex.getExtractedText();
+        xmlCorpus = termithIndex.getXmlCorpus();
+        corpus = Paths.get(FilesUtilities.createTemporaryFolder("corpus"));
+        lang = termithIndex.getLang();
+        morphoSyntaxStandOff = termithIndex.getMorphoSyntaxStandOff();
+        tokenizeTeiBody = termithIndex.getTokenizeTeiBody();
+        terminologies = termithIndex.getTerminologies();
+        doneSignal = new CountDownLatch(extractedText.size());
 
 
-        LOGGER.info("temporary folder created: " + this.corpus);
-        Files.createDirectories(Paths.get(this.corpus + "/json"));
-        Files.createDirectories(Paths.get(this.corpus + "/txt"));
-        LOGGER.info("create temporary text files in " + this.corpus + "/txt folder");
-        FilesUtilities.createFiles(this.corpus + "/txt", extractedText, "txt");
+        LOGGER.info("temporary folder created: " + corpus);
+        Files.createDirectories(Paths.get(corpus + "/json"));
+        Files.createDirectories(Paths.get(corpus + "/txt"));
+        LOGGER.info("create temporary text files in " + corpus + "/txt folder");
+        FilesUtilities.createFiles(corpus + "/txt", extractedText, "txt");
     }
 
     public TermSuiteTextInjector() {
@@ -142,8 +142,8 @@ us
 
             PipelineBuilder pipelineBuilder = new PipelineBuilder(
                     lang,
-                    this.textPath,
-                    this.treeTaggerHome,
+                    textPath,
+                    treeTaggerHome,
                     terminologies.get(0).toString(),
                     terminologies.get(1).toString(),
                     teiMorphoSyntaxObserver
@@ -207,7 +207,7 @@ us
             LOGGER.info("TeiMorphoSyntaxWorker Started, processing: " + json.getAbsolutePath());
             SyntaxGenerator syntaxGenerator = new SyntaxGenerator(json, txt, xml);
             syntaxGenerator.execute();
-            tokenizeTeiBody.put(json.getName().replace("json",""), syntaxGenerator.getTokenizeBody());
+            tokenizeTeiBody.put(json.getName().replace(".json",""), syntaxGenerator.getTokenizeBody());
             LOGGER.info("TeiMorphoSyntaxWorker Terminated");
         }
     }

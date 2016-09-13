@@ -37,7 +37,8 @@ public class FilesUtilities {
      */
     public static void createFiles(String path, Map<String, StringBuffer> corpus, String extension) {
         corpus.forEach((filename, content) -> {
-            try (BufferedWriter writer = Files.newBufferedWriter(Paths.get(path + "/" + filename + "." + extension))){
+            try (BufferedWriter writer =
+                         Files.newBufferedWriter(Paths.get(path + "/" + filename + "." + extension))){
                 LOGGER.info("write file: " + path + "/" + filename + "." + extension);
                 writer.write(String.valueOf(content));
 

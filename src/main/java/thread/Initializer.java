@@ -49,7 +49,7 @@ public class Initializer {
      * @param termithIndex the input of folder
      */
     public Initializer(int poolSize, TermithIndex termithIndex) {
-        this.base = termithIndex.getBase();
+        base = termithIndex.getBase();
         executor = Executors.newFixedThreadPool(poolSize);
         extractedText = termithIndex.getExtractedText();
         xmlCorpus = termithIndex.getXmlCorpus();

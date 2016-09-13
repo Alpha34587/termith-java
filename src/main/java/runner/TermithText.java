@@ -20,7 +20,7 @@ public class TermithText {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(TermithText.class.getName());
 
-    TermithIndex termithIndex;
+    private TermithIndex termithIndex;
 
     public TermithText(TermithIndex termithIndex) {
         this.termithIndex = termithIndex;
