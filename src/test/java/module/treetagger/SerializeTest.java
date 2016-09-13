@@ -1,5 +1,6 @@
 package module.treetagger;
 
+import models.TermithIndex;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Rule;
@@ -24,6 +25,7 @@ public class SerializeTest {
     private Serialize serializeLemma;
     private Serialize serializeTag;
     private File jsonResFile;
+    private TermithIndex termithIndex;
 
     @Rule
     public TemporaryFolder temporaryFolder = new TemporaryFolder();
@@ -31,11 +33,12 @@ public class SerializeTest {
     @Before
     public void setUp() throws IOException {
 
+        termithIndex = new TermithIndex.Builder().build();
         TagNormalizer.initTag("en");
-        initializer = new Initializer();
+        initializer = new Initializer(termithIndex);
         initializer.addText("1",
                 new StringBuffer("\n \n \nJournal of Gerontology: PSYCHOLOGICAL patient (1998@)"));
-        CorpusAnalyzer corpusAnalyzer = new CorpusAnalyzer(initializer);
+        CorpusAnalyzer corpusAnalyzer = new CorpusAnalyzer(termithIndex.getExtractedText());
 
         tokenLemma = new StringBuilder(
                 "Journal\tNP\tJournal\n" +

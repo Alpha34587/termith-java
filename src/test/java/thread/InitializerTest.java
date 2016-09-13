@@ -1,10 +1,11 @@
 package thread;
 
+import models.TermithIndex;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.nio.file.Paths;
+import java.io.IOException;
 
 /**
  * @author Simon Meoni
@@ -12,19 +13,20 @@ import java.nio.file.Paths;
  */
 public class InitializerTest {
     private Initializer initializerMonoThread;
-
     private Initializer initializerMultiThread;
+    private TermithIndex termithIndex;
 
     @Before
-    public void setup(){
+    public void setup() throws IOException {
+        termithIndex = new TermithIndex.Builder().baseFolder("src/test/resources/corpus/xml").build();
         initializerMonoThread = new Initializer(
                 1,
-                Paths.get("src/test/resources/corpus/xml")
+                termithIndex
         );
 
         initializerMultiThread = new Initializer(
                 8,
-                Paths.get("src/test/resources/corpus/xml")
+               termithIndex
         );
     }
     @Test

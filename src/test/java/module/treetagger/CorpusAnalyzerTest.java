@@ -1,12 +1,14 @@
 package module.treetagger;
 
 import Utils.File;
+import models.TermithIndex;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import thread.Initializer;
 
 import java.nio.file.Paths;
+import java.util.Map;
 
 /**
  * @author Simon Meoni
@@ -14,58 +16,64 @@ import java.nio.file.Paths;
  */
 public class CorpusAnalyzerTest {
 
+    private TermithIndex termithIndex;
     private Initializer initializerCorpus;
     private CorpusAnalyzer corpusAnalyzer;
+    private Map<String,StringBuffer> extractedText;
+
     @Before
     public void setUp() throws Exception {
-        initializerCorpus = new Initializer();
+
+        termithIndex = new TermithIndex.Builder().build();
+        initializerCorpus = new Initializer(termithIndex);
         initializerCorpus.addText("1", File.ReadFile(Paths.get("src/test/resources/corpus.analyzer/txt/file1.txt")));
         initializerCorpus.addText("2",File.ReadFile(Paths.get("src/test/resources/corpus.analyzer/txt/file2.txt")));
         initializerCorpus.addText("3",File.ReadFile(Paths.get("src/test/resources/corpus.analyzer/txt/file3.txt")));
+        extractedText = termithIndex.getExtractedText();
     }
 
     @Test
     public void totalSize() throws Exception {
         corpusAnalyzer = new CorpusAnalyzer(extractedText);
         Assert.assertEquals("the total size must be equals to :",132,
-                corpusAnalyzer.totalSize(initializerCorpus));
+                corpusAnalyzer.totalSize(extractedText));
     }
 
     @Test
     public void documentSize() throws Exception {
         corpusAnalyzer = new CorpusAnalyzer(extractedText);
         Assert.assertEquals("the size of the document must be equals to :",
-                24, corpusAnalyzer.documentSize(initializerCorpus,"1"));
+                24, corpusAnalyzer.documentSize(extractedText,"1"));
         Assert.assertEquals("the size of the document must be equals to :",
-                76, corpusAnalyzer.documentSize(initializerCorpus,"2"));
+                76, corpusAnalyzer.documentSize(extractedText,"2"));
         Assert.assertEquals("the size of the document must be equals to :",
-                32, corpusAnalyzer.documentSize(initializerCorpus,"3"));
+                32, corpusAnalyzer.documentSize(extractedText,"3"));
     }
 
     @Test
     public void nbOfDocs() throws Exception {
         corpusAnalyzer = new CorpusAnalyzer(extractedText);
         Assert.assertEquals("the number of the document must be equals to :",
-                3, corpusAnalyzer.nbOfDocs(initializerCorpus));
+                3, corpusAnalyzer.nbOfDocs(extractedText));
     }
 
     @Test
     public void documentOffset() throws Exception {
         corpusAnalyzer = new CorpusAnalyzer(extractedText);
         Assert.assertEquals("the end must be equals to :", 23,
-                corpusAnalyzer.end(initializerCorpus,"1")
+                corpusAnalyzer.end(extractedText,"1")
                 );
         Assert.assertEquals("the end must be equals to :", 75,
-                corpusAnalyzer.end(initializerCorpus,"2")
+                corpusAnalyzer.end(extractedText,"2")
         );
         Assert.assertEquals("the end must be equals to :", 31,
-                corpusAnalyzer.end(initializerCorpus,"3")
+                corpusAnalyzer.end(extractedText,"3")
         );
     }
 
     @Test
     public void cumulSize() throws Exception {
-        CorpusAnalyzer corpusAnalyzer = new CorpusAnalyzer(initializerCorpus);
+        CorpusAnalyzer corpusAnalyzer = new CorpusAnalyzer(extractedText);
         Assert.assertEquals("the cumul size must be equals to :", 24,
                 corpusAnalyzer.getAnalyzedTexts().get("1").getCumulSize()
         );
