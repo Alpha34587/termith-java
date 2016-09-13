@@ -1,5 +1,6 @@
 package cli;
 
+import models.TermithIndex;
 import org.apache.commons.cli.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -75,28 +76,28 @@ class TermithTextCLI {
 
         try {
             CommandLine line = parser.parse( options, args );
-            TermithText termithText;
+            TermithIndex termithIndex;
             if (options.hasOption("trace")) {
 
-                termithText = new TermithText.Builder()
+                termithIndex = new TermithIndex.Builder()
                         .lang(line.getOptionValue("l"))
                         .baseFolder(line.getOptionValue("i"))
                         .treeTaggerHome(line.getOptionValue("tt"))
                         .trace(true)
                         .export(line.getOptionValue("o"))
                         .build();
-                termithText.execute();
             }
             else {
 
-                termithText = new TermithText.Builder()
+                termithIndex = new TermithIndex.Builder()
                         .lang(line.getOptionValue("l"))
                         .baseFolder(line.getOptionValue("i"))
                         .treeTaggerHome(line.getOptionValue("tt"))
                         .export(line.getOptionValue("o"))
                         .build();
-                termithText.execute();
             }
+
+            new TermithText(termithIndex).execute();
         } catch (ParseException e) {
             LOGGER.info("There are some problems during parsing arguments : ",e);
         }

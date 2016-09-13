@@ -1,6 +1,7 @@
 package thread;
 
 import eu.project.ttc.tools.TermSuitePipeline;
+import models.TermithIndex;
 import module.tei.morphology.SyntaxGenerator;
 import module.termsuite.JsonTermsuiteObserver;
 import module.termsuite.PipelineBuilder;
@@ -45,39 +46,30 @@ public class TermSuiteTextInjector {
 
     /**
      * this is the main builder of termithXmlInjector
-     * @param extractedText the plain extract previously previously
-     * @param xmlCorpus the base corpus send to TermithXmlAnalyzer
-     * @param treeTaggerHome the path of TreeTagger used by TermsuitePipelineBuilder
-     * @param lang the language of the corpus
+
      * @throws IOException
      */
-    public TermSuiteTextInjector(Map<String, StringBuffer> extractedText, Map<String, StringBuffer> xmlCorpus,
-                                 String treeTaggerHome, String lang)
+    public TermSuiteTextInjector(TermithIndex termithIndex)
             throws IOException {
-        this(DEFAULT_POOL_SIZE, extractedText, xmlCorpus, treeTaggerHome, lang);
+        this(DEFAULT_POOL_SIZE, termithIndex);
     }
 
     /**
      * @see TermSuiteTextInjector
      * @param poolSize specify the number of worker
-     * @param extractedText the plain extract previously previously
-     * @param xmlCorpus the base corpus send to TermithXmlAnalyzer
-     * @param treeTaggerHome the path of TreeTagger used by TermsuitePipelineBuilder
-     * @param lang the language of the corpus
+us
      * @throws IOException
      */
-    public TermSuiteTextInjector(int poolSize, Map<String, StringBuffer> extractedText,
-                                 Map<String, StringBuffer> xmlCorpus,
-                                 String treeTaggerHome, String lang) throws IOException {
-        this.treeTaggerHome = treeTaggerHome;
+    public TermSuiteTextInjector(int poolSize, TermithIndex termithIndex) throws IOException {
+        this.treeTaggerHome = termithIndex.getTreeTaggerHome();
         this.executorService = Executors.newFixedThreadPool(poolSize);
-        this.extractedText = extractedText;
-        this.xmlCorpus = xmlCorpus;
+        this.extractedText = termithIndex.getExtractedText();
+        this.xmlCorpus = termithIndex.getXmlCorpus();
         this.corpus = Paths.get(FilesUtilities.createTemporaryFolder("corpus"));
-        this.lang = lang;
-        this.morphoSyntaxStandOff = new ConcurrentHashMap<>();
-        this.tokenizeTeiBody = new ConcurrentHashMap<>();
-        this.terminologies = new CopyOnWriteArrayList<>();
+        this.lang = termithIndex.getLang();
+        this.morphoSyntaxStandOff = termithIndex.getMorphoSyntaxStandOff();
+        this.tokenizeTeiBody = termithIndex.getTokenizeTeiBody();
+        this.terminologies = termithIndex.getTerminologies();
         this.doneSignal = new CountDownLatch(extractedText.size());
 
 

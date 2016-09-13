@@ -26,14 +26,14 @@ public class CorpusAnalyzerTest {
 
     @Test
     public void totalSize() throws Exception {
-        corpusAnalyzer = new CorpusAnalyzer();
+        corpusAnalyzer = new CorpusAnalyzer(extractedText);
         Assert.assertEquals("the total size must be equals to :",132,
                 corpusAnalyzer.totalSize(initializerCorpus));
     }
 
     @Test
     public void documentSize() throws Exception {
-        corpusAnalyzer = new CorpusAnalyzer();
+        corpusAnalyzer = new CorpusAnalyzer(extractedText);
         Assert.assertEquals("the size of the document must be equals to :",
                 24, corpusAnalyzer.documentSize(initializerCorpus,"1"));
         Assert.assertEquals("the size of the document must be equals to :",
@@ -44,14 +44,14 @@ public class CorpusAnalyzerTest {
 
     @Test
     public void nbOfDocs() throws Exception {
-        corpusAnalyzer = new CorpusAnalyzer();
+        corpusAnalyzer = new CorpusAnalyzer(extractedText);
         Assert.assertEquals("the number of the document must be equals to :",
                 3, corpusAnalyzer.nbOfDocs(initializerCorpus));
     }
 
     @Test
     public void documentOffset() throws Exception {
-        corpusAnalyzer = new CorpusAnalyzer();
+        corpusAnalyzer = new CorpusAnalyzer(extractedText);
         Assert.assertEquals("the end must be equals to :", 23,
                 corpusAnalyzer.end(initializerCorpus,"1")
                 );

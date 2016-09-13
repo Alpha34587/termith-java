@@ -1,5 +1,6 @@
 package thread;
 
+import models.TermithIndex;
 import module.tei.morphology.SyntaxGenerator;
 import module.tools.FilesUtilities;
 import module.treetagger.CorpusAnalyzer;
@@ -14,8 +15,11 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 import java.util.Map;
-import java.util.concurrent.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author Simon Meoni
@@ -27,40 +31,37 @@ public class JsonWriterInjector extends TermSuiteTextInjector {
     private static final int DEFAULT_POOL_SIZE = Runtime.getRuntime().availableProcessors();
     private final String treeTaggerHome;
     private final ExecutorService executorService;
-    private final Initializer initializer;
+    private final Map<String, StringBuffer> extractedText;
     private final Map<String, StringBuffer> xmlCorpus;
     private Map<String, StringBuffer> tokenizeTeiBody;
     private Map<String, Path> JsonTreeTagger;
     private final Path corpus;
     private final String lang;
-    private final CopyOnWriteArrayList terminologies;
+    private final List terminologies;
 
-    public JsonWriterInjector(Initializer initializer,
-                              Map<String,StringBuffer> xmlCorpus,
-                              String treeTaggerHome, String lang)
+    public JsonWriterInjector(TermithIndex termithIndex)
             throws IOException {
-        this(DEFAULT_POOL_SIZE, initializer, xmlCorpus,treeTaggerHome, lang);
+        this(DEFAULT_POOL_SIZE, termithIndex);
     }
 
-    public JsonWriterInjector(int poolSize, Initializer initializer,
-                              Map<String,StringBuffer> xmlCorpus,
-                              String treeTaggerHome, String lang) throws IOException {
-        this.treeTaggerHome = treeTaggerHome;
-        this.executorService = Executors.newFixedThreadPool(poolSize);
-        this.initializer = initializer;
-        this.corpus = Paths.get(FilesUtilities.createTemporaryFolder("corpus"));
-        this.lang = lang;
-        this.xmlCorpus = xmlCorpus;
-        this.terminologies = new CopyOnWriteArrayList<>();
-        this.JsonTreeTagger = new ConcurrentHashMap<>();
-        this.tokenizeTeiBody = new ConcurrentHashMap<>();
+    public JsonWriterInjector(int poolSize, TermithIndex termithIndex) throws IOException {
+        termithIndex.setCorpus(Paths.get(FilesUtilities.createTemporaryFolder("corpus")));
+        treeTaggerHome = termithIndex.getTreeTaggerHome();
+        executorService = Executors.newFixedThreadPool(poolSize);
+        extractedText = termithIndex.getExtractedText();
+        corpus = termithIndex.getCorpus();
+        lang = termithIndex.getLang();
+        xmlCorpus = termithIndex.getXmlCorpus();
+        terminologies = termithIndex.getTerminologies();
+        JsonTreeTagger = termithIndex.getJsonTreeTagger();
+        tokenizeTeiBody = termithIndex.getTokenizeTeiBody();
         TagNormalizer.initTag(lang);
 
-        LOGGER.info("temporary folder created: " + this.corpus);
-        Files.createDirectories(Paths.get(this.corpus + "/json"));
-        Files.createDirectories(Paths.get(this.corpus + "/txt"));
-        LOGGER.info("create temporary text files in " + this.corpus + "/txt folder");
-        FilesUtilities.createFiles(this.corpus + "/txt", initializer.getExtractedText(), "txt");
+        LOGGER.info("temporary folder created: " + corpus);
+        Files.createDirectories(Paths.get(corpus + "/json"));
+        Files.createDirectories(Paths.get(corpus + "/txt"));
+        LOGGER.info("create temporary text files in " + corpus + "/txt folder");
+        FilesUtilities.createFiles(corpus + "/txt", extractedText, "txt");
     }
 
     public Path getCorpus() {
@@ -72,8 +73,8 @@ public class JsonWriterInjector extends TermSuiteTextInjector {
     }
 
     public void execute() throws InterruptedException  {
-        CorpusAnalyzer corpusAnalyzer = new CorpusAnalyzer(initializer);
-        initializer.getExtractedText().forEach((key,txt) -> {
+        CorpusAnalyzer corpusAnalyzer = new CorpusAnalyzer(extractedText);
+        extractedText.forEach((key,txt) -> {
                     int index = 1;
                     executorService.submit(new TreeTaggerToJsonWorker(txt, corpus + "/txt/" + key + ".txt",
                             corpus + "/json/" + key + ".json",

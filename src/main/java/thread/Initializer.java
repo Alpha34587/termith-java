@@ -1,5 +1,6 @@
 package thread;
 
+import models.TermithIndex;
 import module.extractor.TextExtractor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,22 +37,22 @@ public class Initializer {
 
     /**
      * a constructor of initialize who take on parameter a folder path with xml files
-     * @param base the input folder
+     * @param termithIndex the input folder
      */
-    public Initializer(Path base) {
-        this(DEFAULT_POOL_SIZE, base);
+    public Initializer(TermithIndex termithIndex) {
+        this(DEFAULT_POOL_SIZE, termithIndex);
     }
 
     /**
      * this constructor can be specify the number of worker for this process
      * @param poolSize number of worker
-     * @param base the input of folder
+     * @param termithIndex the input of folder
      */
-    public Initializer(int poolSize, Path base) {
-        this.base = base;
+    public Initializer(int poolSize, TermithIndex termithIndex) {
+        this.base = termithIndex.getBase();
         executor = Executors.newFixedThreadPool(poolSize);
-        extractedText = new ConcurrentHashMap<>();
-        xmlCorpus = new ConcurrentHashMap<>();
+        extractedText = termithIndex.getExtractedText();
+        xmlCorpus = termithIndex.getXmlCorpus();
     }
 
     /**

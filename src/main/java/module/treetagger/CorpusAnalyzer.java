@@ -2,7 +2,6 @@ package module.treetagger;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import thread.Initializer;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -20,21 +19,20 @@ public class CorpusAnalyzer {
     private int cumulSize;
     private boolean lastDocs;
     private int index;
-    public CorpusAnalyzer(){};
 
-    public CorpusAnalyzer(Initializer initializer){
+    public CorpusAnalyzer(Map<String, StringBuffer> extractedText){
         LOGGER.info("CorpusAnalyzer object building started");
         analyzedTexts = new HashMap<>();
-        totalSize = totalSize(initializer);
+        totalSize = totalSize(extractedText);
         cumulSize = 0;
         lastDocs = false;
         index = 1;
 
-        initializer.getExtractedText().forEach((id,content) ->
+        extractedText.forEach((id,content) ->
                 {
 
-                    int documentSize = documentSize(initializer,id);
-                    int nbDocs = nbOfDocs(initializer);
+                    int documentSize = documentSize(extractedText,id);
+                    int nbDocs = nbOfDocs(extractedText);
                     cumulSize += documentSize;
                     if (index == nbDocs){
                         lastDocs = true;
@@ -42,9 +40,9 @@ public class CorpusAnalyzer {
 
                     TextAnalyzer textAnalyzer =
                             new TextAnalyzer(
-                                    documentSize(initializer,id),
+                                    documentSize(extractedText,id),
                                     nbDocs,
-                                    end(initializer,id),
+                                    end(extractedText,id),
                                     index,
                                     cumulSize,
                                     totalSize,
@@ -67,10 +65,10 @@ public class CorpusAnalyzer {
     /**
      * @return return the size of the total corpus
      */
-    public int totalSize(Initializer initializer) {
+    public int totalSize(Map<String, StringBuffer> extractedText) {
         int totalSize = 0;
         byte[] bytesCt;
-        for (StringBuffer text : initializer.getExtractedText().values()){
+        for (StringBuffer text : extractedText.values()){
             totalSize += text.toString().getBytes().length + 1;
         }
         return totalSize;
@@ -80,8 +78,8 @@ public class CorpusAnalyzer {
      * return the size of a document
      * @return
      */
-    public int documentSize(Initializer initializer, String id){
-        return initializer.getExtractedText().get(id)
+    public int documentSize(Map<String, StringBuffer> extractedText, String id){
+        return extractedText.get(id)
                 .toString().getBytes().length + 1;
     }
 
@@ -89,15 +87,15 @@ public class CorpusAnalyzer {
      * return the number of document of the corpus
      * @return
      */
-    public int nbOfDocs(Initializer initializer){
-        return initializer.getExtractedText().size();
+    public int nbOfDocs(Map<String, StringBuffer> extractedText){
+        return extractedText.size();
     }
 
     /**
      * return the uima offset of a document
      * @return
      */
-    public int end(Initializer initializer, String id){
-        return initializer.getExtractedText().get(id).toString().length();
+    public int end(Map<String, StringBuffer> extractedText, String id){
+        return extractedText.get(id).toString().length();
     }
 }

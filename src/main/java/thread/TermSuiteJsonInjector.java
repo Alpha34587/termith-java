@@ -1,5 +1,6 @@
 package thread;
 
+import models.TermithIndex;
 import module.termsuite.JsonPipelineBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,26 +30,22 @@ public class TermSuiteJsonInjector {
 
     private List<Path> terminologies;
 
-    public TermSuiteJsonInjector(Map<String, Path> json, Map<String, StringBuffer> xmlCorpus,
-                                 String treeTaggerHome, String lang, Path corpus)
+    public TermSuiteJsonInjector(TermithIndex termithIndex)
             throws IOException {
-        this(DEFAULT_POOL_SIZE, json, xmlCorpus, treeTaggerHome, lang, corpus);
+        this(DEFAULT_POOL_SIZE, termithIndex);
     }
 
-    public TermSuiteJsonInjector(int poolSize, Map<String, Path> json,
-                                 Map<String, StringBuffer> xmlCorpus,
-                                 String treeTaggerHome, String lang, Path corpus) throws IOException {
-        this.treeTaggerHome = treeTaggerHome;
+    public TermSuiteJsonInjector(int poolSize, TermithIndex termithIndex) throws IOException {
+        this.treeTaggerHome = termithIndex.getTreeTaggerHome();
         this.executorService = Executors.newFixedThreadPool(poolSize);
-        this.json = json;
-        this.xmlCorpus = xmlCorpus;
-        this.corpus = corpus;
-        this.lang = lang;
-        this.terminologies = new CopyOnWriteArrayList<>();
+        this.xmlCorpus = termithIndex.getXmlCorpus();
+        this.corpus = termithIndex.getCorpus();
+        this.lang = termithIndex.getLang();
+        this.terminologies = termithIndex.getTerminologies();
     }
 
     public void execute() throws ExecutionException, InterruptedException {
-        JsonTermSuiteWorker jsonTermSuiteWorker = new JsonTermSuiteWorker(this.corpus + "/json", lang);
+        JsonTermSuiteWorker jsonTermSuiteWorker = new JsonTermSuiteWorker(corpus + "/json", lang);
         Future<?> termsuiteTask = executorService.submit(jsonTermSuiteWorker);
         termsuiteTask.get();
         executorService.shutdown();
