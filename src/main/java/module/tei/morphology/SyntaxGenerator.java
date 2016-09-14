@@ -1,8 +1,11 @@
 package module.tei.morphology;
 
+import models.OffsetId;
 import module.termsuite.TermsuiteJsonReader;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Simon Meoni
@@ -15,15 +18,18 @@ public class SyntaxGenerator {
     private StringBuffer xml;
     private StringBuffer tokenizeBody;
     private StringBuffer standoff;
+    private List<OffsetId> offsetId;
 
     public SyntaxGenerator(File json, StringBuffer txt, StringBuffer xml) {
 
-        this.termsuiteJsonReader = new TermsuiteJsonReader(json);
-        termsuiteJsonReader.parsing();
-        this.txt = txt;
         this.xml = xml;
-        this.tokenizeBody = new StringBuffer();
-        this.standoff = new StringBuffer();
+        this.txt = txt;
+        termsuiteJsonReader = new TermsuiteJsonReader(json);
+        termsuiteJsonReader.parsing();
+        tokenizeBody = new StringBuffer();
+        standoff = new StringBuffer();
+        offsetId = new ArrayList<>();
+
     }
 
     public StringBuffer getTokenizeBody() {
@@ -32,7 +38,7 @@ public class SyntaxGenerator {
 
     public void execute() {
 
-        SyntaxParser syntaxParser = new SyntaxParser(txt,xml,termsuiteJsonReader);
+        SyntaxParser syntaxParser = new SyntaxParser(txt,xml,termsuiteJsonReader, offsetId);
         syntaxParser.execute();
         this.tokenizeBody = syntaxParser.getTokenizeBuffer();
     }

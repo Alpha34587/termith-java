@@ -1,10 +1,12 @@
 package module.tei.morphology;
 
+import models.OffsetId;
 import module.termsuite.TermsuiteJsonReader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
 /**
@@ -20,14 +22,16 @@ public class SyntaxParser {
     private TermsuiteJsonReader termsuiteJsonReader;
     private Queue<Character> xmlCharacterQueue;
     private Integer[] offset = new Integer[2];
+    private List<OffsetId> offsetId;
+
 
     //TODO return a list of tag with {begin, end and the Tag id for each token
-    SyntaxParser(StringBuffer txt, StringBuffer xml, TermsuiteJsonReader termsuiteJsonReader) {
+    SyntaxParser(StringBuffer txt, StringBuffer xml, TermsuiteJsonReader termsuiteJsonReader, List<OffsetId> offsetId) {
         this.xml = xml;
         this.txt = txt;
         this.termsuiteJsonReader = termsuiteJsonReader;
         this.tokenizeBuffer = new StringBuffer();
-
+        this.offsetId = offsetId;
     }
 
     SyntaxParser(StringBuffer xml){
@@ -45,6 +49,8 @@ public class SyntaxParser {
     public Integer[] getOffset() {
         return offset;
     }
+
+    public List<OffsetId> getOffsetId() { return offsetId; }
 
     public void execute(){
         teiBodyspliter();
@@ -101,6 +107,7 @@ public class SyntaxParser {
         if (termsuiteJsonReader.getCurrentTokenBegin() == -2){
             tokenizeBuffer.append("</w>");
             id++;
+            OffsetId.addId(offsetId,id);
         }
 
         while(ch != '>' ||
@@ -133,6 +140,12 @@ public class SyntaxParser {
 
         if (offset[0] == termsuiteJsonReader.getCurrentTokenBegin()){
             tokenizeBuffer.append("<w xml:id=\"" + "t").append(id).append("\">");
+            OffsetId.addNewOffset(
+                    offsetId,
+                    termsuiteJsonReader.getCurrentTokenBegin(),
+                    termsuiteJsonReader.getCurrentTokenEnd(),
+                    id
+            );
             termsuiteJsonReader.setCurrentTokenBegin(-2);
         }
 

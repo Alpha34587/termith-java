@@ -6,6 +6,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Simon Meoni
@@ -25,6 +27,7 @@ public class SyntaxParserTest {
     SyntaxParser alignmentTokenInjector;
     String expectedStringBuffer;
     String expectedStringBuffer2;
+    List<String> offsetIdAlignement;
     @Before
     public void setUp(){
 
@@ -136,7 +139,7 @@ public class SyntaxParserTest {
         basicTokenInjector = new SyntaxParser(
                 new StringBuffer("le chien mange des pommes"),
                 new StringBuffer("<text>le chien mange des pommes</text>"),
-                basicTermsuiteJsonReader
+                basicTermsuiteJsonReader, new ArrayList<>()
         );
 
         //insideTokenInjector
@@ -149,7 +152,7 @@ public class SyntaxParserTest {
         insideTokenInjector = new SyntaxParser(
                 new StringBuffer("le chien mange des pommes"),
                 new StringBuffer("<text>le <hi>chi</hi><hi>en</hi> mange de<s>s</s> <hi>pommes</hi></text>"),
-                insideTermsuiteJsonReader
+                insideTermsuiteJsonReader, new ArrayList<>()
         );
 
         TermsuiteJsonReader insideTermsuiteJsonReader2 = new TermsuiteJsonReader();
@@ -164,7 +167,7 @@ public class SyntaxParserTest {
         insideTokenInjector2 = new SyntaxParser(
                 new StringBuffer("le chien mange des (bonnes) pommes"),
                 new StringBuffer("<text>le <hi>chi</hi><hi>en</hi> mange de<s>s</s> <hi>(bonnes<hi>)</hi> pommes</hi></text>"),
-                insideTermsuiteJsonReader2
+                insideTermsuiteJsonReader2, new ArrayList<>()
         );
 
         //commentTokenInjector
@@ -180,7 +183,7 @@ public class SyntaxParserTest {
                 new StringBuffer("<text>le<!--testtest--> <hi>chi</hi>en" +
                         " <!--test-->mange de<s>s</s><!--lalalal--><!--test--> " +
                         "<hi>pommes</hi><!--lalala--></text>"),
-                commentTermsuiteJsonReader
+                commentTermsuiteJsonReader, new ArrayList<>()
         );
 
         //symbolTokenInjector
@@ -189,7 +192,7 @@ public class SyntaxParserTest {
         symbolTokenInjector = new SyntaxParser(
                 new StringBuffer("le &amp; &amp; chi&eacute;ien ma&diams;nge des pommes&amp;"),
                 new StringBuffer("le &amp; &amp; chi&eacute;ien ma&diams;nge des pommes&amp;"),
-                symbolTermsuiteJsonReader
+                symbolTermsuiteJsonReader, new ArrayList<>()
         );
 
         TermsuiteJsonReader symbolTermsuiteJsonReader2 = new TermsuiteJsonReader();
@@ -203,7 +206,7 @@ public class SyntaxParserTest {
         symbolTokenInjector2 = new SyntaxParser(
                 new StringBuffer("le &amp; &amp; chi&eacute;ien ma&diams;nge &diams;des pommes&amp;"),
                 new StringBuffer("<text>le &amp; &amp; chi&eacute;ien ma&diams;nge &diams;des pommes&amp;</text>"),
-                symbolTermsuiteJsonReader2
+                symbolTermsuiteJsonReader2, new ArrayList<>()
         );
 
         TermsuiteJsonReader symbolTermsuiteJsonReader3 = new TermsuiteJsonReader();
@@ -221,7 +224,7 @@ public class SyntaxParserTest {
                         "<sub>&diams;d</sub>es " +
                         "<hi>pommes&amp;</hi>" +
                         "</text>"),
-                symbolTermsuiteJsonReader3
+                symbolTermsuiteJsonReader3, new ArrayList<>()
         );
 
 
@@ -239,8 +242,19 @@ public class SyntaxParserTest {
                 new StringBuffer("<text><head>le chien</head><p>mange " +
                         "<div>un froma<sup>ge</sup> assez" +
                         "</div></p><p>d&eacute;licieux  </p>\n\n\n&amp;</text>"),
-                alignmentTermsuiteJsonReader
+                alignmentTermsuiteJsonReader, new ArrayList<>()
         );
+
+        alignmentTokenInjector.teiWordTokenizer();
+        offsetIdAlignement =  new ArrayList<>();
+        offsetIdAlignement.add("0, 2, [1]");
+        offsetIdAlignement.add("3, 8, [2]");
+        offsetIdAlignement.add("9, 14, [3]");
+        offsetIdAlignement.add("15, 17, [4]");
+        offsetIdAlignement.add("18, 25, [5, 6]");
+        offsetIdAlignement.add("26, 31, [7]");
+        offsetIdAlignement.add("33, 42, [8]");
+        offsetIdAlignement.add("48, 49, [9]");
     }
     @Test
     public void teiBodyspliterTest() throws Exception {
@@ -356,7 +370,6 @@ public class SyntaxParserTest {
 
     @Test
     public void checkTextAlignmentTest(){
-        alignmentTokenInjector.teiWordTokenizer();
         Assert.assertEquals("text alignment test fails :",
                 "<text>" +
                         "<head><w xml:id=\"t1\">le</w> " +
@@ -370,6 +383,18 @@ public class SyntaxParserTest {
                         "<w xml:id=\"t9\">&amp;</w>" +
                         "</text>",
                 alignmentTokenInjector.getTokenizeBuffer().toString());
+    }
+
+    @Test
+    public void checkOffsetId(){
+
+        alignmentTokenInjector.getOffsetId().forEach(
+                offsetId -> {
+                    String observed = offsetId.getBegin() + ", " + offsetId.getEnd() + ", " + offsetId.getIds();
+                    String expected = offsetIdAlignement.get(alignmentTokenInjector.getOffsetId().indexOf(offsetId));
+                    Assert.assertEquals("this offset must be equals", expected, observed);
+                }
+        );
     }
 
 }
