@@ -111,7 +111,11 @@ public class TermSuiteJsonInjector {
         @Override
         public void run() {
             TerminologyParser terminologyParser = new TerminologyParser(terminologies.get(1));
-            terminologyParser.execute();
+            try {
+                terminologyParser.execute();
+            } catch (IOException e) {
+                LOGGER.error("error during terminology parsing", e);
+            }
         }
     }
 }
