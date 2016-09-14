@@ -19,6 +19,9 @@ public class OffsetId {
         ids.add(id);
     }
 
+    public OffsetId() {
+
+    }
 
 
     public int getBegin() {
