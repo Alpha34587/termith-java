@@ -1,6 +1,6 @@
 package module.tei.morphology;
 
-import models.OffsetId;
+import models.MorphoSyntaxOffsetId;
 import module.termsuite.TermsuiteJsonReader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,11 +22,11 @@ public class SyntaxParser {
     private TermsuiteJsonReader termsuiteJsonReader;
     private Queue<Character> xmlCharacterQueue;
     private Integer[] offset = new Integer[2];
-    private List<OffsetId> offsetId;
+    private List<MorphoSyntaxOffsetId> offsetId;
 
 
-    //TODO return a list of tag with {begin, end and the Tag id for each token
-    SyntaxParser(StringBuffer txt, StringBuffer xml, TermsuiteJsonReader termsuiteJsonReader, List<OffsetId> offsetId) {
+    SyntaxParser(StringBuffer txt, StringBuffer xml, TermsuiteJsonReader termsuiteJsonReader,
+                 List<MorphoSyntaxOffsetId> offsetId) {
         this.xml = xml;
         this.txt = txt;
         this.termsuiteJsonReader = termsuiteJsonReader;
@@ -50,7 +50,7 @@ public class SyntaxParser {
         return offset;
     }
 
-    public List<OffsetId> getOffsetId() { return offsetId; }
+    public List<MorphoSyntaxOffsetId> getOffsetId() { return offsetId; }
 
     public void execute(){
         teiBodyspliter();
@@ -107,7 +107,7 @@ public class SyntaxParser {
         if (termsuiteJsonReader.getCurrentTokenBegin() == -2){
             tokenizeBuffer.append("</w>");
             id++;
-            OffsetId.addId(offsetId,id);
+            MorphoSyntaxOffsetId.addId(offsetId,id);
         }
 
         while(ch != '>' ||
@@ -140,10 +140,12 @@ public class SyntaxParser {
 
         if (offset[0] == termsuiteJsonReader.getCurrentTokenBegin()){
             tokenizeBuffer.append("<w xml:id=\"" + "t").append(id).append("\">");
-            OffsetId.addNewOffset(
+            MorphoSyntaxOffsetId.addNewOffset(
                     offsetId,
                     termsuiteJsonReader.getCurrentTokenBegin(),
                     termsuiteJsonReader.getCurrentTokenEnd(),
+                    termsuiteJsonReader.getCurrentLemma(),
+                    termsuiteJsonReader.getCurrentPos(),
                     id
             );
             termsuiteJsonReader.setCurrentTokenBegin(-2);

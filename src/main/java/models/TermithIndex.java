@@ -23,7 +23,7 @@ public class TermithIndex {
     public Path corpus;
     public List<Path> terminologies;
     public Map<String, StringBuffer> tokenizeTeiBody;
-    public Map<String, List<OffsetId>> morphoSyntaxStandOff;
+    public Map<String, List<MorphoSyntaxOffsetId>> morphoSyntaxStandOff;
     public Map<String, StringBuffer> extractedText;
     public Map<String, StringBuffer> xmlCorpus;
     public Map<String, Path> JsonTreeTagger;
@@ -67,7 +67,7 @@ public class TermithIndex {
         return terminologies;
     }
 
-    public Map<String, List<OffsetId>> getMorphoSyntaxStandOff() {
+    public Map<String, List<MorphoSyntaxOffsetId>> getMorphoSyntaxStandOff() {
         return morphoSyntaxStandOff;
     }
 

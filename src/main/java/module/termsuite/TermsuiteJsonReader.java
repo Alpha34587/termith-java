@@ -101,6 +101,20 @@ public class TermsuiteJsonReader {
             pollToken.setBegin(i);
     }
 
+    public String getCurrentLemma(){
+        if (pollToken != null)
+            return pollToken.getLemma();
+        else
+            return "";
+    }
+
+    public String getCurrentPos(){
+        if (pollToken != null)
+            return pollToken.getPos();
+        else
+            return "";
+    }
+
     public void setCurrentTokenEnd(int i){
         if (pollToken != null)
             pollToken.setBegin(i);

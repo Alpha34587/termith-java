@@ -1,6 +1,6 @@
 package module.tei.morphology;
 
-import models.OffsetId;
+import models.MorphoSyntaxOffsetId;
 import module.termsuite.TermsuiteJsonReader;
 
 import java.io.File;
@@ -18,7 +18,7 @@ public class SyntaxGenerator {
     private StringBuffer xml;
     private StringBuffer tokenizeBody;
     private StringBuffer standoff;
-    private List<OffsetId> offsetId;
+    private List<MorphoSyntaxOffsetId> offsetId;
 
     public SyntaxGenerator(File json, StringBuffer txt, StringBuffer xml) {
 
@@ -36,7 +36,7 @@ public class SyntaxGenerator {
         return tokenizeBody;
     }
 
-    public List<OffsetId> getOffsetId() {
+    public List<MorphoSyntaxOffsetId> getOffsetId() {
         return offsetId;
     }
 

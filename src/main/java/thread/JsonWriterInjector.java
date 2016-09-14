@@ -1,6 +1,6 @@
 package thread;
 
-import models.OffsetId;
+import models.MorphoSyntaxOffsetId;
 import models.TermithIndex;
 import module.tei.morphology.SyntaxGenerator;
 import module.tools.FilesUtilities;
@@ -39,7 +39,7 @@ public class JsonWriterInjector extends TermSuiteTextInjector {
     private final Path corpus;
     private final String lang;
     private final List terminologies;
-    private Map<String, List<OffsetId>> morphoSyntaxStandOff;
+    private Map<String, List<MorphoSyntaxOffsetId>> morphoSyntaxStandOff;
 
     public JsonWriterInjector(TermithIndex termithIndex)
             throws IOException {
