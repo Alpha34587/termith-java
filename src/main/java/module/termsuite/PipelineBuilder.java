@@ -4,6 +4,7 @@ import eu.project.ttc.engines.cleaner.TermProperty;
 import eu.project.ttc.engines.desc.TermSuiteCollection;
 import eu.project.ttc.engines.exporter.TermsuiteJsonCasExporter;
 import eu.project.ttc.tools.TermSuitePipeline;
+import module.termsuite.json.JsonTermsuiteObserver;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.factory.AnalysisEngineFactory;

@@ -1,4 +1,4 @@
-package module.termsuite;
+package module.termsuite.terminology;
 
 import java.io.File;
 

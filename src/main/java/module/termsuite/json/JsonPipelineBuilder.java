@@ -1,4 +1,4 @@
-package module.termsuite;
+package module.termsuite.json;
 
 import eu.project.ttc.engines.cleaner.TermProperty;
 import eu.project.ttc.engines.desc.TermSuiteCollection;

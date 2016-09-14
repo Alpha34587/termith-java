@@ -1,7 +1,9 @@
 package thread;
 
+import models.MorphoSyntaxOffsetId;
 import models.TermithIndex;
-import module.termsuite.JsonPipelineBuilder;
+import module.termsuite.json.JsonPipelineBuilder;
+import module.termsuite.terminology.TerminologyStandOff;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -20,7 +22,7 @@ public class TermSuiteJsonInjector {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(TermSuiteJsonInjector.class.getName());
     private static final int DEFAULT_POOL_SIZE = Runtime.getRuntime().availableProcessors();
-
+    private final Map<String, List<MorphoSyntaxOffsetId>> morphosyntaxStandOff;
     private Path corpus;
     private Map<String, Path> json;
     private Map<String, StringBuffer> xmlCorpus;
@@ -42,12 +44,16 @@ public class TermSuiteJsonInjector {
         this.corpus = termithIndex.getCorpus();
         this.lang = termithIndex.getLang();
         this.terminologies = termithIndex.getTerminologies();
+        this.morphosyntaxStandOff =  termithIndex.getMorphoSyntaxStandOff();
     }
 
     public void execute() throws ExecutionException, InterruptedException {
         JsonTermSuiteWorker jsonTermSuiteWorker = new JsonTermSuiteWorker(corpus + "/json", lang);
         Future<?> termsuiteTask = executorService.submit(jsonTermSuiteWorker);
         termsuiteTask.get();
+        morphosyntaxStandOff.forEach(
+                (id,value) -> executorService.submit(new TerminologyStandOffWorker(id,value))
+        );
         executorService.shutdown();
         executorService.awaitTermination(1L,TimeUnit.DAYS);
     }
@@ -78,6 +84,23 @@ public class TermSuiteJsonInjector {
             LOGGER.info("Finished execution of Termsuite Pipeline, result in :" +
                     jsonCorpus);
 
+        }
+    }
+
+    private class TerminologyStandOffWorker implements Runnable {
+        private final String id;
+        private final List<MorphoSyntaxOffsetId> value;
+
+        TerminologyStandOffWorker(String id, List<MorphoSyntaxOffsetId> value) {
+
+            this.id = id;
+            this.value = value;
+        }
+
+        @Override
+        public void run() {
+            TerminologyStandOff terminologyStandOff = new TerminologyStandOff();
+            terminologyStandOff.execute();
         }
     }
 }

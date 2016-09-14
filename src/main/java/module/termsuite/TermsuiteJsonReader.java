@@ -41,7 +41,7 @@ public class TermsuiteJsonReader {
         return pollToken == null;
     }
 
-    Queue<Token> getTokenQueue() {
+    public Queue<Token> getTokenQueue() {
         return tokenQueue;
     }
 

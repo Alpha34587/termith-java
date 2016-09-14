@@ -1,4 +1,4 @@
-package module.termsuite;
+package module.termsuite.json;
 
 /**
  * Created by simon on 13/09/16.
