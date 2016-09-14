@@ -3,6 +3,7 @@ package thread;
 import models.MorphoSyntaxOffsetId;
 import models.TermithIndex;
 import module.termsuite.json.JsonPipelineBuilder;
+import module.termsuite.terminology.TerminologyParser;
 import module.termsuite.terminology.TerminologyStandOff;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -51,6 +52,7 @@ public class TermSuiteJsonInjector {
         JsonTermSuiteWorker jsonTermSuiteWorker = new JsonTermSuiteWorker(corpus + "/json", lang);
         Future<?> termsuiteTask = executorService.submit(jsonTermSuiteWorker);
         termsuiteTask.get();
+        executorService.submit(new TerminologyParserWorker());
         morphosyntaxStandOff.forEach(
                 (id,value) -> executorService.submit(new TerminologyStandOffWorker(id,value))
         );
@@ -101,6 +103,15 @@ public class TermSuiteJsonInjector {
         public void run() {
             TerminologyStandOff terminologyStandOff = new TerminologyStandOff();
             terminologyStandOff.execute();
+        }
+    }
+
+    private class TerminologyParserWorker implements Runnable {
+
+        @Override
+        public void run() {
+            TerminologyParser terminologyParser = new TerminologyParser(terminologies.get(1));
+            terminologyParser.execute();
         }
     }
 }

@@ -24,6 +24,7 @@ public class TermithIndex {
     public List<Path> terminologies;
     public Map<String, StringBuffer> tokenizeTeiBody;
     public Map<String, List<MorphoSyntaxOffsetId>> morphoSyntaxStandOff;
+    public Map<String, List<MorphoSyntaxOffsetId>> terminologyStandOff;
     public Map<String, StringBuffer> extractedText;
     public Map<String, StringBuffer> xmlCorpus;
     public Map<String, Path> JsonTreeTagger;
@@ -41,6 +42,7 @@ public class TermithIndex {
         extractedText = new ConcurrentHashMap<>();
         xmlCorpus = new ConcurrentHashMap<>();
         JsonTreeTagger = new ConcurrentHashMap<>();
+        terminologyStandOff = new ConcurrentHashMap<>();
     }
 
     public String getOutputPath() {
@@ -69,6 +71,10 @@ public class TermithIndex {
 
     public Map<String, List<MorphoSyntaxOffsetId>> getMorphoSyntaxStandOff() {
         return morphoSyntaxStandOff;
+    }
+
+    public Map<String, List<MorphoSyntaxOffsetId>> getTerminologyStandOff() {
+        return terminologyStandOff;
     }
 
     public Map<String, StringBuffer> getTokenizeTeiBody() {
