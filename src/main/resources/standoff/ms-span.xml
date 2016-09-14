@@ -1,0 +1,10 @@
+<span target="@target">
+    <fs>
+        <f name="lemma">
+            <string>@lemma</string>
+        </f>
+        <f name="pos">
+            <symbol value="@pos"/>
+        </f>
+    </fs>
+</span>
