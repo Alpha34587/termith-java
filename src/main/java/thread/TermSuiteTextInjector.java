@@ -1,6 +1,7 @@
 package thread;
 
 import eu.project.ttc.tools.TermSuitePipeline;
+import models.OffsetId;
 import models.TermithIndex;
 import module.tei.morphology.SyntaxGenerator;
 import module.termsuite.JsonTermsuiteObserver;
@@ -39,7 +40,7 @@ public class TermSuiteTextInjector {
     private String lang;
 
     private List<Path> terminologies;
-    private Map<String, StringBuffer> morphoSyntaxStandOff;
+    private Map<String, List<OffsetId>> morphoSyntaxStandOff;
     private Map<String, StringBuffer> tokenizeTeiBody;
     private CountDownLatch doneSignal;
 
@@ -208,6 +209,7 @@ us
             SyntaxGenerator syntaxGenerator = new SyntaxGenerator(json, txt, xml);
             syntaxGenerator.execute();
             tokenizeTeiBody.put(json.getName().replace(".json",""), syntaxGenerator.getTokenizeBody());
+            morphoSyntaxStandOff.put(json.getName().replace(".json",""), syntaxGenerator.getOffsetId());
             LOGGER.info("TeiMorphoSyntaxWorker Terminated");
         }
     }

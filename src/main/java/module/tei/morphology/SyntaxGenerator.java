@@ -36,10 +36,15 @@ public class SyntaxGenerator {
         return tokenizeBody;
     }
 
+    public List<OffsetId> getOffsetId() {
+        return offsetId;
+    }
+
     public void execute() {
 
         SyntaxParser syntaxParser = new SyntaxParser(txt,xml,termsuiteJsonReader, offsetId);
         syntaxParser.execute();
         this.tokenizeBody = syntaxParser.getTokenizeBuffer();
+        this.offsetId = syntaxParser.getOffsetId();
     }
 }

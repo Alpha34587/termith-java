@@ -1,5 +1,6 @@
 package thread;
 
+import models.OffsetId;
 import models.TermithIndex;
 import module.tei.morphology.SyntaxGenerator;
 import module.tools.FilesUtilities;
@@ -38,6 +39,7 @@ public class JsonWriterInjector extends TermSuiteTextInjector {
     private final Path corpus;
     private final String lang;
     private final List terminologies;
+    private Map<String, List<OffsetId>> morphoSyntaxStandOff;
 
     public JsonWriterInjector(TermithIndex termithIndex)
             throws IOException {
@@ -55,6 +57,7 @@ public class JsonWriterInjector extends TermSuiteTextInjector {
         terminologies = termithIndex.getTerminologies();
         JsonTreeTagger = termithIndex.getJsonTreeTagger();
         tokenizeTeiBody = termithIndex.getTokenizeTeiBody();
+        morphoSyntaxStandOff = termithIndex.getMorphoSyntaxStandOff();
         TagNormalizer.initTag(lang);
 
         LOGGER.info("temporary folder created: " + corpus);
@@ -128,6 +131,7 @@ public class JsonWriterInjector extends TermSuiteTextInjector {
                 );
                 syntaxGenerator.execute();
                 tokenizeTeiBody.put(json.getName().replace(".json",""), syntaxGenerator.getTokenizeBody());
+                morphoSyntaxStandOff.put(json.getName().replace(".json",""), syntaxGenerator.getOffsetId());
                 LOGGER.info("tokenize xml body ended");
             } catch (IOException e) {
                 LOGGER.info("error during parsing TreeTagger data", e);
