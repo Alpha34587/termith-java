@@ -56,6 +56,7 @@ public class TerminologyParser {
 
             else if (inTerms) {
                 if (jsonToken == JsonToken.END_ARRAY && Objects.equals(parser.getCurrentName(), "terms")) {
+
                     inTerms = false;
                 }
 
@@ -88,7 +89,7 @@ public class TerminologyParser {
         String realId =
                 FilesUtilities.nameNormalizer(idSource.get(currentFile));
         if (standOffTerminology.containsKey(realId)){
-            standOffTerminology.get(realId).add(offsetId);
+            standOffTerminology.get(realId).add(new TerminologyOffetId(offsetId));
         }
 
         else {
@@ -100,6 +101,8 @@ public class TerminologyParser {
     private void extractTerm(JsonToken jsonToken, JsonParser parser,
                              TerminologyOffetId offetId) throws IOException {
         if (jsonToken.equals(JsonToken.FIELD_NAME)){
+
+
             switch (parser.getCurrentName()){
                 case "id" :
                     offetId.setTermId(parser.nextIntValue(0));
