@@ -104,7 +104,24 @@ public class Exporter {
         }
 
         private StringBuffer serializeTerminology(List<TerminologyOffetId> terminologyOffetIds) {
-            return new StringBuffer();
+            StringBuffer standoff = new StringBuffer();
+            Deque<TerminologyOffetId> termDeque = new ArrayDeque<>(terminologyOffetIds);
+
+            standoff.append(STANDOFF.split("\n")[0].replace("@type", "candidatsTermes")).append("\n");
+            standoff.append(T_TEI_HEADER).append("\n");
+            standoff.append(LIST_ANNOTATION.split("\n")[0]).append("\n");
+            while (!termDeque.isEmpty()){
+                TerminologyOffetId token = termDeque.poll();
+                standoff.append(
+                        T_SPAN.replace("@target",serializeId(token.getIds()))
+                                .replace("@corresp",String.valueOf(token.getTermId()))
+                                .replace("@string", token.getWord())
+                ).append("\n");
+            }
+            standoff.append(LIST_ANNOTATION.split("\n")[1]).append("\n");
+            standoff.append(STANDOFF.split("\n")[1]).append("\n");
+
+            return standoff;
         }
 
         private StringBuffer serializeMorphosyntax(List<MorphoSyntaxOffsetId> morphoSyntaxOffsetIds) {
@@ -113,7 +130,7 @@ public class Exporter {
 
             standoff.append(STANDOFF.split("\n")[0].replace("@type", "wordForms")).append("\n");
             standoff.append(MS_TEI_HEADER).append("\n");
-            standoff.append(MS_LIST_ANNOTATION.split("\n")[0]).append("\n");
+            standoff.append(LIST_ANNOTATION.split("\n")[0]).append("\n");
             while (!morphoDeque.isEmpty()){
                 MorphoSyntaxOffsetId token = morphoDeque.poll();
                 standoff.append(
@@ -122,14 +139,18 @@ public class Exporter {
                                 .replace("@pos", token.getTag())
                 ).append("\n");
             }
-            standoff.append(MS_LIST_ANNOTATION.split("\n")[1]).append("\n");
+            standoff.append(LIST_ANNOTATION.split("\n")[1]).append("\n");
             standoff.append(STANDOFF.split("\n")[1]).append("\n");
 
             return standoff;
         }
 
         private String serializeId(List<Integer> ids) {
-            return ids.stream().map(e ->  "t" + e.toString()).reduce(" ", String::join);
+            String target = "";
+            for (int id : ids) {
+                target += "#t" + id + " ";
+            }
+            return target.substring(0,target.length() - 1);
         }
     }
 

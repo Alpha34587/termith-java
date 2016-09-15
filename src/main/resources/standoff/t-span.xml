@@ -1,6 +1,6 @@
-<span target="@target" corresp="@corresp">
+<span target="@target" corresp="#TS2.0-entry-@corresp">
     <fs>
-        <f name="@name">
+        <f name="inflexionWord">
             <string>@string</string>
         </f>
     </fs>

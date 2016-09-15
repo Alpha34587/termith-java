@@ -16,9 +16,12 @@ public class standOffResources {
     private static final Logger LOGGER = LoggerFactory.getLogger(standOffResources.class.getName());
     private final static String PATH = "src/main/resources/standoff/";
 
-    public final static String MS_LIST_ANNOTATION = readFiles(PATH + "ms-list-annotation.xml");
+    public final static String LIST_ANNOTATION = readFiles(PATH + "list-annotation.xml");
     public final static String MS_SPAN = readFiles(PATH + "ms-span.xml");
+    public final static String T_SPAN = readFiles(PATH + "t-span.xml");
     public final static String MS_TEI_HEADER = readFiles(PATH + "ms-tei-header.xml");
+    public final static String T_TEI_HEADER = readFiles(PATH + "t-tei-header.xml");
+    public final static String T_INTERP_GRP = readFiles(PATH + "t-interp-grp.xml");
     public final static String STANDOFF = readFiles(PATH + "standoff.xml");
 
 
