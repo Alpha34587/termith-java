@@ -48,4 +48,9 @@ public class FilesUtilities {
 
         });
     }
+
+    public static String nameNormalizer(String path){
+        String name = Paths.get(path).getFileName().toString();
+        return name.split("\\.")[0];
+    }
 }

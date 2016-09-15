@@ -31,9 +31,9 @@ public class TerminologyParserTest {
         List<String> file1 = new ArrayList<>();
         List<String> file2 = new ArrayList<>();
 
-        file1.add("0 14 cuillère en bois 1");
-        file1.add("0 14 pomme de terre 1");
-        file2.add("10 14 cuillère en bois 1");
+        file1.add("0 14 cuillière en bois 1");
+        file1.add("9 15 pomme de terre 2");
+        file2.add("10 14 cuillière de bois 1");
 
         HashMap<String, List<String>> expected = new HashMap<>();
         expected.put("file1",file1);

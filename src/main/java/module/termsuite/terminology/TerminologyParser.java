@@ -4,15 +4,16 @@ import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonToken;
 import models.TerminologyOffetId;
+import module.tools.FilesUtilities;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
+
+import static eu.project.ttc.readers.JsonCasConstants.F_BEGIN;
+import static eu.project.ttc.readers.JsonCasConstants.F_END;
 
 /**
  * @author Simon Meoni
@@ -23,11 +24,13 @@ public class TerminologyParser {
     private Map<String,List<TerminologyOffetId>> standOffTerminology;
     private Map<String,String> idSource;
     private final JsonFactory factory = new JsonFactory();
+    private String currentFile;
 
     public TerminologyParser(Path path) {
         this.path = path;
-        this.standOffTerminology = new ConcurrentHashMap<>();
-        this.idSource = new HashMap<>();
+        standOffTerminology = new ConcurrentHashMap<>();
+        idSource = new HashMap<>();
+        currentFile = "";
     }
 
     public Map<String, List<TerminologyOffetId>> getStandOffTerminology() {
@@ -40,6 +43,8 @@ public class TerminologyParser {
         JsonToken jsonToken;
         boolean inTerms = false;
         boolean inSource = false;
+        boolean inOcc = false;
+        TerminologyOffetId offsetId = new TerminologyOffetId();
         while ((jsonToken = parser.nextToken()) != null) {
 
             if (inSource) {
@@ -47,27 +52,82 @@ public class TerminologyParser {
                     inSource = false;
                 }
                 extractInputSource(jsonToken, parser);
-            } else if (inTerms) {
+            }
+
+            else if (inTerms) {
                 if (jsonToken == JsonToken.END_ARRAY && Objects.equals(parser.getCurrentName(), "terms")) {
                     inTerms = false;
                 }
-                extractTerm();
 
-            } else if ("input_sources".equals(parser.getParsingContext().getCurrentName())) {
+                else if (jsonToken == JsonToken.END_ARRAY && inOcc){
+                    inOcc = false;
+                }
+
+
+                else if (jsonToken == JsonToken.END_OBJECT && inOcc) {
+                    fillTerminology(offsetId);
+                }
+
+                else if (Objects.equals(parser.getCurrentName(), "occurrences")){
+                    inOcc = true;
+                }
+
+                extractTerm(jsonToken, parser, offsetId);
+            }
+            else if ("input_sources".equals(parser.getParsingContext().getCurrentName())) {
                 inSource = true;
-            } else if ("terms".equals(parser.getParsingContext().getCurrentName())) {
+            }
+
+            else if ("terms".equals(parser.getParsingContext().getCurrentName())) {
                 inTerms = true;
             }
         }
     }
 
-    private void extractTerm() {
+    private void fillTerminology(TerminologyOffetId offsetId) {
+        String realId =
+                FilesUtilities.nameNormalizer(idSource.get(currentFile));
+        if (standOffTerminology.containsKey(realId)){
+            standOffTerminology.get(realId).add(offsetId);
+        }
+
+        else {
+            standOffTerminology.put(realId,new ArrayList<>(
+                    Collections.singletonList(new TerminologyOffetId(offsetId))));
+        }
+    }
+
+    private void extractTerm(JsonToken jsonToken, JsonParser parser,
+                             TerminologyOffetId offetId) throws IOException {
+        if (jsonToken.equals(JsonToken.FIELD_NAME)){
+            switch (parser.getCurrentName()){
+                case "id" :
+                    offetId.setTermId(parser.nextIntValue(0));
+                    break;
+                case "text" :
+                    offetId.setWord(parser.nextTextValue());
+                    break;
+                case F_BEGIN :
+                    offetId.setBegin(parser.nextIntValue(0));
+                    break;
+                case F_END :
+                    offetId.setEnd(parser.nextIntValue(0));
+                    break;
+                case "file" :
+                    currentFile = String.valueOf(parser.nextIntValue(0));
+                    break;
+                default:
+                    break;
+            }
+        }
 
     }
 
     private void extractInputSource(JsonToken jsonToken, JsonParser parser) throws IOException {
         if (jsonToken.equals(JsonToken.FIELD_NAME)) {
-            idSource.put(parser.getCurrentName(), parser.nextTextValue());
+            idSource.put(parser.getCurrentName(),
+                    FilesUtilities.nameNormalizer(parser.nextTextValue()));
         }
     }
+
 }

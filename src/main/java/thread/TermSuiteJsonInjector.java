@@ -1,6 +1,7 @@
 package thread;
 
 import models.MorphoSyntaxOffsetId;
+import models.TerminologyOffetId;
 import models.TermithIndex;
 import module.termsuite.json.JsonPipelineBuilder;
 import module.termsuite.terminology.TerminologyParser;
@@ -23,7 +24,8 @@ public class TermSuiteJsonInjector {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(TermSuiteJsonInjector.class.getName());
     private static final int DEFAULT_POOL_SIZE = Runtime.getRuntime().availableProcessors();
-    private final Map<String, List<MorphoSyntaxOffsetId>> morphosyntaxStandOff;
+    private Map<String, List<MorphoSyntaxOffsetId>> morphosyntaxStandOff;
+    private Map<String, List<TerminologyOffetId>> terminologyStandOff;
     private Path corpus;
     private Map<String, Path> json;
     private Map<String, StringBuffer> xmlCorpus;
@@ -39,22 +41,25 @@ public class TermSuiteJsonInjector {
     }
 
     public TermSuiteJsonInjector(int poolSize, TermithIndex termithIndex) throws IOException {
-        this.treeTaggerHome = termithIndex.getTreeTaggerHome();
-        this.executorService = Executors.newFixedThreadPool(poolSize);
-        this.xmlCorpus = termithIndex.getXmlCorpus();
-        this.corpus = termithIndex.getCorpus();
-        this.lang = termithIndex.getLang();
-        this.terminologies = termithIndex.getTerminologies();
-        this.morphosyntaxStandOff =  termithIndex.getMorphoSyntaxStandOff();
+        treeTaggerHome = termithIndex.getTreeTaggerHome();
+        executorService = Executors.newFixedThreadPool(poolSize);
+        xmlCorpus = termithIndex.getXmlCorpus();
+        corpus = termithIndex.getCorpus();
+        lang = termithIndex.getLang();
+        terminologies = termithIndex.getTerminologies();
+        morphosyntaxStandOff =  termithIndex.getMorphoSyntaxStandOff();
     }
 
     public void execute() throws ExecutionException, InterruptedException {
         JsonTermSuiteWorker jsonTermSuiteWorker = new JsonTermSuiteWorker(corpus + "/json", lang);
         Future<?> termsuiteTask = executorService.submit(jsonTermSuiteWorker);
         termsuiteTask.get();
-        executorService.submit(new TerminologyParserWorker());
+        Future<?> terminologyTask = executorService.submit(new TerminologyParserWorker());
+        terminologyTask.get();
         morphosyntaxStandOff.forEach(
-                (id,value) -> executorService.submit(new TerminologyStandOffWorker(id,value))
+                (id,value) -> executorService.submit(new TerminologyStandOffWorker(
+                        id,value,terminologyStandOff.get(id))
+                )
         );
         executorService.shutdown();
         executorService.awaitTermination(1L,TimeUnit.DAYS);
@@ -91,17 +96,20 @@ public class TermSuiteJsonInjector {
 
     private class TerminologyStandOffWorker implements Runnable {
         private final String id;
-        private final List<MorphoSyntaxOffsetId> value;
+        private final List<MorphoSyntaxOffsetId> morpho;
+        private List<TerminologyOffetId> termino;
 
-        TerminologyStandOffWorker(String id, List<MorphoSyntaxOffsetId> value) {
+        TerminologyStandOffWorker(String id, List<MorphoSyntaxOffsetId> morpho, List<TerminologyOffetId> termino) {
 
             this.id = id;
-            this.value = value;
+            this.morpho = morpho;
+
+            this.termino = termino;
         }
 
         @Override
         public void run() {
-            TerminologyStandOff terminologyStandOff = new TerminologyStandOff();
+            TerminologyStandOff terminologyStandOff = new TerminologyStandOff(id, morpho, termino);
             terminologyStandOff.execute();
         }
     }
@@ -110,9 +118,12 @@ public class TermSuiteJsonInjector {
 
         @Override
         public void run() {
+            LOGGER.info("parsing terminology started");
             TerminologyParser terminologyParser = new TerminologyParser(terminologies.get(1));
             try {
                 terminologyParser.execute();
+                terminologyStandOff = terminologyParser.getStandOffTerminology();
+                LOGGER.info("parsing terminology ended");
             } catch (IOException e) {
                 LOGGER.error("error during terminology parsing", e);
             }

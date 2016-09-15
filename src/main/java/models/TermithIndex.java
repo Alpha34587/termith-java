@@ -21,13 +21,13 @@ public class TermithIndex {
     private boolean trace;
 
     public Path corpus;
-    public List<Path> terminologies;
-    public Map<String, StringBuffer> tokenizeTeiBody;
-    public Map<String, List<MorphoSyntaxOffsetId>> morphoSyntaxStandOff;
-    public Map<String, List<MorphoSyntaxOffsetId>> terminologyStandOff;
-    public Map<String, StringBuffer> extractedText;
-    public Map<String, StringBuffer> xmlCorpus;
-    public Map<String, Path> JsonTreeTagger;
+    private List<Path> terminologies;
+    private Map<String, StringBuffer> tokenizeTeiBody;
+    private Map<String, List<MorphoSyntaxOffsetId>> morphoSyntaxStandOff;
+    private Map<String, List<TerminologyOffetId>> terminologyStandOff;
+    private Map<String, StringBuffer> extractedText;
+    private Map<String, StringBuffer> xmlCorpus;
+    private Map<String, Path> JsonTreeTagger;
 
     private TermithIndex(Builder builder) {
         base = builder.base;
@@ -73,7 +73,7 @@ public class TermithIndex {
         return morphoSyntaxStandOff;
     }
 
-    public Map<String, List<MorphoSyntaxOffsetId>> getTerminologyStandOff() {
+    public Map<String, List<TerminologyOffetId>> getTerminologyStandOff() {
         return terminologyStandOff;
     }
 
