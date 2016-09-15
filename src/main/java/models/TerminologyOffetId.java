@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class TerminologyOffetId extends OffsetId {
     private String word;
     private int termId;
-    protected TerminologyOffetId(int begin, int end, int id, String word) {
+    public TerminologyOffetId(int begin, int end, int id, String word) {
         super();
         this.begin = begin;
         this.end = end;

@@ -21,6 +21,10 @@ public class TerminologyStandOff {
         this.termino = termino;
     }
 
+    public List<TerminologyOffetId> getTermino() {
+        return termino;
+    }
+
     public void execute() {
     }
 }

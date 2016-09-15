@@ -19,6 +19,12 @@ public class OffsetId {
         ids.add(id);
     }
 
+    protected OffsetId(int begin, int end, List<Integer> ids) {
+        this.begin = begin;
+        this.end = end;
+        this.ids = ids;
+    }
+
     public OffsetId() {
 
     }

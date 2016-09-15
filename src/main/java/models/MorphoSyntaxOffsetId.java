@@ -10,8 +10,14 @@ public class MorphoSyntaxOffsetId extends OffsetId{
 
     String lemma;
     String tag;
-    protected MorphoSyntaxOffsetId(int begin,int end,String lemma, String tag ,int id) {
+    public MorphoSyntaxOffsetId(int begin,int end,String lemma, String tag ,int id) {
         super(begin, end, id);
+        this.lemma = lemma;
+        this.tag = tag;
+    }
+
+    public MorphoSyntaxOffsetId(int begin, int end, String lemma, String tag, List<Integer> ids) {
+        super(begin,end,ids);
         this.lemma = lemma;
         this.tag = tag;
     }
