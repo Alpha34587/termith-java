@@ -1,7 +1,7 @@
 package module.termsuite.terminology;
 
 import models.MorphoSyntaxOffsetId;
-import models.TerminologyOffetId;
+import models.TermsOffsetId;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,13 +16,13 @@ import java.util.List;
 public class TerminologyStandOffTest {
 
     private List<MorphoSyntaxOffsetId> morpho;
-    private List<TerminologyOffetId> termino;
+    private List<TermsOffsetId> termino;
     private TerminologyStandOff simpleTerminologyStandOff;
     private TerminologyStandOff multiTerminologyStandOff;
     private List<MorphoSyntaxOffsetId> multimorpho;
-    private List<TerminologyOffetId> multitermino;
+    private List<TermsOffsetId> multitermino;
     private List<MorphoSyntaxOffsetId> symbolmorpho;
-    private List<TerminologyOffetId> symboltermino;
+    private List<TermsOffsetId> symboltermino;
     private TerminologyStandOff symbolTerminologyStandOff;
 
     @Before
@@ -35,9 +35,9 @@ public class TerminologyStandOffTest {
         morpho.add(new MorphoSyntaxOffsetId(20,26,"pierre","N",4));
 
         termino = new ArrayList<>();
-        termino.add(new TerminologyOffetId(0,10,0,"cuillière"));
-        termino.add(new TerminologyOffetId(0,18,1,"cuillière en bois"));
-        termino.add(new TerminologyOffetId(20,26,2,"pierre"));
+        termino.add(new TermsOffsetId(0,10,0,"cuillière"));
+        termino.add(new TermsOffsetId(0,18,1,"cuillière en bois"));
+        termino.add(new TermsOffsetId(20,26,2,"pierre"));
         simpleTerminologyStandOff = new TerminologyStandOff("1",morpho,termino);
 
         multimorpho = new ArrayList<>();
@@ -56,9 +56,9 @@ public class TerminologyStandOffTest {
         multimorpho.add(new MorphoSyntaxOffsetId(20,26,"pierre","N",pierreIds));
 
         multitermino = new ArrayList<>();
-        multitermino.add(new TerminologyOffetId(0,10,0,"cuillière"));
-        multitermino.add(new TerminologyOffetId(0,18,1,"cuillière en bois"));
-        multitermino.add(new TerminologyOffetId(20,26,2,"pierre"));
+        multitermino.add(new TermsOffsetId(0,10,0,"cuillière"));
+        multitermino.add(new TermsOffsetId(0,18,1,"cuillière en bois"));
+        multitermino.add(new TermsOffsetId(20,26,2,"pierre"));
         multiTerminologyStandOff = new TerminologyStandOff("1",multimorpho,multitermino);
 
         symbolmorpho = new ArrayList<>();
@@ -70,9 +70,9 @@ public class TerminologyStandOffTest {
         symbolmorpho.add(new MorphoSyntaxOffsetId(20,26,"pierre","N",pierreIds));
 
         symboltermino = new ArrayList<>();
-        symboltermino.add(new TerminologyOffetId(0,10,0,"cuillière"));
-        symboltermino.add(new TerminologyOffetId(0,18,1,"cuillière en bois"));
-        symboltermino.add(new TerminologyOffetId(20,26,2,"pierre"));
+        symboltermino.add(new TermsOffsetId(0,10,0,"cuillière"));
+        symboltermino.add(new TermsOffsetId(0,18,1,"cuillière en bois"));
+        symboltermino.add(new TermsOffsetId(20,26,2,"pierre"));
         symbolTerminologyStandOff = new TerminologyStandOff("1",symbolmorpho,symboltermino);
     }
     @Test

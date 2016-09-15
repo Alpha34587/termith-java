@@ -1,8 +1,8 @@
 package module.tools;
 
 import models.MorphoSyntaxOffsetId;
-import models.TerminologyOffetId;
 import models.TermithIndex;
+import models.TermsOffsetId;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import runner.TermithText;
@@ -103,15 +103,15 @@ public class Exporter {
 
         }
 
-        private StringBuffer serializeTerminology(List<TerminologyOffetId> terminologyOffetIds) {
+        private StringBuffer serializeTerminology(List<TermsOffsetId> termsOffsetIds) {
             StringBuffer standoff = new StringBuffer();
-            Deque<TerminologyOffetId> termDeque = new ArrayDeque<>(terminologyOffetIds);
+            Deque<TermsOffsetId> termDeque = new ArrayDeque<>(termsOffsetIds);
 
             standoff.append(STANDOFF.split("\n")[0].replace("@type", "candidatsTermes")).append("\n");
             standoff.append(T_TEI_HEADER).append("\n");
             standoff.append(LIST_ANNOTATION.split("\n")[0]).append("\n");
             while (!termDeque.isEmpty()){
-                TerminologyOffetId token = termDeque.poll();
+                TermsOffsetId token = termDeque.poll();
                 standoff.append(
                         T_SPAN.replace("@target",serializeId(token.getIds()))
                                 .replace("@corresp",String.valueOf(token.getTermId()))

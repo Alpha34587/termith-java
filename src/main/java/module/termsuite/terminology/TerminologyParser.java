@@ -3,7 +3,7 @@ package module.termsuite.terminology;
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonToken;
-import models.TerminologyOffetId;
+import models.TermsOffsetId;
 import module.tools.FilesUtilities;
 
 import java.io.File;
@@ -21,7 +21,7 @@ import static eu.project.ttc.readers.JsonCasConstants.F_END;
  */
 public class TerminologyParser {
     private Path path;
-    private Map<String,List<TerminologyOffetId>> standOffTerminology;
+    private Map<String,List<TermsOffsetId>> standOffTerminology;
     private Map<String,String> idSource;
     private final JsonFactory factory = new JsonFactory();
     private String currentFile;
@@ -33,7 +33,7 @@ public class TerminologyParser {
         currentFile = "";
     }
 
-    public Map<String, List<TerminologyOffetId>> getStandOffTerminology() {
+    public Map<String, List<TermsOffsetId>> getStandOffTerminology() {
         return standOffTerminology;
     }
 
@@ -44,7 +44,7 @@ public class TerminologyParser {
         boolean inTerms = false;
         boolean inSource = false;
         boolean inOcc = false;
-        TerminologyOffetId offsetId = new TerminologyOffetId();
+        TermsOffsetId offsetId = new TermsOffsetId();
         while ((jsonToken = parser.nextToken()) != null) {
 
             if (inSource) {
@@ -85,21 +85,21 @@ public class TerminologyParser {
         }
     }
 
-    private void fillTerminology(TerminologyOffetId offsetId) {
+    private void fillTerminology(TermsOffsetId offsetId) {
         String realId =
                 FilesUtilities.nameNormalizer(idSource.get(currentFile));
         if (standOffTerminology.containsKey(realId)){
-            standOffTerminology.get(realId).add(new TerminologyOffetId(offsetId));
+            standOffTerminology.get(realId).add(new TermsOffsetId(offsetId));
         }
 
         else {
             standOffTerminology.put(realId,new ArrayList<>(
-                    Collections.singletonList(new TerminologyOffetId(offsetId))));
+                    Collections.singletonList(new TermsOffsetId(offsetId))));
         }
     }
 
     private void extractTerm(JsonToken jsonToken, JsonParser parser,
-                             TerminologyOffetId offetId) throws IOException {
+                             TermsOffsetId offetId) throws IOException {
         if (jsonToken.equals(JsonToken.FIELD_NAME)){
 
 

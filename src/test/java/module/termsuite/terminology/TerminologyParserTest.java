@@ -1,6 +1,6 @@
 package module.termsuite.terminology;
 
-import models.TerminologyOffetId;
+import models.TermsOffsetId;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -55,7 +55,7 @@ public class TerminologyParserTest {
 
     }
 
-    private String parse(TerminologyOffetId offset) {
+    private String parse(TermsOffsetId offset) {
         return offset.getBegin() + " " + offset.getEnd() + " " + offset.getWord() + " " + offset.getTermId();
     }
 

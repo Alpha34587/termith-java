@@ -24,7 +24,7 @@ public class TermithIndex {
     private List<Path> terminologies;
     private Map<String, StringBuffer> tokenizeTeiBody;
     private Map<String, List<MorphoSyntaxOffsetId>> morphoSyntaxStandOff;
-    private Map<String, List<TerminologyOffetId>> terminologyStandOff;
+    private Map<String, List<TermsOffsetId>> terminologyStandOff;
     private Map<String, StringBuffer> extractedText;
     private Map<String, StringBuffer> xmlCorpus;
     private Map<String, Path> JsonTreeTagger;
@@ -73,7 +73,7 @@ public class TermithIndex {
         return morphoSyntaxStandOff;
     }
 
-    public Map<String, List<TerminologyOffetId>> getTerminologyStandOff() {
+    public Map<String, List<TermsOffsetId>> getTerminologyStandOff() {
         return terminologyStandOff;
     }
 
@@ -97,7 +97,7 @@ public class TermithIndex {
         return JsonTreeTagger;
     }
 
-    public void setTerminologyStandOff(Map<String, List<TerminologyOffetId>> terminologyStandOff) {
+    public void setTerminologyStandOff(Map<String, List<TermsOffsetId>> terminologyStandOff) {
         this.terminologyStandOff = terminologyStandOff;
     }
 

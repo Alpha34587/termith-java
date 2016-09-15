@@ -1,8 +1,8 @@
 package thread;
 
 import models.MorphoSyntaxOffsetId;
-import models.TerminologyOffetId;
 import models.TermithIndex;
+import models.TermsOffsetId;
 import module.termsuite.json.JsonPipelineBuilder;
 import module.termsuite.terminology.TerminologyParser;
 import module.termsuite.terminology.TerminologyStandOff;
@@ -26,7 +26,7 @@ public class TermSuiteJsonInjector {
     private static final int DEFAULT_POOL_SIZE = Runtime.getRuntime().availableProcessors();
     private final TermithIndex termithIndex;
     private Map<String, List<MorphoSyntaxOffsetId>> morphosyntaxStandOff;
-    private Map<String, List<TerminologyOffetId>> terminologyStandOff;
+    private Map<String, List<TermsOffsetId>> terminologyStandOff;
     private Path corpus;
     private Map<String, Path> json;
     private Map<String, StringBuffer> xmlCorpus;
@@ -102,9 +102,9 @@ public class TermSuiteJsonInjector {
     private class TerminologyStandOffWorker implements Runnable {
         private final String id;
         private final List<MorphoSyntaxOffsetId> morpho;
-        private List<TerminologyOffetId> termino;
+        private List<TermsOffsetId> termino;
 
-        TerminologyStandOffWorker(String id, List<MorphoSyntaxOffsetId> morpho, List<TerminologyOffetId> termino) {
+        TerminologyStandOffWorker(String id, List<MorphoSyntaxOffsetId> morpho, List<TermsOffsetId> termino) {
 
             this.id = id;
             this.morpho = morpho;

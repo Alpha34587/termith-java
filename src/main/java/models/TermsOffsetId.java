@@ -7,10 +7,10 @@ import java.util.List;
  * @author Simon Meoni
  *         Created on 14/09/16.
  */
-public class TerminologyOffetId extends OffsetId {
+public class TermsOffsetId extends OffsetId {
     private String word;
     private int termId;
-    public TerminologyOffetId(int begin, int end, int id, String word) {
+    public TermsOffsetId(int begin, int end, int id, String word) {
         super();
         this.begin = begin;
         this.end = end;
@@ -19,7 +19,7 @@ public class TerminologyOffetId extends OffsetId {
         this.ids = new ArrayList<>();
     }
 
-    public TerminologyOffetId() {
+    public TermsOffsetId() {
     }
 
     public void setWord(String word) {
@@ -43,7 +43,7 @@ public class TerminologyOffetId extends OffsetId {
         this.ids.addAll(ids);
     }
 
-    public TerminologyOffetId(TerminologyOffetId other) {
+    public TermsOffsetId(TermsOffsetId other) {
         this.begin = other.begin;
         this.end = other.end;
         this.word = other.word;

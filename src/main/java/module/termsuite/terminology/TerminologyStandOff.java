@@ -1,7 +1,7 @@
 package module.termsuite.terminology;
 
 import models.MorphoSyntaxOffsetId;
-import models.TerminologyOffetId;
+import models.TermsOffsetId;
 
 import java.util.List;
 import java.util.NavigableMap;
@@ -16,18 +16,18 @@ import java.util.stream.Collectors;
 public class TerminologyStandOff {
     private final String id;
     private final List<MorphoSyntaxOffsetId> morpho;
-    private final List<TerminologyOffetId> termino;
+    private final List<TermsOffsetId> termino;
     private NavigableMap<Integer,List<Integer>> beginMap;
     private NavigableMap<Integer,List<Integer>> endMap;
 
-    public TerminologyStandOff(String id, List<MorphoSyntaxOffsetId> morpho, List<TerminologyOffetId> termino) {
+    public TerminologyStandOff(String id, List<MorphoSyntaxOffsetId> morpho, List<TermsOffsetId> termino) {
 
         this.id = id;
         this.morpho = morpho;
         this.termino = termino;
     }
 
-    public List<TerminologyOffetId> getTermino() {
+    public List<TermsOffsetId> getTermino() {
         return termino;
     }
 
