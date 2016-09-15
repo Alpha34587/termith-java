@@ -74,15 +74,15 @@ public class TerminologyStandOffTest {
 
     @Test
     public void multiExecute() throws Exception {
-        simpleTerminologyStandOff.execute();
+        multiTerminologyStandOff.execute();
         List<String> expected = new ArrayList<>();
         expected.add("[0]");
         expected.add("[0, 1, 2, 3]");
         expected.add("[5, 6, 7, 8]");
 
-        simpleTerminologyStandOff.getTermino().forEach(
+        multiTerminologyStandOff.getTermino().forEach(
                 ids -> Assert.assertEquals("morpho ids must be equals",
-                        expected.get(simpleTerminologyStandOff.getTermino().indexOf(ids)),
+                        expected.get(multiTerminologyStandOff.getTermino().indexOf(ids)),
                         ids.getIds().toString()
                 )
         );
