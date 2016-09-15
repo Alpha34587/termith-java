@@ -97,6 +97,10 @@ public class TermithIndex {
         return JsonTreeTagger;
     }
 
+    public void setTerminologyStandOff(Map<String, List<TerminologyOffetId>> terminologyStandOff) {
+        this.terminologyStandOff = terminologyStandOff;
+    }
+
     public void setCorpus(Path corpus) {
         this.corpus = corpus;
     }

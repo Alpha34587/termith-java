@@ -24,6 +24,7 @@ public class TermSuiteJsonInjector {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(TermSuiteJsonInjector.class.getName());
     private static final int DEFAULT_POOL_SIZE = Runtime.getRuntime().availableProcessors();
+    private final TermithIndex termithIndex;
     private Map<String, List<MorphoSyntaxOffsetId>> morphosyntaxStandOff;
     private Map<String, List<TerminologyOffetId>> terminologyStandOff;
     private Path corpus;
@@ -48,6 +49,8 @@ public class TermSuiteJsonInjector {
         lang = termithIndex.getLang();
         terminologies = termithIndex.getTerminologies();
         morphosyntaxStandOff =  termithIndex.getMorphoSyntaxStandOff();
+        terminologyStandOff = termithIndex.getTerminologyStandOff();
+        this.termithIndex = termithIndex;
     }
 
     public void execute() throws ExecutionException, InterruptedException {
@@ -61,6 +64,8 @@ public class TermSuiteJsonInjector {
                         id,value,terminologyStandOff.get(id))
                 )
         );
+        LOGGER.info("waiting executors to finish");
+        termithIndex.setTerminologyStandOff(terminologyStandOff);
         executorService.shutdown();
         executorService.awaitTermination(1L,TimeUnit.DAYS);
     }
@@ -109,6 +114,7 @@ public class TermSuiteJsonInjector {
 
         @Override
         public void run() {
+            LOGGER.info("Bind Morphosyntax ids and Terminology for : " + id);
             TerminologyStandOff terminologyStandOff = new TerminologyStandOff(id, morpho, termino);
             terminologyStandOff.execute();
         }
