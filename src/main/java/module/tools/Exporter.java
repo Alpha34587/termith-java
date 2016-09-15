@@ -1,6 +1,7 @@
 package module.tools;
 
 import models.MorphoSyntaxOffsetId;
+import models.TerminologyOffetId;
 import models.TermithIndex;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -96,7 +97,14 @@ public class Exporter {
             int startText = value.indexOf("</teiHeader>");
             if (termithIndex.getMorphoSyntaxStandOff().containsKey(key))
                 value.insert(startText,serializeMorphosyntax(termithIndex.getMorphoSyntaxStandOff().get(key)));
+            if (termithIndex.getTerminologyStandOff().containsKey(key))
+                value.insert(startText,serializeTerminology(termithIndex.getTerminologyStandOff().get(key)));
 
+
+        }
+
+        private StringBuffer serializeTerminology(List<TerminologyOffetId> terminologyOffetIds) {
+            return new StringBuffer();
         }
 
         private StringBuffer serializeMorphosyntax(List<MorphoSyntaxOffsetId> morphoSyntaxOffsetIds) {

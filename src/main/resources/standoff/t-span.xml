@@ -1,0 +1,7 @@
+<span target="@target" corresp="@corresp">
+    <fs>
+        <f name="@name">
+            <string>@string</string>
+        </f>
+    </fs>
+</span>
