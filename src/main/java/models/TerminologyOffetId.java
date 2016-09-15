@@ -1,6 +1,7 @@
 package models;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Simon Meoni
@@ -36,6 +37,10 @@ public class TerminologyOffetId extends OffsetId {
 
     public int getTermId() {
         return termId;
+    }
+
+    public void setIds(List<Integer> ids){
+        this.ids.addAll(ids);
     }
 
     public TerminologyOffetId(TerminologyOffetId other) {

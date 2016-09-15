@@ -21,21 +21,26 @@ public class TerminologyStandOffTest {
     private TerminologyStandOff multiTerminologyStandOff;
     private List<MorphoSyntaxOffsetId> multimorpho;
     private List<TerminologyOffetId> multitermino;
+    private List<MorphoSyntaxOffsetId> symbolmorpho;
+    private List<TerminologyOffetId> symboltermino;
+    private TerminologyStandOff symbolTerminologyStandOff;
 
     @Before
     public void setUp(){
+        morpho = new ArrayList<>();
         morpho.add(new MorphoSyntaxOffsetId(0,10,"cuillière","N",0));
         morpho.add(new MorphoSyntaxOffsetId(11,13,"en","DET",1));
         morpho.add(new MorphoSyntaxOffsetId(14,18,"bois","N",2));
         morpho.add(new MorphoSyntaxOffsetId(15,19,"rien","N",3));
         morpho.add(new MorphoSyntaxOffsetId(20,26,"pierre","N",4));
 
+        termino = new ArrayList<>();
         termino.add(new TerminologyOffetId(0,10,0,"cuillière"));
         termino.add(new TerminologyOffetId(0,18,1,"cuillière en bois"));
         termino.add(new TerminologyOffetId(20,26,2,"pierre"));
         simpleTerminologyStandOff = new TerminologyStandOff("1",morpho,termino);
 
-
+        multimorpho = new ArrayList<>();
         multimorpho.add(new MorphoSyntaxOffsetId(0,10,"cuillière","N",0));
         List<Integer> boisIds = new ArrayList<>();
         boisIds.add(2);
@@ -50,10 +55,25 @@ public class TerminologyStandOffTest {
         multimorpho.add(new MorphoSyntaxOffsetId(15,19,"rien","N",4));
         multimorpho.add(new MorphoSyntaxOffsetId(20,26,"pierre","N",pierreIds));
 
+        multitermino = new ArrayList<>();
         multitermino.add(new TerminologyOffetId(0,10,0,"cuillière"));
         multitermino.add(new TerminologyOffetId(0,18,1,"cuillière en bois"));
         multitermino.add(new TerminologyOffetId(20,26,2,"pierre"));
         multiTerminologyStandOff = new TerminologyStandOff("1",multimorpho,multitermino);
+
+        symbolmorpho = new ArrayList<>();
+        symbolmorpho.add(new MorphoSyntaxOffsetId(0,10,"cuillière","N",0));
+        symbolmorpho.add(new MorphoSyntaxOffsetId(11,13,"en","DET",1));
+        symbolmorpho.add(new MorphoSyntaxOffsetId(14,18,"bois","N",boisIds));
+        symbolmorpho.add(new MorphoSyntaxOffsetId(18,19,",","N",boisIds));
+        symbolmorpho.add(new MorphoSyntaxOffsetId(15,19,"rien","N",4));
+        symbolmorpho.add(new MorphoSyntaxOffsetId(20,26,"pierre","N",pierreIds));
+
+        symboltermino = new ArrayList<>();
+        symboltermino.add(new TerminologyOffetId(0,10,0,"cuillière"));
+        symboltermino.add(new TerminologyOffetId(0,18,1,"cuillière en bois"));
+        symboltermino.add(new TerminologyOffetId(20,26,2,"pierre"));
+        symbolTerminologyStandOff = new TerminologyStandOff("1",symbolmorpho,symboltermino);
     }
     @Test
     public void simpleExecute() throws Exception {
@@ -74,6 +94,23 @@ public class TerminologyStandOffTest {
 
     @Test
     public void multiExecute() throws Exception {
+        multiTerminologyStandOff.execute();
+        List<String> expected = new ArrayList<>();
+        expected.add("[0]");
+        expected.add("[0, 1, 2, 3]");
+        expected.add("[5, 6, 7, 8]");
+
+        multiTerminologyStandOff.getTermino().forEach(
+                ids -> Assert.assertEquals("morpho ids must be equals",
+                        expected.get(multiTerminologyStandOff.getTermino().indexOf(ids)),
+                        ids.getIds().toString()
+                )
+        );
+
+    }
+
+    @Test
+    public void symbolExecute() throws Exception {
         multiTerminologyStandOff.execute();
         List<String> expected = new ArrayList<>();
         expected.add("[0]");
