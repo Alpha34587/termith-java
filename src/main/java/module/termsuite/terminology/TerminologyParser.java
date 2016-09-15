@@ -14,6 +14,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import static eu.project.ttc.readers.JsonCasConstants.F_BEGIN;
 import static eu.project.ttc.readers.JsonCasConstants.F_END;
+import static models.JsonTermResources.*;
 
 /**
  * @author Simon Meoni
@@ -104,10 +105,10 @@ public class TerminologyParser {
 
 
             switch (parser.getCurrentName()){
-                case "id" :
+                case T_ID :
                     offetId.setTermId(parser.nextIntValue(0));
                     break;
-                case "text" :
+                case T_TEXT :
                     offetId.setWord(parser.nextTextValue());
                     break;
                 case F_BEGIN :
@@ -116,7 +117,7 @@ public class TerminologyParser {
                 case F_END :
                     offetId.setEnd(parser.nextIntValue(0));
                     break;
-                case "file" :
+                case T_FILE :
                     currentFile = String.valueOf(parser.nextIntValue(0));
                     break;
                 default:
