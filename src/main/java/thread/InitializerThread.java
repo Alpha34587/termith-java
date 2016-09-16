@@ -13,6 +13,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
+import static models.TermithIndex.base;
+
 /**
  * This is the first phase of the termith process. The objective is to extract the text in order to send it to
  * a termsuite process.
@@ -45,7 +47,7 @@ public class InitializerThread {
         this.termithIndex = termithIndex;
         this.executor = Executors.newFixedThreadPool(poolSize);
         corpusCnt  = new CountDownLatch(
-                (int)Files.list(termithIndex.getBase()).count());
+                (int)Files.list(base).count());
     }
 
     /**
@@ -54,7 +56,7 @@ public class InitializerThread {
      * @throws InterruptedException
      */
     public void execute() throws IOException, InterruptedException {
-        Files.list(termithIndex.getBase()).forEach(
+        Files.list(base).forEach(
                 p -> {
                     executor.submit(new TextExtractorWorker(p,termithIndex));
                     executor.submit(new InitCorpusWorker(p, termithIndex,corpusCnt));

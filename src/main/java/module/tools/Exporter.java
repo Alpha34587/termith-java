@@ -17,6 +17,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
+import static models.TermithIndex.outputPath;
 import static models.standOffResources.*;
 
 
@@ -57,7 +58,7 @@ public class Exporter {
         @Override
         public void run() {
 
-            LOGGER.info("writing : " + termithIndex.getOutputPath() + "/" + key + ".xml");
+            LOGGER.info("writing : " + outputPath + "/" + key + ".xml");
             insertStandOff();
             insertBody();
             writeFile();
@@ -67,8 +68,7 @@ public class Exporter {
         private void writeFile() {
             try {
                 BufferedWriter bufferedWriter =
-                        Files.newBufferedWriter(Paths.get(termithIndex.getOutputPath() + "/" + key + ".xml"));
-
+                        Files.newBufferedWriter(Paths.get(outputPath + "/" + key + ".xml"));
                 bufferedWriter.write(String.valueOf(value));
                 bufferedWriter.close();
             } catch (IOException e) {

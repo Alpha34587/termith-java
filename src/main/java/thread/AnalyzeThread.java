@@ -20,6 +20,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.*;
 
+import static models.TermithIndex.lang;
+
 /**
  * @author Simon Meoni
  *         Created on 01/09/16.
@@ -78,7 +80,7 @@ public class AnalyzeThread {
     }
 
     private void init() throws IOException {
-        TagNormalizer.initTag(TermithIndex.lang);
+        TagNormalizer.initTag(lang);
 
         LOGGER.info("temporary folder created: " + termithIndex.getCorpus());
         Files.createDirectories(Paths.get(termithIndex.getCorpus() + "/json"));

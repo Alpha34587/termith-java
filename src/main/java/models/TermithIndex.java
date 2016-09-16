@@ -14,11 +14,11 @@ import java.util.concurrent.CopyOnWriteArrayList;
  */
 public class TermithIndex {
 
-    private String outputPath;
+    public static String outputPath;
     public static String lang;
     public static String treeTaggerHome;
-    private Path base;
-    private boolean trace;
+    public static Path base;
+    public static boolean trace;
 
     public Path corpus;
     private List<Path> terminologies;
@@ -43,22 +43,6 @@ public class TermithIndex {
         xmlCorpus = new ConcurrentHashMap<>();
         JsonTreeTagger = new ConcurrentHashMap<>();
         terminologyStandOff = new ConcurrentHashMap<>();
-    }
-
-    public String getOutputPath() {
-        return outputPath;
-    }
-
-    public String getLang() {
-        return lang;
-    }
-
-    public String getTreeTaggerHome() {
-        return treeTaggerHome;
-    }
-
-    public Path getBase() {
-        return base;
     }
 
     public boolean isTrace() {
