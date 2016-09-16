@@ -100,22 +100,22 @@ public class TerminologyParser {
     }
 
     private void extractTerm(JsonToken jsonToken, JsonParser parser,
-                             TermsOffsetId offetId) throws IOException {
+                             TermsOffsetId offsetId) throws IOException {
         if (jsonToken.equals(JsonToken.FIELD_NAME)){
 
 
             switch (parser.getCurrentName()){
                 case T_ID :
-                    offetId.setTermId(parser.nextIntValue(0));
+                    offsetId.setTermId(parser.nextIntValue(0));
                     break;
                 case T_TEXT :
-                    offetId.setWord(parser.nextTextValue());
+                    offsetId.setWord(parser.nextTextValue());
                     break;
                 case F_BEGIN :
-                    offetId.setBegin(parser.nextIntValue(0));
+                    offsetId.setBegin(parser.nextIntValue(0));
                     break;
                 case F_END :
-                    offetId.setEnd(parser.nextIntValue(0));
+                    offsetId.setEnd(parser.nextIntValue(0));
                     break;
                 case T_FILE :
                     currentFile = String.valueOf(parser.nextIntValue(0));
