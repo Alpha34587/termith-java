@@ -1,5 +1,6 @@
 package module.termsuite;
 
+import module.termsuite.json.TermsuiteJsonReader;
 import org.antlr.v4.runtime.misc.Pair;
 import org.junit.Assert;
 import org.junit.Before;

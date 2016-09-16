@@ -24,7 +24,7 @@ import java.util.concurrent.*;
  * @author Simon Meoni
  *         Created on 01/09/16.
  */
-public class AnalyzeThread extends TermSuiteTextInjector {
+public class AnalyzeThread {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(AnalyzeThread.class.getName());
     private static final int DEFAULT_POOL_SIZE = Runtime.getRuntime().availableProcessors();

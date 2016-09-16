@@ -1,7 +1,7 @@
 package worker;
 
 import models.TermithIndex;
-import module.termsuite.json.JsonPipelineBuilder;
+import module.termsuite.PipelineBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -27,7 +27,7 @@ public class TermsuiteWorker implements Runnable{
     public void run() {
         LOGGER.info("Build Termsuite Pipeline");
         init();
-        JsonPipelineBuilder pipelineBuilder = new JsonPipelineBuilder(
+        PipelineBuilder pipelineBuilder = new PipelineBuilder(
                 lang,
                 jsonCorpus,
                 termithIndex.getTerminologies().get(0).toString(),

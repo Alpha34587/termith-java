@@ -1,4 +1,4 @@
-package module.termsuite;
+package module.termsuite.json;
 
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonParser;

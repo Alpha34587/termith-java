@@ -1,6 +1,6 @@
 package module.tei.morphology;
 
-import module.termsuite.TermsuiteJsonReader;
+import module.termsuite.json.TermsuiteJsonReader;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

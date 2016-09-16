@@ -1,7 +1,7 @@
 package module.tei.morphology;
 
 import models.MorphoSyntaxOffsetId;
-import module.termsuite.TermsuiteJsonReader;
+import module.termsuite.json.TermsuiteJsonReader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
