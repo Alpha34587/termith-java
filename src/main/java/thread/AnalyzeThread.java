@@ -7,6 +7,8 @@ import module.treetagger.CorpusAnalyzer;
 import module.treetagger.TagNormalizer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import worker.TerminologyParserWorker;
+import worker.TerminologyStandOffWorker;
 import worker.TermsuiteWorker;
 import worker.TreeTaggerWorker;
 
@@ -63,8 +65,13 @@ public class AnalyzeThread extends TermSuiteTextInjector {
         );
         LOGGER.info("waiting that all json files are serialized");
         jsonCnt.await();
-        Future<?> termsuiteTask = executorService.submit(new TermsuiteWorker(termithIndex));
-        termsuiteTask.get();
+        executorService.submit(new TermsuiteWorker(termithIndex)).get();
+        executorService.submit(new TerminologyParserWorker()).get();
+        termithIndex.getMorphoSyntaxStandOff().forEach(
+                (id,value) -> executorService.submit(new TerminologyStandOffWorker(
+                        id,value,termithIndex)
+                )
+        );
         LOGGER.info("json files serialization finished, termsuite task started");
         executorService.shutdown();
         executorService.awaitTermination(1L,TimeUnit.DAYS);
