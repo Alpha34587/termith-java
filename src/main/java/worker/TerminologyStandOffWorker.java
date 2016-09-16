@@ -2,21 +2,38 @@ package worker;
 
 import models.MorphoSyntaxOffsetId;
 import models.TermithIndex;
+import models.TermsOffsetId;
+import module.termsuite.terminology.TerminologyStandOff;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.List;
+import java.util.NavigableMap;
 
 /**
  * @author Simon Meoni
  *         Created on 16/09/16.
  */
 public class TerminologyStandOffWorker implements Runnable {
+    private static final Logger LOGGER = LoggerFactory.getLogger(TerminologyStandOffWorker.class.getName());
+    private final String id;
+    private final List<MorphoSyntaxOffsetId> morpho;
+    private final List<TermsOffsetId> termino;
+    private NavigableMap<Integer,List<Integer>> beginMap;
+    private NavigableMap<Integer,List<Integer>> endMap;
     public TerminologyStandOffWorker(String id,
-                                     List<MorphoSyntaxOffsetId> value,
+                                     List<MorphoSyntaxOffsetId> morpho,
                                      TermithIndex termithIndex) {
+        this.id = id;
+        this.morpho = morpho;
+        this.termino = termithIndex.getTerminologyStandOff().get(id);
     }
 
     @Override
     public void run() {
-
+        LOGGER.info("retrieve morphosyntax id for file :" + id);
+        TerminologyStandOff terminologyStandOff = new TerminologyStandOff(id,morpho,termino);
+        terminologyStandOff.execute();
+        LOGGER.info("retrieve id task finished");
     }
 }

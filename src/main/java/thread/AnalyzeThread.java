@@ -65,14 +65,14 @@ public class AnalyzeThread extends TermSuiteTextInjector {
         );
         LOGGER.info("waiting that all json files are serialized");
         jsonCnt.await();
+        LOGGER.info("json files serialization finished, termsuite task started");
         executorService.submit(new TermsuiteWorker(termithIndex)).get();
-        executorService.submit(new TerminologyParserWorker()).get();
+        executorService.submit(new TerminologyParserWorker(termithIndex)).get();
         termithIndex.getMorphoSyntaxStandOff().forEach(
                 (id,value) -> executorService.submit(new TerminologyStandOffWorker(
                         id,value,termithIndex)
                 )
         );
-        LOGGER.info("json files serialization finished, termsuite task started");
         executorService.shutdown();
         executorService.awaitTermination(1L,TimeUnit.DAYS);
     }
