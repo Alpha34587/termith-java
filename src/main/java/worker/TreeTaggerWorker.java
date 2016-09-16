@@ -46,7 +46,6 @@ public class TreeTaggerWorker implements Runnable {
     public void run() {
         TreeTaggerToJson treeTaggerToJson = new TreeTaggerToJson(
                 txt,
-                txtPath,
                 jsonPath,
                 treeTaggerHome,
                 lang,

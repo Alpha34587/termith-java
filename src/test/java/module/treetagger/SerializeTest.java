@@ -35,30 +35,27 @@ public class SerializeTest {
 
         termithIndex = new TermithIndex.Builder().build();
         TagNormalizer.initTag("en");
-        initializerThread = new InitializerThread(termithIndex);
-        initializerThread.addText("1",
+        termithIndex.addText("1",
                 new StringBuffer("\n \n \nJournal of Gerontology: PSYCHOLOGICAL patient (1998@)"));
         CorpusAnalyzer corpusAnalyzer = new CorpusAnalyzer(termithIndex.getExtractedText());
 
         tokenLemma = new StringBuilder(
                 "Journal\tNP\tJournal\n" +
-                "of\tIN\tof\n" +
-                "Gerontology\tNP\tgerontology\n" +
-                ":\t:\t:\n" +
-                "PSYCHOLOGICAL\tJJ\tpsychological\n" +
-                "patient\tJJ\tpatient\n" +
-                "(\tJJ\t(\n" +
-                "1998@\tJJ\t1998@\n" +
-                ")\tJJ\t)");
+                        "of\tIN\tof\n" +
+                        "Gerontology\tNP\tgerontology\n" +
+                        ":\t:\t:\n" +
+                        "PSYCHOLOGICAL\tJJ\tpsychological\n" +
+                        "patient\tJJ\tpatient\n" +
+                        "(\tJJ\t(\n" +
+                        "1998@\tJJ\t1998@\n" +
+                        ")\tJJ\t)");
         lemma = new StringBuffer(
                 "\n \n \nJournal of Gerontology: PSYCHOLOGICAL patient (1998@)");
 
-
         jsonResFile = temporaryFolder.newFile("test1.json");
 
-
-        serializeLemma = new Serialize(tokenLemma, "test1.json",
-                jsonResFile.getAbsolutePath(), lemma, corpusAnalyzer.getAnalyzedTexts().get("1"));
+        serializeLemma = new Serialize(tokenLemma, jsonResFile.getAbsolutePath(),
+                lemma, corpusAnalyzer.getAnalyzedTexts().get("1"));
     }
 
     @Test
@@ -66,6 +63,7 @@ public class SerializeTest {
         serializeLemma.execute();
         String observe = String.join("\n",Files.readAllLines(jsonResFile.toPath()));
         String expected = String.join("\n", Files.readAllLines(Paths.get("src/test/resources/serialize/file1.json")));
+        expected = expected.replace("test1.json",jsonResFile.getAbsolutePath());
         Assert.assertEquals("files content must be equals : ",expected,observe);
     }
 

@@ -93,6 +93,12 @@ public class TermithIndex {
         return extractedText;
     }
 
+    public void addText(String id, StringBuffer content) {
+
+        this.getExtractedText().put(id,content);
+    }
+
+
     public Map<String, StringBuffer> getXmlCorpus() {
         return xmlCorpus;
     }

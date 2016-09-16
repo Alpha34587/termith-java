@@ -25,10 +25,9 @@ public class CorpusAnalyzerTest {
     public void setUp() throws Exception {
 
         termithIndex = new TermithIndex.Builder().build();
-        initializerThreadCorpus = new InitializerThread(termithIndex);
-        initializerThreadCorpus.addText("1", File.ReadFile(Paths.get("src/test/resources/corpus.analyzer/txt/file1.txt")));
-        initializerThreadCorpus.addText("2",File.ReadFile(Paths.get("src/test/resources/corpus.analyzer/txt/file2.txt")));
-        initializerThreadCorpus.addText("3",File.ReadFile(Paths.get("src/test/resources/corpus.analyzer/txt/file3.txt")));
+        termithIndex.addText("1", File.ReadFile(Paths.get("src/test/resources/corpus.analyzer/txt/file1.txt")));
+        termithIndex.addText("2",File.ReadFile(Paths.get("src/test/resources/corpus.analyzer/txt/file2.txt")));
+        termithIndex.addText("3",File.ReadFile(Paths.get("src/test/resources/corpus.analyzer/txt/file3.txt")));
         extractedText = termithIndex.getExtractedText();
     }
 

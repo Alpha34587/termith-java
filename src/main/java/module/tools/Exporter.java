@@ -5,7 +5,6 @@ import models.TermithIndex;
 import models.TermsOffsetId;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import runner.TermithText;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -19,13 +18,6 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 import static models.standOffResources.*;
-
-/**
- * This class is used to execute the different output result of the TermithText class
- * @see TermithText
- * @author Simon Meoni
- * Created on 16/08/16.
- */
 
 
 public class Exporter {

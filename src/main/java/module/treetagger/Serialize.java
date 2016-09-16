@@ -16,18 +16,16 @@ import java.util.ArrayDeque;
 public class Serialize {
 
     private ArrayDeque tokenDeque;
-    private String jsonPath;
     private StringBuffer txt;
-    private String txtPath;
+    private String jsonPath;
     private TextAnalyzer textAnalyzer;
 
-    public Serialize(StringBuilder tokenDeque, String txtPath, String jsonPath, StringBuffer txt
+    public Serialize(StringBuilder tokenDeque, String jsonPath, StringBuffer txt
             , TextAnalyzer textAnalyzer) {
         this.tokenDeque = new ArrayDeque();
         populateTokenDeque(tokenDeque);
-        this.jsonPath = jsonPath;
         this.txt = txt;
-        this.txtPath = txtPath;
+        this.jsonPath = jsonPath;
         this.textAnalyzer = textAnalyzer;
     }
 
@@ -38,7 +36,7 @@ public class Serialize {
     }
 
     public void execute() throws IOException {
-        FileOutputStream fos = new FileOutputStream(txtPath);
+        FileOutputStream fos = new FileOutputStream(jsonPath);
         Writer writer = new OutputStreamWriter(fos, "UTF-8");
         JsonFactory jfactory = new JsonFactory();
         JsonGenerator jg = jfactory.createGenerator(writer);
@@ -76,7 +74,7 @@ public class Serialize {
         jg.writeFieldName("sdi");
         jg.writeStartObject();
         jg.writeFieldName("uri");
-        jg.writeString("file:/"+ txtPath);
+        jg.writeString("file:/"+ jsonPath);
         jg.writeFieldName("off_in_s");
         jg.writeNumber(0);
         jg.writeFieldName("document_index");

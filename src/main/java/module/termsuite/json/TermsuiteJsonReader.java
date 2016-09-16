@@ -152,7 +152,7 @@ public class TermsuiteJsonReader {
         tokenQueue.add(new Token(pos, lemma, begin, end));
     }
 
-    class Token {
+    public class Token {
 
         public String pos;
         private String lemma;

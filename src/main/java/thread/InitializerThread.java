@@ -68,7 +68,4 @@ public class InitializerThread {
         executor.awaitTermination(1L, TimeUnit.DAYS);
     }
 
-    public void addText(String id, StringBuffer content) {
-        termithIndex.getExtractedText().put(id,content);
-    }
 }
