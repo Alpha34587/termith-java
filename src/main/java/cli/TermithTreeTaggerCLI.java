@@ -1,10 +1,10 @@
 package cli;
 
 import models.TermithIndex;
-import module.tools.Exporter;
 import org.apache.commons.cli.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import runner.Exporter;
 import runner.TermithTreeTagger;
 
 import javax.xml.transform.TransformerException;
