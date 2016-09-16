@@ -38,9 +38,6 @@ public class TextExtractorWorker implements Runnable {
             TextExtractor textExtractor = new TextExtractor(path.toFile());
             StringBuffer extractedBuffer = textExtractor.xsltTransformation();
             termithIndex.getExtractedText().put(path.getFileName().toString().replace(".xml", ""), extractedBuffer);
-//            termithIndex.getXmlCorpus().put(path.getFileName().toString().replace(".xml", ""), new StringBuffer(
-//                    String.join("\n", Files.readAllLines(path))
-//            ));
             LOGGER.info("Extraction done for file: " + this.path);
         } catch (IOException e) {
             LOGGER.info("File Exception",e);
