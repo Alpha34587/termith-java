@@ -49,14 +49,16 @@ public class TermithTreeTagger {
         }
         LOGGER.info("First Phase Finished : Text extraction");
 
-        LOGGER.info("Starting Second Phase Started: Json Writer");
+        LOGGER.info("Starting Second Phase Started: Analyze Phase");
         AnalyzeThread analyzeThread = new AnalyzeThread(poolSize, termithIndex);
         try {
             analyzeThread.execute();
         } catch ( Exception e ) {
-            LOGGER.error("Error during execution of the extraction text phase : ",e);
+            LOGGER.error("Error during execution of the analyze phase : ",e);
             exit(1);
         }
+        LOGGER.info("Starting Second Phase Finished: Analyze Phase");
+
 
 
     }

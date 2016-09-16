@@ -7,6 +7,7 @@ import module.treetagger.CorpusAnalyzer;
 import module.treetagger.TagNormalizer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import worker.TermsuiteWorker;
 import worker.TreeTaggerWorker;
 
 import java.io.IOException;
@@ -15,10 +16,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 
 /**
  * @author Simon Meoni
@@ -51,7 +49,7 @@ public class AnalyzeThread extends TermSuiteTextInjector {
         return termithIndex.getCorpus();
     }
 
-    public void execute() throws InterruptedException, IOException {
+    public void execute() throws InterruptedException, IOException, ExecutionException {
         init();
         CorpusAnalyzer corpusAnalyzer = new CorpusAnalyzer(termithIndex.getExtractedText());
 
@@ -65,6 +63,8 @@ public class AnalyzeThread extends TermSuiteTextInjector {
         );
         LOGGER.info("waiting that all json files are serialized");
         jsonCnt.await();
+        Future<?> termsuiteTask = executorService.submit(new TermsuiteWorker(termithIndex));
+        termsuiteTask.get();
         LOGGER.info("json files serialization finished, termsuite task started");
         executorService.shutdown();
         executorService.awaitTermination(1L,TimeUnit.DAYS);

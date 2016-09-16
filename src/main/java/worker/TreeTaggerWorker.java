@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.util.concurrent.CountDownLatch;
 
 import static models.TermithIndex.lang;
+import static models.TermithIndex.treeTaggerHome;
 
 /**
  * @author Simon Meoni
@@ -47,7 +48,7 @@ public class TreeTaggerWorker implements Runnable {
                 txt,
                 txtPath,
                 jsonPath,
-                TermithIndex.treeTaggerHome,
+                treeTaggerHome,
                 lang,
                 textAnalyzer
         );
@@ -60,7 +61,7 @@ public class TreeTaggerWorker implements Runnable {
             LOGGER.info("converting TreeTagger output finished file : " + txtPath);
 
             LOGGER.info("tokenization and morphosyntax tasks started file : " + jsonPath);
-            File json = new File(txtPath);
+            File json = new File(jsonPath);
             SyntaxGenerator syntaxGenerator = new SyntaxGenerator(
                     json,txt,xml
             );
