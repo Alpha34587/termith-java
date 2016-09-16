@@ -6,12 +6,14 @@ import org.slf4j.LoggerFactory;
 import javax.xml.transform.Source;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 import java.io.File;
 import java.io.IOException;
 import java.io.StringWriter;
+
+import static models.XsltStylesheetResources.EXTRACT_TEXT;
+import static models.XsltStylesheetResources.FACTORY;
 
 /**
  * The textExtractor class is used extract the plain text of an XML file
@@ -37,16 +39,14 @@ public class TextExtractor {
      */
     public StringBuffer xsltTransformation() throws IOException {
 
-        TransformerFactory factory = TransformerFactory.newInstance();
-        Source xslt = new StreamSource(new File("src/main/resources/xsl/ExtractText.xsl"));
         Source input = new StreamSource(file);
         Transformer transformer;
         StringWriter stringWriter = new StringWriter();
         StreamResult streamResult = new StreamResult(stringWriter);
 
         try {
-            LOGGER.info("apply " + xslt.toString() + "to xml file" + input.toString());
-            transformer = factory.newTransformer(xslt);
+            LOGGER.info("apply " + EXTRACT_TEXT.toString() + "to xml file" + input.toString());
+            transformer = FACTORY.newTransformer(EXTRACT_TEXT);
             transformer.transform(input, streamResult);
 
         } catch (TransformerException e) {
