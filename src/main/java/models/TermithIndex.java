@@ -69,6 +69,10 @@ public class TermithIndex {
         return terminologies;
     }
 
+    public Path getJsonTerminology(){
+        return terminologies.get(1);
+    }
+
     public Map<String, List<MorphoSyntaxOffsetId>> getMorphoSyntaxStandOff() {
         return morphoSyntaxStandOff;
     }
