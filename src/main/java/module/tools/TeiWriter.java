@@ -36,7 +36,7 @@ public class TeiWriter {
         this.termithIndex = termithIndex;
     }
 
-    public void execute() {
+    public void execute() throws IOException {
 
         LOGGER.info("writing : " + outputPath + "/" + key + ".xml");
         insertStandOff();
@@ -45,16 +45,19 @@ public class TeiWriter {
     }
 
 
-    private void writeFile() {
+    private void writeFile() throws IOException {
+        BufferedWriter bufferedWriter = null;
         try {
-            BufferedWriter bufferedWriter =
+            bufferedWriter =
                     Files.newBufferedWriter(Paths.get(outputPath + "/" + key + ".xml"));
-            {
-                bufferedWriter.write(String.valueOf(value));
-                bufferedWriter.close();
-            }
+            bufferedWriter.write(String.valueOf(value));
         } catch (IOException e) {
             LOGGER.error("Some errors during files writing",e);
+        }
+        finally {
+            if (bufferedWriter != null) {
+                bufferedWriter.close();
+            }
         }
     }
 
@@ -63,7 +66,7 @@ public class TeiWriter {
             int startText = value.indexOf("<text>");
             int endText = value.indexOf("</TEI>");
             value.delete(startText,endText);
-            value.insert(startText,termithIndex.getTokenizeTeiBody().get(key));
+            value.insert(startText,termithIndex.getTokenizeTeiBody().get(key).append("\n"));
         }
     }
 
@@ -73,8 +76,6 @@ public class TeiWriter {
             value.insert(startText,serializeMorphosyntax(termithIndex.getMorphoSyntaxStandOff().get(key)));
         if (termithIndex.getTerminologyStandOff().containsKey(key))
             value.insert(startText,serializeTerminology(termithIndex.getTerminologyStandOff().get(key)));
-
-
     }
 
     private StringBuffer serializeTerminology(List<TermsOffsetId> termsOffsetIds) {

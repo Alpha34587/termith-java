@@ -58,7 +58,11 @@ public class SyntaxParser {
     }
 
     void teiBodyspliter(){
-        xml = new StringBuffer(xml.toString().split("(?=(<text>|<text\\s.*>))")[1]);
+        xml = new StringBuffer(
+                xml.toString()
+                        .split("(?=(<text>|<text\\s.*>))")[1]
+                        .split("(?<=(</text>))")[0]
+        );
 
     }
 

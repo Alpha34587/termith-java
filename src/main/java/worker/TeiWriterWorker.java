@@ -5,6 +5,8 @@ import module.tools.TeiWriter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.IOException;
+
 import static models.TermithIndex.outputPath;
 
 /**
@@ -29,7 +31,11 @@ public class TeiWriterWorker implements Runnable {
 
         LOGGER.info("writing : " + outputPath + "/" + key + ".xml");
         TeiWriter teiWriter = new TeiWriter(key,value,termithIndex);
-        teiWriter.execute();
+        try {
+            teiWriter.execute();
+        } catch (IOException e) {
+            LOGGER.error("errors during writing xml/tei file",e);
+        }
     }
 
 

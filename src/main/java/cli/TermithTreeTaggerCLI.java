@@ -103,5 +103,6 @@ public class TermithTreeTaggerCLI {
         } catch (ParseException e) {
             LOGGER.info("There are some problems during parsing arguments : ",e);
         }
+        int a = 0;
     }
 }
