@@ -3,66 +3,61 @@ package runner;
 import models.TermithIndex;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import thread.Initializer;
-import thread.JsonWriterInjector;
-import thread.TermSuiteJsonInjector;
+import worker.InitCorpusWorker;
+import worker.TextExtractorWorker;
 
 import java.io.IOException;
-
-import static java.lang.System.exit;
+import java.nio.file.Files;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author Simon Meoni
- *         Created on 01/09/16.
+ *         Created on 16/09/16.
  */
 public class TermithTreeTagger {
-    /***
-     * this is a part of the builder pattern
-
-     * @param builder Builder object
-     */
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(TermithText.class.getName());
+    private static final Logger LOGGER = LoggerFactory.getLogger(TermithTreeTagger.class.getName());
+    private static final int DEFAULT_POOL_SIZE = Runtime.getRuntime().availableProcessors();
     private TermithIndex termithIndex;
+    private ExecutorService executor;
+    private CountDownLatch corpusCnt;
 
-    public TermithTreeTagger(TermithIndex termithIndex) {
+    public TermithTreeTagger(TermithIndex termithIndex) throws IOException {
+        this(DEFAULT_POOL_SIZE, termithIndex);
+    }
+
+
+    public TermithTreeTagger(int poolSize,TermithIndex termithIndex) throws IOException {
         this.termithIndex = termithIndex;
+        this.executor = Executors.newFixedThreadPool(poolSize);
+        corpusCnt  = new CountDownLatch(
+                (int)Files.list(termithIndex.getBase()).count());
     }
 
     public TermithIndex getTermithIndex() {
         return termithIndex;
     }
 
-    public void execute() throws IOException {
+    public void execute() throws IOException, InterruptedException {
 
         int poolSize = Runtime.getRuntime().availableProcessors();
         LOGGER.info("Pool size set to: " + poolSize);
         LOGGER.info("Starting First Phase: Text extraction");
-        Initializer initializer = new Initializer(poolSize, termithIndex);
-        try {
-            initializer.execute();
-        } catch ( Exception e ) {
-            LOGGER.error("Error during execution of the extraction text phase : ",e);
-            exit(1);
-        }
+        Files.list(termithIndex.getBase()).forEach(
+                p -> {
+                    executor.submit(new TextExtractorWorker(p,termithIndex));
+                    executor.submit(new InitCorpusWorker(p, termithIndex,corpusCnt));
+                }
 
-        LOGGER.info("Starting Second Phase: Json Writer");
-        JsonWriterInjector jsonWriterInjector = new JsonWriterInjector(poolSize, termithIndex);
-        try {
-            jsonWriterInjector.execute();
-        } catch ( Exception e ) {
-            LOGGER.error("Error during execution of the extraction text phase : ",e);
-            exit(1);
-        }
+        );
+        LOGGER.info("Waiting initCorpusWorker executors to finish");
+        corpusCnt.await();
+        LOGGER.info("initCorpusWorker finished");
+        executor.shutdown();
+        executor.awaitTermination(1L, TimeUnit.DAYS);
 
-        LOGGER.info("Starting Third Phase: TermSuite + XML injection");
-        TermSuiteJsonInjector termSuiteJsonInjector = new TermSuiteJsonInjector(poolSize, termithIndex);
-        try {
-            termSuiteJsonInjector.execute();
-        } catch (Exception e) {
-            LOGGER.error("Error during execution of the termsuite and injection phase : ", e);
-            exit(1);
-
-        }
     }
+
 }
