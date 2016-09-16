@@ -4,7 +4,7 @@ import models.TermithIndex;
 import module.extractor.TextExtractor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import thread.Initializer;
+import thread.InitializerThread;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -17,7 +17,7 @@ public class TextExtractorWorker implements Runnable {
 
     private Path path;
     private TermithIndex termithIndex;
-    private static final Logger LOGGER = LoggerFactory.getLogger(Initializer.class.getName());
+    private static final Logger LOGGER = LoggerFactory.getLogger(InitializerThread.class.getName());
 
     /**
      * constructor of the class the parameter path is the path of the file that we want to treated

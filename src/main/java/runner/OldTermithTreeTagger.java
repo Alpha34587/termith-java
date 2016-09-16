@@ -3,8 +3,8 @@ package runner;
 import models.TermithIndex;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import thread.Initializer;
-import thread.JsonWriterInjector;
+import thread.AnalyzeThread;
+import thread.InitializerThread;
 import thread.TermSuiteJsonInjector;
 
 import java.io.IOException;
@@ -38,18 +38,18 @@ public class OldTermithTreeTagger {
         int poolSize = Runtime.getRuntime().availableProcessors();
         LOGGER.info("Pool size set to: " + poolSize);
         LOGGER.info("Starting First Phase: Text extraction");
-        Initializer initializer = new Initializer(poolSize, termithIndex);
+        InitializerThread initializerThread = new InitializerThread(poolSize, termithIndex);
         try {
-            initializer.execute();
+            initializerThread.execute();
         } catch ( Exception e ) {
             LOGGER.error("Error during execution of the extraction text phase : ",e);
             exit(1);
         }
 
         LOGGER.info("Starting Second Phase: Json Writer");
-        JsonWriterInjector jsonWriterInjector = new JsonWriterInjector(poolSize, termithIndex);
+        AnalyzeThread analyzeThread = new AnalyzeThread(poolSize, termithIndex);
         try {
-            jsonWriterInjector.execute();
+            analyzeThread.execute();
         } catch ( Exception e ) {
             LOGGER.error("Error during execution of the extraction text phase : ",e);
             exit(1);

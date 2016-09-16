@@ -3,7 +3,7 @@ package runner;
 import models.TermithIndex;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import thread.Initializer;
+import thread.InitializerThread;
 import thread.TermSuiteTextInjector;
 
 import java.io.IOException;
@@ -38,9 +38,9 @@ public class TermithText {
         int poolSize = Runtime.getRuntime().availableProcessors();
         LOGGER.info("Pool size set to: " + poolSize);
         LOGGER.info("Starting First Phase: Text extraction");
-        Initializer initializer = new Initializer(poolSize, termithIndex);
+        InitializerThread initializerThread = new InitializerThread(poolSize, termithIndex);
         try {
-            initializer.execute();
+            initializerThread.execute();
         } catch ( Exception e ) {
             LOGGER.error("Error during execution of the extraction text phase : ",e);
             exit(1);

@@ -19,9 +19,9 @@ import java.util.concurrent.TimeUnit;
  * @author Simon Meoni
  * Created on 25/07/16.
  */
-public class Initializer {
+public class InitializerThread {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(Initializer.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(InitializerThread.class);
     private static final int DEFAULT_POOL_SIZE = Runtime.getRuntime().availableProcessors();
 
     private TermithIndex termithIndex;
@@ -32,7 +32,7 @@ public class Initializer {
      * a constructor of initialize who take on parameter a folder path with xml files
      * @param termithIndex the input folder
      */
-    public Initializer(TermithIndex termithIndex) throws IOException {
+    public InitializerThread(TermithIndex termithIndex) throws IOException {
         this(DEFAULT_POOL_SIZE, termithIndex);
     }
 
@@ -41,7 +41,7 @@ public class Initializer {
      * @param poolSize number of worker
      * @param termithIndex the input of folder
      */
-    public Initializer(int poolSize, TermithIndex termithIndex) throws IOException {
+    public InitializerThread(int poolSize, TermithIndex termithIndex) throws IOException {
         this.termithIndex = termithIndex;
         this.executor = Executors.newFixedThreadPool(poolSize);
         corpusCnt  = new CountDownLatch(
@@ -70,4 +70,7 @@ public class Initializer {
         executor.awaitTermination(1L, TimeUnit.DAYS);
     }
 
+    public void addText(String id, StringBuffer content) {
+        termithIndex.getExtractedText().put(id,content);
+    }
 }

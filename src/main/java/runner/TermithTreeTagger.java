@@ -3,15 +3,12 @@ package runner;
 import models.TermithIndex;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import worker.InitCorpusWorker;
-import worker.TextExtractorWorker;
+import thread.AnalyzeThread;
+import thread.InitializerThread;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
+
+import static java.lang.System.exit;
 
 /**
  * @author Simon Meoni
@@ -20,9 +17,8 @@ import java.util.concurrent.TimeUnit;
 public class TermithTreeTagger {
     private static final Logger LOGGER = LoggerFactory.getLogger(TermithTreeTagger.class.getName());
     private static final int DEFAULT_POOL_SIZE = Runtime.getRuntime().availableProcessors();
+    private int poolSize;
     private TermithIndex termithIndex;
-    private ExecutorService executor;
-    private CountDownLatch corpusCnt;
 
     public TermithTreeTagger(TermithIndex termithIndex) throws IOException {
         this(DEFAULT_POOL_SIZE, termithIndex);
@@ -30,10 +26,9 @@ public class TermithTreeTagger {
 
 
     public TermithTreeTagger(int poolSize,TermithIndex termithIndex) throws IOException {
+        this.poolSize = poolSize;
         this.termithIndex = termithIndex;
-        this.executor = Executors.newFixedThreadPool(poolSize);
-        corpusCnt  = new CountDownLatch(
-                (int)Files.list(termithIndex.getBase()).count());
+
     }
 
     public TermithIndex getTermithIndex() {
@@ -44,19 +39,25 @@ public class TermithTreeTagger {
 
         int poolSize = Runtime.getRuntime().availableProcessors();
         LOGGER.info("Pool size set to: " + poolSize);
-        LOGGER.info("Starting First Phase: Text extraction");
-        Files.list(termithIndex.getBase()).forEach(
-                p -> {
-                    executor.submit(new TextExtractorWorker(p,termithIndex));
-                    executor.submit(new InitCorpusWorker(p, termithIndex,corpusCnt));
-                }
+        LOGGER.info("First Phase Started : Text extraction");
+        try{
+            InitializerThread initializerThread = new InitializerThread(poolSize,termithIndex);
+            initializerThread.execute();
+        } catch ( Exception e ) {
+            LOGGER.error("Error during execution of the extraction text phase : ",e);
+            exit(1);
+        }
+        LOGGER.info("First Phase Finished : Text extraction");
 
-        );
-        LOGGER.info("Waiting initCorpusWorker executors to finish");
-        corpusCnt.await();
-        LOGGER.info("initCorpusWorker finished");
-        executor.shutdown();
-        executor.awaitTermination(1L, TimeUnit.DAYS);
+        LOGGER.info("Starting Second Phase Started: Json Writer");
+        AnalyzeThread analyzeThread = new AnalyzeThread(poolSize, termithIndex);
+        try {
+            analyzeThread.execute();
+        } catch ( Exception e ) {
+            LOGGER.error("Error during execution of the extraction text phase : ",e);
+            exit(1);
+        }
+
 
     }
 

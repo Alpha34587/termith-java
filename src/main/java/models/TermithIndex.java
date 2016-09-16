@@ -1,7 +1,5 @@
 package models;
 
-import module.treetagger.TextAnalyzer;
-
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -30,7 +28,6 @@ public class TermithIndex {
     private Map<String, StringBuffer> extractedText;
     private Map<String, StringBuffer> xmlCorpus;
     private Map<String, Path> JsonTreeTagger;
-    private TextAnalyzer textAnalyzer;
 
     private TermithIndex(Builder builder) {
         base = builder.base;
@@ -46,7 +43,6 @@ public class TermithIndex {
         xmlCorpus = new ConcurrentHashMap<>();
         JsonTreeTagger = new ConcurrentHashMap<>();
         terminologyStandOff = new ConcurrentHashMap<>();
-        textAnalyzer = new TextAnalyzer();
     }
 
     public String getOutputPath() {
@@ -59,10 +55,6 @@ public class TermithIndex {
 
     public String getTreeTaggerHome() {
         return treeTaggerHome;
-    }
-
-    public TextAnalyzer getTextAnalyzer() {
-        return textAnalyzer;
     }
 
     public Path getBase() {

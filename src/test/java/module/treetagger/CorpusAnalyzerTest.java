@@ -5,7 +5,7 @@ import models.TermithIndex;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import thread.Initializer;
+import thread.InitializerThread;
 
 import java.nio.file.Paths;
 import java.util.Map;
@@ -17,7 +17,7 @@ import java.util.Map;
 public class CorpusAnalyzerTest {
 
     private TermithIndex termithIndex;
-    private Initializer initializerCorpus;
+    private InitializerThread initializerThreadCorpus;
     private CorpusAnalyzer corpusAnalyzer;
     private Map<String,StringBuffer> extractedText;
 
@@ -25,10 +25,10 @@ public class CorpusAnalyzerTest {
     public void setUp() throws Exception {
 
         termithIndex = new TermithIndex.Builder().build();
-        initializerCorpus = new Initializer(termithIndex);
-        initializerCorpus.addText("1", File.ReadFile(Paths.get("src/test/resources/corpus.analyzer/txt/file1.txt")));
-        initializerCorpus.addText("2",File.ReadFile(Paths.get("src/test/resources/corpus.analyzer/txt/file2.txt")));
-        initializerCorpus.addText("3",File.ReadFile(Paths.get("src/test/resources/corpus.analyzer/txt/file3.txt")));
+        initializerThreadCorpus = new InitializerThread(termithIndex);
+        initializerThreadCorpus.addText("1", File.ReadFile(Paths.get("src/test/resources/corpus.analyzer/txt/file1.txt")));
+        initializerThreadCorpus.addText("2",File.ReadFile(Paths.get("src/test/resources/corpus.analyzer/txt/file2.txt")));
+        initializerThreadCorpus.addText("3",File.ReadFile(Paths.get("src/test/resources/corpus.analyzer/txt/file3.txt")));
         extractedText = termithIndex.getExtractedText();
     }
 

@@ -6,7 +6,7 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
-import thread.Initializer;
+import thread.InitializerThread;
 
 import java.io.File;
 import java.io.IOException;
@@ -21,7 +21,7 @@ public class SerializeTest {
 
     private StringBuilder tokenLemma;
     private StringBuffer lemma;
-    private Initializer initializer;
+    private InitializerThread initializerThread;
     private Serialize serializeLemma;
     private Serialize serializeTag;
     private File jsonResFile;
@@ -35,8 +35,8 @@ public class SerializeTest {
 
         termithIndex = new TermithIndex.Builder().build();
         TagNormalizer.initTag("en");
-        initializer = new Initializer(termithIndex);
-        initializer.addText("1",
+        initializerThread = new InitializerThread(termithIndex);
+        initializerThread.addText("1",
                 new StringBuffer("\n \n \nJournal of Gerontology: PSYCHOLOGICAL patient (1998@)"));
         CorpusAnalyzer corpusAnalyzer = new CorpusAnalyzer(termithIndex.getExtractedText());
 
