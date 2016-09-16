@@ -63,8 +63,6 @@ public class InitializerThread {
         );
         LOGGER.info("Waiting initCorpusWorker executors to finish");
         corpusCnt.await();
-        LOGGER.info("Waiting initCorpusWorker executors to finish");
-        corpusCnt.await();
         LOGGER.info("initCorpusWorker finished");
         executor.shutdown();
         executor.awaitTermination(1L, TimeUnit.DAYS);
