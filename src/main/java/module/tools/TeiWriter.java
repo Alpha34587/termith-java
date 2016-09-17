@@ -28,6 +28,7 @@ public class TeiWriter {
     private StringBuffer value;
     private TermithIndex termithIndex;
     private static final Logger LOGGER = LoggerFactory.getLogger(TeiWriterWorker.class.getName());
+    private final String SEPARATOR = "(?<=\n)";
 
 
     public TeiWriter(String key, StringBuffer value, TermithIndex termithIndex) {
@@ -82,19 +83,19 @@ public class TeiWriter {
         StringBuffer standoff = new StringBuffer();
         Deque<TermsOffsetId> termDeque = new ArrayDeque<>(termsOffsetIds);
 
-        standoff.append(STANDOFF.split("\n")[0].replace("@type", "candidatsTermes")).append("\n");
-        standoff.append(T_TEI_HEADER).append("\n");
-        standoff.append(LIST_ANNOTATION.split("\n")[0]).append("\n");
+        standoff.append(STANDOFF.split(SEPARATOR)[0].replace("@type", "candidatsTermes"));
+        standoff.append(T_TEI_HEADER);
+        standoff.append(LIST_ANNOTATION.split(SEPARATOR)[0]);
         while (!termDeque.isEmpty()){
             TermsOffsetId token = termDeque.poll();
             standoff.append(
                     T_SPAN.replace("@target",serializeId(token.getIds()))
                             .replace("@corresp",String.valueOf(token.getTermId()))
                             .replace("@string", token.getWord())
-            ).append("\n");
+            );
         }
-        standoff.append(LIST_ANNOTATION.split("\n")[1]).append("\n");
-        standoff.append(STANDOFF.split("\n")[1]).append("\n");
+        standoff.append(LIST_ANNOTATION.split(SEPARATOR)[1]);
+        standoff.append(STANDOFF.split(SEPARATOR)[1]);
 
         return standoff;
     }
@@ -103,19 +104,19 @@ public class TeiWriter {
         StringBuffer standoff = new StringBuffer();
         Deque<MorphoSyntaxOffsetId> morphoDeque = new ArrayDeque<>(morphoSyntaxOffsetIds);
 
-        standoff.append(STANDOFF.split("\n")[0].replace("@type", "wordForms")).append("\n");
-        standoff.append(MS_TEI_HEADER).append("\n");
-        standoff.append(LIST_ANNOTATION.split("\n")[0]).append("\n");
+        standoff.append(STANDOFF.split(SEPARATOR)[0].replace("@type", "wordForms"));
+        standoff.append(MS_TEI_HEADER);
+        standoff.append(LIST_ANNOTATION.split(SEPARATOR)[0]);
         while (!morphoDeque.isEmpty()){
             MorphoSyntaxOffsetId token = morphoDeque.poll();
             standoff.append(
                     MS_SPAN.replace("@target",serializeId(token.getIds()))
-                            .replace("@lemma",token.getLemma())
+                            .replace("@lemma", token.getLemma().replace("<unknown>", "@unknown"))
                             .replace("@pos", token.getTag())
-            ).append("\n");
+            );
         }
-        standoff.append(LIST_ANNOTATION.split("\n")[1]).append("\n");
-        standoff.append(STANDOFF.split("\n")[1]).append("\n");
+        standoff.append(LIST_ANNOTATION.split(SEPARATOR)[1]);
+        standoff.append(STANDOFF.split(SEPARATOR)[1]);
 
         return standoff;
     }

@@ -25,12 +25,14 @@ public class standOffResources {
     public final static String STANDOFF = readFiles(PATH + "standoff.xml");
 
 
+
     private static String readFiles(String path)  {
         try {
-            return String.join("\n",Files.readAllLines(Paths.get(path)));
+            return String.join("\n", Files.readAllLines(Paths.get(path))) + "\n";
         } catch (IOException e) {
             LOGGER.error("cannot read resources",e);
         }
         return "";
     }
+    //TODO il faut faire ici une fonction level/ident qui prend en entrée un niveau de hiérarchie et qui colle des tab en fonction
 }
