@@ -71,11 +71,11 @@ public class TeiWriter {
     }
 
     private void insertStandOff() {
-        int startText = value.indexOf("</teiHeader>");
+        int startText = value.indexOf("<text>");
+        if (termithIndex.getTerminologyStandOff().containsKey(key))
+            value.insert(startText, serializeTerminology(termithIndex.getTerminologyStandOff().get(key)));
         if (termithIndex.getMorphoSyntaxStandOff().containsKey(key))
             value.insert(startText,serializeMorphosyntax(termithIndex.getMorphoSyntaxStandOff().get(key)));
-        if (termithIndex.getTerminologyStandOff().containsKey(key))
-            value.insert(startText,serializeTerminology(termithIndex.getTerminologyStandOff().get(key)));
     }
 
     private StringBuffer serializeTerminology(List<TermsOffsetId> termsOffsetIds) {
