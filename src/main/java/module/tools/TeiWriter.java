@@ -81,6 +81,13 @@ public class TeiWriter {
 
     private StringBuffer serializeTerminology(List<TermsOffsetId> termsOffsetIds) {
         StringBuffer standoff = new StringBuffer();
+        termsOffsetIds.sort((o1, o2) -> {
+            int comp = o1.getIds().get(0).compareTo(o2.getIds().get(0));
+            if (comp == 0) {
+                comp = ((Integer) o1.getIds().size()).compareTo(o2.getIds().size()) * -1;
+            }
+            return comp;
+        });
         Deque<TermsOffsetId> termDeque = new ArrayDeque<>(termsOffsetIds);
 
         standoff.append(STANDOFF.split(SEPARATOR)[0].replace("@type", "candidatsTermes"));
