@@ -16,13 +16,13 @@ public class standOffResources {
     private static final Logger LOGGER = LoggerFactory.getLogger(standOffResources.class.getName());
     private final static String PATH = "src/main/resources/standoff/";
 
-    public final static String LIST_ANNOTATION = readFiles(PATH + "list-annotation.xml");
-    public final static String MS_SPAN = readFiles(PATH + "ms-span.xml");
-    public final static String T_SPAN = readFiles(PATH + "t-span.xml");
-    public final static String MS_TEI_HEADER = readFiles(PATH + "ms-tei-header.xml");
-    public final static String T_TEI_HEADER = readFiles(PATH + "t-tei-header.xml");
-    public final static String T_INTERP_GRP = readFiles(PATH + "t-interp-grp.xml");
-    public final static String STANDOFF = readFiles(PATH + "standoff.xml");
+    public final static String LIST_ANNOTATION = indentation(readFiles(PATH + "list-annotation.xml"), 2);
+    public final static String MS_SPAN = indentation(readFiles(PATH + "ms-span.xml"), 3);
+    public final static String T_SPAN = indentation(readFiles(PATH + "t-span.xml"), 3);
+    public final static String MS_TEI_HEADER = indentation(readFiles(PATH + "ms-tei-header.xml"), 2);
+    public final static String T_TEI_HEADER = indentation(readFiles(PATH + "t-tei-header.xml"), 2);
+    public final static String T_INTERP_GRP = indentation(readFiles(PATH + "t-interp-grp.xml"), 2);
+    public final static String STANDOFF = indentation(readFiles(PATH + "standoff.xml"), 1);
 
 
 
@@ -34,5 +34,19 @@ public class standOffResources {
         }
         return "";
     }
-    //TODO il faut faire ici une fonction level/ident qui prend en entrée un niveau de hiérarchie et qui colle des tab en fonction
+
+    private static String indentation(String input, int level) {
+        String output = "";
+        String ident = "";
+        while (level != 0) {
+            ident += "\t";
+            level--;
+        }
+
+        for (String line : input.split("(?<=\n)")) {
+            output += ident + line;
+        }
+
+        return output;
+    }
 }
