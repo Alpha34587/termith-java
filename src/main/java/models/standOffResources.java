@@ -23,6 +23,7 @@ public class standOffResources {
     public final static String T_TEI_HEADER = indentation(readFiles(PATH + "t-tei-header.xml"), 2);
     public final static String T_INTERP_GRP = indentation(readFiles(PATH + "t-interp-grp.xml"), 2);
     public final static String STANDOFF = indentation(readFiles(PATH + "standoff.xml"), 1);
+    public final static String NS = readFiles(PATH + "ns.txt");
 
 
 

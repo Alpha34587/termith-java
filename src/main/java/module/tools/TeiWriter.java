@@ -40,9 +40,15 @@ public class TeiWriter {
     public void execute() throws IOException {
 
         LOGGER.info("writing : " + outputPath + "/" + key + ".xml");
+        insertStandoffNs();
         insertStandOff();
         insertBody();
         writeFile();
+    }
+
+    private void insertStandoffNs() {
+        int teiTag = value.indexOf("<TEI ") + 5;
+        value.insert(teiTag, NS.substring(0, NS.length() - 1) + " ");
     }
 
 
