@@ -1,6 +1,8 @@
 package cli;
 
+import ch.qos.logback.classic.Level;
 import models.TermithIndex;
+import module.tools.CLIUtils;
 import org.apache.commons.cli.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -78,25 +80,18 @@ public class TermithTreeTaggerCLI {
         try {
             CommandLine line = parser.parse( options, args );
             TermithIndex termithIndex;
-            if (options.hasOption("trace")) {
 
-                termithIndex = new TermithIndex.Builder()
-                        .lang(line.getOptionValue("l"))
-                        .baseFolder(line.getOptionValue("i"))
-                        .treeTaggerHome(line.getOptionValue("tt"))
-                        .trace(true)
-                        .export(line.getOptionValue("o"))
-                        .build();
-            }
-            else {
-                termithIndex = new TermithIndex.Builder()
-                        .lang(line.getOptionValue("l"))
-                        .baseFolder(line.getOptionValue("i"))
-                        .treeTaggerHome(line.getOptionValue("tt"))
-                        .export(line.getOptionValue("o"))
-                        .build();
+            termithIndex = new TermithIndex.Builder()
+                    .lang(line.getOptionValue("l"))
+                    .baseFolder(line.getOptionValue("i"))
+                    .treeTaggerHome(line.getOptionValue("tt"))
+                    .trace(true)
+                    .export(line.getOptionValue("o"))
+                    .build();
 
-            }
+            if (options.hasOption("trace"))
+                CLIUtils.setGlobalLogLevel(Level.DEBUG);
+
             new TermithTreeTagger(termithIndex).execute();
             Exporter exporter = new Exporter(termithIndex);
             exporter.execute();
