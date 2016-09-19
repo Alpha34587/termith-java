@@ -3,6 +3,7 @@ package models;
 import module.observer.TermithObservable;
 
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
@@ -31,8 +32,9 @@ public class TermithIndex {
     private Map<String, StringBuffer> xmlCorpus;
     private Map<String, Path> JsonTreeTagger;
     private TermithObservable termithObservable;
+    private int corpusSize;
 
-    private TermithIndex(Builder builder) {
+    private TermithIndex(Builder builder) throws IOException {
         base = builder.base;
         trace = builder.trace;
         outputPath = builder.outputPath;
@@ -47,6 +49,7 @@ public class TermithIndex {
         JsonTreeTagger = new ConcurrentHashMap<>();
         terminologyStandOff = new ConcurrentHashMap<>();
         termithObservable = new TermithObservable();
+        corpusSize = (int) Files.list(base).count();
     }
 
     public boolean isTrace() {
@@ -60,6 +63,8 @@ public class TermithIndex {
     public Path getJsonTerminology(){
         return terminologies.get(1);
     }
+
+    public int getCorpusSize() {return corpusSize;}
 
     public Map<String, List<MorphoSyntaxOffsetId>> getMorphoSyntaxStandOff() {
         return morphoSyntaxStandOff;
@@ -180,7 +185,7 @@ public class TermithIndex {
          * @see TermithIndex
          * @return return termith object
          */
-        public TermithIndex build() {
+        public TermithIndex build() throws IOException {
             return  new TermithIndex(this);
         }
     }

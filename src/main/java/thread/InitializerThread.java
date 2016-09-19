@@ -1,6 +1,7 @@
 package thread;
 
 import models.TermithIndex;
+import module.timer.ProgressBarTimer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import worker.InitCorpusWorker;
@@ -23,7 +24,7 @@ import static models.TermithIndex.base;
  */
 public class InitializerThread {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(InitializerThread.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(InitializerThread.class.getName());
     private static final int DEFAULT_POOL_SIZE = Runtime.getRuntime().availableProcessors();
 
     private TermithIndex termithIndex;
@@ -56,6 +57,7 @@ public class InitializerThread {
      * @throws InterruptedException
      */
     public void execute() throws IOException, InterruptedException {
+        new ProgressBarTimer(termithIndex,LOGGER).start();
         Files.list(base).forEach(
                 p -> {
                     executor.submit(new TextExtractorWorker(p,termithIndex));
