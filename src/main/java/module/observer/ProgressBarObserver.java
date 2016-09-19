@@ -1,4 +1,6 @@
-package module.tools;
+package module.observer;
+
+import module.tools.ProgressBar;
 
 import java.util.Observable;
 import java.util.Observer;

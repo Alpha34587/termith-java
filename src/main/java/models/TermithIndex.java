@@ -1,6 +1,6 @@
 package models;
 
-import module.tools.TermithObservable;
+import module.observer.TermithObservable;
 
 import java.io.IOException;
 import java.nio.file.Path;
