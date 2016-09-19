@@ -29,6 +29,8 @@ public class TermithIndex {
     private Map<String, StringBuffer> extractedText;
     private Map<String, StringBuffer> xmlCorpus;
     private Map<String, Path> JsonTreeTagger;
+    private List<Path> outputFile;
+
     private int corpusSize;
 
     private TermithIndex(Builder builder) throws IOException {
@@ -41,6 +43,7 @@ public class TermithIndex {
         morphoSyntaxStandOff = new ConcurrentHashMap<>();
         tokenizeTeiBody = new ConcurrentHashMap<>();
         corpus = null;
+        outputFile = new CopyOnWriteArrayList<>();
         extractedText = new ConcurrentHashMap<>();
         xmlCorpus = new ConcurrentHashMap<>();
         JsonTreeTagger = new ConcurrentHashMap<>();
@@ -85,6 +88,10 @@ public class TermithIndex {
     public void addText(String id, StringBuffer content) {
 
         this.getExtractedText().put(id,content);
+    }
+
+    public List<Path> getOutputFile() {
+        return outputFile;
     }
 
     public Map<String, StringBuffer> getXmlCorpus() {

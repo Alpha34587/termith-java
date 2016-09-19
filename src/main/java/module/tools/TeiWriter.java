@@ -58,6 +58,7 @@ public class TeiWriter {
             bufferedWriter =
                     Files.newBufferedWriter(Paths.get(outputPath + "/" + key + ".xml"));
             bufferedWriter.write(String.valueOf(value));
+            termithIndex.getOutputFile().add(Paths.get(outputPath + "/" + key + ".xml"));
         } catch (IOException e) {
             LOGGER.error("Some errors during files writing",e);
         }
