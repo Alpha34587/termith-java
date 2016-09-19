@@ -15,8 +15,10 @@ public class ProgressBarObserver implements Observer{
     }
 
     @Override
-    public void update(Observable observable, Object o) {
+    public synchronized void update(Observable observable, Object o) {
         TermithObservable termithObservable = (TermithObservable) observable;
-        progressBar.update(termithObservable.getCurrentDone(),termithObservable.getCurrentTotal());
+        progressBar.update(termithObservable.getCurrentDone(),
+                termithObservable.getCurrentTotal(),
+                termithObservable.getCurrentLogger());
     }
 }

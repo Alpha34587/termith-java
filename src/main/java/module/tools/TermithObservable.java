@@ -1,6 +1,11 @@
 package module.tools;
 
+import org.slf4j.Logger;
+
+import java.util.Map;
 import java.util.Observable;
+import java.util.Observer;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @author Simon Meoni
@@ -9,22 +14,33 @@ import java.util.Observable;
 public class TermithObservable extends Observable {
     private int currentDone;
     private int currentTotal;
-
+    private Logger currentLogger;
+    private Map<Logger, Observer> observerMap;
     public TermithObservable() {
+        observerMap = new ConcurrentHashMap<>();
     }
 
-    public synchronized void changeValue(int done, int total, ProgressBarObserver progressBarObserver){
+    public synchronized void changeValue(int done, int total, Logger logger){
         setCurrentDone(done);
         setCurrentTotal(total);
+        setCurrentLogger(logger);
         setChanged();
-        notifyObservers(progressBarObserver);
+        notifyObservers(observerMap.get(logger));
     }
 
-    public void setCurrentDone(int currentDone) {
+    public Logger getCurrentLogger() {
+        return currentLogger;
+    }
+
+    public void setCurrentLogger(Logger currentLogger) {
+        this.currentLogger = currentLogger;
+    }
+
+    public synchronized void setCurrentDone(int currentDone) {
         this.currentDone = currentDone;
     }
 
-    public void setCurrentTotal(int currentTotal) {
+    public synchronized void setCurrentTotal(int currentTotal) {
         this.currentTotal = currentTotal;
     }
 
@@ -36,4 +52,10 @@ public class TermithObservable extends Observable {
 
         return currentDone;
     }
+
+    public synchronized void addObserver(Observer observer, Logger logger) {
+        super.addObserver(observer);
+        observerMap.put(logger,observer);
+    }
+
 }

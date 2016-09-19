@@ -31,23 +31,19 @@ public class ProgressBar {
      * @param done an int representing the work done so far
      * @param total an int representing the total work
      */
-    public void update(int done, int total) {
+    public synchronized void update(int done, int total, Logger logger) {
         char[] workchars = {'|', '/', '-', '\\'};
-        String format = "\r%3d%% %s %c";
-
-        int percent = (++done * 100) / total;
+        String format = "\r%3d%% %s %s %c";
+        int percent = (done * 100) / total;
         int extrachars = (percent / 2) - this.progress.length();
-
+        String fileProgress = "(" + done + "/" + total + ")";
         while (extrachars-- > 0) {
             progress.append('#');
         }
 
-        LOGGER.info(format, percent, progress,
+        logger.info("{}% {} {}", percent, fileProgress,progress,
                 workchars[done % workchars.length]);
-
         if (done == total) {
-//            LOGGER.info();
-//            System.out.println();
             init();
         }
     }
