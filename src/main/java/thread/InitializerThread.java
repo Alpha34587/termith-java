@@ -2,6 +2,7 @@ package thread;
 
 import models.TermithIndex;
 import module.timer.ExtractTextTimer;
+import module.timer.InitCorpusTimer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import worker.InitCorpusWorker;
@@ -58,6 +59,7 @@ public class InitializerThread {
      */
     public void execute() throws IOException, InterruptedException {
         new ExtractTextTimer(termithIndex,LOGGER).start();
+        new InitCorpusTimer(termithIndex,LOGGER).start();
         Files.list(base).forEach(
                 p -> {
                     executor.submit(new TextExtractorWorker(p,termithIndex));

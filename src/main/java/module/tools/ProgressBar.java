@@ -42,7 +42,7 @@ public class ProgressBar {
             progress.append('#');
         }
 
-        logger.info("{} : {}% {} {}", message, percent, fileProgress, progress);
+        logger.info("{} : {}% {}", message, percent, fileProgress);
         if (done == total) {
             init();
         }
