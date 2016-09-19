@@ -14,11 +14,19 @@ import java.util.concurrent.CountDownLatch;
  * @author Simon Meoni
  *         Created on 16/09/16.
  */
-public class InitCorpusWorker implements Runnable{
+public class InitCorpusWorker implements Runnable {
     private Path path;
     private TermithIndex termithIndex;
     private CountDownLatch corpusCnt;
     private static final Logger LOGGER = LoggerFactory.getLogger(InitializerThread.class.getName());
+
+    /**
+     * constructor of the class the parameter path is the path of the file that we want to treated
+     * @param path
+     */
+    public InitCorpusWorker(Path path, TermithIndex termithIndex) {
+        this(path, termithIndex, new CountDownLatch(termithIndex.getXmlCorpus().size()));
+    }
 
     /**
      * constructor of the class the parameter path is the path of the file that we want to treated
@@ -29,6 +37,10 @@ public class InitCorpusWorker implements Runnable{
         this.path = path;
         this.termithIndex = termithIndex;
         this.corpusCnt = corpusCnt;
+    }
+
+    public CountDownLatch getCorpusCnt() {
+        return corpusCnt;
     }
 
     /**
@@ -42,7 +54,7 @@ public class InitCorpusWorker implements Runnable{
             ));
             corpusCnt.countDown();
         } catch (IOException e) {
-            LOGGER.info("File Exception",e);
+            LOGGER.error("File Exception",e);
         }
     }
 }
