@@ -21,7 +21,7 @@ public class CorpusAnalyzer {
     private int index;
 
     public CorpusAnalyzer(Map<String, StringBuffer> extractedText){
-        LOGGER.info("CorpusAnalyzer object building started");
+        LOGGER.debug("CorpusAnalyzer object building started");
         analyzedTexts = new HashMap<>();
         totalSize = totalSize(extractedText);
         cumulSize = 0;
@@ -52,7 +52,7 @@ public class CorpusAnalyzer {
                     index++;
                     analyzedTexts.put(id,textAnalyzer);
                 });
-        LOGGER.info("CorpusAnalyzer object building ended");
+        LOGGER.debug("CorpusAnalyzer object building ended");
     }
 
     /**

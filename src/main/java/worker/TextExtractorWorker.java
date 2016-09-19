@@ -34,13 +34,13 @@ public class TextExtractorWorker implements Runnable {
     @Override
     public void run() {
         try {
-            LOGGER.info("Extracting text of file: " + this.path);
+            LOGGER.debug("Extracting text of file: " + this.path);
             TextExtractor textExtractor = new TextExtractor(path.toFile());
             StringBuffer extractedBuffer = textExtractor.xsltTransformation();
             termithIndex.getExtractedText().put(path.getFileName().toString().replace(".xml", ""), extractedBuffer);
-            LOGGER.info("Extraction done for file: " + this.path);
+            LOGGER.debug("Extraction done for file: " + this.path);
         } catch (IOException e) {
-            LOGGER.info("File Exception",e);
+            LOGGER.error("File Exception",e);
         }
     }
 }

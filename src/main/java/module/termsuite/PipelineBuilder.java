@@ -1,5 +1,6 @@
 package module.termsuite;
 
+import ch.qos.logback.classic.Level;
 import eu.project.ttc.engines.cleaner.TermProperty;
 import eu.project.ttc.engines.desc.TermSuiteCollection;
 import eu.project.ttc.tools.TermSuitePipeline;
@@ -21,7 +22,7 @@ public class PipelineBuilder {
                            String tbxTerminology,
                            String jsonTerminology) {
 
-        TermSuiteCLIUtils.setGlobalLogLevel("info");
+        TermSuiteCLIUtils.setGlobalLogLevel(Level.INFO);
         this.termsuitePipeline = TermSuitePipeline.create(lang)
                 .setResourceFilePath(getClass().getResource("/termsuite-lang/termsuite-resources.jar").getPath())
                 .setCollection(

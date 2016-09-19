@@ -2,6 +2,8 @@ package thread;
 
 import models.MorphoSyntaxOffsetId;
 import models.TermithIndex;
+import module.timer.TerminologyTimer;
+import module.timer.TokenizeTimer;
 import module.tools.FilesUtilities;
 import module.treetagger.CorpusAnalyzer;
 import module.treetagger.TagNormalizer;
@@ -55,8 +57,8 @@ public class AnalyzeThread {
 
     public void execute() throws InterruptedException, IOException, ExecutionException {
         init();
+        new TokenizeTimer(termithIndex,LOGGER).start();
         CorpusAnalyzer corpusAnalyzer = new CorpusAnalyzer(termithIndex.getExtractedText());
-
         termithIndex.getExtractedText().forEach((key,txt) ->
                 executorService.submit(new TreeTaggerWorker(
                         termithIndex,
@@ -70,6 +72,7 @@ public class AnalyzeThread {
         LOGGER.info("json files serialization finished, termsuite task started");
         executorService.submit(new TermsuiteWorker(termithIndex)).get();
         executorService.submit(new TerminologyParserWorker(termithIndex)).get();
+        new TerminologyTimer(termithIndex,LOGGER).start();
         termithIndex.getMorphoSyntaxStandOff().forEach(
                 (id,value) -> executorService.submit(new TerminologyStandOffWorker(
                         id,value,termithIndex)
@@ -81,11 +84,10 @@ public class AnalyzeThread {
 
     private void init() throws IOException {
         TagNormalizer.initTag(lang);
-
-        LOGGER.info("temporary folder created: " + termithIndex.getCorpus());
+        LOGGER.debug("temporary folder created: " + termithIndex.getCorpus());
         Files.createDirectories(Paths.get(termithIndex.getCorpus() + "/json"));
         Files.createDirectories(Paths.get(termithIndex.getCorpus() + "/txt"));
-        LOGGER.info("create temporary text files in " + termithIndex.getCorpus() + "/txt folder");
+        LOGGER.debug("create temporary text files in " + termithIndex.getCorpus() + "/txt folder");
         FilesUtilities.createFiles(termithIndex.getCorpus() + "/txt",
                 termithIndex.getExtractedText(), "txt");
     }

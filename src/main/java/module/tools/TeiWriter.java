@@ -39,7 +39,7 @@ public class TeiWriter {
 
     public void execute() throws IOException {
 
-        LOGGER.info("writing : " + outputPath + "/" + key + ".xml");
+        LOGGER.debug("writing : " + outputPath + "/" + key + ".xml");
         insertStandoffNs();
         insertStandOff();
         insertBody();

@@ -45,7 +45,7 @@ public class TextExtractor {
         StreamResult streamResult = new StreamResult(stringWriter);
 
         try {
-            LOGGER.info("apply " + EXTRACT_TEXT.toString() + "to xml file" + input.toString());
+            LOGGER.debug("apply " + EXTRACT_TEXT.toString() + "to xml file" + input.toString());
             transformer = FACTORY.newTransformer(EXTRACT_TEXT);
             transformer.transform(input, streamResult);
 

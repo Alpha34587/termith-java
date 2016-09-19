@@ -57,10 +57,10 @@ public class TermithTreeTaggerCLI {
                 .required(true)
                 .build();
 
-        Option trace = Option.builder("t")
-                .longOpt("trace")
+        Option trace = Option.builder("d")
+                .longOpt("debug")
                 .hasArg(false)
-                .desc("write all the phase in the output folder")
+                .desc("activate debug log mode")
                 .build();
 
         Option treetagger = Option.builder("tt")
@@ -85,18 +85,20 @@ public class TermithTreeTaggerCLI {
                     .lang(line.getOptionValue("l"))
                     .baseFolder(line.getOptionValue("i"))
                     .treeTaggerHome(line.getOptionValue("tt"))
-                    .trace(true)
                     .export(line.getOptionValue("o"))
                     .build();
+            CLIUtils.setGlobalLogLevel(Level.INFO);
 
-            if (options.hasOption("trace"))
+            if (line.hasOption("debug")){
                 CLIUtils.setGlobalLogLevel(Level.DEBUG);
+            }
+
 
             new TermithTreeTagger(termithIndex).execute();
             Exporter exporter = new Exporter(termithIndex);
             exporter.execute();
         } catch (ParseException e) {
-            LOGGER.info("There are some problems during parsing arguments : ",e);
+            LOGGER.error("There are some problems during parsing arguments : ",e);
         }
     }
 }

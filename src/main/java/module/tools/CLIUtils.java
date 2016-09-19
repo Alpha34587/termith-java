@@ -10,7 +10,6 @@ import org.slf4j.LoggerFactory;
  */
 public class CLIUtils {
     private static final Logger LOGGER = LoggerFactory.getLogger(CLIUtils.class.getName());
-    private static Level level = Level.INFO;
 
     public static void setGlobalLogLevel(Level level) {
         ch.qos.logback.classic.Logger logger = (ch.qos.logback.classic.Logger)LoggerFactory

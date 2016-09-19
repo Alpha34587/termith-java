@@ -58,7 +58,7 @@ public class TermsuiteJsonReader {
     }
 
     private void browseJson() throws IOException {
-        LOGGER.info("Json browsing started");
+        LOGGER.debug("Json browsing started");
         JsonParser parser = factory.createParser(file);
 
         JsonToken jsonToken;
@@ -81,7 +81,7 @@ public class TermsuiteJsonReader {
                 inWa = true;
             }
         }
-        LOGGER.info("Json browsing ended");
+        LOGGER.debug("Json browsing ended");
 
     }
 

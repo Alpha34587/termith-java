@@ -29,7 +29,7 @@ public class TeiWriterWorker implements Runnable {
     @Override
     public void run() {
 
-        LOGGER.info("writing : " + outputPath + "/" + key + ".xml");
+        LOGGER.debug("writing : " + outputPath + "/" + key + ".xml");
         TeiWriter teiWriter = new TeiWriter(key,value,termithIndex);
         try {
             teiWriter.execute();

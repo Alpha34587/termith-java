@@ -25,7 +25,7 @@ public class TermithObservable extends Observable {
         setCurrentTotal(total);
         setCurrentLogger(logger);
         setChanged();
-        notifyObservers(observerMap.get(logger));
+        notifyObservers(logger);
     }
 
     public Logger getCurrentLogger() {
@@ -56,6 +56,10 @@ public class TermithObservable extends Observable {
     public synchronized void addObserver(Observer observer, Logger logger) {
         super.addObserver(observer);
         observerMap.put(logger,observer);
+    }
+
+    public void deleteObserver(Logger logger){
+        deleteObserver(observerMap.get(logger));
     }
 
 }

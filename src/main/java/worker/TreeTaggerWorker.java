@@ -54,12 +54,12 @@ public class TreeTaggerWorker implements Runnable {
 
 
         try {
-            LOGGER.info("converting TreeTagger output started file : " + txtPath);
+            LOGGER.debug("converting TreeTagger output started file : " + txtPath);
             treeTaggerToJson.execute();
             jsonCnt.countDown();
-            LOGGER.info("converting TreeTagger output finished file : " + txtPath);
+            LOGGER.debug("converting TreeTagger output finished file : " + txtPath);
 
-            LOGGER.info("tokenization and morphosyntax tasks started file : " + jsonPath);
+            LOGGER.debug("tokenization and morphosyntax tasks started file : " + jsonPath);
             File json = new File(jsonPath);
             SyntaxGenerator syntaxGenerator = new SyntaxGenerator(
                     json,txt,xml
@@ -67,12 +67,12 @@ public class TreeTaggerWorker implements Runnable {
             syntaxGenerator.execute();
             termithIndex.getTokenizeTeiBody().put(json.getName().replace(".json",""), syntaxGenerator.getTokenizeBody());
             termithIndex.getMorphoSyntaxStandOff().put(json.getName().replace(".json",""), syntaxGenerator.getOffsetId());
-            LOGGER.info("tokenization and morphosyntax tasks finished file : " + jsonPath);
+            LOGGER.debug("tokenization and morphosyntax tasks finished file : " + jsonPath);
 
         } catch (IOException e) {
-            LOGGER.info("error during parsing TreeTagger data", e);
+            LOGGER.error("error during parsing TreeTagger data", e);
         } catch (InterruptedException e) {
-            LOGGER.info("error during Tree Tagger Process");
+            LOGGER.error("error during Tree Tagger Process");
         }
     }
 }

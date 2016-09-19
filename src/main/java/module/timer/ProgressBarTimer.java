@@ -2,6 +2,7 @@ package module.timer;
 
 import models.TermithIndex;
 import module.observer.ProgressBarObserver;
+import module.observer.TermithObservable;
 import org.slf4j.Logger;
 
 import java.util.Timer;
@@ -14,7 +15,7 @@ import java.util.concurrent.TimeUnit;
  * @author Simon Meoni
  *         Created on 19/09/16.
  */
-public abstract class ProgressBarTimer extends TimerTask {
+abstract class ProgressBarTimer extends TimerTask {
 
 
     protected TermithIndex termithIndex;
@@ -23,6 +24,7 @@ public abstract class ProgressBarTimer extends TimerTask {
     protected long delay;
     protected long interval;
     protected ScheduledExecutorService service;
+    protected TermithObservable termithObservable;
 
     public ProgressBarTimer(TermithIndex termithIndex, String message,Logger logger){
         this(termithIndex,logger,15, message);
@@ -34,7 +36,8 @@ public abstract class ProgressBarTimer extends TimerTask {
         this.logger = logger;
         this.delay = 0;
         this.interval = interval;
-        termithIndex.getTermithObservable().addObserver(new ProgressBarObserver(message),logger);
+        this.termithObservable = new TermithObservable();
+        termithObservable.addObserver(new ProgressBarObserver(message),logger);
     }
 
     public void start(){
@@ -47,7 +50,7 @@ public abstract class ProgressBarTimer extends TimerTask {
     }
 
     protected void update(int done) {
-        termithIndex.getTermithObservable().changeValue(done,
+        termithObservable.changeValue(done,
                 termithIndex.getCorpusSize(), logger);
         if (termithIndex.getCorpusSize() == done){
             timer.cancel();

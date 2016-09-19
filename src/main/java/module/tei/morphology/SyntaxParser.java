@@ -74,7 +74,7 @@ public class SyntaxParser {
     }
 
     void teiWordTokenizer() {
-        LOGGER.info("Tokenization Started");
+        LOGGER.debug("Tokenization Started");
         offset[0] = 0;
         offset[1] = 1;
         int id = 1;
@@ -97,7 +97,7 @@ public class SyntaxParser {
                 termsuiteJsonReader.pollToken();
             }
         }
-        LOGGER.info("Tokenization Ended");
+        LOGGER.debug("Tokenization Ended");
     }
 
     private void countOffset() {

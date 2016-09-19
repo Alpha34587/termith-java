@@ -33,6 +33,6 @@ public class TreeTaggerToJson {
         treeTaggerWrapper.execute();
         Serialize serialize = new Serialize(treeTaggerWrapper.getTtOut(),jsonPath,txt, textAnalyzer);
         serialize.execute();
-        LOGGER.info("write file " + jsonPath);
+        LOGGER.debug("write file " + jsonPath);
     }
 }

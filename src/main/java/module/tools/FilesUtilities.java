@@ -39,7 +39,7 @@ public class FilesUtilities {
         corpus.forEach((filename, content) -> {
             try (BufferedWriter writer =
                          Files.newBufferedWriter(Paths.get(path + "/" + filename + "." + extension))){
-                LOGGER.info("write file: " + path + "/" + filename + "." + extension);
+                LOGGER.debug("write file: " + path + "/" + filename + "." + extension);
                 writer.write(String.valueOf(content));
 
             } catch (IOException e) {
