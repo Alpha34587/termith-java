@@ -49,7 +49,7 @@ public class TermithIndex {
         JsonTreeTagger = new ConcurrentHashMap<>();
         terminologyStandOff = new ConcurrentHashMap<>();
         termithObservable = new TermithObservable();
-        corpusSize = (int) Files.list(base).count();
+        corpusSize = builder.corpusSize;
     }
 
     public boolean isTrace() {
@@ -127,6 +127,7 @@ public class TermithIndex {
         private Path corpus;
         private Map<String, StringBuffer> extractedText;
         private Map<String, StringBuffer> xmlCorpus;
+        private int corpusSize = 0;
 
         /**
          * This method set the input folder path
@@ -136,6 +137,7 @@ public class TermithIndex {
          */
         public Builder baseFolder(String path) throws IOException {
             this.base = Paths.get(path);
+            corpusSize = (int) Files.list(base).count();
             return this;
         }
 
