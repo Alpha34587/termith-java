@@ -1,5 +1,7 @@
 package models;
 
+import module.tools.TermithObservable;
+
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -28,6 +30,7 @@ public class TermithIndex {
     private Map<String, StringBuffer> extractedText;
     private Map<String, StringBuffer> xmlCorpus;
     private Map<String, Path> JsonTreeTagger;
+    private TermithObservable termithObservable;
 
     private TermithIndex(Builder builder) {
         base = builder.base;
@@ -43,6 +46,7 @@ public class TermithIndex {
         xmlCorpus = new ConcurrentHashMap<>();
         JsonTreeTagger = new ConcurrentHashMap<>();
         terminologyStandOff = new ConcurrentHashMap<>();
+        termithObservable = new TermithObservable();
     }
 
     public boolean isTrace() {
@@ -82,6 +86,9 @@ public class TermithIndex {
         this.getExtractedText().put(id,content);
     }
 
+    public TermithObservable getTermithObservable() {
+        return termithObservable;
+    }
 
     public Map<String, StringBuffer> getXmlCorpus() {
         return xmlCorpus;
