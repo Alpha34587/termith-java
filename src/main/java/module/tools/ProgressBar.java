@@ -15,12 +15,15 @@ public class ProgressBar {
      * 100% ################################################## |
      */
     private StringBuilder progress;
+    private String message;
     private static final Logger LOGGER = LoggerFactory.getLogger(ProgressBar.class.getName());
 
     /**
      * initialize progress bar properties.
+     * @param message
      */
-    public ProgressBar() {
+    public ProgressBar(String message) {
+        this.message = message;
         init();
     }
 
@@ -32,8 +35,6 @@ public class ProgressBar {
      * @param total an int representing the total work
      */
     public synchronized void update(int done, int total, Logger logger) {
-        char[] workchars = {'|', '/', '-', '\\'};
-        String format = "\r%3d%% %s %s %c";
         int percent = (done * 100) / total;
         int extrachars = (percent / 2) - this.progress.length();
         String fileProgress = "(" + done + "/" + total + ")";
@@ -41,8 +42,7 @@ public class ProgressBar {
             progress.append('#');
         }
 
-        logger.info("{}% {} {}", percent, fileProgress,progress,
-                workchars[done % workchars.length]);
+        logger.info("{} : {}% {} {}", message, percent, fileProgress, progress);
         if (done == total) {
             init();
         }

@@ -1,7 +1,7 @@
 package thread;
 
 import models.TermithIndex;
-import module.timer.ProgressBarTimer;
+import module.timer.ExtractTextTimer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import worker.InitCorpusWorker;
@@ -57,7 +57,7 @@ public class InitializerThread {
      * @throws InterruptedException
      */
     public void execute() throws IOException, InterruptedException {
-        new ProgressBarTimer(termithIndex,LOGGER).start();
+        new ExtractTextTimer(termithIndex,LOGGER).start();
         Files.list(base).forEach(
                 p -> {
                     executor.submit(new TextExtractorWorker(p,termithIndex));

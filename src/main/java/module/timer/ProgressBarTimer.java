@@ -14,27 +14,27 @@ import java.util.concurrent.TimeUnit;
  * @author Simon Meoni
  *         Created on 19/09/16.
  */
-public class ProgressBarTimer extends TimerTask {
+public abstract class ProgressBarTimer extends TimerTask {
 
 
-    private TermithIndex termithIndex;
-    private Timer timer;
-    private Logger logger;
-    private long delay;
-    private long interval;
-    ScheduledExecutorService service;
+    protected TermithIndex termithIndex;
+    protected Timer timer;
+    protected Logger logger;
+    protected long delay;
+    protected long interval;
+    protected ScheduledExecutorService service;
 
-    public ProgressBarTimer(TermithIndex termithIndex, Logger logger){
-        this(termithIndex,logger,15);
+    public ProgressBarTimer(TermithIndex termithIndex, String message,Logger logger){
+        this(termithIndex,logger,15, message);
     }
 
-    public ProgressBarTimer(TermithIndex termithIndex, Logger logger, long interval) {
+    public ProgressBarTimer(TermithIndex termithIndex, Logger logger, long interval, String message) {
         this.termithIndex = termithIndex;
         this.timer = new Timer();
         this.logger = logger;
         this.delay = 0;
         this.interval = interval;
-        termithIndex.getTermithObservable().addObserver(new ProgressBarObserver(),logger);
+        termithIndex.getTermithObservable().addObserver(new ProgressBarObserver(message),logger);
     }
 
     public void start(){
@@ -44,14 +44,15 @@ public class ProgressBarTimer extends TimerTask {
 
     @Override
     public void run() {
-        // task to run goes here
-        termithIndex.getTermithObservable().changeValue(termithIndex.getExtractedText().size(),
+    }
+
+    protected void update(int done) {
+        termithIndex.getTermithObservable().changeValue(done,
                 termithIndex.getCorpusSize(), logger);
-        if (termithIndex.getExtractedText().size() == termithIndex.getCorpusSize()){
+        if (termithIndex.getCorpusSize() == done){
             timer.cancel();
             service.shutdownNow();
         }
-
     }
 
 }

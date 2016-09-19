@@ -11,9 +11,10 @@ import java.util.Observer;
  */
 public class ProgressBarObserver implements Observer{
     ProgressBar progressBar;
+    String message;
 
-    public ProgressBarObserver() {
-        this.progressBar = new ProgressBar();
+    public ProgressBarObserver(String message) {
+        this.progressBar = new ProgressBar(message);
     }
 
     @Override
