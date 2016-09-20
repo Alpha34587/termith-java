@@ -1,5 +1,6 @@
 package module.tools;
 
+import models.TermithIndex;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -8,7 +9,11 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.Map;
+
+import static models.TermithIndex.outputPath;
+
 /**
  * FileUtilities group several static method in order to manipulate the file system during the different process of
  * TermithText
@@ -43,7 +48,7 @@ public class FilesUtilities {
                 writer.write(String.valueOf(content));
 
             } catch (IOException e) {
-                e.printStackTrace();
+                LOGGER.error("error during copying some files",e);
             }
 
         });
@@ -52,5 +57,20 @@ public class FilesUtilities {
     public static String nameNormalizer(String path){
         String name = Paths.get(path).getFileName().toString();
         return name.split("\\.")[0];
+    }
+
+    public static void exportTerminology(TermithIndex termithIndex) {
+        try {
+            LOGGER.debug("copying tbx and json terminology ...");
+            Files.copy(termithIndex.getTerminologies().get(0),
+                    Paths.get(outputPath+"/terminology.tbx"),
+                    StandardCopyOption.REPLACE_EXISTING);
+
+            Files.copy(termithIndex.getTerminologies().get(1),
+                    Paths.get(outputPath+"/terminology.json"),
+                    StandardCopyOption.REPLACE_EXISTING);
+        } catch (IOException e) {
+            LOGGER.error("cannot copy terminologies",e);
+        }
     }
 }

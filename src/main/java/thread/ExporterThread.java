@@ -12,6 +12,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
+import static module.tools.FilesUtilities.exportTerminology;
+
 /**
  * @author Simon Meoni
  *         Created on 19/09/16.
@@ -45,6 +47,7 @@ public class ExporterThread {
 
     public void execute() throws InterruptedException {
         new ExporterTimer(termithIndex,LOGGER).start();
+        exportTerminology(termithIndex);
         termithIndex.getXmlCorpus().forEach(
                 (key,value) -> executor.submit(new TeiWriterWorker(key,value,termithIndex))
         );
