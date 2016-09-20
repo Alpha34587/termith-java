@@ -2,6 +2,7 @@ package thread;
 
 import models.MorphoSyntaxOffsetId;
 import models.TermithIndex;
+import module.timer.JsonTimer;
 import module.timer.TerminologyTimer;
 import module.timer.TokenizeTimer;
 import module.tools.FilesUtilities;
@@ -58,6 +59,7 @@ public class AnalyzeThread {
     public void execute() throws InterruptedException, IOException, ExecutionException {
         init();
         new TokenizeTimer(termithIndex,LOGGER).start();
+        new JsonTimer(termithIndex,LOGGER).start();
         CorpusAnalyzer corpusAnalyzer = new CorpusAnalyzer(termithIndex.getExtractedText());
         termithIndex.getExtractedText().forEach((key,txt) ->
                 executorService.submit(new TreeTaggerWorker(

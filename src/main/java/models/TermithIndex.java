@@ -29,6 +29,7 @@ public class TermithIndex {
     private Map<String, StringBuffer> extractedText;
     private Map<String, StringBuffer> xmlCorpus;
     private Map<String, Path> JsonTreeTagger;
+    private List<Path> SerializeJson;
     private List<Path> outputFile;
 
     private int corpusSize;
@@ -47,6 +48,7 @@ public class TermithIndex {
         extractedText = new ConcurrentHashMap<>();
         xmlCorpus = new ConcurrentHashMap<>();
         JsonTreeTagger = new ConcurrentHashMap<>();
+        SerializeJson = new CopyOnWriteArrayList<>();
         terminologyStandOff = new ConcurrentHashMap<>();
         corpusSize = builder.corpusSize;
     }
@@ -76,6 +78,8 @@ public class TermithIndex {
     public Map<String, StringBuffer> getTokenizeTeiBody() {
         return tokenizeTeiBody;
     }
+
+    public List<Path> getSerializeJson() {return SerializeJson;}
 
     public Path getCorpus() {
         return corpus;

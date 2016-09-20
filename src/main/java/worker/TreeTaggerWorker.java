@@ -11,6 +11,7 @@ import thread.AnalyzeThread;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.concurrent.CountDownLatch;
 
 import static models.TermithIndex.lang;
@@ -57,13 +58,12 @@ public class TreeTaggerWorker implements Runnable {
             LOGGER.debug("converting TreeTagger output started file : " + txtPath);
             treeTaggerToJson.execute();
             jsonCnt.countDown();
+            termithIndex.getSerializeJson().add(Paths.get(jsonPath));
             LOGGER.debug("converting TreeTagger output finished file : " + txtPath);
 
             LOGGER.debug("tokenization and morphosyntax tasks started file : " + jsonPath);
             File json = new File(jsonPath);
-            SyntaxGenerator syntaxGenerator = new SyntaxGenerator(
-                    json,txt,xml
-            );
+            SyntaxGenerator syntaxGenerator = new SyntaxGenerator(json,txt,xml);
             syntaxGenerator.execute();
             termithIndex.getTokenizeTeiBody().put(json.getName().replace(".json",""), syntaxGenerator.getTokenizeBody());
             termithIndex.getMorphoSyntaxStandOff().put(json.getName().replace(".json",""), syntaxGenerator.getOffsetId());
