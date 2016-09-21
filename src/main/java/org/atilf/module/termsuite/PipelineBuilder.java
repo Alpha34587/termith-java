@@ -20,11 +20,12 @@ public class PipelineBuilder {
      */
     public PipelineBuilder(String lang, String jsonPath,
                            String tbxTerminology,
-                           String jsonTerminology) {
-
+                           String jsonTerminology,
+                           String jarResource) {
+        
         TermSuiteCLIUtils.setGlobalLogLevel(Level.INFO);
         this.termsuitePipeline = TermSuitePipeline.create(lang)
-                .setResourceJar("src/main/resources/termsuite-lang/termsuite-resources.jar")
+                .setResourceJar(jarResource)
                 .setCollection(
                         TermSuiteCollection.JSON,
                         jsonPath,
@@ -44,8 +45,8 @@ public class PipelineBuilder {
                 .aeContextualizer(3, true)
                 .setExportJsonWithContext(false)
                 .setExportJsonWithOccurrences(true)
-                .haeJsonExporter(jsonTerminology.toString())
-                .haeTbxExporter(tbxTerminology.toString());
+                .haeJsonExporter(jsonTerminology)
+                .haeTbxExporter(tbxTerminology);
     }
 
     /**
