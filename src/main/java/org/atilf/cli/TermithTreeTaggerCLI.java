@@ -41,6 +41,7 @@ public class TermithTreeTaggerCLI {
         lang.setRequired(true);
         Option trace = new Option("d","debug",true,"activate debug log mode");
         trace.setRequired(false);
+        trace.setArgs(0);
         Option treetagger = new Option("tt","treetagger",true,"set TreeTagger path");
         treetagger.setRequired(true);
 
