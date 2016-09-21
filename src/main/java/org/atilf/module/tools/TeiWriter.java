@@ -1,6 +1,7 @@
 package org.atilf.module.tools;
 
 import org.atilf.models.MorphoSyntaxOffsetId;
+import org.atilf.models.StandOffResources;
 import org.atilf.models.TermithIndex;
 import org.atilf.models.TermsOffsetId;
 import org.slf4j.Logger;
@@ -16,7 +17,6 @@ import java.util.Deque;
 import java.util.List;
 
 import static org.atilf.models.TermithIndex.outputPath;
-import static org.atilf.models.standOffResources.*;
 
 /**
  * @author Simon Meoni
@@ -27,14 +27,16 @@ public class TeiWriter {
     private String key;
     private StringBuffer value;
     private TermithIndex termithIndex;
+    private StandOffResources stdfRes;
     private static final Logger LOGGER = LoggerFactory.getLogger(TeiWriterWorker.class.getName());
     private final String SEPARATOR = "(?<=\n)";
 
 
-    public TeiWriter(String key, StringBuffer value, TermithIndex termithIndex) {
+    public TeiWriter(String key, StringBuffer value, TermithIndex termithIndex, StandOffResources stdfRes) {
         this.key = key;
         this.value = value;
         this.termithIndex = termithIndex;
+        this.stdfRes = stdfRes;
     }
 
     public void execute() throws IOException {
@@ -48,7 +50,8 @@ public class TeiWriter {
 
     private void insertStandoffNs() {
         int teiTag = value.indexOf("<TEI ") + 5;
-        value.insert(teiTag, NS.substring(0, NS.length() - 1) + " ");
+        value.insert(teiTag, stdfRes.NS.substring(0,
+                stdfRes.NS.length() - 1) + " ");
     }
 
 
@@ -97,19 +100,19 @@ public class TeiWriter {
         });
         Deque<TermsOffsetId> termDeque = new ArrayDeque<>(termsOffsetIds);
 
-        standoff.append(STANDOFF.split(SEPARATOR)[0].replace("@type", "candidatsTermes"));
-        standoff.append(T_TEI_HEADER);
-        standoff.append(LIST_ANNOTATION.split(SEPARATOR)[0]);
+        standoff.append(stdfRes.STANDOFF.split(SEPARATOR)[0].replace("@type", "candidatsTermes"));
+        standoff.append(stdfRes.T_TEI_HEADER);
+        standoff.append(stdfRes.LIST_ANNOTATION.split(SEPARATOR)[0]);
         while (!termDeque.isEmpty()){
             TermsOffsetId token = termDeque.poll();
             standoff.append(
-                    T_SPAN.replace("@target",serializeId(token.getIds()))
+                    stdfRes.T_SPAN.replace("@target",serializeId(token.getIds()))
                             .replace("@corresp",String.valueOf(token.getTermId()))
                             .replace("@string", token.getWord())
             );
         }
-        standoff.append(LIST_ANNOTATION.split(SEPARATOR)[1]);
-        standoff.append(STANDOFF.split(SEPARATOR)[1]);
+        standoff.append(stdfRes.LIST_ANNOTATION.split(SEPARATOR)[1]);
+        standoff.append(stdfRes.STANDOFF.split(SEPARATOR)[1]);
 
         return standoff;
     }
@@ -118,19 +121,20 @@ public class TeiWriter {
         StringBuffer standoff = new StringBuffer();
         Deque<MorphoSyntaxOffsetId> morphoDeque = new ArrayDeque<>(morphoSyntaxOffsetIds);
 
-        standoff.append(STANDOFF.split(SEPARATOR)[0].replace("@type", "wordForms"));
-        standoff.append(MS_TEI_HEADER);
-        standoff.append(LIST_ANNOTATION.split(SEPARATOR)[0]);
+        standoff.append(stdfRes.STANDOFF.split(SEPARATOR)[0]
+                .replace("@type", "wordForms"));
+        standoff.append(stdfRes.MS_TEI_HEADER);
+        standoff.append(stdfRes.LIST_ANNOTATION.split(SEPARATOR)[0]);
         while (!morphoDeque.isEmpty()){
             MorphoSyntaxOffsetId token = morphoDeque.poll();
             standoff.append(
-                    MS_SPAN.replace("@target",serializeId(token.getIds()))
+                    stdfRes.MS_SPAN.replace("@target",serializeId(token.getIds()))
                             .replace("@lemma", token.getLemma().replace("<unknown>", "@unknown"))
                             .replace("@pos", token.getTag())
             );
         }
-        standoff.append(LIST_ANNOTATION.split(SEPARATOR)[1]);
-        standoff.append(STANDOFF.split(SEPARATOR)[1]);
+        standoff.append(stdfRes.LIST_ANNOTATION.split(SEPARATOR)[1]);
+        standoff.append(stdfRes.STANDOFF.split(SEPARATOR)[1]);
 
         return standoff;
     }

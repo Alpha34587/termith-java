@@ -1,5 +1,6 @@
 package org.atilf.worker;
 
+import org.atilf.models.StandOffResources;
 import org.atilf.models.TermithIndex;
 import org.atilf.module.tools.TeiWriter;
 import org.slf4j.Logger;
@@ -30,7 +31,7 @@ public class TeiWriterWorker implements Runnable {
     public void run() {
 
         LOGGER.debug("writing : " + outputPath + "/" + key + ".xml");
-        TeiWriter teiWriter = new TeiWriter(key,value,termithIndex);
+        TeiWriter teiWriter = new TeiWriter(key,value,termithIndex, new StandOffResources());
         try {
             teiWriter.execute();
         } catch (IOException e) {
