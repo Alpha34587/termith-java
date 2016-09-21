@@ -1,5 +1,6 @@
 package org.atilf.module.extractor;
 
+import org.atilf.models.XslResources;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -12,9 +13,6 @@ import java.io.File;
 import java.io.IOException;
 import java.io.StringWriter;
 
-import static org.atilf.models.XsltStylesheetResources.EXTRACT_TEXT;
-import static org.atilf.models.XsltStylesheetResources.FACTORY;
-
 /**
  * The textExtractor class is used extract the plain text of an XML file
  * @author Simon Meoni
@@ -23,13 +21,16 @@ import static org.atilf.models.XsltStylesheetResources.FACTORY;
 public class TextExtractor {
     private static final Logger LOGGER = LoggerFactory.getLogger(TextExtractor.class.getName());
     private File file;
+    private XslResources xslResources;
 
     /**
      * builder for textExtractor
      * @param file Treated xml/tei file
+     * @param xslResources
      */
-    public TextExtractor(File file) {
+    public TextExtractor(File file, XslResources xslResources) {
         this.file = file;
+        this.xslResources = xslResources;
     }
 
     /**
@@ -38,15 +39,14 @@ public class TextExtractor {
      * @throws IOException
      */
     public StringBuffer xsltTransformation() throws IOException {
-
         Source input = new StreamSource(file);
-        Transformer transformer;
+        Transformer transformer = null;
         StringWriter stringWriter = new StringWriter();
         StreamResult streamResult = new StreamResult(stringWriter);
 
         try {
-            LOGGER.debug("apply " + EXTRACT_TEXT.toString() + "to xml file" + input.toString());
-            transformer = FACTORY.newTransformer(EXTRACT_TEXT);
+            LOGGER.debug("apply " + xslResources.EXTRACT_TEXT.toString() + "to xml file" + input.toString());
+            transformer = xslResources.FACTORY.newTransformer(xslResources.EXTRACT_TEXT);
             transformer.transform(input, streamResult);
 
         } catch (TransformerException e) {

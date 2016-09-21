@@ -1,5 +1,6 @@
 package org.atilf.module.extractor;
 
+import org.atilf.models.XslResources;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,7 +17,7 @@ public class TextExtractorTest {
     TextExtractor textExtractor;
     @Before
     public void setUp(){
-        textExtractor = new TextExtractor(new File("src/test/resources/corpus/xml/file1.xml"));
+        textExtractor = new TextExtractor(new File("src/test/resources/corpus/xml/file1.xml"), new XslResources());
     }
 
     @Test

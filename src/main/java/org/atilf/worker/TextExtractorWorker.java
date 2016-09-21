@@ -1,6 +1,7 @@
 package org.atilf.worker;
 
 import org.atilf.models.TermithIndex;
+import org.atilf.models.XslResources;
 import org.atilf.module.extractor.TextExtractor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,6 +16,7 @@ import java.nio.file.Path;
  */
 public class TextExtractorWorker implements Runnable {
 
+    private final XslResources xslResources;
     private Path path;
     private TermithIndex termithIndex;
     private static final Logger LOGGER = LoggerFactory.getLogger(InitializerThread.class.getName());
@@ -26,6 +28,7 @@ public class TextExtractorWorker implements Runnable {
     public TextExtractorWorker(Path path, TermithIndex termithIndex) {
         this.path = path;
         this.termithIndex = termithIndex;
+        this.xslResources = new XslResources();
     }
 
     /**
@@ -35,7 +38,7 @@ public class TextExtractorWorker implements Runnable {
     public void run() {
         try {
             LOGGER.debug("Extracting text of file: " + this.path);
-            TextExtractor textExtractor = new TextExtractor(path.toFile());
+            TextExtractor textExtractor = new TextExtractor(path.toFile(),xslResources);
             StringBuffer extractedBuffer = textExtractor.xsltTransformation();
             termithIndex.getExtractedText().put(path.getFileName().toString().replace(".xml", ""), extractedBuffer);
             LOGGER.debug("Extraction done for file: " + this.path);
