@@ -1,6 +1,0 @@
-*~
-gradle.properties
-.gradle/
-build/
-termsuite-resources*.jar
-META-INF/
