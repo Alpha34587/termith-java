@@ -38,7 +38,7 @@ public class TextExtractor {
      * @return the extracted text
      * @throws IOException
      */
-    public StringBuffer xsltTransformation() throws IOException {
+    public StringBuilder xsltTransformation() throws IOException {
         Source input = new StreamSource(file);
         Transformer transformer = null;
         StringWriter stringWriter = new StringWriter();
@@ -53,6 +53,6 @@ public class TextExtractor {
             LOGGER.error("could not apply the xslt transformation : ", e);
         }
 
-        return new StringBuffer(stringWriter.getBuffer());
+        return new StringBuilder(stringWriter.getBuffer());
     }
 }

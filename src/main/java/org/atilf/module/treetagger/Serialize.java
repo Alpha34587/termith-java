@@ -16,11 +16,11 @@ import java.util.ArrayDeque;
 public class Serialize {
 
     private ArrayDeque tokenDeque;
-    private StringBuffer txt;
+    private StringBuilder txt;
     private String jsonPath;
     private TextAnalyzer textAnalyzer;
 
-    public Serialize(StringBuilder tokenDeque, String jsonPath, StringBuffer txt
+    public Serialize(StringBuilder tokenDeque, String jsonPath, StringBuilder txt
             , TextAnalyzer textAnalyzer) {
         this.tokenDeque = new ArrayDeque();
         populateTokenDeque(tokenDeque);

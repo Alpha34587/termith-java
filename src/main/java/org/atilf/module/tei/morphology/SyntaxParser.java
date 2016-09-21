@@ -16,33 +16,33 @@ import java.util.Queue;
 public class SyntaxParser {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(SyntaxParser.class);
-    private StringBuffer xml;
-    private StringBuffer txt;
-    private StringBuffer tokenizeBuffer;
+    private StringBuilder xml;
+    private StringBuilder txt;
+    private StringBuilder tokenizeBuffer;
     private TermsuiteJsonReader termsuiteJsonReader;
     private Queue<Character> xmlCharacterQueue;
     private Integer[] offset = new Integer[2];
     private List<MorphoSyntaxOffsetId> offsetId;
 
 
-    SyntaxParser(StringBuffer txt, StringBuffer xml, TermsuiteJsonReader termsuiteJsonReader,
+    SyntaxParser(StringBuilder txt, StringBuilder xml, TermsuiteJsonReader termsuiteJsonReader,
                  List<MorphoSyntaxOffsetId> offsetId) {
         this.xml = xml;
         this.txt = txt;
         this.termsuiteJsonReader = termsuiteJsonReader;
-        this.tokenizeBuffer = new StringBuffer();
+        this.tokenizeBuffer = new StringBuilder();
         this.offsetId = offsetId;
     }
 
-    SyntaxParser(StringBuffer xml){
+    SyntaxParser(StringBuilder xml){
         this.xml = xml;
     }
 
-    public StringBuffer getXml() {
+    public StringBuilder getXml() {
         return xml;
     }
 
-    StringBuffer getTokenizeBuffer() {
+    StringBuilder getTokenizeBuffer() {
         return tokenizeBuffer;
     }
 
@@ -58,7 +58,7 @@ public class SyntaxParser {
     }
 
     void teiBodyspliter(){
-        xml = new StringBuffer(
+        xml = new StringBuilder(
                 xml.toString()
                         .split("(?=(<text>|<text\\s.*>))")[1]
                         .split("(?<=(</text>))")[0]

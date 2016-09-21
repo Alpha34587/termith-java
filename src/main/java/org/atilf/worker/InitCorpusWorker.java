@@ -49,7 +49,7 @@ public class InitCorpusWorker implements Runnable {
     @Override
     public void run() {
         try {
-            termithIndex.getXmlCorpus().put(path.getFileName().toString().replace(".xml", ""), new StringBuffer(
+            termithIndex.getXmlCorpus().put(path.getFileName().toString().replace(".xml", ""), new StringBuilder(
                     String.join("\n", Files.readAllLines(path))
             ));
             corpusCnt.countDown();

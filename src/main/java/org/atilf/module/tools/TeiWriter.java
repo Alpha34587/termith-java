@@ -25,14 +25,14 @@ import static org.atilf.models.TermithIndex.outputPath;
 public class TeiWriter {
 
     private String key;
-    private StringBuffer value;
+    private StringBuilder value;
     private TermithIndex termithIndex;
     private StandOffResources stdfRes;
     private static final Logger LOGGER = LoggerFactory.getLogger(TeiWriterWorker.class.getName());
     private final String SEPARATOR = "(?<=\n)";
 
 
-    public TeiWriter(String key, StringBuffer value, TermithIndex termithIndex, StandOffResources stdfRes) {
+    public TeiWriter(String key, StringBuilder value, TermithIndex termithIndex, StandOffResources stdfRes) {
         this.key = key;
         this.value = value;
         this.termithIndex = termithIndex;
@@ -89,8 +89,8 @@ public class TeiWriter {
             value.insert(startText,serializeMorphosyntax(termithIndex.getMorphoSyntaxStandOff().get(key)));
     }
 
-    private StringBuffer serializeTerminology(List<TermsOffsetId> termsOffsetIds) {
-        StringBuffer standoff = new StringBuffer();
+    private StringBuilder serializeTerminology(List<TermsOffsetId> termsOffsetIds) {
+        StringBuilder standoff = new StringBuilder();
         termsOffsetIds.sort((o1, o2) -> {
             int comp = o1.getIds().get(0).compareTo(o2.getIds().get(0));
             if (comp == 0) {
@@ -117,8 +117,8 @@ public class TeiWriter {
         return standoff;
     }
 
-    private StringBuffer serializeMorphosyntax(List<MorphoSyntaxOffsetId> morphoSyntaxOffsetIds) {
-        StringBuffer standoff = new StringBuffer();
+    private StringBuilder serializeMorphosyntax(List<MorphoSyntaxOffsetId> morphoSyntaxOffsetIds) {
+        StringBuilder standoff = new StringBuilder();
         Deque<MorphoSyntaxOffsetId> morphoDeque = new ArrayDeque<>(morphoSyntaxOffsetIds);
 
         standoff.append(stdfRes.STANDOFF.split(SEPARATOR)[0]

@@ -27,9 +27,9 @@ public class TreeTaggerWorker implements Runnable {
     private final String txtPath;
     private TermithIndex termithIndex;
     private CountDownLatch jsonCnt;
-    StringBuffer txt;
+    StringBuilder txt;
     String jsonPath;
-    StringBuffer xml;
+    StringBuilder xml;
     TextAnalyzer textAnalyzer;
 
     public TreeTaggerWorker(TermithIndex termithIndex, CorpusAnalyzer corpusAnalyzer, String name,

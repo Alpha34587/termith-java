@@ -12,13 +12,13 @@ import java.io.IOException;
 public class TreeTaggerToJson {
 
     private final Logger LOGGER = LoggerFactory.getLogger(TreeTaggerToJson.class.getName());
-    private final StringBuffer txt;
+    private final StringBuilder txt;
     private final String jsonPath;
     private final String treeTaggerHome;
     private final String lang;
     private final TextAnalyzer textAnalyzer;
 
-    public TreeTaggerToJson(StringBuffer txt, String jsonPath
+    public TreeTaggerToJson(StringBuilder txt, String jsonPath
             , String treeTaggerHome, String lang, TextAnalyzer textAnalyzer){
         this.txt = txt;
         this.jsonPath = jsonPath;

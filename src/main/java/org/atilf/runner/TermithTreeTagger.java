@@ -37,7 +37,7 @@ public class TermithTreeTagger {
 
     public void execute() throws IOException, InterruptedException {
 
-        int poolSize = Runtime.getRuntime().availableProcessors();
+        int poolSize = 8;
         LOGGER.info("Pool size set to: " + poolSize);
         LOGGER.info("First Phase Started : Text extraction");
         try{

@@ -14,25 +14,25 @@ import java.util.List;
 public class SyntaxGenerator {
 
     private TermsuiteJsonReader termsuiteJsonReader;
-    private StringBuffer txt;
-    private StringBuffer xml;
-    private StringBuffer tokenizeBody;
-    private StringBuffer standoff;
+    private StringBuilder txt;
+    private StringBuilder xml;
+    private StringBuilder tokenizeBody;
+    private StringBuilder standoff;
     private List<MorphoSyntaxOffsetId> offsetId;
 
-    public SyntaxGenerator(File json, StringBuffer txt, StringBuffer xml) {
+    public SyntaxGenerator(File json, StringBuilder txt, StringBuilder xml) {
 
         this.xml = xml;
         this.txt = txt;
         termsuiteJsonReader = new TermsuiteJsonReader(json);
         termsuiteJsonReader.parsing();
-        tokenizeBody = new StringBuffer();
-        standoff = new StringBuffer();
+        tokenizeBody = new StringBuilder();
+        standoff = new StringBuilder();
         offsetId = new ArrayList<>();
 
     }
 
-    public StringBuffer getTokenizeBody() {
+    public StringBuilder getTokenizeBody() {
         return tokenizeBody;
     }
 

@@ -23,11 +23,11 @@ public class TermithIndex {
 
     public Path corpus;
     private List<Path> terminologies;
-    private Map<String, StringBuffer> tokenizeTeiBody;
+    private Map<String, StringBuilder> tokenizeTeiBody;
     private Map<String, List<MorphoSyntaxOffsetId>> morphoSyntaxStandOff;
     private Map<String, List<TermsOffsetId>> terminologyStandOff;
-    private Map<String, StringBuffer> extractedText;
-    private Map<String, StringBuffer> xmlCorpus;
+    private Map<String, StringBuilder> extractedText;
+    private Map<String, StringBuilder> xmlCorpus;
     private Map<String, Path> JsonTreeTagger;
     private List<Path> SerializeJson;
     private List<Path> outputFile;
@@ -75,7 +75,7 @@ public class TermithIndex {
         return terminologyStandOff;
     }
 
-    public Map<String, StringBuffer> getTokenizeTeiBody() {
+    public Map<String, StringBuilder> getTokenizeTeiBody() {
         return tokenizeTeiBody;
     }
 
@@ -85,11 +85,11 @@ public class TermithIndex {
         return corpus;
     }
 
-    public Map<String, StringBuffer> getExtractedText() {
+    public Map<String, StringBuilder> getExtractedText() {
         return extractedText;
     }
 
-    public void addText(String id, StringBuffer content) {
+    public void addText(String id, StringBuilder content) {
 
         this.getExtractedText().put(id,content);
     }
@@ -98,7 +98,7 @@ public class TermithIndex {
         return outputFile;
     }
 
-    public Map<String, StringBuffer> getXmlCorpus() {
+    public Map<String, StringBuilder> getXmlCorpus() {
         return xmlCorpus;
     }
 
@@ -124,12 +124,6 @@ public class TermithIndex {
         String outputPath = null;
         String lang;
         String treeTaggerHome;
-        private List<Path> terminologies;
-        private Map<String, StringBuffer> morphoSyntaxStandOff;
-        private Map<String, StringBuffer> tokenizeTeiBody;
-        private Path corpus;
-        private Map<String, StringBuffer> extractedText;
-        private Map<String, StringBuffer> xmlCorpus;
         private int corpusSize = 0;
 
         /**

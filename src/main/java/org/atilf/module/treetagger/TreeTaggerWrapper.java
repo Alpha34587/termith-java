@@ -12,13 +12,13 @@ import java.util.stream.Collector;
  */
 public class TreeTaggerWrapper {
 
-    private final StringBuffer txt;
+    private final StringBuilder txt;
     private TreeTaggerParameter treeTaggerParameter;
     private String treeTaggerHome;
 
     private StringBuilder ttOut;
 
-    public TreeTaggerWrapper(StringBuffer txt, String treeTaggerHome, TreeTaggerParameter treeTaggerParameter) {
+    public TreeTaggerWrapper(StringBuilder txt, String treeTaggerHome, TreeTaggerParameter treeTaggerParameter) {
 
         this.txt = txt;
         this.treeTaggerHome = treeTaggerHome;

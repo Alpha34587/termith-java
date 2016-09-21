@@ -35,12 +35,12 @@ public class FilesUtilities {
     }
 
     /**
-     * create files with the content of a stringBuffer
+     * create files with the content of a StringBuilder
      * @param path the path of the folder
      * @param corpus the corpus with the name of the file and his content
      * @param extension the extension expected of the created file
      */
-    public static void createFiles(String path, Map<String, StringBuffer> corpus, String extension) {
+    public static void createFiles(String path, Map<String, StringBuilder> corpus, String extension) {
         corpus.forEach((filename, content) -> {
             try (BufferedWriter writer =
                          Files.newBufferedWriter(Paths.get(path + "/" + filename + "." + extension))){

@@ -17,12 +17,12 @@ import static org.atilf.models.TermithIndex.outputPath;
 public class TeiWriterWorker implements Runnable {
 
     private String key;
-    private StringBuffer value;
+    private StringBuilder value;
     private TermithIndex termithIndex;
     private static final Logger LOGGER = LoggerFactory.getLogger(TeiWriterWorker.class.getName());
 
 
-    public TeiWriterWorker(String key, StringBuffer value, TermithIndex termithIndex){
+    public TeiWriterWorker(String key, StringBuilder value, TermithIndex termithIndex){
         this.key = key;
         this.value = value;
         this.termithIndex = termithIndex;

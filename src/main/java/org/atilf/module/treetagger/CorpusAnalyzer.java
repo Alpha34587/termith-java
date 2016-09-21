@@ -20,7 +20,7 @@ public class CorpusAnalyzer {
     private boolean lastDocs;
     private int index;
 
-    public CorpusAnalyzer(Map<String, StringBuffer> extractedText){
+    public CorpusAnalyzer(Map<String, StringBuilder> extractedText){
         LOGGER.debug("CorpusAnalyzer object building started");
         analyzedTexts = new HashMap<>();
         totalSize = totalSize(extractedText);
@@ -65,10 +65,10 @@ public class CorpusAnalyzer {
     /**
      * @return return the size of the total corpus
      */
-    public int totalSize(Map<String, StringBuffer> extractedText) {
+    public int totalSize(Map<String, StringBuilder> extractedText) {
         int totalSize = 0;
         byte[] bytesCt;
-        for (StringBuffer text : extractedText.values()){
+        for (StringBuilder text : extractedText.values()){
             totalSize += text.toString().getBytes().length + 1;
         }
         return totalSize;
@@ -78,7 +78,7 @@ public class CorpusAnalyzer {
      * return the size of a document
      * @return
      */
-    public int documentSize(Map<String, StringBuffer> extractedText, String id){
+    public int documentSize(Map<String, StringBuilder> extractedText, String id){
         return extractedText.get(id)
                 .toString().getBytes().length + 1;
     }
@@ -87,7 +87,7 @@ public class CorpusAnalyzer {
      * return the number of document of the corpus
      * @return
      */
-    public int nbOfDocs(Map<String, StringBuffer> extractedText){
+    public int nbOfDocs(Map<String, StringBuilder> extractedText){
         return extractedText.size();
     }
 
@@ -95,7 +95,7 @@ public class CorpusAnalyzer {
      * return the uima offset of a document
      * @return
      */
-    public int end(Map<String, StringBuffer> extractedText, String id){
+    public int end(Map<String, StringBuilder> extractedText, String id){
         return extractedText.get(id).toString().length();
     }
 }
