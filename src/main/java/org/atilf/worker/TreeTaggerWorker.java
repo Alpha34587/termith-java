@@ -25,6 +25,7 @@ public class TreeTaggerWorker implements Runnable {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(AnalyzeThread.class.getName());
     private final String txtPath;
+    private final String name;
     private TermithIndex termithIndex;
     private CountDownLatch jsonCnt;
     StringBuilder txt;
@@ -41,6 +42,7 @@ public class TreeTaggerWorker implements Runnable {
         this.jsonPath = termithIndex.getCorpus() + "/json/" + name + ".json";
         this.textAnalyzer = corpusAnalyzer.getAnalyzedTexts().get(name);
         this.xml = termithIndex.getXmlCorpus().get(name);
+        this.name = name;
     }
 
     @Override
@@ -67,6 +69,7 @@ public class TreeTaggerWorker implements Runnable {
             syntaxGenerator.execute();
             termithIndex.getTokenizeTeiBody().put(json.getName().replace(".json",""), syntaxGenerator.getTokenizeBody());
             termithIndex.getMorphoSyntaxStandOff().put(json.getName().replace(".json",""), syntaxGenerator.getOffsetId());
+            termithIndex.getExtractedText().remove(name);
             LOGGER.debug("tokenization and morphosyntax tasks finished file : " + jsonPath);
 
         } catch (IOException e) {
