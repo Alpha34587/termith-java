@@ -24,6 +24,7 @@ import java.util.Map;
 import java.util.concurrent.*;
 
 import static org.atilf.models.TermithIndex.lang;
+import static org.atilf.models.TermithIndex.outputPath;
 
 /**
  * @author Simon Meoni
@@ -46,7 +47,7 @@ public class AnalyzeThread {
     }
 
     public AnalyzeThread(int poolSize, TermithIndex termithIndex) throws IOException {
-        termithIndex.setCorpus(Paths.get(FilesUtilities.createTemporaryFolder("corpus")));
+        termithIndex.setCorpus(Paths.get(outputPath));
         executorService = Executors.newFixedThreadPool(poolSize);
         this.termithIndex = termithIndex;
         jsonCnt = new CountDownLatch(termithIndex.getExtractedText().size());
