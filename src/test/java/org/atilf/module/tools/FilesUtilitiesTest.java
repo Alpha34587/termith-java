@@ -18,14 +18,14 @@ import java.util.Map;
  */
 public class FilesUtilitiesTest {
     String path;
-    Map<String, StringBuffer> testMap;
+    Map<String, StringBuilder> testMap;
 
     @Before
     public void setUp() throws Exception {
         path = FilesUtilities.createTemporaryFolder("test");
         testMap = new HashMap<>();
-        testMap.put("test1", new StringBuffer("test2"));
-        testMap.put("test3", new StringBuffer("test4"));
+        testMap.put("test1", new StringBuilder("test2"));
+        testMap.put("test3", new StringBuilder("test4"));
         FilesUtilities.createFiles(path,testMap,"txt");
     }
 

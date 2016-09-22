@@ -20,7 +20,7 @@ import java.nio.file.Paths;
 public class SerializeTest {
 
     private StringBuilder tokenLemma;
-    private StringBuffer lemma;
+    private StringBuilder lemma;
     private InitializerThread initializerThread;
     private Serialize serializeLemma;
     private Serialize serializeTag;
@@ -36,7 +36,7 @@ public class SerializeTest {
         termithIndex = new TermithIndex.Builder().build();
         TagNormalizer.initTag("en");
         termithIndex.addText("1",
-                new StringBuffer("\n \n \nJournal of Gerontology: PSYCHOLOGICAL patient (1998@)"));
+                new StringBuilder("\n \n \nJournal of Gerontology: PSYCHOLOGICAL patient (1998@)"));
         CorpusAnalyzer corpusAnalyzer = new CorpusAnalyzer(termithIndex.getExtractedText());
 
         tokenLemma = new StringBuilder(
@@ -49,7 +49,7 @@ public class SerializeTest {
                         "(\tJJ\t(\n" +
                         "1998@\tJJ\t1998@\n" +
                         ")\tJJ\t)");
-        lemma = new StringBuffer(
+        lemma = new StringBuilder(
                 "\n \n \nJournal of Gerontology: PSYCHOLOGICAL patient (1998@)");
 
         jsonResFile = temporaryFolder.newFile("test1.json");

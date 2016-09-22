@@ -19,7 +19,7 @@ public class CorpusAnalyzerTest {
     private TermithIndex termithIndex;
     private InitializerThread initializerThreadCorpus;
     private CorpusAnalyzer corpusAnalyzer;
-    private Map<String,StringBuffer> extractedText;
+    private Map<String,StringBuilder> extractedText;
 
     @Before
     public void setUp() throws Exception {

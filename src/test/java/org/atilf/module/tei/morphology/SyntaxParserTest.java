@@ -25,14 +25,14 @@ public class SyntaxParserTest {
     SyntaxParser symbolTokenInjector2;
     SyntaxParser symbolTokenInjector3;
     SyntaxParser alignmentTokenInjector;
-    String expectedStringBuffer;
-    String expectedStringBuffer2;
+    String expectedStringBuilder;
+    String expectedStringBuilder2;
     List<String> offsetIdAlignement;
     @Before
     public void setUp(){
 
         //bodySplitter test
-        expectedStringBuffer =
+        expectedStringBuilder =
                 "<text>\n" +
                         "    <body>\n" +
                         "      <div>\n" +
@@ -40,7 +40,7 @@ public class SyntaxParserTest {
                         "Le chien mange des chips\n" +
                         "  </text>";
 
-        expectedStringBuffer2 =
+        expectedStringBuilder2 =
                 "<text xml:id=\"pas fraiche du tout\">\n" +
                         "    <body>\n" +
                         "      <div>\n" +
@@ -48,7 +48,7 @@ public class SyntaxParserTest {
                         "Le chien mange des chips pas fraiche\n" +
                         "  </text>";
 
-        StringBuffer stringBuffer = new StringBuffer(
+        StringBuilder StringBuilder = new StringBuilder(
                 "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
                         "<!--Version 1.2 générée le 5-4-2016-->\n" +
                         "<TEI xmlns:tei=\"http://www.tei-c.org/ns/1.0\" " +
@@ -73,7 +73,7 @@ public class SyntaxParserTest {
                         "Le chien mange des chips\n" +
                         "  </text>");
 
-        StringBuffer stringBuffer2 = new StringBuffer(
+        StringBuilder StringBuilder2 = new StringBuilder(
                 "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
                         "<!--Version 1.2 générée le 5-4-2016-->\n" +
                         "<TEI xmlns:tei=\"http://www.tei-c.org/ns/1.0\" " +
@@ -98,7 +98,7 @@ public class SyntaxParserTest {
                         "Le chien mange des chips pas fraiche\n" +
                         "  </text>");
 
-        StringBuffer stringBuffer3 = new StringBuffer(
+        StringBuilder StringBuilder3 = new StringBuilder(
                 "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
                         "<!--Version 1.2 générée le 5-4-2016-->\n" +
                         "<TEI xmlns:tei=\"http://www.tei-c.org/ns/1.0\" " +
@@ -122,9 +122,9 @@ public class SyntaxParserTest {
                         "        <p>\n" +
                         "Le chien mange des chips pas fraiche\n" +
                         "<!--lalalalal--></text>");
-        syntaxBody = new SyntaxParser(stringBuffer);
-        syntaxBody2 = new SyntaxParser(stringBuffer2);
-        syntaxBody3 = new SyntaxParser(stringBuffer3);
+        syntaxBody = new SyntaxParser(StringBuilder);
+        syntaxBody2 = new SyntaxParser(StringBuilder2);
+        syntaxBody3 = new SyntaxParser(StringBuilder3);
         syntaxBody.teiBodyspliter();
         syntaxBody2.teiBodyspliter();
         syntaxBody3.teiBodyspliter();
@@ -137,8 +137,8 @@ public class SyntaxParserTest {
         basicTermsuiteJsonReader.createToken("N", "des", 15, 18);
         basicTermsuiteJsonReader.createToken("N", "pommes", 19, 25);
         basicTokenInjector = new SyntaxParser(
-                new StringBuffer("le chien mange des pommes"),
-                new StringBuffer("<text>le chien mange des pommes</text>"),
+                new StringBuilder("le chien mange des pommes"),
+                new StringBuilder("<text>le chien mange des pommes</text>"),
                 basicTermsuiteJsonReader, new ArrayList<>()
         );
 
@@ -150,8 +150,8 @@ public class SyntaxParserTest {
         insideTermsuiteJsonReader.createToken("N","des",15,18);
         insideTermsuiteJsonReader.createToken("N","pommes",19,25);
         insideTokenInjector = new SyntaxParser(
-                new StringBuffer("le chien mange des pommes"),
-                new StringBuffer("<text>le <hi>chi</hi><hi>en</hi> mange de<s>s</s> <hi>pommes</hi></text>"),
+                new StringBuilder("le chien mange des pommes"),
+                new StringBuilder("<text>le <hi>chi</hi><hi>en</hi> mange de<s>s</s> <hi>pommes</hi></text>"),
                 insideTermsuiteJsonReader, new ArrayList<>()
         );
 
@@ -165,8 +165,8 @@ public class SyntaxParserTest {
         insideTermsuiteJsonReader2.createToken("N",")",26,27);
         insideTermsuiteJsonReader2.createToken("N","pommes",28,34);
         insideTokenInjector2 = new SyntaxParser(
-                new StringBuffer("le chien mange des (bonnes) pommes"),
-                new StringBuffer("<text>le <hi>chi</hi><hi>en</hi> mange de<s>s</s> <hi>(bonnes<hi>)</hi> pommes</hi></text>"),
+                new StringBuilder("le chien mange des (bonnes) pommes"),
+                new StringBuilder("<text>le <hi>chi</hi><hi>en</hi> mange de<s>s</s> <hi>(bonnes<hi>)</hi> pommes</hi></text>"),
                 insideTermsuiteJsonReader2, new ArrayList<>()
         );
 
@@ -179,8 +179,8 @@ public class SyntaxParserTest {
         commentTermsuiteJsonReader.createToken("N", "des", 15, 18);
         commentTermsuiteJsonReader.createToken("N", "pommes", 19, 25);
         commentTokenInjector = new SyntaxParser(
-                new StringBuffer("le chien mange des pommes"),
-                new StringBuffer("<text>le<!--testtest--> <hi>chi</hi>en" +
+                new StringBuilder("le chien mange des pommes"),
+                new StringBuilder("<text>le<!--testtest--> <hi>chi</hi>en" +
                         " <!--test-->mange de<s>s</s><!--lalalal--><!--test--> " +
                         "<hi>pommes</hi><!--lalala--></text>"),
                 commentTermsuiteJsonReader, new ArrayList<>()
@@ -190,8 +190,8 @@ public class SyntaxParserTest {
         TermsuiteJsonReader symbolTermsuiteJsonReader = new TermsuiteJsonReader();
 
         symbolTokenInjector = new SyntaxParser(
-                new StringBuffer("le &amp; &amp; chi&eacute;ien ma&diams;nge des pommes&amp;"),
-                new StringBuffer("le &amp; &amp; chi&eacute;ien ma&diams;nge des pommes&amp;"),
+                new StringBuilder("le &amp; &amp; chi&eacute;ien ma&diams;nge des pommes&amp;"),
+                new StringBuilder("le &amp; &amp; chi&eacute;ien ma&diams;nge des pommes&amp;"),
                 symbolTermsuiteJsonReader, new ArrayList<>()
         );
 
@@ -204,8 +204,8 @@ public class SyntaxParserTest {
         symbolTermsuiteJsonReader2.createToken("N", "des", 22, 26);
         symbolTermsuiteJsonReader2.createToken("N", "pommes", 27, 34);
         symbolTokenInjector2 = new SyntaxParser(
-                new StringBuffer("le &amp; &amp; chi&eacute;ien ma&diams;nge &diams;des pommes&amp;"),
-                new StringBuffer("<text>le &amp; &amp; chi&eacute;ien ma&diams;nge &diams;des pommes&amp;</text>"),
+                new StringBuilder("le &amp; &amp; chi&eacute;ien ma&diams;nge &diams;des pommes&amp;"),
+                new StringBuilder("<text>le &amp; &amp; chi&eacute;ien ma&diams;nge &diams;des pommes&amp;</text>"),
                 symbolTermsuiteJsonReader2, new ArrayList<>()
         );
 
@@ -218,8 +218,8 @@ public class SyntaxParserTest {
         symbolTermsuiteJsonReader3.createToken("N", "des", 23, 27);
         symbolTermsuiteJsonReader3.createToken("N", "pommes", 28, 35);
         symbolTokenInjector3 = new SyntaxParser(
-                new StringBuffer("le &amp; &amp; chi&eacute;ien ma&diams;&diams;nge &diams;des pommes&amp;"),
-                new StringBuffer("<text><hi>le</hi> &amp; &amp; <hi>chi</hi>&eacute;ien" +
+                new StringBuilder("le &amp; &amp; chi&eacute;ien ma&diams;&diams;nge &diams;des pommes&amp;"),
+                new StringBuilder("<text><hi>le</hi> &amp; &amp; <hi>chi</hi>&eacute;ien" +
                         " <hi>ma</hi><sub>&diams;&diams;</sub><sub>nge</sub> " +
                         "<sub>&diams;d</sub>es " +
                         "<hi>pommes&amp;</hi>" +
@@ -238,8 +238,8 @@ public class SyntaxParserTest {
         alignmentTermsuiteJsonReader.createToken("N", "délicieux", 33, 42);
         alignmentTermsuiteJsonReader.createToken("N", "&", 48, 49);
         alignmentTokenInjector = new SyntaxParser(
-                new StringBuffer("le chien\nmange un fromage assez\n\ndélicieux  \n\n\n\n&"),
-                new StringBuffer("<text><head>le chien</head><p>mange " +
+                new StringBuilder("le chien\nmange un fromage assez\n\ndélicieux  \n\n\n\n&"),
+                new StringBuilder("<text><head>le chien</head><p>mange " +
                         "<div>un froma<sup>ge</sup> assez" +
                         "</div></p><p>d&eacute;licieux  </p>\n\n\n&amp;</text>"),
                 alignmentTermsuiteJsonReader, new ArrayList<>()
@@ -258,10 +258,10 @@ public class SyntaxParserTest {
     }
     @Test
     public void teiBodyspliterTest() throws Exception {
-        Assert.assertEquals("this stringBuffer must be equals to :",
-                syntaxBody.getXml().toString(), expectedStringBuffer);
-        Assert.assertEquals("this stringBuffer must be equals to :",
-                syntaxBody2.getXml().toString(), expectedStringBuffer2);
+        Assert.assertEquals("this StringBuilder must be equals to :",
+                syntaxBody.getXml().toString(), expectedStringBuilder);
+        Assert.assertEquals("this StringBuilder must be equals to :",
+                syntaxBody2.getXml().toString(), expectedStringBuilder2);
     }
 
     @Test

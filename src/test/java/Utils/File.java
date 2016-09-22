@@ -10,7 +10,7 @@ import java.nio.file.Path;
  */
 public class File {
 
-    public static StringBuffer ReadFile(Path path) throws IOException {
-        return new StringBuffer(String.join("\n", Files.readAllLines(path)));
+    public static StringBuilder ReadFile(Path path) throws IOException {
+        return new StringBuilder(String.join("\n", Files.readAllLines(path)));
     }
 }
