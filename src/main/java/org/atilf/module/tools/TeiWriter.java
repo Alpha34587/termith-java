@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.atilf.worker.TeiWriterWorker;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -24,6 +25,8 @@ import static org.atilf.models.TermithIndex.outputPath;
  */
 public class TeiWriter {
 
+    private List<MorphoSyntaxOffsetId> morphoStandoff;
+    private StringBuilder tokenizeBody;
     private String key;
     private StringBuilder value;
     private TermithIndex termithIndex;
@@ -37,6 +40,8 @@ public class TeiWriter {
         this.value = value;
         this.termithIndex = termithIndex;
         this.stdfRes = stdfRes;
+        this.morphoStandoff = (List<MorphoSyntaxOffsetId>) FilesUtilities.readObject(termithIndex.getMorphoSyntaxStandOff().get(key));
+        this.tokenizeBody = (StringBuilder) FilesUtilities.readObject(termithIndex.getTokenizeTeiBody().get(key));
     }
 
     public void execute() throws IOException {
@@ -46,6 +51,12 @@ public class TeiWriter {
         insertStandOff();
         insertBody();
         writeFile();
+        removeSerializeFile();
+    }
+
+    private void removeSerializeFile() {
+        new File(termithIndex.getMorphoSyntaxStandOff().get(key).toString()).delete();
+        new File(termithIndex.getTokenizeTeiBody().get(key).toString()).delete();
     }
 
     private void insertStandoffNs() {
@@ -77,7 +88,7 @@ public class TeiWriter {
             int startText = value.indexOf("<text>");
             int endText = value.indexOf("</TEI>");
             value.delete(startText,endText);
-            value.insert(startText,termithIndex.getTokenizeTeiBody().get(key).append("\n"));
+            value.insert(startText,tokenizeBody.append("\n"));
         }
     }
 
@@ -86,7 +97,7 @@ public class TeiWriter {
         if (termithIndex.getTerminologyStandOff().containsKey(key))
             value.insert(startText, serializeTerminology(termithIndex.getTerminologyStandOff().get(key)));
         if (termithIndex.getMorphoSyntaxStandOff().containsKey(key))
-            value.insert(startText,serializeMorphosyntax(termithIndex.getMorphoSyntaxStandOff().get(key)));
+            value.insert(startText,serializeMorphosyntax(morphoStandoff));
     }
 
     private StringBuilder serializeTerminology(List<TermsOffsetId> termsOffsetIds) {

@@ -15,7 +15,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
  */
 public class TermithIndex {
 
-    public static String outputPath;
+    public static Path outputPath;
     public static String lang;
     public static String treeTaggerHome;
     public static Path base;
@@ -23,8 +23,8 @@ public class TermithIndex {
 
     public Path corpus;
     private List<Path> terminologies;
-    private Map<String, StringBuilder> tokenizeTeiBody;
-    private Map<String, List<MorphoSyntaxOffsetId>> morphoSyntaxStandOff;
+    private Map<String, Path> tokenizeTeiBody;
+    private Map<String, Path> morphoSyntaxStandOff;
     private Map<String, List<TermsOffsetId>> terminologyStandOff;
     private Map<String, StringBuilder> extractedText;
     private Map<String, StringBuilder> xmlCorpus;
@@ -67,7 +67,7 @@ public class TermithIndex {
 
     public int getCorpusSize() {return corpusSize;}
 
-    public Map<String, List<MorphoSyntaxOffsetId>> getMorphoSyntaxStandOff() {
+    public Map<String, Path> getMorphoSyntaxStandOff() {
         return morphoSyntaxStandOff;
     }
 
@@ -75,7 +75,7 @@ public class TermithIndex {
         return terminologyStandOff;
     }
 
-    public Map<String, StringBuilder> getTokenizeTeiBody() {
+    public Map<String, Path> getTokenizeTeiBody() {
         return tokenizeTeiBody;
     }
 
@@ -121,7 +121,7 @@ public class TermithIndex {
     {
         Path base;
         boolean trace = false;
-        String outputPath = null;
+        Path outputPath = null;
         String lang;
         String treeTaggerHome;
         private int corpusSize = 0;
@@ -155,7 +155,7 @@ public class TermithIndex {
          * @return return output path
          */
         public Builder export(String outputPath){
-            this.outputPath = outputPath;
+            this.outputPath = Paths.get(outputPath);
             return this;
         }
 

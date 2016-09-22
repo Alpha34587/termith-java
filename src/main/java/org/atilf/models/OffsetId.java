@@ -1,5 +1,6 @@
 package org.atilf.models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,7 +8,7 @@ import java.util.List;
  * @author Simon Meoni
  *         Created on 14/09/16.
  */
-public class OffsetId {
+public class OffsetId implements Serializable {
     int begin;
     int end;
     List<Integer> ids;

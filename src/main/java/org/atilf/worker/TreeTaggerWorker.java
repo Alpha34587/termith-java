@@ -2,6 +2,7 @@ package org.atilf.worker;
 
 import org.atilf.models.TermithIndex;
 import org.atilf.module.tei.morphology.SyntaxGenerator;
+import org.atilf.module.tools.FilesUtilities;
 import org.atilf.module.treetagger.CorpusAnalyzer;
 import org.atilf.module.treetagger.TextAnalyzer;
 import org.atilf.module.treetagger.TreeTaggerToJson;
@@ -67,8 +68,10 @@ public class TreeTaggerWorker implements Runnable {
             File json = new File(jsonPath);
             SyntaxGenerator syntaxGenerator = new SyntaxGenerator(json,txt,xml);
             syntaxGenerator.execute();
-            termithIndex.getTokenizeTeiBody().put(json.getName().replace(".json",""), syntaxGenerator.getTokenizeBody());
-            termithIndex.getMorphoSyntaxStandOff().put(json.getName().replace(".json",""), syntaxGenerator.getOffsetId());
+            termithIndex.getTokenizeTeiBody().put(json.getName().replace(".json",""),
+                    FilesUtilities.writeObject(syntaxGenerator.getTokenizeBody(),termithIndex.getCorpus()));
+            termithIndex.getMorphoSyntaxStandOff().put(json.getName().replace(".json",""),
+                    FilesUtilities.writeObject(syntaxGenerator.getOffsetId(),termithIndex.getCorpus()));
             termithIndex.getExtractedText().remove(name);
             LOGGER.debug("tokenization and morphosyntax tasks finished file : " + jsonPath);
 

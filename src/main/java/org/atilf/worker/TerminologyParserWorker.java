@@ -2,6 +2,7 @@ package org.atilf.worker;
 
 import org.atilf.models.TermithIndex;
 import org.atilf.module.termsuite.terminology.TerminologyParser;
+import org.atilf.module.tools.FilesUtilities;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -28,9 +29,7 @@ public class TerminologyParserWorker implements Runnable {
         TerminologyParser terminologyParser = new TerminologyParser(terminologyPath);
         try {
             terminologyParser.execute();
-            termithIndex.setTerminologyStandOff(
-                    terminologyParser.getStandOffTerminology()
-            );
+            termithIndex.setTerminologyStandOff(terminologyParser.getStandOffTerminology());
             LOGGER.info("parsing terminology ended");
         } catch (IOException e) {
             LOGGER.error("error during terminology parsing", e);

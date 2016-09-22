@@ -4,9 +4,11 @@ import org.atilf.models.MorphoSyntaxOffsetId;
 import org.atilf.models.TermithIndex;
 import org.atilf.models.TermsOffsetId;
 import org.atilf.module.termsuite.terminology.TerminologyStandOff;
+import org.atilf.module.tools.FilesUtilities;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.nio.file.Path;
 import java.util.List;
 import java.util.NavigableMap;
 
@@ -22,10 +24,10 @@ public class TerminologyStandOffWorker implements Runnable {
     private NavigableMap<Integer,List<Integer>> beginMap;
     private NavigableMap<Integer,List<Integer>> endMap;
     public TerminologyStandOffWorker(String id,
-                                     List<MorphoSyntaxOffsetId> morpho,
+                                     Path morpho,
                                      TermithIndex termithIndex) {
         this.id = id;
-        this.morpho = morpho;
+        this.morpho = (List<MorphoSyntaxOffsetId>) FilesUtilities.readObject(morpho);
         this.termino = termithIndex.getTerminologyStandOff().get(id);
     }
 

@@ -1,16 +1,18 @@
 package org.atilf.module.tools;
 
 import org.atilf.models.TermithIndex;
+import org.atilf.models.TermsOffsetId;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.BufferedWriter;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import static org.atilf.models.TermithIndex.outputPath;
 
@@ -74,7 +76,64 @@ public class FilesUtilities {
         }
     }
 
-    public static StringBuilder ReadFile(Path path) throws IOException {
-        return new StringBuilder(String.join("\n", Files.readAllLines(path)));
+    public static StringBuilder ReadFile(Path path) {
+        try {
+            return new StringBuilder(String.join("\n", Files.readAllLines(path)));
+        } catch (IOException e) {
+            LOGGER.error("could read file",e);
+        }
+        return null;
     }
+
+    public static Path writeObject(Object o,Path workingPath) throws IOException {
+        FileOutputStream fos = null;
+        ObjectOutputStream oos = null;
+        Path path = Paths.get(workingPath + "/" + UUID.randomUUID().toString());
+        try {
+            fos = new FileOutputStream(path.toString());
+            oos = new ObjectOutputStream(fos);
+            oos.writeObject(o);
+            oos.close();
+        } catch (IOException e) {
+            LOGGER.error("could not write object",e);
+        }
+        finally {
+            if (fos != null){
+                fos.close();
+            }
+        }
+        return path;
+    }
+
+    public static Object readObject(Path filePath){
+
+        FileInputStream fis = null;
+        ObjectInputStream in = null;
+        Object o = null;
+        try {
+            fis = new FileInputStream(new File(filePath.toString()));
+            in = new ObjectInputStream(fis);
+            o = in.readObject();
+        }
+        catch (IOException e) {
+            LOGGER.error("could not open file",e);
+
+        }
+        catch (ClassNotFoundException e) {
+            LOGGER.error("could import object",e);
+        }
+        finally {
+            if (fis != null){
+                try {
+                    fis.close();
+                } catch (IOException e) {
+                    LOGGER.error("could not close object",e);
+                }
+            }
+        }
+        return o;
+    }
+
+
+    
 }

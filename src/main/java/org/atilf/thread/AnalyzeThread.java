@@ -47,7 +47,7 @@ public class AnalyzeThread {
     }
 
     public AnalyzeThread(int poolSize, TermithIndex termithIndex) throws IOException {
-        termithIndex.setCorpus(Paths.get(outputPath));
+        termithIndex.setCorpus(outputPath);
         executorService = Executors.newFixedThreadPool(poolSize);
         this.termithIndex = termithIndex;
         jsonCnt = new CountDownLatch(termithIndex.getExtractedText().size());
