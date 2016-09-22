@@ -53,7 +53,8 @@ public class TreeTaggerWorker implements Runnable {
                 jsonPath,
                 treeTaggerHome,
                 lang,
-                textAnalyzer
+                textAnalyzer,
+                TermithIndex.outputPath.toString()
         );
 
 

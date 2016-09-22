@@ -20,15 +20,18 @@ public class TreeTaggerWrapper {
     private final StringBuilder txt;
     private TreeTaggerParameter treeTaggerParameter;
     private String treeTaggerHome;
+    private String outputPath;
 
     private StringBuilder ttOut;
 
-    public TreeTaggerWrapper(StringBuilder txt, String treeTaggerHome, TreeTaggerParameter treeTaggerParameter) {
+    public TreeTaggerWrapper(StringBuilder txt, String treeTaggerHome, TreeTaggerParameter treeTaggerParameter,
+    String outputPath) {
 
         this.txt = txt;
         this.treeTaggerHome = treeTaggerHome;
         this.ttOut = new StringBuilder();
         this.treeTaggerParameter = treeTaggerParameter;
+        this.outputPath = outputPath;
     }
 
     public StringBuilder getTtOut() {
@@ -54,7 +57,7 @@ public class TreeTaggerWrapper {
     }
     
     private String writeFile(String parsingText) throws IOException {
-        File temp = File.createTempFile(UUID.randomUUID().toString(), ".tt");
+        File temp = new File( outputPath + UUID.randomUUID().toString() + ".tt");
         BufferedWriter bw = new BufferedWriter(new FileWriter(temp));
         bw.write(parsingText);
         bw.flush();
