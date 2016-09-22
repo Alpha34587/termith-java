@@ -73,4 +73,8 @@ public class FilesUtilities {
             LOGGER.error("cannot copy terminologies",e);
         }
     }
+
+    public static StringBuilder ReadFile(Path path) throws IOException {
+        return new StringBuilder(String.join("\n", Files.readAllLines(path)));
+    }
 }

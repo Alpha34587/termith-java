@@ -1,11 +1,11 @@
 package org.atilf.module.treetagger;
 
-import Utils.File;
 import org.atilf.models.TermithIndex;
+import org.atilf.module.tools.FilesUtilities;
+import org.atilf.thread.InitializerThread;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.atilf.thread.InitializerThread;
 
 import java.nio.file.Paths;
 import java.util.Map;
@@ -25,9 +25,9 @@ public class CorpusAnalyzerTest {
     public void setUp() throws Exception {
 
         termithIndex = new TermithIndex.Builder().build();
-        termithIndex.addText("1", File.ReadFile(Paths.get("src/test/resources/corpus.analyzer/txt/file1.txt")));
-        termithIndex.addText("2",File.ReadFile(Paths.get("src/test/resources/corpus.analyzer/txt/file2.txt")));
-        termithIndex.addText("3",File.ReadFile(Paths.get("src/test/resources/corpus.analyzer/txt/file3.txt")));
+        termithIndex.addText("1", FilesUtilities.ReadFile(Paths.get("src/test/resources/corpus.analyzer/txt/file1.txt")));
+        termithIndex.addText("2",FilesUtilities.ReadFile(Paths.get("src/test/resources/corpus.analyzer/txt/file2.txt")));
+        termithIndex.addText("3",FilesUtilities.ReadFile(Paths.get("src/test/resources/corpus.analyzer/txt/file3.txt")));
         extractedText = termithIndex.getExtractedText();
     }
 
