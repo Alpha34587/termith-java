@@ -5,6 +5,7 @@ import org.atilf.worker.CleanerWorker;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author Simon Meoni
@@ -14,8 +15,10 @@ public class CleanerThread {
 
     public CleanerThread() {}
 
-    public void execute() {
+    public void execute() throws InterruptedException {
         ExecutorService executor = Executors.newSingleThreadExecutor();
         executor.submit(new CleanerWorker(TermithIndex.outputPath,TermithIndex.keepFiles));
+        executor.shutdown();
+        executor.awaitTermination(1L, TimeUnit.DAYS);
     }
 }

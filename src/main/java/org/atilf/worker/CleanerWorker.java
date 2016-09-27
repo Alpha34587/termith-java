@@ -4,6 +4,7 @@ import org.atilf.module.tools.WorkingFilesCleaner;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.IOException;
 import java.nio.file.Path;
 
 
@@ -27,6 +28,10 @@ public class CleanerWorker implements Runnable {
 
         LOGGER.debug("clean working directory : " + this.corpus);
         WorkingFilesCleaner workingFilesCleaner = new WorkingFilesCleaner(this.corpus,this.keepFiles);
-        workingFilesCleaner.execute();
+        try {
+            workingFilesCleaner.execute();
+        } catch (IOException e) {
+            LOGGER.error("error during cleaning directory",e);
+        }
     }
 }
