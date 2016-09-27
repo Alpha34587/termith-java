@@ -1,5 +1,6 @@
 package org.atilf.module.treetagger;
 
+import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -50,6 +51,12 @@ public class TreeTaggerWrapper {
                         (stringBuilder, str) -> stringBuilder.append(str).append("\n"),
                         StringBuilder::append)
                 );
+
+        int exitCode = p.waitFor();
+        if (exitCode != 0) {
+            throw new InterruptedException(IOUtils.toString(p.getErrorStream(),"UTF-8"));
+            
+        }
         if (p.isAlive()){
         p.destroy();
         }

@@ -79,7 +79,8 @@ public class TreeTaggerWorker implements Runnable {
         } catch (IOException e) {
             LOGGER.error("error during parsing TreeTagger data", e);
         } catch (InterruptedException e) {
-            LOGGER.error("error during Tree Tagger Process");
+            LOGGER.error("error during Tree Tagger Process : ",e);
+            Thread.currentThread().interrupt();
         }
     }
 }
