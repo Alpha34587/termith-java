@@ -20,7 +20,7 @@ public class TermithIndex {
     public static String lang;
     public static String treeTaggerHome;
     public static Path base;
-    public static boolean trace;
+    public static boolean keepFiles;
 
     public Path corpus;
     private List<Path> terminologies;
@@ -37,7 +37,7 @@ public class TermithIndex {
 
     private TermithIndex(Builder builder) throws IOException {
         base = builder.base;
-        trace = builder.trace;
+        keepFiles = builder.keepFiles;
         outputPath = builder.outputPath;
         treeTaggerHome = builder.treeTaggerHome;
         lang = builder.lang;
@@ -54,8 +54,8 @@ public class TermithIndex {
         corpusSize = builder.corpusSize;
     }
 
-    public boolean isTrace() {
-        return trace;
+    public boolean iskeepFiles() {
+        return keepFiles;
     }
 
     public List<Path> getTerminologies() {
@@ -121,7 +121,7 @@ public class TermithIndex {
     public static class Builder
     {
         Path base;
-        boolean trace = false;
+        boolean keepFiles = false;
         Path outputPath = null;
         String lang;
         String treeTaggerHome;
@@ -140,13 +140,13 @@ public class TermithIndex {
         }
 
         /**
-         * this method set a boolean that used to activate or not the trace : each step of the process will be export to
+         * this method set a boolean that used to activate or not the keepFiles : each step of the process will be export to
          * the result folder
-         * @param activate boolean use to activate the "trace" mode
+         * @param activate boolean use to activate the "keepFiles" mode
          * @return value of the activate boolean
          */
-        public Builder trace(boolean activate){
-            this.trace = activate;
+        public Builder keepFiles(boolean activate){
+            this.keepFiles = activate;
             return this;
         }
 

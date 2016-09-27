@@ -4,6 +4,7 @@ import ch.qos.logback.classic.Level;
 import org.apache.commons.cli.*;
 import org.atilf.models.TermithIndex;
 import org.atilf.module.tools.CLIUtils;
+import org.atilf.runner.Cleaner;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.atilf.runner.Exporter;
@@ -11,6 +12,8 @@ import org.atilf.runner.TermithTreeTagger;
 
 import javax.xml.transform.TransformerException;
 import java.io.IOException;
+
+import static sun.management.ConnectorAddressLink.export;
 
 /**
  * @author Simon Meoni
@@ -39,17 +42,21 @@ public class TermithTreeTaggerCLI {
         out.setRequired(true);
         Option lang = new Option("l","lang",true,"specify the language of the corpus");
         lang.setRequired(true);
-        Option trace = new Option("d","debug",true,"activate debug log mode");
-        trace.setRequired(false);
-        trace.setArgs(0);
+        Option debug = new Option("d","debug",true,"activate debug log mode");
+        debug.setRequired(false);
+        debug.setArgs(0);
+        Option keep = new Option("k","keep-files",true,"keep working files");
+        keep.setRequired(false);
+        keep.setArgs(0);
         Option treetagger = new Option("tt","treetagger",true,"set TreeTagger path");
         treetagger.setRequired(true);
 
         options.addOption(in);
         options.addOption(out);
-        options.addOption(trace);
+        options.addOption(debug);
         options.addOption(treetagger);
         options.addOption(lang);
+        options.addOption(keep);
 
         try {
             CommandLine line = parser.parse( options, args );
@@ -59,6 +66,7 @@ public class TermithTreeTaggerCLI {
                     .lang(line.getOptionValue("l"))
                     .baseFolder(line.getOptionValue("i"))
                     .treeTaggerHome(line.getOptionValue("tt"))
+                    .keepFiles(line.hasOption("keep-files"))
                     .export(line.getOptionValue("o"))
                     .build();
             CLIUtils.setGlobalLogLevel(Level.INFO);
@@ -71,6 +79,8 @@ public class TermithTreeTaggerCLI {
             new TermithTreeTagger(termithIndex).execute();
             Exporter exporter = new Exporter(termithIndex);
             exporter.execute();
+            Cleaner cleaner = new Cleaner();
+            cleaner.execute();
         } catch (ParseException e) {
             LOGGER.error("There are some problems during parsing arguments : ",e);
         }
