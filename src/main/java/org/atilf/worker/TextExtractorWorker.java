@@ -3,6 +3,7 @@ package org.atilf.worker;
 import org.atilf.models.TermithIndex;
 import org.atilf.models.XslResources;
 import org.atilf.module.extractor.TextExtractor;
+import org.atilf.module.tools.FilesUtilities;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.atilf.thread.InitializerThread;
@@ -40,7 +41,7 @@ public class TextExtractorWorker implements Runnable {
             LOGGER.debug("Extracting text of file: " + this.path);
             TextExtractor textExtractor = new TextExtractor(path.toFile(),xslResources);
             StringBuilder extractedBuffer = textExtractor.xsltTransformation();
-            termithIndex.getExtractedText().put(path.getFileName().toString().replace(".xml", ""), extractedBuffer);
+            termithIndex.getExtractedText().put(FilesUtilities.nameNormalizer(path.getFileName().toString()), extractedBuffer);
             LOGGER.debug("Extraction done for file: " + this.path);
         } catch (IOException e) {
             LOGGER.error("File Exception",e);

@@ -1,6 +1,7 @@
 package org.atilf.worker;
 
 import org.atilf.models.TermithIndex;
+import org.atilf.module.tools.FilesUtilities;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.atilf.thread.InitializerThread;
@@ -49,7 +50,7 @@ public class InitCorpusWorker implements Runnable {
     @Override
     public void run() {
         try {
-            termithIndex.getXmlCorpus().put(path.getFileName().toString().replace(".xml", ""), new StringBuilder(
+            termithIndex.getXmlCorpus().put(FilesUtilities.nameNormalizer(path.getFileName().toString()), new StringBuilder(
                     String.join("\n", Files.readAllLines(path))
             ));
             corpusCnt.countDown();
