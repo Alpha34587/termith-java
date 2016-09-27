@@ -20,7 +20,7 @@ public class TreeTaggerParameter {
     }
 
     public String parse() {
-        String parameter = treeTaggerHome + "bin/tree-tagger " + treeTaggerHome + "lib/";
+        String parameter = treeTaggerHome + "/bin/tree-tagger " + treeTaggerHome + "/lib/";
 
         if (Objects.equals(lang, "fr")) {
             parameter += "french.par ";

@@ -1,9 +1,10 @@
 package org.atilf.models;
 
+import org.atilf.module.tools.FilesUtilities;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -133,7 +134,7 @@ public class TermithIndex {
          * @throws IOException
          */
         public Builder baseFolder(String path) throws IOException {
-            this.base = Paths.get(path);
+            this.base = FilesUtilities.folderPathResolver(path);
             corpusSize = (int) Files.list(base).count();
             return this;
         }
@@ -155,7 +156,7 @@ public class TermithIndex {
          * @return return output path
          */
         public Builder export(String outputPath){
-            this.outputPath = Paths.get(outputPath);
+            this.outputPath = FilesUtilities.folderPathResolver(outputPath);
             return this;
         }
 
@@ -174,8 +175,8 @@ public class TermithIndex {
          * @param treeTaggerHome TreeTagger path
          * @return return TreeTagger path
          */
-        public Builder treeTaggerHome(String treeTaggerHome){
-            this.treeTaggerHome = treeTaggerHome;
+        public Builder treeTaggerHome(String treeTaggerHome) {
+            this.treeTaggerHome = FilesUtilities.folderPathResolver(treeTaggerHome).toString();
             return this;
         }
 
