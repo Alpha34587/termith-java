@@ -51,12 +51,6 @@ public class TeiWriter {
         insertStandOff();
         insertBody();
         writeFile();
-        removeSerializeFile();
-    }
-
-    private void removeSerializeFile() {
-        new File(termithIndex.getMorphoSyntaxStandOff().get(key).toString()).delete();
-        new File(termithIndex.getTokenizeTeiBody().get(key).toString()).delete();
     }
 
     private void insertStandoffNs() {
