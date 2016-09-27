@@ -57,7 +57,7 @@ public class TreeTaggerWrapper {
     }
     
     private String writeFile(String parsingText) throws IOException {
-        File temp = new File( outputPath + UUID.randomUUID().toString() + ".tt");
+        File temp = new File( outputPath + "/" + UUID.randomUUID().toString() + ".tt");
         BufferedWriter bw = new BufferedWriter(new FileWriter(temp));
         bw.write(parsingText);
         bw.flush();
