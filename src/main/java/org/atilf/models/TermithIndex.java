@@ -95,6 +95,10 @@ public class TermithIndex {
         this.getExtractedText().put(id,content);
     }
 
+    public void setCorpusSize(int corpusSize) {
+        this.corpusSize = corpusSize;
+    }
+
     public List<Path> getOutputFile() {
         return outputFile;
     }

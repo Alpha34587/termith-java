@@ -41,7 +41,13 @@ public class TextExtractorWorker implements Runnable {
             LOGGER.debug("Extracting text of file: " + this.path);
             TextExtractor textExtractor = new TextExtractor(path.toFile(),xslResources);
             StringBuilder extractedBuffer = textExtractor.xsltTransformation();
-            termithIndex.getExtractedText().put(FilesUtilities.nameNormalizer(path.getFileName().toString()), extractedBuffer);
+            if (extractedBuffer.length() != 0) {
+                termithIndex.getExtractedText().put(FilesUtilities.nameNormalizer(path.getFileName().toString()), extractedBuffer);
+            }
+            else {
+                LOGGER.info(this.path + " has empty body");
+                termithIndex.setCorpusSize(termithIndex.getCorpusSize() - 1);
+            }
             LOGGER.debug("Extraction done for file: " + this.path);
         } catch (IOException e) {
             LOGGER.error("File Exception",e);
