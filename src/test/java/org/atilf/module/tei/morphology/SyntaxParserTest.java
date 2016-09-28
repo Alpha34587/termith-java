@@ -25,11 +25,13 @@ public class SyntaxParserTest {
     SyntaxParser symbolTokenInjector2;
     SyntaxParser symbolTokenInjector3;
     SyntaxParser alignmentTokenInjector;
+    SyntaxParser alignmentTokenInjector2;
     String expectedStringBuilder;
     String expectedStringBuilder2;
     List<String> offsetIdAlignement;
+
     @Before
-    public void setUp(){
+    public void setUp() throws Exception {
 
         //bodySplitter test
         expectedStringBuilder =
@@ -236,16 +238,33 @@ public class SyntaxParserTest {
         alignmentTermsuiteJsonReader.createToken("N", "fromage", 18, 25);
         alignmentTermsuiteJsonReader.createToken("N", "assez", 26, 31);
         alignmentTermsuiteJsonReader.createToken("N", "délicieux", 33, 42);
-        alignmentTermsuiteJsonReader.createToken("N", "&", 48, 49);
+        alignmentTermsuiteJsonReader.createToken("N", "<", 48, 49);
         alignmentTokenInjector = new SyntaxParser(
-                new StringBuilder("le chien\nmange un fromage assez\n\ndélicieux  \n\n\n\n&"),
+                new StringBuilder("le chien\nmange un fromage assez\n\ndélicieux  \n\n\n\n<"),
                 new StringBuilder("<text><head>le chien</head><p>mange " +
                         "<div>un froma<sup>ge</sup> assez" +
-                        "</div></p><p>d&eacute;licieux  </p>\n\n\n&amp;</text>"),
+                        "</div></p><p>d&eacute;licieux  </p>\n\n\n&lt;</text>"),
                 alignmentTermsuiteJsonReader, new ArrayList<>()
         );
-
         alignmentTokenInjector.teiWordTokenizer();
+
+        TermsuiteJsonReader alignmentTermsuiteJsonReader2 = new TermsuiteJsonReader();
+        alignmentTermsuiteJsonReader2.createToken("N", "le", 0, 2);
+        alignmentTermsuiteJsonReader2.createToken("N", "chien", 3 , 8);
+        alignmentTermsuiteJsonReader2.createToken("N", "mange", 9, 14);
+        alignmentTermsuiteJsonReader2.createToken("N", "<", 16, 17);
+        alignmentTermsuiteJsonReader2.createToken("N", "fromage", 18, 25);
+        alignmentTermsuiteJsonReader2.createToken("N", "assez", 26, 31);
+        alignmentTermsuiteJsonReader2.createToken("N", "délicieux", 33, 42);
+        alignmentTokenInjector2 = new SyntaxParser(
+                new StringBuilder("le chien\nmange \n< fromage assez\n\ndélicieux  \n\n\n\n"),
+                new StringBuilder("<text><head>le chien</head><p>mange " +
+                        "<div>&lt; froma<sup>ge</sup> assez" +
+                        "</div></p><p>d&eacute;licieux  </p>\n\n\n</text>"),
+                alignmentTermsuiteJsonReader2, new ArrayList<>()
+        );
+            alignmentTokenInjector2.teiWordTokenizer();
+
         offsetIdAlignement =  new ArrayList<>();
         offsetIdAlignement.add("0, 2, [1]");
         offsetIdAlignement.add("3, 8, [2]");
@@ -254,7 +273,6 @@ public class SyntaxParserTest {
         offsetIdAlignement.add("18, 25, [5, 6]");
         offsetIdAlignement.add("26, 31, [7]");
         offsetIdAlignement.add("33, 42, [8]");
-        offsetIdAlignement.add("48, 49, [9]");
     }
     @Test
     public void teiBodyspliterTest() throws Exception {
@@ -265,7 +283,7 @@ public class SyntaxParserTest {
     }
 
     @Test
-    public void basictokenInjectorTest() {
+    public void basictokenInjectorTest() throws Exception {
         basicTokenInjector.teiWordTokenizer();
 
         Assert.assertEquals("tokenizeInjector basic test fail :",
@@ -281,7 +299,7 @@ public class SyntaxParserTest {
     }
 
     @Test
-    public void insideTokenInjectorTest() {
+    public void insideTokenInjectorTest() throws Exception {
         insideTokenInjector.teiWordTokenizer();
         Assert.assertEquals("tokenizeInjector inside test fail :",
                 "<text>" +
@@ -315,7 +333,7 @@ public class SyntaxParserTest {
     }
 
     @Test
-    public void commentTokenInjector() {
+    public void commentTokenInjector() throws Exception {
         commentTokenInjector.teiWordTokenizer();
         Assert.assertEquals("tokenizeInjector comment test fail :",
                 "<text>" +
@@ -332,12 +350,11 @@ public class SyntaxParserTest {
     }
 
     @Test
-    public void checkIfSymbolTest() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException, NoSuchFieldException {
+    public void checkIfSymbolTest() throws Exception {
         symbolTokenInjector.teiWordTokenizer();
         symbolTokenInjector2.teiWordTokenizer();
         symbolTokenInjector3.teiWordTokenizer();
 
-//        Assert.assertEquals("the offset must have this value :",33 ,symbolTokenInjector.getOffset());
         Assert.assertEquals("symbol parsing test fails :",
                 "<text>" +
                         "<w xml:id=\"t1\">le</w> " +
@@ -380,9 +397,22 @@ public class SyntaxParserTest {
                         "<sup><w xml:id=\"t6\">ge</w></sup> " +
                         "<w xml:id=\"t7\">assez</w></div></p>" +
                         "<p><w xml:id=\"t8\">d&eacute;licieux</w>  </p>\n\n\n" +
-                        "<w xml:id=\"t9\">&amp;</w>" +
+                        "<w xml:id=\"t9\">&lt;</w>" +
                         "</text>",
                 alignmentTokenInjector.getTokenizeBuffer().toString());
+
+        Assert.assertEquals("text alignment test fails :",
+                "<text>" +
+                        "<head><w xml:id=\"t1\">le</w> " +
+                        "<w xml:id=\"t2\">chien</w></head>" +
+                        "<p><w xml:id=\"t3\">mange</w> " +
+                        "<div><w xml:id=\"t4\">&lt;</w> " +
+                        "<w xml:id=\"t5\">froma</w>" +
+                        "<sup><w xml:id=\"t6\">ge</w></sup> " +
+                        "<w xml:id=\"t7\">assez</w></div></p>" +
+                        "<p><w xml:id=\"t8\">d&eacute;licieux</w>  </p>\n\n\n" +
+                        "</text>",
+                alignmentTokenInjector2.getTokenizeBuffer().toString());
     }
 
     @Test

@@ -90,7 +90,6 @@ public class SyntaxParser {
                     checkTextAlignment(ch);
                     id = tokenInjector(ch, id);
                     countOffset();
-
                 }
 
                 if (offset[0] > termsuiteJsonReader.getCurrentTokenEnd()) {
@@ -106,8 +105,8 @@ public class SyntaxParser {
     }
 
     private void countOffset() {
-            offset[0] += 1;
-            offset[1] += 1;
+        offset[0] += 1;
+        offset[1] += 1;
     }
 
 
@@ -173,9 +172,8 @@ public class SyntaxParser {
     }
 
     private void checkTextAlignment(Character ch){
-        if (offset[0] < txt.length() - 1 && txt.charAt(offset[0]) == '\n') {
-            while (ch != txt.charAt(offset[0]))
+        while (offset[0] < txt.length() - 1 && txt.charAt(offset[0]) == '\n' && txt.charAt(offset[0]) != ch) {
                 countOffset();
-            }
+        }
     }
 }
