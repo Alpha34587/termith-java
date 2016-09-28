@@ -52,7 +52,7 @@ public class SyntaxParser {
 
     public List<MorphoSyntaxOffsetId> getOffsetId() { return offsetId; }
 
-    public void execute(){
+    public void execute() throws Exception {
         teiBodyspliter();
         teiWordTokenizer();
     }
@@ -73,7 +73,7 @@ public class SyntaxParser {
         }
     }
 
-    void teiWordTokenizer() {
+    void teiWordTokenizer() throws Exception {
         LOGGER.debug("Tokenization Started");
         offset[0] = 0;
         offset[1] = 1;
@@ -81,23 +81,28 @@ public class SyntaxParser {
         termsuiteJsonReader.pollToken();
         Character ch;
         fillXmlCharacterQueue();
-        while (!xmlCharacterQueue.isEmpty()) {
-            ch = xmlCharacterQueue.poll();
-            if (ch == '<') {
-               id = waitUntilTagEnd(ch,id);
-            }
-            else {
-                checkTextAlignment(ch);
-                id = tokenInjector(ch, id);
-                countOffset();
+        try {
+            while (!xmlCharacterQueue.isEmpty()) {
+                ch = xmlCharacterQueue.poll();
+                if (ch == '<') {
+                    id = waitUntilTagEnd(ch, id);
+                } else {
+                    checkTextAlignment(ch);
+                    id = tokenInjector(ch, id);
+                    countOffset();
 
-            }
+                }
 
-            if (offset[0] > termsuiteJsonReader.getCurrentTokenEnd()){
-                termsuiteJsonReader.pollToken();
+                if (offset[0] > termsuiteJsonReader.getCurrentTokenEnd()) {
+                    termsuiteJsonReader.pollToken();
+                }
             }
+            LOGGER.debug("Tokenization Ended");
         }
-        LOGGER.debug("Tokenization Ended");
+
+        catch (Exception e){
+            throw new Exception(e);
+        }
     }
 
     private void countOffset() {

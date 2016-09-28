@@ -40,7 +40,7 @@ public class SyntaxGenerator {
         return offsetId;
     }
 
-    public void execute() {
+    public void execute() throws Exception {
 
         SyntaxParser syntaxParser = new SyntaxParser(txt,xml,termsuiteJsonReader, offsetId);
         syntaxParser.execute();

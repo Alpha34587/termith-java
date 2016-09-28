@@ -81,6 +81,8 @@ public class TreeTaggerWorker implements Runnable {
         } catch (InterruptedException e) {
             LOGGER.error("error during Tree Tagger Process : ",e);
             Thread.currentThread().interrupt();
+        } catch (Exception e) {
+            LOGGER.error("error during xml tokenization parsing",e);
         }
     }
 }
