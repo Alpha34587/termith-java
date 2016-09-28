@@ -19,19 +19,20 @@ public class TeiWriterWorker implements Runnable {
     private String key;
     private StringBuilder value;
     private TermithIndex termithIndex;
+    private StandOffResources standOffResources;
     private static final Logger LOGGER = LoggerFactory.getLogger(TeiWriterWorker.class.getName());
 
 
-    public TeiWriterWorker(String key, StringBuilder value, TermithIndex termithIndex){
+    public TeiWriterWorker(String key, StringBuilder value, TermithIndex termithIndex, StandOffResources standOffResources){
         this.key = key;
         this.value = value;
         this.termithIndex = termithIndex;
+        this.standOffResources = standOffResources;
     }
     @Override
     public void run() {
-
         LOGGER.debug("writing : " + outputPath + "/" + key + ".xml");
-        TeiWriter teiWriter = new TeiWriter(key,value,termithIndex, new StandOffResources());
+        TeiWriter teiWriter = new TeiWriter(key,value,termithIndex, standOffResources);
         try {
             teiWriter.execute();
         } catch (IOException e) {

@@ -15,8 +15,11 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayDeque;
 import java.util.Deque;
+import java.util.Iterator;
 import java.util.List;
 
+import static com.sun.org.apache.xml.internal.security.keys.keyresolver.KeyResolver.iterator;
+import static jdk.nashorn.internal.objects.NativeString.replace;
 import static org.atilf.models.TermithIndex.outputPath;
 
 /**
@@ -31,7 +34,7 @@ public class TeiWriter {
     private StringBuilder value;
     private TermithIndex termithIndex;
     private StandOffResources stdfRes;
-    private static final Logger LOGGER = LoggerFactory.getLogger(TeiWriterWorker.class.getName());
+    private static final Logger LOGGER = LoggerFactory.getLogger(TeiWriter.class.getName());
     private final String SEPARATOR = "(?<=\n)";
 
 
@@ -45,12 +48,16 @@ public class TeiWriter {
     }
 
     public void execute() throws IOException {
-
-        LOGGER.debug("writing : " + outputPath + "/" + key + ".xml");
-        insertStandoffNs();
-        insertStandOff();
-        insertBody();
-        writeFile();
+        try {
+            LOGGER.debug("writing : " + outputPath + "/" + key + ".xml");
+            insertStandoffNs();
+            insertStandOff();
+            insertBody();
+            writeFile();
+        }
+        catch (Exception e){
+            LOGGER.error("cannot write file: ",e);
+        }
     }
 
     private void insertStandoffNs() {
@@ -65,13 +72,14 @@ public class TeiWriter {
         try {
             bufferedWriter =
                     Files.newBufferedWriter(Paths.get(outputPath + "/" + key + ".xml"));
-            bufferedWriter.write(String.valueOf(value));
+            bufferedWriter.append(value);
             termithIndex.getOutputFile().add(Paths.get(outputPath + "/" + key + ".xml"));
         } catch (IOException e) {
             LOGGER.error("Some errors during files writing",e);
         }
         finally {
             if (bufferedWriter != null) {
+                bufferedWriter.flush();
                 bufferedWriter.close();
             }
         }
@@ -103,43 +111,49 @@ public class TeiWriter {
             }
             return comp;
         });
-        Deque<TermsOffsetId> termDeque = new ArrayDeque<>(termsOffsetIds);
-
-        standoff.append(stdfRes.STANDOFF.split(SEPARATOR)[0].replace("@type", "candidatsTermes"));
+        standoff.append(replaceTemplate(cut(stdfRes.STANDOFF,false),"@type","candidatsTermes"));
         standoff.append(stdfRes.T_TEI_HEADER);
-        standoff.append(stdfRes.LIST_ANNOTATION.split(SEPARATOR)[0]);
-        while (!termDeque.isEmpty()){
-            TermsOffsetId token = termDeque.poll();
-            standoff.append(
-                    stdfRes.T_SPAN.replace("@target",serializeId(token.getIds()))
-                            .replace("@corresp",String.valueOf(token.getTermId()))
-                            .replace("@string", token.getWord())
-            );
+        standoff.append(cut(stdfRes.LIST_ANNOTATION,false));
+        for (TermsOffsetId token : termsOffsetIds) {
+            StringBuilder entry;
+            entry = replaceTemplate(stdfRes.T_SPAN, "@target", serializeId(token.getIds()));
+            entry = replaceTemplate(entry, "@corresp", String.valueOf(token.getTermId()));
+            entry = replaceTemplate(entry, "@string", token.getWord());
+            standoff.append(entry);
         }
-        standoff.append(stdfRes.LIST_ANNOTATION.split(SEPARATOR)[1]);
-        standoff.append(stdfRes.STANDOFF.split(SEPARATOR)[1]);
+        standoff.append(cut(stdfRes.LIST_ANNOTATION,true));
+        standoff.append(cut(stdfRes.STANDOFF,true));
 
         return standoff;
     }
 
+    private StringBuilder cut(StringBuilder template,boolean closedTag) {
+        if (closedTag)
+            return new StringBuilder(template.toString().split(SEPARATOR)[1]);
+        else
+            return new StringBuilder(template.toString().split(SEPARATOR)[0]);
+    }
+
+    private StringBuilder replaceTemplate(StringBuilder template, String model, String occurence) {
+        int index = template.indexOf(model);
+        return new StringBuilder(new StringBuilder(template).replace(index, index + model.length(), occurence));
+    }
+
     private StringBuilder serializeMorphosyntax(List<MorphoSyntaxOffsetId> morphoSyntaxOffsetIds) {
         StringBuilder standoff = new StringBuilder();
-        Deque<MorphoSyntaxOffsetId> morphoDeque = new ArrayDeque<>(morphoSyntaxOffsetIds);
 
-        standoff.append(stdfRes.STANDOFF.split(SEPARATOR)[0]
-                .replace("@type", "wordForms"));
+        standoff.append(replaceTemplate(cut(stdfRes.STANDOFF,false),"@type","wordForms"));
         standoff.append(stdfRes.MS_TEI_HEADER);
-        standoff.append(stdfRes.LIST_ANNOTATION.split(SEPARATOR)[0]);
-        while (!morphoDeque.isEmpty()){
-            MorphoSyntaxOffsetId token = morphoDeque.poll();
-            standoff.append(
-                    stdfRes.MS_SPAN.replace("@target",serializeId(token.getIds()))
-                            .replace("@lemma", token.getLemma().replace("<unknown>", "@unknown"))
-                            .replace("@pos", token.getTag())
-            );
+        standoff.append(cut(stdfRes.LIST_ANNOTATION,false));
+        for (MorphoSyntaxOffsetId token : morphoSyntaxOffsetIds) {
+            StringBuilder entry;
+            entry = replaceTemplate(stdfRes.MS_SPAN, "@target", serializeId(token.getIds()));
+            entry = replaceTemplate(entry, "@lemma", token.getLemma().replace("<unknown>", "@unknown"));
+            entry = replaceTemplate(entry, "@pos", token.getTag());
+            standoff.append(entry);
         }
-        standoff.append(stdfRes.LIST_ANNOTATION.split(SEPARATOR)[1]);
-        standoff.append(stdfRes.STANDOFF.split(SEPARATOR)[1]);
+        standoff.append(cut(stdfRes.LIST_ANNOTATION,true));
+        standoff.append(cut(stdfRes.STANDOFF,true));
 
         return standoff;
     }

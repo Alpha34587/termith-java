@@ -18,14 +18,14 @@ public class StandOffResources {
     private static final Logger LOGGER = LoggerFactory.getLogger(StandOffResources.class.getName());
     private final static String PATH = "standoff/";
 
-    public final String LIST_ANNOTATION = indentation(readFile(PATH + "list-annotation.xml"), 2);
-    public final String MS_SPAN = indentation(readFile(PATH + "ms-span.xml"), 3);
-    public final String T_SPAN = indentation(readFile(PATH + "t-span.xml"), 3);
-    public final String MS_TEI_HEADER = indentation(readFile(PATH + "ms-tei-header.xml"), 2);
-    public final String T_TEI_HEADER = indentation(readFile(PATH + "t-tei-header.xml"), 2);
-    public final String T_INTERP_GRP = indentation(readFile(PATH + "t-interp-grp.xml"), 2);
-    public final String STANDOFF = indentation(readFile(PATH + "standoff.xml"), 1);
-    public final String NS = readFile(PATH + "ns.txt");
+    public final StringBuilder LIST_ANNOTATION = indentation(readFile(PATH + "list-annotation.xml"), 2);
+    public final StringBuilder MS_SPAN = indentation(readFile(PATH + "ms-span.xml"), 3);
+    public final StringBuilder T_SPAN = indentation(readFile(PATH + "t-span.xml"), 3);
+    public final StringBuilder MS_TEI_HEADER = indentation(readFile(PATH + "ms-tei-header.xml"), 2);
+    public final StringBuilder T_TEI_HEADER = indentation(readFile(PATH + "t-tei-header.xml"), 2);
+    public final StringBuilder T_INTERP_GRP = indentation(readFile(PATH + "t-interp-grp.xml"), 2);
+    public final StringBuilder STANDOFF = indentation(readFile(PATH + "standoff.xml"), 1);
+    public final StringBuilder NS = indentation(readFile(PATH + "ns.txt"),0);
 
 
 
@@ -42,7 +42,7 @@ public class StandOffResources {
         return "";
     }
 
-    private String indentation(String input, int level) {
+    private StringBuilder indentation(String input, int level) {
         String output = "";
         String ident = "";
         while (level != 0) {
@@ -54,6 +54,6 @@ public class StandOffResources {
             output += ident + line;
         }
 
-        return output;
+        return new StringBuilder(output);
     }
 }

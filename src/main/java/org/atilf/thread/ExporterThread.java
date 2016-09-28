@@ -1,5 +1,6 @@
 package org.atilf.thread;
 
+import org.atilf.models.StandOffResources;
 import org.atilf.models.TermithIndex;
 import org.atilf.module.timer.ExporterTimer;
 import org.slf4j.Logger;
@@ -48,8 +49,9 @@ public class ExporterThread {
     public void execute() throws InterruptedException {
         new ExporterTimer(termithIndex,LOGGER).start();
         exportTerminology(termithIndex);
+        StandOffResources standOffResources = new StandOffResources();
         termithIndex.getXmlCorpus().forEach(
-                (key,value) -> executor.submit(new TeiWriterWorker(key,value,termithIndex))
+                (key,value) -> executor.submit(new TeiWriterWorker(key,value,termithIndex,standOffResources))
         );
         LOGGER.info("Waiting executors to finish");
         executor.shutdown();

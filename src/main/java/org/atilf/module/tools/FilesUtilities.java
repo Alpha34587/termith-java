@@ -112,6 +112,7 @@ public class FilesUtilities {
             fis = new FileInputStream(new File(filePath.toString()));
             in = new ObjectInputStream(fis);
             o = in.readObject();
+            in.close();
         }
         catch (IOException e) {
             LOGGER.error("could not open file",e);
