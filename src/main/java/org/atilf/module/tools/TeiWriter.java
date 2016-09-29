@@ -1,9 +1,6 @@
 package org.atilf.module.tools;
 
-import org.atilf.models.MorphoSyntaxOffsetId;
-import org.atilf.models.StandOffResources;
-import org.atilf.models.TermithIndex;
-import org.atilf.models.TermsOffsetId;
+import org.atilf.models.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -13,6 +10,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 
+import static org.atilf.models.SpecialChXmlEscape.*;
 import static org.atilf.models.TermithIndex.outputPath;
 
 /**
@@ -80,15 +78,23 @@ public class TeiWriter {
 
     private void insertBody() {
         if (termithIndex.getTokenizeTeiBody().containsKey(key)){
-            int startText = value.indexOf("<text");
+            int startText = searchStart();
             int endText = value.indexOf("</TEI>");
             value.delete(startText,endText);
             value.insert(startText,tokenizeBody.append("\n"));
         }
     }
 
+    private int searchStart() {
+        int index = value.indexOf("<text>");
+        if (index == -1){
+            index = value.indexOf("<text ");
+        }
+        return index;
+    }
+
     private void insertStandOff() {
-        int startText = value.indexOf("<text");
+        int startText = searchStart();
         if (termithIndex.getTerminologyStandOff().containsKey(key))
             value.insert(startText, serializeTerminology(termithIndex.getTerminologyStandOff().get(key)));
         if (termithIndex.getMorphoSyntaxStandOff().containsKey(key))
@@ -111,12 +117,12 @@ public class TeiWriter {
             StringBuilder entry;
             entry = replaceTemplate(stdfRes.T_SPAN, "@target", serializeId(token.getIds()));
             entry = replaceTemplate(entry, "@corresp", String.valueOf(token.getTermId()));
-            entry = replaceTemplate(entry, "@string", token.getWord());
+            entry = replaceTemplate(entry, "@string", replaceXmlChar(token.getWord()));
             standoff.append(entry);
         }
         standoff.append(cut(stdfRes.LIST_ANNOTATION,true));
         standoff.append(cut(stdfRes.STANDOFF,true));
-
+        termsOffsetIds.clear();
         return standoff;
     }
 
@@ -141,13 +147,14 @@ public class TeiWriter {
         for (MorphoSyntaxOffsetId token : morphoSyntaxOffsetIds) {
             StringBuilder entry;
             entry = replaceTemplate(stdfRes.MS_SPAN, "@target", serializeId(token.getIds()));
-            entry = replaceTemplate(entry, "@lemma", token.getLemma().replace("<unknown>", "@unknown"));
+            entry = replaceTemplate(entry, "@lemma",
+                    replaceXmlChar(token.getLemma().replace("<unknown>", "@unknown")));
             entry = replaceTemplate(entry, "@pos", token.getTag());
             standoff.append(entry);
         }
         standoff.append(cut(stdfRes.LIST_ANNOTATION,true));
         standoff.append(cut(stdfRes.STANDOFF,true));
-
+        morphoStandoff.clear();
         return standoff;
     }
 
