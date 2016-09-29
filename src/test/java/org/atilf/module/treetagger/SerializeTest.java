@@ -1,5 +1,6 @@
 package org.atilf.module.treetagger;
 
+import org.atilf.models.TagNormalizer;
 import org.atilf.models.TermithIndex;
 import org.junit.Assert;
 import org.junit.Before;

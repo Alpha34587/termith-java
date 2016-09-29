@@ -1,4 +1,4 @@
-package org.atilf.module.treetagger;
+package org.atilf.models;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;

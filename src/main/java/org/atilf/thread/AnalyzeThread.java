@@ -7,7 +7,7 @@ import org.atilf.module.timer.TerminologyTimer;
 import org.atilf.module.timer.TokenizeTimer;
 import org.atilf.module.tools.FilesUtilities;
 import org.atilf.module.treetagger.CorpusAnalyzer;
-import org.atilf.module.treetagger.TagNormalizer;
+import org.atilf.models.TagNormalizer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.atilf.worker.TerminologyParserWorker;
