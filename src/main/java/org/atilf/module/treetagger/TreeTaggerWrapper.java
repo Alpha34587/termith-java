@@ -55,7 +55,7 @@ public class TreeTaggerWrapper {
         int exitCode = p.waitFor();
         if (exitCode != 0) {
             throw new InterruptedException(IOUtils.toString(p.getErrorStream(),"UTF-8"));
-            
+
         }
         if (p.isAlive()){
         p.destroy();
@@ -109,7 +109,7 @@ public class TreeTaggerWrapper {
         newPuncts.add("\n\'\n");
 
         String parseTxt = txt.toString().trim();
-        parseTxt = parseTxt.replace(" ", "\n");
+        parseTxt = parseTxt.replaceAll("\\s+", "\n");
         while (!oldPuncts.isEmpty()) {
                     parseTxt = parseTxt.replace(oldPuncts.poll(), newPuncts.poll());
         }

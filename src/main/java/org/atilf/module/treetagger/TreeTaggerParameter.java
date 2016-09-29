@@ -32,7 +32,7 @@ public class TreeTaggerParameter {
         if (sgml) {
             parameter +=  "-sgml ";
         }
-         return parameter + "-token -lemma";
+         return parameter + "-no-unknown -token -lemma";
     }
 
 }

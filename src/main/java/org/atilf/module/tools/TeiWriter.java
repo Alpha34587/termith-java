@@ -6,20 +6,13 @@ import org.atilf.models.TermithIndex;
 import org.atilf.models.TermsOffsetId;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.atilf.worker.TeiWriterWorker;
 
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.Iterator;
 import java.util.List;
 
-import static com.sun.org.apache.xml.internal.security.keys.keyresolver.KeyResolver.iterator;
-import static jdk.nashorn.internal.objects.NativeString.replace;
 import static org.atilf.models.TermithIndex.outputPath;
 
 /**
@@ -87,7 +80,7 @@ public class TeiWriter {
 
     private void insertBody() {
         if (termithIndex.getTokenizeTeiBody().containsKey(key)){
-            int startText = value.indexOf("<text>");
+            int startText = value.indexOf("<text");
             int endText = value.indexOf("</TEI>");
             value.delete(startText,endText);
             value.insert(startText,tokenizeBody.append("\n"));
@@ -95,7 +88,7 @@ public class TeiWriter {
     }
 
     private void insertStandOff() {
-        int startText = value.indexOf("<text>");
+        int startText = value.indexOf("<text");
         if (termithIndex.getTerminologyStandOff().containsKey(key))
             value.insert(startText, serializeTerminology(termithIndex.getTerminologyStandOff().get(key)));
         if (termithIndex.getMorphoSyntaxStandOff().containsKey(key))
