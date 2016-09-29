@@ -28,7 +28,7 @@ public class TermithIndex {
     private Map<String, Path> morphoSyntaxStandOff;
     private Map<String, List<TermsOffsetId>> terminologyStandOff;
     private Map<String, StringBuilder> extractedText;
-    private Map<String, StringBuilder> xmlCorpus;
+    private Map<String, Path> xmlCorpus;
     private Map<String, Path> JsonTreeTagger;
     private List<Path> SerializeJson;
     private List<Path> outputFile;
@@ -103,7 +103,7 @@ public class TermithIndex {
         return outputFile;
     }
 
-    public Map<String, StringBuilder> getXmlCorpus() {
+    public Map<String, Path> getXmlCorpus() {
         return xmlCorpus;
     }
 

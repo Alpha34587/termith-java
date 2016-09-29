@@ -14,6 +14,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 import static org.atilf.module.tools.FilesUtilities.exportTerminology;
+import static org.atilf.module.tools.FilesUtilities.readFile;
 
 /**
  * @author Simon Meoni
@@ -51,7 +52,7 @@ public class ExporterThread {
         exportTerminology(termithIndex);
         StandOffResources standOffResources = new StandOffResources();
         termithIndex.getXmlCorpus().forEach(
-                (key,value) -> executor.submit(new TeiWriterWorker(key,value,termithIndex,standOffResources))
+                (key,value) -> executor.submit(new TeiWriterWorker(key,readFile(value),termithIndex,standOffResources))
         );
         LOGGER.info("Waiting executors to finish");
         executor.shutdown();

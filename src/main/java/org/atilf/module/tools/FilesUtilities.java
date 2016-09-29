@@ -54,6 +54,17 @@ public class FilesUtilities {
         });
     }
 
+    public static StringBuilder readFile(Path path){
+        StringBuilder file = null;
+        try {
+                    file = new StringBuilder(String.join("\n", Files.readAllLines(path)));
+        } catch (IOException e) {
+            LOGGER.error("cannot read file : ",e);
+
+        }
+        return file;
+    }
+
     public static String nameNormalizer(String path){
         String name = Paths.get(path).getFileName().toString();
         return name.split("\\.")[0];
@@ -91,6 +102,7 @@ public class FilesUtilities {
             fos = new FileOutputStream(path.toString());
             oos = new ObjectOutputStream(fos);
             oos.writeObject(o);
+            oos.reset();
             oos.close();
         } catch (IOException e) {
             LOGGER.error("could not write object",e);

@@ -42,7 +42,7 @@ public class TreeTaggerWorker implements Runnable {
         this.txtPath = termithIndex.getCorpus() + "/txt/" + name + ".txt";
         this.jsonPath = termithIndex.getCorpus() + "/json/" + name + ".json";
         this.textAnalyzer = corpusAnalyzer.getAnalyzedTexts().get(name);
-        this.xml = termithIndex.getXmlCorpus().get(name);
+        this.xml = FilesUtilities.readFile(termithIndex.getXmlCorpus().get(name));
         this.name = name;
     }
 

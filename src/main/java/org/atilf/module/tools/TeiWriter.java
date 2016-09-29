@@ -45,6 +45,7 @@ public class TeiWriter {
             insertStandOff();
             insertBody();
             writeFile();
+            value = null;
         }
         catch (Exception e){
             LOGGER.error("cannot write file: ",e);
@@ -95,10 +96,13 @@ public class TeiWriter {
 
     private void insertStandOff() {
         int startText = searchStart();
-        if (termithIndex.getTerminologyStandOff().containsKey(key))
+        if (termithIndex.getTerminologyStandOff().containsKey(key)){
             value.insert(startText, serializeTerminology(termithIndex.getTerminologyStandOff().get(key)));
-        if (termithIndex.getMorphoSyntaxStandOff().containsKey(key))
+        }
+        if (termithIndex.getMorphoSyntaxStandOff().containsKey(key)){
             value.insert(startText,serializeMorphosyntax(morphoStandoff));
+            morphoStandoff.clear();
+        }
     }
 
     private StringBuilder serializeTerminology(List<TermsOffsetId> termsOffsetIds) {
@@ -122,7 +126,6 @@ public class TeiWriter {
         }
         standoff.append(cut(stdfRes.LIST_ANNOTATION,true));
         standoff.append(cut(stdfRes.STANDOFF,true));
-        termsOffsetIds.clear();
         return standoff;
     }
 
@@ -154,7 +157,6 @@ public class TeiWriter {
         }
         standoff.append(cut(stdfRes.LIST_ANNOTATION,true));
         standoff.append(cut(stdfRes.STANDOFF,true));
-        morphoStandoff.clear();
         return standoff;
     }
 

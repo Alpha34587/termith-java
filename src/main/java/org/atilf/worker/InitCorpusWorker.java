@@ -49,13 +49,7 @@ public class InitCorpusWorker implements Runnable {
      */
     @Override
     public void run() {
-        try {
-            termithIndex.getXmlCorpus().put(FilesUtilities.nameNormalizer(path.getFileName().toString()), new StringBuilder(
-                    String.join("\n", Files.readAllLines(path))
-            ));
+            termithIndex.getXmlCorpus().put(FilesUtilities.nameNormalizer(path.getFileName().toString()), path);
             corpusCnt.countDown();
-        } catch (IOException e) {
-            LOGGER.error("File Exception",e);
-        }
     }
 }
