@@ -74,13 +74,14 @@ public class AnalyzeThread {
         jsonCnt.await();
         LOGGER.info("json files serialization finished, termsuite task started");
         executorService.submit(new TermsuiteWorker(termithIndex)).get();
+        LOGGER.info("terminology extraction started");
         executorService.submit(new TerminologyParserWorker(termithIndex)).get();
-        new TerminologyTimer(termithIndex,LOGGER).start();
         termithIndex.getMorphoSyntaxStandOff().forEach(
                 (id,value) -> executorService.submit(new TerminologyStandOffWorker(
                         id,value,termithIndex)
                 )
         );
+        LOGGER.info("terminology extraction finished");
         executorService.shutdown();
         executorService.awaitTermination(1L,TimeUnit.DAYS);
     }
