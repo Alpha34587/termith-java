@@ -5,6 +5,9 @@ import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonToken;
 import org.atilf.models.TermsOffsetId;
 import org.atilf.module.tools.FilesUtilities;
+import org.atilf.worker.TermsuiteWorker;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.IOException;
@@ -21,6 +24,7 @@ import static org.atilf.models.JsonTermResources.*;
  *         Created on 14/09/16.
  */
 public class TerminologyParser {
+    private static final Logger LOGGER = LoggerFactory.getLogger(TerminologyParser.class.getName());
     private Path path;
     private Map<String,List<TermsOffsetId>> standOffTerminology;
     private Map<String,String> idSource;
@@ -39,50 +43,47 @@ public class TerminologyParser {
     }
 
     public void execute() throws IOException {
+        try {
+            JsonParser parser = factory.createParser(new File(path.toString()));
+            JsonToken jsonToken;
+            boolean inTerms = false;
+            boolean inSource = false;
+            boolean inOcc = false;
+            TermsOffsetId offsetId = new TermsOffsetId();
+            while ((jsonToken = parser.nextToken()) != null) {
 
-        JsonParser parser = factory.createParser(new File(path.toString()));
-        JsonToken jsonToken;
-        boolean inTerms = false;
-        boolean inSource = false;
-        boolean inOcc = false;
-        TermsOffsetId offsetId = new TermsOffsetId();
-        while ((jsonToken = parser.nextToken()) != null) {
-
-            if (inSource) {
-                if (jsonToken == JsonToken.END_OBJECT) {
-                    inSource = false;
+                if (inSource) {
+                    if (jsonToken == JsonToken.END_OBJECT) {
+                        inSource = false;
+                    }
+                    extractInputSource(jsonToken, parser);
                 }
-                extractInputSource(jsonToken, parser);
+                else if (inTerms) {
+                    if (jsonToken == JsonToken.END_ARRAY && Objects.equals(parser.getCurrentName(), "terms")) {
+
+                        inTerms = false;
+                        break;
+                    } else if (jsonToken == JsonToken.END_ARRAY && inOcc) {
+                        inOcc = false;
+                    } else if (jsonToken == JsonToken.END_OBJECT && inOcc) {
+                        fillTerminology(offsetId);
+                    } else if (Objects.equals(parser.getCurrentName(), "occurrences")) {
+                        inOcc = true;
+                    }
+                    extractTerm(jsonToken, parser, offsetId);
+                }
+
+                else if ("input_sources".equals(parser.getParsingContext().getCurrentName())) {
+                    inSource = true;
+                }
+
+                else if ("terms".equals(parser.getParsingContext().getCurrentName())) {
+                    inTerms = true;
+                }
             }
-
-            else if (inTerms) {
-                if (jsonToken == JsonToken.END_ARRAY && Objects.equals(parser.getCurrentName(), "terms")) {
-
-                    inTerms = false;
-                }
-
-                else if (jsonToken == JsonToken.END_ARRAY && inOcc){
-                    inOcc = false;
-                }
-
-
-                else if (jsonToken == JsonToken.END_OBJECT && inOcc) {
-                    fillTerminology(offsetId);
-                }
-
-                else if (Objects.equals(parser.getCurrentName(), "occurrences")){
-                    inOcc = true;
-                }
-
-                extractTerm(jsonToken, parser, offsetId);
-            }
-            else if ("input_sources".equals(parser.getParsingContext().getCurrentName())) {
-                inSource = true;
-            }
-
-            else if ("terms".equals(parser.getParsingContext().getCurrentName())) {
-                inTerms = true;
-            }
+        }
+        catch (Exception e){
+            LOGGER.error("cannot parse file",e);
         }
     }
 
