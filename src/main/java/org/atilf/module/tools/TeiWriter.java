@@ -1,6 +1,9 @@
 package org.atilf.module.tools;
 
-import org.atilf.models.*;
+import org.atilf.models.MorphoSyntaxOffsetId;
+import org.atilf.models.StandOffResources;
+import org.atilf.models.TermithIndex;
+import org.atilf.models.TermsOffsetId;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -10,7 +13,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 
-import static org.atilf.models.SpecialChXmlEscape.*;
+import static org.atilf.models.SpecialChXmlEscape.replaceXmlChar;
 import static org.atilf.models.TermithIndex.outputPath;
 
 /**
@@ -19,71 +22,45 @@ import static org.atilf.models.TermithIndex.outputPath;
  */
 public class TeiWriter {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(TeiWriter.class.getName());
+    private final BufferedWriter bufferedWriter;
     private List<MorphoSyntaxOffsetId> morphoStandoff;
     private StringBuilder tokenizeBody;
     private String key;
     private StringBuilder value;
     private TermithIndex termithIndex;
     private StandOffResources stdfRes;
-    private static final Logger LOGGER = LoggerFactory.getLogger(TeiWriter.class.getName());
     private final String SEPARATOR = "(?<=\n)";
 
 
-    public TeiWriter(String key, StringBuilder value, TermithIndex termithIndex, StandOffResources stdfRes) {
+    public TeiWriter(String key, StringBuilder value, TermithIndex termithIndex, StandOffResources stdfRes) throws IOException {
         this.key = key;
         this.value = value;
         this.termithIndex = termithIndex;
         this.stdfRes = stdfRes;
         this.morphoStandoff = (List<MorphoSyntaxOffsetId>) FilesUtilities.readObject(termithIndex.getMorphoSyntaxStandOff().get(key));
         this.tokenizeBody = (StringBuilder) FilesUtilities.readObject(termithIndex.getTokenizeTeiBody().get(key));
+        this.bufferedWriter = Files.newBufferedWriter(Paths.get(outputPath + "/" + key + ".xml"));
+
     }
 
     public void execute() throws IOException {
-        try {
-            LOGGER.debug("writing : " + outputPath + "/" + key + ".xml");
-            insertStandoffNs();
-            insertStandOff();
-            insertBody();
-            writeFile();
-            value = null;
-        }
-        catch (Exception e){
-            LOGGER.error("cannot write file: ",e);
-        }
+        LOGGER.debug("writing : " + outputPath + "/" + key + ".xml");
+        insertStandoffNs();
+        insertStandOff();
+        insertBody();
+        termithIndex.getOutputFile().add(Paths.get(outputPath + "/" + key + ".xml"));
     }
 
-    private void insertStandoffNs() {
+    private void insertStandoffNs() throws IOException {
         int teiTag = value.indexOf("<TEI ") + 5;
-        value.insert(teiTag, stdfRes.NS.substring(0,
-                stdfRes.NS.length() - 1) + " ");
+        value.insert(teiTag, stdfRes.NS.substring(0, stdfRes.NS.length() - 1) + " ");
     }
 
-
-    private void writeFile() throws IOException {
-        BufferedWriter bufferedWriter = null;
-        try {
-            bufferedWriter =
-                    Files.newBufferedWriter(Paths.get(outputPath + "/" + key + ".xml"));
-            bufferedWriter.append(value);
-            termithIndex.getOutputFile().add(Paths.get(outputPath + "/" + key + ".xml"));
-        } catch (IOException e) {
-            LOGGER.error("Some errors during files writing",e);
-        }
-        finally {
-            if (bufferedWriter != null) {
-                bufferedWriter.flush();
-                bufferedWriter.close();
-            }
-        }
-    }
-
-    private void insertBody() {
-        if (termithIndex.getTokenizeTeiBody().containsKey(key)){
-            int startText = searchStart();
-            int endText = value.indexOf("</TEI>");
-            value.delete(startText,endText);
-            value.insert(startText,tokenizeBody.append("\n"));
-        }
+    private void insertBody() throws IOException {
+        bufferedWriter.append(tokenizeBody.append("\n"));
+        bufferedWriter.append(value.subSequence(value.indexOf("</text>") + 7  , value.length()));
+        bufferedWriter.flush();
     }
 
     private int searchStart() {
@@ -94,19 +71,18 @@ public class TeiWriter {
         return index;
     }
 
-    private void insertStandOff() {
+    private void insertStandOff() throws IOException {
         int startText = searchStart();
+        bufferedWriter.append(value.subSequence(0,startText));
         if (termithIndex.getTerminologyStandOff().containsKey(key)){
-            value.insert(startText, serializeTerminology(termithIndex.getTerminologyStandOff().get(key)));
+            serializeTerminology(termithIndex.getTerminologyStandOff().get(key));
         }
         if (termithIndex.getMorphoSyntaxStandOff().containsKey(key)){
-            value.insert(startText,serializeMorphosyntax(morphoStandoff));
-            morphoStandoff.clear();
+            serializeMorphosyntax(morphoStandoff);
         }
     }
 
-    private StringBuilder serializeTerminology(List<TermsOffsetId> termsOffsetIds) {
-        StringBuilder standoff = new StringBuilder();
+    private void serializeTerminology(List<TermsOffsetId> termsOffsetIds) throws IOException {
         termsOffsetIds.sort((o1, o2) -> {
             int comp = o1.getIds().get(0).compareTo(o2.getIds().get(0));
             if (comp == 0) {
@@ -114,19 +90,18 @@ public class TeiWriter {
             }
             return comp;
         });
-        standoff.append(replaceTemplate(cut(stdfRes.STANDOFF,false),"@type","candidatsTermes"));
-        standoff.append(stdfRes.T_TEI_HEADER);
-        standoff.append(cut(stdfRes.LIST_ANNOTATION,false));
+        bufferedWriter.append(replaceTemplate(cut(new StringBuilder(stdfRes.STANDOFF),false),"@type","candidatsTermes"));
+        bufferedWriter.append(stdfRes.T_TEI_HEADER);
+        bufferedWriter.append(cut(stdfRes.LIST_ANNOTATION,false));
         for (TermsOffsetId token : termsOffsetIds) {
-            StringBuilder entry;
-            entry = replaceTemplate(stdfRes.T_SPAN, "@target", serializeId(token.getIds()));
-            entry = replaceTemplate(entry, "@corresp", String.valueOf(token.getTermId()));
-            entry = replaceTemplate(entry, "@string", replaceXmlChar(token.getWord()));
-            standoff.append(entry);
+            StringBuilder entry = new StringBuilder(stdfRes.T_SPAN);
+            replaceTemplate(entry,"@target", serializeId(token.getIds()));
+            replaceTemplate(entry, "@corresp", String.valueOf(token.getTermId()));
+            replaceTemplate(entry, "@string", replaceXmlChar(token.getWord()));
+            bufferedWriter.append(entry);
         }
-        standoff.append(cut(stdfRes.LIST_ANNOTATION,true));
-        standoff.append(cut(stdfRes.STANDOFF,true));
-        return standoff;
+        bufferedWriter.append(cut(stdfRes.LIST_ANNOTATION,true));
+        bufferedWriter.append(cut(stdfRes.STANDOFF,true));
     }
 
     private StringBuilder cut(StringBuilder template,boolean closedTag) {
@@ -138,26 +113,25 @@ public class TeiWriter {
 
     private StringBuilder replaceTemplate(StringBuilder template, String model, String occurence) {
         int index = template.indexOf(model);
-        return new StringBuilder(new StringBuilder(template).replace(index, index + model.length(), occurence));
+        template.replace(index, index + model.length(), occurence);
+        return template;
     }
 
-    private StringBuilder serializeMorphosyntax(List<MorphoSyntaxOffsetId> morphoSyntaxOffsetIds) {
+    private void serializeMorphosyntax(List<MorphoSyntaxOffsetId> morphoSyntaxOffsetIds) throws IOException {
         StringBuilder standoff = new StringBuilder();
 
-        standoff.append(replaceTemplate(cut(stdfRes.STANDOFF,false),"@type","wordForms"));
-        standoff.append(stdfRes.MS_TEI_HEADER);
-        standoff.append(cut(stdfRes.LIST_ANNOTATION,false));
+        bufferedWriter.append(replaceTemplate(cut(stdfRes.STANDOFF,false),"@type","wordForms"));
+        bufferedWriter.append(stdfRes.MS_TEI_HEADER);
+        bufferedWriter.append(cut(stdfRes.LIST_ANNOTATION,false));
         for (MorphoSyntaxOffsetId token : morphoSyntaxOffsetIds) {
-            StringBuilder entry;
-            entry = replaceTemplate(stdfRes.MS_SPAN, "@target", serializeId(token.getIds()));
-            entry = replaceTemplate(entry, "@lemma",
-                    replaceXmlChar(token.getLemma().replace("<unknown>", "@unknown")));
-            entry = replaceTemplate(entry, "@pos", token.getTag());
-            standoff.append(entry);
+            StringBuilder entry = new StringBuilder(stdfRes.MS_SPAN);
+            replaceTemplate(entry, "@target", serializeId(token.getIds()));
+            replaceTemplate(entry, "@lemma", replaceXmlChar(token.getLemma().replace("<unknown>", "@unknown")));
+            replaceTemplate(entry, "@pos", token.getTag());
+            bufferedWriter.append(entry);
         }
-        standoff.append(cut(stdfRes.LIST_ANNOTATION,true));
-        standoff.append(cut(stdfRes.STANDOFF,true));
-        return standoff;
+        bufferedWriter.append(cut(stdfRes.LIST_ANNOTATION,true));
+        bufferedWriter.append(cut(stdfRes.STANDOFF,true));
     }
 
     private String serializeId(List<Integer> ids) {

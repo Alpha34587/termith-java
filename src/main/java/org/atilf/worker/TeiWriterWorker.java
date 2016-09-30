@@ -32,8 +32,8 @@ public class TeiWriterWorker implements Runnable {
     @Override
     public void run() {
         LOGGER.debug("writing : " + outputPath + "/" + key + ".xml");
-        TeiWriter teiWriter = new TeiWriter(key,value,termithIndex, standOffResources);
         try {
+            TeiWriter teiWriter = new TeiWriter(key,value,termithIndex, standOffResources);
             teiWriter.execute();
         } catch (IOException e) {
             LOGGER.error("errors during writing xml/tei file",e);
