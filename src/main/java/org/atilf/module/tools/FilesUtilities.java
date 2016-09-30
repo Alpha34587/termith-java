@@ -85,15 +85,6 @@ public class FilesUtilities {
         }
     }
 
-    public static StringBuilder ReadFile(Path path) {
-        try {
-            return new StringBuilder(String.join("\n", Files.readAllLines(path)));
-        } catch (IOException e) {
-            LOGGER.error("could read file",e);
-        }
-        return null;
-    }
-
     public static Path writeObject(Object o,Path workingPath) throws IOException {
         FileOutputStream fos = null;
         ObjectOutputStream oos = null;
@@ -102,6 +93,7 @@ public class FilesUtilities {
             fos = new FileOutputStream(path.toString());
             oos = new ObjectOutputStream(fos);
             oos.writeObject(o);
+            oos.flush();
             oos.reset();
             oos.close();
         } catch (IOException e) {
