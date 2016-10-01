@@ -27,7 +27,7 @@ public class TermithIndex {
     private Map<String, Path> tokenizeTeiBody;
     private Map<String, Path> morphoSyntaxStandOff;
     private Map<String, List<TermsOffsetId>> terminologyStandOff;
-    private Map<String, StringBuilder> extractedText;
+    private Map<String, Path> extractedText;
     private Map<String, Path> xmlCorpus;
     private Map<String, Path> JsonTreeTagger;
     private List<Path> SerializeJson;
@@ -86,13 +86,13 @@ public class TermithIndex {
         return corpus;
     }
 
-    public Map<String, StringBuilder> getExtractedText() {
+    public Map<String, Path> getExtractedText() {
         return extractedText;
     }
 
-    public void addText(String id, StringBuilder content) {
+    public void addText(String id, StringBuilder content) throws IOException {
 
-        this.getExtractedText().put(id,content);
+        this.getExtractedText().put(id,FilesUtilities.writeObject(content,TermithIndex.outputPath));
     }
 
     public void setCorpusSize(int corpusSize) {
