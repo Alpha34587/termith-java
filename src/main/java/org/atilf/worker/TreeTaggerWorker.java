@@ -38,7 +38,7 @@ public class TreeTaggerWorker implements Runnable {
                             CountDownLatch jsonCnt) {
         this.termithIndex = termithIndex;
         this.jsonCnt = jsonCnt;
-        this.txt = termithIndex.getExtractedText().get(name);
+        this.txt = (StringBuilder) FilesUtilities.readObject(termithIndex.getExtractedText().get(name));
         this.txtPath = termithIndex.getCorpus() + "/txt/" + name + ".txt";
         this.jsonPath = termithIndex.getCorpus() + "/json/" + name + ".json";
         this.textAnalyzer = corpusAnalyzer.getAnalyzedTexts().get(name);

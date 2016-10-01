@@ -19,6 +19,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.*;
@@ -57,11 +58,22 @@ public class AnalyzeThread {
         return termithIndex.getCorpus();
     }
 
+    public Map<String,StringBuilder> getDeserializeText(){
+        Map<String,StringBuilder> textMap = new HashMap<>();
+        termithIndex.getExtractedText().forEach(
+                (key,value) -> {
+                    textMap.put(key,(StringBuilder) FilesUtilities.readObject(value));
+                }
+        );
+        return textMap;
+    }
+
     public void execute() throws InterruptedException, IOException, ExecutionException {
         init();
         new TokenizeTimer(termithIndex,LOGGER).start();
         new JsonTimer(termithIndex,LOGGER).start();
-        CorpusAnalyzer corpusAnalyzer = new CorpusAnalyzer(termithIndex.getExtractedText());
+
+        CorpusAnalyzer corpusAnalyzer = new CorpusAnalyzer(getDeserializeText());
         termithIndex.getExtractedText().forEach((key,txt) ->
                 executorService.submit(new TreeTaggerWorker(
                         termithIndex,
@@ -92,7 +104,5 @@ public class AnalyzeThread {
         Files.createDirectories(Paths.get(termithIndex.getCorpus() + "/json"));
         Files.createDirectories(Paths.get(termithIndex.getCorpus() + "/txt"));
         LOGGER.debug("create temporary text files in " + termithIndex.getCorpus() + "/txt folder");
-        FilesUtilities.createFiles(termithIndex.getCorpus() + "/txt",
-                termithIndex.getExtractedText(), "txt");
     }
 }
