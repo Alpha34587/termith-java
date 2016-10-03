@@ -39,10 +39,11 @@ public class TeiWriter {
         this.termithIndex = termithIndex;
         this.stdfRes = stdfRes;
         this.morphoStandoff = (List<MorphoSyntaxOffsetId>) FilesUtilities.readObject(termithIndex.getMorphoSyntaxStandOff().get(key));
-        Files.delete(termithIndex.getMorphoSyntaxStandOff().get(key));
         this.tokenizeBody = (StringBuilder) FilesUtilities.readObject(termithIndex.getTokenizeTeiBody().get(key));
         this.bufferedWriter = Files.newBufferedWriter(Paths.get(outputPath + "/" + key + ".xml"));
 
+        Files.delete(termithIndex.getMorphoSyntaxStandOff().get(key));
+        Files.delete(termithIndex.getTokenizeTeiBody().get(key));
     }
 
     public void execute() throws IOException {

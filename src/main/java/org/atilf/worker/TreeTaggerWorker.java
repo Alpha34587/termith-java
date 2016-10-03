@@ -12,6 +12,7 @@ import org.atilf.thread.AnalyzeThread;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.concurrent.CountDownLatch;
 
@@ -44,6 +45,12 @@ public class TreeTaggerWorker implements Runnable {
         this.textAnalyzer = corpusAnalyzer.getAnalyzedTexts().get(name);
         this.xml = FilesUtilities.readFile(termithIndex.getXmlCorpus().get(name));
         this.name = name;
+
+        try {
+            Files.delete(termithIndex.getExtractedText().get(name));
+        } catch (IOException e) {
+            LOGGER.error("could not delete file",e);
+        }
     }
 
     @Override
