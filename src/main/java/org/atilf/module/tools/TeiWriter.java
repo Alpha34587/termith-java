@@ -82,13 +82,15 @@ public class TeiWriter {
     private void insertStandOff() throws IOException {
         int startText = searchStart();
         bufferedWriter.append(value.subSequence(0,startText));
+        if (termithIndex.getMorphoSyntaxStandOff().containsKey(key)){
+            serializeMorphosyntax(morphoStandoff);
+        }
+
         if (termithIndex.getTerminologyStandOff().containsKey(key) &&
                 !termithIndex.getTerminologyStandOff().get(key).isEmpty()){
             serializeTerminology(termithIndex.getTerminologyStandOff().get(key));
         }
-        if (termithIndex.getMorphoSyntaxStandOff().containsKey(key)){
-            serializeMorphosyntax(morphoStandoff);
-        }
+
     }
 
     private void serializeTerminology(List<TermsOffsetId> termsOffsetIds) throws IOException {
