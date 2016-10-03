@@ -93,9 +93,9 @@ public class AnalyzeThread {
                         id,value,termithIndex)
                 )
         );
-        LOGGER.info("terminology extraction finished");
         executorService.shutdown();
         executorService.awaitTermination(1L,TimeUnit.DAYS);
+        LOGGER.info("terminology extraction finished");
     }
 
     private void init() throws IOException {

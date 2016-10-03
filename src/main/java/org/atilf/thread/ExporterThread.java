@@ -3,9 +3,9 @@ package org.atilf.thread;
 import org.atilf.models.StandOffResources;
 import org.atilf.models.TermithIndex;
 import org.atilf.module.timer.ExporterTimer;
+import org.atilf.worker.TeiWriterWorker;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.atilf.worker.TeiWriterWorker;
 
 import java.io.IOException;
 import java.util.concurrent.CountDownLatch;
@@ -13,7 +13,6 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
-import static org.atilf.module.tools.FilesUtilities.exportTerminology;
 import static org.atilf.module.tools.FilesUtilities.readFile;
 
 /**
@@ -49,7 +48,6 @@ public class ExporterThread {
 
     public void execute() throws InterruptedException {
         new ExporterTimer(termithIndex,LOGGER).start();
-        exportTerminology(termithIndex);
         StandOffResources standOffResources = new StandOffResources();
         termithIndex.getXmlCorpus().forEach(
                 (key,value) -> executor.submit(new TeiWriterWorker(key,readFile(value),termithIndex,standOffResources))

@@ -46,6 +46,7 @@ public class FilesUtilities {
                          Files.newBufferedWriter(Paths.get(path + "/" + filename + "." + extension))){
                 LOGGER.debug("write file: " + path + "/" + filename + "." + extension);
                 writer.write(String.valueOf(content));
+                writer.close();
 
             } catch (IOException e) {
                 LOGGER.error("error during copying some files",e);

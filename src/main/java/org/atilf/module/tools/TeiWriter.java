@@ -39,17 +39,24 @@ public class TeiWriter {
         this.termithIndex = termithIndex;
         this.stdfRes = stdfRes;
         this.morphoStandoff = (List<MorphoSyntaxOffsetId>) FilesUtilities.readObject(termithIndex.getMorphoSyntaxStandOff().get(key));
+        Files.delete(termithIndex.getMorphoSyntaxStandOff().get(key));
         this.tokenizeBody = (StringBuilder) FilesUtilities.readObject(termithIndex.getTokenizeTeiBody().get(key));
         this.bufferedWriter = Files.newBufferedWriter(Paths.get(outputPath + "/" + key + ".xml"));
 
     }
 
     public void execute() throws IOException {
-        LOGGER.debug("writing : " + outputPath + "/" + key + ".xml");
-        insertStandoffNs();
-        insertStandOff();
-        insertBody();
-        termithIndex.getOutputFile().add(Paths.get(outputPath + "/" + key + ".xml"));
+        try {
+            LOGGER.debug("writing : " + outputPath + "/" + key + ".xml");
+            insertStandoffNs();
+            insertStandOff();
+            insertBody();
+            termithIndex.getOutputFile().add(Paths.get(outputPath + "/" + key + ".xml"));
+            bufferedWriter.close();
+        }
+        catch (Exception e){
+            LOGGER.error("could not write file",e);
+        }
     }
 
     private void insertStandoffNs() throws IOException {
@@ -74,7 +81,8 @@ public class TeiWriter {
     private void insertStandOff() throws IOException {
         int startText = searchStart();
         bufferedWriter.append(value.subSequence(0,startText));
-        if (termithIndex.getTerminologyStandOff().containsKey(key)){
+        if (termithIndex.getTerminologyStandOff().containsKey(key) &&
+                !termithIndex.getTerminologyStandOff().get(key).isEmpty()){
             serializeTerminology(termithIndex.getTerminologyStandOff().get(key));
         }
         if (termithIndex.getMorphoSyntaxStandOff().containsKey(key)){
