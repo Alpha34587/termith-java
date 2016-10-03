@@ -9,7 +9,7 @@ import org.slf4j.Logger;
  */
 public class JsonTimer extends ProgressBarTimer {
     public JsonTimer(TermithIndex termithIndex, Logger logger) {
-        super(termithIndex, logger, 100, "Json serialization progression");
+        super(termithIndex, logger, 5000, "Json serialization progression");
     }
 
     @Override

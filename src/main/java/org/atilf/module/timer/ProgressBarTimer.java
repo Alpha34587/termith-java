@@ -27,7 +27,7 @@ abstract class ProgressBarTimer extends TimerTask {
     protected TermithObservable termithObservable;
 
     public ProgressBarTimer(TermithIndex termithIndex, String message,Logger logger){
-        this(termithIndex,logger,15, message);
+        this(termithIndex,logger,3000, message);
     }
 
     public ProgressBarTimer(TermithIndex termithIndex, Logger logger, long interval, String message) {

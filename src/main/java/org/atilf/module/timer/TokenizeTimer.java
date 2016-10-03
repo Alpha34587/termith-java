@@ -10,7 +10,7 @@ import org.slf4j.Logger;
 public class TokenizeTimer extends ProgressBarTimer {
 
     public TokenizeTimer(TermithIndex termithIndex, Logger logger) {
-        super(termithIndex, logger, 100, "xml tokenization progression");
+        super(termithIndex, logger, 5000, "xml tokenization progression");
     }
     @Override
     public void run() {

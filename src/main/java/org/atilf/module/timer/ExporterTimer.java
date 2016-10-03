@@ -10,7 +10,7 @@ import org.slf4j.Logger;
 public class ExporterTimer extends ProgressBarTimer {
 
     public ExporterTimer(TermithIndex termithIndex, Logger logger) {
-        super(termithIndex, logger, 100, "writing file progression");
+        super(termithIndex, logger, 5000, "writing file progression");
     }
 
     @Override
