@@ -5,9 +5,13 @@ import org.atilf.module.tools.FilesUtilities;
 import org.atilf.thread.InitializerThread;
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.TemporaryFolder;
 
+import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -21,14 +25,27 @@ public class CorpusAnalyzerTest {
     private CorpusAnalyzer corpusAnalyzer;
     private Map<String,StringBuilder> extractedText;
 
+    @Rule
+    public TemporaryFolder temporaryFolder = new TemporaryFolder();
+
     @Before
     public void setUp() throws Exception {
 
-        termithIndex = new TermithIndex.Builder().build();
-        termithIndex.addText("1", FilesUtilities.ReadFile(Paths.get("src/test/resources/corpus.analyzer/txt/file1.txt")));
-        termithIndex.addText("2",FilesUtilities.ReadFile(Paths.get("src/test/resources/corpus.analyzer/txt/file2.txt")));
-        termithIndex.addText("3",FilesUtilities.ReadFile(Paths.get("src/test/resources/corpus.analyzer/txt/file3.txt")));
-        extractedText = termithIndex.getExtractedText();
+        termithIndex = new TermithIndex.Builder().export(temporaryFolder.getRoot().getPath()).build();
+        termithIndex.addText("1", FilesUtilities.readFile(Paths.get("src/test/resources/corpus.analyzer/txt/file1.txt")));
+        termithIndex.addText("2",FilesUtilities.readFile(Paths.get("src/test/resources/corpus.analyzer/txt/file2.txt")));
+        termithIndex.addText("3",FilesUtilities.readFile(Paths.get("src/test/resources/corpus.analyzer/txt/file3.txt")));
+        extractedText = convertExtractedText(termithIndex.getExtractedText());
+    }
+
+    public static Map<String,StringBuilder> convertExtractedText(Map<String,Path> extractedText){
+        Map<String,StringBuilder> map = new HashMap<>();
+        extractedText.forEach(
+                (key,value) -> {
+                    map.put(key,(StringBuilder) FilesUtilities.readObject(value));
+                }
+        );
+        return map;
     }
 
     @Test

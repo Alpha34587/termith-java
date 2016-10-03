@@ -33,12 +33,11 @@ public class SerializeTest {
 
     @Before
     public void setUp() throws IOException {
-
-        termithIndex = new TermithIndex.Builder().build();
+        termithIndex = new TermithIndex.Builder().export(temporaryFolder.getRoot().getPath()).build();
         TagNormalizer.initTag("en");
         termithIndex.addText("1",
                 new StringBuilder("\n \n \nJournal of Gerontology: PSYCHOLOGICAL patient (1998@)"));
-        CorpusAnalyzer corpusAnalyzer = new CorpusAnalyzer(termithIndex.getExtractedText());
+        CorpusAnalyzer corpusAnalyzer = new CorpusAnalyzer(CorpusAnalyzerTest.convertExtractedText(termithIndex.getExtractedText()));
 
         tokenLemma = new StringBuilder(
                 "Journal\tNP\tJournal\n" +

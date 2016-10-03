@@ -273,6 +273,7 @@ public class SyntaxParserTest {
         offsetIdAlignement.add("18, 25, [5, 6]");
         offsetIdAlignement.add("26, 31, [7]");
         offsetIdAlignement.add("33, 42, [8]");
+        offsetIdAlignement.add("48, 49, [9]");
     }
     @Test
     public void teiBodyspliterTest() throws Exception {
