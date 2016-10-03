@@ -36,7 +36,7 @@ public class PipelineBuilder {
                 .aeRegexSpotter()
                 .aeSpecificityComputer()
                 .aeCompostSplitter()
-                .aeMaxSizeThresholdCleaner(TermProperty.FREQUENCY, 250000)
+                .aeMaxSizeThresholdCleaner(TermProperty.FREQUENCY, 100000)
                 .aeSyntacticVariantGatherer()
                 .aeGraphicalVariantGatherer()
                 .aeThresholdCleaner(TermProperty.FREQUENCY, 5)
