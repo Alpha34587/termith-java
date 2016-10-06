@@ -27,27 +27,25 @@ public class TreeTaggerWorker implements Runnable {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(AnalyzeThread.class.getName());
     private final String txtPath;
-    private final String name;
     private TermithIndex termithIndex;
     private CountDownLatch jsonCnt;
-    StringBuilder txt;
-    String jsonPath;
-    StringBuilder xml;
-    TextAnalyzer textAnalyzer;
+    private StringBuilder txt;
+    private String jsonPath;
+    private StringBuilder xml;
+    private TextAnalyzer textAnalyzer;
 
-    public TreeTaggerWorker(TermithIndex termithIndex, CorpusAnalyzer corpusAnalyzer, String name,
+    public TreeTaggerWorker(TermithIndex termithIndex, CorpusAnalyzer corpusAnalyzer, String id,
                             CountDownLatch jsonCnt) {
         this.termithIndex = termithIndex;
         this.jsonCnt = jsonCnt;
-        this.txt = (StringBuilder) FilesUtils.readObject(termithIndex.getExtractedText().get(name));
-        this.txtPath = termithIndex.getCorpus() + "/txt/" + name + ".txt";
-        this.jsonPath = termithIndex.getCorpus() + "/json/" + name + ".json";
-        this.textAnalyzer = corpusAnalyzer.getAnalyzedTexts().get(name);
-        this.xml = FilesUtils.readFile(termithIndex.getXmlCorpus().get(name));
-        this.name = name;
+        this.txt = (StringBuilder) FilesUtils.readObject(termithIndex.getExtractedText().get(id));
+        this.txtPath = termithIndex.getCorpus() + "/txt/" + id + ".txt";
+        this.jsonPath = termithIndex.getCorpus() + "/json/" + id + ".json";
+        this.textAnalyzer = corpusAnalyzer.getAnalyzedTexts().get(id);
+        this.xml = FilesUtils.readFile(termithIndex.getXmlCorpus().get(id));
 
         try {
-            Files.delete(termithIndex.getExtractedText().get(name));
+            Files.delete(termithIndex.getExtractedText().get(id));
         } catch (IOException e) {
             LOGGER.error("could not delete file",e);
         }
