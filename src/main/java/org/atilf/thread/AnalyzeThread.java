@@ -1,25 +1,23 @@
 package org.atilf.thread;
 
-import org.atilf.models.MorphoSyntaxOffsetId;
+import org.atilf.models.TagNormalizer;
 import org.atilf.models.TermithIndex;
 import org.atilf.module.timer.JsonTimer;
 import org.atilf.module.timer.TokenizeTimer;
 import org.atilf.module.tools.FilesUtils;
 import org.atilf.module.treetagger.CorpusAnalyzer;
-import org.atilf.models.TagNormalizer;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.atilf.worker.TerminologyParserWorker;
 import org.atilf.worker.TerminologyStandOffWorker;
 import org.atilf.worker.TermsuiteWorker;
 import org.atilf.worker.TreeTaggerWorker;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.concurrent.*;
 
@@ -35,9 +33,6 @@ public class AnalyzeThread {
     private static final Logger LOGGER = LoggerFactory.getLogger(AnalyzeThread.class.getName());
     private static final int DEFAULT_POOL_SIZE = Runtime.getRuntime().availableProcessors();
     private final ExecutorService executorService;
-    private Map<String, StringBuffer> tokenizeTeiBody;
-    private Map<String, Path> JsonTreeTagger;
-    private Map<String, List<MorphoSyntaxOffsetId>> morphoSyntaxStandOff;
     private TermithIndex termithIndex;
     private CountDownLatch jsonCnt;
 
@@ -57,7 +52,7 @@ public class AnalyzeThread {
         return termithIndex.getCorpus();
     }
 
-    public Map<String,StringBuilder> getDeserializeText(){
+    private Map<String,StringBuilder> getDeserializeText(){
         Map<String,StringBuilder> textMap = new HashMap<>();
         termithIndex.getExtractedText().forEach(
                 (key,value) -> {
@@ -88,9 +83,9 @@ public class AnalyzeThread {
         LOGGER.info("terminology extraction started");
         executorService.submit(new TerminologyParserWorker(termithIndex)).get();
         termithIndex.getMorphoSyntaxStandOff().forEach(
-                (id,value) -> executorService.submit(new TerminologyStandOffWorker(
-                        id,value,termithIndex)
-                )
+                (id,value) -> {
+                    executorService.submit(new TerminologyStandOffWorker(id,value,termithIndex));
+                }
         );
         executorService.shutdown();
         executorService.awaitTermination(1L,TimeUnit.DAYS);

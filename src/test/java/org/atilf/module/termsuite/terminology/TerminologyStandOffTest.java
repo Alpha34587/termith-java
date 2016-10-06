@@ -38,7 +38,7 @@ public class TerminologyStandOffTest {
         termino.add(new TermsOffsetId(0,10,0,"cuillière"));
         termino.add(new TermsOffsetId(0,18,1,"cuillière en bois"));
         termino.add(new TermsOffsetId(20,26,2,"pierre"));
-        simpleTerminologyStandOff = new TerminologyStandOff("1",morpho,termino);
+        simpleTerminologyStandOff = new TerminologyStandOff(morpho,termino);
 
         multimorpho = new ArrayList<>();
         multimorpho.add(new MorphoSyntaxOffsetId(0,10,"cuillière","N",0));
@@ -59,7 +59,7 @@ public class TerminologyStandOffTest {
         multitermino.add(new TermsOffsetId(0,10,0,"cuillière"));
         multitermino.add(new TermsOffsetId(0,18,1,"cuillière en bois"));
         multitermino.add(new TermsOffsetId(20,26,2,"pierre"));
-        multiTerminologyStandOff = new TerminologyStandOff("1",multimorpho,multitermino);
+        multiTerminologyStandOff = new TerminologyStandOff(multimorpho,multitermino);
 
         symbolmorpho = new ArrayList<>();
         symbolmorpho.add(new MorphoSyntaxOffsetId(0,10,"cuillière","N",0));
@@ -73,7 +73,7 @@ public class TerminologyStandOffTest {
         symboltermino.add(new TermsOffsetId(0,10,0,"cuillière"));
         symboltermino.add(new TermsOffsetId(0,18,1,"cuillière en bois"));
         symboltermino.add(new TermsOffsetId(20,26,2,"pierre"));
-        symbolTerminologyStandOff = new TerminologyStandOff("1",symbolmorpho,symboltermino);
+        symbolTerminologyStandOff = new TerminologyStandOff(symbolmorpho,symboltermino);
     }
     @Test
     public void simpleExecute() throws Exception {

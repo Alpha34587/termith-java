@@ -34,7 +34,7 @@ public class TerminologyStandOffWorker implements Runnable {
     @Override
     public void run() {
         LOGGER.debug("retrieve morphosyntax id for file :" + id);
-        TerminologyStandOff terminologyStandOff = new TerminologyStandOff(id,morpho,termino);
+        TerminologyStandOff terminologyStandOff = new TerminologyStandOff(morpho,termino);
         terminologyStandOff.execute();
         LOGGER.debug("retrieve id task finished");
     }

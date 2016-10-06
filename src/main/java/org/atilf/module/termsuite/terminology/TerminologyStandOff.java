@@ -14,15 +14,13 @@ import java.util.stream.Collectors;
  *         Created on 14/09/16.
  */
 public class TerminologyStandOff {
-    private final String id;
     private final List<MorphoSyntaxOffsetId> morpho;
     private final List<TermsOffsetId> termino;
     private NavigableMap<Integer,List<Integer>> beginMap;
     private NavigableMap<Integer,List<Integer>> endMap;
 
-    public TerminologyStandOff(String id, List<MorphoSyntaxOffsetId> morpho, List<TermsOffsetId> termino) {
+    public TerminologyStandOff(List<MorphoSyntaxOffsetId> morpho, List<TermsOffsetId> termino) {
 
-        this.id = id;
         this.morpho = morpho;
         this.termino = termino;
     }
