@@ -2,7 +2,7 @@ package org.atilf.worker;
 
 import org.atilf.models.TermithIndex;
 import org.atilf.module.tei.morphology.SyntaxGenerator;
-import org.atilf.module.tools.FilesUtilities;
+import org.atilf.module.tools.FilesUtils;
 import org.atilf.module.treetagger.CorpusAnalyzer;
 import org.atilf.module.treetagger.TextAnalyzer;
 import org.atilf.module.treetagger.TreeTaggerToJson;
@@ -39,11 +39,11 @@ public class TreeTaggerWorker implements Runnable {
                             CountDownLatch jsonCnt) {
         this.termithIndex = termithIndex;
         this.jsonCnt = jsonCnt;
-        this.txt = (StringBuilder) FilesUtilities.readObject(termithIndex.getExtractedText().get(name));
+        this.txt = (StringBuilder) FilesUtils.readObject(termithIndex.getExtractedText().get(name));
         this.txtPath = termithIndex.getCorpus() + "/txt/" + name + ".txt";
         this.jsonPath = termithIndex.getCorpus() + "/json/" + name + ".json";
         this.textAnalyzer = corpusAnalyzer.getAnalyzedTexts().get(name);
-        this.xml = FilesUtilities.readFile(termithIndex.getXmlCorpus().get(name));
+        this.xml = FilesUtils.readFile(termithIndex.getXmlCorpus().get(name));
         this.name = name;
 
         try {
@@ -77,9 +77,9 @@ public class TreeTaggerWorker implements Runnable {
             SyntaxGenerator syntaxGenerator = new SyntaxGenerator(json,txt,xml);
             syntaxGenerator.execute();
             termithIndex.getTokenizeTeiBody().put(json.getName().replace(".json",""),
-                    FilesUtilities.writeObject(syntaxGenerator.getTokenizeBody(),termithIndex.getCorpus()));
+                    FilesUtils.writeObject(syntaxGenerator.getTokenizeBody(),termithIndex.getCorpus()));
             termithIndex.getMorphoSyntaxStandOff().put(json.getName().replace(".json",""),
-                    FilesUtilities.writeObject(syntaxGenerator.getOffsetId(),termithIndex.getCorpus()));
+                    FilesUtils.writeObject(syntaxGenerator.getOffsetId(),termithIndex.getCorpus()));
             LOGGER.debug("tokenization and morphosyntax tasks finished file : " + jsonPath);
 
         } catch (IOException e) {

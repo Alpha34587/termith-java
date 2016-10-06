@@ -13,8 +13,6 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
-import static org.atilf.module.tools.FilesUtilities.readFile;
-
 /**
  * @author Simon Meoni
  *         Created on 19/09/16.
@@ -50,7 +48,7 @@ public class ExporterThread {
         new ExporterTimer(termithIndex,LOGGER).start();
         StandOffResources standOffResources = new StandOffResources();
         termithIndex.getXmlCorpus().forEach(
-                (key,value) -> executor.submit(new TeiWriterWorker(key,readFile(value),termithIndex,standOffResources))
+                (key,value) -> executor.submit(new TeiWriterWorker(key,termithIndex,standOffResources))
         );
         LOGGER.info("Waiting executors to finish");
         executor.shutdown();

@@ -3,7 +3,7 @@ package org.atilf.worker;
 import org.atilf.models.TermithIndex;
 import org.atilf.models.XslResources;
 import org.atilf.module.extractor.TextExtractor;
-import org.atilf.module.tools.FilesUtilities;
+import org.atilf.module.tools.FilesUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.atilf.thread.InitializerThread;
@@ -42,8 +42,8 @@ public class TextExtractorWorker implements Runnable {
             TextExtractor textExtractor = new TextExtractor(path.toFile(),xslResources);
             StringBuilder extractedBuffer = textExtractor.xsltTransformation();
             if (extractedBuffer.length() != 0) {
-                termithIndex.getExtractedText().put(FilesUtilities.nameNormalizer(path.getFileName().toString()),
-                        FilesUtilities.writeObject(extractedBuffer,TermithIndex.outputPath));
+                termithIndex.getExtractedText().put(FilesUtils.nameNormalizer(path.getFileName().toString()),
+                        FilesUtils.writeObject(extractedBuffer,TermithIndex.outputPath));
             }
             else {
                 LOGGER.info(this.path + " has empty body");

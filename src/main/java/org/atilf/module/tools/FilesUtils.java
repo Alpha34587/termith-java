@@ -20,8 +20,8 @@ import static org.atilf.models.TermithIndex.outputPath;
  * @author Simon Meoni
  * Created on 16/08/16.
  */
-public class FilesUtilities {
-    private static final Logger LOGGER = LoggerFactory.getLogger(FilesUtilities.class.getName());
+public class FilesUtils {
+    private static final Logger LOGGER = LoggerFactory.getLogger(FilesUtils.class.getName());
 
     /**
      * Create temporary folder with a name

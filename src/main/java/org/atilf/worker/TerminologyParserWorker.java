@@ -2,7 +2,6 @@ package org.atilf.worker;
 
 import org.atilf.models.TermithIndex;
 import org.atilf.module.termsuite.terminology.TerminologyParser;
-import org.atilf.module.tools.FilesUtilities;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

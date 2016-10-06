@@ -1,6 +1,5 @@
 package org.atilf.module.tools;
 
-import org.atilf.module.tools.FilesUtilities;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,17 +15,17 @@ import java.util.Map;
  * @author Simon Meoni
  * Created on 22/08/16.
  */
-public class FilesUtilitiesTest {
+public class FilesUtilsTest {
     String path;
     Map<String, StringBuilder> testMap;
 
     @Before
     public void setUp() throws Exception {
-        path = FilesUtilities.createTemporaryFolder("test");
+        path = FilesUtils.createTemporaryFolder("test");
         testMap = new HashMap<>();
         testMap.put("test1", new StringBuilder("test2"));
         testMap.put("test3", new StringBuilder("test4"));
-        FilesUtilities.createFiles(path,testMap,"txt");
+        FilesUtils.createFiles(path,testMap,"txt");
     }
 
     @Test

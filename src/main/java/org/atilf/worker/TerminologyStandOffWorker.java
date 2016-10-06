@@ -4,7 +4,7 @@ import org.atilf.models.MorphoSyntaxOffsetId;
 import org.atilf.models.TermithIndex;
 import org.atilf.models.TermsOffsetId;
 import org.atilf.module.termsuite.terminology.TerminologyStandOff;
-import org.atilf.module.tools.FilesUtilities;
+import org.atilf.module.tools.FilesUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -27,7 +27,7 @@ public class TerminologyStandOffWorker implements Runnable {
                                      Path morpho,
                                      TermithIndex termithIndex) {
         this.id = id;
-        this.morpho = (List<MorphoSyntaxOffsetId>) FilesUtilities.readObject(morpho);
+        this.morpho = (List<MorphoSyntaxOffsetId>) FilesUtils.readObject(morpho);
         this.termino = termithIndex.getTerminologyStandOff().get(id);
     }
 

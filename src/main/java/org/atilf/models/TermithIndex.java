@@ -1,6 +1,6 @@
 package org.atilf.models;
 
-import org.atilf.module.tools.FilesUtilities;
+import org.atilf.module.tools.FilesUtils;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -92,7 +92,7 @@ public class TermithIndex {
 
     public void addText(String id, StringBuilder content) throws IOException {
 
-        this.getExtractedText().put(id,FilesUtilities.writeObject(content,TermithIndex.outputPath));
+        this.getExtractedText().put(id, FilesUtils.writeObject(content,TermithIndex.outputPath));
     }
 
     public void setCorpusSize(int corpusSize) {
@@ -138,7 +138,7 @@ public class TermithIndex {
          * @throws IOException
          */
         public Builder baseFolder(String path) throws IOException {
-            this.base = FilesUtilities.folderPathResolver(path);
+            this.base = FilesUtils.folderPathResolver(path);
             corpusSize = (int) Files.list(base).count();
             return this;
         }
@@ -160,7 +160,7 @@ public class TermithIndex {
          * @return return output path
          */
         public Builder export(String outputPath){
-            this.outputPath = FilesUtilities.folderPathResolver(outputPath);
+            this.outputPath = FilesUtils.folderPathResolver(outputPath);
             return this;
         }
 
@@ -180,7 +180,7 @@ public class TermithIndex {
          * @return return TreeTagger path
          */
         public Builder treeTaggerHome(String treeTaggerHome) {
-            this.treeTaggerHome = FilesUtilities.folderPathResolver(treeTaggerHome).toString();
+            this.treeTaggerHome = FilesUtils.folderPathResolver(treeTaggerHome).toString();
             return this;
         }
 

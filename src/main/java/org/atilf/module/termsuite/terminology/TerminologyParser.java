@@ -4,8 +4,7 @@ import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonToken;
 import org.atilf.models.TermsOffsetId;
-import org.atilf.module.tools.FilesUtilities;
-import org.atilf.worker.TermsuiteWorker;
+import org.atilf.module.tools.FilesUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -89,7 +88,7 @@ public class TerminologyParser {
 
     private void fillTerminology(TermsOffsetId offsetId) {
         String realId =
-                FilesUtilities.nameNormalizer(idSource.get(currentFile));
+                FilesUtils.nameNormalizer(idSource.get(currentFile));
         if (standOffTerminology.containsKey(realId)){
             standOffTerminology.get(realId).add(new TermsOffsetId(offsetId));
         }
@@ -131,7 +130,7 @@ public class TerminologyParser {
     private void extractInputSource(JsonToken jsonToken, JsonParser parser) throws IOException {
         if (jsonToken.equals(JsonToken.FIELD_NAME)) {
             idSource.put(parser.getCurrentName(),
-                    FilesUtilities.nameNormalizer(parser.nextTextValue()));
+                    FilesUtils.nameNormalizer(parser.nextTextValue()));
         }
     }
 

@@ -1,7 +1,7 @@
 package org.atilf.module.treetagger;
 
 import org.atilf.models.TermithIndex;
-import org.atilf.module.tools.FilesUtilities;
+import org.atilf.module.tools.FilesUtils;
 import org.atilf.thread.InitializerThread;
 import org.junit.Assert;
 import org.junit.Before;
@@ -32,9 +32,9 @@ public class CorpusAnalyzerTest {
     public void setUp() throws Exception {
 
         termithIndex = new TermithIndex.Builder().export(temporaryFolder.getRoot().getPath()).build();
-        termithIndex.addText("1", FilesUtilities.readFile(Paths.get("src/test/resources/corpus.analyzer/txt/file1.txt")));
-        termithIndex.addText("2",FilesUtilities.readFile(Paths.get("src/test/resources/corpus.analyzer/txt/file2.txt")));
-        termithIndex.addText("3",FilesUtilities.readFile(Paths.get("src/test/resources/corpus.analyzer/txt/file3.txt")));
+        termithIndex.addText("1", FilesUtils.readFile(Paths.get("src/test/resources/corpus.analyzer/txt/file1.txt")));
+        termithIndex.addText("2", FilesUtils.readFile(Paths.get("src/test/resources/corpus.analyzer/txt/file2.txt")));
+        termithIndex.addText("3", FilesUtils.readFile(Paths.get("src/test/resources/corpus.analyzer/txt/file3.txt")));
         extractedText = convertExtractedText(termithIndex.getExtractedText());
     }
 
@@ -42,7 +42,7 @@ public class CorpusAnalyzerTest {
         Map<String,StringBuilder> map = new HashMap<>();
         extractedText.forEach(
                 (key,value) -> {
-                    map.put(key,(StringBuilder) FilesUtilities.readObject(value));
+                    map.put(key,(StringBuilder) FilesUtils.readObject(value));
                 }
         );
         return map;

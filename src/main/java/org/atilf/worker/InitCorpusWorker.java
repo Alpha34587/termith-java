@@ -1,13 +1,11 @@
 package org.atilf.worker;
 
 import org.atilf.models.TermithIndex;
-import org.atilf.module.tools.FilesUtilities;
+import org.atilf.module.tools.FilesUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.atilf.thread.InitializerThread;
 
-import java.io.IOException;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.concurrent.CountDownLatch;
 
@@ -49,7 +47,7 @@ public class InitCorpusWorker implements Runnable {
      */
     @Override
     public void run() {
-            termithIndex.getXmlCorpus().put(FilesUtilities.nameNormalizer(path.getFileName().toString()), path);
+            termithIndex.getXmlCorpus().put(FilesUtils.nameNormalizer(path.getFileName().toString()), path);
             corpusCnt.countDown();
     }
 }

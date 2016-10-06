@@ -2,7 +2,6 @@ package org.atilf.module.tools;
 
 import org.atilf.models.MorphoSyntaxOffsetId;
 import org.atilf.models.StandOffResources;
-import org.atilf.models.TermithIndex;
 import org.atilf.models.TermsOffsetId;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,11 +9,10 @@ import org.slf4j.LoggerFactory;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.nio.file.Path;
 import java.util.List;
 
 import static org.atilf.models.SpecialChXmlEscape.replaceXmlChar;
-import static org.atilf.models.TermithIndex.outputPath;
 
 /**
  * @author Simon Meoni
@@ -23,36 +21,38 @@ import static org.atilf.models.TermithIndex.outputPath;
 public class TeiWriter {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(TeiWriter.class.getName());
-    private final BufferedWriter bufferedWriter;
-    private List<MorphoSyntaxOffsetId> morphoStandoff;
+    private BufferedWriter bufferedWriter = null;
+    private final StringBuilder xmlCorpus;
+    private final List<MorphoSyntaxOffsetId> morphoSyntaxOffsetIds;
     private StringBuilder tokenizeBody;
-    private String key;
-    private StringBuilder value;
-    private TermithIndex termithIndex;
+    private final List<TermsOffsetId> termsOffsetIds;
     private StandOffResources stdfRes;
-    private final String SEPARATOR = "(?<=\n)";
 
+    public TeiWriter(StringBuilder xmlCorpus,
+                     List<MorphoSyntaxOffsetId> morphoSyntaxOffsetIds,
+                     StringBuilder tokenizeBody,List<TermsOffsetId> termsOffsetIds,
+                     Path outputPath,
+                     StandOffResources standOffResources) {
 
-    public TeiWriter(String key, StringBuilder value, TermithIndex termithIndex, StandOffResources stdfRes) throws IOException {
-        this.key = key;
-        this.value = value;
-        this.termithIndex = termithIndex;
-        this.stdfRes = stdfRes;
-        this.morphoStandoff = (List<MorphoSyntaxOffsetId>) FilesUtilities.readObject(termithIndex.getMorphoSyntaxStandOff().get(key));
-        this.tokenizeBody = (StringBuilder) FilesUtilities.readObject(termithIndex.getTokenizeTeiBody().get(key));
-        this.bufferedWriter = Files.newBufferedWriter(Paths.get(outputPath + "/" + key + ".xml"));
+        this.xmlCorpus = xmlCorpus;
+        this.morphoSyntaxOffsetIds = morphoSyntaxOffsetIds;
+        this.tokenizeBody = tokenizeBody;
+        this.termsOffsetIds = termsOffsetIds;
+        this.stdfRes = standOffResources;
+        try {
+            this.bufferedWriter = Files.newBufferedWriter(outputPath);
+        } catch (IOException e) {
+            LOGGER.error("cannot initialize buffered writer object",e);
+        }
 
-        Files.delete(termithIndex.getMorphoSyntaxStandOff().get(key));
-        Files.delete(termithIndex.getTokenizeTeiBody().get(key));
     }
+
 
     public void execute() throws IOException {
         try {
-            LOGGER.debug("writing : " + outputPath + "/" + key + ".xml");
             insertStandoffNs();
             insertStandOff();
             insertBody();
-            termithIndex.getOutputFile().add(Paths.get(outputPath + "/" + key + ".xml"));
             bufferedWriter.close();
         }
         catch (Exception e){
@@ -61,34 +61,34 @@ public class TeiWriter {
     }
 
     private void insertStandoffNs() throws IOException {
-        int teiTag = value.indexOf("<TEI ") + 5;
-        value.insert(teiTag, stdfRes.NS.substring(0, stdfRes.NS.length() - 1) + " ");
+        int teiTag = xmlCorpus.indexOf("<TEI ") + 5;
+        xmlCorpus.insert(teiTag, stdfRes.NS.substring(0, stdfRes.NS.length() - 1) + " ");
     }
 
     private void insertBody() throws IOException {
         bufferedWriter.append(tokenizeBody.append("\n"));
-        bufferedWriter.append(value.subSequence(value.indexOf("</text>") + 7  , value.length()));
+        bufferedWriter.append(xmlCorpus.subSequence(xmlCorpus.indexOf("</text>") + 7  , xmlCorpus.length()));
         bufferedWriter.flush();
     }
 
     private int searchStart() {
-        int index = value.indexOf("<text>");
+        int index = xmlCorpus.indexOf("<text>");
         if (index == -1){
-            index = value.indexOf("<text ");
+            index = xmlCorpus.indexOf("<text ");
         }
         return index;
     }
 
     private void insertStandOff() throws IOException {
         int startText = searchStart();
-        bufferedWriter.append(value.subSequence(0,startText));
-        if (termithIndex.getMorphoSyntaxStandOff().containsKey(key)){
-            serializeMorphosyntax(morphoStandoff);
+        bufferedWriter.append(xmlCorpus.subSequence(0,startText));
+        if (morphoSyntaxOffsetIds != null){
+            serializeMorphosyntax(morphoSyntaxOffsetIds);
         }
 
-        if (termithIndex.getTerminologyStandOff().containsKey(key) &&
-                !termithIndex.getTerminologyStandOff().get(key).isEmpty()){
-            serializeTerminology(termithIndex.getTerminologyStandOff().get(key));
+        if (termsOffsetIds != null &&
+                !termsOffsetIds.isEmpty()){
+            serializeTerminology(termsOffsetIds);
         }
 
     }
@@ -116,10 +116,11 @@ public class TeiWriter {
     }
 
     private StringBuilder cut(StringBuilder template,boolean closedTag) {
+        String separator = "(?<=\n)";
         if (closedTag)
-            return new StringBuilder(template.toString().split(SEPARATOR)[1]);
+            return new StringBuilder(template.toString().split(separator)[1]);
         else
-            return new StringBuilder(template.toString().split(SEPARATOR)[0]);
+            return new StringBuilder(template.toString().split(separator)[0]);
     }
 
     private StringBuilder replaceTemplate(StringBuilder template, String model, String occurence) {

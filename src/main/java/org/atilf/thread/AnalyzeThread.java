@@ -3,9 +3,8 @@ package org.atilf.thread;
 import org.atilf.models.MorphoSyntaxOffsetId;
 import org.atilf.models.TermithIndex;
 import org.atilf.module.timer.JsonTimer;
-import org.atilf.module.timer.TerminologyTimer;
 import org.atilf.module.timer.TokenizeTimer;
-import org.atilf.module.tools.FilesUtilities;
+import org.atilf.module.tools.FilesUtils;
 import org.atilf.module.treetagger.CorpusAnalyzer;
 import org.atilf.models.TagNormalizer;
 import org.slf4j.Logger;
@@ -62,7 +61,7 @@ public class AnalyzeThread {
         Map<String,StringBuilder> textMap = new HashMap<>();
         termithIndex.getExtractedText().forEach(
                 (key,value) -> {
-                    textMap.put(key,(StringBuilder) FilesUtilities.readObject(value));
+                    textMap.put(key,(StringBuilder) FilesUtils.readObject(value));
                 }
         );
         return textMap;
