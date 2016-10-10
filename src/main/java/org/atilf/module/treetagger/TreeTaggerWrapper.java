@@ -5,6 +5,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.UUID;
@@ -60,7 +62,7 @@ public class TreeTaggerWrapper {
         if (p.isAlive()){
         p.destroy();
         }
-        new File(ttPath).delete();
+        Files.delete(Paths.get(ttPath));
     }
     
     private String writeFile(String parsingText) throws IOException {
