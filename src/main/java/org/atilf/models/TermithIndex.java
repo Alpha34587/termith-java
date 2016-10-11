@@ -129,6 +129,7 @@ public class TermithIndex {
         Path outputPath = null;
         String lang;
         String treeTaggerHome;
+        List<Path> terminology = new CopyOnWriteArrayList<>();
         private int corpusSize = 0;
 
         /**
@@ -181,6 +182,17 @@ public class TermithIndex {
          */
         public Builder treeTaggerHome(String treeTaggerHome) {
             this.treeTaggerHome = FilesUtils.folderPathResolver(treeTaggerHome).toString();
+            return this;
+        }
+
+        /**
+         * set json terminology path
+         * @param terminology TreeTagger path
+         * @return return TreeTagger path
+         */
+        public Builder terminology(String terminology) {
+            this.terminology.add(null);
+            this.terminology.add(FilesUtils.folderPathResolver(terminology));
             return this;
         }
 
