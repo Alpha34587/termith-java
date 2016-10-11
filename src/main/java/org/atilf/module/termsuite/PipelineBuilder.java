@@ -43,7 +43,6 @@ public class PipelineBuilder {
                 .aeThresholdCleaner(TermProperty.FREQUENCY, 5)
                 .aeThresholdCleaner(TermProperty.DOCUMENT_FREQUENCY, 2)
                 .aeTopNCleaner(TermProperty.WR, 10000)
-                .aeTermClassifier(TermProperty.FREQUENCY)
                 .aeContextualizer(3, true)
                 .setExportJsonWithContext(false)
                 .setExportJsonWithOccurrences(true)
