@@ -58,6 +58,7 @@ public class DesambCLI {
                     .lang(line.getOptionValue("l"))
                     .baseFolder(line.getOptionValue("i"))
                     .terminology(line.getOptionValue("t"))
+                    .annotation(line.getOptionValue("a"))
                     .export(line.getOptionValue("o"))
                     .build();
             CLIUtils.setGlobalLogLevel(Level.INFO);

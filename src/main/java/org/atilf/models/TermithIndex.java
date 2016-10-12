@@ -23,6 +23,7 @@ public class TermithIndex {
     public static boolean keepFiles;
 
     public Path corpus;
+    public Path disambAnnotation;
     private List<Path> terminologies;
     private Map<String, Path> tokenizeTeiBody;
     private Map<String, Path> morphoSyntaxStandOff;
@@ -36,6 +37,7 @@ public class TermithIndex {
     private int corpusSize;
 
     private TermithIndex(Builder builder) throws IOException {
+    disambAnnotation = builder.disambAnnotation;
         base = builder.base;
         keepFiles = builder.keepFiles;
         outputPath = builder.outputPath;
@@ -130,6 +132,7 @@ public class TermithIndex {
         String lang;
         String treeTaggerHome;
         List<Path> terminology = new CopyOnWriteArrayList<>();
+        Path disambAnnotation;
         private int corpusSize = 0;
 
         /**
@@ -193,6 +196,17 @@ public class TermithIndex {
         public Builder terminology(String terminology) {
             this.terminology.add(null);
             this.terminology.add(FilesUtils.folderPathResolver(terminology));
+            return this;
+        }
+
+
+        /**
+         * set annotation path
+         * @param disambAnnotation disamb path
+         * @return return disamb path
+         */
+        public Builder annotation(String disambAnnotation) {
+            this.disambAnnotation = FilesUtils.folderPathResolver(disambAnnotation);
             return this;
         }
 
