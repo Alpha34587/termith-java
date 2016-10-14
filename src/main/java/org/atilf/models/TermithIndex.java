@@ -1,5 +1,6 @@
 package org.atilf.models;
 
+import org.atilf.module.disambiguisation.SubLexic;
 import org.atilf.module.tools.FilesUtils;
 
 import java.io.IOException;
@@ -33,6 +34,7 @@ public class TermithIndex {
     private Map<String, Path> JsonTreeTagger;
     private List<Path> SerializeJson;
     private List<Path> outputFile;
+    private Map<String, Path> subLexics;
 
     private int corpusSize;
 
@@ -95,6 +97,10 @@ public class TermithIndex {
     public void addText(String id, StringBuilder content) throws IOException {
 
         this.getExtractedText().put(id, FilesUtils.writeObject(content,TermithIndex.outputPath));
+    }
+
+    public Map<String, Path> getSubLexics() {
+        return subLexics;
     }
 
     public void setCorpusSize(int corpusSize) {
