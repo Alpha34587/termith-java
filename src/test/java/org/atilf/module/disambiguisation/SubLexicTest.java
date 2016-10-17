@@ -1,6 +1,11 @@
 package org.atilf.module.disambiguisation;
 
+import com.google.common.collect.Multiset;
+import org.junit.Before;
 import org.junit.Test;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import static org.junit.Assert.*;
 
@@ -9,24 +14,20 @@ import static org.junit.Assert.*;
  *         Created on 17/10/16.
  */
 public class SubLexicTest {
-    @Test
-    public void execute() throws Exception {
-
-    }
-
-    @Test
-    public void extractSubCorpus() throws Exception {
-
+    SubLexic subLexic;
+    @Before
+    public void setUp(){
+        subLexic = new SubLexic("/home/smeoni/IdeaProjects/termITH/src/test/resources/corpus/tei/test1.xml",
+                new HashMap<>());
     }
 
     @Test
     public void extractTerms() throws Exception {
-
+        subLexic.extractTerms();
     }
 
     @Test
-    public void mapToMultiset() throws Exception {
-
+    public void extractSubCorpus() throws Exception {
+        subLexic.extractSubCorpus();
     }
-
 }

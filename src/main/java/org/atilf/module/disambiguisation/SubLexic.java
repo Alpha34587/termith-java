@@ -1,7 +1,6 @@
 package org.atilf.module.disambiguisation;
 
 import com.google.common.collect.Multiset;
-import org.atilf.worker.SubLexicWorker;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
@@ -12,7 +11,6 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Path;
 import java.util.ArrayDeque;
 import java.util.Map;
 
@@ -25,9 +23,9 @@ public class SubLexic {
     private ArrayDeque<String> target;
     private ArrayDeque<String> corresp;
     private ArrayDeque<String> lexAna;
-    DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-    DocumentBuilder dBuilder;
-    Document doc;
+    private DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+    private DocumentBuilder dBuilder;
+    private Document doc;
     private static final Logger LOGGER = LoggerFactory.getLogger(SubLexic.class.getName());
 
     public ArrayDeque<String> getTarget() {
@@ -69,7 +67,7 @@ public class SubLexic {
 
     }
 
-    public void mapToMultiset(){
+    private void mapToMultiset(){
 
     }
 }

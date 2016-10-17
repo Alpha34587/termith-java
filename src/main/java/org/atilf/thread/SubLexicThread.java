@@ -1,10 +1,7 @@
 package org.atilf.thread;
 
 import org.atilf.models.TermithIndex;
-import org.atilf.module.timer.ExtractTextTimer;
-import org.atilf.worker.InitCorpusWorker;
 import org.atilf.worker.SubLexicWorker;
-import org.atilf.worker.TextExtractorWorker;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -38,7 +35,7 @@ public class SubLexicThread {
                     executor.submit(new SubLexicWorker(p,termithIndex));
                 }
         );
-        LOGGER.info("Waiting initCorpusWorker executors to finish");
+        LOGGER.info("Waiting SubLexicWorker executors to finish");
         executor.shutdown();
         executor.awaitTermination(1L, TimeUnit.DAYS);    }
 }
