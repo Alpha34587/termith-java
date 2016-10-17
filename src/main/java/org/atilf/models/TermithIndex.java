@@ -1,6 +1,6 @@
 package org.atilf.models;
 
-import org.atilf.module.disambiguisation.SubLexic;
+import com.google.common.collect.Multiset;
 import org.atilf.module.tools.FilesUtils;
 
 import java.io.IOException;
@@ -34,7 +34,7 @@ public class TermithIndex {
     private Map<String, Path> JsonTreeTagger;
     private List<Path> SerializeJson;
     private List<Path> outputFile;
-    private Map<String, Path> subLexics;
+    private Map<String, Multiset> TermSubLexic;
 
     private int corpusSize;
 
@@ -55,6 +55,7 @@ public class TermithIndex {
         JsonTreeTagger = new ConcurrentHashMap<>();
         SerializeJson = new CopyOnWriteArrayList<>();
         terminologyStandOff = new ConcurrentHashMap<>();
+        TermSubLexic = new ConcurrentHashMap<>();
         corpusSize = builder.corpusSize;
     }
 
@@ -99,8 +100,8 @@ public class TermithIndex {
         this.getExtractedText().put(id, FilesUtils.writeObject(content,TermithIndex.outputPath));
     }
 
-    public Map<String, Path> getSubLexics() {
-        return subLexics;
+    public Map<String, Multiset> getTermSubLexic() {
+        return TermSubLexic;
     }
 
     public void setCorpusSize(int corpusSize) {

@@ -2,9 +2,10 @@ package org.atilf.worker;
 
 import org.atilf.models.TermithIndex;
 import org.atilf.module.disambiguisation.SubLexic;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.nio.file.Path;
-import java.util.concurrent.Callable;
 
 /**
  * @author Simon Meoni
@@ -13,6 +14,7 @@ import java.util.concurrent.Callable;
 public class SubLexicWorker implements Runnable {
     private final Path p;
     private final TermithIndex termithIndex;
+    private static final Logger LOGGER = LoggerFactory.getLogger(SubLexicWorker.class.getName());
 
     public SubLexicWorker(Path p, TermithIndex termithIndex) {
         this.p = p;
@@ -21,8 +23,9 @@ public class SubLexicWorker implements Runnable {
 
     @Override
     public void run() {
-        SubLexic subLexic = new SubLexic();
+        LOGGER.debug("add " + p + " to sub lexic");
+        SubLexic subLexic = new SubLexic(p,termithIndex.getTermSubLexic());
+        LOGGER.debug(p + " added");
         subLexic.execute();
-//        termithIndex.getSubLexics().put()
     }
 }

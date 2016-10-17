@@ -7,6 +7,7 @@ import org.atilf.thread.SubLexicThread;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.IOException;
 import java.util.concurrent.ExecutorService;
 
 /**
@@ -31,7 +32,11 @@ public class Disambiguisation {
 
     public void execute() {
         SubLexicThread lexic = new SubLexicThread(termithIndex,poolSize);
-        lexic.execute();
+        try {
+            lexic.execute();
+        } catch (IOException | InterruptedException e) {
+            LOGGER.error("errors during the subLexic phase : ", e);
+        }
         LexicProfileThread lexicProfileThread = new LexicProfileThread(termithIndex,poolSize);
         lexicProfileThread.execute();
         DisambEvaluationThread evaluation = new DisambEvaluationThread(termithIndex,poolSize);
