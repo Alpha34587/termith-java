@@ -21,14 +21,26 @@ import java.util.Map;
  *         Created on 14/10/16.
  */
 public class SubLexic {
-    private String lexOn;
     private Map<String, Multiset> subLexics;
     private ArrayDeque<String> target;
-    private ArrayDeque<String> termsId;
+    private ArrayDeque<String> corresp;
+    private ArrayDeque<String> lexAna;
     DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
     DocumentBuilder dBuilder;
     Document doc;
     private static final Logger LOGGER = LoggerFactory.getLogger(SubLexic.class.getName());
+
+    public ArrayDeque<String> getTarget() {
+        return target;
+    }
+
+    public ArrayDeque<String> getCorresp() {
+        return corresp;
+    }
+
+    public ArrayDeque<String> getLexAna() {
+        return lexAna;
+    }
 
     public SubLexic(String p, Map<String, Multiset> subLexics){
         this.subLexics = subLexics;
@@ -49,15 +61,15 @@ public class SubLexic {
         extractSubCorpus();
     }
 
-    private void extractSubCorpus() {
+    public void extractSubCorpus() {
 
     }
 
-    private void extractTerms() {
+    public void extractTerms() {
 
     }
 
-    private void mapToMultiset(){
+    public void mapToMultiset(){
 
     }
 }
