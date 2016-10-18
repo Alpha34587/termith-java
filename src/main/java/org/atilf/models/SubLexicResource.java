@@ -6,6 +6,7 @@ import org.atilf.module.termsuite.json.TermsuiteJsonReader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.xml.XMLConstants;
 import javax.xml.namespace.NamespaceContext;
 import java.io.File;
 import java.io.IOException;
@@ -26,9 +27,12 @@ public class SubLexicResource {
             String uri;
             if (s.equals("ns") || s.equals("ns2"))
                 uri = "http://standoff.proposal";
+            else if (s.equals("xml"))
+                uri = XMLConstants.XML_NS_URI;
             else
                 uri = "http://www.tei-c.org/ns/1.0";
-            return uri;        }
+            return uri;
+        }
 
         @Override
         public String getPrefix(String s) {
