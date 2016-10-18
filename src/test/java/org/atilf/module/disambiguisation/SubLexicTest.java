@@ -95,7 +95,8 @@ public class SubLexicTest {
 
     @Test
     public void extractSubCorpusSimple() throws Exception {
-        subLexic.extractSubCorpus();
+        subCorpus.extractTerms();
+        subCorpus.extractSubCorpus();
         expectedMap.forEach(
                 (key,value) -> {
                     Multiset observed = multiSub.get(key);
