@@ -57,7 +57,7 @@ public class SubLexic {
             LOGGER.error("error during the creation of documentBuilder object : ", e);
         }
         try {
-            doc = dBuilder.parse("file://"+p);
+            doc = dBuilder.parse(p);
         } catch (SAXException | IOException e) {
             LOGGER.error("error during the parsing of document",e);
         }

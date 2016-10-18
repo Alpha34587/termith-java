@@ -23,7 +23,7 @@ public class SubLexicTest {
     Deque<String> expectedLexAna = new ArrayDeque<>();
     @Before
     public void setUp(){
-        subLexic = new SubLexic("/home/smeoni/IdeaProjects/termITH/src/test/resources/corpus/tei/test1.xml",
+        subLexic = new SubLexic("src/test/resources/corpus/tei/test1.xml",
                 new HashMap<>());
         expectedTarget.add("#t13 #t14 #t15 #t16");
         expectedTarget.add("#t16 #t17 #t18");
