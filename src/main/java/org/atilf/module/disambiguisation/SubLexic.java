@@ -17,7 +17,7 @@ import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.Map;
 
-import static org.atilf.models.SubLexicResource.NAMESPACE_CONTEXT;
+import static org.atilf.models.SubLexicResource.*;
 
 /**
  * @author Simon Meoni
@@ -83,12 +83,10 @@ public class SubLexic {
         xpath.setNamespaceContext(NAMESPACE_CONTEXT);
 
         try {
-            eSpan = xpath.compile(
-                    "//ns:standOff[@type = 'candidatsTermes']/ns:listAnnotation/tei:span"
-            );
-            eTarget = xpath.compile("@target");
-            eCorresp = xpath.compile("@corresp");
-            eAna = xpath.compile("@ana");
+            eSpan = xpath.compile(SPAN);
+            eTarget = xpath.compile(TARGET);
+            eCorresp = xpath.compile(CORRESP);
+            eAna = xpath.compile(ANA);
 
             NodeList nodes = (NodeList) eSpan.evaluate(doc, XPathConstants.NODESET);
 
