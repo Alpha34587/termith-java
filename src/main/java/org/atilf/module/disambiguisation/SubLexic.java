@@ -4,7 +4,7 @@ import com.google.common.collect.Multiset;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
-import org.w3c.dom.Element;
+import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
@@ -13,9 +13,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.xpath.*;
 import java.io.IOException;
-import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.Map;
+import java.util.*;
 
 import static org.atilf.models.SubLexicResource.*;
 
@@ -31,6 +29,7 @@ public class SubLexic {
     private DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
     private DocumentBuilder dBuilder;
     private Document doc;
+    private XPath xpath;
     private static final Logger LOGGER = LoggerFactory.getLogger(SubLexic.class.getName());
 
     public Deque<String> getTarget() {
@@ -47,6 +46,8 @@ public class SubLexic {
 
     public SubLexic(String p, Map<String, Multiset> subLexics){
         this.subLexics = subLexics;
+        xpath = XPathFactory.newInstance().newXPath();
+        xpath.setNamespaceContext(NAMESPACE_CONTEXT);
         target = new ArrayDeque<>();
         corresp = new ArrayDeque<>();
         lexAna = new ArrayDeque<>();
@@ -69,8 +70,45 @@ public class SubLexic {
     }
 
     public void extractSubCorpus() {
+        while (!target.isEmpty()){
+            String t = target.poll();
+            String c = corresp.poll();
+            String l = lexAna.poll();
+            XPathExpression xPathExpression;
 
+            try {
+                List<String> tags = Arrays.asList(t.split(" "));
+                for (String tag : tags) {
+                    tag = tag.substring(1);
+                    xPathExpression = xpath.compile(
+                            ("//tei:text//tei:w" +
+                                    "[following-sibling::tei:w[@xml:id = '@id'] or" +
+                                    " preceding-sibling::tei:w[@xml:id = '@id']]")
+                                    .replace("@id",tag)
+                    );
 
+                    NodeList nodes = (NodeList) xPathExpression.evaluate(doc, XPathConstants.NODESET);
+
+                    for(int i = 0; i < nodes.getLength(); i ++){
+                        String id = nodes.item(i).getAttributes().getNamedItem("xml:id").getNodeValue();
+                        if (!tags.contains("#"+id)){
+                            XPathExpression sXpath  = xpath.compile("//ns:standOff[@type = 'wordForms']" +
+                                    "/ns:listAnnotation/tei:span[@target = '@id']"
+                                            .replace(
+                                                    "@id",
+                                                    "#"+ nodes.item(i).getAttributes().getNamedItem("xml:id")
+                                                            .getNodeValue()
+                                            )
+                            );
+                            mapToMultiset((Node) sXpath.evaluate(doc,XPathConstants.NODE),c,l);
+                        }
+                    }
+                }
+
+            } catch (XPathExpressionException e) {
+                LOGGER.error("error during the parsing of document",e);
+            }
+        }
     }
 
     public void extractTerms() {
@@ -100,7 +138,6 @@ public class SubLexic {
         }
     }
 
-    private void mapToMultiset(){
-
+    private void mapToMultiset(Node span, String c, String l){
     }
 }
