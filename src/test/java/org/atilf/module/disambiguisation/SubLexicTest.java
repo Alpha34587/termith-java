@@ -1,14 +1,12 @@
 package org.atilf.module.disambiguisation;
 
+import com.google.common.collect.HashMultiset;
 import com.google.common.collect.Multiset;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 import static org.junit.Assert.*;
 
@@ -23,6 +21,7 @@ public class SubLexicTest {
     Deque<String> expectedCorresp = new ArrayDeque<>();
     Deque<String> expectedLexAna = new ArrayDeque<>();
     Map<String,Multiset> expectedMap = new HashMap<>();
+    Map<String,Multiset> multiSub = new HashMap<>();
     @Before
     public void setUp(){
         subLexic = new SubLexic("src/test/resources/corpus/tei/test1.xml",
@@ -45,9 +44,38 @@ public class SubLexicTest {
         expectedLexAna.add("#DM0");
         expectedLexAna.add("#noDM");
         expectedLexAna.add("#noDM");
-        subCorpus = new SubLexic("src/test/resources/corpus/tei/test2.xml",
-                new HashMap<>());
 
+        subCorpus = new SubLexic("src/test/resources/corpus/tei/test2.xml", multiSub);
+        Multiset<String> entry1 = HashMultiset.create();
+        entry1.add("du");
+        entry1.add("l'");
+        entry1.add(".");
+        entry1.add("sur");
+        entry1.add("les");
+        entry1.add("deux");
+        entry1.add("sites");
+
+        expectedMap.put("entry-13471_lexOff",entry1);
+        Multiset<String> entry2 = HashMultiset.create();
+        entry2.add("pêche");
+        entry2.add(",");
+        entry2.add("limitée");
+        entry2.add("à");
+        entry2.add("quelques");
+        entry2.add("espèces");
+        entry2.add("communes");
+        entry2.add(".");
+        entry2.add("ils");
+        expectedMap.put("entry-7263_lexOff",entry2);
+
+        Multiset<String> entry3 = HashMultiset.create();
+        entry3.add("type");
+        entry3.add("de");
+        entry3.add("rejet");
+        entry3.add("précédant");
+        entry3.add("leur");
+        entry3.add(".");
+        expectedMap.put("entry-990_noLex",entry3);
     }
 
     @Test
@@ -66,7 +94,22 @@ public class SubLexicTest {
     }
 
     @Test
-    public void extractSubCorpus() throws Exception {
+    public void extractSubCorpusSimple() throws Exception {
         subLexic.extractSubCorpus();
+        expectedMap.forEach(
+                (key,value) -> {
+                    Multiset observed = multiSub.get(key);
+                    value.forEach(
+                            el -> {
+                                Assert.assertTrue(
+                                        "this element must be contains on this multiset : ",
+                                        observed.contains(el));
+                                Assert.assertEquals("the occurence of element must be equals",
+                                        value.count(el),observed.contains(el)
+                                );
+                            }
+                    );
+                }
+        );
     }
 }
