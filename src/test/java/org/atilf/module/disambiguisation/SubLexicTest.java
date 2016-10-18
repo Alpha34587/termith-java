@@ -18,9 +18,11 @@ import static org.junit.Assert.*;
  */
 public class SubLexicTest {
     SubLexic subLexic;
+    SubLexic subCorpus;
     Deque<String> expectedTarget = new ArrayDeque<>();
     Deque<String> expectedCorresp = new ArrayDeque<>();
     Deque<String> expectedLexAna = new ArrayDeque<>();
+    Map<String,Multiset> expectedMap = new HashMap<>();
     @Before
     public void setUp(){
         subLexic = new SubLexic("src/test/resources/corpus/tei/test1.xml",
@@ -43,6 +45,9 @@ public class SubLexicTest {
         expectedLexAna.add("#DM0");
         expectedLexAna.add("#noDM");
         expectedLexAna.add("#noDM");
+        subCorpus = new SubLexic("src/test/resources/corpus/tei/test2.xml",
+                new HashMap<>());
+
     }
 
     @Test
