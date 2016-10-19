@@ -47,34 +47,34 @@ public class SubLexicTest {
 
         subCorpus = new SubLexic("src/test/resources/corpus/tei/test2.xml", multiSub);
         Multiset<String> entry1 = HashMultiset.create();
-        entry1.add("du");
-        entry1.add("l'");
-        entry1.add(".");
-        entry1.add("sur");
-        entry1.add("les");
-        entry1.add("deux");
-        entry1.add("sites");
+        entry1.add("du PRP:det");
+        entry1.add("le DET:ART");
+        entry1.add(". SENT");
+        entry1.add("sur PRP");
+        entry1.add("le DET:ART");
+        entry1.add("deux NUM");
+        entry1.add("site NOM");
 
-        expectedMap.put("entry-13471_lexOff",entry1);
+        expectedMap.put("entry-13471_lexOn",entry1);
         Multiset<String> entry2 = HashMultiset.create();
-        entry2.add("pêche");
-        entry2.add(",");
-        entry2.add("limitée");
-        entry2.add("à");
-        entry2.add("quelques");
-        entry2.add("espèces");
-        entry2.add("communes");
-        entry2.add(".");
-        entry2.add("ils");
-        expectedMap.put("entry-7263_lexOff",entry2);
+        entry2.add("pêche NOM");
+        entry2.add(", PUN");
+        entry2.add("limiter VER:pper");
+        entry2.add("à PRP");
+        entry2.add("quelque PRO:IND");
+        entry2.add("espèce NOM");
+        entry2.add("commun ADJ");
+        entry2.add(". SENT");
+        entry2.add("il PRO:PER");
+        expectedMap.put("entry-7263_lexOn",entry2);
 
         Multiset<String> entry3 = HashMultiset.create();
-        entry3.add("type");
-        entry3.add("de");
-        entry3.add("rejet");
-        entry3.add("précédant");
-        entry3.add("leur");
-        entry3.add(".");
+        entry3.add("type NOM");
+        entry3.add("de PRP");
+        entry3.add("rejet NOM");
+        entry3.add("précéder VER:ppre");
+        entry3.add("leur DET:POS");
+        entry3.add(". SENT");
         expectedMap.put("entry-990_noLex",entry3);
     }
 
@@ -102,11 +102,10 @@ public class SubLexicTest {
                     Multiset observed = multiSub.get(key);
                     value.forEach(
                             el -> {
-                                Assert.assertTrue(
-                                        "this element must be contains on this multiset : ",
-                                        observed.contains(el));
-                                Assert.assertEquals("the occurence of element must be equals",
-                                        value.count(el),observed.contains(el)
+                                int count = observed.count(el);
+                                Assert.assertEquals("the occurence of element must be equals at " + key +
+                                                " for the word : " + el,
+                                        value.count(el),observed.count(el)
                                 );
                             }
                     );

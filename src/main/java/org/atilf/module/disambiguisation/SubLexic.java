@@ -1,5 +1,6 @@
 package org.atilf.module.disambiguisation;
 
+import com.google.common.collect.HashMultiset;
 import com.google.common.collect.Multiset;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -78,32 +79,36 @@ public class SubLexic {
 
             try {
                 List<String> tags = Arrays.asList(t.split(" "));
+                Set<Node> nodeSet = new HashSet<>();
                 for (String tag : tags) {
                     tag = tag.substring(1);
                     xPathExpression = xpath.compile(
                             ("//tei:text//tei:w" +
-                                    "[following-sibling::tei:w[@xml:id = '@id'] or" +
-                                    " preceding-sibling::tei:w[@xml:id = '@id']]")
-                                    .replace("@id",tag)
+                                    "[./following-sibling::tei:w[@xml:id = '@id'] or" +
+                                    " ./preceding-sibling::tei:w[@xml:id = '@id']]")
+                                    .replace("@id", tag)
                     );
-
                     NodeList nodes = (NodeList) xPathExpression.evaluate(doc, XPathConstants.NODESET);
+                    for(int i = 0; i < nodes.getLength(); i ++) {
+                        nodeSet.add(nodes.item(i));
+                    }
+                }
 
-                    for(int i = 0; i < nodes.getLength(); i ++){
-                        String id = nodes.item(i).getAttributes().getNamedItem("xml:id").getNodeValue();
+                for (Node node : nodeSet) {
+                        String id = node.getAttributes().getNamedItem("xml:id").getNodeValue();
                         if (!tags.contains("#"+id)){
                             XPathExpression sXpath  = xpath.compile("//ns:standOff[@type = 'wordForms']" +
                                     "/ns:listAnnotation/tei:span[@target = '@id']"
                                             .replace(
                                                     "@id",
-                                                    "#"+ nodes.item(i).getAttributes().getNamedItem("xml:id")
+                                                    "#"+ node.getAttributes().getNamedItem("xml:id")
                                                             .getNodeValue()
                                             )
                             );
                             mapToMultiset((Node) sXpath.evaluate(doc,XPathConstants.NODE),c,l);
                         }
                     }
-                }
+
 
             } catch (XPathExpressionException e) {
                 LOGGER.error("error during the parsing of document",e);
@@ -112,13 +117,10 @@ public class SubLexic {
     }
 
     public void extractTerms() {
-
-        XPath xpath = XPathFactory.newInstance().newXPath();
         XPathExpression eSpan;
         XPathExpression eTarget;
         XPathExpression eCorresp;
         XPathExpression eAna;
-        xpath.setNamespaceContext(NAMESPACE_CONTEXT);
 
         try {
             eSpan = xpath.compile(SPAN);
@@ -139,5 +141,37 @@ public class SubLexic {
     }
 
     private void mapToMultiset(Node span, String c, String l){
+        try {
+            XPathExpression eLemma = xpath.compile(".//tei:f[@name = 'lemma']/tei:string/text()");
+            XPathExpression ePos = xpath.compile(".//tei:f[@name = 'pos']/tei:symbol/@value");
+
+            Node lemmaNode = (Node) eLemma.evaluate(span, XPathConstants.NODE);
+            Node posNode = (Node) ePos.evaluate(span, XPathConstants.NODE);
+            String lemmaValue = lemmaNode.getNodeValue().trim();
+            String posValue = posNode.getNodeValue().trim();
+            String key = normalizeKey(c,l);
+            if (subLexics.containsKey(key)){
+                subLexics.get(key).add(lemmaValue + " " + posValue);
+            }
+            else{
+                Multiset<String> multiset = HashMultiset.create();
+                multiset.add(lemmaValue + " " + posValue);
+                subLexics.put(key,multiset);
+
+            }
+        } catch (XPathExpressionException e) {
+            LOGGER.error("error during the parsing of document",e);
+        }
+    }
+
+    private String normalizeKey(String c, String l) {
+        switch (l) {
+            case "#noDM" :
+                return (c + "_noLex").replace("#","");
+            case "#DM0" :
+                return (c + "_lexOff").replace("#","");
+            default:
+                return (c + "_lexOn").replace("#","");
+        }
     }
 }
