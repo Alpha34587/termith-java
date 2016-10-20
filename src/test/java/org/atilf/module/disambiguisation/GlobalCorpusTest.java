@@ -22,8 +22,8 @@ public class GlobalCorpusTest {
 
     @Before
     public void setUp() throws Exception {
-        corpus1 = new GlobalCorpus("src/test/resources/corpus/tei/test1.xml",observedCorpus);
-        corpus2 = new GlobalCorpus("src/test/resources/corpus/tei/test1.xml",observedCorpus);
+        corpus1 = new GlobalCorpus("src/test/resources/corpus/tei/test3.xml",observedCorpus);
+        corpus2 = new GlobalCorpus("src/test/resources/corpus/tei/test4.xml",observedCorpus);
 
 
     }
