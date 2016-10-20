@@ -53,6 +53,8 @@ public class GlobalCorpusTest {
 
     @Test
     public void execute() throws Exception {
+        corpus1.execute();
+        corpus2.execute();
         Assert.assertEquals("this two multisets must be equals",expectedCorpus.toString(),observedCorpus.toString());
     }
 
