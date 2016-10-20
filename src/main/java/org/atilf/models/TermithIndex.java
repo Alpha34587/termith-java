@@ -35,11 +35,12 @@ public class TermithIndex {
     private List<Path> SerializeJson;
     private List<Path> outputFile;
     private Map<String, Multiset> TermSubLexic;
+    private Multiset disambGlobalCorpus;
 
     private int corpusSize;
 
     private TermithIndex(Builder builder) throws IOException {
-    disambAnnotation = builder.disambAnnotation;
+        disambAnnotation = builder.disambAnnotation;
         base = builder.base;
         keepFiles = builder.keepFiles;
         outputPath = builder.outputPath;
@@ -70,6 +71,9 @@ public class TermithIndex {
     public Path getJsonTerminology(){
         return terminologies.get(1);
     }
+
+
+    public Multiset getDisambGlobalCorpus() { return disambGlobalCorpus; }
 
     public int getCorpusSize() {return corpusSize;}
 
