@@ -95,19 +95,19 @@ public class SubLexic {
                 }
 
                 for (Node node : nodeSet) {
-                        String id = node.getAttributes().getNamedItem("xml:id").getNodeValue();
-                        if (!tags.contains("#"+id)){
-                            XPathExpression sXpath  = xpath.compile("//ns:standOff[@type = 'wordForms']" +
-                                    "/ns:listAnnotation/tei:span[@target = '@id']"
-                                            .replace(
-                                                    "@id",
-                                                    "#"+ node.getAttributes().getNamedItem("xml:id")
-                                                            .getNodeValue()
-                                            )
-                            );
-                            mapToMultiset((Node) sXpath.evaluate(doc,XPathConstants.NODE),c,l);
-                        }
+                    String id = node.getAttributes().getNamedItem("xml:id").getNodeValue();
+                    if (!tags.contains("#"+id)){
+                        XPathExpression sXpath  = xpath.compile("//ns:standOff[@type = 'wordForms']" +
+                                "/ns:listAnnotation/tei:span[@target = '@id']"
+                                        .replace(
+                                                "@id",
+                                                "#"+ node.getAttributes().getNamedItem("xml:id")
+                                                        .getNodeValue()
+                                        )
+                        );
+                        mapToMultiset((Node) sXpath.evaluate(doc,XPathConstants.NODE),c,l);
                     }
+                }
 
 
             } catch (XPathExpressionException e) {
@@ -131,9 +131,12 @@ public class SubLexic {
             NodeList nodes = (NodeList) eSpan.evaluate(doc, XPathConstants.NODESET);
 
             for (int i = 0; i < nodes.getLength(); i++) {
-                target.add(eTarget.evaluate(nodes.item(i)));
-                corresp.add(eCorresp.evaluate(nodes.item(i)));
-                lexAna.add(eAna.evaluate(nodes.item(i)));
+                String ana = eAna.evaluate(nodes.item(i));
+                if (!ana.equals("#noDM") && !ana.isEmpty()){
+                    target.add(eTarget.evaluate(nodes.item(i)));
+                    corresp.add(eCorresp.evaluate(nodes.item(i)));
+                    lexAna.add(eAna.evaluate(nodes.item(i)));
+                }
             }
         } catch (XPathExpressionException e) {
             LOGGER.error("error during the parsing of document",e);
@@ -166,8 +169,6 @@ public class SubLexic {
 
     private String normalizeKey(String c, String l) {
         switch (l) {
-            case "#noDM" :
-                return (c + "_noLex").replace("#","");
             case "#DM0" :
                 return (c + "_lexOff").replace("#","");
             default:

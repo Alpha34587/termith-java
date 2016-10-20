@@ -26,24 +26,17 @@ public class SubLexicTest {
     public void setUp(){
         subLexic = new SubLexic("src/test/resources/corpus/tei/test1.xml",
                 new HashMap<>());
-        expectedTarget.add("#t13 #t14 #t15 #t16");
         expectedTarget.add("#t16 #t17 #t18");
         expectedTarget.add("#t30");
         expectedTarget.add("#t49");
-        expectedTarget.add("#t62");
-        expectedTarget.add("#t68 #t69 #t70");
-        expectedCorresp.add("#entry-13471");
+
         expectedCorresp.add("#entry-8318");
         expectedCorresp.add("#entry-7263");
         expectedCorresp.add("#entry-990");
-        expectedCorresp.add("#entry-39775");
-        expectedCorresp.add("#entry-151826");
-        expectedLexAna.add("#noDM");
+
         expectedLexAna.add("#DM4");
         expectedLexAna.add("#DM3");
         expectedLexAna.add("#DM0");
-        expectedLexAna.add("#noDM");
-        expectedLexAna.add("#noDM");
 
         subCorpus = new SubLexic("src/test/resources/corpus/tei/test2.xml", multiSub);
         Multiset<String> entry1 = HashMultiset.create();
@@ -68,14 +61,6 @@ public class SubLexicTest {
         entry2.add("il PRO:PER");
         expectedMap.put("entry-7263_lexOn",entry2);
 
-        Multiset<String> entry3 = HashMultiset.create();
-        entry3.add("type NOM");
-        entry3.add("de PRP");
-        entry3.add("rejet NOM");
-        entry3.add("précéder VER:ppre");
-        entry3.add("leur DET:POS");
-        entry3.add(". SENT");
-        expectedMap.put("entry-990_noLex",entry3);
     }
 
     @Test
