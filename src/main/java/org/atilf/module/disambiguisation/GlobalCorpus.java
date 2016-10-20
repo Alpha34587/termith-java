@@ -16,11 +16,11 @@ public class GlobalCorpus {
         addToGlobalCorpus();
     }
 
-    public void addToGlobalCorpus() {
+    private void addToGlobalCorpus() {
 
     }
 
-    public void extractWords() {
+    private void extractWords() {
 
     }
 }
