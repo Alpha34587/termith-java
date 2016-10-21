@@ -20,8 +20,8 @@ public class SubLexicTest {
     Deque<String> expectedTarget = new ArrayDeque<>();
     Deque<String> expectedCorresp = new ArrayDeque<>();
     Deque<String> expectedLexAna = new ArrayDeque<>();
-    Map<String,Multiset> expectedMap = new HashMap<>();
-    Map<String,Multiset> multiSub = new HashMap<>();
+    Map<String,LexicalProfile> expectedMap = new HashMap<>();
+    Map<String,LexicalProfile> multiSub = new HashMap<>();
     @Before
     public void setUp(){
         subLexic = new SubLexic("src/test/resources/corpus/tei/test1.xml",
@@ -48,7 +48,7 @@ public class SubLexicTest {
         entry1.add("deux NUM");
         entry1.add("site NOM");
 
-        expectedMap.put("entry-13471_lexOn",entry1);
+        expectedMap.put("entry-13471_lexOn",new LexicalProfile(entry1));
         Multiset<String> entry2 = HashMultiset.create();
         entry2.add("pêche NOM");
         entry2.add(", PUN");
@@ -59,7 +59,7 @@ public class SubLexicTest {
         entry2.add("commun ADJ");
         entry2.add(". SENT");
         entry2.add("il PRO:PER");
-        expectedMap.put("entry-7263_lexOn",entry2);
+        expectedMap.put("entry-7263_lexOn",new LexicalProfile(entry2));
 
     }
 
@@ -84,13 +84,13 @@ public class SubLexicTest {
         subCorpus.extractSubCorpus();
         expectedMap.forEach(
                 (key,value) -> {
-                    Multiset observed = multiSub.get(key);
-                    value.forEach(
+                    Multiset observed = multiSub.get(key).getLexicalTable();
+                    value.getLexicalTable().forEach(
                             el -> {
                                 int count = observed.count(el);
                                 Assert.assertEquals("the occurence of element must be equals at " + key +
                                                 " for the word : " + el,
-                                        value.count(el),observed.count(el)
+                                        value.getLexicalTable().count(el),observed.count(el)
                                 );
                             }
                     );

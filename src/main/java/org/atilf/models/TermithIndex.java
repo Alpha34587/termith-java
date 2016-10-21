@@ -1,6 +1,7 @@
 package org.atilf.models;
 
 import com.google.common.collect.Multiset;
+import org.atilf.module.disambiguisation.LexicalProfile;
 import org.atilf.module.tools.FilesUtils;
 
 import java.io.IOException;
@@ -34,7 +35,7 @@ public class TermithIndex {
     private Map<String, Path> JsonTreeTagger;
     private List<Path> SerializeJson;
     private List<Path> outputFile;
-    private Map<String, Multiset> TermSubLexic;
+    private Map<String, LexicalProfile> TermSubLexic;
     private Multiset disambGlobalCorpus;
 
     private int corpusSize;
@@ -104,7 +105,7 @@ public class TermithIndex {
         this.getExtractedText().put(id, FilesUtils.writeObject(content,TermithIndex.outputPath));
     }
 
-    public Map<String, Multiset> getTermSubLexic() {
+    public Map<String, LexicalProfile> getTermSubLexic() {
         return TermSubLexic;
     }
 

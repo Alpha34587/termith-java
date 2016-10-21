@@ -23,7 +23,7 @@ import static org.atilf.models.SubLexicResource.*;
  *         Created on 14/10/16.
  */
 public class SubLexic {
-    private Map<String, Multiset> subLexics;
+    private Map<String, LexicalProfile> subLexics;
     private Deque<String> target;
     private Deque<String> corresp;
     private Deque<String> lexAna;
@@ -45,7 +45,7 @@ public class SubLexic {
         return lexAna;
     }
 
-    public SubLexic(String p, Map<String, Multiset> subLexics){
+    public SubLexic(String p, Map<String, LexicalProfile> subLexics){
         this.subLexics = subLexics;
         xpath = XPathFactory.newInstance().newXPath();
         xpath.setNamespaceContext(NAMESPACE_CONTEXT);
@@ -68,6 +68,7 @@ public class SubLexic {
     public void execute() {
         extractTerms();
         extractSubCorpus();
+
     }
 
     public void extractSubCorpus() {
@@ -154,12 +155,12 @@ public class SubLexic {
             String posValue = posNode.getNodeValue().trim();
             String key = normalizeKey(c,l);
             if (subLexics.containsKey(key)){
-                subLexics.get(key).add(lemmaValue + " " + posValue);
+                subLexics.get(key).getLexicalTable().add(lemmaValue + " " + posValue);
             }
             else{
                 Multiset<String> multiset = HashMultiset.create();
                 multiset.add(lemmaValue + " " + posValue);
-                subLexics.put(key,multiset);
+                subLexics.put(key,new LexicalProfile(multiset));
 
             }
         } catch (XPathExpressionException e) {

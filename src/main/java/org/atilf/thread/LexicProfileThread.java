@@ -1,5 +1,6 @@
 package org.atilf.thread;
 
+import org.atilf.models.RLexic;
 import org.atilf.models.TermithIndex;
 
 /**
@@ -17,6 +18,11 @@ public class LexicProfileThread {
     }
 
     public void execute() {
+        RLexic rLexic = new RLexic(termithIndex.getDisambGlobalCorpus());
+        termithIndex.getTermSubLexic().forEach(
+                (key,value) -> {
 
+                }
+        );
     }
 }
