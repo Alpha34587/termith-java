@@ -2,8 +2,6 @@ package org.atilf.thread;
 
 import org.atilf.models.RLexic;
 import org.atilf.models.TermithIndex;
-import org.atilf.module.disambiguisation.GlobalCorpus;
-import org.atilf.module.disambiguisation.LexicalProfile;
 import org.atilf.worker.SpecCoeffWorker;
 
 import java.util.concurrent.ExecutorService;

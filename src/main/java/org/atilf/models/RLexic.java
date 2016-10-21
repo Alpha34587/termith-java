@@ -2,8 +2,6 @@ package org.atilf.models;
 
 import com.google.common.collect.Multiset;
 
-import static com.sun.xml.internal.bind.api.impl.NameConverter.standard;
-
 /**
  * @author Simon Meoni
  *         Created on 21/10/16.
@@ -32,6 +30,8 @@ public class RLexic {
     public StringBuffer getrOcc() {
         return rOcc;
     }
+
+    public int getCorpusSizeOcc() { return corpusSizeOcc; }
 
     private void closeRVariable() {
         rName.deleteCharAt(rName.length()-1);

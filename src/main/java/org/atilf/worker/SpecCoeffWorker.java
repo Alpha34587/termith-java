@@ -2,6 +2,11 @@ package org.atilf.worker;
 
 import org.atilf.models.RLexic;
 import org.atilf.models.TermithIndex;
+import org.atilf.module.disambiguisation.LexicalProfile;
+import org.atilf.module.disambiguisation.SpecCoeffCalculator;
+
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * @author Simon Meoni
@@ -21,6 +26,7 @@ public class SpecCoeffWorker implements Runnable {
 
     @Override
     public void run() {
-
+        SpecCoeffCalculator specCoeff = new SpecCoeffCalculator(termithIndex.getTermSubLexic().get(key), rLexic);
+        specCoeff.execute();
     }
 }
