@@ -2,6 +2,12 @@ package org.atilf.thread;
 
 import org.atilf.models.RLexic;
 import org.atilf.models.TermithIndex;
+import org.atilf.module.disambiguisation.GlobalCorpus;
+import org.atilf.module.disambiguisation.LexicalProfile;
+import org.atilf.worker.SpecCoeffWorker;
+
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * @author Simon Meoni
@@ -19,9 +25,11 @@ public class LexicProfileThread {
 
     public void execute() {
         RLexic rLexic = new RLexic(termithIndex.getDisambGlobalCorpus());
+        ExecutorService executor = Executors.newFixedThreadPool(poolSize);
+
         termithIndex.getTermSubLexic().forEach(
                 (key,value) -> {
-
+                    executor.submit(new SpecCoeffWorker(key,termithIndex,rLexic));
                 }
         );
     }
