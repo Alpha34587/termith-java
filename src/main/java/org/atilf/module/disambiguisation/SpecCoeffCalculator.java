@@ -30,7 +30,7 @@ public class SpecCoeffCalculator {
     private double[] computeSpecCoeff() {
         RCaller rcaller = RCaller.create();
         RCode code = RCode.create();
-        code.addRCode("source(" + "\"/home/smeoni/IdeaProjects/DesambAuto/R/specificities.R\"" + ")");
+        code.addRCode("source(" + "\"src/main/resources/disambiguisation/R/specificities.R\"" + ")");
         code.addRCode("sumCol <-" + rLexic.getCorpusSizeOcc());
         code.addRCode("tabCol <-" + "c(" + rSubLexic.getCorpusSizeOcc() + "," + rLexic.getCorpusSizeOcc() + ")");
         code.addRCode("names(tabCol) <- c(\"sublexicon\",\"complementary\")");
