@@ -22,6 +22,9 @@ public class LexicalProfile {
         return lexicalTable;
     }
 
+    public int getLexicalSize(){
+        return lexicalTable.size();
+    }
     public int countOccurence(String word){
         if (lexicalTable.contains(word)){
             return lexicalTable.count(word);
