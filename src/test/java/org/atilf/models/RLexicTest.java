@@ -24,15 +24,15 @@ public class RLexicTest {
     String rOcc;
     @Before
     public void setUp() throws Exception {
-        rName = "c(\"donnée NOM\"," +
-                "\"ce PRO:DEM\"," +
-                "\"présenter VER:pres\"," +
-                "\"archéo-ichtyofauniques ADJ\"," +
-                "\"livrer VER:pper\"," +
-                "\"du PRP:det\"," +
-                "\"un DET:ART\"," +
-                "\"article NOM\"," +
-                "\"comparer VER:pper\")";
+        rName = "c(\"6\"," +
+                "\"0\"," +
+                "\"2\"," +
+                "\"7\"," +
+                "\"8\"," +
+                "\"5\"," +
+                "\"3\"," +
+                "\"1\"," +
+                "\"4\")";
         rOcc = "c(1,1,1,1,1,1,2,1,1)";
 
         corpus = new GlobalLexic(new HashMap<>(),new HashMap<>());

@@ -20,7 +20,7 @@ public class RLexic {
         rOcc = new StringBuffer();
         rName.append("c(");
         rOcc.append("c(");
-//        corpus.getGlobalLexic().forEach(this::convertToRFormat);
+        corpus.forEach(this::convertToRFormat);
         closeRVariable();
     }
 
@@ -46,7 +46,7 @@ public class RLexic {
     }
 
     private void convertToRFormat(String el) {
-        rName.append("\""+el+"\",");
-//        rOcc.append(corpus.count(el)+",");
+        rName.append("\""+ corpus.getIdEntry(el) +"\",");
+        rOcc.append(corpus.getCount(el)+",");
     }
 }
