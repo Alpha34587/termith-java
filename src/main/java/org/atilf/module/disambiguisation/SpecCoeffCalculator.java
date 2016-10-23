@@ -25,10 +25,11 @@ public class SpecCoeffCalculator {
         ReduceToLexicalProfile(computeSpecCoeff());
     }
 
-    private void ReduceToLexicalProfile(double[] specCoef) {
+    public void ReduceToLexicalProfile(double[] specCoef) {
+
     }
 
-    private double[] computeSpecCoeff() {
+    public double[] computeSpecCoeff() {
         RCaller rcaller = RCaller.create();
         RCode code = RCode.create();
         code.addRCode("source(" + "\"src/main/resources/disambiguisation/R/specificities.R\"" + ")");
@@ -37,7 +38,7 @@ public class SpecCoeffCalculator {
         code.addRCode("names(tabCol) <- c(\"sublexicon\",\"complementary\")");
         code.addRCode("lexic <-" + rLexic.getrOcc());
         code.addRCode("names(lexic) <-" + rLexic.getrName());
-        code.addRCode("sublexic <-" + rSubLexic.getrName());
+        code.addRCode("sublexic <-" + rSubLexic.getrOcc());
         code.addRCode("names(sublexic) <-" + rSubLexic.getrOcc());
         code.addRCode("res <- specificities.lexicon(lexic,sublexic,sumCol,tabCol)");
         code.addRCode("res <- res[,1]");

@@ -2,6 +2,7 @@ package org.atilf.models;
 
 import com.google.common.collect.HashMultiset;
 import com.google.common.collect.Multiset;
+import com.sun.xml.internal.bind.v2.TODO;
 import org.atilf.module.disambiguisation.GlobalCorpus;
 import org.junit.Assert;
 import org.junit.Before;
@@ -22,6 +23,7 @@ public class RLexicTest {
     RLexic rLexic;
     String rName;
     String rOcc;
+    //TODO make subLexicFormat method
     @Before
     public void setUp() throws Exception {
         rName = "c(\"6\"," +

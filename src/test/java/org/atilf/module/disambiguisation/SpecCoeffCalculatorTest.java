@@ -14,6 +14,7 @@ import java.util.Map;
  *         Created on 21/10/16.
  */
 public class SpecCoeffCalculatorTest {
+
     private GlobalCorpus corpus1;
     private GlobalCorpus corpus2;
     private GlobalLexic globalLexic;
@@ -37,11 +38,21 @@ public class SpecCoeffCalculatorTest {
         subCorpus2.execute();
     }
 
+//    @Test
+//    public void execute() throws Exception {
+//
+//        subLexic.values().forEach(
+//                value -> new SpecCoeffCalculator(value,rLexic,globalLexic).execute()
+//        );
+//    }
+//TODO complete test
     @Test
-    public void execute() throws Exception {
-        subLexic.values().forEach(
-                value -> new SpecCoeffCalculator(value,rLexic,globalLexic).execute()
-        );
+    public void reduceToLexicalProfile() throws Exception {
+
     }
 
+    @Test
+    public void computeSpecCoeff() throws Exception {
+
+    }
 }
