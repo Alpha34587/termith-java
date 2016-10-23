@@ -22,7 +22,7 @@ public class LexicProfileThread {
     }
 
     public void execute() {
-        RLexic rLexic = new RLexic(termithIndex.getDisambGlobalCorpus());
+        RLexic rLexic = new RLexic(termithIndex.getDisambGlobalLexic());
         ExecutorService executor = Executors.newFixedThreadPool(poolSize);
 
         termithIndex.getTermSubLexic().forEach(

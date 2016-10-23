@@ -36,7 +36,7 @@ public class TermithIndex {
     private List<Path> SerializeJson;
     private List<Path> outputFile;
     private Map<String, LexicalProfile> TermSubLexic;
-    private Multiset disambGlobalCorpus;
+    private GlobalLexic disambGlobalLexic;
 
     private int corpusSize;
 
@@ -58,6 +58,7 @@ public class TermithIndex {
         SerializeJson = new CopyOnWriteArrayList<>();
         terminologyStandOff = new ConcurrentHashMap<>();
         TermSubLexic = new ConcurrentHashMap<>();
+        disambGlobalLexic = new GlobalLexic(new ConcurrentHashMap<>(),new ConcurrentHashMap<>());
         corpusSize = builder.corpusSize;
     }
 
@@ -74,7 +75,7 @@ public class TermithIndex {
     }
 
 
-    public Multiset getDisambGlobalCorpus() { return disambGlobalCorpus; }
+    public GlobalLexic getDisambGlobalLexic() { return disambGlobalLexic; }
 
     public int getCorpusSize() {return corpusSize;}
 

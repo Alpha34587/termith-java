@@ -1,15 +1,13 @@
 package org.atilf.module.disambiguisation;
 
 import com.google.common.collect.HashMultiset;
-import com.google.common.collect.Multiset;
+import org.atilf.models.GlobalLexic;
 import org.atilf.models.RLexic;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.HashMap;
 import java.util.Map;
-
-import static org.junit.Assert.*;
 
 /**
  * @author Simon Meoni
@@ -18,7 +16,7 @@ import static org.junit.Assert.*;
 public class SpecCoeffCalculatorTest {
     private GlobalCorpus corpus1;
     private GlobalCorpus corpus2;
-    private Multiset observedCorpus;
+    private GlobalLexic globalLexic;
     private RLexic rLexic;
     private Map<String, LexicalProfile> subLexic;
     private SubLexic subCorpus1;
@@ -26,15 +24,15 @@ public class SpecCoeffCalculatorTest {
 
     @Before
     public void setUp() throws Exception {
-        observedCorpus = HashMultiset.create();
+        globalLexic = new GlobalLexic(new HashMap<>(),new HashMap<>());
         subLexic = new HashMap<>();
-        corpus1 = new GlobalCorpus("src/test/resources/corpus/tei/test1.xml",observedCorpus);
-        corpus2 = new GlobalCorpus("src/test/resources/corpus/tei/test2.xml",observedCorpus);
+        corpus1 = new GlobalCorpus("src/test/resources/corpus/tei/test1.xml", globalLexic);
+        corpus2 = new GlobalCorpus("src/test/resources/corpus/tei/test2.xml", globalLexic);
         subCorpus1 = new SubLexic("src/test/resources/corpus/tei/test1.xml", subLexic);
         subCorpus2 = new SubLexic("src/test/resources/corpus/tei/test2.xml", subLexic);
         corpus1.execute();
         corpus2.execute();
-        rLexic = new RLexic(observedCorpus);
+        rLexic = new RLexic(globalLexic);
         subCorpus1.execute();
         subCorpus2.execute();
     }
@@ -42,7 +40,7 @@ public class SpecCoeffCalculatorTest {
     @Test
     public void execute() throws Exception {
         subLexic.values().forEach(
-                value -> new SpecCoeffCalculator(value,rLexic).execute()
+                value -> new SpecCoeffCalculator(value,rLexic,globalLexic).execute()
         );
     }
 

@@ -2,6 +2,7 @@ package org.atilf.module.disambiguisation;
 
 import com.github.rcaller.rstuff.RCaller;
 import com.github.rcaller.rstuff.RCode;
+import org.atilf.models.GlobalLexic;
 import org.atilf.models.RLexic;
 
 /**
@@ -13,11 +14,11 @@ public class SpecCoeffCalculator {
     private final RLexic rLexic;
     private final RLexic rSubLexic;
 
-    public SpecCoeffCalculator(LexicalProfile lexicalProfile, RLexic rLexic) {
+    public SpecCoeffCalculator(LexicalProfile lexicalProfile, RLexic rLexic, GlobalLexic globalLexic) {
 
         this.lexicalProfile = lexicalProfile;
         this.rLexic = rLexic;
-        this.rSubLexic = new RLexic(lexicalProfile.getLexicalTable());
+        this.rSubLexic = new RLexic(lexicalProfile.getLexicalTable(),globalLexic);
     }
 
     public void execute() {

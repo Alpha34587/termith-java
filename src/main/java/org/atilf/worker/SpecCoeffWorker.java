@@ -26,7 +26,8 @@ public class SpecCoeffWorker implements Runnable {
 
     @Override
     public void run() {
-        SpecCoeffCalculator specCoeff = new SpecCoeffCalculator(termithIndex.getTermSubLexic().get(key), rLexic);
+        SpecCoeffCalculator specCoeff = new SpecCoeffCalculator(termithIndex.getTermSubLexic().get(key),
+                rLexic,termithIndex.getDisambGlobalLexic());
         specCoeff.execute();
     }
 }

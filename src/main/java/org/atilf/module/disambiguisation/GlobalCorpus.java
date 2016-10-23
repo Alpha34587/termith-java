@@ -1,10 +1,9 @@
 package org.atilf.module.disambiguisation;
 
-import com.google.common.collect.Multiset;
+import org.atilf.models.GlobalLexic;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
-import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
@@ -23,7 +22,7 @@ import static org.atilf.models.SubLexicResource.NAMESPACE_CONTEXT;
  */
 public class GlobalCorpus {
     private final String p;
-    private final Multiset disambGlobalCorpus;
+    private final GlobalLexic disambGlobalCorpus;
     private DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
     private DocumentBuilder dBuilder;
     private Document doc;
@@ -31,7 +30,7 @@ public class GlobalCorpus {
     private static final Logger LOGGER = LoggerFactory.getLogger(GlobalCorpus.class.getName());
     private NodeList spanNode;
 
-    public GlobalCorpus(String p, Multiset disambGlobalCorpus) {
+    public GlobalCorpus(String p, GlobalLexic disambGlobalCorpus) {
         this.p = p;
         this.disambGlobalCorpus = disambGlobalCorpus;
         xpath = XPathFactory.newInstance().newXPath();
@@ -59,7 +58,7 @@ public class GlobalCorpus {
             XPathExpression eLemma = xpath.compile(".//tei:f[@name = 'lemma']/tei:string/text()");
             XPathExpression ePos = xpath.compile(".//tei:f[@name = 'pos']/tei:symbol/@value");
             for (int i = 0; i < spanNode.getLength(); i++) {
-            disambGlobalCorpus.add(eLemma.evaluate(spanNode.item(i), XPathConstants.STRING) + " "
+            disambGlobalCorpus.addEntry(eLemma.evaluate(spanNode.item(i), XPathConstants.STRING) + " "
                     + ePos.evaluate(spanNode.item(i), XPathConstants.STRING));
             }
 

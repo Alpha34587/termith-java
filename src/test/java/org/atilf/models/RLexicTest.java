@@ -7,6 +7,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.HashMap;
+
 import static eu.project.ttc.utils.TermSuiteConstants.ADJ;
 import static org.junit.Assert.*;
 
@@ -16,7 +18,7 @@ import static org.junit.Assert.*;
  */
 public class RLexicTest {
 
-    Multiset<String> corpus;
+    GlobalLexic corpus;
     RLexic rLexic;
     String rName;
     String rOcc;
@@ -33,17 +35,17 @@ public class RLexicTest {
                 "\"comparer VER:pper\")";
         rOcc = "c(1,1,1,1,1,1,2,1,1)";
 
-        corpus = HashMultiset.create();
-        corpus.add("ce PRO:DEM");
-        corpus.add("article NOM");
-        corpus.add("présenter VER:pres");
-        corpus.add("un DET:ART");
-        corpus.add("un DET:ART");
-        corpus.add("comparer VER:pper");
-        corpus.add("du PRP:det");
-        corpus.add("donnée NOM");
-        corpus.add("archéo-ichtyofauniques ADJ");
-        corpus.add("livrer VER:pper");
+        corpus = new GlobalLexic(new HashMap<>(),new HashMap<>());
+        corpus.addEntry("ce PRO:DEM");
+        corpus.addEntry("article NOM");
+        corpus.addEntry("présenter VER:pres");
+        corpus.addEntry("un DET:ART");
+        corpus.addEntry("un DET:ART");
+        corpus.addEntry("comparer VER:pper");
+        corpus.addEntry("du PRP:det");
+        corpus.addEntry("donnée NOM");
+        corpus.addEntry("archéo-ichtyofauniques ADJ");
+        corpus.addEntry("livrer VER:pper");
         rLexic = new RLexic(corpus);
     }
 

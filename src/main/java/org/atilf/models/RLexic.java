@@ -10,17 +10,22 @@ public class RLexic {
     int corpusSizeOcc;
     private StringBuffer rName;
     private StringBuffer rOcc;
-    private Multiset<String> corpus;
+    private GlobalLexic corpus;
 
-    public RLexic(Multiset<String> corpus){
+    public RLexic(GlobalLexic corpus){
+        //TODO rewrite RLexic
         this.corpus = corpus;
         corpusSizeOcc = corpus.size();
         rName = new StringBuffer();
         rOcc = new StringBuffer();
         rName.append("c(");
         rOcc.append("c(");
-        corpus.elementSet().forEach(this::convertToRFormat);
+//        corpus.getGlobalLexic().forEach(this::convertToRFormat);
         closeRVariable();
+    }
+
+    public RLexic(Multiset lexicalTable, GlobalLexic globalLexic) {
+
     }
 
     public StringBuffer getrName() {
@@ -42,6 +47,6 @@ public class RLexic {
 
     private void convertToRFormat(String el) {
         rName.append("\""+el+"\",");
-        rOcc.append(corpus.count(el)+",");
+//        rOcc.append(corpus.count(el)+",");
     }
 }
