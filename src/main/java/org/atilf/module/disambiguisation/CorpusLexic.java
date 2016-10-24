@@ -20,17 +20,17 @@ import static org.atilf.models.SubLexicResource.NAMESPACE_CONTEXT;
  * @author Simon Meoni
  *         Created on 20/10/16.
  */
-public class GlobalCorpus {
+public class CorpusLexic {
     private final String p;
     private final GlobalLexic disambGlobalCorpus;
     private DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
     private DocumentBuilder dBuilder;
     private Document doc;
     private XPath xpath;
-    private static final Logger LOGGER = LoggerFactory.getLogger(GlobalCorpus.class.getName());
+    private static final Logger LOGGER = LoggerFactory.getLogger(CorpusLexic.class.getName());
     private NodeList spanNode;
 
-    public GlobalCorpus(String p, GlobalLexic disambGlobalCorpus) {
+    public CorpusLexic(String p, GlobalLexic disambGlobalCorpus) {
         this.p = p;
         this.disambGlobalCorpus = disambGlobalCorpus;
         xpath = XPathFactory.newInstance().newXPath();

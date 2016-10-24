@@ -1,7 +1,7 @@
 package org.atilf.thread;
 
 import org.atilf.models.TermithIndex;
-import org.atilf.worker.CorpusGlobalWorker;
+import org.atilf.worker.CorpusLexicWorker;
 import org.atilf.worker.SubLexicWorker;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,10 +34,11 @@ public class SubLexicThread {
         Files.list(base).forEach(
                 p -> {
                     executor.submit(new SubLexicWorker(p,termithIndex));
-                    executor.submit(new CorpusGlobalWorker(p,termithIndex));
+                    executor.submit(new CorpusLexicWorker(p,termithIndex));
                 }
         );
         LOGGER.info("Waiting SubLexicWorker executors to finish");
         executor.shutdown();
-        executor.awaitTermination(1L, TimeUnit.DAYS);    }
+        executor.awaitTermination(1L, TimeUnit.DAYS);
+    }
 }

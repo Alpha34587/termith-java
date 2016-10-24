@@ -1,17 +1,10 @@
 package org.atilf.models;
 
-import com.google.common.collect.HashMultiset;
-import com.google.common.collect.Multiset;
-import com.sun.xml.internal.bind.v2.TODO;
-import org.atilf.module.disambiguisation.GlobalCorpus;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.HashMap;
-
-import static eu.project.ttc.utils.TermSuiteConstants.ADJ;
-import static org.junit.Assert.*;
 
 /**
  * @author Simon Meoni

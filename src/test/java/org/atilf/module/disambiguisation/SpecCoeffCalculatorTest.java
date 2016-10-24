@@ -1,13 +1,11 @@
 package org.atilf.module.disambiguisation;
 
-import com.google.common.collect.HashMultiset;
 import org.atilf.models.GlobalLexic;
 import org.atilf.models.RLexic;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.lang.reflect.Array;
 import java.util.*;
 
 /**
@@ -16,8 +14,8 @@ import java.util.*;
  */
 public class SpecCoeffCalculatorTest {
 
-    private GlobalCorpus corpus1;
-    private GlobalCorpus corpus2;
+    private CorpusLexic corpus1;
+    private CorpusLexic corpus2;
     private GlobalLexic globalLexic;
     private RLexic rLexic;
     private Map<String, LexicalProfile> subLexic;
@@ -33,8 +31,8 @@ public class SpecCoeffCalculatorTest {
         globalLexic = new GlobalLexic(new HashMap<>(),new HashMap<>());
         subLexic = new HashMap<>();
         executeSubLexic = new HashMap<>();
-        corpus1 = new GlobalCorpus("src/test/resources/corpus/tei/test1.xml", globalLexic);
-        corpus2 = new GlobalCorpus("src/test/resources/corpus/tei/test2.xml", globalLexic);
+        corpus1 = new CorpusLexic("src/test/resources/corpus/tei/test1.xml", globalLexic);
+        corpus2 = new CorpusLexic("src/test/resources/corpus/tei/test2.xml", globalLexic);
         subCorpus1 = new SubLexic("src/test/resources/corpus/tei/test1.xml", subLexic);
         subCorpus2 = new SubLexic("src/test/resources/corpus/tei/test2.xml", subLexic);
         executeSubCorpus1 = new SubLexic("src/test/resources/corpus/tei/test1.xml", executeSubLexic);

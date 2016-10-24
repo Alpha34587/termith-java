@@ -38,7 +38,11 @@ public class Disambiguisation {
             LOGGER.error("errors during the subLexic phase : ", e);
         }
         LexicProfileThread lexicProfileThread = new LexicProfileThread(termithIndex,poolSize);
-        lexicProfileThread.execute();
+        try {
+            lexicProfileThread.execute();
+        } catch (InterruptedException e) {
+            LOGGER.error("errors during the lexicProfile phase : ", e);
+        }
         DisambEvaluationThread evaluation = new DisambEvaluationThread(termithIndex,poolSize);
         evaluation.execute();
         InjectionThread injection = new InjectionThread(termithIndex,poolSize);

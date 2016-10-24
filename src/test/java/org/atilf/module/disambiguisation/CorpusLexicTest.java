@@ -1,32 +1,27 @@
 package org.atilf.module.disambiguisation;
 
-import com.google.common.collect.HashMultiset;
-import com.google.common.collect.Multiset;
 import org.atilf.models.GlobalLexic;
-import org.atilf.models.TermithIndex;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.HashMap;
 
-import static org.junit.Assert.*;
-
 /**
  * @author Simon Meoni
  *         Created on 20/10/16.
  */
-public class GlobalCorpusTest {
-    GlobalCorpus corpus1;
-    GlobalCorpus corpus2;
+public class CorpusLexicTest {
+    CorpusLexic corpus1;
+    CorpusLexic corpus2;
     GlobalLexic observedCorpus = new GlobalLexic(new HashMap<>(), new HashMap<>());
     GlobalLexic expectedCorpus = new GlobalLexic(new HashMap<>(), new HashMap<>());
 
 
     @Before
     public void setUp() throws Exception {
-        corpus1 = new GlobalCorpus("src/test/resources/corpus/tei/test3.xml",observedCorpus);
-        corpus2 = new GlobalCorpus("src/test/resources/corpus/tei/test4.xml",observedCorpus);
+        corpus1 = new CorpusLexic("src/test/resources/corpus/tei/test3.xml",observedCorpus);
+        corpus2 = new CorpusLexic("src/test/resources/corpus/tei/test4.xml",observedCorpus);
 
         expectedCorpus.addEntry("ce PRO:DEM");
         expectedCorpus.addEntry("article NOM");
