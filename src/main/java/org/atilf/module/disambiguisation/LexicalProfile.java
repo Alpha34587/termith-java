@@ -33,6 +33,10 @@ public class LexicalProfile {
             return -1;
     }
 
+    public Map<String, Float> getSpecCoefficientMap() {
+        return specCoefficientMap;
+    }
+
     public void addCoefficientSpec(String entry, Float coefficient){
         if (lexicalTable.contains(entry)) {
             specCoefficientMap.put(entry,coefficient);

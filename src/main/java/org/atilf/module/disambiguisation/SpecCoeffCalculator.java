@@ -13,9 +13,11 @@ public class SpecCoeffCalculator {
     private final LexicalProfile lexicalProfile;
     private final RLexic rLexic;
     private final RLexic rSubLexic;
+    private final GlobalLexic globalLexic;
 
     public SpecCoeffCalculator(LexicalProfile lexicalProfile, RLexic rLexic, GlobalLexic globalLexic) {
 
+        this.globalLexic = globalLexic;
         this.lexicalProfile = lexicalProfile;
         this.rLexic = rLexic;
         this.rSubLexic = new RLexic(lexicalProfile.getLexicalTable(),globalLexic);
@@ -25,11 +27,17 @@ public class SpecCoeffCalculator {
         ReduceToLexicalProfile(computeSpecCoeff());
     }
 
-    public void ReduceToLexicalProfile(double[] specCoef) {
-
+    public void ReduceToLexicalProfile(float[] specCoef) {
+        int cnt = 0;
+        for (String id : rSubLexic.getIdSubCorpus()) {
+            lexicalProfile.addCoefficientSpec(
+                    globalLexic.getLexicalEntry(Integer.parseInt(id)),
+                    specCoef[cnt]);
+            cnt++;
+        }
     }
 
-    public double[] computeSpecCoeff() {
+    public float[] computeSpecCoeff() {
         RCaller rcaller = RCaller.create();
         RCode code = RCode.create();
         code.addRCode("source(" + "\"src/main/resources/disambiguisation/R/specificities.R\"" + ")");
@@ -47,7 +55,6 @@ public class SpecCoeffCalculator {
         code.addRCode("names(res) <- NULL");
         rcaller.setRCode(code);
         rcaller.runAndReturnResult("res");
-        return rcaller.getParser().getAsDoubleArray("res");
-
+        return rcaller.getParser().getAsFloatArray("res");
     }
 }

@@ -2,6 +2,9 @@ package org.atilf.models;
 
 import com.google.common.collect.Multiset;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author Simon Meoni
  *         Created on 21/10/16.
@@ -12,6 +15,7 @@ public class RLexic {
     private StringBuffer rOcc;
     private GlobalLexic corpus;
     private Multiset<String> subCorpus;
+    private List<String> idSubCorpus;
 
     public RLexic(GlobalLexic corpus){
         this.corpus = corpus;
@@ -27,6 +31,7 @@ public class RLexic {
     public RLexic(Multiset<String> subCorpus, GlobalLexic corpus) {
         this.subCorpus = subCorpus;
         this.corpus = corpus;
+        this.idSubCorpus = new ArrayList<>();
         corpusSizeOcc = subCorpus.size();
         rName = new StringBuffer();
         rOcc = new StringBuffer();
@@ -42,6 +47,10 @@ public class RLexic {
 
     public StringBuffer getrOcc() {
         return rOcc;
+    }
+
+    public List<String> getIdSubCorpus() {
+        return idSubCorpus;
     }
 
     public int getCorpusSizeOcc() { return corpusSizeOcc; }
@@ -61,5 +70,6 @@ public class RLexic {
     private void convertToRFSubormat(String el) {
         rName.append("\""+ corpus.getIdEntry(el) +"\",");
         rOcc.append(subCorpus.count(el)+",");
+        idSubCorpus.add(corpus.getIdEntry(el));
     }
 }

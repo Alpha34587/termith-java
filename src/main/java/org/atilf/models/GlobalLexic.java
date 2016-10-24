@@ -8,6 +8,8 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.function.Consumer;
 
+import static com.sun.org.apache.xerces.internal.impl.xpath.regex.CaseInsensitiveMap.get;
+
 /**
  * @author Simon Meoni
  *         Created on 23/10/16.
@@ -51,6 +53,10 @@ public class GlobalLexic implements Iterable<String>{
 
     public String getIdEntry(String el){
         return idEntry.get(el).toString();
+    }
+
+    public String getLexicalEntry(int el){
+        return lexicalEntry.get(el);
     }
 
     @Override
