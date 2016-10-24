@@ -24,10 +24,10 @@ public class SpecCoeffInjector {
     }
 
     public void execute() {
-        ReduceToLexicalProfile(computeSpecCoeff());
+        reduceToLexicalProfile(computeSpecCoeff());
     }
 
-    public void ReduceToLexicalProfile(float[] specCoef) {
+    public void reduceToLexicalProfile(float[] specCoef) {
         int cnt = 0;
         for (String id : rSubLexic.getIdSubCorpus()) {
             lexicalProfile.addCoefficientSpec(

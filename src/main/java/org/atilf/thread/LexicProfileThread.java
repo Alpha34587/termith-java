@@ -30,12 +30,10 @@ public class LexicProfileThread {
         ExecutorService executor = Executors.newFixedThreadPool(poolSize);
 
         termithIndex.getTermSubLexic().forEach(
-                (key,value) -> {
-                    executor.submit(new SpecCoeffInjectorWorker(
-                            key,
-                            termithIndex,
-                            rLexic));
-                }
+                (key,value) -> executor.submit(new SpecCoeffInjectorWorker(
+                        key,
+                        termithIndex,
+                        rLexic))
         );
 
         LOGGER.info("Waiting SubLexicExtractorWorker executors to finish");

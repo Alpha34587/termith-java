@@ -14,8 +14,8 @@ import java.util.*;
  */
 public class SpecCoeffInjectorTest {
 
-    private CorpusLexic corpus1;
-    private CorpusLexic corpus2;
+    private LexicExtractor corpus1;
+    private LexicExtractor corpus2;
     private GlobalLexic globalLexic;
     private RLexic rLexic;
     private Map<String, LexicalProfile> subLexic;
@@ -31,8 +31,8 @@ public class SpecCoeffInjectorTest {
         globalLexic = new GlobalLexic(new HashMap<>(),new HashMap<>());
         subLexic = new HashMap<>();
         executeSubLexic = new HashMap<>();
-        corpus1 = new CorpusLexic("src/test/resources/corpus/tei/test1.xml", globalLexic);
-        corpus2 = new CorpusLexic("src/test/resources/corpus/tei/test2.xml", globalLexic);
+        corpus1 = new LexicExtractor("src/test/resources/corpus/tei/test1.xml", globalLexic);
+        corpus2 = new LexicExtractor("src/test/resources/corpus/tei/test2.xml", globalLexic);
         subCorpus1 = new SubLexicExtractor("src/test/resources/corpus/tei/test1.xml", subLexic);
         subCorpus2 = new SubLexicExtractor("src/test/resources/corpus/tei/test2.xml", subLexic);
         executeSubCorpus1 = new SubLexicExtractor("src/test/resources/corpus/tei/test1.xml", executeSubLexic);

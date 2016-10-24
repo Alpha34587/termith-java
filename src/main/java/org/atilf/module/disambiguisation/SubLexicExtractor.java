@@ -33,18 +33,6 @@ public class SubLexicExtractor {
     private XPath xpath;
     private static final Logger LOGGER = LoggerFactory.getLogger(SubLexicExtractor.class.getName());
 
-    public Deque<String> getTarget() {
-        return target;
-    }
-
-    public Deque<String> getCorresp() {
-        return corresp;
-    }
-
-    public Deque<String> getLexAna() {
-        return lexAna;
-    }
-
     public SubLexicExtractor(String p, Map<String, LexicalProfile> subLexics){
         this.subLexics = subLexics;
         xpath = XPathFactory.newInstance().newXPath();
@@ -65,10 +53,21 @@ public class SubLexicExtractor {
         }
     }
 
+    public Deque<String> getTarget() {
+        return target;
+    }
+
+    public Deque<String> getCorresp() {
+        return corresp;
+    }
+
+    public Deque<String> getLexAna() {
+        return lexAna;
+    }
+
     public void execute() {
         extractTerms();
         extractSubCorpus();
-
     }
 
     public void extractSubCorpus() {
@@ -90,30 +89,38 @@ public class SubLexicExtractor {
                                     .replace("@id", tag)
                     );
                     NodeList nodes = (NodeList) xPathExpression.evaluate(doc, XPathConstants.NODESET);
-                    for(int i = 0; i < nodes.getLength(); i ++) {
-                        nodeSet.add(nodes.item(i));
-                    }
+                    addToNodeSet(nodeSet, nodes);
                 }
 
                 for (Node node : nodeSet) {
-                    String id = node.getAttributes().getNamedItem("xml:id").getNodeValue();
-                    if (!tags.contains("#"+id)){
-                        XPathExpression sXpath  = xpath.compile("//ns:standOff[@type = 'wordForms']" +
-                                "/ns:listAnnotation/tei:span[@target = '@id']"
-                                        .replace(
-                                                "@id",
-                                                "#"+ node.getAttributes().getNamedItem("xml:id")
-                                                        .getNodeValue()
-                                        )
-                        );
-                        mapToMultiset((Node) sXpath.evaluate(doc,XPathConstants.NODE),c,l);
-                    }
+                    extractWordForms(c, l, tags, node);
                 }
 
 
             } catch (XPathExpressionException e) {
                 LOGGER.error("error during the parsing of document",e);
             }
+        }
+    }
+
+    private void addToNodeSet(Set<Node> nodeSet, NodeList nodes) {
+        for(int i = 0; i < nodes.getLength(); i ++) {
+            nodeSet.add(nodes.item(i));
+        }
+    }
+
+    private void extractWordForms(String c, String l, List<String> tags, Node node) throws XPathExpressionException {
+        String id = node.getAttributes().getNamedItem("xml:id").getNodeValue();
+        if (!tags.contains("#"+id)){
+            XPathExpression sXpath  = xpath.compile("//ns:standOff[@type = 'wordForms']" +
+                    "/ns:listAnnotation/tei:span[@target = '@id']"
+                            .replace(
+                                    "@id",
+                                    "#"+ node.getAttributes().getNamedItem("xml:id")
+                                            .getNodeValue()
+                            )
+            );
+            mapToMultiset((Node) sXpath.evaluate(doc, XPathConstants.NODE),c,l);
         }
     }
 
@@ -133,7 +140,7 @@ public class SubLexicExtractor {
 
             for (int i = 0; i < nodes.getLength(); i++) {
                 String ana = eAna.evaluate(nodes.item(i));
-                if (!ana.equals("#noDM") && !ana.isEmpty()){
+                if (!"#noDM".equals(ana) && !ana.isEmpty()){
                     target.add(eTarget.evaluate(nodes.item(i)));
                     corresp.add(eCorresp.evaluate(nodes.item(i)));
                     lexAna.add(eAna.evaluate(nodes.item(i)));
@@ -169,11 +176,10 @@ public class SubLexicExtractor {
     }
 
     private String normalizeKey(String c, String l) {
-        switch (l) {
-            case "#DM0" :
-                return (c + "_lexOff").replace("#","");
-            default:
-                return (c + "_lexOn").replace("#","");
+        if ("#DM0".equals(l)) {
+            return (c + "_lexOff").replace("#", "");
+        } else {
+            return (c + "_lexOn").replace("#", "");
         }
     }
 }

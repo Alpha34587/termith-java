@@ -12,16 +12,16 @@ import java.util.HashMap;
  *         Created on 20/10/16.
  */
 public class CorpusLexicTest {
-    CorpusLexic corpus1;
-    CorpusLexic corpus2;
+    LexicExtractor corpus1;
+    LexicExtractor corpus2;
     GlobalLexic observedCorpus = new GlobalLexic(new HashMap<>(), new HashMap<>());
     GlobalLexic expectedCorpus = new GlobalLexic(new HashMap<>(), new HashMap<>());
 
 
     @Before
     public void setUp() throws Exception {
-        corpus1 = new CorpusLexic("src/test/resources/corpus/tei/test3.xml",observedCorpus);
-        corpus2 = new CorpusLexic("src/test/resources/corpus/tei/test4.xml",observedCorpus);
+        corpus1 = new LexicExtractor("src/test/resources/corpus/tei/test3.xml",observedCorpus);
+        corpus2 = new LexicExtractor("src/test/resources/corpus/tei/test4.xml",observedCorpus);
 
         expectedCorpus.addEntry("ce PRO:DEM");
         expectedCorpus.addEntry("article NOM");

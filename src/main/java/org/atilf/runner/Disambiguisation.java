@@ -8,7 +8,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
-import java.util.concurrent.ExecutorService;
 
 /**
  * @author Simon Meoni
@@ -17,7 +16,6 @@ import java.util.concurrent.ExecutorService;
 public class Disambiguisation {
     private static final Logger LOGGER = LoggerFactory.getLogger(Exporter.class.getName());
     private static  final int POOL_SIZE = Runtime.getRuntime().availableProcessors();
-    private ExecutorService executor;
     private TermithIndex termithIndex;
     private int poolSize;
 
@@ -36,12 +34,14 @@ public class Disambiguisation {
             lexic.execute();
         } catch (IOException | InterruptedException e) {
             LOGGER.error("errors during the subLexic phase : ", e);
+            Thread.currentThread().interrupt();
         }
         LexicProfileThread lexicProfileThread = new LexicProfileThread(termithIndex,poolSize);
         try {
             lexicProfileThread.execute();
         } catch (InterruptedException e) {
             LOGGER.error("errors during the lexicProfile phase : ", e);
+            Thread.currentThread().interrupt();
         }
         DisambEvaluationThread evaluation = new DisambEvaluationThread(termithIndex,poolSize);
         evaluation.execute();
