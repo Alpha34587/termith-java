@@ -2,7 +2,7 @@ package org.atilf.thread;
 
 import org.atilf.models.RLexic;
 import org.atilf.models.TermithIndex;
-import org.atilf.worker.SpecCoeffWorker;
+import org.atilf.worker.SpecCoeffInjectorWorker;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -31,11 +31,14 @@ public class LexicProfileThread {
 
         termithIndex.getTermSubLexic().forEach(
                 (key,value) -> {
-                    executor.submit(new SpecCoeffWorker(key,termithIndex,rLexic));
+                    executor.submit(new SpecCoeffInjectorWorker(
+                            key,
+                            termithIndex,
+                            rLexic));
                 }
         );
 
-        LOGGER.info("Waiting SubLexicWorker executors to finish");
+        LOGGER.info("Waiting SubLexicExtractorWorker executors to finish");
         executor.shutdown();
         executor.awaitTermination(1L, TimeUnit.DAYS);
     }

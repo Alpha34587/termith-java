@@ -11,12 +11,12 @@ import java.nio.file.Path;
  * @author Simon Meoni
  *         Created on 20/10/16.
  */
-public class CorpusLexicWorker implements Runnable {
+public class LexicExtractorWorker implements Runnable {
     private final Path p;
     private final TermithIndex termithIndex;
-    private static final Logger LOGGER = LoggerFactory.getLogger(CorpusLexicWorker.class.getName());
+    private static final Logger LOGGER = LoggerFactory.getLogger(LexicExtractorWorker.class.getName());
 
-    public CorpusLexicWorker(Path p, TermithIndex termithIndex) {
+    public LexicExtractorWorker(Path p, TermithIndex termithIndex) {
         this.p = p;
         this.termithIndex = termithIndex;
     }

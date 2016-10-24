@@ -22,7 +22,7 @@ import static org.atilf.models.SubLexicResource.*;
  * @author Simon Meoni
  *         Created on 14/10/16.
  */
-public class SubLexic {
+public class SubLexicExtractor {
     private Map<String, LexicalProfile> subLexics;
     private Deque<String> target;
     private Deque<String> corresp;
@@ -31,7 +31,7 @@ public class SubLexic {
     private DocumentBuilder dBuilder;
     private Document doc;
     private XPath xpath;
-    private static final Logger LOGGER = LoggerFactory.getLogger(SubLexic.class.getName());
+    private static final Logger LOGGER = LoggerFactory.getLogger(SubLexicExtractor.class.getName());
 
     public Deque<String> getTarget() {
         return target;
@@ -45,7 +45,7 @@ public class SubLexic {
         return lexAna;
     }
 
-    public SubLexic(String p, Map<String, LexicalProfile> subLexics){
+    public SubLexicExtractor(String p, Map<String, LexicalProfile> subLexics){
         this.subLexics = subLexics;
         xpath = XPathFactory.newInstance().newXPath();
         xpath.setNamespaceContext(NAMESPACE_CONTEXT);

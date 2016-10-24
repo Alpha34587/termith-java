@@ -9,13 +9,13 @@ import org.atilf.models.RLexic;
  * @author Simon Meoni
  *         Created on 21/10/16.
  */
-public class SpecCoeffCalculator {
+public class SpecCoeffInjector {
     private final LexicalProfile lexicalProfile;
     private final RLexic rLexic;
     private final RLexic rSubLexic;
     private final GlobalLexic globalLexic;
 
-    public SpecCoeffCalculator(LexicalProfile lexicalProfile, RLexic rLexic, GlobalLexic globalLexic) {
+    public SpecCoeffInjector(LexicalProfile lexicalProfile, RLexic rLexic, GlobalLexic globalLexic) {
 
         this.globalLexic = globalLexic;
         this.lexicalProfile = lexicalProfile;

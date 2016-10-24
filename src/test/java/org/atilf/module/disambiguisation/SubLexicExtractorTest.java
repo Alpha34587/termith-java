@@ -8,15 +8,13 @@ import org.junit.Test;
 
 import java.util.*;
 
-import static org.junit.Assert.*;
-
 /**
  * @author Simon Meoni
  *         Created on 17/10/16.
  */
-public class SubLexicTest {
-    SubLexic subLexic;
-    SubLexic subCorpus;
+public class SubLexicExtractorTest {
+    SubLexicExtractor subLexicExtractor;
+    SubLexicExtractor subCorpus;
     Deque<String> expectedTarget = new ArrayDeque<>();
     Deque<String> expectedCorresp = new ArrayDeque<>();
     Deque<String> expectedLexAna = new ArrayDeque<>();
@@ -24,7 +22,7 @@ public class SubLexicTest {
     Map<String,LexicalProfile> multiSub = new HashMap<>();
     @Before
     public void setUp(){
-        subLexic = new SubLexic("src/test/resources/corpus/tei/test1.xml",
+        subLexicExtractor = new SubLexicExtractor("src/test/resources/corpus/tei/test1.xml",
                 new HashMap<>());
         expectedTarget.add("#t16 #t17 #t18");
         expectedTarget.add("#t30");
@@ -38,7 +36,7 @@ public class SubLexicTest {
         expectedLexAna.add("#DM3");
         expectedLexAna.add("#DM0");
 
-        subCorpus = new SubLexic("src/test/resources/corpus/tei/test2.xml", multiSub);
+        subCorpus = new SubLexicExtractor("src/test/resources/corpus/tei/test2.xml", multiSub);
         Multiset<String> entry1 = HashMultiset.create();
         entry1.add("du PRP:det");
         entry1.add("le DET:ART");
@@ -65,14 +63,14 @@ public class SubLexicTest {
 
     @Test
     public void extractTerms() throws Exception {
-        subLexic.extractTerms();
-        subLexic.getTarget().forEach(
+        subLexicExtractor.extractTerms();
+        subLexicExtractor.getTarget().forEach(
                 el -> Assert.assertEquals("target must be equals",expectedTarget.poll(),el)
         );
-        subLexic.getCorresp().forEach(
+        subLexicExtractor.getCorresp().forEach(
                 el -> Assert.assertEquals("terms id must be equals",expectedCorresp.poll(),el)
         );
-        subLexic.getLexAna().forEach(
+        subLexicExtractor.getLexAna().forEach(
                 el -> Assert.assertEquals("ana id must be equals",expectedLexAna.poll(),el)
         );
 
