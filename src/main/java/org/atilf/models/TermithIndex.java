@@ -1,6 +1,6 @@
 package org.atilf.models;
 
-import com.google.common.collect.Multiset;
+import org.atilf.module.disambiguisation.EvaluationProfile;
 import org.atilf.module.disambiguisation.LexicalProfile;
 import org.atilf.module.tools.FilesUtils;
 
@@ -35,7 +35,8 @@ public class TermithIndex {
     private Map<String, Path> JsonTreeTagger;
     private List<Path> SerializeJson;
     private List<Path> outputFile;
-    private Map<String, LexicalProfile> TermSubLexic;
+    private Map<String, LexicalProfile> termSubLexic;
+    private Map<String, EvaluationProfile> evaluationLexic;
     private GlobalLexic disambGlobalLexic;
 
     private int corpusSize;
@@ -57,7 +58,7 @@ public class TermithIndex {
         JsonTreeTagger = new ConcurrentHashMap<>();
         SerializeJson = new CopyOnWriteArrayList<>();
         terminologyStandOff = new ConcurrentHashMap<>();
-        TermSubLexic = new ConcurrentHashMap<>();
+        termSubLexic = new ConcurrentHashMap<>();
         disambGlobalLexic = new GlobalLexic(new ConcurrentHashMap<>(),new ConcurrentHashMap<>());
         corpusSize = builder.corpusSize;
     }
@@ -74,6 +75,9 @@ public class TermithIndex {
         return terminologies.get(1);
     }
 
+    public Map<String, EvaluationProfile> getEvaluationLexic() {
+        return evaluationLexic;
+    }
 
     public GlobalLexic getDisambGlobalLexic() { return disambGlobalLexic; }
 
@@ -107,7 +111,7 @@ public class TermithIndex {
     }
 
     public Map<String, LexicalProfile> getTermSubLexic() {
-        return TermSubLexic;
+        return termSubLexic;
     }
 
     public void setCorpusSize(int corpusSize) {

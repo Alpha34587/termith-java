@@ -44,7 +44,11 @@ public class Disambiguisation {
             Thread.currentThread().interrupt();
         }
         DisambEvaluationThread evaluation = new DisambEvaluationThread(termithIndex,poolSize);
-        evaluation.execute();
+        try {
+            evaluation.execute();
+        } catch (IOException | InterruptedException e) {
+            LOGGER.error("errors during evaluation phase : ", e);
+        }
         InjectionThread injection = new InjectionThread(termithIndex,poolSize);
         injection.execute();
 
