@@ -3,11 +3,12 @@ package org.atilf.module.disambiguisation;
 import com.google.common.collect.HashMultiset;
 import org.atilf.models.GlobalLexic;
 import org.atilf.models.RLexic;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.lang.reflect.Array;
+import java.util.*;
 
 /**
  * @author Simon Meoni
@@ -22,6 +23,7 @@ public class SpecCoeffCalculatorTest {
     private Map<String, LexicalProfile> subLexic;
     private SubLexic subCorpus1;
     private SubLexic subCorpus2;
+    private Map<String,double[]> specificities;
 
     @Before
     public void setUp() throws Exception {
@@ -36,16 +38,16 @@ public class SpecCoeffCalculatorTest {
         rLexic = new RLexic(globalLexic);
         subCorpus1.execute();
         subCorpus2.execute();
+        specificities = new HashMap<>();
+        specificities.put("entry-8318_lexOn",new double[]{1.3425, 1.3425, 1.3425, 1.3425, 3.4531, 3.4531});
+        specificities.put("entry-990_lexOff",new double[]{1.8162, 1.8162, 1.8162, 1.8162, 1.8162, 1.8162});
+        specificities.put("entry-7263_lexOn",new double[]{3.9302, 3.9302, 3.9302, 3.9302, 3.9302, 3.9302,
+                3.9302, 3.9302, 3.9302, 3.9302, 3.9302, 3.9302, 3.9302, 3.9302, 3.9302, 3.9302, 3.9302, 3.9302,});
+        specificities.put("entry-13471_lexOn",new double[]{1.3425, 1.3425, 1.3425, 1.3425, 3.4531, 3.4531, 1.3425});
+
     }
 
-//    @Test
-//    public void execute() throws Exception {
-//
-//        subLexic.values().forEach(
-//                value -> new SpecCoeffCalculator(value,rLexic,globalLexic).execute()
-//        );
-//    }
-//TODO complete test
+    //TODO complete test
     @Test
     public void reduceToLexicalProfile() throws Exception {
 
@@ -53,6 +55,12 @@ public class SpecCoeffCalculatorTest {
 
     @Test
     public void computeSpecCoeff() throws Exception {
-
+        subLexic.forEach(
+                (key,value) -> {
+                    Assert.assertArrayEquals(
+                            specificities.get(key),
+                            new SpecCoeffCalculator(value, rLexic, globalLexic).computeSpecCoeff(),
+                            0);}
+        );
     }
 }
