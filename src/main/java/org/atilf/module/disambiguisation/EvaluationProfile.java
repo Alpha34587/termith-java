@@ -2,20 +2,20 @@ package org.atilf.module.disambiguisation;
 
 import com.google.common.collect.Multiset;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Iterator;
+import java.util.function.Consumer;
 
 /**
  * @author Simon Meoni
  *         Created on 24/10/16.
  */
-public class EvaluationProfile {
+public class EvaluationProfile implements Iterable<String> {
     Multiset<String> lexicalTable;
-    Map<String,String> disambIdMap;
+    String disambIdMap;
 
     public EvaluationProfile(Multiset lexicalTable) {
         this.lexicalTable = lexicalTable;
-        disambIdMap = new HashMap<>();
+        disambIdMap = "noDa";
     }
 
     public Multiset getLexicalTable() {
@@ -30,20 +30,26 @@ public class EvaluationProfile {
             return -1;
     }
 
-    public Map<String, String> getDisambIdMap() {
+    public String getDisambIdMap() {
         return disambIdMap;
     }
 
-    public void addDisambId(String entry, String disambId){
-        if (lexicalTable.contains(entry)) {
-            disambIdMap.put(entry,disambId);
-        }
-        else{
-            throw new NullPointerException("Multiset Object not contains this entry " + entry);
-        }
+    public void setDisambIdMap(String disambIdMap) {
+        this.disambIdMap = disambIdMap;
     }
+
 
     void addOccurence(String occ){
         lexicalTable.add(occ);
+    }
+
+    @Override
+    public Iterator<String> iterator() {
+        return null;
+    }
+
+    @Override
+    public void forEach(Consumer<? super String> consumer) {
+        lexicalTable.elementSet().forEach(consumer);
     }
 }

@@ -2,7 +2,7 @@ package org.atilf.thread;
 
 import org.atilf.models.TermithIndex;
 import org.atilf.worker.EvaluationExtractorWorker;
-import org.atilf.worker.EvaluationInjectorWorker;
+import org.atilf.worker.EvaluationWorker;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -37,7 +37,7 @@ public class DisambEvaluationThread {
         );
 
         termithIndex.getEvaluationLexic().forEach(
-                (key,value) -> executor.submit(new EvaluationInjectorWorker(key,termithIndex))
+                (key,value) -> executor.submit(new EvaluationWorker(value,termithIndex))
         );
 
         LOGGER.info("Waiting SubLexicExtractorWorker executors to finish");
