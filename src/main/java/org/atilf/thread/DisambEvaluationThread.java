@@ -3,8 +3,6 @@ package org.atilf.thread;
 import org.atilf.models.TermithIndex;
 import org.atilf.worker.EvaluationExtractorWorker;
 import org.atilf.worker.EvaluationInjectorWorker;
-import org.atilf.worker.LexicExtractorWorker;
-import org.atilf.worker.SubLexicExtractorWorker;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

@@ -7,12 +7,9 @@ import java.util.Map;
  *         Created on 24/10/16.
  */
 public class EvaluationExtractor {
-    private final String file;
     private final Map<String, EvaluationProfile> evaluationLexic;
 
-    public EvaluationExtractor(String file, Map<String, EvaluationProfile> evaluationLexic) {
-
-        this.file = file;
+    public EvaluationExtractor(Map<String, EvaluationProfile> evaluationLexic) {
         this.evaluationLexic = evaluationLexic;
     }
 

@@ -36,7 +36,7 @@ public class TermithIndex {
     private List<Path> SerializeJson;
     private List<Path> outputFile;
     private Map<String, LexicalProfile> termSubLexic;
-    private Map<String, EvaluationProfile> evaluationLexic;
+    private Map<String,Map<String, EvaluationProfile>> evaluationLexic;
     private GlobalLexic disambGlobalLexic;
 
     private int corpusSize;
@@ -75,7 +75,7 @@ public class TermithIndex {
         return terminologies.get(1);
     }
 
-    public Map<String, EvaluationProfile> getEvaluationLexic() {
+    public Map<String,Map<String, EvaluationProfile>> getEvaluationLexic() {
         return evaluationLexic;
     }
 
