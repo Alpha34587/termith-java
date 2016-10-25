@@ -2,6 +2,7 @@ package org.atilf.runner;
 
 import org.atilf.models.TermithIndex;
 import org.atilf.thread.DisambEvaluationThread;
+import org.atilf.thread.DisambExporterThread;
 import org.atilf.thread.LexicProfileThread;
 import org.atilf.thread.SubLexicThread;
 import org.slf4j.Logger;
@@ -49,8 +50,11 @@ public class Disambiguisation {
         } catch (IOException | InterruptedException e) {
             LOGGER.error("errors during evaluation phase : ", e);
         }
-        InjectionThread injection = new InjectionThread(termithIndex,poolSize);
-        injection.execute();
-
+        DisambExporterThread exporter = new DisambExporterThread(termithIndex,poolSize);
+        try {
+            exporter.execute();
+        } catch (IOException | InterruptedException e) {
+            LOGGER.error("errors during exporting phase : ", e);
+        }
     }
 }
