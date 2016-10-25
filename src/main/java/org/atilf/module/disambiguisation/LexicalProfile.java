@@ -13,12 +13,12 @@ public class LexicalProfile {
     Multiset lexicalTable;
     Map<String,Float> specCoefficientMap;
 
-    public LexicalProfile(Multiset lexicalTable) {
+    LexicalProfile(Multiset lexicalTable) {
         this.lexicalTable = lexicalTable;
         specCoefficientMap = new HashMap<>();
     }
 
-    public Multiset getLexicalTable() {
+    Multiset getLexicalTable() {
         return lexicalTable;
     }
 
@@ -33,16 +33,20 @@ public class LexicalProfile {
             return -1;
     }
 
-    public Map<String, Float> getSpecCoefficientMap() {
+    Map<String, Float> getSpecCoefficientMap() {
         return specCoefficientMap;
     }
 
-    public void addCoefficientSpec(String entry, Float coefficient){
+    void addCoefficientSpec(String entry, Float coefficient){
         if (lexicalTable.contains(entry)) {
             specCoefficientMap.put(entry,coefficient);
         }
         else{
             throw new NullPointerException("Multiset Object not contains this entry " + entry);
         }
+    }
+
+    void addOccurence(String occ){
+        lexicalTable.add(occ);
     }
 }

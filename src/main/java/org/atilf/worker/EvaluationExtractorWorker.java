@@ -29,6 +29,7 @@ public class EvaluationExtractorWorker implements Runnable {
     public void run() {
         LOGGER.debug("add " + p + " to evaluation lexic");
         EvaluationExtractor evaluationExtractor = new EvaluationExtractor(
+                p.toString(),
                 termithIndex.getEvaluationLexic().get(
                         FilesUtils.nameNormalizer(p.toString())
                 )

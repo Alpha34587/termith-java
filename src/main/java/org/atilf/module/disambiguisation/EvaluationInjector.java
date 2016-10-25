@@ -8,11 +8,11 @@ import java.util.Map;
  */
 public class EvaluationInjector {
     private final String term;
-    private final Map<String, EvaluationProfile> evaluationLexic;
+    private final Map<String,Map<String, EvaluationProfile>> evaluationLexic;
     private final Map<String, LexicalProfile> termSubLexic;
 
     public EvaluationInjector(String term,
-                              Map<String, EvaluationProfile> evaluationLexic,
+                              Map<String,Map<String, EvaluationProfile>> evaluationLexic,
                               Map<String, LexicalProfile> termSubLexic) {
         this.term = term;
         this.evaluationLexic = evaluationLexic;

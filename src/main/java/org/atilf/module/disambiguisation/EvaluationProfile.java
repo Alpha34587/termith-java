@@ -10,7 +10,7 @@ import java.util.Map;
  *         Created on 24/10/16.
  */
 public class EvaluationProfile {
-    Multiset lexicalTable;
+    Multiset<String> lexicalTable;
     Map<String,String> disambIdMap;
 
     public EvaluationProfile(Multiset lexicalTable) {
@@ -41,5 +41,9 @@ public class EvaluationProfile {
         else{
             throw new NullPointerException("Multiset Object not contains this entry " + entry);
         }
+    }
+
+    void addOccurence(String occ){
+        lexicalTable.add(occ);
     }
 }

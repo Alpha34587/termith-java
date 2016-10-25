@@ -24,13 +24,13 @@ import static org.atilf.models.SubLexicResource.*;
  */
 public class SubLexicExtractor {
     private Map<String, LexicalProfile> subLexics;
-    private Deque<String> target;
-    private Deque<String> corresp;
-    private Deque<String> lexAna;
+    protected Deque<String> target;
+    protected Deque<String> corresp;
+    Deque<String> lexAna;
     private DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
     private DocumentBuilder dBuilder;
-    private Document doc;
-    private XPath xpath;
+    Document doc;
+    XPath xpath;
     private static final Logger LOGGER = LoggerFactory.getLogger(SubLexicExtractor.class.getName());
 
     public SubLexicExtractor(String p, Map<String, LexicalProfile> subLexics){
@@ -151,7 +151,7 @@ public class SubLexicExtractor {
         }
     }
 
-    private void mapToMultiset(Node span, String c, String l){
+    protected void mapToMultiset(Node span, String c, String l){
         try {
             XPathExpression eLemma = xpath.compile(".//tei:f[@name = 'lemma']/tei:string/text()");
             XPathExpression ePos = xpath.compile(".//tei:f[@name = 'pos']/tei:symbol/@value");
@@ -162,7 +162,7 @@ public class SubLexicExtractor {
             String posValue = posNode.getNodeValue().trim();
             String key = normalizeKey(c,l);
             if (subLexics.containsKey(key)){
-                subLexics.get(key).getLexicalTable().add(lemmaValue + " " + posValue);
+                subLexics.get(key).addOccurence(lemmaValue + " " + posValue);
             }
             else{
                 Multiset<String> multiset = HashMultiset.create();
@@ -175,7 +175,7 @@ public class SubLexicExtractor {
         }
     }
 
-    private String normalizeKey(String c, String l) {
+    protected String normalizeKey(String c, String l) {
         if ("#DM0".equals(l)) {
             return (c + "_lexOff").replace("#", "");
         } else {

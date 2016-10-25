@@ -11,9 +11,9 @@ import java.util.Map;
  */
 public class DisambTeiWriter {
     private final Path p;
-    private final Map<String, EvaluationProfile> evaluationLexic;
+    private final Map<String,Map<String, EvaluationProfile>> evaluationLexic;
 
-    public DisambTeiWriter(Path p, Map<String, EvaluationProfile> evaluationLexic) {
+    public DisambTeiWriter(Path p, Map<String,Map<String, EvaluationProfile>> evaluationLexic) {
         this.p = p;
         this.evaluationLexic = evaluationLexic;
     }
