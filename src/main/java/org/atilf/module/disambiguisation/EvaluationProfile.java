@@ -30,7 +30,7 @@ public class EvaluationProfile implements Iterable<String> {
             return -1;
     }
 
-    public String getDisambIdMap() {
+    public String getDisambId() {
         return disambIdMap;
     }
 

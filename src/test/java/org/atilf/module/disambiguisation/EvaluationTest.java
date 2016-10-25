@@ -6,6 +6,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,6 +19,8 @@ public class EvaluationTest {
     Map<String,EvaluationProfile> evaluationProfileMap;
     Map<String,LexicalProfile> lexicalProfileMap;
     Evaluation evaluation;
+    List<String> disambIdObserved;
+
     @Before
     public void setUp() throws Exception {
         evaluationProfileMap = new HashMap<>();
@@ -126,13 +129,18 @@ public class EvaluationTest {
         lexicalProfileMap.get("entry-7263_lexOff").addCoefficientSpec("il PRO:PER", 1f);
         evaluation.execute();
 
+        disambIdObserved = new ArrayList<>();
+        disambIdObserved.add("DaOn");
+        disambIdObserved.add("DaOn");
     }
 
     @Test
     public void execute() throws Exception {
-        evaluationProfileMap.values().forEach(
-                value -> Assert.assertEquals("this value must be equals","DaOff",value.getDisambIdMap())
-        );
+        int cnt = 0;
+        for (EvaluationProfile evaluationProfile : evaluationProfileMap.values()) {
+            Assert.assertEquals("this value must be equals", disambIdObserved.get(cnt),evaluationProfile.getDisambId());
+            cnt++;
+        }
     }
 
 }
