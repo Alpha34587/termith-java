@@ -78,50 +78,79 @@ public class SubLexicExtractor {
             XPathExpression xPathExpression;
 
             try {
-                List<String> tags = Arrays.asList(t.split(" "));
-                Set<Node> nodeSet = new HashSet<>();
-                for (String tag : tags) {
-                    tag = tag.substring(1);
-                    xPathExpression = xpath.compile(
-                            ("//tei:text//tei:w" +
-                                    "[./following-sibling::tei:w[@xml:id = '@id'] or" +
-                                    " ./preceding-sibling::tei:w[@xml:id = '@id']]")
-                                    .replace("@id", tag)
-                    );
-                    NodeList nodes = (NodeList) xPathExpression.evaluate(doc, XPathConstants.NODESET);
-                    addToNodeSet(nodeSet, nodes);
+                List<String> tags = Arrays.asList(t.replace("#","").split(" "));
+                if (tags.size() > 1) {
+                    multiWordsExtractor(c, l, tags);
                 }
-
-                for (Node node : nodeSet) {
-                    extractWordForms(c, l, tags, node);
-                }
-
-
+                else
+                    singleWordExtractor(c,l,tags.get(0));
             } catch (XPathExpressionException e) {
                 LOGGER.error("error during the parsing of document",e);
             }
         }
     }
 
-    private void addToNodeSet(Set<Node> nodeSet, NodeList nodes) {
+    private void singleWordExtractor(String corresp, String lex, String tag) throws XPathExpressionException {
+        XPathExpression xPathExpression;
+        NodeList nodes;
+        xPathExpression = xpath.compile(
+                ("//tei:text//tei:w" +
+                        "[./preceding-sibling::tei:w[@xml:id = '@id'] or" +
+                        " ./following-sibling::tei:w[@xml:id = '@id']]")
+                        .replace("@id", tag)
+        );
+        nodes = (NodeList) xPathExpression.evaluate(doc, XPathConstants.NODESET);
+
         for(int i = 0; i < nodes.getLength(); i ++) {
-            nodeSet.add(nodes.item(i));
+            extractWordForms(corresp, lex, nodes.item(i));
         }
     }
 
-    private void extractWordForms(String c, String l, List<String> tags, Node node) throws XPathExpressionException {
-        String id = node.getAttributes().getNamedItem("xml:id").getNodeValue();
-        if (!tags.contains("#"+id)){
-            XPathExpression sXpath  = xpath.compile("//ns:standOff[@type = 'wordForms']" +
-                    "/ns:listAnnotation/tei:span[@target = '@id']"
-                            .replace(
-                                    "@id",
-                                    "#"+ node.getAttributes().getNamedItem("xml:id")
-                                            .getNodeValue()
-                            )
+    private void multiWordsExtractor(String corresp, String lex, List<String> tags) throws XPathExpressionException {
+        XPathExpression xPathExpression;
+        NodeList nodes;
+
+        xPathExpression = xpath.compile(
+                ("//tei:text//tei:w[./preceding::tei:w[@xml:id = '@id_first'] and " +
+                        "./following::tei:w[@xml:id = '@id_last']]")
+                        .replace("@id_first", tags.get(0))
+                        .replace("@id_last",tags.get(tags.size()-1))
+        );
+        nodes = (NodeList) xPathExpression.evaluate(doc, XPathConstants.NODESET);
+
+        if (equalsToCorrespTarget(tags,nodes)){
+            xPathExpression = xpath.compile(
+                    ("//tei:text//tei:w" +
+                            "[./preceding-sibling::tei:w[@xml:id = '@id_last'] or" +
+                            " ./following-sibling::tei:w[@xml:id = '@id_first']]")
+                            .replace("@id_first", tags.get(0)).replace("@id_last",tags.get(tags.size()-1))
             );
-            mapToMultiset((Node) sXpath.evaluate(doc, XPathConstants.NODE),c,l);
+            nodes = (NodeList) xPathExpression.evaluate(doc, XPathConstants.NODESET);
+
+            for(int i = 0; i < nodes.getLength(); i ++) {
+                extractWordForms(corresp, lex, nodes.item(i));
+            }
         }
+    }
+
+    private boolean equalsToCorrespTarget(List<String> tags, NodeList nodes) {
+        List<String> nodeId = new ArrayList<>();
+        for(int i = 0; i < nodes.getLength(); i ++) {
+            nodeId.add(nodes.item(i).getAttributes().getNamedItem("xml:id").getNodeValue());
+        }
+        return tags.subList(1,tags.size()-1).equals(nodeId);
+    }
+
+    private void extractWordForms(String c, String l, Node node) throws XPathExpressionException {
+        XPathExpression sXpath  = xpath.compile("//ns:standOff[@type = 'wordForms']" +
+                "/ns:listAnnotation/tei:span[@target = '@id']"
+                        .replace(
+                                "@id",
+                                "#"+ node.getAttributes().getNamedItem("xml:id")
+                                        .getNodeValue()
+                        )
+        );
+        mapToMultiset((Node) sXpath.evaluate(doc, XPathConstants.NODE),c,l);
     }
 
     public void extractTerms() {

@@ -13,17 +13,22 @@ import java.util.*;
  *         Created on 17/10/16.
  */
 public class SubLexicExtractorTest {
-    SubLexicExtractor subLexicExtractor;
     SubLexicExtractor subCorpus;
+    SubLexicExtractor subCorpus2;
+    SubLexicExtractor subLexicExtractor = new SubLexicExtractor(
+            "src/test/resources/corpus/tei/test1.xml",
+            new HashMap<>()
+    );
     Deque<String> expectedTarget = new ArrayDeque<>();
     Deque<String> expectedCorresp = new ArrayDeque<>();
     Deque<String> expectedLexAna = new ArrayDeque<>();
     Map<String,LexicalProfile> expectedMap = new HashMap<>();
+    Map<String,LexicalProfile> expectedMap2 = new HashMap<>();
     Map<String,LexicalProfile> multiSub = new HashMap<>();
+    Map<String, LexicalProfile> multiSub2 = new HashMap<>();
+
     @Before
     public void setUp(){
-        subLexicExtractor = new SubLexicExtractor("src/test/resources/corpus/tei/test1.xml",
-                new HashMap<>());
         expectedTarget.add("#t16 #t17 #t18");
         expectedTarget.add("#t30");
         expectedTarget.add("#t49");
@@ -59,6 +64,8 @@ public class SubLexicExtractorTest {
         entry2.add("il PRO:PER");
         expectedMap.put("entry-7263_lexOn",new LexicalProfile(entry2));
 
+        subCorpus2 = new SubLexicExtractor("src/test/resources/corpus/tei/test5.xml", multiSub2);
+        expectedMap2.put("entry-7263_lexOn",new LexicalProfile(entry2));
     }
 
     @Test
@@ -81,18 +88,40 @@ public class SubLexicExtractorTest {
         subCorpus.extractTerms();
         subCorpus.extractSubCorpus();
         expectedMap.forEach(
-                (key,value) -> {
+                (key, value) -> {
                     Multiset observed = multiSub.get(key).getLexicalTable();
                     value.getLexicalTable().forEach(
                             el -> {
                                 int count = observed.count(el);
                                 Assert.assertEquals("the occurence of element must be equals at " + key +
                                                 " for the word : " + el,
-                                        value.getLexicalTable().count(el),observed.count(el)
+                                        value.getLexicalTable().count(el), observed.count(el)
                                 );
                             }
                     );
                 }
         );
+    }
+
+    @Test
+    public void extractSubCorpusOneTerm() throws Exception {
+
+        subCorpus2.extractTerms();
+        subCorpus2.extractSubCorpus();
+        expectedMap2.forEach(
+                (key, value) -> {
+                    Multiset observed = multiSub2.get(key).getLexicalTable();
+                    value.getLexicalTable().forEach(
+                            el -> {
+                                int count = observed.count(el);
+                                Assert.assertEquals("the occurence of element must be equals at " + key +
+                                                " for the word : " + el,
+                                        value.getLexicalTable().count(el), observed.count(el)
+                                );
+                            }
+                    );
+                }
+        );
+
     }
 }
