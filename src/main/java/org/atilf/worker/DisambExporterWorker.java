@@ -2,9 +2,12 @@ package org.atilf.worker;
 
 import org.atilf.models.TermithIndex;
 import org.atilf.module.tools.DisambTeiWriter;
+import org.atilf.module.tools.FilesUtils;
 
 import java.nio.file.Path;
 import java.util.concurrent.Callable;
+
+import static org.atilf.module.tools.FilesUtils.nameNormalizer;
 
 /**
  * @author Simon Meoni
@@ -21,7 +24,13 @@ public class DisambExporterWorker implements Runnable {
 
     @Override
     public void run() {
-        DisambTeiWriter disambTeiWriter = new DisambTeiWriter(p,termithIndex.getEvaluationLexic().get(p));
+        String file = FilesUtils.nameNormalizer(p.toString());
+        DisambTeiWriter disambTeiWriter = new DisambTeiWriter(
+                file,
+                termithIndex.getEvaluationLexic().get(
+                        file
+                )
+        );
         disambTeiWriter.execute();
     }
 }

@@ -49,12 +49,14 @@ public class Disambiguisation {
             evaluation.execute();
         } catch (IOException | InterruptedException e) {
             LOGGER.error("errors during evaluation phase : ", e);
+            Thread.currentThread().interrupt();
         }
         DisambExporterThread exporter = new DisambExporterThread(termithIndex,poolSize);
         try {
             exporter.execute();
         } catch (IOException | InterruptedException e) {
             LOGGER.error("errors during exporting phase : ", e);
+            Thread.currentThread().interrupt();
         }
     }
 }
