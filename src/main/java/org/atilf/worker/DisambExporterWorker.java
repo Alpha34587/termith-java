@@ -21,7 +21,7 @@ public class DisambExporterWorker implements Runnable {
 
     @Override
     public void run() {
-        DisambTeiWriter disambTeiWriter = new DisambTeiWriter(p,termithIndex.getEvaluationLexic());
+        DisambTeiWriter disambTeiWriter = new DisambTeiWriter(p,termithIndex.getEvaluationLexic().get(p));
         disambTeiWriter.execute();
     }
 }
