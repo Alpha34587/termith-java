@@ -42,15 +42,16 @@ public class DisambTeiWriterTest {
         evaluationProfile.get("entry-990_noDM").setDisambIdMap("DaOff");
 
         teiWriter = new DisambTeiWriter(
-                FilesUtils.nameNormalizer("src/test/resources/corpus/tei/test2.xml"),
+                "src/test/resources/corpus/tei/test2.xml",
                 evaluationProfile
         );
+        teiWriter.execute();
     }
 
     @Test
     public void execute() throws Exception {
         Assert.assertEquals("these files must be equals",
-                Files.readLines(new File("src/test/resources/corpus/tei/test2.xml"),Charset.defaultCharset()),
+                Files.readLines(new File("src/test/resources/corpus/disamb-tei/test2-disamb.xml"),Charset.defaultCharset()),
                 Files.readLines(new File(TermithIndex.outputPath + "/test2.xml"), Charset.defaultCharset())
                 );
     }

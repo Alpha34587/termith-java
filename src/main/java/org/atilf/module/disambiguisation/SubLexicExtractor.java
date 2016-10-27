@@ -75,7 +75,6 @@ public class SubLexicExtractor {
             String t = target.poll();
             String c = corresp.poll();
             String l = lexAna.poll();
-            XPathExpression xPathExpression;
 
             try {
                 List<String> tags = Arrays.asList(t.replace("#","").split(" "));
@@ -200,7 +199,7 @@ public class SubLexicExtractor {
 
             }
         } catch (XPathExpressionException e) {
-            LOGGER.error("error during the parsing of document",e);
+            LOGGER.error("error during the parsing of document :",e);
         }
     }
 
