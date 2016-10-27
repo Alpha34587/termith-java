@@ -1,10 +1,10 @@
 package org.atilf.runner;
 
-import org.atilf.models.TermithIndex;
-import org.atilf.thread.DisambEvaluationThread;
-import org.atilf.thread.DisambExporterThread;
-import org.atilf.thread.LexicProfileThread;
-import org.atilf.thread.SubLexicThread;
+import org.atilf.models.termith.TermithIndex;
+import org.atilf.thread.disambiguisation.DisambEvaluationThread;
+import org.atilf.thread.disambiguisation.DisambExporterThread;
+import org.atilf.thread.disambiguisation.LexicProfileThread;
+import org.atilf.thread.disambiguisation.SubLexicThread;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

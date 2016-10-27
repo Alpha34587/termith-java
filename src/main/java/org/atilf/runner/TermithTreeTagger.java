@@ -1,10 +1,10 @@
 package org.atilf.runner;
 
-import org.atilf.models.TermithIndex;
+import org.atilf.models.termith.TermithIndex;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.atilf.thread.AnalyzeThread;
-import org.atilf.thread.InitializerThread;
+import org.atilf.thread.enrichment.AnalyzeThread;
+import org.atilf.thread.enrichment.InitializerThread;
 
 import java.io.IOException;
 

@@ -1,12 +1,12 @@
 package org.atilf.worker;
 
-import org.atilf.models.TermithIndex;
+import org.atilf.models.termith.TermithIndex;
 import org.atilf.module.tei.morphology.SyntaxGenerator;
 import org.atilf.module.tools.FilesUtils;
 import org.atilf.module.treetagger.CorpusAnalyzer;
-import org.atilf.models.TextAnalyzer;
+import org.atilf.models.termsuite.TextAnalyzer;
 import org.atilf.module.treetagger.TreeTaggerToJson;
-import org.atilf.thread.AnalyzeThread;
+import org.atilf.thread.enrichment.AnalyzeThread;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

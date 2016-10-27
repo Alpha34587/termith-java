@@ -1,6 +1,6 @@
 package org.atilf.module.treetagger;
 
-import org.atilf.models.TextAnalyzer;
+import org.atilf.models.termsuite.TextAnalyzer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

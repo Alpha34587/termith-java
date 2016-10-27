@@ -1,9 +1,9 @@
 package org.atilf.runner;
 
-import org.atilf.models.TermithIndex;
+import org.atilf.models.termith.TermithIndex;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.atilf.thread.ExporterThread;
+import org.atilf.thread.enrichment.ExporterThread;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;

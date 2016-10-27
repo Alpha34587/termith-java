@@ -1,13 +1,10 @@
 package org.atilf.runner;
 
-import org.atilf.models.TermithIndex;
-import org.atilf.thread.CleanerThread;
-import org.atilf.thread.ExporterThread;
+import org.atilf.thread.enrichment.CleanerThread;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 import static java.lang.System.exit;
 

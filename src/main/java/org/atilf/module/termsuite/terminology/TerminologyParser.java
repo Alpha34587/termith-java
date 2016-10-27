@@ -3,7 +3,7 @@ package org.atilf.module.termsuite.terminology;
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonToken;
-import org.atilf.models.TermsOffsetId;
+import org.atilf.models.termsuite.TermsOffsetId;
 import org.atilf.module.tools.FilesUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,7 +16,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import static eu.project.ttc.readers.JsonCasConstants.F_BEGIN;
 import static eu.project.ttc.readers.JsonCasConstants.F_END;
-import static org.atilf.models.JsonTermResources.*;
+import static org.atilf.models.termsuite.JsonTermResources.*;
 
 /**
  * @author Simon Meoni

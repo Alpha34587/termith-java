@@ -1,13 +1,13 @@
 package org.atilf.module.treetagger;
 
-import org.atilf.models.TagNormalizer;
-import org.atilf.models.TermithIndex;
+import org.atilf.models.treetagger.TagNormalizer;
+import org.atilf.models.termith.TermithIndex;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
-import org.atilf.thread.InitializerThread;
+import org.atilf.thread.enrichment.InitializerThread;
 
 import java.io.File;
 import java.io.IOException;

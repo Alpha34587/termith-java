@@ -1,8 +1,8 @@
 package org.atilf.module.tools;
 
-import org.atilf.models.MorphoSyntaxOffsetId;
-import org.atilf.models.StandOffResources;
-import org.atilf.models.TermsOffsetId;
+import org.atilf.models.termsuite.MorphoSyntaxOffsetId;
+import org.atilf.models.tei.exporter.StandOffResources;
+import org.atilf.models.termsuite.TermsOffsetId;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -12,7 +12,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
 
-import static org.atilf.models.SpecialChXmlEscape.replaceXmlChar;
+import static org.atilf.models.tei.exporter.SpecialChXmlEscape.replaceXmlChar;
 
 /**
  * @author Simon Meoni

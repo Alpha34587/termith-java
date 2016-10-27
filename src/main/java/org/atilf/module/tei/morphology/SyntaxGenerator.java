@@ -1,6 +1,6 @@
 package org.atilf.module.tei.morphology;
 
-import org.atilf.models.MorphoSyntaxOffsetId;
+import org.atilf.models.termsuite.MorphoSyntaxOffsetId;
 import org.atilf.module.termsuite.json.TermsuiteJsonReader;
 
 import java.io.File;

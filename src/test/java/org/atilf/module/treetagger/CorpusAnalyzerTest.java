@@ -1,8 +1,8 @@
 package org.atilf.module.treetagger;
 
-import org.atilf.models.TermithIndex;
+import org.atilf.models.termith.TermithIndex;
 import org.atilf.module.tools.FilesUtils;
-import org.atilf.thread.InitializerThread;
+import org.atilf.thread.enrichment.InitializerThread;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Rule;

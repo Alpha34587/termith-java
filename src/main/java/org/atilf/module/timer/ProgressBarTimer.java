@@ -1,6 +1,6 @@
 package org.atilf.module.timer;
 
-import org.atilf.models.TermithIndex;
+import org.atilf.models.termith.TermithIndex;
 import org.atilf.module.observer.ProgressBarObserver;
 import org.atilf.module.observer.TermithObservable;
 import org.slf4j.Logger;
