@@ -112,10 +112,10 @@ public class TerminologyParser {
                     offsetId.setWord(parser.nextTextValue());
                     break;
                 case F_BEGIN :
-                    offsetId.setBegin(parser.nextIntValue(0));
+                    offsetId.set_begin(parser.nextIntValue(0));
                     break;
                 case F_END :
-                    offsetId.setEnd(parser.nextIntValue(0));
+                    offsetId.set_end(parser.nextIntValue(0));
                     break;
                 case T_FILE :
                     currentFile = String.valueOf(parser.nextIntValue(0));

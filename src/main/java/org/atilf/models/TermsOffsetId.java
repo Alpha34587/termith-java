@@ -12,11 +12,11 @@ public class TermsOffsetId extends OffsetId {
     private int termId;
     public TermsOffsetId(int begin, int end, int id, String word) {
         super();
-        this.begin = begin;
-        this.end = end;
+        this._begin = begin;
+        this._end = end;
         this.word = word;
         this.termId = id;
-        this.ids = new ArrayList<>();
+        this._ids = new ArrayList<>();
     }
 
     public TermsOffsetId() {
@@ -40,14 +40,14 @@ public class TermsOffsetId extends OffsetId {
     }
 
     public void setIds(List<Integer> ids){
-        this.ids.addAll(ids);
+        this._ids.addAll(ids);
     }
 
     public TermsOffsetId(TermsOffsetId other) {
-        this.begin = other.begin;
-        this.end = other.end;
+        this._begin = other._begin;
+        this._end = other._end;
         this.word = other.word;
         this.termId = other.termId;
-        this.ids = new ArrayList<>();
+        this._ids = new ArrayList<>();
     }
 }

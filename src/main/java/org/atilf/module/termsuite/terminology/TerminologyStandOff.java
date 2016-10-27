@@ -34,7 +34,7 @@ public class TerminologyStandOff {
 
         termino.forEach(
                 el -> {
-                    el.setIds(retrieveMorphoIds(el.getBegin(),el.getEnd()));
+                    el.setIds(retrieveMorphoIds(el.get_begin(),el.get_end()));
                 }
         );
     }
@@ -60,8 +60,8 @@ public class TerminologyStandOff {
         endMap = new TreeMap<>();
         morpho.forEach(
                 el -> {
-                    beginMap.put(el.getBegin(),el.getIds());
-                    endMap.put(el.getEnd(),el.getIds());
+                    beginMap.put(el.get_begin(),el.get_ids());
+                    endMap.put(el.get_end(),el.get_ids());
                 }
         );
     }

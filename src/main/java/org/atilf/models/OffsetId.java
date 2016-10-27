@@ -9,45 +9,41 @@ import java.util.List;
  *         Created on 14/09/16.
  */
 public class OffsetId implements Serializable {
-    int begin;
-    int end;
-    List<Integer> ids;
+    int _begin;
+    int _end;
+    List<Integer> _ids = new ArrayList<>();
 
     protected OffsetId(int begin, int end, int id) {
-        this.begin = begin;
-        this.end = end;
-        this.ids = new ArrayList<>();
-        ids.add(id);
+        _begin = begin;
+        _end = end;
+        _ids.add(id);
     }
 
     protected OffsetId(int begin, int end, List<Integer> ids) {
-        this.begin = begin;
-        this.end = end;
-        this.ids = ids;
+        this._begin = begin;
+        this._end = end;
+        this._ids = ids;
     }
 
-    public OffsetId() {
+    public OffsetId() {}
 
+    public void set_begin(int _begin) {
+        this._begin = _begin;
     }
 
-
-    public void setBegin(int begin) {
-        this.begin = begin;
+    public void set_end(int _end) {
+        this._end = _end;
     }
 
-    public void setEnd(int end) {
-        this.end = end;
+    public int get_begin() {
+        return _begin;
     }
 
-    public int getBegin() {
-        return begin;
+    public int get_end() {
+        return _end;
     }
 
-    public int getEnd() {
-        return end;
-    }
-
-    public List<Integer> getIds() {
-        return ids;
+    public List<Integer> get_ids() {
+        return _ids;
     }
 }

@@ -95,9 +95,9 @@ public class TeiWriter {
 
     private void serializeTerminology(List<TermsOffsetId> termsOffsetIds) throws IOException {
         termsOffsetIds.sort((o1, o2) -> {
-            int comp = o1.getIds().get(0).compareTo(o2.getIds().get(0));
+            int comp = o1.get_ids().get(0).compareTo(o2.get_ids().get(0));
             if (comp == 0) {
-                comp = ((Integer) o1.getIds().size()).compareTo(o2.getIds().size()) * -1;
+                comp = ((Integer) o1.get_ids().size()).compareTo(o2.get_ids().size()) * -1;
             }
             return comp;
         });
@@ -106,7 +106,7 @@ public class TeiWriter {
         bufferedWriter.append(cut(stdfRes.LIST_ANNOTATION,false));
         for (TermsOffsetId token : termsOffsetIds) {
             StringBuilder entry = new StringBuilder(stdfRes.T_SPAN);
-            replaceTemplate(entry,"@target", serializeId(token.getIds()));
+            replaceTemplate(entry,"@target", serializeId(token.get_ids()));
             replaceTemplate(entry, "@corresp", String.valueOf(token.getTermId()));
             replaceTemplate(entry, "@string", replaceXmlChar(token.getWord()));
             bufferedWriter.append(entry);
@@ -137,9 +137,9 @@ public class TeiWriter {
         bufferedWriter.append(cut(stdfRes.LIST_ANNOTATION,false));
         for (MorphoSyntaxOffsetId token : morphoSyntaxOffsetIds) {
             StringBuilder entry = new StringBuilder(stdfRes.MS_SPAN);
-            replaceTemplate(entry, "@target", serializeId(token.getIds()));
-            replaceTemplate(entry, "@lemma", replaceXmlChar(token.getLemma().replace("<unknown>", "@unknown")));
-            replaceTemplate(entry, "@pos", token.getTag());
+            replaceTemplate(entry, "@target", serializeId(token.get_ids()));
+            replaceTemplate(entry, "@lemma", replaceXmlChar(token.get_lemma().replace("<unknown>", "@unknown")));
+            replaceTemplate(entry, "@pos", token.get_tag());
             bufferedWriter.append(entry);
         }
         bufferedWriter.append(cut(stdfRes.LIST_ANNOTATION,true));

@@ -5,7 +5,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -421,7 +420,7 @@ public class SyntaxParserTest {
 
         alignmentTokenInjector.getOffsetId().forEach(
                 offsetId -> {
-                    String observed = offsetId.getBegin() + ", " + offsetId.getEnd() + ", " + offsetId.getIds();
+                    String observed = offsetId.get_begin() + ", " + offsetId.get_end() + ", " + offsetId.get_ids();
                     String expected = offsetIdAlignement.get(alignmentTokenInjector.getOffsetId().indexOf(offsetId));
                     Assert.assertEquals("this offset must be equals", expected, observed);
                 }
