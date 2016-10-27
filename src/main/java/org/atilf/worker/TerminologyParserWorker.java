@@ -28,7 +28,7 @@ public class TerminologyParserWorker implements Runnable {
         TerminologyParser terminologyParser = new TerminologyParser(terminologyPath);
         try {
             terminologyParser.execute();
-            termithIndex.setTerminologyStandOff(terminologyParser.getStandOffTerminology());
+            termithIndex.set_terminologyStandOff(terminologyParser.getStandOffTerminology());
             LOGGER.info("parsing terminology ended");
         } catch (IOException e) {
             LOGGER.error("error during terminology parsing", e);

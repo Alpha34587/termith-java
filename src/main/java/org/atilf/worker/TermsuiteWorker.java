@@ -6,15 +6,12 @@ import org.atilf.module.termsuite.PipelineBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
 
-import static org.atilf.models.TermithIndex.lang;
-import static org.atilf.models.TermithIndex.outputPath;
+import static org.atilf.models.TermithIndex._lang;
 
 /**
  * @author Simon Meoni
@@ -27,7 +24,7 @@ public class TermsuiteWorker implements Runnable{
 
     public TermsuiteWorker(TermithIndex termithIndex) {
         this.termithIndex = termithIndex;
-        jsonCorpus = termithIndex.corpus + "/json";
+        jsonCorpus = termithIndex._corpus + "/json";
     }
 
     @Override
@@ -35,33 +32,33 @@ public class TermsuiteWorker implements Runnable{
         LOGGER.info("Build Termsuite Pipeline");
         init();
         PipelineBuilder pipelineBuilder = new PipelineBuilder(
-                lang,
+                _lang,
                 jsonCorpus,
-                termithIndex.getTerminologies().get(0).toString(),
-                termithIndex.getTerminologies().get(1).toString(),
+                termithIndex.get_terminologies().get(0).toString(),
+                termithIndex.get_terminologies().get(1).toString(),
                 exportResource()
         );
         LOGGER.info("Run Termsuite Pipeline");
         pipelineBuilder.start();
         LOGGER.info("Finished execution of Termsuite Pipeline, result in :" +
-                termithIndex.getCorpus());
+                termithIndex.get_corpus());
 
     }
 
     private void init() {
         
-        termithIndex.getTerminologies().add(Paths.get(jsonCorpus.replace("json","") + "/" + "terminology.tbx"));
-        termithIndex.getTerminologies().add(Paths.get(jsonCorpus.replace("json","") + "/" + "terminology.json"));
+        termithIndex.get_terminologies().add(Paths.get(jsonCorpus.replace("json","") + "/" + "terminology.tbx"));
+        termithIndex.get_terminologies().add(Paths.get(jsonCorpus.replace("json","") + "/" + "terminology.json"));
     }
 
 
     public String exportResource(){
         InputStream resourceAsStream = getClass().getClassLoader().getResourceAsStream("termsuite-lang/termsuite-resources.jar");
         try {
-            Files.write(Paths.get(termithIndex.corpus+"/termsuite-resources.jar"), ByteStreams.toByteArray(resourceAsStream));
+            Files.write(Paths.get(termithIndex._corpus +"/termsuite-resources.jar"), ByteStreams.toByteArray(resourceAsStream));
         } catch (IOException e) {
             LOGGER.error("cannot copy termsuite-resources.jar",e);
         }
-        return termithIndex.corpus+"/termsuite-resources.jar";
+        return termithIndex._corpus +"/termsuite-resources.jar";
     }
 }

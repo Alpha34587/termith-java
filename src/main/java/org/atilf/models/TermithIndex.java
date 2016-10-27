@@ -18,124 +18,121 @@ import java.util.concurrent.CopyOnWriteArrayList;
  */
 public class TermithIndex {
 
-    public static Path outputPath;
-    public static String lang;
-    public static String treeTaggerHome;
-    public static Path base;
-    public static boolean keepFiles;
+    public static Path _outputPath;
+    public static String _lang;
+    public static String _treeTaggerHome;
+    public static Path _base;
+    public static boolean _keepFiles;
 
-    public Path corpus;
-    public Path disambAnnotation;
-    private List<Path> terminologies;
-    private Map<String, Path> tokenizeTeiBody;
-    private Map<String, Path> morphoSyntaxStandOff;
-    private Map<String, List<TermsOffsetId>> terminologyStandOff;
-    private Map<String, Path> extractedText;
-    private Map<String, Path> xmlCorpus;
-    private Map<String, Path> JsonTreeTagger;
-    private List<Path> SerializeJson;
-    private List<Path> outputFile;
-    private Map<String, LexicalProfile> termSubLexic;
-    private Map<String,Map<String, EvaluationProfile>> evaluationLexic;
-    private GlobalLexic disambGlobalLexic;
-
-    private int corpusSize;
+    public Path _corpus = null;
+    public Path _disambAnnotation;
+    private List<Path> _terminologies = new CopyOnWriteArrayList<>();
+    private Map<String, Path> _tokenizeTeiBody = new ConcurrentHashMap<>();
+    private Map<String, Path> _morphoSyntaxStandOff = new ConcurrentHashMap<>();
+    private Map<String, List<TermsOffsetId>> _terminologyStandOff = new ConcurrentHashMap<>();
+    private Map<String, Path> _extractedText = new ConcurrentHashMap<>();
+    private Map<String, Path> _xmlCorpus = new ConcurrentHashMap<>();
+    private Map<String, Path> _jsonTreeTagger = new ConcurrentHashMap<>();
+    private List<Path> _serializeJson = new CopyOnWriteArrayList<>();
+    private List<Path> _outputFile = new CopyOnWriteArrayList<>();
+    private Map<String, LexicalProfile> _termSubLexic = new ConcurrentHashMap<>();
+    private Map<String,Map<String, EvaluationProfile>> _evaluationLexic;
+    private GlobalLexic _disambGlobalLexic = new GlobalLexic(new ConcurrentHashMap<>(),new ConcurrentHashMap<>());
+    private int _corpusSize;
 
     private TermithIndex(Builder builder) throws IOException {
-        disambAnnotation = builder.disambAnnotation;
-        base = builder.base;
-        keepFiles = builder.keepFiles;
-        outputPath = builder.outputPath;
-        treeTaggerHome = builder.treeTaggerHome;
-        lang = builder.lang;
-        terminologies = new CopyOnWriteArrayList<>();
-        morphoSyntaxStandOff = new ConcurrentHashMap<>();
-        tokenizeTeiBody = new ConcurrentHashMap<>();
-        corpus = null;
-        outputFile = new CopyOnWriteArrayList<>();
-        extractedText = new ConcurrentHashMap<>();
-        xmlCorpus = new ConcurrentHashMap<>();
-        JsonTreeTagger = new ConcurrentHashMap<>();
-        SerializeJson = new CopyOnWriteArrayList<>();
-        terminologyStandOff = new ConcurrentHashMap<>();
-        termSubLexic = new ConcurrentHashMap<>();
-        disambGlobalLexic = new GlobalLexic(new ConcurrentHashMap<>(),new ConcurrentHashMap<>());
-        corpusSize = builder.corpusSize;
+        _disambAnnotation = builder._disambAnnotation;
+        _base = builder._base;
+        _keepFiles = builder._keepFiles;
+        _outputPath = builder._outputPath;
+        _treeTaggerHome = builder._treeTaggerHome;
+        _lang = builder._lang;
+        _corpusSize = builder._corpusSize;
     }
 
-    public boolean iskeepFiles() {
-        return keepFiles;
-    }
-
-    public List<Path> getTerminologies() {
-        return terminologies;
+    /*
+    Getter
+     */
+    public List<Path> get_terminologies() {
+        return _terminologies;
     }
 
     public Path getJsonTerminology(){
-        return terminologies.get(1);
+        return _terminologies.get(1);
     }
 
-    public Map<String,Map<String, EvaluationProfile>> getEvaluationLexic() {
-        return evaluationLexic;
+    public GlobalLexic get_disambGlobalLexic() { return _disambGlobalLexic; }
+
+    public int get_corpusSize() {return _corpusSize;}
+
+    public Map<String,Map<String, EvaluationProfile>> get_evaluationLexic() {
+        return _evaluationLexic;
     }
 
-    public GlobalLexic getDisambGlobalLexic() { return disambGlobalLexic; }
-
-    public int getCorpusSize() {return corpusSize;}
-
-    public Map<String, Path> getMorphoSyntaxStandOff() {
-        return morphoSyntaxStandOff;
+    public Map<String, Path> get_morphoSyntaxStandOff() {
+        return _morphoSyntaxStandOff;
     }
 
-    public Map<String, List<TermsOffsetId>> getTerminologyStandOff() {
-        return terminologyStandOff;
+    public Map<String, List<TermsOffsetId>> get_terminologyStandOff() {
+        return _terminologyStandOff;
     }
 
-    public Map<String, Path> getTokenizeTeiBody() {
-        return tokenizeTeiBody;
+    public Map<String, Path> get_tokenizeTeiBody() {
+        return _tokenizeTeiBody;
     }
 
-    public List<Path> getSerializeJson() {return SerializeJson;}
+    public List<Path> get_serializeJson() {return _serializeJson;}
 
-    public Path getCorpus() {
-        return corpus;
+    public Path get_corpus() {
+        return _corpus;
     }
 
-    public Map<String, Path> getExtractedText() {
-        return extractedText;
+    public Map<String, Path> get_xmlCorpus() {
+        return _xmlCorpus;
     }
 
+    public List<Path> get_outputFile() {
+        return _outputFile;
+    }
+
+    public Map<String, Path> get_jsonTreeTagger() {
+        return _jsonTreeTagger;
+    }
+
+    public Map<String, LexicalProfile> get_termSubLexic() {
+        return _termSubLexic;
+    }
+
+    public Map<String, Path> get_extractedText() {
+        return _extractedText;
+    }
+
+    /*
+    Setter
+     */
+
+    public void set_corpusSize(int corpusSize) {
+        _corpusSize = corpusSize;
+    }
+
+    public void set_corpus(Path corpus) {
+        _corpus = corpus;
+    }
+
+    public void set_terminologyStandOff(Map<String, List<TermsOffsetId>> terminologyStandOff) {
+        _terminologyStandOff = terminologyStandOff;
+    }
+
+    /*
+    Other method
+     */
     public void addText(String id, StringBuilder content) throws IOException {
 
-        this.getExtractedText().put(id, FilesUtils.writeObject(content,TermithIndex.outputPath));
+        this.get_extractedText().put(id, FilesUtils.writeObject(content,TermithIndex._outputPath));
     }
 
-    public Map<String, LexicalProfile> getTermSubLexic() {
-        return termSubLexic;
-    }
-
-    public void setCorpusSize(int corpusSize) {
-        this.corpusSize = corpusSize;
-    }
-
-    public List<Path> getOutputFile() {
-        return outputFile;
-    }
-
-    public Map<String, Path> getXmlCorpus() {
-        return xmlCorpus;
-    }
-
-    public Map<String, Path> getJsonTreeTagger() {
-        return JsonTreeTagger;
-    }
-
-    public void setTerminologyStandOff(Map<String, List<TermsOffsetId>> terminologyStandOff) {
-        this.terminologyStandOff = terminologyStandOff;
-    }
-
-    public void setCorpus(Path corpus) {
-        this.corpus = corpus;
+    public boolean iskeepFiles() {
+        return _keepFiles;
     }
 
     /**
@@ -143,35 +140,35 @@ public class TermithIndex {
      */
     public static class Builder
     {
-        Path base;
-        boolean keepFiles = false;
-        Path outputPath = null;
-        String lang;
-        String treeTaggerHome;
-        List<Path> terminology = new CopyOnWriteArrayList<>();
-        Path disambAnnotation;
-        private int corpusSize = 0;
+        Path _outputPath = null;
+        boolean _keepFiles = false;
+        List<Path> _terminology = new CopyOnWriteArrayList<>();
+        String _lang;
+        Path _base;
+        String _treeTaggerHome;
+        Path _disambAnnotation;
+        private int _corpusSize = 0;
 
         /**
          * This method set the input folder path
-         * @param path path of the base corpus
-         * @return return the path of the base corpus
+         * @param path path of the _base corpus
+         * @return return the path of the _base corpus
          * @throws IOException
          */
         public Builder baseFolder(String path) throws IOException {
-            this.base = FilesUtils.folderPathResolver(path);
-            corpusSize = (int) Files.list(base).count();
+            _base = FilesUtils.folderPathResolver(path);
+            _corpusSize = (int) Files.list(_base).count();
             return this;
         }
 
         /**
-         * this method set a boolean that used to activate or not the keepFiles : each step of the process will be export to
+         * this method set a boolean that used to activate or not the _keepFiles : each step of the process will be export to
          * the result folder
-         * @param activate boolean use to activate the "keepFiles" mode
+         * @param activate boolean use to activate the "_keepFiles" mode
          * @return value of the activate boolean
          */
         public Builder keepFiles(boolean activate){
-            this.keepFiles = activate;
+            _keepFiles = activate;
             return this;
         }
 
@@ -181,17 +178,17 @@ public class TermithIndex {
          * @return return output path
          */
         public Builder export(String outputPath){
-            this.outputPath = FilesUtils.folderPathResolver(outputPath);
+            _outputPath = FilesUtils.folderPathResolver(outputPath);
             return this;
         }
 
         /**
-         * set the lang
+         * set the _lang
          * @param lang set language
          * @return return string language
          */
         public Builder lang(String lang){
-            this.lang = lang;
+            _lang = lang;
             return this;
         }
 
@@ -201,7 +198,7 @@ public class TermithIndex {
          * @return return TreeTagger path
          */
         public Builder treeTaggerHome(String treeTaggerHome) {
-            this.treeTaggerHome = FilesUtils.folderPathResolver(treeTaggerHome).toString();
+            _treeTaggerHome = FilesUtils.folderPathResolver(treeTaggerHome).toString();
             return this;
         }
 
@@ -211,8 +208,8 @@ public class TermithIndex {
          * @return return TreeTagger path
          */
         public Builder terminology(String terminology) {
-            this.terminology.add(null);
-            this.terminology.add(FilesUtils.folderPathResolver(terminology));
+            _terminology.add(null);
+            _terminology.add(FilesUtils.folderPathResolver(terminology));
             return this;
         }
 
@@ -223,7 +220,7 @@ public class TermithIndex {
          * @return return disamb path
          */
         public Builder annotation(String disambAnnotation) {
-            this.disambAnnotation = FilesUtils.folderPathResolver(disambAnnotation);
+            _disambAnnotation = FilesUtils.folderPathResolver(disambAnnotation);
             return this;
         }
 
@@ -233,7 +230,7 @@ public class TermithIndex {
          * @return return termith object
          */
         public TermithIndex build() throws IOException {
-            return  new TermithIndex(this);
+            return new TermithIndex(this);
         }
     }
 }

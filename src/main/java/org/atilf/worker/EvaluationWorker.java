@@ -25,7 +25,7 @@ public class EvaluationWorker implements Runnable {
     public void run() {
         Evaluation evaluation = new Evaluation(
                 evaluationProfile,
-                termithIndex.getTermSubLexic()
+                termithIndex.get_termSubLexic()
         );
         evaluation.execute();
     }

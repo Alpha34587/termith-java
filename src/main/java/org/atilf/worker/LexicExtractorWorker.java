@@ -23,7 +23,7 @@ public class LexicExtractorWorker implements Runnable {
     @Override
     public void run() {
         LOGGER.debug("extract occurence from " + p + " to global corpus lexic");
-        LexicExtractor lexicExtractor = new LexicExtractor(p.toString(),termithIndex.getDisambGlobalLexic());
+        LexicExtractor lexicExtractor = new LexicExtractor(p.toString(),termithIndex.get_disambGlobalLexic());
         LOGGER.debug(p + " added to global corpus");
         lexicExtractor.execute();
     }

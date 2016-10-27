@@ -13,6 +13,6 @@ public class InitCorpusTimer extends ProgressBarTimer{
     }
     @Override
     public void run() {
-        update(termithIndex.getXmlCorpus().size());
+        update(termithIndex.get_xmlCorpus().size());
     }
 }

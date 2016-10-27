@@ -47,7 +47,7 @@ public class ExporterThread {
     public void execute() throws InterruptedException {
         new ExporterTimer(termithIndex,LOGGER).start();
         StandOffResources standOffResources = new StandOffResources();
-        termithIndex.getXmlCorpus().forEach(
+        termithIndex.get_xmlCorpus().forEach(
                 (key,value) -> executor.submit(new TeiWriterWorker(key,termithIndex,standOffResources))
         );
         LOGGER.info("Waiting executors to finish");

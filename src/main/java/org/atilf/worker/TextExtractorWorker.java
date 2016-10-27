@@ -42,12 +42,12 @@ public class TextExtractorWorker implements Runnable {
             TextExtractor textExtractor = new TextExtractor(path.toFile(),xslResources);
             StringBuilder extractedBuffer = textExtractor.xsltTransformation();
             if (extractedBuffer.length() != 0) {
-                termithIndex.getExtractedText().put(FilesUtils.nameNormalizer(path.getFileName().toString()),
-                        FilesUtils.writeObject(extractedBuffer,TermithIndex.outputPath));
+                termithIndex.get_extractedText().put(FilesUtils.nameNormalizer(path.getFileName().toString()),
+                        FilesUtils.writeObject(extractedBuffer,TermithIndex._outputPath));
             }
             else {
                 LOGGER.info(this.path + " has empty body");
-                termithIndex.setCorpusSize(termithIndex.getCorpusSize() - 1);
+                termithIndex.set_corpusSize(termithIndex.get_corpusSize() - 1);
             }
             LOGGER.debug("Extraction done for file: " + this.path);
         } catch (IOException e) {

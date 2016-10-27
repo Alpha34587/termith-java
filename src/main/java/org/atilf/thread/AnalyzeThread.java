@@ -21,8 +21,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.*;
 
-import static org.atilf.models.TermithIndex.lang;
-import static org.atilf.models.TermithIndex.outputPath;
+import static org.atilf.models.TermithIndex._lang;
+import static org.atilf.models.TermithIndex._outputPath;
 
 /**
  * @author Simon Meoni
@@ -42,19 +42,19 @@ public class AnalyzeThread {
     }
 
     public AnalyzeThread(int poolSize, TermithIndex termithIndex) throws IOException {
-        termithIndex.setCorpus(outputPath);
+        termithIndex.set_corpus(_outputPath);
         executorService = Executors.newFixedThreadPool(poolSize);
         this.termithIndex = termithIndex;
-        jsonCnt = new CountDownLatch(termithIndex.getExtractedText().size());
+        jsonCnt = new CountDownLatch(termithIndex.get_extractedText().size());
     }
 
     public Path getCorpus() {
-        return termithIndex.getCorpus();
+        return termithIndex.get_corpus();
     }
 
     private Map<String,StringBuilder> getDeserializeText(){
         Map<String,StringBuilder> textMap = new HashMap<>();
-        termithIndex.getExtractedText().forEach(
+        termithIndex.get_extractedText().forEach(
                 (key,value) -> {
                     textMap.put(key,(StringBuilder) FilesUtils.readObject(value));
                 }
@@ -68,7 +68,7 @@ public class AnalyzeThread {
         new JsonTimer(termithIndex,LOGGER).start();
 
         CorpusAnalyzer corpusAnalyzer = new CorpusAnalyzer(getDeserializeText());
-        termithIndex.getExtractedText().forEach((key,txt) ->
+        termithIndex.get_extractedText().forEach((key, txt) ->
                 executorService.submit(new TreeTaggerWorker(
                         termithIndex,
                         corpusAnalyzer,
@@ -82,7 +82,7 @@ public class AnalyzeThread {
         executorService.submit(new TermsuiteWorker(termithIndex)).get();
         LOGGER.info("terminology extraction started");
         executorService.submit(new TerminologyParserWorker(termithIndex)).get();
-        termithIndex.getMorphoSyntaxStandOff().forEach(
+        termithIndex.get_morphoSyntaxStandOff().forEach(
                 (id,value) -> {
                     executorService.submit(new TerminologyStandOffWorker(id,value,termithIndex));
                 }
@@ -93,10 +93,10 @@ public class AnalyzeThread {
     }
 
     private void init() throws IOException {
-        TagNormalizer.initTag(lang);
-        LOGGER.debug("temporary folder created: " + termithIndex.getCorpus());
-        Files.createDirectories(Paths.get(termithIndex.getCorpus() + "/json"));
-        Files.createDirectories(Paths.get(termithIndex.getCorpus() + "/txt"));
-        LOGGER.debug("create temporary text files in " + termithIndex.getCorpus() + "/txt folder");
+        TagNormalizer.initTag(_lang);
+        LOGGER.debug("temporary folder created: " + termithIndex.get_corpus());
+        Files.createDirectories(Paths.get(termithIndex.get_corpus() + "/json"));
+        Files.createDirectories(Paths.get(termithIndex.get_corpus() + "/txt"));
+        LOGGER.debug("create temporary text files in " + termithIndex.get_corpus() + "/txt folder");
     }
 }

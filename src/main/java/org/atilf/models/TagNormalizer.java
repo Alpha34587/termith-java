@@ -148,15 +148,15 @@ public class TagNormalizer {
         EN_TT_TAG.put("TO", "preposition");
     }
 
-    protected static Map<String,String> ttTag;
+    protected static Map<String,String> _ttTag;
 
     public static void initTag(String lang){
         switch (lang) {
             case "en" :
-                ttTag = EN_TT_TAG;
+                _ttTag = EN_TT_TAG;
                 break;
             case "fr" :
-                ttTag = FR_TT_TAG;
+                _ttTag = FR_TT_TAG;
                 break;
             default:
                 break;
@@ -164,6 +164,6 @@ public class TagNormalizer {
     }
 
     public static String normalize(String token) {
-        return ttTag.get(token);
+        return _ttTag.get(token);
     }
 }

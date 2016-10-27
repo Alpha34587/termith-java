@@ -16,8 +16,8 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.concurrent.CountDownLatch;
 
-import static org.atilf.models.TermithIndex.lang;
-import static org.atilf.models.TermithIndex.treeTaggerHome;
+import static org.atilf.models.TermithIndex._lang;
+import static org.atilf.models.TermithIndex._treeTaggerHome;
 
 /**
  * @author Simon Meoni
@@ -38,14 +38,14 @@ public class TreeTaggerWorker implements Runnable {
                             CountDownLatch jsonCnt) {
         this.termithIndex = termithIndex;
         this.jsonCnt = jsonCnt;
-        this.txt = (StringBuilder) FilesUtils.readObject(termithIndex.getExtractedText().get(id));
-        this.txtPath = termithIndex.getCorpus() + "/txt/" + id + ".txt";
-        this.jsonPath = termithIndex.getCorpus() + "/json/" + id + ".json";
+        this.txt = (StringBuilder) FilesUtils.readObject(termithIndex.get_extractedText().get(id));
+        this.txtPath = termithIndex.get_corpus() + "/txt/" + id + ".txt";
+        this.jsonPath = termithIndex.get_corpus() + "/json/" + id + ".json";
         this.textAnalyzer = corpusAnalyzer.getAnalyzedTexts().get(id);
-        this.xml = FilesUtils.readFile(termithIndex.getXmlCorpus().get(id));
+        this.xml = FilesUtils.readFile(termithIndex.get_xmlCorpus().get(id));
 
         try {
-            Files.delete(termithIndex.getExtractedText().get(id));
+            Files.delete(termithIndex.get_extractedText().get(id));
         } catch (IOException e) {
             LOGGER.error("could not delete file",e);
         }
@@ -56,10 +56,10 @@ public class TreeTaggerWorker implements Runnable {
         TreeTaggerToJson treeTaggerToJson = new TreeTaggerToJson(
                 txt,
                 jsonPath,
-                treeTaggerHome,
-                lang,
+                _treeTaggerHome,
+                _lang,
                 textAnalyzer,
-                TermithIndex.outputPath.toString()
+                TermithIndex._outputPath.toString()
         );
 
 
@@ -67,17 +67,17 @@ public class TreeTaggerWorker implements Runnable {
             LOGGER.debug("converting TreeTagger output started file : " + txtPath);
             treeTaggerToJson.execute();
             jsonCnt.countDown();
-            termithIndex.getSerializeJson().add(Paths.get(jsonPath));
+            termithIndex.get_serializeJson().add(Paths.get(jsonPath));
             LOGGER.debug("converting TreeTagger output finished file : " + txtPath);
 
             LOGGER.debug("tokenization and morphosyntax tasks started file : " + jsonPath);
             File json = new File(jsonPath);
             SyntaxGenerator syntaxGenerator = new SyntaxGenerator(json,txt,xml);
             syntaxGenerator.execute();
-            termithIndex.getTokenizeTeiBody().put(json.getName().replace(".json",""),
-                    FilesUtils.writeObject(syntaxGenerator.getTokenizeBody(),termithIndex.getCorpus()));
-            termithIndex.getMorphoSyntaxStandOff().put(json.getName().replace(".json",""),
-                    FilesUtils.writeObject(syntaxGenerator.getOffsetId(),termithIndex.getCorpus()));
+            termithIndex.get_tokenizeTeiBody().put(json.getName().replace(".json",""),
+                    FilesUtils.writeObject(syntaxGenerator.getTokenizeBody(),termithIndex.get_corpus()));
+            termithIndex.get_morphoSyntaxStandOff().put(json.getName().replace(".json",""),
+                    FilesUtils.writeObject(syntaxGenerator.getOffsetId(),termithIndex.get_corpus()));
             LOGGER.debug("tokenization and morphosyntax tasks finished file : " + jsonPath);
 
         } catch (IOException e) {

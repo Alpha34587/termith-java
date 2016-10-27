@@ -14,7 +14,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
-import static org.atilf.models.TermithIndex.base;
+import static org.atilf.models.TermithIndex._base;
 
 /**
  * This is the first phase of the termith process. The objective is to extract the text in order to send it to
@@ -48,7 +48,7 @@ public class InitializerThread {
         this.termithIndex = termithIndex;
         this.executor = Executors.newFixedThreadPool(poolSize);
         corpusCnt  = new CountDownLatch(
-                (int)Files.list(base).count());
+                (int)Files.list(_base).count());
     }
 
     /**
@@ -57,7 +57,7 @@ public class InitializerThread {
      * @throws InterruptedException
      */
     public void execute() throws IOException, InterruptedException {
-        Files.list(base).forEach(
+        Files.list(_base).forEach(
                 p -> {
                     executor.submit(new TextExtractorWorker(p,termithIndex));
                     executor.submit(new InitCorpusWorker(p, termithIndex,corpusCnt));

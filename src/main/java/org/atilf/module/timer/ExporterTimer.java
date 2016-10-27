@@ -15,6 +15,6 @@ public class ExporterTimer extends ProgressBarTimer {
 
     @Override
     public void run() {
-        update(termithIndex.getOutputFile().size());
+        update(termithIndex.get_outputFile().size());
     }
 }

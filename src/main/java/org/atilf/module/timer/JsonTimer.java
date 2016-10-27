@@ -14,6 +14,6 @@ public class JsonTimer extends ProgressBarTimer {
 
     @Override
     public void run() {
-        update(termithIndex.getSerializeJson().size());
+        update(termithIndex.get_serializeJson().size());
     }
 }

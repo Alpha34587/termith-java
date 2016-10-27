@@ -10,10 +10,9 @@ import static org.atilf.models.TagNormalizer.FR_TT_TAG;
  *         Created on 29/09/16.
  */
 public class SpecialChXmlEscape {
-    protected final static Map<String, String> XML_SPEC_CH;
+    protected final static Map<String, String> XML_SPEC_CH = new ConcurrentHashMap<>();
 
     static {
-        XML_SPEC_CH = new ConcurrentHashMap<>();
         XML_SPEC_CH.put("\"", "&quot;");
         XML_SPEC_CH.put("&", "&amp;");
         XML_SPEC_CH.put("'", "&apos;");
