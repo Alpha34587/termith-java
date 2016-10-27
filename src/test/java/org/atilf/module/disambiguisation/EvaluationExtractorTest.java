@@ -86,13 +86,13 @@ public class EvaluationExtractorTest {
     @Test
     public void extractTerms() throws Exception {
         evalExtractor1.extractTerms();
-        evalExtractor1.getTarget().forEach(
+        evalExtractor1.get_target().forEach(
                 el -> Assert.assertEquals("target must be equals",expectedTarget.poll(),el)
         );
-        evalExtractor1.getCorresp().forEach(
+        evalExtractor1.get_corresp().forEach(
                 el -> Assert.assertEquals("terms id must be equals",expectedCorresp.poll(),el)
         );
-        evalExtractor1.getLexAna().forEach(
+        evalExtractor1.get_lexAna().forEach(
                 el -> Assert.assertEquals("ana id must be equals",expectedLexAna.poll(),el)
         );
 
@@ -104,13 +104,13 @@ public class EvaluationExtractorTest {
         evalExtractor2.extractSubCorpus();
         expectedMap.forEach(
                 (key,value) -> {
-                    Multiset observed = multiSub.get(key).getLexicalTable();
-                    value.getLexicalTable().forEach(
+                    Multiset observed = multiSub.get(key).get_lexicalTable();
+                    value.forEach(
                             el -> {
                                 int count = observed.count(el);
                                 Assert.assertEquals("the occurence of element must be equals at " + key +
                                                 " for the word : " + el,
-                                        value.getLexicalTable().count(el),observed.count(el)
+                                        value.countOccurence(el),observed.count(el)
                                 );
                             }
                     );

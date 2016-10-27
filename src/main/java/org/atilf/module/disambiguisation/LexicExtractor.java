@@ -21,28 +21,37 @@ import static org.atilf.models.SubLexicResource.NAMESPACE_CONTEXT;
  *         Created on 20/10/16.
  */
 public class LexicExtractor {
-    private final GlobalLexic disambGlobalCorpus;
-    private DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-    private DocumentBuilder dBuilder;
-    private Document doc;
-    private XPath xpath;
+    private GlobalLexic _disambGlobalCorpus;
+    private DocumentBuilderFactory _dbFactory = DocumentBuilderFactory.newInstance();
+    private DocumentBuilder _dBuilder;
+    private Document _doc;
+    private XPath _xpath = XPathFactory.newInstance().newXPath();
+    private NodeList _spanNode;
     private static final Logger LOGGER = LoggerFactory.getLogger(LexicExtractor.class.getName());
-    private NodeList spanNode;
+    private XPathExpression _eLemma;
+    private XPathExpression _ePos;
+    private XPathExpression _eSpanWordForms;
 
     public LexicExtractor(String p, GlobalLexic disambGlobalCorpus) {
-        this.disambGlobalCorpus = disambGlobalCorpus;
-        xpath = XPathFactory.newInstance().newXPath();
-        xpath.setNamespaceContext(NAMESPACE_CONTEXT);
+        _disambGlobalCorpus = disambGlobalCorpus;
+        _xpath.setNamespaceContext(NAMESPACE_CONTEXT);
+        _dbFactory.setNamespaceAware(true);
         try {
-            dbFactory.setNamespaceAware(true);
-            dBuilder = dbFactory.newDocumentBuilder();
+            _dBuilder = _dbFactory.newDocumentBuilder();
         } catch (ParserConfigurationException e) {
             LOGGER.error("error during the creation of documentBuilder object : ", e);
         }
         try {
-            doc = dBuilder.parse(p);
+            _doc = _dBuilder.parse(p);
         } catch (SAXException | IOException e) {
             LOGGER.error("error during the parsing of document", e);
+        }
+        try {
+            _eLemma = _xpath.compile(".//tei:f[@name = 'lemma']/tei:string/text()");
+            _ePos = _xpath.compile(".//tei:f[@name = 'pos']/tei:symbol/@value");
+            _eSpanWordForms = _xpath.compile("//ns:standOff[@type = 'wordForms']/ns:listAnnotation/tei:span");
+        } catch (XPathExpressionException e) {
+            LOGGER.error("cannot compile xpath :",e);
         }
     }
 
@@ -53,23 +62,18 @@ public class LexicExtractor {
 
     private void addToGlobalCorpus() {
         try {
-            XPathExpression eLemma = xpath.compile(".//tei:f[@name = 'lemma']/tei:string/text()");
-            XPathExpression ePos = xpath.compile(".//tei:f[@name = 'pos']/tei:symbol/@value");
-            for (int i = 0; i < spanNode.getLength(); i++) {
-            disambGlobalCorpus.addEntry(eLemma.evaluate(spanNode.item(i), XPathConstants.STRING) + " "
-                    + ePos.evaluate(spanNode.item(i), XPathConstants.STRING));
+            for (int i = 0; i < _spanNode.getLength(); i++) {
+            _disambGlobalCorpus.addEntry(_eLemma.evaluate(_spanNode.item(i), XPathConstants.STRING) + " "
+                    + _ePos.evaluate(_spanNode.item(i), XPathConstants.STRING));
             }
-
         } catch (XPathExpressionException e) {
             LOGGER.error("error during the parsing of document", e);
         }
     }
 
     private void extractWords() {
-        XPathExpression xPathExpression;
         try {
-            xPathExpression = xpath.compile("//ns:standOff[@type = 'wordForms']/ns:listAnnotation/tei:span");
-            spanNode = (NodeList) xPathExpression.evaluate(doc, XPathConstants.NODESET);
+            _spanNode = (NodeList) _eSpanWordForms.evaluate(_doc, XPathConstants.NODESET);
         } catch (XPathExpressionException e) {
             LOGGER.error("error during the parsing of document",e);
         }

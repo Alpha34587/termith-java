@@ -1,60 +1,80 @@
 package org.atilf.module.disambiguisation;
 
+import com.google.common.collect.HashMultiset;
 import com.google.common.collect.Multiset;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.function.Consumer;
 
 /**
  * @author Simon Meoni
  *         Created on 21/10/16.
  */
-public class LexicalProfile {
-    Multiset lexicalTable;
-    Map<String,Float> specCoefficientMap;
+public class LexicalProfile implements Iterable<String>{
+    Multiset<String> _lexicalTable;
+    Map<String,Float> _specCoefficientMap = new HashMap<>();
 
-    LexicalProfile(Multiset lexicalTable) {
-        this.lexicalTable = lexicalTable;
-        specCoefficientMap = new HashMap<>();
+    LexicalProfile(Multiset<String> lexicalTable) {
+        _lexicalTable = lexicalTable;
     }
 
-    Multiset getLexicalTable() {
-        return lexicalTable;
+    LexicalProfile() {
+        _lexicalTable = HashMultiset.create();
     }
 
-    public int getLexicalSize(){
-        return lexicalTable.size();
+    Multiset<String> get_lexicalTable() {
+        return _lexicalTable;
     }
-    public int countOccurence(String word){
-        if (lexicalTable.contains(word)){
-            return lexicalTable.count(word);
+
+    public int lexicalSize(){
+        return _lexicalTable.size();
+    }
+
+    public int countOccurrence(String word){
+        if (_lexicalTable.contains(word)){
+            return _lexicalTable.count(word);
         }
         else
             return -1;
     }
 
-    Map<String, Float> getSpecCoefficientMap() {
-        return specCoefficientMap;
+    Map<String, Float> get_specCoefficientMap() {
+        return _specCoefficientMap;
     }
 
     float getSpecCoefficient(String entry){
-        if (specCoefficientMap.containsKey(entry)) {
-            return specCoefficientMap.get(entry);
+        if (_specCoefficientMap.containsKey(entry)) {
+            return _specCoefficientMap.get(entry);
         }
         else
             return 0;
     }
 
     void addCoefficientSpec(String entry, Float coefficient){
-        if (lexicalTable.contains(entry)) {
-            specCoefficientMap.put(entry,coefficient);
+        if (_lexicalTable.contains(entry)) {
+            _specCoefficientMap.put(entry,coefficient);
         }
         else{
+
             throw new NullPointerException("Multiset Object not contains this entry " + entry);
         }
     }
 
-    void addOccurence(String occ){
-        lexicalTable.add(occ);
+
+
+    void addOccurrence(String occ){
+        _lexicalTable.add(occ);
+    }
+
+    @Override
+    public Iterator iterator() {
+        return null;
+    }
+
+    @Override
+    public void forEach(Consumer<? super String> consumer) {
+        _lexicalTable.elementSet().forEach(consumer);
     }
 }

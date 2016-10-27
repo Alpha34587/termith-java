@@ -2,7 +2,6 @@ package org.atilf.module.tools;
 
 import com.google.common.collect.HashMultiset;
 import com.google.common.io.Files;
-import org.apache.commons.io.FileUtils;
 import org.atilf.models.TermithIndex;
 import org.atilf.module.disambiguisation.EvaluationProfile;
 import org.junit.Assert;
@@ -13,11 +12,8 @@ import org.junit.rules.TemporaryFolder;
 
 import java.io.File;
 import java.nio.charset.Charset;
-import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
-
-import static org.junit.Assert.*;
 
 /**
  * @author Simon Meoni
@@ -37,9 +33,9 @@ public class DisambTeiWriterTest {
         evaluationProfile.put("entry-13471_DM1", new EvaluationProfile(HashMultiset.create()));
         evaluationProfile.put("entry-7263_DM3", new EvaluationProfile(HashMultiset.create()));
         evaluationProfile.put("entry-990_noDM", new EvaluationProfile(HashMultiset.create()));
-        evaluationProfile.get("entry-13471_DM1").setDisambIdMap("DaOn");
-        evaluationProfile.get("entry-7263_DM3").setDisambIdMap("DaOn");
-        evaluationProfile.get("entry-990_noDM").setDisambIdMap("DaOff");
+        evaluationProfile.get("entry-13471_DM1").set_disambId("DaOn");
+        evaluationProfile.get("entry-7263_DM3").set_disambId("DaOn");
+        evaluationProfile.get("entry-990_noDM").set_disambId("DaOff");
 
         teiWriter = new DisambTeiWriter(
                 "src/test/resources/corpus/tei/test2.xml",

@@ -2,7 +2,7 @@ package org.atilf.worker;
 
 import org.atilf.models.RLexic;
 import org.atilf.models.TermithIndex;
-import org.atilf.module.disambiguisation.SpecCoeffInjector;
+import org.atilf.module.disambiguisation.SpecCoefficientInjector;
 
 /**
  * @author Simon Meoni
@@ -22,7 +22,7 @@ public class SpecCoeffInjectorWorker implements Runnable {
 
     @Override
     public void run() {
-        SpecCoeffInjector specCoeff = new SpecCoeffInjector(termithIndex.getTermSubLexic().get(key),
+        SpecCoefficientInjector specCoeff = new SpecCoefficientInjector(termithIndex.getTermSubLexic().get(key),
                 rLexic,termithIndex.getDisambGlobalLexic());
         specCoeff.execute();
     }

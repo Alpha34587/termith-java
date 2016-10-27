@@ -1,9 +1,6 @@
 package org.atilf.module.tools;
 
-import org.atilf.models.MorphoSyntaxOffsetId;
-import org.atilf.models.StandOffResources;
 import org.atilf.models.TermithIndex;
-import org.atilf.models.TermsOffsetId;
 import org.atilf.module.disambiguisation.EvaluationProfile;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,22 +8,16 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
-import org.xml.sax.helpers.DefaultHandler;
 
 import javax.xml.parsers.*;
 import javax.xml.transform.*;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.xpath.*;
-import java.io.BufferedWriter;
-import java.io.File;
 import java.io.IOException;
-import java.nio.file.Path;
-import java.util.List;
 import java.util.Map;
 
 import static org.atilf.models.SubLexicResource.*;
-import static org.atilf.models.TermithIndex.outputPath;
 
 /**
  * @author Simon Meoni
@@ -74,7 +65,7 @@ public class DisambTeiWriter {
                 String termId = correspVal.getNodeValue().substring(1) + "_" + anaVal.getNodeValue().substring(1);
                 if (evaluationLexic.containsKey(termId)) {
                     anaVal.setNodeValue(
-                            anaVal.getNodeValue() + " #" + evaluationLexic.get(termId).getDisambId()
+                            anaVal.getNodeValue() + " #" + evaluationLexic.get(termId).get_disambId()
                     );
                 }
             }

@@ -71,13 +71,13 @@ public class SubLexicExtractorTest {
     @Test
     public void extractTerms() throws Exception {
         subLexicExtractor.extractTerms();
-        subLexicExtractor.getTarget().forEach(
+        subLexicExtractor.get_target().forEach(
                 el -> Assert.assertEquals("target must be equals",expectedTarget.poll(),el)
         );
-        subLexicExtractor.getCorresp().forEach(
+        subLexicExtractor.get_corresp().forEach(
                 el -> Assert.assertEquals("terms id must be equals",expectedCorresp.poll(),el)
         );
-        subLexicExtractor.getLexAna().forEach(
+        subLexicExtractor.get_lexAna().forEach(
                 el -> Assert.assertEquals("ana id must be equals",expectedLexAna.poll(),el)
         );
 
@@ -89,13 +89,13 @@ public class SubLexicExtractorTest {
         subCorpus.extractSubCorpus();
         expectedMap.forEach(
                 (key, value) -> {
-                    Multiset observed = multiSub.get(key).getLexicalTable();
-                    value.getLexicalTable().forEach(
+                    Multiset observed = multiSub.get(key).get_lexicalTable();
+                    value.get_lexicalTable().forEach(
                             el -> {
                                 int count = observed.count(el);
                                 Assert.assertEquals("the occurence of element must be equals at " + key +
                                                 " for the word : " + el,
-                                        value.getLexicalTable().count(el), observed.count(el)
+                                        value.get_lexicalTable().count(el), observed.count(el)
                                 );
                             }
                     );
@@ -110,13 +110,13 @@ public class SubLexicExtractorTest {
         subCorpus2.extractSubCorpus();
         expectedMap2.forEach(
                 (key, value) -> {
-                    Multiset observed = multiSub2.get(key).getLexicalTable();
-                    value.getLexicalTable().forEach(
+                    Multiset observed = multiSub2.get(key).get_lexicalTable();
+                    value.get_lexicalTable().forEach(
                             el -> {
                                 int count = observed.count(el);
                                 Assert.assertEquals("the occurence of element must be equals at " + key +
                                                 " for the word : " + el,
-                                        value.getLexicalTable().count(el), observed.count(el)
+                                        value.get_lexicalTable().count(el), observed.count(el)
                                 );
                             }
                     );

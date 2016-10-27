@@ -1,6 +1,6 @@
 package org.atilf.models;
 
-import com.google.common.collect.Multiset;
+import org.atilf.module.disambiguisation.LexicalProfile;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,65 +11,61 @@ import java.util.List;
  */
 public class RLexic {
     int corpusSizeOcc;
-    private StringBuffer rName;
-    private StringBuffer rOcc;
-    private GlobalLexic corpus;
-    private Multiset<String> subCorpus;
-    private List<String> idSubCorpus;
+    private StringBuffer _rName = new StringBuffer();
+    private StringBuffer _rOcc = new StringBuffer();
+    private GlobalLexic _corpus;
+    private LexicalProfile _subCorpus;
+    private List<String> _idSubCorpus;
 
     public RLexic(GlobalLexic corpus){
-        this.corpus = corpus;
+        _corpus = corpus;
         corpusSizeOcc = corpus.size();
-        rName = new StringBuffer();
-        rOcc = new StringBuffer();
-        rName.append("c(");
-        rOcc.append("c(");
-        this.corpus.forEach(this::convertToRFormat);
+        _rName.append("c(");
+        _rOcc.append("c(");
+        _corpus.forEach(this::convertToRFormat);
         closeRVariable();
     }
 
-    public RLexic(Multiset<String> subCorpus, GlobalLexic corpus) {
-        this.subCorpus = subCorpus;
-        this.corpus = corpus;
-        this.idSubCorpus = new ArrayList<>();
-        corpusSizeOcc = subCorpus.size();
-        rName = new StringBuffer();
-        rOcc = new StringBuffer();
-        rName.append("c(");
-        rOcc.append("c(");
-        subCorpus.forEach(this::convertToRFSubormat);
+    public RLexic(LexicalProfile subCorpus, GlobalLexic corpus) {
+        _subCorpus = subCorpus;
+        _corpus = corpus;
+        _idSubCorpus = new ArrayList<>();
+        corpusSizeOcc = subCorpus.lexicalSize();
+        _rName.append("c(");
+        _rOcc.append("c(");
+        _subCorpus.forEach(this::convertToRFSubormat);
         closeRVariable();
     }
 
-    public StringBuffer getrName() {
-        return rName;
+    public StringBuffer get_rName() {
+        return _rName;
     }
 
-    public StringBuffer getrOcc() {
-        return rOcc;
+    public StringBuffer get_rOcc() {
+        return _rOcc;
     }
 
-    public List<String> getIdSubCorpus() {
-        return idSubCorpus;
+    public List<String> get_idSubCorpus() {
+        return _idSubCorpus;
     }
 
     public int getCorpusSizeOcc() { return corpusSizeOcc; }
 
     private void closeRVariable() {
-        rName.deleteCharAt(rName.length()-1);
-        rOcc.deleteCharAt(rOcc.length()-1);
-        rName.append(")");
-        rOcc.append(")");
+        _rName.deleteCharAt(_rName.length()-1);
+        _rOcc.deleteCharAt(_rOcc.length()-1);
+        _rName.append(")");
+        _rOcc.append(")");
     }
 
     private void convertToRFormat(String el) {
-        rName.append("\""+ corpus.getIdEntry(el) +"\",");
-        rOcc.append(corpus.getCount(el)+",");
+        _rName.append("\""+ _corpus.get_idEntry(el) +"\",");
+        _rOcc.append(_corpus.count(el)+",");
     }
 
     private void convertToRFSubormat(String el) {
-        rName.append("\""+ corpus.getIdEntry(el) +"\",");
-        rOcc.append(subCorpus.count(el)+",");
-        idSubCorpus.add(corpus.getIdEntry(el));
+        _rName.append("\""+ _corpus.get_idEntry(el) +"\",");
+        _rOcc.append(_subCorpus.countOccurrence(el)+",");
+        _idSubCorpus.add(_corpus.get_idEntry(el));
     }
 }

@@ -49,20 +49,20 @@ public class SpecCoeffInjectorTest {
         executeSubCorpus2.execute();
 
         specificities = new HashMap<>();
-        specificities.put("entry-8318_lexOn",new float[]{1.3425f, 1.3425f, 1.3425f, 1.3425f, 3.4531f, 3.4531f});
+        specificities.put("entry-8318_lexOn",new float[]{1.3425f, 1.3425f, 1.3425f, 3.4531f, 1.3425f});
         specificities.put("entry-990_lexOff",new float[]{1.8162f, 1.8162f, 1.8162f, 1.8162f, 1.8162f, 1.8162f});
         specificities.put("entry-7263_lexOn",new float[]{3.9302f, 3.9302f, 3.9302f, 3.9302f, 3.9302f, 3.9302f,
-                3.9302f, 3.9302f, 3.9302f, 3.9302f, 3.9302f, 3.9302f, 3.9302f, 3.9302f, 3.9302f, 3.9302f, 3.9302f, 3.9302f});
-        specificities.put("entry-13471_lexOn",new float[]{1.3425f, 1.3425f, 1.3425f, 1.3425f, 3.4531f, 3.4531f, 1.3425f});
+                3.9302f, 3.9302f, 3.9302f});
+        specificities.put("entry-13471_lexOn",new float[]{1.3425f, 1.3425f, 1.3425f, 1.3425f, 3.4531f, 1.3425f});
 
-        executeSubLexic.forEach((key,value) -> new SpecCoeffInjector(value, rLexic, globalLexic).execute());
+        executeSubLexic.forEach((key,value) -> new SpecCoefficientInjector(value, rLexic, globalLexic).execute());
     }
 
     @Test
     public void execute() throws Exception {
         executeSubLexic.values().forEach(
                 values -> {
-                    values.getSpecCoefficientMap().values().forEach(
+                    values.get_specCoefficientMap().values().forEach(
                             coef -> Assert.assertNotEquals("this coefficient must be not equals to 0", 0, coef)
                     );
                 }
@@ -75,7 +75,7 @@ public class SpecCoeffInjectorTest {
                 (key,value) -> {
                     Assert.assertArrayEquals(
                             specificities.get(key),
-                            new SpecCoeffInjector(value, rLexic, globalLexic).computeSpecCoeff(),
+                            new SpecCoefficientInjector(value, rLexic, globalLexic).computeSpecCoefficient(),
                             0);}
         );
     }

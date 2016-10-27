@@ -8,39 +8,36 @@ import java.util.Map;
  */
 public class Evaluation {
 
-    private final Map<String, EvaluationProfile> evaluationProfile;
-    private final Map<String, LexicalProfile> termSubLexic;
-    float factorOn = 0f;
-    float factorOff = 0f;
+    private final Map<String, EvaluationProfile> _evaluationProfile;
+    private final Map<String, LexicalProfile> _termSubLexic;
+    float _factorOn = 0f;
+    float _factorOff = 0f;
 
     public Evaluation(Map<String, EvaluationProfile> evaluationProfile, Map<String, LexicalProfile> termSubLexic) {
 
-        this.evaluationProfile = evaluationProfile;
-        this.termSubLexic = termSubLexic;
+        _evaluationProfile = evaluationProfile;
+        _termSubLexic = termSubLexic;
     }
 
     public void execute() {
-        evaluationProfile.forEach(
+        _evaluationProfile.forEach(
                 (key,value) ->
                 {
 
                     String lexEntryOn = formatEntry(key,"On");
                     String lexEntryOff = formatEntry(key, "Off");
 
-                    if (!termSubLexic.containsKey(lexEntryOn)){
-                        value.setDisambIdMap("DaOff");
+                    if (!_termSubLexic.containsKey(lexEntryOn)){
+                        value.set_disambId("DaOff");
                     }
 
-                    else if (!termSubLexic.containsKey(lexEntryOff)){
-                        value.setDisambIdMap("DaOn");
+                    else if (!_termSubLexic.containsKey(lexEntryOff)){
+                        value.set_disambId("DaOn");
                     }
 
                     else {
-                        computeFactor(value,
-                                termSubLexic.get(lexEntryOn),
-                                termSubLexic.get(lexEntryOff)
-                        );
-                        compareFactor(factorOn,factorOff, value);
+                        computeFactor(value, _termSubLexic.get(lexEntryOn), _termSubLexic.get(lexEntryOff));
+                        compareFactor(_factorOn, _factorOff, value);
                     }
                 }
         );
@@ -49,10 +46,10 @@ public class Evaluation {
 
     private void compareFactor(float lexEntryOn, float lexEntryOff, EvaluationProfile entry) {
         if (lexEntryOff >= lexEntryOn){
-            entry.setDisambIdMap("DaOff");
+            entry.set_disambId("DaOff");
         }
         else {
-            entry.setDisambIdMap("DaOn");
+            entry.set_disambId("DaOn");
         }
     }
 
@@ -61,20 +58,17 @@ public class Evaluation {
                                 LexicalProfile lexOff) {
         entry.forEach(
                 el -> {
-                    factorOn += occurenceScore(lexOn.getSpecCoefficient(el),entry.countOccurence(el));
-                    factorOff += occurenceScore(lexOff.getSpecCoefficient(el),entry.countOccurence(el));
+                    _factorOn += occurrenceScore(lexOn.getSpecCoefficient(el),entry.countOccurence(el));
+                    _factorOff += occurrenceScore(lexOff.getSpecCoefficient(el),entry.countOccurence(el));
                 }
         );
     }
 
-    private float occurenceScore(float specCoefficient, int nbOcc) {
+    private float occurrenceScore(float specCoefficient, int nbOcc) {
         return (float) nbOcc * specCoefficient;
     }
 
     private String formatEntry(String key, String token) {
-        String[] entrySplit = key.split("_");
-        entrySplit[1] =  "lex" + token;
-
-        return String.join("_", entrySplit);
+        return key.split("_")[0] + "_lex" + token;
     }
 }
