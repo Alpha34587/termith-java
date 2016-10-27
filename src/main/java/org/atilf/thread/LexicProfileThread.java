@@ -15,24 +15,24 @@ import java.util.concurrent.TimeUnit;
  *         Created on 12/10/16.
  */
 public class LexicProfileThread {
-    private final TermithIndex termithIndex;
-    private final int poolSize;
+    private final TermithIndex _termithIndex;
+    private final int _poolSize;
     private static final Logger LOGGER = LoggerFactory.getLogger(LexicProfileThread.class.getName());
 
     public LexicProfileThread(TermithIndex termithIndex, int poolSize) {
 
-        this.termithIndex = termithIndex;
-        this.poolSize = poolSize;
+        _termithIndex = termithIndex;
+        _poolSize = poolSize;
     }
 
     public void execute() throws InterruptedException {
-        RLexic rLexic = new RLexic(termithIndex.get_disambGlobalLexic());
-        ExecutorService executor = Executors.newFixedThreadPool(poolSize);
+        RLexic rLexic = new RLexic(_termithIndex.get_disambGlobalLexic());
+        ExecutorService executor = Executors.newFixedThreadPool(_poolSize);
 
-        termithIndex.get_termSubLexic().forEach(
+        _termithIndex.get_termSubLexic().forEach(
                 (key,value) -> executor.submit(new SpecCoeffInjectorWorker(
                         key,
-                        termithIndex,
+                        _termithIndex,
                         rLexic))
         );
 

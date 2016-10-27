@@ -22,12 +22,11 @@ import java.util.concurrent.TimeUnit;
  */
 public class InitializerThread {
 
+    private TermithIndex _termithIndex;
+    private ExecutorService _executor;
+    private CountDownLatch _corpusCnt;
     private static final Logger LOGGER = LoggerFactory.getLogger(InitializerThread.class.getName());
     private static final int DEFAULT_POOL_SIZE = Runtime.getRuntime().availableProcessors();
-
-    private TermithIndex termithIndex;
-    private ExecutorService executor;
-    private CountDownLatch corpusCnt;
 
     /**
      * a constructor of initialize who take on parameter a folder path with xml files
@@ -43,9 +42,9 @@ public class InitializerThread {
      * @param termithIndex the input of folder
      */
     public InitializerThread(int poolSize, TermithIndex termithIndex) throws IOException {
-        this.termithIndex = termithIndex;
-        this.executor = Executors.newFixedThreadPool(poolSize);
-        corpusCnt  = new CountDownLatch(
+        _termithIndex = termithIndex;
+        _executor = Executors.newFixedThreadPool(poolSize);
+        _corpusCnt = new CountDownLatch(
                 (int)Files.list(TermithIndex.get_base()).count());
     }
 
@@ -57,17 +56,17 @@ public class InitializerThread {
     public void execute() throws IOException, InterruptedException {
         Files.list(TermithIndex.get_base()).forEach(
                 p -> {
-                    executor.submit(new TextExtractorWorker(p,termithIndex));
-                    executor.submit(new InitCorpusWorker(p, termithIndex,corpusCnt));
+                    _executor.submit(new TextExtractorWorker(p, _termithIndex));
+                    _executor.submit(new InitCorpusWorker(p, _termithIndex, _corpusCnt));
                 }
 
         );
-        new ExtractTextTimer(termithIndex,LOGGER).start();
+        new ExtractTextTimer(_termithIndex,LOGGER).start();
         LOGGER.info("Waiting initCorpusWorker executors to finish");
-        corpusCnt.await();
+        _corpusCnt.await();
         LOGGER.info("initCorpusWorker finished");
-        executor.shutdown();
-        executor.awaitTermination(1L, TimeUnit.DAYS);
+        _executor.shutdown();
+        _executor.awaitTermination(1L, TimeUnit.DAYS);
     }
 
 }

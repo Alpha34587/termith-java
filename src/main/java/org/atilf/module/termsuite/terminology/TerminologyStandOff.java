@@ -14,25 +14,23 @@ import java.util.stream.Collectors;
  *         Created on 14/09/16.
  */
 public class TerminologyStandOff {
-    private final List<MorphoSyntaxOffsetId> morpho;
-    private final List<TermsOffsetId> termino;
-    private NavigableMap<Integer,List<Integer>> beginMap;
-    private NavigableMap<Integer,List<Integer>> endMap;
+    private final List<MorphoSyntaxOffsetId> _morpho;
+    private final List<TermsOffsetId> _termino;
+    private NavigableMap<Integer,List<Integer>> _beginMap;
+    private NavigableMap<Integer,List<Integer>> _endMap;
 
     public TerminologyStandOff(List<MorphoSyntaxOffsetId> morpho, List<TermsOffsetId> termino) {
-
-        this.morpho = morpho;
-        this.termino = termino;
+        _morpho = morpho;
+        _termino = termino;
     }
 
-    public List<TermsOffsetId> getTermino() {
-        return termino;
+    public List<TermsOffsetId> get_termino() {
+        return _termino;
     }
 
     public void execute() {
         createNavigablesMap();
-
-        termino.forEach(
+        _termino.forEach(
                 el -> {
                     el.setIds(retrieveMorphoIds(el.get_begin(),el.get_end()));
                 }
@@ -41,8 +39,8 @@ public class TerminologyStandOff {
 
     private List<Integer> retrieveMorphoIds(int begin, int end) {
 
-        List<Integer> beginSubMap = castToIntList(beginMap.subMap(begin, end));
-        List<Integer> endSubMap = castToIntList(endMap.subMap(begin, false, end, true));
+        List<Integer> beginSubMap = castToIntList(_beginMap.subMap(begin, end));
+        List<Integer> endSubMap = castToIntList(_endMap.subMap(begin, false, end, true));
 
         beginSubMap.retainAll(endSubMap);
         return beginSubMap;
@@ -56,12 +54,12 @@ public class TerminologyStandOff {
     }
 
     private void createNavigablesMap() {
-        beginMap = new TreeMap<>();
-        endMap = new TreeMap<>();
-        morpho.forEach(
+        _beginMap = new TreeMap<>();
+        _endMap = new TreeMap<>();
+        _morpho.forEach(
                 el -> {
-                    beginMap.put(el.get_begin(),el.get_ids());
-                    endMap.put(el.get_end(),el.get_ids());
+                    _beginMap.put(el.get_begin(),el.get_ids());
+                    _endMap.put(el.get_end(),el.get_ids());
                 }
         );
     }

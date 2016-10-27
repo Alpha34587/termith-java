@@ -16,8 +16,8 @@ import static java.lang.System.exit;
  *         Created on 27/09/16.
  */
 public class Cleaner {
+    private ExecutorService _executor;
     private static final Logger LOGGER = LoggerFactory.getLogger(Cleaner.class.getName());
-    private ExecutorService executor;
 
     public Cleaner(){}
 

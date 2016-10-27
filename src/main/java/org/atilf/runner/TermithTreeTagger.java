@@ -15,10 +15,11 @@ import static java.lang.System.exit;
  *         Created on 16/09/16.
  */
 public class TermithTreeTagger {
+
+    private int _poolSize;
+    private TermithIndex _termithIndex;
     private static final Logger LOGGER = LoggerFactory.getLogger(TermithTreeTagger.class.getName());
     private static final int DEFAULT_POOL_SIZE = Runtime.getRuntime().availableProcessors();
-    private int poolSize;
-    private TermithIndex termithIndex;
 
     public TermithTreeTagger(TermithIndex termithIndex) throws IOException {
         this(DEFAULT_POOL_SIZE, termithIndex);
@@ -26,13 +27,13 @@ public class TermithTreeTagger {
 
 
     public TermithTreeTagger(int poolSize,TermithIndex termithIndex) throws IOException {
-        this.poolSize = poolSize;
-        this.termithIndex = termithIndex;
+        this._poolSize = poolSize;
+        this._termithIndex = termithIndex;
 
     }
 
-    public TermithIndex getTermithIndex() {
-        return termithIndex;
+    public TermithIndex get_termithIndex() {
+        return _termithIndex;
     }
 
     public void execute() throws IOException, InterruptedException {
@@ -41,7 +42,7 @@ public class TermithTreeTagger {
         LOGGER.info("Pool size set to: " + poolSize);
         LOGGER.info("First Phase Started : Text extraction");
         try{
-            InitializerThread initializerThread = new InitializerThread(poolSize,termithIndex);
+            InitializerThread initializerThread = new InitializerThread(poolSize, _termithIndex);
             initializerThread.execute();
         } catch ( Exception e ) {
             LOGGER.error("Error during execution of the extraction text phase : ",e);
@@ -50,7 +51,7 @@ public class TermithTreeTagger {
         LOGGER.info("First Phase Finished : Text extraction");
 
         LOGGER.info("Starting Second Phase Started: Analyze Phase");
-        AnalyzeThread analyzeThread = new AnalyzeThread(poolSize, termithIndex);
+        AnalyzeThread analyzeThread = new AnalyzeThread(poolSize, _termithIndex);
         try {
             analyzeThread.execute();
         } catch ( Exception e ) {

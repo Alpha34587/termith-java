@@ -19,34 +19,32 @@ import static eu.project.ttc.readers.JsonCasConstants.*;
  */
 public class TermsuiteJsonReader {
 
+    private Queue<Token> _tokenQueue = new LinkedList<>();
+    private File _file;
+    private Token _pollToken;
+    private final JsonFactory _factory = new JsonFactory();
     private final static Logger LOGGER = LoggerFactory.getLogger(TermsuiteJsonReader.class);
-    private final JsonFactory factory = new JsonFactory();
-    private Queue<Token> tokenQueue;
-    private File file;
-    private Token pollToken;
 
 
-    public TermsuiteJsonReader(){
-        this.tokenQueue = new LinkedList<>();
-    }
+    public TermsuiteJsonReader(){}
 
     public TermsuiteJsonReader(File file) {this(new LinkedList<>(), file);}
 
     private TermsuiteJsonReader(Queue<Token> tokenQueue, File file) {
-        this.tokenQueue = tokenQueue;
-        this.file = file;
+        _tokenQueue = tokenQueue;
+        _file = file;
     }
 
     public boolean isTokenQueueEmpty(){
-        return pollToken == null;
+        return _pollToken == null;
     }
 
-    public Queue<Token> getTokenQueue() {
-        return tokenQueue;
+    public Queue<Token> get_tokenQueue() {
+        return _tokenQueue;
     }
 
-    void setTokenQueue(Queue<Token> tokenQueue) {
-        this.tokenQueue = tokenQueue;
+    void set_tokenQueue(Queue<Token> _tokenQueue) {
+        this._tokenQueue = _tokenQueue;
     }
 
     public void parsing() {
@@ -59,7 +57,7 @@ public class TermsuiteJsonReader {
 
     private void browseJson() throws IOException {
         LOGGER.debug("Json browsing started");
-        JsonParser parser = factory.createParser(file);
+        JsonParser parser = _factory.createParser(_file);
 
         JsonToken jsonToken;
         Token token = new Token();
@@ -71,7 +69,7 @@ public class TermsuiteJsonReader {
                 if (jsonToken == JsonToken.END_ARRAY)
                     break;
                 else if (jsonToken == JsonToken.END_OBJECT) {
-                    tokenQueue.add(token);
+                    _tokenQueue.add(token);
                     token = new Token();
                 }
                 fillTokenStack(parser, jsonToken, token);
@@ -86,43 +84,43 @@ public class TermsuiteJsonReader {
     }
 
     public void pollToken(){
-        this.pollToken =  tokenQueue.poll();
+        _pollToken =  _tokenQueue.poll();
     }
 
     public int getCurrentTokenEnd(){
-        if (pollToken != null)
-            return pollToken.getEnd();
+        if (_pollToken != null)
+            return _pollToken.getEnd();
         else
             return -1;
     }
 
     public void setCurrentTokenBegin(int i){
-        if (pollToken != null)
-            pollToken.setBegin(i);
+        if (_pollToken != null)
+            _pollToken.setBegin(i);
     }
 
     public String getCurrentLemma(){
-        if (pollToken != null)
-            return pollToken.getLemma();
+        if (_pollToken != null)
+            return _pollToken.getLemma();
         else
             return "";
     }
 
     public String getCurrentPos(){
-        if (pollToken != null)
-            return pollToken.getPos();
+        if (_pollToken != null)
+            return _pollToken.getPos();
         else
             return "";
     }
 
     public void setCurrentTokenEnd(int i){
-        if (pollToken != null)
-            pollToken.setBegin(i);
+        if (_pollToken != null)
+            _pollToken.setBegin(i);
     }
 
     public int getCurrentTokenBegin(){
-        if (pollToken != null)
-            return pollToken.getBegin();
+        if (_pollToken != null)
+            return _pollToken.getBegin();
         else
             return -1;
     }
@@ -149,7 +147,7 @@ public class TermsuiteJsonReader {
     }
 
     public void createToken(String pos, String lemma, int begin, int end){
-        tokenQueue.add(new Token(pos, lemma, begin, end));
+        _tokenQueue.add(new Token(pos, lemma, begin, end));
     }
 
     public class Token {

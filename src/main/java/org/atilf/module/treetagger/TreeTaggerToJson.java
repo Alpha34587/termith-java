@@ -1,5 +1,6 @@
 package org.atilf.module.treetagger;
 
+import org.atilf.models.TextAnalyzer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -33,7 +34,7 @@ public class TreeTaggerToJson {
         TreeTaggerWrapper treeTaggerWrapper = new TreeTaggerWrapper(txt,treeTaggerHome,
                 new TreeTaggerParameter(false,lang, treeTaggerHome), outputPath);
         treeTaggerWrapper.execute();
-        Serialize serialize = new Serialize(treeTaggerWrapper.getTtOut(),jsonPath,txt, textAnalyzer);
+        Serialize serialize = new Serialize(treeTaggerWrapper.get_ttOut(),jsonPath,txt, textAnalyzer);
         serialize.execute();
         LOGGER.debug("write file " + jsonPath);
     }

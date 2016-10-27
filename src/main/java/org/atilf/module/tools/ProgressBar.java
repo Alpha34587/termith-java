@@ -8,47 +8,42 @@ import org.slf4j.LoggerFactory;
  *         Created on 19/09/16.
  */
 public class ProgressBar {
-    /**
-     * Ascii progress meter. On completion this will reset itself,
-     * so it can be reused
-     * <br /><br />
-     * 100% ################################################## |
-     */
-    private StringBuilder progress;
-    private String message;
+
+    private StringBuilder _progress;
+    private String _message;
     private static final Logger LOGGER = LoggerFactory.getLogger(ProgressBar.class.getName());
 
     /**
-     * initialize progress bar properties.
+     * initialize _progress bar properties.
      * @param message
      */
     public ProgressBar(String message) {
-        this.message = message;
+        _message = message;
         init();
     }
 
     /**
-     * called whenever the progress bar needs to be updated.
-     * that is whenever progress was made.
+     * called whenever the _progress bar needs to be updated.
+     * that is whenever _progress was made.
      *
      * @param done an int representing the work done so far
      * @param total an int representing the total work
      */
     public synchronized void update(int done, int total, Logger logger) {
         int percent = (done * 100) / total;
-        int extrachars = (percent / 2) - this.progress.length();
+        int extrachars = (percent / 2) - _progress.length();
         String fileProgress = "(" + done + "/" + total + ")";
         while (extrachars-- > 0) {
-            progress.append('#');
+            _progress.append('#');
         }
 
-        logger.info("{} : {}% {}", message, percent, fileProgress);
+        logger.info("{} : {}% {}", _message, percent, fileProgress);
         if (done == total) {
             init();
         }
     }
 
     private void init() {
-        this.progress = new StringBuilder(60);
+        _progress = new StringBuilder(60);
     }
 }

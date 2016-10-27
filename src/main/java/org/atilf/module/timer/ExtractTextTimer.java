@@ -15,6 +15,6 @@ public class ExtractTextTimer extends ProgressBarTimer{
 
     @Override
     public void run() {
-        update(termithIndex.get_extractedText().size());
+        update(_termithIndex.get_extractedText().size());
     }
 }

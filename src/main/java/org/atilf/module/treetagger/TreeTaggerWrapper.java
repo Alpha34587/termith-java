@@ -20,34 +20,31 @@ public class TreeTaggerWrapper {
 
     private final Logger LOGGER = LoggerFactory.getLogger(TreeTaggerWrapper.class.getName());
 
-    private final StringBuilder txt;
-    private TreeTaggerParameter treeTaggerParameter;
-    private String treeTaggerHome;
-    private String outputPath;
-
-    private StringBuilder ttOut;
+    private final StringBuilder _txt;
+    private TreeTaggerParameter _treeTaggerParameter;
+    private String _treeTaggerHome;
+    private String _outputPath;
+    private StringBuilder _ttOut = new StringBuilder();
 
     public TreeTaggerWrapper(StringBuilder txt, String treeTaggerHome, TreeTaggerParameter treeTaggerParameter,
     String outputPath) {
-
-        this.txt = txt;
-        this.treeTaggerHome = treeTaggerHome;
-        this.ttOut = new StringBuilder();
-        this.treeTaggerParameter = treeTaggerParameter;
-        this.outputPath = outputPath;
+        _txt = txt;
+        _treeTaggerHome = treeTaggerHome;
+        _treeTaggerParameter = treeTaggerParameter;
+        _outputPath = outputPath;
     }
 
-    public StringBuilder getTtOut() {
-        return ttOut;
+    public StringBuilder get_ttOut() {
+        return _ttOut;
     }
 
     public void execute() throws IOException, InterruptedException {
         String ttPath = writeFile(parsingText());
-        Process p = Runtime.getRuntime().exec(new String[]{"bash","-c", treeTaggerParameter.parse() + " "
+        Process p = Runtime.getRuntime().exec(new String[]{"bash","-c", _treeTaggerParameter.parse() + " "
                 + ttPath});
 
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(p.getInputStream()));
-        ttOut  =
+        _ttOut =
                 bufferedReader.lines().map(String::toString).collect(Collector.of(
                         StringBuilder::new,
                         (stringBuilder, str) -> stringBuilder.append(str).append("\n"),
@@ -66,7 +63,7 @@ public class TreeTaggerWrapper {
     }
     
     private String writeFile(String parsingText) throws IOException {
-        File temp = new File( outputPath + "/" + UUID.randomUUID().toString() + ".tt");
+        File temp = new File( _outputPath + "/" + UUID.randomUUID().toString() + ".tt");
         BufferedWriter bw = new BufferedWriter(new FileWriter(temp));
         bw.write(parsingText);
         bw.flush();
@@ -110,7 +107,7 @@ public class TreeTaggerWrapper {
         newPuncts.add("\n\"\n");
         newPuncts.add("\n\'\n");
 
-        String parseTxt = txt.toString().trim();
+        String parseTxt = _txt.toString().trim();
         parseTxt = parseTxt.replaceAll("\\s+", "\n");
         while (!oldPuncts.isEmpty()) {
                     parseTxt = parseTxt.replace(oldPuncts.poll(), newPuncts.poll());

@@ -1,5 +1,6 @@
 package org.atilf.module.treetagger;
 
+import org.atilf.models.TextAnalyzer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -13,53 +14,52 @@ import java.util.Map;
 public class CorpusAnalyzer {
 
 
+    private Map<String,TextAnalyzer> _analyzedTexts  = new HashMap<>();
+    private int _totalSize;
+    private int _cumulSize;
+    private boolean _lastDocs;
+    private int _index;
     private static final Logger LOGGER = LoggerFactory.getLogger(CorpusAnalyzer.class.getName());
-    private Map<String,TextAnalyzer> analyzedTexts;
-    private int totalSize;
-    private int cumulSize;
-    private boolean lastDocs;
-    private int index;
 
     public CorpusAnalyzer(Map<String, StringBuilder> extractedText){
         LOGGER.debug("CorpusAnalyzer object building started");
-        analyzedTexts = new HashMap<>();
-        totalSize = totalSize(extractedText);
-        cumulSize = 0;
-        lastDocs = false;
-        index = 1;
+        _totalSize = totalSize(extractedText);
+        _cumulSize = 0;
+        _lastDocs = false;
+        _index = 1;
 
         extractedText.forEach((id,content) ->
-                {
+        {
 
-                    int documentSize = documentSize(extractedText,id);
-                    int nbDocs = nbOfDocs(extractedText);
-                    cumulSize += documentSize;
-                    if (index == nbDocs){
-                        lastDocs = true;
-                    }
+            int documentSize = documentSize(extractedText,id);
+            int nbDocs = nbOfDocs(extractedText);
+            _cumulSize += documentSize;
+            if (_index == nbDocs){
+                _lastDocs = true;
+            }
 
-                    TextAnalyzer textAnalyzer =
-                            new TextAnalyzer(
-                                    documentSize(extractedText,id),
-                                    nbDocs,
-                                    end(extractedText,id),
-                                    index,
-                                    cumulSize,
-                                    totalSize,
-                                    lastDocs
-                            );
+            TextAnalyzer textAnalyzer =
+                    new TextAnalyzer(
+                            documentSize(extractedText,id),
+                            nbDocs,
+                            end(extractedText,id),
+                            _index,
+                            _cumulSize,
+                            _totalSize,
+                            _lastDocs
+                    );
 
-                    index++;
-                    analyzedTexts.put(id,textAnalyzer);
-                });
+            _index++;
+            _analyzedTexts.put(id,textAnalyzer);
+        });
         LOGGER.debug("CorpusAnalyzer object building ended");
     }
 
     /**
      * @return return analyzedText fields
      */
-    public Map<String, TextAnalyzer> getAnalyzedTexts() {
-        return analyzedTexts;
+    public Map<String, TextAnalyzer> get_analyzedTexts() {
+        return _analyzedTexts;
     }
 
     /**

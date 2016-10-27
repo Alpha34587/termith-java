@@ -16,41 +16,41 @@ import java.util.Queue;
 public class SyntaxParser {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(SyntaxParser.class);
-    private StringBuilder xml;
-    private StringBuilder txt;
-    private StringBuilder tokenizeBuffer;
-    private TermsuiteJsonReader termsuiteJsonReader;
+    private StringBuilder _xml;
+    private StringBuilder _txt;
+    private StringBuilder _tokenizeBuffer;
+    private TermsuiteJsonReader _termsuiteJsonReader;
     private Queue<Character> xmlCharacterQueue;
     private Integer[] offset = new Integer[2];
-    private List<MorphoSyntaxOffsetId> offsetId;
+    private List<MorphoSyntaxOffsetId> _offsetId;
 
 
     SyntaxParser(StringBuilder txt, StringBuilder xml, TermsuiteJsonReader termsuiteJsonReader,
                  List<MorphoSyntaxOffsetId> offsetId) {
-        this.xml = xml;
-        this.txt = txt;
-        this.termsuiteJsonReader = termsuiteJsonReader;
-        this.tokenizeBuffer = new StringBuilder();
-        this.offsetId = offsetId;
+        _xml = xml;
+        _txt = txt;
+        _termsuiteJsonReader = termsuiteJsonReader;
+        _tokenizeBuffer = new StringBuilder();
+        _offsetId = offsetId;
     }
 
     SyntaxParser(StringBuilder xml){
-        this.xml = xml;
+        this._xml = xml;
     }
 
-    public StringBuilder getXml() {
-        return xml;
+    public StringBuilder get_xml() {
+        return _xml;
     }
 
-    StringBuilder getTokenizeBuffer() {
-        return tokenizeBuffer;
+    StringBuilder get_tokenizeBuffer() {
+        return _tokenizeBuffer;
     }
 
     public Integer[] getOffset() {
         return offset;
     }
 
-    public List<MorphoSyntaxOffsetId> getOffsetId() { return offsetId; }
+    public List<MorphoSyntaxOffsetId> get_offsetId() { return _offsetId; }
 
     public void execute() throws Exception {
         teiBodyspliter();
@@ -58,8 +58,8 @@ public class SyntaxParser {
     }
 
     void teiBodyspliter(){
-        xml = new StringBuilder(
-                xml.toString()
+        _xml = new StringBuilder(
+                _xml.toString()
                         .split("(?=(<text>|<text\\s.*>))")[1]
                         .split("(?<=(</text>))")[0]
         );
@@ -68,7 +68,7 @@ public class SyntaxParser {
 
     private void fillXmlCharacterQueue() {
         xmlCharacterQueue = new LinkedList<>();
-        for (Character c : xml.toString().toCharArray()){
+        for (Character c : _xml.toString().toCharArray()){
             this.xmlCharacterQueue.add(c);
         }
     }
@@ -78,7 +78,7 @@ public class SyntaxParser {
         offset[0] = 0;
         offset[1] = 1;
         int id = 1;
-        termsuiteJsonReader.pollToken();
+        _termsuiteJsonReader.pollToken();
         Character ch;
         fillXmlCharacterQueue();
         try {
@@ -92,8 +92,8 @@ public class SyntaxParser {
                     countOffset();
                 }
 
-                if (offset[0] > termsuiteJsonReader.getCurrentTokenEnd()) {
-                    termsuiteJsonReader.pollToken();
+                if (offset[0] > _termsuiteJsonReader.getCurrentTokenEnd()) {
+                    _termsuiteJsonReader.pollToken();
                 }
             }
             LOGGER.debug("Tokenization Ended");
@@ -112,23 +112,23 @@ public class SyntaxParser {
 
     private int waitUntilTagEnd(Character ch, int id) {
 
-        if (termsuiteJsonReader.getCurrentTokenBegin() == -2){
-            tokenizeBuffer.append("</w>");
+        if (_termsuiteJsonReader.getCurrentTokenBegin() == -2){
+            _tokenizeBuffer.append("</w>");
             id++;
-            MorphoSyntaxOffsetId.addId(offsetId,id);
+            MorphoSyntaxOffsetId.addId(_offsetId,id);
         }
 
         while(ch != '>' ||
                 (!xmlCharacterQueue.isEmpty() && xmlCharacterQueue.peek() == '<') ){
-            tokenizeBuffer.append(ch);
+            _tokenizeBuffer.append(ch);
             ch = xmlCharacterQueue.poll();
         }
 
-        tokenizeBuffer.append(ch);
+        _tokenizeBuffer.append(ch);
         checkIfSymbol(ch);
 
-        if(termsuiteJsonReader.getCurrentTokenBegin() == -2){
-            tokenizeBuffer.append("<w xml:id=\"" + "t").append(id).append("\">");
+        if(_termsuiteJsonReader.getCurrentTokenBegin() == -2){
+            _tokenizeBuffer.append("<w xml:id=\"" + "t").append(id).append("\">");
         }
 
         return id;
@@ -137,34 +137,34 @@ public class SyntaxParser {
     private void checkIfSymbol(Character ch) {
         if (ch == '&'){
             while ((ch = xmlCharacterQueue.poll()) != ';'){
-                tokenizeBuffer.append(ch);
+                _tokenizeBuffer.append(ch);
             }
-            tokenizeBuffer.append(ch);
+            _tokenizeBuffer.append(ch);
         }
 
     }
 
     private int tokenInjector(Character ch, int id) {
 
-        if (offset[0] == termsuiteJsonReader.getCurrentTokenBegin()){
-            tokenizeBuffer.append("<w xml:id=\"" + "t").append(id).append("\">");
+        if (offset[0] == _termsuiteJsonReader.getCurrentTokenBegin()){
+            _tokenizeBuffer.append("<w xml:id=\"" + "t").append(id).append("\">");
             MorphoSyntaxOffsetId.addNewOffset(
-                    offsetId,
-                    termsuiteJsonReader.getCurrentTokenBegin(),
-                    termsuiteJsonReader.getCurrentTokenEnd(),
-                    termsuiteJsonReader.getCurrentLemma(),
-                    termsuiteJsonReader.getCurrentPos(),
+                    _offsetId,
+                    _termsuiteJsonReader.getCurrentTokenBegin(),
+                    _termsuiteJsonReader.getCurrentTokenEnd(),
+                    _termsuiteJsonReader.getCurrentLemma(),
+                    _termsuiteJsonReader.getCurrentPos(),
                     id
             );
-            termsuiteJsonReader.setCurrentTokenBegin(-2);
+            _termsuiteJsonReader.setCurrentTokenBegin(-2);
         }
 
-        tokenizeBuffer.append(ch);
+        _tokenizeBuffer.append(ch);
         checkIfSymbol(ch);
 
-        if (offset[1] == termsuiteJsonReader.getCurrentTokenEnd()){
-            tokenizeBuffer.append("</w>");
-            termsuiteJsonReader.pollToken();
+        if (offset[1] == _termsuiteJsonReader.getCurrentTokenEnd()){
+            _tokenizeBuffer.append("</w>");
+            _termsuiteJsonReader.pollToken();
             return id + 1;
         }
         return id;
@@ -172,7 +172,7 @@ public class SyntaxParser {
     }
 
     private void checkTextAlignment(Character ch){
-        while (offset[0] < txt.length() - 1 && txt.charAt(offset[0]) == '\n' && txt.charAt(offset[0]) != ch) {
+        while (offset[0] < _txt.length() - 1 && _txt.charAt(offset[0]) == '\n' && _txt.charAt(offset[0]) != ch) {
                 countOffset();
         }
     }

@@ -27,11 +27,11 @@ import java.util.concurrent.*;
  */
 public class AnalyzeThread {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(AnalyzeThread.class.getName());
+    private TermithIndex _termithIndex;
+    private CountDownLatch _jsonCnt;
+    private final ExecutorService _executorService;
     private static final int DEFAULT_POOL_SIZE = Runtime.getRuntime().availableProcessors();
-    private final ExecutorService executorService;
-    private TermithIndex termithIndex;
-    private CountDownLatch jsonCnt;
+    private static final Logger LOGGER = LoggerFactory.getLogger(AnalyzeThread.class.getName());
 
     public AnalyzeThread(TermithIndex termithIndex)
             throws IOException {
@@ -40,18 +40,18 @@ public class AnalyzeThread {
 
     public AnalyzeThread(int poolSize, TermithIndex termithIndex) throws IOException {
         termithIndex.set_corpus(TermithIndex.get_outputPath());
-        executorService = Executors.newFixedThreadPool(poolSize);
-        this.termithIndex = termithIndex;
-        jsonCnt = new CountDownLatch(termithIndex.get_extractedText().size());
+        _executorService = Executors.newFixedThreadPool(poolSize);
+        _termithIndex = termithIndex;
+        _jsonCnt = new CountDownLatch(termithIndex.get_extractedText().size());
     }
 
     public Path getCorpus() {
-        return termithIndex.get_corpus();
+        return _termithIndex.get_corpus();
     }
 
     private Map<String,StringBuilder> getDeserializeText(){
         Map<String,StringBuilder> textMap = new HashMap<>();
-        termithIndex.get_extractedText().forEach(
+        _termithIndex.get_extractedText().forEach(
                 (key,value) -> {
                     textMap.put(key,(StringBuilder) FilesUtils.readObject(value));
                 }
@@ -61,39 +61,39 @@ public class AnalyzeThread {
 
     public void execute() throws InterruptedException, IOException, ExecutionException {
         init();
-        new TokenizeTimer(termithIndex,LOGGER).start();
-        new JsonTimer(termithIndex,LOGGER).start();
+        new TokenizeTimer(_termithIndex,LOGGER).start();
+        new JsonTimer(_termithIndex,LOGGER).start();
 
         CorpusAnalyzer corpusAnalyzer = new CorpusAnalyzer(getDeserializeText());
-        termithIndex.get_extractedText().forEach((key, txt) ->
-                executorService.submit(new TreeTaggerWorker(
-                        termithIndex,
+        _termithIndex.get_extractedText().forEach((key, txt) ->
+                _executorService.submit(new TreeTaggerWorker(
+                        _termithIndex,
                         corpusAnalyzer,
                         key,
-                        jsonCnt
+                        _jsonCnt
                 ))
         );
         LOGGER.info("waiting that all json files are serialized");
-        jsonCnt.await();
+        _jsonCnt.await();
         LOGGER.info("json files serialization finished, termsuite task started");
-        executorService.submit(new TermsuiteWorker(termithIndex)).get();
+        _executorService.submit(new TermsuiteWorker(_termithIndex)).get();
         LOGGER.info("terminology extraction started");
-        executorService.submit(new TerminologyParserWorker(termithIndex)).get();
-        termithIndex.get_morphoSyntaxStandOff().forEach(
+        _executorService.submit(new TerminologyParserWorker(_termithIndex)).get();
+        _termithIndex.get_morphoSyntaxStandOff().forEach(
                 (id,value) -> {
-                    executorService.submit(new TerminologyStandOffWorker(id,value,termithIndex));
+                    _executorService.submit(new TerminologyStandOffWorker(id,value, _termithIndex));
                 }
         );
-        executorService.shutdown();
-        executorService.awaitTermination(1L,TimeUnit.DAYS);
+        _executorService.shutdown();
+        _executorService.awaitTermination(1L,TimeUnit.DAYS);
         LOGGER.info("terminology extraction finished");
     }
 
     private void init() throws IOException {
         TagNormalizer.initTag(TermithIndex.get_lang());
-        LOGGER.debug("temporary folder created: " + termithIndex.get_corpus());
-        Files.createDirectories(Paths.get(termithIndex.get_corpus() + "/json"));
-        Files.createDirectories(Paths.get(termithIndex.get_corpus() + "/txt"));
-        LOGGER.debug("create temporary text files in " + termithIndex.get_corpus() + "/txt folder");
+        LOGGER.debug("temporary folder created: " + _termithIndex.get_corpus());
+        Files.createDirectories(Paths.get(_termithIndex.get_corpus() + "/json"));
+        Files.createDirectories(Paths.get(_termithIndex.get_corpus() + "/txt"));
+        LOGGER.debug("create temporary text files in " + _termithIndex.get_corpus() + "/txt folder");
     }
 }

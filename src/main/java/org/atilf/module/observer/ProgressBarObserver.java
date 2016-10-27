@@ -10,18 +10,17 @@ import java.util.Observer;
  *         Created on 19/09/16.
  */
 public class ProgressBarObserver implements Observer{
-    ProgressBar progressBar;
-    String message;
+    private ProgressBar _progressBar;
 
     public ProgressBarObserver(String message) {
-        this.progressBar = new ProgressBar(message);
+        _progressBar = new ProgressBar(message);
     }
 
     @Override
     public synchronized void update(Observable observable, Object o) {
         TermithObservable termithObservable = (TermithObservable) observable;
-        progressBar.update(termithObservable.getCurrentDone(),
-                termithObservable.getCurrentTotal(),
-                termithObservable.getCurrentLogger());
+        _progressBar.update(termithObservable.get_currentDone(),
+                termithObservable.get_currentTotal(),
+                termithObservable.get_currentLogger());
     }
 }

@@ -8,11 +8,12 @@ import org.slf4j.Logger;
  *         Created on 19/09/16.
  */
 public class InitCorpusTimer extends ProgressBarTimer{
+
     public InitCorpusTimer(TermithIndex termithIndex, Logger logger) {
         super(termithIndex, "Init corpus progression", logger);
     }
     @Override
     public void run() {
-        update(termithIndex.get_xmlCorpus().size());
+        update(_termithIndex.get_xmlCorpus().size());
     }
 }

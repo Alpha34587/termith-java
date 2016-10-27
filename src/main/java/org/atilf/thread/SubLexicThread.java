@@ -17,22 +17,23 @@ import java.util.concurrent.TimeUnit;
  *         Created on 12/10/16.
  */
 public class SubLexicThread {
-    private final TermithIndex termithIndex;
-    private final int poolSize;
+
+    private final TermithIndex _termithIndex;
+    private final int _poolSize;
     private static final Logger LOGGER = LoggerFactory.getLogger(SubLexicThread.class.getName());
 
     public SubLexicThread(TermithIndex termithIndex, int poolSize) {
 
-        this.termithIndex = termithIndex;
-        this.poolSize = poolSize;
+        _termithIndex = termithIndex;
+        _poolSize = poolSize;
     }
 
     public void execute() throws IOException, InterruptedException {
-        ExecutorService executor = Executors.newFixedThreadPool(poolSize);
+        ExecutorService executor = Executors.newFixedThreadPool(_poolSize);
         Files.list(TermithIndex.get_base()).forEach(
                 p -> {
-                    executor.submit(new SubLexicExtractorWorker(p,termithIndex));
-                    executor.submit(new LexicExtractorWorker(p,termithIndex));
+                    executor.submit(new SubLexicExtractorWorker(p, _termithIndex));
+                    executor.submit(new LexicExtractorWorker(p, _termithIndex));
                 }
         );
         LOGGER.info("Waiting SubLexicExtractorWorker executors to finish");

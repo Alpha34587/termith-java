@@ -12,54 +12,51 @@ import java.util.concurrent.ConcurrentHashMap;
  *         Created on 19/09/16.
  */
 public class TermithObservable extends Observable {
-    private int currentDone;
-    private int currentTotal;
-    private Logger currentLogger;
-    private Map<Logger, Observer> observerMap;
+    private int _currentDone;
+    private int _currentTotal;
+    private Logger _currentLogger;
+    private Map<Logger, Observer> _observerMap;
     public TermithObservable() {
-        observerMap = new ConcurrentHashMap<>();
+        _observerMap = new ConcurrentHashMap<>();
     }
 
     public synchronized void changeValue(int done, int total, Logger logger){
-        setCurrentDone(done);
-        setCurrentTotal(total);
-        setCurrentLogger(logger);
+        set_currentDone(done);
+        set_currentTotal(total);
+        set_currentLogger(logger);
         setChanged();
         notifyObservers(logger);
     }
 
-    public Logger getCurrentLogger() {
-        return currentLogger;
+    public Logger get_currentLogger() {
+        return _currentLogger;
     }
 
-    public void setCurrentLogger(Logger currentLogger) {
-        this.currentLogger = currentLogger;
+    public int get_currentTotal() {
+        return _currentTotal;
     }
 
-    public synchronized void setCurrentDone(int currentDone) {
-        this.currentDone = currentDone;
+    public int get_currentDone() { return _currentDone; }
+
+    public void set_currentLogger(Logger _currentLogger) {
+        this._currentLogger = _currentLogger;
     }
 
-    public synchronized void setCurrentTotal(int currentTotal) {
-        this.currentTotal = currentTotal;
+    public synchronized void set_currentDone(int _currentDone) {
+        this._currentDone = _currentDone;
     }
 
-    public int getCurrentTotal() {
-        return currentTotal;
-    }
-
-    public int getCurrentDone() {
-
-        return currentDone;
+    public synchronized void set_currentTotal(int _currentTotal) {
+        this._currentTotal = _currentTotal;
     }
 
     public synchronized void addObserver(Observer observer, Logger logger) {
         super.addObserver(observer);
-        observerMap.put(logger,observer);
+        _observerMap.put(logger,observer);
     }
 
     public void deleteObserver(Logger logger){
-        deleteObserver(observerMap.get(logger));
+        deleteObserver(_observerMap.get(logger));
     }
 
 }

@@ -12,7 +12,7 @@ import eu.project.ttc.tools.cli.TermSuiteCLIUtils;
  */
 public class PipelineBuilder {
 
-    private TermSuitePipeline termsuitePipeline;
+    private TermSuitePipeline _termsuitePipeline;
 
     /**
      * create a termsuite pipeline with decided parameter for the termith project
@@ -24,7 +24,7 @@ public class PipelineBuilder {
                            String jarResource) {
         
         TermSuiteCLIUtils.setGlobalLogLevel(Level.INFO);
-        this.termsuitePipeline = TermSuitePipeline.create(lang)
+        _termsuitePipeline = TermSuitePipeline.create(lang)
                 .setResourceJar(jarResource)
                 .setCollection(
                         TermSuiteCollection.JSON,
@@ -54,11 +54,11 @@ public class PipelineBuilder {
      * run the termsuite pipeline
      */
     public void start(){
-        this.termsuitePipeline.run();
+        this._termsuitePipeline.run();
     }
 
-    public TermSuitePipeline getTermsuitePipeline() {
-        return termsuitePipeline;
+    public TermSuitePipeline get_termsuitePipeline() {
+        return _termsuitePipeline;
     }
 
 }

@@ -8,28 +8,28 @@ import java.util.Objects;
  */
 public class TreeTaggerParameter {
 
-    private final String treeTaggerHome;
-    private boolean sgml;
-    private String lang;
+    private final String _treeTaggerHome;
+    private boolean _sgml;
+    private String _lang;
 
     public TreeTaggerParameter(boolean sgml, String lang, String treeTaggerHome){
 
-        this.sgml = sgml;
-        this.lang = lang;
-        this.treeTaggerHome = treeTaggerHome;
+        this._sgml = sgml;
+        this._lang = lang;
+        this._treeTaggerHome = treeTaggerHome;
     }
 
     public String parse() {
-        String parameter = treeTaggerHome + "/bin/tree-tagger " + treeTaggerHome + "/lib/";
+        String parameter = _treeTaggerHome + "/bin/tree-tagger " + _treeTaggerHome + "/lib/";
 
-        if (Objects.equals(lang, "fr")) {
+        if (Objects.equals(_lang, "fr")) {
             parameter += "french.par ";
         }
-        else if (Objects.equals(lang,"en")) {
+        else if (Objects.equals(_lang,"en")) {
             parameter += "english-utf8.par ";
         }
 
-        if (sgml) {
+        if (_sgml) {
             parameter +=  "-sgml ";
         }
          return parameter + "-no-unknown -token -lemma";

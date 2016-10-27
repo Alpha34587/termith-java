@@ -49,11 +49,11 @@ public class TermsuiteJsonReaderTest {
 
     @Test
     public void parsingTest(){
-        while (!expectedJsonReader.getTokenQueue().isEmpty() || !termsuiteJsonReader.getTokenQueue().isEmpty()) {
+        while (!expectedJsonReader.get_tokenQueue().isEmpty() || !termsuiteJsonReader.get_tokenQueue().isEmpty()) {
             try {
 
-                TermsuiteJsonReader.Token expected = expectedJsonReader.getTokenQueue().poll();
-                TermsuiteJsonReader.Token current = termsuiteJsonReader.getTokenQueue().poll();
+                TermsuiteJsonReader.Token expected = expectedJsonReader.get_tokenQueue().poll();
+                TermsuiteJsonReader.Token current = termsuiteJsonReader.get_tokenQueue().poll();
                 Assert.assertEquals("tokenStack must be equals :", expected.getBegin(),
                         current.getBegin());
                 Assert.assertEquals("tokenStack must be equals :", expected.getEnd(),

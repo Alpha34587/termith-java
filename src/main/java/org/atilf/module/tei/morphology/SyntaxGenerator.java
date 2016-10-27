@@ -13,38 +13,33 @@ import java.util.List;
  */
 public class SyntaxGenerator {
 
-    private TermsuiteJsonReader termsuiteJsonReader;
-    private StringBuilder txt;
-    private StringBuilder xml;
-    private StringBuilder tokenizeBody;
-    private StringBuilder standoff;
-    private List<MorphoSyntaxOffsetId> offsetId;
+    private TermsuiteJsonReader _termsuiteJsonReader;
+    private StringBuilder _txt;
+    private StringBuilder _xml;
+    private StringBuilder _tokenizeBody = new StringBuilder();
+    private StringBuilder _standoff = new StringBuilder();
+    private List<MorphoSyntaxOffsetId> _offsetId = new ArrayList<>();
 
     public SyntaxGenerator(File json, StringBuilder txt, StringBuilder xml) {
-
-        this.xml = xml;
-        this.txt = txt;
-        termsuiteJsonReader = new TermsuiteJsonReader(json);
-        termsuiteJsonReader.parsing();
-        tokenizeBody = new StringBuilder();
-        standoff = new StringBuilder();
-        offsetId = new ArrayList<>();
-
+        _xml = xml;
+        _txt = txt;
+        _termsuiteJsonReader = new TermsuiteJsonReader(json);
+        _termsuiteJsonReader.parsing();
     }
 
-    public StringBuilder getTokenizeBody() {
-        return tokenizeBody;
+    public StringBuilder get_tokenizeBody() {
+        return _tokenizeBody;
     }
 
-    public List<MorphoSyntaxOffsetId> getOffsetId() {
-        return offsetId;
+    public List<MorphoSyntaxOffsetId> get_offsetId() {
+        return _offsetId;
     }
 
     public void execute() throws Exception {
 
-        SyntaxParser syntaxParser = new SyntaxParser(txt,xml,termsuiteJsonReader, offsetId);
+        SyntaxParser syntaxParser = new SyntaxParser(_txt, _xml, _termsuiteJsonReader, _offsetId);
         syntaxParser.execute();
-        this.tokenizeBody = syntaxParser.getTokenizeBuffer();
-        this.offsetId = syntaxParser.getOffsetId();
+        _tokenizeBody = syntaxParser.get_tokenizeBuffer();
+        _offsetId = syntaxParser.get_offsetId();
     }
 }

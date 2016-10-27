@@ -4,7 +4,7 @@ import org.atilf.models.TermithIndex;
 import org.atilf.module.tei.morphology.SyntaxGenerator;
 import org.atilf.module.tools.FilesUtils;
 import org.atilf.module.treetagger.CorpusAnalyzer;
-import org.atilf.module.treetagger.TextAnalyzer;
+import org.atilf.models.TextAnalyzer;
 import org.atilf.module.treetagger.TreeTaggerToJson;
 import org.atilf.thread.AnalyzeThread;
 import org.slf4j.Logger;
@@ -38,7 +38,7 @@ public class TreeTaggerWorker implements Runnable {
         this.txt = (StringBuilder) FilesUtils.readObject(termithIndex.get_extractedText().get(id));
         this.txtPath = termithIndex.get_corpus() + "/txt/" + id + ".txt";
         this.jsonPath = termithIndex.get_corpus() + "/json/" + id + ".json";
-        this.textAnalyzer = corpusAnalyzer.getAnalyzedTexts().get(id);
+        this.textAnalyzer = corpusAnalyzer.get_analyzedTexts().get(id);
         this.xml = FilesUtils.readFile(termithIndex.get_xmlCorpus().get(id));
 
         try {
@@ -72,9 +72,9 @@ public class TreeTaggerWorker implements Runnable {
             SyntaxGenerator syntaxGenerator = new SyntaxGenerator(json,txt,xml);
             syntaxGenerator.execute();
             termithIndex.get_tokenizeTeiBody().put(json.getName().replace(".json",""),
-                    FilesUtils.writeObject(syntaxGenerator.getTokenizeBody(),termithIndex.get_corpus()));
+                    FilesUtils.writeObject(syntaxGenerator.get_tokenizeBody(),termithIndex.get_corpus()));
             termithIndex.get_morphoSyntaxStandOff().put(json.getName().replace(".json",""),
-                    FilesUtils.writeObject(syntaxGenerator.getOffsetId(),termithIndex.get_corpus()));
+                    FilesUtils.writeObject(syntaxGenerator.get_offsetId(),termithIndex.get_corpus()));
             LOGGER.debug("tokenization and morphosyntax tasks finished file : " + jsonPath);
 
         } catch (IOException e) {

@@ -17,32 +17,29 @@ import java.util.concurrent.TimeUnit;
  */
 abstract class ProgressBarTimer extends TimerTask {
 
-
-    protected TermithIndex termithIndex;
-    protected Timer timer;
-    protected Logger logger;
-    protected long delay;
-    protected long interval;
-    protected ScheduledExecutorService service;
-    protected TermithObservable termithObservable;
+    protected Timer _timer = new Timer();
+    protected TermithObservable _termithObservable = new TermithObservable();
+    protected TermithIndex _termithIndex;
+    protected Logger _logger;
+    protected long _delay;
+    protected long _interval;
+    protected ScheduledExecutorService _service;
 
     public ProgressBarTimer(TermithIndex termithIndex, String message,Logger logger){
         this(termithIndex,logger,3000, message);
     }
 
     public ProgressBarTimer(TermithIndex termithIndex, Logger logger, long interval, String message) {
-        this.termithIndex = termithIndex;
-        this.timer = new Timer();
-        this.logger = logger;
-        this.delay = 0;
-        this.interval = interval;
-        this.termithObservable = new TermithObservable();
-        termithObservable.addObserver(new ProgressBarObserver(message),logger);
+        _termithIndex = termithIndex;
+        _logger = logger;
+        _delay = 0;
+        _interval = interval;
+        _termithObservable.addObserver(new ProgressBarObserver(message),logger);
     }
 
     public void start(){
-        service = Executors.newSingleThreadScheduledExecutor();
-        service.scheduleAtFixedRate(this, delay, interval, TimeUnit.MILLISECONDS);
+        _service = Executors.newSingleThreadScheduledExecutor();
+        _service.scheduleAtFixedRate(this, _delay, _interval, TimeUnit.MILLISECONDS);
     }
 
     @Override
@@ -50,11 +47,11 @@ abstract class ProgressBarTimer extends TimerTask {
     }
 
     protected void update(int done) {
-        termithObservable.changeValue(done,
-                termithIndex.get_corpusSize(), logger);
-        if (termithIndex.get_corpusSize() == done){
-            timer.cancel();
-            service.shutdownNow();
+        _termithObservable.changeValue(done,
+                _termithIndex.get_corpusSize(), _logger);
+        if (_termithIndex.get_corpusSize() == done){
+            _timer.cancel();
+            _service.shutdownNow();
         }
     }
 

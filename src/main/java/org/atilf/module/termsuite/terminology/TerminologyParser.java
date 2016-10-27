@@ -23,27 +23,25 @@ import static org.atilf.models.JsonTermResources.*;
  *         Created on 14/09/16.
  */
 public class TerminologyParser {
+    private Path _path;
+    private Map<String,List<TermsOffsetId>> _standOffTerminology = new ConcurrentHashMap<>();
+    private Map<String,String> _idSource = new HashMap<>();
+    private String _currentFile;
+    private final JsonFactory _factory = new JsonFactory();
     private static final Logger LOGGER = LoggerFactory.getLogger(TerminologyParser.class.getName());
-    private Path path;
-    private Map<String,List<TermsOffsetId>> standOffTerminology;
-    private Map<String,String> idSource;
-    private final JsonFactory factory = new JsonFactory();
-    private String currentFile;
 
     public TerminologyParser(Path path) {
-        this.path = path;
-        standOffTerminology = new ConcurrentHashMap<>();
-        idSource = new HashMap<>();
-        currentFile = "";
+        _path = path;
+        _currentFile = "";
     }
 
-    public Map<String, List<TermsOffsetId>> getStandOffTerminology() {
-        return standOffTerminology;
+    public Map<String, List<TermsOffsetId>> get_standOffTerminology() {
+        return _standOffTerminology;
     }
 
     public void execute() throws IOException {
         try {
-            JsonParser parser = factory.createParser(new File(path.toString()));
+            JsonParser parser = _factory.createParser(new File(_path.toString()));
             JsonToken jsonToken;
             boolean inTerms = false;
             boolean inSource = false;
@@ -88,13 +86,13 @@ public class TerminologyParser {
 
     private void fillTerminology(TermsOffsetId offsetId) {
         String realId =
-                FilesUtils.nameNormalizer(idSource.get(currentFile));
-        if (standOffTerminology.containsKey(realId)){
-            standOffTerminology.get(realId).add(new TermsOffsetId(offsetId));
+                FilesUtils.nameNormalizer(_idSource.get(_currentFile));
+        if (_standOffTerminology.containsKey(realId)){
+            _standOffTerminology.get(realId).add(new TermsOffsetId(offsetId));
         }
 
         else {
-            standOffTerminology.put(realId,new ArrayList<>(
+            _standOffTerminology.put(realId,new ArrayList<>(
                     Collections.singletonList(new TermsOffsetId(offsetId))));
         }
     }
@@ -118,7 +116,7 @@ public class TerminologyParser {
                     offsetId.set_end(parser.nextIntValue(0));
                     break;
                 case T_FILE :
-                    currentFile = String.valueOf(parser.nextIntValue(0));
+                    _currentFile = String.valueOf(parser.nextIntValue(0));
                     break;
                 default:
                     break;
@@ -129,7 +127,7 @@ public class TerminologyParser {
 
     private void extractInputSource(JsonToken jsonToken, JsonParser parser) throws IOException {
         if (jsonToken.equals(JsonToken.FIELD_NAME)) {
-            idSource.put(parser.getCurrentName(),
+            _idSource.put(parser.getCurrentName(),
                     FilesUtils.nameNormalizer(parser.nextTextValue()));
         }
     }

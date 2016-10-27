@@ -14,7 +14,7 @@ public class TerminologyTimer extends ProgressBarTimer {
     }
     @Override
     public void run() {
-        update(termithIndex.get_terminologyStandOff().size());
+        update(_termithIndex.get_terminologyStandOff().size());
     }
 
 }

@@ -18,24 +18,23 @@ import java.util.concurrent.TimeUnit;
  */
 public class DisambEvaluationThread {
 
-    private final TermithIndex termithIndex;
-    private final int poolSize;
+    private final TermithIndex _termithIndex;
+    private final int _poolSize;
     private static final Logger LOGGER = LoggerFactory.getLogger(DisambEvaluationThread.class.getName());
 
     public DisambEvaluationThread(TermithIndex termithIndex, int poolSize) {
-
-        this.termithIndex = termithIndex;
-        this.poolSize = poolSize;
+        _termithIndex = termithIndex;
+        _poolSize = poolSize;
     }
 
     public void execute() throws IOException, InterruptedException {
-        ExecutorService executor = Executors.newFixedThreadPool(poolSize);
+        ExecutorService executor = Executors.newFixedThreadPool(_poolSize);
         Files.list(TermithIndex.get_base()).forEach(
-                p -> executor.submit(new EvaluationExtractorWorker(p,termithIndex))
+                p -> executor.submit(new EvaluationExtractorWorker(p, _termithIndex))
         );
 
-        termithIndex.get_evaluationLexic().forEach(
-                (key,value) -> executor.submit(new EvaluationWorker(value,termithIndex))
+        _termithIndex.get_evaluationLexic().forEach(
+                (key,value) -> executor.submit(new EvaluationWorker(value, _termithIndex))
         );
 
         LOGGER.info("Waiting SubLexicExtractorWorker executors to finish");

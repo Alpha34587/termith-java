@@ -14,7 +14,7 @@ public class TokenizeTimer extends ProgressBarTimer {
     }
     @Override
     public void run() {
-        update(termithIndex.get_tokenizeTeiBody().size());
+        update(_termithIndex.get_tokenizeTeiBody().size());
     }
 
 }

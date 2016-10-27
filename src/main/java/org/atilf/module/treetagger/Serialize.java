@@ -3,6 +3,7 @@ package org.atilf.module.treetagger;
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonGenerator;
 import org.atilf.models.TagNormalizer;
+import org.atilf.models.TextAnalyzer;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -16,28 +17,27 @@ import java.util.ArrayDeque;
  */
 public class Serialize {
 
-    private ArrayDeque tokenDeque;
-    private StringBuilder txt;
-    private String jsonPath;
-    private TextAnalyzer textAnalyzer;
+    private ArrayDeque<String> _tokenDeque = new ArrayDeque<String>();
+    private StringBuilder _txt;
+    private String _jsonPath;
+    private TextAnalyzer _textAnalyzer;
 
     public Serialize(StringBuilder tokenDeque, String jsonPath, StringBuilder txt
             , TextAnalyzer textAnalyzer) {
-        this.tokenDeque = new ArrayDeque();
         populateTokenDeque(tokenDeque);
-        this.txt = txt;
-        this.jsonPath = jsonPath;
-        this.textAnalyzer = textAnalyzer;
+        this._txt = txt;
+        this._jsonPath = jsonPath;
+        this._textAnalyzer = textAnalyzer;
     }
 
     private void populateTokenDeque(StringBuilder tokenDeque) {
         for (String token : tokenDeque.toString().split("\n")) {
-            this.tokenDeque.add(token);
+            this._tokenDeque.add(token);
         }
     }
 
     public void execute() throws IOException {
-        FileOutputStream fos = new FileOutputStream(jsonPath);
+        FileOutputStream fos = new FileOutputStream(_jsonPath);
         Writer writer = new OutputStreamWriter(fos, "UTF-8");
         JsonFactory jfactory = new JsonFactory();
         JsonGenerator jg = jfactory.createGenerator(writer);
@@ -67,7 +67,7 @@ public class Serialize {
 
     private void writeText(JsonGenerator jg) throws IOException {
         jg.writeFieldName("covered_text");
-        jg.writeString(txt.toString());
+        jg.writeString(_txt.toString());
 
     }
 
@@ -75,25 +75,25 @@ public class Serialize {
         jg.writeFieldName("sdi");
         jg.writeStartObject();
         jg.writeFieldName("uri");
-        jg.writeString("file:/"+ jsonPath);
+        jg.writeString("file:/"+ _jsonPath);
         jg.writeFieldName("off_in_s");
         jg.writeNumber(0);
         jg.writeFieldName("document_index");
-        jg.writeNumber(textAnalyzer.getDocIndex());
+        jg.writeNumber(_textAnalyzer.get_docIndex());
         jg.writeFieldName("nb_documents");
-        jg.writeNumber(textAnalyzer.getNbOfDocs());
+        jg.writeNumber(_textAnalyzer.get_nbOfDocs());
         jg.writeFieldName("document_size");
-        jg.writeNumber(textAnalyzer.getDocumentSize());
+        jg.writeNumber(_textAnalyzer.get_documentSize());
         jg.writeFieldName("cumul_doc_size");
-        jg.writeNumber(textAnalyzer.getCumulSize());
+        jg.writeNumber(_textAnalyzer.get_cumulSize());
         jg.writeFieldName("corpus_size");
-        jg.writeNumber(textAnalyzer.getTotalSize());
+        jg.writeNumber(_textAnalyzer.get_totalSize());
         jg.writeFieldName("last_segment");
-        jg.writeBoolean(textAnalyzer.getIsLastDoc());
+        jg.writeBoolean(_textAnalyzer.getIsLastDoc());
         jg.writeFieldName("begin");
-        jg.writeNumber(textAnalyzer.getBegin());
+        jg.writeNumber(_textAnalyzer.get_begin());
         jg.writeFieldName("end");
-        jg.writeNumber(textAnalyzer.getEnd());
+        jg.writeNumber(_textAnalyzer.get_end());
         jg.writeEndObject();
     }
 
@@ -101,8 +101,8 @@ public class Serialize {
         Integer[] offset = new Integer[]{0,1};
         jg.writeFieldName("word_annotations");
         jg.writeStartArray();
-        while (!tokenDeque.isEmpty()){
-            String[] line = tokenDeque.poll().toString().split("\t");
+        while (!_tokenDeque.isEmpty()){
+            String[] line = _tokenDeque.poll().toString().split("\t");
 
             jg.writeStartObject();
             addTag(line[1], jg);
@@ -139,12 +139,12 @@ public class Serialize {
         while (end == -1){
             char ch = letterCharArray[cpt];
 
-            if (!findBegin && txt.charAt(offset[0]) == ch) {
+            if (!findBegin && _txt.charAt(offset[0]) == ch) {
                 findBegin = true;
                 begin = offset[0];
             }
 
-            if (cpt == letterCharArray.length -1  && txt.charAt(offset[0]) == ch)
+            if (cpt == letterCharArray.length -1  && _txt.charAt(offset[0]) == ch)
                 end = offset[1];
 
             if (findBegin)

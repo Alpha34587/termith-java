@@ -14,39 +14,39 @@ import java.io.IOException;
 import java.io.StringWriter;
 
 /**
- * The textExtractor class is used extract the plain text of an XML file
+ * The textExtractor class is used extract the plain text of an XML _file
  * @author Simon Meoni
  * Created on 25/07/16.
  */
 public class TextExtractor {
     private static final Logger LOGGER = LoggerFactory.getLogger(TextExtractor.class.getName());
-    private File file;
-    private XslResources xslResources;
+    private File _file;
+    private XslResources _xslResources;
 
     /**
      * builder for textExtractor
-     * @param file Treated xml/tei file
+     * @param file Treated xml/tei _file
      * @param xslResources
      */
     public TextExtractor(File file, XslResources xslResources) {
-        this.file = file;
-        this.xslResources = xslResources;
+        _file = file;
+        _xslResources = xslResources;
     }
 
     /**
-     * this method apply an xsl stylesheet to a file given in parameter. it extracts the plain text of the xml file
+     * this method apply an xsl stylesheet to a _file given in parameter. it extracts the plain text of the xml _file
      * @return the extracted text
      * @throws IOException
      */
     public StringBuilder xsltTransformation() throws IOException {
-        Source input = new StreamSource(file);
-        Transformer transformer = null;
+        Source input = new StreamSource(_file);
+        Transformer transformer;
         StringWriter stringWriter = new StringWriter();
         StreamResult streamResult = new StreamResult(stringWriter);
 
         try {
-            LOGGER.debug("apply " + xslResources.EXTRACT_TEXT.toString() + "to xml file" + input.toString());
-            transformer = xslResources.FACTORY.newTransformer(xslResources.EXTRACT_TEXT);
+            LOGGER.debug("apply " + _xslResources.EXTRACT_TEXT.toString() + "to xml file" + input.toString());
+            transformer = _xslResources.FACTORY.newTransformer(_xslResources.EXTRACT_TEXT);
             transformer.transform(input, streamResult);
 
         } catch (TransformerException e) {

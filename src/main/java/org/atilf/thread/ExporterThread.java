@@ -19,12 +19,11 @@ import java.util.concurrent.TimeUnit;
  */
 public class ExporterThread {
 
-    private static final Logger LOGGER =  LoggerFactory.getLogger(ExporterThread.class.getName());
+    private TermithIndex _termithIndex;
+    private ExecutorService _executor;
+    private CountDownLatch _corpusCnt;
     private static final int DEFAULT_POOL_SIZE = Runtime.getRuntime().availableProcessors();
-
-    private TermithIndex termithIndex;
-    private ExecutorService executor;
-    private CountDownLatch corpusCnt;
+    private static final Logger LOGGER =  LoggerFactory.getLogger(ExporterThread.class.getName());
 
     /**
      * a constructor of initialize who take on parameter a folder path with xml files
@@ -40,18 +39,18 @@ public class ExporterThread {
      * @param termithIndex the input of folder
      */
     public ExporterThread(int poolSize, TermithIndex termithIndex) throws IOException {
-        this.termithIndex = termithIndex;
-        this.executor = Executors.newFixedThreadPool(poolSize);
+        _termithIndex = termithIndex;
+        _executor = Executors.newFixedThreadPool(poolSize);
     }
 
     public void execute() throws InterruptedException {
-        new ExporterTimer(termithIndex,LOGGER).start();
+        new ExporterTimer(_termithIndex,LOGGER).start();
         StandOffResources standOffResources = new StandOffResources();
-        termithIndex.get_xmlCorpus().forEach(
-                (key,value) -> executor.submit(new TeiWriterWorker(key,termithIndex,standOffResources))
+        _termithIndex.get_xmlCorpus().forEach(
+                (key,value) -> _executor.submit(new TeiWriterWorker(key, _termithIndex,standOffResources))
         );
         LOGGER.info("Waiting executors to finish");
-        executor.shutdown();
-        executor.awaitTermination(1L, TimeUnit.DAYS);
+        _executor.shutdown();
+        _executor.awaitTermination(1L, TimeUnit.DAYS);
     }
 }
