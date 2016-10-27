@@ -21,9 +21,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.*;
 
-import static org.atilf.models.TermithIndex._lang;
-import static org.atilf.models.TermithIndex._outputPath;
-
 /**
  * @author Simon Meoni
  *         Created on 01/09/16.
@@ -42,7 +39,7 @@ public class AnalyzeThread {
     }
 
     public AnalyzeThread(int poolSize, TermithIndex termithIndex) throws IOException {
-        termithIndex.set_corpus(_outputPath);
+        termithIndex.set_corpus(TermithIndex.get_outputPath());
         executorService = Executors.newFixedThreadPool(poolSize);
         this.termithIndex = termithIndex;
         jsonCnt = new CountDownLatch(termithIndex.get_extractedText().size());
@@ -93,7 +90,7 @@ public class AnalyzeThread {
     }
 
     private void init() throws IOException {
-        TagNormalizer.initTag(_lang);
+        TagNormalizer.initTag(TermithIndex.get_lang());
         LOGGER.debug("temporary folder created: " + termithIndex.get_corpus());
         Files.createDirectories(Paths.get(termithIndex.get_corpus() + "/json"));
         Files.createDirectories(Paths.get(termithIndex.get_corpus() + "/txt"));

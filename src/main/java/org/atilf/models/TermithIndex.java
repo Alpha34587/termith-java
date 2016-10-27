@@ -18,11 +18,11 @@ import java.util.concurrent.CopyOnWriteArrayList;
  */
 public class TermithIndex {
 
-    public static Path _outputPath;
-    public static String _lang;
-    public static String _treeTaggerHome;
-    public static Path _base;
-    public static boolean _keepFiles;
+    private static Path _outputPath;
+    private static String _lang;
+    private static String _treeTaggerHome;
+    private static Path _base;
+    private static boolean _keepFiles;
 
     public Path _corpus = null;
     public Path _disambAnnotation;
@@ -53,6 +53,7 @@ public class TermithIndex {
     /*
     Getter
      */
+
     public List<Path> get_terminologies() {
         return _terminologies;
     }
@@ -106,6 +107,18 @@ public class TermithIndex {
     public Map<String, Path> get_extractedText() {
         return _extractedText;
     }
+
+    public static Path get_outputPath() { return _outputPath;}
+
+    public static String get_lang() { return _lang; }
+
+    public static String get_treeTaggerHome() { return _treeTaggerHome; }
+
+    public static Path get_base() { return _base; }
+
+    public static boolean is_keepFiles() { return _keepFiles; }
+
+    public Path get_disambAnnotation() { return _disambAnnotation; }
 
     /*
     Setter

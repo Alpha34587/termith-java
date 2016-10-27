@@ -12,8 +12,6 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
-import static org.atilf.models.TermithIndex._base;
-
 /**
  * @author Simon Meoni
  *         Created on 12/10/16.
@@ -31,7 +29,7 @@ public class SubLexicThread {
 
     public void execute() throws IOException, InterruptedException {
         ExecutorService executor = Executors.newFixedThreadPool(poolSize);
-        Files.list(_base).forEach(
+        Files.list(TermithIndex.get_base()).forEach(
                 p -> {
                     executor.submit(new SubLexicExtractorWorker(p,termithIndex));
                     executor.submit(new LexicExtractorWorker(p,termithIndex));

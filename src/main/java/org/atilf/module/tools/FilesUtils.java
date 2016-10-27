@@ -12,8 +12,6 @@ import java.nio.file.StandardCopyOption;
 import java.util.Map;
 import java.util.UUID;
 
-import static org.atilf.models.TermithIndex._outputPath;
-
 /**
  * FileUtilities group several static method in order to manipulate the file system during the different process of
  * TermithText
@@ -75,11 +73,11 @@ public class FilesUtils {
         try {
             LOGGER.debug("copying tbx and json terminology ...");
             Files.copy(termithIndex.get_terminologies().get(0),
-                    Paths.get(_outputPath +"/terminology.tbx"),
+                    Paths.get(TermithIndex.get_outputPath() +"/terminology.tbx"),
                     StandardCopyOption.REPLACE_EXISTING);
 
             Files.copy(termithIndex.get_terminologies().get(1),
-                    Paths.get(_outputPath +"/terminology.json"),
+                    Paths.get(TermithIndex.get_outputPath() +"/terminology.json"),
                     StandardCopyOption.REPLACE_EXISTING);
         } catch (IOException e) {
             LOGGER.error("cannot copy terminologies",e);

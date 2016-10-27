@@ -8,35 +8,32 @@ import java.util.List;
  *         Created on 14/09/16.
  */
 public class TermsOffsetId extends OffsetId {
-    private String word;
-    private int termId;
+    private String _word;
+    private int _termId;
     public TermsOffsetId(int begin, int end, int id, String word) {
         super();
-        this._begin = begin;
-        this._end = end;
-        this.word = word;
-        this.termId = id;
-        this._ids = new ArrayList<>();
+        _begin = begin;
+        _end = end;
+        _word = word;
+        _termId = id;
     }
 
-    public TermsOffsetId() {
+    public TermsOffsetId() {}
+
+    public void set_word(String _word) {
+        this._word = _word;
     }
 
-    public void setWord(String word) {
-        this.word = word;
+    public void set_termId(int _termId) {
+        this._termId = _termId;
     }
 
-    public void setTermId(int termId) {
-        this.termId = termId;
+    public String get_word() {
+        return _word;
     }
 
-
-    public String getWord() {
-        return word;
-    }
-
-    public int getTermId() {
-        return termId;
+    public int get_termId() {
+        return _termId;
     }
 
     public void setIds(List<Integer> ids){
@@ -44,10 +41,9 @@ public class TermsOffsetId extends OffsetId {
     }
 
     public TermsOffsetId(TermsOffsetId other) {
-        this._begin = other._begin;
-        this._end = other._end;
-        this.word = other.word;
-        this.termId = other.termId;
-        this._ids = new ArrayList<>();
+        _begin = other._begin;
+        _end = other._end;
+        _word = other._word;
+        _termId = other._termId;
     }
 }

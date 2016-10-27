@@ -6,18 +6,15 @@ import org.atilf.module.tools.FilesUtils;
 import org.atilf.module.treetagger.CorpusAnalyzer;
 import org.atilf.module.treetagger.TextAnalyzer;
 import org.atilf.module.treetagger.TreeTaggerToJson;
+import org.atilf.thread.AnalyzeThread;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.atilf.thread.AnalyzeThread;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.concurrent.CountDownLatch;
-
-import static org.atilf.models.TermithIndex._lang;
-import static org.atilf.models.TermithIndex._treeTaggerHome;
 
 /**
  * @author Simon Meoni
@@ -56,10 +53,10 @@ public class TreeTaggerWorker implements Runnable {
         TreeTaggerToJson treeTaggerToJson = new TreeTaggerToJson(
                 txt,
                 jsonPath,
-                _treeTaggerHome,
-                _lang,
+                TermithIndex.get_treeTaggerHome(),
+                TermithIndex.get_lang(),
                 textAnalyzer,
-                TermithIndex._outputPath.toString()
+                TermithIndex.get_outputPath().toString()
         );
 
 

@@ -56,7 +56,7 @@ public class TerminologyParserTest {
     }
 
     private String parse(TermsOffsetId offset) {
-        return offset.get_begin() + " " + offset.get_end() + " " + offset.getWord() + " " + offset.getTermId();
+        return offset.get_begin() + " " + offset.get_end() + " " + offset.get_word() + " " + offset.get_termId();
     }
 
 }

@@ -14,8 +14,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
-import static org.atilf.models.TermithIndex._outputPath;
-
 /**
  * @author Simon Meoni
  *         Created on 16/09/16.
@@ -35,7 +33,7 @@ public class TeiWriterWorker implements Runnable {
     }
     @Override
     public void run() {
-        Path outputFile = Paths.get(_outputPath + "/" + key + ".xml");
+        Path outputFile = Paths.get(TermithIndex.get_outputPath() + "/" + key + ".xml");
         LOGGER.debug("writing : " + outputFile);
         TeiWriter teiWriter = null;
         try {

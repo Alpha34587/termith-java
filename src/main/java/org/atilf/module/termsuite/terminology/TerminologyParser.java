@@ -106,10 +106,10 @@ public class TerminologyParser {
 
             switch (parser.getCurrentName()){
                 case T_ID :
-                    offsetId.setTermId(parser.nextIntValue(0));
+                    offsetId.set_termId(parser.nextIntValue(0));
                     break;
                 case T_TEXT :
-                    offsetId.setWord(parser.nextTextValue());
+                    offsetId.set_word(parser.nextTextValue());
                     break;
                 case F_BEGIN :
                     offsetId.set_begin(parser.nextIntValue(0));

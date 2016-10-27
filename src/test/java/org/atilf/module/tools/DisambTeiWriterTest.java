@@ -48,7 +48,7 @@ public class DisambTeiWriterTest {
     public void execute() throws Exception {
         Assert.assertEquals("these files must be equals",
                 Files.readLines(new File("src/test/resources/corpus/disamb-tei/test2-disamb.xml"),Charset.defaultCharset()),
-                Files.readLines(new File(TermithIndex._outputPath + "/test2.xml"), Charset.defaultCharset())
+                Files.readLines(new File(TermithIndex.get_outputPath() + "/test2.xml"), Charset.defaultCharset())
                 );
     }
 

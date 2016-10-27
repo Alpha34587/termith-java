@@ -77,7 +77,7 @@ public class DisambTeiWriter {
                 transformer.setOutputProperty(OutputKeys.DOCTYPE_PUBLIC, "yes");
                 doc.setXmlStandalone(true);
                 DOMSource source = new DOMSource(doc);
-                StreamResult result = new StreamResult(TermithIndex._outputPath + "/"
+                StreamResult result = new StreamResult(TermithIndex.get_outputPath() + "/"
                         + FilesUtils.nameNormalizer(p) + ".xml");
                 transformer.transform(source, result);
             } catch (TransformerException e) {

@@ -17,7 +17,7 @@ public class CleanerThread {
 
     public void execute() throws InterruptedException {
         ExecutorService executor = Executors.newSingleThreadExecutor();
-        executor.submit(new CleanerWorker(TermithIndex._outputPath,TermithIndex._keepFiles));
+        executor.submit(new CleanerWorker(TermithIndex.get_outputPath(),TermithIndex.is_keepFiles()));
         executor.shutdown();
         executor.awaitTermination(1L, TimeUnit.DAYS);
     }

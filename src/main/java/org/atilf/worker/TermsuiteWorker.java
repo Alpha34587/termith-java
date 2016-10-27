@@ -11,8 +11,6 @@ import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-import static org.atilf.models.TermithIndex._lang;
-
 /**
  * @author Simon Meoni
  *         Created on 16/09/16.
@@ -32,7 +30,7 @@ public class TermsuiteWorker implements Runnable{
         LOGGER.info("Build Termsuite Pipeline");
         init();
         PipelineBuilder pipelineBuilder = new PipelineBuilder(
-                _lang,
+                TermithIndex.get_lang(),
                 jsonCorpus,
                 termithIndex.get_terminologies().get(0).toString(),
                 termithIndex.get_terminologies().get(1).toString(),

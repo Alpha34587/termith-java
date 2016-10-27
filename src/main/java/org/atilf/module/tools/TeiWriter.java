@@ -107,8 +107,8 @@ public class TeiWriter {
         for (TermsOffsetId token : termsOffsetIds) {
             StringBuilder entry = new StringBuilder(stdfRes.T_SPAN);
             replaceTemplate(entry,"@target", serializeId(token.get_ids()));
-            replaceTemplate(entry, "@corresp", String.valueOf(token.getTermId()));
-            replaceTemplate(entry, "@string", replaceXmlChar(token.getWord()));
+            replaceTemplate(entry, "@corresp", String.valueOf(token.get_termId()));
+            replaceTemplate(entry, "@string", replaceXmlChar(token.get_word()));
             bufferedWriter.append(entry);
         }
         bufferedWriter.append(cut(stdfRes.LIST_ANNOTATION,true));
