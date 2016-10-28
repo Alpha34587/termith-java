@@ -1,6 +1,6 @@
 package org.atilf.module.disambiguisation;
 
-import org.atilf.models.GlobalLexic;
+import org.atilf.models.disambiguisation.GlobalLexic;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
@@ -14,7 +14,7 @@ import javax.xml.xpath.*;
 
 import java.io.IOException;
 
-import static org.atilf.models.SubLexicResource.NAMESPACE_CONTEXT;
+import static org.atilf.models.disambiguisation.SubLexicResource.NAMESPACE_CONTEXT;
 
 /**
  * @author Simon Meoni

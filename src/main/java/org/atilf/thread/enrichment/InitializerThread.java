@@ -1,6 +1,6 @@
-package org.atilf.thread;
+package org.atilf.thread.enrichment;
 
-import org.atilf.models.TermithIndex;
+import org.atilf.models.termith.TermithIndex;
 import org.atilf.module.timer.ExtractTextTimer;
 import org.atilf.worker.InitCorpusWorker;
 import org.atilf.worker.TextExtractorWorker;

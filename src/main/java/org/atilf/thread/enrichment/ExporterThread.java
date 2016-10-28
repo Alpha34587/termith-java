@@ -1,7 +1,7 @@
-package org.atilf.thread;
+package org.atilf.thread.enrichment;
 
-import org.atilf.models.StandOffResources;
-import org.atilf.models.TermithIndex;
+import org.atilf.models.tei.exporter.StandOffResources;
+import org.atilf.models.termith.TermithIndex;
 import org.atilf.module.timer.ExporterTimer;
 import org.atilf.worker.TeiWriterWorker;
 import org.slf4j.Logger;

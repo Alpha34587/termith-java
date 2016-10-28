@@ -1,5 +1,6 @@
-package org.atilf.models;
+package org.atilf.models.disambiguisation;
 
+import org.atilf.models.disambiguisation.GlobalLexic;
 import org.atilf.module.disambiguisation.LexicalProfile;
 
 import java.util.ArrayList;

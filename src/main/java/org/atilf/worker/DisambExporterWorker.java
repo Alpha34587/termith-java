@@ -1,6 +1,6 @@
 package org.atilf.worker;
 
-import org.atilf.models.TermithIndex;
+import org.atilf.models.termith.TermithIndex;
 import org.atilf.module.tools.DisambTeiWriter;
 import org.atilf.module.tools.FilesUtils;
 

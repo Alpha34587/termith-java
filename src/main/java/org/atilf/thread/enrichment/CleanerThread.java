@@ -1,6 +1,6 @@
-package org.atilf.thread;
+package org.atilf.thread.enrichment;
 
-import org.atilf.models.TermithIndex;
+import org.atilf.models.termith.TermithIndex;
 import org.atilf.worker.CleanerWorker;
 
 import java.util.concurrent.ExecutorService;

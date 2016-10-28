@@ -1,8 +1,8 @@
 package org.atilf.worker;
 
-import org.atilf.models.MorphoSyntaxOffsetId;
-import org.atilf.models.StandOffResources;
-import org.atilf.models.TermithIndex;
+import org.atilf.models.termsuite.MorphoSyntaxOffsetId;
+import org.atilf.models.tei.exporter.StandOffResources;
+import org.atilf.models.termith.TermithIndex;
 import org.atilf.module.tools.FilesUtils;
 import org.atilf.module.tools.TeiWriter;
 import org.slf4j.Logger;

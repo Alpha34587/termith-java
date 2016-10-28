@@ -1,8 +1,8 @@
 package org.atilf.worker;
 
-import org.atilf.models.MorphoSyntaxOffsetId;
-import org.atilf.models.TermithIndex;
-import org.atilf.models.TermsOffsetId;
+import org.atilf.models.termsuite.MorphoSyntaxOffsetId;
+import org.atilf.models.termith.TermithIndex;
+import org.atilf.models.termsuite.TermsOffsetId;
 import org.atilf.module.termsuite.terminology.TerminologyStandOff;
 import org.atilf.module.tools.FilesUtils;
 import org.slf4j.Logger;

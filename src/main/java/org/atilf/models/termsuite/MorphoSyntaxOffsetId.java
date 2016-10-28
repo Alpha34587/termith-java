@@ -1,4 +1,4 @@
-package org.atilf.models;
+package org.atilf.models.termsuite;
 
 import java.util.List;
 

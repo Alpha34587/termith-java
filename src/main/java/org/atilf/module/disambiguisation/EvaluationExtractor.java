@@ -10,7 +10,7 @@ import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathExpressionException;
 import java.util.Map;
 
-import static org.atilf.models.SubLexicResource.*;
+import static org.atilf.models.disambiguisation.SubLexicResource.*;
 
 /**
  * @author Simon Meoni

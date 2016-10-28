@@ -1,6 +1,6 @@
 package org.atilf.module.extractor;
 
-import org.atilf.models.XslResources;
+import org.atilf.models.extractor.XslResources;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

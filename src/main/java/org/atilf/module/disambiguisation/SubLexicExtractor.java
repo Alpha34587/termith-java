@@ -1,7 +1,5 @@
 package org.atilf.module.disambiguisation;
 
-import com.google.common.collect.HashMultiset;
-import com.google.common.collect.Multiset;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
@@ -16,7 +14,7 @@ import javax.xml.xpath.*;
 import java.io.IOException;
 import java.util.*;
 
-import static org.atilf.models.SubLexicResource.*;
+import static org.atilf.models.disambiguisation.SubLexicResource.*;
 
 /**
  * @author Simon Meoni

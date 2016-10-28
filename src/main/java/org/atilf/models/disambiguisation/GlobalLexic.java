@@ -1,4 +1,4 @@
-package org.atilf.models;
+package org.atilf.models.disambiguisation;
 
 import com.google.common.collect.HashMultiset;
 import com.google.common.collect.Multiset;

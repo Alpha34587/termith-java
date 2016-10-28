@@ -1,7 +1,7 @@
 package org.atilf.worker;
 
 import com.google.common.io.ByteStreams;
-import org.atilf.models.TermithIndex;
+import org.atilf.models.termith.TermithIndex;
 import org.atilf.module.termsuite.PipelineBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

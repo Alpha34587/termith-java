@@ -1,7 +1,7 @@
 package org.atilf.worker;
 
-import org.atilf.models.RLexic;
-import org.atilf.models.TermithIndex;
+import org.atilf.models.disambiguisation.RLexic;
+import org.atilf.models.termith.TermithIndex;
 import org.atilf.module.disambiguisation.SpecCoefficientInjector;
 
 /**

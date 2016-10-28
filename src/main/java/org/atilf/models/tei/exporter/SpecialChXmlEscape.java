@@ -1,9 +1,7 @@
-package org.atilf.models;
+package org.atilf.models.tei.exporter;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-
-import static org.atilf.models.TagNormalizer.FR_TT_TAG;
 
 /**
  * @author Simon Meoni

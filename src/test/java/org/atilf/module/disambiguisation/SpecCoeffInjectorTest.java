@@ -1,7 +1,7 @@
 package org.atilf.module.disambiguisation;
 
-import org.atilf.models.GlobalLexic;
-import org.atilf.models.RLexic;
+import org.atilf.models.disambiguisation.GlobalLexic;
+import org.atilf.models.disambiguisation.RLexic;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

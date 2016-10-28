@@ -1,6 +1,6 @@
 package org.atilf.module.tools;
 
-import org.atilf.models.TermithIndex;
+import org.atilf.models.termith.TermithIndex;
 import org.atilf.module.disambiguisation.EvaluationProfile;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,7 +17,7 @@ import javax.xml.xpath.*;
 import java.io.IOException;
 import java.util.Map;
 
-import static org.atilf.models.SubLexicResource.*;
+import static org.atilf.models.disambiguisation.SubLexicResource.*;
 
 /**
  * @author Simon Meoni

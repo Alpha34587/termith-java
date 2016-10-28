@@ -1,10 +1,10 @@
 package org.atilf.worker;
 
-import org.atilf.models.TermithIndex;
+import org.atilf.models.termith.TermithIndex;
 import org.atilf.module.tools.FilesUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.atilf.thread.InitializerThread;
+import org.atilf.thread.enrichment.InitializerThread;
 
 import java.nio.file.Path;
 import java.util.concurrent.CountDownLatch;

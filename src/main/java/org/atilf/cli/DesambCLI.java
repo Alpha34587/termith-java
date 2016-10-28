@@ -2,7 +2,7 @@ package org.atilf.cli;
 
 import ch.qos.logback.classic.Level;
 import org.apache.commons.cli.*;
-import org.atilf.models.TermithIndex;
+import org.atilf.models.termith.TermithIndex;
 import org.atilf.module.tools.CLIUtils;
 import org.atilf.runner.Disambiguisation;
 import org.slf4j.Logger;

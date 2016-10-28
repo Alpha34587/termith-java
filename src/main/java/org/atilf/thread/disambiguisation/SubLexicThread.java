@@ -1,8 +1,8 @@
-package org.atilf.thread;
+package org.atilf.thread.disambiguisation;
 
-import org.atilf.models.TermithIndex;
-import org.atilf.worker.EvaluationExtractorWorker;
-import org.atilf.worker.EvaluationWorker;
+import org.atilf.models.termith.TermithIndex;
+import org.atilf.worker.LexicExtractorWorker;
+import org.atilf.worker.SubLexicExtractorWorker;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -16,13 +16,14 @@ import java.util.concurrent.TimeUnit;
  * @author Simon Meoni
  *         Created on 12/10/16.
  */
-public class DisambEvaluationThread {
+public class SubLexicThread {
 
     private final TermithIndex _termithIndex;
     private final int _poolSize;
-    private static final Logger LOGGER = LoggerFactory.getLogger(DisambEvaluationThread.class.getName());
+    private static final Logger LOGGER = LoggerFactory.getLogger(SubLexicThread.class.getName());
 
-    public DisambEvaluationThread(TermithIndex termithIndex, int poolSize) {
+    public SubLexicThread(TermithIndex termithIndex, int poolSize) {
+
         _termithIndex = termithIndex;
         _poolSize = poolSize;
     }
@@ -30,13 +31,11 @@ public class DisambEvaluationThread {
     public void execute() throws IOException, InterruptedException {
         ExecutorService executor = Executors.newFixedThreadPool(_poolSize);
         Files.list(TermithIndex.get_base()).forEach(
-                p -> executor.submit(new EvaluationExtractorWorker(p, _termithIndex))
+                p -> {
+                    executor.submit(new SubLexicExtractorWorker(p, _termithIndex));
+                    executor.submit(new LexicExtractorWorker(p, _termithIndex));
+                }
         );
-
-        _termithIndex.get_evaluationLexic().forEach(
-                (key,value) -> executor.submit(new EvaluationWorker(value, _termithIndex))
-        );
-
         LOGGER.info("Waiting SubLexicExtractorWorker executors to finish");
         executor.shutdown();
         executor.awaitTermination(1L, TimeUnit.DAYS);

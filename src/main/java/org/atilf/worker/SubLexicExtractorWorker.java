@@ -1,6 +1,6 @@
 package org.atilf.worker;
 
-import org.atilf.models.TermithIndex;
+import org.atilf.models.termith.TermithIndex;
 import org.atilf.module.disambiguisation.SubLexicExtractor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,9 +23,9 @@ public class SubLexicExtractorWorker implements Runnable {
 
     @Override
     public void run() {
-        LOGGER.debug("add " + p + " to sub lexic");
+        LOGGER.info("add " + p + " to sub lexic");
         SubLexicExtractor subLexicExtractor = new SubLexicExtractor(p.toString(),termithIndex.get_termSubLexic());
-        LOGGER.debug(p + " added");
         subLexicExtractor.execute();
+        LOGGER.info(p + " added");
     }
 }

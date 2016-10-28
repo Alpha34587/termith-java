@@ -1,12 +1,12 @@
 package org.atilf.worker;
 
-import org.atilf.models.TermithIndex;
-import org.atilf.models.XslResources;
+import org.atilf.models.termith.TermithIndex;
+import org.atilf.models.extractor.XslResources;
 import org.atilf.module.extractor.TextExtractor;
 import org.atilf.module.tools.FilesUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.atilf.thread.InitializerThread;
+import org.atilf.thread.enrichment.InitializerThread;
 
 import java.io.IOException;
 import java.nio.file.Path;

@@ -1,7 +1,7 @@
-package org.atilf.thread;
+package org.atilf.thread.enrichment;
 
-import org.atilf.models.TagNormalizer;
-import org.atilf.models.TermithIndex;
+import org.atilf.models.treetagger.TagNormalizer;
+import org.atilf.models.termith.TermithIndex;
 import org.atilf.module.timer.JsonTimer;
 import org.atilf.module.timer.TokenizeTimer;
 import org.atilf.module.tools.FilesUtils;

@@ -2,8 +2,8 @@ package org.atilf.module.disambiguisation;
 
 import com.github.rcaller.rstuff.RCaller;
 import com.github.rcaller.rstuff.RCode;
-import org.atilf.models.GlobalLexic;
-import org.atilf.models.RLexic;
+import org.atilf.models.disambiguisation.GlobalLexic;
+import org.atilf.models.disambiguisation.RLexic;
 
 /**
  * @author Simon Meoni

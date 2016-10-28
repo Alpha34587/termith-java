@@ -1,8 +1,6 @@
-package org.atilf.models;
+package org.atilf.models.disambiguisation;
 
-import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.atilf.module.termsuite.json.TermsuiteJsonReader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -12,7 +10,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.Queue;
 
 /**
  * @author Simon Meoni

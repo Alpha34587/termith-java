@@ -1,4 +1,4 @@
-package org.atilf.models;
+package org.atilf.models.extractor;
 
 import javax.xml.transform.Source;
 import javax.xml.transform.TransformerFactory;

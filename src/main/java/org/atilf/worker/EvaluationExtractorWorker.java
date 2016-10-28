@@ -1,6 +1,6 @@
 package org.atilf.worker;
 
-import org.atilf.models.TermithIndex;
+import org.atilf.models.termith.TermithIndex;
 import org.atilf.module.disambiguisation.EvaluationExtractor;
 import org.atilf.module.tools.FilesUtils;
 import org.slf4j.Logger;

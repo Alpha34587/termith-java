@@ -1,5 +1,7 @@
-package org.atilf.models;
+package org.atilf.models.termith;
 
+import org.atilf.models.disambiguisation.GlobalLexic;
+import org.atilf.models.termsuite.TermsOffsetId;
 import org.atilf.module.disambiguisation.EvaluationProfile;
 import org.atilf.module.disambiguisation.LexicalProfile;
 import org.atilf.module.tools.FilesUtils;

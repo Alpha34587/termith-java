@@ -1,6 +1,5 @@
-package org.atilf.models;
+package org.atilf.models.termsuite;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
