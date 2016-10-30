@@ -7,6 +7,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+import javax.xml.namespace.QName;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -34,6 +35,8 @@ public class SubLexicExtractor {
     private Map<String, LexicalProfile> _subLexics;
     private DocumentBuilderFactory _dbFactory = DocumentBuilderFactory.newInstance();
     private DocumentBuilder _dBuilder;
+    private XpathMapVariableResolver _xpathMapVariableResolver = new XpathMapVariableResolver();
+    private Map<String, String> _xpathVariableMap = new HashMap<>();
     private static final Logger LOGGER = LoggerFactory.getLogger(SubLexicExtractor.class.getName());
 
     public SubLexicExtractor(String p, Map<String, LexicalProfile> subLexics){
@@ -193,6 +196,14 @@ public class SubLexicExtractor {
             return (c + "_lexOff").replace("#", "");
         } else {
             return (c + "_lexOn").replace("#", "");
+        }
+    }
+
+    class XpathMapVariableResolver implements XPathVariableResolver {
+
+        @Override
+        public Object resolveVariable(QName qName) {
+            return _xpathVariableMap.get(qName.getLocalPart());
         }
     }
 }

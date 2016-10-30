@@ -1,6 +1,6 @@
 package org.atilf.module.disambiguisation;
 
-import com.google.common.collect.HashMultiset;
+import com.google.common.collect.ConcurrentHashMultiset;
 import com.google.common.collect.Multiset;
 
 import java.util.HashMap;
@@ -21,7 +21,7 @@ public class LexicalProfile implements Iterable<String>{
     }
 
     LexicalProfile() {
-        _lexicalTable = HashMultiset.create();
+        _lexicalTable = ConcurrentHashMultiset.create();
     }
 
     Multiset<String> get_lexicalTable() {
