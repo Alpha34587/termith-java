@@ -3,7 +3,6 @@ package org.atilf.module.disambiguisation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
-import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
@@ -27,16 +26,15 @@ public class SubLexicExtractor {
     Deque<String> _lexAna = new ArrayDeque<>();
     Document _doc;
     XPath _xpath;
-    private XPathExpression _eTargetTermGetter;
     private XPathExpression _eSpan;
     private XPathExpression _eTarget;
     private XPathExpression _eCorresp;
     private XPathExpression _eAna;
     private Map<String, LexicalProfile> _subLexics;
-    private DocumentBuilderFactory _dbFactory = DocumentBuilderFactory.newInstance();
     private DocumentBuilder _dBuilder;
     private XpathMapVariableResolver _xpathMapVariableResolver = new XpathMapVariableResolver();
     private Map<String, String> _xpathVariableMap = new HashMap<>();
+    private Map<String, String> _targetSpanMap = new HashMap<>();
     private static final Logger LOGGER = LoggerFactory.getLogger(SubLexicExtractor.class.getName());
 
     public SubLexicExtractor(String p, Map<String, LexicalProfile> subLexics){
@@ -44,6 +42,7 @@ public class SubLexicExtractor {
         _xpath = XPathFactory.newInstance().newXPath();
         _xpath.setNamespaceContext(NAMESPACE_CONTEXT);
         try {
+            DocumentBuilderFactory _dbFactory = DocumentBuilderFactory.newInstance();
             _dbFactory.setNamespaceAware(true);
             _dBuilder = _dbFactory.newDocumentBuilder();
         } catch (ParserConfigurationException e) {
@@ -82,22 +81,28 @@ public class SubLexicExtractor {
     }
 
     public void extractSubCorpus() {
-        while (!_target.isEmpty()){
-            String t = _target.poll();
-            String c = _corresp.poll();
-            String l = _lexAna.poll();
-            NodeList nodes;
-            try {
-                List<String> tags = Arrays.asList(t.replace("#","").split(" "));
-                if (tags.size() > 1) {
-                    multiWordsExtractor(c, l, tags);
+        if (!_target.isEmpty()) {
+            fillTargetSpanMap();
+            while (!_target.isEmpty()) {
+                String t = _target.poll();
+                String c = _corresp.poll();
+                String l = _lexAna.poll();
+                NodeList nodes;
+                try {
+                    List<String> tags = Arrays.asList(t.replace("#", "").split(" "));
+                    if (tags.size() > 1) {
+                        multiWordsExtractor(c, l, tags);
+                    } else
+                        singleWordExtractor(c, l, tags.get(0));
+                } catch (XPathExpressionException e) {
+                    LOGGER.error("error during the parsing of document", e);
                 }
-                else
-                    singleWordExtractor(c,l,tags.get(0));
-            } catch (XPathExpressionException e) {
-                LOGGER.error("error during the parsing of document",e);
             }
         }
+    }
+
+    private void fillTargetSpanMap() {
+
     }
 
     private void singleWordExtractor(String corresp, String lex, String tag) throws XPathExpressionException {
@@ -144,15 +149,8 @@ public class SubLexicExtractor {
 
     private void extractWordForms(String c, String l, NodeList nodes) throws XPathExpressionException {
         for (int i = 0; i < nodes.getLength(); i++) {
-            XPathExpression sXpath = _xpath.compile("//ns:standOff[@type = 'wordForms']" +
-                    "/ns:listAnnotation/tei:span[@target = '@id']"
-                            .replace(
-                                    "@id",
-                                    "#" + nodes.item(i).getAttributes().getNamedItem("xml:id")
-                                            .getNodeValue()
-                            )
-            );
-            mapToMultiset((Node) sXpath.evaluate(_doc, XPathConstants.NODE), c, l);
+            String targetValue = "#" + nodes.item(i).getAttributes().getNamedItem("xml:id").getNodeValue();
+            addOccToLexicalProfile(_targetSpanMap.get(targetValue), c, l);
         }
     }
 
@@ -172,23 +170,12 @@ public class SubLexicExtractor {
         }
     }
 
-    protected void mapToMultiset(Node span, String c, String l){
-        try {
-            XPathExpression eLemma = _xpath.compile(".//tei:f[@name = 'lemma']/tei:string/text()");
-            XPathExpression ePos = _xpath.compile(".//tei:f[@name = 'pos']/tei:symbol/@value");
-
-            Node lemmaNode = (Node) eLemma.evaluate(span, XPathConstants.NODE);
-            Node posNode = (Node) ePos.evaluate(span, XPathConstants.NODE);
-            String lemmaValue = lemmaNode.getNodeValue().trim();
-            String posValue = posNode.getNodeValue().trim();
-            String key = normalizeKey(c,l);
+    protected void addOccToLexicalProfile(String spanValue, String c, String l) {
+        String key = normalizeKey(c, l);
             if (!_subLexics.containsKey(key)){
                 _subLexics.put(key,new LexicalProfile());
             }
-            _subLexics.get(key).addOccurrence(lemmaValue + " " + posValue);
-        } catch (XPathExpressionException e) {
-            LOGGER.error("error during the parsing of document :",e);
-        }
+        _subLexics.get(key).addOccurrence(spanValue);
     }
 
     protected String normalizeKey(String c, String l) {
