@@ -3,6 +3,7 @@ package org.atilf.module.disambiguisation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
+import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
@@ -26,7 +27,11 @@ public class SubLexicExtractor {
     Deque<String> _lexAna = new ArrayDeque<>();
     Document _doc;
     XPath _xpath;
-    private XPathExpression _eSpan;
+    private XPathExpression _eSpanWordForms;
+    private XPathExpression _eSpanTarget;
+    private XPathExpression _eSpanLemma;
+    private XPathExpression _eSpanPos;
+    private XPathExpression _eSpanTerms;
     private XPathExpression _eTarget;
     private XPathExpression _eCorresp;
     private XPathExpression _eAna;
@@ -54,10 +59,15 @@ public class SubLexicExtractor {
             LOGGER.error("error during the parsing of document",e);
         }
         try {
-            _eSpan = _xpath.compile(SPAN);
+            _eSpanTerms = _xpath.compile(SPAN);
             _eTarget = _xpath.compile(TARGET);
             _eCorresp = _xpath.compile(CORRESP);
             _eAna = _xpath.compile(ANA);
+            _eSpanWordForms = _xpath.compile("//ns:standOff[@type = 'wordForms']" +
+                    "/ns:listAnnotation/tei:span");
+            _eSpanLemma = _xpath.compile(".//tei:f[@name = 'lemma']/tei:string/text()");
+            _eSpanPos = _xpath.compile(".//tei:f[@name = 'pos']/tei:symbol/@value");
+            _eSpanTarget = _xpath.compile("@target");
         } catch (XPathExpressionException e) {
             LOGGER.error("cannot compile xpath expression",e);
         }
@@ -102,7 +112,21 @@ public class SubLexicExtractor {
     }
 
     private void fillTargetSpanMap() {
+        try {
+            NodeList nodes = (NodeList) _eSpanWordForms.evaluate(_doc, XPathConstants.NODESET);
+            for (int i = 0; i < nodes.getLength();i++){
+                 Node target = (Node) _eSpanTarget.evaluate(nodes.item(i), XPathConstants.NODE);
+                 Node lemma = (Node) _eSpanLemma.evaluate(nodes.item(i), XPathConstants.NODE);
+                 Node pos = (Node) _eSpanPos.evaluate(nodes.item(i), XPathConstants.NODE);
+                _targetSpanMap.put(
+                        target.getNodeValue(),
+                        lemma.getNodeValue() + " " + pos.getNodeValue()
+                );
+            }
+        } catch (XPathExpressionException e) {
+            LOGGER.error("error during the parsing of document", e);
 
+        }
     }
 
     private void singleWordExtractor(String corresp, String lex, String tag) throws XPathExpressionException {
@@ -156,7 +180,7 @@ public class SubLexicExtractor {
 
     public void extractTerms() {
         try {
-            NodeList nodes = (NodeList) _eSpan.evaluate(_doc, XPathConstants.NODESET);
+            NodeList nodes = (NodeList) _eSpanTerms.evaluate(_doc, XPathConstants.NODESET);
             for (int i = 0; i < nodes.getLength(); i++) {
                 String ana = _eAna.evaluate(nodes.item(i));
                 if (!"#noDM".equals(ana) && !ana.isEmpty()){

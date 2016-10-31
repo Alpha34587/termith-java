@@ -60,23 +60,6 @@ public class EvaluationExtractor extends SubLexicExtractor{
         }
     }
 
-    @Override
-    protected void mapToMultiset(Node span, String c, String l){
-        try {
-            Node lemmaNode = (Node) _eLemma.evaluate(span, XPathConstants.NODE);
-            Node posNode = (Node) _ePos.evaluate(span, XPathConstants.NODE);
-            String lemmaValue = lemmaNode.getNodeValue().trim();
-            String posValue = posNode.getNodeValue().trim();
-            String key = normalizeKey(c,l);
-            if (!_evaluationLexic.containsKey(key)){
-                _evaluationLexic.put(key,new EvaluationProfile());
-            }
-            _evaluationLexic.get(key).addOccurrence(lemmaValue + " " + posValue);
-
-        } catch (XPathExpressionException e) {
-            LOGGER.error("error during the parsing of document",e);
-        }
-    }
 
     @Override
     protected String normalizeKey(String c, String l) {
