@@ -22,33 +22,34 @@ import static org.atilf.models.disambiguisation.SubLexicResource.*;
  *         Created on 14/10/16.
  */
 public class SubLexicExtractor {
+    private static final Logger LOGGER = LoggerFactory.getLogger(SubLexicExtractor.class.getName());
     Deque<String> _target = new ArrayDeque<>();
     Deque<String> _corresp = new ArrayDeque<>();
     Deque<String> _lexAna = new ArrayDeque<>();
     Document _doc;
-    XPath _xpath;
-    XPathExpression _eSpanWordForms;
-    XPathExpression _eSpanTarget;
-    XPathExpression _eSpanLemma;
-    XPathExpression _eSpanPos;
     XPathExpression _eSpanTerms;
     XPathExpression _eTarget;
     XPathExpression _eCorresp;
-    XPathExpression _eFirstId;
-    XPathExpression _eNextId;
     XPathExpression _eAna;
+    private XPathExpression _eSpanWordForms;
+    private XPathExpression _eSpanTarget;
+    private XPathExpression _eSpanLemma;
+    private XPathExpression _eSpanPos;
+    private XPathExpression _eFirstId;
+    private XPathExpression _eNextId;
+    private XPathExpression _eMultiTagsGetter;
+    private XPathExpression _eSimpleTagGetter;
     private Map<String, LexicalProfile> _subLexics;
     private DocumentBuilder _dBuilder;
-    private XpathMapVariableResolver _xpathMapVariableResolver = new XpathMapVariableResolver();
     private Map<String, String> _xpathVariableMap = new HashMap<>();
     private Map<String, String> _targetSpanMap = new HashMap<>();
-    private static final Logger LOGGER = LoggerFactory.getLogger(SubLexicExtractor.class.getName());
 
     public SubLexicExtractor(String p, Map<String, LexicalProfile> subLexics){
+        XPath xpath = XPathFactory.newInstance().newXPath();
+        XpathMapVariableResolver xpathMapVariableResolver = new XpathMapVariableResolver();
         _subLexics = subLexics;
-        _xpath = XPathFactory.newInstance().newXPath();
-        _xpath.setNamespaceContext(NAMESPACE_CONTEXT);
-        _xpath.setXPathVariableResolver(_xpathMapVariableResolver);
+        xpath.setNamespaceContext(NAMESPACE_CONTEXT);
+        xpath.setXPathVariableResolver(xpathMapVariableResolver);
         try {
             DocumentBuilderFactory _dbFactory = DocumentBuilderFactory.newInstance();
             _dbFactory.setNamespaceAware(true);
@@ -63,31 +64,32 @@ public class SubLexicExtractor {
             LOGGER.error("error during the parsing of document",e);
         }
         try {
-            _eSpanTerms = _xpath.compile(SPAN);
-            _eTarget = _xpath.compile(TARGET);
-            _eCorresp = _xpath.compile(CORRESP);
-            _eAna = _xpath.compile(ANA);
-            _eSpanWordForms = _xpath.compile("//ns:standOff[@type = 'wordForms']" +
-                    "/ns:listAnnotation/tei:span");
-            _eSpanLemma = _xpath.compile(".//tei:f[@name = 'lemma']/tei:string/text()");
-            _eSpanPos = _xpath.compile(".//tei:f[@name = 'pos']/tei:symbol/@value");
-            _eFirstId = _xpath.compile(".//tei:text//tei:w[@xml:id = $id]/@xml:id");
-            _eNextId = _xpath.compile(".//tei:text//tei:w[@xml:id = $id]/following::tei:w[1]/@xml:id");
-            _eSpanTarget = _xpath.compile("@target");
+            _eSpanTerms = xpath.compile(SPAN_T);
+            _eTarget = xpath.compile(TARGET_T);
+            _eCorresp = xpath.compile(CORRESP_T);
+            _eSpanTarget = xpath.compile(TARGET_W);
+            _eAna = xpath.compile(ANA_T);
+            _eSpanWordForms = xpath.compile(SPAN_W);
+            _eSpanLemma = xpath.compile(LEMMA_W);
+            _eSpanPos = xpath.compile(POS_W);
+            _eFirstId = xpath.compile(FIRST_TEXT);
+            _eNextId = xpath.compile(NEXT_TEXT);
+            _eMultiTagsGetter = xpath.compile(MULTI_TEXT);
+            _eSimpleTagGetter = xpath.compile(SIMPLE_TEXT);
         } catch (XPathExpressionException e) {
             LOGGER.error("cannot compile xpath expression",e);
         }
     }
 
-    public Deque<String> get_target() {
+    Deque<String> get_target() {
         return _target;
     }
 
-    public Deque<String> get_corresp() {
+    Deque<String> get_corresp() {
         return _corresp;
     }
 
-    public Deque<String> get_lexAna() {
+    Deque<String> get_lexAna() {
         return _lexAna;
     }
 
@@ -96,7 +98,7 @@ public class SubLexicExtractor {
         extractSubCorpus();
     }
 
-    public void extractSubCorpus() {
+    void extractSubCorpus() {
         if (!_target.isEmpty()) {
             fillTargetSpanMap();
             while (!_target.isEmpty()) {
@@ -135,27 +137,17 @@ public class SubLexicExtractor {
     }
 
     private void singleWordExtractor(String corresp, String lex, String tag) throws XPathExpressionException {
-        XPathExpression xPathExpression;
         NodeList nodes;
-        xPathExpression = _xpath.compile(
-                ("//tei:text//tei:w" +
-                        "[./preceding-sibling::tei:w[@xml:id = '@id'] or" +
-                        " ./following-sibling::tei:w[@xml:id = '@id']]")
-                        .replace("@id", tag)
-        );
-        nodes = (NodeList) xPathExpression.evaluate(_doc, XPathConstants.NODESET);
+        _xpathVariableMap.put("c_id", tag);
+        nodes = (NodeList) _eSimpleTagGetter.evaluate(_doc, XPathConstants.NODESET);
         extractWordForms(corresp, lex, nodes);
     }
 
     private void multiWordsExtractor(String corresp, String lex, List<String> tags) throws XPathExpressionException {
         if (equalsToCorrespTarget(tags)){
-            XPathExpression eTargetsTermGetter = _xpath.compile(
-                    ("//tei:text//tei:w" +
-                            "[./preceding-sibling::tei:w[@xml:id = '@id_last'] or" +
-                            " ./following-sibling::tei:w[@xml:id = '@id_first']]")
-                            .replace("@id_first", tags.get(0)).replace("@id_last",tags.get(tags.size()-1))
-            );
-            NodeList nodes = (NodeList) eTargetsTermGetter.evaluate(_doc, XPathConstants.NODESET);
+            _xpathVariableMap.put("first", tags.get(0));
+            _xpathVariableMap.put("last", tags.get(tags.size() - 1));
+            NodeList nodes = (NodeList) _eMultiTagsGetter.evaluate(_doc, XPathConstants.NODESET);
             extractWordForms(corresp, lex, nodes);
         }
     }

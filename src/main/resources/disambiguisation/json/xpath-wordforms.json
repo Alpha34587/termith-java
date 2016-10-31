@@ -1,0 +1,6 @@
+{
+  "span": "//ns:standOff[@type = 'wordForms']/ns:listAnnotation/tei:span",
+  "lemma": ".//tei:f[@name = 'lemma']/tei:string/text()",
+  "pos": ".//tei:f[@name = 'pos']/tei:symbol/@value",
+  "target": "@target"
+}

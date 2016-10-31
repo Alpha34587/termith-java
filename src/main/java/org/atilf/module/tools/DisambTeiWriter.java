@@ -9,8 +9,13 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-import javax.xml.parsers.*;
-import javax.xml.transform.*;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.xpath.*;
@@ -24,9 +29,9 @@ import static org.atilf.models.disambiguisation.SubLexicResource.*;
  *         Created on 25/10/16.
  */
 public class DisambTeiWriter {
+    private static final Logger LOGGER = LoggerFactory.getLogger(TeiWriter.class.getName());
     private final String p;
     private final Map<String, EvaluationProfile> evaluationLexic;
-    private static final Logger LOGGER = LoggerFactory.getLogger(TeiWriter.class.getName());
     private DocumentBuilder dBuilder;
     private Document doc;
     private DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -55,9 +60,9 @@ public class DisambTeiWriter {
         XPathExpression ana;
         XPathExpression corresp;
         try {
-            span = xpath.compile(SPAN);
-            ana = xpath.compile(ANA);
-            corresp = xpath.compile(CORRESP);
+            span = xpath.compile(SPAN_T);
+            ana = xpath.compile(ANA_T);
+            corresp = xpath.compile(CORRESP_T);
             NodeList termNodes = (NodeList) span.evaluate(doc, XPathConstants.NODESET);
             for (int i = 0; i < termNodes.getLength(); i++){
                 Node correspVal = (Node) corresp.evaluate(termNodes.item(i), XPathConstants.NODE);
