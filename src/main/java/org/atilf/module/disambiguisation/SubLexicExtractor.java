@@ -27,14 +27,16 @@ public class SubLexicExtractor {
     Deque<String> _lexAna = new ArrayDeque<>();
     Document _doc;
     XPath _xpath;
-    private XPathExpression _eSpanWordForms;
-    private XPathExpression _eSpanTarget;
-    private XPathExpression _eSpanLemma;
-    private XPathExpression _eSpanPos;
-    private XPathExpression _eSpanTerms;
-    private XPathExpression _eTarget;
-    private XPathExpression _eCorresp;
-    private XPathExpression _eAna;
+    XPathExpression _eSpanWordForms;
+    XPathExpression _eSpanTarget;
+    XPathExpression _eSpanLemma;
+    XPathExpression _eSpanPos;
+    XPathExpression _eSpanTerms;
+    XPathExpression _eTarget;
+    XPathExpression _eCorresp;
+    XPathExpression _eFirstId;
+    XPathExpression _eNextId;
+    XPathExpression _eAna;
     private Map<String, LexicalProfile> _subLexics;
     private DocumentBuilder _dBuilder;
     private XpathMapVariableResolver _xpathMapVariableResolver = new XpathMapVariableResolver();
@@ -46,10 +48,12 @@ public class SubLexicExtractor {
         _subLexics = subLexics;
         _xpath = XPathFactory.newInstance().newXPath();
         _xpath.setNamespaceContext(NAMESPACE_CONTEXT);
+        _xpath.setXPathVariableResolver(_xpathMapVariableResolver);
         try {
             DocumentBuilderFactory _dbFactory = DocumentBuilderFactory.newInstance();
             _dbFactory.setNamespaceAware(true);
             _dBuilder = _dbFactory.newDocumentBuilder();
+
         } catch (ParserConfigurationException e) {
             LOGGER.error("error during the creation of documentBuilder object : ", e);
         }
@@ -67,6 +71,8 @@ public class SubLexicExtractor {
                     "/ns:listAnnotation/tei:span");
             _eSpanLemma = _xpath.compile(".//tei:f[@name = 'lemma']/tei:string/text()");
             _eSpanPos = _xpath.compile(".//tei:f[@name = 'pos']/tei:symbol/@value");
+            _eFirstId = _xpath.compile(".//tei:text//tei:w[@xml:id = $id]/@xml:id");
+            _eNextId = _xpath.compile(".//tei:text//tei:w[@xml:id = $id]/following::tei:w[1]/@xml:id");
             _eSpanTarget = _xpath.compile("@target");
         } catch (XPathExpressionException e) {
             LOGGER.error("cannot compile xpath expression",e);
@@ -97,7 +103,6 @@ public class SubLexicExtractor {
                 String t = _target.poll();
                 String c = _corresp.poll();
                 String l = _lexAna.poll();
-                NodeList nodes;
                 try {
                     List<String> tags = Arrays.asList(t.replace("#", "").split(" "));
                     if (tags.size() > 1) {
@@ -115,9 +120,9 @@ public class SubLexicExtractor {
         try {
             NodeList nodes = (NodeList) _eSpanWordForms.evaluate(_doc, XPathConstants.NODESET);
             for (int i = 0; i < nodes.getLength();i++){
-                 Node target = (Node) _eSpanTarget.evaluate(nodes.item(i), XPathConstants.NODE);
-                 Node lemma = (Node) _eSpanLemma.evaluate(nodes.item(i), XPathConstants.NODE);
-                 Node pos = (Node) _eSpanPos.evaluate(nodes.item(i), XPathConstants.NODE);
+                Node target = (Node) _eSpanTarget.evaluate(nodes.item(i), XPathConstants.NODE);
+                Node lemma = (Node) _eSpanLemma.evaluate(nodes.item(i), XPathConstants.NODE);
+                Node pos = (Node) _eSpanPos.evaluate(nodes.item(i), XPathConstants.NODE);
                 _targetSpanMap.put(
                         target.getNodeValue(),
                         lemma.getNodeValue() + " " + pos.getNodeValue()
@@ -143,32 +148,42 @@ public class SubLexicExtractor {
     }
 
     private void multiWordsExtractor(String corresp, String lex, List<String> tags) throws XPathExpressionException {
-        NodeList nodes;
-        XPathExpression eTargetsTermGetter = _xpath.compile(
-                ("//tei:text//tei:w[./preceding::tei:w[@xml:id = '@id_first'] and " +
-                        "./following::tei:w[@xml:id = '@id_last']]")
-                        .replace("@id_first", tags.get(0))
-                        .replace("@id_last", tags.get(tags.size() - 1))
-        );
-        nodes = (NodeList) eTargetsTermGetter.evaluate(_doc, XPathConstants.NODESET);
-        if (equalsToCorrespTarget(tags,nodes)){
-            eTargetsTermGetter = _xpath.compile(
+        if (equalsToCorrespTarget(tags)){
+            XPathExpression eTargetsTermGetter = _xpath.compile(
                     ("//tei:text//tei:w" +
                             "[./preceding-sibling::tei:w[@xml:id = '@id_last'] or" +
                             " ./following-sibling::tei:w[@xml:id = '@id_first']]")
                             .replace("@id_first", tags.get(0)).replace("@id_last",tags.get(tags.size()-1))
             );
-            nodes = (NodeList) eTargetsTermGetter.evaluate(_doc, XPathConstants.NODESET);
+            NodeList nodes = (NodeList) eTargetsTermGetter.evaluate(_doc, XPathConstants.NODESET);
             extractWordForms(corresp, lex, nodes);
         }
     }
 
-    private boolean equalsToCorrespTarget(List<String> tags, NodeList nodes) {
-        List<String> nodeId = new ArrayList<>();
-        for(int i = 0; i < nodes.getLength(); i ++) {
-            nodeId.add(nodes.item(i).getAttributes().getNamedItem("xml:id").getNodeValue());
+    private boolean equalsToCorrespTarget(List<String> tags) {
+        Node firstNode;
+        Node nextNode;
+        for(int i = 0; i < tags.size(); i ++) {
+            try {
+                if (i == 0) {
+                    _xpathVariableMap.put("id", "t" +  Integer.parseInt(tags.get(0).substring(1)));
+                    firstNode = (Node) _eFirstId.evaluate(_doc, XPathConstants.NODE);
+                    if (!(Objects.equals(tags.get(0), firstNode.getNodeValue())))
+                        return false;
+                }
+                else {
+                    _xpathVariableMap.put("id", "t" +  Integer.parseInt(tags.get(i-1).substring(1)));
+                    nextNode = (Node) _eNextId.evaluate(_doc, XPathConstants.NODE);
+
+                    if (!Objects.equals(tags.get(i), nextNode.getNodeValue())) {
+                        return false;
+                    }
+                }
+            } catch (XPathExpressionException e) {
+                LOGGER.error("error during the parsing of document",e);
+            }
         }
-        return tags.subList(1,tags.size()-1).equals(nodeId);
+        return true;
     }
 
     private void extractWordForms(String c, String l, NodeList nodes) throws XPathExpressionException {
@@ -196,9 +211,9 @@ public class SubLexicExtractor {
 
     protected void addOccToLexicalProfile(String spanValue, String c, String l) {
         String key = normalizeKey(c, l);
-            if (!_subLexics.containsKey(key)){
-                _subLexics.put(key,new LexicalProfile());
-            }
+        if (!_subLexics.containsKey(key)){
+            _subLexics.put(key,new LexicalProfile());
+        }
         _subLexics.get(key).addOccurrence(spanValue);
     }
 
@@ -210,7 +225,7 @@ public class SubLexicExtractor {
         }
     }
 
-    class XpathMapVariableResolver implements XPathVariableResolver {
+    private class XpathMapVariableResolver implements XPathVariableResolver {
 
         @Override
         public Object resolveVariable(QName qName) {

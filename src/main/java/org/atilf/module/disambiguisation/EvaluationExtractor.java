@@ -20,32 +20,15 @@ public class EvaluationExtractor extends SubLexicExtractor{
 
     private final Map<String, EvaluationProfile> _evaluationLexic;
     private static final Logger LOGGER = LoggerFactory.getLogger(EvaluationExtractor.class.getName());
-    private XPathExpression _eSpan;
-    private XPathExpression _eTarget;
-    private XPathExpression _eCorresp;
-    private XPathExpression _eAna;
-    private XPathExpression _ePos;
-    private XPathExpression _eLemma;
     public EvaluationExtractor(String p , Map<String, EvaluationProfile> evaluationLexic) {
-
         super(p,null);
         _evaluationLexic = evaluationLexic;
-        try {
-            _eSpan = _xpath.compile(SPAN);
-            _eTarget = _xpath.compile(TARGET);
-            _eCorresp = _xpath.compile(CORRESP);
-            _eAna = _xpath.compile(ANA);
-            _eLemma = _xpath.compile(".//tei:f[@name = 'lemma']/tei:string/text()");
-            _ePos = _xpath.compile(".//tei:f[@name = 'pos']/tei:symbol/@value");
-        } catch (XPathExpressionException e) {
-            LOGGER.error("cannot compile _xpath expression :", e);
-        }
     }
 
     @Override
     public void extractTerms() {
         try {
-            NodeList nodes = (NodeList) _eSpan.evaluate(_doc, XPathConstants.NODESET);
+            NodeList nodes = (NodeList) _eSpanTerms.evaluate(_doc, XPathConstants.NODESET);
 
             for (int i = 0; i < nodes.getLength(); i++) {
                 String ana = _eAna.evaluate(nodes.item(i));
@@ -60,6 +43,15 @@ public class EvaluationExtractor extends SubLexicExtractor{
         }
     }
 
+    @Override
+    protected void addOccToLexicalProfile(String spanValue, String c, String l){
+            String key = normalizeKey(c,l);
+            if (!_evaluationLexic.containsKey(key)){
+                _evaluationLexic.put(key,new EvaluationProfile());
+            }
+            _evaluationLexic.get(key).addOccurrence(spanValue);
+
+    }
 
     @Override
     protected String normalizeKey(String c, String l) {
