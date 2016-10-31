@@ -22,7 +22,6 @@ import static org.atilf.models.disambiguisation.SubLexicResource.*;
  *         Created on 14/10/16.
  */
 public class SubLexicExtractor {
-    private static final Logger LOGGER = LoggerFactory.getLogger(SubLexicExtractor.class.getName());
     Deque<String> _target = new ArrayDeque<>();
     Deque<String> _corresp = new ArrayDeque<>();
     Deque<String> _lexAna = new ArrayDeque<>();
@@ -31,6 +30,7 @@ public class SubLexicExtractor {
     XPathExpression _eTarget;
     XPathExpression _eCorresp;
     XPathExpression _eAna;
+    protected Map<String, LexicalProfile> _subLexics;
     private XPathExpression _eSpanWordForms;
     private XPathExpression _eSpanTarget;
     private XPathExpression _eSpanLemma;
@@ -39,10 +39,10 @@ public class SubLexicExtractor {
     private XPathExpression _eNextId;
     private XPathExpression _eMultiTagsGetter;
     private XPathExpression _eSimpleTagGetter;
-    private Map<String, LexicalProfile> _subLexics;
     private DocumentBuilder _dBuilder;
     private Map<String, String> _xpathVariableMap = new HashMap<>();
     private Map<String, String> _targetSpanMap = new HashMap<>();
+    private static final Logger LOGGER = LoggerFactory.getLogger(SubLexicExtractor.class.getName());
 
     public SubLexicExtractor(String p, Map<String, LexicalProfile> subLexics){
         XPath xpath = XPathFactory.newInstance().newXPath();
@@ -191,14 +191,18 @@ public class SubLexicExtractor {
             for (int i = 0; i < nodes.getLength(); i++) {
                 String ana = _eAna.evaluate(nodes.item(i));
                 if (!"#noDM".equals(ana) && !ana.isEmpty()){
-                    _target.add(_eTarget.evaluate(nodes.item(i)));
-                    _corresp.add(_eCorresp.evaluate(nodes.item(i)));
-                    _lexAna.add(_eAna.evaluate(nodes.item(i)));
+                    addToTermsQueues(nodes,ana,i);
                 }
             }
         } catch (XPathExpressionException e) {
             LOGGER.error("error during the parsing of document",e);
         }
+    }
+
+    public void addToTermsQueues(NodeList nodes, String ana, int i) throws XPathExpressionException {
+        _target.add(_eTarget.evaluate(nodes.item(i)));
+        _corresp.add(_eCorresp.evaluate(nodes.item(i)));
+        _lexAna.add(ana);
     }
 
     protected void addOccToLexicalProfile(String spanValue, String c, String l) {
