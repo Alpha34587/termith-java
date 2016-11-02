@@ -63,7 +63,8 @@ public class SubLexicExtractorTest {
         entry2.add(". SENT");
         entry2.add("il PRO:PER");
         expectedMap.put("entry-7263_lexOn",new LexicalProfile(entry2));
-
+        //TODO remove useless unit test (one Term test)
+        //TODO add size test
         subCorpus2 = new SubLexicExtractor("src/test/resources/corpus/tei/test5.xml", multiSub2);
         expectedMap2.put("entry-7263_lexOn",new LexicalProfile(entry2));
     }

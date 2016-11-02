@@ -1,7 +1,6 @@
 package org.atilf.worker;
 
 import org.atilf.models.disambiguisation.DisambXslResources;
-import org.atilf.models.extractor.XslResources;
 import org.atilf.models.termith.TermithIndex;
 import org.atilf.module.disambiguisation.DisambXslTransformer;
 import org.atilf.module.tools.FilesUtils;
