@@ -47,7 +47,7 @@ public class FilesUtils {
                 writer.close();
 
             } catch (IOException e) {
-                LOGGER.error("error during copying some files",e);
+                LOGGER.error("error during creating some files",e);
             }
 
         });
@@ -104,6 +104,14 @@ public class FilesUtils {
             }
         }
         return path;
+    }
+
+    public static Path writeXml(StringBuilder content,Path workingPath) throws IOException {
+
+        BufferedWriter bufferedWriter = Files.newBufferedWriter(workingPath);
+        bufferedWriter.append(content);
+        bufferedWriter.close();
+        return workingPath;
     }
 
     public static Object readObject(Path filePath){

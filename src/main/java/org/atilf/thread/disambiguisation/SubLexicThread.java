@@ -1,8 +1,7 @@
 package org.atilf.thread.disambiguisation;
 
 import org.atilf.models.termith.TermithIndex;
-import org.atilf.worker.LexicExtractorWorker;
-import org.atilf.worker.SubLexicExtractorWorker;
+import org.atilf.worker.DisambXslTransformerWorker;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -32,10 +31,16 @@ public class SubLexicThread {
         ExecutorService executor = Executors.newFixedThreadPool(_poolSize);
         Files.list(TermithIndex.get_base()).forEach(
                 p -> {
-                    executor.submit(new SubLexicExtractorWorker(p, _termithIndex));
-                    executor.submit(new LexicExtractorWorker(p, _termithIndex));
+                    executor.submit(new DisambXslTransformerWorker(p, _termithIndex));
                 }
         );
+
+//        Files.list(TermithIndex.get_base()).forEach(
+//                p -> {
+//                    executor.submit(new SubLexicExtractorWorker(p, _termithIndex));
+//                    executor.submit(new LexicExtractorWorker(p, _termithIndex));
+//                }
+//        );
         LOGGER.info("Waiting SubLexicExtractorWorker executors to finish");
         executor.shutdown();
         executor.awaitTermination(1L, TimeUnit.DAYS);

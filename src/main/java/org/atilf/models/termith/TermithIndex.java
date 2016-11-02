@@ -35,6 +35,7 @@ public class TermithIndex {
     private Map<String, Path> _extractedText = new ConcurrentHashMap<>();
     private Map<String, Path> _xmlCorpus = new ConcurrentHashMap<>();
     private Map<String, Path> _jsonTreeTagger = new ConcurrentHashMap<>();
+    private Map<String, Path> _DisambTranformedFile = new ConcurrentHashMap<>();
     private List<Path> _serializeJson = new CopyOnWriteArrayList<>();
     private List<Path> _outputFile = new CopyOnWriteArrayList<>();
     private Map<String, LexicalProfile> _termSubLexic = new ConcurrentHashMap<>();
@@ -83,6 +84,8 @@ public class TermithIndex {
     public Map<String, Path> get_tokenizeTeiBody() {
         return _tokenizeTeiBody;
     }
+
+    public Map<String, Path> get_disambTranformedFile() {return _DisambTranformedFile;}
 
     public List<Path> get_serializeJson() {return _serializeJson;}
 

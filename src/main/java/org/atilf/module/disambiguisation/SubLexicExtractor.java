@@ -126,8 +126,8 @@ public class SubLexicExtractor {
                 Node lemma = (Node) _eSpanLemma.evaluate(nodes.item(i), XPathConstants.NODE);
                 Node pos = (Node) _eSpanPos.evaluate(nodes.item(i), XPathConstants.NODE);
                 _targetSpanMap.put(
-                        target.getNodeValue(),
-                        lemma.getNodeValue() + " " + pos.getNodeValue()
+                        nodes.item(i).getAttributes().getNamedItem("target").getNodeValue(),
+                        nodes.item(i).getTextContent().trim() + " " + pos.getNodeValue()
                 );
             }
         } catch (XPathExpressionException e) {
@@ -144,12 +144,10 @@ public class SubLexicExtractor {
     }
 
     private void multiWordsExtractor(String corresp, String lex, List<String> tags) throws XPathExpressionException {
-        if (equalsToCorrespTarget(tags)){
             _xpathVariableMap.put("first", tags.get(0));
             _xpathVariableMap.put("last", tags.get(tags.size() - 1));
             NodeList nodes = (NodeList) _eMultiTagsGetter.evaluate(_doc, XPathConstants.NODESET);
             extractWordForms(corresp, lex, nodes);
-        }
     }
 
     private boolean equalsToCorrespTarget(List<String> tags) {
@@ -189,7 +187,7 @@ public class SubLexicExtractor {
         try {
             NodeList nodes = (NodeList) _eSpanTerms.evaluate(_doc, XPathConstants.NODESET);
             for (int i = 0; i < nodes.getLength(); i++) {
-                String ana = _eAna.evaluate(nodes.item(i));
+                String ana = nodes.item(i).getAttributes().getNamedItem("ana").getNodeValue();
                 if (!"#noDM".equals(ana) && !ana.isEmpty()){
                     addToTermsQueues(nodes,ana,i);
                 }
@@ -200,8 +198,8 @@ public class SubLexicExtractor {
     }
 
     public void addToTermsQueues(NodeList nodes, String ana, int i) throws XPathExpressionException {
-        _target.add(_eTarget.evaluate(nodes.item(i)));
-        _corresp.add(_eCorresp.evaluate(nodes.item(i)));
+        _target.add(nodes.item(i).getAttributes().getNamedItem("target").getNodeValue());
+        _corresp.add(nodes.item(i).getAttributes().getNamedItem("corresp").getNodeValue());
         _lexAna.add(ana);
     }
 
