@@ -24,7 +24,7 @@ public class DisambExporterWorker implements Runnable {
         String file = FilesUtils.nameNormalizer(p.toString());
         DisambTeiWriter disambTeiWriter = new DisambTeiWriter(
                 file,
-                termithIndex.get_evaluationLexic().get(
+                termithIndex.getEvaluationLexic().get(
                         file
                 )
         );

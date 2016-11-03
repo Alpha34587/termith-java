@@ -37,7 +37,7 @@ public class SerializeTest {
         TagNormalizer.initTag("en");
         termithIndex.addText("1",
                 new StringBuilder("\n \n \nJournal of Gerontology: PSYCHOLOGICAL patient (1998@)"));
-        CorpusAnalyzer corpusAnalyzer = new CorpusAnalyzer(CorpusAnalyzerTest.convertExtractedText(termithIndex.get_extractedText()));
+        CorpusAnalyzer corpusAnalyzer = new CorpusAnalyzer(CorpusAnalyzerTest.convertExtractedText(termithIndex.getExtractedText()));
 
         tokenLemma = new StringBuilder(
                 "Journal\tNP\tJournal\n" +

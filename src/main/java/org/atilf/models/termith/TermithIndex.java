@@ -20,14 +20,10 @@ import java.util.concurrent.CopyOnWriteArrayList;
  */
 public class TermithIndex {
 
-    private static Path _outputPath;
-    private static String _lang;
-    private static String _treeTaggerHome;
-    private static Path _base;
-    private static boolean _keepFiles;
-
-    public Path _corpus = null;
-    private Path _disambAnnotation;
+    /*
+    Termith felds
+     */
+    private Path _corpus = null;
     private List<Path> _terminologies = new CopyOnWriteArrayList<>();
     private Map<String, Path> _tokenizeTeiBody = new ConcurrentHashMap<>();
     private Map<String, Path> _morphoSyntaxStandOff = new ConcurrentHashMap<>();
@@ -35,13 +31,34 @@ public class TermithIndex {
     private Map<String, Path> _extractedText = new ConcurrentHashMap<>();
     private Map<String, Path> _xmlCorpus = new ConcurrentHashMap<>();
     private Map<String, Path> _jsonTreeTagger = new ConcurrentHashMap<>();
-    private Map<String, Path> _DisambTranformedFile = new ConcurrentHashMap<>();
     private List<Path> _serializeJson = new CopyOnWriteArrayList<>();
     private List<Path> _outputFile = new CopyOnWriteArrayList<>();
+    private int _corpusSize;
+    private Path _disambAnnotation;
+
+    /*
+    Disambiguation  core fields
+     */
+
     private Map<String, LexicalProfile> _termSubLexic = new ConcurrentHashMap<>();
     private Map<String,Map<String, EvaluationProfile>> _evaluationLexic = new ConcurrentHashMap<>();
     private GlobalLexic _disambGlobalLexic = new GlobalLexic(new ConcurrentHashMap<>(),new ConcurrentHashMap<>());
-    private int _corpusSize;
+    private Map<String, Path> _DisambTranformedFile = new ConcurrentHashMap<>();
+
+    /*
+    CLI parameter
+     */
+
+    private static Path _outputPath;
+    private static String _lang;
+    private static String _treeTaggerHome;
+    private static Path _base;
+    private static boolean _keepFiles;
+
+
+    /*
+    Constructor
+     */
 
     private TermithIndex(Builder builder) throws IOException {
         _disambAnnotation = builder._disambAnnotation;
@@ -57,7 +74,7 @@ public class TermithIndex {
     Getter
      */
 
-    public List<Path> get_terminologies() {
+    public List<Path> getTerminologies() {
         return _terminologies;
     }
 
@@ -65,39 +82,39 @@ public class TermithIndex {
         return _terminologies.get(1);
     }
 
-    public GlobalLexic get_disambGlobalLexic() { return _disambGlobalLexic; }
+    public GlobalLexic getDisambGlobalLexic() { return _disambGlobalLexic; }
 
-    public int get_corpusSize() {return _corpusSize;}
+    public int getCorpusSize() {return _corpusSize;}
 
-    public Map<String,Map<String, EvaluationProfile>> get_evaluationLexic() {
+    public Map<String,Map<String, EvaluationProfile>> getEvaluationLexic() {
         return _evaluationLexic;
     }
 
-    public Map<String, Path> get_morphoSyntaxStandOff() {
+    public Map<String, Path> getMorphoSyntaxStandOff() {
         return _morphoSyntaxStandOff;
     }
 
-    public Map<String, List<TermsOffsetId>> get_terminologyStandOff() {
+    public Map<String, List<TermsOffsetId>> getTerminologyStandOff() {
         return _terminologyStandOff;
     }
 
-    public Map<String, Path> get_tokenizeTeiBody() {
+    public Map<String, Path> getTokenizeTeiBody() {
         return _tokenizeTeiBody;
     }
 
     public Map<String, Path> getDisambTranformedFile() {return _DisambTranformedFile;}
 
-    public List<Path> get_serializeJson() {return _serializeJson;}
+    public List<Path> getSerializeJson() {return _serializeJson;}
 
-    public Path get_corpus() {
+    public Path getCorpus() {
         return _corpus;
     }
 
-    public Map<String, Path> get_xmlCorpus() {
+    public Map<String, Path> getXmlCorpus() {
         return _xmlCorpus;
     }
 
-    public List<Path> get_outputFile() {
+    public List<Path> getOutputFile() {
         return _outputFile;
     }
 
@@ -105,25 +122,25 @@ public class TermithIndex {
         return _jsonTreeTagger;
     }
 
-    public Map<String, LexicalProfile> get_termSubLexic() {
+    public Map<String, LexicalProfile> getTermSubLexic() {
         return _termSubLexic;
     }
 
-    public Map<String, Path> get_extractedText() {
+    public Map<String, Path> getExtractedText() {
         return _extractedText;
     }
 
     public static Path getOutputPath() { return _outputPath;}
 
-    public static String get_lang() { return _lang; }
+    public static String getLang() { return _lang; }
 
-    public static String get_treeTaggerHome() { return _treeTaggerHome; }
+    public static String getTreeTaggerHome() { return _treeTaggerHome; }
 
     public static Path getBase() { return _base; }
 
-    public static boolean is_keepFiles() { return _keepFiles; }
+    public static boolean isKeepFiles() { return _keepFiles; }
 
-    public Path get_disambAnnotation() { return _disambAnnotation; }
+    public Path getDisambAnnotation() { return _disambAnnotation; }
 
     /*
     Setter
@@ -146,11 +163,7 @@ public class TermithIndex {
      */
     public void addText(String id, StringBuilder content) throws IOException {
 
-        this.get_extractedText().put(id, FilesUtils.writeObject(content,TermithIndex._outputPath));
-    }
-
-    public boolean iskeepFiles() {
-        return _keepFiles;
+        this.getExtractedText().put(id, FilesUtils.writeObject(content,TermithIndex._outputPath));
     }
 
     /**

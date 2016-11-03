@@ -28,10 +28,10 @@ public class EvaluationExtractorWorker implements Runnable {
     public void run() {
         LOGGER.debug("add " + p + " to evaluation lexic");
         String file = FilesUtils.nameNormalizer(p.toString());
-        termithIndex.get_evaluationLexic().put(file,new HashMap<>());
+        termithIndex.getEvaluationLexic().put(file,new HashMap<>());
         EvaluationExtractor evaluationExtractor = new EvaluationExtractor(
                 p.toString(),
-                termithIndex.get_evaluationLexic().get(file)
+                termithIndex.getEvaluationLexic().get(file)
         );
         LOGGER.debug(p + " added");
         evaluationExtractor.execute();

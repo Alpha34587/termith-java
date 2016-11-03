@@ -28,7 +28,7 @@ public class TerminologyStandOffWorker implements Runnable {
                                      TermithIndex termithIndex) {
         this.id = id;
         this.morpho = (List<MorphoSyntaxOffsetId>) FilesUtils.readObject(morpho);
-        this.termino = termithIndex.get_terminologyStandOff().get(id);
+        this.termino = termithIndex.getTerminologyStandOff().get(id);
     }
 
     @Override

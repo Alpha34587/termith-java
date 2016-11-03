@@ -26,10 +26,10 @@ public class LexicProfileThread {
     }
 
     public void execute() throws InterruptedException {
-        RLexic rLexic = new RLexic(_termithIndex.get_disambGlobalLexic());
+        RLexic rLexic = new RLexic(_termithIndex.getDisambGlobalLexic());
         ExecutorService executor = Executors.newFixedThreadPool(_poolSize);
 
-        _termithIndex.get_termSubLexic().forEach(
+        _termithIndex.getTermSubLexic().forEach(
                 (key,value) -> executor.submit(new SpecCoeffInjectorWorker(
                         key,
                         _termithIndex,

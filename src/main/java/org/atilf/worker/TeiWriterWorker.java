@@ -37,30 +37,30 @@ public class TeiWriterWorker implements Runnable {
         LOGGER.debug("writing : " + outputFile);
         TeiWriter teiWriter = null;
         try {
-            if (termithIndex.get_terminologyStandOff().containsKey(key)) {
+            if (termithIndex.getTerminologyStandOff().containsKey(key)) {
                 teiWriter = new TeiWriter(
-                        (StringBuilder) FilesUtils.readFile(termithIndex.get_xmlCorpus().get(key)),
-                        (List<MorphoSyntaxOffsetId>) FilesUtils.readObject(termithIndex.get_morphoSyntaxStandOff().get(key)),
-                        (StringBuilder) FilesUtils.readObject(termithIndex.get_tokenizeTeiBody().get(key)),
-                        termithIndex.get_terminologyStandOff().get(key),
+                        (StringBuilder) FilesUtils.readFile(termithIndex.getXmlCorpus().get(key)),
+                        (List<MorphoSyntaxOffsetId>) FilesUtils.readObject(termithIndex.getMorphoSyntaxStandOff().get(key)),
+                        (StringBuilder) FilesUtils.readObject(termithIndex.getTokenizeTeiBody().get(key)),
+                        termithIndex.getTerminologyStandOff().get(key),
                         outputFile,
                         standOffResources);
             }
 
             else {
                 teiWriter = new TeiWriter(
-                        (StringBuilder) FilesUtils.readFile(termithIndex.get_xmlCorpus().get(key)),
-                        (List<MorphoSyntaxOffsetId>) FilesUtils.readObject(termithIndex.get_morphoSyntaxStandOff().get(key)),
-                        (StringBuilder) FilesUtils.readObject(termithIndex.get_tokenizeTeiBody().get(key)),
+                        (StringBuilder) FilesUtils.readFile(termithIndex.getXmlCorpus().get(key)),
+                        (List<MorphoSyntaxOffsetId>) FilesUtils.readObject(termithIndex.getMorphoSyntaxStandOff().get(key)),
+                        (StringBuilder) FilesUtils.readObject(termithIndex.getTokenizeTeiBody().get(key)),
                         null,
                         outputFile,
                         standOffResources);
             }
 
-            Files.delete(termithIndex.get_morphoSyntaxStandOff().get(key));
-            Files.delete(termithIndex.get_tokenizeTeiBody().get(key));
+            Files.delete(termithIndex.getMorphoSyntaxStandOff().get(key));
+            Files.delete(termithIndex.getTokenizeTeiBody().get(key));
             teiWriter.execute();
-            termithIndex.get_outputFile().add(outputFile);
+            termithIndex.getOutputFile().add(outputFile);
         } catch (IOException e) {
             LOGGER.error("errors during writing xml/tei file",e);
         }

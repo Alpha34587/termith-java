@@ -35,7 +35,7 @@ public class CorpusAnalyzerTest {
         termithIndex.addText("1", FilesUtils.readFile(Paths.get("src/test/resources/corpus.analyzer/txt/file1.txt")));
         termithIndex.addText("2", FilesUtils.readFile(Paths.get("src/test/resources/corpus.analyzer/txt/file2.txt")));
         termithIndex.addText("3", FilesUtils.readFile(Paths.get("src/test/resources/corpus.analyzer/txt/file3.txt")));
-        extractedText = convertExtractedText(termithIndex.get_extractedText());
+        extractedText = convertExtractedText(termithIndex.getExtractedText());
     }
 
     public static Map<String,StringBuilder> convertExtractedText(Map<String,Path> extractedText){

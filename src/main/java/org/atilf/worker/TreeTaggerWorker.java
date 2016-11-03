@@ -35,14 +35,14 @@ public class TreeTaggerWorker implements Runnable {
                             CountDownLatch jsonCnt) {
         this.termithIndex = termithIndex;
         this.jsonCnt = jsonCnt;
-        this.txt = (StringBuilder) FilesUtils.readObject(termithIndex.get_extractedText().get(id));
-        this.txtPath = termithIndex.get_corpus() + "/txt/" + id + ".txt";
-        this.jsonPath = termithIndex.get_corpus() + "/json/" + id + ".json";
+        this.txt = (StringBuilder) FilesUtils.readObject(termithIndex.getExtractedText().get(id));
+        this.txtPath = termithIndex.getCorpus() + "/txt/" + id + ".txt";
+        this.jsonPath = termithIndex.getCorpus() + "/json/" + id + ".json";
         this.textAnalyzer = corpusAnalyzer.get_analyzedTexts().get(id);
-        this.xml = FilesUtils.readFile(termithIndex.get_xmlCorpus().get(id));
+        this.xml = FilesUtils.readFile(termithIndex.getXmlCorpus().get(id));
 
         try {
-            Files.delete(termithIndex.get_extractedText().get(id));
+            Files.delete(termithIndex.getExtractedText().get(id));
         } catch (IOException e) {
             LOGGER.error("could not delete file",e);
         }
@@ -53,8 +53,8 @@ public class TreeTaggerWorker implements Runnable {
         TreeTaggerToJson treeTaggerToJson = new TreeTaggerToJson(
                 txt,
                 jsonPath,
-                TermithIndex.get_treeTaggerHome(),
-                TermithIndex.get_lang(),
+                TermithIndex.getTreeTaggerHome(),
+                TermithIndex.getLang(),
                 textAnalyzer,
                 TermithIndex.getOutputPath().toString()
         );
@@ -64,17 +64,17 @@ public class TreeTaggerWorker implements Runnable {
             LOGGER.debug("converting TreeTagger output started file : " + txtPath);
             treeTaggerToJson.execute();
             jsonCnt.countDown();
-            termithIndex.get_serializeJson().add(Paths.get(jsonPath));
+            termithIndex.getSerializeJson().add(Paths.get(jsonPath));
             LOGGER.debug("converting TreeTagger output finished file : " + txtPath);
 
             LOGGER.debug("tokenization and morphosyntax tasks started file : " + jsonPath);
             File json = new File(jsonPath);
             SyntaxGenerator syntaxGenerator = new SyntaxGenerator(json,txt,xml);
             syntaxGenerator.execute();
-            termithIndex.get_tokenizeTeiBody().put(json.getName().replace(".json",""),
-                    FilesUtils.writeObject(syntaxGenerator.get_tokenizeBody(),termithIndex.get_corpus()));
-            termithIndex.get_morphoSyntaxStandOff().put(json.getName().replace(".json",""),
-                    FilesUtils.writeObject(syntaxGenerator.get_offsetId(),termithIndex.get_corpus()));
+            termithIndex.getTokenizeTeiBody().put(json.getName().replace(".json",""),
+                    FilesUtils.writeObject(syntaxGenerator.get_tokenizeBody(),termithIndex.getCorpus()));
+            termithIndex.getMorphoSyntaxStandOff().put(json.getName().replace(".json",""),
+                    FilesUtils.writeObject(syntaxGenerator.get_offsetId(),termithIndex.getCorpus()));
             LOGGER.debug("tokenization and morphosyntax tasks finished file : " + jsonPath);
 
         } catch (IOException e) {

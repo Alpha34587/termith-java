@@ -24,7 +24,7 @@ public class SubLexicExtractorWorker implements Runnable {
     @Override
     public void run() {
         LOGGER.info("add " + p + " to sub lexic");
-        SubLexicExtractor subLexicExtractor = new SubLexicExtractor(p.toString(),termithIndex.get_termSubLexic());
+        SubLexicExtractor subLexicExtractor = new SubLexicExtractor(p.toString(),termithIndex.getTermSubLexic());
         subLexicExtractor.execute();
         LOGGER.info(p + " added");
     }

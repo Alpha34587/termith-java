@@ -33,7 +33,7 @@ public class DisambEvaluationThread {
                 p -> executor.submit(new EvaluationExtractorWorker(p, _termithIndex))
         );
 
-        _termithIndex.get_evaluationLexic().forEach(
+        _termithIndex.getEvaluationLexic().forEach(
                 (key,value) -> executor.submit(new EvaluationWorker(value, _termithIndex))
         );
 

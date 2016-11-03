@@ -22,7 +22,7 @@ public class TermsuiteWorker implements Runnable{
 
     public TermsuiteWorker(TermithIndex termithIndex) {
         this.termithIndex = termithIndex;
-        jsonCorpus = termithIndex._corpus + "/json";
+        jsonCorpus = termithIndex.getCorpus() + "/json";
     }
 
     @Override
@@ -30,33 +30,33 @@ public class TermsuiteWorker implements Runnable{
         LOGGER.info("Build Termsuite Pipeline");
         init();
         PipelineBuilder pipelineBuilder = new PipelineBuilder(
-                TermithIndex.get_lang(),
+                TermithIndex.getLang(),
                 jsonCorpus,
-                termithIndex.get_terminologies().get(0).toString(),
-                termithIndex.get_terminologies().get(1).toString(),
+                termithIndex.getTerminologies().get(0).toString(),
+                termithIndex.getTerminologies().get(1).toString(),
                 exportResource()
         );
         LOGGER.info("Run Termsuite Pipeline");
         pipelineBuilder.start();
         LOGGER.info("Finished execution of Termsuite Pipeline, result in :" +
-                termithIndex.get_corpus());
+                termithIndex.getCorpus());
 
     }
 
     private void init() {
         
-        termithIndex.get_terminologies().add(Paths.get(jsonCorpus.replace("json","") + "/" + "terminology.tbx"));
-        termithIndex.get_terminologies().add(Paths.get(jsonCorpus.replace("json","") + "/" + "terminology.json"));
+        termithIndex.getTerminologies().add(Paths.get(jsonCorpus.replace("json","") + "/" + "terminology.tbx"));
+        termithIndex.getTerminologies().add(Paths.get(jsonCorpus.replace("json","") + "/" + "terminology.json"));
     }
 
 
     public String exportResource(){
         InputStream resourceAsStream = getClass().getClassLoader().getResourceAsStream("termsuite-lang/termsuite-resources.jar");
         try {
-            Files.write(Paths.get(termithIndex._corpus +"/termsuite-resources.jar"), ByteStreams.toByteArray(resourceAsStream));
+            Files.write(Paths.get(termithIndex.getCorpus() +"/termsuite-resources.jar"), ByteStreams.toByteArray(resourceAsStream));
         } catch (IOException e) {
             LOGGER.error("cannot copy termsuite-resources.jar",e);
         }
-        return termithIndex._corpus +"/termsuite-resources.jar";
+        return termithIndex.getCorpus() +"/termsuite-resources.jar";
     }
 }

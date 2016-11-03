@@ -24,7 +24,7 @@ public class InitCorpusWorker implements Runnable {
      * @param path
      */
     public InitCorpusWorker(Path path, TermithIndex termithIndex) {
-        this(path, termithIndex, new CountDownLatch(termithIndex.get_xmlCorpus().size()));
+        this(path, termithIndex, new CountDownLatch(termithIndex.getXmlCorpus().size()));
     }
 
     /**
@@ -47,7 +47,7 @@ public class InitCorpusWorker implements Runnable {
      */
     @Override
     public void run() {
-            termithIndex.get_xmlCorpus().put(FilesUtils.nameNormalizer(path.getFileName().toString()), path);
+            termithIndex.getXmlCorpus().put(FilesUtils.nameNormalizer(path.getFileName().toString()), path);
             corpusCnt.countDown();
     }
 }

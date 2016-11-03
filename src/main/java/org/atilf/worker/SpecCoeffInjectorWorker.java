@@ -22,8 +22,8 @@ public class SpecCoeffInjectorWorker implements Runnable {
 
     @Override
     public void run() {
-        SpecCoefficientInjector specCoeff = new SpecCoefficientInjector(termithIndex.get_termSubLexic().get(key),
-                rLexic,termithIndex.get_disambGlobalLexic());
+        SpecCoefficientInjector specCoeff = new SpecCoefficientInjector(termithIndex.getTermSubLexic().get(key),
+                rLexic,termithIndex.getDisambGlobalLexic());
         specCoeff.execute();
     }
 }

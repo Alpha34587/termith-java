@@ -42,16 +42,16 @@ public class AnalyzeThread {
         termithIndex.set_corpus(TermithIndex.getOutputPath());
         _executorService = Executors.newFixedThreadPool(poolSize);
         _termithIndex = termithIndex;
-        _jsonCnt = new CountDownLatch(termithIndex.get_extractedText().size());
+        _jsonCnt = new CountDownLatch(termithIndex.getExtractedText().size());
     }
 
     public Path getCorpus() {
-        return _termithIndex.get_corpus();
+        return _termithIndex.getCorpus();
     }
 
     private Map<String,StringBuilder> getDeserializeText(){
         Map<String,StringBuilder> textMap = new HashMap<>();
-        _termithIndex.get_extractedText().forEach(
+        _termithIndex.getExtractedText().forEach(
                 (key,value) -> {
                     textMap.put(key,(StringBuilder) FilesUtils.readObject(value));
                 }
@@ -65,7 +65,7 @@ public class AnalyzeThread {
         new JsonTimer(_termithIndex,LOGGER).start();
 
         CorpusAnalyzer corpusAnalyzer = new CorpusAnalyzer(getDeserializeText());
-        _termithIndex.get_extractedText().forEach((key, txt) ->
+        _termithIndex.getExtractedText().forEach((key, txt) ->
                 _executorService.submit(new TreeTaggerWorker(
                         _termithIndex,
                         corpusAnalyzer,
@@ -79,7 +79,7 @@ public class AnalyzeThread {
         _executorService.submit(new TermsuiteWorker(_termithIndex)).get();
         LOGGER.info("terminology extraction started");
         _executorService.submit(new TerminologyParserWorker(_termithIndex)).get();
-        _termithIndex.get_morphoSyntaxStandOff().forEach(
+        _termithIndex.getMorphoSyntaxStandOff().forEach(
                 (id,value) -> {
                     _executorService.submit(new TerminologyStandOffWorker(id,value, _termithIndex));
                 }
@@ -90,10 +90,10 @@ public class AnalyzeThread {
     }
 
     private void init() throws IOException {
-        TagNormalizer.initTag(TermithIndex.get_lang());
-        LOGGER.debug("temporary folder created: " + _termithIndex.get_corpus());
-        Files.createDirectories(Paths.get(_termithIndex.get_corpus() + "/json"));
-        Files.createDirectories(Paths.get(_termithIndex.get_corpus() + "/txt"));
-        LOGGER.debug("create temporary text files in " + _termithIndex.get_corpus() + "/txt folder");
+        TagNormalizer.initTag(TermithIndex.getLang());
+        LOGGER.debug("temporary folder created: " + _termithIndex.getCorpus());
+        Files.createDirectories(Paths.get(_termithIndex.getCorpus() + "/json"));
+        Files.createDirectories(Paths.get(_termithIndex.getCorpus() + "/txt"));
+        LOGGER.debug("create temporary text files in " + _termithIndex.getCorpus() + "/txt folder");
     }
 }

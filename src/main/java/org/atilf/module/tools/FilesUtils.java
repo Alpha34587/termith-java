@@ -72,11 +72,11 @@ public class FilesUtils {
     public static void exportTerminology(TermithIndex termithIndex) {
         try {
             LOGGER.debug("copying tbx and json terminology ...");
-            Files.copy(termithIndex.get_terminologies().get(0),
+            Files.copy(termithIndex.getTerminologies().get(0),
                     Paths.get(TermithIndex.getOutputPath() +"/terminology.tbx"),
                     StandardCopyOption.REPLACE_EXISTING);
 
-            Files.copy(termithIndex.get_terminologies().get(1),
+            Files.copy(termithIndex.getTerminologies().get(1),
                     Paths.get(TermithIndex.getOutputPath() +"/terminology.json"),
                     StandardCopyOption.REPLACE_EXISTING);
         } catch (IOException e) {

@@ -48,8 +48,8 @@ abstract class ProgressBarTimer extends TimerTask {
 
     protected void update(int done) {
         _termithObservable.changeValue(done,
-                _termithIndex.get_corpusSize(), _logger);
-        if (_termithIndex.get_corpusSize() == done){
+                _termithIndex.getCorpusSize(), _logger);
+        if (_termithIndex.getCorpusSize() == done){
             _timer.cancel();
             _service.shutdownNow();
         }
