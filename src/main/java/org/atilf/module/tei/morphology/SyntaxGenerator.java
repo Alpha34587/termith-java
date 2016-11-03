@@ -27,11 +27,11 @@ public class SyntaxGenerator {
         _termsuiteJsonReader.parsing();
     }
 
-    public StringBuilder get_tokenizeBody() {
+    public StringBuilder getTokenizeBody() {
         return _tokenizeBody;
     }
 
-    public List<MorphoSyntaxOffsetId> get_offsetId() {
+    public List<MorphoSyntaxOffsetId> getOffsetId() {
         return _offsetId;
     }
 
@@ -39,7 +39,7 @@ public class SyntaxGenerator {
 
         SyntaxParser syntaxParser = new SyntaxParser(_txt, _xml, _termsuiteJsonReader, _offsetId);
         syntaxParser.execute();
-        _tokenizeBody = syntaxParser.get_tokenizeBuffer();
+        _tokenizeBody = syntaxParser.getTokenizeBuffer();
         _offsetId = syntaxParser.get_offsetId();
     }
 }

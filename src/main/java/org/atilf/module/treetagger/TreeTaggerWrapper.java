@@ -26,15 +26,15 @@ public class TreeTaggerWrapper {
     private String _outputPath;
     private StringBuilder _ttOut = new StringBuilder();
 
-    public TreeTaggerWrapper(StringBuilder txt, String treeTaggerHome, TreeTaggerParameter treeTaggerParameter,
-    String outputPath) {
+    TreeTaggerWrapper(StringBuilder txt, String treeTaggerHome, TreeTaggerParameter treeTaggerParameter,
+                      String outputPath) {
         _txt = txt;
         _treeTaggerHome = treeTaggerHome;
         _treeTaggerParameter = treeTaggerParameter;
         _outputPath = outputPath;
     }
 
-    public StringBuilder get_ttOut() {
+    StringBuilder get_ttOut() {
         return _ttOut;
     }
 

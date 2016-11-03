@@ -40,7 +40,7 @@ public class LexicalProfile implements Iterable<String>{
             return -1;
     }
 
-    Map<String, Float> get_specCoefficientMap() {
+    Map<String, Float> getSpecCoefficientMap() {
         return _specCoefficientMap;
     }
 
@@ -69,7 +69,7 @@ public class LexicalProfile implements Iterable<String>{
     }
 
     @Override
-    public Iterator iterator() {
+    public Iterator<String> iterator() {
         return null;
     }
 

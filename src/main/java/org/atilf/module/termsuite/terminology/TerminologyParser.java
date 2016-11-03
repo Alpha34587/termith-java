@@ -104,16 +104,16 @@ public class TerminologyParser {
 
             switch (parser.getCurrentName()){
                 case T_ID :
-                    offsetId.set_termId(parser.nextIntValue(0));
+                    offsetId.setTermId(parser.nextIntValue(0));
                     break;
                 case T_TEXT :
-                    offsetId.set_word(parser.nextTextValue());
+                    offsetId.setWord(parser.nextTextValue());
                     break;
                 case F_BEGIN :
-                    offsetId.set_begin(parser.nextIntValue(0));
+                    offsetId.setBegin(parser.nextIntValue(0));
                     break;
                 case F_END :
-                    offsetId.set_end(parser.nextIntValue(0));
+                    offsetId.setEnd(parser.nextIntValue(0));
                     break;
                 case T_FILE :
                     _currentFile = String.valueOf(parser.nextIntValue(0));

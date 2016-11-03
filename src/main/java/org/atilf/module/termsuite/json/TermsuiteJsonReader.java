@@ -39,11 +39,11 @@ public class TermsuiteJsonReader {
         return _pollToken == null;
     }
 
-    public Queue<Token> get_tokenQueue() {
+    public Queue<Token> getTokenQueue() {
         return _tokenQueue;
     }
 
-    void set_tokenQueue(Queue<Token> _tokenQueue) {
+    void setTokenQueue(Queue<Token> _tokenQueue) {
         this._tokenQueue = _tokenQueue;
     }
 

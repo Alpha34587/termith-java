@@ -6,20 +6,20 @@ import java.util.Objects;
  * @author Simon Meoni
  *         Created on 02/09/16.
  */
-public class TreeTaggerParameter {
+class TreeTaggerParameter {
 
     private final String _treeTaggerHome;
     private boolean _sgml;
     private String _lang;
 
-    public TreeTaggerParameter(boolean sgml, String lang, String treeTaggerHome){
+    TreeTaggerParameter(boolean sgml, String lang, String treeTaggerHome){
 
         this._sgml = sgml;
         this._lang = lang;
         this._treeTaggerHome = treeTaggerHome;
     }
 
-    public String parse() {
+    String parse() {
         String parameter = _treeTaggerHome + "/bin/tree-tagger " + _treeTaggerHome + "/lib/";
 
         if (Objects.equals(_lang, "fr")) {

@@ -79,21 +79,21 @@ public class Serialize {
         jg.writeFieldName("off_in_s");
         jg.writeNumber(0);
         jg.writeFieldName("document_index");
-        jg.writeNumber(_textAnalyzer.get_docIndex());
+        jg.writeNumber(_textAnalyzer.getDocIndex());
         jg.writeFieldName("nb_documents");
-        jg.writeNumber(_textAnalyzer.get_nbOfDocs());
+        jg.writeNumber(_textAnalyzer.getNbOfDocs());
         jg.writeFieldName("document_size");
-        jg.writeNumber(_textAnalyzer.get_documentSize());
+        jg.writeNumber(_textAnalyzer.getDocumentSize());
         jg.writeFieldName("cumul_doc_size");
-        jg.writeNumber(_textAnalyzer.get_cumulSize());
+        jg.writeNumber(_textAnalyzer.getCumulSize());
         jg.writeFieldName("corpus_size");
-        jg.writeNumber(_textAnalyzer.get_totalSize());
+        jg.writeNumber(_textAnalyzer.getTotalSize());
         jg.writeFieldName("last_segment");
         jg.writeBoolean(_textAnalyzer.getIsLastDoc());
         jg.writeFieldName("begin");
-        jg.writeNumber(_textAnalyzer.get_begin());
+        jg.writeNumber(_textAnalyzer.getBegin());
         jg.writeFieldName("end");
-        jg.writeNumber(_textAnalyzer.get_end());
+        jg.writeNumber(_textAnalyzer.getEnd());
         jg.writeEndObject();
     }
 

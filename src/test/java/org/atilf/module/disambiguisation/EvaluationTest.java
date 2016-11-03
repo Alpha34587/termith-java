@@ -138,7 +138,7 @@ public class EvaluationTest {
     public void execute() throws Exception {
         int cnt = 0;
         for (EvaluationProfile evaluationProfile : evaluationProfileMap.values()) {
-            Assert.assertEquals("this value must be equals", disambIdObserved.get(cnt),evaluationProfile.get_disambId());
+            Assert.assertEquals("this value must be equals", disambIdObserved.get(cnt),evaluationProfile.getDisambId());
             cnt++;
         }
     }

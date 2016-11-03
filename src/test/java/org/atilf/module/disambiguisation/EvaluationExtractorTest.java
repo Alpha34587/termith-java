@@ -104,7 +104,7 @@ public class EvaluationExtractorTest {
         evalExtractor2.extractSubCorpus();
         expectedMap.forEach(
                 (key,value) -> {
-                    Multiset observed = multiSub.get(key).get_lexicalTable();
+                    Multiset observed = multiSub.get(key).getLexicalTable();
                     value.forEach(
                             el -> {
                                 int count = observed.count(el);

@@ -30,7 +30,7 @@ public class GlobalLexic implements Iterable<String>{
         return _multisetLexic.size();
     }
 
-    public Map<Integer, String> get_lexicalEntry() {
+    public Map<Integer, String> getLexicalEntry() {
         return _lexicalEntry;
     }
 
@@ -47,11 +47,11 @@ public class GlobalLexic implements Iterable<String>{
         return _multisetLexic.count(el);
     }
 
-    public String get_idEntry(String el){
+    public String getIdEntry(String el){
         return _idEntry.get(el).toString();
     }
 
-    public String get_lexicalEntry(int el){
+    public String getLexicalEntry(int el){
         return _lexicalEntry.get(el);
     }
 

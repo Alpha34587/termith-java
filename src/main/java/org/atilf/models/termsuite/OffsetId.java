@@ -27,23 +27,23 @@ public class OffsetId implements Serializable {
 
     public OffsetId() {}
 
-    public void set_begin(int _begin) {
+    public void setBegin(int _begin) {
         this._begin = _begin;
     }
 
-    public void set_end(int _end) {
+    public void setEnd(int _end) {
         this._end = _end;
     }
 
-    public int get_begin() {
+    public int getBegin() {
         return _begin;
     }
 
-    public int get_end() {
+    public int getEnd() {
         return _end;
     }
 
-    public List<Integer> get_ids() {
+    public List<Integer> getIds() {
         return _ids;
     }
 }

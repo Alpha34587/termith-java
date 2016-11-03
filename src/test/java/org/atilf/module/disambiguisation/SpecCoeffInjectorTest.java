@@ -62,7 +62,7 @@ public class SpecCoeffInjectorTest {
     public void execute() throws Exception {
         executeSubLexic.values().forEach(
                 values -> {
-                    values.get_specCoefficientMap().values().forEach(
+                    values.getSpecCoefficientMap().values().forEach(
                             coef -> Assert.assertNotEquals("this coefficient must be not equals to 0", 0, coef)
                     );
                 }

@@ -19,19 +19,19 @@ public class TermsOffsetId extends OffsetId {
 
     public TermsOffsetId() {}
 
-    public void set_word(String _word) {
+    public void setWord(String _word) {
         this._word = _word;
     }
 
-    public void set_termId(int _termId) {
+    public void setTermId(int _termId) {
         this._termId = _termId;
     }
 
-    public String get_word() {
+    public String getWord() {
         return _word;
     }
 
-    public int get_termId() {
+    public int getTermId() {
         return _termId;
     }
 

@@ -15,7 +15,7 @@ import javax.xml.xpath.*;
 import java.io.IOException;
 import java.util.*;
 
-import static org.atilf.models.disambiguisation.SubLexicResource.*;
+import static org.atilf.models.disambiguisation.ContextResources.*;
 
 /**
  * @author Simon Meoni

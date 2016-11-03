@@ -9,7 +9,7 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class TagNormalizer {
 
-    protected final static Map<String, String> FR_TT_TAG;
+    private final static Map<String, String> FR_TT_TAG;
 
     static {
         FR_TT_TAG = new ConcurrentHashMap<>();
@@ -81,7 +81,7 @@ public class TagNormalizer {
         FR_TT_TAG.put("VER:subp", "present");
     }
 
-    protected final static Map<String, String> EN_TT_TAG;
+    private final static Map<String, String> EN_TT_TAG;
 
     static {
         EN_TT_TAG = new ConcurrentHashMap<>();
@@ -148,7 +148,7 @@ public class TagNormalizer {
         EN_TT_TAG.put("TO", "preposition");
     }
 
-    protected static Map<String,String> _ttTag;
+    private static Map<String,String> _ttTag;
 
     public static void initTag(String lang){
         switch (lang) {

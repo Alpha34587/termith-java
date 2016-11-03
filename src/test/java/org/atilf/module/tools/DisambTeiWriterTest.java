@@ -33,9 +33,9 @@ public class DisambTeiWriterTest {
         evaluationProfile.put("entry-13471_DM1", new EvaluationProfile(HashMultiset.create()));
         evaluationProfile.put("entry-7263_DM3", new EvaluationProfile(HashMultiset.create()));
         evaluationProfile.put("entry-990_noDM", new EvaluationProfile(HashMultiset.create()));
-        evaluationProfile.get("entry-13471_DM1").set_disambId("DaOn");
-        evaluationProfile.get("entry-7263_DM3").set_disambId("DaOn");
-        evaluationProfile.get("entry-990_noDM").set_disambId("DaOff");
+        evaluationProfile.get("entry-13471_DM1").setDisambId("DaOn");
+        evaluationProfile.get("entry-7263_DM3").setDisambId("DaOn");
+        evaluationProfile.get("entry-990_noDM").setDisambId("DaOff");
 
         teiWriter = new DisambTeiWriter(
                 "src/test/resources/corpus/tei/test2.xml",

@@ -28,11 +28,11 @@ public class Evaluation {
                     String lexEntryOff = formatEntry(key, "Off");
 
                     if (!_termSubLexic.containsKey(lexEntryOn)){
-                        value.set_disambId("DaOff");
+                        value.setDisambId("DaOff");
                     }
 
                     else if (!_termSubLexic.containsKey(lexEntryOff)){
-                        value.set_disambId("DaOn");
+                        value.setDisambId("DaOn");
                     }
 
                     else {
@@ -46,10 +46,10 @@ public class Evaluation {
 
     private void compareFactor(float lexEntryOn, float lexEntryOff, EvaluationProfile entry) {
         if (lexEntryOff >= lexEntryOn){
-            entry.set_disambId("DaOff");
+            entry.setDisambId("DaOff");
         }
         else {
-            entry.set_disambId("DaOn");
+            entry.setDisambId("DaOn");
         }
     }
 

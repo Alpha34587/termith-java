@@ -22,7 +22,7 @@ import javax.xml.xpath.*;
 import java.io.IOException;
 import java.util.Map;
 
-import static org.atilf.models.disambiguisation.SubLexicResource.*;
+import static org.atilf.models.disambiguisation.ContextResources.*;
 
 /**
  * @author Simon Meoni
@@ -70,7 +70,7 @@ public class DisambTeiWriter {
                 String termId = correspVal.getNodeValue().substring(1) + "_" + anaVal.getNodeValue().substring(1);
                 if (evaluationLexic.containsKey(termId)) {
                     anaVal.setNodeValue(
-                            anaVal.getNodeValue() + " #" + evaluationLexic.get(termId).get_disambId()
+                            anaVal.getNodeValue() + " #" + evaluationLexic.get(termId).getDisambId()
                     );
                 }
             }

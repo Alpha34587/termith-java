@@ -14,7 +14,7 @@ import javax.xml.xpath.*;
 
 import java.io.IOException;
 
-import static org.atilf.models.disambiguisation.SubLexicResource.NAMESPACE_CONTEXT;
+import static org.atilf.models.disambiguisation.ContextResources.NAMESPACE_CONTEXT;
 
 /**
  * @author Simon Meoni

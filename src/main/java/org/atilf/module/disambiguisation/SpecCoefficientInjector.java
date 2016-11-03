@@ -31,7 +31,7 @@ public class SpecCoefficientInjector {
         int cnt = 0;
         for (String id : _rSubLexic.get_idSubCorpus()) {
             _lexicalProfile.addCoefficientSpec(
-                    _globalLexic.get_lexicalEntry(Integer.parseInt(id)),
+                    _globalLexic.getLexicalEntry(Integer.parseInt(id)),
                     specCoef[cnt]);
             cnt++;
         }

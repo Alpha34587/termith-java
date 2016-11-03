@@ -38,11 +38,11 @@ public class SyntaxParser {
         this._xml = xml;
     }
 
-    public StringBuilder get_xml() {
+    public StringBuilder getXml() {
         return _xml;
     }
 
-    StringBuilder get_tokenizeBuffer() {
+    StringBuilder getTokenizeBuffer() {
         return _tokenizeBuffer;
     }
 

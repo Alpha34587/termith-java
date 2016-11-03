@@ -86,7 +86,7 @@ public class TerminologyStandOffTest {
         simpleTerminologyStandOff.get_termino().forEach(
                 ids -> Assert.assertEquals("morpho ids must be equals",
                         expected.get(simpleTerminologyStandOff.get_termino().indexOf(ids)),
-                        ids.get_ids().toString()
+                        ids.getIds().toString()
                         )
         );
 
@@ -103,7 +103,7 @@ public class TerminologyStandOffTest {
         multiTerminologyStandOff.get_termino().forEach(
                 ids -> Assert.assertEquals("morpho ids must be equals",
                         expected.get(multiTerminologyStandOff.get_termino().indexOf(ids)),
-                        ids.get_ids().toString()
+                        ids.getIds().toString()
                 )
         );
 
@@ -120,7 +120,7 @@ public class TerminologyStandOffTest {
         multiTerminologyStandOff.get_termino().forEach(
                 ids -> Assert.assertEquals("morpho ids must be equals",
                         expected.get(multiTerminologyStandOff.get_termino().indexOf(ids)),
-                        ids.get_ids().toString()
+                        ids.getIds().toString()
                 )
         );
 

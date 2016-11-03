@@ -1,6 +1,5 @@
 package org.atilf.models.disambiguisation;
 
-import org.atilf.models.disambiguisation.GlobalLexic;
 import org.atilf.module.disambiguisation.LexicalProfile;
 
 import java.util.ArrayList;
@@ -60,13 +59,13 @@ public class RLexic {
     }
 
     private void convertToRFormat(String el) {
-        _rName.append("\""+ _corpus.get_idEntry(el) +"\",");
+        _rName.append("\""+ _corpus.getIdEntry(el) +"\",");
         _rOcc.append(_corpus.count(el)+",");
     }
 
     private void convertToRFSubormat(String el) {
-        _rName.append("\""+ _corpus.get_idEntry(el) +"\",");
+        _rName.append("\""+ _corpus.getIdEntry(el) +"\",");
         _rOcc.append(_subCorpus.countOccurrence(el)+",");
-        _idSubCorpus.add(_corpus.get_idEntry(el));
+        _idSubCorpus.add(_corpus.getIdEntry(el));
     }
 }

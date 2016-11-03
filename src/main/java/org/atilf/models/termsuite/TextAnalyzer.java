@@ -32,31 +32,31 @@ public class TextAnalyzer {
         _isLastDoc = isLastDoc;
     }
 
-    public int get_documentSize() {
+    public int getDocumentSize() {
         return _documentSize;
     }
 
-    public int get_nbOfDocs() {
+    public int getNbOfDocs() {
         return _nbOfDocs;
     }
 
-    public int get_begin() {
+    public int getBegin() {
         return _begin;
     }
 
-    public int get_end() {
+    public int getEnd() {
         return _end;
     }
 
-    public int get_docIndex() {
+    public int getDocIndex() {
         return _docIndex;
     }
 
-    public int get_cumulSize() {
+    public int getCumulSize() {
         return _cumulSize;
     }
 
-    public int get_totalSize() {
+    public int getTotalSize() {
         return _totalSize;
     }
 

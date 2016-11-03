@@ -277,9 +277,9 @@ public class SyntaxParserTest {
     @Test
     public void teiBodyspliterTest() throws Exception {
         Assert.assertEquals("this StringBuilder must be equals to :",
-                syntaxBody.get_xml().toString(), expectedStringBuilder);
+                syntaxBody.getXml().toString(), expectedStringBuilder);
         Assert.assertEquals("this StringBuilder must be equals to :",
-                syntaxBody2.get_xml().toString(), expectedStringBuilder2);
+                syntaxBody2.getXml().toString(), expectedStringBuilder2);
     }
 
     @Test
@@ -294,7 +294,7 @@ public class SyntaxParserTest {
                         "<w xml:id=\"t4\">des</w> " +
                         "<w xml:id=\"t5\">pommes</w>" +
                         "</text>",
-                basicTokenInjector.get_tokenizeBuffer().toString()
+                basicTokenInjector.getTokenizeBuffer().toString()
         );
     }
 
@@ -311,7 +311,7 @@ public class SyntaxParserTest {
                         "<s><w xml:id=\"t6\">s</w></s> " +
                         "<hi><w xml:id=\"t7\">pommes</w></hi>" +
                         "</text>",
-                insideTokenInjector.get_tokenizeBuffer().toString()
+                insideTokenInjector.getTokenizeBuffer().toString()
         );
 
         insideTokenInjector2.teiWordTokenizer();
@@ -328,7 +328,7 @@ public class SyntaxParserTest {
                         "<hi><w xml:id=\"t9\">)</w></hi> " +
                         "<w xml:id=\"t10\">pommes</w></hi>" +
                         "</text>",
-                insideTokenInjector2.get_tokenizeBuffer().toString()
+                insideTokenInjector2.getTokenizeBuffer().toString()
         );
     }
 
@@ -345,7 +345,7 @@ public class SyntaxParserTest {
                         "<s><w xml:id=\"t6\">s</w></s><!--lalalal--><!--test--> " +
                         "<hi><w xml:id=\"t7\">pommes</w></hi><!--lalala-->" +
                         "</text>",
-                commentTokenInjector.get_tokenizeBuffer().toString()
+                commentTokenInjector.getTokenizeBuffer().toString()
         );
     }
 
@@ -365,7 +365,7 @@ public class SyntaxParserTest {
                         "<w xml:id=\"t6\">&diams;des</w> " +
                         "<w xml:id=\"t7\">pommes&amp;</w>" +
                         "</text>",
-                symbolTokenInjector2.get_tokenizeBuffer().toString());
+                symbolTokenInjector2.getTokenizeBuffer().toString());
 
         Assert.assertEquals("complex symbol parsing test fails :",
                 "<text>" +
@@ -381,7 +381,7 @@ public class SyntaxParserTest {
                         "<w xml:id=\"t10\">es</w> " +
                         "<hi><w xml:id=\"t11\">pommes&amp;</w></hi>" +
                         "</text>",
-                symbolTokenInjector3.get_tokenizeBuffer().toString());
+                symbolTokenInjector3.getTokenizeBuffer().toString());
 
     }
 
@@ -399,7 +399,7 @@ public class SyntaxParserTest {
                         "<p><w xml:id=\"t8\">d&eacute;licieux</w>  </p>\n\n\n" +
                         "<w xml:id=\"t9\">&lt;</w>" +
                         "</text>",
-                alignmentTokenInjector.get_tokenizeBuffer().toString());
+                alignmentTokenInjector.getTokenizeBuffer().toString());
 
         Assert.assertEquals("text alignment test fails :",
                 "<text>" +
@@ -412,7 +412,7 @@ public class SyntaxParserTest {
                         "<w xml:id=\"t7\">assez</w></div></p>" +
                         "<p><w xml:id=\"t8\">d&eacute;licieux</w>  </p>\n\n\n" +
                         "</text>",
-                alignmentTokenInjector2.get_tokenizeBuffer().toString());
+                alignmentTokenInjector2.getTokenizeBuffer().toString());
     }
 
     @Test
@@ -420,7 +420,7 @@ public class SyntaxParserTest {
 
         alignmentTokenInjector.get_offsetId().forEach(
                 offsetId -> {
-                    String observed = offsetId.get_begin() + ", " + offsetId.get_end() + ", " + offsetId.get_ids();
+                    String observed = offsetId.getBegin() + ", " + offsetId.getEnd() + ", " + offsetId.getIds();
                     String expected = offsetIdAlignement.get(alignmentTokenInjector.get_offsetId().indexOf(offsetId));
                     Assert.assertEquals("this offset must be equals", expected, observed);
                 }

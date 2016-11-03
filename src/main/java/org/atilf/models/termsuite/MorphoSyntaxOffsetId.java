@@ -8,8 +8,8 @@ import java.util.List;
  */
 public class MorphoSyntaxOffsetId extends OffsetId{
 
-    String _lemma;
-    String _tag;
+    private String _lemma;
+    private String _tag;
     public MorphoSyntaxOffsetId(int begin,int end,String lemma, String tag ,int id) {
         super(begin, end, id);
         _lemma = lemma;
@@ -22,11 +22,11 @@ public class MorphoSyntaxOffsetId extends OffsetId{
         _tag = tag;
     }
 
-    public String get_lemma() {
+    public String getLemma() {
         return _lemma;
     }
 
-    public String get_tag() {
+    public String getTag() {
         return _tag;
     }
 

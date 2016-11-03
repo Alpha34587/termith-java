@@ -22,7 +22,7 @@ public class EvaluationProfile implements Iterable<String> {
         _lexicalTable = HashMultiset.create();
     }
 
-    public Multiset<String> get_lexicalTable() {
+    public Multiset<String> getLexicalTable() {
         return _lexicalTable;
     }
 
@@ -34,11 +34,11 @@ public class EvaluationProfile implements Iterable<String> {
             return -1;
     }
 
-    public String get_disambId() {
+    public String getDisambId() {
         return _disambId;
     }
 
-    public void set_disambId(String _disambId) {
+    public void setDisambId(String _disambId) {
         this._disambId = _disambId;
     }
 

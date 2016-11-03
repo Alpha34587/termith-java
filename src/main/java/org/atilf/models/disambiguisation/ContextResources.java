@@ -1,21 +1,17 @@
 package org.atilf.models.disambiguisation;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.xml.XMLConstants;
 import javax.xml.namespace.NamespaceContext;
-import java.io.File;
-import java.io.IOException;
 import java.util.Iterator;
-import java.util.Map;
 
 /**
  * @author Simon Meoni
  *         Created on 18/10/16.
  */
-public class SubLexicResource {
+public class ContextResources {
     public static final NamespaceContext NAMESPACE_CONTEXT = new NamespaceContext() {
         @Override
         public String getNamespaceURI(String s) {
@@ -51,7 +47,7 @@ public class SubLexicResource {
     public static final String ANA_T;
     public static final String MULTI_TEXT;
     public static final String SIMPLE_TEXT;
-    private final static Logger LOGGER = LoggerFactory.getLogger(SubLexicResource.class);
+    private final static Logger LOGGER = LoggerFactory.getLogger(ContextResources.class);
 
     static {
         SPAN_T = "//ns:standOff/tei:span";
