@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?><TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:ns="http://standoff.proposal" xmlns:ns2="http://standoff.proposal" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <ns:standOff>
-        <span ana="#DM1 #DaOn" corresp="#entry-13471" target="#t13 #t14 #t15 #t16"/>
-        <span ana="#DM1 #DaOn" corresp="#entry-13471" target="#t16 #t17 #t18"/>
-        <span ana="#DM3 #DaOn" corresp="#entry-7263" target="#t30"/>
-        <span ana="#noDM #DaOff" corresp="#entry-990" target="#t49"/>
+        <span ana="#DM1" corresp="#entry-13471" target="#t13 #t14 #t15 #t16"/>
+        <span ana="#DM1" corresp="#entry-13471" target="#t16 #t17 #t18"/>
+        <span ana="#DM3" corresp="#entry-7263" target="#t30"/>
+        <span ana="#noDM" corresp="#entry-990" target="#t49"/>
     </ns:standOff>
     <text>
         <front>
