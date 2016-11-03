@@ -20,11 +20,11 @@ public class SpecCoeffInjectorTest {
     private RLexic rLexic;
     private Map<String, LexicalProfile> subLexic;
     private Map<String, LexicalProfile> executeSubLexic;
-    private SubLexicExtractor subCorpus1;
-    private SubLexicExtractor subCorpus2;
+    private ContextExtractor subCorpus1;
+    private ContextExtractor subCorpus2;
     private Map<String,float[]> specificities;
-    private SubLexicExtractor executeSubCorpus2;
-    private SubLexicExtractor executeSubCorpus1;
+    private ContextExtractor executeSubCorpus2;
+    private ContextExtractor executeSubCorpus1;
 
     @Before
     public void setUp() throws Exception {
@@ -33,10 +33,10 @@ public class SpecCoeffInjectorTest {
         executeSubLexic = new HashMap<>();
         corpus1 = new LexicExtractor("src/test/resources/corpus/tei/test1.xml", globalLexic);
         corpus2 = new LexicExtractor("src/test/resources/corpus/tei/test2.xml", globalLexic);
-        subCorpus1 = new SubLexicExtractor("src/test/resources/corpus/tei/test1.xml", subLexic);
-        subCorpus2 = new SubLexicExtractor("src/test/resources/corpus/tei/test2.xml", subLexic);
-        executeSubCorpus1 = new SubLexicExtractor("src/test/resources/corpus/tei/test1.xml", executeSubLexic);
-        executeSubCorpus2 = new SubLexicExtractor("src/test/resources/corpus/tei/test2.xml", executeSubLexic);
+        subCorpus1 = new ContextExtractor("src/test/resources/corpus/tei/test1.xml", subLexic);
+        subCorpus2 = new ContextExtractor("src/test/resources/corpus/tei/test2.xml", subLexic);
+        executeSubCorpus1 = new ContextExtractor("src/test/resources/corpus/tei/test1.xml", executeSubLexic);
+        executeSubCorpus2 = new ContextExtractor("src/test/resources/corpus/tei/test2.xml", executeSubLexic);
 
         corpus1.execute();
         corpus2.execute();

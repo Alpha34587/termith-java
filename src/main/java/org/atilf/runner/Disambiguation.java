@@ -1,10 +1,7 @@
 package org.atilf.runner;
 
 import org.atilf.models.termith.TermithIndex;
-import org.atilf.thread.disambiguisation.DisambEvaluationThread;
-import org.atilf.thread.disambiguisation.DisambExporterThread;
-import org.atilf.thread.disambiguisation.LexicProfileThread;
-import org.atilf.thread.disambiguisation.SubLexicThread;
+import org.atilf.thread.disambiguisation.ContextLexicThread;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -14,24 +11,24 @@ import java.io.IOException;
  * @author Simon Meoni
  *         Created on 11/10/16.
  */
-public class Disambiguisation {
+public class Disambiguation {
 
     private TermithIndex _termithIndex;
     private int _poolSize;
     private static final Logger LOGGER = LoggerFactory.getLogger(Exporter.class.getName());
     private static  final int POOL_SIZE = Runtime.getRuntime().availableProcessors();
 
-    public Disambiguisation(TermithIndex termithIndex){
+    public Disambiguation(TermithIndex termithIndex){
         this(termithIndex, POOL_SIZE);
     }
 
-    public Disambiguisation(TermithIndex termithIndex, int poolSize){
+    public Disambiguation(TermithIndex termithIndex, int poolSize){
         _poolSize = poolSize;
         _termithIndex = termithIndex;
     }
 
     public void execute() {
-        SubLexicThread lexic = new SubLexicThread(_termithIndex, POOL_SIZE);
+        ContextLexicThread lexic = new ContextLexicThread(_termithIndex, POOL_SIZE);
         try {
             lexic.execute();
             int a = 0;

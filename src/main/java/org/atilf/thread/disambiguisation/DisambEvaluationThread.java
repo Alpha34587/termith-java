@@ -37,7 +37,7 @@ public class DisambEvaluationThread {
                 (key,value) -> executor.submit(new EvaluationWorker(value, _termithIndex))
         );
 
-        LOGGER.info("Waiting SubLexicExtractorWorker executors to finish");
+        LOGGER.info("Waiting ContextExtractorWorker executors to finish");
         executor.shutdown();
         executor.awaitTermination(1L, TimeUnit.DAYS);
     }

@@ -21,7 +21,7 @@ import static org.atilf.models.disambiguisation.SubLexicResource.*;
  * @author Simon Meoni
  *         Created on 14/10/16.
  */
-public class SubLexicExtractor {
+public class ContextExtractor {
     Deque<String> _target = new ArrayDeque<>();
     Deque<String> _corresp = new ArrayDeque<>();
     Deque<String> _lexAna = new ArrayDeque<>();
@@ -35,9 +35,9 @@ public class SubLexicExtractor {
     private XPathExpression _eSimpleTagGetter;
     private DocumentBuilder _dBuilder;
     private Map<String, String> _xpathVariableMap = new HashMap<>();
-    private static final Logger LOGGER = LoggerFactory.getLogger(SubLexicExtractor.class.getName());
+    private static final Logger LOGGER = LoggerFactory.getLogger(ContextExtractor.class.getName());
 
-    public SubLexicExtractor(String p, Map<String, LexicalProfile> subLexics){
+    public ContextExtractor(String p, Map<String, LexicalProfile> subLexics){
         XPath xpath = XPathFactory.newInstance().newXPath();
         XpathMapVariableResolver xpathMapVariableResolver = new XpathMapVariableResolver();
         _subLexics = subLexics;

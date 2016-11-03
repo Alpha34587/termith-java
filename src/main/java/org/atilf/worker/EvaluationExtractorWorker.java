@@ -16,7 +16,7 @@ import java.util.HashMap;
 public class EvaluationExtractorWorker implements Runnable {
     private final Path p;
     private final TermithIndex termithIndex;
-    private static final Logger LOGGER = LoggerFactory.getLogger(SubLexicExtractorWorker.class.getName());
+    private static final Logger LOGGER = LoggerFactory.getLogger(ContextExtractorWorker.class.getName());
 
 
     public EvaluationExtractorWorker(Path p, TermithIndex termithIndex) {

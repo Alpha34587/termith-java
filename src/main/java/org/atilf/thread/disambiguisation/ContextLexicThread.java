@@ -1,12 +1,11 @@
 package org.atilf.thread.disambiguisation;
 
 import org.atilf.models.termith.TermithIndex;
+import org.atilf.worker.ContextExtractorWorker;
 import org.atilf.worker.DisambXslTransformerWorker;
-import org.atilf.worker.SubLexicExtractorWorker;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.concurrent.CountDownLatch;
@@ -18,13 +17,13 @@ import java.util.concurrent.TimeUnit;
  * @author Simon Meoni
  *         Created on 12/10/16.
  */
-public class SubLexicThread {
+public class ContextLexicThread {
 
     private final TermithIndex _termithIndex;
     private final int _poolSize;
-    private static final Logger LOGGER = LoggerFactory.getLogger(SubLexicThread.class.getName());
+    private static final Logger LOGGER = LoggerFactory.getLogger(ContextLexicThread.class.getName());
     private CountDownLatch _transformCounter;
-    public SubLexicThread(TermithIndex termithIndex, int poolSize) {
+    public ContextLexicThread(TermithIndex termithIndex, int poolSize) {
 
         _termithIndex = termithIndex;
         _poolSize = poolSize;
@@ -46,11 +45,11 @@ public class SubLexicThread {
         _transformCounter.await();
         _termithIndex.getDisambTranformedFile().values().forEach(
                 (file) -> {
-                    executor.submit(new SubLexicExtractorWorker(file, _termithIndex));
+                    executor.submit(new ContextExtractorWorker(file, _termithIndex));
 //                    executor.submit(new LexicExtractorWorker(file, _termithIndex));
                 }
         );
-        LOGGER.info("Waiting SubLexicExtractorWorker executors to finish");
+        LOGGER.info("Waiting ContextExtractorWorker executors to finish");
         executor.shutdown();
         executor.awaitTermination(1L, TimeUnit.DAYS);
         int a = 0;

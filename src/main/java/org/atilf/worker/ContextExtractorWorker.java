@@ -1,7 +1,7 @@
 package org.atilf.worker;
 
 import org.atilf.models.termith.TermithIndex;
-import org.atilf.module.disambiguisation.SubLexicExtractor;
+import org.atilf.module.disambiguisation.ContextExtractor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -11,12 +11,12 @@ import java.nio.file.Path;
  * @author Simon Meoni
  *         Created on 14/10/16.
  */
-public class SubLexicExtractorWorker implements Runnable {
+public class ContextExtractorWorker implements Runnable {
     private final Path p;
     private final TermithIndex termithIndex;
-    private static final Logger LOGGER = LoggerFactory.getLogger(SubLexicExtractorWorker.class.getName());
+    private static final Logger LOGGER = LoggerFactory.getLogger(ContextExtractorWorker.class.getName());
 
-    public SubLexicExtractorWorker(Path p, TermithIndex termithIndex) {
+    public ContextExtractorWorker(Path p, TermithIndex termithIndex) {
         this.p = p;
         this.termithIndex = termithIndex;
     }
@@ -24,8 +24,8 @@ public class SubLexicExtractorWorker implements Runnable {
     @Override
     public void run() {
         LOGGER.info("add " + p + " to sub lexic");
-        SubLexicExtractor subLexicExtractor = new SubLexicExtractor(p.toString(),termithIndex.getTermSubLexic());
-        subLexicExtractor.execute();
+        ContextExtractor contextExtractor = new ContextExtractor(p.toString(),termithIndex.getTermSubLexic());
+        contextExtractor.execute();
         LOGGER.info(p + " added");
     }
 }

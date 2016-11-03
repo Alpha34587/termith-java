@@ -12,7 +12,7 @@ import java.util.Map;
  * @author Simon Meoni
  *         Created on 24/10/16.
  */
-public class EvaluationExtractor extends SubLexicExtractor{
+public class EvaluationExtractor extends ContextExtractor {
 
     private final Map<String, EvaluationProfile> _evaluationLexic;
     private static final Logger LOGGER = LoggerFactory.getLogger(EvaluationExtractor.class.getName());

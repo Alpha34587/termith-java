@@ -33,7 +33,7 @@ public class DisambExporterThread {
         Files.list(TermithIndex.getBase()).forEach(
                 p -> executor.submit(new DisambExporterWorker(p, _termithIndex))
         );
-        LOGGER.info("Waiting SubLexicExtractorWorker executors to finish");
+        LOGGER.info("Waiting ContextExtractorWorker executors to finish");
         executor.shutdown();
         executor.awaitTermination(1L, TimeUnit.DAYS);
     }

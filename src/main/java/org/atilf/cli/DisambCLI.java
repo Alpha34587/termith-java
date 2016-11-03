@@ -4,7 +4,7 @@ import ch.qos.logback.classic.Level;
 import org.apache.commons.cli.*;
 import org.atilf.models.termith.TermithIndex;
 import org.atilf.module.tools.CLIUtils;
-import org.atilf.runner.Disambiguisation;
+import org.atilf.runner.Disambiguation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -15,11 +15,11 @@ import java.io.IOException;
  * @author Simon Meoni
  *         Created on 11/10/16.
  */
-public class DesambCLI {
+public class DisambCLI {
     private static final Options options = new Options();
     private static final Logger LOGGER = LoggerFactory.getLogger(TermithTreeTaggerCLI.class.getName());
 
-    private DesambCLI() {
+    private DisambCLI() {
         throw new IllegalAccessError("Utility class");
     }
 
@@ -68,7 +68,7 @@ public class DesambCLI {
             }
 
 
-            new Disambiguisation(termithIndex).execute();
+            new Disambiguation(termithIndex).execute();
 
         } catch (ParseException e) {
             LOGGER.error("There are some problems during parsing arguments : ",e);

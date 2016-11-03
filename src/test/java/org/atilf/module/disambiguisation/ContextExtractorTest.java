@@ -12,7 +12,7 @@ import java.util.*;
  * @author Simon Meoni
  *         Created on 17/10/16.
  */
-public class SubLexicExtractorTest {
+public class ContextExtractorTest {
     private Deque<String> _expectedTarget = new ArrayDeque<>();
     private Deque<String> _expectedCorresp = new ArrayDeque<>();
 
@@ -20,7 +20,7 @@ public class SubLexicExtractorTest {
     private Map<String,LexicalProfile> _expectedMap = new HashMap<>();
     private Map<String,LexicalProfile> _multiSub = new HashMap<>();
 
-    private SubLexicExtractor _subCorpus = new SubLexicExtractor(
+    private ContextExtractor _subCorpus = new ContextExtractor(
             "src/test/resources/corpus/tei/test2.xml",
             _multiSub
     );
@@ -96,7 +96,7 @@ public class SubLexicExtractorTest {
 
     @Test
     public void extractSubCorpus() throws Exception {
-        _subCorpus = new SubLexicExtractor(
+        _subCorpus = new ContextExtractor(
                 "src/test/resources/corpus/tei/test2.xml",
                 _multiSub
         );
