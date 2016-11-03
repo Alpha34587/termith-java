@@ -16,6 +16,7 @@ public class EvaluationExtractor extends SubLexicExtractor{
 
     private final Map<String, EvaluationProfile> _evaluationLexic;
     private static final Logger LOGGER = LoggerFactory.getLogger(EvaluationExtractor.class.getName());
+
     public EvaluationExtractor(String p , Map<String, EvaluationProfile> evaluationLexic) {
         super(p,null);
         _evaluationLexic = evaluationLexic;
@@ -45,7 +46,7 @@ public class EvaluationExtractor extends SubLexicExtractor{
         for (int i = 0; i < nodes.getLength(); i++) {
             String ana = _eAna.evaluate(nodes.item(i));
             if (!ana.isEmpty()){
-                addToTermsQueues(nodes, ana, i);
+                addToTermsQueues(nodes.item(i), ana);
             }
         }
     }

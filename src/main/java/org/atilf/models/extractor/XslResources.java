@@ -9,11 +9,11 @@ import javax.xml.transform.stream.StreamSource;
  *         Created on 16/09/16.
  */
 public class XslResources {
-    public final TransformerFactory FACTORY;
-    public final Source EXTRACT_TEXT;
+    public final TransformerFactory _factory;
+    public final Source _extractText;
 
     public XslResources() {
-        this.EXTRACT_TEXT = new StreamSource(getClass().getClassLoader().getResourceAsStream("xsl/ExtractText.xsl"));
-        this.FACTORY = TransformerFactory.newInstance();
+        _extractText = new StreamSource(getClass().getClassLoader().getResourceAsStream("xsl/ExtractText.xsl"));
+        _factory = TransformerFactory.newInstance();
     }
 }

@@ -56,7 +56,7 @@ public class TreeTaggerWorker implements Runnable {
                 TermithIndex.get_treeTaggerHome(),
                 TermithIndex.get_lang(),
                 textAnalyzer,
-                TermithIndex.get_outputPath().toString()
+                TermithIndex.getOutputPath().toString()
         );
 
 

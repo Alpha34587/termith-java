@@ -33,7 +33,7 @@ public class TeiWriterWorker implements Runnable {
     }
     @Override
     public void run() {
-        Path outputFile = Paths.get(TermithIndex.get_outputPath() + "/" + key + ".xml");
+        Path outputFile = Paths.get(TermithIndex.getOutputPath() + "/" + key + ".xml");
         LOGGER.debug("writing : " + outputFile);
         TeiWriter teiWriter = null;
         try {

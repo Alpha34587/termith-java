@@ -113,7 +113,7 @@ public class TermithIndex {
         return _extractedText;
     }
 
-    public static Path get_outputPath() { return _outputPath;}
+    public static Path getOutputPath() { return _outputPath;}
 
     public static String get_lang() { return _lang; }
 
