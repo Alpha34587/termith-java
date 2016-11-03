@@ -73,11 +73,11 @@ public class FilesUtils {
         try {
             LOGGER.debug("copying tbx and json terminology ...");
             Files.copy(termithIndex.get_terminologies().get(0),
-                    Paths.get(TermithIndex.get_outputPath() +"/terminology.tbx"),
+                    Paths.get(TermithIndex.getOutputPath() +"/terminology.tbx"),
                     StandardCopyOption.REPLACE_EXISTING);
 
             Files.copy(termithIndex.get_terminologies().get(1),
-                    Paths.get(TermithIndex.get_outputPath() +"/terminology.json"),
+                    Paths.get(TermithIndex.getOutputPath() +"/terminology.json"),
                     StandardCopyOption.REPLACE_EXISTING);
         } catch (IOException e) {
             LOGGER.error("cannot copy terminologies",e);
@@ -106,9 +106,9 @@ public class FilesUtils {
         return path;
     }
 
-    public static Path writeXml(StringBuilder content,Path workingPath) throws IOException {
-
-        BufferedWriter bufferedWriter = Files.newBufferedWriter(workingPath);
+    public static Path writeXml(StringBuilder content,Path workingPath, Path filename) throws IOException {
+        Path filePath = folderPathResolver(workingPath.toString() + "/" + filename.toString());
+        BufferedWriter bufferedWriter = Files.newBufferedWriter(filePath);
         bufferedWriter.append(content);
         bufferedWriter.close();
         return workingPath;
@@ -147,5 +147,4 @@ public class FilesUtils {
     public static Path folderPathResolver(String path){
         return Paths.get(path).normalize();
     }
-    
 }
