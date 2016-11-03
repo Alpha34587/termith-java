@@ -45,7 +45,7 @@ public class InitializerThread {
         _termithIndex = termithIndex;
         _executor = Executors.newFixedThreadPool(poolSize);
         _corpusCnt = new CountDownLatch(
-                (int)Files.list(TermithIndex.get_base()).count());
+                (int)Files.list(TermithIndex.getBase()).count());
     }
 
     /**
@@ -54,7 +54,7 @@ public class InitializerThread {
      * @throws InterruptedException
      */
     public void execute() throws IOException, InterruptedException {
-        Files.list(TermithIndex.get_base()).forEach(
+        Files.list(TermithIndex.getBase()).forEach(
                 p -> {
                     _executor.submit(new TextExtractorWorker(p, _termithIndex));
                     _executor.submit(new InitCorpusWorker(p, _termithIndex, _corpusCnt));

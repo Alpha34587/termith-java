@@ -111,7 +111,7 @@ public class FilesUtils {
         BufferedWriter bufferedWriter = Files.newBufferedWriter(filePath);
         bufferedWriter.append(content);
         bufferedWriter.close();
-        return workingPath;
+        return filePath;
     }
 
     public static Object readObject(Path filePath){

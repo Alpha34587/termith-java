@@ -29,7 +29,7 @@ public class DisambEvaluationThread {
 
     public void execute() throws IOException, InterruptedException {
         ExecutorService executor = Executors.newFixedThreadPool(_poolSize);
-        Files.list(TermithIndex.get_base()).forEach(
+        Files.list(TermithIndex.getBase()).forEach(
                 p -> executor.submit(new EvaluationExtractorWorker(p, _termithIndex))
         );
 

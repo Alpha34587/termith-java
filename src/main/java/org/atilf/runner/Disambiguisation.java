@@ -31,7 +31,7 @@ public class Disambiguisation {
     }
 
     public void execute() {
-        SubLexicThread lexic = new SubLexicThread(_termithIndex, 1);
+        SubLexicThread lexic = new SubLexicThread(_termithIndex, POOL_SIZE);
         try {
             lexic.execute();
             int a = 0;

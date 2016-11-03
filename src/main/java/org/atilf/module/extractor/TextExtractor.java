@@ -19,9 +19,9 @@ import java.io.StringWriter;
  * Created on 25/07/16.
  */
 public class TextExtractor {
-    private static final Logger LOGGER = LoggerFactory.getLogger(TextExtractor.class.getName());
-    private File _file;
-    private XslResources _xslResources;
+    private final Logger LOGGER = LoggerFactory.getLogger(this.getClass().getName());
+    protected File _file;
+    protected XslResources _xslResources;
 
     /**
      * builder for textExtractor
@@ -45,12 +45,12 @@ public class TextExtractor {
         StreamResult streamResult = new StreamResult(stringWriter);
 
         try {
-            LOGGER.debug("apply " + _xslResources._extractText.toString() + "to xml file" + input.toString());
-            transformer = _xslResources._factory.newTransformer(_xslResources._extractText);
+            LOGGER.debug("apply " + _xslResources._stylesheet.toString() + "to xml file" + input.toString());
+            transformer = _xslResources._factory.newTransformer(_xslResources._stylesheet);
             transformer.transform(input, streamResult);
 
         } catch (TransformerException e) {
-            LOGGER.error("could not apply the xslt transformation : ", e);
+            LOGGER.error("could not apply the xslt transformation to the file : " + _file.getAbsolutePath() + " ", e);
         }
 
         return new StringBuilder(stringWriter.getBuffer());

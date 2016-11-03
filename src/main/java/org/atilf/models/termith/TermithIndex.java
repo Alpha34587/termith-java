@@ -27,7 +27,7 @@ public class TermithIndex {
     private static boolean _keepFiles;
 
     public Path _corpus = null;
-    public Path _disambAnnotation;
+    private Path _disambAnnotation;
     private List<Path> _terminologies = new CopyOnWriteArrayList<>();
     private Map<String, Path> _tokenizeTeiBody = new ConcurrentHashMap<>();
     private Map<String, Path> _morphoSyntaxStandOff = new ConcurrentHashMap<>();
@@ -39,7 +39,7 @@ public class TermithIndex {
     private List<Path> _serializeJson = new CopyOnWriteArrayList<>();
     private List<Path> _outputFile = new CopyOnWriteArrayList<>();
     private Map<String, LexicalProfile> _termSubLexic = new ConcurrentHashMap<>();
-    private Map<String,Map<String, EvaluationProfile>> _evaluationLexic;
+    private Map<String,Map<String, EvaluationProfile>> _evaluationLexic = new ConcurrentHashMap<>();
     private GlobalLexic _disambGlobalLexic = new GlobalLexic(new ConcurrentHashMap<>(),new ConcurrentHashMap<>());
     private int _corpusSize;
 
@@ -85,7 +85,7 @@ public class TermithIndex {
         return _tokenizeTeiBody;
     }
 
-    public Map<String, Path> get_disambTranformedFile() {return _DisambTranformedFile;}
+    public Map<String, Path> getDisambTranformedFile() {return _DisambTranformedFile;}
 
     public List<Path> get_serializeJson() {return _serializeJson;}
 
@@ -119,7 +119,7 @@ public class TermithIndex {
 
     public static String get_treeTaggerHome() { return _treeTaggerHome; }
 
-    public static Path get_base() { return _base; }
+    public static Path getBase() { return _base; }
 
     public static boolean is_keepFiles() { return _keepFiles; }
 

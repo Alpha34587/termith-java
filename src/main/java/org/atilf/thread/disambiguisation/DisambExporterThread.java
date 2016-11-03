@@ -30,7 +30,7 @@ public class DisambExporterThread {
     public void execute() throws IOException, InterruptedException {
 
         ExecutorService executor = Executors.newFixedThreadPool(_poolSize);
-        Files.list(TermithIndex.get_base()).forEach(
+        Files.list(TermithIndex.getBase()).forEach(
                 p -> executor.submit(new DisambExporterWorker(p, _termithIndex))
         );
         LOGGER.info("Waiting SubLexicExtractorWorker executors to finish");

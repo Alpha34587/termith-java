@@ -24,7 +24,7 @@ public class LexicalProfile implements Iterable<String>{
         _lexicalTable = ConcurrentHashMultiset.create();
     }
 
-    Multiset<String> get_lexicalTable() {
+    Multiset<String> getLexicalTable() {
         return _lexicalTable;
     }
 

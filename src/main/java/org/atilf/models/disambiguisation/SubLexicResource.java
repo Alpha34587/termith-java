@@ -49,50 +49,19 @@ public class SubLexicResource {
     public static final String TARGET_T;
     public static final String CORRESP_T;
     public static final String ANA_T;
-    public static final String POS_W;
-    public static final String SPAN_W;
-    public static final String LEMMA_W;
-    public static final String TARGET_W;
-    public static final String FIRST_TEXT;
-    public static final String NEXT_TEXT;
     public static final String MULTI_TEXT;
     public static final String SIMPLE_TEXT;
     private final static Logger LOGGER = LoggerFactory.getLogger(SubLexicResource.class);
 
     static {
-        ObjectMapper mapper = new ObjectMapper();
-        Map jsonTerm = null;
-        Map jsonWordForm = null;
-        Map jsonText = null;
-        try {
-            jsonTerm = mapper.readValue(
-                    new File("src/main/resources/disambiguisation/json/xpath-candidats-termes.json"),
-                    Map.class);
-            jsonWordForm = mapper.readValue(
-                    new File("src/main/resources/disambiguisation/json/xpath-wordforms.json"),
-                    Map.class);
-            jsonText = mapper.readValue(
-                    new File("src/main/resources/disambiguisation/json/xpath-text.json"),
-                    Map.class);
-        } catch (IOException e) {
-            LOGGER.error("could not initialize sublexic resource",e);
-        }
-
-        assert jsonTerm != null;
-        SPAN_T = (String) jsonTerm.get("span");
-        TARGET_T = (String) jsonTerm.get("target");
-        CORRESP_T = (String) jsonTerm.get("corresp");
-        ANA_T = (String) jsonTerm.get("ana");
-        assert jsonWordForm != null;
-        SPAN_W = (String) jsonWordForm.get("span");
-        TARGET_W = (String) jsonWordForm.get("target");
-        LEMMA_W = (String) jsonWordForm.get("lemma");
-        POS_W = (String) jsonWordForm.get("pos");
-        assert jsonText != null;
-        FIRST_TEXT = (String) jsonText.get("first_id");
-        NEXT_TEXT = (String) jsonText.get("next_id");
-        SIMPLE_TEXT = (String) jsonText.get("simple_id");
-        MULTI_TEXT = (String) jsonText.get("multi_id");
+        SPAN_T = "//ns:standOff/tei:span";
+        TARGET_T = "@target";
+        CORRESP_T = "@corresp";
+        ANA_T = "@ana";
+        SIMPLE_TEXT = "/tei:TEI/tei:text//tei:w[./preceding-sibling::tei:w[@xml:id = $c_id ] " +
+                "or ./following-sibling::tei:w[@xml:id = $c_id]]";
+        MULTI_TEXT = "/tei:TEI/tei:text//tei:w[./preceding-sibling::tei:w[@xml:id = $last] or " +
+                "./following-sibling::tei:w[@xml:id = $first]]";
     }
 
 }

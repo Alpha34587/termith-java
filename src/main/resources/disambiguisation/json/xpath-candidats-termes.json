@@ -1,6 +1,0 @@
-{
-  "span":"//ns:standOff[@type = 'candidatsTermes']/ns:listAnnotation/tei:span",
-  "target":"@target",
-  "corresp":"@corresp",
-  "ana":"@ana"
-}
