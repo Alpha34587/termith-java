@@ -18,30 +18,9 @@ import java.io.StringWriter;
  * @author Simon Meoni
  *         Created on 02/11/16.
  */
-public class DisambXslTransformer {
+public class DisambXslTransformer extends TextExtractor {
     private static final Logger LOGGER = LoggerFactory.getLogger(DisambXslTransformer.class.getName());
-    private final File _file;
-    private final DisambXslResources _xslResources;
 
-    public DisambXslTransformer(File file, DisambXslResources xslResources) {
-        _file = file;
-        _xslResources = xslResources;
-    }
-
-    public StringBuilder xsltTransformation() {
-        Source input = new StreamSource(_file);
-        Transformer transformer;
-        StringWriter stringWriter = new StringWriter();
-        StreamResult streamResult = new StreamResult(stringWriter);
-
-        try {
-            LOGGER.debug("apply " + _xslResources.getDisamb().toString() + "to xml file" + input.toString());
-            transformer = _xslResources.getFactory().newTransformer(_xslResources.getDisamb());
-            transformer.transform(input, streamResult);
-
-        } catch (TransformerException e) {
-            LOGGER.error("could not apply the xslt transformation : ", e);
-        }
-
-        return new StringBuilder(stringWriter.getBuffer());    }
+    public DisambXslTransformer(File file, XslResources xslResources) {
+        super(file,xslResources);}
 }

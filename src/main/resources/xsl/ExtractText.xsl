@@ -8,7 +8,6 @@
     <xsl:apply-templates/>
   </xsl:template>
   <xsl:template match="text()[ancestor::tei:p|ancestor::tei:head|ancestor::tei:div|ancestor::tei:q|ancestor::tei:ab|ancestor::tei:note][position() = last()]">
-    <xsl:variable name="test" select="."/>
     <xsl:value-of select="."/>
     <xsl:if test="not(normalize-space(.) = '')">
       <xsl:text>&#10;</xsl:text>

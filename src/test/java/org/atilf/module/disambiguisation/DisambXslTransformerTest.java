@@ -11,12 +11,14 @@ import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
+import static org.custommonkey.xmlunit.XMLAssert.assertXMLEqual;
+
 /**
  * @author Simon Meoni
  *         Created on 02/11/16.
  */
-public class DisambXslTransformerTest extends XMLTestCase {
-    DisambXslTransformer _disambXslTransformer;
+public class DisambXslTransformerTest {
+    private DisambXslTransformer _disambXslTransformer;
     @Before
     public void setUp(){
         _disambXslTransformer = new DisambXslTransformer(

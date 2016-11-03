@@ -32,7 +32,10 @@ public class DisambXslTransformerWorker implements Runnable {
             DisambXslTransformer disambXslTransformer = new DisambXslTransformer(_p.toFile(),_xslResources);
             _termithIndex.get_disambTranformedFile().put(
                     FilesUtils.nameNormalizer(_p.getFileName().toString()),
-                    FilesUtils.writeXml(disambXslTransformer.xsltTransformation(),_p.toAbsolutePath())
+                    FilesUtils.writeXml(
+                            disambXslTransformer.xsltTransformation(),
+                            TermithIndex.getOutputPath(),
+                            _p.getFileName())
             );
             LOGGER.debug("Extraction done for file: " + _p);
         } catch (IOException e) {
