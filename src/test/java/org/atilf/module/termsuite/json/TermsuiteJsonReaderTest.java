@@ -1,6 +1,5 @@
-package org.atilf.module.termsuite;
+package org.atilf.module.termsuite.json;
 
-import org.atilf.module.termsuite.json.TermsuiteJsonReader;
 import org.antlr.v4.runtime.misc.Pair;
 import org.junit.Assert;
 import org.junit.Before;

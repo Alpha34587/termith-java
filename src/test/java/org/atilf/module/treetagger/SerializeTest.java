@@ -7,7 +7,6 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
-import org.atilf.thread.enrichment.InitializerThread;
 
 import java.io.File;
 import java.io.IOException;
@@ -20,26 +19,22 @@ import java.nio.file.Paths;
  */
 public class SerializeTest {
 
-    private StringBuilder tokenLemma;
-    private StringBuilder lemma;
-    private InitializerThread initializerThread;
-    private Serialize serializeLemma;
-    private Serialize serializeTag;
-    private File jsonResFile;
-    private TermithIndex termithIndex;
+    private Serialize _serializeLemma;
+    private File _jsonResFile;
+    private TermithIndex _termithIndex;
 
     @Rule
     public TemporaryFolder temporaryFolder = new TemporaryFolder();
 
     @Before
     public void setUp() throws IOException {
-        termithIndex = new TermithIndex.Builder().export(temporaryFolder.getRoot().getPath()).build();
+        _termithIndex = new TermithIndex.Builder().export(temporaryFolder.getRoot().getPath()).build();
         TagNormalizer.initTag("en");
-        termithIndex.addText("1",
+        _termithIndex.addText("1",
                 new StringBuilder("\n \n \nJournal of Gerontology: PSYCHOLOGICAL patient (1998@)"));
-        CorpusAnalyzer corpusAnalyzer = new CorpusAnalyzer(CorpusAnalyzerTest.convertExtractedText(termithIndex.getExtractedText()));
+        CorpusAnalyzer corpusAnalyzer = new CorpusAnalyzer(CorpusAnalyzerTest.convertExtractedText(_termithIndex.getExtractedText()));
 
-        tokenLemma = new StringBuilder(
+        StringBuilder tokenLemma = new StringBuilder(
                 "Journal\tNP\tJournal\n" +
                         "of\tIN\tof\n" +
                         "Gerontology\tNP\tgerontology\n" +
@@ -49,21 +44,21 @@ public class SerializeTest {
                         "(\tJJ\t(\n" +
                         "1998@\tJJ\t1998@\n" +
                         ")\tJJ\t)");
-        lemma = new StringBuilder(
+        StringBuilder lemma = new StringBuilder(
                 "\n \n \nJournal of Gerontology: PSYCHOLOGICAL patient (1998@)");
 
-        jsonResFile = temporaryFolder.newFile("test1.json");
+        _jsonResFile = temporaryFolder.newFile("test1.json");
 
-        serializeLemma = new Serialize(tokenLemma, jsonResFile.getAbsolutePath(),
+        _serializeLemma = new Serialize(tokenLemma, _jsonResFile.getAbsolutePath(),
                 lemma, corpusAnalyzer.get_analyzedTexts().get("1"));
     }
 
     @Test
     public void executeTest() throws Exception {
-        serializeLemma.execute();
-        String observe = String.join("\n",Files.readAllLines(jsonResFile.toPath()));
+        _serializeLemma.execute();
+        String observe = String.join("\n",Files.readAllLines(_jsonResFile.toPath()));
         String expected = String.join("\n", Files.readAllLines(Paths.get("src/test/resources/serialize/file1.json")));
-        expected = expected.replace("test1.json",jsonResFile.getAbsolutePath());
+        expected = expected.replace("test1.json", _jsonResFile.getAbsolutePath());
         Assert.assertEquals("files content must be equals : ",expected,observe);
     }
 

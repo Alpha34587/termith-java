@@ -28,28 +28,28 @@ import static org.atilf.models.disambiguisation.ContextResources.*;
  * @author Simon Meoni
  *         Created on 25/10/16.
  */
-public class DisambTeiWriter {
+public class DisambiguationTeiWriter {
     private static final Logger LOGGER = LoggerFactory.getLogger(TeiWriter.class.getName());
-    private final String p;
-    private final Map<String, EvaluationProfile> evaluationLexic;
-    private DocumentBuilder dBuilder;
-    private Document doc;
-    private DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-    private XPath xpath = XPathFactory.newInstance().newXPath();
+    private final String _p;
+    private final Map<String, EvaluationProfile> _evaluationLexic;
+    private DocumentBuilder _dBuilder;
+    private Document _doc;
+    private DocumentBuilderFactory _dbFactory = DocumentBuilderFactory.newInstance();
+    private XPath _xpath = XPathFactory.newInstance().newXPath();
 
-    public DisambTeiWriter(String p, Map<String, EvaluationProfile> evaluationLexic) {
-        this.p = p;
-        this.evaluationLexic = evaluationLexic;
-        xpath.setNamespaceContext(NAMESPACE_CONTEXT);
+    public DisambiguationTeiWriter(String p, Map<String, EvaluationProfile> evaluationLexic) {
+        _p = p;
+        _evaluationLexic = evaluationLexic;
+        _xpath.setNamespaceContext(NAMESPACE_CONTEXT);
 
         try {
-            dbFactory.setNamespaceAware(true);
-            dBuilder = dbFactory.newDocumentBuilder();
+            _dbFactory.setNamespaceAware(true);
+            _dBuilder = _dbFactory.newDocumentBuilder();
         } catch (ParserConfigurationException e) {
             LOGGER.error("error during the creation of documentBuilder object : ", e);
         }
         try {
-            doc = dBuilder.parse(p);
+            _doc = _dBuilder.parse(p);
         } catch (SAXException | IOException e) {
             LOGGER.error("error during the parsing of document",e);
         }
@@ -60,17 +60,17 @@ public class DisambTeiWriter {
         XPathExpression ana;
         XPathExpression corresp;
         try {
-            span = xpath.compile(SPAN_T);
-            ana = xpath.compile(ANA_T);
-            corresp = xpath.compile(CORRESP_T);
-            NodeList termNodes = (NodeList) span.evaluate(doc, XPathConstants.NODESET);
+            span = _xpath.compile(SPAN_T);
+            ana = _xpath.compile(ANA_T);
+            corresp = _xpath.compile(CORRESP_T);
+            NodeList termNodes = (NodeList) span.evaluate(_doc, XPathConstants.NODESET);
             for (int i = 0; i < termNodes.getLength(); i++){
                 Node correspVal = (Node) corresp.evaluate(termNodes.item(i), XPathConstants.NODE);
                 Node anaVal = (Node) ana.evaluate(termNodes.item(i), XPathConstants.NODE);
                 String termId = correspVal.getNodeValue().substring(1) + "_" + anaVal.getNodeValue().substring(1);
-                if (evaluationLexic.containsKey(termId)) {
+                if (_evaluationLexic.containsKey(termId)) {
                     anaVal.setNodeValue(
-                            anaVal.getNodeValue() + " #" + evaluationLexic.get(termId).getDisambId()
+                            anaVal.getNodeValue() + " #" + _evaluationLexic.get(termId).getDisambId()
                     );
                 }
             }
@@ -80,10 +80,10 @@ public class DisambTeiWriter {
                 Transformer transformer = transformerFactory.newTransformer();
                 transformer.setOutputProperty(OutputKeys.INDENT, "yes");
                 transformer.setOutputProperty(OutputKeys.DOCTYPE_PUBLIC, "yes");
-                doc.setXmlStandalone(true);
-                DOMSource source = new DOMSource(doc);
+                _doc.setXmlStandalone(true);
+                DOMSource source = new DOMSource(_doc);
                 StreamResult result = new StreamResult(TermithIndex.getOutputPath() + "/"
-                        + FilesUtils.nameNormalizer(p) + ".xml");
+                        + FilesUtils.nameNormalizer(_p) + ".xml");
                 transformer.transform(source, result);
             } catch (TransformerException e) {
                 LOGGER.error("error during file writing",e);

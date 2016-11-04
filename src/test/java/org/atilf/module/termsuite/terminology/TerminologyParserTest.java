@@ -16,16 +16,17 @@ import java.util.List;
  */
 public class TerminologyParserTest {
 
-    TerminologyParser terminologyParser;
+    private TerminologyParser _terminologyParser;
+    private List<String> expectedFile = new ArrayList<>();
+
     @Before
     public void setUp(){
-        terminologyParser = new TerminologyParser(Paths.get("src/test/resources/terminology-json/terminology.json"));
+        _terminologyParser = new TerminologyParser(Paths.get("src/test/resources/terminology-json/terminology.json"));
     }
 
     @Test
     public void execute() throws Exception {
 
-        List<String> expectedFile = new ArrayList<>();
         expectedFile.add("file1");
         expectedFile.add("file2");
         List<String> file1 = new ArrayList<>();
@@ -39,14 +40,14 @@ public class TerminologyParserTest {
         expected.put("file1",file1);
         expected.put("file2",file2);
 
-        terminologyParser.execute();
+        _terminologyParser.execute();
         expectedFile.forEach(
                 key -> {
-                    terminologyParser.get_standOffTerminology().get(key).forEach(
+                    _terminologyParser.get_standOffTerminology().get(key).forEach(
                             offset -> {
                                 Assert.assertEquals("this object must be equals",
                                         expected.get(key)
-                                                .get(terminologyParser.get_standOffTerminology()
+                                                .get(_terminologyParser.get_standOffTerminology()
                                                         .get(key).indexOf(offset)),parse(offset));
                             }
                     );

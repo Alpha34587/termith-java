@@ -21,7 +21,7 @@ public class ContextExtractorTest {
     private Map<String,LexicalProfile> _multiSub = new HashMap<>();
 
     private ContextExtractor _subCorpus = new ContextExtractor(
-            "src/test/resources/corpus/tei/test2.xml",
+            "src/test/resources/corpus/disambiguation/transform-tei/test2.xml",
             _multiSub
     );
 
@@ -97,7 +97,7 @@ public class ContextExtractorTest {
     @Test
     public void extractSubCorpus() throws Exception {
         _subCorpus = new ContextExtractor(
-                "src/test/resources/corpus/tei/test2.xml",
+                "src/test/resources/corpus/disambiguation/transform-tei/test2.xml",
                 _multiSub
         );
         _subCorpus.execute();

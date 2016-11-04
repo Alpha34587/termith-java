@@ -40,7 +40,7 @@ public class SpecCoefficientInjector {
     public float[] computeSpecCoefficient() {
         RCaller rcaller = RCaller.create();
         RCode code = RCode.create();
-        code.addRCode("source(" + "\"src/main/resources/disambiguisation/R/specificities.R\"" + ")");
+        code.addRCode("source(" + "\"src/main/resources/disambiguation/R/specificities.R\"" + ")");
         code.addRCode("sumCol <-" + _rLexic.getCorpusSizeOcc());
         code.addRCode("tabCol <-" + "c(" + _rSubLexic.getCorpusSizeOcc() + "," + _rLexic.getCorpusSizeOcc() + ")");
         code.addRCode("names(tabCol) <- c(\"sublexicon\",\"complementary\")");

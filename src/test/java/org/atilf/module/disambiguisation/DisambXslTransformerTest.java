@@ -1,9 +1,7 @@
 package org.atilf.module.disambiguisation;
 
 import org.atilf.models.disambiguisation.DisambXslResources;
-import org.custommonkey.xmlunit.XMLTestCase;
 import org.custommonkey.xmlunit.XMLUnit;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -22,7 +20,7 @@ public class DisambXslTransformerTest {
     @Before
     public void setUp(){
         _disambXslTransformer = new DisambXslTransformer(
-                new File("src/test/resources/corpus/disambiguisation/tei/test2.xml"),
+                new File("src/test/resources/corpus/disambiguation/tei/test1.xml"),
                 new DisambXslResources()
         );
     }
@@ -32,7 +30,7 @@ public class DisambXslTransformerTest {
         XMLUnit.setIgnoreWhitespace(true);
         assertXMLEqual("this two xml must be equals",
                 String.join("\n", Files.readAllLines(
-                        Paths.get("src/test/resources/corpus/disambiguisation/transform-tei/test2.xml"))),
+                        Paths.get("src/test/resources/corpus/disambiguation/transform-tei/test1.xml"))),
                 _disambXslTransformer.xsltTransformation().toString()
         );
     }

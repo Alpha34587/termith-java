@@ -15,77 +15,81 @@ import java.util.List;
  */
 public class TerminologyStandOffTest {
 
-    private List<MorphoSyntaxOffsetId> morpho;
-    private List<TermsOffsetId> termino;
-    private TerminologyStandOff simpleTerminologyStandOff;
-    private TerminologyStandOff multiTerminologyStandOff;
-    private List<MorphoSyntaxOffsetId> multimorpho;
-    private List<TermsOffsetId> multitermino;
-    private List<MorphoSyntaxOffsetId> symbolmorpho;
-    private List<TermsOffsetId> symboltermino;
-    private TerminologyStandOff symbolTerminologyStandOff;
+    private List<MorphoSyntaxOffsetId> _morpho = new ArrayList<>();
+    private List<TermsOffsetId> _termino = new ArrayList<>();
+    private List<MorphoSyntaxOffsetId> _multimorpho = new ArrayList<>();
+    private List<TermsOffsetId> _multitermino = new ArrayList<>();
+    private List<MorphoSyntaxOffsetId> _symbolmorpho = new ArrayList<>();
+    private List<TermsOffsetId> _symboltermino = new ArrayList<>();
+    private TerminologyStandOff _simpleTerminologyStandOff;
+    private TerminologyStandOff _multiTerminologyStandOff;
+    private TerminologyStandOff _symbolTerminologyStandOff;
 
     @Before
     public void setUp(){
-        morpho = new ArrayList<>();
-        morpho.add(new MorphoSyntaxOffsetId(0,10,"cuillière","N",0));
-        morpho.add(new MorphoSyntaxOffsetId(11,13,"en","DET",1));
-        morpho.add(new MorphoSyntaxOffsetId(14,18,"bois","N",2));
-        morpho.add(new MorphoSyntaxOffsetId(15,19,"rien","N",3));
-        morpho.add(new MorphoSyntaxOffsetId(20,26,"pierre","N",4));
 
-        termino = new ArrayList<>();
-        termino.add(new TermsOffsetId(0,10,0,"cuillière"));
-        termino.add(new TermsOffsetId(0,18,1,"cuillière en bois"));
-        termino.add(new TermsOffsetId(20,26,2,"pierre"));
-        simpleTerminologyStandOff = new TerminologyStandOff(morpho,termino);
+        /*
+        simple test
+         */
+        _morpho.add(new MorphoSyntaxOffsetId(0,10,"cuillière","N",0));
+        _morpho.add(new MorphoSyntaxOffsetId(11,13,"en","DET",1));
+        _morpho.add(new MorphoSyntaxOffsetId(14,18,"bois","N",2));
+        _morpho.add(new MorphoSyntaxOffsetId(15,19,"rien","N",3));
+        _morpho.add(new MorphoSyntaxOffsetId(20,26,"pierre","N",4));
 
-        multimorpho = new ArrayList<>();
-        multimorpho.add(new MorphoSyntaxOffsetId(0,10,"cuillière","N",0));
-        List<Integer> boisIds = new ArrayList<>();
-        boisIds.add(2);
-        boisIds.add(3);
-        List<Integer> pierreIds = new ArrayList<>();
-        pierreIds.add(5);
-        pierreIds.add(6);
-        pierreIds.add(7);
-        pierreIds.add(8);
-        multimorpho.add(new MorphoSyntaxOffsetId(11,13,"en","DET",1));
-        multimorpho.add(new MorphoSyntaxOffsetId(14,18,"bois","N",boisIds));
-        multimorpho.add(new MorphoSyntaxOffsetId(15,19,"rien","N",4));
-        multimorpho.add(new MorphoSyntaxOffsetId(20,26,"pierre","N",pierreIds));
+        _termino.add(new TermsOffsetId(0,10,0,"cuillière"));
+        _termino.add(new TermsOffsetId(0,18,1,"cuillière en bois"));
+        _termino.add(new TermsOffsetId(20,26,2,"pierre"));
+        _simpleTerminologyStandOff = new TerminologyStandOff(_morpho, _termino);
 
-        multitermino = new ArrayList<>();
-        multitermino.add(new TermsOffsetId(0,10,0,"cuillière"));
-        multitermino.add(new TermsOffsetId(0,18,1,"cuillière en bois"));
-        multitermino.add(new TermsOffsetId(20,26,2,"pierre"));
-        multiTerminologyStandOff = new TerminologyStandOff(multimorpho,multitermino);
+        /*
+        multi test
+         */
+        List<Integer> woodIds = new ArrayList<>();
+        woodIds.add(2);
+        woodIds.add(3);
+        List<Integer> stoneIds = new ArrayList<>();
+        stoneIds.add(5);
+        stoneIds.add(6);
+        stoneIds.add(7);
+        stoneIds.add(8);
+        _multimorpho.add(new MorphoSyntaxOffsetId(0,10,"cuillière","N",0));
+        _multimorpho.add(new MorphoSyntaxOffsetId(11,13,"en","DET",1));
+        _multimorpho.add(new MorphoSyntaxOffsetId(14,18,"bois","N",woodIds));
+        _multimorpho.add(new MorphoSyntaxOffsetId(15,19,"rien","N",4));
+        _multimorpho.add(new MorphoSyntaxOffsetId(20,26,"pierre","N",stoneIds));
 
-        symbolmorpho = new ArrayList<>();
-        symbolmorpho.add(new MorphoSyntaxOffsetId(0,10,"cuillière","N",0));
-        symbolmorpho.add(new MorphoSyntaxOffsetId(11,13,"en","DET",1));
-        symbolmorpho.add(new MorphoSyntaxOffsetId(14,18,"bois","N",boisIds));
-        symbolmorpho.add(new MorphoSyntaxOffsetId(18,19,",","N",boisIds));
-        symbolmorpho.add(new MorphoSyntaxOffsetId(15,19,"rien","N",4));
-        symbolmorpho.add(new MorphoSyntaxOffsetId(20,26,"pierre","N",pierreIds));
+        _multitermino.add(new TermsOffsetId(0,10,0,"cuillière"));
+        _multitermino.add(new TermsOffsetId(0,18,1,"cuillière en bois"));
+        _multitermino.add(new TermsOffsetId(20,26,2,"pierre"));
+        _multiTerminologyStandOff = new TerminologyStandOff(_multimorpho, _multitermino);
 
-        symboltermino = new ArrayList<>();
-        symboltermino.add(new TermsOffsetId(0,10,0,"cuillière"));
-        symboltermino.add(new TermsOffsetId(0,18,1,"cuillière en bois"));
-        symboltermino.add(new TermsOffsetId(20,26,2,"pierre"));
-        symbolTerminologyStandOff = new TerminologyStandOff(symbolmorpho,symboltermino);
+        /*
+        symbol test
+         */
+        _symbolmorpho.add(new MorphoSyntaxOffsetId(0,10,"cuillière","N",0));
+        _symbolmorpho.add(new MorphoSyntaxOffsetId(11,13,"en","DET",1));
+        _symbolmorpho.add(new MorphoSyntaxOffsetId(14,18,"bois","N",woodIds));
+        _symbolmorpho.add(new MorphoSyntaxOffsetId(18,19,",","N",woodIds));
+        _symbolmorpho.add(new MorphoSyntaxOffsetId(15,19,"rien","N",4));
+        _symbolmorpho.add(new MorphoSyntaxOffsetId(20,26,"pierre","N",stoneIds));
+
+        _symboltermino.add(new TermsOffsetId(0,10,0,"cuillière"));
+        _symboltermino.add(new TermsOffsetId(0,18,1,"cuillière en bois"));
+        _symboltermino.add(new TermsOffsetId(20,26,2,"pierre"));
+        _symbolTerminologyStandOff = new TerminologyStandOff(_symbolmorpho, _symboltermino);
     }
     @Test
     public void simpleExecute() throws Exception {
-        simpleTerminologyStandOff.execute();
+        _simpleTerminologyStandOff.execute();
         List<String> expected = new ArrayList<>();
         expected.add("[0]");
         expected.add("[0, 1, 2]");
         expected.add("[4]");
 
-        simpleTerminologyStandOff.get_termino().forEach(
-                ids -> Assert.assertEquals("morpho ids must be equals",
-                        expected.get(simpleTerminologyStandOff.get_termino().indexOf(ids)),
+        _simpleTerminologyStandOff.get_termino().forEach(
+                ids -> Assert.assertEquals("_morpho ids must be equals",
+                        expected.get(_simpleTerminologyStandOff.get_termino().indexOf(ids)),
                         ids.getIds().toString()
                         )
         );
@@ -94,15 +98,15 @@ public class TerminologyStandOffTest {
 
     @Test
     public void multiExecute() throws Exception {
-        multiTerminologyStandOff.execute();
+        _multiTerminologyStandOff.execute();
         List<String> expected = new ArrayList<>();
         expected.add("[0]");
         expected.add("[0, 1, 2, 3]");
         expected.add("[5, 6, 7, 8]");
 
-        multiTerminologyStandOff.get_termino().forEach(
-                ids -> Assert.assertEquals("morpho ids must be equals",
-                        expected.get(multiTerminologyStandOff.get_termino().indexOf(ids)),
+        _multiTerminologyStandOff.get_termino().forEach(
+                ids -> Assert.assertEquals("_morpho ids must be equals",
+                        expected.get(_multiTerminologyStandOff.get_termino().indexOf(ids)),
                         ids.getIds().toString()
                 )
         );
@@ -111,15 +115,15 @@ public class TerminologyStandOffTest {
 
     @Test
     public void symbolExecute() throws Exception {
-        multiTerminologyStandOff.execute();
+        _symbolTerminologyStandOff.execute();
         List<String> expected = new ArrayList<>();
         expected.add("[0]");
         expected.add("[0, 1, 2, 3]");
         expected.add("[5, 6, 7, 8]");
 
-        multiTerminologyStandOff.get_termino().forEach(
-                ids -> Assert.assertEquals("morpho ids must be equals",
-                        expected.get(multiTerminologyStandOff.get_termino().indexOf(ids)),
+        _symbolTerminologyStandOff.get_termino().forEach(
+                ids -> Assert.assertEquals("_morpho ids must be equals",
+                        expected.get(_symbolTerminologyStandOff.get_termino().indexOf(ids)),
                         ids.getIds().toString()
                 )
         );

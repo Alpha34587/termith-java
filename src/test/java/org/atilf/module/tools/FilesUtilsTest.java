@@ -16,33 +16,32 @@ import java.util.Map;
  * Created on 22/08/16.
  */
 public class FilesUtilsTest {
-    String path;
-    Map<String, StringBuilder> testMap;
+    private String _path;
+    private Map<String, StringBuilder> _testMap = new HashMap<>();
 
     @Before
     public void setUp() throws Exception {
-        path = FilesUtils.createTemporaryFolder("test");
-        testMap = new HashMap<>();
-        testMap.put("test1", new StringBuilder("test2"));
-        testMap.put("test3", new StringBuilder("test4"));
-        FilesUtils.createFiles(path,testMap,"txt");
+        _path = FilesUtils.createTemporaryFolder("test");
+        _testMap.put("test1", new StringBuilder("test2"));
+        _testMap.put("test3", new StringBuilder("test4"));
+        FilesUtils.createFiles(_path, _testMap,"txt");
     }
 
     @Test
     public void testIfFilesExists() {
-        Path path1 = Paths.get(path + "/test1.txt");
-        Path path2 = Paths.get(path + "/test3.txt");
+        Path path1 = Paths.get(_path + "/test1.txt");
+        Path path2 = Paths.get(_path + "/test3.txt");
         Assert.assertTrue("the file " + path1.toString() + " must be exists ", Files.exists(path1));
         Assert.assertTrue("the file " + path2.toString() + " must be exists ", Files.exists(path2));
     }
 
     @Test
     public void testFilesContent() {
-        testMap.forEach((name, content) -> {
+        _testMap.forEach((name, content) -> {
             try {
                 System.out.println(content);
                 Assert.assertEquals("this file must contains",
-                        Files.readAllLines(Paths.get( path + "/"+ name + ".txt")).get(0),content.toString());
+                        Files.readAllLines(Paths.get( _path + "/"+ name + ".txt")).get(0),content.toString());
             } catch (IOException e) {
                 e.printStackTrace();
             }

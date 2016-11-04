@@ -49,7 +49,7 @@ public class EvaluationExtractorTest {
         _expectedLexAna.add("#noDM");
         _expectedLexAna.add("#noDM");
 
-        _evalExtractor2 = new EvaluationExtractor("src/test/resources/corpus/tei/test2.xml", multiSub);
+        _evalExtractor2 = new EvaluationExtractor("src/test/resources/corpus/tei/test1.xml", multiSub);
         Multiset<String> entry1 = HashMultiset.create();
         entry1.add("du PRP:det");
         entry1.add("le DET:ART");

@@ -1,7 +1,7 @@
 package org.atilf.worker;
 
 import org.atilf.models.termith.TermithIndex;
-import org.atilf.module.tools.DisambTeiWriter;
+import org.atilf.module.tools.DisambiguationTeiWriter;
 import org.atilf.module.tools.FilesUtils;
 
 import java.nio.file.Path;
@@ -22,12 +22,12 @@ public class DisambExporterWorker implements Runnable {
     @Override
     public void run() {
         String file = FilesUtils.nameNormalizer(p.toString());
-        DisambTeiWriter disambTeiWriter = new DisambTeiWriter(
+        DisambiguationTeiWriter disambiguationTeiWriter = new DisambiguationTeiWriter(
                 file,
                 termithIndex.getEvaluationLexic().get(
                         file
                 )
         );
-        disambTeiWriter.execute();
+        disambiguationTeiWriter.execute();
     }
 }
