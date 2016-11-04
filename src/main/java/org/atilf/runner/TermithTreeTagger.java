@@ -19,16 +19,16 @@ public class TermithTreeTagger {
     private int _poolSize;
     private TermithIndex _termithIndex;
     private static final Logger LOGGER = LoggerFactory.getLogger(TermithTreeTagger.class.getName());
-    private static final int DEFAULT_POOL_SIZE = Runtime.getRuntime().availableProcessors();
+    private static final int POOL_SIZE = Runtime.getRuntime().availableProcessors();
 
     public TermithTreeTagger(TermithIndex termithIndex) throws IOException {
-        this(DEFAULT_POOL_SIZE, termithIndex);
+        this(termithIndex,POOL_SIZE);
     }
 
 
-    public TermithTreeTagger(int poolSize,TermithIndex termithIndex) throws IOException {
-        this._poolSize = poolSize;
-        this._termithIndex = termithIndex;
+    public TermithTreeTagger(TermithIndex termithIndex,int poolSize) throws IOException {
+        _poolSize = poolSize;
+        _termithIndex = termithIndex;
 
     }
 
@@ -38,11 +38,10 @@ public class TermithTreeTagger {
 
     public void execute() throws IOException, InterruptedException {
 
-        int poolSize = DEFAULT_POOL_SIZE;
-        LOGGER.info("Pool size set to: " + poolSize);
+        LOGGER.info("Pool size set to: " + _poolSize);
         LOGGER.info("First Phase Started : Text extraction");
         try{
-            InitializerThread initializerThread = new InitializerThread(poolSize, _termithIndex);
+            InitializerThread initializerThread = new InitializerThread(_poolSize, _termithIndex);
             initializerThread.execute();
         } catch ( Exception e ) {
             LOGGER.error("Error during execution of the extraction text phase : ",e);
@@ -51,7 +50,7 @@ public class TermithTreeTagger {
         LOGGER.info("First Phase Finished : Text extraction");
 
         LOGGER.info("Starting Second Phase Started: Analyze Phase");
-        AnalyzeThread analyzeThread = new AnalyzeThread(poolSize, _termithIndex);
+        AnalyzeThread analyzeThread = new AnalyzeThread(_poolSize, _termithIndex);
         try {
             analyzeThread.execute();
         } catch ( Exception e ) {

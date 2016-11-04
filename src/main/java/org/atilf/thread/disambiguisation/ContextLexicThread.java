@@ -3,6 +3,7 @@ package org.atilf.thread.disambiguisation;
 import org.atilf.models.termith.TermithIndex;
 import org.atilf.worker.ContextExtractorWorker;
 import org.atilf.worker.DisambXslTransformerWorker;
+import org.atilf.worker.LexicExtractorWorker;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -23,6 +24,7 @@ public class ContextLexicThread {
     private final int _poolSize;
     private static final Logger LOGGER = LoggerFactory.getLogger(ContextLexicThread.class.getName());
     private CountDownLatch _transformCounter;
+
     public ContextLexicThread(TermithIndex termithIndex, int poolSize) {
 
         _termithIndex = termithIndex;
@@ -46,7 +48,7 @@ public class ContextLexicThread {
         _termithIndex.getDisambTranformedFile().values().forEach(
                 (file) -> {
                     executor.submit(new ContextExtractorWorker(file, _termithIndex));
-//                    executor.submit(new LexicExtractorWorker(file, _termithIndex));
+                    executor.submit(new LexicExtractorWorker(file, _termithIndex));
                 }
         );
         LOGGER.info("Waiting ContextExtractorWorker executors to finish");

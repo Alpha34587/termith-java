@@ -28,10 +28,9 @@ public class Disambiguation {
     }
 
     public void execute() {
-        ContextLexicThread lexic = new ContextLexicThread(_termithIndex, POOL_SIZE);
+        ContextLexicThread lexic = new ContextLexicThread(_termithIndex, _poolSize);
         try {
             lexic.execute();
-            int a = 0;
         } catch (IOException | InterruptedException e) {
             LOGGER.error("errors during the subLexic phase : ", e);
             Thread.currentThread().interrupt();

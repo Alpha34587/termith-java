@@ -14,7 +14,7 @@ import static java.lang.System.exit;
 public class Exporter {
 
     private TermithIndex _termithIndex;
-    private ExecutorService _executor;
+    private int _poolSize;
     private static final Logger LOGGER = LoggerFactory.getLogger(Exporter.class.getName());
     private static final int POOL_SIZE = Runtime.getRuntime().availableProcessors();
 
@@ -23,15 +23,14 @@ public class Exporter {
     }
 
     public Exporter(TermithIndex termithIndex, int poolSize){
-        _executor = Executors.newFixedThreadPool(poolSize);
         _termithIndex = termithIndex;
+        _poolSize = poolSize;
     }
 
     public void execute() throws InterruptedException {
-        int poolSize = Runtime.getRuntime().availableProcessors();
         LOGGER.info("Tei exportation phase starting :");
         try{
-            ExporterThread exporter = new ExporterThread(poolSize, _termithIndex);
+            ExporterThread exporter = new ExporterThread(_poolSize, _termithIndex);
             exporter.execute();
         } catch ( Exception e ) {
             LOGGER.error("Error during execution of the extraction text phase : ",e);

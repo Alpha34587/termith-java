@@ -45,10 +45,6 @@ public class AnalyzeThread {
         _jsonCnt = new CountDownLatch(termithIndex.getExtractedText().size());
     }
 
-    public Path getCorpus() {
-        return _termithIndex.getCorpus();
-    }
-
     private Map<String,StringBuilder> getDeserializeText(){
         Map<String,StringBuilder> textMap = new HashMap<>();
         _termithIndex.getExtractedText().forEach(
