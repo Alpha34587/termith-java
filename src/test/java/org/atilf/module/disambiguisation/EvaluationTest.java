@@ -16,16 +16,13 @@ import java.util.Map;
  *         Created on 25/10/16.
  */
 public class EvaluationTest {
-    Map<String,EvaluationProfile> evaluationProfileMap;
-    Map<String,LexicalProfile> lexicalProfileMap;
-    Evaluation evaluation;
-    List<String> disambIdObserved;
+    private Map<String,EvaluationProfile> _evaluationProfileMap  = new HashMap<>();
+    private List<String> _disambIdObserved;
 
     @Before
     public void setUp() throws Exception {
-        evaluationProfileMap = new HashMap<>();
-        lexicalProfileMap = new HashMap<>();
-        evaluation = new Evaluation(evaluationProfileMap, lexicalProfileMap);
+        Map<String, LexicalProfile> lexicalProfileMap = new HashMap<>();
+        Evaluation evaluation = new Evaluation(_evaluationProfileMap, lexicalProfileMap);
 
         Multiset<String> entry1 = HashMultiset.create();
         entry1.add("du PRP:det");
@@ -35,7 +32,7 @@ public class EvaluationTest {
         entry1.add("le DET:ART");
         entry1.add("deux NUM");
         entry1.add("site NOM");
-        evaluationProfileMap.put("entry-13471_DM1",new EvaluationProfile(entry1));
+        _evaluationProfileMap.put("entry-13471_DM1",new EvaluationProfile(entry1));
 
 
         Multiset<String> entry2 = HashMultiset.create();
@@ -48,7 +45,7 @@ public class EvaluationTest {
         entry2.add("commun ADJ");
         entry2.add(". SENT");
         entry2.add("il PRO:PER");
-        evaluationProfileMap.put("entry-7263_DM3",new EvaluationProfile(entry2));
+        _evaluationProfileMap.put("entry-7263_DM3",new EvaluationProfile(entry2));
 
         Multiset<String> entry3 = HashMultiset.create();
         entry3.add("du PRP:det");
@@ -129,16 +126,16 @@ public class EvaluationTest {
         lexicalProfileMap.get("entry-7263_lexOff").addCoefficientSpec("il PRO:PER", 1f);
         evaluation.execute();
 
-        disambIdObserved = new ArrayList<>();
-        disambIdObserved.add("DaOn");
-        disambIdObserved.add("DaOn");
+        _disambIdObserved = new ArrayList<>();
+        _disambIdObserved.add("DaOn");
+        _disambIdObserved.add("DaOn");
     }
 
     @Test
     public void execute() throws Exception {
         int cnt = 0;
-        for (EvaluationProfile evaluationProfile : evaluationProfileMap.values()) {
-            Assert.assertEquals("this value must be equals", disambIdObserved.get(cnt),evaluationProfile.getDisambId());
+        for (EvaluationProfile evaluationProfile : _evaluationProfileMap.values()) {
+            Assert.assertEquals("this value must be equals", _disambIdObserved.get(cnt),evaluationProfile.getDisambId());
             cnt++;
         }
     }

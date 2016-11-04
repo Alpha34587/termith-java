@@ -16,40 +16,40 @@ import java.util.Map;
  *         Created on 25/10/16.
  */
 public class EvaluationExtractorTest {
-    EvaluationExtractor evalExtractor1;
-    EvaluationExtractor evalExtractor2;
-    Deque<String> expectedTarget = new ArrayDeque<>();
-    Deque<String> expectedCorresp = new ArrayDeque<>();
-    Deque<String> expectedLexAna = new ArrayDeque<>();
+    private EvaluationExtractor _evaluationExtractor;
+    private EvaluationExtractor _evalExtractor2;
+    private Deque<String> _expectedTarget = new ArrayDeque<>();
+    private Deque<String> _expectedCorresp = new ArrayDeque<>();
+    private Deque<String> _expectedLexAna = new ArrayDeque<>();
     //TODO rename this variable
-    Map<String,EvaluationProfile> expectedMap = new HashMap<>();
-    Map<String,EvaluationProfile> multiSub = new HashMap<>();
+    private Map<String,EvaluationProfile> expectedMap = new HashMap<>();
+    private Map<String,EvaluationProfile> multiSub = new HashMap<>();
     @Before
     public void setUp(){
-        evalExtractor1 = new EvaluationExtractor("src/test/resources/corpus/tei/test1.xml",
+        _evaluationExtractor = new EvaluationExtractor("src/test/resources/corpus/tei/test1.xml",
                 new HashMap<>());
-        expectedTarget.add("#t13 #t14 #t15 #t16");
-        expectedTarget.add("#t16 #t17 #t18");
-        expectedTarget.add("#t30");
-        expectedTarget.add("#t49");
-        expectedTarget.add("#t62");
-        expectedTarget.add("#t68 #t69 #t70");
+        _expectedTarget.add("#t13 #t14 #t15 #t16");
+        _expectedTarget.add("#t16 #t17 #t18");
+        _expectedTarget.add("#t30");
+        _expectedTarget.add("#t49");
+        _expectedTarget.add("#t62");
+        _expectedTarget.add("#t68 #t69 #t70");
 
-        expectedCorresp.add("#entry-13471");
-        expectedCorresp.add("#entry-8318");
-        expectedCorresp.add("#entry-7263");
-        expectedCorresp.add("#entry-990");
-        expectedCorresp.add("#entry-39775");
-        expectedCorresp.add("#entry-151826");
+        _expectedCorresp.add("#entry-13471");
+        _expectedCorresp.add("#entry-8318");
+        _expectedCorresp.add("#entry-7263");
+        _expectedCorresp.add("#entry-990");
+        _expectedCorresp.add("#entry-39775");
+        _expectedCorresp.add("#entry-151826");
 
-        expectedLexAna.add("#noDM");
-        expectedLexAna.add("#DM4");
-        expectedLexAna.add("#DM3");
-        expectedLexAna.add("#DM0");
-        expectedLexAna.add("#noDM");
-        expectedLexAna.add("#noDM");
+        _expectedLexAna.add("#noDM");
+        _expectedLexAna.add("#DM4");
+        _expectedLexAna.add("#DM3");
+        _expectedLexAna.add("#DM0");
+        _expectedLexAna.add("#noDM");
+        _expectedLexAna.add("#noDM");
 
-        evalExtractor2 = new EvaluationExtractor("src/test/resources/corpus/tei/test2.xml", multiSub);
+        _evalExtractor2 = new EvaluationExtractor("src/test/resources/corpus/tei/test2.xml", multiSub);
         Multiset<String> entry1 = HashMultiset.create();
         entry1.add("du PRP:det");
         entry1.add("le DET:ART");
@@ -85,23 +85,23 @@ public class EvaluationExtractorTest {
 
     @Test
     public void extractTerms() throws Exception {
-        evalExtractor1.extractTerms();
-        evalExtractor1.getTarget().forEach(
-                el -> Assert.assertEquals("target must be equals",expectedTarget.poll(),el)
+        _evaluationExtractor.extractTerms();
+        _evaluationExtractor.getTarget().forEach(
+                el -> Assert.assertEquals("target must be equals", _expectedTarget.poll(),el)
         );
-        evalExtractor1.getCorresp().forEach(
-                el -> Assert.assertEquals("terms id must be equals",expectedCorresp.poll(),el)
+        _evaluationExtractor.getCorresp().forEach(
+                el -> Assert.assertEquals("terms id must be equals", _expectedCorresp.poll(),el)
         );
-        evalExtractor1.getLexAna().forEach(
-                el -> Assert.assertEquals("ana id must be equals",expectedLexAna.poll(),el)
+        _evaluationExtractor.getLexAna().forEach(
+                el -> Assert.assertEquals("ana id must be equals", _expectedLexAna.poll(),el)
         );
 
     }
 
     @Test
     public void extractSubCorpusSimple() throws Exception {
-        evalExtractor2.extractTerms();
-        evalExtractor2.extractSubCorpus();
+        _evalExtractor2.extractTerms();
+        _evalExtractor2.extractSubCorpus();
         expectedMap.forEach(
                 (key,value) -> {
                     Multiset observed = multiSub.get(key).getLexicalTable();

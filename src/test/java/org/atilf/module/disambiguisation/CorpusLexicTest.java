@@ -12,49 +12,49 @@ import java.util.HashMap;
  *         Created on 20/10/16.
  */
 public class CorpusLexicTest {
-    LexicExtractor corpus1;
-    LexicExtractor corpus2;
-    GlobalLexic observedCorpus = new GlobalLexic(new HashMap<>(), new HashMap<>());
-    GlobalLexic expectedCorpus = new GlobalLexic(new HashMap<>(), new HashMap<>());
+    private LexicExtractor _corpus1;
+    private LexicExtractor _corpus2;
+    private GlobalLexic _observedCorpus = new GlobalLexic(new HashMap<>(), new HashMap<>());
+    private GlobalLexic _expectedCorpus = new GlobalLexic(new HashMap<>(), new HashMap<>());
 
 
     @Before
     public void setUp() throws Exception {
-        corpus1 = new LexicExtractor("src/test/resources/corpus/tei/test3.xml",observedCorpus);
-        corpus2 = new LexicExtractor("src/test/resources/corpus/tei/test4.xml",observedCorpus);
+        _corpus1 = new LexicExtractor("src/test/resources/corpus/tei/test3.xml", _observedCorpus);
+        _corpus2 = new LexicExtractor("src/test/resources/corpus/tei/test4.xml", _observedCorpus);
 
-        expectedCorpus.addEntry("ce PRO:DEM");
-        expectedCorpus.addEntry("article NOM");
-        expectedCorpus.addEntry("présenter VER:pres");
-        expectedCorpus.addEntry("un DET:ART");
-        expectedCorpus.addEntry("étude NOM");
-        expectedCorpus.addEntry("comparer VER:pper");
-        expectedCorpus.addEntry("du PRP:det");
-        expectedCorpus.addEntry("donnée NOM");
-        expectedCorpus.addEntry("archéo-ichtyofauniques ADJ");
-        expectedCorpus.addEntry("livrer VER:pper");
-        expectedCorpus.addEntry("par PRP");
-        expectedCorpus.addEntry("deux NUM");
-        expectedCorpus.addEntry("ce PRO:DEM");
-        expectedCorpus.addEntry("article NOM");
-        expectedCorpus.addEntry("présenter VER:pres");
-        expectedCorpus.addEntry("un DET:ART");
-        expectedCorpus.addEntry("étude NOM");
-        expectedCorpus.addEntry("comparer VER:pper");
-        expectedCorpus.addEntry("du PRP:det");
-        expectedCorpus.addEntry("donnée NOM");
-        expectedCorpus.addEntry("archéo-ichtyofauniques ADJ");
-        expectedCorpus.addEntry("rouge VER:pper");
-        expectedCorpus.addEntry("chien PRP");
-        expectedCorpus.addEntry("deux NUM");
+        _expectedCorpus.addEntry("ce PRO:DEM");
+        _expectedCorpus.addEntry("article NOM");
+        _expectedCorpus.addEntry("présenter VER:pres");
+        _expectedCorpus.addEntry("un DET:ART");
+        _expectedCorpus.addEntry("étude NOM");
+        _expectedCorpus.addEntry("comparer VER:pper");
+        _expectedCorpus.addEntry("du PRP:det");
+        _expectedCorpus.addEntry("donnée NOM");
+        _expectedCorpus.addEntry("archéo-ichtyofauniques ADJ");
+        _expectedCorpus.addEntry("livrer VER:pper");
+        _expectedCorpus.addEntry("par PRP");
+        _expectedCorpus.addEntry("deux NUM");
+        _expectedCorpus.addEntry("ce PRO:DEM");
+        _expectedCorpus.addEntry("article NOM");
+        _expectedCorpus.addEntry("présenter VER:pres");
+        _expectedCorpus.addEntry("un DET:ART");
+        _expectedCorpus.addEntry("étude NOM");
+        _expectedCorpus.addEntry("comparer VER:pper");
+        _expectedCorpus.addEntry("du PRP:det");
+        _expectedCorpus.addEntry("donnée NOM");
+        _expectedCorpus.addEntry("archéo-ichtyofauniques ADJ");
+        _expectedCorpus.addEntry("rouge VER:pper");
+        _expectedCorpus.addEntry("chien PRP");
+        _expectedCorpus.addEntry("deux NUM");
     }
 
     @Test
     public void execute() throws Exception {
-        corpus1.execute();
-        corpus2.execute();
-        Assert.assertEquals("this two multisets must be equals",expectedCorpus.get_multisetLexic().toString(),
-                observedCorpus.get_multisetLexic().toString());
+        _corpus1.execute();
+        _corpus2.execute();
+        Assert.assertEquals("this two multisets must be equals", _expectedCorpus.get_multisetLexic().toString(),
+                _observedCorpus.get_multisetLexic().toString());
     }
 
 }

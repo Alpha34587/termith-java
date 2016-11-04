@@ -14,69 +14,59 @@ import java.util.*;
  */
 public class SpecCoeffInjectorTest {
 
-    private LexicExtractor corpus1;
-    private LexicExtractor corpus2;
-    private GlobalLexic globalLexic;
-    private RLexic rLexic;
-    private Map<String, LexicalProfile> subLexic;
-    private Map<String, LexicalProfile> executeSubLexic;
-    private ContextExtractor subCorpus1;
-    private ContextExtractor subCorpus2;
-    private Map<String,float[]> specificities;
-    private ContextExtractor executeSubCorpus2;
-    private ContextExtractor executeSubCorpus1;
+    private GlobalLexic _globalLexic = new GlobalLexic(new HashMap<>(),new HashMap<>());
+    private RLexic _rLexic;
+    private Map<String, LexicalProfile> _subLexic = new HashMap<>();
+    private Map<String, LexicalProfile> _executeSubLexic = new HashMap<>();
+    private Map<String,float[]> _specificities;
 
     @Before
     public void setUp() throws Exception {
-        globalLexic = new GlobalLexic(new HashMap<>(),new HashMap<>());
-        subLexic = new HashMap<>();
-        executeSubLexic = new HashMap<>();
-        corpus1 = new LexicExtractor("src/test/resources/corpus/tei/test1.xml", globalLexic);
-        corpus2 = new LexicExtractor("src/test/resources/corpus/tei/test2.xml", globalLexic);
-        subCorpus1 = new ContextExtractor("src/test/resources/corpus/tei/test1.xml", subLexic);
-        subCorpus2 = new ContextExtractor("src/test/resources/corpus/tei/test2.xml", subLexic);
-        executeSubCorpus1 = new ContextExtractor("src/test/resources/corpus/tei/test1.xml", executeSubLexic);
-        executeSubCorpus2 = new ContextExtractor("src/test/resources/corpus/tei/test2.xml", executeSubLexic);
+
+        LexicExtractor corpus1 = new LexicExtractor("src/test/resources/corpus/tei/test1.xml", _globalLexic);
+        LexicExtractor corpus2 = new LexicExtractor("src/test/resources/corpus/tei/test2.xml", _globalLexic);
+        ContextExtractor subCorpus1 = new ContextExtractor("src/test/resources/corpus/tei/test1.xml", _subLexic);
+        ContextExtractor subCorpus2 = new ContextExtractor("src/test/resources/corpus/tei/test2.xml", _subLexic);
+        ContextExtractor executeSubCorpus1 = new ContextExtractor("src/test/resources/corpus/tei/test1.xml", _executeSubLexic);
+        ContextExtractor executeSubCorpus2 = new ContextExtractor("src/test/resources/corpus/tei/test2.xml", _executeSubLexic);
 
         corpus1.execute();
         corpus2.execute();
 
-        rLexic = new RLexic(globalLexic);
+        _rLexic = new RLexic(_globalLexic);
 
         subCorpus1.execute();
         subCorpus2.execute();
         executeSubCorpus1.execute();
         executeSubCorpus2.execute();
 
-        specificities = new HashMap<>();
-        specificities.put("entry-8318_lexOn",new float[]{1.3425f, 1.3425f, 1.3425f, 3.4531f, 1.3425f});
-        specificities.put("entry-990_lexOff",new float[]{1.8162f, 1.8162f, 1.8162f, 1.8162f, 1.8162f, 1.8162f});
-        specificities.put("entry-7263_lexOn",new float[]{3.9302f, 3.9302f, 3.9302f, 3.9302f, 3.9302f, 3.9302f,
+        _specificities = new HashMap<>();
+        _specificities.put("entry-8318_lexOn",new float[]{1.3425f, 1.3425f, 1.3425f, 3.4531f, 1.3425f});
+        _specificities.put("entry-990_lexOff",new float[]{1.8162f, 1.8162f, 1.8162f, 1.8162f, 1.8162f, 1.8162f});
+        _specificities.put("entry-7263_lexOn",new float[]{3.9302f, 3.9302f, 3.9302f, 3.9302f, 3.9302f, 3.9302f,
                 3.9302f, 3.9302f, 3.9302f});
-        specificities.put("entry-13471_lexOn",new float[]{1.3425f, 1.3425f, 1.3425f, 1.3425f, 3.4531f, 1.3425f});
+        _specificities.put("entry-13471_lexOn",new float[]{1.3425f, 1.3425f, 1.3425f, 1.3425f, 3.4531f, 1.3425f});
 
-        executeSubLexic.forEach((key,value) -> new SpecCoefficientInjector(value, rLexic, globalLexic).execute());
+        _executeSubLexic.forEach((key, value) -> new SpecCoefficientInjector(value, _rLexic, _globalLexic).execute());
     }
 
     @Test
     public void execute() throws Exception {
-        executeSubLexic.values().forEach(
-                values -> {
-                    values.getSpecCoefficientMap().values().forEach(
-                            coef -> Assert.assertNotEquals("this coefficient must be not equals to 0", 0, coef)
-                    );
-                }
+        _executeSubLexic.values().forEach(
+                values -> values.getSpecCoefficientMap().values().forEach(
+                        coef -> Assert.assertNotEquals("this coefficient must be not equals to 0", 0, coef)
+                )
         );
     }
 
     @Test
     public void computeSpecCoeff() throws Exception {
-        subLexic.forEach(
-                (key,value) -> {
-                    Assert.assertArrayEquals(
-                            specificities.get(key),
-                            new SpecCoefficientInjector(value, rLexic, globalLexic).computeSpecCoefficient(),
-                            0);}
+        _subLexic.forEach(
+                (key,value) -> Assert.assertArrayEquals(
+                        _specificities.get(key),
+                        new SpecCoefficientInjector(value, _rLexic, _globalLexic).computeSpecCoefficient(),
+                        0
+                )
         );
     }
 }

@@ -14,17 +14,17 @@ import java.nio.file.Paths;
  * Created on 22/08/16.
  */
 public class TextExtractorTest {
-    TextExtractor textExtractor;
+    private TextExtractor _textExtractor;
     @Before
     public void setUp(){
-        textExtractor = new TextExtractor(new File("src/test/resources/corpus/xml/file1.xml"), new XslResources());
+        _textExtractor = new TextExtractor(new File("src/test/resources/corpus/xml/file1.xml"), new XslResources());
     }
 
     @Test
     public void testXsltTransformation() throws Exception {
         Assert.assertEquals("the extracted text must be equal",
                 String.join("\n", Files.readAllLines(Paths.get("src/test/resources/corpus/txt/file1.txt"))),
-                textExtractor.xsltTransformation().toString()
+                _textExtractor.xsltTransformation().toString()
         );
     }
 
