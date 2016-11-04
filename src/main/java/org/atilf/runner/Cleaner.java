@@ -4,8 +4,6 @@ import org.atilf.thread.enrichment.CleanerThread;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.concurrent.ExecutorService;
-
 import static java.lang.System.exit;
 
 /**

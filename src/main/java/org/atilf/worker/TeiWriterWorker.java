@@ -39,7 +39,7 @@ public class TeiWriterWorker implements Runnable {
         try {
             if (termithIndex.getTerminologyStandOff().containsKey(key)) {
                 teiWriter = new TeiWriter(
-                        (StringBuilder) FilesUtils.readFile(termithIndex.getXmlCorpus().get(key)),
+                        FilesUtils.readFile(termithIndex.getXmlCorpus().get(key)),
                         (List<MorphoSyntaxOffsetId>) FilesUtils.readObject(termithIndex.getMorphoSyntaxStandOff().get(key)),
                         (StringBuilder) FilesUtils.readObject(termithIndex.getTokenizeTeiBody().get(key)),
                         termithIndex.getTerminologyStandOff().get(key),
@@ -49,7 +49,7 @@ public class TeiWriterWorker implements Runnable {
 
             else {
                 teiWriter = new TeiWriter(
-                        (StringBuilder) FilesUtils.readFile(termithIndex.getXmlCorpus().get(key)),
+                        FilesUtils.readFile(termithIndex.getXmlCorpus().get(key)),
                         (List<MorphoSyntaxOffsetId>) FilesUtils.readObject(termithIndex.getMorphoSyntaxStandOff().get(key)),
                         (StringBuilder) FilesUtils.readObject(termithIndex.getTokenizeTeiBody().get(key)),
                         null,
