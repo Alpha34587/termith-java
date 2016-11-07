@@ -1,34 +1,42 @@
 package org.atilf.module.termsuite;
 
 import ch.qos.logback.classic.Level;
+import com.google.common.io.ByteStreams;
 import eu.project.ttc.engines.cleaner.TermProperty;
 import eu.project.ttc.engines.desc.TermSuiteCollection;
 import eu.project.ttc.tools.TermSuitePipeline;
 import eu.project.ttc.tools.cli.TermSuiteCLIUtils;
+import org.atilf.models.termith.TermithIndex;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 /**
  * @author Simon Meoni
  *         Created on 08/09/16.
  */
-public class PipelineBuilder {
+public class PipelineBuilder implements Runnable{
 
+    private String _jsonCorpus;
     private TermSuitePipeline _termsuitePipeline;
+    private TermithIndex _termithIndex;
+    private static final Logger LOGGER = LoggerFactory.getLogger(PipelineBuilder.class.getName());
 
-    /**
-     * create a termsuite pipeline with decided parameter for the termith project
-     * @param lang the specified language
-     */
-    public PipelineBuilder(String lang, String jsonPath,
-                           String tbxTerminology,
-                           String jsonTerminology,
-                           String jarResource) {
-        
+    public PipelineBuilder(TermithIndex termithIndex){
+        _termithIndex = termithIndex;
+        _jsonCorpus = termithIndex.getCorpus() + "/json";
+        init();
+
         TermSuiteCLIUtils.setGlobalLogLevel(Level.INFO);
-        _termsuitePipeline = TermSuitePipeline.create(lang)
-                .setResourceJar(jarResource)
+        _termsuitePipeline = TermSuitePipeline.create(TermithIndex.getLang())
+                .setResourceJar(exportResource())
                 .setCollection(
                         TermSuiteCollection.JSON,
-                        jsonPath,
+                        _jsonCorpus,
                         "UTF-8")
                 .aeUrlFilter()
                 .aeStemmer()
@@ -46,19 +54,47 @@ public class PipelineBuilder {
                 .aeContextualizer(3, true)
                 .setExportJsonWithContext(false)
                 .setExportJsonWithOccurrences(true)
-                .haeJsonExporter(jsonTerminology)
-                .haeTbxExporter(tbxTerminology);
+                .haeJsonExporter(termithIndex.getJsonTerminology().toString())
+                .haeTbxExporter(termithIndex.getTerminologies().get(0).toString());
+
     }
 
     /**
      * run the termsuite pipeline
      */
-    public void start(){
+    public void execute(){
         this._termsuitePipeline.run();
     }
 
-    public TermSuitePipeline get_termsuitePipeline() {
+    public TermSuitePipeline getTermsuitePipeline() {
         return _termsuitePipeline;
     }
 
+    @Override
+    public void run() {
+        LOGGER.info("Build Termsuite Pipeline");
+        init();
+        LOGGER.info("Run Termsuite Pipeline");
+        execute();
+        LOGGER.info("Finished execution of Termsuite Pipeline, result in :" +
+                _termithIndex.getCorpus());
+
+    }
+
+    private void init() {
+
+        _termithIndex.getTerminologies().add(Paths.get(_jsonCorpus.replace("json","") + "/" + "terminology.tbx"));
+        _termithIndex.getTerminologies().add(Paths.get(_jsonCorpus.replace("json","") + "/" + "terminology.json"));
+    }
+
+
+    private String exportResource(){
+        InputStream resourceAsStream = getClass().getClassLoader().getResourceAsStream("termsuite-lang/termsuite-resources.jar");
+        try {
+            Files.write(Paths.get(_termithIndex.getCorpus() +"/termsuite-resources.jar"), ByteStreams.toByteArray(resourceAsStream));
+        } catch (IOException e) {
+            LOGGER.error("cannot copy termsuite-resources.jar",e);
+        }
+        return _termithIndex.getCorpus() +"/termsuite-resources.jar";
+    }
 }

@@ -3,13 +3,13 @@ package org.atilf.thread.enrichment;
 import org.atilf.models.termith.TermithIndex;
 import org.atilf.models.termsuite.MorphoSyntaxOffsetId;
 import org.atilf.models.treetagger.TagNormalizer;
+import org.atilf.module.termsuite.PipelineBuilder;
 import org.atilf.module.termsuite.terminology.TerminologyParser;
 import org.atilf.module.termsuite.terminology.TerminologyStandOff;
 import org.atilf.module.timer.JsonTimer;
 import org.atilf.module.timer.TokenizeTimer;
 import org.atilf.module.tools.FilesUtils;
 import org.atilf.module.treetagger.CorpusAnalyzer;
-import org.atilf.worker.TermsuiteWorker;
 import org.atilf.worker.TreeTaggerWorker;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -70,7 +70,7 @@ public class AnalyzeThread {
         LOGGER.info("waiting that all json files are serialized");
         _jsonCnt.await();
         LOGGER.info("json files serialization finished, termsuite task started");
-        _executorService.submit(new TermsuiteWorker(_termithIndex)).get();
+        _executorService.submit(new PipelineBuilder(_termithIndex)).get();
         LOGGER.info("terminology extraction started");
         _executorService.submit(new TerminologyParser(_termithIndex)).get();
         _termithIndex.getMorphoSyntaxStandOff().forEach(
@@ -88,7 +88,6 @@ public class AnalyzeThread {
 
     private void init() throws IOException {
         TagNormalizer.initTag(TermithIndex.getLang());
-        LOGGER.debug("temporary folder created: " + _termithIndex.getCorpus());
         Files.createDirectories(Paths.get(_termithIndex.getCorpus() + "/json"));
         Files.createDirectories(Paths.get(_termithIndex.getCorpus() + "/txt"));
         LOGGER.debug("create temporary text files in " + _termithIndex.getCorpus() + "/txt folder");
