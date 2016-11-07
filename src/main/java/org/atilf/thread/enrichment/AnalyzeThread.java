@@ -1,12 +1,12 @@
 package org.atilf.thread.enrichment;
 
-import org.atilf.models.treetagger.TagNormalizer;
 import org.atilf.models.termith.TermithIndex;
+import org.atilf.models.treetagger.TagNormalizer;
+import org.atilf.module.termsuite.terminology.TerminologyParser;
 import org.atilf.module.timer.JsonTimer;
 import org.atilf.module.timer.TokenizeTimer;
 import org.atilf.module.tools.FilesUtils;
 import org.atilf.module.treetagger.CorpusAnalyzer;
-import org.atilf.worker.TerminologyParserWorker;
 import org.atilf.worker.TerminologyStandOffWorker;
 import org.atilf.worker.TermsuiteWorker;
 import org.atilf.worker.TreeTaggerWorker;
@@ -47,9 +47,7 @@ public class AnalyzeThread {
     private Map<String,StringBuilder> getDeserializeText(){
         Map<String,StringBuilder> textMap = new HashMap<>();
         _termithIndex.getExtractedText().forEach(
-                (key,value) -> {
-                    textMap.put(key,(StringBuilder) FilesUtils.readObject(value));
-                }
+                (key,value) -> textMap.put(key,(StringBuilder) FilesUtils.readObject(value))
         );
         return textMap;
     }
@@ -73,11 +71,9 @@ public class AnalyzeThread {
         LOGGER.info("json files serialization finished, termsuite task started");
         _executorService.submit(new TermsuiteWorker(_termithIndex)).get();
         LOGGER.info("terminology extraction started");
-        _executorService.submit(new TerminologyParserWorker(_termithIndex)).get();
+        _executorService.submit(new TerminologyParser(_termithIndex)).get();
         _termithIndex.getMorphoSyntaxStandOff().forEach(
-                (id,value) -> {
-                    _executorService.submit(new TerminologyStandOffWorker(id,value, _termithIndex));
-                }
+                (id,value) -> _executorService.submit(new TerminologyStandOffWorker(id,value, _termithIndex))
         );
         _executorService.shutdown();
         _executorService.awaitTermination(1L,TimeUnit.DAYS);

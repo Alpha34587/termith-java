@@ -42,16 +42,12 @@ public class TerminologyParserTest {
 
         _terminologyParser.execute();
         expectedFile.forEach(
-                key -> {
-                    _terminologyParser.get_standOffTerminology().get(key).forEach(
-                            offset -> {
-                                Assert.assertEquals("this object must be equals",
-                                        expected.get(key)
-                                                .get(_terminologyParser.get_standOffTerminology()
-                                                        .get(key).indexOf(offset)),parse(offset));
-                            }
-                    );
-                }
+                key -> _terminologyParser.getStandOffTerminology().get(key).forEach(
+                        offset -> Assert.assertEquals("this object must be equals",
+                                expected.get(key)
+                                        .get(_terminologyParser.getStandOffTerminology()
+                                                .get(key).indexOf(offset)),parse(offset))
+                )
         );
 
     }

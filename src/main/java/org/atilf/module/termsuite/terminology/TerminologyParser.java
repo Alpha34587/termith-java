@@ -3,6 +3,7 @@ package org.atilf.module.termsuite.terminology;
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonToken;
+import org.atilf.models.termith.TermithIndex;
 import org.atilf.models.termsuite.TermsOffsetId;
 import org.atilf.module.tools.FilesUtils;
 import org.slf4j.Logger;
@@ -22,20 +23,33 @@ import static org.atilf.models.termsuite.JsonTermResources.*;
  * @author Simon Meoni
  *         Created on 14/09/16.
  */
-public class TerminologyParser {
+public class TerminologyParser implements Runnable{
     private Path _path;
+    private TermithIndex _termithIndex;
     private Map<String,List<TermsOffsetId>> _standOffTerminology = new ConcurrentHashMap<>();
     private Map<String,String> _idSource = new HashMap<>();
     private String _currentFile;
     private final JsonFactory _factory = new JsonFactory();
     private static final Logger LOGGER = LoggerFactory.getLogger(TerminologyParser.class.getName());
 
-    public TerminologyParser(Path path) {
+    public TerminologyParser(Path path, TermithIndex termithIndex) {
+        _path = path;
+        _termithIndex = termithIndex;
+        _currentFile = "";
+    }
+
+    TerminologyParser(Path path) {
         _path = path;
         _currentFile = "";
     }
 
-    public Map<String, List<TermsOffsetId>> get_standOffTerminology() {
+    public TerminologyParser(TermithIndex termithIndex) {
+        _path = termithIndex.getJsonTerminology();
+        _termithIndex = termithIndex;
+        _currentFile = "";
+    }
+
+    public Map<String, List<TermsOffsetId>> getStandOffTerminology() {
         return _standOffTerminology;
     }
 
@@ -129,6 +143,17 @@ public class TerminologyParser {
         if (jsonToken.equals(JsonToken.FIELD_NAME)) {
             _idSource.put(parser.getCurrentName(),
                     FilesUtils.nameNormalizer(parser.nextTextValue()));
+        }
+    }
+
+    @Override
+    public void run() {
+        try {
+            this.execute();
+            _termithIndex.set_terminologyStandOff(getStandOffTerminology());
+            LOGGER.info("parsing terminology ended");
+        } catch (IOException e) {
+            LOGGER.error("error during terminology parsing", e);
         }
     }
 
