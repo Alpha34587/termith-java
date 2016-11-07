@@ -6,7 +6,7 @@ import java.util.Map;
  * @author Simon Meoni
  *         Created on 24/10/16.
  */
-public class Evaluation {
+public class Evaluation implements Runnable{
 
     private final Map<String, EvaluationProfile> _evaluationProfile;
     private final Map<String, LexicalProfile> _termSubLexic;
@@ -70,5 +70,10 @@ public class Evaluation {
 
     private String formatEntry(String key, String token) {
         return key.split("_")[0] + "_lex" + token;
+    }
+
+    @Override
+    public void run() {
+        this.execute();
     }
 }

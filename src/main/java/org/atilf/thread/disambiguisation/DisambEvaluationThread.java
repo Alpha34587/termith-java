@@ -1,8 +1,8 @@
 package org.atilf.thread.disambiguisation;
 
 import org.atilf.models.termith.TermithIndex;
+import org.atilf.module.disambiguisation.Evaluation;
 import org.atilf.module.disambiguisation.EvaluationExtractor;
-import org.atilf.worker.EvaluationWorker;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -34,7 +34,7 @@ public class DisambEvaluationThread {
         );
 
         _termithIndex.getEvaluationLexic().forEach(
-                (key,value) -> executor.submit(new EvaluationWorker(value, _termithIndex))
+                (key,value) -> executor.submit(new Evaluation(value, _termithIndex.getTermSubLexic()))
         );
 
         LOGGER.info("Waiting ContextExtractorWorker executors to finish");
