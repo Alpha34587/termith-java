@@ -1,8 +1,8 @@
 package org.atilf.worker;
 
-import org.atilf.models.termsuite.MorphoSyntaxOffsetId;
 import org.atilf.models.tei.exporter.StandOffResources;
 import org.atilf.models.termith.TermithIndex;
+import org.atilf.models.termsuite.MorphoSyntaxOffsetId;
 import org.atilf.module.tools.FilesUtils;
 import org.atilf.module.tools.TeiWriter;
 import org.slf4j.Logger;
@@ -12,7 +12,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.List;
 
 /**
  * @author Simon Meoni
@@ -35,13 +34,17 @@ public class TeiWriterWorker implements Runnable {
     public void run() {
         Path outputFile = Paths.get(TermithIndex.getOutputPath() + "/" + key + ".xml");
         LOGGER.debug("writing : " + outputFile);
-        TeiWriter teiWriter = null;
+        TeiWriter teiWriter;
         try {
             if (termithIndex.getTerminologyStandOff().containsKey(key)) {
+
                 teiWriter = new TeiWriter(
                         FilesUtils.readFile(termithIndex.getXmlCorpus().get(key)),
-                        (List<MorphoSyntaxOffsetId>) FilesUtils.readObject(termithIndex.getMorphoSyntaxStandOff().get(key)),
-                        (StringBuilder) FilesUtils.readObject(termithIndex.getTokenizeTeiBody().get(key)),
+                        FilesUtils.readListObject(
+                                termithIndex.getMorphoSyntaxStandOff().get(key),
+                                MorphoSyntaxOffsetId.class
+                        ),
+                        FilesUtils.readObject(termithIndex.getTokenizeTeiBody().get(key),StringBuilder.class),
                         termithIndex.getTerminologyStandOff().get(key),
                         outputFile,
                         standOffResources);
@@ -50,8 +53,11 @@ public class TeiWriterWorker implements Runnable {
             else {
                 teiWriter = new TeiWriter(
                         FilesUtils.readFile(termithIndex.getXmlCorpus().get(key)),
-                        (List<MorphoSyntaxOffsetId>) FilesUtils.readObject(termithIndex.getMorphoSyntaxStandOff().get(key)),
-                        (StringBuilder) FilesUtils.readObject(termithIndex.getTokenizeTeiBody().get(key)),
+                        FilesUtils.readListObject(
+                                termithIndex.getMorphoSyntaxStandOff().get(key),
+                                MorphoSyntaxOffsetId.class
+                        ),
+                        FilesUtils.readObject(termithIndex.getTokenizeTeiBody().get(key),StringBuilder.class),
                         null,
                         outputFile,
                         standOffResources);

@@ -43,9 +43,7 @@ public class CorpusAnalyzerTest {
     static Map<String,StringBuilder> convertExtractedText(Map<String, Path> extractedText){
         Map<String,StringBuilder> map = new HashMap<>();
         extractedText.forEach(
-                (key,value) -> {
-                    map.put(key,(StringBuilder) FilesUtils.readObject(value));
-                }
+                (key,value) -> map.put(key, FilesUtils.readObject(value,StringBuilder.class))
         );
         return map;
     }

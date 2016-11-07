@@ -9,6 +9,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -27,7 +28,7 @@ public class FilesUtils {
      * @return return the path created
      * @throws IOException throw an exception if the name of the path is incorrect
      */
-    public static String createTemporaryFolder(String path) throws IOException {
+    static String createTemporaryFolder(String path) throws IOException {
         Path tempDir = Files.createTempDirectory(path);
         return tempDir.toString();
     }
@@ -38,7 +39,7 @@ public class FilesUtils {
      * @param corpus the corpus with the name of the file and his content
      * @param extension the extension expected of the created file
      */
-    public static void createFiles(String path, Map<String, StringBuilder> corpus, String extension) {
+    static void createFiles(String path, Map<String, StringBuilder> corpus, String extension) {
         corpus.forEach((filename, content) -> {
             try (BufferedWriter writer =
                          Files.newBufferedWriter(Paths.get(path + "/" + filename + "." + extension))){
@@ -86,7 +87,7 @@ public class FilesUtils {
 
     public static Path writeObject(Object o,Path workingPath) throws IOException {
         FileOutputStream fos = null;
-        ObjectOutputStream oos = null;
+        ObjectOutputStream oos;
         Path path = Paths.get(workingPath + "/" + UUID.randomUUID().toString());
         try {
             fos = new FileOutputStream(path.toString());
@@ -114,10 +115,10 @@ public class FilesUtils {
         return filePath;
     }
 
-    public static Object readObject(Path filePath){
+    public static <T> List<T> readListObject(Path filePath, Class<T> type){
 
+        ObjectInputStream in;
         FileInputStream fis = null;
-        ObjectInputStream in = null;
         Object o = null;
         try {
             fis = new FileInputStream(new File(filePath.toString()));
@@ -141,7 +142,37 @@ public class FilesUtils {
                 }
             }
         }
-        return o;
+        return (List<T>) o;
+    }
+
+    public static <T>T readObject(Path filePath, Class<T> type){
+
+        ObjectInputStream in;
+        FileInputStream fis = null;
+        Object o = null;
+        try {
+            fis = new FileInputStream(new File(filePath.toString()));
+            in = new ObjectInputStream(fis);
+            o = in.readObject();
+            in.close();
+        }
+        catch (IOException e) {
+            LOGGER.error("could not open file",e);
+
+        }
+        catch (ClassNotFoundException e) {
+            LOGGER.error("could import object",e);
+        }
+        finally {
+            if (fis != null){
+                try {
+                    fis.close();
+                } catch (IOException e) {
+                    LOGGER.error("could not close object",e);
+                }
+            }
+        }
+        return type.cast(o);
     }
 
     public static Path folderPathResolver(String path){

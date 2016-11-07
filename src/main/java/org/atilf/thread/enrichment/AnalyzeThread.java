@@ -18,7 +18,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.concurrent.*;
 
@@ -49,7 +48,7 @@ public class AnalyzeThread {
     private Map<String,StringBuilder> getDeserializeText(){
         Map<String,StringBuilder> textMap = new HashMap<>();
         _termithIndex.getExtractedText().forEach(
-                (key,value) -> textMap.put(key,(StringBuilder) FilesUtils.readObject(value))
+                (key,value) -> textMap.put(key,FilesUtils.readObject(value, StringBuilder.class))
         );
         return textMap;
     }
@@ -77,7 +76,7 @@ public class AnalyzeThread {
         _termithIndex.getMorphoSyntaxStandOff().forEach(
                 (id,value) -> _executorService.submit(
                         new TerminologyStandOff(
-                                (List<MorphoSyntaxOffsetId>) FilesUtils.readObject(value),
+                                FilesUtils.readListObject(value,MorphoSyntaxOffsetId.class),
                                 _termithIndex.getTerminologyStandOff().get(id)
                         )
                 )
