@@ -2,6 +2,8 @@ package org.atilf.module.termsuite.terminology;
 
 import org.atilf.models.termsuite.MorphoSyntaxOffsetId;
 import org.atilf.models.termsuite.TermsOffsetId;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.List;
 import java.util.NavigableMap;
@@ -13,24 +15,26 @@ import java.util.stream.Collectors;
  * @author Simon Meoni
  *         Created on 14/09/16.
  */
-public class TerminologyStandOff {
+public class TerminologyStandOff implements Runnable{
     private final List<MorphoSyntaxOffsetId> _morpho;
-    private final List<TermsOffsetId> _termino;
+    private final List<TermsOffsetId> _terminology;
     private NavigableMap<Integer,List<Integer>> _beginMap;
     private NavigableMap<Integer,List<Integer>> _endMap;
+    private static final Logger LOGGER = LoggerFactory.getLogger(TerminologyStandOff.class.getName());
+    private String _id;
 
-    public TerminologyStandOff(List<MorphoSyntaxOffsetId> morpho, List<TermsOffsetId> termino) {
+    public TerminologyStandOff(List<MorphoSyntaxOffsetId> morpho, List<TermsOffsetId> terminology) {
         _morpho = morpho;
-        _termino = termino;
+        _terminology = terminology;
     }
 
-    public List<TermsOffsetId> get_termino() {
-        return _termino;
+    public List<TermsOffsetId> getTerminology() {
+        return _terminology;
     }
 
     public void execute() {
         createNavigablesMap();
-        _termino.forEach(
+        _terminology.forEach(
                 el -> {
                     el.setIds(retrieveMorphoIds(el.getBegin(),el.getEnd()));
                 }
@@ -62,6 +66,13 @@ public class TerminologyStandOff {
                     _endMap.put(el.getEnd(),el.getIds());
                 }
         );
+    }
+
+    @Override
+    public void run() {
+        LOGGER.debug("retrieve morphosyntax id for file :" + _id);
+        this.execute();
+        LOGGER.debug("retrieve id task finished");
     }
 
 }

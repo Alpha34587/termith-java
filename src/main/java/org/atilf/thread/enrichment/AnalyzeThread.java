@@ -1,13 +1,14 @@
 package org.atilf.thread.enrichment;
 
 import org.atilf.models.termith.TermithIndex;
+import org.atilf.models.termsuite.MorphoSyntaxOffsetId;
 import org.atilf.models.treetagger.TagNormalizer;
 import org.atilf.module.termsuite.terminology.TerminologyParser;
+import org.atilf.module.termsuite.terminology.TerminologyStandOff;
 import org.atilf.module.timer.JsonTimer;
 import org.atilf.module.timer.TokenizeTimer;
 import org.atilf.module.tools.FilesUtils;
 import org.atilf.module.treetagger.CorpusAnalyzer;
-import org.atilf.worker.TerminologyStandOffWorker;
 import org.atilf.worker.TermsuiteWorker;
 import org.atilf.worker.TreeTaggerWorker;
 import org.slf4j.Logger;
@@ -17,6 +18,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.*;
 
@@ -73,7 +75,12 @@ public class AnalyzeThread {
         LOGGER.info("terminology extraction started");
         _executorService.submit(new TerminologyParser(_termithIndex)).get();
         _termithIndex.getMorphoSyntaxStandOff().forEach(
-                (id,value) -> _executorService.submit(new TerminologyStandOffWorker(id,value, _termithIndex))
+                (id,value) -> _executorService.submit(
+                        new TerminologyStandOff(
+                                (List<MorphoSyntaxOffsetId>) FilesUtils.readObject(value),
+                                _termithIndex.getTerminologyStandOff().get(id)
+                        )
+                )
         );
         _executorService.shutdown();
         _executorService.awaitTermination(1L,TimeUnit.DAYS);

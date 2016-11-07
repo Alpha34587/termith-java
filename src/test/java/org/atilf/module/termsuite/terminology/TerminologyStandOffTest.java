@@ -87,9 +87,9 @@ public class TerminologyStandOffTest {
         expected.add("[0, 1, 2]");
         expected.add("[4]");
 
-        _simpleTerminologyStandOff.get_termino().forEach(
+        _simpleTerminologyStandOff.getTerminology().forEach(
                 ids -> Assert.assertEquals("_morpho ids must be equals",
-                        expected.get(_simpleTerminologyStandOff.get_termino().indexOf(ids)),
+                        expected.get(_simpleTerminologyStandOff.getTerminology().indexOf(ids)),
                         ids.getIds().toString()
                         )
         );
@@ -104,9 +104,9 @@ public class TerminologyStandOffTest {
         expected.add("[0, 1, 2, 3]");
         expected.add("[5, 6, 7, 8]");
 
-        _multiTerminologyStandOff.get_termino().forEach(
+        _multiTerminologyStandOff.getTerminology().forEach(
                 ids -> Assert.assertEquals("_morpho ids must be equals",
-                        expected.get(_multiTerminologyStandOff.get_termino().indexOf(ids)),
+                        expected.get(_multiTerminologyStandOff.getTerminology().indexOf(ids)),
                         ids.getIds().toString()
                 )
         );
@@ -121,9 +121,9 @@ public class TerminologyStandOffTest {
         expected.add("[0, 1, 2, 3]");
         expected.add("[5, 6, 7, 8]");
 
-        _symbolTerminologyStandOff.get_termino().forEach(
+        _symbolTerminologyStandOff.getTerminology().forEach(
                 ids -> Assert.assertEquals("_morpho ids must be equals",
-                        expected.get(_symbolTerminologyStandOff.get_termino().indexOf(ids)),
+                        expected.get(_symbolTerminologyStandOff.getTerminology().indexOf(ids)),
                         ids.getIds().toString()
                 )
         );
