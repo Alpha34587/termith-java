@@ -7,13 +7,14 @@ import org.slf4j.LoggerFactory;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 
 /**
  * @author Simon Meoni
  *         Created on 27/09/16.
  */
-public class WorkingFilesCleaner {
+public class WorkingFilesCleaner implements Runnable{
     private final Path _corpus;
     private final boolean _keepFiles;
     private static final Logger LOGGER = LoggerFactory.getLogger(WorkingFilesCleaner.class.getName());
@@ -38,10 +39,27 @@ public class WorkingFilesCleaner {
                     }
                     else {
                         if (!file.getName().matches(".*(\\.xml|\\.json|\\.tbx)")){
-                            file.delete();
+                            try {
+                                Files.delete(file.toPath());
+                            }
+                            catch (NoSuchFileException e){
+                                LOGGER.error("no such file or directory",e);
+                            } catch (IOException e) {
+                                LOGGER.error("File permission problem",e);
+                            }
                         }
                     }
                 }
         );
+    }
+
+    @Override
+    public void run() {
+        LOGGER.debug("clean working directory : " + _corpus);
+        try {
+            this.execute();
+        } catch (IOException e) {
+            LOGGER.error("error during cleaning directory",e);
+        }
     }
 }

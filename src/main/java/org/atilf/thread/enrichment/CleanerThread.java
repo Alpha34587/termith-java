@@ -1,7 +1,7 @@
 package org.atilf.thread.enrichment;
 
 import org.atilf.models.termith.TermithIndex;
-import org.atilf.worker.CleanerWorker;
+import org.atilf.module.tools.WorkingFilesCleaner;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -17,7 +17,7 @@ public class CleanerThread {
 
     public void execute() throws InterruptedException {
         ExecutorService executor = Executors.newSingleThreadExecutor();
-        executor.submit(new CleanerWorker(TermithIndex.getOutputPath(),TermithIndex.isKeepFiles()));
+        executor.submit(new WorkingFilesCleaner(TermithIndex.getOutputPath(),TermithIndex.isKeepFiles()));
         executor.shutdown();
         executor.awaitTermination(1L, TimeUnit.DAYS);
     }
