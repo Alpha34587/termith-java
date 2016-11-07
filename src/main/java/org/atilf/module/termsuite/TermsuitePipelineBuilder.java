@@ -19,14 +19,14 @@ import java.nio.file.Paths;
  * @author Simon Meoni
  *         Created on 08/09/16.
  */
-public class PipelineBuilder implements Runnable{
+public class TermsuitePipelineBuilder implements Runnable{
 
     private String _jsonCorpus;
     private TermSuitePipeline _termsuitePipeline;
     private TermithIndex _termithIndex;
-    private static final Logger LOGGER = LoggerFactory.getLogger(PipelineBuilder.class.getName());
+    private static final Logger LOGGER = LoggerFactory.getLogger(TermsuitePipelineBuilder.class.getName());
 
-    public PipelineBuilder(TermithIndex termithIndex){
+    public TermsuitePipelineBuilder(TermithIndex termithIndex){
         _termithIndex = termithIndex;
         _jsonCorpus = termithIndex.getCorpus() + "/json";
         init();

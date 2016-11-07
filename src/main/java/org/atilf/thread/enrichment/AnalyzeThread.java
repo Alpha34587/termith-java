@@ -3,7 +3,7 @@ package org.atilf.thread.enrichment;
 import org.atilf.models.termith.TermithIndex;
 import org.atilf.models.termsuite.MorphoSyntaxOffsetId;
 import org.atilf.models.treetagger.TagNormalizer;
-import org.atilf.module.termsuite.PipelineBuilder;
+import org.atilf.module.termsuite.TermsuitePipelineBuilder;
 import org.atilf.module.termsuite.terminology.TerminologyParser;
 import org.atilf.module.termsuite.terminology.TerminologyStandOff;
 import org.atilf.module.timer.JsonTimer;
@@ -70,7 +70,7 @@ public class AnalyzeThread {
         LOGGER.info("waiting that all json files are serialized");
         _jsonCnt.await();
         LOGGER.info("json files serialization finished, termsuite task started");
-        _executorService.submit(new PipelineBuilder(_termithIndex)).get();
+        _executorService.submit(new TermsuitePipelineBuilder(_termithIndex)).get();
         LOGGER.info("terminology extraction started");
         _executorService.submit(new TerminologyParser(_termithIndex)).get();
         _termithIndex.getMorphoSyntaxStandOff().forEach(
