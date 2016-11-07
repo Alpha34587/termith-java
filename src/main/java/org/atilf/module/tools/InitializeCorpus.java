@@ -1,10 +1,9 @@
-package org.atilf.worker;
+package org.atilf.module.tools;
 
 import org.atilf.models.termith.TermithIndex;
-import org.atilf.module.tools.FilesUtils;
+import org.atilf.thread.enrichment.InitializerThread;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.atilf.thread.enrichment.InitializerThread;
 
 import java.nio.file.Path;
 import java.util.concurrent.CountDownLatch;
@@ -13,7 +12,7 @@ import java.util.concurrent.CountDownLatch;
  * @author Simon Meoni
  *         Created on 16/09/16.
  */
-public class InitCorpusWorker implements Runnable {
+public class InitializeCorpus implements Runnable {
     private Path path;
     private TermithIndex termithIndex;
     private CountDownLatch corpusCnt;
@@ -21,18 +20,18 @@ public class InitCorpusWorker implements Runnable {
 
     /**
      * constructor of the class the parameter path is the path of the file that we want to treated
-     * @param path
+     * @param path path of the input file
      */
-    public InitCorpusWorker(Path path, TermithIndex termithIndex) {
+    public InitializeCorpus(Path path, TermithIndex termithIndex) {
         this(path, termithIndex, new CountDownLatch(termithIndex.getXmlCorpus().size()));
     }
 
     /**
      * constructor of the class the parameter path is the path of the file that we want to treated
-     * @param path
-     * @param corpusCnt
+     * @param path path of the input
+     * @param corpusCnt remains files to add to corpus
      */
-    public InitCorpusWorker(Path path, TermithIndex termithIndex, CountDownLatch corpusCnt) {
+    public InitializeCorpus(Path path, TermithIndex termithIndex, CountDownLatch corpusCnt) {
         this.path = path;
         this.termithIndex = termithIndex;
         this.corpusCnt = corpusCnt;

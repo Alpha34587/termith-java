@@ -2,7 +2,7 @@ package org.atilf.thread.enrichment;
 
 import org.atilf.models.termith.TermithIndex;
 import org.atilf.module.timer.ExtractTextTimer;
-import org.atilf.worker.InitCorpusWorker;
+import org.atilf.module.tools.InitializeCorpus;
 import org.atilf.worker.TextExtractorWorker;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -50,14 +50,14 @@ public class InitializerThread {
 
     /**
      * execute the extraction text task with the help of inner InitializerWorker class
-     * @throws IOException
-     * @throws InterruptedException
+     * @throws IOException throws exception if a file is not find
+     * @throws InterruptedException throws java concurrent executorService exception
      */
     public void execute() throws IOException, InterruptedException {
         Files.list(TermithIndex.getBase()).forEach(
                 p -> {
                     _executor.submit(new TextExtractorWorker(p, _termithIndex));
-                    _executor.submit(new InitCorpusWorker(p, _termithIndex, _corpusCnt));
+                    _executor.submit(new InitializeCorpus(p, _termithIndex, _corpusCnt));
                 }
 
         );
