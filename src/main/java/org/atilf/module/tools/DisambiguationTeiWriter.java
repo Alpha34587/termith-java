@@ -28,7 +28,7 @@ import static org.atilf.models.disambiguisation.ContextResources.*;
  * @author Simon Meoni
  *         Created on 25/10/16.
  */
-public class DisambiguationTeiWriter {
+public class DisambiguationTeiWriter implements Runnable {
     private static final Logger LOGGER = LoggerFactory.getLogger(TeiWriter.class.getName());
     private final String _p;
     private final Map<String, EvaluationProfile> _evaluationLexic;
@@ -95,4 +95,9 @@ public class DisambiguationTeiWriter {
 
 
     }
+    @Override
+    public void run() {
+        this.execute();
+    }
+
 }

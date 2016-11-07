@@ -1,7 +1,8 @@
 package org.atilf.thread.disambiguisation;
 
 import org.atilf.models.termith.TermithIndex;
-import org.atilf.worker.DisambExporterWorker;
+import org.atilf.module.tools.DisambiguationTeiWriter;
+import org.atilf.module.tools.FilesUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -31,7 +32,15 @@ public class DisambExporterThread {
 
         ExecutorService executor = Executors.newFixedThreadPool(_poolSize);
         Files.list(TermithIndex.getBase()).forEach(
-                p -> executor.submit(new DisambExporterWorker(p, _termithIndex))
+                p ->
+                {
+                    String file = FilesUtils.nameNormalizer(p.toString());
+                    executor.submit(new DisambiguationTeiWriter(
+                        file,
+                        _termithIndex.getEvaluationLexic().get(file)
+                        ));
+                }
+
         );
         LOGGER.info("Waiting ContextExtractorWorker executors to finish");
         executor.shutdown();
