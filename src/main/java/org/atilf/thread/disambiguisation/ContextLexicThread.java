@@ -1,7 +1,7 @@
 package org.atilf.thread.disambiguisation;
 
 import org.atilf.models.termith.TermithIndex;
-import org.atilf.worker.ContextExtractorWorker;
+import org.atilf.module.disambiguisation.ContextExtractor;
 import org.atilf.worker.DisambXslTransformerWorker;
 import org.atilf.worker.LexicExtractorWorker;
 import org.slf4j.Logger;
@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -47,14 +48,12 @@ public class ContextLexicThread {
         _transformCounter.await();
         _termithIndex.getDisambTranformedFile().values().forEach(
                 (file) -> {
-                    executor.submit(new ContextExtractorWorker(file, _termithIndex));
+                    executor.submit(new ContextExtractor(file.toString(), _termithIndex.getTermSubLexic()));
                     executor.submit(new LexicExtractorWorker(file, _termithIndex));
                 }
         );
         LOGGER.info("Waiting ContextExtractorWorker executors to finish");
         executor.shutdown();
         executor.awaitTermination(1L, TimeUnit.DAYS);
-        int a = 0;
-
     }
 }

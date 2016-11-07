@@ -21,7 +21,7 @@ import static org.atilf.models.disambiguisation.ContextResources.*;
  * @author Simon Meoni
  *         Created on 14/10/16.
  */
-public class ContextExtractor {
+public class ContextExtractor implements Runnable{
     Deque<String> _target = new ArrayDeque<>();
     Deque<String> _corresp = new ArrayDeque<>();
     Deque<String> _lexAna = new ArrayDeque<>();
@@ -31,6 +31,7 @@ public class ContextExtractor {
     XPathExpression _eCorresp;
     XPathExpression _eAna;
     Map<String, LexicalProfile> _subLexics;
+    private String _p;
     private XPathExpression _eMultiTagsGetter;
     private XPathExpression _eSimpleTagGetter;
     private DocumentBuilder _dBuilder;
@@ -38,9 +39,10 @@ public class ContextExtractor {
     private static final Logger LOGGER = LoggerFactory.getLogger(ContextExtractor.class.getName());
 
     public ContextExtractor(String p, Map<String, LexicalProfile> subLexics){
-        XPath xpath = XPathFactory.newInstance().newXPath();
-        XpathMapVariableResolver xpathMapVariableResolver = new XpathMapVariableResolver();
+        _p = p;
         _subLexics = subLexics;
+        XpathMapVariableResolver xpathMapVariableResolver = new XpathMapVariableResolver();
+        XPath xpath = XPathFactory.newInstance().newXPath();
         xpath.setNamespaceContext(NAMESPACE_CONTEXT);
         xpath.setXPathVariableResolver(xpathMapVariableResolver);
         try {
@@ -157,6 +159,13 @@ public class ContextExtractor {
         } else {
             return (c + "_lexOn").replace("#", "");
         }
+    }
+
+    @Override
+    public void run() {
+        LOGGER.info("add " + _p + " to sub lexic");
+        this.execute();
+        LOGGER.info(_p + " added");
     }
 
     private class XpathMapVariableResolver implements XPathVariableResolver {
