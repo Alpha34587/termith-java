@@ -20,7 +20,7 @@ import static org.atilf.models.disambiguisation.ContextResources.NAMESPACE_CONTE
  * @author Simon Meoni
  *         Created on 20/10/16.
  */
-public class LexicExtractor {
+public class LexicExtractor implements Runnable{
     private GlobalLexic _disambGlobalCorpus;
     private DocumentBuilderFactory _dbFactory = DocumentBuilderFactory.newInstance();
     private DocumentBuilder _dBuilder;
@@ -31,11 +31,13 @@ public class LexicExtractor {
     private XPathExpression _eLemma;
     private XPathExpression _ePos;
     private XPathExpression _eSpanWordForms;
+    private String _p;
 
     public LexicExtractor(String p, GlobalLexic disambGlobalCorpus) {
         _disambGlobalCorpus = disambGlobalCorpus;
         _xpath.setNamespaceContext(NAMESPACE_CONTEXT);
         _dbFactory.setNamespaceAware(true);
+        _p = p;
         try {
             _dBuilder = _dbFactory.newDocumentBuilder();
         } catch (ParserConfigurationException e) {
@@ -77,5 +79,12 @@ public class LexicExtractor {
         } catch (XPathExpressionException e) {
             LOGGER.error("error during the parsing of document",e);
         }
+    }
+
+    @Override
+    public void run() {
+        LOGGER.info("extract occurence from " + _p + " to global corpus lexic");
+        LOGGER.info(_p + " added to global corpus");
+        this.execute();
     }
 }
