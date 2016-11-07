@@ -1,7 +1,7 @@
 package org.atilf.thread.disambiguisation;
 
 import org.atilf.models.termith.TermithIndex;
-import org.atilf.worker.EvaluationExtractorWorker;
+import org.atilf.module.disambiguisation.EvaluationExtractor;
 import org.atilf.worker.EvaluationWorker;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,7 +30,7 @@ public class DisambEvaluationThread {
     public void execute() throws IOException, InterruptedException {
         ExecutorService executor = Executors.newFixedThreadPool(_poolSize);
         Files.list(TermithIndex.getBase()).forEach(
-                p -> executor.submit(new EvaluationExtractorWorker(p, _termithIndex))
+                p -> executor.submit(new EvaluationExtractor(p.toString(), _termithIndex))
         );
 
         _termithIndex.getEvaluationLexic().forEach(

@@ -22,6 +22,7 @@ public class EvaluationExtractorTest {
     private Deque<String> _expectedCorresp = new ArrayDeque<>();
     private Deque<String> _expectedLexAna = new ArrayDeque<>();
     //TODO rename this variable
+    //TODO change resource path &
     private Map<String,EvaluationProfile> expectedMap = new HashMap<>();
     private Map<String,EvaluationProfile> multiSub = new HashMap<>();
     @Before

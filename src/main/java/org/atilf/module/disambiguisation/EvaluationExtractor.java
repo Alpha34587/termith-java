@@ -1,11 +1,14 @@
 package org.atilf.module.disambiguisation;
 
+import org.atilf.models.termith.TermithIndex;
+import org.atilf.module.tools.FilesUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.NodeList;
 
 import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpressionException;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -16,6 +19,7 @@ public class EvaluationExtractor extends ContextExtractor {
 
     private final Map<String, EvaluationProfile> _evaluationLexic;
     private static final Logger LOGGER = LoggerFactory.getLogger(EvaluationExtractor.class.getName());
+    private String _p;
 
     public EvaluationExtractor(String p , Map<String, EvaluationProfile> evaluationLexic) {
         super(p,null);
@@ -25,6 +29,12 @@ public class EvaluationExtractor extends ContextExtractor {
     public EvaluationExtractor(String p , Map<String, EvaluationProfile> evaluationLexic, Map<String,LexicalProfile> specLexic) {
         super(p,specLexic);
         _evaluationLexic = evaluationLexic;
+    }
+
+    public EvaluationExtractor(String p , TermithIndex termithIndex) {
+        super(p,termithIndex.getTermSubLexic());
+        _p = p;
+        _evaluationLexic = termithIndex.getEvaluationLexic().put(FilesUtils.nameNormalizer(p),new HashMap<>());
     }
 
     @Override
@@ -82,5 +92,12 @@ public class EvaluationExtractor extends ContextExtractor {
     @Override
     protected String normalizeKey(String c, String l) {
         return c.substring(1,c.length()) + "_" + l.subSequence(1,l.length());
+    }
+
+    @Override
+    public void run() {
+        LOGGER.debug("add " + _p + " to evaluation lexic");
+        this.execute();
+        LOGGER.debug(_p + " added");
     }
 }
