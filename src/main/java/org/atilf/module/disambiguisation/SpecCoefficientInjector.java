@@ -4,12 +4,13 @@ import com.github.rcaller.rstuff.RCaller;
 import com.github.rcaller.rstuff.RCode;
 import org.atilf.models.disambiguisation.GlobalLexic;
 import org.atilf.models.disambiguisation.RLexic;
+import org.atilf.models.termith.TermithIndex;
 
 /**
  * @author Simon Meoni
  *         Created on 21/10/16.
  */
-public class SpecCoefficientInjector {
+public class SpecCoefficientInjector implements Runnable{
     private final LexicalProfile _lexicalProfile;
     private final RLexic _rLexic;
     private final RLexic _rSubLexic;
@@ -21,6 +22,13 @@ public class SpecCoefficientInjector {
         _lexicalProfile = lexicalProfile;
         _rLexic = rLexic;
         _rSubLexic = new RLexic(lexicalProfile,globalLexic);
+    }
+
+    public SpecCoefficientInjector(String p,TermithIndex termithIndex, RLexic rLexic){
+        _globalLexic = termithIndex.getDisambGlobalLexic();
+        _lexicalProfile = termithIndex.getTermSubLexic().get(p);
+        _rLexic = rLexic;
+        _rSubLexic = new RLexic(_lexicalProfile,_globalLexic);
     }
 
     public void execute() {
@@ -37,7 +45,7 @@ public class SpecCoefficientInjector {
         }
     }
 
-    public float[] computeSpecCoefficient() {
+    float[] computeSpecCoefficient() {
         RCaller rcaller = RCaller.create();
         RCode code = RCode.create();
         code.addRCode("source(" + "\"src/main/resources/disambiguation/R/specificities.R\"" + ")");
@@ -56,5 +64,10 @@ public class SpecCoefficientInjector {
         rcaller.setRCode(code);
         rcaller.runAndReturnResult("res");
         return rcaller.getParser().getAsFloatArray("res");
+    }
+
+    @Override
+    public void run() {
+        this.execute();
     }
 }

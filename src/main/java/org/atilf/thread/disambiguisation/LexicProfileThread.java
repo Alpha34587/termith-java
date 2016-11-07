@@ -2,7 +2,7 @@ package org.atilf.thread.disambiguisation;
 
 import org.atilf.models.disambiguisation.RLexic;
 import org.atilf.models.termith.TermithIndex;
-import org.atilf.worker.SpecCoeffInjectorWorker;
+import org.atilf.module.disambiguisation.SpecCoefficientInjector;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -30,7 +30,7 @@ public class LexicProfileThread {
         ExecutorService executor = Executors.newFixedThreadPool(_poolSize);
 
         _termithIndex.getTermSubLexic().forEach(
-                (key,value) -> executor.submit(new SpecCoeffInjectorWorker(
+                (key,value) -> executor.submit(new SpecCoefficientInjector(
                         key,
                         _termithIndex,
                         rLexic))
