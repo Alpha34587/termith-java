@@ -1,5 +1,6 @@
 package org.atilf.thread.enrichment;
 
+import org.atilf.models.extractor.XslResources;
 import org.atilf.models.termith.TermithIndex;
 import org.atilf.module.timer.ExtractTextTimer;
 import org.atilf.module.tools.InitializeCorpus;
@@ -54,9 +55,10 @@ public class InitializerThread {
      * @throws InterruptedException throws java concurrent executorService exception
      */
     public void execute() throws IOException, InterruptedException {
+        XslResources xslResources = new XslResources();
         Files.list(TermithIndex.getBase()).forEach(
                 p -> {
-                    _executor.submit(new TextExtractorWorker(p, _termithIndex));
+                    _executor.submit(new TextExtractorWorker(p, _termithIndex, xslResources));
                     _executor.submit(new InitializeCorpus(p, _termithIndex, _corpusCnt));
                 }
 

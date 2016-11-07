@@ -20,8 +20,8 @@ import java.io.StringWriter;
  */
 public class TextExtractor {
     private final Logger LOGGER = LoggerFactory.getLogger(this.getClass().getName());
-    protected File _file;
-    protected XslResources _xslResources;
+    private File _file;
+    private XslResources _xslResources;
 
     /**
      * builder for textExtractor
@@ -36,7 +36,7 @@ public class TextExtractor {
     /**
      * this method apply an xsl stylesheet to a _file given in parameter. it extracts the plain text of the xml _file
      * @return the extracted text
-     * @throws IOException
+     * @throws IOException throw IO exception of StreamResult variable
      */
     public StringBuilder xsltTransformation() throws IOException {
         Source input = new StreamSource(_file);
@@ -46,7 +46,7 @@ public class TextExtractor {
 
         try {
             LOGGER.debug("apply " + _xslResources._stylesheet.toString() + "to xml file" + input.toString());
-            transformer = _xslResources._factory.newTransformer(_xslResources._stylesheet);
+            transformer = _xslResources._factory.newTransformer();
             transformer.transform(input, streamResult);
 
         } catch (TransformerException e) {

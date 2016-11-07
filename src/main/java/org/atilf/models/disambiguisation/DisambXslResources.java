@@ -1,8 +1,12 @@
 package org.atilf.models.disambiguisation;
 
 import org.atilf.models.extractor.XslResources;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.xml.transform.Source;
+import javax.xml.transform.Templates;
+import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.stream.StreamSource;
 
@@ -12,12 +16,17 @@ import javax.xml.transform.stream.StreamSource;
  */
 public class DisambXslResources extends XslResources{
 
+        private static final Logger LOGGER = LoggerFactory.getLogger(DisambXslResources.class.getName());
         public DisambXslResources() {
             _stylesheet = new StreamSource(getClass().getClassLoader().getResourceAsStream("xsl/disamb.xsl"));
-            _factory = TransformerFactory.newInstance();
+            try {
+                _factory = TransformerFactory.newInstance().newTemplates(_stylesheet);
+            } catch (TransformerConfigurationException e) {
+                LOGGER.error("cannot parse xsl stylesheet",e);
+            }
         }
 
-        public TransformerFactory getFactory() {
+        public Templates getFactory() {
             return _factory;
         }
 

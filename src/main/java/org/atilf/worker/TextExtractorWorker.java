@@ -24,12 +24,12 @@ public class TextExtractorWorker implements Runnable {
 
     /**
      * constructor of the class the parameter path is the path of the file that we want to treated
-     * @param path
+     * @param path path of input file
      */
-    public TextExtractorWorker(Path path, TermithIndex termithIndex) {
+    public TextExtractorWorker(Path path, TermithIndex termithIndex, XslResources xslResources) {
         this.path = path;
         this.termithIndex = termithIndex;
-        this.xslResources = new XslResources();
+        this.xslResources = xslResources;
     }
 
     /**

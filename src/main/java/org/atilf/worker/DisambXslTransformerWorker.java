@@ -16,7 +16,6 @@ import java.util.concurrent.CountDownLatch;
  *         Created on 02/11/16.
  */
 public class DisambXslTransformerWorker implements Runnable {
-    private final DisambXslResources _xslResources = new DisambXslResources();
     private final Path _p;
     private final TermithIndex _termithIndex;
     private CountDownLatch _transformCounter;
@@ -34,9 +33,10 @@ public class DisambXslTransformerWorker implements Runnable {
 
     @Override
     public void run() {
+        DisambXslResources xslResources = new DisambXslResources();
         try {
             LOGGER.info("convert xml file: " + _p);
-            DisambXslTransformer disambXslTransformer = new DisambXslTransformer(_p.toFile(),_xslResources);
+            DisambXslTransformer disambXslTransformer = new DisambXslTransformer(_p.toFile(), xslResources);
             _termithIndex.getDisambTranformedFile().put(
                     FilesUtils.nameNormalizer(_p.getFileName().toString()),
                     FilesUtils.writeXml(
