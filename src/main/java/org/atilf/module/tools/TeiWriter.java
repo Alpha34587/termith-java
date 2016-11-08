@@ -1,7 +1,8 @@
 package org.atilf.module.tools;
 
-import org.atilf.models.termsuite.MorphoSyntaxOffsetId;
 import org.atilf.models.tei.exporter.StandOffResources;
+import org.atilf.models.termith.TermithIndex;
+import org.atilf.models.termsuite.MorphoSyntaxOffsetId;
 import org.atilf.models.termsuite.TermsOffsetId;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,6 +11,7 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 import static org.atilf.models.tei.exporter.SpecialChXmlEscape.replaceXmlChar;
@@ -18,16 +20,39 @@ import static org.atilf.models.tei.exporter.SpecialChXmlEscape.replaceXmlChar;
  * @author Simon Meoni
  *         Created on 16/09/16.
  */
-public class TeiWriter {
+public class TeiWriter implements Runnable {
 
+    private Path _outputPath;
     private BufferedWriter _bufferedWriter = null;
     private StringBuilder _tokenizeBody;
     private StandOffResources _stdfRes;
+    private TermithIndex _termithIndex;
     private final StringBuilder _xmlCorpus;
     private final List<MorphoSyntaxOffsetId> _morphoSyntaxOffsetIds;
     private final List<TermsOffsetId> _termsOffsetIds;
     private static final Logger LOGGER = LoggerFactory.getLogger(TeiWriter.class.getName());
 
+
+    public TeiWriter(String key,TermithIndex termithIndex, StandOffResources standOffResources){
+        this(
+                FilesUtils.readFile(termithIndex.getXmlCorpus().get(key)),
+                FilesUtils.readListObject(
+                        termithIndex.getMorphoSyntaxStandOff().get(key),
+                        MorphoSyntaxOffsetId.class),
+                FilesUtils.readObject(termithIndex.getTokenizeTeiBody().get(key),StringBuilder.class),
+                termithIndex.getTerminologyStandOff().get(key),
+                Paths.get(TermithIndex.getOutputPath() + "/" + key + ".xml"),
+                standOffResources
+        );
+        try {
+            Files.delete(termithIndex.getMorphoSyntaxStandOff().get(key));
+            Files.delete(termithIndex.getTokenizeTeiBody().get(key));
+        } catch (IOException e) {
+            LOGGER.error("cannot delete file",e);
+        }
+        _outputPath = Paths.get(TermithIndex.getOutputPath() + "/" + key + ".xml");
+        _termithIndex = termithIndex;
+    }
     public TeiWriter(StringBuilder xmlCorpus,
                      List<MorphoSyntaxOffsetId> morphoSyntaxOffsetIds,
                      StringBuilder tokenizeBody,List<TermsOffsetId> termsOffsetIds,
@@ -130,8 +155,6 @@ public class TeiWriter {
     }
 
     private void serializeMorphosyntax(List<MorphoSyntaxOffsetId> morphoSyntaxOffsetIds) throws IOException {
-        StringBuilder standoff = new StringBuilder();
-
         _bufferedWriter.append(replaceTemplate(cut(_stdfRes.STANDOFF,false),"@type","wordForms"));
         _bufferedWriter.append(_stdfRes.MS_TEI_HEADER);
         _bufferedWriter.append(cut(_stdfRes.LIST_ANNOTATION,false));
@@ -152,5 +175,16 @@ public class TeiWriter {
             target += "#t" + id + " ";
         }
         return target.substring(0,target.length() - 1);
+    }
+
+    @Override
+    public void run() {
+        LOGGER.debug("writing : " + _outputPath);
+        try {
+            this.execute();
+            _termithIndex.getOutputFile().add(_outputPath);
+        } catch (IOException e) {
+            LOGGER.error("errors during writing xml/tei file",e);
+        }
     }
 }

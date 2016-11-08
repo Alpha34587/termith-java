@@ -3,7 +3,7 @@ package org.atilf.thread.enrichment;
 import org.atilf.models.tei.exporter.StandOffResources;
 import org.atilf.models.termith.TermithIndex;
 import org.atilf.module.timer.ExporterTimer;
-import org.atilf.worker.TeiWriterWorker;
+import org.atilf.module.tools.TeiWriter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -47,7 +47,7 @@ public class ExporterThread {
         new ExporterTimer(_termithIndex,LOGGER).start();
         StandOffResources standOffResources = new StandOffResources();
         _termithIndex.getXmlCorpus().forEach(
-                (key,value) -> _executor.submit(new TeiWriterWorker(key, _termithIndex,standOffResources))
+                (key,value) -> _executor.submit(new TeiWriter(key, _termithIndex,standOffResources))
         );
         LOGGER.info("Waiting executors to finish");
         _executor.shutdown();
