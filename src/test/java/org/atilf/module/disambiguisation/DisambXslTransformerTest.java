@@ -31,7 +31,7 @@ public class DisambXslTransformerTest {
         assertXMLEqual("this two xml must be equals",
                 String.join("\n", Files.readAllLines(
                         Paths.get("src/test/resources/corpus/disambiguation/transform-tei/test1.xml"))),
-                _disambXslTransformer.xsltTransformation().toString()
+                _disambXslTransformer.execute().toString()
         );
     }
 

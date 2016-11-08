@@ -2,9 +2,9 @@ package org.atilf.thread.enrichment;
 
 import org.atilf.models.extractor.XslResources;
 import org.atilf.models.termith.TermithIndex;
+import org.atilf.module.extractor.TextExtractor;
 import org.atilf.module.timer.ExtractTextTimer;
 import org.atilf.module.tools.InitializeCorpus;
-import org.atilf.worker.TextExtractorWorker;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -58,7 +58,7 @@ public class InitializerThread {
         XslResources xslResources = new XslResources();
         Files.list(TermithIndex.getBase()).forEach(
                 p -> {
-                    _executor.submit(new TextExtractorWorker(p, _termithIndex, xslResources));
+                    _executor.submit(new TextExtractor(p.toFile(), _termithIndex, xslResources));
                     _executor.submit(new InitializeCorpus(p, _termithIndex, _corpusCnt));
                 }
 

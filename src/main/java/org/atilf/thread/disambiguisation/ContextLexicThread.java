@@ -1,9 +1,10 @@
 package org.atilf.thread.disambiguisation;
 
+import org.atilf.models.disambiguisation.DisambXslResources;
 import org.atilf.models.termith.TermithIndex;
 import org.atilf.module.disambiguisation.ContextExtractor;
+import org.atilf.module.disambiguisation.DisambXslTransformer;
 import org.atilf.module.disambiguisation.LexicExtractor;
-import org.atilf.worker.DisambXslTransformerWorker;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -41,8 +42,14 @@ public class ContextLexicThread {
 
     public void execute() throws IOException, InterruptedException {
         ExecutorService executor = Executors.newFixedThreadPool(_poolSize);
+        DisambXslResources xslResources = new DisambXslResources();
         Files.list(TermithIndex.getBase()).forEach(
-                p -> executor.submit(new DisambXslTransformerWorker(p, _termithIndex, _transformCounter))
+                p -> executor.submit(new DisambXslTransformer(
+                        p.toFile(),
+                        _transformCounter,
+                        _termithIndex,
+                        xslResources)
+                )
         );
         _transformCounter.await();
         _termithIndex.getDisambTranformedFile().values().forEach(

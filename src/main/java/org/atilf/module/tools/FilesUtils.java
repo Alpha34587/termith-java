@@ -107,8 +107,8 @@ public class FilesUtils {
         return path;
     }
 
-    public static Path writeXml(StringBuilder content,Path workingPath, Path filename) throws IOException {
-        Path filePath = folderPathResolver(workingPath.toString() + "/" + filename.toString());
+    public static Path writeXml(StringBuilder content,Path workingPath, String filename) throws IOException {
+        Path filePath = folderPathResolver(workingPath.toString() + "/" + filename);
         BufferedWriter bufferedWriter = Files.newBufferedWriter(filePath);
         bufferedWriter.append(content);
         bufferedWriter.close();
