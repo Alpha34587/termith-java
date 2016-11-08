@@ -1,7 +1,7 @@
 package org.atilf.models;
 
-import org.atilf.models.disambiguation.GlobalLexic;
-import org.atilf.models.disambiguation.RLexic;
+import org.atilf.models.disambiguation.GlobalLexicon;
+import org.atilf.models.disambiguation.RLexicon;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -12,10 +12,10 @@ import java.util.HashMap;
  * @author Simon Meoni
  *         Created on 21/10/16.
  */
-public class RLexicTest {
+public class RLexiconTest {
 
-    private GlobalLexic _corpus;
-    private RLexic _rLexic;
+    private GlobalLexicon _corpus;
+    private RLexicon _rLexicon;
     private String _rName;
     private String _rOcc;
     //TODO make subLexicFormat method
@@ -32,7 +32,7 @@ public class RLexicTest {
                 "\"4\")";
         _rOcc = "c(1,1,1,1,1,1,2,1,1)";
 
-        _corpus = new GlobalLexic(new HashMap<>(),new HashMap<>());
+        _corpus = new GlobalLexicon(new HashMap<>(),new HashMap<>());
         _corpus.addEntry("ce PRO:DEM");
         _corpus.addEntry("article NOM");
         _corpus.addEntry("présenter VER:pres");
@@ -43,17 +43,17 @@ public class RLexicTest {
         _corpus.addEntry("donnée NOM");
         _corpus.addEntry("archéo-ichtyofauniques ADJ");
         _corpus.addEntry("livrer VER:pper");
-        _rLexic = new RLexic(_corpus);
+        _rLexicon = new RLexicon(_corpus);
     }
 
     @Test
     public void getRName() throws Exception {
-        Assert.assertEquals("_rName variable must be equals ", _rName, _rLexic.getRName().toString());
+        Assert.assertEquals("_rName variable must be equals ", _rName, _rLexicon.getRName().toString());
     }
 
     @Test
     public void getROcc() throws Exception {
-        Assert.assertEquals("_rOcc variable must be equals ", _rOcc, _rLexic.getROcc().toString());
+        Assert.assertEquals("_rOcc variable must be equals ", _rOcc, _rLexicon.getROcc().toString());
 
     }
 

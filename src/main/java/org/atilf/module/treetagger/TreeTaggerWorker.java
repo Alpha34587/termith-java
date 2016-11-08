@@ -70,7 +70,7 @@ public class TreeTaggerWorker implements Runnable {
             syntaxGenerator.execute();
             _termithIndex.getTokenizeTeiBody().put(json.getName().replace(".json",""),
                     FilesUtils.writeObject(syntaxGenerator.getTokenizeBody(), _termithIndex.getCorpus()));
-            _termithIndex.getMorphoSyntaxStandOff().put(json.getName().replace(".json",""),
+            _termithIndex.getMorphologyStandOff().put(json.getName().replace(".json",""),
                     FilesUtils.writeObject(syntaxGenerator.getOffsetId(), _termithIndex.getCorpus()));
             LOGGER.debug("tokenization and morphosyntax tasks finished file : " + _jsonPath);
 

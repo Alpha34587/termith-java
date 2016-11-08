@@ -1,6 +1,6 @@
 package org.atilf.module.termsuite.terminology;
 
-import org.atilf.models.termsuite.MorphoSyntaxOffsetId;
+import org.atilf.models.termsuite.MorphologyOffsetId;
 import org.atilf.models.termsuite.TermsOffsetId;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,14 +16,14 @@ import java.util.stream.Collectors;
  *         Created on 14/09/16.
  */
 public class TerminologyStandOff implements Runnable{
-    private final List<MorphoSyntaxOffsetId> _morpho;
+    private final List<MorphologyOffsetId> _morpho;
     private final List<TermsOffsetId> _terminology;
     private NavigableMap<Integer,List<Integer>> _beginMap;
     private NavigableMap<Integer,List<Integer>> _endMap;
     private static final Logger LOGGER = LoggerFactory.getLogger(TerminologyStandOff.class.getName());
     private String _id;
 
-    public TerminologyStandOff(List<MorphoSyntaxOffsetId> morpho, List<TermsOffsetId> terminology) {
+    public TerminologyStandOff(List<MorphologyOffsetId> morpho, List<TermsOffsetId> terminology) {
         _morpho = morpho;
         _terminology = terminology;
     }
@@ -35,9 +35,7 @@ public class TerminologyStandOff implements Runnable{
     public void execute() {
         createNavigablesMap();
         _terminology.forEach(
-                el -> {
-                    el.setIds(retrieveMorphoIds(el.getBegin(),el.getEnd()));
-                }
+                el -> el.setIds(retrieveMorphoIds(el.getBegin(),el.getEnd()))
         );
     }
 

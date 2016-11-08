@@ -16,7 +16,7 @@ public class CorpusAnalyzer {
 
     private Map<String,TextAnalyzer> _analyzedTexts  = new HashMap<>();
     private int _totalSize;
-    private int _cumulSize;
+    private int _sumSize;
     private boolean _lastDocs;
     private int _index;
     private static final Logger LOGGER = LoggerFactory.getLogger(CorpusAnalyzer.class.getName());
@@ -24,7 +24,7 @@ public class CorpusAnalyzer {
     public CorpusAnalyzer(Map<String, StringBuilder> extractedText){
         LOGGER.debug("CorpusAnalyzer object building started");
         _totalSize = totalSize(extractedText);
-        _cumulSize = 0;
+        _sumSize = 0;
         _lastDocs = false;
         _index = 1;
 
@@ -33,7 +33,7 @@ public class CorpusAnalyzer {
 
             int documentSize = documentSize(extractedText,id);
             int nbDocs = nbOfDocs(extractedText);
-            _cumulSize += documentSize;
+            _sumSize += documentSize;
             if (_index == nbDocs){
                 _lastDocs = true;
             }
@@ -44,7 +44,7 @@ public class CorpusAnalyzer {
                             nbDocs,
                             end(extractedText,id),
                             _index,
-                            _cumulSize,
+                            _sumSize,
                             _totalSize,
                             _lastDocs
                     );

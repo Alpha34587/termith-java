@@ -2,7 +2,7 @@ package org.atilf.module.tools;
 
 import org.atilf.models.tei.exporter.StandOffResources;
 import org.atilf.models.termith.TermithIndex;
-import org.atilf.models.termsuite.MorphoSyntaxOffsetId;
+import org.atilf.models.termsuite.MorphologyOffsetId;
 import org.atilf.models.termsuite.TermsOffsetId;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,7 +28,7 @@ public class TeiWriter implements Runnable {
     private StandOffResources _stdfRes;
     private TermithIndex _termithIndex;
     private final StringBuilder _xmlCorpus;
-    private final List<MorphoSyntaxOffsetId> _morphoSyntaxOffsetIds;
+    private final List<MorphologyOffsetId> _morphologyOffsetIds;
     private final List<TermsOffsetId> _termsOffsetIds;
     private static final Logger LOGGER = LoggerFactory.getLogger(TeiWriter.class.getName());
 
@@ -37,15 +37,15 @@ public class TeiWriter implements Runnable {
         this(
                 FilesUtils.readFile(termithIndex.getXmlCorpus().get(key)),
                 FilesUtils.readListObject(
-                        termithIndex.getMorphoSyntaxStandOff().get(key),
-                        MorphoSyntaxOffsetId.class),
+                        termithIndex.getMorphologyStandOff().get(key),
+                        MorphologyOffsetId.class),
                 FilesUtils.readObject(termithIndex.getTokenizeTeiBody().get(key),StringBuilder.class),
                 termithIndex.getTerminologyStandOff().get(key),
                 Paths.get(TermithIndex.getOutputPath() + "/" + key + ".xml"),
                 standOffResources
         );
         try {
-            Files.delete(termithIndex.getMorphoSyntaxStandOff().get(key));
+            Files.delete(termithIndex.getMorphologyStandOff().get(key));
             Files.delete(termithIndex.getTokenizeTeiBody().get(key));
         } catch (IOException e) {
             LOGGER.error("cannot delete file",e);
@@ -54,13 +54,13 @@ public class TeiWriter implements Runnable {
         _termithIndex = termithIndex;
     }
     public TeiWriter(StringBuilder xmlCorpus,
-                     List<MorphoSyntaxOffsetId> morphoSyntaxOffsetIds,
+                     List<MorphologyOffsetId> morphologyOffsetIds,
                      StringBuilder tokenizeBody,List<TermsOffsetId> termsOffsetIds,
                      Path outputPath,
                      StandOffResources standOffResources) {
 
         _xmlCorpus = xmlCorpus;
-        _morphoSyntaxOffsetIds = morphoSyntaxOffsetIds;
+        _morphologyOffsetIds = morphologyOffsetIds;
         _tokenizeBody = tokenizeBody;
         _termsOffsetIds = termsOffsetIds;
         _stdfRes = standOffResources;
@@ -107,8 +107,8 @@ public class TeiWriter implements Runnable {
     private void insertStandOff() throws IOException {
         int startText = searchStart();
         _bufferedWriter.append(_xmlCorpus.subSequence(0,startText));
-        if (_morphoSyntaxOffsetIds != null){
-            serializeMorphosyntax(_morphoSyntaxOffsetIds);
+        if (_morphologyOffsetIds != null){
+            serializeMorphosyntax(_morphologyOffsetIds);
         }
 
         if (_termsOffsetIds != null &&
@@ -154,11 +154,11 @@ public class TeiWriter implements Runnable {
         return template;
     }
 
-    private void serializeMorphosyntax(List<MorphoSyntaxOffsetId> morphoSyntaxOffsetIds) throws IOException {
+    private void serializeMorphosyntax(List<MorphologyOffsetId> morphologyOffsetIds) throws IOException {
         _bufferedWriter.append(replaceTemplate(cut(_stdfRes.STANDOFF,false),"@type","wordForms"));
         _bufferedWriter.append(_stdfRes.MS_TEI_HEADER);
         _bufferedWriter.append(cut(_stdfRes.LIST_ANNOTATION,false));
-        for (MorphoSyntaxOffsetId token : morphoSyntaxOffsetIds) {
+        for (MorphologyOffsetId token : morphologyOffsetIds) {
             StringBuilder entry = new StringBuilder(_stdfRes.MS_SPAN);
             replaceTemplate(entry, "@target", serializeId(token.getIds()));
             replaceTemplate(entry, "@lemma", replaceXmlChar(token.getLemma().replace("<unknown>", "@unknown")));

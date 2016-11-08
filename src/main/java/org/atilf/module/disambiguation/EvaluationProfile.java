@@ -12,7 +12,7 @@ import java.util.function.Consumer;
  */
 public class EvaluationProfile implements Iterable<String> {
     private Multiset<String> _lexicalTable;
-    private String _disambId = "noDa";
+    private String _disambiguationId = "noDa";
 
     public EvaluationProfile(Multiset<String> lexicalTable) {
         _lexicalTable = lexicalTable;
@@ -26,7 +26,7 @@ public class EvaluationProfile implements Iterable<String> {
         return _lexicalTable;
     }
 
-    public int countOccurence(String word){
+    public int countOccurrence(String word){
         if (_lexicalTable.contains(word)){
             return _lexicalTable.count(word);
         }
@@ -34,12 +34,12 @@ public class EvaluationProfile implements Iterable<String> {
             return -1;
     }
 
-    public String getDisambId() {
-        return _disambId;
+    public String getDisambiguationId() {
+        return _disambiguationId;
     }
 
-    public void setDisambId(String _disambId) {
-        this._disambId = _disambId;
+    public void setDisambiguationId(String _disambiguationId) {
+        this._disambiguationId = _disambiguationId;
     }
 
 

@@ -17,31 +17,31 @@ import java.util.Map;
  */
 public class EvaluationExtractor extends ContextExtractor {
 
-    private final Map<String, EvaluationProfile> _evaluationLexic;
+    private final Map<String, EvaluationProfile> _evaluationLexicon;
     private static final Logger LOGGER = LoggerFactory.getLogger(EvaluationExtractor.class.getName());
     private String _p;
 
-    public EvaluationExtractor(String p , Map<String, EvaluationProfile> evaluationLexic) {
+    public EvaluationExtractor(String p , Map<String, EvaluationProfile> evaluationLexicon) {
         super(p,null);
-        _evaluationLexic = evaluationLexic;
+        _evaluationLexicon = evaluationLexicon;
     }
 
-    public EvaluationExtractor(String p , Map<String, EvaluationProfile> evaluationLexic, Map<String,LexicalProfile> specLexic) {
-        super(p,specLexic);
-        _evaluationLexic = evaluationLexic;
+    public EvaluationExtractor(String p , Map<String, EvaluationProfile> evaluationLexicon, Map<String,LexicalProfile> specLexicon) {
+        super(p,specLexicon);
+        _evaluationLexicon = evaluationLexicon;
     }
 
     public EvaluationExtractor(String p , TermithIndex termithIndex) {
-        super(p,termithIndex.getTermSubLexic());
+        super(p,termithIndex.getContextLexicon());
         _p = p;
-        _evaluationLexic = termithIndex.getEvaluationLexic().put(FilesUtils.nameNormalizer(p),new HashMap<>());
+        _evaluationLexicon = termithIndex.getEvaluationLexicon().put(FilesUtils.nameNormalizer(p),new HashMap<>());
     }
 
     @Override
     public void extractTerms() {
         try {
             NodeList nodes = (NodeList) _eSpanTerms.evaluate(_doc, XPathConstants.NODESET);
-            if (_subLexics == null){
+            if (_contextLexicon == null){
                 extractWithNoLProfile(nodes);
             }
             else {
@@ -65,7 +65,7 @@ public class EvaluationExtractor extends ContextExtractor {
         for (int i = 0; i < nodes.getLength(); i++) {
             String ana = _eAna.evaluate(nodes.item(i));
             String corresp = _eCorresp.evaluate(nodes.item(i));
-            if (!ana.isEmpty() && containInSpecCoeffLexic(corresp)){
+            if (!ana.isEmpty() && containInSpecLexicon(corresp)){
                 _target.add(_eTarget.evaluate(nodes.item(i)));
                 _corresp.add(corresp);
                 _lexAna.add(ana);
@@ -74,18 +74,18 @@ public class EvaluationExtractor extends ContextExtractor {
     }
 
 
-    private boolean containInSpecCoeffLexic(String corresp){
-        return !(_subLexics.containsKey(corresp.substring(1) + "_lexOff") ||
-                _subLexics.containsKey(corresp.substring(1) + "_lexOn"));
+    private boolean containInSpecLexicon(String corresp){
+        return !(_contextLexicon.containsKey(corresp.substring(1) + "_lexOff") ||
+                _contextLexicon.containsKey(corresp.substring(1) + "_lexOn"));
     }
 
     @Override
     protected void addOccToLexicalProfile(String spanValue, String c, String l){
             String key = normalizeKey(c,l);
-            if (!_evaluationLexic.containsKey(key)){
-                _evaluationLexic.put(key,new EvaluationProfile());
+            if (!_evaluationLexicon.containsKey(key)){
+                _evaluationLexicon.put(key,new EvaluationProfile());
             }
-            _evaluationLexic.get(key).addOccurrence(spanValue);
+            _evaluationLexicon.get(key).addOccurrence(spanValue);
 
     }
 
@@ -96,7 +96,7 @@ public class EvaluationExtractor extends ContextExtractor {
 
     @Override
     public void run() {
-        LOGGER.debug("add " + _p + " to evaluation lexic");
+        LOGGER.debug("add " + _p + " to evaluation lexicon");
         this.execute();
         LOGGER.debug(_p + " added");
     }

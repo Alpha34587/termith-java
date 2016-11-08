@@ -9,31 +9,31 @@ import java.util.List;
  * @author Simon Meoni
  *         Created on 21/10/16.
  */
-public class RLexic {
+public class RLexicon {
     private int corpusSizeOcc;
     private StringBuffer _rName = new StringBuffer();
     private StringBuffer _rOcc = new StringBuffer();
-    private GlobalLexic _corpus;
+    private GlobalLexicon _corpus;
     private LexicalProfile _subCorpus;
     private List<String> _idSubCorpus;
 
-    public RLexic(GlobalLexic corpus){
+    public RLexicon(GlobalLexicon corpus){
         _corpus = corpus;
         corpusSizeOcc = corpus.size();
         _rName.append("c(");
         _rOcc.append("c(");
-        _corpus.forEach(this::convertToRFormat);
+        _corpus.forEach(this::convertToRGlobal);
         closeRVariable();
     }
 
-    public RLexic(LexicalProfile subCorpus, GlobalLexic corpus) {
+    public RLexicon(LexicalProfile subCorpus, GlobalLexicon corpus) {
         _subCorpus = subCorpus;
         _corpus = corpus;
         _idSubCorpus = new ArrayList<>();
         corpusSizeOcc = subCorpus.lexicalSize();
         _rName.append("c(");
         _rOcc.append("c(");
-        _subCorpus.forEach(this::convertToRFSubormat);
+        _subCorpus.forEach(this::convertToRContext);
         closeRVariable();
     }
 
@@ -58,12 +58,12 @@ public class RLexic {
         _rOcc.append(")");
     }
 
-    private void convertToRFormat(String el) {
+    private void convertToRGlobal(String el) {
         _rName.append("\"").append(_corpus.getIdEntry(el)).append("\",");
         _rOcc.append(_corpus.count(el)).append(",");
     }
 
-    private void convertToRFSubormat(String el) {
+    private void convertToRContext(String el) {
         _rName.append("\"").append(_corpus.getIdEntry(el)).append("\",");
         _rOcc.append(_subCorpus.countOccurrence(el)).append(",");
         _idSubCorpus.add(_corpus.getIdEntry(el));

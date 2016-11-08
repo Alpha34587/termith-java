@@ -1,7 +1,7 @@
 package org.atilf.module.disambiguation;
 
-import org.atilf.models.disambiguation.GlobalLexic;
-import org.atilf.models.disambiguation.RLexic;
+import org.atilf.models.disambiguation.GlobalLexicon;
+import org.atilf.models.disambiguation.RLexicon;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -14,8 +14,8 @@ import java.util.*;
  */
 public class SpecCoeffInjectorTest {
 
-    private GlobalLexic _globalLexic = new GlobalLexic(new HashMap<>(),new HashMap<>());
-    private RLexic _rLexic;
+    private GlobalLexicon _globalLexicon = new GlobalLexicon(new HashMap<>(),new HashMap<>());
+    private RLexicon _rLexicon;
     private Map<String, LexicalProfile> _subLexic = new HashMap<>();
     private Map<String, LexicalProfile> _executeSubLexic = new HashMap<>();
     private Map<String,float[]> _specificities = new HashMap<>();
@@ -23,8 +23,8 @@ public class SpecCoeffInjectorTest {
     @Before
     public void setUp() throws Exception {
 
-        LexicExtractor corpus1 = new LexicExtractor("src/test/resources/corpus/tei/test1.xml", _globalLexic);
-        LexicExtractor corpus2 = new LexicExtractor("src/test/resources/corpus/tei/test1.xml", _globalLexic);
+        LexiconExtractor corpus1 = new LexiconExtractor("src/test/resources/corpus/tei/test1.xml", _globalLexicon);
+        LexiconExtractor corpus2 = new LexiconExtractor("src/test/resources/corpus/tei/test1.xml", _globalLexicon);
         ContextExtractor subCorpus1 = new ContextExtractor("src/test/resources/corpus/tei/test1.xml", _subLexic);
         ContextExtractor subCorpus2 = new ContextExtractor("src/test/resources/corpus/tei/test1.xml", _subLexic);
         ContextExtractor executeSubCorpus1 = new ContextExtractor("src/test/resources/corpus/tei/test1.xml", _executeSubLexic);
@@ -33,7 +33,7 @@ public class SpecCoeffInjectorTest {
         corpus1.execute();
         corpus2.execute();
 
-        _rLexic = new RLexic(_globalLexic);
+        _rLexicon = new RLexicon(_globalLexicon);
 
         subCorpus1.execute();
         subCorpus2.execute();
@@ -46,7 +46,7 @@ public class SpecCoeffInjectorTest {
                 3.9302f, 3.9302f, 3.9302f});
         _specificities.put("entry-13471_lexOn",new float[]{1.3425f, 1.3425f, 1.3425f, 1.3425f, 3.4531f, 1.3425f});
 
-        _executeSubLexic.forEach((key, value) -> new SpecCoefficientInjector(value, _rLexic, _globalLexic).execute());
+        _executeSubLexic.forEach((key, value) -> new SpecCoefficientInjector(value, _rLexicon, _globalLexicon).execute());
     }
 
     @Test
@@ -63,7 +63,7 @@ public class SpecCoeffInjectorTest {
         _subLexic.forEach(
                 (key,value) -> Assert.assertArrayEquals(
                         _specificities.get(key),
-                        new SpecCoefficientInjector(value, _rLexic, _globalLexic).computeSpecCoefficient(),
+                        new SpecCoefficientInjector(value, _rLexicon, _globalLexicon).computeSpecCoefficient(),
                         0
                 )
         );

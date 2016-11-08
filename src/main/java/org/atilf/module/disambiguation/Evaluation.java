@@ -9,14 +9,14 @@ import java.util.Map;
 public class Evaluation implements Runnable{
 
     private final Map<String, EvaluationProfile> _evaluationProfile;
-    private final Map<String, LexicalProfile> _termSubLexic;
+    private final Map<String, LexicalProfile> _termSubLexicon;
     private float _factorOn = 0f;
     private float _factorOff = 0f;
 
-    public Evaluation(Map<String, EvaluationProfile> evaluationProfile, Map<String, LexicalProfile> termSubLexic) {
+    public Evaluation(Map<String, EvaluationProfile> evaluationProfile, Map<String, LexicalProfile> termSubLexicon) {
 
         _evaluationProfile = evaluationProfile;
-        _termSubLexic = termSubLexic;
+        _termSubLexicon = termSubLexicon;
     }
 
     public void execute() {
@@ -27,16 +27,16 @@ public class Evaluation implements Runnable{
                     String lexEntryOn = formatEntry(key,"On");
                     String lexEntryOff = formatEntry(key, "Off");
 
-                    if (!_termSubLexic.containsKey(lexEntryOn)){
-                        value.setDisambId("DaOff");
+                    if (!_termSubLexicon.containsKey(lexEntryOn)){
+                        value.setDisambiguationId("DaOff");
                     }
 
-                    else if (!_termSubLexic.containsKey(lexEntryOff)){
-                        value.setDisambId("DaOn");
+                    else if (!_termSubLexicon.containsKey(lexEntryOff)){
+                        value.setDisambiguationId("DaOn");
                     }
 
                     else {
-                        computeFactor(value, _termSubLexic.get(lexEntryOn), _termSubLexic.get(lexEntryOff));
+                        computeFactor(value, _termSubLexicon.get(lexEntryOn), _termSubLexicon.get(lexEntryOff));
                         compareFactor(_factorOn, _factorOff, value);
                     }
                 }
@@ -46,10 +46,10 @@ public class Evaluation implements Runnable{
 
     private void compareFactor(float lexEntryOn, float lexEntryOff, EvaluationProfile entry) {
         if (lexEntryOff >= lexEntryOn){
-            entry.setDisambId("DaOff");
+            entry.setDisambiguationId("DaOff");
         }
         else {
-            entry.setDisambId("DaOn");
+            entry.setDisambiguationId("DaOn");
         }
     }
 
@@ -58,8 +58,8 @@ public class Evaluation implements Runnable{
                                 LexicalProfile lexOff) {
         entry.forEach(
                 el -> {
-                    _factorOn += occurrenceScore(lexOn.getSpecCoefficient(el),entry.countOccurence(el));
-                    _factorOff += occurrenceScore(lexOff.getSpecCoefficient(el),entry.countOccurence(el));
+                    _factorOn += occurrenceScore(lexOn.getSpecCoefficient(el),entry.countOccurrence(el));
+                    _factorOff += occurrenceScore(lexOff.getSpecCoefficient(el),entry.countOccurrence(el));
                 }
         );
     }

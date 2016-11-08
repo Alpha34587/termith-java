@@ -71,44 +71,44 @@ public class TreeTaggerWrapper {
     }
 
     public String parsingText(){
-        Deque<String> oldPuncts = new ArrayDeque<>();
-        Deque<String> newPuncts = new ArrayDeque<>();
-        oldPuncts.add(".");
-        oldPuncts.add("?");
-        oldPuncts.add("!");
-        oldPuncts.add(";");
-        oldPuncts.add(",");
-        oldPuncts.add(",");
-        oldPuncts.add(":");
-        oldPuncts.add("(");
-        oldPuncts.add(")");
-        oldPuncts.add("[");
-        oldPuncts.add("]");
-        oldPuncts.add("{");
-        oldPuncts.add("}");
-        oldPuncts.add("\"");
-        oldPuncts.add("\'");
+        Deque<String> oldPunctuations = new ArrayDeque<>();
+        Deque<String> newPunctuations = new ArrayDeque<>();
+        oldPunctuations.add(".");
+        oldPunctuations.add("?");
+        oldPunctuations.add("!");
+        oldPunctuations.add(";");
+        oldPunctuations.add(",");
+        oldPunctuations.add(",");
+        oldPunctuations.add(":");
+        oldPunctuations.add("(");
+        oldPunctuations.add(")");
+        oldPunctuations.add("[");
+        oldPunctuations.add("]");
+        oldPunctuations.add("{");
+        oldPunctuations.add("}");
+        oldPunctuations.add("\"");
+        oldPunctuations.add("\'");
 
-        newPuncts.add("\n.\n");
-        newPuncts.add("\n?\n");
-        newPuncts.add("\n!\n");
-        newPuncts.add("\n;\n");
-        newPuncts.add("\n,\n");
-        newPuncts.add("\n,\n");
-        newPuncts.add("\n:\n");
-        newPuncts.add("\n(\n");
-        newPuncts.add("\n)\n");
-        newPuncts.add("\n[\n");
-        newPuncts.add("\n]\n");
-        newPuncts.add("\n{\n");
-        newPuncts.add("\n}\n");
-        newPuncts.add("\n\"\n");
-        newPuncts.add("\n\'\n");
+        newPunctuations.add("\n.\n");
+        newPunctuations.add("\n?\n");
+        newPunctuations.add("\n!\n");
+        newPunctuations.add("\n;\n");
+        newPunctuations.add("\n,\n");
+        newPunctuations.add("\n,\n");
+        newPunctuations.add("\n:\n");
+        newPunctuations.add("\n(\n");
+        newPunctuations.add("\n)\n");
+        newPunctuations.add("\n[\n");
+        newPunctuations.add("\n]\n");
+        newPunctuations.add("\n{\n");
+        newPunctuations.add("\n}\n");
+        newPunctuations.add("\n\"\n");
+        newPunctuations.add("\n\'\n");
 
         String parseTxt = _txt.toString().trim();
         parseTxt = parseTxt.replaceAll("\\s+", "\n");
-        while (!oldPuncts.isEmpty()) {
-                    parseTxt = parseTxt.replace(oldPuncts.poll(), newPuncts.poll());
+        while (!oldPunctuations.isEmpty()) {
+                    parseTxt = parseTxt.replace(oldPunctuations.poll(), newPunctuations.poll());
         }
 
         return parseTxt;

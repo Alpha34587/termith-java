@@ -42,14 +42,14 @@ public class StandOffResources {
 
     private StringBuilder indentation(String input, int level) {
         String output = "";
-        String ident = "";
+        String identation = "";
         while (level != 0) {
-            ident += "\t";
+            identation += "\t";
             level--;
         }
 
         for (String line : input.split("(?<=\n)")) {
-            output += ident + line;
+            output += identation + line;
         }
 
         return new StringBuilder(output);

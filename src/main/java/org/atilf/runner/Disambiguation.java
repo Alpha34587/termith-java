@@ -1,10 +1,10 @@
 package org.atilf.runner;
 
 import org.atilf.models.termith.TermithIndex;
-import org.atilf.thread.disambiguation.ContextLexicThread;
-import org.atilf.thread.disambiguation.DisambEvaluationThread;
-import org.atilf.thread.disambiguation.DisambExporterThread;
-import org.atilf.thread.disambiguation.LexicProfileThread;
+import org.atilf.thread.disambiguation.ContextLexiconThread;
+import org.atilf.thread.disambiguation.DisambiguationEvaluationThread;
+import org.atilf.thread.disambiguation.DisambiguationExporterThread;
+import org.atilf.thread.disambiguation.LexiconProfileThread;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -31,28 +31,28 @@ public class Disambiguation {
     }
 
     public void execute() {
-        ContextLexicThread lexic = new ContextLexicThread(_termithIndex, _poolSize);
+        ContextLexiconThread lexicon = new ContextLexiconThread(_termithIndex, _poolSize);
         try {
-            lexic.execute();
+            lexicon.execute();
         } catch (IOException | InterruptedException e) {
-            LOGGER.error("errors during the subLexic phase : ", e);
+            LOGGER.error("errors during the sub-lexicon phase : ", e);
             Thread.currentThread().interrupt();
         }
-        LexicProfileThread lexicProfileThread = new LexicProfileThread(_termithIndex, _poolSize);
+        LexiconProfileThread lexiconProfileThread = new LexiconProfileThread(_termithIndex, _poolSize);
         try {
-            lexicProfileThread.execute();
+            lexiconProfileThread.execute();
         } catch (InterruptedException e) {
-            LOGGER.error("errors during the lexicProfile phase : ", e);
+            LOGGER.error("errors during the lexicon profile phase : ", e);
             Thread.currentThread().interrupt();
         }
-        DisambEvaluationThread evaluation = new DisambEvaluationThread(_termithIndex, _poolSize);
+        DisambiguationEvaluationThread evaluation = new DisambiguationEvaluationThread(_termithIndex, _poolSize);
         try {
             evaluation.execute();
         } catch (IOException | InterruptedException e) {
             LOGGER.error("errors during evaluation phase : ", e);
             Thread.currentThread().interrupt();
         }
-        DisambExporterThread exporter = new DisambExporterThread(_termithIndex, _poolSize);
+        DisambiguationExporterThread exporter = new DisambiguationExporterThread(_termithIndex, _poolSize);
         try {
             exporter.execute();
         } catch (IOException | InterruptedException e) {

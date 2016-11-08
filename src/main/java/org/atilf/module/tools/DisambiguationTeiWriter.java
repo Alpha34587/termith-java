@@ -31,15 +31,15 @@ import static org.atilf.models.disambiguation.ContextResources.*;
 public class DisambiguationTeiWriter implements Runnable {
     private static final Logger LOGGER = LoggerFactory.getLogger(TeiWriter.class.getName());
     private final String _p;
-    private final Map<String, EvaluationProfile> _evaluationLexic;
+    private final Map<String, EvaluationProfile> _evaluationLexicon;
     private DocumentBuilder _dBuilder;
     private Document _doc;
     private DocumentBuilderFactory _dbFactory = DocumentBuilderFactory.newInstance();
     private XPath _xpath = XPathFactory.newInstance().newXPath();
 
-    public DisambiguationTeiWriter(String p, Map<String, EvaluationProfile> evaluationLexic) {
+    public DisambiguationTeiWriter(String p, Map<String, EvaluationProfile> evaluationLexicon) {
         _p = p;
-        _evaluationLexic = evaluationLexic;
+        _evaluationLexicon = evaluationLexicon;
         _xpath.setNamespaceContext(NAMESPACE_CONTEXT);
 
         try {
@@ -68,9 +68,9 @@ public class DisambiguationTeiWriter implements Runnable {
                 Node correspVal = (Node) corresp.evaluate(termNodes.item(i), XPathConstants.NODE);
                 Node anaVal = (Node) ana.evaluate(termNodes.item(i), XPathConstants.NODE);
                 String termId = correspVal.getNodeValue().substring(1) + "_" + anaVal.getNodeValue().substring(1);
-                if (_evaluationLexic.containsKey(termId)) {
+                if (_evaluationLexicon.containsKey(termId)) {
                     anaVal.setNodeValue(
-                            anaVal.getNodeValue() + " #" + _evaluationLexic.get(termId).getDisambId()
+                            anaVal.getNodeValue() + " #" + _evaluationLexicon.get(termId).getDisambiguationId()
                     );
                 }
             }

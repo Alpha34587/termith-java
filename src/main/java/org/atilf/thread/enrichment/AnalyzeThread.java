@@ -1,7 +1,7 @@
 package org.atilf.thread.enrichment;
 
 import org.atilf.models.termith.TermithIndex;
-import org.atilf.models.termsuite.MorphoSyntaxOffsetId;
+import org.atilf.models.termsuite.MorphologyOffsetId;
 import org.atilf.models.treetagger.TagNormalizer;
 import org.atilf.module.termsuite.TermsuitePipelineBuilder;
 import org.atilf.module.termsuite.terminology.TerminologyParser;
@@ -73,10 +73,10 @@ public class AnalyzeThread {
         _executorService.submit(new TermsuitePipelineBuilder(_termithIndex)).get();
         LOGGER.info("terminology extraction started");
         _executorService.submit(new TerminologyParser(_termithIndex)).get();
-        _termithIndex.getMorphoSyntaxStandOff().forEach(
+        _termithIndex.getMorphologyStandOff().forEach(
                 (id,value) -> _executorService.submit(
                         new TerminologyStandOff(
-                                FilesUtils.readListObject(value,MorphoSyntaxOffsetId.class),
+                                FilesUtils.readListObject(value,MorphologyOffsetId.class),
                                 _termithIndex.getTerminologyStandOff().get(id)
                         )
                 )

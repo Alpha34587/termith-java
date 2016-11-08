@@ -11,7 +11,7 @@ public class TextAnalyzer {
     private int _begin = 0;
     private int _end;
     private int _docIndex;
-    private int _cumulSize;
+    private int _sumSize;
     private int _totalSize;
     private boolean _isLastDoc;
     public TextAnalyzer(){}
@@ -20,14 +20,14 @@ public class TextAnalyzer {
                         int nbOfDocs,
                         int end,
                         int docIndex,
-                        int cumulSize,
+                        int sumSize,
                         int totalSize,
                         boolean isLastDoc) {
         _documentSize = documentSize;
         _nbOfDocs = nbOfDocs;
         _end = end;
         _docIndex = docIndex;
-        _cumulSize = cumulSize;
+        _sumSize = sumSize;
         _totalSize = totalSize;
         _isLastDoc = isLastDoc;
     }
@@ -52,8 +52,8 @@ public class TextAnalyzer {
         return _docIndex;
     }
 
-    public int getCumulSize() {
-        return _cumulSize;
+    public int getSumSize() {
+        return _sumSize;
     }
 
     public int getTotalSize() {

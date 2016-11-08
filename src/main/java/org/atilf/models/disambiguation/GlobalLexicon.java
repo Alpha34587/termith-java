@@ -11,23 +11,23 @@ import java.util.function.Consumer;
  * @author Simon Meoni
  *         Created on 23/10/16.
  */
-public class GlobalLexic implements Iterable<String>{
-    private Multiset<String> _multisetLexic = HashMultiset.create();
+public class GlobalLexicon implements Iterable<String>{
+    private Multiset<String> _multisetLexicon = HashMultiset.create();
     private Map<Integer,String> _lexicalEntry;
     private Map<String, Integer> _idEntry;
     private int _counter = 0;
 
-    public GlobalLexic(Map<Integer,String> lexicalEntry, Map<String,Integer> idEntry) {
+    public GlobalLexicon(Map<Integer,String> lexicalEntry, Map<String,Integer> idEntry) {
         _idEntry = idEntry;
         _lexicalEntry = lexicalEntry;
     }
 
-    public Multiset getMultisetLexic() {
-        return _multisetLexic;
+    public Multiset getMultisetLexicon() {
+        return _multisetLexicon;
     }
 
     public int size(){
-        return _multisetLexic.size();
+        return _multisetLexicon.size();
     }
 
     public Map<Integer, String> getLexicalEntry() {
@@ -35,7 +35,7 @@ public class GlobalLexic implements Iterable<String>{
     }
 
     public void addEntry(String entry){
-        _multisetLexic.add(entry);
+        _multisetLexicon.add(entry);
         if (!_idEntry.containsKey(entry)) {
             _idEntry.put(entry, _counter);
             _lexicalEntry.put(_counter, entry);
@@ -44,7 +44,7 @@ public class GlobalLexic implements Iterable<String>{
     }
 
     public int count(String el){
-        return _multisetLexic.count(el);
+        return _multisetLexicon.count(el);
     }
 
     public String getIdEntry(String el){
@@ -62,6 +62,6 @@ public class GlobalLexic implements Iterable<String>{
 
     @Override
     public void forEach(Consumer<? super String> consumer) {
-        _multisetLexic.elementSet().forEach(consumer);
+        _multisetLexicon.elementSet().forEach(consumer);
     }
 }

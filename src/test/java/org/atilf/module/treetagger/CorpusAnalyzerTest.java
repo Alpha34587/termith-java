@@ -90,13 +90,13 @@ public class CorpusAnalyzerTest {
     public void cumulSize() throws Exception {
         _corpusAnalyzer = new CorpusAnalyzer(_extractedText);
         Assert.assertEquals("the cumul size must be equals to :", 24,
-                _corpusAnalyzer.getAnalyzedTexts().get("1").getCumulSize()
+                _corpusAnalyzer.getAnalyzedTexts().get("1").getSumSize()
         );
         Assert.assertEquals("the cumul size must be equals to :", 100,
-                _corpusAnalyzer.getAnalyzedTexts().get("2").getCumulSize()
+                _corpusAnalyzer.getAnalyzedTexts().get("2").getSumSize()
         );
         Assert.assertEquals("the cumul size  must be equals to :", 132,
-                _corpusAnalyzer.getAnalyzedTexts().get("3").getCumulSize()
+                _corpusAnalyzer.getAnalyzedTexts().get("3").getSumSize()
         );
     }
 }

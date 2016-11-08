@@ -30,7 +30,7 @@ public class ContextExtractor implements Runnable{
     XPathExpression _eTarget;
     XPathExpression _eCorresp;
     XPathExpression _eAna;
-    Map<String, LexicalProfile> _subLexics;
+    Map<String, LexicalProfile> _contextLexicon;
     private String _p;
     private XPathExpression _eMultiTagsGetter;
     private XPathExpression _eSimpleTagGetter;
@@ -38,9 +38,9 @@ public class ContextExtractor implements Runnable{
     private Map<String, String> _xpathVariableMap = new HashMap<>();
     private static final Logger LOGGER = LoggerFactory.getLogger(ContextExtractor.class.getName());
 
-    public ContextExtractor(String p, Map<String, LexicalProfile> subLexics){
+    public ContextExtractor(String p, Map<String, LexicalProfile> contextLexicon){
         _p = p;
-        _subLexics = subLexics;
+        _contextLexicon = contextLexicon;
         XpathMapVariableResolver xpathMapVariableResolver = new XpathMapVariableResolver();
         XPath xpath = XPathFactory.newInstance().newXPath();
         xpath.setNamespaceContext(NAMESPACE_CONTEXT);
@@ -147,10 +147,10 @@ public class ContextExtractor implements Runnable{
 
     protected void addOccToLexicalProfile(String spanValue, String c, String l) {
         String key = normalizeKey(c, l);
-        if (!_subLexics.containsKey(key)){
-            _subLexics.put(key,new LexicalProfile());
+        if (!_contextLexicon.containsKey(key)){
+            _contextLexicon.put(key,new LexicalProfile());
         }
-        _subLexics.get(key).addOccurrence(spanValue);
+        _contextLexicon.get(key).addOccurrence(spanValue);
     }
 
     protected String normalizeKey(String c, String l) {
@@ -163,7 +163,7 @@ public class ContextExtractor implements Runnable{
 
     @Override
     public void run() {
-        LOGGER.info("add " + _p + " to sub lexic");
+        LOGGER.info("add " + _p + " to sub lexicon");
         this.execute();
         LOGGER.info(_p + " added");
     }

@@ -15,11 +15,11 @@ import java.io.IOException;
  * @author Simon Meoni
  *         Created on 11/10/16.
  */
-public class DisambCLI {
+public class DisambiguationCLI {
     private static final Options options = new Options();
     private static final Logger LOGGER = LoggerFactory.getLogger(TermithTreeTaggerCLI.class.getName());
 
-    private DisambCLI() {
+    private DisambiguationCLI() {
         throw new IllegalAccessError("Utility class");
     }
 

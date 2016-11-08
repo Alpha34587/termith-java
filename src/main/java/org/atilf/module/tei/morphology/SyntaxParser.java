@@ -1,6 +1,6 @@
 package org.atilf.module.tei.morphology;
 
-import org.atilf.models.termsuite.MorphoSyntaxOffsetId;
+import org.atilf.models.termsuite.MorphologyOffsetId;
 import org.atilf.module.termsuite.json.TermsuiteJsonReader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,11 +22,11 @@ public class SyntaxParser {
     private TermsuiteJsonReader _termsuiteJsonReader;
     private Queue<Character> xmlCharacterQueue;
     private Integer[] offset = new Integer[2];
-    private List<MorphoSyntaxOffsetId> _offsetId;
+    private List<MorphologyOffsetId> _offsetId;
 
 
     SyntaxParser(StringBuilder txt, StringBuilder xml, TermsuiteJsonReader termsuiteJsonReader,
-                 List<MorphoSyntaxOffsetId> offsetId) {
+                 List<MorphologyOffsetId> offsetId) {
         _xml = xml;
         _txt = txt;
         _termsuiteJsonReader = termsuiteJsonReader;
@@ -50,14 +50,14 @@ public class SyntaxParser {
         return offset;
     }
 
-    public List<MorphoSyntaxOffsetId> getOffsetId() { return _offsetId; }
+    public List<MorphologyOffsetId> getOffsetId() { return _offsetId; }
 
     public void execute() throws Exception {
-        teiBodyspliter();
+        teiBodySplit();
         teiWordTokenizer();
     }
 
-    void teiBodyspliter(){
+    void teiBodySplit(){
         _xml = new StringBuilder(
                 _xml.toString()
                         .split("(?=(<text>|<text\\s.*>))")[1]
@@ -115,7 +115,7 @@ public class SyntaxParser {
         if (_termsuiteJsonReader.getCurrentTokenBegin() == -2){
             _tokenizeBuffer.append("</w>");
             id++;
-            MorphoSyntaxOffsetId.addId(_offsetId,id);
+            MorphologyOffsetId.addId(_offsetId,id);
         }
 
         while(ch != '>' ||
@@ -148,7 +148,7 @@ public class SyntaxParser {
 
         if (offset[0] == _termsuiteJsonReader.getCurrentTokenBegin()){
             _tokenizeBuffer.append("<w xml:id=\"" + "t").append(id).append("\">");
-            MorphoSyntaxOffsetId.addNewOffset(
+            MorphologyOffsetId.addNewOffset(
                     _offsetId,
                     _termsuiteJsonReader.getCurrentTokenBegin(),
                     _termsuiteJsonReader.getCurrentTokenEnd(),

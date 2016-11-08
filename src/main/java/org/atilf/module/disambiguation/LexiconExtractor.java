@@ -1,6 +1,6 @@
 package org.atilf.module.disambiguation;
 
-import org.atilf.models.disambiguation.GlobalLexic;
+import org.atilf.models.disambiguation.GlobalLexicon;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
@@ -20,21 +20,21 @@ import static org.atilf.models.disambiguation.ContextResources.NAMESPACE_CONTEXT
  * @author Simon Meoni
  *         Created on 20/10/16.
  */
-public class LexicExtractor implements Runnable{
-    private GlobalLexic _disambGlobalCorpus;
+public class LexiconExtractor implements Runnable{
+    private GlobalLexicon _globalLexicon;
     private DocumentBuilderFactory _dbFactory = DocumentBuilderFactory.newInstance();
     private DocumentBuilder _dBuilder;
     private Document _doc;
     private XPath _xpath = XPathFactory.newInstance().newXPath();
     private NodeList _spanNode;
-    private static final Logger LOGGER = LoggerFactory.getLogger(LexicExtractor.class.getName());
+    private static final Logger LOGGER = LoggerFactory.getLogger(LexiconExtractor.class.getName());
     private XPathExpression _eLemma;
     private XPathExpression _ePos;
     private XPathExpression _eSpanWordForms;
     private String _p;
 
-    public LexicExtractor(String p, GlobalLexic disambGlobalCorpus) {
-        _disambGlobalCorpus = disambGlobalCorpus;
+    public LexiconExtractor(String p, GlobalLexicon globalLexicon) {
+        _globalLexicon = globalLexicon;
         _xpath.setNamespaceContext(NAMESPACE_CONTEXT);
         _dbFactory.setNamespaceAware(true);
         _p = p;
@@ -65,7 +65,7 @@ public class LexicExtractor implements Runnable{
     private void addToGlobalCorpus() {
         try {
             for (int i = 0; i < _spanNode.getLength(); i++) {
-            _disambGlobalCorpus.addEntry(_eLemma.evaluate(_spanNode.item(i), XPathConstants.STRING) + " "
+            _globalLexicon.addEntry(_eLemma.evaluate(_spanNode.item(i), XPathConstants.STRING) + " "
                     + _ePos.evaluate(_spanNode.item(i), XPathConstants.STRING));
             }
         } catch (XPathExpressionException e) {
@@ -83,7 +83,7 @@ public class LexicExtractor implements Runnable{
 
     @Override
     public void run() {
-        LOGGER.info("extract occurence from " + _p + " to global corpus lexic");
+        LOGGER.info("extract occurrence from " + _p + " to global corpus lexicon");
         LOGGER.info(_p + " added to global corpus");
         this.execute();
     }

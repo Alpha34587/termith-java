@@ -4,7 +4,7 @@ import org.atilf.models.disambiguation.DisambiguationXslResources;
 import org.atilf.models.termith.TermithIndex;
 import org.atilf.module.disambiguation.ContextExtractor;
 import org.atilf.module.disambiguation.DisambiguationXslTransformer;
-import org.atilf.module.disambiguation.LexicExtractor;
+import org.atilf.module.disambiguation.LexiconExtractor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -19,14 +19,14 @@ import java.util.concurrent.TimeUnit;
  * @author Simon Meoni
  *         Created on 12/10/16.
  */
-public class ContextLexicThread {
+public class ContextLexiconThread {
 
+    private CountDownLatch _transformCounter;
     private final TermithIndex _termithIndex;
     private final int _poolSize;
-    private static final Logger LOGGER = LoggerFactory.getLogger(ContextLexicThread.class.getName());
-    private CountDownLatch _transformCounter;
+    private static final Logger LOGGER = LoggerFactory.getLogger(ContextLexiconThread.class.getName());
 
-    public ContextLexicThread(TermithIndex termithIndex, int poolSize) {
+    public ContextLexiconThread(TermithIndex termithIndex, int poolSize) {
 
         _termithIndex = termithIndex;
         _poolSize = poolSize;
@@ -52,10 +52,10 @@ public class ContextLexicThread {
                 )
         );
         _transformCounter.await();
-        _termithIndex.getDisambTranformedFile().values().forEach(
+        _termithIndex.getDisambiguationTransformedFile().values().forEach(
                 (file) -> {
-                    executor.submit(new ContextExtractor(file.toString(), _termithIndex.getTermSubLexic()));
-                    executor.submit(new LexicExtractor(file.toString(), _termithIndex.getDisambGlobalLexic()));
+                    executor.submit(new ContextExtractor(file.toString(), _termithIndex.getContextLexicon()));
+                    executor.submit(new LexiconExtractor(file.toString(), _termithIndex.getGlobalLexicon()));
                 }
         );
         LOGGER.info("Waiting ContextExtractorWorker executors to finish");

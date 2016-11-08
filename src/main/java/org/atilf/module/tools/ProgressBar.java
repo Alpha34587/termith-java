@@ -31,9 +31,9 @@ public class ProgressBar {
      */
     public synchronized void update(int done, int total, Logger logger) {
         int percent = (done * 100) / total;
-        int extrachars = (percent / 2) - _progress.length();
+        int extraChars = (percent / 2) - _progress.length();
         String fileProgress = "(" + done + "/" + total + ")";
-        while (extrachars-- > 0) {
+        while (extraChars-- > 0) {
             _progress.append('#');
         }
 

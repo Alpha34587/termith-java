@@ -1,6 +1,6 @@
 package org.atilf.module.termsuite.terminology;
 
-import org.atilf.models.termsuite.MorphoSyntaxOffsetId;
+import org.atilf.models.termsuite.MorphologyOffsetId;
 import org.atilf.models.termsuite.TermsOffsetId;
 import org.junit.Assert;
 import org.junit.Before;
@@ -15,11 +15,11 @@ import java.util.List;
  */
 public class TerminologyStandOffTest {
 
-    private List<MorphoSyntaxOffsetId> _morpho = new ArrayList<>();
+    private List<MorphologyOffsetId> _morpho = new ArrayList<>();
     private List<TermsOffsetId> _termino = new ArrayList<>();
-    private List<MorphoSyntaxOffsetId> _multimorpho = new ArrayList<>();
+    private List<MorphologyOffsetId> _multimorpho = new ArrayList<>();
     private List<TermsOffsetId> _multitermino = new ArrayList<>();
-    private List<MorphoSyntaxOffsetId> _symbolmorpho = new ArrayList<>();
+    private List<MorphologyOffsetId> _symbolmorpho = new ArrayList<>();
     private List<TermsOffsetId> _symboltermino = new ArrayList<>();
     private TerminologyStandOff _simpleTerminologyStandOff;
     private TerminologyStandOff _multiTerminologyStandOff;
@@ -31,11 +31,11 @@ public class TerminologyStandOffTest {
         /*
         simple test
          */
-        _morpho.add(new MorphoSyntaxOffsetId(0,10,"cuillière","N",0));
-        _morpho.add(new MorphoSyntaxOffsetId(11,13,"en","DET",1));
-        _morpho.add(new MorphoSyntaxOffsetId(14,18,"bois","N",2));
-        _morpho.add(new MorphoSyntaxOffsetId(15,19,"rien","N",3));
-        _morpho.add(new MorphoSyntaxOffsetId(20,26,"pierre","N",4));
+        _morpho.add(new MorphologyOffsetId(0,10,"cuillière","N",0));
+        _morpho.add(new MorphologyOffsetId(11,13,"en","DET",1));
+        _morpho.add(new MorphologyOffsetId(14,18,"bois","N",2));
+        _morpho.add(new MorphologyOffsetId(15,19,"rien","N",3));
+        _morpho.add(new MorphologyOffsetId(20,26,"pierre","N",4));
 
         _termino.add(new TermsOffsetId(0,10,0,"cuillière"));
         _termino.add(new TermsOffsetId(0,18,1,"cuillière en bois"));
@@ -53,11 +53,11 @@ public class TerminologyStandOffTest {
         stoneIds.add(6);
         stoneIds.add(7);
         stoneIds.add(8);
-        _multimorpho.add(new MorphoSyntaxOffsetId(0,10,"cuillière","N",0));
-        _multimorpho.add(new MorphoSyntaxOffsetId(11,13,"en","DET",1));
-        _multimorpho.add(new MorphoSyntaxOffsetId(14,18,"bois","N",woodIds));
-        _multimorpho.add(new MorphoSyntaxOffsetId(15,19,"rien","N",4));
-        _multimorpho.add(new MorphoSyntaxOffsetId(20,26,"pierre","N",stoneIds));
+        _multimorpho.add(new MorphologyOffsetId(0,10,"cuillière","N",0));
+        _multimorpho.add(new MorphologyOffsetId(11,13,"en","DET",1));
+        _multimorpho.add(new MorphologyOffsetId(14,18,"bois","N",woodIds));
+        _multimorpho.add(new MorphologyOffsetId(15,19,"rien","N",4));
+        _multimorpho.add(new MorphologyOffsetId(20,26,"pierre","N",stoneIds));
 
         _multitermino.add(new TermsOffsetId(0,10,0,"cuillière"));
         _multitermino.add(new TermsOffsetId(0,18,1,"cuillière en bois"));
@@ -67,12 +67,12 @@ public class TerminologyStandOffTest {
         /*
         symbol test
          */
-        _symbolmorpho.add(new MorphoSyntaxOffsetId(0,10,"cuillière","N",0));
-        _symbolmorpho.add(new MorphoSyntaxOffsetId(11,13,"en","DET",1));
-        _symbolmorpho.add(new MorphoSyntaxOffsetId(14,18,"bois","N",woodIds));
-        _symbolmorpho.add(new MorphoSyntaxOffsetId(18,19,",","N",woodIds));
-        _symbolmorpho.add(new MorphoSyntaxOffsetId(15,19,"rien","N",4));
-        _symbolmorpho.add(new MorphoSyntaxOffsetId(20,26,"pierre","N",stoneIds));
+        _symbolmorpho.add(new MorphologyOffsetId(0,10,"cuillière","N",0));
+        _symbolmorpho.add(new MorphologyOffsetId(11,13,"en","DET",1));
+        _symbolmorpho.add(new MorphologyOffsetId(14,18,"bois","N",woodIds));
+        _symbolmorpho.add(new MorphologyOffsetId(18,19,",","N",woodIds));
+        _symbolmorpho.add(new MorphologyOffsetId(15,19,"rien","N",4));
+        _symbolmorpho.add(new MorphologyOffsetId(20,26,"pierre","N",stoneIds));
 
         _symboltermino.add(new TermsOffsetId(0,10,0,"cuillière"));
         _symboltermino.add(new TermsOffsetId(0,18,1,"cuillière en bois"));

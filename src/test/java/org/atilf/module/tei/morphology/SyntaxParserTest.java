@@ -125,11 +125,11 @@ public class SyntaxParserTest {
 
         _syntaxBody = new SyntaxParser(StringBuilder);
         _syntaxBody2 = new SyntaxParser(StringBuilder2);
-        _syntaxBody.teiBodyspliter();
-        _syntaxBody2.teiBodyspliter();
+        _syntaxBody.teiBodySplit();
+        _syntaxBody2.teiBodySplit();
 
         SyntaxParser syntaxBody3 = new SyntaxParser(StringBuilder3);
-        syntaxBody3.teiBodyspliter();
+        syntaxBody3.teiBodySplit();
 
         //_basicTokenInjector
         TermsuiteJsonReader basicTermsuiteJsonReader = new TermsuiteJsonReader();

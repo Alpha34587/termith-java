@@ -1,6 +1,6 @@
 package org.atilf.models.termith;
 
-import org.atilf.models.disambiguation.GlobalLexic;
+import org.atilf.models.disambiguation.GlobalLexicon;
 import org.atilf.models.termsuite.TermsOffsetId;
 import org.atilf.module.disambiguation.EvaluationProfile;
 import org.atilf.module.disambiguation.LexicalProfile;
@@ -21,12 +21,12 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class TermithIndex {
 
     /*
-    Termith felds
+    Termith fields
      */
     private Path _corpus = null;
     private List<Path> _terminologies = new CopyOnWriteArrayList<>();
     private Map<String, Path> _tokenizeTeiBody = new ConcurrentHashMap<>();
-    private Map<String, Path> _morphoSyntaxStandOff = new ConcurrentHashMap<>();
+    private Map<String, Path> _morphologyStandOff = new ConcurrentHashMap<>();
     private Map<String, List<TermsOffsetId>> _terminologyStandOff = new ConcurrentHashMap<>();
     private Map<String, Path> _extractedText = new ConcurrentHashMap<>();
     private Map<String, Path> _xmlCorpus = new ConcurrentHashMap<>();
@@ -34,16 +34,16 @@ public class TermithIndex {
     private List<Path> _serializeJson = new CopyOnWriteArrayList<>();
     private List<Path> _outputFile = new CopyOnWriteArrayList<>();
     private int _corpusSize;
-    private Path _disambAnnotation;
+    private Path _disambiguationAnnotation;
 
     /*
     Disambiguation  core fields
      */
 
-    private Map<String, LexicalProfile> _termSubLexic = new ConcurrentHashMap<>();
-    private Map<String,Map<String, EvaluationProfile>> _evaluationLexic = new ConcurrentHashMap<>();
-    private GlobalLexic _disambGlobalLexic = new GlobalLexic(new ConcurrentHashMap<>(),new ConcurrentHashMap<>());
-    private Map<String, Path> _DisambTranformedFile = new ConcurrentHashMap<>();
+    private Map<String, LexicalProfile> _termSubLexicon = new ConcurrentHashMap<>();
+    private Map<String,Map<String, EvaluationProfile>> _evaluationLexicon = new ConcurrentHashMap<>();
+    private GlobalLexicon _globalLexicon = new GlobalLexicon(new ConcurrentHashMap<>(),new ConcurrentHashMap<>());
+    private Map<String, Path> _disambiguationTranformedFile = new ConcurrentHashMap<>();
 
     /*
     CLI parameter
@@ -61,7 +61,7 @@ public class TermithIndex {
      */
 
     private TermithIndex(Builder builder) throws IOException {
-        _disambAnnotation = builder._disambAnnotation;
+        _disambiguationAnnotation = builder._disambiguationAnnotation;
         _base = builder._base;
         _keepFiles = builder._keepFiles;
         _outputPath = builder._outputPath;
@@ -82,16 +82,16 @@ public class TermithIndex {
         return _terminologies.get(1);
     }
 
-    public GlobalLexic getDisambGlobalLexic() { return _disambGlobalLexic; }
+    public GlobalLexicon getGlobalLexicon() { return _globalLexicon; }
 
     public int getCorpusSize() {return _corpusSize;}
 
-    public Map<String,Map<String, EvaluationProfile>> getEvaluationLexic() {
-        return _evaluationLexic;
+    public Map<String,Map<String, EvaluationProfile>> getEvaluationLexicon() {
+        return _evaluationLexicon;
     }
 
-    public Map<String, Path> getMorphoSyntaxStandOff() {
-        return _morphoSyntaxStandOff;
+    public Map<String, Path> getMorphologyStandOff() {
+        return _morphologyStandOff;
     }
 
     public Map<String, List<TermsOffsetId>> getTerminologyStandOff() {
@@ -102,7 +102,7 @@ public class TermithIndex {
         return _tokenizeTeiBody;
     }
 
-    public Map<String, Path> getDisambTranformedFile() {return _DisambTranformedFile;}
+    public Map<String, Path> getDisambiguationTransformedFile() {return _disambiguationTranformedFile;}
 
     public List<Path> getSerializeJson() {return _serializeJson;}
 
@@ -122,8 +122,8 @@ public class TermithIndex {
         return _jsonTreeTagger;
     }
 
-    public Map<String, LexicalProfile> getTermSubLexic() {
-        return _termSubLexic;
+    public Map<String, LexicalProfile> getContextLexicon() {
+        return _termSubLexicon;
     }
 
     public Map<String, Path> getExtractedText() {
@@ -140,7 +140,7 @@ public class TermithIndex {
 
     public static boolean isKeepFiles() { return _keepFiles; }
 
-    public Path getDisambAnnotation() { return _disambAnnotation; }
+    public Path getDisambiguationAnnotation() { return _disambiguationAnnotation; }
 
     /*
     Setter
@@ -177,7 +177,7 @@ public class TermithIndex {
         String _lang;
         Path _base;
         String _treeTaggerHome;
-        Path _disambAnnotation;
+        Path _disambiguationAnnotation;
         private int _corpusSize = 0;
 
         /**
@@ -247,11 +247,11 @@ public class TermithIndex {
 
         /**
          * set annotation path
-         * @param disambAnnotation disamb path
-         * @return return disamb path
+         * @param disambiguationAnnotation disambiguation path
+         * @return return disambiguation path
          */
-        public Builder annotation(String disambAnnotation) {
-            _disambAnnotation = FilesUtils.folderPathResolver(disambAnnotation);
+        public Builder annotation(String disambiguationAnnotation) {
+            _disambiguationAnnotation = FilesUtils.folderPathResolver(disambiguationAnnotation);
             return this;
         }
 

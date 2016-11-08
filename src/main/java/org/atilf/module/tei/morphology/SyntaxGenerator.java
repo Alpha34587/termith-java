@@ -1,6 +1,6 @@
 package org.atilf.module.tei.morphology;
 
-import org.atilf.models.termsuite.MorphoSyntaxOffsetId;
+import org.atilf.models.termsuite.MorphologyOffsetId;
 import org.atilf.module.termsuite.json.TermsuiteJsonReader;
 
 import java.io.File;
@@ -18,7 +18,7 @@ public class SyntaxGenerator {
     private StringBuilder _xml;
     private StringBuilder _tokenizeBody = new StringBuilder();
     private StringBuilder _standoff = new StringBuilder();
-    private List<MorphoSyntaxOffsetId> _offsetId = new ArrayList<>();
+    private List<MorphologyOffsetId> _offsetId = new ArrayList<>();
 
     public SyntaxGenerator(File json, StringBuilder txt, StringBuilder xml) {
         _xml = xml;
@@ -31,7 +31,7 @@ public class SyntaxGenerator {
         return _tokenizeBody;
     }
 
-    public List<MorphoSyntaxOffsetId> getOffsetId() {
+    public List<MorphologyOffsetId> getOffsetId() {
         return _offsetId;
     }
 

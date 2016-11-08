@@ -33,7 +33,7 @@ public class DisambiguationXslTransformer extends TextExtractor {
     public void run() {
         try {
             LOGGER.info("convert xml file: " + _file.getAbsolutePath());
-            _termithIndex.getDisambTranformedFile().put(
+            _termithIndex.getDisambiguationTransformedFile().put(
                     FilesUtils.nameNormalizer(_file.getName()),
                     FilesUtils.writeXml(
                             this.execute(),

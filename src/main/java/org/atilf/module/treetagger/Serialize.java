@@ -17,7 +17,7 @@ import java.util.ArrayDeque;
  */
 public class Serialize {
 
-    private ArrayDeque<String> _tokenDeque = new ArrayDeque<String>();
+    private ArrayDeque<String> _tokenDeque = new ArrayDeque<>();
     private StringBuilder _txt;
     private String _jsonPath;
     private TextAnalyzer _textAnalyzer;
@@ -39,8 +39,8 @@ public class Serialize {
     public void execute() throws IOException {
         FileOutputStream fos = new FileOutputStream(_jsonPath);
         Writer writer = new OutputStreamWriter(fos, "UTF-8");
-        JsonFactory jfactory = new JsonFactory();
-        JsonGenerator jg = jfactory.createGenerator(writer);
+        JsonFactory jFactory = new JsonFactory();
+        JsonGenerator jg = jFactory.createGenerator(writer);
         jg.useDefaultPrettyPrinter();
         jg.writeStartObject();
         writeSdi(jg);
@@ -85,7 +85,7 @@ public class Serialize {
         jg.writeFieldName("document_size");
         jg.writeNumber(_textAnalyzer.getDocumentSize());
         jg.writeFieldName("cumul_doc_size");
-        jg.writeNumber(_textAnalyzer.getCumulSize());
+        jg.writeNumber(_textAnalyzer.getSumSize());
         jg.writeFieldName("corpus_size");
         jg.writeNumber(_textAnalyzer.getTotalSize());
         jg.writeFieldName("last_segment");

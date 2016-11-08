@@ -2,8 +2,8 @@ package org.atilf.module.disambiguation;
 
 import com.github.rcaller.rstuff.RCaller;
 import com.github.rcaller.rstuff.RCode;
-import org.atilf.models.disambiguation.GlobalLexic;
-import org.atilf.models.disambiguation.RLexic;
+import org.atilf.models.disambiguation.GlobalLexicon;
+import org.atilf.models.disambiguation.RLexicon;
 import org.atilf.models.termith.TermithIndex;
 
 /**
@@ -12,35 +12,35 @@ import org.atilf.models.termith.TermithIndex;
  */
 public class SpecCoefficientInjector implements Runnable{
     private final LexicalProfile _lexicalProfile;
-    private final RLexic _rLexic;
-    private final RLexic _rSubLexic;
-    private final GlobalLexic _globalLexic;
+    private final RLexicon _rLexicon;
+    private final RLexicon _rSubLexicon;
+    private final GlobalLexicon _globalLexicon;
 
-    public SpecCoefficientInjector(LexicalProfile lexicalProfile, RLexic rLexic, GlobalLexic globalLexic) {
+    public SpecCoefficientInjector(LexicalProfile lexicalProfile, RLexicon rLexicon, GlobalLexicon globalLexicon) {
 
-        _globalLexic = globalLexic;
+        _globalLexicon = globalLexicon;
         _lexicalProfile = lexicalProfile;
-        _rLexic = rLexic;
-        _rSubLexic = new RLexic(lexicalProfile,globalLexic);
+        _rLexicon = rLexicon;
+        _rSubLexicon = new RLexicon(lexicalProfile, globalLexicon);
     }
 
-    public SpecCoefficientInjector(String p,TermithIndex termithIndex, RLexic rLexic){
-        _globalLexic = termithIndex.getDisambGlobalLexic();
-        _lexicalProfile = termithIndex.getTermSubLexic().get(p);
-        _rLexic = rLexic;
-        _rSubLexic = new RLexic(_lexicalProfile,_globalLexic);
+    public SpecCoefficientInjector(String p,TermithIndex termithIndex, RLexicon rLexicon){
+        _globalLexicon = termithIndex.getGlobalLexicon();
+        _lexicalProfile = termithIndex.getContextLexicon().get(p);
+        _rLexicon = rLexicon;
+        _rSubLexicon = new RLexicon(_lexicalProfile, _globalLexicon);
     }
 
     public void execute() {
         reduceToLexicalProfile(computeSpecCoefficient());
     }
 
-    private void reduceToLexicalProfile(float[] specCoef) {
+    private void reduceToLexicalProfile(float[] specCoefficient) {
         int cnt = 0;
-        for (String id : _rSubLexic.getIdSubCorpus()) {
+        for (String id : _rSubLexicon.getIdSubCorpus()) {
             _lexicalProfile.addCoefficientSpec(
-                    _globalLexic.getLexicalEntry(Integer.parseInt(id)),
-                    specCoef[cnt]);
+                    _globalLexicon.getLexicalEntry(Integer.parseInt(id)),
+                    specCoefficient[cnt]);
             cnt++;
         }
     }
@@ -49,13 +49,13 @@ public class SpecCoefficientInjector implements Runnable{
         RCaller rcaller = RCaller.create();
         RCode code = RCode.create();
         code.addRCode("source(" + "\"src/main/resources/disambiguation/R/specificities.R\"" + ")");
-        code.addRCode("sumCol <-" + _rLexic.getCorpusSizeOcc());
-        code.addRCode("tabCol <-" + "c(" + _rSubLexic.getCorpusSizeOcc() + "," + _rLexic.getCorpusSizeOcc() + ")");
+        code.addRCode("sumCol <-" + _rLexicon.getCorpusSizeOcc());
+        code.addRCode("tabCol <-" + "c(" + _rSubLexicon.getCorpusSizeOcc() + "," + _rLexicon.getCorpusSizeOcc() + ")");
         code.addRCode("names(tabCol) <- c(\"sublexicon\",\"complementary\")");
-        code.addRCode("lexic <-" + _rLexic.getROcc());
-        code.addRCode("names(lexic) <-" + _rLexic.getRName());
-        code.addRCode("sublexic <-" + _rSubLexic.getROcc());
-        code.addRCode("names(sublexic) <-" + _rSubLexic.getROcc());
+        code.addRCode("lexic <-" + _rLexicon.getROcc());
+        code.addRCode("names(lexic) <-" + _rLexicon.getRName());
+        code.addRCode("sublexic <-" + _rSubLexicon.getROcc());
+        code.addRCode("names(sublexic) <-" + _rSubLexicon.getROcc());
         code.addRCode("res <- specificities.lexicon(lexic,sublexic,sumCol,tabCol)");
         code.addRCode("res <- res[,1]");
         code.addRCode("names(res) <- names(lexic)");

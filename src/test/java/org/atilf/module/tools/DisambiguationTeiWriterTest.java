@@ -32,9 +32,9 @@ public class DisambiguationTeiWriterTest {
         _evaluationProfile.put("entry-13471_DM1", new EvaluationProfile(HashMultiset.create()));
         _evaluationProfile.put("entry-7263_DM3", new EvaluationProfile(HashMultiset.create()));
         _evaluationProfile.put("entry-990_noDM", new EvaluationProfile(HashMultiset.create()));
-        _evaluationProfile.get("entry-13471_DM1").setDisambId("DaOn");
-        _evaluationProfile.get("entry-7263_DM3").setDisambId("DaOn");
-        _evaluationProfile.get("entry-990_noDM").setDisambId("DaOff");
+        _evaluationProfile.get("entry-13471_DM1").setDisambiguationId("DaOn");
+        _evaluationProfile.get("entry-7263_DM3").setDisambiguationId("DaOn");
+        _evaluationProfile.get("entry-990_noDM").setDisambiguationId("DaOff");
 
         DisambiguationTeiWriter teiWriter = new DisambiguationTeiWriter(
                 "src/test/resources/corpus/disambiguation/tei/test1.xml",
