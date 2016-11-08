@@ -25,9 +25,9 @@ public class Serialize {
     public Serialize(StringBuilder tokenDeque, String jsonPath, StringBuilder txt
             , TextAnalyzer textAnalyzer) {
         populateTokenDeque(tokenDeque);
-        this._txt = txt;
-        this._jsonPath = jsonPath;
-        this._textAnalyzer = textAnalyzer;
+        _txt = txt;
+        _jsonPath = jsonPath;
+        _textAnalyzer = textAnalyzer;
     }
 
     private void populateTokenDeque(StringBuilder tokenDeque) {
@@ -102,7 +102,7 @@ public class Serialize {
         jg.writeFieldName("word_annotations");
         jg.writeStartArray();
         while (!_tokenDeque.isEmpty()){
-            String[] line = _tokenDeque.poll().toString().split("\t");
+            String[] line = _tokenDeque.poll().split("\t");
 
             jg.writeStartObject();
             addTag(line[1], jg);
@@ -120,17 +120,17 @@ public class Serialize {
         jg.writeString(TagNormalizer.normalize(token));
     }
 
-    public void addLemma(String token, JsonGenerator jg) throws IOException {
+    private void addLemma(String token, JsonGenerator jg) throws IOException {
         jg.writeFieldName("lemma");
         jg.writeString(token);
     }
 
-    public void addTag(String tag, JsonGenerator jg) throws IOException {
+    private void addTag(String tag, JsonGenerator jg) throws IOException {
         jg.writeFieldName("tag");
         jg.writeString(tag);
     }
 
-    public Integer[] addOffsets(Integer[] offset, String token, JsonGenerator jGenerator) throws IOException {
+    private Integer[] addOffsets(Integer[] offset, String token, JsonGenerator jGenerator) throws IOException {
         char[] letterCharArray = token.toCharArray();
         boolean findBegin = false;
         int begin = -1;
