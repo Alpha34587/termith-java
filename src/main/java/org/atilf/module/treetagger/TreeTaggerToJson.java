@@ -31,7 +31,7 @@ public class TreeTaggerToJson {
     }
 
     public void execute() throws IOException, InterruptedException {
-        TreeTaggerWrapper treeTaggerWrapper = new TreeTaggerWrapper(_txt, _treeTaggerHome,
+        TreeTaggerWrapper treeTaggerWrapper = new TreeTaggerWrapper(_txt,
                 new TreeTaggerParameter(false, _lang, _treeTaggerHome), _outputPath);
         treeTaggerWrapper.execute();
         Serialize serialize = new Serialize(treeTaggerWrapper.getTtOut(), _jsonPath, _txt, _textAnalyzer);

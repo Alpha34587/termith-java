@@ -22,14 +22,12 @@ public class TreeTaggerWrapper {
 
     private final StringBuilder _txt;
     private TreeTaggerParameter _treeTaggerParameter;
-    private String _treeTaggerHome;
     private String _outputPath;
     private StringBuilder _ttOut = new StringBuilder();
 
-    TreeTaggerWrapper(StringBuilder txt, String treeTaggerHome, TreeTaggerParameter treeTaggerParameter,
+    TreeTaggerWrapper(StringBuilder txt, TreeTaggerParameter treeTaggerParameter,
                       String outputPath) {
         _txt = txt;
-        _treeTaggerHome = treeTaggerHome;
         _treeTaggerParameter = treeTaggerParameter;
         _outputPath = outputPath;
     }
