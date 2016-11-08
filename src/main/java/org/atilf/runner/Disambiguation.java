@@ -2,6 +2,9 @@ package org.atilf.runner;
 
 import org.atilf.models.termith.TermithIndex;
 import org.atilf.thread.disambiguisation.ContextLexicThread;
+import org.atilf.thread.disambiguisation.DisambEvaluationThread;
+import org.atilf.thread.disambiguisation.DisambExporterThread;
+import org.atilf.thread.disambiguisation.LexicProfileThread;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -35,26 +38,26 @@ public class Disambiguation {
             LOGGER.error("errors during the subLexic phase : ", e);
             Thread.currentThread().interrupt();
         }
-//        LexicProfileThread lexicProfileThread = new LexicProfileThread(_termithIndex, _poolSize);
-//        try {
-//            lexicProfileThread.execute();
-//        } catch (InterruptedException e) {
-//            LOGGER.error("errors during the lexicProfile phase : ", e);
-//            Thread.currentThread().interrupt();
-//        }
-//        DisambEvaluationThread evaluation = new DisambEvaluationThread(_termithIndex, _poolSize);
-//        try {
-//            evaluation.execute();
-//        } catch (IOException | InterruptedException e) {
-//            LOGGER.error("errors during evaluation phase : ", e);
-//            Thread.currentThread().interrupt();
-//        }
-//        DisambExporterThread exporter = new DisambExporterThread(_termithIndex, _poolSize);
-//        try {
-//            exporter.execute();
-//        } catch (IOException | InterruptedException e) {
-//            LOGGER.error("errors during exporting phase : ", e);
-//            Thread.currentThread().interrupt();
-//        }
+        LexicProfileThread lexicProfileThread = new LexicProfileThread(_termithIndex, _poolSize);
+        try {
+            lexicProfileThread.execute();
+        } catch (InterruptedException e) {
+            LOGGER.error("errors during the lexicProfile phase : ", e);
+            Thread.currentThread().interrupt();
+        }
+        DisambEvaluationThread evaluation = new DisambEvaluationThread(_termithIndex, _poolSize);
+        try {
+            evaluation.execute();
+        } catch (IOException | InterruptedException e) {
+            LOGGER.error("errors during evaluation phase : ", e);
+            Thread.currentThread().interrupt();
+        }
+        DisambExporterThread exporter = new DisambExporterThread(_termithIndex, _poolSize);
+        try {
+            exporter.execute();
+        } catch (IOException | InterruptedException e) {
+            LOGGER.error("errors during exporting phase : ", e);
+            Thread.currentThread().interrupt();
+        }
     }
 }

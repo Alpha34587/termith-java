@@ -10,7 +10,7 @@ import org.atilf.module.timer.JsonTimer;
 import org.atilf.module.timer.TokenizeTimer;
 import org.atilf.module.tools.FilesUtils;
 import org.atilf.module.treetagger.CorpusAnalyzer;
-import org.atilf.worker.TreeTaggerWorker;
+import org.atilf.module.treetagger.TreeTaggerWorker;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
