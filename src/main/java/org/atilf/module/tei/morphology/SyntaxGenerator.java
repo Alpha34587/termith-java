@@ -40,6 +40,6 @@ public class SyntaxGenerator {
         SyntaxParser syntaxParser = new SyntaxParser(_txt, _xml, _termsuiteJsonReader, _offsetId);
         syntaxParser.execute();
         _tokenizeBody = syntaxParser.getTokenizeBuffer();
-        _offsetId = syntaxParser.get_offsetId();
+        _offsetId = syntaxParser.getOffsetId();
     }
 }

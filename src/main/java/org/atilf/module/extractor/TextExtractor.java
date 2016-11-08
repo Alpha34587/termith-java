@@ -76,7 +76,7 @@ public class TextExtractor implements Runnable{
             }
             else {
                 LOGGER.info(_file + " has empty body");
-                _termithIndex.set_corpusSize(_termithIndex.getCorpusSize() - 1);
+                _termithIndex.setCorpusSize(_termithIndex.getCorpusSize() - 1);
             }
             LOGGER.debug("Extraction done for file: " + _file);
         } catch (IOException e) {

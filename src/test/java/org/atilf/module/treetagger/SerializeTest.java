@@ -50,7 +50,7 @@ public class SerializeTest {
         _jsonResFile = temporaryFolder.newFile("test1.json");
 
         _serializeLemma = new Serialize(tokenLemma, _jsonResFile.getAbsolutePath(),
-                lemma, corpusAnalyzer.get_analyzedTexts().get("1"));
+                lemma, corpusAnalyzer.getAnalyzedTexts().get("1"));
     }
 
     @Test

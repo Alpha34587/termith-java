@@ -419,10 +419,10 @@ public class SyntaxParserTest {
     @Test
     public void checkOffsetId(){
 
-        _alignmentTokenInjector.get_offsetId().forEach(
+        _alignmentTokenInjector.getOffsetId().forEach(
                 offsetId -> {
                     String observed = offsetId.getBegin() + ", " + offsetId.getEnd() + ", " + offsetId.getIds();
-                    String expected = _offsetIdAlignment.get(_alignmentTokenInjector.get_offsetId().indexOf(offsetId));
+                    String expected = _offsetIdAlignment.get(_alignmentTokenInjector.getOffsetId().indexOf(offsetId));
                     Assert.assertEquals("this offset must be equals", expected, observed);
                 }
         );

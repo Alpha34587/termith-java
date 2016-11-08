@@ -58,7 +58,7 @@ public class CorpusAnalyzer {
     /**
      * @return return analyzedText fields
      */
-    public Map<String, TextAnalyzer> get_analyzedTexts() {
+    public Map<String, TextAnalyzer> getAnalyzedTexts() {
         return _analyzedTexts;
     }
 

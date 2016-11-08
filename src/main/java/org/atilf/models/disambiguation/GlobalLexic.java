@@ -22,7 +22,7 @@ public class GlobalLexic implements Iterable<String>{
         _lexicalEntry = lexicalEntry;
     }
 
-    public Multiset get_multisetLexic() {
+    public Multiset getMultisetLexic() {
         return _multisetLexic;
     }
 

@@ -35,7 +35,7 @@ public class TreeTaggerWorker implements Runnable {
         _txt = FilesUtils.readObject(termithIndex.getExtractedText().get(id),StringBuilder.class);
         _txtPath = termithIndex.getCorpus() + "/txt/" + id + ".txt";
         _jsonPath = termithIndex.getCorpus() + "/json/" + id + ".json";
-        _textAnalyzer = corpusAnalyzer.get_analyzedTexts().get(id);
+        _textAnalyzer = corpusAnalyzer.getAnalyzedTexts().get(id);
         _xml = FilesUtils.readFile(termithIndex.getXmlCorpus().get(id));
 
         try {

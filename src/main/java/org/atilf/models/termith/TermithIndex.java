@@ -118,7 +118,7 @@ public class TermithIndex {
         return _outputFile;
     }
 
-    public Map<String, Path> get_jsonTreeTagger() {
+    public Map<String, Path> getJsonTreeTagger() {
         return _jsonTreeTagger;
     }
 
@@ -146,15 +146,15 @@ public class TermithIndex {
     Setter
      */
 
-    public void set_corpusSize(int corpusSize) {
+    public void setCorpusSize(int corpusSize) {
         _corpusSize = corpusSize;
     }
 
-    public void set_corpus(Path corpus) {
+    public void setCorpus(Path corpus) {
         _corpus = corpus;
     }
 
-    public void set_terminologyStandOff(Map<String, List<TermsOffsetId>> terminologyStandOff) {
+    public void setTerminologyStandOff(Map<String, List<TermsOffsetId>> terminologyStandOff) {
         _terminologyStandOff = terminologyStandOff;
     }
 

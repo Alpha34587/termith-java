@@ -47,13 +47,13 @@ public class RLexicTest {
     }
 
     @Test
-    public void get_rName() throws Exception {
-        Assert.assertEquals("_rName variable must be equals ", _rName, _rLexic.get_rName().toString());
+    public void getRName() throws Exception {
+        Assert.assertEquals("_rName variable must be equals ", _rName, _rLexic.getRName().toString());
     }
 
     @Test
-    public void get_rOcc() throws Exception {
-        Assert.assertEquals("_rOcc variable must be equals ", _rOcc, _rLexic.get_rOcc().toString());
+    public void getROcc() throws Exception {
+        Assert.assertEquals("_rOcc variable must be equals ", _rOcc, _rLexic.getROcc().toString());
 
     }
 

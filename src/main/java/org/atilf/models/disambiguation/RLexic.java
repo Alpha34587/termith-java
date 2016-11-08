@@ -37,15 +37,15 @@ public class RLexic {
         closeRVariable();
     }
 
-    public StringBuffer get_rName() {
+    public StringBuffer getRName() {
         return _rName;
     }
 
-    public StringBuffer get_rOcc() {
+    public StringBuffer getROcc() {
         return _rOcc;
     }
 
-    public List<String> get_idSubCorpus() {
+    public List<String> getIdSubCorpus() {
         return _idSubCorpus;
     }
 

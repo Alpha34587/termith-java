@@ -34,7 +34,7 @@ public class TreeTaggerWrapper {
         _outputPath = outputPath;
     }
 
-    StringBuilder get_ttOut() {
+    StringBuilder getTtOut() {
         return _ttOut;
     }
 

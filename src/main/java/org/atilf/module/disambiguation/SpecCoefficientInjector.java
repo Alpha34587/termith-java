@@ -37,7 +37,7 @@ public class SpecCoefficientInjector implements Runnable{
 
     private void reduceToLexicalProfile(float[] specCoef) {
         int cnt = 0;
-        for (String id : _rSubLexic.get_idSubCorpus()) {
+        for (String id : _rSubLexic.getIdSubCorpus()) {
             _lexicalProfile.addCoefficientSpec(
                     _globalLexic.getLexicalEntry(Integer.parseInt(id)),
                     specCoef[cnt]);
@@ -52,10 +52,10 @@ public class SpecCoefficientInjector implements Runnable{
         code.addRCode("sumCol <-" + _rLexic.getCorpusSizeOcc());
         code.addRCode("tabCol <-" + "c(" + _rSubLexic.getCorpusSizeOcc() + "," + _rLexic.getCorpusSizeOcc() + ")");
         code.addRCode("names(tabCol) <- c(\"sublexicon\",\"complementary\")");
-        code.addRCode("lexic <-" + _rLexic.get_rOcc());
-        code.addRCode("names(lexic) <-" + _rLexic.get_rName());
-        code.addRCode("sublexic <-" + _rSubLexic.get_rOcc());
-        code.addRCode("names(sublexic) <-" + _rSubLexic.get_rOcc());
+        code.addRCode("lexic <-" + _rLexic.getROcc());
+        code.addRCode("names(lexic) <-" + _rLexic.getRName());
+        code.addRCode("sublexic <-" + _rSubLexic.getROcc());
+        code.addRCode("names(sublexic) <-" + _rSubLexic.getROcc());
         code.addRCode("res <- specificities.lexicon(lexic,sublexic,sumCol,tabCol)");
         code.addRCode("res <- res[,1]");
         code.addRCode("names(res) <- names(lexic)");

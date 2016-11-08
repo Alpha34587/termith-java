@@ -32,7 +32,7 @@ public class TermithTreeTagger {
 
     }
 
-    public TermithIndex get_termithIndex() {
+    public TermithIndex getTermithIndex() {
         return _termithIndex;
     }
 

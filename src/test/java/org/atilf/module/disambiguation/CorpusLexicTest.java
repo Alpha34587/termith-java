@@ -53,8 +53,8 @@ public class CorpusLexicTest {
     public void execute() throws Exception {
         _corpus1.execute();
         _corpus2.execute();
-        Assert.assertEquals("this two multisets must be equals", _expectedCorpus.get_multisetLexic().toString(),
-                _observedCorpus.get_multisetLexic().toString());
+        Assert.assertEquals("this two multisets must be equals", _expectedCorpus.getMultisetLexic().toString(),
+                _observedCorpus.getMultisetLexic().toString());
     }
 
 }

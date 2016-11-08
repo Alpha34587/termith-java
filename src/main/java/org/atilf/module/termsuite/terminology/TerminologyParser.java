@@ -150,7 +150,7 @@ public class TerminologyParser implements Runnable{
     public void run() {
         try {
             this.execute();
-            _termithIndex.set_terminologyStandOff(getStandOffTerminology());
+            _termithIndex.setTerminologyStandOff(getStandOffTerminology());
             LOGGER.info("parsing terminology ended");
         } catch (IOException e) {
             LOGGER.error("error during terminology parsing", e);

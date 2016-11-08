@@ -50,7 +50,7 @@ public class SyntaxParser {
         return offset;
     }
 
-    public List<MorphoSyntaxOffsetId> get_offsetId() { return _offsetId; }
+    public List<MorphoSyntaxOffsetId> getOffsetId() { return _offsetId; }
 
     public void execute() throws Exception {
         teiBodyspliter();

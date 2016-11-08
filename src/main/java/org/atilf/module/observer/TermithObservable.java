@@ -21,32 +21,32 @@ public class TermithObservable extends Observable {
     }
 
     public synchronized void changeValue(int done, int total, Logger logger){
-        set_currentDone(done);
-        set_currentTotal(total);
-        set_currentLogger(logger);
+        setCurrentDone(done);
+        setCurrentTotal(total);
+        setCurrentLogger(logger);
         setChanged();
         notifyObservers(logger);
     }
 
-    public Logger get_currentLogger() {
+    public Logger getCurrentLogger() {
         return _currentLogger;
     }
 
-    public int get_currentTotal() {
+    public int getCurrentTotal() {
         return _currentTotal;
     }
 
-    public int get_currentDone() { return _currentDone; }
+    public int getCurrentDone() { return _currentDone; }
 
-    public void set_currentLogger(Logger _currentLogger) {
+    public void setCurrentLogger(Logger _currentLogger) {
         this._currentLogger = _currentLogger;
     }
 
-    public synchronized void set_currentDone(int _currentDone) {
+    public synchronized void setCurrentDone(int _currentDone) {
         this._currentDone = _currentDone;
     }
 
-    public synchronized void set_currentTotal(int _currentTotal) {
+    public synchronized void setCurrentTotal(int _currentTotal) {
         this._currentTotal = _currentTotal;
     }
 
