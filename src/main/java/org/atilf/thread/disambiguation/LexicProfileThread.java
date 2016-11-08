@@ -1,8 +1,8 @@
-package org.atilf.thread.disambiguisation;
+package org.atilf.thread.disambiguation;
 
-import org.atilf.models.disambiguisation.RLexic;
+import org.atilf.models.disambiguation.RLexic;
 import org.atilf.models.termith.TermithIndex;
-import org.atilf.module.disambiguisation.SpecCoefficientInjector;
+import org.atilf.module.disambiguation.SpecCoefficientInjector;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

@@ -1,6 +1,6 @@
-package org.atilf.models.disambiguisation;
+package org.atilf.models.disambiguation;
 
-import org.atilf.module.disambiguisation.LexicalProfile;
+import org.atilf.module.disambiguation.LexicalProfile;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +10,7 @@ import java.util.List;
  *         Created on 21/10/16.
  */
 public class RLexic {
-    int corpusSizeOcc;
+    private int corpusSizeOcc;
     private StringBuffer _rName = new StringBuffer();
     private StringBuffer _rOcc = new StringBuffer();
     private GlobalLexic _corpus;
@@ -59,13 +59,13 @@ public class RLexic {
     }
 
     private void convertToRFormat(String el) {
-        _rName.append("\""+ _corpus.getIdEntry(el) +"\",");
-        _rOcc.append(_corpus.count(el)+",");
+        _rName.append("\"").append(_corpus.getIdEntry(el)).append("\",");
+        _rOcc.append(_corpus.count(el)).append(",");
     }
 
     private void convertToRFSubormat(String el) {
-        _rName.append("\""+ _corpus.getIdEntry(el) +"\",");
-        _rOcc.append(_subCorpus.countOccurrence(el)+",");
+        _rName.append("\"").append(_corpus.getIdEntry(el)).append("\",");
+        _rOcc.append(_subCorpus.countOccurrence(el)).append(",");
         _idSubCorpus.add(_corpus.getIdEntry(el));
     }
 }

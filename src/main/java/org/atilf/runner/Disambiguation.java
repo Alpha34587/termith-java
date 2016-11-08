@@ -1,10 +1,10 @@
 package org.atilf.runner;
 
 import org.atilf.models.termith.TermithIndex;
-import org.atilf.thread.disambiguisation.ContextLexicThread;
-import org.atilf.thread.disambiguisation.DisambEvaluationThread;
-import org.atilf.thread.disambiguisation.DisambExporterThread;
-import org.atilf.thread.disambiguisation.LexicProfileThread;
+import org.atilf.thread.disambiguation.ContextLexicThread;
+import org.atilf.thread.disambiguation.DisambEvaluationThread;
+import org.atilf.thread.disambiguation.DisambExporterThread;
+import org.atilf.thread.disambiguation.LexicProfileThread;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

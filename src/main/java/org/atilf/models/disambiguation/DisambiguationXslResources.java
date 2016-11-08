@@ -1,4 +1,4 @@
-package org.atilf.models.disambiguisation;
+package org.atilf.models.disambiguation;
 
 import org.atilf.models.extractor.XslResources;
 import org.slf4j.Logger;
@@ -14,10 +14,10 @@ import javax.xml.transform.stream.StreamSource;
  * @author Simon Meoni
  *         Created on 02/11/16.
  */
-public class DisambXslResources extends XslResources{
+public class DisambiguationXslResources extends XslResources{
 
-        private static final Logger LOGGER = LoggerFactory.getLogger(DisambXslResources.class.getName());
-        public DisambXslResources() {
+        private static final Logger LOGGER = LoggerFactory.getLogger(DisambiguationXslResources.class.getName());
+        public DisambiguationXslResources() {
             _stylesheet = new StreamSource(getClass().getClassLoader().getResourceAsStream("xsl/disamb.xsl"));
             try {
                 _factory = TransformerFactory.newInstance().newTemplates(_stylesheet);

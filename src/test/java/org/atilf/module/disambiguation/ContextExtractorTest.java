@@ -1,4 +1,4 @@
-package org.atilf.module.disambiguisation;
+package org.atilf.module.disambiguation;
 
 import com.google.common.collect.HashMultiset;
 import com.google.common.collect.Multiset;
@@ -111,12 +111,10 @@ public class ContextExtractorTest {
                 (key, value) -> {
                     Multiset observed = _multiSub.get(key).getLexicalTable();
                     value.getLexicalTable().forEach(
-                            el -> {
-                                Assert.assertEquals("the occurence of element must be equals at " + key +
-                                                " for the word : " + el,
-                                        value.getLexicalTable().count(el), observed.count(el)
-                                );
-                            }
+                            el -> Assert.assertEquals("the occurence of element must be equals at " + key +
+                                            " for the word : " + el,
+                                    value.getLexicalTable().count(el), observed.count(el)
+                            )
                     );
                 }
         );

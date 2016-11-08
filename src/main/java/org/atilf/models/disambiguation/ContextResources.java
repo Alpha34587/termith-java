@@ -1,4 +1,4 @@
-package org.atilf.models.disambiguisation;
+package org.atilf.models.disambiguation;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

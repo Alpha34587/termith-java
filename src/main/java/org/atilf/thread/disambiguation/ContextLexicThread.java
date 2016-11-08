@@ -1,10 +1,10 @@
-package org.atilf.thread.disambiguisation;
+package org.atilf.thread.disambiguation;
 
-import org.atilf.models.disambiguisation.DisambXslResources;
+import org.atilf.models.disambiguation.DisambiguationXslResources;
 import org.atilf.models.termith.TermithIndex;
-import org.atilf.module.disambiguisation.ContextExtractor;
-import org.atilf.module.disambiguisation.DisambXslTransformer;
-import org.atilf.module.disambiguisation.LexicExtractor;
+import org.atilf.module.disambiguation.ContextExtractor;
+import org.atilf.module.disambiguation.DisambiguationXslTransformer;
+import org.atilf.module.disambiguation.LexicExtractor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -42,9 +42,9 @@ public class ContextLexicThread {
 
     public void execute() throws IOException, InterruptedException {
         ExecutorService executor = Executors.newFixedThreadPool(_poolSize);
-        DisambXslResources xslResources = new DisambXslResources();
+        DisambiguationXslResources xslResources = new DisambiguationXslResources();
         Files.list(TermithIndex.getBase()).forEach(
-                p -> executor.submit(new DisambXslTransformer(
+                p -> executor.submit(new DisambiguationXslTransformer(
                         p.toFile(),
                         _transformCounter,
                         _termithIndex,

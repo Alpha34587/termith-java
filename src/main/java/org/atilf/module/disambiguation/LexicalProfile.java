@@ -1,4 +1,4 @@
-package org.atilf.module.disambiguisation;
+package org.atilf.module.disambiguation;
 
 import com.google.common.collect.ConcurrentHashMultiset;
 import com.google.common.collect.Multiset;
@@ -13,8 +13,8 @@ import java.util.function.Consumer;
  *         Created on 21/10/16.
  */
 public class LexicalProfile implements Iterable<String>{
-    Multiset<String> _lexicalTable;
-    Map<String,Float> _specCoefficientMap = new HashMap<>();
+    private Multiset<String> _lexicalTable;
+    private Map<String,Float> _specCoefficientMap = new HashMap<>();
 
     LexicalProfile(Multiset<String> lexicalTable) {
         _lexicalTable = lexicalTable;

@@ -1,8 +1,8 @@
-package org.atilf.thread.disambiguisation;
+package org.atilf.thread.disambiguation;
 
 import org.atilf.models.termith.TermithIndex;
-import org.atilf.module.disambiguisation.Evaluation;
-import org.atilf.module.disambiguisation.EvaluationExtractor;
+import org.atilf.module.tools.DisambiguationTeiWriter;
+import org.atilf.module.tools.FilesUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -14,29 +14,34 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * @author Simon Meoni
- *         Created on 12/10/16.
+ *         Created on 25/10/16.
  */
-public class DisambEvaluationThread {
+public class DisambExporterThread {
 
     private final TermithIndex _termithIndex;
     private final int _poolSize;
     private static final Logger LOGGER = LoggerFactory.getLogger(DisambEvaluationThread.class.getName());
 
-    public DisambEvaluationThread(TermithIndex termithIndex, int poolSize) {
+    public DisambExporterThread(TermithIndex termithIndex, int poolSize) {
+
         _termithIndex = termithIndex;
         _poolSize = poolSize;
     }
 
     public void execute() throws IOException, InterruptedException {
+
         ExecutorService executor = Executors.newFixedThreadPool(_poolSize);
         Files.list(TermithIndex.getBase()).forEach(
-                p -> executor.submit(new EvaluationExtractor(p.toString(), _termithIndex))
-        );
+                p ->
+                {
+                    String file = FilesUtils.nameNormalizer(p.toString());
+                    executor.submit(new DisambiguationTeiWriter(
+                        file,
+                        _termithIndex.getEvaluationLexic().get(file)
+                        ));
+                }
 
-        _termithIndex.getEvaluationLexic().forEach(
-                (key,value) -> executor.submit(new Evaluation(value, _termithIndex.getTermSubLexic()))
         );
-
         LOGGER.info("Waiting ContextExtractorWorker executors to finish");
         executor.shutdown();
         executor.awaitTermination(1L, TimeUnit.DAYS);

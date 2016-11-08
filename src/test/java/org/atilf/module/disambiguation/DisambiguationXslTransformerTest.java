@@ -1,6 +1,6 @@
-package org.atilf.module.disambiguisation;
+package org.atilf.module.disambiguation;
 
-import org.atilf.models.disambiguisation.DisambXslResources;
+import org.atilf.models.disambiguation.DisambiguationXslResources;
 import org.custommonkey.xmlunit.XMLUnit;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,13 +15,13 @@ import static org.custommonkey.xmlunit.XMLAssert.assertXMLEqual;
  * @author Simon Meoni
  *         Created on 02/11/16.
  */
-public class DisambXslTransformerTest {
-    private DisambXslTransformer _disambXslTransformer;
+public class DisambiguationXslTransformerTest {
+    private DisambiguationXslTransformer _disambiguationXslTransformer;
     @Before
     public void setUp(){
-        _disambXslTransformer = new DisambXslTransformer(
+        _disambiguationXslTransformer = new DisambiguationXslTransformer(
                 new File("src/test/resources/corpus/disambiguation/tei/test1.xml"),
-                new DisambXslResources()
+                new DisambiguationXslResources()
         );
     }
 
@@ -31,7 +31,7 @@ public class DisambXslTransformerTest {
         assertXMLEqual("this two xml must be equals",
                 String.join("\n", Files.readAllLines(
                         Paths.get("src/test/resources/corpus/disambiguation/transform-tei/test1.xml"))),
-                _disambXslTransformer.execute().toString()
+                _disambiguationXslTransformer.execute().toString()
         );
     }
 

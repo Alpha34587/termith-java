@@ -1,4 +1,4 @@
-package org.atilf.module.disambiguisation;
+package org.atilf.module.disambiguation;
 
 import org.atilf.models.termith.TermithIndex;
 import org.atilf.module.tools.FilesUtils;

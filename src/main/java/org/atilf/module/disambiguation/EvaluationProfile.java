@@ -1,4 +1,4 @@
-package org.atilf.module.disambiguisation;
+package org.atilf.module.disambiguation;
 
 import com.google.common.collect.HashMultiset;
 import com.google.common.collect.Multiset;
@@ -11,8 +11,8 @@ import java.util.function.Consumer;
  *         Created on 24/10/16.
  */
 public class EvaluationProfile implements Iterable<String> {
-    Multiset<String> _lexicalTable;
-    String _disambId = "noDa";
+    private Multiset<String> _lexicalTable;
+    private String _disambId = "noDa";
 
     public EvaluationProfile(Multiset<String> lexicalTable) {
         _lexicalTable = lexicalTable;

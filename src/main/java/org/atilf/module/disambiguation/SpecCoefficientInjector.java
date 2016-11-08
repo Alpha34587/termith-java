@@ -1,9 +1,9 @@
-package org.atilf.module.disambiguisation;
+package org.atilf.module.disambiguation;
 
 import com.github.rcaller.rstuff.RCaller;
 import com.github.rcaller.rstuff.RCode;
-import org.atilf.models.disambiguisation.GlobalLexic;
-import org.atilf.models.disambiguisation.RLexic;
+import org.atilf.models.disambiguation.GlobalLexic;
+import org.atilf.models.disambiguation.RLexic;
 import org.atilf.models.termith.TermithIndex;
 
 /**

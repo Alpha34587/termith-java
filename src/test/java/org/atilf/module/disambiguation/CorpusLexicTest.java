@@ -1,6 +1,6 @@
-package org.atilf.module.disambiguisation;
+package org.atilf.module.disambiguation;
 
-import org.atilf.models.disambiguisation.GlobalLexic;
+import org.atilf.models.disambiguation.GlobalLexic;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

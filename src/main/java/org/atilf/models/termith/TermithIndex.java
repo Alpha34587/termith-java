@@ -1,9 +1,9 @@
 package org.atilf.models.termith;
 
-import org.atilf.models.disambiguisation.GlobalLexic;
+import org.atilf.models.disambiguation.GlobalLexic;
 import org.atilf.models.termsuite.TermsOffsetId;
-import org.atilf.module.disambiguisation.EvaluationProfile;
-import org.atilf.module.disambiguisation.LexicalProfile;
+import org.atilf.module.disambiguation.EvaluationProfile;
+import org.atilf.module.disambiguation.LexicalProfile;
 import org.atilf.module.tools.FilesUtils;
 
 import java.io.IOException;
@@ -184,7 +184,7 @@ public class TermithIndex {
          * This method set the input folder path
          * @param path path of the _base corpus
          * @return return the path of the _base corpus
-         * @throws IOException
+         * @throws IOException throws exception of folderResolver method
          */
         public Builder baseFolder(String path) throws IOException {
             _base = FilesUtils.folderPathResolver(path);

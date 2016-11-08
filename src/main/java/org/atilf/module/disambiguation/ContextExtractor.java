@@ -1,4 +1,4 @@
-package org.atilf.module.disambiguisation;
+package org.atilf.module.disambiguation;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,7 +15,7 @@ import javax.xml.xpath.*;
 import java.io.IOException;
 import java.util.*;
 
-import static org.atilf.models.disambiguisation.ContextResources.*;
+import static org.atilf.models.disambiguation.ContextResources.*;
 
 /**
  * @author Simon Meoni

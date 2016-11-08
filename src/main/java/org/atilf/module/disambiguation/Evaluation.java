@@ -1,4 +1,4 @@
-package org.atilf.module.disambiguisation;
+package org.atilf.module.disambiguation;
 
 import java.util.Map;
 
@@ -10,8 +10,8 @@ public class Evaluation implements Runnable{
 
     private final Map<String, EvaluationProfile> _evaluationProfile;
     private final Map<String, LexicalProfile> _termSubLexic;
-    float _factorOn = 0f;
-    float _factorOff = 0f;
+    private float _factorOn = 0f;
+    private float _factorOff = 0f;
 
     public Evaluation(Map<String, EvaluationProfile> evaluationProfile, Map<String, LexicalProfile> termSubLexic) {
 

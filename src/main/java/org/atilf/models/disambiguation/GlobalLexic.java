@@ -1,4 +1,4 @@
-package org.atilf.models.disambiguisation;
+package org.atilf.models.disambiguation;
 
 import com.google.common.collect.HashMultiset;
 import com.google.common.collect.Multiset;
@@ -15,7 +15,7 @@ public class GlobalLexic implements Iterable<String>{
     private Multiset<String> _multisetLexic = HashMultiset.create();
     private Map<Integer,String> _lexicalEntry;
     private Map<String, Integer> _idEntry;
-    int _counter = 0;
+    private int _counter = 0;
 
     public GlobalLexic(Map<Integer,String> lexicalEntry, Map<String,Integer> idEntry) {
         _idEntry = idEntry;

@@ -1,7 +1,7 @@
 package org.atilf.module.tools;
 
 import org.atilf.models.termith.TermithIndex;
-import org.atilf.module.disambiguisation.EvaluationProfile;
+import org.atilf.module.disambiguation.EvaluationProfile;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
@@ -22,7 +22,7 @@ import javax.xml.xpath.*;
 import java.io.IOException;
 import java.util.Map;
 
-import static org.atilf.models.disambiguisation.ContextResources.*;
+import static org.atilf.models.disambiguation.ContextResources.*;
 
 /**
  * @author Simon Meoni

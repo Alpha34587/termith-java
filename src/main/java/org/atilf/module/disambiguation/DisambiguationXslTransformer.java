@@ -1,4 +1,4 @@
-package org.atilf.module.disambiguisation;
+package org.atilf.module.disambiguation;
 
 import org.atilf.models.extractor.XslResources;
 import org.atilf.models.termith.TermithIndex;
@@ -15,15 +15,15 @@ import java.util.concurrent.CountDownLatch;
  * @author Simon Meoni
  *         Created on 02/11/16.
  */
-public class DisambXslTransformer extends TextExtractor {
+public class DisambiguationXslTransformer extends TextExtractor {
     private TermithIndex _termithIndex;
     private CountDownLatch _transformCounter;
-    private static final Logger LOGGER = LoggerFactory.getLogger(DisambXslTransformer.class.getName());
+    private static final Logger LOGGER = LoggerFactory.getLogger(DisambiguationXslTransformer.class.getName());
 
-    public DisambXslTransformer(File file, XslResources xslResources) {
+    public DisambiguationXslTransformer(File file, XslResources xslResources) {
         super(file,xslResources);}
 
-    public DisambXslTransformer(File file, CountDownLatch transformCounter, TermithIndex termithIndex, XslResources xslResources){
+    public DisambiguationXslTransformer(File file, CountDownLatch transformCounter, TermithIndex termithIndex, XslResources xslResources){
         super(file,xslResources);
         _transformCounter = transformCounter;
         _termithIndex = termithIndex;
