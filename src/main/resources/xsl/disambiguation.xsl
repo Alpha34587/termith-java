@@ -27,6 +27,7 @@
     </xsl:template>
 
     <xsl:template match="ns:standOff/@type"/>
+    <xsl:template match="ns:standOff"/>
 
     <xsl:template match="ns:standOff[@type = 'candidatsTermes']">
         <xsl:copy>

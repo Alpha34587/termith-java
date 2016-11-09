@@ -20,7 +20,7 @@ public class ContextExtractorTest {
     private Map<String,LexicalProfile> _expectedMap = new HashMap<>();
     private Map<String,LexicalProfile> _multiSub = new HashMap<>();
 
-    private ContextExtractor _subCorpus = new ContextExtractor(
+    private ContextExtractor _contextCorpus = new ContextExtractor(
             "src/test/resources/corpus/disambiguation/transform-tei/test2.xml",
             _multiSub
     );
@@ -40,6 +40,18 @@ public class ContextExtractorTest {
         _expectedLexAna.add("#DM3");
 
         Multiset<String> entry1 = HashMultiset.create();
+        entry1.add("ce PRO:DEM");
+        entry1.add("article NOM");
+        entry1.add("présenter VER:pres");
+        entry1.add("un DET:ART");
+        entry1.add("étude NOM");
+        entry1.add("comparer VER:pper");
+        entry1.add("du PRP:det");
+        entry1.add("donnée NOM");
+        entry1.add("archéo-ichtyofauniques ADJ");
+        entry1.add("livrer VER:pper");
+        entry1.add("par PRP");
+        entry1.add("deux NUM");
         entry1.add("du PRP:det");
         entry1.add("le DET:ART");
         entry1.add(". SENT");
@@ -64,31 +76,31 @@ public class ContextExtractorTest {
 
     @Test
     public void extractTerms() throws Exception {
-        _subCorpus.extractTerms();
+        _contextCorpus.extractTerms();
         Assert.assertEquals(
                 "these queues must have the same size",
                 _expectedTarget.size(),
-                _subCorpus.getTarget().size()
+                _contextCorpus.getTarget().size()
         );
-        _subCorpus.getTarget().forEach(
+        _contextCorpus.getTarget().forEach(
                 el -> Assert.assertEquals("target must be equals", _expectedTarget.poll(),el)
         );
 
         Assert.assertEquals(
                 "these queues must have the same size",
                 _expectedCorresp.size(),
-                _subCorpus.getCorresp().size()
+                _contextCorpus.getCorresp().size()
         );
-        _subCorpus.getCorresp().forEach(
+        _contextCorpus.getCorresp().forEach(
                 el -> Assert.assertEquals("terms id must be equals", _expectedCorresp.poll(),el)
         );
 
         Assert.assertEquals(
                 "these queues must have the same size",
                 _expectedLexAna.size(),
-                _subCorpus.getLexAna().size()
+                _contextCorpus.getLexAna().size()
         );
-        _subCorpus.getLexAna().forEach(
+        _contextCorpus.getLexAna().forEach(
                 el -> Assert.assertEquals("ana id must be equals", _expectedLexAna.poll(),el)
         );
 
@@ -96,11 +108,11 @@ public class ContextExtractorTest {
 
     @Test
     public void extractSubCorpus() throws Exception {
-        _subCorpus = new ContextExtractor(
+        _contextCorpus = new ContextExtractor(
                 "src/test/resources/corpus/disambiguation/transform-tei/test2.xml",
                 _multiSub
         );
-        _subCorpus.execute();
+        _contextCorpus.execute();
         Assert.assertEquals(
                 "this two map must have the same size",
                 _multiSub.size(),

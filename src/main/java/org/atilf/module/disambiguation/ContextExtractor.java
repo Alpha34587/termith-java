@@ -22,6 +22,7 @@ import static org.atilf.models.disambiguation.ContextResources.*;
  *         Created on 14/10/16.
  */
 public class ContextExtractor implements Runnable{
+    private XPathExpression _simpleGetter;
     Deque<String> _target = new ArrayDeque<>();
     Deque<String> _corresp = new ArrayDeque<>();
     Deque<String> _lexAna = new ArrayDeque<>();
@@ -32,9 +33,11 @@ public class ContextExtractor implements Runnable{
     XPathExpression _eAna;
     Map<String, LexicalProfile> _contextLexicon;
     private String _p;
-    private XPathExpression _eMultiTagsGetter;
-    private XPathExpression _eSimpleTagGetter;
+    private XPathExpression _lastGetter;
+    private XPathExpression _firstGetter;
+    private XPathExpression _eTagsGetter;
     private DocumentBuilder _dBuilder;
+    private Set<Node> _nodeSet = new HashSet<>();
     private Map<String, String> _xpathVariableMap = new HashMap<>();
     private static final Logger LOGGER = LoggerFactory.getLogger(ContextExtractor.class.getName());
 
@@ -59,11 +62,13 @@ public class ContextExtractor implements Runnable{
             LOGGER.error("error during the parsing of document",e);
         }
         try {
-            _eSpanTerms = xpath.compile(SPAN_T);
-            _eTarget = xpath.compile(TARGET_T);
-            _eCorresp = xpath.compile(CORRESP_T);
-            _eMultiTagsGetter = xpath.compile(MULTI_TEXT);
-            _eSimpleTagGetter = xpath.compile(SIMPLE_TEXT);
+            _eSpanTerms = xpath.compile(SPAN);
+            _eTarget = xpath.compile(TARGET);
+            _eCorresp = xpath.compile(CORRESP);
+            _eTagsGetter = xpath.compile(TAG_GETTER);
+            _simpleGetter = xpath.compile(CONTEXT_GETTER_SIMPLE);
+            _firstGetter = xpath.compile(CONTEXT_GETTER_FIRST);
+            _lastGetter = xpath.compile(CONTEXT_GETTER_LAST);
         } catch (XPathExpressionException e) {
             LOGGER.error("cannot compile xpath expression",e);
         }
@@ -83,10 +88,10 @@ public class ContextExtractor implements Runnable{
 
     public void execute() {
         extractTerms();
-        extractSubCorpus();
+        extractContext();
     }
 
-    void extractSubCorpus() {
+    void extractContext() {
         while (!_target.isEmpty()) {
             String t = _target.poll();
             String c = _corresp.poll();
@@ -99,7 +104,7 @@ public class ContextExtractor implements Runnable{
                 else
                     singleWordExtractor(c, l, tags.get(0));
 
-                LOGGER.info("add words to the term : " + c + "-" + l);
+                LOGGER.debug(("add words to the term : " + c + "-" + l).replace("#",""));
             } catch (XPathExpressionException e) {
                 LOGGER.error("error during the parsing of document", e);
             }
@@ -108,21 +113,50 @@ public class ContextExtractor implements Runnable{
 
     private void singleWordExtractor(String corresp, String lex, String tag) throws XPathExpressionException {
         _xpathVariableMap.put("c_id", tag);
-        NodeList nodes = (NodeList) _eSimpleTagGetter.evaluate(_doc, XPathConstants.NODESET);
-        extractWordForms(corresp, lex, nodes);
+
+        Node node = (Node) _simpleGetter.evaluate(_doc, XPathConstants.NODE);
+        addNodeList((NodeList) _eTagsGetter.evaluate(node, XPathConstants.NODESET));
+        extractWordForms(corresp, lex, tag);
+        _nodeSet.clear();
     }
 
     private void multiWordsExtractor(String corresp, String lex, List<String> tags) throws XPathExpressionException {
         _xpathVariableMap.put("first", tags.get(0));
         _xpathVariableMap.put("last", tags.get(tags.size() - 1));
-        NodeList nodes = (NodeList) _eMultiTagsGetter.evaluate(_doc, XPathConstants.NODESET);
-        extractWordForms(corresp, lex, nodes);
+        Node firstParentNode = (Node) _firstGetter.evaluate(_doc, XPathConstants.NODE);
+        Node lastParentNode = (Node) _lastGetter.evaluate(_doc, XPathConstants.NODE);
+        addNodeList((NodeList) _eTagsGetter.evaluate(firstParentNode, XPathConstants.NODESET));
+
+        if (!firstParentNode.equals(lastParentNode)) {
+            addNodeList((NodeList) _eTagsGetter.evaluate(lastParentNode, XPathConstants.NODESET));
+        }
+        extractWordForms(corresp, lex, tags);
+        _nodeSet.clear();
     }
 
-    private void extractWordForms(String c, String l, NodeList nodes) throws XPathExpressionException {
-        for (int i = 0; i < nodes.getLength(); i++) {
-            addOccToLexicalProfile(nodes.item(i).getTextContent(), c, l);
+    private void addNodeList(NodeList nodes) {
+        for (int i = 0; i < nodes.getLength(); i++){
+            _nodeSet.add(nodes.item(i));
         }
+    }
+
+    private void extractWordForms(String c, String l, String tag) throws XPathExpressionException {
+        ArrayList<String> list = new ArrayList<>();
+        list.add(tag);
+        extractWordForms(c, l, list);
+    }
+
+    private void extractWordForms(String c, String l, List<String> tags) throws XPathExpressionException {
+        List<String> duplicateTags = new ArrayList<>();
+        _nodeSet.forEach(
+                el -> {
+                    String id = el.getAttributes().getNamedItem("xml:id").getNodeValue();
+                    if (!tags.contains(id) && !duplicateTags.contains(id)) {
+                        addOccToLexicalProfile(el.getTextContent(), c, l);
+                        duplicateTags.add(id);
+                    }
+                }
+        );
     }
 
     public void extractTerms() {

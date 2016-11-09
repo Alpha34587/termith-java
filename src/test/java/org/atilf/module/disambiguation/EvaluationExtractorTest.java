@@ -102,7 +102,7 @@ public class EvaluationExtractorTest {
     @Test
     public void extractSubCorpusSimple() throws Exception {
         _evalExtractor2.extractTerms();
-        _evalExtractor2.extractSubCorpus();
+        _evalExtractor2.extractContext();
         expectedMap.forEach(
                 (key,value) -> {
                     Multiset observed = multiSub.get(key).getLexicalTable();

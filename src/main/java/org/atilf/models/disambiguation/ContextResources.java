@@ -41,23 +41,26 @@ public class ContextResources {
             return null;
         }
     };
-    public static final String SPAN_T;
-    public static final String TARGET_T;
-    public static final String CORRESP_T;
-    public static final String ANA_T;
-    public static final String MULTI_TEXT;
-    public static final String SIMPLE_TEXT;
+    public static final String SPAN;
+    public static final String TARGET;
+    public static final String CORRESP;
+    public static final String ANA;
+    public static final String CONTEXT_GETTER_SIMPLE;
+    public static final String TAG_GETTER;
+    public static final String CONTEXT_GETTER_LAST;
+    public static final String CONTEXT_GETTER_FIRST;
+
     private final static Logger LOGGER = LoggerFactory.getLogger(ContextResources.class);
 
     static {
-        SPAN_T = "//ns:standOff/tei:span";
-        TARGET_T = "@target";
-        CORRESP_T = "@corresp";
-        ANA_T = "@ana";
-        SIMPLE_TEXT = "/tei:TEI/tei:text//tei:w[./preceding-sibling::tei:w[@xml:id = $c_id ] " +
-                "or ./following-sibling::tei:w[@xml:id = $c_id]]";
-        MULTI_TEXT = "/tei:TEI/tei:text//tei:w[./preceding-sibling::tei:w[@xml:id = $last] or " +
-                "./following-sibling::tei:w[@xml:id = $first]]";
+        SPAN = "//ns:standOff/tei:span";
+        TARGET = "@target";
+        CORRESP = "@corresp";
+        ANA = "@ana";
+        TAG_GETTER = ".//tei:w";
+        CONTEXT_GETTER_SIMPLE = "/tei:TEI/tei:text//tei:w[@xml:id = $c_id]/..";
+        CONTEXT_GETTER_FIRST = "/tei:TEI/tei:text//tei:w[@xml:id = $first]/..";
+        CONTEXT_GETTER_LAST = "/tei:TEI/tei:text//tei:w[@xml:id = $last]/..";
     }
 
 }

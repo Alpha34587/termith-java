@@ -2,9 +2,6 @@ package org.atilf.runner;
 
 import org.atilf.models.termith.TermithIndex;
 import org.atilf.thread.disambiguation.ContextLexiconThread;
-import org.atilf.thread.disambiguation.DisambiguationEvaluationThread;
-import org.atilf.thread.disambiguation.DisambiguationExporterThread;
-import org.atilf.thread.disambiguation.LexiconProfileThread;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -31,33 +28,34 @@ public class Disambiguation {
     }
 
     public void execute() {
-        ContextLexiconThread lexicon = new ContextLexiconThread(_termithIndex, _poolSize);
+        ContextLexiconThread lexicon = new ContextLexiconThread(_termithIndex, 8);
         try {
             lexicon.execute();
         } catch (IOException | InterruptedException e) {
             LOGGER.error("errors during the sub-lexicon phase : ", e);
             Thread.currentThread().interrupt();
         }
-        LexiconProfileThread lexiconProfileThread = new LexiconProfileThread(_termithIndex, _poolSize);
-        try {
-            lexiconProfileThread.execute();
-        } catch (InterruptedException e) {
-            LOGGER.error("errors during the lexicon profile phase : ", e);
-            Thread.currentThread().interrupt();
-        }
-        DisambiguationEvaluationThread evaluation = new DisambiguationEvaluationThread(_termithIndex, _poolSize);
-        try {
-            evaluation.execute();
-        } catch (IOException | InterruptedException e) {
-            LOGGER.error("errors during evaluation phase : ", e);
-            Thread.currentThread().interrupt();
-        }
-        DisambiguationExporterThread exporter = new DisambiguationExporterThread(_termithIndex, _poolSize);
-        try {
-            exporter.execute();
-        } catch (IOException | InterruptedException e) {
-            LOGGER.error("errors during exporting phase : ", e);
-            Thread.currentThread().interrupt();
-        }
+        int a = 0;
+//        LexiconProfileThread lexiconProfileThread = new LexiconProfileThread(_executorService, _poolSize);
+//        try {
+//            lexiconProfileThread.execute();
+//        } catch (InterruptedException e) {
+//            LOGGER.error("errors during the lexicon profile phase : ", e);
+//            Thread.currentThread().interrupt();
+//        }
+//        DisambiguationEvaluationThread evaluation = new DisambiguationEvaluationThread(_executorService, _poolSize);
+//        try {
+//            evaluation.execute();
+//        } catch (IOException | InterruptedException e) {
+//            LOGGER.error("errors during evaluation phase : ", e);
+//            Thread.currentThread().interrupt();
+//        }
+//        DisambiguationExporterThread exporter = new DisambiguationExporterThread(_executorService, _poolSize);
+//        try {
+//            exporter.execute();
+//        } catch (IOException | InterruptedException e) {
+//            LOGGER.error("errors during exporting phase : ", e);
+//            Thread.currentThread().interrupt();
+//        }
     }
 }

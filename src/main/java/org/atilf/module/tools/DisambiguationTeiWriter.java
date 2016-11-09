@@ -60,9 +60,9 @@ public class DisambiguationTeiWriter implements Runnable {
         XPathExpression ana;
         XPathExpression corresp;
         try {
-            span = _xpath.compile(SPAN_T);
-            ana = _xpath.compile(ANA_T);
-            corresp = _xpath.compile(CORRESP_T);
+            span = _xpath.compile(SPAN);
+            ana = _xpath.compile(ANA);
+            corresp = _xpath.compile(CORRESP);
             NodeList termNodes = (NodeList) span.evaluate(_doc, XPathConstants.NODESET);
             for (int i = 0; i < termNodes.getLength(); i++){
                 Node correspVal = (Node) corresp.evaluate(termNodes.item(i), XPathConstants.NODE);

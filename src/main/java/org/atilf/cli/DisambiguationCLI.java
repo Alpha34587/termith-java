@@ -41,13 +41,16 @@ public class DisambiguationCLI {
         Option terminology = new Option("t","terminology",true,"set terminology path");
         terminology.setRequired(true);
         Option annotation = new Option("a","annotation",true,"set annotation json path");
-        annotation.setRequired(true);
-
+        annotation.setRequired(false);
+        Option debug = new Option("d","debug",true,"show debug log");
+        debug.setRequired(false);
+        debug.setArgs(0);
 
         options.addOption(in);
         options.addOption(out);
         options.addOption(lang);
         options.addOption(terminology);
+        options.addOption(debug);
         options.addOption(annotation);
 
         try {
@@ -58,7 +61,6 @@ public class DisambiguationCLI {
                     .lang(line.getOptionValue("l"))
                     .baseFolder(line.getOptionValue("i"))
                     .terminology(line.getOptionValue("t"))
-                    .annotation(line.getOptionValue("a"))
                     .export(line.getOptionValue("o"))
                     .build();
             CLIUtils.setGlobalLogLevel(Level.INFO);
@@ -66,7 +68,6 @@ public class DisambiguationCLI {
             if (line.hasOption("debug")){
                 CLIUtils.setGlobalLogLevel(Level.DEBUG);
             }
-
 
             new Disambiguation(termithIndex).execute();
 
