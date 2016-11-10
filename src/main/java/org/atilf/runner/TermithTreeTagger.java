@@ -41,7 +41,7 @@ public class TermithTreeTagger {
         LOGGER.info("Pool size set to: " + _poolSize);
         LOGGER.info("First Phase Started : Text extraction");
         try{
-            InitializerThread initializerThread = new InitializerThread(_poolSize, _termithIndex);
+            InitializerThread initializerThread = new InitializerThread(_termithIndex, _poolSize);
             initializerThread.execute();
         } catch ( Exception e ) {
             LOGGER.error("Error during execution of the extraction text phase : ",e);
@@ -50,7 +50,7 @@ public class TermithTreeTagger {
         LOGGER.info("First Phase Finished : Text extraction");
 
         LOGGER.info("Starting Second Phase Started: Analyze Phase");
-        AnalyzeThread analyzeThread = new AnalyzeThread(_poolSize, _termithIndex);
+        AnalyzeThread analyzeThread = new AnalyzeThread(_termithIndex, _poolSize);
         try {
             analyzeThread.execute();
         } catch ( Exception e ) {

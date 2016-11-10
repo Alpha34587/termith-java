@@ -12,7 +12,7 @@ import java.util.concurrent.CountDownLatch;
  * @author Simon Meoni
  *         Created on 16/09/16.
  */
-public class InitializeCorpus implements Runnable {
+public class CorpusMapper implements Runnable {
     private Path path;
     private TermithIndex termithIndex;
     private CountDownLatch corpusCnt;
@@ -22,7 +22,7 @@ public class InitializeCorpus implements Runnable {
      * constructor of the class the parameter path is the path of the file that we want to treated
      * @param path path of the input file
      */
-    public InitializeCorpus(Path path, TermithIndex termithIndex) {
+    public CorpusMapper(Path path, TermithIndex termithIndex) {
         this(path, termithIndex, new CountDownLatch(termithIndex.getXmlCorpus().size()));
     }
 
@@ -31,7 +31,7 @@ public class InitializeCorpus implements Runnable {
      * @param path path of the input
      * @param corpusCnt remains files to add to corpus
      */
-    public InitializeCorpus(Path path, TermithIndex termithIndex, CountDownLatch corpusCnt) {
+    public CorpusMapper(Path path, TermithIndex termithIndex, CountDownLatch corpusCnt) {
         this.path = path;
         this.termithIndex = termithIndex;
         this.corpusCnt = corpusCnt;

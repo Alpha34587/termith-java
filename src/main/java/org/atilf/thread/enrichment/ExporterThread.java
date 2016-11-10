@@ -4,53 +4,62 @@ import org.atilf.models.tei.exporter.StandOffResources;
 import org.atilf.models.termith.TermithIndex;
 import org.atilf.module.timer.ExporterTimer;
 import org.atilf.module.tools.TeiWriter;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.atilf.thread.Thread;
 
-import java.io.IOException;
-import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 /**
  * @author Simon Meoni
  *         Created on 19/09/16.
  */
-public class ExporterThread {
-
-    private TermithIndex _termithIndex;
-    private ExecutorService _executor;
-    private CountDownLatch _corpusCnt;
-    private static final int DEFAULT_POOL_SIZE = Runtime.getRuntime().availableProcessors();
-    private static final Logger LOGGER =  LoggerFactory.getLogger(ExporterThread.class.getName());
+public class ExporterThread extends Thread {
 
     /**
-     * a constructor of initialize who take on parameter a folder path with xml files
-     * @param termithIndex the input folder
+     * this constructor initialize the _termithIndex fields and initialize the _poolSize field with the default value
+     * with the number of available processors.
+     * @param termithIndex the termithIndex is an object that contains the results of the process*
      */
-    public ExporterThread(TermithIndex termithIndex) throws IOException {
-        this(DEFAULT_POOL_SIZE, termithIndex);
+    protected ExporterThread(TermithIndex termithIndex){
+        super(termithIndex, DEFAULT_POOL_SIZE);
     }
 
     /**
-     * this constructor can be specify the number of org.atilf.worker for this process
-     * @param poolSize number of org.atilf.worker
-     * @param termithIndex the input of folder
+     * this constructor initialize all the needed fields. it initialize the termithIndex who contains the result of
+     * process and initialize the size of the pool of _executorService field.
+     * @param termithIndex the termithIndex is an object that contains the results of the process
+     * @param poolSize the number of thread used during the process
+     * @see TermithIndex
+     * @see ExecutorService
      */
-    public ExporterThread(int poolSize, TermithIndex termithIndex) throws IOException {
-        _termithIndex = termithIndex;
-        _executor = Executors.newFixedThreadPool(poolSize);
+    public ExporterThread(TermithIndex termithIndex, int poolSize) {
+        super(termithIndex,poolSize);
     }
 
+    /**
+     * this method export the result of process to the tei file format
+     * @throws InterruptedException throws java concurrent executorService exception
+     */
     public void execute() throws InterruptedException {
-        new ExporterTimer(_termithIndex,LOGGER).start();
+        /*
+         initializerExporter timer
+         */
+        new ExporterTimer(_termithIndex,_logger).start();
+
+        /*
+        initialize standoff resource object
+         */
+
         StandOffResources standOffResources = new StandOffResources();
+
+        /*
+        export result
+         */
         _termithIndex.getXmlCorpus().forEach(
-                (key,value) -> _executor.submit(new TeiWriter(key, _termithIndex,standOffResources))
+                (key,value) -> _executorService.submit(new TeiWriter(key, _termithIndex,standOffResources))
         );
-        LOGGER.info("Waiting executors to finish");
-        _executor.shutdown();
-        _executor.awaitTermination(1L, TimeUnit.DAYS);
+        _logger.info("Waiting executors to finish");
+        _executorService.shutdown();
+        _executorService.awaitTermination(1L, TimeUnit.DAYS);
     }
 }

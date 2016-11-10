@@ -27,7 +27,7 @@ public class Exporter {
     public void execute() throws InterruptedException {
         LOGGER.info("Tei exportation phase starting :");
         try{
-            ExporterThread exporter = new ExporterThread(_poolSize, _termithIndex);
+            ExporterThread exporter = new ExporterThread(_termithIndex, _poolSize);
             exporter.execute();
         } catch ( Exception e ) {
             LOGGER.error("Error during execution of the extraction text phase : ",e);
