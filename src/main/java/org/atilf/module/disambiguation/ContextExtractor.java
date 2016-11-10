@@ -147,13 +147,11 @@ public class ContextExtractor implements Runnable{
     }
 
     private void extractWordForms(String c, String l, List<String> tags) throws XPathExpressionException {
-        List<String> duplicateTags = new ArrayList<>();
         _nodeSet.forEach(
                 el -> {
                     String id = el.getAttributes().getNamedItem("xml:id").getNodeValue();
-                    if (!tags.contains(id) && !duplicateTags.contains(id)) {
+                    if (!tags.contains(id)) {
                         addOccToLexicalProfile(el.getTextContent(), c, l);
-                        duplicateTags.add(id);
                     }
                 }
         );
