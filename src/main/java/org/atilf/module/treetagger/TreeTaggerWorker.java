@@ -2,6 +2,7 @@ package org.atilf.module.treetagger;
 
 import org.atilf.models.termith.TermithIndex;
 import org.atilf.models.termsuite.TextAnalyzer;
+import org.atilf.models.treetagger.TagNormalizer;
 import org.atilf.module.tei.morphology.SyntaxGenerator;
 import org.atilf.module.tools.FilesUtils;
 import org.slf4j.Logger;
@@ -47,6 +48,7 @@ public class TreeTaggerWorker implements Runnable {
 
     @Override
     public void run() {
+        init();
         TreeTaggerToJson treeTaggerToJson = new TreeTaggerToJson(
                 _txt,
                 _jsonPath,
@@ -83,4 +85,16 @@ public class TreeTaggerWorker implements Runnable {
             LOGGER.error("error during xml tokenization parsing",e);
         }
     }
+
+    private void init(){
+        try {
+        TagNormalizer.initTag(TermithIndex.getLang());
+        Files.createDirectories(Paths.get(_termithIndex.getCorpus() + "/txt"));
+        LOGGER.debug("create temporary text files in " + _termithIndex.getCorpus() + "/txt folder");
+            Files.createDirectories(Paths.get(_termithIndex.getCorpus() + "/json"));
+        } catch (IOException e) {
+            LOGGER.error("cannot create directories : ",e);
+        }
+    }
+
 }

@@ -2,7 +2,6 @@ package org.atilf.thread.enrichment;
 
 import org.atilf.models.termith.TermithIndex;
 import org.atilf.models.termsuite.MorphologyOffsetId;
-import org.atilf.models.treetagger.TagNormalizer;
 import org.atilf.module.termsuite.TermsuitePipelineBuilder;
 import org.atilf.module.termsuite.terminology.TerminologyParser;
 import org.atilf.module.termsuite.terminology.TerminologyStandOff;
@@ -15,8 +14,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.*;
@@ -54,7 +51,6 @@ public class AnalyzeThread {
     }
 
     public void execute() throws InterruptedException, IOException, ExecutionException {
-        init();
         new TokenizeTimer(_termithIndex,LOGGER).start();
         new JsonTimer(_termithIndex,LOGGER).start();
 
@@ -84,12 +80,5 @@ public class AnalyzeThread {
         _executorService.shutdown();
         _executorService.awaitTermination(1L,TimeUnit.DAYS);
         LOGGER.info("terminology extraction finished");
-    }
-
-    private void init() throws IOException {
-        TagNormalizer.initTag(TermithIndex.getLang());
-        Files.createDirectories(Paths.get(_termithIndex.getCorpus() + "/json"));
-        Files.createDirectories(Paths.get(_termithIndex.getCorpus() + "/txt"));
-        LOGGER.debug("create temporary text files in " + _termithIndex.getCorpus() + "/txt folder");
     }
 }
