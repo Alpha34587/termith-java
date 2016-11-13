@@ -15,14 +15,14 @@ import java.io.IOException;
 public class Disambiguation extends Runner {
     
     public Disambiguation(TermithIndex termithIndex){
-        this(termithIndex, Runner.DEFAULT_POOL_SIZE);
+        super(termithIndex, Runner.DEFAULT_POOL_SIZE);
     }
 
     public Disambiguation(TermithIndex termithIndex, int poolSize){
-        _poolSize = poolSize;
-        _termithIndex = termithIndex;
+        super(termithIndex, poolSize);
     }
 
+    @Override
     public void execute() {
         ContextLexiconThread lexicon = new ContextLexiconThread(_termithIndex, _poolSize);
         try {

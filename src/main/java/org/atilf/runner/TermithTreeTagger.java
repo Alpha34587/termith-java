@@ -16,25 +16,22 @@ import static java.lang.System.exit;
  */
 public class TermithTreeTagger extends Runner {
 
-    public TermithTreeTagger(TermithIndex termithIndex) throws IOException {
-        this(termithIndex, Runner.DEFAULT_POOL_SIZE);
+    public TermithTreeTagger(TermithIndex termithIndex) {
+        super(termithIndex, Runner.DEFAULT_POOL_SIZE);
     }
 
-
-    public TermithTreeTagger(TermithIndex termithIndex,int poolSize) throws IOException {
-        _poolSize = poolSize;
-        _termithIndex = termithIndex;
-
+    public TermithTreeTagger(TermithIndex termithIndex, int poolSize) {
+        super(termithIndex, poolSize);
     }
 
     public TermithIndex getTermithIndex() {
         return _termithIndex;
     }
 
+    @Override
     public void execute() throws IOException, InterruptedException {
 
         _logger.info("Pool size set to: " + _poolSize);
-
         /*
         Extraction text phase
          */

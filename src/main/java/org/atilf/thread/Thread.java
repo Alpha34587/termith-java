@@ -13,6 +13,9 @@ import java.util.concurrent.Executors;
  * @author Simon Meoni Created on 10/11/16.
  */
 public abstract class Thread {
+    protected static final int DEFAULT_POOL_SIZE = Runtime.getRuntime().availableProcessors();
+    protected final ExecutorService _executorService;
+    protected final Logger _logger = LoggerFactory.getLogger(this.getClass().getName());
     /**
      * the abstract class Thread is a main part of the workflow of the termith process. The runner classes call the
      * inherit Thread classes linearly.
@@ -20,14 +23,11 @@ public abstract class Thread {
      * who process the file corpus
      */
     protected TermithIndex _termithIndex;
-    protected final ExecutorService _executorService;
-    protected static final int DEFAULT_POOL_SIZE = Runtime.getRuntime().availableProcessors();
-    protected final Logger _logger = LoggerFactory.getLogger(this.getClass().getName());
 
     /**
      * this constructor initialize the _termithIndex fields and initialize the _poolSize field with the default value
      * with the number of available processors.
-     * @param termithIndex the termithIndex is an object that contains the results of the process*
+     * @param termithIndex the termithIndex is an object that contains the results of the process
      */
     protected Thread(TermithIndex termithIndex){
         this(termithIndex, DEFAULT_POOL_SIZE);
