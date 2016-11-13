@@ -4,8 +4,6 @@ import ch.qos.logback.classic.Level;
 import org.apache.commons.cli.*;
 import org.atilf.models.termith.TermithIndex;
 import org.atilf.module.tools.CLIUtils;
-import org.atilf.runner.Cleaner;
-import org.atilf.runner.Exporter;
 import org.atilf.runner.TermithTreeTagger;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -72,13 +70,7 @@ public class TermithTreeTaggerCLI {
             if (line.hasOption("debug")){
                 CLIUtils.setGlobalLogLevel(Level.DEBUG);
             }
-
-
             new TermithTreeTagger(termithIndex).execute();
-            Exporter exporter = new Exporter(termithIndex);
-            exporter.execute();
-            Cleaner cleaner = new Cleaner();
-            cleaner.execute();
         } catch (ParseException e) {
             LOGGER.error("There are some problems during parsing arguments : ",e);
         }
