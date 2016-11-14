@@ -57,5 +57,5 @@ public abstract class Thread {
      * @throws InterruptedException thrown if awaitTermination function is interrupted while waiting
      * @throws ExecutionException thrown a exception if a system process is interrupted
      */
-    protected void execute() throws IOException, InterruptedException, ExecutionException {}
+    public void execute() throws IOException, InterruptedException, ExecutionException {}
 }

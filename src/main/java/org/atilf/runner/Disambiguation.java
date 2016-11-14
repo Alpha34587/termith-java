@@ -7,10 +7,12 @@ import org.atilf.thread.disambiguation.EvaluationThread;
 import org.atilf.thread.disambiguation.LexiconProfileThread;
 
 import java.io.IOException;
+import java.util.concurrent.ExecutionException;
 
 /**
  * @author Simon Meoni
  *         Created on 11/10/16.
+ *         this is the disambiguation process of termITH
  */
 public class Disambiguation extends Runner {
 
@@ -49,45 +51,29 @@ public class Disambiguation extends Runner {
      */
     @Override
     public void execute() {
+        try {
+            _logger.info("Pool size set to: " + _poolSize);
+
         /*
         Context extraction phase
          */
-        ContextLexiconThread lexicon = new ContextLexiconThread(_termithIndex, _poolSize);
-        try {
-            lexicon.execute();
-        } catch (IOException | InterruptedException e) {
-            _logger.error("errors during the sub-lexicon phase : ", e);
-            Thread.currentThread().interrupt();
-        }
-        /*
+            executeThread(ContextLexiconThread.class,_termithIndex,_poolSize);
+                        /*
         Lexicon profile processing
          */
-        LexiconProfileThread lexiconProfileThread = new LexiconProfileThread(_termithIndex, _poolSize);
-        try {
-            lexiconProfileThread.execute();
-        } catch (InterruptedException e) {
-            _logger.error("errors during the lexicon profile phase : ", e);
-            Thread.currentThread().interrupt();
-        }
+            executeThread(LexiconProfileThread.class,_termithIndex, _poolSize);
         /*
         Evaluation phase
          */
-        EvaluationThread evaluation = new EvaluationThread(_termithIndex, _poolSize);
-        try {
-            evaluation.execute();
-        } catch (IOException | InterruptedException e) {
-            _logger.error("errors during evaluation phase : ", e);
-            Thread.currentThread().interrupt();
-        }
+            executeThread(EvaluationThread.class,_termithIndex,_poolSize);
         /*
         Export results
          */
-        DisambiguationExporterThread exporter = new DisambiguationExporterThread(_termithIndex, _poolSize);
-        try {
-            exporter.execute();
-        } catch (IOException | InterruptedException e) {
-            _logger.error("errors during exporting phase : ", e);
-            Thread.currentThread().interrupt();
+            executeThread(DisambiguationExporterThread.class,_termithIndex,_poolSize);
+        } catch (InterruptedException | ExecutionException | IOException e) {
+            _logger.error("error during execution of thread : ", e);
         }
+
     }
+
 }

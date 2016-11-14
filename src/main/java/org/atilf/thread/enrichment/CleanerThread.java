@@ -12,6 +12,10 @@ import java.util.concurrent.TimeUnit;
  */
 public class CleanerThread extends Thread{
 
+    public CleanerThread(TermithIndex termithIndex, int poolSize) {
+        super(termithIndex,poolSize);
+    }
+
     /**
      * this method cleans the working directory of termith process. It remove all serialized java object remained and
      * the json and txt folder

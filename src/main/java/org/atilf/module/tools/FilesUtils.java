@@ -115,6 +115,7 @@ public class FilesUtils {
         return filePath;
     }
 
+    @SuppressWarnings("unchecked")
     public static <T> List<T> readListObject(Path filePath, Class<T> type){
 
         ObjectInputStream in;

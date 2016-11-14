@@ -7,12 +7,12 @@ import org.atilf.thread.enrichment.ExporterThread;
 import org.atilf.thread.enrichment.InitializerThread;
 
 import java.io.IOException;
-
-import static java.lang.System.exit;
+import java.util.concurrent.ExecutionException;
 
 /**
  * @author Simon Meoni
  *         Created on 16/09/16.
+ *         this is the analysis process of morphology (with treeTagger) and terminology of a corpus
  */
 public class TermithTreeTagger extends Runner {
 
@@ -45,57 +45,27 @@ public class TermithTreeTagger extends Runner {
      */
     @Override
     public void execute() throws IOException, InterruptedException {
-
-        _logger.info("Pool size set to: " + _poolSize);
+        try {
         /*
         Extraction text phase
          */
-        _logger.info("First Phase Started : Text extraction");
-        try{
-            InitializerThread initializerThread = new InitializerThread(_termithIndex, _poolSize);
-            initializerThread.execute();
-        } catch ( Exception e ) {
-            _logger.error("Error during execution of the extraction text phase : ", e);
-            exit(1);
-        }
-        _logger.info("First Phase Finished : Text extraction");
-
-        /*
+            executeThread(InitializerThread.class,_termithIndex,_poolSize);
+                    /*
         Morphology and terminology analysis phase
          */
-        _logger.info("Starting Second Phase Started: Analyze Phase");
-        AnalyzeThread analyzeThread = new AnalyzeThread(_termithIndex, _poolSize);
-        try {
-            analyzeThread.execute();
-        } catch ( Exception e ) {
-            _logger.error("Error during execution of the analyze phase : ", e);
-            exit(1);
-        }
-        _logger.info("Starting Second Phase Finished: Analyze Phase");
-
+            executeThread(AnalyzeThread.class,_termithIndex, _poolSize);
         /*
         Tei exportation phase
          */
-        _logger.info("Tei exportation phase starting :");
-        try {
-            ExporterThread exporter = new ExporterThread(_termithIndex, _poolSize);
-            exporter.execute();
-        } catch (Exception e) {
-            _logger.error("Error during execution of the extraction text phase : ", e);
-            exit(1);
-        }
-
+            executeThread(ExporterThread.class,_termithIndex,_poolSize);
         /*
         Clean working directory
          */
-        _logger.info("Cleaning working directory");
-        try {
-            CleanerThread cleaner = new CleanerThread();
-            cleaner.execute();
-        } catch (Exception e) {
-            _logger.error("Error during execution of the extraction text phase : ", e);
-            exit(1);
+            executeThread(CleanerThread.class,_termithIndex,_poolSize);
+        } catch (ExecutionException e) {
+            e.printStackTrace();
         }
+
     }
 
 }
