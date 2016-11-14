@@ -13,6 +13,7 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
 /**
+ * transform files of a corpus into working file format and extract context of the terminology entry of corpus
  * @author Simon Meoni
  *         Created on 12/10/16.
  */

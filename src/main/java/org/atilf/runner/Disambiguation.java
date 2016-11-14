@@ -10,9 +10,9 @@ import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
 /**
+ * this is the disambiguation process of termITH
  * @author Simon Meoni
  *         Created on 11/10/16.
- *         this is the disambiguation process of termITH
  */
 public class Disambiguation extends Runner {
 

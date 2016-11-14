@@ -40,7 +40,7 @@ public class TermithIndex {
     Disambiguation  core fields
      */
 
-    private Map<String, LexicalProfile> _termSubLexicon = new ConcurrentHashMap<>();
+    private Map<String, LexicalProfile> _contextLexicon = new ConcurrentHashMap<>();
     private Map<String,Map<String, EvaluationProfile>> _evaluationLexicon = new ConcurrentHashMap<>();
     private GlobalLexicon _globalLexicon = new GlobalLexicon(new ConcurrentHashMap<>(),new ConcurrentHashMap<>());
     private Map<String, Path> _disambiguationTranformedFile = new ConcurrentHashMap<>();
@@ -123,7 +123,7 @@ public class TermithIndex {
     }
 
     public Map<String, LexicalProfile> getContextLexicon() {
-        return _termSubLexicon;
+        return _contextLexicon;
     }
 
     public Map<String, Path> getExtractedText() {

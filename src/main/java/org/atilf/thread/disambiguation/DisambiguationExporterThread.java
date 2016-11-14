@@ -11,6 +11,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.TimeUnit;
 
 /**
+ * export the result of the disambiguation to the tei/standoff xml file format
  * @author Simon Meoni
  *         Created on 25/10/16.
  */

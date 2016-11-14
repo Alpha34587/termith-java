@@ -18,8 +18,6 @@ import java.util.*;
 import static org.atilf.models.disambiguation.ContextResources.*;
 
 /**
- * @author Simon Meoni
- *         Created on 14/10/16.
  *         - the context extractor moudule extract the context of a terminology entries of the learning corpus.
  *         - the extraction is performed on the working xml files format converted with the
  *         DisambiguationXslTransformer module
@@ -82,6 +80,8 @@ import static org.atilf.models.disambiguation.ContextResources.*;
  *
  *        the principle is to find the parent node of the term candidate and extract all the w element except the
  *        node belongs to the occurence term candidate
+ * @author Simon Meoni
+ *         Created on 14/10/16.
  *
  */
 public class ContextExtractor implements Runnable{

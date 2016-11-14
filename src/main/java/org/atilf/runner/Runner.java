@@ -10,8 +10,8 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.concurrent.ExecutionException;
 
 /**
- * @author Simon Meoni Created on 10/11/16.
  * This class is used to create some Thread inherited classes and execute each of them linearly.
+ * @author Simon Meoni Created on 10/11/16.
  */
 public abstract class Runner {
 

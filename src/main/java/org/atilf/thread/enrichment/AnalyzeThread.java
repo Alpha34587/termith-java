@@ -22,18 +22,16 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.TimeUnit;
 
 /**
+ * The AnalyzeThread calls several modules classes which analyze the morphology of each file in the corpus and the
+ * terminology of the corpus. The morphology is analyzed with a treetagger wrapper. The result is serialized to
+ * the json termsuite format. The terminology uses the json files write during the analyze of the morphology.
+ * The terminology is export as two json and tbx files. Finally the result of the phase is prepared in order to
+ * write them into the tei files of the corpus
  * @author Simon Meoni
  *         Created on 01/09/16.
  */
 public class AnalyzeThread extends Thread{
 
-    /**
-     * The AnalyzeThread calls several modules classes which analyze the morphology of each file in the corpus and the
-     * terminology of the corpus. The morphology is analyzed with a treetagger wrapper. The result is serialized to
-     * the json termsuite format. The terminology uses the json files write during the analyze of the morphology.
-     * The terminology is export as two json and tbx files. Finally the result of the phase is prepared in order to
-     * write them into the tei files of the corpus
-     */
     private CountDownLatch _jsonCnt;
 
     /**

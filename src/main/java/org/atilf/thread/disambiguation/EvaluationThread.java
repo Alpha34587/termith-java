@@ -11,6 +11,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.TimeUnit;
 
 /**
+ * Evaluate the corpus with the lexicalProfile creates with the LexiconProfileThread
  * @author Simon Meoni
  *         Created on 12/10/16.
  */

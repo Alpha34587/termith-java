@@ -13,12 +13,20 @@ public class Evaluation implements Runnable{
     private float _factorOn = 0f;
     private float _factorOff = 0f;
 
+    /**
+     *
+     * @param evaluationProfile
+     * @param termSubLexicon
+     */
     public Evaluation(Map<String, EvaluationProfile> evaluationProfile, Map<String, LexicalProfile> termSubLexicon) {
 
         _evaluationProfile = evaluationProfile;
         _termSubLexicon = termSubLexicon;
     }
 
+    /**
+     *
+     */
     public void execute() {
         _evaluationProfile.forEach(
                 (key,value) ->
@@ -44,6 +52,12 @@ public class Evaluation implements Runnable{
 
     }
 
+    /**
+     *
+     * @param lexEntryOn
+     * @param lexEntryOff
+     * @param entry
+     */
     private void compareFactor(float lexEntryOn, float lexEntryOff, EvaluationProfile entry) {
         if (lexEntryOff >= lexEntryOn){
             entry.setDisambiguationId("DaOff");
@@ -53,6 +67,12 @@ public class Evaluation implements Runnable{
         }
     }
 
+    /**
+     *
+     * @param entry
+     * @param lexOn
+     * @param lexOff
+     */
     private void computeFactor(EvaluationProfile entry,
                                 LexicalProfile lexOn,
                                 LexicalProfile lexOff) {
@@ -64,14 +84,29 @@ public class Evaluation implements Runnable{
         );
     }
 
+    /**
+     *
+     * @param specCoefficient
+     * @param nbOcc
+     * @return
+     */
     private float occurrenceScore(float specCoefficient, int nbOcc) {
         return (float) nbOcc * specCoefficient;
     }
 
+    /**
+     *
+     * @param key
+     * @param token
+     * @return
+     */
     private String formatEntry(String key, String token) {
         return key.split("_")[0] + "_lex" + token;
     }
 
+    /**
+     *
+     */
     @Override
     public void run() {
         this.execute();

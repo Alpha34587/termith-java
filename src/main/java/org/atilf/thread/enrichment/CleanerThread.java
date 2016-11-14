@@ -7,6 +7,7 @@ import org.atilf.thread.Thread;
 import java.util.concurrent.TimeUnit;
 
 /**
+ * clean the working directory file after a process
  * @author Simon Meoni
  *         Created on 27/09/16.
  */

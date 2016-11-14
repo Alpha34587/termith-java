@@ -10,6 +10,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.TimeUnit;
 
 /**
+ * The ExporterThread export the result of a the termithTreeTagger runner into a tei/standoff xml format
  * @author Simon Meoni
  *         Created on 19/09/16.
  */

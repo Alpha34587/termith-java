@@ -13,6 +13,7 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
 /**
+ * Extract the plain text of an xml file and retained the xml corpus file path into a map
  * @author Simon Meoni
  * Created on 25/07/16.
  */

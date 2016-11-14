@@ -10,18 +10,16 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
+ * the abstract class Thread is a main part of the workflow of the termith process. The runner classes call the
+ * inherit Thread classes linearly.
+ * The execute method is contains the multithreaded jobs (like the classes module inherited from the Runnable class)
+ * who process the file corpus
  * @author Simon Meoni Created on 10/11/16.
  */
 public abstract class Thread {
     protected static final int DEFAULT_POOL_SIZE = Runtime.getRuntime().availableProcessors();
     protected final ExecutorService _executorService;
     protected final Logger _logger = LoggerFactory.getLogger(this.getClass().getName());
-    /**
-     * the abstract class Thread is a main part of the workflow of the termith process. The runner classes call the
-     * inherit Thread classes linearly.
-     * The execute method is contains the multithreaded jobs (like the classes module inherited from the Runnable class)
-     * who process the file corpus
-     */
     protected TermithIndex _termithIndex;
 
     /**

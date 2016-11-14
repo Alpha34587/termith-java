@@ -10,9 +10,9 @@ import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
 /**
+ * this is the analysis process of morphology (with treeTagger) and terminology of a corpus
  * @author Simon Meoni
  *         Created on 16/09/16.
- *         this is the analysis process of morphology (with treeTagger) and terminology of a corpus
  */
 public class TermithTreeTagger extends Runner {
 
