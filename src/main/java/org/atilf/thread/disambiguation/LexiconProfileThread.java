@@ -19,7 +19,7 @@ public class LexiconProfileThread extends Thread{
      * with the number of available processors.
      *
      * @param termithIndex
-     *         the termithIndex is an object that contains the results of the process*
+     *         the termithIndex is an object that contains the results of the process
      */
     public LexiconProfileThread(TermithIndex termithIndex) {
         super(termithIndex);
