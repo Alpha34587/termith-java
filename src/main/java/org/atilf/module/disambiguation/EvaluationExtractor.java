@@ -54,7 +54,7 @@ public class EvaluationExtractor extends ContextExtractor {
 
     private void extractWithNoLProfile(NodeList nodes) throws XPathExpressionException {
         for (int i = 0; i < nodes.getLength(); i++) {
-            String ana = _eAna.evaluate(nodes.item(i));
+            String ana = nodes.item(i).getAttributes().getNamedItem("ana").getNodeValue();
             if (!ana.isEmpty()){
                 addToTermsQueues(nodes.item(i), ana);
             }
@@ -63,10 +63,10 @@ public class EvaluationExtractor extends ContextExtractor {
 
     private void extractWithLProfile(NodeList nodes) throws XPathExpressionException {
         for (int i = 0; i < nodes.getLength(); i++) {
-            String ana = _eAna.evaluate(nodes.item(i));
-            String corresp = _eCorresp.evaluate(nodes.item(i));
+            String ana = nodes.item(i).getAttributes().getNamedItem("ana").getNodeValue();
+            String corresp = nodes.item(i).getAttributes().getNamedItem("corresp").getNodeValue();
             if (!ana.isEmpty() && containInSpecLexicon(corresp)){
-                _target.add(_eTarget.evaluate(nodes.item(i)));
+                _target.add(nodes.item(i).getAttributes().getNamedItem("target").getNodeValue());
                 _corresp.add(corresp);
                 _lexAna.add(ana);
             }
@@ -80,12 +80,12 @@ public class EvaluationExtractor extends ContextExtractor {
     }
 
     @Override
-    protected void addOccToLexicalProfile(String spanValue, String c, String l){
+    protected void addOccToLexicalProfile(String word, String c, String l){
             String key = normalizeKey(c,l);
             if (!_evaluationLexicon.containsKey(key)){
                 _evaluationLexicon.put(key,new EvaluationProfile());
             }
-            _evaluationLexicon.get(key).addOccurrence(spanValue);
+            _evaluationLexicon.get(key).addOccurrence(word);
 
     }
 
