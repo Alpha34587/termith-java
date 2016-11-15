@@ -11,55 +11,78 @@ import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 
 /**
+ * clean working directory after processing
  * @author Simon Meoni
  *         Created on 27/09/16.
  */
 public class WorkingFilesCleaner implements Runnable{
-    private final Path _corpus;
-    private final boolean _keepFiles;
     private static final Logger LOGGER = LoggerFactory.getLogger(WorkingFilesCleaner.class.getName());
+    private final Path _outputPath;
+    private final boolean _keepFiles;
 
-    public WorkingFilesCleaner(Path corpus, boolean keepFiles) {
-        _corpus = corpus;
+    /**
+     * constructor for WorkingFilesCleaner module
+     *
+     * @param outputPath the path of the working directory
+     * @param keepFiles if this value is true all subfolder of the directory is kept
+     */
+    public WorkingFilesCleaner(Path outputPath, boolean keepFiles) {
+        _outputPath = outputPath;
         _keepFiles = keepFiles;
     }
 
-    public void execute() throws IOException {
-        Files.list(_corpus).forEach(
-                path -> {
-                    File file = new File(path.toString());
-                    if (_keepFiles && file.isDirectory())
-                        LOGGER.info("keeping " + file.getAbsolutePath() + " directory");
-                    else if (file.isDirectory()){
-                        try {
-                            FileUtils.deleteDirectory(file);
-                        } catch (IOException e) {
-                            LOGGER.error("cannot delete directory",e);
-                        }
-                    }
-                    else {
-                        if (!file.getName().matches(".*(\\.xml|\\.json|\\.tbx)")){
+    /**
+     * remove subfolder working directory if _keepFiles is false
+     */
+    public void execute() {
+        try {
+            Files.list(_outputPath).forEach(
+                    path -> {
+                        File file = new File(path.toString());
+                        /*
+                        if _keepFiles is true and file is directory the file is kept
+                         */
+                        if (_keepFiles && file.isDirectory())
+                            LOGGER.info("keeping " + file.getAbsolutePath() + " directory");
+
+                        /*
+                        the directory is deleted if _keepFiles is false
+                         */
+                        else if (file.isDirectory()){
                             try {
-                                Files.delete(file.toPath());
-                            }
-                            catch (NoSuchFileException e){
-                                LOGGER.error("no such file or directory",e);
+                                FileUtils.deleteDirectory(file);
                             } catch (IOException e) {
-                                LOGGER.error("File permission problem",e);
+                                LOGGER.error("cannot delete directory",e);
+                            }
+                        }
+                        /*
+                        remove serialized java object
+                         */
+                        else {
+                            if (!file.getName().matches(".*(\\.xml|\\.json|\\.tbx)")) {
+                                try {
+                                    Files.delete(file.toPath());
+                                } catch (NoSuchFileException e) {
+                                    LOGGER.error("no such file or directory", e);
+                                } catch (IOException e) {
+                                    LOGGER.error("File permission problem", e);
+                                }
                             }
                         }
                     }
-                }
-        );
+            );
+        } catch (IOException e) {
+            LOGGER.error("no such file or directory", e);
+        }
     }
 
+    /**
+     * call execute method
+     */
     @Override
     public void run() {
-        LOGGER.debug("clean working directory : " + _corpus);
-        try {
-            this.execute();
-        } catch (IOException e) {
-            LOGGER.error("error during cleaning directory",e);
-        }
+        LOGGER.debug("clean working directory : " + _outputPath);
+        execute();
+
     }
 }
