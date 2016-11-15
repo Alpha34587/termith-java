@@ -1,4 +1,4 @@
-package org.atilf.module.disambiguation;
+package org.atilf.models.disambiguation;
 
 import com.google.common.collect.HashMultiset;
 import com.google.common.collect.Multiset;
@@ -43,7 +43,7 @@ public class EvaluationProfile implements Iterable<String> {
     }
 
 
-    void addOccurrence(String occ){
+    public void addOccurrence(String occ){
         _lexicalTable.add(occ);
     }
 

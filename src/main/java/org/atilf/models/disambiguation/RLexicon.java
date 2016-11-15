@@ -1,7 +1,5 @@
 package org.atilf.models.disambiguation;
 
-import org.atilf.module.disambiguation.LexicalProfile;
-
 import java.util.ArrayList;
 import java.util.List;
 

@@ -2,6 +2,8 @@ package org.atilf.module.disambiguation;
 
 import com.google.common.collect.HashMultiset;
 import com.google.common.collect.Multiset;
+import org.atilf.models.disambiguation.EvaluationProfile;
+import org.atilf.models.disambiguation.LexicalProfile;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

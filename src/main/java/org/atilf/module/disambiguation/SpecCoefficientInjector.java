@@ -3,6 +3,7 @@ package org.atilf.module.disambiguation;
 import com.github.rcaller.rstuff.RCaller;
 import com.github.rcaller.rstuff.RCode;
 import org.atilf.models.disambiguation.GlobalLexicon;
+import org.atilf.models.disambiguation.LexicalProfile;
 import org.atilf.models.disambiguation.RLexicon;
 import org.atilf.models.termith.TermithIndex;
 

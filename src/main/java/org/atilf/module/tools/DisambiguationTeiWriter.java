@@ -1,7 +1,7 @@
 package org.atilf.module.tools;
 
 import org.atilf.models.termith.TermithIndex;
-import org.atilf.module.disambiguation.EvaluationProfile;
+import org.atilf.models.disambiguation.EvaluationProfile;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;

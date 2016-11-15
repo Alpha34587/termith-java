@@ -2,8 +2,8 @@ package org.atilf.models.termith;
 
 import org.atilf.models.disambiguation.GlobalLexicon;
 import org.atilf.models.termsuite.TermsOffsetId;
-import org.atilf.module.disambiguation.EvaluationProfile;
-import org.atilf.module.disambiguation.LexicalProfile;
+import org.atilf.models.disambiguation.EvaluationProfile;
+import org.atilf.models.disambiguation.LexicalProfile;
 import org.atilf.module.tools.FilesUtils;
 
 import java.io.IOException;

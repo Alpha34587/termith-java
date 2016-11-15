@@ -1,5 +1,7 @@
 package org.atilf.module.disambiguation;
 
+import org.atilf.models.disambiguation.EvaluationProfile;
+import org.atilf.models.disambiguation.LexicalProfile;
 import org.atilf.models.termith.TermithIndex;
 import org.atilf.module.tools.FilesUtils;
 import org.slf4j.Logger;

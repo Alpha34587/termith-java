@@ -1,4 +1,4 @@
-package org.atilf.module.disambiguation;
+package org.atilf.models.disambiguation;
 
 import com.google.common.collect.ConcurrentHashMultiset;
 import com.google.common.collect.Multiset;
@@ -16,23 +16,23 @@ public class LexicalProfile implements Iterable<String>{
     private Multiset<String> _lexicalTable;
     private Map<String,Float> _specCoefficientMap = new HashMap<>();
 
-    LexicalProfile(Multiset<String> lexicalTable) {
+    public LexicalProfile(Multiset<String> lexicalTable) {
         _lexicalTable = lexicalTable;
     }
 
-    LexicalProfile() {
+    public LexicalProfile() {
         _lexicalTable = ConcurrentHashMultiset.create();
     }
 
-    Multiset<String> getLexicalTable() {
+    public Multiset<String> getLexicalTable() {
         return _lexicalTable;
     }
 
-    public int lexicalSize(){
+    int lexicalSize(){
         return _lexicalTable.size();
     }
 
-    public int countOccurrence(String word){
+    int countOccurrence(String word){
         if (_lexicalTable.contains(word)){
             return _lexicalTable.count(word);
         }
@@ -40,11 +40,11 @@ public class LexicalProfile implements Iterable<String>{
             return -1;
     }
 
-    Map<String, Float> getSpecCoefficientMap() {
+    public Map<String, Float> getSpecCoefficientMap() {
         return _specCoefficientMap;
     }
 
-    float getSpecCoefficient(String entry){
+    public float getSpecCoefficient(String entry){
         if (_specCoefficientMap.containsKey(entry)) {
             return _specCoefficientMap.get(entry);
         }
@@ -52,7 +52,7 @@ public class LexicalProfile implements Iterable<String>{
             return 0;
     }
 
-    void addCoefficientSpec(String entry, Float coefficient){
+    public void addCoefficientSpec(String entry, Float coefficient){
         if (_lexicalTable.contains(entry)) {
             _specCoefficientMap.put(entry,coefficient);
         }
@@ -64,7 +64,7 @@ public class LexicalProfile implements Iterable<String>{
 
 
 
-    void addOccurrence(String occ){
+    public void addOccurrence(String occ){
         _lexicalTable.add(occ);
     }
 

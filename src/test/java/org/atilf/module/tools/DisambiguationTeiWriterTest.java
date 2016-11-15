@@ -2,7 +2,7 @@ package org.atilf.module.tools;
 
 import com.google.common.collect.HashMultiset;
 import org.atilf.models.termith.TermithIndex;
-import org.atilf.module.disambiguation.EvaluationProfile;
+import org.atilf.models.disambiguation.EvaluationProfile;
 import org.custommonkey.xmlunit.XMLUnit;
 import org.junit.Before;
 import org.junit.Rule;

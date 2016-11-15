@@ -1,5 +1,6 @@
 package org.atilf.module.disambiguation;
 
+import org.atilf.models.disambiguation.LexicalProfile;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;

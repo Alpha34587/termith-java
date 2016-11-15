@@ -1,5 +1,8 @@
 package org.atilf.module.disambiguation;
 
+import org.atilf.models.disambiguation.EvaluationProfile;
+import org.atilf.models.disambiguation.LexicalProfile;
+
 import java.util.Map;
 
 /**

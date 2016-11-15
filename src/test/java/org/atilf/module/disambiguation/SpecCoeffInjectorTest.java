@@ -1,6 +1,7 @@
 package org.atilf.module.disambiguation;
 
 import org.atilf.models.disambiguation.GlobalLexicon;
+import org.atilf.models.disambiguation.LexicalProfile;
 import org.atilf.models.disambiguation.RLexicon;
 import org.junit.Assert;
 import org.junit.Before;
