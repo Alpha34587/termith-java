@@ -101,7 +101,7 @@ public class EvaluationExtractorTest {
     }
 
     @Test
-    public void extractSubCorpusSimple() throws Exception {
+    public void extractLexiconProfileSimple() throws Exception {
         _evalExtractor2.extractTerms();
         _evalExtractor2.extractContext();
         expectedMap.forEach(

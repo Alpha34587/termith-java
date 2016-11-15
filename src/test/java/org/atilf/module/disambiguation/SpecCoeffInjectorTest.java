@@ -15,31 +15,31 @@ import java.util.*;
  */
 public class SpecCoeffInjectorTest {
 
-    private CorpusLexicon _CorpusLexicon = new CorpusLexicon(new HashMap<>(),new HashMap<>());
+    private CorpusLexicon _corpusLexicon = new CorpusLexicon(new HashMap<>(),new HashMap<>());
     private RLexicon _rLexicon;
-    private Map<String, LexiconProfile> _subLexic = new HashMap<>();
-    private Map<String, LexiconProfile> _executeSubLexic = new HashMap<>();
+    private Map<String, LexiconProfile> _contextLexicon1 = new HashMap<>();
+    private Map<String, LexiconProfile> _contextLexicon2 = new HashMap<>();
     private Map<String,float[]> _specificities = new HashMap<>();
 
     @Before
     public void setUp() throws Exception {
 
-        CorpusLexiconExtractor corpus1 = new CorpusLexiconExtractor("src/test/resources/corpus/tei/test1.xml", _CorpusLexicon);
-        CorpusLexiconExtractor corpus2 = new CorpusLexiconExtractor("src/test/resources/corpus/tei/test1.xml", _CorpusLexicon);
-        ContextExtractor subCorpus1 = new ContextExtractor("src/test/resources/corpus/tei/test1.xml", _subLexic);
-        ContextExtractor subCorpus2 = new ContextExtractor("src/test/resources/corpus/tei/test1.xml", _subLexic);
-        ContextExtractor executeSubCorpus1 = new ContextExtractor("src/test/resources/corpus/tei/test1.xml", _executeSubLexic);
-        ContextExtractor executeSubCorpus2 = new ContextExtractor("src/test/resources/corpus/tei/test1.xml", _executeSubLexic);
+        CorpusLexiconExtractor corpus1 = new CorpusLexiconExtractor("src/test/resources/corpus/tei/test1.xml", _corpusLexicon);
+        CorpusLexiconExtractor corpus2 = new CorpusLexiconExtractor("src/test/resources/corpus/tei/test1.xml", _corpusLexicon);
+        ContextExtractor contextExtractor = new ContextExtractor("src/test/resources/corpus/tei/test1.xml", _contextLexicon1);
+        ContextExtractor contextExtractor1 = new ContextExtractor("src/test/resources/corpus/tei/test1.xml", _contextLexicon1);
+        ContextExtractor contextExtractor2 = new ContextExtractor("src/test/resources/corpus/tei/test1.xml", _contextLexicon2);
+        ContextExtractor contextExtractor3 = new ContextExtractor("src/test/resources/corpus/tei/test1.xml", _contextLexicon2);
 
         corpus1.execute();
         corpus2.execute();
 
-        _rLexicon = new RLexicon(_CorpusLexicon);
+        _rLexicon = new RLexicon(_corpusLexicon);
 
-        subCorpus1.execute();
-        subCorpus2.execute();
-        executeSubCorpus1.execute();
-        executeSubCorpus2.execute();
+        contextExtractor.execute();
+        contextExtractor1.execute();
+        contextExtractor2.execute();
+        contextExtractor3.execute();
 
         _specificities.put("entry-8318_lexOn",new float[]{1.3425f, 1.3425f, 1.3425f, 3.4531f, 1.3425f});
         _specificities.put("entry-990_lexOff",new float[]{1.8162f, 1.8162f, 1.8162f, 1.8162f, 1.8162f, 1.8162f});
@@ -47,12 +47,12 @@ public class SpecCoeffInjectorTest {
                 3.9302f, 3.9302f, 3.9302f});
         _specificities.put("entry-13471_lexOn",new float[]{1.3425f, 1.3425f, 1.3425f, 1.3425f, 3.4531f, 1.3425f});
 
-        _executeSubLexic.forEach((key, value) -> new SpecCoefficientInjector(value, _rLexicon, _CorpusLexicon).execute());
+        _contextLexicon2.forEach((key, value) -> new SpecCoefficientInjector(value, _rLexicon, _corpusLexicon).execute());
     }
 
     @Test
     public void execute() throws Exception {
-        _executeSubLexic.values().forEach(
+        _contextLexicon2.values().forEach(
                 values -> values.getSpecCoefficientMap().values().forEach(
                         coef -> Assert.assertNotEquals("this coefficient must be not equals to 0", 0, coef)
                 )
@@ -61,10 +61,10 @@ public class SpecCoeffInjectorTest {
 
     @Test
     public void computeSpecCoeff() throws Exception {
-        _subLexic.forEach(
+        _contextLexicon1.forEach(
                 (key,value) -> Assert.assertArrayEquals(
                         _specificities.get(key),
-                        new SpecCoefficientInjector(value, _rLexicon, _CorpusLexicon).computeSpecCoefficient(),
+                        new SpecCoefficientInjector(value, _rLexicon, _corpusLexicon).computeSpecCoefficient(),
                         0
                 )
         );

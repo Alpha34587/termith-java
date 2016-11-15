@@ -12,8 +12,8 @@ public class RLexicon {
     private StringBuffer _rName = new StringBuffer();
     private StringBuffer _rOcc = new StringBuffer();
     private CorpusLexicon _corpus;
-    private LexiconProfile _subCorpus;
-    private List<String> _idSubCorpus;
+    private LexiconProfile _lexiconProfile;
+    private List<String> _idContextLexicon;
 
     public RLexicon(CorpusLexicon corpus){
         _corpus = corpus;
@@ -24,14 +24,14 @@ public class RLexicon {
         closeRVariable();
     }
 
-    public RLexicon(LexiconProfile subCorpus, CorpusLexicon corpus) {
-        _subCorpus = subCorpus;
+    public RLexicon(LexiconProfile lexiconProfile, CorpusLexicon corpus) {
+        _lexiconProfile = lexiconProfile;
         _corpus = corpus;
-        _idSubCorpus = new ArrayList<>();
-        corpusSizeOcc = subCorpus.lexicalSize();
+        _idContextLexicon = new ArrayList<>();
+        corpusSizeOcc = lexiconProfile.lexicalSize();
         _rName.append("c(");
         _rOcc.append("c(");
-        _subCorpus.forEach(this::convertToRContext);
+        _lexiconProfile.forEach(this::convertToRContext);
         closeRVariable();
     }
 
@@ -43,8 +43,8 @@ public class RLexicon {
         return _rOcc;
     }
 
-    public List<String> getIdSubCorpus() {
-        return _idSubCorpus;
+    public List<String> getIdContextLexicon() {
+        return _idContextLexicon;
     }
 
     public int getCorpusSizeOcc() { return corpusSizeOcc; }
@@ -63,7 +63,7 @@ public class RLexicon {
 
     private void convertToRContext(String el) {
         _rName.append("\"").append(_corpus.getIdEntry(el)).append("\",");
-        _rOcc.append(_subCorpus.countOccurrence(el)).append(",");
-        _idSubCorpus.add(_corpus.getIdEntry(el));
+        _rOcc.append(_lexiconProfile.countOccurrence(el)).append(",");
+        _idContextLexicon.add(_corpus.getIdEntry(el));
     }
 }

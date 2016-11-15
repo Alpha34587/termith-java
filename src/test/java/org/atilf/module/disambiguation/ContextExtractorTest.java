@@ -108,7 +108,7 @@ public class ContextExtractorTest {
     }
 
     @Test
-    public void extractSubCorpus() throws Exception {
+    public void extractLexiconProfile() throws Exception {
         _contextCorpus = new ContextExtractor(
                 "src/test/resources/corpus/disambiguation/transform-tei/test2.xml",
                 _multiSub
