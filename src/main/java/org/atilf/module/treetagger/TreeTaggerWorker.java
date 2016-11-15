@@ -16,6 +16,7 @@ import java.nio.file.Paths;
 import java.util.concurrent.CountDownLatch;
 
 /**
+ *
  * @author Simon Meoni
  *         Created on 16/09/16.
  */
@@ -30,6 +31,13 @@ public class TreeTaggerWorker implements Runnable {
     private StringBuilder _xml;
     private TextAnalyzer _textAnalyzer;
 
+    /**
+     *
+     * @param termithIndex
+     * @param corpusAnalyzer
+     * @param id
+     * @param jsonCnt
+     */
     public TreeTaggerWorker(TermithIndex termithIndex, CorpusAnalyzer corpusAnalyzer, String id,
                             CountDownLatch jsonCnt) {
         _termithIndex = termithIndex;
@@ -47,6 +55,9 @@ public class TreeTaggerWorker implements Runnable {
         }
     }
 
+    /**
+     *
+     */
     @Override
     public void run() {
         init();
@@ -71,6 +82,7 @@ public class TreeTaggerWorker implements Runnable {
             File json = new File(_jsonPath);
             SyntaxParserWrapper syntaxParserWrapper = new SyntaxParserWrapper(json, _txt, _xml);
             syntaxParserWrapper.execute();
+
             _termithIndex.getTokenizeTeiBody().put(json.getName().replace(".json",""),
                     FilesUtils.writeObject(syntaxParserWrapper.getTokenizeBody(), _termithIndex.getCorpus()));
             _termithIndex.getMorphologyStandOff().put(json.getName().replace(".json",""),
@@ -87,6 +99,9 @@ public class TreeTaggerWorker implements Runnable {
         }
     }
 
+    /**
+     *
+     */
     private void init(){
         try {
         TagNormalizer.initTag(TermithIndex.getLang());
