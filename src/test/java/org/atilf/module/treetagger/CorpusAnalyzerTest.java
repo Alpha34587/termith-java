@@ -1,6 +1,7 @@
 package org.atilf.module.treetagger;
 
 import org.atilf.models.termith.TermithIndex;
+import org.atilf.models.termsuite.CorpusAnalyzer;
 import org.atilf.module.tools.FilesUtils;
 import org.junit.Assert;
 import org.junit.Before;

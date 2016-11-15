@@ -1,9 +1,10 @@
 package org.atilf.module.treetagger;
 
 import org.atilf.models.termith.TermithIndex;
+import org.atilf.models.termsuite.CorpusAnalyzer;
 import org.atilf.models.termsuite.TextAnalyzer;
 import org.atilf.models.treetagger.TagNormalizer;
-import org.atilf.module.tei.morphology.SyntaxGenerator;
+import org.atilf.module.tei.morphology.SyntaxParserWrapper;
 import org.atilf.module.tools.FilesUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -68,12 +69,12 @@ public class TreeTaggerWorker implements Runnable {
 
             LOGGER.debug("tokenization and morphosyntax tasks started file : " + _jsonPath);
             File json = new File(_jsonPath);
-            SyntaxGenerator syntaxGenerator = new SyntaxGenerator(json, _txt, _xml);
-            syntaxGenerator.execute();
+            SyntaxParserWrapper syntaxParserWrapper = new SyntaxParserWrapper(json, _txt, _xml);
+            syntaxParserWrapper.execute();
             _termithIndex.getTokenizeTeiBody().put(json.getName().replace(".json",""),
-                    FilesUtils.writeObject(syntaxGenerator.getTokenizeBody(), _termithIndex.getCorpus()));
+                    FilesUtils.writeObject(syntaxParserWrapper.getTokenizeBody(), _termithIndex.getCorpus()));
             _termithIndex.getMorphologyStandOff().put(json.getName().replace(".json",""),
-                    FilesUtils.writeObject(syntaxGenerator.getOffsetId(), _termithIndex.getCorpus()));
+                    FilesUtils.writeObject(syntaxParserWrapper.getOffsetId(), _termithIndex.getCorpus()));
             LOGGER.debug("tokenization and morphosyntax tasks finished file : " + _jsonPath);
 
         } catch (IOException e) {

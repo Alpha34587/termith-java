@@ -34,8 +34,8 @@ public class TreeTaggerToJson {
         TreeTaggerWrapper treeTaggerWrapper = new TreeTaggerWrapper(_txt,
                 new TreeTaggerParameter(false, _lang, _treeTaggerHome), _outputPath);
         treeTaggerWrapper.execute();
-        Serialize serialize = new Serialize(treeTaggerWrapper.getTtOut(), _jsonPath, _txt, _textAnalyzer);
-        serialize.execute();
+        JsonSerializer jsonSerializer = new JsonSerializer(treeTaggerWrapper.getTtOut(), _jsonPath, _txt, _textAnalyzer);
+        jsonSerializer.execute();
         LOGGER.debug("write file " + _jsonPath);
     }
 }

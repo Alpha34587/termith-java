@@ -11,7 +11,7 @@ import java.util.List;
  * @author Simon Meoni
  * Created on 17/08/16.
  */
-public class SyntaxGenerator {
+public class SyntaxParserWrapper {
 
     private TermsuiteJsonReader _termsuiteJsonReader;
     private StringBuilder _txt;
@@ -20,7 +20,7 @@ public class SyntaxGenerator {
     private StringBuilder _standoff = new StringBuilder();
     private List<MorphologyOffsetId> _offsetId = new ArrayList<>();
 
-    public SyntaxGenerator(File json, StringBuilder txt, StringBuilder xml) {
+    public SyntaxParserWrapper(File json, StringBuilder txt, StringBuilder xml) {
         _xml = xml;
         _txt = txt;
         _termsuiteJsonReader = new TermsuiteJsonReader(json);

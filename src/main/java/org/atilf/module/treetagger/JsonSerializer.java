@@ -15,14 +15,14 @@ import java.util.ArrayDeque;
  * @author Simon Meoni
  *         Created on 01/09/16.
  */
-public class Serialize {
+public class JsonSerializer {
 
     private ArrayDeque<String> _tokenDeque = new ArrayDeque<>();
     private StringBuilder _txt;
     private String _jsonPath;
     private TextAnalyzer _textAnalyzer;
 
-    public Serialize(StringBuilder tokenDeque, String jsonPath, StringBuilder txt
+    public JsonSerializer(StringBuilder tokenDeque, String jsonPath, StringBuilder txt
             , TextAnalyzer textAnalyzer) {
         populateTokenDeque(tokenDeque);
         _txt = txt;

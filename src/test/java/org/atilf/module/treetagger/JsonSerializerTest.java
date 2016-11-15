@@ -1,5 +1,6 @@
 package org.atilf.module.treetagger;
 
+import org.atilf.models.termsuite.CorpusAnalyzer;
 import org.atilf.models.treetagger.TagNormalizer;
 import org.atilf.models.termith.TermithIndex;
 import org.junit.Assert;
@@ -17,9 +18,9 @@ import java.nio.file.Paths;
  * @author Simon Meoni
  *         Created on 05/09/16.
  */
-public class SerializeTest {
+public class JsonSerializerTest {
 
-    private Serialize _serializeLemma;
+    private JsonSerializer _jsonSerializerLemma;
     private File _jsonResFile;
     private TermithIndex _termithIndex;
 
@@ -49,13 +50,13 @@ public class SerializeTest {
 
         _jsonResFile = temporaryFolder.newFile("test1.json");
 
-        _serializeLemma = new Serialize(tokenLemma, _jsonResFile.getAbsolutePath(),
+        _jsonSerializerLemma = new JsonSerializer(tokenLemma, _jsonResFile.getAbsolutePath(),
                 lemma, corpusAnalyzer.getAnalyzedTexts().get("1"));
     }
 
     @Test
     public void executeTest() throws Exception {
-        _serializeLemma.execute();
+        _jsonSerializerLemma.execute();
         String observe = String.join("\n",Files.readAllLines(_jsonResFile.toPath()));
         String expected = String.join("\n", Files.readAllLines(Paths.get("src/test/resources/serialize/file1.json")));
         expected = expected.replace("test1.json", _jsonResFile.getAbsolutePath());

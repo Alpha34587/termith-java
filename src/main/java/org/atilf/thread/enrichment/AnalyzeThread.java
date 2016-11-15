@@ -9,7 +9,7 @@ import org.atilf.module.termsuite.terminology.TerminologyStandOff;
 import org.atilf.module.timer.JsonTimer;
 import org.atilf.module.timer.TokenizeTimer;
 import org.atilf.module.tools.FilesUtils;
-import org.atilf.module.treetagger.CorpusAnalyzer;
+import org.atilf.models.termsuite.CorpusAnalyzer;
 import org.atilf.module.treetagger.TreeTaggerWorker;
 import org.atilf.thread.Thread;
 
