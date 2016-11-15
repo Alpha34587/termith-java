@@ -8,9 +8,11 @@ import org.slf4j.LoggerFactory;
 import java.io.IOException;
 
 /**
+ * TreeTaggerToJson calls TreeTaggerWrapper and JsonSerializer
  * @author Simon Meoni
  *         Created on 01/09/16.
  */
+//TODO remove this class and call the two modules on TreeTaggerWorker
 public class TreeTaggerToJson {
 
     private final Logger LOGGER = LoggerFactory.getLogger(TreeTaggerToJson.class.getName());
