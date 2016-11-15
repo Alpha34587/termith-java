@@ -1,7 +1,7 @@
 package org.atilf.module.disambiguation;
 
 import org.atilf.models.disambiguation.EvaluationProfile;
-import org.atilf.models.disambiguation.LexicalProfile;
+import org.atilf.models.disambiguation.LexiconProfile;
 import org.atilf.models.termith.TermithIndex;
 import org.atilf.module.tools.FilesUtils;
 import org.slf4j.Logger;
@@ -28,7 +28,7 @@ public class EvaluationExtractor extends ContextExtractor {
         _evaluationLexicon = evaluationLexicon;
     }
 
-    public EvaluationExtractor(String p , Map<String, EvaluationProfile> evaluationLexicon, Map<String,LexicalProfile> specLexicon) {
+    public EvaluationExtractor(String p , Map<String, EvaluationProfile> evaluationLexicon, Map<String,LexiconProfile> specLexicon) {
         super(p,specLexicon);
         _evaluationLexicon = evaluationLexicon;
     }

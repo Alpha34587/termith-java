@@ -3,7 +3,7 @@ package org.atilf.module.disambiguation;
 import com.google.common.collect.HashMultiset;
 import com.google.common.collect.Multiset;
 import org.atilf.models.disambiguation.EvaluationProfile;
-import org.atilf.models.disambiguation.LexicalProfile;
+import org.atilf.models.disambiguation.LexiconProfile;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -23,7 +23,7 @@ public class EvaluationTest {
 
     @Before
     public void setUp() throws Exception {
-        Map<String, LexicalProfile> lexicalProfileMap = new HashMap<>();
+        Map<String, LexiconProfile> lexicalProfileMap = new HashMap<>();
         Evaluation evaluation = new Evaluation(_evaluationProfileMap, lexicalProfileMap);
 
         Multiset<String> entry1 = HashMultiset.create();
@@ -57,7 +57,7 @@ public class EvaluationTest {
         entry3.add("le DET:ART");
         entry3.add("deux NUM");
 
-        lexicalProfileMap.put("entry-13471_lexOn",new LexicalProfile(entry3));
+        lexicalProfileMap.put("entry-13471_lexOn",new LexiconProfile(entry3));
         lexicalProfileMap.get("entry-13471_lexOn").addCoefficientSpec("du PRP:det", 1f);
         lexicalProfileMap.get("entry-13471_lexOn").addCoefficientSpec("le DET:ART", 1f);
         lexicalProfileMap.get("entry-13471_lexOn").addCoefficientSpec(". SENT", 1f);
@@ -73,7 +73,7 @@ public class EvaluationTest {
         entry4.add("quelque PRO:IND");
         entry4.add("espèce NOM");
         entry4.add("il PRO:PER");
-        lexicalProfileMap.put("entry-13471_lexOff",new LexicalProfile(entry4));
+        lexicalProfileMap.put("entry-13471_lexOff",new LexiconProfile(entry4));
         lexicalProfileMap.get("entry-13471_lexOff").addCoefficientSpec("pêche NOM", 1f);
         lexicalProfileMap.get("entry-13471_lexOff").addCoefficientSpec(", PUN", 1f);
         lexicalProfileMap.get("entry-13471_lexOff").addCoefficientSpec("limiter VER:pper", 1f);
@@ -92,7 +92,7 @@ public class EvaluationTest {
         entry5.add("commun ADJ");
         entry5.add(". SENT");
         entry5.add("il PRO:PER");
-        lexicalProfileMap.put("entry-7263_lexOn",new LexicalProfile(entry5));
+        lexicalProfileMap.put("entry-7263_lexOn",new LexiconProfile(entry5));
         lexicalProfileMap.get("entry-7263_lexOn").addCoefficientSpec("pêche NOM", 1f);
         lexicalProfileMap.get("entry-7263_lexOn").addCoefficientSpec(", PUN", 1f);
         lexicalProfileMap.get("entry-7263_lexOn").addCoefficientSpec("limiter VER:pper", 1f);
@@ -116,7 +116,7 @@ public class EvaluationTest {
         entry6.add("commun ADJ");
         entry6.add(". SENT");
         entry6.add("il PRO:PER");
-        lexicalProfileMap.put("entry-7263_lexOff",new LexicalProfile(entry6));
+        lexicalProfileMap.put("entry-7263_lexOff",new LexiconProfile(entry6));
         lexicalProfileMap.get("entry-7263_lexOff").addCoefficientSpec("pêche NOM", 1f);
         lexicalProfileMap.get("entry-7263_lexOff").addCoefficientSpec(", PUN", 1f);
         lexicalProfileMap.get("entry-7263_lexOff").addCoefficientSpec("limiter VER:pper", 1f);

@@ -12,15 +12,15 @@ import java.util.function.Consumer;
  * @author Simon Meoni
  *         Created on 21/10/16.
  */
-public class LexicalProfile implements Iterable<String>{
+public class LexiconProfile implements Iterable<String>{
     private Multiset<String> _lexicalTable;
     private Map<String,Float> _specCoefficientMap = new HashMap<>();
 
-    public LexicalProfile(Multiset<String> lexicalTable) {
+    public LexiconProfile(Multiset<String> lexicalTable) {
         _lexicalTable = lexicalTable;
     }
 
-    public LexicalProfile() {
+    public LexiconProfile() {
         _lexicalTable = ConcurrentHashMultiset.create();
     }
 

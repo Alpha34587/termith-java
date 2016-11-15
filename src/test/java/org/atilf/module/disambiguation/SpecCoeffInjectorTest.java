@@ -1,7 +1,7 @@
 package org.atilf.module.disambiguation;
 
 import org.atilf.models.disambiguation.GlobalLexicon;
-import org.atilf.models.disambiguation.LexicalProfile;
+import org.atilf.models.disambiguation.LexiconProfile;
 import org.atilf.models.disambiguation.RLexicon;
 import org.junit.Assert;
 import org.junit.Before;
@@ -17,8 +17,8 @@ public class SpecCoeffInjectorTest {
 
     private GlobalLexicon _globalLexicon = new GlobalLexicon(new HashMap<>(),new HashMap<>());
     private RLexicon _rLexicon;
-    private Map<String, LexicalProfile> _subLexic = new HashMap<>();
-    private Map<String, LexicalProfile> _executeSubLexic = new HashMap<>();
+    private Map<String, LexiconProfile> _subLexic = new HashMap<>();
+    private Map<String, LexiconProfile> _executeSubLexic = new HashMap<>();
     private Map<String,float[]> _specificities = new HashMap<>();
 
     @Before

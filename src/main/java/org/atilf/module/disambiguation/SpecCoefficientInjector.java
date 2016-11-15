@@ -3,7 +3,7 @@ package org.atilf.module.disambiguation;
 import com.github.rcaller.rstuff.RCaller;
 import com.github.rcaller.rstuff.RCode;
 import org.atilf.models.disambiguation.GlobalLexicon;
-import org.atilf.models.disambiguation.LexicalProfile;
+import org.atilf.models.disambiguation.LexiconProfile;
 import org.atilf.models.disambiguation.RLexicon;
 import org.atilf.models.termith.TermithIndex;
 
@@ -12,24 +12,24 @@ import org.atilf.models.termith.TermithIndex;
  *         Created on 21/10/16.
  */
 public class SpecCoefficientInjector implements Runnable{
-    private final LexicalProfile _lexicalProfile;
+    private final LexiconProfile _lexiconProfile;
     private final RLexicon _rLexicon;
     private final RLexicon _rSubLexicon;
     private final GlobalLexicon _globalLexicon;
 
-    public SpecCoefficientInjector(LexicalProfile lexicalProfile, RLexicon rLexicon, GlobalLexicon globalLexicon) {
+    public SpecCoefficientInjector(LexiconProfile lexiconProfile, RLexicon rLexicon, GlobalLexicon globalLexicon) {
 
         _globalLexicon = globalLexicon;
-        _lexicalProfile = lexicalProfile;
+        _lexiconProfile = lexiconProfile;
         _rLexicon = rLexicon;
-        _rSubLexicon = new RLexicon(lexicalProfile, globalLexicon);
+        _rSubLexicon = new RLexicon(lexiconProfile, globalLexicon);
     }
 
     public SpecCoefficientInjector(String p,TermithIndex termithIndex, RLexicon rLexicon){
         _globalLexicon = termithIndex.getGlobalLexicon();
-        _lexicalProfile = termithIndex.getContextLexicon().get(p);
+        _lexiconProfile = termithIndex.getContextLexicon().get(p);
         _rLexicon = rLexicon;
-        _rSubLexicon = new RLexicon(_lexicalProfile, _globalLexicon);
+        _rSubLexicon = new RLexicon(_lexiconProfile, _globalLexicon);
     }
 
     public void execute() {
@@ -39,7 +39,7 @@ public class SpecCoefficientInjector implements Runnable{
     private void reduceToLexicalProfile(float[] specCoefficient) {
         int cnt = 0;
         for (String id : _rSubLexicon.getIdSubCorpus()) {
-            _lexicalProfile.addCoefficientSpec(
+            _lexiconProfile.addCoefficientSpec(
                     _globalLexicon.getLexicalEntry(Integer.parseInt(id)),
                     specCoefficient[cnt]);
             cnt++;

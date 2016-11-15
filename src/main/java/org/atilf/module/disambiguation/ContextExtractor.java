@@ -1,6 +1,6 @@
 package org.atilf.module.disambiguation;
 
-import org.atilf.models.disambiguation.LexicalProfile;
+import org.atilf.models.disambiguation.LexiconProfile;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
@@ -92,7 +92,7 @@ public class ContextExtractor implements Runnable{
     Deque<String> _lexAna = new ArrayDeque<>();
     Document _doc;
     XPathExpression _eSpanTerms;
-    Map<String, LexicalProfile> _contextLexicon;
+    Map<String, LexiconProfile> _contextLexicon;
     private String _p;
     private XPathExpression _lastGetter;
     private XPathExpression _firstGetter;
@@ -108,9 +108,9 @@ public class ContextExtractor implements Runnable{
      * @param p the path of the xml file
      * @param contextLexicon the contextLexicon of the termithIndex of the process (all the context is retained
      *                       in this variable)
-     * @see LexicalProfile
+     * @see LexiconProfile
      */
-    public ContextExtractor(String p, Map<String, LexicalProfile> contextLexicon){
+    public ContextExtractor(String p, Map<String, LexiconProfile> contextLexicon){
 
         /*
         initialize the path and all the necessary fields needed to parse xml file
@@ -430,9 +430,8 @@ public class ContextExtractor implements Runnable{
      * add to queue a term candidate
      * @param node the current span node (it is an occurrence term candidate)
      * @param ana the ana value of the current node
-     * @throws XPathExpressionException
      */
-    void addToTermsQueues(Node node, String ana) throws XPathExpressionException {
+    void addToTermsQueues(Node node, String ana) {
         _target.add(node.getAttributes().getNamedItem("target").getNodeValue());
         _corresp.add(node.getAttributes().getNamedItem("corresp").getNodeValue());
         _lexAna.add(ana);
@@ -454,7 +453,7 @@ public class ContextExtractor implements Runnable{
         create new entry if the key not exists in the _contextLexicon field
          */
         if (!_contextLexicon.containsKey(key)){
-            _contextLexicon.put(key,new LexicalProfile());
+            _contextLexicon.put(key,new LexiconProfile());
         }
         _contextLexicon.get(key).addOccurrence(word);
     }

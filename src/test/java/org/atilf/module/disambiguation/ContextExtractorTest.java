@@ -2,7 +2,7 @@ package org.atilf.module.disambiguation;
 
 import com.google.common.collect.HashMultiset;
 import com.google.common.collect.Multiset;
-import org.atilf.models.disambiguation.LexicalProfile;
+import org.atilf.models.disambiguation.LexiconProfile;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -18,8 +18,8 @@ public class ContextExtractorTest {
     private Deque<String> _expectedCorresp = new ArrayDeque<>();
 
     private Deque<String> _expectedLexAna = new ArrayDeque<>();
-    private Map<String,LexicalProfile> _expectedMap = new HashMap<>();
-    private Map<String,LexicalProfile> _multiSub = new HashMap<>();
+    private Map<String,LexiconProfile> _expectedMap = new HashMap<>();
+    private Map<String,LexiconProfile> _multiSub = new HashMap<>();
 
     private ContextExtractor _contextCorpus = new ContextExtractor(
             "src/test/resources/corpus/disambiguation/transform-tei/test2.xml",
@@ -61,7 +61,7 @@ public class ContextExtractorTest {
         entry1.add("deux NUM");
         entry1.add("site NOM");
 
-        _expectedMap.put("entry-13471_lexOn",new LexicalProfile(entry1));
+        _expectedMap.put("entry-13471_lexOn",new LexiconProfile(entry1));
         Multiset<String> entry2 = HashMultiset.create();
         entry2.add("pêche NOM");
         entry2.add(", PUN");
@@ -72,7 +72,7 @@ public class ContextExtractorTest {
         entry2.add("commun ADJ");
         entry2.add(". SENT");
         entry2.add("il PRO:PER");
-        _expectedMap.put("entry-7263_lexOn",new LexicalProfile(entry2));
+        _expectedMap.put("entry-7263_lexOn",new LexiconProfile(entry2));
     }
 
     @Test

@@ -1,7 +1,7 @@
 package org.atilf.module.disambiguation;
 
 import org.atilf.models.disambiguation.EvaluationProfile;
-import org.atilf.models.disambiguation.LexicalProfile;
+import org.atilf.models.disambiguation.LexiconProfile;
 
 import java.util.Map;
 
@@ -23,7 +23,7 @@ import java.util.Map;
 public class Evaluation implements Runnable{
 
     private final Map<String, EvaluationProfile> _evaluationProfile;
-    private final Map<String, LexicalProfile> _contextLexicon;
+    private final Map<String, LexiconProfile> _contextLexicon;
     private float _factorOn = 0f;
     private float _factorOff = 0f;
 
@@ -32,7 +32,7 @@ public class Evaluation implements Runnable{
      * @param evaluationProfile the evaluationProfile of a termithIndex
      * @param contextLexicon the contextLexicon of a termithIndex
      */
-    public Evaluation(Map<String, EvaluationProfile> evaluationProfile, Map<String, LexicalProfile> contextLexicon) {
+    public Evaluation(Map<String, EvaluationProfile> evaluationProfile, Map<String, LexiconProfile> contextLexicon) {
 
         _evaluationProfile = evaluationProfile;
         _contextLexicon = contextLexicon;
@@ -50,7 +50,7 @@ public class Evaluation implements Runnable{
                 (key,value) ->
                 {
                     /*
-                    convert evaluationProfile key to LexicalProfile keys (suffix key with lexOn and lexOff)
+                    convert evaluationProfile key to LexiconProfile keys (suffix key with lexOn and lexOff)
                      */
                     String lexEntryOn = formatEntry(key,"On");
                     String lexEntryOff = formatEntry(key, "Off");
@@ -113,8 +113,8 @@ public class Evaluation implements Runnable{
      * @param lexOff the non-terminology lexicalProfile of the current term candidate
      */
     private void computeFactor(EvaluationProfile entry,
-                                LexicalProfile lexOn,
-                                LexicalProfile lexOff) {
+                                LexiconProfile lexOn,
+                                LexiconProfile lexOff) {
         entry.forEach(
                 el -> {
                     _factorOn += occurrenceScore(lexOn.getSpecCoefficient(el),entry.countOccurrence(el));

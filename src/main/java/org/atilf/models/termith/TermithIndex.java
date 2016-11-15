@@ -1,9 +1,9 @@
 package org.atilf.models.termith;
 
 import org.atilf.models.disambiguation.GlobalLexicon;
+import org.atilf.models.disambiguation.LexiconProfile;
 import org.atilf.models.termsuite.TermsOffsetId;
 import org.atilf.models.disambiguation.EvaluationProfile;
-import org.atilf.models.disambiguation.LexicalProfile;
 import org.atilf.module.tools.FilesUtils;
 
 import java.io.IOException;
@@ -40,7 +40,7 @@ public class TermithIndex {
     Disambiguation  core fields
      */
 
-    private Map<String, LexicalProfile> _contextLexicon = new ConcurrentHashMap<>();
+    private Map<String, LexiconProfile> _contextLexicon = new ConcurrentHashMap<>();
     private Map<String,Map<String, EvaluationProfile>> _evaluationLexicon = new ConcurrentHashMap<>();
     private GlobalLexicon _globalLexicon = new GlobalLexicon(new ConcurrentHashMap<>(),new ConcurrentHashMap<>());
     private Map<String, Path> _disambiguationTranformedFile = new ConcurrentHashMap<>();
@@ -122,7 +122,7 @@ public class TermithIndex {
         return _jsonTreeTagger;
     }
 
-    public Map<String, LexicalProfile> getContextLexicon() {
+    public Map<String, LexiconProfile> getContextLexicon() {
         return _contextLexicon;
     }
 

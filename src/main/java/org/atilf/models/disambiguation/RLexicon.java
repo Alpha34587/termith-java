@@ -12,7 +12,7 @@ public class RLexicon {
     private StringBuffer _rName = new StringBuffer();
     private StringBuffer _rOcc = new StringBuffer();
     private GlobalLexicon _corpus;
-    private LexicalProfile _subCorpus;
+    private LexiconProfile _subCorpus;
     private List<String> _idSubCorpus;
 
     public RLexicon(GlobalLexicon corpus){
@@ -24,7 +24,7 @@ public class RLexicon {
         closeRVariable();
     }
 
-    public RLexicon(LexicalProfile subCorpus, GlobalLexicon corpus) {
+    public RLexicon(LexiconProfile subCorpus, GlobalLexicon corpus) {
         _subCorpus = subCorpus;
         _corpus = corpus;
         _idSubCorpus = new ArrayList<>();
