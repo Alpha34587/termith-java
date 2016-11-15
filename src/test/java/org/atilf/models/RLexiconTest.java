@@ -1,6 +1,6 @@
 package org.atilf.models;
 
-import org.atilf.models.disambiguation.GlobalLexicon;
+import org.atilf.models.disambiguation.CorpusLexicon;
 import org.atilf.models.disambiguation.RLexicon;
 import org.junit.Assert;
 import org.junit.Before;
@@ -14,7 +14,7 @@ import java.util.HashMap;
  */
 public class RLexiconTest {
 
-    private GlobalLexicon _corpus;
+    private CorpusLexicon _corpus;
     private RLexicon _rLexicon;
     private String _rName;
     private String _rOcc;
@@ -32,7 +32,7 @@ public class RLexiconTest {
                 "\"4\")";
         _rOcc = "c(1,1,1,1,1,1,2,1,1)";
 
-        _corpus = new GlobalLexicon(new HashMap<>(),new HashMap<>());
+        _corpus = new CorpusLexicon(new HashMap<>(),new HashMap<>());
         _corpus.addEntry("ce PRO:DEM");
         _corpus.addEntry("article NOM");
         _corpus.addEntry("présenter VER:pres");

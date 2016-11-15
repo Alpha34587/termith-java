@@ -1,6 +1,6 @@
 package org.atilf.models.termith;
 
-import org.atilf.models.disambiguation.GlobalLexicon;
+import org.atilf.models.disambiguation.CorpusLexicon;
 import org.atilf.models.disambiguation.LexiconProfile;
 import org.atilf.models.termsuite.TermsOffsetId;
 import org.atilf.models.disambiguation.EvaluationProfile;
@@ -42,7 +42,7 @@ public class TermithIndex {
 
     private Map<String, LexiconProfile> _contextLexicon = new ConcurrentHashMap<>();
     private Map<String,Map<String, EvaluationProfile>> _evaluationLexicon = new ConcurrentHashMap<>();
-    private GlobalLexicon _globalLexicon = new GlobalLexicon(new ConcurrentHashMap<>(),new ConcurrentHashMap<>());
+    private CorpusLexicon _CorpusLexicon = new CorpusLexicon(new ConcurrentHashMap<>(),new ConcurrentHashMap<>());
     private Map<String, Path> _disambiguationTranformedFile = new ConcurrentHashMap<>();
 
     /*
@@ -82,7 +82,7 @@ public class TermithIndex {
         return _terminologies.get(1);
     }
 
-    public GlobalLexicon getGlobalLexicon() { return _globalLexicon; }
+    public CorpusLexicon getCorpusLexicon() { return _CorpusLexicon; }
 
     public int getCorpusSize() {return _corpusSize;}
 

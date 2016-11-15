@@ -11,11 +11,11 @@ public class RLexicon {
     private int corpusSizeOcc;
     private StringBuffer _rName = new StringBuffer();
     private StringBuffer _rOcc = new StringBuffer();
-    private GlobalLexicon _corpus;
+    private CorpusLexicon _corpus;
     private LexiconProfile _subCorpus;
     private List<String> _idSubCorpus;
 
-    public RLexicon(GlobalLexicon corpus){
+    public RLexicon(CorpusLexicon corpus){
         _corpus = corpus;
         corpusSizeOcc = corpus.size();
         _rName.append("c(");
@@ -24,7 +24,7 @@ public class RLexicon {
         closeRVariable();
     }
 
-    public RLexicon(LexiconProfile subCorpus, GlobalLexicon corpus) {
+    public RLexicon(LexiconProfile subCorpus, CorpusLexicon corpus) {
         _subCorpus = subCorpus;
         _corpus = corpus;
         _idSubCorpus = new ArrayList<>();

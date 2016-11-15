@@ -11,13 +11,13 @@ import java.util.function.Consumer;
  * @author Simon Meoni
  *         Created on 23/10/16.
  */
-public class GlobalLexicon implements Iterable<String>{
+public class CorpusLexicon implements Iterable<String>{
     private Multiset<String> _multisetLexicon = HashMultiset.create();
     private Map<Integer,String> _lexicalEntry;
     private Map<String, Integer> _idEntry;
     private int _counter = 0;
 
-    public GlobalLexicon(Map<Integer,String> lexicalEntry, Map<String,Integer> idEntry) {
+    public CorpusLexicon(Map<Integer,String> lexicalEntry, Map<String,Integer> idEntry) {
         _idEntry = idEntry;
         _lexicalEntry = lexicalEntry;
     }

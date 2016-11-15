@@ -2,7 +2,7 @@ package org.atilf.module.disambiguation;
 
 import com.github.rcaller.rstuff.RCaller;
 import com.github.rcaller.rstuff.RCode;
-import org.atilf.models.disambiguation.GlobalLexicon;
+import org.atilf.models.disambiguation.CorpusLexicon;
 import org.atilf.models.disambiguation.LexiconProfile;
 import org.atilf.models.disambiguation.RLexicon;
 import org.atilf.models.termith.TermithIndex;
@@ -15,21 +15,21 @@ public class SpecCoefficientInjector implements Runnable{
     private final LexiconProfile _lexiconProfile;
     private final RLexicon _rLexicon;
     private final RLexicon _rSubLexicon;
-    private final GlobalLexicon _globalLexicon;
+    private final CorpusLexicon _CorpusLexicon;
 
-    public SpecCoefficientInjector(LexiconProfile lexiconProfile, RLexicon rLexicon, GlobalLexicon globalLexicon) {
+    public SpecCoefficientInjector(LexiconProfile lexiconProfile, RLexicon rLexicon, CorpusLexicon CorpusLexicon) {
 
-        _globalLexicon = globalLexicon;
+        _CorpusLexicon = CorpusLexicon;
         _lexiconProfile = lexiconProfile;
         _rLexicon = rLexicon;
-        _rSubLexicon = new RLexicon(lexiconProfile, globalLexicon);
+        _rSubLexicon = new RLexicon(lexiconProfile, CorpusLexicon);
     }
 
     public SpecCoefficientInjector(String p,TermithIndex termithIndex, RLexicon rLexicon){
-        _globalLexicon = termithIndex.getGlobalLexicon();
+        _CorpusLexicon = termithIndex.getCorpusLexicon();
         _lexiconProfile = termithIndex.getContextLexicon().get(p);
         _rLexicon = rLexicon;
-        _rSubLexicon = new RLexicon(_lexiconProfile, _globalLexicon);
+        _rSubLexicon = new RLexicon(_lexiconProfile, _CorpusLexicon);
     }
 
     public void execute() {
@@ -40,7 +40,7 @@ public class SpecCoefficientInjector implements Runnable{
         int cnt = 0;
         for (String id : _rSubLexicon.getIdSubCorpus()) {
             _lexiconProfile.addCoefficientSpec(
-                    _globalLexicon.getLexicalEntry(Integer.parseInt(id)),
+                    _CorpusLexicon.getLexicalEntry(Integer.parseInt(id)),
                     specCoefficient[cnt]);
             cnt++;
         }

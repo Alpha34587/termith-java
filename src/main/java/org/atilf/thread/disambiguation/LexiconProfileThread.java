@@ -52,7 +52,7 @@ public class LexiconProfileThread extends Thread{
         /*
         convert global corpus into R variable
          */
-        RLexicon rLexicon = new RLexicon(_termithIndex.getGlobalLexicon());
+        RLexicon rLexicon = new RLexicon(_termithIndex.getCorpusLexicon());
 
         /*
         compute lexical profile for each terms candidates entries
