@@ -1,7 +1,6 @@
-package org.atilf.module.tools;
+package org.atilf.module.observer;
 
 import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * @author Simon Meoni
@@ -11,11 +10,10 @@ public class ProgressBar {
 
     private StringBuilder _progress;
     private String _message;
-    private static final Logger LOGGER = LoggerFactory.getLogger(ProgressBar.class.getName());
 
     /**
      * initialize _progress bar properties.
-     * @param message
+     * @param message the title of the observed thread
      */
     public ProgressBar(String message) {
         _message = message;

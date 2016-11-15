@@ -1,11 +1,10 @@
 package org.atilf.module.observer;
 
-import org.atilf.module.tools.ProgressBar;
-
 import java.util.Observable;
 import java.util.Observer;
 
 /**
+ * ProgressBarObserver is a class that update _progressBar when ProgressBarObserver object is notified
  * @author Simon Meoni
  *         Created on 19/09/16.
  */
