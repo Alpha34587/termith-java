@@ -1,9 +1,9 @@
-package org.atilf.module.treetagger;
+package org.atilf.module.termsuite;
 
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonGenerator;
-import org.atilf.models.treetagger.TagNormalizer;
 import org.atilf.models.termsuite.TextAnalyzer;
+import org.atilf.models.treetagger.TagNormalizer;
 
 import java.io.FileOutputStream;
 import java.io.IOException;

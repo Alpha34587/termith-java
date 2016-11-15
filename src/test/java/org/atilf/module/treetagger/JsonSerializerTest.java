@@ -1,8 +1,9 @@
 package org.atilf.module.treetagger;
 
+import org.atilf.models.termith.TermithIndex;
 import org.atilf.models.termsuite.CorpusAnalyzer;
 import org.atilf.models.treetagger.TagNormalizer;
-import org.atilf.models.termith.TermithIndex;
+import org.atilf.module.termsuite.JsonSerializer;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Rule;
@@ -20,12 +21,11 @@ import java.nio.file.Paths;
  */
 public class JsonSerializerTest {
 
+    @Rule
+    public TemporaryFolder temporaryFolder = new TemporaryFolder();
     private JsonSerializer _jsonSerializerLemma;
     private File _jsonResFile;
     private TermithIndex _termithIndex;
-
-    @Rule
-    public TemporaryFolder temporaryFolder = new TemporaryFolder();
 
     @Before
     public void setUp() throws IOException {
