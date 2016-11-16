@@ -41,9 +41,6 @@ public class CorpusMapper implements Runnable {
         return corpusCnt;
     }
 
-    /**
-     * this override method run call the extractor text method
-     */
     @Override
     public void run() {
             termithIndex.getXmlCorpus().put(FilesUtils.nameNormalizer(path.getFileName().toString()), path);

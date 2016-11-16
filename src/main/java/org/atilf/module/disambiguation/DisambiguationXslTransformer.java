@@ -64,7 +64,7 @@ public class DisambiguationXslTransformer extends TextExtractor {
                     /*
                     transform and write file
                      */
-                    FilesUtils.writeXml(
+                    FilesUtils.writeFile(
                             this.execute(),
                             TermithIndex.getOutputPath(),
                             _file.getName())
