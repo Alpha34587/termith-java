@@ -1,4 +1,4 @@
-package org.atilf.module.termsuite.json;
+package org.atilf.module.termsuite.terminology;
 
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonParser;
@@ -17,20 +17,20 @@ import static eu.project.ttc.readers.JsonCasConstants.*;
  * @author Simon Meoni
  *         Created on 25/08/16.
  */
-public class TermsuiteJsonReader {
+public class TerminologyJsonReader {
 
     private Queue<Token> _tokenQueue = new LinkedList<>();
     private File _file;
     private Token _pollToken;
     private final JsonFactory _factory = new JsonFactory();
-    private final static Logger LOGGER = LoggerFactory.getLogger(TermsuiteJsonReader.class);
+    private final static Logger LOGGER = LoggerFactory.getLogger(TerminologyJsonReader.class);
 
 
-    public TermsuiteJsonReader(){}
+    public TerminologyJsonReader(){}
 
-    public TermsuiteJsonReader(File file) {this(new LinkedList<>(), file);}
+    public TerminologyJsonReader(File file) {this(new LinkedList<>(), file);}
 
-    private TermsuiteJsonReader(Queue<Token> tokenQueue, File file) {
+    private TerminologyJsonReader(Queue<Token> tokenQueue, File file) {
         _tokenQueue = tokenQueue;
         _file = file;
     }

@@ -1,6 +1,6 @@
 package org.atilf.module.tei.morphology;
 
-import org.atilf.module.termsuite.json.TermsuiteJsonReader;
+import org.atilf.module.termsuite.terminology.TerminologyJsonReader;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -132,93 +132,93 @@ public class SyntaxParserTest {
         syntaxBody3.teiBodySplit();
 
         //_basicTokenInjector
-        TermsuiteJsonReader basicTermsuiteJsonReader = new TermsuiteJsonReader();
-        basicTermsuiteJsonReader.createToken("N", "le", 0, 2);
-        basicTermsuiteJsonReader.createToken("N", "chien", 3, 8);
-        basicTermsuiteJsonReader.createToken("N", "mange", 9, 14);
-        basicTermsuiteJsonReader.createToken("N", "des", 15, 18);
-        basicTermsuiteJsonReader.createToken("N", "pommes", 19, 25);
+        TerminologyJsonReader basicTerminologyJsonReader = new TerminologyJsonReader();
+        basicTerminologyJsonReader.createToken("N", "le", 0, 2);
+        basicTerminologyJsonReader.createToken("N", "chien", 3, 8);
+        basicTerminologyJsonReader.createToken("N", "mange", 9, 14);
+        basicTerminologyJsonReader.createToken("N", "des", 15, 18);
+        basicTerminologyJsonReader.createToken("N", "pommes", 19, 25);
         _basicTokenInjector = new SyntaxParser(
                 new StringBuilder("le chien mange des pommes"),
                 new StringBuilder("<text>le chien mange des pommes</text>"),
-                basicTermsuiteJsonReader, new ArrayList<>()
+                basicTerminologyJsonReader, new ArrayList<>()
         );
 
         //insideTokenInjector
-        TermsuiteJsonReader insideTermsuiteJsonReader = new TermsuiteJsonReader();
-        insideTermsuiteJsonReader.createToken("N","le",0,2);
-        insideTermsuiteJsonReader.createToken("N","chien",3,8);
-        insideTermsuiteJsonReader.createToken("N","mange",9,14);
-        insideTermsuiteJsonReader.createToken("N","des",15,18);
-        insideTermsuiteJsonReader.createToken("N","pommes",19,25);
+        TerminologyJsonReader insideTerminologyJsonReader = new TerminologyJsonReader();
+        insideTerminologyJsonReader.createToken("N","le",0,2);
+        insideTerminologyJsonReader.createToken("N","chien",3,8);
+        insideTerminologyJsonReader.createToken("N","mange",9,14);
+        insideTerminologyJsonReader.createToken("N","des",15,18);
+        insideTerminologyJsonReader.createToken("N","pommes",19,25);
         _insideTokenInjector = new SyntaxParser(
                 new StringBuilder("le chien mange des pommes"),
                 new StringBuilder("<text>le <hi>chi</hi><hi>en</hi> mange de<s>s</s> <hi>pommes</hi></text>"),
-                insideTermsuiteJsonReader, new ArrayList<>()
+                insideTerminologyJsonReader, new ArrayList<>()
         );
 
-        TermsuiteJsonReader insideTermsuiteJsonReader2 = new TermsuiteJsonReader();
-        insideTermsuiteJsonReader2.createToken("N","le",0,2);
-        insideTermsuiteJsonReader2.createToken("N","chien",3,8);
-        insideTermsuiteJsonReader2.createToken("N","mange",9,14);
-        insideTermsuiteJsonReader2.createToken("N","des",15,18);
-        insideTermsuiteJsonReader2.createToken("N","(",19,20);
-        insideTermsuiteJsonReader2.createToken("N","bonnes",20,26);
-        insideTermsuiteJsonReader2.createToken("N",")",26,27);
-        insideTermsuiteJsonReader2.createToken("N","pommes",28,34);
+        TerminologyJsonReader insideTerminologyJsonReader2 = new TerminologyJsonReader();
+        insideTerminologyJsonReader2.createToken("N","le",0,2);
+        insideTerminologyJsonReader2.createToken("N","chien",3,8);
+        insideTerminologyJsonReader2.createToken("N","mange",9,14);
+        insideTerminologyJsonReader2.createToken("N","des",15,18);
+        insideTerminologyJsonReader2.createToken("N","(",19,20);
+        insideTerminologyJsonReader2.createToken("N","bonnes",20,26);
+        insideTerminologyJsonReader2.createToken("N",")",26,27);
+        insideTerminologyJsonReader2.createToken("N","pommes",28,34);
         _insideTokenInjector2 = new SyntaxParser(
                 new StringBuilder("le chien mange des (bonnes) pommes"),
                 new StringBuilder("<text>le <hi>chi</hi><hi>en</hi> mange de<s>s</s> <hi>(bonnes<hi>)</hi> pommes</hi></text>"),
-                insideTermsuiteJsonReader2, new ArrayList<>()
+                insideTerminologyJsonReader2, new ArrayList<>()
         );
 
         //_commentTokenInjector
 
-        TermsuiteJsonReader commentTermsuiteJsonReader = new TermsuiteJsonReader();
-        commentTermsuiteJsonReader.createToken("N", "le", 0, 2);
-        commentTermsuiteJsonReader.createToken("N", "chien", 3, 8);
-        commentTermsuiteJsonReader.createToken("N", "mange", 9, 14);
-        commentTermsuiteJsonReader.createToken("N", "des", 15, 18);
-        commentTermsuiteJsonReader.createToken("N", "pommes", 19, 25);
+        TerminologyJsonReader commentTerminologyJsonReader = new TerminologyJsonReader();
+        commentTerminologyJsonReader.createToken("N", "le", 0, 2);
+        commentTerminologyJsonReader.createToken("N", "chien", 3, 8);
+        commentTerminologyJsonReader.createToken("N", "mange", 9, 14);
+        commentTerminologyJsonReader.createToken("N", "des", 15, 18);
+        commentTerminologyJsonReader.createToken("N", "pommes", 19, 25);
         _commentTokenInjector = new SyntaxParser(
                 new StringBuilder("le chien mange des pommes"),
                 new StringBuilder("<text>le<!--testtest--> <hi>chi</hi>en" +
                         " <!--test-->mange de<s>s</s><!--lalalal--><!--test--> " +
                         "<hi>pommes</hi><!--lalala--></text>"),
-                commentTermsuiteJsonReader, new ArrayList<>()
+                commentTerminologyJsonReader, new ArrayList<>()
         );
 
         //_symbolTokenInjector
-        TermsuiteJsonReader symbolTermsuiteJsonReader = new TermsuiteJsonReader();
+        TerminologyJsonReader symbolTerminologyJsonReader = new TerminologyJsonReader();
 
         _symbolTokenInjector = new SyntaxParser(
                 new StringBuilder("le &amp; &amp; chi&eacute;ien ma&diams;nge des pommes&amp;"),
                 new StringBuilder("le &amp; &amp; chi&eacute;ien ma&diams;nge des pommes&amp;"),
-                symbolTermsuiteJsonReader, new ArrayList<>()
+                symbolTerminologyJsonReader, new ArrayList<>()
         );
 
-        TermsuiteJsonReader symbolTermsuiteJsonReader2 = new TermsuiteJsonReader();
-        symbolTermsuiteJsonReader2.createToken("N", "le", 0, 2);
-        symbolTermsuiteJsonReader2.createToken("N", "&amp;", 3, 4);
-        symbolTermsuiteJsonReader2.createToken("N", "&amp;", 5, 6);
-        symbolTermsuiteJsonReader2.createToken("N", "chien", 7, 14);
-        symbolTermsuiteJsonReader2.createToken("N", "mange", 15, 21);
-        symbolTermsuiteJsonReader2.createToken("N", "des", 22, 26);
-        symbolTermsuiteJsonReader2.createToken("N", "pommes", 27, 34);
+        TerminologyJsonReader symbolTerminologyJsonReader2 = new TerminologyJsonReader();
+        symbolTerminologyJsonReader2.createToken("N", "le", 0, 2);
+        symbolTerminologyJsonReader2.createToken("N", "&amp;", 3, 4);
+        symbolTerminologyJsonReader2.createToken("N", "&amp;", 5, 6);
+        symbolTerminologyJsonReader2.createToken("N", "chien", 7, 14);
+        symbolTerminologyJsonReader2.createToken("N", "mange", 15, 21);
+        symbolTerminologyJsonReader2.createToken("N", "des", 22, 26);
+        symbolTerminologyJsonReader2.createToken("N", "pommes", 27, 34);
         _symbolTokenInjector2 = new SyntaxParser(
                 new StringBuilder("le &amp; &amp; chi&eacute;ien ma&diams;nge &diams;des pommes&amp;"),
                 new StringBuilder("<text>le &amp; &amp; chi&eacute;ien ma&diams;nge &diams;des pommes&amp;</text>"),
-                symbolTermsuiteJsonReader2, new ArrayList<>()
+                symbolTerminologyJsonReader2, new ArrayList<>()
         );
 
-        TermsuiteJsonReader symbolTermsuiteJsonReader3 = new TermsuiteJsonReader();
-        symbolTermsuiteJsonReader3.createToken("N", "le", 0, 2);
-        symbolTermsuiteJsonReader3.createToken("N", "&amp;", 3, 4);
-        symbolTermsuiteJsonReader3.createToken("N", "&amp;", 5, 6);
-        symbolTermsuiteJsonReader3.createToken("N", "chien", 7, 14);
-        symbolTermsuiteJsonReader3.createToken("N", "mange", 15, 22);
-        symbolTermsuiteJsonReader3.createToken("N", "des", 23, 27);
-        symbolTermsuiteJsonReader3.createToken("N", "pommes", 28, 35);
+        TerminologyJsonReader symbolTerminologyJsonReader3 = new TerminologyJsonReader();
+        symbolTerminologyJsonReader3.createToken("N", "le", 0, 2);
+        symbolTerminologyJsonReader3.createToken("N", "&amp;", 3, 4);
+        symbolTerminologyJsonReader3.createToken("N", "&amp;", 5, 6);
+        symbolTerminologyJsonReader3.createToken("N", "chien", 7, 14);
+        symbolTerminologyJsonReader3.createToken("N", "mange", 15, 22);
+        symbolTerminologyJsonReader3.createToken("N", "des", 23, 27);
+        symbolTerminologyJsonReader3.createToken("N", "pommes", 28, 35);
         _symbolTokenInjector3 = new SyntaxParser(
                 new StringBuilder("le &amp; &amp; chi&eacute;ien ma&diams;&diams;nge &diams;des pommes&amp;"),
                 new StringBuilder("<text><hi>le</hi> &amp; &amp; <hi>chi</hi>&eacute;ien" +
@@ -226,42 +226,42 @@ public class SyntaxParserTest {
                         "<sub>&diams;d</sub>es " +
                         "<hi>pommes&amp;</hi>" +
                         "</text>"),
-                symbolTermsuiteJsonReader3, new ArrayList<>()
+                symbolTerminologyJsonReader3, new ArrayList<>()
         );
 
 
-        TermsuiteJsonReader alignmentTermsuiteJsonReader = new TermsuiteJsonReader();
-        alignmentTermsuiteJsonReader.createToken("N", "le", 0, 2);
-        alignmentTermsuiteJsonReader.createToken("N", "chien", 3 , 8);
-        alignmentTermsuiteJsonReader.createToken("N", "mange", 9, 14);
-        alignmentTermsuiteJsonReader.createToken("N", "un", 15, 17);
-        alignmentTermsuiteJsonReader.createToken("N", "fromage", 18, 25);
-        alignmentTermsuiteJsonReader.createToken("N", "assez", 26, 31);
-        alignmentTermsuiteJsonReader.createToken("N", "délicieux", 33, 42);
-        alignmentTermsuiteJsonReader.createToken("N", "<", 48, 49);
+        TerminologyJsonReader alignmentTerminologyJsonReader = new TerminologyJsonReader();
+        alignmentTerminologyJsonReader.createToken("N", "le", 0, 2);
+        alignmentTerminologyJsonReader.createToken("N", "chien", 3 , 8);
+        alignmentTerminologyJsonReader.createToken("N", "mange", 9, 14);
+        alignmentTerminologyJsonReader.createToken("N", "un", 15, 17);
+        alignmentTerminologyJsonReader.createToken("N", "fromage", 18, 25);
+        alignmentTerminologyJsonReader.createToken("N", "assez", 26, 31);
+        alignmentTerminologyJsonReader.createToken("N", "délicieux", 33, 42);
+        alignmentTerminologyJsonReader.createToken("N", "<", 48, 49);
         _alignmentTokenInjector = new SyntaxParser(
                 new StringBuilder("le chien\nmange un fromage assez\n\ndélicieux  \n\n\n\n<"),
                 new StringBuilder("<text><head>le chien</head><p>mange " +
                         "<div>un froma<sup>ge</sup> assez" +
                         "</div></p><p>d&eacute;licieux  </p>\n\n\n&lt;</text>"),
-                alignmentTermsuiteJsonReader, new ArrayList<>()
+                alignmentTerminologyJsonReader, new ArrayList<>()
         );
         _alignmentTokenInjector.teiWordTokenizer();
 
-        TermsuiteJsonReader alignmentTermsuiteJsonReader2 = new TermsuiteJsonReader();
-        alignmentTermsuiteJsonReader2.createToken("N", "le", 0, 2);
-        alignmentTermsuiteJsonReader2.createToken("N", "chien", 3 , 8);
-        alignmentTermsuiteJsonReader2.createToken("N", "mange", 9, 14);
-        alignmentTermsuiteJsonReader2.createToken("N", "<", 16, 17);
-        alignmentTermsuiteJsonReader2.createToken("N", "fromage", 18, 25);
-        alignmentTermsuiteJsonReader2.createToken("N", "assez", 26, 31);
-        alignmentTermsuiteJsonReader2.createToken("N", "délicieux", 33, 42);
+        TerminologyJsonReader alignmentTerminologyJsonReader2 = new TerminologyJsonReader();
+        alignmentTerminologyJsonReader2.createToken("N", "le", 0, 2);
+        alignmentTerminologyJsonReader2.createToken("N", "chien", 3 , 8);
+        alignmentTerminologyJsonReader2.createToken("N", "mange", 9, 14);
+        alignmentTerminologyJsonReader2.createToken("N", "<", 16, 17);
+        alignmentTerminologyJsonReader2.createToken("N", "fromage", 18, 25);
+        alignmentTerminologyJsonReader2.createToken("N", "assez", 26, 31);
+        alignmentTerminologyJsonReader2.createToken("N", "délicieux", 33, 42);
         _alignmentTokenInjector2 = new SyntaxParser(
                 new StringBuilder("le chien\nmange \n< fromage assez\n\ndélicieux  \n\n\n\n"),
                 new StringBuilder("<text><head>le chien</head><p>mange " +
                         "<div>&lt; froma<sup>ge</sup> assez" +
                         "</div></p><p>d&eacute;licieux  </p>\n\n\n</text>"),
-                alignmentTermsuiteJsonReader2, new ArrayList<>()
+                alignmentTerminologyJsonReader2, new ArrayList<>()
         );
             _alignmentTokenInjector2.teiWordTokenizer();
 

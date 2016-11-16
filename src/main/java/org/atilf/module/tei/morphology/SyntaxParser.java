@@ -1,7 +1,7 @@
 package org.atilf.module.tei.morphology;
 
 import org.atilf.models.termsuite.MorphologyOffsetId;
-import org.atilf.module.termsuite.json.TermsuiteJsonReader;
+import org.atilf.module.termsuite.terminology.TerminologyJsonReader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -19,17 +19,17 @@ public class SyntaxParser {
     private StringBuilder _xml;
     private StringBuilder _txt;
     private StringBuilder _tokenizeBuffer;
-    private TermsuiteJsonReader _termsuiteJsonReader;
+    private TerminologyJsonReader _terminologyJsonReader;
     private Queue<Character> xmlCharacterQueue;
     private Integer[] offset = new Integer[2];
     private List<MorphologyOffsetId> _offsetId;
 
 
-    SyntaxParser(StringBuilder txt, StringBuilder xml, TermsuiteJsonReader termsuiteJsonReader,
+    SyntaxParser(StringBuilder txt, StringBuilder xml, TerminologyJsonReader terminologyJsonReader,
                  List<MorphologyOffsetId> offsetId) {
         _xml = xml;
         _txt = txt;
-        _termsuiteJsonReader = termsuiteJsonReader;
+        _terminologyJsonReader = terminologyJsonReader;
         _tokenizeBuffer = new StringBuilder();
         _offsetId = offsetId;
     }
@@ -78,7 +78,7 @@ public class SyntaxParser {
         offset[0] = 0;
         offset[1] = 1;
         int id = 1;
-        _termsuiteJsonReader.pollToken();
+        _terminologyJsonReader.pollToken();
         Character ch;
         fillXmlCharacterQueue();
         try {
@@ -92,8 +92,8 @@ public class SyntaxParser {
                     countOffset();
                 }
 
-                if (offset[0] > _termsuiteJsonReader.getCurrentTokenEnd()) {
-                    _termsuiteJsonReader.pollToken();
+                if (offset[0] > _terminologyJsonReader.getCurrentTokenEnd()) {
+                    _terminologyJsonReader.pollToken();
                 }
             }
             LOGGER.debug("Tokenization Ended");
@@ -112,7 +112,7 @@ public class SyntaxParser {
 
     private int waitUntilTagEnd(Character ch, int id) {
 
-        if (_termsuiteJsonReader.getCurrentTokenBegin() == -2){
+        if (_terminologyJsonReader.getCurrentTokenBegin() == -2){
             _tokenizeBuffer.append("</w>");
             id++;
             MorphologyOffsetId.addId(_offsetId,id);
@@ -127,7 +127,7 @@ public class SyntaxParser {
         _tokenizeBuffer.append(ch);
         checkIfSymbol(ch);
 
-        if(_termsuiteJsonReader.getCurrentTokenBegin() == -2){
+        if(_terminologyJsonReader.getCurrentTokenBegin() == -2){
             _tokenizeBuffer.append("<w xml:id=\"" + "t").append(id).append("\">");
         }
 
@@ -146,25 +146,25 @@ public class SyntaxParser {
 
     private int tokenInjector(Character ch, int id) {
 
-        if (offset[0] == _termsuiteJsonReader.getCurrentTokenBegin()){
+        if (offset[0] == _terminologyJsonReader.getCurrentTokenBegin()){
             _tokenizeBuffer.append("<w xml:id=\"" + "t").append(id).append("\">");
             MorphologyOffsetId.addNewOffset(
                     _offsetId,
-                    _termsuiteJsonReader.getCurrentTokenBegin(),
-                    _termsuiteJsonReader.getCurrentTokenEnd(),
-                    _termsuiteJsonReader.getCurrentLemma(),
-                    _termsuiteJsonReader.getCurrentPos(),
+                    _terminologyJsonReader.getCurrentTokenBegin(),
+                    _terminologyJsonReader.getCurrentTokenEnd(),
+                    _terminologyJsonReader.getCurrentLemma(),
+                    _terminologyJsonReader.getCurrentPos(),
                     id
             );
-            _termsuiteJsonReader.setCurrentTokenBegin(-2);
+            _terminologyJsonReader.setCurrentTokenBegin(-2);
         }
 
         _tokenizeBuffer.append(ch);
         checkIfSymbol(ch);
 
-        if (offset[1] == _termsuiteJsonReader.getCurrentTokenEnd()){
+        if (offset[1] == _terminologyJsonReader.getCurrentTokenEnd()){
             _tokenizeBuffer.append("</w>");
-            _termsuiteJsonReader.pollToken();
+            _terminologyJsonReader.pollToken();
             return id + 1;
         }
         return id;

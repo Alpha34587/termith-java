@@ -3,7 +3,7 @@ package org.atilf.thread.enrichment;
 import org.atilf.models.termith.TermithIndex;
 import org.atilf.models.termsuite.MorphologyOffsetId;
 import org.atilf.module.extractor.TextExtractor;
-import org.atilf.module.termsuite.TermsuitePipelineBuilder;
+import org.atilf.module.termsuite.pipeline.TermsuitePipelineBuilder;
 import org.atilf.module.termsuite.terminology.TerminologyParser;
 import org.atilf.module.termsuite.terminology.TerminologyStandOff;
 import org.atilf.module.timer.JsonTimer;

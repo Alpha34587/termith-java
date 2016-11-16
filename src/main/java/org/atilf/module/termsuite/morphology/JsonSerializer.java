@@ -1,4 +1,4 @@
-package org.atilf.module.termsuite;
+package org.atilf.module.termsuite.morphology;
 
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonGenerator;
@@ -12,6 +12,7 @@ import java.io.Writer;
 import java.util.ArrayDeque;
 
 /**
+ *
  * @author Simon Meoni
  *         Created on 01/09/16.
  */
@@ -22,6 +23,13 @@ public class JsonSerializer {
     private String _jsonPath;
     private TextAnalyzer _textAnalyzer;
 
+    /**
+     *
+     * @param tokenDeque
+     * @param jsonPath
+     * @param txt
+     * @param textAnalyzer
+     */
     public JsonSerializer(StringBuilder tokenDeque, String jsonPath, StringBuilder txt
             , TextAnalyzer textAnalyzer) {
         populateTokenDeque(tokenDeque);
@@ -30,12 +38,20 @@ public class JsonSerializer {
         _textAnalyzer = textAnalyzer;
     }
 
+    /**
+     *
+     * @param tokenDeque
+     */
     private void populateTokenDeque(StringBuilder tokenDeque) {
         for (String token : tokenDeque.toString().split("\n")) {
             this._tokenDeque.add(token);
         }
     }
 
+    /**
+     *
+     * @throws IOException
+     */
     public void execute() throws IOException {
         FileOutputStream fos = new FileOutputStream(_jsonPath);
         Writer writer = new OutputStreamWriter(fos, "UTF-8");
@@ -53,24 +69,44 @@ public class JsonSerializer {
         writer.close();
     }
 
+    /**
+     *
+     * @param jg
+     * @throws IOException
+     */
     private void writeTermOcc(JsonGenerator jg) throws IOException {
         jg.writeFieldName("term_occ_annotations");
         jg.writeStartArray();
         jg.writeEndArray();
     }
 
+    /**
+     *
+     * @param jg
+     * @throws IOException
+     */
     private void writeFe(JsonGenerator jg) throws IOException {
         jg.writeFieldName("fixed_expressions");
         jg.writeStartArray();
         jg.writeEndArray();
     }
 
+    /**
+     *
+     * @param jg
+     * @throws IOException
+     */
     private void writeText(JsonGenerator jg) throws IOException {
         jg.writeFieldName("covered_text");
         jg.writeString(_txt.toString());
 
     }
 
+    /**
+     *
+     * @param jg
+     * @throws IOException
+     */
     private void writeSdi(JsonGenerator jg) throws IOException {
         jg.writeFieldName("sdi");
         jg.writeStartObject();
@@ -97,6 +133,11 @@ public class JsonSerializer {
         jg.writeEndObject();
     }
 
+    /**
+     *
+     * @param jg
+     * @throws IOException
+     */
     public void writeTag(JsonGenerator jg) throws IOException {
         Integer[] offset = new Integer[]{0,1};
         jg.writeFieldName("word_annotations");
@@ -115,21 +156,47 @@ public class JsonSerializer {
 
     }
 
+    /**
+     *
+     * @param token
+     * @param jg
+     * @throws IOException
+     */
     private void addCat(String token, JsonGenerator jg) throws IOException {
         jg.writeFieldName("cat");
         jg.writeString(TagNormalizer.normalize(token));
     }
 
+    /**
+     *
+     * @param token
+     * @param jg
+     * @throws IOException
+     */
     private void addLemma(String token, JsonGenerator jg) throws IOException {
         jg.writeFieldName("lemma");
         jg.writeString(token);
     }
 
+    /**
+     *
+     * @param tag
+     * @param jg
+     * @throws IOException
+     */
     private void addTag(String tag, JsonGenerator jg) throws IOException {
         jg.writeFieldName("tag");
         jg.writeString(tag);
     }
 
+    /**
+     *
+     * @param offset
+     * @param token
+     * @param jGenerator
+     * @return
+     * @throws IOException
+     */
     private Integer[] addOffsets(Integer[] offset, String token, JsonGenerator jGenerator) throws IOException {
         char[] letterCharArray = token.toCharArray();
         boolean findBegin = false;

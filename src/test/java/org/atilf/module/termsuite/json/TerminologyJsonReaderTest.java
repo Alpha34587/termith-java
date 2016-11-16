@@ -1,6 +1,7 @@
 package org.atilf.module.termsuite.json;
 
 import org.antlr.v4.runtime.misc.Pair;
+import org.atilf.module.termsuite.terminology.TerminologyJsonReader;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,26 +17,26 @@ import java.util.Queue;
  * @author Simon Meoni
  *         Created on 25/08/16.
  */
-public class TermsuiteJsonReaderTest {
-    private TermsuiteJsonReader termsuiteJsonReader;
-    private TermsuiteJsonReader cleanTermsuiteJsonReader;
-    private TermsuiteJsonReader expectedJsonReader;
+public class TerminologyJsonReaderTest {
+    private TerminologyJsonReader _terminologyJsonReader;
+    private TerminologyJsonReader _cleanTerminologyJsonReader;
+    private TerminologyJsonReader expectedJsonReader;
 
     private Queue<Pair<Integer, Integer>> offsets = new LinkedList<>();
 
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(TermsuiteJsonReaderTest.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(TerminologyJsonReaderTest.class);
 
     @Before
     public void setUp(){
         //Parsing Test
-        cleanTermsuiteJsonReader = new TermsuiteJsonReader();
-        termsuiteJsonReader = new TermsuiteJsonReader(new File("src/test/resources/file/reader/json/file1.json"));
-        expectedJsonReader = new TermsuiteJsonReader();
+        _cleanTerminologyJsonReader = new TerminologyJsonReader();
+        _terminologyJsonReader = new TerminologyJsonReader(new File("src/test/resources/file/reader/json/file1.json"));
+        expectedJsonReader = new TerminologyJsonReader();
         expectedJsonReader.createToken("NN", "hearing", 22, 29);
         expectedJsonReader.createToken("N", "research", 30, 38);
         expectedJsonReader.createToken("CD", "125", 39, 42);
-        termsuiteJsonReader.parsing();
+        _terminologyJsonReader.parsing();
 
         //Clean Test
         offsets.add(new Pair<>(0,5));
@@ -48,11 +49,11 @@ public class TermsuiteJsonReaderTest {
 
     @Test
     public void parsingTest(){
-        while (!expectedJsonReader.getTokenQueue().isEmpty() || !termsuiteJsonReader.getTokenQueue().isEmpty()) {
+        while (!expectedJsonReader.getTokenQueue().isEmpty() || !_terminologyJsonReader.getTokenQueue().isEmpty()) {
             try {
 
-                TermsuiteJsonReader.Token expected = expectedJsonReader.getTokenQueue().poll();
-                TermsuiteJsonReader.Token current = termsuiteJsonReader.getTokenQueue().poll();
+                TerminologyJsonReader.Token expected = expectedJsonReader.getTokenQueue().poll();
+                TerminologyJsonReader.Token current = _terminologyJsonReader.getTokenQueue().poll();
                 Assert.assertEquals("tokenStack must be equals :", expected.getBegin(),
                         current.getBegin());
                 Assert.assertEquals("tokenStack must be equals :", expected.getEnd(),

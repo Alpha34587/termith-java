@@ -1,4 +1,4 @@
-package org.atilf.module.termsuite;
+package org.atilf.module.termsuite.pipeline;
 
 import ch.qos.logback.classic.Level;
 import com.google.common.io.ByteStreams;

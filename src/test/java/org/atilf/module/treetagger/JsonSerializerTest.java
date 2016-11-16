@@ -3,7 +3,7 @@ package org.atilf.module.treetagger;
 import org.atilf.models.termith.TermithIndex;
 import org.atilf.models.termsuite.CorpusAnalyzer;
 import org.atilf.models.treetagger.TagNormalizer;
-import org.atilf.module.termsuite.JsonSerializer;
+import org.atilf.module.termsuite.morphology.JsonSerializer;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Rule;

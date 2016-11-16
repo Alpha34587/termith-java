@@ -1,7 +1,7 @@
 package org.atilf.module.treetagger;
 
 import org.atilf.models.termsuite.TextAnalyzer;
-import org.atilf.module.termsuite.JsonSerializer;
+import org.atilf.module.termsuite.morphology.JsonSerializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
