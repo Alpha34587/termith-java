@@ -1,4 +1,4 @@
-package org.atilf.module.observer;
+package org.atilf.module.timer.observer;
 
 import org.slf4j.Logger;
 
