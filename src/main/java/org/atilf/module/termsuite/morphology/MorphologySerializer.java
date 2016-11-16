@@ -12,11 +12,11 @@ import java.io.Writer;
 import java.util.ArrayDeque;
 
 /**
- *
+ * Serialize TreeTagger result to Termsuite json format
  * @author Simon Meoni
  *         Created on 01/09/16.
  */
-public class JsonSerializer {
+public class MorphologySerializer {
 
     private ArrayDeque<String> _tokenDeque = new ArrayDeque<>();
     private StringBuilder _txt;
@@ -24,33 +24,33 @@ public class JsonSerializer {
     private TextAnalyzer _textAnalyzer;
 
     /**
-     *
-     * @param tokenDeque
-     * @param jsonPath
-     * @param txt
-     * @param textAnalyzer
+     * constructor for MorphologySerializer
+     * @param treeTaggerOutput treetagger output
+     * @param jsonPath the output of json file
+     * @param txt the plain text of the file
+     * @param textAnalyzer the termsuite json metadata
      */
-    public JsonSerializer(StringBuilder tokenDeque, String jsonPath, StringBuilder txt
+    public MorphologySerializer(StringBuilder treeTaggerOutput, String jsonPath, StringBuilder txt
             , TextAnalyzer textAnalyzer) {
-        populateTokenDeque(tokenDeque);
+        populateTokenDeque(treeTaggerOutput);
         _txt = txt;
         _jsonPath = jsonPath;
         _textAnalyzer = textAnalyzer;
     }
 
     /**
-     *
-     * @param tokenDeque
+     * put treeTagger Lemma/POS pairs in _tokenDeque field
+     * @param TreeTaggerOutput the treeTagger output
      */
-    private void populateTokenDeque(StringBuilder tokenDeque) {
-        for (String token : tokenDeque.toString().split("\n")) {
-            this._tokenDeque.add(token);
+    private void populateTokenDeque(StringBuilder TreeTaggerOutput) {
+        for (String token : TreeTaggerOutput.toString().split("\n")) {
+            _tokenDeque.add(token);
         }
     }
 
     /**
-     *
-     * @throws IOException
+     * serialize result into a json
+     * @throws IOException thrown an exception if the jsonGenerator meet a problem during the writing of the file
      */
     public void execute() throws IOException {
         FileOutputStream fos = new FileOutputStream(_jsonPath);
@@ -70,9 +70,9 @@ public class JsonSerializer {
     }
 
     /**
-     *
-     * @param jg
-     * @throws IOException
+     * write empty term_occ_annotations element
+     * @param jg the current jsonGenerator
+     * @throws IOException thrown an exception if the jsonGenerator meet a problem during the writing of the file
      */
     private void writeTermOcc(JsonGenerator jg) throws IOException {
         jg.writeFieldName("term_occ_annotations");
@@ -81,9 +81,9 @@ public class JsonSerializer {
     }
 
     /**
-     *
-     * @param jg
-     * @throws IOException
+     * write empty fixed_expressions element
+     * @param jg the current jsonGenerator
+     * @throws IOException thrown an exception if the jsonGenerator meet a problem during the writing of the file
      */
     private void writeFe(JsonGenerator jg) throws IOException {
         jg.writeFieldName("fixed_expressions");
@@ -92,9 +92,9 @@ public class JsonSerializer {
     }
 
     /**
-     *
-     * @param jg
-     * @throws IOException
+     * write plain text on covered_text element
+     * @param jg the current jsonGenerator
+     * @throws IOException thrown an exception if the jsonGenerator meet a problem during the writing of the file
      */
     private void writeText(JsonGenerator jg) throws IOException {
         jg.writeFieldName("covered_text");
@@ -103,9 +103,9 @@ public class JsonSerializer {
     }
 
     /**
-     *
-     * @param jg
-     * @throws IOException
+     * write termsuite json metadata
+     * @param jg the current jsonGenerator
+     * @throws IOException thrown an exception if the jsonGenerator meet a problem during the writing of the file
      */
     private void writeSdi(JsonGenerator jg) throws IOException {
         jg.writeFieldName("sdi");
@@ -134,9 +134,9 @@ public class JsonSerializer {
     }
 
     /**
-     *
-     * @param jg
-     * @throws IOException
+     * write tag element
+     * @param jg the current jsonGenerator
+     * @throws IOException thrown an exception if the jsonGenerator meet a problem during the writing of the file
      */
     public void writeTag(JsonGenerator jg) throws IOException {
         Integer[] offset = new Integer[]{0,1};
@@ -157,10 +157,10 @@ public class JsonSerializer {
     }
 
     /**
-     *
-     * @param token
-     * @param jg
-     * @throws IOException
+     * write cat field into tag element
+     * @param token the category value
+     * @param jg the current jsonGenerator
+     * @throws IOException thrown an exception if the jsonGenerator meet a problem during the writing of the file
      */
     private void addCat(String token, JsonGenerator jg) throws IOException {
         jg.writeFieldName("cat");
@@ -168,10 +168,10 @@ public class JsonSerializer {
     }
 
     /**
-     *
-     * @param token
-     * @param jg
-     * @throws IOException
+     * write lemma field into tag element
+     * @param token the lemma value
+     * @param jg the current jsonGenerator
+     * @throws IOException thrown an exception if the jsonGenerator meet a problem during the writing of the file
      */
     private void addLemma(String token, JsonGenerator jg) throws IOException {
         jg.writeFieldName("lemma");
@@ -179,26 +179,26 @@ public class JsonSerializer {
     }
 
     /**
-     *
-     * @param tag
-     * @param jg
-     * @throws IOException
+     * write tag field into tag element
+     * @param token the tag value
+     * @param jg the current jsonGenerator
+     * @throws IOException thrown an exception if the jsonGenerator meet a problem during the writing of the file
      */
-    private void addTag(String tag, JsonGenerator jg) throws IOException {
+    private void addTag(String token, JsonGenerator jg) throws IOException {
         jg.writeFieldName("tag");
-        jg.writeString(tag);
+        jg.writeString(token);
     }
 
     /**
-     *
-     * @param offset
-     * @param token
-     * @param jGenerator
-     * @return
-     * @throws IOException
+     * write the offset of the of the tag into a tag element
+     * @param offset the current offset
+     * @param word the current words
+     * @param jGenerator the current json Generator
+     * @return the new character offset
+     * @throws IOException thrown an exception if the jsonGenerator meet a problem during the writing of the file
      */
-    private Integer[] addOffsets(Integer[] offset, String token, JsonGenerator jGenerator) throws IOException {
-        char[] letterCharArray = token.toCharArray();
+    private Integer[] addOffsets(Integer[] offset, String word, JsonGenerator jGenerator) throws IOException {
+        char[] letterCharArray = word.toCharArray();
         boolean findBegin = false;
         int begin = -1;
         int end = -1;

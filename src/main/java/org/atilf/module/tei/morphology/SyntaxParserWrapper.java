@@ -1,7 +1,7 @@
 package org.atilf.module.tei.morphology;
 
 import org.atilf.models.termsuite.MorphologyOffsetId;
-import org.atilf.module.termsuite.terminology.TerminologyJsonReader;
+import org.atilf.module.termsuite.morphology.MorphologyParser;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -15,7 +15,7 @@ import java.util.List;
  */
 public class SyntaxParserWrapper {
 
-    private TerminologyJsonReader _terminologyJsonReader;
+    private MorphologyParser _morphologyParser;
     private StringBuilder _txt;
     private StringBuilder _xml;
     private StringBuilder _tokenizeBody = new StringBuilder();
@@ -27,7 +27,7 @@ public class SyntaxParserWrapper {
      *             for the tokenization and report of the POS tagging in the standOff morphology annotation in tei file
      * @param txt the extracted file of a xml file. it use to make some text alignment during tokenization proccessing
      * @param xml the xml file when the tokenization is performed
-     * @see TerminologyJsonReader
+     * @see MorphologyParser
      */
     public SyntaxParserWrapper(File json, StringBuilder txt, StringBuilder xml) {
         _xml = xml;
@@ -35,8 +35,8 @@ public class SyntaxParserWrapper {
         /*
         deserialize json file
          */
-        _terminologyJsonReader = new TerminologyJsonReader(json);
-        _terminologyJsonReader.parsing();
+        _morphologyParser = new MorphologyParser(json);
+        _morphologyParser.execute();
     }
 
     /**
@@ -62,7 +62,7 @@ public class SyntaxParserWrapper {
      */
     public void execute() throws Exception {
 
-        SyntaxParser syntaxParser = new SyntaxParser(_txt, _xml, _terminologyJsonReader, _offsetId);
+        SyntaxParser syntaxParser = new SyntaxParser(_txt, _xml, _morphologyParser, _offsetId);
         syntaxParser.execute();
         _tokenizeBody = syntaxParser.getTokenizeBuffer();
         _offsetId = syntaxParser.getOffsetId();

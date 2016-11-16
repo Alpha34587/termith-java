@@ -97,7 +97,7 @@ class TreeTaggerWrapper {
 
     /**
      * write file given at TreeTagger
-     * @param parsingText the parsing text compute with parsing text method
+     * @param parsingText the execute text compute with execute text method
      * @return the path of the text input
      * @throws IOException thrown an exception if the file has been not written
      */
@@ -113,7 +113,7 @@ class TreeTaggerWrapper {
 
     /**
      * make each word separate by a space and punctuations in a new line.
-     * @return return the parsing text
+     * @return return the execute text
      */
     private String parsingText(){
         Deque<String> oldPunctuations = new ArrayDeque<>();

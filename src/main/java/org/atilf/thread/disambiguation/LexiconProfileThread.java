@@ -9,7 +9,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.TimeUnit;
 
 /**
- * The LexiconProfileThread process the specificity coefficient for each pair of lemma/pos of a termEntry contained by
+ * The LexiconProfileThread process the specificity coefficient for each pair of lemma/_pos of a termEntry contained by
  * _contextLexicon map of termithIndex
  * @author Simon Meoni
  *         Created on 12/10/16.

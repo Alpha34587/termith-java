@@ -1,9 +1,10 @@
-package org.atilf.module.tools;
+package org.atilf.module.exporter;
 
 import org.atilf.models.tei.exporter.StandOffResources;
 import org.atilf.models.termith.TermithIndex;
 import org.atilf.models.termsuite.MorphologyOffsetId;
-import org.atilf.models.termsuite.TermsOffsetId;
+import org.atilf.models.termsuite.TermOffsetId;
+import org.atilf.module.tools.FilesUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -30,7 +31,7 @@ public class TeiWriter implements Runnable {
     private TermithIndex _termithIndex;
     private final StringBuilder _xmlCorpus;
     private final List<MorphologyOffsetId> _morphologyOffsetIds;
-    private final List<TermsOffsetId> _termsOffsetIds;
+    private final List<TermOffsetId> _termOffsetIds;
     private static final Logger LOGGER = LoggerFactory.getLogger(TeiWriter.class.getName());
 
 
@@ -77,20 +78,20 @@ public class TeiWriter implements Runnable {
      * @param xmlCorpus the xmlFile
      * @param morphologyOffsetIds morphology tags
      * @param tokenizeBody the tokenize body
-     * @param termsOffsetIds term entries tags
+     * @param termOffsetIds term entries tags
      * @param outputPath the output path
      * @param standOffResources static resource used by teiWriter
      */
     public TeiWriter(StringBuilder xmlCorpus,
                      List<MorphologyOffsetId> morphologyOffsetIds,
-                     StringBuilder tokenizeBody,List<TermsOffsetId> termsOffsetIds,
+                     StringBuilder tokenizeBody,List<TermOffsetId> termOffsetIds,
                      Path outputPath,
                      StandOffResources standOffResources) {
 
         _xmlCorpus = xmlCorpus;
         _morphologyOffsetIds = morphologyOffsetIds;
         _tokenizeBody = tokenizeBody;
-        _termsOffsetIds = termsOffsetIds;
+        _termOffsetIds = termOffsetIds;
         _stdfRes = standOffResources;
         try {
             _bufferedWriter = Files.newBufferedWriter(outputPath);
@@ -169,24 +170,24 @@ public class TeiWriter implements Runnable {
         /*
         inject terminology
          */
-        if (_termsOffsetIds != null &&
-                !_termsOffsetIds.isEmpty()){
-            serializeTerminology(_termsOffsetIds);
+        if (_termOffsetIds != null &&
+                !_termOffsetIds.isEmpty()){
+            serializeTerminology(_termOffsetIds);
         }
 
     }
 
     /**
      * this method convert a list of TermOffsetId into a standoff element
-     * @param termsOffsetIds the TermsOffsetId list
+     * @param termOffsetIds the TermOffsetId list
      * @throws IOException thrown an exception if _bufferedWriter fields throws an error during writing
      */
-    private void serializeTerminology(List<TermsOffsetId> termsOffsetIds) throws IOException {
+    private void serializeTerminology(List<TermOffsetId> termOffsetIds) throws IOException {
 
         /*
         reorder the list
          */
-        termsOffsetIds.sort((o1, o2) -> {
+        termOffsetIds.sort((o1, o2) -> {
             int comp = o1.getIds().get(0).compareTo(o2.getIds().get(0));
             if (comp == 0) {
                 comp = ((Integer) o1.getIds().size()).compareTo(o2.getIds().size()) * -1;
@@ -203,7 +204,7 @@ public class TeiWriter implements Runnable {
         /*
         write his content
          */
-        for (TermsOffsetId token : termsOffsetIds) {
+        for (TermOffsetId token : termOffsetIds) {
             /*
             write a span element
              */
@@ -266,7 +267,7 @@ public class TeiWriter implements Runnable {
             StringBuilder entry = new StringBuilder(_stdfRes.MS_SPAN);
             replaceTemplate(entry, "@target", serializeId(token.getIds()));
             replaceTemplate(entry, "@lemma", replaceXmlChar(token.getLemma().replace("<unknown>", "@unknown")));
-            replaceTemplate(entry, "@pos", token.getTag());
+            replaceTemplate(entry, "@_pos", token.getTag());
             _bufferedWriter.append(entry);
         }
         _bufferedWriter.append(cut(_stdfRes.LIST_ANNOTATION,true));

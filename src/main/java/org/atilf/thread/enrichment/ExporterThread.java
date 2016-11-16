@@ -3,7 +3,7 @@ package org.atilf.thread.enrichment;
 import org.atilf.models.tei.exporter.StandOffResources;
 import org.atilf.models.termith.TermithIndex;
 import org.atilf.module.timer.TeiWriterTimer;
-import org.atilf.module.tools.TeiWriter;
+import org.atilf.module.exporter.TeiWriter;
 import org.atilf.thread.Thread;
 
 import java.util.concurrent.ExecutorService;

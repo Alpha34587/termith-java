@@ -6,10 +6,10 @@ import java.util.List;
  * @author Simon Meoni
  *         Created on 14/09/16.
  */
-public class TermsOffsetId extends OffsetId {
+public class TermOffsetId extends OffsetId {
     private String _word;
     private int _termId;
-    public TermsOffsetId(int begin, int end, int id, String word) {
+    public TermOffsetId(int begin, int end, int id, String word) {
         super();
         _begin = begin;
         _end = end;
@@ -17,7 +17,7 @@ public class TermsOffsetId extends OffsetId {
         _termId = id;
     }
 
-    public TermsOffsetId() {}
+    public TermOffsetId() {}
 
     public void setWord(String _word) {
         this._word = _word;
@@ -39,7 +39,7 @@ public class TermsOffsetId extends OffsetId {
         this._ids.addAll(ids);
     }
 
-    public TermsOffsetId(TermsOffsetId other) {
+    public TermOffsetId(TermOffsetId other) {
         _begin = other._begin;
         _end = other._end;
         _word = other._word;

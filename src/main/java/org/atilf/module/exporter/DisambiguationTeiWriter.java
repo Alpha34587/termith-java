@@ -1,7 +1,8 @@
-package org.atilf.module.tools;
+package org.atilf.module.exporter;
 
 import org.atilf.models.termith.TermithIndex;
 import org.atilf.models.disambiguation.EvaluationProfile;
+import org.atilf.module.tools.FilesUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
@@ -61,7 +62,7 @@ public class DisambiguationTeiWriter implements Runnable {
         try {
             _doc = _dBuilder.parse(p);
         } catch (SAXException | IOException e) {
-            LOGGER.error("error during the parsing of document",e);
+            LOGGER.error("error during the execute of document",e);
         }
     }
 
@@ -119,7 +120,7 @@ public class DisambiguationTeiWriter implements Runnable {
             }
 
         } catch (XPathExpressionException e) {
-            LOGGER.error("error during the parsing of document",e);
+            LOGGER.error("error during the execute of document",e);
         }
     }
 

@@ -122,7 +122,7 @@ public class ContextExtractor implements Runnable{
         _p = p;
         _contextLexicon = contextLexicon;
         /*
-        The xpathMapVariableResolver is an object that it used to change xsl variable during dom parsing
+        The xpathMapVariableResolver is an object that it used to change xsl variable during dom execute
          */
         XpathMapVariableResolver xpathMapVariableResolver = new XpathMapVariableResolver();
         XPath xpath = XPathFactory.newInstance().newXPath();
@@ -142,11 +142,11 @@ public class ContextExtractor implements Runnable{
         }
         try {
             /*
-            parsing document
+            execute document
              */
             _doc = _dBuilder.parse(p);
         } catch (SAXException | IOException e) {
-            LOGGER.error("error during the parsing of document",e);
+            LOGGER.error("error during the execute of document",e);
         }
         try {
             /*
@@ -253,7 +253,7 @@ public class ContextExtractor implements Runnable{
                     singleWordExtractor(c, l, tags.get(0));
                 LOGGER.debug(("add words to the term : " + c + "-" + l).replace("#",""));
             } catch (XPathExpressionException e) {
-                LOGGER.error("error during the parsing of document", e);
+                LOGGER.error("error during the execute of document", e);
             }
         }
     }
@@ -422,7 +422,7 @@ public class ContextExtractor implements Runnable{
                 }
             }
         } catch (XPathExpressionException e) {
-            LOGGER.error("error during the parsing of document",e);
+            LOGGER.error("error during the execute of document",e);
         }
     }
 

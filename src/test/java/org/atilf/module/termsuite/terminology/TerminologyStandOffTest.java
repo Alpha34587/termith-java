@@ -1,7 +1,7 @@
 package org.atilf.module.termsuite.terminology;
 
 import org.atilf.models.termsuite.MorphologyOffsetId;
-import org.atilf.models.termsuite.TermsOffsetId;
+import org.atilf.models.termsuite.TermOffsetId;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,11 +16,11 @@ import java.util.List;
 public class TerminologyStandOffTest {
 
     private List<MorphologyOffsetId> _morpho = new ArrayList<>();
-    private List<TermsOffsetId> _termino = new ArrayList<>();
+    private List<TermOffsetId> _termino = new ArrayList<>();
     private List<MorphologyOffsetId> _multimorpho = new ArrayList<>();
-    private List<TermsOffsetId> _multitermino = new ArrayList<>();
+    private List<TermOffsetId> _multitermino = new ArrayList<>();
     private List<MorphologyOffsetId> _symbolmorpho = new ArrayList<>();
-    private List<TermsOffsetId> _symboltermino = new ArrayList<>();
+    private List<TermOffsetId> _symboltermino = new ArrayList<>();
     private TerminologyStandOff _simpleTerminologyStandOff;
     private TerminologyStandOff _multiTerminologyStandOff;
     private TerminologyStandOff _symbolTerminologyStandOff;
@@ -37,9 +37,9 @@ public class TerminologyStandOffTest {
         _morpho.add(new MorphologyOffsetId(15,19,"rien","N",3));
         _morpho.add(new MorphologyOffsetId(20,26,"pierre","N",4));
 
-        _termino.add(new TermsOffsetId(0,10,0,"cuillière"));
-        _termino.add(new TermsOffsetId(0,18,1,"cuillière en bois"));
-        _termino.add(new TermsOffsetId(20,26,2,"pierre"));
+        _termino.add(new TermOffsetId(0,10,0,"cuillière"));
+        _termino.add(new TermOffsetId(0,18,1,"cuillière en bois"));
+        _termino.add(new TermOffsetId(20,26,2,"pierre"));
         _simpleTerminologyStandOff = new TerminologyStandOff(_morpho, _termino);
 
         /*
@@ -59,9 +59,9 @@ public class TerminologyStandOffTest {
         _multimorpho.add(new MorphologyOffsetId(15,19,"rien","N",4));
         _multimorpho.add(new MorphologyOffsetId(20,26,"pierre","N",stoneIds));
 
-        _multitermino.add(new TermsOffsetId(0,10,0,"cuillière"));
-        _multitermino.add(new TermsOffsetId(0,18,1,"cuillière en bois"));
-        _multitermino.add(new TermsOffsetId(20,26,2,"pierre"));
+        _multitermino.add(new TermOffsetId(0,10,0,"cuillière"));
+        _multitermino.add(new TermOffsetId(0,18,1,"cuillière en bois"));
+        _multitermino.add(new TermOffsetId(20,26,2,"pierre"));
         _multiTerminologyStandOff = new TerminologyStandOff(_multimorpho, _multitermino);
 
         /*
@@ -74,9 +74,9 @@ public class TerminologyStandOffTest {
         _symbolmorpho.add(new MorphologyOffsetId(15,19,"rien","N",4));
         _symbolmorpho.add(new MorphologyOffsetId(20,26,"pierre","N",stoneIds));
 
-        _symboltermino.add(new TermsOffsetId(0,10,0,"cuillière"));
-        _symboltermino.add(new TermsOffsetId(0,18,1,"cuillière en bois"));
-        _symboltermino.add(new TermsOffsetId(20,26,2,"pierre"));
+        _symboltermino.add(new TermOffsetId(0,10,0,"cuillière"));
+        _symboltermino.add(new TermOffsetId(0,18,1,"cuillière en bois"));
+        _symboltermino.add(new TermOffsetId(20,26,2,"pierre"));
         _symbolTerminologyStandOff = new TerminologyStandOff(_symbolmorpho, _symboltermino);
     }
     @Test

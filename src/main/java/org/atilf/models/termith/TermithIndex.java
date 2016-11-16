@@ -2,7 +2,7 @@ package org.atilf.models.termith;
 
 import org.atilf.models.disambiguation.CorpusLexicon;
 import org.atilf.models.disambiguation.LexiconProfile;
-import org.atilf.models.termsuite.TermsOffsetId;
+import org.atilf.models.termsuite.TermOffsetId;
 import org.atilf.models.disambiguation.EvaluationProfile;
 import org.atilf.module.tools.FilesUtils;
 
@@ -27,7 +27,7 @@ public class TermithIndex {
     private List<Path> _terminologies = new CopyOnWriteArrayList<>();
     private Map<String, Path> _tokenizeTeiBody = new ConcurrentHashMap<>();
     private Map<String, Path> _morphologyStandOff = new ConcurrentHashMap<>();
-    private Map<String, List<TermsOffsetId>> _terminologyStandOff = new ConcurrentHashMap<>();
+    private Map<String, List<TermOffsetId>> _terminologyStandOff = new ConcurrentHashMap<>();
     private Map<String, Path> _extractedText = new ConcurrentHashMap<>();
     private Map<String, Path> _xmlCorpus = new ConcurrentHashMap<>();
     private Map<String, Path> _jsonTreeTagger = new ConcurrentHashMap<>();
@@ -94,7 +94,7 @@ public class TermithIndex {
         return _morphologyStandOff;
     }
 
-    public Map<String, List<TermsOffsetId>> getTerminologyStandOff() {
+    public Map<String, List<TermOffsetId>> getTerminologyStandOff() {
         return _terminologyStandOff;
     }
 
@@ -154,7 +154,7 @@ public class TermithIndex {
         _corpus = corpus;
     }
 
-    public void setTerminologyStandOff(Map<String, List<TermsOffsetId>> terminologyStandOff) {
+    public void setTerminologyStandOff(Map<String, List<TermOffsetId>> terminologyStandOff) {
         _terminologyStandOff = terminologyStandOff;
     }
 

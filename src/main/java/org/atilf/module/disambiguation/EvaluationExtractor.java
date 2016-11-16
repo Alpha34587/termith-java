@@ -50,7 +50,7 @@ public class EvaluationExtractor extends ContextExtractor {
                 extractWithLProfile(nodes);
             }
         } catch (XPathExpressionException e) {
-            LOGGER.error("error during the parsing of document",e);
+            LOGGER.error("error during the execute of document",e);
         }
     }
 

@@ -1,6 +1,6 @@
 package org.atilf.module.termsuite.terminology;
 
-import org.atilf.models.termsuite.TermsOffsetId;
+import org.atilf.models.termsuite.TermOffsetId;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -52,7 +52,7 @@ public class TerminologyParserTest {
 
     }
 
-    private String parse(TermsOffsetId offset) {
+    private String parse(TermOffsetId offset) {
         return offset.getBegin() + " " + offset.getEnd() + " " + offset.getWord() + " " + offset.getTermId();
     }
 

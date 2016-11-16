@@ -60,11 +60,11 @@ public class CorpusLexiconExtractor implements Runnable{
         }
         try {
             /*
-            parsing document
+            execute document
              */
             _doc = _dBuilder.parse(p);
         } catch (SAXException | IOException e) {
-            LOGGER.error("error during the parsing of document", e);
+            LOGGER.error("error during the execute of document", e);
         }
         try {
             /*
@@ -102,7 +102,7 @@ public class CorpusLexiconExtractor implements Runnable{
         try {
             _wElements = (NodeList) _eTagsGetter.evaluate(_doc, XPathConstants.NODESET);
         } catch (XPathExpressionException e) {
-            LOGGER.error("error during the parsing of document",e);
+            LOGGER.error("error during the execute of document",e);
         }
     }
 

@@ -72,7 +72,7 @@ public class DisambiguationCLI {
             new Disambiguation(termithIndex).execute();
 
         } catch (ParseException e) {
-            LOGGER.error("There are some problems during parsing arguments : ",e);
+            LOGGER.error("There are some problems during execute arguments : ",e);
         }
     }
 }

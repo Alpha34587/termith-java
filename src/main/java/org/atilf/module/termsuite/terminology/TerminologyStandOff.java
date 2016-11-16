@@ -1,7 +1,7 @@
 package org.atilf.module.termsuite.terminology;
 
 import org.atilf.models.termsuite.MorphologyOffsetId;
-import org.atilf.models.termsuite.TermsOffsetId;
+import org.atilf.models.termsuite.TermOffsetId;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -12,34 +12,54 @@ import java.util.TreeMap;
 import java.util.stream.Collectors;
 
 /**
+ * this class retrieve xml:id from w elements of morphology and links to the terms occurrences.
+ *
  * @author Simon Meoni
  *         Created on 14/09/16.
  */
 public class TerminologyStandOff implements Runnable{
     private final List<MorphologyOffsetId> _morpho;
-    private final List<TermsOffsetId> _terminology;
-    private NavigableMap<Integer,List<Integer>> _beginMap;
-    private NavigableMap<Integer,List<Integer>> _endMap;
+    private final List<TermOffsetId> _terminology;
+    private NavigableMap<Integer,List<Integer>> _beginMap = new TreeMap<>();
+    private NavigableMap<Integer,List<Integer>> _endMap = new TreeMap<>();
     private static final Logger LOGGER = LoggerFactory.getLogger(TerminologyStandOff.class.getName());
     private String _id;
 
-    public TerminologyStandOff(List<MorphologyOffsetId> morpho, List<TermsOffsetId> terminology) {
+    /**
+     * constructor for TerminologyStandOff class
+     * @param morpho the morphology entities analyzes by treetagger
+     * @param terminology the terminologies occurrences compute by termsuite
+     */
+    public TerminologyStandOff(List<MorphologyOffsetId> morpho, List<TermOffsetId> terminology) {
         _morpho = morpho;
         _terminology = terminology;
     }
 
-    public List<TermsOffsetId> getTerminology() {
+    /**
+     * getter for _terminology field
+     * @return return List<TermOffsetId>
+     */
+    public List<TermOffsetId> getTerminology() {
         return _terminology;
     }
 
+    /**
+     * the execute method calls fillNavigableMaps and retrieves for each term occurrences, words associated with them
+     */
     public void execute() {
-        createNavigablesMap();
+        fillNavigableMaps();
         _terminology.forEach(
-                el -> el.setIds(retrieveMorphoIds(el.getBegin(),el.getEnd()))
+                el -> el.setIds(retrieveMorphologyIds(el.getBegin(),el.getEnd()))
         );
     }
 
-    private List<Integer> retrieveMorphoIds(int begin, int end) {
+    /**
+     * make intersection between the _beginMap and the _endMap
+     * @param begin the character offset of the beginning of the term
+     * @param end the character offset of the end of the term
+     * @return the xml:id of the w elements belongs to the term occurrences
+     */
+    private List<Integer> retrieveMorphologyIds(int begin, int end) {
 
         List<Integer> beginSubMap = castToIntList(_beginMap.subMap(begin, end));
         List<Integer> endSubMap = castToIntList(_endMap.subMap(begin, false, end, true));
@@ -48,6 +68,11 @@ public class TerminologyStandOff implements Runnable{
         return beginSubMap;
     }
 
+    /**
+     * cast TreeMap to List<Integer>
+     * @param integerListSortedMap the treeMap to cast
+     * @return the int list of id
+     */
     private List<Integer> castToIntList(SortedMap<Integer, List<Integer>> integerListSortedMap) {
         return integerListSortedMap.values()
                 .stream()
@@ -55,9 +80,11 @@ public class TerminologyStandOff implements Runnable{
                 .collect(Collectors.toList());
     }
 
-    private void createNavigablesMap() {
-        _beginMap = new TreeMap<>();
-        _endMap = new TreeMap<>();
+    /**
+     * - fill _beginMap with the beginning character offset of words and the associated id
+     * - fill _endMap with the ending character offset of words and the associated id
+     */
+    private void fillNavigableMaps() {
         _morpho.forEach(
                 el -> {
                     _beginMap.put(el.getBegin(),el.getIds());
@@ -66,10 +93,13 @@ public class TerminologyStandOff implements Runnable{
         );
     }
 
+    /**
+     * call execute method
+     */
     @Override
     public void run() {
         LOGGER.debug("retrieve morphosyntax id for file :" + _id);
-        this.execute();
+        execute();
         LOGGER.debug("retrieve id task finished");
     }
 

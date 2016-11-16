@@ -109,12 +109,12 @@ public class TreeTaggerWorker implements Runnable {
             LOGGER.debug("tokenization and morphosyntax tasks finished file : " + _jsonPath);
 
         } catch (IOException e) {
-            LOGGER.error("error during parsing TreeTagger data", e);
+            LOGGER.error("error during execute TreeTagger data", e);
         } catch (InterruptedException e) {
             LOGGER.error("error during Tree Tagger Process : ",e);
             Thread.currentThread().interrupt();
         } catch (Exception e) {
-            LOGGER.error("error during xml tokenization parsing",e);
+            LOGGER.error("error during xml tokenization execute",e);
         }
     }
 

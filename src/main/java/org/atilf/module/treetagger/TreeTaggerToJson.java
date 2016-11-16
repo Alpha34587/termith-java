@@ -1,14 +1,14 @@
 package org.atilf.module.treetagger;
 
 import org.atilf.models.termsuite.TextAnalyzer;
-import org.atilf.module.termsuite.morphology.JsonSerializer;
+import org.atilf.module.termsuite.morphology.MorphologySerializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 
 /**
- * TreeTaggerToJson calls TreeTaggerWrapper and JsonSerializer
+ * TreeTaggerToJson calls TreeTaggerWrapper and MorphologySerializer
  * @author Simon Meoni
  *         Created on 01/09/16.
  */
@@ -37,8 +37,8 @@ public class TreeTaggerToJson {
         TreeTaggerWrapper treeTaggerWrapper = new TreeTaggerWrapper(_txt,
                 new TreeTaggerParameter(false, _lang, _treeTaggerHome), _outputPath);
         treeTaggerWrapper.execute();
-        JsonSerializer jsonSerializer = new JsonSerializer(treeTaggerWrapper.getTtOut(), _jsonPath, _txt, _textAnalyzer);
-        jsonSerializer.execute();
+        MorphologySerializer morphologySerializer = new MorphologySerializer(treeTaggerWrapper.getTtOut(), _jsonPath, _txt, _textAnalyzer);
+        morphologySerializer.execute();
         LOGGER.debug("write file " + _jsonPath);
     }
 }

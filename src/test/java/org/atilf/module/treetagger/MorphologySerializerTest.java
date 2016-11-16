@@ -3,7 +3,7 @@ package org.atilf.module.treetagger;
 import org.atilf.models.termith.TermithIndex;
 import org.atilf.models.termsuite.CorpusAnalyzer;
 import org.atilf.models.treetagger.TagNormalizer;
-import org.atilf.module.termsuite.morphology.JsonSerializer;
+import org.atilf.module.termsuite.morphology.MorphologySerializer;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Rule;
@@ -19,11 +19,11 @@ import java.nio.file.Paths;
  * @author Simon Meoni
  *         Created on 05/09/16.
  */
-public class JsonSerializerTest {
+public class MorphologySerializerTest {
 
     @Rule
     public TemporaryFolder temporaryFolder = new TemporaryFolder();
-    private JsonSerializer _jsonSerializerLemma;
+    private MorphologySerializer _morphologySerializerLemma;
     private File _jsonResFile;
     private TermithIndex _termithIndex;
 
@@ -50,13 +50,13 @@ public class JsonSerializerTest {
 
         _jsonResFile = temporaryFolder.newFile("test1.json");
 
-        _jsonSerializerLemma = new JsonSerializer(tokenLemma, _jsonResFile.getAbsolutePath(),
+        _morphologySerializerLemma = new MorphologySerializer(tokenLemma, _jsonResFile.getAbsolutePath(),
                 lemma, corpusAnalyzer.getAnalyzedTexts().get("1"));
     }
 
     @Test
     public void executeTest() throws Exception {
-        _jsonSerializerLemma.execute();
+        _morphologySerializerLemma.execute();
         String observe = String.join("\n",Files.readAllLines(_jsonResFile.toPath()));
         String expected = String.join("\n", Files.readAllLines(Paths.get("src/test/resources/serialize/file1.json")));
         expected = expected.replace("test1.json", _jsonResFile.getAbsolutePath());
