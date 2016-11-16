@@ -25,6 +25,7 @@ import java.util.Map;
 import static org.atilf.models.disambiguation.ContextResources.*;
 
 /**
+ * Write the result of disambiguation in tei file format
  * @author Simon Meoni
  *         Created on 25/10/16.
  */
@@ -37,9 +38,18 @@ public class DisambiguationTeiWriter implements Runnable {
     private DocumentBuilderFactory _dbFactory = DocumentBuilderFactory.newInstance();
     private XPath _xpath = XPathFactory.newInstance().newXPath();
 
+    /**
+     * constructor for DisambiguationTeiWriter
+     * @param p the file name
+     * @param evaluationLexicon the evaluation lexicon that contains the result for disambiguation for one file
+     */
     public DisambiguationTeiWriter(String p, Map<String, EvaluationProfile> evaluationLexicon) {
+        /*
+        prepare dom parser
+         */
         _p = p;
         _evaluationLexicon = evaluationLexicon;
+
         _xpath.setNamespaceContext(NAMESPACE_CONTEXT);
 
         try {
@@ -60,13 +70,29 @@ public class DisambiguationTeiWriter implements Runnable {
         XPathExpression ana;
         XPathExpression corresp;
         try {
+            /*
+            compile needed xpath expression
+             */
             span = _xpath.compile(SPAN);
             ana = _xpath.compile(ANA);
             corresp = _xpath.compile(CORRESP);
+            /*
+            get all the span of corresp element
+             */
             NodeList termNodes = (NodeList) span.evaluate(_doc, XPathConstants.NODESET);
             for (int i = 0; i < termNodes.getLength(); i++){
+                /*
+                get corresp attribute of span element
+                 */
                 Node correspVal = (Node) corresp.evaluate(termNodes.item(i), XPathConstants.NODE);
+                /*
+                get ana attribute of span element
+                 */
                 Node anaVal = (Node) ana.evaluate(termNodes.item(i), XPathConstants.NODE);
+
+                /*
+                write result of disambiguation in ana attribute
+                 */
                 String termId = correspVal.getNodeValue().substring(1) + "_" + anaVal.getNodeValue().substring(1);
                 if (_evaluationLexicon.containsKey(termId)) {
                     anaVal.setNodeValue(
@@ -76,6 +102,9 @@ public class DisambiguationTeiWriter implements Runnable {
             }
 
             try {
+                /*
+                write result
+                 */
                 TransformerFactory transformerFactory = TransformerFactory.newInstance();
                 Transformer transformer = transformerFactory.newTransformer();
                 transformer.setOutputProperty(OutputKeys.INDENT, "yes");
@@ -92,12 +121,16 @@ public class DisambiguationTeiWriter implements Runnable {
         } catch (XPathExpressionException e) {
             LOGGER.error("error during the parsing of document",e);
         }
-
-
     }
+
+    /**
+     * call execute method
+     */
     @Override
     public void run() {
-        this.execute();
+        LOGGER.debug("write tei disambiguation for :" + _p);
+        execute();
+        LOGGER.debug("tei disambiguation is written for :" + _p);
     }
 
 }
