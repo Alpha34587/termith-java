@@ -12,18 +12,18 @@ import java.util.List;
  * @author Simon Meoni
  *         Created on 26/08/16.
  */
-public class SyntaxParserTest {
-    private SyntaxParser _syntaxBody;
-    private SyntaxParser _syntaxBody2;
-    private SyntaxParser _basicTokenInjector;
-    private SyntaxParser _insideTokenInjector;
-    private SyntaxParser _insideTokenInjector2;
-    private SyntaxParser _commentTokenInjector;
-    private SyntaxParser _symbolTokenInjector;
-    private SyntaxParser _symbolTokenInjector2;
-    private SyntaxParser _symbolTokenInjector3;
-    private SyntaxParser _alignmentTokenInjector;
-    private SyntaxParser _alignmentTokenInjector2;
+public class MorphologyTokenizerTest {
+    private MorphologyTokenizer _syntaxBody;
+    private MorphologyTokenizer _syntaxBody2;
+    private MorphologyTokenizer _basicTokenInjector;
+    private MorphologyTokenizer _insideTokenInjector;
+    private MorphologyTokenizer _insideTokenInjector2;
+    private MorphologyTokenizer _commentTokenInjector;
+    private MorphologyTokenizer _symbolTokenInjector;
+    private MorphologyTokenizer _symbolTokenInjector2;
+    private MorphologyTokenizer _symbolTokenInjector3;
+    private MorphologyTokenizer _alignmentTokenInjector;
+    private MorphologyTokenizer _alignmentTokenInjector2;
     private String _expectedStringBuilder;
     private String _expectedStringBuilder2;
     private List<String> _offsetIdAlignment;
@@ -123,13 +123,13 @@ public class SyntaxParserTest {
                         "Le chien mange des chips pas fraiche\n" +
                         "<!--lalalalal--></text>");
 
-        _syntaxBody = new SyntaxParser(StringBuilder);
-        _syntaxBody2 = new SyntaxParser(StringBuilder2);
-        _syntaxBody.teiBodySplit();
-        _syntaxBody2.teiBodySplit();
+        _syntaxBody = new MorphologyTokenizer(StringBuilder);
+        _syntaxBody2 = new MorphologyTokenizer(StringBuilder2);
+        _syntaxBody.teiTextSplitter();
+        _syntaxBody2.teiTextSplitter();
 
-        SyntaxParser syntaxBody3 = new SyntaxParser(StringBuilder3);
-        syntaxBody3.teiBodySplit();
+        MorphologyTokenizer syntaxBody3 = new MorphologyTokenizer(StringBuilder3);
+        syntaxBody3.teiTextSplitter();
 
         //_basicTokenInjector
         MorphologyParser basicMorphologyParser = new MorphologyParser();
@@ -138,7 +138,7 @@ public class SyntaxParserTest {
         basicMorphologyParser.createToken("N", "mange", 9, 14);
         basicMorphologyParser.createToken("N", "des", 15, 18);
         basicMorphologyParser.createToken("N", "pommes", 19, 25);
-        _basicTokenInjector = new SyntaxParser(
+        _basicTokenInjector = new MorphologyTokenizer(
                 new StringBuilder("le chien mange des pommes"),
                 new StringBuilder("<text>le chien mange des pommes</text>"),
                 basicMorphologyParser, new ArrayList<>()
@@ -151,7 +151,7 @@ public class SyntaxParserTest {
         insideMorphologyParser.createToken("N","mange",9,14);
         insideMorphologyParser.createToken("N","des",15,18);
         insideMorphologyParser.createToken("N","pommes",19,25);
-        _insideTokenInjector = new SyntaxParser(
+        _insideTokenInjector = new MorphologyTokenizer(
                 new StringBuilder("le chien mange des pommes"),
                 new StringBuilder("<text>le <hi>chi</hi><hi>en</hi> mange de<s>s</s> <hi>pommes</hi></text>"),
                 insideMorphologyParser, new ArrayList<>()
@@ -166,7 +166,7 @@ public class SyntaxParserTest {
         insideMorphologyParser2.createToken("N","bonnes",20,26);
         insideMorphologyParser2.createToken("N",")",26,27);
         insideMorphologyParser2.createToken("N","pommes",28,34);
-        _insideTokenInjector2 = new SyntaxParser(
+        _insideTokenInjector2 = new MorphologyTokenizer(
                 new StringBuilder("le chien mange des (bonnes) pommes"),
                 new StringBuilder("<text>le <hi>chi</hi><hi>en</hi> mange de<s>s</s> <hi>(bonnes<hi>)</hi> pommes</hi></text>"),
                 insideMorphologyParser2, new ArrayList<>()
@@ -180,7 +180,7 @@ public class SyntaxParserTest {
         commentMorphologyParser.createToken("N", "mange", 9, 14);
         commentMorphologyParser.createToken("N", "des", 15, 18);
         commentMorphologyParser.createToken("N", "pommes", 19, 25);
-        _commentTokenInjector = new SyntaxParser(
+        _commentTokenInjector = new MorphologyTokenizer(
                 new StringBuilder("le chien mange des pommes"),
                 new StringBuilder("<text>le<!--testtest--> <hi>chi</hi>en" +
                         " <!--test-->mange de<s>s</s><!--lalalal--><!--test--> " +
@@ -191,7 +191,7 @@ public class SyntaxParserTest {
         //_symbolTokenInjector
         MorphologyParser symbolMorphologyParser = new MorphologyParser();
 
-        _symbolTokenInjector = new SyntaxParser(
+        _symbolTokenInjector = new MorphologyTokenizer(
                 new StringBuilder("le &amp; &amp; chi&eacute;ien ma&diams;nge des pommes&amp;"),
                 new StringBuilder("le &amp; &amp; chi&eacute;ien ma&diams;nge des pommes&amp;"),
                 symbolMorphologyParser, new ArrayList<>()
@@ -205,7 +205,7 @@ public class SyntaxParserTest {
         symbolMorphologyParser2.createToken("N", "mange", 15, 21);
         symbolMorphologyParser2.createToken("N", "des", 22, 26);
         symbolMorphologyParser2.createToken("N", "pommes", 27, 34);
-        _symbolTokenInjector2 = new SyntaxParser(
+        _symbolTokenInjector2 = new MorphologyTokenizer(
                 new StringBuilder("le &amp; &amp; chi&eacute;ien ma&diams;nge &diams;des pommes&amp;"),
                 new StringBuilder("<text>le &amp; &amp; chi&eacute;ien ma&diams;nge &diams;des pommes&amp;</text>"),
                 symbolMorphologyParser2, new ArrayList<>()
@@ -219,7 +219,7 @@ public class SyntaxParserTest {
         symbolMorphologyParser3.createToken("N", "mange", 15, 22);
         symbolMorphologyParser3.createToken("N", "des", 23, 27);
         symbolMorphologyParser3.createToken("N", "pommes", 28, 35);
-        _symbolTokenInjector3 = new SyntaxParser(
+        _symbolTokenInjector3 = new MorphologyTokenizer(
                 new StringBuilder("le &amp; &amp; chi&eacute;ien ma&diams;&diams;nge &diams;des pommes&amp;"),
                 new StringBuilder("<text><hi>le</hi> &amp; &amp; <hi>chi</hi>&eacute;ien" +
                         " <hi>ma</hi><sub>&diams;&diams;</sub><sub>nge</sub> " +
@@ -239,7 +239,7 @@ public class SyntaxParserTest {
         alignmentMorphologyParser.createToken("N", "assez", 26, 31);
         alignmentMorphologyParser.createToken("N", "délicieux", 33, 42);
         alignmentMorphologyParser.createToken("N", "<", 48, 49);
-        _alignmentTokenInjector = new SyntaxParser(
+        _alignmentTokenInjector = new MorphologyTokenizer(
                 new StringBuilder("le chien\nmange un fromage assez\n\ndélicieux  \n\n\n\n<"),
                 new StringBuilder("<text><head>le chien</head><p>mange " +
                         "<div>un froma<sup>ge</sup> assez" +
@@ -256,7 +256,7 @@ public class SyntaxParserTest {
         alignmentMorphologyParser2.createToken("N", "fromage", 18, 25);
         alignmentMorphologyParser2.createToken("N", "assez", 26, 31);
         alignmentMorphologyParser2.createToken("N", "délicieux", 33, 42);
-        _alignmentTokenInjector2 = new SyntaxParser(
+        _alignmentTokenInjector2 = new MorphologyTokenizer(
                 new StringBuilder("le chien\nmange \n< fromage assez\n\ndélicieux  \n\n\n\n"),
                 new StringBuilder("<text><head>le chien</head><p>mange " +
                         "<div>&lt; froma<sup>ge</sup> assez" +

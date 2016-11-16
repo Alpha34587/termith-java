@@ -8,12 +8,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * this class is a wrapper for the SyntaxParser class. it initialize all variables needed for SyntaxParser
+ * this class is a wrapper for the MorphologyTokenizer class. it initialize all variables needed for MorphologyTokenizer
  * and retrieve the result of syntaxWrapper
  * @author Simon Meoni
  * Created on 17/08/16.
  */
-public class SyntaxParserWrapper {
+public class MorphologyTokenizerWrapper {
 
     private MorphologyParser _morphologyParser;
     private StringBuilder _txt;
@@ -29,7 +29,7 @@ public class SyntaxParserWrapper {
      * @param xml the xml file when the tokenization is performed
      * @see MorphologyParser
      */
-    public SyntaxParserWrapper(File json, StringBuilder txt, StringBuilder xml) {
+    public MorphologyTokenizerWrapper(File json, StringBuilder txt, StringBuilder xml) {
         _xml = xml;
         _txt = txt;
         /*
@@ -58,13 +58,13 @@ public class SyntaxParserWrapper {
 
     /**
      *  execute method of syntaxParser and retrieve the result of syntaxParser
-     * @throws Exception catch exception of SyntaxParser object
+     * @throws Exception catch exception of MorphologyTokenizer object
      */
     public void execute() throws Exception {
 
-        SyntaxParser syntaxParser = new SyntaxParser(_txt, _xml, _morphologyParser, _offsetId);
-        syntaxParser.execute();
-        _tokenizeBody = syntaxParser.getTokenizeBuffer();
-        _offsetId = syntaxParser.getOffsetId();
+        MorphologyTokenizer morphologyTokenizer = new MorphologyTokenizer(_txt, _xml, _morphologyParser, _offsetId);
+        morphologyTokenizer.execute();
+        _tokenizeBody = morphologyTokenizer.getTokenizeBuffer();
+        _offsetId = morphologyTokenizer.getOffsetId();
     }
 }

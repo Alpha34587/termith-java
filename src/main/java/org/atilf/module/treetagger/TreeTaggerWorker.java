@@ -4,7 +4,7 @@ import org.atilf.models.termith.TermithIndex;
 import org.atilf.models.termsuite.CorpusAnalyzer;
 import org.atilf.models.termsuite.TextAnalyzer;
 import org.atilf.models.treetagger.TagNormalizer;
-import org.atilf.module.tei.morphology.SyntaxParserWrapper;
+import org.atilf.module.tei.morphology.MorphologyTokenizerWrapper;
 import org.atilf.module.tools.FilesUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,7 +16,7 @@ import java.nio.file.Paths;
 import java.util.concurrent.CountDownLatch;
 
 /**
- * TreeTagger Wrapper calls two modules : TreeTaggerToJson and  SyntaxParserWrapper. The first module run the
+ * TreeTagger Wrapper calls two modules : TreeTaggerToJson and  MorphologyTokenizerWrapper. The first module run the
  * morphology analysis and write termsuite morphology file and the second tokenize the xml file.
  * @author Simon Meoni
  *         Created on 16/09/16.
@@ -60,7 +60,7 @@ public class TreeTaggerWorker implements Runnable {
     }
 
     /**
-     * the run method execute treeTaggerToJson module and SyntaxParserWrapper module
+     * the run method execute treeTaggerToJson module and MorphologyTokenizerWrapper module
      */
     @Override
     public void run() {
@@ -95,17 +95,17 @@ public class TreeTaggerWorker implements Runnable {
              */
             LOGGER.debug("tokenization and morphosyntax tasks started for : " + _jsonPath);
             File json = new File(_jsonPath);
-            SyntaxParserWrapper syntaxParserWrapper = new SyntaxParserWrapper(json, _txt, _xml);
-            syntaxParserWrapper.execute();
+            MorphologyTokenizerWrapper morphologyTokenizerWrapper = new MorphologyTokenizerWrapper(json, _txt, _xml);
+            morphologyTokenizerWrapper.execute();
 
             /*
             retained tokenize body and json file in the termithIndex
              */
             _termithIndex.getTokenizeTeiBody().put(json.getName().replace(".json",""),
-                    FilesUtils.writeObject(syntaxParserWrapper.getTokenizeBody(), _termithIndex.getCorpus()));
+                    FilesUtils.writeObject(morphologyTokenizerWrapper.getTokenizeBody(), _termithIndex.getCorpus()));
 
             _termithIndex.getMorphologyStandOff().put(json.getName().replace(".json",""),
-                    FilesUtils.writeObject(syntaxParserWrapper.getOffsetId(), _termithIndex.getCorpus()));
+                    FilesUtils.writeObject(morphologyTokenizerWrapper.getOffsetId(), _termithIndex.getCorpus()));
             LOGGER.debug("tokenization and morphosyntax tasks finished file : " + _jsonPath);
 
         } catch (IOException e) {
