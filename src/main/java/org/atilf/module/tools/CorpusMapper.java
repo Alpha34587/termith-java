@@ -37,10 +37,17 @@ public class CorpusMapper implements Runnable {
         this.corpusCnt = corpusCnt;
     }
 
+    /**
+     * getter for corpusCnt
+     * @return return CountDownLatch
+     */
     public CountDownLatch getCorpusCnt() {
         return corpusCnt;
     }
 
+    /**
+     * put xml path on xmlCorpus hashmap
+     */
     @Override
     public void run() {
             termithIndex.getXmlCorpus().put(FilesUtils.nameNormalizer(path.getFileName().toString()), path);
