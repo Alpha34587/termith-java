@@ -4,12 +4,13 @@ import org.atilf.models.termith.TermithIndex;
 import org.slf4j.Logger;
 
 /**
+ * timer for teiWriter task
  * @author Simon Meoni
  *         Created on 19/09/16.
  */
-public class ExporterTimer extends ProgressBarTimer {
+public class TeiWriterTimer extends ProgressBarTimer {
 
-    public ExporterTimer(TermithIndex termithIndex, Logger logger) {
+    public TeiWriterTimer(TermithIndex termithIndex, Logger logger) {
         super(termithIndex, logger, 5000, "writing file progression");
     }
 

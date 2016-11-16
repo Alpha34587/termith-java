@@ -4,6 +4,7 @@ import org.atilf.models.termith.TermithIndex;
 import org.slf4j.Logger;
 
 /**
+ * timer for terminology extraction
  * @author Simon Meoni
  *         Created on 19/09/16.
  */

@@ -12,24 +12,38 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 /**
+ * abstract class for notify TermithObservable and add observer
  * @author Simon Meoni
  *         Created on 19/09/16.
  */
 abstract class ProgressBarTimer extends TimerTask {
 
-    protected Timer _timer = new Timer();
-    protected TermithObservable _termithObservable = new TermithObservable();
+    private Timer _timer = new Timer();
+    private TermithObservable _termithObservable = new TermithObservable();
     protected TermithIndex _termithIndex;
     protected Logger _logger;
-    protected long _delay;
-    protected long _interval;
-    protected ScheduledExecutorService _service;
+    private long _delay;
+    private long _interval;
+    private ScheduledExecutorService _service;
 
-    public ProgressBarTimer(TermithIndex termithIndex, String message,Logger logger){
+    /**
+     * constructor for ProgressBarTimer
+     * @param termithIndex termithIndex of a process
+     * @param message the name of the task
+     * @param logger the logger of the task
+     */
+    ProgressBarTimer(TermithIndex termithIndex, String message, Logger logger){
         this(termithIndex,logger,3000, message);
     }
 
-    public ProgressBarTimer(TermithIndex termithIndex, Logger logger, long interval, String message) {
+    /**
+     * constructor for ProgressBarTimer
+     * @param termithIndex termithIndex of a process
+     * @param message the name of the task
+     * @param logger the logger of the task
+     * @param interval the time interval between two notifications
+     */
+    ProgressBarTimer(TermithIndex termithIndex, Logger logger, long interval, String message) {
         _termithIndex = termithIndex;
         _logger = logger;
         _delay = 0;
@@ -37,15 +51,18 @@ abstract class ProgressBarTimer extends TimerTask {
         _termithObservable.addObserver(new ProgressBarObserver(message),logger);
     }
 
+    /*
+    begin the timer task
+     */
     public void start(){
         _service = Executors.newSingleThreadScheduledExecutor();
         _service.scheduleAtFixedRate(this, _delay, _interval, TimeUnit.MILLISECONDS);
     }
 
-    @Override
-    public void run() {
-    }
-
+    /**
+     * update observer
+     * @param done the number of task are done during process
+     */
     protected void update(int done) {
         _termithObservable.changeValue(done,
                 _termithIndex.getCorpusSize(), _logger);

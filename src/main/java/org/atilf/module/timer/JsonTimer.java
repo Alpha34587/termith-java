@@ -4,6 +4,7 @@ import org.atilf.models.termith.TermithIndex;
 import org.slf4j.Logger;
 
 /**
+ * the Timer for Morphology json writing
  * @author Simon Meoni
  *         Created on 20/09/16.
  */

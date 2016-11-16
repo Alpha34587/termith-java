@@ -4,6 +4,7 @@ import org.atilf.models.termith.TermithIndex;
 import org.slf4j.Logger;
 
 /**
+ * timer for text extraction task
  * @author Simon Meoni
  *         Created on 19/09/16.
  */
