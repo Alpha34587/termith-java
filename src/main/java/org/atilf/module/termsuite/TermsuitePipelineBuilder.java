@@ -16,6 +16,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 /**
+ * build a termsuite pipeline and run it.
  * @author Simon Meoni
  *         Created on 08/09/16.
  */
@@ -26,18 +27,37 @@ public class TermsuitePipelineBuilder implements Runnable{
     private TermithIndex _termithIndex;
     private static final Logger LOGGER = LoggerFactory.getLogger(TermsuitePipelineBuilder.class.getName());
 
+    /**
+     * this constructor initialize the pipeline with all parameters needed for termsuite
+     * @param termithIndex
+     */
     public TermsuitePipelineBuilder(TermithIndex termithIndex){
         _termithIndex = termithIndex;
         _jsonCorpus = termithIndex.getCorpus() + "/json";
+        /*
+        create path for terminologies in termithIndex
+         */
         init();
-
         TermSuiteCLIUtils.setGlobalLogLevel(Level.INFO);
+        /*
+         create termsuitePipeline
+         */
         _termsuitePipeline = TermSuitePipeline.create(TermithIndex.getLang())
+                /*
+                 set Termsuite resource (it is a .jar version of termsuite resource)
+                 */
                 .setResourceJar(exportResource())
+                /*
+                set morphology json files folder
+                 */
                 .setCollection(
                         TermSuiteCollection.JSON,
                         _jsonCorpus,
                         "UTF-8")
+
+                /*
+                find term candidate
+                 */
                 .aeUrlFilter()
                 .aeStemmer()
                 .aeStopWordsFilter()
@@ -45,15 +65,27 @@ public class TermsuitePipelineBuilder implements Runnable{
                 .aeSpecificityComputer()
                 .aeCompostSplitter()
 //                .aeFixedExpressionSpotter()
+                /*
+                limit the number of term candidate
+                 */
                 .aeMaxSizeThresholdCleaner(TermProperty.FREQUENCY, 100000)
+                /*
+                gathering some term candidate
+                 */
                 .aeSyntacticVariantGatherer()
                 .aeGraphicalVariantGatherer()
+                /*
+                remove terms which have a frequency below a threshold
+                 */
                 .aeThresholdCleaner(TermProperty.FREQUENCY, 5)
                 .aeThresholdCleaner(TermProperty.DOCUMENT_FREQUENCY, 2)
                 .aeTopNCleaner(TermProperty.WR, 10000)
                 .aeContextualizer(3, true)
                 .setExportJsonWithContext(false)
                 .setExportJsonWithOccurrences(true)
+                /*
+                export terminology
+                 */
                 .haeJsonExporter(termithIndex.getJsonTerminology().toString())
                 .haeTbxExporter(termithIndex.getTerminologies().get(0).toString());
 
@@ -63,17 +95,14 @@ public class TermsuitePipelineBuilder implements Runnable{
      * run the termsuite pipeline
      */
     public void execute(){
-        this._termsuitePipeline.run();
+        _termsuitePipeline.run();
     }
 
-    public TermSuitePipeline getTermsuitePipeline() {
-        return _termsuitePipeline;
-    }
-
+    /**
+     *
+     */
     @Override
     public void run() {
-        LOGGER.info("Build Termsuite Pipeline");
-        init();
         LOGGER.info("Run Termsuite Pipeline");
         execute();
         LOGGER.info("Finished execution of Termsuite Pipeline, result in :" +
@@ -81,6 +110,9 @@ public class TermsuitePipelineBuilder implements Runnable{
 
     }
 
+    /**
+     * add path terminology for termithIndex
+     */
     private void init() {
 
         _termithIndex.getTerminologies().add(Paths.get(_jsonCorpus.replace("json","") + "/" + "terminology.tbx"));
@@ -88,6 +120,10 @@ public class TermsuitePipelineBuilder implements Runnable{
     }
 
 
+    /**
+     * externalize termsuite jar resource
+     * @return the path of termsuite jar resource
+     */
     private String exportResource(){
         InputStream resourceAsStream = getClass().getClassLoader().getResourceAsStream("termsuite-lang/termsuite-resources.jar");
         try {
