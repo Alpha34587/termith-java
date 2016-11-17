@@ -49,12 +49,12 @@ public class DisambiguationExporterThread extends Thread{
      */
     public void execute() throws IOException, InterruptedException {
 
-        Files.list(TermithIndex.getBase()).forEach(
+        Files.list(TermithIndex.getEvaluationPath()).forEach(
                 p ->
                 {
                     String file = FilesUtils.nameNormalizer(p.toString());
                     _executorService.submit(new DisambiguationTeiWriter(
-                        file,
+                        p.toString(),
                         _termithIndex.getEvaluationLexicon().get(file)
                         ));
                 }

@@ -11,6 +11,7 @@ import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpressionException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.CountDownLatch;
 
 /**
  * @author Simon Meoni
@@ -21,11 +22,20 @@ public class EvaluationExtractor extends ContextExtractor {
     private final Map<String, EvaluationProfile> _evaluationLexicon;
     private static final Logger LOGGER = LoggerFactory.getLogger(EvaluationExtractor.class.getName());
     private String _p;
+    private CountDownLatch _extactorCounter;
 
-    public EvaluationExtractor(String p , TermithIndex termithIndex) {
+    public EvaluationExtractor(String p, TermithIndex termithIndex) {
         super(p,termithIndex.getContextLexicon());
         _p = p;
-       termithIndex.getEvaluationLexicon().put(FilesUtils.nameNormalizer(p),new HashMap<>());
+        termithIndex.getEvaluationLexicon().put(FilesUtils.nameNormalizer(p),new HashMap<>());
+        _evaluationLexicon = termithIndex.getEvaluationLexicon().get(FilesUtils.nameNormalizer(p));
+    }
+
+    public EvaluationExtractor(String p, TermithIndex termithIndex, CountDownLatch extactorCounter) {
+        super(p,termithIndex.getContextLexicon());
+        _p = p;
+        _extactorCounter = extactorCounter;
+        termithIndex.getEvaluationLexicon().put(FilesUtils.nameNormalizer(p),new HashMap<>());
         _evaluationLexicon = termithIndex.getEvaluationLexicon().get(FilesUtils.nameNormalizer(p));
     }
 
@@ -61,6 +71,7 @@ public class EvaluationExtractor extends ContextExtractor {
     public void run() {
         LOGGER.debug("add " + _p + " to evaluation lexicon");
         this.execute();
+        _extactorCounter.countDown();
         LOGGER.debug(_p + " added");
     }
 

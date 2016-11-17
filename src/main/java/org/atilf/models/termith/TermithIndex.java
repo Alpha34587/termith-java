@@ -42,8 +42,9 @@ public class TermithIndex {
 
     private Map<String, LexiconProfile> _contextLexicon = new ConcurrentHashMap<>();
     private Map<String,Map<String, EvaluationProfile>> _evaluationLexicon = new ConcurrentHashMap<>();
-    private CorpusLexicon _CorpusLexicon = new CorpusLexicon(new ConcurrentHashMap<>(),new ConcurrentHashMap<>());
-    private Map<String, Path> _disambiguationsTranformedFile = new ConcurrentHashMap<>();
+    private CorpusLexicon _corpusLexicon = new CorpusLexicon(new ConcurrentHashMap<>(),new ConcurrentHashMap<>());
+    private Map<String, Path> _learningTransformedFiles = new ConcurrentHashMap<>();
+    private Map<String, Path> _evaluationTransformedFiles = new ConcurrentHashMap<>();
 
     /*
     CLI parameter
@@ -89,7 +90,7 @@ public class TermithIndex {
         return _terminologies.get(1);
     }
 
-    public CorpusLexicon getCorpusLexicon() { return _CorpusLexicon; }
+    public CorpusLexicon getCorpusLexicon() { return _corpusLexicon; }
 
     public int getCorpusSize() {return _corpusSize;}
 
@@ -101,15 +102,15 @@ public class TermithIndex {
         return _morphologyStandOff;
     }
 
-    public Map<String, List<TermOffsetId>> getTerminologyStandOff() {
-        return _terminologyStandOff;
-    }
+    public Map<String, List<TermOffsetId>> getTerminologyStandOff() {return _terminologyStandOff;}
 
     public Map<String, Path> getTokenizeTeiBody() {
         return _tokenizeTeiBody;
     }
 
-    public Map<String, Path> getDisambiguationTransformedFile() {return _disambiguationsTranformedFile;}
+    public Map<String, Path> getLearningTransformedFile() {return _learningTransformedFiles;}
+
+    public Map<String, Path> getEvaluationTransformedFiles() {return _evaluationTransformedFiles;}
 
     public List<Path> getSerializeJson() {return _serializeJson;}
 

@@ -9,6 +9,8 @@ import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 
 /**
@@ -20,6 +22,7 @@ import java.util.concurrent.CountDownLatch;
 public class DisambiguationXslTransformer extends TextExtractor {
     private TermithIndex _termithIndex;
     private CountDownLatch _transformCounter;
+    private Map<String, Path> _xmlTransformedMap;
     private static final Logger LOGGER = LoggerFactory.getLogger(DisambiguationXslTransformer.class.getName());
 
     /**
@@ -40,10 +43,18 @@ public class DisambiguationXslTransformer extends TextExtractor {
      * @param xslResources the xslResource object who have as field the parse xsl stylesheet
      *                     used to convert the input file
      */
-    public DisambiguationXslTransformer(File file, CountDownLatch transformCounter, TermithIndex termithIndex, XslResources xslResources){
+    public DisambiguationXslTransformer(File file, CountDownLatch transformCounter,
+                                        TermithIndex termithIndex, XslResources xslResources){
         super(file,xslResources);
         _transformCounter = transformCounter;
-        _termithIndex = termithIndex;
+        _xmlTransformedMap = termithIndex.getLearningTransformedFile();
+    }
+
+    public DisambiguationXslTransformer(File file, CountDownLatch transformCounter,
+                                        Map<String, Path> xmlTransformedMap, XslResources xslResources){
+        super(file,xslResources);
+        _transformCounter = transformCounter;
+        _xmlTransformedMap = xmlTransformedMap;
     }
 
     /**
@@ -55,7 +66,7 @@ public class DisambiguationXslTransformer extends TextExtractor {
     public void run() {
         try {
             LOGGER.info("convert xml file: " + _file.getAbsolutePath());
-            _termithIndex.getDisambiguationTransformedFile().put(
+            _xmlTransformedMap.put(
                     FilesUtils.nameNormalizer(
                     /*
                     key of the entry
@@ -65,7 +76,7 @@ public class DisambiguationXslTransformer extends TextExtractor {
                     transform and write file
                      */
                     FilesUtils.writeFile(
-                            this.execute(),
+                            execute(),
                             TermithIndex.getOutputPath(),
                             _file.getName())
             );

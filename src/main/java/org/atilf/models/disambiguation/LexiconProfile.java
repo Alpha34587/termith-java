@@ -57,7 +57,6 @@ public class LexiconProfile implements Iterable<String>{
             _specCoefficientMap.put(entry,coefficient);
         }
         else{
-
             throw new NullPointerException("Multiset Object not contains this entry " + entry);
         }
     }

@@ -35,8 +35,8 @@ public class EvaluationExtractorTest {
 
         _evaluationExtractor = new EvaluationExtractor(
                 "src/test/resources/corpus/disambiguation/transform-tei/test1.xml",
-                termithIndex
-        );
+                termithIndex);
+
         _expectedTarget.add("#t13 #t14 #t15 #t16");
         _expectedCorresp.add("#entry-13471");
         _expectedLexAna.add("#noDM");

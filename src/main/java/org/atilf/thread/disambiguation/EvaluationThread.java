@@ -1,11 +1,15 @@
 package org.atilf.thread.disambiguation;
 
+import org.atilf.models.disambiguation.DisambiguationXslResources;
 import org.atilf.models.termith.TermithIndex;
+import org.atilf.module.disambiguation.DisambiguationXslTransformer;
+import org.atilf.module.disambiguation.Evaluation;
 import org.atilf.module.disambiguation.EvaluationExtractor;
 import org.atilf.thread.Thread;
 
 import java.io.IOException;
 import java.nio.file.Files;
+import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.TimeUnit;
 
@@ -16,6 +20,8 @@ import java.util.concurrent.TimeUnit;
  */
 public class EvaluationThread extends Thread{
 
+    private CountDownLatch _transformCounter;
+    private CountDownLatch _extactorCounter;
     /**
      * this constructor initialize the _termithIndex fields and initialize the _poolSize field with the default value
      * with the number of available processors.
@@ -24,7 +30,7 @@ public class EvaluationThread extends Thread{
      *         the termithIndex is an object that contains the results of the process*
      */
     public EvaluationThread(TermithIndex termithIndex) {
-        super(termithIndex);
+        this(termithIndex,Thread.DEFAULT_POOL_SIZE);
     }
 
     /**
@@ -40,7 +46,18 @@ public class EvaluationThread extends Thread{
      * @see ExecutorService
      */
     public EvaluationThread(TermithIndex termithIndex, int poolSize) {
+
         super(termithIndex, poolSize);
+        try {
+            _transformCounter = new CountDownLatch(
+                    (int) Files.list(TermithIndex.getEvaluationPath()).count()
+            );
+            _extactorCounter = new CountDownLatch(
+                    (int) Files.list(TermithIndex.getEvaluationPath()).count()
+            );
+        } catch (IOException e) {
+            _logger.error("could not find folder : ",e);
+        }
     }
 
     /**
@@ -52,26 +69,37 @@ public class EvaluationThread extends Thread{
      * @throws InterruptedException thrown if awaitTermination function is interrupted while waiting
      */
     public void execute() throws IOException, InterruptedException {
-        /*
-        TODO problem : wait that the extraction is finished before executing the evaluation phase or extract and after
-        evaluate. Or use a listener ?
-         */
+        DisambiguationXslResources xslResources = new DisambiguationXslResources();
 
+        /*
+        Transformation phase
+         */
+        Files.list(TermithIndex.getEvaluationPath()).forEach(
+                p -> _executorService.submit(
+                        new DisambiguationXslTransformer(
+                        p.toFile(),
+                        _transformCounter,
+                        _termithIndex.getEvaluationTransformedFiles(),
+                        xslResources)
+                )
+        );
+
+        _transformCounter.await();
         /*
         Extraction phase
          */
-        Files.list(TermithIndex.getEvaluationPath()).forEach(
-                p -> _executorService.submit(new EvaluationExtractor(p.toString(), _termithIndex))
+        _termithIndex.getEvaluationTransformedFiles().values().forEach(
+                p -> _executorService.submit(new EvaluationExtractor(p.toString(), _termithIndex,_extactorCounter))
         );
 
+        _extactorCounter.await();
         /*
         Evaluation phase
          */
-//        _termithIndex.getEvaluationLexicon().forEach(
-//                (key,value) -> _executorService.submit(new Evaluation(value, _termithIndex.getContextLexicon()))
-//        );
-
-        _logger.info("Waiting ContextExtractorWorker executors to finish");
+        _termithIndex.getEvaluationLexicon().forEach(
+                (key,value) -> _executorService.submit(new Evaluation(value, _termithIndex.getContextLexicon()))
+        );
+        _logger.info("Waiting EvaluationWorker executors to finish");
         _executorService.shutdown();
         _executorService.awaitTermination(1L, TimeUnit.DAYS);
     }

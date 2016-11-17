@@ -82,7 +82,7 @@ public class ContextLexiconThread extends Thread {
         /*
         Extraction phase
          */
-        _termithIndex.getDisambiguationTransformedFile().values().forEach(
+        _termithIndex.getLearningTransformedFile().values().forEach(
                 (file) -> {
                     _executorService.submit(new ContextExtractor(file.toString(), _termithIndex.getContextLexicon()));
                     _executorService.submit(new CorpusLexiconExtractor(file.toString(), _termithIndex.getCorpusLexicon()));
