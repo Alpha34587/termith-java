@@ -82,8 +82,7 @@ public class EvaluationExtractor extends ContextExtractor {
     }
 
     @Override
-    protected void addOccToLexicalProfile(String word, String c, String l){
-            String key = normalizeKey(c,l);
+    protected void addOccToLexicalProfile(String word, String key){
             if (!_evaluationLexicon.containsKey(key)){
                 _evaluationLexicon.put(key,new EvaluationProfile());
             }

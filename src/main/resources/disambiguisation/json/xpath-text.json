@@ -1,6 +1,0 @@
-{
-  "first_id": ".//tei:text//tei:w[@xml:id = $id]/@xml:id",
-  "next_id": ".//tei:text//tei:w[@xml:id = $id]/following::tei:w[1]/@xml:id",
-  "multi_id": "//tei:text//tei:w[./preceding-sibling::tei:w[@xml:id = $last] or ./following-sibling::tei:w[@xml:id = $first]]",
-  "simple_id": "//tei:text//tei:w[./preceding-sibling::tei:w[@xml:id = $c_id ] or ./following-sibling::tei:w[@xml:id = $c_id]]"
-}

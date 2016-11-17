@@ -88,7 +88,7 @@ public class ContextLexiconThread extends Thread {
                     _executorService.submit(new CorpusLexiconExtractor(file.toString(), _termithIndex.getCorpusLexicon()));
                 }
         );
-        _logger.info("Waiting ContextExtractorWorker executors to finish");
+        _logger.info("Waiting ContextExtractor executors to finish");
         _executorService.shutdown();
         _executorService.awaitTermination(1L, TimeUnit.DAYS);
     }

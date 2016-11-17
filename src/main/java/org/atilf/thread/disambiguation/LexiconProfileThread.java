@@ -64,7 +64,7 @@ public class LexiconProfileThread extends Thread{
                         rLexicon))
         );
 
-        _logger.info("Waiting ContextExtractorWorker executors to finish");
+        _logger.info("Waiting SpecCoefficientInjector executors to finish");
         _executorService.shutdown();
         _executorService.awaitTermination(1L, TimeUnit.DAYS);
     }

@@ -29,13 +29,16 @@ public class ContextExtractorTest {
     @Before
     public void setUp(){
         _expectedTarget.add("#t13 #t14 #t15 #t16");
+        _expectedTarget.add("#t13 #t14 #t15 #t16");
         _expectedTarget.add("#t16 #t17 #t18");
         _expectedTarget.add("#t30");
 
         _expectedCorresp.add("#entry-13471");
         _expectedCorresp.add("#entry-13471");
+        _expectedCorresp.add("#entry-13471");
         _expectedCorresp.add("#entry-7263");
 
+        _expectedLexAna.add("#DM1");
         _expectedLexAna.add("#DM1");
         _expectedLexAna.add("#DM1");
         _expectedLexAna.add("#DM3");

@@ -6,6 +6,8 @@ import org.atilf.models.disambiguation.CorpusLexicon;
 import org.atilf.models.disambiguation.LexiconProfile;
 import org.atilf.models.disambiguation.RLexicon;
 import org.atilf.models.termith.TermithIndex;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * compute specificity coefficient for each word of a term candidate entry. the result is retained on the
@@ -17,7 +19,9 @@ public class SpecCoefficientInjector implements Runnable{
     private final LexiconProfile _lexiconProfile;
     private final RLexicon _rLexicon;
     private final RLexicon _rContextLexicon;
+    private String _id;
     private final CorpusLexicon _corpusLexicon;
+    private static final Logger LOGGER = LoggerFactory.getLogger(SpecCoefficientInjector.class.getName());
 
     /**
      *  constructor of SpecCoefficientInjector
@@ -48,6 +52,7 @@ public class SpecCoefficientInjector implements Runnable{
      *                 of the corpusLexicon and his size
      */
     public SpecCoefficientInjector(String id,TermithIndex termithIndex, RLexicon rLexicon){
+        _id = id;
         _corpusLexicon = termithIndex.getCorpusLexicon();
         _lexiconProfile = termithIndex.getContextLexicon().get(id);
         _rLexicon = rLexicon;
@@ -58,7 +63,13 @@ public class SpecCoefficientInjector implements Runnable{
      * call reduceToLexicalProfile method
      */
     public void execute() {
-        reduceToLexicalProfile(computeSpecCoefficient());
+
+        try {
+            reduceToLexicalProfile(computeSpecCoefficient());
+        }
+        catch (Exception e){
+            LOGGER.error("problem during the execution of SpecCoefficientInjector :", e);
+        }
     }
 
 
@@ -121,7 +132,7 @@ public class SpecCoefficientInjector implements Runnable{
         /*
         add all words of the corpus
          */
-        code.addRCode("names(sublexic) <-" + _rContextLexicon.getROcc());
+        code.addRCode("names(sublexic) <-" + _rContextLexicon.getRName());
         /*
         compute specificities coefficient for all words of the corpus
          */
@@ -146,6 +157,8 @@ public class SpecCoefficientInjector implements Runnable{
      */
     @Override
     public void run() {
+        LOGGER.info("compute specificities coefficient for : " + _id);
         execute();
+        LOGGER.info("specificities coefficient is computed for : " + _id);
     }
 }

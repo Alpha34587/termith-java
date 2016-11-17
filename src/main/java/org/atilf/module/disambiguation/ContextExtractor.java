@@ -100,6 +100,7 @@ public class ContextExtractor implements Runnable{
     private DocumentBuilder _dBuilder;
     private Set<Node> _nodeSet = new HashSet<>();
     private Map<String, String> _xpathVariableMap = new HashMap<>();
+    private Map<String,Set<String>> _xmlIdMap = new HashMap<>();
     private static final Logger LOGGER = LoggerFactory.getLogger(ContextExtractor.class.getName());
 
 
@@ -379,20 +380,39 @@ public class ContextExtractor implements Runnable{
         _nodeSet.forEach(
                 el -> {
                     /*
+                    determine which suffix will be added to term entry.
+                    _lexOff if l variable is equals to #DM0 and _lexOn if l variable is equals to #DM1, #DM2, #DM3, #DM4
+                    */
+                    String key = normalizeKey(c, l);
+                    /*
                     get the id of the current w element
                      */
                     String id = el.getAttributes().getNamedItem("xml:id").getNodeValue();
                     /*
-                    check if the tag is contained on the term occurrence candidate
+                    check if the tag is contained on the term occurrence candidate & the tag is not already added for
+                    this term context
                      */
-                    if (!tags.contains(id)) {
+                    if (!tags.contains(id) && !_xmlIdMap.getOrDefault(key,new HashSet<>()).contains(id)) {
                         /*
                         add the text content of an element into the multiset of the current term entry
                          */
-                        addOccToLexicalProfile(el.getTextContent(), c, l);
+                        addOccToLexicalProfile(el.getTextContent(), key);
+                        addToXmlIdMap(key,id);
                     }
                 }
         );
+    }
+
+    /**
+     * add xml:id to the list associated to a term key
+     * @param term the term entry
+     * @param xmlId the xml:id to add
+     */
+    private void addToXmlIdMap(String term, String xmlId) {
+        if (!_xmlIdMap.containsKey(term)){
+            _xmlIdMap.put(term,new HashSet<>());
+        }
+        _xmlIdMap.get(term).add(xmlId);
     }
 
     /**
@@ -440,15 +460,10 @@ public class ContextExtractor implements Runnable{
     /**
      * add to lexicalProfile a context for terminology entry
      * @param word add pair of lemma/POS into lexicalProfile multiset
-     * @param c the term id entry
-     * @param l the annotation of a term occurrence annotation
+     * @param key the term id entry suffixes by _lexOn or _lexOff
      */
-    protected void addOccToLexicalProfile(String word, String c, String l) {
-        /*
-        determine which suffix will be added to term entry.
-        _lexOff if l variable is equals to #DM0 and _lexOn if l variable is equals to #DM1, #DM2, #DM3, #DM4
-         */
-        String key = normalizeKey(c, l);
+    protected void addOccToLexicalProfile(String word, String key) {
+
         /*
         create new entry if the key not exists in the _contextLexicon field
          */
