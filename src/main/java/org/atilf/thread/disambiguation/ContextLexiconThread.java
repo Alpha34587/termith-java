@@ -35,7 +35,7 @@ public class ContextLexiconThread extends Thread {
         super(termithIndex, poolSize);
         try {
             _transformCounter = new CountDownLatch(
-                    (int) Files.list(TermithIndex.getBase()).count()
+                    (int) Files.list(TermithIndex.getLearningPath()).count()
             );
         } catch (IOException e) {
             _logger.error("could not find folder : ",e);
@@ -65,7 +65,7 @@ public class ContextLexiconThread extends Thread {
         /*
         Transformation phase
          */
-        Files.list(TermithIndex.getBase()).forEach(
+        Files.list(TermithIndex.getLearningPath()).forEach(
                 p -> _executorService.submit(new DisambiguationXslTransformer(
                         p.toFile(),
                         _transformCounter,

@@ -43,7 +43,7 @@ public class TermithIndex {
     private Map<String, LexiconProfile> _contextLexicon = new ConcurrentHashMap<>();
     private Map<String,Map<String, EvaluationProfile>> _evaluationLexicon = new ConcurrentHashMap<>();
     private CorpusLexicon _CorpusLexicon = new CorpusLexicon(new ConcurrentHashMap<>(),new ConcurrentHashMap<>());
-    private Map<String, Path> _disambiguationTranformedFile = new ConcurrentHashMap<>();
+    private Map<String, Path> _disambiguationsTranformedFile = new ConcurrentHashMap<>();
 
     /*
     CLI parameter
@@ -55,6 +55,11 @@ public class TermithIndex {
     private static Path _base;
     private static boolean _keepFiles;
 
+    /*
+    Disambiguation CLI parameter
+     */
+    private static Path _learningPath;
+    private static Path _evaluationPath;
 
     /*
     Constructor
@@ -68,6 +73,8 @@ public class TermithIndex {
         _treeTaggerHome = builder._treeTaggerHome;
         _lang = builder._lang;
         _corpusSize = builder._corpusSize;
+        _learningPath = builder._learningPath;
+        _evaluationPath = builder._evaluationPath;
     }
 
     /*
@@ -102,9 +109,13 @@ public class TermithIndex {
         return _tokenizeTeiBody;
     }
 
-    public Map<String, Path> getDisambiguationTransformedFile() {return _disambiguationTranformedFile;}
+    public Map<String, Path> getDisambiguationTransformedFile() {return _disambiguationsTranformedFile;}
 
     public List<Path> getSerializeJson() {return _serializeJson;}
+
+    public static Path getLearningPath() {return _learningPath;}
+
+    public static Path getEvaluationPath() {return _evaluationPath;}
 
     public Path getCorpus() {
         return _corpus;
@@ -178,6 +189,8 @@ public class TermithIndex {
         Path _base;
         String _treeTaggerHome;
         Path _disambiguationAnnotation;
+        Path _learningPath;
+        Path _evaluationPath;
         private int _corpusSize = 0;
 
         /**
@@ -189,6 +202,29 @@ public class TermithIndex {
         public Builder baseFolder(String path) throws IOException {
             _base = FilesUtils.folderPathResolver(path);
             _corpusSize = (int) Files.list(_base).count();
+            return this;
+        }
+
+        /**
+         * This method set the learning folder path
+         * @param path path of the _learningPath corpus
+         * @return return the path of the _learningPath corpus
+         * @throws IOException throws exception of folderResolver method
+         */
+        public Builder learningFolder(String path) throws IOException {
+            _learningPath = FilesUtils.folderPathResolver(path);
+            return this;
+        }
+
+        /**
+         * This method set the evaluation folder path
+         * @param path path of the _evaluationPath corpus
+         * @return return the path of the _evaluationPath corpus
+         * @throws IOException throws exception of folderResolver method
+         */
+        public Builder evaluationFolder(String path) throws IOException {
+            _evaluationPath = FilesUtils.folderPathResolver(path);
+            _corpusSize = (int) Files.list(_evaluationPath).count();
             return this;
         }
 

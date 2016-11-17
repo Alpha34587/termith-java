@@ -1,7 +1,6 @@
 package org.atilf.thread.disambiguation;
 
 import org.atilf.models.termith.TermithIndex;
-import org.atilf.module.disambiguation.Evaluation;
 import org.atilf.module.disambiguation.EvaluationExtractor;
 import org.atilf.thread.Thread;
 
@@ -61,16 +60,16 @@ public class EvaluationThread extends Thread{
         /*
         Extraction phase
          */
-        Files.list(TermithIndex.getBase()).forEach(
+        Files.list(TermithIndex.getEvaluationPath()).forEach(
                 p -> _executorService.submit(new EvaluationExtractor(p.toString(), _termithIndex))
         );
 
         /*
         Evaluation phase
          */
-        _termithIndex.getEvaluationLexicon().forEach(
-                (key,value) -> _executorService.submit(new Evaluation(value, _termithIndex.getContextLexicon()))
-        );
+//        _termithIndex.getEvaluationLexicon().forEach(
+//                (key,value) -> _executorService.submit(new Evaluation(value, _termithIndex.getContextLexicon()))
+//        );
 
         _logger.info("Waiting ContextExtractorWorker executors to finish");
         _executorService.shutdown();

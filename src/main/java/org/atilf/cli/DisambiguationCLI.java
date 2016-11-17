@@ -32,8 +32,10 @@ public class DisambiguationCLI {
     public static void main(String[] args) throws IOException, InterruptedException, TransformerException {
         CommandLineParser parser = new PosixParser();
 
-        Option in = new Option("i","input",true,"path of the corpus in tei format");
-        in.setRequired(true);
+        Option learning = new Option("le","learning",true,"path of the learning corpus in tei format");
+        learning.setRequired(true);
+        Option evaluation = new Option("e","evaluation",true,"path of the evaluation corpus in tei format");
+        evaluation.setRequired(true);
         Option out = new Option("o","output",true,"output folder");
         out.setRequired(true);
         Option lang = new Option("l","lang",true,"specify the language of the corpus");
@@ -46,7 +48,8 @@ public class DisambiguationCLI {
         debug.setRequired(false);
         debug.setArgs(0);
 
-        options.addOption(in);
+        options.addOption(learning);
+        options.addOption(evaluation);
         options.addOption(out);
         options.addOption(lang);
         options.addOption(terminology);
@@ -59,7 +62,8 @@ public class DisambiguationCLI {
 
             termithIndex = new TermithIndex.Builder()
                     .lang(line.getOptionValue("l"))
-                    .baseFolder(line.getOptionValue("i"))
+                    .learningFolder(line.getOptionValue("le"))
+                    .evaluationFolder(line.getOptionValue("e"))
                     .terminology(line.getOptionValue("t"))
                     .export(line.getOptionValue("o"))
                     .build();
