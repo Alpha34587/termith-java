@@ -38,7 +38,7 @@ public class DisambiguationTeiWriterTest {
         _evaluationProfile.get("entry-990_noDM").setDisambiguationId("DaOff");
 
         DisambiguationTeiWriter teiWriter = new DisambiguationTeiWriter(
-                "src/test/resources/corpus/disambiguation/tei/test1.xml",
+                "src/test/resources/corpus/disambiguation/tei/test6.xml",
                 _evaluationProfile
         );
         teiWriter.execute();
@@ -46,12 +46,14 @@ public class DisambiguationTeiWriterTest {
 
     @Test
     public void execute() throws Exception {
-        String join = String.join("\n", Files.readAllLines(Paths.get(TermithIndex.getOutputPath() + "/test1.xml")));
+        String join = String.join("\n", Files.readAllLines(Paths.get(TermithIndex.getOutputPath() + "/test6.xml")));
         XMLUnit.setIgnoreWhitespace(true);
         assertXMLEqual(
                 "these files must be equals",
-                String.join("\n",Files.readAllLines(Paths.get("src/test/resources/corpus/disambiguation/disamb-id-tei/test1.xml"))),
-                String.join("\n",Files.readAllLines(Paths.get(TermithIndex.getOutputPath() + "/test1.xml")))
+                String.join("\n",Files.readAllLines(
+                        Paths.get("src/test/resources/corpus/disambiguation/disamb-id-tei/test6.xml"))
+                ),
+                String.join("\n",Files.readAllLines(Paths.get(TermithIndex.getOutputPath() + "/test6.xml")))
                 );
     }
 

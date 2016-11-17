@@ -1,7 +1,7 @@
 package org.atilf.module.exporter;
 
-import org.atilf.models.termith.TermithIndex;
 import org.atilf.models.disambiguation.EvaluationProfile;
+import org.atilf.models.termith.TermithIndex;
 import org.atilf.module.tools.FilesUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -68,15 +68,11 @@ public class DisambiguationTeiWriter implements Runnable {
 
     public void execute() {
         XPathExpression span;
-        XPathExpression ana;
-        XPathExpression corresp;
         try {
             /*
             compile needed xpath expression
              */
-            span = _xpath.compile(SPAN);
-            ana = _xpath.compile(ANA);
-            corresp = _xpath.compile(CORRESP);
+            span = _xpath.compile(TEI_SPAN);
             /*
             get all the span of corresp element
              */
@@ -85,23 +81,30 @@ public class DisambiguationTeiWriter implements Runnable {
                 /*
                 get corresp attribute of span element
                  */
-                Node correspVal = (Node) corresp.evaluate(termNodes.item(i), XPathConstants.NODE);
+                String correspVal = termNodes.item(i).getAttributes().getNamedItem("corresp").getNodeValue();
                 /*
                 get ana attribute of span element
                  */
-                Node anaVal = (Node) ana.evaluate(termNodes.item(i), XPathConstants.NODE);
+                Node anaNode = termNodes.item(i).getAttributes().getNamedItem("ana");
+                String anaVal = anaNode.getNodeValue();
 
                 /*
                 write result of disambiguation in ana attribute
                  */
-                String termId = correspVal.getNodeValue().substring(1) + "_" + anaVal.getNodeValue().substring(1);
+                String termId = correspVal.substring(1) + "_" + anaVal.substring(1);
                 if (_evaluationLexicon.containsKey(termId)) {
-                    anaVal.setNodeValue(
-                            anaVal.getNodeValue() + " #" + _evaluationLexicon.get(termId).getDisambiguationId()
+                    anaNode.setNodeValue(
+                            anaVal + " #" + _evaluationLexicon.get(termId).getDisambiguationId()
+                    );
+                    LOGGER.debug("write DaOn or DaOff value");
+                }
+
+                else {
+                    anaNode.setNodeValue(
+                            anaVal + " #noDa"
                     );
                 }
             }
-
             try {
                 /*
                 write result

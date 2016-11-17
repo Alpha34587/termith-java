@@ -41,6 +41,7 @@ public class ContextResources {
             return null;
         }
     };
+    public static final String TEI_SPAN;
     public static final String SPAN;
     public static final String TARGET;
     public static final String CORRESP;
@@ -51,8 +52,8 @@ public class ContextResources {
     public static final String CONTEXT_GETTER_FIRST;
 
     private final static Logger LOGGER = LoggerFactory.getLogger(ContextResources.class);
-
     static {
+        TEI_SPAN = "//ns:standOff[@type = 'candidatsTermes']/ns:listAnnotation/tei:span";
         SPAN = "//ns:standOff/tei:span";
         TARGET = "@target";
         CORRESP = "@corresp";
