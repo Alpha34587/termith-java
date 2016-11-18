@@ -33,7 +33,7 @@ public class TermsuitePipelineBuilder implements Runnable{
      */
     public TermsuitePipelineBuilder(TermithIndex termithIndex){
         _termithIndex = termithIndex;
-        _jsonCorpus = termithIndex.getCorpus() + "/json";
+        _jsonCorpus = TermithIndex.getOutputPath() + "/json";
         /*
         create path for terminologies in termithIndex
          */
@@ -106,7 +106,7 @@ public class TermsuitePipelineBuilder implements Runnable{
         LOGGER.info("Run Termsuite Pipeline");
         execute();
         LOGGER.info("Finished execution of Termsuite Pipeline, result in :" +
-                _termithIndex.getCorpus());
+                TermithIndex.getOutputPath());
 
     }
 
@@ -127,10 +127,10 @@ public class TermsuitePipelineBuilder implements Runnable{
     private String exportResource(){
         InputStream resourceAsStream = getClass().getClassLoader().getResourceAsStream("termsuite-lang/termsuite-resources.jar");
         try {
-            Files.write(Paths.get(_termithIndex.getCorpus() +"/termsuite-resources.jar"), ByteStreams.toByteArray(resourceAsStream));
+            Files.write(Paths.get(TermithIndex.getOutputPath() +"/termsuite-resources.jar"), ByteStreams.toByteArray(resourceAsStream));
         } catch (IOException e) {
             LOGGER.error("cannot copy termsuite-resources.jar",e);
         }
-        return _termithIndex.getCorpus() +"/termsuite-resources.jar";
+        return TermithIndex.getOutputPath() +"/termsuite-resources.jar";
     }
 }

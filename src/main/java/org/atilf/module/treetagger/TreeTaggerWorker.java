@@ -45,7 +45,7 @@ public class TreeTaggerWorker implements Runnable {
         _termithIndex = termithIndex;
         _jsonCnt = jsonCnt;
         _txt = FilesUtils.readObject(termithIndex.getExtractedText().get(id),StringBuilder.class);
-        _jsonPath = termithIndex.getCorpus() + "/json/" + id + ".json";
+        _jsonPath = TermithIndex.getOutputPath() + "/json/" + id + ".json";
         _textAnalyzer = corpusAnalyzer.getAnalyzedTexts().get(id);
         _xml = FilesUtils.readFile(termithIndex.getXmlCorpus().get(id));
         _id = id;
@@ -107,10 +107,10 @@ public class TreeTaggerWorker implements Runnable {
             retained tokenize body and json file in the termithIndex
              */
             _termithIndex.getTokenizeTeiBody().put(json.getName().replace(".json",""),
-                    FilesUtils.writeObject(morphologyTokenizer.getTokenizeBuffer(), _termithIndex.getCorpus()));
+                    FilesUtils.writeObject(morphologyTokenizer.getTokenizeBuffer(), TermithIndex.getOutputPath()));
 
             _termithIndex.getMorphologyStandOff().put(json.getName().replace(".json",""),
-                    FilesUtils.writeObject(morphologyTokenizer.getOffsetId(), _termithIndex.getCorpus()));
+                    FilesUtils.writeObject(morphologyTokenizer.getOffsetId(), TermithIndex.getOutputPath()));
             LOGGER.debug("tokenization and morphosyntax tasks finished file : " + _jsonPath);
 
         } catch (IOException e) {
@@ -131,8 +131,8 @@ public class TreeTaggerWorker implements Runnable {
         try {
 
             TagNormalizer.initTag(TermithIndex.getLang());
-            Files.createDirectories(Paths.get(_termithIndex.getCorpus() + "/json"));
-            LOGGER.debug("create temporary text files in " + _termithIndex.getCorpus() + "/json folder");
+            Files.createDirectories(Paths.get(TermithIndex.getOutputPath() + "/json"));
+            LOGGER.debug("create temporary text files in " + TermithIndex.getOutputPath() + "/json folder");
         } catch (IOException e) {
             LOGGER.error("cannot create directories : ",e);
         }

@@ -23,14 +23,12 @@ public class TermithIndex {
     /*
     Termith fields
      */
-    private Path _corpus = null;
     private List<Path> _terminologies = new CopyOnWriteArrayList<>();
     private Map<String, Path> _tokenizeTeiBody = new ConcurrentHashMap<>();
     private Map<String, Path> _morphologyStandOff = new ConcurrentHashMap<>();
     private Map<String, List<TermOffsetId>> _terminologyStandOff = new ConcurrentHashMap<>();
     private Map<String, Path> _extractedText = new ConcurrentHashMap<>();
     private Map<String, Path> _xmlCorpus = new ConcurrentHashMap<>();
-    private Map<String, Path> _jsonTreeTagger = new ConcurrentHashMap<>();
     private List<Path> _serializeJson = new CopyOnWriteArrayList<>();
     private List<Path> _outputFile = new CopyOnWriteArrayList<>();
     private int _corpusSize;
@@ -106,20 +104,12 @@ public class TermithIndex {
 
     public List<Path> getSerializeJson() {return _serializeJson;}
 
-    public Path getCorpus() {
-        return _corpus;
-    }
-
     public Map<String, Path> getXmlCorpus() {
         return _xmlCorpus;
     }
 
     public List<Path> getOutputFile() {
         return _outputFile;
-    }
-
-    public Map<String, Path> getJsonTreeTagger() {
-        return _jsonTreeTagger;
     }
 
     public Map<String, LexiconProfile> getContextLexicon() {
@@ -148,10 +138,6 @@ public class TermithIndex {
 
     public void setCorpusSize(int corpusSize) {
         _corpusSize = corpusSize;
-    }
-
-    public void setCorpus(Path corpus) {
-        _corpus = corpus;
     }
 
     public void setTerminologyStandOff(Map<String, List<TermOffsetId>> terminologyStandOff) {
