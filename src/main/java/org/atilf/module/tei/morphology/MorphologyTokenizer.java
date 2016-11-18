@@ -5,6 +5,8 @@ import org.atilf.module.termsuite.morphology.MorphologyParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.File;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -23,7 +25,7 @@ public class MorphologyTokenizer {
     private StringBuilder _txt;
     private MorphologyParser _morphologyParser;
     private Queue<Character> _xmlCharacterQueue = new LinkedList<>();
-    private List<MorphologyOffsetId> _offsetId;
+    private List<MorphologyOffsetId> _offsetId = new ArrayList<>();
     private Integer[] _offset = new Integer[2];
     private StringBuilder _tokenizeBuffer = new StringBuilder();
 
@@ -32,15 +34,25 @@ public class MorphologyTokenizer {
      * constructor for MorphologyTokenizer
      * @param txt the extracted text of xml file
      * @param xml the xml file
-     * @param morphologyParser the morphologyParser of the file
-     * @param offsetId the generated id of each tokenized word is kept on this variable
+     * @param json json file associated to the xml file
      */
-    MorphologyTokenizer(StringBuilder txt, StringBuilder xml, MorphologyParser morphologyParser,
-                        List<MorphologyOffsetId> offsetId) {
+    public MorphologyTokenizer(StringBuilder txt, StringBuilder xml, File json) {
         _xml = xml;
         _txt = txt;
-        _morphologyParser = morphologyParser;
-        _offsetId = offsetId;
+        _morphologyParser = new MorphologyParser(json);
+        _morphologyParser.execute();
+    }
+
+    /**
+     * constructor for MorphologyTokenizer
+     * @param txt the extracted text of xml file
+     * @param xml the xml file
+     * @param parser the morphology parser object when the execution of parsing is externalized
+     */
+    public MorphologyTokenizer(StringBuilder txt, StringBuilder xml, MorphologyParser parser) {
+        _xml = xml;
+        _txt = txt;
+        _morphologyParser = parser;
     }
 
     /**
@@ -63,7 +75,7 @@ public class MorphologyTokenizer {
      * getter for tokenize text
      * @return tokenize text
      */
-    StringBuilder getTokenizeBuffer() {
+    public StringBuilder getTokenizeBuffer() {
         return _tokenizeBuffer;
     }
 

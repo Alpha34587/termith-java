@@ -141,7 +141,7 @@ public class MorphologyTokenizerTest {
         _basicTokenInjector = new MorphologyTokenizer(
                 new StringBuilder("le chien mange des pommes"),
                 new StringBuilder("<text>le chien mange des pommes</text>"),
-                basicMorphologyParser, new ArrayList<>()
+                basicMorphologyParser
         );
 
         //insideTokenInjector
@@ -154,7 +154,7 @@ public class MorphologyTokenizerTest {
         _insideTokenInjector = new MorphologyTokenizer(
                 new StringBuilder("le chien mange des pommes"),
                 new StringBuilder("<text>le <hi>chi</hi><hi>en</hi> mange de<s>s</s> <hi>pommes</hi></text>"),
-                insideMorphologyParser, new ArrayList<>()
+                insideMorphologyParser
         );
 
         MorphologyParser insideMorphologyParser2 = new MorphologyParser();
@@ -169,7 +169,7 @@ public class MorphologyTokenizerTest {
         _insideTokenInjector2 = new MorphologyTokenizer(
                 new StringBuilder("le chien mange des (bonnes) pommes"),
                 new StringBuilder("<text>le <hi>chi</hi><hi>en</hi> mange de<s>s</s> <hi>(bonnes<hi>)</hi> pommes</hi></text>"),
-                insideMorphologyParser2, new ArrayList<>()
+                insideMorphologyParser2
         );
 
         //_commentTokenInjector
@@ -185,7 +185,7 @@ public class MorphologyTokenizerTest {
                 new StringBuilder("<text>le<!--testtest--> <hi>chi</hi>en" +
                         " <!--test-->mange de<s>s</s><!--lalalal--><!--test--> " +
                         "<hi>pommes</hi><!--lalala--></text>"),
-                commentMorphologyParser, new ArrayList<>()
+                commentMorphologyParser
         );
 
         //_symbolTokenInjector
@@ -194,7 +194,7 @@ public class MorphologyTokenizerTest {
         _symbolTokenInjector = new MorphologyTokenizer(
                 new StringBuilder("le &amp; &amp; chi&eacute;ien ma&diams;nge des pommes&amp;"),
                 new StringBuilder("le &amp; &amp; chi&eacute;ien ma&diams;nge des pommes&amp;"),
-                symbolMorphologyParser, new ArrayList<>()
+                symbolMorphologyParser
         );
 
         MorphologyParser symbolMorphologyParser2 = new MorphologyParser();
@@ -208,7 +208,7 @@ public class MorphologyTokenizerTest {
         _symbolTokenInjector2 = new MorphologyTokenizer(
                 new StringBuilder("le &amp; &amp; chi&eacute;ien ma&diams;nge &diams;des pommes&amp;"),
                 new StringBuilder("<text>le &amp; &amp; chi&eacute;ien ma&diams;nge &diams;des pommes&amp;</text>"),
-                symbolMorphologyParser2, new ArrayList<>()
+                symbolMorphologyParser2
         );
 
         MorphologyParser symbolMorphologyParser3 = new MorphologyParser();
@@ -226,7 +226,7 @@ public class MorphologyTokenizerTest {
                         "<sub>&diams;d</sub>es " +
                         "<hi>pommes&amp;</hi>" +
                         "</text>"),
-                symbolMorphologyParser3, new ArrayList<>()
+                symbolMorphologyParser3
         );
 
 
@@ -244,7 +244,7 @@ public class MorphologyTokenizerTest {
                 new StringBuilder("<text><head>le chien</head><p>mange " +
                         "<div>un froma<sup>ge</sup> assez" +
                         "</div></p><p>d&eacute;licieux  </p>\n\n\n&lt;</text>"),
-                alignmentMorphologyParser, new ArrayList<>()
+                alignmentMorphologyParser
         );
         _alignmentTokenInjector.teiWordTokenizer();
 
@@ -261,7 +261,7 @@ public class MorphologyTokenizerTest {
                 new StringBuilder("<text><head>le chien</head><p>mange " +
                         "<div>&lt; froma<sup>ge</sup> assez" +
                         "</div></p><p>d&eacute;licieux  </p>\n\n\n</text>"),
-                alignmentMorphologyParser2, new ArrayList<>()
+                alignmentMorphologyParser2
         );
             _alignmentTokenInjector2.teiWordTokenizer();
 
