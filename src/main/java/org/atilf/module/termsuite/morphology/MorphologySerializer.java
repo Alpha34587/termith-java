@@ -37,18 +37,10 @@ public class MorphologySerializer {
      */
     public MorphologySerializer(StringBuilder treeTaggerOutput, String jsonPath, StringBuilder txt
             , TextAnalyzer textAnalyzer) {
-        populateTokenDeque(treeTaggerOutput);
+        Collections.addAll(_tokenDeque, treeTaggerOutput.toString().split("\n"));
         _txt = txt;
         _jsonPath = jsonPath;
         _textAnalyzer = textAnalyzer;
-    }
-
-    /**
-     * put treeTagger Lemma/POS pairs in _tokenDeque field
-     * @param TreeTaggerOutput the treeTagger output
-     */
-    private void populateTokenDeque(StringBuilder TreeTaggerOutput) {
-        Collections.addAll(_tokenDeque, TreeTaggerOutput.toString().split("\n"));
     }
 
     /**
