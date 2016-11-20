@@ -23,7 +23,7 @@ public class DisambiguationExporterThread extends Thread{
      * with the number of available processors.
      * @param termithIndex the termithIndex is an object that contains the results of the process*
      */
-    protected DisambiguationExporterThread(TermithIndex termithIndex){
+    public DisambiguationExporterThread(TermithIndex termithIndex) {
         super(termithIndex, DEFAULT_POOL_SIZE);
     }
 
