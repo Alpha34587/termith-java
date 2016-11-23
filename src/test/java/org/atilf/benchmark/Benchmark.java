@@ -149,7 +149,7 @@ public class Benchmark {
         }
         long finishTime = System.nanoTime();
 
-        return TimeUnit.SECONDS.convert(finishTime - startTime, TimeUnit.NANOSECONDS);
+        return TimeUnit.MINUTES.convert(finishTime - startTime, TimeUnit.NANOSECONDS);
     }
 
     /**
