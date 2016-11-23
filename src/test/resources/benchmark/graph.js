@@ -32,6 +32,22 @@ var data = {
         pointHoverBorderColor: "rgba(220,220,220,1)",
         pointHoverBorderWidth: 2,
         pointRadius: 1,
+        },
+
+        {
+        label: "R coefficient",
+        data: [],
+        fill: false,
+        pointBorderColor: "black",
+        borderColor: "rgba(235,188,147,0.89)",
+        backgroundColor: "rgba(235,188,147,0.89)",
+        pointBackgroundColor: "black",
+        pointBorderWidth: 1,
+        pointHoverRadius: 5,
+        pointHoverBackgroundColor: "black",
+        pointHoverBorderColor: "rgba(220,220,220,1)",
+        pointHoverBorderWidth: 2,
+        pointRadius: 1,
         }
     ]
 
