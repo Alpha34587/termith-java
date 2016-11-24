@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 /**
+ * this class contains the xml fragment of used to write standoff annotation
  * @author Simon Meoni
  *         Created on 14/09/16.
  */
@@ -26,6 +27,11 @@ public class StandOffResources {
     public final StringBuilder NS = indentation(readFile(PATH + "ns.txt"),0);
 
 
+    /**
+     * read a fragment
+     * @param path path of a fragment
+     * @return the fragment
+     */
 
     private String readFile(String path)  {
         try {
@@ -40,6 +46,12 @@ public class StandOffResources {
         return "";
     }
 
+    /**
+     * indent a fragment
+     * @param input a fragment
+     * @param level the level of indentation
+     * @return the transformed fragment
+     */
     private StringBuilder indentation(String input, int level) {
         String output = "";
         String identation = "";

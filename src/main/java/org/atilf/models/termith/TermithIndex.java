@@ -15,6 +15,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
+ * this the main class of the project. All the results of the different modules is in this class.
  * @author Simon Meoni
  *         Created on 13/09/16.
  */
@@ -43,7 +44,7 @@ public class TermithIndex {
     private Map<String, LexiconProfile> _contextLexicon = new ConcurrentHashMap<>();
     private Map<String,Map<String, EvaluationProfile>> _evaluationLexicon = new ConcurrentHashMap<>();
     private CorpusLexicon _CorpusLexicon = new CorpusLexicon(new ConcurrentHashMap<>(),new ConcurrentHashMap<>());
-    private Map<String, Path> _disambiguationTranformedFile = new ConcurrentHashMap<>();
+    private Map<String, Path> _disambiguationTransformedFile = new ConcurrentHashMap<>();
 
     /*
     CLI parameter
@@ -102,7 +103,7 @@ public class TermithIndex {
         return _tokenizeTeiBody;
     }
 
-    public Map<String, Path> getDisambiguationTransformedFile() {return _disambiguationTranformedFile;}
+    public Map<String, Path> getDisambiguationTransformedFile() {return _disambiguationTransformedFile;}
 
     public List<Path> getSerializeJson() {return _serializeJson;}
 

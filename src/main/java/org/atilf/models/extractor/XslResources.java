@@ -10,6 +10,9 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.stream.StreamSource;
 
 /**
+ * This is xsl resource for TextExtractor module. This class contains the xslStyleSheet to
+ * extract plain text of a tei file.
+ * @see org.atilf.module.extractor.TextExtractor
  * @author Simon Meoni
  *         Created on 16/09/16.
  */
