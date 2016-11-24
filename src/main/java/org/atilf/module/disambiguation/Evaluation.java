@@ -117,8 +117,8 @@ public class Evaluation implements Runnable{
                                 LexiconProfile lexOff) {
         entry.forEach(
                 el -> {
-                    _factorOn += occurrenceScore(lexOn.getSpecCoefficient(el),entry.countOccurrence(el));
-                    _factorOff += occurrenceScore(lexOff.getSpecCoefficient(el),entry.countOccurrence(el));
+                    _factorOn += occurrenceScore(lexOn.getSpecCoefficient(el),entry.count(el));
+                    _factorOff += occurrenceScore(lexOff.getSpecCoefficient(el),entry.count(el));
                 }
         );
     }

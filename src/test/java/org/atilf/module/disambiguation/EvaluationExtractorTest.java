@@ -112,7 +112,7 @@ public class EvaluationExtractorTest {
                                 int count = observed.count(el);
                                 Assert.assertEquals("the occurence of element must be equals at " + key +
                                                 " for the word : " + el,
-                                        value.countOccurrence(el),observed.count(el)
+                                        value.count(el),observed.count(el)
                                 );
                             }
                     );

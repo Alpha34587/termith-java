@@ -4,13 +4,12 @@ import org.atilf.models.extractor.XslResources;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.xml.transform.Source;
-import javax.xml.transform.Templates;
 import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.stream.StreamSource;
 
 /**
+ * the xsl resource used during the disambiguation. the xsl stylesheet converts tei file into working file format
  * @author Simon Meoni
  *         Created on 02/11/16.
  */
@@ -24,13 +23,5 @@ public class DisambiguationXslResources extends XslResources{
             } catch (TransformerConfigurationException e) {
                 LOGGER.error("cannot parse xsl stylesheet",e);
             }
-        }
-
-        public Templates getFactory() {
-            return _factory;
-        }
-
-        public Source getDisambiguationStyleSheet() {
-            return _stylesheet;
         }
 }
