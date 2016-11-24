@@ -1,6 +1,6 @@
 package org.atilf.models.disambiguation;
 
-import com.google.common.collect.HashMultiset;
+import com.google.common.collect.ConcurrentHashMultiset;
 import com.google.common.collect.Multiset;
 
 import java.util.Iterator;
@@ -12,7 +12,7 @@ import java.util.function.Consumer;
  *         Created on 23/10/16.
  */
 public class CorpusLexicon implements Iterable<String>{
-    private Multiset<String> _multisetLexicon = HashMultiset.create();
+    private Multiset<String> _multisetLexicon = ConcurrentHashMultiset.create();
     private Map<Integer,String> _lexicalEntry;
     private Map<String, Integer> _idEntry;
     private int _counter = 0;

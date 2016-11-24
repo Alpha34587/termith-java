@@ -61,8 +61,6 @@ public class LexiconProfile implements Iterable<String>{
         }
     }
 
-
-
     public void addOccurrence(String occ){
         _lexicalTable.add(occ);
     }
