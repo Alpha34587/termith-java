@@ -14,6 +14,8 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.xpath.*;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.*;
 
 import static org.atilf.models.disambiguation.ContextResources.*;
@@ -494,6 +496,11 @@ public class ContextExtractor implements Runnable{
     public void run() {
         LOGGER.info("add " + _p + " to sub lexicon");
         this.execute();
+        try {
+            Files.delete(Paths.get(_p));
+        } catch (IOException e) {
+            LOGGER.error("cannot delete file", e);
+        }
         LOGGER.info(_p + " added");
     }
 
