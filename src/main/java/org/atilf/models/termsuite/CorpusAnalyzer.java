@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * the corpus analyzer is a class who contains the metadata needed to serialize json file
  * @author Simon Meoni
  *         Created on 07/09/16.
  */
@@ -20,6 +21,10 @@ public class CorpusAnalyzer {
     private int _index;
     private static final Logger LOGGER = LoggerFactory.getLogger(CorpusAnalyzer.class.getName());
 
+    /**
+     * the constructor of Corpus analyzer
+     * @param extractedText all extracted texts of a corpus
+     */
     public CorpusAnalyzer(Map<String, StringBuilder> extractedText){
         LOGGER.debug("CorpusAnalyzer object building started");
         _totalSize = totalSize(extractedText);
@@ -29,7 +34,6 @@ public class CorpusAnalyzer {
 
         extractedText.forEach((id,content) ->
         {
-
             int documentSize = documentSize(extractedText,id);
             int nbDocs = nbOfDocs(extractedText);
             _sumSize += documentSize;
@@ -55,6 +59,7 @@ public class CorpusAnalyzer {
     }
 
     /**
+     * return the metadata of each files
      * @return return analyzedText fields
      */
     public Map<String, TextAnalyzer> getAnalyzedTexts() {
@@ -62,11 +67,11 @@ public class CorpusAnalyzer {
     }
 
     /**
+     * the size of the corpus
      * @return return the size of the total corpus
      */
     public int totalSize(Map<String, StringBuilder> extractedText) {
         int totalSize = 0;
-        byte[] bytesCt;
         for (StringBuilder text : extractedText.values()){
             totalSize += text.toString().getBytes().length + 1;
         }
@@ -74,8 +79,7 @@ public class CorpusAnalyzer {
     }
 
     /**
-     * return the size of a document
-     * @return
+     * @return return the current document size
      */
     public int documentSize(Map<String, StringBuilder> extractedText, String id){
         return extractedText.get(id)
@@ -83,16 +87,14 @@ public class CorpusAnalyzer {
     }
 
     /**
-     * return the number of document of the corpus
-     * @return
+     * @return return the number of document of the corpus
      */
     public int nbOfDocs(Map<String, StringBuilder> extractedText){
         return extractedText.size();
     }
 
     /**
-     * return the uima offset of a document
-     * @return
+     * @return return the uima offset of a document
      */
     public int end(Map<String, StringBuilder> extractedText, String id){
         return extractedText.get(id).toString().length();

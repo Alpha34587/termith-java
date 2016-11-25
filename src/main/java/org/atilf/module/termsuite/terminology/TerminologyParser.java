@@ -104,25 +104,24 @@ public class TerminologyParser implements Runnable{
                     extractInputSource(jsonToken, parser);
                 }
                 else if (inTerms) {
-                    if (jsonToken == JsonToken.END_ARRAY && Objects.equals(parser.getCurrentName(), "terms")) {
-
+                    if (jsonToken == JsonToken.END_ARRAY && Objects.equals(parser.getCurrentName(), T_TERMS)) {
                         inTerms = false;
                         break;
                     } else if (jsonToken == JsonToken.END_ARRAY && inOcc) {
                         inOcc = false;
                     } else if (jsonToken == JsonToken.END_OBJECT && inOcc) {
                         fillTerminology(offsetId);
-                    } else if (Objects.equals(parser.getCurrentName(), "occurrences")) {
+                    } else if (Objects.equals(parser.getCurrentName(), T_OCC)) {
                         inOcc = true;
                     }
                     extractTerm(jsonToken, parser, offsetId);
                 }
 
-                else if ("input_sources".equals(parser.getParsingContext().getCurrentName())) {
+                else if (T_INPUT.equals(parser.getParsingContext().getCurrentName())) {
                     inSource = true;
                 }
 
-                else if ("terms".equals(parser.getParsingContext().getCurrentName())) {
+                else if (T_TERMS.equals(parser.getParsingContext().getCurrentName())) {
                     inTerms = true;
                 }
             }
