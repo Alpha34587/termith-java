@@ -9,6 +9,8 @@ import org.atilf.models.termith.TermithIndex;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Objects;
+
 /**
  * compute specificity coefficient for each word of a term candidate entry. the result is retained on the
  * _lexicalProfile field. This class call a R script with the library Rcaller.
@@ -149,7 +151,26 @@ public class SpecCoefficientInjector implements Runnable{
          */
         rcaller.setRCode(code);
         rcaller.runAndReturnResult("res");
-        return rcaller.getParser().getAsFloatArray("res");
+        rcaller.deleteTempFiles();
+        return resToFloat(rcaller.getParser().getAsStringArray("res"));
+    }
+
+    private float[] resToFloat(String[] res) {
+        float[] floatArray = new float[res.length];
+        for (int i = 0; i < res.length; i++){
+            if (Objects.equals(res[i], "Inf")){
+                floatArray[i] = Float.POSITIVE_INFINITY;
+                LOGGER.error("positive infinity was return by R");
+            }
+            else if (Objects.equals(res[i], "-Inf")){
+                floatArray[i] = Float.NEGATIVE_INFINITY;
+                LOGGER.error("negative infinity was return by R");
+            }
+            else {
+                floatArray[i] = Float.parseFloat(res[i]);
+            }
+        }
+        return floatArray;
     }
 
     /*
