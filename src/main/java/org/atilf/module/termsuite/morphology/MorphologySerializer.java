@@ -121,7 +121,7 @@ public class MorphologySerializer {
         jg.writeFieldName("document_size");
         jg.writeNumber(_textAnalyzer.getDocumentSize());
         jg.writeFieldName("cumul_doc_size");
-        jg.writeNumber(_textAnalyzer.getSumSize());
+        jg.writeNumber(_textAnalyzer.getCumulatedSize());
         jg.writeFieldName("corpus_size");
         jg.writeNumber(_textAnalyzer.getTotalSize());
         jg.writeFieldName("last_segment");
