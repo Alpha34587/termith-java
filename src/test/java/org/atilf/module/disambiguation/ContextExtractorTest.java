@@ -64,7 +64,7 @@ public class ContextExtractorTest {
         entry1.add("deux NUM");
         entry1.add("site NOM");
 
-        _expectedMap.put("entry-13471_lexOn",new LexiconProfile(entry1));
+        _expectedMap.put("entry-13471_lexOff",new LexiconProfile(entry1));
         Multiset<String> entry2 = HashMultiset.create();
         entry2.add("pêche NOM");
         entry2.add(", PUN");
@@ -75,7 +75,7 @@ public class ContextExtractorTest {
         entry2.add("commun ADJ");
         entry2.add(". SENT");
         entry2.add("il PRO:PER");
-        _expectedMap.put("entry-7263_lexOn",new LexiconProfile(entry2));
+        _expectedMap.put("entry-7263_lexOff",new LexiconProfile(entry2));
     }
 
     @Test

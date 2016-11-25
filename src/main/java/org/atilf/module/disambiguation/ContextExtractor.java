@@ -482,10 +482,10 @@ public class ContextExtractor implements Runnable{
      * @return the normalized key
      */
     protected String normalizeKey(String c, String l) {
-        if ("#DM0".equals(l)) {
-            return (c + "_lexOff").replace("#", "");
-        } else {
+        if ("#DM4".equals(l)) {
             return (c + "_lexOn").replace("#", "");
+        } else {
+            return (c + "_lexOff").replace("#", "");
         }
     }
 

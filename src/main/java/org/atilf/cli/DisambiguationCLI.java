@@ -39,9 +39,9 @@ public class DisambiguationCLI {
         Option out = new Option("o","output",true,"output folder");
         out.setRequired(true);
         Option lang = new Option("l","lang",true,"specify the language of the corpus");
-        lang.setRequired(true);
+        lang.setRequired(false);
         Option terminology = new Option("t","terminology",true,"set terminology path");
-        terminology.setRequired(true);
+        terminology.setRequired(false);
         Option annotation = new Option("a","annotation",true,"set annotation json path");
         annotation.setRequired(false);
         Option debug = new Option("d","debug",true,"show debug log");
