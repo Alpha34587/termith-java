@@ -267,7 +267,7 @@ public class TeiWriter implements Runnable {
             StringBuilder entry = new StringBuilder(_stdfRes.MS_SPAN);
             replaceTemplate(entry, "@target", serializeId(token.getIds()));
             replaceTemplate(entry, "@lemma", replaceXmlChar(token.getLemma().replace("<unknown>", "@unknown")));
-            replaceTemplate(entry, "@_pos", token.getTag());
+            replaceTemplate(entry, "@pos", token.getTag());
             _bufferedWriter.append(entry);
         }
         _bufferedWriter.append(cut(_stdfRes.LIST_ANNOTATION,true));

@@ -4,7 +4,8 @@ import org.atilf.models.termith.TermithIndex;
 import org.atilf.models.termsuite.CorpusAnalyzer;
 import org.atilf.models.termsuite.TextAnalyzer;
 import org.atilf.models.treetagger.TagNormalizer;
-import org.atilf.module.tei.morphology.MorphologyTokenizerWrapper;
+import org.atilf.module.tei.morphology.MorphologyTokenizer;
+import org.atilf.module.termsuite.morphology.MorphologySerializer;
 import org.atilf.module.tools.FilesUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -44,7 +45,7 @@ public class TreeTaggerWorker implements Runnable {
         _termithIndex = termithIndex;
         _jsonCnt = jsonCnt;
         _txt = FilesUtils.readObject(termithIndex.getExtractedText().get(id),StringBuilder.class);
-        _jsonPath = termithIndex.getCorpus() + "/json/" + id + ".json";
+        _jsonPath = TermithIndex.getOutputPath() + "/json/" + id + ".json";
         _textAnalyzer = corpusAnalyzer.getAnalyzedTexts().get(id);
         _xml = FilesUtils.readFile(termithIndex.getXmlCorpus().get(id));
         _id = id;
@@ -71,12 +72,9 @@ public class TreeTaggerWorker implements Runnable {
         /*
         instantiate TreeTaggerToJson object
          */
-        TreeTaggerToJson treeTaggerToJson = new TreeTaggerToJson(
+        TreeTaggerWrapper treeTaggerWrapper = new TreeTaggerWrapper(
                 _txt,
-                _jsonPath,
-                TermithIndex.getTreeTaggerHome(),
-                TermithIndex.getLang(),
-                _textAnalyzer,
+                new TreeTaggerParameter(false, TermithIndex.getLang(), TermithIndex.getTreeTaggerHome()),
                 TermithIndex.getOutputPath().toString()
         );
 
@@ -85,7 +83,14 @@ public class TreeTaggerWorker implements Runnable {
             TreeTagger task and Json serialization
              */
             LOGGER.debug("TreeTagger task started for :" + _id);
-            treeTaggerToJson.execute();
+            treeTaggerWrapper.execute();
+
+            MorphologySerializer morphologySerializer = new MorphologySerializer(
+                    treeTaggerWrapper.getTtOut(),
+                    _jsonPath,
+                    _txt,
+                    _textAnalyzer);
+            morphologySerializer.execute();
             _jsonCnt.countDown();
             _termithIndex.getSerializeJson().add(Paths.get(_jsonPath));
             LOGGER.debug("TreeTagger task finished for : " + _id);
@@ -95,17 +100,17 @@ public class TreeTaggerWorker implements Runnable {
              */
             LOGGER.debug("tokenization and morphosyntax tasks started for : " + _jsonPath);
             File json = new File(_jsonPath);
-            MorphologyTokenizerWrapper morphologyTokenizerWrapper = new MorphologyTokenizerWrapper(json, _txt, _xml);
-            morphologyTokenizerWrapper.execute();
+            MorphologyTokenizer morphologyTokenizer = new MorphologyTokenizer(_txt, _xml, json);
+            morphologyTokenizer.execute();
 
             /*
             retained tokenize body and json file in the termithIndex
              */
             _termithIndex.getTokenizeTeiBody().put(json.getName().replace(".json",""),
-                    FilesUtils.writeObject(morphologyTokenizerWrapper.getTokenizeBody(), _termithIndex.getCorpus()));
+                    FilesUtils.writeObject(morphologyTokenizer.getTokenizeBuffer(), TermithIndex.getOutputPath()));
 
             _termithIndex.getMorphologyStandOff().put(json.getName().replace(".json",""),
-                    FilesUtils.writeObject(morphologyTokenizerWrapper.getOffsetId(), _termithIndex.getCorpus()));
+                    FilesUtils.writeObject(morphologyTokenizer.getOffsetId(), TermithIndex.getOutputPath()));
             LOGGER.debug("tokenization and morphosyntax tasks finished file : " + _jsonPath);
 
         } catch (IOException e) {
@@ -126,8 +131,8 @@ public class TreeTaggerWorker implements Runnable {
         try {
 
             TagNormalizer.initTag(TermithIndex.getLang());
-            Files.createDirectories(Paths.get(_termithIndex.getCorpus() + "/json"));
-            LOGGER.debug("create temporary text files in " + _termithIndex.getCorpus() + "/json folder");
+            Files.createDirectories(Paths.get(TermithIndex.getOutputPath() + "/json"));
+            LOGGER.debug("create temporary text files in " + TermithIndex.getOutputPath() + "/json folder");
         } catch (IOException e) {
             LOGGER.error("cannot create directories : ",e);
         }

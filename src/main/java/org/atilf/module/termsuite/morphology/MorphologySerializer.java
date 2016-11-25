@@ -4,12 +4,15 @@ import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonGenerator;
 import org.atilf.models.termsuite.TextAnalyzer;
 import org.atilf.models.treetagger.TagNormalizer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.util.ArrayDeque;
+import java.util.Collections;
 
 /**
  * Serialize TreeTagger result to Termsuite json format
@@ -22,6 +25,8 @@ public class MorphologySerializer {
     private StringBuilder _txt;
     private String _jsonPath;
     private TextAnalyzer _textAnalyzer;
+    private final Logger LOGGER = LoggerFactory.getLogger(MorphologySerializer.class.getName());
+
 
     /**
      * constructor for MorphologySerializer
@@ -32,20 +37,10 @@ public class MorphologySerializer {
      */
     public MorphologySerializer(StringBuilder treeTaggerOutput, String jsonPath, StringBuilder txt
             , TextAnalyzer textAnalyzer) {
-        populateTokenDeque(treeTaggerOutput);
+        Collections.addAll(_tokenDeque, treeTaggerOutput.toString().split("\n"));
         _txt = txt;
         _jsonPath = jsonPath;
         _textAnalyzer = textAnalyzer;
-    }
-
-    /**
-     * put treeTagger Lemma/POS pairs in _tokenDeque field
-     * @param TreeTaggerOutput the treeTagger output
-     */
-    private void populateTokenDeque(StringBuilder TreeTaggerOutput) {
-        for (String token : TreeTaggerOutput.toString().split("\n")) {
-            _tokenDeque.add(token);
-        }
     }
 
     /**
@@ -67,6 +62,7 @@ public class MorphologySerializer {
         jg.writeEndObject();
         jg.flush();
         writer.close();
+        LOGGER.debug("write file " + _jsonPath);
     }
 
     /**
@@ -138,7 +134,7 @@ public class MorphologySerializer {
      * @param jg the current jsonGenerator
      * @throws IOException thrown an exception if the jsonGenerator meet a problem during the writing of the file
      */
-    public void writeTag(JsonGenerator jg) throws IOException {
+    private void writeTag(JsonGenerator jg) throws IOException {
         Integer[] offset = new Integer[]{0,1};
         jg.writeFieldName("word_annotations");
         jg.writeStartArray();

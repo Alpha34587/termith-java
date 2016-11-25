@@ -30,7 +30,6 @@ public class TermithIndex {
     private Map<String, List<TermOffsetId>> _terminologyStandOff = new ConcurrentHashMap<>();
     private Map<String, Path> _extractedText = new ConcurrentHashMap<>();
     private Map<String, Path> _xmlCorpus = new ConcurrentHashMap<>();
-    private Map<String, Path> _jsonTreeTagger = new ConcurrentHashMap<>();
     private List<Path> _serializeJson = new CopyOnWriteArrayList<>();
     private List<Path> _outputFile = new CopyOnWriteArrayList<>();
     private int _corpusSize;
