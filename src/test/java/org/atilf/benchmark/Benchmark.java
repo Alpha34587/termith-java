@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.io.FileUtils;
 import org.atilf.models.termith.TermithIndex;
+import org.atilf.module.tools.FilesUtils;
 import org.atilf.thread.Thread;
 import org.atilf.thread.disambiguation.ContextLexiconThread;
 import org.atilf.thread.disambiguation.DisambiguationExporterThread;
@@ -49,16 +50,20 @@ public class Benchmark {
     private static final Logger LOGGER = LoggerFactory.getLogger(Benchmark.class.getName());
 
     public void setUp() throws IOException {
+
+        if (_temporaryFolder.exists()){
+            FileUtils.deleteDirectory(_temporaryFolder);
+        }
         if(!_temporaryFolder.mkdir()){
-            LOGGER.error("the temporary folder could has not been created");
+            LOGGER.error("the temporary folder has not been created");
         }
         createTermithIndex(_duplicate);
-        warmUp(1000000);
+        warmUp();
     }
 
-    private void warmUp(int count) {
+    private void warmUp() {
         int i = 0;
-        while (i < count) {i++;}
+        while (i < 1000000) {i++;}
         LOGGER.info("warm up finished");
     }
 
@@ -217,7 +222,7 @@ public class Benchmark {
     public static void main(String[] args) throws IOException, NoSuchMethodException {
         _learning = args[0];
         _evaluation = args[1];
-        _out = args[2];
+        _out = FilesUtils.folderPathResolver(args[2]).toString();
         _temporaryFolder = new File(args[3]);
         _duplicate = Integer.parseInt(args[4]);
         Benchmark benchmark = new Benchmark();
