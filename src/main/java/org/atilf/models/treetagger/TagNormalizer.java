@@ -4,6 +4,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
+ * normalize treetagger tags during json serialization in english or french
  * @author Simon Meoni
  *         Created on 08/09/16.
  */

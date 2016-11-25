@@ -38,7 +38,7 @@ public class EvaluationExtractorTest {
         _expectedTarget.add("#t13 #t14 #t15 #t16");
         _expectedCorresp.add("#entry-13471");
         _expectedLexAna.add("#noDM");
-        
+
         Multiset<String> entry1 = HashMultiset.create();
         entry1.add("ce PRO:DEM");
         entry1.add("article NOM");
@@ -79,10 +79,13 @@ public class EvaluationExtractorTest {
                 (key,value) -> {
                     Multiset observed = _observedMap.get(key).getLexicalTable();
                     value.forEach(
-                            el -> Assert.assertEquals("the occurence of element must be equals at " + key +
-                                            " for the word : " + el,
-                                    value.countOccurrence(el),observed.count(el)
-                            )
+                            el -> {
+                                int count = observed.count(el);
+                                Assert.assertEquals("the occurence of element must be equals at " + key +
+                                                " for the word : " + el,
+                                        value.count(el),observed.count(el)
+                                );
+                            }
                     );
                 }
         );

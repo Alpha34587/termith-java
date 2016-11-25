@@ -4,6 +4,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
+ * this is an equivalence table used during the exportation to tei file
  * @author Simon Meoni
  *         Created on 29/09/16.
  */
@@ -18,10 +19,15 @@ public class SpecialChXmlEscape {
         XML_SPEC_CH.put(">", "&gt;");
     }
 
-    public static String replaceXmlChar(String occ){
+    /**
+     * replace a special character to a xml escape characters
+     * @param ch the character
+     * @return the converted character
+     */
+    public static String replaceXmlChar(String ch){
         for (Map.Entry <String,String> entry : XML_SPEC_CH.entrySet()){
-            occ = occ.replace(entry.getKey(),entry.getValue());
+            ch = ch.replace(entry.getKey(),entry.getValue());
         }
-        return occ;
+        return ch;
     }
 }

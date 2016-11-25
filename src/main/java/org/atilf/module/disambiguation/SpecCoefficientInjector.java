@@ -113,11 +113,11 @@ public class SpecCoefficientInjector implements Runnable{
         /*
         add size of the corpus
          */
-        code.addRCode("sumCol <-" + _rLexicon.getCorpusSizeOcc());
+        code.addRCode("sumCol <-" + _rLexicon.getSize());
         /*
         add size of the corpus and the size of the context
          */
-        code.addRCode("tabCol <-" + "c(" + _rContextLexicon.getCorpusSizeOcc() + "," + _rLexicon.getCorpusSizeOcc() + ")");
+        code.addRCode("tabCol <-" + "c(" + _rContextLexicon.getSize() + "," + _rLexicon.getSize() + ")");
         code.addRCode("names(tabCol) <- c(\"sublexicon\",\"complementary\")");
         /*
         add occurrences numbers for all words of the corpus
