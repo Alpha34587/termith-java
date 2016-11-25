@@ -116,8 +116,8 @@ public class Benchmark {
         }
         String js = String.join("\n", Files.readAllLines(Paths.get("src/test/resources/benchmark/graph.js")));
         js = js.replace("labels: []", "labels: " + sizeList.toString());
-        js = js.replaceFirst("data: \\[\\]", "data: " + contextList.toString());
         js = js.replaceFirst("data: \\[\\]", "data: " + disambiguationList.toString());
+        js = js.replaceFirst("data: \\[\\]", "data: " + contextList.toString());
         js = js.replaceFirst("data: \\[\\]", "data: " + rList.toString());
         Files.write(Paths.get(_out + "graph.js"),js.getBytes());
         Files.copy(
