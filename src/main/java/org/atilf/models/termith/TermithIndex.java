@@ -1,11 +1,13 @@
 package org.atilf.models.termith;
 
+import org.apache.commons.io.FileUtils;
 import org.atilf.models.disambiguation.CorpusLexicon;
 import org.atilf.models.disambiguation.LexiconProfile;
 import org.atilf.models.termsuite.TermOffsetId;
 import org.atilf.models.disambiguation.EvaluationProfile;
 import org.atilf.module.tools.FilesUtils;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -338,8 +340,15 @@ public class TermithIndex {
          * @param outputPath the output path
          * @return return output path
          */
-        public Builder export(String outputPath){
+        public Builder export(String outputPath) throws IOException {
             _outputPath = FilesUtils.folderPathResolver(outputPath);
+            File folder = _outputPath.toFile();
+            if (Files.exists(_outputPath)){
+                FileUtils.deleteDirectory(folder);
+            }
+            if (!folder.mkdir()){
+                throw new IOException("cannot create output folder");
+            }
             return this;
         }
 
