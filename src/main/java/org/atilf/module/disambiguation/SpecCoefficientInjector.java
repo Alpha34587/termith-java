@@ -5,6 +5,7 @@ import com.github.rcaller.rstuff.RCode;
 import org.atilf.models.disambiguation.CorpusLexicon;
 import org.atilf.models.disambiguation.LexiconProfile;
 import org.atilf.models.disambiguation.RLexicon;
+import org.atilf.models.disambiguation.RResources;
 import org.atilf.models.termith.TermithIndex;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -106,7 +107,7 @@ public class SpecCoefficientInjector implements Runnable{
         /*
         import R script
          */
-        code.addRCode("source(" + "\"src/main/resources/disambiguation/R/specificities.R\"" + ")");
+        code.addRCode(RResources.SCRIPT);
         /*
         add variable
          */
