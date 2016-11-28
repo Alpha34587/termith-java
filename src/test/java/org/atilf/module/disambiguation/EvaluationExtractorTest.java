@@ -15,6 +15,8 @@ import java.util.Deque;
 import java.util.HashMap;
 import java.util.Map;
 
+import static org.atilf.models.disambiguation.AnnotationResources.NO_DM;
+
 /**
  * @author Simon Meoni
  *         Created on 25/10/16.
@@ -37,7 +39,7 @@ public class EvaluationExtractorTest {
 
         _expectedTarget.add("#t13 #t14 #t15 #t16");
         _expectedCorresp.add("#entry-13471");
-        _expectedLexAna.add("#noDM");
+        _expectedLexAna.add(NO_DM.getValue());
 
         Multiset<String> entry1 = HashMultiset.create();
         entry1.add("ce PRO:DEM");

@@ -6,6 +6,8 @@ import com.google.common.collect.Multiset;
 import java.util.Iterator;
 import java.util.function.Consumer;
 
+import static org.atilf.models.disambiguation.AnnotationResources.NO_DA;
+
 /**
  * the evaluation contains the context of a terms to evaluate and a the value of disambiguation.
  * the default value of the disambiguation is not noDa and can take three value : noDa, DaOn or DaOff
@@ -14,7 +16,7 @@ import java.util.function.Consumer;
  */
 public class EvaluationProfile implements Iterable<String> {
     private Multiset<String> _lexicalTable;
-    private String _disambiguationId = "noDa";
+    private AnnotationResources _disambiguationId = NO_DA;
 
     /**
      * a constructor for evaluationProfile
@@ -57,14 +59,14 @@ public class EvaluationProfile implements Iterable<String> {
      * @return the disambiguation of this term
      */
     public String getDisambiguationId() {
-        return _disambiguationId;
+        return _disambiguationId.getValue();
     }
 
     /**
      * setter of disambiguationId
-     * @param _disambiguationId a string
+     * @param _disambiguationId AnnotationResource
      */
-    public void setDisambiguationId(String _disambiguationId) {
+    public void setDisambiguationId(AnnotationResources _disambiguationId) {
         this._disambiguationId = _disambiguationId;
     }
 

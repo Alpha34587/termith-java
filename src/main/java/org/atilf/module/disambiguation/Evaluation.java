@@ -1,5 +1,6 @@
 package org.atilf.module.disambiguation;
 
+import org.atilf.models.disambiguation.AnnotationResources;
 import org.atilf.models.disambiguation.EvaluationProfile;
 import org.atilf.models.disambiguation.LexiconProfile;
 
@@ -60,7 +61,7 @@ public class Evaluation implements Runnable{
                      the term is not a terminology
                      */
                     if (!_contextLexicon.containsKey(lexEntryOn)){
-                        value.setDisambiguationId("DaOff");
+                        value.setDisambiguationId(AnnotationResources.DA_OFF);
                     }
 
                     /*
@@ -68,7 +69,7 @@ public class Evaluation implements Runnable{
                      the term is terminology
                      */
                     else if (!_contextLexicon.containsKey(lexEntryOff)){
-                        value.setDisambiguationId("DaOn");
+                        value.setDisambiguationId(AnnotationResources.DA_ON);
                     }
 
                     /*
@@ -97,10 +98,10 @@ public class Evaluation implements Runnable{
      */
     private void compareFactor(EvaluationProfile entry) {
         if (_factorOff >= _factorOn){
-            entry.setDisambiguationId("DaOff");
+            entry.setDisambiguationId(AnnotationResources.DA_OFF);
         }
         else {
-            entry.setDisambiguationId("DaOn");
+            entry.setDisambiguationId(AnnotationResources.DA_ON);
         }
     }
 
