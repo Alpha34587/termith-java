@@ -17,7 +17,7 @@ import java.io.IOException;
  */
 public class DisambiguationCLI {
     private static final Options options = new Options();
-    private static final Logger LOGGER = LoggerFactory.getLogger(TermithTreeTaggerCLI.class.getName());
+    private static final Logger LOGGER = LoggerFactory.getLogger(DisambiguationCLI.class.getName());
 
     private DisambiguationCLI() {
         throw new IllegalAccessError("Utility class");
