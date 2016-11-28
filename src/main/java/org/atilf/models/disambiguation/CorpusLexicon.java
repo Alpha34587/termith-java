@@ -18,6 +18,7 @@ public class CorpusLexicon extends Lexicon{
      * @param idEntry the map who links a word to an id
      */
     public CorpusLexicon(Map<Integer,String> lexicalEntry, Map<String,Integer> idEntry) {
+        super();
         _idEntry = idEntry;
         _lexicalEntry = lexicalEntry;
     }
