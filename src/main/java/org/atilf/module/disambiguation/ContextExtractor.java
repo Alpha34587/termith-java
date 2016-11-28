@@ -91,7 +91,7 @@ import static org.atilf.models.disambiguation.ContextResources.*;
  */
 public class ContextExtractor implements Runnable{
     private XPathExpression _simpleGetter;
-    Deque<String> _target = new ArrayDeque<>();
+    protected Deque<String> _target = new ArrayDeque<>();
     Deque<String> _corresp = new ArrayDeque<>();
     Deque<String> _lexAna = new ArrayDeque<>();
     Document _doc;
