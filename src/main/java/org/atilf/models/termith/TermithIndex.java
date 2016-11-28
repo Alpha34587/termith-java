@@ -378,8 +378,10 @@ public class TermithIndex {
          * @return return TreeTagger path
          */
         public Builder terminology(String terminology) {
-            _terminology.add(null);
-            _terminology.add(FilesUtils.folderPathResolver(terminology));
+            if (terminology == null)
+                _terminology.add(null);
+            else
+                _terminology.add(FilesUtils.folderPathResolver(terminology));
             return this;
         }
 
