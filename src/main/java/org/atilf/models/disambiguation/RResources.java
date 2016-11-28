@@ -1,0 +1,27 @@
+package org.atilf.models.disambiguation;
+
+import org.apache.commons.io.IOUtils;
+import org.atilf.module.disambiguation.SpecCoefficientInjector;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.io.IOException;
+import java.io.InputStream;
+
+/**
+ * @author Simon Meoni Created on 28/11/16.
+ */
+public class RResources {
+    public static final String SCRIPT;
+    private static final Logger LOGGER = LoggerFactory.getLogger(RResources.class.getName());
+    static {
+        String script = null;
+        InputStream resourceAsStream = SpecCoefficientInjector.class.getResourceAsStream("/disambiguation/R/specificities.R");
+        try {
+            script = IOUtils.toString(resourceAsStream, "UTF-8");
+        } catch (IOException e) {
+            LOGGER.error("cannot read R resource",e);
+        }
+        SCRIPT = script;
+    }
+}
