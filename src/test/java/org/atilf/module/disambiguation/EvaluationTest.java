@@ -13,6 +13,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static org.atilf.models.disambiguation.AnnotationResources.DA_ON;
+
 /**
  * @author Simon Meoni
  *         Created on 25/10/16.
@@ -129,8 +131,8 @@ public class EvaluationTest {
         evaluation.execute();
 
         _disambIdObserved = new ArrayList<>();
-        _disambIdObserved.add("DaOn");
-        _disambIdObserved.add("DaOn");
+        _disambIdObserved.add(DA_ON.getValue());
+        _disambIdObserved.add(DA_ON.getValue());
     }
 
     @Test

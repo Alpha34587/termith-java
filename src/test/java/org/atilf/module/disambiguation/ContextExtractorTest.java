@@ -9,6 +9,9 @@ import org.junit.Test;
 
 import java.util.*;
 
+import static org.atilf.models.disambiguation.AnnotationResources.DM1;
+import static org.atilf.models.disambiguation.AnnotationResources.DM3;
+
 /**
  * @author Simon Meoni
  *         Created on 17/10/16.
@@ -38,10 +41,10 @@ public class ContextExtractorTest {
         _expectedCorresp.add("#entry-13471");
         _expectedCorresp.add("#entry-7263");
 
-        _expectedLexAna.add("#DM1");
-        _expectedLexAna.add("#DM1");
-        _expectedLexAna.add("#DM1");
-        _expectedLexAna.add("#DM3");
+        _expectedLexAna.add(DM1.getValue());
+        _expectedLexAna.add(DM1.getValue());
+        _expectedLexAna.add(DM1.getValue());
+        _expectedLexAna.add(DM3.getValue());
 
         Multiset<String> entry1 = HashMultiset.create();
         entry1.add("ce PRO:DEM");

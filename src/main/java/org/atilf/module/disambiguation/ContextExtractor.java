@@ -18,6 +18,8 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
 
+import static org.atilf.models.disambiguation.AnnotationResources.DM4;
+import static org.atilf.models.disambiguation.AnnotationResources.NO_DM;
 import static org.atilf.models.disambiguation.ContextResources.*;
 
 /**
@@ -436,7 +438,7 @@ public class ContextExtractor implements Runnable{
                    * the #noDM attribute means that the term has not annotation and the context is undefined
                    * between the terminology context and the non-terminology context
                  */
-                if (!"#noDM".equals(ana) && !ana.isEmpty()){
+                if (!NO_DM.getValue().equals(ana) && !ana.isEmpty()){
                     /*
                     add term occurrence candidate to queue
                      */
@@ -482,7 +484,7 @@ public class ContextExtractor implements Runnable{
      * @return the normalized key
      */
     protected String normalizeKey(String c, String l) {
-        if ("#DM4".equals(l)) {
+        if (DM4.getValue().equals(l)) {
             return (c + "_lexOn").replace("#", "");
         } else {
             return (c + "_lexOff").replace("#", "");
