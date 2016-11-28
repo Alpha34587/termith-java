@@ -12,7 +12,7 @@ import java.io.InputStream;
  * @author Simon Meoni Created on 28/11/16.
  */
 public class RResources {
-    public static final String SCRIPT;
+    public static final StringBuilder SCRIPT;
     private static final Logger LOGGER = LoggerFactory.getLogger(RResources.class.getName());
     static {
         String script = null;
@@ -22,6 +22,7 @@ public class RResources {
         } catch (IOException e) {
             LOGGER.error("cannot read R resource",e);
         }
-        SCRIPT = script;
+        assert script != null;
+        SCRIPT = new StringBuilder(script);
     }
 }
