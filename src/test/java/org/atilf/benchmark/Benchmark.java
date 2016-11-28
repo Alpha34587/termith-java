@@ -4,7 +4,9 @@ import com.fasterxml.jackson.annotation.JsonRootName;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.io.FileUtils;
+import org.atilf.models.disambiguation.DisambiguationXslResources;
 import org.atilf.models.termith.TermithIndex;
+import org.atilf.module.disambiguation.DisambiguationXslTransformer;
 import org.atilf.module.tools.FilesUtils;
 import org.atilf.thread.Thread;
 import org.atilf.thread.disambiguation.ContextLexiconThread;
@@ -65,6 +67,31 @@ public class Benchmark {
         int i = 0;
         while (i < 1000000) {i++;}
         LOGGER.info("warm up finished");
+        try {
+            countTerms();
+        } catch (IOException e) {
+            LOGGER.error("cannot read file  : ", e);
+        }
+    }
+
+    private void countTerms() throws IOException {
+        Files.list(TermithIndex.getLearningPath()).forEach(
+                file -> {
+                    DisambiguationXslTransformer transformer = new DisambiguationXslTransformer(
+                            file.toFile(),new DisambiguationXslResources()
+                    );
+                    try {
+                        Path path = FilesUtils.writeFile(transformer.execute(),
+                                _temporaryFolder.toPath(), file.getFileName().toString());
+                        TermExtractor termExtractor = new TermExtractor(path.toString());
+                        _sizes += termExtractor.countTerms();
+                    } catch (IOException e) {
+                        LOGGER.error("cannot transform file ", e);
+                    }
+                    LOGGER.info("counting done for file :" + file);
+
+                }
+        );
     }
 
     private void contextLexiconThread() throws NoSuchMethodException {
@@ -85,7 +112,6 @@ public class Benchmark {
     }
 
     private void writeJson() throws IOException {
-        _sizes = _termithIndex.getCorpusSize();
         List<Benchmark> benchmarkList = new ArrayList<>();
         if (Files.exists(Paths.get("history.json"))) {
             JavaType type = _mapper.getTypeFactory().
