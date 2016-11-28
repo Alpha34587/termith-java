@@ -24,31 +24,31 @@ public class CorpusLexiconExtractorTest {
                 _observedCorpus
         );
 
-        _expectedCorpus.addEntry("ce PRO:DEM");
-        _expectedCorpus.addEntry("article NOM");
-        _expectedCorpus.addEntry("présenter VER:pres");
-        _expectedCorpus.addEntry("un DET:ART");
-        _expectedCorpus.addEntry("étude NOM");
-        _expectedCorpus.addEntry("comparer VER:pper");
-        _expectedCorpus.addEntry("du PRP:det");
-        _expectedCorpus.addEntry("donnée NOM");
-        _expectedCorpus.addEntry("archéo-ichtyofauniques ADJ");
-        _expectedCorpus.addEntry("livrer VER:pper");
-        _expectedCorpus.addEntry("par PRP");
-        _expectedCorpus.addEntry("deux NUM");
-        _expectedCorpus.addEntry("site NOM");
-        _expectedCorpus.addEntry("de PRP");
-        _expectedCorpus.addEntry("le DET:ART");
-        _expectedCorpus.addEntry("âge NOM");
-        _expectedCorpus.addEntry("du PRP:det");
+        _expectedCorpus.addOccurrence("ce PRO:DEM");
+        _expectedCorpus.addOccurrence("article NOM");
+        _expectedCorpus.addOccurrence("présenter VER:pres");
+        _expectedCorpus.addOccurrence("un DET:ART");
+        _expectedCorpus.addOccurrence("étude NOM");
+        _expectedCorpus.addOccurrence("comparer VER:pper");
+        _expectedCorpus.addOccurrence("du PRP:det");
+        _expectedCorpus.addOccurrence("donnée NOM");
+        _expectedCorpus.addOccurrence("archéo-ichtyofauniques ADJ");
+        _expectedCorpus.addOccurrence("livrer VER:pper");
+        _expectedCorpus.addOccurrence("par PRP");
+        _expectedCorpus.addOccurrence("deux NUM");
+        _expectedCorpus.addOccurrence("site NOM");
+        _expectedCorpus.addOccurrence("de PRP");
+        _expectedCorpus.addOccurrence("le DET:ART");
+        _expectedCorpus.addOccurrence("âge NOM");
+        _expectedCorpus.addOccurrence("du PRP:det");
 
     }
 
     @Test
     public void execute() throws Exception {
         _corpus1.execute();
-        Assert.assertEquals("this two multisets must be equals", _expectedCorpus.getMultisetLexicon().toString(),
-                _observedCorpus.getMultisetLexicon().toString());
+        Assert.assertEquals("this two multisets must be equals", _expectedCorpus.getLexicalTable().toString(),
+                _observedCorpus.getLexicalTable().toString());
     }
 
 }

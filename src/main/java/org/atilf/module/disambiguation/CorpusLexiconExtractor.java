@@ -91,7 +91,7 @@ public class CorpusLexiconExtractor implements Runnable{
      */
     private void addToCorpus() {
         for (int i = 0; i < _wElements.getLength(); i++) {
-            _CorpusLexicon.addEntry(_wElements.item(i).getTextContent());
+            _CorpusLexicon.addOccurrence(_wElements.item(i).getTextContent());
         }
     }
 

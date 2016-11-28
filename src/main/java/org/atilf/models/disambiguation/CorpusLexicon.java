@@ -1,18 +1,12 @@
 package org.atilf.models.disambiguation;
 
-import com.google.common.collect.ConcurrentHashMultiset;
-import com.google.common.collect.Multiset;
-
-import java.util.Iterator;
 import java.util.Map;
-import java.util.function.Consumer;
 
 /**
  * the corpus lexicon is an object who contains the number of occurrences for each words of a corpus
  *         Created on 23/10/16.
  */
-public class CorpusLexicon implements Iterable<String>{
-    private Multiset<String> _multisetLexicon = ConcurrentHashMultiset.create();
+public class CorpusLexicon extends Lexicon{
     private Map<Integer,String> _lexicalEntry;
     private Map<String, Integer> _idEntry;
     private int _counter = 0;
@@ -29,22 +23,6 @@ public class CorpusLexicon implements Iterable<String>{
     }
 
     /**
-     * getter of the multiset of the entire corpus
-     * @return return a multiset variable
-     */
-    public Multiset getMultisetLexicon() {
-        return _multisetLexicon;
-    }
-
-    /**
-     * the size of the corpus
-     * @return return the size of the corpus
-     */
-    public int size(){
-        return _multisetLexicon.size();
-    }
-
-    /**
      * get the map with id associated to words
      * @return return the map with id associated to words
      */
@@ -57,22 +35,14 @@ public class CorpusLexicon implements Iterable<String>{
      * of the id is incremented
      * @param entry the word to add
      */
-    public void addEntry(String entry){
-        _multisetLexicon.add(entry);
+    @Override
+    public void addOccurrence(String entry){
+        _lexicalTable.add(entry);
         if (!_idEntry.containsKey(entry)) {
             _idEntry.put(entry, _counter);
             _lexicalEntry.put(_counter, entry);
             _counter++;
         }
-    }
-
-    /**
-     * count the number of occurrences of a word
-     * @param word a word to count in the corpus
-     * @return return the number of occurrence of word
-     */
-    public int count(String word){
-        return _multisetLexicon.count(word);
     }
 
     /**
@@ -89,23 +59,5 @@ public class CorpusLexicon implements Iterable<String>{
      */
     public String getLexicalEntry(int id){
         return _lexicalEntry.get(id);
-    }
-
-    /**
-     * override iterator
-     * @return return String iterator
-     */
-    @Override
-    public Iterator<String> iterator() {
-        return null;
-    }
-
-    /**
-     * this foreach lambda method is associated to the multiset of the corpus
-     * @param consumer the current string consumer
-     */
-    @Override
-    public void forEach(Consumer<? super String> consumer) {
-        _multisetLexicon.elementSet().forEach(consumer);
     }
 }

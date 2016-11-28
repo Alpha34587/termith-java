@@ -33,16 +33,16 @@ public class RLexiconTest {
         _rOcc = "c(1,1,1,1,1,1,2,1,1)";
 
         _corpus = new CorpusLexicon(new HashMap<>(),new HashMap<>());
-        _corpus.addEntry("ce PRO:DEM");
-        _corpus.addEntry("article NOM");
-        _corpus.addEntry("présenter VER:pres");
-        _corpus.addEntry("un DET:ART");
-        _corpus.addEntry("un DET:ART");
-        _corpus.addEntry("comparer VER:pper");
-        _corpus.addEntry("du PRP:det");
-        _corpus.addEntry("donnée NOM");
-        _corpus.addEntry("archéo-ichtyofauniques ADJ");
-        _corpus.addEntry("livrer VER:pper");
+        _corpus.addOccurrence("ce PRO:DEM");
+        _corpus.addOccurrence("article NOM");
+        _corpus.addOccurrence("présenter VER:pres");
+        _corpus.addOccurrence("un DET:ART");
+        _corpus.addOccurrence("un DET:ART");
+        _corpus.addOccurrence("comparer VER:pper");
+        _corpus.addOccurrence("du PRP:det");
+        _corpus.addOccurrence("donnée NOM");
+        _corpus.addOccurrence("archéo-ichtyofauniques ADJ");
+        _corpus.addOccurrence("livrer VER:pper");
         _rLexicon = new RLexicon(_corpus);
     }
 
