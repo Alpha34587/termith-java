@@ -107,7 +107,7 @@ public class SpecCoefficientInjector implements Runnable{
         /*
         import R script
          */
-        code.addRCode(RResources.SCRIPT);
+        code.addRCode(RResources.SCRIPT.toString());
         /*
         add variable
          */
