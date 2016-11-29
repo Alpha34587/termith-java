@@ -57,7 +57,7 @@ public class CorpusLexicon implements Iterable<String>{
      * of the id is incremented
      * @param entry the word to add
      */
-    public void addEntry(String entry){
+    public synchronized void addEntry(String entry){
         _multisetLexicon.add(entry);
         if (!_idEntry.containsKey(entry)) {
             _idEntry.put(entry, _counter);
