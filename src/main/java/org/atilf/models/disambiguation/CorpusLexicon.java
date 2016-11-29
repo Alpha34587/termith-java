@@ -36,8 +36,7 @@ public class CorpusLexicon extends Lexicon{
      * of the id is incremented
      * @param entry the word to add
      */
-    @Override
-    public void addOccurrence(String entry){
+    public synchronized void addEntry(String entry){
         _lexicalTable.add(entry);
         if (!_idEntry.containsKey(entry)) {
             _idEntry.put(entry, _counter);
