@@ -83,7 +83,7 @@ public class ContextExtractorTest {
 
     @Test
     public void extractTerms() throws Exception {
-        _contextCorpus.extractTerms();
+        _contextCorpus.execute();
         Assert.assertEquals(
                 "these queues must have the same size",
                 _expectedTarget.size(),
