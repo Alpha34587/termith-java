@@ -96,6 +96,7 @@ public class SpecCoefficientInjector implements Runnable{
      * @return coefficients specificities
      */
     float[] computeSpecCoefficient() {
+        LOGGER.debug("compute specificity coefficient");
         /*
         instantiate rcaller
          */
@@ -153,6 +154,7 @@ public class SpecCoefficientInjector implements Runnable{
         rcaller.setRCode(code);
         rcaller.runAndReturnResult("res");
         rcaller.deleteTempFiles();
+        LOGGER.debug("specificity coefficient has been computed");
         return resToFloat(rcaller.getParser().getAsStringArray("res"));
     }
 

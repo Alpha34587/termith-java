@@ -496,14 +496,14 @@ public class ContextExtractor implements Runnable{
      */
     @Override
     public void run() {
-        LOGGER.info("add " + _p + " to sub lexicon");
+        LOGGER.info("extract contexts from " + _p );
         this.execute();
         try {
             Files.delete(Paths.get(_p));
         } catch (IOException e) {
             LOGGER.error("cannot delete file", e);
         }
-        LOGGER.info(_p + " added");
+        LOGGER.info("all contexts in " + _p + "has been extracted");
     }
 
     /**

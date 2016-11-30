@@ -97,7 +97,7 @@ public class EvaluationThread extends Thread{
         Evaluation phase
          */
         _termithIndex.getEvaluationLexicon().forEach(
-                (key,value) -> _executorService.submit(new Evaluation(value, _termithIndex.getContextLexicon()))
+                (p,value) -> _executorService.submit(new Evaluation(p, value, _termithIndex.getContextLexicon()))
         );
         _logger.info("Waiting EvaluationWorker executors to finish");
         _executorService.shutdown();
