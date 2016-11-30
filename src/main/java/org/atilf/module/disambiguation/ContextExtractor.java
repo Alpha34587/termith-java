@@ -1,10 +1,15 @@
 package org.atilf.module.disambiguation;
 
+import org.xml.sax.Attributes;
+import org.xml.sax.SAXException;
+import org.xml.sax.helpers.DefaultHandler;
 import org.atilf.models.disambiguation.LexiconProfile;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.w3c.dom.Node;
 
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -82,11 +87,10 @@ import static org.atilf.models.disambiguation.AnnotationResources.DM4;
  *
  */
 public class ContextExtractor implements Runnable{
-    protected Deque<String> _target = new ArrayDeque<>();
-    Deque<String> _corresp = new ArrayDeque<>();
-    Deque<String> _lexAna = new ArrayDeque<>();
+    protected Deque<Terms> _terms = new ArrayDeque<>();
     Map<String, LexiconProfile> _contextLexicon;
     private String _p;
+    private File _xml;
     private static final Logger LOGGER = LoggerFactory.getLogger(ContextExtractor.class.getName());
 
 
@@ -98,42 +102,17 @@ public class ContextExtractor implements Runnable{
      * @see LexiconProfile
      */
     public ContextExtractor(String p, Map<String, LexiconProfile> contextLexicon){
-
-        /*
-        initialize the path and all the necessary fields needed to parse xml file
-         */
-
         /*
         initialize _p and _contextLexicon fields
          */
         _p = p;
         _contextLexicon = contextLexicon;
+        _xml = new File(_p);
     }
 
-    /**
-     * getter of _target
-     * @return return the targets attributes value of extracted term candidates
-     */
-    Deque<String> getTarget() {
-        return _target;
+    public Deque<Terms> getTerms() {
+        return _terms;
     }
-
-    /**
-     * getter of _corresp
-     * @return return the corresp attributes value of extracted term candidates
-     */
-    Deque<String> getCorresp() {
-        return _corresp;
-    }
-
-    /**
-     * getter of _lexAna
-     * @return return the ana attributes value of term candidates
-     */
-    Deque<String> getLexAna() {
-        return _lexAna;
-    }
-
 
     /**
      * the execute method call two methods :
@@ -147,17 +126,14 @@ public class ContextExtractor implements Runnable{
      *      or non-terminology context of term candidate
      */
     public void execute() {
-    }
-
-    /**
-     * add to queue a term candidate
-     * @param node the current span node (it is an occurrence term candidate)
-     * @param ana the ana value of the current node
-     */
-    void addToTermsQueues(Node node, String ana) {
-        _target.add(node.getAttributes().getNamedItem("target").getNodeValue());
-        _corresp.add(node.getAttributes().getNamedItem("corresp").getNodeValue());
-        _lexAna.add(ana);
+        try {
+            SAXParserFactory factory = SAXParserFactory.newInstance();
+            SAXParser saxParser = factory.newSAXParser();
+            UserHandler userHandler = new UserHandler();
+            saxParser.parse(_xml,userHandler);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -204,4 +180,49 @@ public class ContextExtractor implements Runnable{
         }
         LOGGER.info("all contexts in " + _p + "has been extracted");
     }
+
+    class UserHandler extends DefaultHandler {
+        boolean inStandOff = false;
+        @Override
+        public void startElement(String uri,
+                                 String localName, String qName, Attributes attributes)
+                throws SAXException {
+        }
+
+        @Override
+        public void endElement(String uri,
+                               String localName, String qName) throws SAXException {
+        }
+
+        @Override
+        public void characters(char ch[],
+                               int start, int length) throws SAXException {
+        }
+    }
+
+    class Terms {
+        private String _corresp;
+        private String _ana;
+        private String _target;
+
+        public Terms(String corresp, String ana, String target) {
+            _corresp = corresp;
+            _ana = ana;
+            _target = target;
+        }
+
+        public String getCorresp() {
+            return _corresp;
+        }
+
+        public String getAna() {
+            return _ana;
+        }
+
+        public String getTarget() {
+            return _target;
+        }
+    }
 }
+
+

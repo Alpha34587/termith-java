@@ -21,6 +21,6 @@ class TermExtractor extends ContextExtractor{
 
     int countTerms() {
 //        extractTerms();
-        return _target.size();
+        return _terms.size();
     }
 }

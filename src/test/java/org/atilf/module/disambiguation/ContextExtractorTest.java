@@ -87,28 +87,28 @@ public class ContextExtractorTest {
         Assert.assertEquals(
                 "these queues must have the same size",
                 _expectedTarget.size(),
-                _contextCorpus.getTarget().size()
+                _contextCorpus.getTerms().size()
         );
-        _contextCorpus.getTarget().forEach(
-                el -> Assert.assertEquals("target must be equals", _expectedTarget.poll(),el)
+        _contextCorpus.getTerms().forEach(
+                el -> Assert.assertEquals("target must be equals", _expectedTarget.poll(),el.getTarget())
         );
 
         Assert.assertEquals(
                 "these queues must have the same size",
                 _expectedCorresp.size(),
-                _contextCorpus.getCorresp().size()
+                _contextCorpus.getTerms().size()
         );
-        _contextCorpus.getCorresp().forEach(
-                el -> Assert.assertEquals("terms id must be equals", _expectedCorresp.poll(),el)
+        _contextCorpus.getTerms().forEach(
+                el -> Assert.assertEquals("terms id must be equals", _expectedCorresp.poll(),el.getCorresp())
         );
 
         Assert.assertEquals(
                 "these queues must have the same size",
                 _expectedLexAna.size(),
-                _contextCorpus.getLexAna().size()
+                _contextCorpus.getTerms().size()
         );
-        _contextCorpus.getLexAna().forEach(
-                el -> Assert.assertEquals("ana id must be equals", _expectedLexAna.poll(),el)
+        _contextCorpus.getTerms().forEach(
+                el -> Assert.assertEquals("ana id must be equals", _expectedLexAna.poll(),el.getAna())
         );
 
     }
