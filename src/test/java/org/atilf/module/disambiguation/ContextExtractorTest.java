@@ -90,7 +90,8 @@ public class ContextExtractorTest {
                 _contextCorpus.getTerms().size()
         );
         _contextCorpus.getTerms().forEach(
-                el -> Assert.assertEquals("target must be equals", _expectedTarget.poll(),el.getTarget())
+                el -> Assert.assertEquals("target must be equals", _expectedTarget.poll(),
+                        String.join(" ",el.getTarget()).replace("t","#t"))
         );
 
         Assert.assertEquals(

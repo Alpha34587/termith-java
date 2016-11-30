@@ -1,11 +1,11 @@
 package org.atilf.module.disambiguation;
 
-import org.xml.sax.Attributes;
-import org.xml.sax.SAXException;
-import org.xml.sax.helpers.DefaultHandler;
 import org.atilf.models.disambiguation.LexiconProfile;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.xml.sax.Attributes;
+import org.xml.sax.SAXException;
+import org.xml.sax.helpers.DefaultHandler;
 
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
@@ -13,10 +13,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 import static org.atilf.models.disambiguation.AnnotationResources.DM4;
 import static org.atilf.models.disambiguation.AnnotationResources.NO_DM;
@@ -189,12 +186,12 @@ public class ContextExtractor implements Runnable {
     class Terms {
         private String _corresp;
         private String _ana;
-        private String _target;
+        private List<String> _target;
 
         public Terms(String corresp, String ana, String target) {
             _corresp = corresp;
             _ana = ana;
-            _target = target;
+            _target = Arrays.asList(target.replace("#","").split(" "));
         }
 
         public String getCorresp() {
@@ -205,7 +202,7 @@ public class ContextExtractor implements Runnable {
             return _ana;
         }
 
-        public String getTarget() {
+        public List<String> getTarget() {
             return _target;
         }
     }
@@ -215,6 +212,7 @@ public class ContextExtractor implements Runnable {
      */
     class UserHandler extends DefaultHandler {
         boolean inStandOff = false;
+        boolean inText = false;
 
         @Override
         public void startElement(String uri, String localName, String qName, Attributes attributes)
@@ -222,10 +220,14 @@ public class ContextExtractor implements Runnable {
             if (qName.equals("ns:standOff")){
                 inStandOff = true;
             }
+
+            if (qName.equals("text")){
+                inText = true;
+            }
             extractTerms(qName, attributes);
+
+
         }
-
-
 
         @Override
         public void endElement(String uri,
@@ -233,11 +235,15 @@ public class ContextExtractor implements Runnable {
             if (Objects.equals(localName, "standOff")){
                 inStandOff = false;
             }
+            if (Objects.equals(localName, "text")){
+                inText = false;
+            }
         }
 
         @Override
         public void characters(char ch[],
                                int start, int length) throws SAXException {
+
         }
 
         private void extractTerms(String qName, Attributes attributes) {
