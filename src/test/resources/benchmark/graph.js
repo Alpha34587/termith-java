@@ -66,7 +66,7 @@ var options = {
     xAxes: [{
       scaleLabel: {
         display: true,
-        labelString: 'number of files'
+        labelString: 'number of terms'
       }
     }]
   }

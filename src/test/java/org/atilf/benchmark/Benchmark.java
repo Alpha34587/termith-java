@@ -150,14 +150,14 @@ public class Benchmark {
         js = js.replaceFirst("data: \\[\\]", "data: " + disambiguationList.toString());
         js = js.replaceFirst("data: \\[\\]", "data: " + contextList.toString());
         js = js.replaceFirst("data: \\[\\]", "data: " + rList.toString());
-        Files.write(Paths.get(_out + "graph.js"),js.getBytes());
+        Files.write(Paths.get(_out + "/graph.js"),js.getBytes());
         Files.copy(
                 Paths.get(GRAPH_RESOURCE + "/Chart.js"),
-                Paths.get(_out + "Chart.js"),REPLACE_EXISTING
+                Paths.get(_out + "/Chart.js"),REPLACE_EXISTING
         );
         Files.copy(
                 Paths.get(GRAPH_RESOURCE + "/graph.html"),
-                Paths.get(_out + "graph.html"),REPLACE_EXISTING
+                Paths.get(_out + "/graph.html"),REPLACE_EXISTING
         );
     }
 
