@@ -16,8 +16,10 @@ import java.nio.file.Paths;
 import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.Map;
+import java.util.Objects;
 
 import static org.atilf.models.disambiguation.AnnotationResources.DM4;
+import static org.atilf.models.disambiguation.AnnotationResources.NO_DM;
 
 /**
  *         - the context extractor moudule extract the context of a terminology entries of the learning corpus.
@@ -86,7 +88,7 @@ import static org.atilf.models.disambiguation.AnnotationResources.DM4;
  *         Created on 14/10/16.
  *
  */
-public class ContextExtractor implements Runnable{
+public class ContextExtractor implements Runnable {
     protected Deque<Terms> _terms = new ArrayDeque<>();
     Map<String, LexiconProfile> _contextLexicon;
     private String _p;
@@ -181,25 +183,9 @@ public class ContextExtractor implements Runnable{
         LOGGER.info("all contexts in " + _p + "has been extracted");
     }
 
-    class UserHandler extends DefaultHandler {
-        boolean inStandOff = false;
-        @Override
-        public void startElement(String uri,
-                                 String localName, String qName, Attributes attributes)
-                throws SAXException {
-        }
-
-        @Override
-        public void endElement(String uri,
-                               String localName, String qName) throws SAXException {
-        }
-
-        @Override
-        public void characters(char ch[],
-                               int start, int length) throws SAXException {
-        }
-    }
-
+    /**
+     * inner terms class contains corresp, ana & target
+     */
     class Terms {
         private String _corresp;
         private String _ana;
@@ -221,6 +207,48 @@ public class ContextExtractor implements Runnable{
 
         public String getTarget() {
             return _target;
+        }
+    }
+
+    /**
+     * UserHandler for SAXParser
+     */
+    class UserHandler extends DefaultHandler {
+        boolean inStandOff = false;
+
+        @Override
+        public void startElement(String uri, String localName, String qName, Attributes attributes)
+                throws SAXException {
+            if (qName.equals("ns:standOff")){
+                inStandOff = true;
+            }
+            extractTerms(qName, attributes);
+        }
+
+
+
+        @Override
+        public void endElement(String uri,
+                               String localName, String qName) throws SAXException {
+            if (Objects.equals(localName, "standOff")){
+                inStandOff = false;
+            }
+        }
+
+        @Override
+        public void characters(char ch[],
+                               int start, int length) throws SAXException {
+        }
+
+        private void extractTerms(String qName, Attributes attributes) {
+            if (inStandOff && qName.equals("span")){
+                String ana = attributes.getValue("ana");
+                if (!ana.equals(NO_DM.getValue())) {
+                    _terms.add(new Terms(attributes.getValue("corresp"),
+                            ana,
+                            attributes.getValue("target")));
+                }
+            }
         }
     }
 }

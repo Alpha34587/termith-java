@@ -63,14 +63,14 @@ public class EvaluationExtractorTest {
 
     @Test
     public void extractTerms() throws Exception {
-        _evaluationExtractor.getTarget().forEach(
-                el -> Assert.assertEquals("target must be equals", _expectedTarget.poll(),el)
+        _evaluationExtractor.getTerms().forEach(
+                el -> Assert.assertEquals("target must be equals", _expectedTarget.poll(),el.getTarget())
         );
-        _evaluationExtractor.getCorresp().forEach(
-                el -> Assert.assertEquals("terms id must be equals", _expectedCorresp.poll(),el)
+        _evaluationExtractor.getTerms().forEach(
+                el -> Assert.assertEquals("terms id must be equals", _expectedCorresp.poll(),el.getCorresp())
         );
-        _evaluationExtractor.getLexAna().forEach(
-                el -> Assert.assertEquals("ana id must be equals", _expectedLexAna.poll(),el)
+        _evaluationExtractor.getTerms().forEach(
+                el -> Assert.assertEquals("ana id must be equals", _expectedLexAna.poll(),el.getAna())
         );
 
     }
