@@ -1,6 +1,7 @@
 package org.atilf.models.disambiguation;
 
 import java.util.Map;
+import java.util.function.Consumer;
 
 /**
  * the corpus lexicon is an object who contains the number of occurrences for each words of a corpus
@@ -36,7 +37,8 @@ public class CorpusLexicon extends Lexicon{
      * of the id is incremented
      * @param entry the word to add
      */
-    public synchronized void addEntry(String entry){
+    @Override
+    public synchronized void addOccurrence(String entry){
         _lexicalTable.add(entry);
         if (!_idEntry.containsKey(entry)) {
             _idEntry.put(entry, _counter);
@@ -59,5 +61,14 @@ public class CorpusLexicon extends Lexicon{
      */
     public String getLexicalEntry(int id){
         return _lexicalEntry.get(id);
+    }
+
+    /**
+     * this foreach lambda method is associated to the multiset of the corpus
+     * @param consumer the current string consumer
+     */
+    @Override
+    public void forEach(Consumer<? super String> consumer) {
+        _lexicalTable.elementSet().forEach(consumer);
     }
 }

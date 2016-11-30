@@ -26,7 +26,7 @@ public class EvaluationTest {
     @Before
     public void setUp() throws Exception {
         Map<String, LexiconProfile> lexicalProfileMap = new HashMap<>();
-        Evaluation evaluation = new Evaluation(_evaluationProfileMap, lexicalProfileMap);
+        Evaluation evaluation = new Evaluation("test",_evaluationProfileMap, lexicalProfileMap);
 
         Multiset<String> entry1 = HashMultiset.create();
         entry1.add("du PRP:det");
