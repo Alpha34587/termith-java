@@ -47,24 +47,21 @@ public class ContextExtractorTest {
         _expectedLexAna.add(DM3.getValue());
 
         Multiset<String> entry1 = HashMultiset.create();
-        entry1.add("ce PRO:DEM");
-        entry1.add("article NOM");
-        entry1.add("présenter VER:pres");
-        entry1.add("un DET:ART");
-        entry1.add("étude NOM");
-        entry1.add("comparer VER:pper");
-        entry1.add("du PRP:det");
-        entry1.add("donnée NOM");
-        entry1.add("archéo-ichtyofauniques ADJ");
-        entry1.add("livrer VER:pper");
-        entry1.add("par PRP");
-        entry1.add("deux NUM");
-        entry1.add("du PRP:det");
-        entry1.add("le DET:ART");
+        entry1.add("ce PRO:DEM",2);
+        entry1.add("article NOM",2);
+        entry1.add("présenter VER:pres",2);
+        entry1.add("un DET:ART",2);
+        entry1.add("étude NOM",2);
+        entry1.add("comparer VER:pper",2);
+        entry1.add("du PRP:det",4);
+        entry1.setCount("donnée NOM",2);
+        entry1.add("archéo-ichtyofauniques ADJ",2);
+        entry1.add("livrer VER:pper",2);
+        entry1.add("par PRP",2);
+        entry1.add("le DET:ART",2);
         entry1.add(". SENT");
         entry1.add("sur PRP");
-        entry1.add("le DET:ART");
-        entry1.add("deux NUM");
+        entry1.add("deux NUM",3);
         entry1.add("site NOM");
 
         _expectedMap.put("entry-13471_lexOff",new LexiconProfile(entry1));
@@ -79,39 +76,6 @@ public class ContextExtractorTest {
         entry2.add(". SENT");
         entry2.add("il PRO:PER");
         _expectedMap.put("entry-7263_lexOff",new LexiconProfile(entry2));
-    }
-
-    @Test
-    public void extractTerms() throws Exception {
-        _contextCorpus.execute();
-        Assert.assertEquals(
-                "these queues must have the same size",
-                _expectedTarget.size(),
-                _contextCorpus.getTerms().size()
-        );
-        _contextCorpus.getTerms().forEach(
-                el -> Assert.assertEquals("target must be equals", _expectedTarget.poll(),
-                        String.join(" ",el.getTarget()).replace("t","#t"))
-        );
-
-        Assert.assertEquals(
-                "these queues must have the same size",
-                _expectedCorresp.size(),
-                _contextCorpus.getTerms().size()
-        );
-        _contextCorpus.getTerms().forEach(
-                el -> Assert.assertEquals("terms id must be equals", _expectedCorresp.poll(),el.getCorresp())
-        );
-
-        Assert.assertEquals(
-                "these queues must have the same size",
-                _expectedLexAna.size(),
-                _contextCorpus.getTerms().size()
-        );
-        _contextCorpus.getTerms().forEach(
-                el -> Assert.assertEquals("ana id must be equals", _expectedLexAna.poll(),el.getAna())
-        );
-
     }
 
     @Test

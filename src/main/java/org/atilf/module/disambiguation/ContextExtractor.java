@@ -85,12 +85,18 @@ import static org.atilf.models.disambiguation.AnnotationResources.NO_DM;
  *         Created on 14/10/16.
  *
  */
-public class ContextExtractor implements Runnable {
-    protected Deque<Terms> _terms = new ArrayDeque<>();
+public class ContextExtractor extends DefaultHandler implements Runnable {
+    protected List<Terms> _terms = new ArrayList<>();
     Map<String, LexiconProfile> _contextLexicon;
     private String _p;
     private File _xml;
+    private boolean _inStandOff = false;
+    private boolean _inW = false;
+    private boolean _inText = false;
+    private Stack<List<Word>> _wordsStack = new Stack<>();
     private static final Logger LOGGER = LoggerFactory.getLogger(ContextExtractor.class.getName());
+    private Word _lastWord;
+    private Terms _currentTerm = null;
 
 
     /**
@@ -109,7 +115,7 @@ public class ContextExtractor implements Runnable {
         _xml = new File(_p);
     }
 
-    public Deque<Terms> getTerms() {
+    public List<Terms> getTerms() {
         return _terms;
     }
 
@@ -128,40 +134,9 @@ public class ContextExtractor implements Runnable {
         try {
             SAXParserFactory factory = SAXParserFactory.newInstance();
             SAXParser saxParser = factory.newSAXParser();
-            UserHandler userHandler = new UserHandler();
-            saxParser.parse(_xml,userHandler);
+            saxParser.parse(_xml,this);
         } catch (Exception e) {
             e.printStackTrace();
-        }
-    }
-
-    /**
-     * add to lexicalProfile a context for terminology entry
-     * @param word add pair of lemma/POS into lexicalProfile multiset
-     * @param key the term id entry suffixes by _lexOn or _lexOff
-     */
-    protected void addOccToLexicalProfile(String word, String key) {
-
-        /*
-        create new entry if the key not exists in the _contextLexicon field
-         */
-        if (!_contextLexicon.containsKey(key)){
-            _contextLexicon.put(key,new LexiconProfile());
-        }
-        _contextLexicon.get(key).addOccurrence(word);
-    }
-
-    /**
-     * normalize the key with suffix and remove '#' character
-     * @param c the term id entry
-     * @param l ana value
-     * @return the normalized key
-     */
-    protected String normalizeKey(String c, String l) {
-        if (DM4.getValue().equals(l)) {
-            return (c + "_lexOn").replace("#", "");
-        } else {
-            return (c + "_lexOff").replace("#", "");
         }
     }
 
@@ -180,83 +155,219 @@ public class ContextExtractor implements Runnable {
         LOGGER.info("all contexts in " + _p + "has been extracted");
     }
 
-    /**
-     * inner terms class contains corresp, ana & target
+    /*
+    override SaxHandler
      */
-    class Terms {
-        private String _corresp;
-        private String _ana;
-        private List<String> _target;
-
-        public Terms(String corresp, String ana, String target) {
-            _corresp = corresp;
-            _ana = ana;
-            _target = Arrays.asList(target.replace("#","").split(" "));
+    @Override
+    public void startElement(String uri, String localName, String qName, Attributes attributes)
+            throws SAXException {
+        switch (qName) {
+            case "ns:standOff":
+                _inStandOff = true;
+                break;
+            case "text":
+                _inText = true;
+                break;
+            case "w":
+                _inW = true;
+                break;
+        }
+        if (_inStandOff && qName.equals("span")){
+            extractTerms(attributes);
+        }
+        else if (_inText && !_inW && !qName.equals("text")){
+            _wordsStack.push(new ArrayList<>());
         }
 
-        public String getCorresp() {
-            return _corresp;
+        else if (_inW){
+            _lastWord = new Word(attributes.getValue("xml:id"));
+            _wordsStack.forEach(words -> words.add(_lastWord));
+        }
+    }
+
+    @Override
+    public void endElement(String uri,
+                           String localName, String qName) throws SAXException {
+        switch (qName) {
+            case "ns:standOff":
+                _inStandOff = false;
+                break;
+            case "text":
+                _inText = false;
+                break;
+            case "w":
+                _inW = false;
+                break;
+        }
+        if (_inText && !qName.equals("w")){
+            searchTermsInContext();
+        }
+    }
+
+    private void searchTermsInContext() {
+        List<String> stackTargets = new ArrayList<>();
+        _wordsStack.peek().forEach(word -> stackTargets.add(word.getTarget()));
+        Iterator<Terms> termsIt = _terms.iterator();
+        while (inContext(termsIt)){
+            List<String> targets = _currentTerm.getTarget();
+            String firstTarget = targets.get(0);
+            String lastTarget = targets.get(targets.size() -1);
+
+            if (stackTargets.contains(firstTarget) && !_currentTerm.isStartContext()) {
+                addWordsToLexicalProfile(
+                        normalizeKey(_currentTerm.getCorresp(), _currentTerm.getAna()),
+                        _wordsStack.peek().subList(0,stackTargets.indexOf(firstTarget))
+                );
+                _currentTerm.setStartContext();
+            }
+
+            if (stackTargets.contains(lastTarget) && !_currentTerm.isEndContext()) {
+                addWordsToLexicalProfile(
+                        normalizeKey(_currentTerm.getCorresp(), _currentTerm.getAna()),
+                        _wordsStack.peek().subList(stackTargets.indexOf(lastTarget),stackTargets.size())
+                );
+                _currentTerm.setEndContext();
+            }
+
+            if (_currentTerm.isEndContext() && _currentTerm.isStartContext()){
+                termsIt.remove();
+            }
+        }
+        _wordsStack.pop();
+    }
+
+    private boolean inContext(Iterator<Terms> termsIt) {
+        if (termsIt.hasNext()){
+            _currentTerm = termsIt.next();
+            List<Word> words = _wordsStack.peek();
+            int firstTermTarget = Integer.parseInt(_currentTerm.getTarget().get(0).replace("t", ""));
+            int lastStackTarget = Integer.parseInt(words.get(words.size()-1).getTarget().replace("t", ""));
+            return firstTermTarget < lastStackTarget;
+        }
+        else {
+            return false;
         }
 
-        public String getAna() {
-            return _ana;
-        }
+    }
 
-        public List<String> getTarget() {
-            return _target;
+    @Override
+    public void characters(char ch[],
+                           int start, int length) throws SAXException {
+        if (_inW){
+            _lastWord.setPosLemma(new String(ch,start,length));
+            _inW = false;
+        }
+    }
+
+    private void extractTerms(Attributes attributes) {
+        String ana = attributes.getValue("ana");
+        if (!ana.equals(NO_DM.getValue())) {
+            _terms.add(new Terms(attributes.getValue("corresp"),
+                    ana,
+                    attributes.getValue("target")));
         }
     }
 
     /**
-     * UserHandler for SAXParser
+     * add to lexicalProfile a context for terminology entry
+     * @param key the term id entry suffixes by _lexOn or _lexOff
      */
-    class UserHandler extends DefaultHandler {
-        boolean inStandOff = false;
-        boolean inText = false;
+    private void addWordsToLexicalProfile(String key,List<Word> context) {
 
-        @Override
-        public void startElement(String uri, String localName, String qName, Attributes attributes)
-                throws SAXException {
-            if (qName.equals("ns:standOff")){
-                inStandOff = true;
-            }
-
-            if (qName.equals("text")){
-                inText = true;
-            }
-            extractTerms(qName, attributes);
-
-
-        }
-
-        @Override
-        public void endElement(String uri,
-                               String localName, String qName) throws SAXException {
-            if (Objects.equals(localName, "standOff")){
-                inStandOff = false;
-            }
-            if (Objects.equals(localName, "text")){
-                inText = false;
-            }
-        }
-
-        @Override
-        public void characters(char ch[],
-                               int start, int length) throws SAXException {
-
-        }
-
-        private void extractTerms(String qName, Attributes attributes) {
-            if (inStandOff && qName.equals("span")){
-                String ana = attributes.getValue("ana");
-                if (!ana.equals(NO_DM.getValue())) {
-                    _terms.add(new Terms(attributes.getValue("corresp"),
-                            ana,
-                            attributes.getValue("target")));
+        /*
+        create new entry if the key not exists in the _contextLexicon field
+         */
+        context.forEach(
+                word -> {
+                    if (!_currentTerm.getTarget().contains(word.getTarget())){
+                        if (!_contextLexicon.containsKey(key)){
+                            _contextLexicon.put(key,new LexiconProfile());
+                        }
+                        _contextLexicon.get(key).addOccurrence(word.getPosLemma());
+                    }
                 }
-            }
+        );
+    }
+
+    /**
+     * normalize the key with suffix and remove '#' character
+     * @param c the term id entry
+     * @param l ana value
+     * @return the normalized key
+     */
+    protected String normalizeKey(String c, String l) {
+        if (DM4.getValue().equals(l)) {
+            return (c + "_lexOn").replace("#", "");
+        } else {
+            return (c + "_lexOff").replace("#", "");
         }
     }
+
+/**
+ * inner terms class contains corresp, ana & target
+ */
+class Terms {
+    private String _corresp;
+    private String _ana;
+    private List<String> _target;
+    boolean _startContext = false;
+    boolean _endContext = false;
+
+    Terms(String corresp, String ana, String target) {
+        _corresp = corresp;
+        _ana = ana;
+        _target = Arrays.asList(target.replace("#","").split(" "));
+    }
+
+    public String getCorresp() {
+        return _corresp;
+    }
+
+    public String getAna() {
+        return _ana;
+    }
+
+    public List<String> getTarget() {
+        return _target;
+    }
+
+    boolean isStartContext() {
+        return _startContext;
+    }
+
+    boolean isEndContext() {
+        return _endContext;
+    }
+
+    void setStartContext() {
+        this._startContext = true;
+    }
+
+    void setEndContext() {
+        this._endContext = true;
+    }
+}
+
+class Word {
+    private String _target;
+    private String _posLemma;
+
+    Word(String target) {
+        _target = target;
+    }
+
+    void setPosLemma(String posLemma) {
+        _posLemma = posLemma;
+    }
+
+    public String getTarget() {
+        return _target;
+    }
+
+    String getPosLemma() {
+        return _posLemma;
+    }
+}
 }
 
 

@@ -42,15 +42,6 @@ public class EvaluationExtractor extends ContextExtractor {
     }
 
     @Override
-    protected void addOccToLexicalProfile(String word, String key){
-            if (!_evaluationLexicon.containsKey(key)){
-                _evaluationLexicon.put(key,new EvaluationProfile());
-            }
-            _evaluationLexicon.get(key).addOccurrence(word);
-
-    }
-
-    @Override
     public void run() {
         LOGGER.info("add " + _p + " to evaluation lexicon");
         this.execute();
