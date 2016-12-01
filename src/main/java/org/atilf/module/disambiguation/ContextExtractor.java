@@ -90,13 +90,21 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
     Map<String, LexiconProfile> _contextLexicon;
     private String _p;
     private File _xml;
-    private boolean _inStandOff = false;
-    private boolean _inW = false;
-    private boolean _inText = false;
-    private Stack<List<Word>> _wordsStack = new Stack<>();
-    private static final Logger LOGGER = LoggerFactory.getLogger(ContextExtractor.class.getName());
+
+    /*
+    variable used during SAX parsing
+     */
     private Word _lastWord;
     private Terms _currentTerm = null;
+    private Stack<List<Word>> _wordsStack = new Stack<>();
+    /*
+    SAX condition
+     */
+    private boolean _inW = false;
+    private boolean _inText = false;
+    private boolean _inStandOff = false;
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(ContextExtractor.class.getName());
 
 
     /**
@@ -119,17 +127,6 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
         return _terms;
     }
 
-    /**
-     * the execute method call two methods :
-     *      - the extractTerms method : extract terms candidates of the document and put the result into Deque :
-     *      _target, _corresp and _lexAna. The _target Deque retained the xml:id value who belong to a term candidate
-     *      occurrence (e.g #t1, #t2 ...).
-     *      The _corresp Deque retained the terminology entry of a term candidate
-     *      occurrence (e.g #entry-13471).
-     *      The _lexAna Deque retained the manual terminology annotation of a term candidate occurrence
-     *      (e.g #DM4, #DM0 ...). this annotation is used to determine if a context belongs to terminology
-     *      or non-terminology context of term candidate
-     */
     public void execute() {
         try {
             SAXParserFactory factory = SAXParserFactory.newInstance();
@@ -242,7 +239,7 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
             List<Word> words = _wordsStack.peek();
             int firstTermTarget = Integer.parseInt(_currentTerm.getTarget().get(0).replace("t", ""));
             int lastStackTarget = Integer.parseInt(words.get(words.size()-1).getTarget().replace("t", ""));
-            return firstTermTarget < lastStackTarget;
+            return firstTermTarget <= lastStackTarget;
         }
         else {
             return false;
