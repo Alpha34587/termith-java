@@ -234,9 +234,9 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
     }
 
     private boolean inContext(Iterator<Terms> termsIt) {
-        if (termsIt.hasNext()){
+        List<Word> words = _wordsStack.peek();
+        if (termsIt.hasNext() && !words.isEmpty()){
             _currentTerm = termsIt.next();
-            List<Word> words = _wordsStack.peek();
             int firstTermTarget = Integer.parseInt(_currentTerm.getTarget().get(0).replace("t", ""));
             int lastStackTarget = Integer.parseInt(words.get(words.size()-1).getTarget().replace("t", ""));
             return firstTermTarget <= lastStackTarget;
