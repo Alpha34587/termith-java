@@ -28,14 +28,14 @@ public class EvaluationExtractor extends ContextExtractor {
     private CountDownLatch _extactorCounter;
 
     public EvaluationExtractor(String p, TermithIndex termithIndex) {
-        super(p,termithIndex.getContextLexicon());
+        super(p,termithIndex.getContextLexicon(), null);
         _p = p;
         termithIndex.getEvaluationLexicon().put(FilesUtils.nameNormalizer(p),new HashMap<>());
         _evaluationLexicon = termithIndex.getEvaluationLexicon().get(FilesUtils.nameNormalizer(p));
     }
 
     public EvaluationExtractor(String p, TermithIndex termithIndex, CountDownLatch extactorCounter) {
-        super(p,termithIndex.getContextLexicon());
+        super(p,termithIndex.getContextLexicon(), null);
         _p = p;
         _extactorCounter = extactorCounter;
         termithIndex.getEvaluationLexicon().put(FilesUtils.nameNormalizer(p),new HashMap<>());

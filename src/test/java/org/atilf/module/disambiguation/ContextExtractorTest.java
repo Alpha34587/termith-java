@@ -2,6 +2,7 @@ package org.atilf.module.disambiguation;
 
 import com.google.common.collect.HashMultiset;
 import com.google.common.collect.Multiset;
+import org.atilf.models.disambiguation.CorpusLexicon;
 import org.atilf.models.disambiguation.LexiconProfile;
 import org.junit.Assert;
 import org.junit.Before;
@@ -17,6 +18,7 @@ import java.util.Map;
 public class ContextExtractorTest {;
     private Map<String,LexiconProfile> _expectedMap = new HashMap<>();
     private Map<String,LexiconProfile> _multiSub = new HashMap<>();
+    private CorpusLexicon _corpusLexicon = new CorpusLexicon(new HashMap<>(),new HashMap<>());
 
     @Before
     public void setUp(){
@@ -104,8 +106,8 @@ public class ContextExtractorTest {;
     public void extractLexiconProfile() throws Exception {
         ContextExtractor contextCorpus = new ContextExtractor(
                 "src/test/resources/corpus/disambiguation/transform-tei/test2.xml",
-                _multiSub
-        );
+                _multiSub,
+                _corpusLexicon);
         contextCorpus.execute();
         Assert.assertEquals(
                 "this two map must have the same size",
