@@ -4,7 +4,6 @@ import org.atilf.models.disambiguation.DisambiguationXslResources;
 import org.atilf.models.termith.TermithIndex;
 import org.atilf.module.disambiguation.ContextExtractor;
 import org.atilf.module.disambiguation.DisambiguationXslTransformer;
-import org.atilf.module.disambiguation.CorpusLexiconExtractor;
 import org.atilf.thread.Thread;
 
 import java.io.IOException;
@@ -55,7 +54,6 @@ public class ContextLexiconThread extends Thread {
      * @see InterruptedException
      * @see DisambiguationXslTransformer
      * @see ContextExtractor
-     * @see CorpusLexiconExtractor
      */
 
     @Override
@@ -90,7 +88,6 @@ public class ContextLexiconThread extends Thread {
                                     _termithIndex.getCorpusLexicon()
                             )
                     );
-                    _executorService.submit(new CorpusLexiconExtractor(file.toString(), _termithIndex.getCorpusLexicon()));
                 }
         );
         _logger.info("Waiting ContextExtractor executors to finish");
