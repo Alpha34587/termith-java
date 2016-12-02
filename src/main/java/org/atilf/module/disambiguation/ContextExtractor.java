@@ -200,9 +200,22 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
                 break;
         }
 
+
         if (_inText && !qName.equals("w")){
             searchTermsInContext();
         }
+        else if (!_inStandOff){
+            _terms.sort((o1, o2) -> {
+                int t1 = Integer.parseInt(o1.getTarget().get(0).replace("t", ""));
+                int t2 = Integer.parseInt(o2.getTarget().get(0).replace("t", ""));
+                int comp = Integer.compare(t1,t2);
+                if (comp == 0) {
+                    comp = ((Integer) o1.getTarget().size()).compareTo(o2.getTarget().size()) * -1;
+                }
+                return comp;
+            });
+        }
+
     }
 
     /**
