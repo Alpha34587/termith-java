@@ -18,11 +18,6 @@ public class ContextExtractorTest {;
     private Map<String,LexiconProfile> _expectedMap = new HashMap<>();
     private Map<String,LexiconProfile> _multiSub = new HashMap<>();
 
-    private ContextExtractor _contextCorpus = new ContextExtractor(
-            "src/test/resources/corpus/disambiguation/transform-tei/test2.xml",
-            _multiSub
-    );
-
     @Before
     public void setUp(){
         /*
@@ -107,11 +102,11 @@ public class ContextExtractorTest {;
 
     @Test
     public void extractLexiconProfile() throws Exception {
-        _contextCorpus = new ContextExtractor(
+        ContextExtractor contextCorpus = new ContextExtractor(
                 "src/test/resources/corpus/disambiguation/transform-tei/test2.xml",
                 _multiSub
         );
-        _contextCorpus.execute();
+        contextCorpus.execute();
         Assert.assertEquals(
                 "this two map must have the same size",
                 _expectedMap.size(),
@@ -122,7 +117,7 @@ public class ContextExtractorTest {;
                 (key, value) -> {
                     Multiset observed = _multiSub.get(key).getLexicalTable();
                     value.getLexicalTable().forEach(
-                            el -> Assert.assertEquals("the occurence of element must be equals at " + key +
+                            el -> Assert.assertEquals("the occurrence of element must be equals at " + key +
                                             " for the word : " + el,
                                     value.getLexicalTable().count(el), observed.count(el)
                             )
