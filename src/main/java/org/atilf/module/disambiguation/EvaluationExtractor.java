@@ -51,7 +51,7 @@ public class EvaluationExtractor extends ContextExtractor {
             _terms.add(new ContextTerm(attributes.getValue("corresp"),
                     ana,
                     attributes.getValue("target")));
-            LOGGER.debug("term extracted: ", attributes.getValue("corresp"));
+            LOGGER.debug("term extracted: " + attributes.getValue("corresp"));
         }
     }
 
