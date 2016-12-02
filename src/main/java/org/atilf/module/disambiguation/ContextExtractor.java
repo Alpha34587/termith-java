@@ -1,6 +1,8 @@
 package org.atilf.module.disambiguation;
 
+import org.atilf.models.disambiguation.ContextTerm;
 import org.atilf.models.disambiguation.LexiconProfile;
+import org.atilf.models.disambiguation.ContextWord;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.xml.sax.Attributes;
@@ -86,7 +88,7 @@ import static org.atilf.models.disambiguation.AnnotationResources.NO_DM;
  *
  */
 public class ContextExtractor extends DefaultHandler implements Runnable {
-    protected List<Terms> _terms = new ArrayList<>();
+    protected List<ContextTerm> _terms = new ArrayList<>();
     Map<String, LexiconProfile> _contextLexicon;
     private String _p;
     private File _xml;
@@ -94,9 +96,9 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
     /*
     variable used during SAX parsing
      */
-    private Word _lastWord;
-    private Terms _currentTerm = null;
-    private Stack<List<Word>> _wordsStack = new Stack<>();
+    private ContextWord _lastContextWord;
+    private ContextTerm _currentTerm = null;
+    private Stack<List<ContextWord>> _contextStack = new Stack<>();
     /*
     SAX condition
      */
@@ -123,7 +125,11 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
         _xml = new File(_p);
     }
 
-    public List<Terms> getTerms() {
+    /**
+     * getter for _terms fields
+     * @return return a list of ContextTerms
+     */
+    public List<ContextTerm> getTerms() {
         return _terms;
     }
 
@@ -152,9 +158,6 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
         LOGGER.info("all contexts in " + _p + "has been extracted");
     }
 
-    /*
-    override SaxHandler
-     */
     @Override
     public void startElement(String uri, String localName, String qName, Attributes attributes)
             throws SAXException {
@@ -173,12 +176,12 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
             extractTerms(attributes);
         }
         else if (_inText && !_inW && !qName.equals("text")){
-            _wordsStack.push(new ArrayList<>());
+            _contextStack.push(new ArrayList<>());
         }
 
         else if (_inW){
-            _lastWord = new Word(attributes.getValue("xml:id"));
-            _wordsStack.forEach(words -> words.add(_lastWord));
+            _lastContextWord = new ContextWord(attributes.getValue("xml:id"));
+            _contextStack.forEach(words -> words.add(_lastContextWord));
         }
     }
 
@@ -196,31 +199,40 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
                 _inW = false;
                 break;
         }
+
         if (_inText && !qName.equals("w")){
             searchTermsInContext();
         }
     }
 
+    /**
+     * search if the context of the top of the stack contains a term. The context is remove if it not contains a term
+     */
     private void searchTermsInContext() {
-        Iterator<Terms> termsIt = _terms.iterator();
+        Iterator<ContextTerm> termsIt = _terms.iterator();
         while (inContext(termsIt)){
             if (inWords()) {
                 addWordsToLexicalProfile(
                         normalizeKey(_currentTerm.getCorresp(), _currentTerm.getAna()),
-                        _wordsStack.peek()
+                        _contextStack.peek()
                 );
                 termsIt.remove();
             }
         }
-        _wordsStack.pop();
+        _contextStack.pop();
     }
 
-    private boolean inContext(Iterator<Terms> termsIt) {
-        List<Word> words = _wordsStack.peek();
-        if (termsIt.hasNext() && !words.isEmpty()){
+    /**
+     * this method is used to check if the current context can probably contains the terms.
+     * @param termsIt the iterator of _terms
+     * @return return true if the first target word of the term is inferior or equal to the last target word.
+     */
+    private boolean inContext(Iterator<ContextTerm> termsIt) {
+        List<ContextWord> contextWords = _contextStack.peek();
+        if (termsIt.hasNext() && !contextWords.isEmpty()){
             _currentTerm = termsIt.next();
             int firstTermTarget = Integer.parseInt(_currentTerm.getTarget().get(0).replace("t", ""));
-            int lastStackTarget = Integer.parseInt(words.get(words.size()-1).getTarget().replace("t", ""));
+            int lastStackTarget = Integer.parseInt(contextWords.get(contextWords.size()-1).getTarget().replace("t", ""));
             return firstTermTarget <= lastStackTarget;
         }
         else {
@@ -229,25 +241,39 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
 
     }
 
+    /**
+     * check if an term occurrence is contained by a context
+     * @return true if _currentTerm is contained / false if _currentTerm is not contained
+     */
     private boolean inWords(){
         List<String> stackTargets = new ArrayList<>();
-        _wordsStack.peek().forEach(word -> stackTargets.add(word.getTarget()));
+        /*
+        fill stackTargets with all target of each words contains in the context on top of the stack
+         */
+        _contextStack.peek().forEach(contextWord -> stackTargets.add(contextWord.getTarget()));
         return stackTargets.containsAll(_currentTerm.getTarget());
     }
 
+    /**
+     * the character event is used to extract the Pos/Lemma pair of a w element
+     */
     @Override
     public void characters(char ch[],
                            int start, int length) throws SAXException {
         if (_inW){
-            _lastWord.setPosLemma(new String(ch,start,length));
+            _lastContextWord.setPosLemma(new String(ch,start,length));
             _inW = false;
         }
     }
 
+    /**
+     * parse the attribute of a span element and initialize a new ContextTerm object and add it to the _terms field
+     * @param attributes the attributes of a span element
+     */
     private void extractTerms(Attributes attributes) {
         String ana = attributes.getValue("ana");
         if (!ana.equals(NO_DM.getValue())) {
-            _terms.add(new Terms(attributes.getValue("corresp"),
+            _terms.add(new ContextTerm(attributes.getValue("corresp"),
                     ana,
                     attributes.getValue("target")));
         }
@@ -257,18 +283,18 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
      * add to lexicalProfile a context for terminology entry
      * @param key the term id entry suffixes by _lexOn or _lexOff
      */
-    private void addWordsToLexicalProfile(String key,List<Word> context) {
+    private void addWordsToLexicalProfile(String key,List<ContextWord> context) {
 
         /*
         create new entry if the key not exists in the _contextLexicon field
          */
         context.forEach(
-                word -> {
-                    if (!_currentTerm.getTarget().contains(word.getTarget())){
+                contextWord -> {
+                    if (!_currentTerm.getTarget().contains(contextWord.getTarget())){
                         if (!_contextLexicon.containsKey(key)){
                             _contextLexicon.put(key,new LexiconProfile());
                         }
-                        _contextLexicon.get(key).addOccurrence(word.getPosLemma());
+                        _contextLexicon.get(key).addOccurrence(contextWord.getPosLemma());
                     }
                 }
         );
@@ -287,54 +313,6 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
             return (c + "_lexOff").replace("#", "");
         }
     }
-
-/**
- * inner terms class contains corresp, ana & target
- */
-class Terms {
-    private String _corresp;
-    private String _ana;
-    private List<String> _target;
-
-    Terms(String corresp, String ana, String target) {
-        _corresp = corresp;
-        _ana = ana;
-        _target = Arrays.asList(target.replace("#","").split(" "));
-    }
-
-    public String getCorresp() {
-        return _corresp;
-    }
-
-    public String getAna() {
-        return _ana;
-    }
-
-    public List<String> getTarget() {
-        return _target;
-    }
-}
-
-class Word {
-    private String _target;
-    private String _posLemma;
-
-    Word(String target) {
-        _target = target;
-    }
-
-    void setPosLemma(String posLemma) {
-        _posLemma = posLemma;
-    }
-
-    public String getTarget() {
-        return _target;
-    }
-
-    String getPosLemma() {
-        return _posLemma;
-    }
-}
 }
 
 
