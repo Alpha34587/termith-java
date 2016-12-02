@@ -1,5 +1,6 @@
 package org.atilf.module.disambiguation;
 
+import com.google.common.collect.Lists;
 import org.atilf.models.disambiguation.ContextTerm;
 import org.atilf.models.disambiguation.CorpusLexicon;
 import org.atilf.models.disambiguation.LexiconProfile;
@@ -91,6 +92,7 @@ import static org.atilf.models.disambiguation.AnnotationResources.NO_DM;
 public class ContextExtractor extends DefaultHandler implements Runnable {
 
     Map<String, LexiconProfile> _contextLexicon;
+    private Map<String,List<String>> _targetContext = new HashMap<>();
     private CorpusLexicon _corpusLexicon;
     protected List<ContextTerm> _terms = new ArrayList<>();
     private String _p;
@@ -310,7 +312,8 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
          */
         context.forEach(
                 contextWord -> {
-                    if (!_currentTerm.getTarget().contains(contextWord.getTarget())){
+                    String target = contextWord.getTarget();
+                    if (!_currentTerm.inTerm(target) && !inTargetContext(key,target)){
                         if (!_contextLexicon.containsKey(key)){
                             _contextLexicon.put(key,new LexiconProfile());
                         }
@@ -318,6 +321,23 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
                     }
                 }
         );
+    }
+
+    protected boolean inTargetContext(String key, String target){
+        if (!_targetContext.containsKey(key)){
+            _targetContext.put(key, Lists.newArrayList(target));
+            return false;
+        }
+        else {
+            List<String> context = _targetContext.get(key);
+            if (context.contains(target)){
+                return true;
+            }
+            else {
+                context.add(target);
+                return false;
+            }
+        }
     }
 
     /**

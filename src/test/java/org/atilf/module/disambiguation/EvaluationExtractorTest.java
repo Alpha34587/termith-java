@@ -10,8 +10,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.util.ArrayDeque;
-import java.util.Deque;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,9 +19,6 @@ import java.util.Map;
  */
 public class EvaluationExtractorTest {
     private EvaluationExtractor _evaluationExtractor;
-    private Deque<String> _expectedTarget = new ArrayDeque<>();
-    private Deque<String> _expectedCorresp = new ArrayDeque<>();
-    private Deque<String> _expectedLexAna = new ArrayDeque<>();
     private Map<String,EvaluationProfile> expectedMap = new HashMap<>();
     private Map<String,EvaluationProfile> _observedMap;
     @Before

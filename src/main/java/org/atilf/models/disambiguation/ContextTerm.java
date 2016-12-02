@@ -28,4 +28,6 @@ public class ContextTerm {
     public List<String> getTarget() {
         return _target;
     }
+
+    public boolean inTerm(String target) { return _target.contains(target); }
 }

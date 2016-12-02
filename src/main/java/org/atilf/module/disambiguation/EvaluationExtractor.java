@@ -62,7 +62,8 @@ public class EvaluationExtractor extends ContextExtractor {
          */
         context.forEach(
                 contextWord -> {
-                    if (!_currentTerm.getTarget().contains(contextWord.getTarget())){
+                    String target = contextWord.getTarget();
+                    if (!_currentTerm.inTerm(target) && !inTargetContext(key,target)){
                         if (!_evaluationLexicon.containsKey(key)){
                             _evaluationLexicon.put(key,new EvaluationProfile());
                         }

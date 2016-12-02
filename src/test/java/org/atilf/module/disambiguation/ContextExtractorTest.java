@@ -27,18 +27,18 @@ public class ContextExtractorTest {;
         case with embedded term part w w w T1 T2 < T3 T4 w >
          */
         Multiset<String> entry1 = HashMultiset.create();
-        entry1.add("ce PRO:DEM",2);
-        entry1.add("article NOM",2);
-        entry1.add("présenter VER:pres",2);
-        entry1.add("un DET:ART",2);
-        entry1.add("étude NOM",2);
-        entry1.add("comparer VER:pper",2);
-        entry1.add("du PRP:det",4);
-        entry1.setCount("donnée NOM",2);
-        entry1.add("archéo-ichtyofauniques ADJ",2);
-        entry1.add("livrer VER:pper",2);
-        entry1.add("par PRP",2);
-        entry1.add("deux NUM",2);
+        entry1.add("ce PRO:DEM");
+        entry1.add("article NOM");
+        entry1.add("présenter VER:pres");
+        entry1.add("un DET:ART");
+        entry1.add("étude NOM");
+        entry1.add("comparer VER:pper");
+        entry1.add("du PRP:det",2);
+        entry1.add("donnée NOM");
+        entry1.add("archéo-ichtyofauniques ADJ");
+        entry1.add("livrer VER:pper");
+        entry1.add("par PRP");
+        entry1.add("deux NUM");
         _expectedLexicon.put("entry-13471_lexOff",new LexiconProfile(entry1));
 
         /*
