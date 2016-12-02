@@ -202,31 +202,13 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
     }
 
     private void searchTermsInContext() {
-        List<String> stackTargets = new ArrayList<>();
-        _wordsStack.peek().forEach(word -> stackTargets.add(word.getTarget()));
         Iterator<Terms> termsIt = _terms.iterator();
         while (inContext(termsIt)){
-            List<String> targets = _currentTerm.getTarget();
-            String firstTarget = targets.get(0);
-            String lastTarget = targets.get(targets.size() -1);
-
-            if (stackTargets.contains(firstTarget) && !_currentTerm.isStartContext()) {
+            if (inWords()) {
                 addWordsToLexicalProfile(
                         normalizeKey(_currentTerm.getCorresp(), _currentTerm.getAna()),
-                        _wordsStack.peek().subList(0,stackTargets.indexOf(firstTarget))
+                        _wordsStack.peek()
                 );
-                _currentTerm.setStartContext();
-            }
-
-            if (stackTargets.contains(lastTarget) && !_currentTerm.isEndContext()) {
-                addWordsToLexicalProfile(
-                        normalizeKey(_currentTerm.getCorresp(), _currentTerm.getAna()),
-                        _wordsStack.peek().subList(stackTargets.indexOf(lastTarget),stackTargets.size())
-                );
-                _currentTerm.setEndContext();
-            }
-
-            if (_currentTerm.isEndContext() && _currentTerm.isStartContext()){
                 termsIt.remove();
             }
         }
@@ -245,6 +227,12 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
             return false;
         }
 
+    }
+
+    private boolean inWords(){
+        List<String> stackTargets = new ArrayList<>();
+        _wordsStack.peek().forEach(word -> stackTargets.add(word.getTarget()));
+        return stackTargets.containsAll(_currentTerm.getTarget());
     }
 
     @Override
@@ -307,8 +295,6 @@ class Terms {
     private String _corresp;
     private String _ana;
     private List<String> _target;
-    boolean _startContext = false;
-    boolean _endContext = false;
 
     Terms(String corresp, String ana, String target) {
         _corresp = corresp;
@@ -326,22 +312,6 @@ class Terms {
 
     public List<String> getTarget() {
         return _target;
-    }
-
-    boolean isStartContext() {
-        return _startContext;
-    }
-
-    boolean isEndContext() {
-        return _endContext;
-    }
-
-    void setStartContext() {
-        this._startContext = true;
-    }
-
-    void setEndContext() {
-        this._endContext = true;
     }
 }
 
