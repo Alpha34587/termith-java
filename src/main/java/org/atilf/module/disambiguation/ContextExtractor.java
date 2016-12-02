@@ -1,18 +1,17 @@
 package org.atilf.module.disambiguation;
 
+import org.atilf.models.disambiguation.ContextTerm;
 import org.atilf.models.disambiguation.LexiconProfile;
+import org.atilf.models.disambiguation.ContextWord;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.w3c.dom.Document;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
+import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
+import org.xml.sax.helpers.DefaultHandler;
 
-import javax.xml.namespace.QName;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.xpath.*;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -20,7 +19,6 @@ import java.util.*;
 
 import static org.atilf.models.disambiguation.AnnotationResources.DM4;
 import static org.atilf.models.disambiguation.AnnotationResources.NO_DM;
-import static org.atilf.models.disambiguation.ContextResources.*;
 
 /**
  *         - the context extractor moudule extract the context of a terminology entries of the learning corpus.
@@ -89,22 +87,25 @@ import static org.atilf.models.disambiguation.ContextResources.*;
  *         Created on 14/10/16.
  *
  */
-public class ContextExtractor implements Runnable{
-    private XPathExpression _simpleGetter;
-    protected Deque<String> _target = new ArrayDeque<>();
-    Deque<String> _corresp = new ArrayDeque<>();
-    Deque<String> _lexAna = new ArrayDeque<>();
-    Document _doc;
-    XPathExpression _eSpanTerms;
+public class ContextExtractor extends DefaultHandler implements Runnable {
+    protected List<ContextTerm> _terms = new ArrayList<>();
     Map<String, LexiconProfile> _contextLexicon;
     private String _p;
-    private XPathExpression _lastGetter;
-    private XPathExpression _firstGetter;
-    private XPathExpression _eTagsGetter;
-    private DocumentBuilder _dBuilder;
-    private Set<Node> _nodeSet = new HashSet<>();
-    private Map<String, String> _xpathVariableMap = new HashMap<>();
-    private Map<String,Set<String>> _xmlIdMap = new HashMap<>();
+    private File _xml;
+
+    /*
+    variable used during SAX parsing
+     */
+    private ContextWord _lastContextWord;
+    private ContextTerm _currentTerm = null;
+    private Stack<List<ContextWord>> _contextStack = new Stack<>();
+    /*
+    SAX condition
+     */
+    private boolean _inW = false;
+    private boolean _inText = false;
+    private boolean _inStandOff = false;
+
     private static final Logger LOGGER = LoggerFactory.getLogger(ContextExtractor.class.getName());
 
 
@@ -116,378 +117,29 @@ public class ContextExtractor implements Runnable{
      * @see LexiconProfile
      */
     public ContextExtractor(String p, Map<String, LexiconProfile> contextLexicon){
-
-        /*
-        initialize the path and all the necessary fields needed to parse xml file
-         */
-
         /*
         initialize _p and _contextLexicon fields
          */
         _p = p;
         _contextLexicon = contextLexicon;
-        /*
-        The xpathMapVariableResolver is an object that it used to change xsl variable during dom execute
-         */
-        XpathMapVariableResolver xpathMapVariableResolver = new XpathMapVariableResolver();
-        XPath xpath = XPathFactory.newInstance().newXPath();
-        /*
-        set the namespaceContext of the parser and set the XpathVariableResolver fields
-        with the xpathMapVariableResolver
-         */
-        xpath.setNamespaceContext(NAMESPACE_CONTEXT);
-        xpath.setXPathVariableResolver(xpathMapVariableResolver);
-        try {
-            DocumentBuilderFactory _dbFactory = DocumentBuilderFactory.newInstance();
-            _dbFactory.setNamespaceAware(true);
-            _dBuilder = _dbFactory.newDocumentBuilder();
-
-        } catch (ParserConfigurationException e) {
-            LOGGER.error("error during the creation of documentBuilder object : ", e);
-        }
-        try {
-            /*
-            execute document
-             */
-            _doc = _dBuilder.parse(p);
-        } catch (SAXException | IOException e) {
-            LOGGER.error("error during the execute of document",e);
-        }
-        try {
-            /*
-            compiling all the xpath Expression needed for the execute method
-             */
-            /*
-            extract span term candidate element
-             */
-            _eSpanTerms = xpath.compile(SPAN);
-            /*
-            extract all w elements from a node
-             */
-            _eTagsGetter = xpath.compile(TAG_GETTER);
-            /*
-            get the parent node of an term candidate occurrence who have a size of one
-            (only one w element belongs to this term candidate occurrence )
-             */
-            _simpleGetter = xpath.compile(CONTEXT_GETTER_SIMPLE);
-            /*
-            get the parent node of the first w element belongs to a term candidate occurrence who have a size
-            superior to one
-             */
-            _firstGetter = xpath.compile(CONTEXT_GETTER_FIRST);
-            /*
-            get the parent node of the last w element belongs to a term candidate occurrence who have a size
-            superior to one
-             */
-            _lastGetter = xpath.compile(CONTEXT_GETTER_LAST);
-        } catch (XPathExpressionException e) {
-            LOGGER.error("cannot compile xpath expression",e);
-        }
+        _xml = new File(_p);
     }
 
     /**
-     * getter of _target
-     * @return return the targets attributes value of extracted term candidates
+     * getter for _terms fields
+     * @return return a list of ContextTerms
      */
-    Deque<String> getTarget() {
-        return _target;
+    public List<ContextTerm> getTerms() {
+        return _terms;
     }
 
-    /**
-     * getter of _corresp
-     * @return return the corresp attributes value of extracted term candidates
-     */
-    Deque<String> getCorresp() {
-        return _corresp;
-    }
-
-    /**
-     * getter of _lexAna
-     * @return return the ana attributes value of term candidates
-     */
-    Deque<String> getLexAna() {
-        return _lexAna;
-    }
-
-
-    /**
-     * the execute method call two methods :
-     *      - the extractTerms method : extract terms candidates of the document and put the result into Deque :
-     *      _target, _corresp and _lexAna. The _target Deque retained the xml:id value who belong to a term candidate
-     *      occurrence (e.g #t1, #t2 ...).
-     *      The _corresp Deque retained the terminology entry of a term candidate
-     *      occurrence (e.g #entry-13471).
-     *      The _lexAna Deque retained the manual terminology annotation of a term candidate occurrence
-     *      (e.g #DM4, #DM0 ...). this annotation is used to determine if a context belongs to terminology
-     *      or non-terminology context of term candidate
-     */
     public void execute() {
-        extractTerms();
-        extractContext();
-    }
-
-    /*
-    the extractContext method extract a context of term candidate occurrence. at each extracted term candidate,
-    this method called multiWordExtractor if the occurrence term candidate have a size superior of one. Otherwise
-    it calls the singleWordExtractor method
-     */
-    void extractContext() {
-
-        while (!_target.isEmpty()) {
-            /*
-            get the current term candidate
-             */
-            String t = _target.poll();
-            String c = _corresp.poll();
-            String l = _lexAna.poll();
-            try {
-                /*
-                remove '#' character and convert t variable into list of tag
-                 */
-                List<String> tags = Arrays.asList(t.replace("#", "").split(" "));
-                if (tags.size() > 1) {
-                    /*
-                    call multiWordsExtractor method
-                     */
-                    multiWordsExtractor(c, l, tags);
-                }
-                else
-                    /*
-                    call singleWordExtractor method
-                     */
-                    singleWordExtractor(c, l, tags.get(0));
-                LOGGER.debug(("add words to the term : " + c + "-" + l).replace("#",""));
-            } catch (XPathExpressionException e) {
-                LOGGER.error("error during the execute of document", e);
-            }
-        }
-    }
-
-    private void singleWordExtractor(String corresp, String lex, String tag) throws XPathExpressionException {
-        /*
-        the _xpathVariableMap is updated : the c_id xpath variable is used by the _simpleGetter xpath expression.
-         */
-        _xpathVariableMap.put("c_id", tag);
-
-        /*
-        find the parent node of the current term candidate.
-         */
-        Node node = (Node) _simpleGetter.evaluate(_doc, XPathConstants.NODE);
-
-        /*
-        adding to the _nodeSet field the w element descendant of the variable node.
-         */
-        addNodeList((NodeList) _eTagsGetter.evaluate(node, XPathConstants.NODESET));
-        /*
-        extract the text content of the tei w element (the text content of a tei w element is the lemmatised form
-        and the POS-tagging separate with a space)
-         */
-        extractWordForms(corresp, lex, tag);
-        /*
-        clear _nodeSet field after extracting : all the context words is retained on the lexicalProfile of the current
-          occurrence term candidate
-         */
-        _nodeSet.clear();
-    }
-
-    private void multiWordsExtractor(String corresp, String lex, List<String> tags) throws XPathExpressionException {
-        /*
-        the _xpathVariableMap is updated : the first xpath variable is used by the _firstGetter xpath expression.
-        And the last xpath variable is used by _lastGetter xpath expression
-         */
-        _xpathVariableMap.put("first", tags.get(0));
-        _xpathVariableMap.put("last", tags.get(tags.size() - 1));
-        /*
-        find the parent node of the first tag 
-         */
-        Node firstParentNode = (Node) _firstGetter.evaluate(_doc, XPathConstants.NODE);
-        /*
-        find the parent node of the last tag
-         */
-        Node lastParentNode = (Node) _lastGetter.evaluate(_doc, XPathConstants.NODE);
-        /*
-        extract the text content of the tei w element (the text content of a tei w element is the lemmatised form
-        and the POS-tagging separate with a space)
-         */
-        addNodeList((NodeList) _eTagsGetter.evaluate(firstParentNode, XPathConstants.NODESET));
-
-        /*
-        check if the first tag and the last tag have the same parent. This fragment has been written to avoid this case :
-          <p>
-              <note>
-                   <w xml:id="t12">deux NUM</w>
-                   <w xml:id="t13">site NOM</w>
-                   <w xml:id="t14">de PRP</w>
-                   <w xml:id="t15">le DET:ART</w>
-             </note>
-             <note>
-                   <w xml:id="t16">âge NOM</w>
-                   <w xml:id="t17">du PRP:det</w>
-            <note>
-            <p>
-            .......
-            </p>
-        </p>
-
-        where t14,t15,t16 is the term candidate.
-        Without this test the context the word of t17 element is missing
-
-         */
-        if (!firstParentNode.equals(lastParentNode)) {
-            /*
-            add to nodeSet the extracted w element
-             */
-            addNodeList((NodeList) _eTagsGetter.evaluate(lastParentNode, XPathConstants.NODESET));
-        }
-        /*
-        extract the text content of the tei w element (the text content of a tei w element is the lemmatised form
-        and the POS-tagging separate with a space)
-         */
-        extractWordForms(corresp, lex, tags);
-        /*
-        clear _nodeSet field after extracting : all the context words is retained on the lexicalProfile of the current
-          occurrence term candidate
-         */
-        _nodeSet.clear();
-    }
-
-    /**
-     * add to _nodeSet field the extracted node of a nodeList
-     * @param nodes the result nodeList object of an evaluate xpath expression
-     */
-    private void addNodeList(NodeList nodes) {
-        for (int i = 0; i < nodes.getLength(); i++){
-            _nodeSet.add(nodes.item(i));
-        }
-    }
-
-    /**
-     * this extractWordForms method for an occurrence term candidate who has the size of one
-     * @param c the term entry id of a term
-     * @param l the manual annotation value of an occurrence term candidate
-     * @param tag the only tag of the occurrence term candidate
-     */
-    private void extractWordForms(String c, String l, String tag) {
-        ArrayList<String> list = new ArrayList<>();
-        list.add(tag);
-        extractWordForms(c, l, list);
-    }
-
-    /**
-     * this method extract the text content of w element belongs to a context of an occurrence term candidate
-     * and exclude w element who are include in a term candidate
-     * @param c the term entry id of a term
-     * @param l the manual annotation value of an occurrence term candidate
-     * @param tags the list of tag of the occurrence term candidate
-     */
-    private void extractWordForms(String c, String l, List<String> tags){
-        _nodeSet.forEach(
-                el -> {
-                    /*
-                    determine which suffix will be added to term entry.
-                    _lexOff if l variable is equals to #DM0 and _lexOn if l variable is equals to #DM1, #DM2, #DM3, #DM4
-                    */
-                    String key = normalizeKey(c, l);
-                    /*
-                    get the id of the current w element
-                     */
-                    String id = el.getAttributes().getNamedItem("xml:id").getNodeValue();
-                    /*
-                    check if the tag is contained on the term occurrence candidate & the tag is not already added for
-                    this term context
-                     */
-                    if (!tags.contains(id) && !_xmlIdMap.getOrDefault(key,new HashSet<>()).contains(id)) {
-                        /*
-                        add the text content of an element into the multiset of the current term entry
-                         */
-                        addOccToLexicalProfile(el.getTextContent(), key);
-                        addToXmlIdMap(key,id);
-                    }
-                }
-        );
-    }
-
-    /**
-     * add xml:id to the list associated to a term key
-     * @param term the term entry
-     * @param xmlId the xml:id to add
-     */
-    private void addToXmlIdMap(String term, String xmlId) {
-        if (!_xmlIdMap.containsKey(term)){
-            _xmlIdMap.put(term,new HashSet<>());
-        }
-        _xmlIdMap.get(term).add(xmlId);
-    }
-
-    /**
-     * extract occurrence term candidate of a xml file
-     */
-    public void extractTerms() {
         try {
-            /*
-             * get all the span into the ns:standOff element
-             */
-            NodeList nodes = (NodeList) _eSpanTerms.evaluate(_doc, XPathConstants.NODESET);
-            for (int i = 0; i < nodes.getLength(); i++) {
-                /*
-                 * get the ana value
-                 */
-                String ana = nodes.item(i).getAttributes().getNamedItem("ana").getNodeValue();
-                /*
-                 * if the ana value has been annotated, the term is added on the queue.
-                   * the #noDM attribute means that the term has not annotation and the context is undefined
-                   * between the terminology context and the non-terminology context
-                 */
-                if (!NO_DM.getValue().equals(ana) && !ana.isEmpty()){
-                    /*
-                    add term occurrence candidate to queue
-                     */
-                    addToTermsQueues(nodes.item(i),ana);
-                }
-            }
-        } catch (XPathExpressionException e) {
-            LOGGER.error("error during the execute of document",e);
-        }
-    }
-
-    /**
-     * add to queue a term candidate
-     * @param node the current span node (it is an occurrence term candidate)
-     * @param ana the ana value of the current node
-     */
-    void addToTermsQueues(Node node, String ana) {
-        _target.add(node.getAttributes().getNamedItem("target").getNodeValue());
-        _corresp.add(node.getAttributes().getNamedItem("corresp").getNodeValue());
-        _lexAna.add(ana);
-    }
-
-    /**
-     * add to lexicalProfile a context for terminology entry
-     * @param word add pair of lemma/POS into lexicalProfile multiset
-     * @param key the term id entry suffixes by _lexOn or _lexOff
-     */
-    protected void addOccToLexicalProfile(String word, String key) {
-
-        /*
-        create new entry if the key not exists in the _contextLexicon field
-         */
-        if (!_contextLexicon.containsKey(key)){
-            _contextLexicon.put(key,new LexiconProfile());
-        }
-        _contextLexicon.get(key).addOccurrence(word);
-    }
-
-    /**
-     * normalize the key with suffix and remove '#' character
-     * @param c the term id entry
-     * @param l ana value
-     * @return the normalized key
-     */
-    protected String normalizeKey(String c, String l) {
-        if (DM4.getValue().equals(l)) {
-            return (c + "_lexOn").replace("#", "");
-        } else {
-            return (c + "_lexOff").replace("#", "");
+            SAXParserFactory factory = SAXParserFactory.newInstance();
+            SAXParser saxParser = factory.newSAXParser();
+            saxParser.parse(_xml,this);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -506,14 +158,161 @@ public class ContextExtractor implements Runnable{
         LOGGER.info("all contexts in " + _p + "has been extracted");
     }
 
-    /**
-     * the XpathMapVariableResolver is a class who can permits to change value of xpath variable
-     */
-    private class XpathMapVariableResolver implements XPathVariableResolver {
+    @Override
+    public void startElement(String uri, String localName, String qName, Attributes attributes)
+            throws SAXException {
+        switch (qName) {
+            case "ns:standOff":
+                _inStandOff = true;
+                break;
+            case "text":
+                _inText = true;
+                break;
+            case "w":
+                _inW = true;
+                break;
+        }
+        if (_inStandOff && qName.equals("span")){
+            extractTerms(attributes);
+        }
+        else if (_inText && !_inW && !qName.equals("text")){
+            _contextStack.push(new ArrayList<>());
+        }
 
-        @Override
-        public Object resolveVariable(QName qName) {
-            return _xpathVariableMap.get(qName.getLocalPart());
+        else if (_inW){
+            _lastContextWord = new ContextWord(attributes.getValue("xml:id"));
+            _contextStack.forEach(words -> words.add(_lastContextWord));
+        }
+    }
+
+    @Override
+    public void endElement(String uri,
+                           String localName, String qName) throws SAXException {
+        switch (qName) {
+            case "ns:standOff":
+                _inStandOff = false;
+                break;
+            case "text":
+                _inText = false;
+                break;
+            case "w":
+                _inW = false;
+                break;
+        }
+
+        if (_inText && !qName.equals("w")){
+            searchTermsInContext();
+        }
+    }
+
+    /**
+     * search if the context of the top of the stack contains a term. The context is remove if it not contains a term
+     */
+    private void searchTermsInContext() {
+        Iterator<ContextTerm> termsIt = _terms.iterator();
+        while (inContext(termsIt)){
+            if (inWords()) {
+                addWordsToLexicalProfile(
+                        normalizeKey(_currentTerm.getCorresp(), _currentTerm.getAna()),
+                        _contextStack.peek()
+                );
+                termsIt.remove();
+            }
+        }
+        _contextStack.pop();
+    }
+
+    /**
+     * this method is used to check if the current context can probably contains the terms.
+     * @param termsIt the iterator of _terms
+     * @return return true if the first target word of the term is inferior or equal to the last target word.
+     */
+    private boolean inContext(Iterator<ContextTerm> termsIt) {
+        List<ContextWord> contextWords = _contextStack.peek();
+        if (termsIt.hasNext() && !contextWords.isEmpty()){
+            _currentTerm = termsIt.next();
+            int firstTermTarget = Integer.parseInt(_currentTerm.getTarget().get(0).replace("t", ""));
+            int lastStackTarget = Integer.parseInt(contextWords.get(contextWords.size()-1).getTarget().replace("t", ""));
+            return firstTermTarget <= lastStackTarget;
+        }
+        else {
+            return false;
+        }
+
+    }
+
+    /**
+     * check if an term occurrence is contained by a context
+     * @return true if _currentTerm is contained / false if _currentTerm is not contained
+     */
+    private boolean inWords(){
+        List<String> stackTargets = new ArrayList<>();
+        /*
+        fill stackTargets with all target of each words contains in the context on top of the stack
+         */
+        _contextStack.peek().forEach(contextWord -> stackTargets.add(contextWord.getTarget()));
+        return stackTargets.containsAll(_currentTerm.getTarget());
+    }
+
+    /**
+     * the character event is used to extract the Pos/Lemma pair of a w element
+     */
+    @Override
+    public void characters(char ch[],
+                           int start, int length) throws SAXException {
+        if (_inW){
+            _lastContextWord.setPosLemma(new String(ch,start,length));
+            _inW = false;
+        }
+    }
+
+    /**
+     * parse the attribute of a span element and initialize a new ContextTerm object and add it to the _terms field
+     * @param attributes the attributes of a span element
+     */
+    private void extractTerms(Attributes attributes) {
+        String ana = attributes.getValue("ana");
+        if (!ana.equals(NO_DM.getValue())) {
+            _terms.add(new ContextTerm(attributes.getValue("corresp"),
+                    ana,
+                    attributes.getValue("target")));
+        }
+    }
+
+    /**
+     * add to lexicalProfile a context for terminology entry
+     * @param key the term id entry suffixes by _lexOn or _lexOff
+     */
+    private void addWordsToLexicalProfile(String key,List<ContextWord> context) {
+
+        /*
+        create new entry if the key not exists in the _contextLexicon field
+         */
+        context.forEach(
+                contextWord -> {
+                    if (!_currentTerm.getTarget().contains(contextWord.getTarget())){
+                        if (!_contextLexicon.containsKey(key)){
+                            _contextLexicon.put(key,new LexiconProfile());
+                        }
+                        _contextLexicon.get(key).addOccurrence(contextWord.getPosLemma());
+                    }
+                }
+        );
+    }
+
+    /**
+     * normalize the key with suffix and remove '#' character
+     * @param c the term id entry
+     * @param l ana value
+     * @return the normalized key
+     */
+    protected String normalizeKey(String c, String l) {
+        if (DM4.getValue().equals(l)) {
+            return (c + "_lexOn").replace("#", "");
+        } else {
+            return (c + "_lexOff").replace("#", "");
         }
     }
 }
+
+

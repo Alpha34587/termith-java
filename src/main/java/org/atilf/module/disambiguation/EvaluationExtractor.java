@@ -5,10 +5,7 @@ import org.atilf.models.termith.TermithIndex;
 import org.atilf.module.tools.FilesUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.w3c.dom.NodeList;
 
-import javax.xml.xpath.XPathConstants;
-import javax.xml.xpath.XPathExpressionException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.CountDownLatch;
@@ -39,32 +36,9 @@ public class EvaluationExtractor extends ContextExtractor {
         _evaluationLexicon = termithIndex.getEvaluationLexicon().get(FilesUtils.nameNormalizer(p));
     }
 
-    @Override
-    public void extractTerms() {
-        try {
-            NodeList nodes = (NodeList) _eSpanTerms.evaluate(_doc, XPathConstants.NODESET);
-            for (int i = 0; i < nodes.getLength(); i++) {
-                if (containInSpecLexicon(nodes.item(i).getAttributes().getNamedItem("corresp").getNodeValue())) {
-                    addToTermsQueues(nodes.item(i),nodes.item(i).getAttributes().getNamedItem("ana").getNodeValue());
-                }
-            }
-        } catch (XPathExpressionException e) {
-            LOGGER.error("error during the execute of document",e);
-        }
-    }
-
     private boolean containInSpecLexicon(String corresp){
         return (_contextLexicon.containsKey(corresp.substring(1) + "_lexOff") ||
                 _contextLexicon.containsKey(corresp.substring(1) + "_lexOn"));
-    }
-
-    @Override
-    protected void addOccToLexicalProfile(String word, String key){
-            if (!_evaluationLexicon.containsKey(key)){
-                _evaluationLexicon.put(key,new EvaluationProfile());
-            }
-            _evaluationLexicon.get(key).addOccurrence(word);
-
     }
 
     @Override

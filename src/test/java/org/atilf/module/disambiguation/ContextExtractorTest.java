@@ -7,20 +7,14 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.*;
-
-import static org.atilf.models.disambiguation.AnnotationResources.DM1;
-import static org.atilf.models.disambiguation.AnnotationResources.DM3;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author Simon Meoni
  *         Created on 17/10/16.
  */
-public class ContextExtractorTest {
-    private Deque<String> _expectedTarget = new ArrayDeque<>();
-    private Deque<String> _expectedCorresp = new ArrayDeque<>();
-
-    private Deque<String> _expectedLexAna = new ArrayDeque<>();
+public class ContextExtractorTest {;
     private Map<String,LexiconProfile> _expectedMap = new HashMap<>();
     private Map<String,LexiconProfile> _multiSub = new HashMap<>();
 
@@ -31,43 +25,27 @@ public class ContextExtractorTest {
 
     @Before
     public void setUp(){
-        _expectedTarget.add("#t13 #t14 #t15 #t16");
-        _expectedTarget.add("#t13 #t14 #t15 #t16");
-        _expectedTarget.add("#t16 #t17 #t18");
-        _expectedTarget.add("#t30");
-
-        _expectedCorresp.add("#entry-13471");
-        _expectedCorresp.add("#entry-13471");
-        _expectedCorresp.add("#entry-13471");
-        _expectedCorresp.add("#entry-7263");
-
-        _expectedLexAna.add(DM1.getValue());
-        _expectedLexAna.add(DM1.getValue());
-        _expectedLexAna.add(DM1.getValue());
-        _expectedLexAna.add(DM3.getValue());
-
+        /*
+        case with embedded term part w w w T1 T2 < T3 T4 w >
+         */
         Multiset<String> entry1 = HashMultiset.create();
-        entry1.add("ce PRO:DEM");
-        entry1.add("article NOM");
-        entry1.add("présenter VER:pres");
-        entry1.add("un DET:ART");
-        entry1.add("étude NOM");
-        entry1.add("comparer VER:pper");
-        entry1.add("du PRP:det");
-        entry1.add("donnée NOM");
-        entry1.add("archéo-ichtyofauniques ADJ");
-        entry1.add("livrer VER:pper");
-        entry1.add("par PRP");
-        entry1.add("deux NUM");
-        entry1.add("du PRP:det");
-        entry1.add("le DET:ART");
-        entry1.add(". SENT");
-        entry1.add("sur PRP");
-        entry1.add("le DET:ART");
-        entry1.add("deux NUM");
-        entry1.add("site NOM");
-
+        entry1.add("ce PRO:DEM",2);
+        entry1.add("article NOM",2);
+        entry1.add("présenter VER:pres",2);
+        entry1.add("un DET:ART",2);
+        entry1.add("étude NOM",2);
+        entry1.add("comparer VER:pper",2);
+        entry1.add("du PRP:det",4);
+        entry1.setCount("donnée NOM",2);
+        entry1.add("archéo-ichtyofauniques ADJ",2);
+        entry1.add("livrer VER:pper",2);
+        entry1.add("par PRP",2);
+        entry1.add("deux NUM",2);
         _expectedMap.put("entry-13471_lexOff",new LexiconProfile(entry1));
+
+        /*
+        simple case : w w w w T w w w w
+         */
         Multiset<String> entry2 = HashMultiset.create();
         entry2.add("pêche NOM");
         entry2.add(", PUN");
@@ -79,38 +57,52 @@ public class ContextExtractorTest {
         entry2.add(". SENT");
         entry2.add("il PRO:PER");
         _expectedMap.put("entry-7263_lexOff",new LexiconProfile(entry2));
-    }
 
-    @Test
-    public void extractTerms() throws Exception {
-        _contextCorpus.extractTerms();
-        Assert.assertEquals(
-                "these queues must have the same size",
-                _expectedTarget.size(),
-                _contextCorpus.getTarget().size()
-        );
-        _contextCorpus.getTarget().forEach(
-                el -> Assert.assertEquals("target must be equals", _expectedTarget.poll(),el)
-        );
+        /*
+        simple multi case : w w w T1 T2 w w w
+         */
+        Multiset<String> entry3 = HashMultiset.create();
+        entry3.add("ce PRO:DEM");
+        entry3.add("article NOM");
+        entry3.add("présenter VER:pres");
+        entry3.add("un DET:ART");
+        entry3.add("étude NOM");
+        entry3.add("comparer VER:pper");
+        entry3.add("archéo-ichtyofauniques ADJ");
+        entry3.add("livrer VER:pper");
+        entry3.add("par PRP");
+        entry3.add("deux NUM");
+        _expectedMap.put("entry-575_lexOff",new LexiconProfile(entry3));
+        
+        /*
+        embedded multi case :  < w w T1 > T2 T3 w w w
+         */
+        Multiset<String> entry4 = HashMultiset.create();
+        entry4.add("type NOM");
+        entry4.add("de PRP");
+        entry4.add("enfouissement NOM");
+        entry4.add(". SENT");
+        _expectedMap.put("entry-5750_lexOff",new LexiconProfile(entry4));
 
-        Assert.assertEquals(
-                "these queues must have the same size",
-                _expectedCorresp.size(),
-                _contextCorpus.getCorresp().size()
-        );
-        _contextCorpus.getCorresp().forEach(
-                el -> Assert.assertEquals("terms id must be equals", _expectedCorresp.poll(),el)
-        );
+        /*
+        case : T1 <T2> w w w
+         */
+        Multiset<String> entry5 = HashMultiset.create();
+        entry5.add("sur PRP");
+        entry5.add("le DET:ART");
+        entry5.add("deux NUM");
+        entry5.add("site NOM");
+        _expectedMap.put("entry-35_lexOff",new LexiconProfile(entry5));
 
-        Assert.assertEquals(
-                "these queues must have the same size",
-                _expectedLexAna.size(),
-                _contextCorpus.getLexAna().size()
-        );
-        _contextCorpus.getLexAna().forEach(
-                el -> Assert.assertEquals("ana id must be equals", _expectedLexAna.poll(),el)
-        );
-
+        /*
+        case : w T < w w w >
+         */
+        Multiset<String> entry6 = HashMultiset.create();
+        entry6.add(", PUN");
+        entry6.add("pêche NOM");
+        entry6.add("être VER:pres");
+        entry6.add("un DET:ART");
+        _expectedMap.put("entry-450_lexOff",new LexiconProfile(entry6));
     }
 
     @Test
@@ -122,8 +114,8 @@ public class ContextExtractorTest {
         _contextCorpus.execute();
         Assert.assertEquals(
                 "this two map must have the same size",
-                _multiSub.size(),
-                _expectedMap.size()
+                _expectedMap.size(),
+                _multiSub.size()
         );
 
         _expectedMap.forEach(
