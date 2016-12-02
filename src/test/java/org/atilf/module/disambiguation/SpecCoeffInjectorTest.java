@@ -24,15 +24,10 @@ public class SpecCoeffInjectorTest {
     @Before
     public void setUp() throws Exception {
 
-        CorpusLexiconExtractor corpus1 = new CorpusLexiconExtractor("src/test/resources/corpus/tei/test1.xml", _corpusLexicon);
-        CorpusLexiconExtractor corpus2 = new CorpusLexiconExtractor("src/test/resources/corpus/tei/test1.xml", _corpusLexicon);
-        ContextExtractor contextExtractor = new ContextExtractor("src/test/resources/corpus/tei/test1.xml", _contextLexicon1);
-        ContextExtractor contextExtractor1 = new ContextExtractor("src/test/resources/corpus/tei/test1.xml", _contextLexicon1);
-        ContextExtractor contextExtractor2 = new ContextExtractor("src/test/resources/corpus/tei/test1.xml", _contextLexicon2);
-        ContextExtractor contextExtractor3 = new ContextExtractor("src/test/resources/corpus/tei/test1.xml", _contextLexicon2);
-
-        corpus1.execute();
-        corpus2.execute();
+        ContextExtractor contextExtractor = new ContextExtractor("src/test/resources/corpus/tei/test1.xml", _contextLexicon1, _corpusLexicon);
+        ContextExtractor contextExtractor1 = new ContextExtractor("src/test/resources/corpus/tei/test1.xml", _contextLexicon1, _corpusLexicon);
+        ContextExtractor contextExtractor2 = new ContextExtractor("src/test/resources/corpus/tei/test1.xml", _contextLexicon2, _corpusLexicon);
+        ContextExtractor contextExtractor3 = new ContextExtractor("src/test/resources/corpus/tei/test1.xml", _contextLexicon2, _corpusLexicon);
 
         _rLexicon = new RLexicon(_corpusLexicon);
 

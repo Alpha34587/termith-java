@@ -2,9 +2,10 @@ package org.atilf.module.disambiguation;
 
 import com.google.common.collect.HashMultiset;
 import com.google.common.collect.Multiset;
+import org.atilf.models.disambiguation.CorpusLexicon;
 import org.atilf.models.disambiguation.LexiconProfile;
 import org.junit.Assert;
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.util.HashMap;
@@ -15,11 +16,13 @@ import java.util.Map;
  *         Created on 17/10/16.
  */
 public class ContextExtractorTest {;
-    private Map<String,LexiconProfile> _expectedMap = new HashMap<>();
-    private Map<String,LexiconProfile> _multiSub = new HashMap<>();
+    private static Map<String,LexiconProfile> _expectedLexicon = new HashMap<>();
+    private static Map<String,LexiconProfile> _observedLexicon = new HashMap<>();
+    private static CorpusLexicon _observedCorpus = new CorpusLexicon(new HashMap<>(),new HashMap<>());
+    private static Multiset<String> _expectedCorpus;
 
-    @Before
-    public void setUp(){
+    @BeforeClass
+    public static void setUp(){
         /*
         case with embedded term part w w w T1 T2 < T3 T4 w >
          */
@@ -36,7 +39,7 @@ public class ContextExtractorTest {;
         entry1.add("livrer VER:pper",2);
         entry1.add("par PRP",2);
         entry1.add("deux NUM",2);
-        _expectedMap.put("entry-13471_lexOff",new LexiconProfile(entry1));
+        _expectedLexicon.put("entry-13471_lexOff",new LexiconProfile(entry1));
 
         /*
         simple case : w w w w T w w w w
@@ -51,7 +54,7 @@ public class ContextExtractorTest {;
         entry2.add("commun ADJ");
         entry2.add(". SENT");
         entry2.add("il PRO:PER");
-        _expectedMap.put("entry-7263_lexOff",new LexiconProfile(entry2));
+        _expectedLexicon.put("entry-7263_lexOff",new LexiconProfile(entry2));
 
         /*
         simple multi case : w w w T1 T2 w w w
@@ -67,7 +70,7 @@ public class ContextExtractorTest {;
         entry3.add("livrer VER:pper");
         entry3.add("par PRP");
         entry3.add("deux NUM");
-        _expectedMap.put("entry-575_lexOff",new LexiconProfile(entry3));
+        _expectedLexicon.put("entry-575_lexOff",new LexiconProfile(entry3));
         
         /*
         embedded multi case :  < w w T1 > T2 T3 w w w
@@ -77,7 +80,7 @@ public class ContextExtractorTest {;
         entry4.add("de PRP");
         entry4.add("enfouissement NOM");
         entry4.add(". SENT");
-        _expectedMap.put("entry-5750_lexOff",new LexiconProfile(entry4));
+        _expectedLexicon.put("entry-5750_lexOff",new LexiconProfile(entry4));
 
         /*
         case : T1 <T2> w w w
@@ -87,7 +90,7 @@ public class ContextExtractorTest {;
         entry5.add("le DET:ART");
         entry5.add("deux NUM");
         entry5.add("site NOM");
-        _expectedMap.put("entry-35_lexOff",new LexiconProfile(entry5));
+        _expectedLexicon.put("entry-35_lexOff",new LexiconProfile(entry5));
 
         /*
         case : w T < w w w >
@@ -97,25 +100,77 @@ public class ContextExtractorTest {;
         entry6.add("pêche NOM");
         entry6.add("être VER:pres");
         entry6.add("un DET:ART");
-        _expectedMap.put("entry-450_lexOff",new LexiconProfile(entry6));
+        _expectedLexicon.put("entry-450_lexOff",new LexiconProfile(entry6));
+
+        _expectedCorpus = HashMultiset.create();
+        _expectedCorpus.add("ce PRO:DEM");
+        _expectedCorpus.add("article NOM");
+        _expectedCorpus.add("présenter VER:pres");
+        _expectedCorpus.add("un DET:ART");
+        _expectedCorpus.add("étude NOM");
+        _expectedCorpus.add("comparer VER:pper");
+        _expectedCorpus.add("du PRP:det");
+        _expectedCorpus.add("donnée NOM");
+        _expectedCorpus.add("archéo-ichtyofauniques ADJ");
+        _expectedCorpus.add("livrer VER:pper");
+        _expectedCorpus.add("par PRP");
+        _expectedCorpus.add("deux NUM");
+        _expectedCorpus.add("site NOM");
+        _expectedCorpus.add("de PRP");
+        _expectedCorpus.add("le DET:ART");
+        _expectedCorpus.add("âge NOM");
+        _expectedCorpus.add("du PRP:det");
+        _expectedCorpus.add("bronze NOM");
+        _expectedCorpus.add(". SENT");
+        _expectedCorpus.add("sur PRP");
+        _expectedCorpus.add("le DET:ART");
+        _expectedCorpus.add("deux NUM");
+        _expectedCorpus.add("site NOM");
+        _expectedCorpus.add(", PUN");
+        _expectedCorpus.add("le DET:ART");
+        _expectedCorpus.add("pêche NOM");
+        _expectedCorpus.add("être VER:pres");
+        _expectedCorpus.add("un DET:ART");
+        _expectedCorpus.add("pêche NOM");
+        _expectedCorpus.add("côtier ADJ");
+        _expectedCorpus.add(", PUN");
+        _expectedCorpus.add("limiter VER:pper");
+        _expectedCorpus.add("à PRP");
+        _expectedCorpus.add("quelque PRO:IND");
+        _expectedCorpus.add("espèce NOM");
+        _expectedCorpus.add("commun ADJ");
+        _expectedCorpus.add(". SENT");
+        _expectedCorpus.add("il PRO:PER");
+        _expectedCorpus.add("se PRO:PER");
+        _expectedCorpus.add("différencier VER:pres");
+        _expectedCorpus.add("principalement ADV");
+        _expectedCorpus.add("par PRP");
+        _expectedCorpus.add("le DET:ART");
+        _expectedCorpus.add("type NOM");
+        _expectedCorpus.add("de PRP");
+        _expectedCorpus.add("rejet NOM");
+        _expectedCorpus.add("précéder VER:ppre");
+        _expectedCorpus.add("leur DET:POS");
+        _expectedCorpus.add("enfouissement NOM");
+        _expectedCorpus.add(". SENT");
+        _expectedCorpus.add("le DET:ART");
+        new ContextExtractor("src/test/resources/corpus/disambiguation/transform-tei/test2.xml",
+                _observedLexicon,
+                _observedCorpus).execute();
     }
 
     @Test
     public void extractLexiconProfile() throws Exception {
-        ContextExtractor contextCorpus = new ContextExtractor(
-                "src/test/resources/corpus/disambiguation/transform-tei/test2.xml",
-                _multiSub
-        );
-        contextCorpus.execute();
+
         Assert.assertEquals(
                 "this two map must have the same size",
-                _expectedMap.size(),
-                _multiSub.size()
+                _expectedLexicon.size(),
+                _observedLexicon.size()
         );
 
-        _expectedMap.forEach(
+        _expectedLexicon.forEach(
                 (key, value) -> {
-                    Multiset observed = _multiSub.get(key).getLexicalTable();
+                    Multiset observed = _observedLexicon.get(key).getLexicalTable();
                     value.getLexicalTable().forEach(
                             el -> Assert.assertEquals("the occurrence of element must be equals at " + key +
                                             " for the word : " + el,
@@ -125,4 +180,15 @@ public class ContextExtractorTest {;
                 }
         );
     }
+
+    @Test
+    public void extractCorpus() {
+        Assert.assertEquals(
+                "this two multiset must be equals : ",
+                _expectedCorpus.toString(),
+                _observedCorpus.getLexicalTable().toString()
+                );
+    }
+
+
 }

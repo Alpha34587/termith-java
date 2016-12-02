@@ -1,6 +1,7 @@
 package org.atilf.module.disambiguation;
 
 import org.atilf.models.disambiguation.ContextTerm;
+import org.atilf.models.disambiguation.CorpusLexicon;
 import org.atilf.models.disambiguation.LexiconProfile;
 import org.atilf.models.disambiguation.ContextWord;
 import org.slf4j.Logger;
@@ -90,6 +91,7 @@ import static org.atilf.models.disambiguation.AnnotationResources.NO_DM;
 public class ContextExtractor extends DefaultHandler implements Runnable {
 
     Map<String, LexiconProfile> _contextLexicon;
+    private CorpusLexicon _corpusLexicon;
     protected List<ContextTerm> _terms = new ArrayList<>();
     private String _p;
     private File _xml;
@@ -98,12 +100,12 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
     variable used during SAX parsing
      */
     ContextTerm _currentTerm = null;
-    private ContextWord _lastContextWord;
+    ContextWord _lastContextWord;
     private Stack<List<ContextWord>> _contextStack = new Stack<>();
     /*
     SAX condition
      */
-    private boolean _inW = false;
+    boolean _inW = false;
     private boolean _inText = false;
     private boolean _inStandOff = false;
 
@@ -115,14 +117,16 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
      * @param p the path of the xml file
      * @param contextLexicon the contextLexicon of the termithIndex of the process (all the context is retained
      *                       in this variable)
+     * @param corpusLexicon
      * @see LexiconProfile
      */
-    public ContextExtractor(String p, Map<String, LexiconProfile> contextLexicon){
+    public ContextExtractor(String p, Map<String, LexiconProfile> contextLexicon, CorpusLexicon corpusLexicon){
         /*
         initialize _p and _contextLexicon fields
          */
         _p = p;
         _contextLexicon = contextLexicon;
+        _corpusLexicon = corpusLexicon;
         _xml = new File(_p);
     }
 
@@ -275,7 +279,9 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
     public void characters(char ch[],
                            int start, int length) throws SAXException {
         if (_inW){
-            _lastContextWord.setPosLemma(new String(ch,start,length));
+            String posLemma = new String(ch,start,length);
+            _lastContextWord.setPosLemma(posLemma);
+            _corpusLexicon.addOccurrence(posLemma);
             _inW = false;
         }
     }
