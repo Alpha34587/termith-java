@@ -15,8 +15,6 @@ import java.util.Deque;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.atilf.models.disambiguation.AnnotationResources.NO_DM;
-
 /**
  * @author Simon Meoni
  *         Created on 25/10/16.
@@ -37,10 +35,6 @@ public class EvaluationExtractorTest {
                 "src/test/resources/corpus/disambiguation/transform-tei/test1.xml",
                 termithIndex);
 
-        _expectedTarget.add("#t13 #t14 #t15 #t16");
-        _expectedCorresp.add("#entry-13471");
-        _expectedLexAna.add(NO_DM.getValue());
-
         Multiset<String> entry1 = HashMultiset.create();
         entry1.add("ce PRO:DEM");
         entry1.add("article NOM");
@@ -57,26 +51,12 @@ public class EvaluationExtractorTest {
         entry1.add("du PRP:det");
 
         expectedMap.put("entry-13471_noDM",new EvaluationProfile(entry1));
-        _evaluationExtractor.execute();
         _observedMap = termithIndex.getEvaluationLexicon().get("test1");
     }
 
     @Test
-    public void extractTerms() throws Exception {
-        _evaluationExtractor.getTerms().forEach(
-                el -> Assert.assertEquals("target must be equals", _expectedTarget.poll(),el.getTarget())
-        );
-        _evaluationExtractor.getTerms().forEach(
-                el -> Assert.assertEquals("terms id must be equals", _expectedCorresp.poll(),el.getCorresp())
-        );
-        _evaluationExtractor.getTerms().forEach(
-                el -> Assert.assertEquals("ana id must be equals", _expectedLexAna.poll(),el.getAna())
-        );
-
-    }
-
-    @Test
-    public void extractLexiconProfileSimple() throws Exception {
+    public void extractEvaluationLexicon() throws Exception {
+        _evaluationExtractor.execute();
         expectedMap.forEach(
                 (key,value) -> {
                     Multiset observed = _observedMap.get(key).getLexicalTable();

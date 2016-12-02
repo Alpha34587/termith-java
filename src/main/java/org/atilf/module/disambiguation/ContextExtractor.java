@@ -88,16 +88,17 @@ import static org.atilf.models.disambiguation.AnnotationResources.NO_DM;
  *
  */
 public class ContextExtractor extends DefaultHandler implements Runnable {
-    protected List<ContextTerm> _terms = new ArrayList<>();
+
     Map<String, LexiconProfile> _contextLexicon;
+    protected List<ContextTerm> _terms = new ArrayList<>();
     private String _p;
     private File _xml;
 
     /*
     variable used during SAX parsing
      */
+    ContextTerm _currentTerm = null;
     private ContextWord _lastContextWord;
-    private ContextTerm _currentTerm = null;
     private Stack<List<ContextWord>> _contextStack = new Stack<>();
     /*
     SAX condition
@@ -283,7 +284,7 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
      * parse the attribute of a span element and initialize a new ContextTerm object and add it to the _terms field
      * @param attributes the attributes of a span element
      */
-    private void extractTerms(Attributes attributes) {
+    protected void extractTerms(Attributes attributes) {
         String ana = attributes.getValue("ana");
         if (!ana.equals(NO_DM.getValue())) {
             _terms.add(new ContextTerm(attributes.getValue("corresp"),
@@ -296,7 +297,7 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
      * add to lexicalProfile a context for terminology entry
      * @param key the term id entry suffixes by _lexOn or _lexOff
      */
-    private void addWordsToLexicalProfile(String key,List<ContextWord> context) {
+    protected void addWordsToLexicalProfile(String key,List<ContextWord> context) {
 
         /*
         create new entry if the key not exists in the _contextLexicon field

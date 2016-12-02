@@ -1,14 +1,20 @@
 package org.atilf.module.disambiguation;
 
+import org.atilf.models.disambiguation.ContextTerm;
+import org.atilf.models.disambiguation.ContextWord;
 import org.atilf.models.disambiguation.EvaluationProfile;
 import org.atilf.models.termith.TermithIndex;
 import org.atilf.module.tools.FilesUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.xml.sax.Attributes;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CountDownLatch;
+
+import static org.atilf.models.disambiguation.AnnotationResources.NO_DM;
 
 /**
  * @author Simon Meoni
@@ -36,9 +42,38 @@ public class EvaluationExtractor extends ContextExtractor {
         _evaluationLexicon = termithIndex.getEvaluationLexicon().get(FilesUtils.nameNormalizer(p));
     }
 
-    private boolean containInSpecLexicon(String corresp){
-        return (_contextLexicon.containsKey(corresp.substring(1) + "_lexOff") ||
-                _contextLexicon.containsKey(corresp.substring(1) + "_lexOn"));
+
+    @Override
+    protected void extractTerms(Attributes attributes) {
+        String ana = attributes.getValue("ana");
+        String corresp = attributes.getValue("corresp");
+        if (ana.equals(NO_DM.getValue()) && InContextLexicon(corresp)) {
+            _terms.add(new ContextTerm(attributes.getValue("corresp"),
+                    ana,
+                    attributes.getValue("target")));
+        }
+    }
+
+    @Override
+    protected void addWordsToLexicalProfile(String key,List<ContextWord> context) {
+        /*
+        create new entry if the key not exists in the _contextLexicon field
+         */
+        context.forEach(
+                contextWord -> {
+                    if (!_currentTerm.getTarget().contains(contextWord.getTarget())){
+                        if (!_evaluationLexicon.containsKey(key)){
+                            _evaluationLexicon.put(key,new EvaluationProfile());
+                        }
+                        _evaluationLexicon.get(key).addOccurrence(contextWord.getPosLemma());
+                    }
+                }
+        );
+    }
+
+    private boolean InContextLexicon(String corresp) {
+        return _contextLexicon.containsKey(corresp.replace("#","") + "_lexOn") ||
+                _contextLexicon.containsKey(corresp.replace("#","") + "_lexOff");
     }
 
     @Override
