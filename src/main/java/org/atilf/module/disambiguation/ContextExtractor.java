@@ -171,9 +171,11 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
         switch (qName) {
             case "ns:standOff":
                 _inStandOff = true;
+                LOGGER.info("term extraction started");
                 break;
             case "text":
                 _inText = true;
+                LOGGER.info("context extraction started");
                 break;
             case "w":
                 _inW = true;
@@ -198,9 +200,11 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
         switch (qName) {
             case "ns:standOff":
                 _inStandOff = false;
+                LOGGER.info("term extraction finished");
                 break;
             case "text":
                 _inText = false;
+                LOGGER.info("context extraction finished");
                 break;
             case "w":
                 _inW = false;
@@ -232,7 +236,7 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
         Iterator<ContextTerm> termsIt = _terms.iterator();
         while (inContext(termsIt)){
             if (inWords()) {
-                addWordsToLexicalProfile(
+                addWordsToLexicon(
                         normalizeKey(_currentTerm.getCorresp(), _currentTerm.getAna()),
                         _contextStack.peek()
                 );
@@ -284,6 +288,7 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
             String posLemma = new String(ch,start,length);
             _lastContextWord.setPosLemma(posLemma);
             _corpusLexicon.addOccurrence(posLemma);
+            LOGGER.debug("add pos lemma pair: "+ posLemma +" to corpus");
             _inW = false;
         }
     }
@@ -298,6 +303,7 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
             _terms.add(new ContextTerm(attributes.getValue("corresp"),
                     ana,
                     attributes.getValue("target")));
+            LOGGER.debug("term extracted: " + attributes.getValue("corresp"));
         }
     }
 
@@ -305,7 +311,7 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
      * add to lexicalProfile a context for terminology entry
      * @param key the term id entry suffixes by _lexOn or _lexOff
      */
-    protected void addWordsToLexicalProfile(String key,List<ContextWord> context) {
+    private void addWordsToLexicon(String key, List<ContextWord> context) {
 
         /*
         create new entry if the key not exists in the _contextLexicon field
@@ -314,14 +320,20 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
                 contextWord -> {
                     String target = contextWord.getTarget();
                     if (!_currentTerm.inTerm(target) && !inTargetContext(key,target)){
-                        if (!_contextLexicon.containsKey(key)){
-                            _contextLexicon.put(key,new LexiconProfile());
-                        }
-                        _contextLexicon.get(key).addOccurrence(contextWord.getPosLemma());
+                        addWordToLexicon(key,contextWord);
                     }
                 }
         );
     }
+
+    protected void addWordToLexicon(String key, ContextWord contextWord){
+        if (!_contextLexicon.containsKey(key)){
+            _contextLexicon.put(key,new LexiconProfile());
+        }
+        _contextLexicon.get(key).addOccurrence(contextWord.getPosLemma());
+        LOGGER.debug("add words to term: " + key);
+    }
+
 
     protected boolean inTargetContext(String key, String target){
         if (!_targetContext.containsKey(key)){

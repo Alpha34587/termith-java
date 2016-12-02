@@ -11,7 +11,6 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 
@@ -52,25 +51,15 @@ public class EvaluationExtractor extends ContextExtractor {
             _terms.add(new ContextTerm(attributes.getValue("corresp"),
                     ana,
                     attributes.getValue("target")));
+            LOGGER.debug("term extracted: ", attributes.getValue("corresp"));
         }
     }
 
-    @Override
-    protected void addWordsToLexicalProfile(String key,List<ContextWord> context) {
-        /*
-        create new entry if the key not exists in the _contextLexicon field
-         */
-        context.forEach(
-                contextWord -> {
-                    String target = contextWord.getTarget();
-                    if (!_currentTerm.inTerm(target) && !inTargetContext(key,target)){
-                        if (!_evaluationLexicon.containsKey(key)){
-                            _evaluationLexicon.put(key,new EvaluationProfile());
-                        }
-                        _evaluationLexicon.get(key).addOccurrence(contextWord.getPosLemma());
-                    }
-                }
-        );
+    protected void addWordToLexicon(String key, ContextWord contextWord){
+        if (!_evaluationLexicon.containsKey(key)){
+            _evaluationLexicon.put(key,new EvaluationProfile());
+        }
+        _evaluationLexicon.get(key).addOccurrence(contextWord.getPosLemma());
     }
 
     private boolean InContextLexicon(String corresp) {
