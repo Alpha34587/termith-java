@@ -8,6 +8,7 @@ import org.atilf.module.tools.FilesUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.xml.sax.Attributes;
+import org.xml.sax.SAXException;
 
 import java.util.HashMap;
 import java.util.List;
@@ -82,6 +83,19 @@ public class EvaluationExtractor extends ContextExtractor {
         this.execute();
         _extactorCounter.countDown();
         LOGGER.info(_p + " added");
+    }
+
+    /**
+     * the character event is used to extract the Pos/Lemma pair of a w element
+     */
+    @Override
+    public void characters(char ch[],
+                           int start, int length) throws SAXException {
+        if (_inW){
+            String word = new String(ch,start,length);
+            _lastContextWord.setPosLemma(word);
+            _inW = false;
+        }
     }
 
     @Override

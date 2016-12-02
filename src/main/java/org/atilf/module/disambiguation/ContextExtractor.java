@@ -100,12 +100,12 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
     variable used during SAX parsing
      */
     ContextTerm _currentTerm = null;
-    private ContextWord _lastContextWord;
+    ContextWord _lastContextWord;
     private Stack<List<ContextWord>> _contextStack = new Stack<>();
     /*
     SAX condition
      */
-    private boolean _inW = false;
+    boolean _inW = false;
     private boolean _inText = false;
     private boolean _inStandOff = false;
 
@@ -279,7 +279,9 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
     public void characters(char ch[],
                            int start, int length) throws SAXException {
         if (_inW){
-            _lastContextWord.setPosLemma(new String(ch,start,length));
+            String posLemma = new String(ch,start,length);
+            _lastContextWord.setPosLemma(posLemma);
+            _corpusLexicon.addOccurrence(posLemma);
             _inW = false;
         }
     }
