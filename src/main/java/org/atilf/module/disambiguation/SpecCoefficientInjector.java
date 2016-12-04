@@ -66,7 +66,9 @@ public class SpecCoefficientInjector implements Runnable{
      * call reduceToLexicalProfile method
      */
     public void execute() {
-
+        //TODO refactor specCoeffTtest : this test must be independent to contextExtractor module
+        //TODO execute method must verify if the both type of lexical profile is present for this term
+        //TODO this test must be independent to Rlexicon module
         try {
             reduceToLexicalProfile(computeSpecCoefficient());
         }
