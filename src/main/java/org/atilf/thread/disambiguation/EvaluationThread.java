@@ -5,6 +5,7 @@ import org.atilf.models.termith.TermithIndex;
 import org.atilf.module.disambiguation.DisambiguationXslTransformer;
 import org.atilf.module.disambiguation.Evaluation;
 import org.atilf.module.disambiguation.EvaluationExtractor;
+import org.atilf.module.disambiguation.ThresholdLexiconCleaner;
 import org.atilf.thread.Thread;
 
 import java.io.IOException;
@@ -71,6 +72,19 @@ public class EvaluationThread extends Thread{
     public void execute() throws IOException, InterruptedException {
         DisambiguationXslResources xslResources = new DisambiguationXslResources();
 
+        //TODO threshold module must be write here
+        /*
+        Threshold cleaner
+         */
+        _termithIndex.getContextLexicon().forEach(
+                (key,value) -> _executorService.submit(new ThresholdLexiconCleaner(
+                        value,
+                        3,
+                        13,
+                        -3,
+                        -13))
+        );
+
         /*
         Transformation phase
          */
@@ -85,6 +99,7 @@ public class EvaluationThread extends Thread{
         );
 
         _transformCounter.await();
+
         /*
         Extraction phase
          */
