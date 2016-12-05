@@ -19,8 +19,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
 
-import static org.atilf.models.disambiguation.AnnotationResources.DM4;
-import static org.atilf.models.disambiguation.AnnotationResources.NO_DM;
+import static org.atilf.models.disambiguation.AnnotationResources.*;
 
 /**
  *         - the context extractor moudule extract the context of a terminology entries of the learning corpus.
@@ -360,9 +359,9 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
      */
     protected String normalizeKey(String c, String l) {
         if (DM4.getValue().equals(l)) {
-            return (c + "_lexOn").replace("#", "");
+            return (c + LEX_ON.getValue()).replace("#", "");
         } else {
-            return (c + "_lexOff").replace("#", "");
+            return (c + LEX_OFF.getValue()).replace("#", "");
         }
     }
 }
