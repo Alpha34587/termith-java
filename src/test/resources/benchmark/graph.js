@@ -8,7 +8,7 @@ var options = {
     yAxes: [{
       scaleLabel: {
         display: true,
-        labelString: 'elapsed time (min)'
+        labelString: 'elapsed time (sec)'
       }
     }],
     xAxes: [{
