@@ -16,6 +16,7 @@ import org.atilf.thread.disambiguation.LexiconProfileThread;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -25,6 +26,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Random;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 
@@ -32,14 +34,17 @@ import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 
 
 /**
- * Created by simon on 18/11/16.
+ * @author Simon Meoni
+ * Created on 18/11/16.
  */
 @JsonRootName("Iteration")
 public class Benchmark {
-    public Integer _sizes = 0;
-    public Long _dataContext = 0L;
+    public Integer _size = 0;
+    public Long _dataContextExtractor = 0L;
     public Long _dataDisambiguation = 0L;
     public Long _dataR = 0L;
+    public Long _dataEvaluationExtractor = 0L;
+    public Long _dataExporter = 0l;
     private ObjectMapper _mapper = new ObjectMapper();
     private TermithIndex _termithIndex;
 
@@ -84,7 +89,7 @@ public class Benchmark {
                         Path path = FilesUtils.writeFile(transformer.execute(),
                                 _temporaryFolder.toPath(), file.getFileName().toString());
                         TermExtractor termExtractor = new TermExtractor(path.toString());
-                        _sizes += termExtractor.countTerms();
+                        _size += termExtractor.countTerms();
                     } catch (IOException e) {
                         LOGGER.error("cannot transform file ", e);
                     }
@@ -92,23 +97,6 @@ public class Benchmark {
 
                 }
         );
-    }
-
-    private void contextLexiconThread() throws NoSuchMethodException {
-        _dataContext = ThreadPerformance(ContextLexiconThread.class);
-        _dataDisambiguation += _dataContext;
-    }
-    private void lexiconProfileThread() throws NoSuchMethodException {
-        _dataR = ThreadPerformance(LexiconProfileThread.class);
-        _dataDisambiguation += _dataR;
-    }
-
-    private void evaluationThread() throws NoSuchMethodException {
-        _dataDisambiguation += ThreadPerformance(EvaluationThread.class);
-    }
-
-    private void disambiguationExporter() throws NoSuchMethodException {
-        _dataDisambiguation += ThreadPerformance(DisambiguationExporterThread.class);
     }
 
     private void writeJson() throws IOException {
@@ -131,25 +119,33 @@ public class Benchmark {
      */
     private void plotViewer() throws IOException {
         List<Integer> sizeList = new ArrayList<>();
-        List<Integer> contextList = new ArrayList<>();
-        List<Integer> disambiguationList = new ArrayList<>();
-        List<Integer> rList = new ArrayList<>();
-
         JavaType type = _mapper.getTypeFactory().
                 constructCollectionType(List.class, LinkedHashMap.class);
         List<LinkedHashMap> benchmarkList = _mapper.readValue(new File("history.json"),type);
-
-        for (LinkedHashMap benchmarkTest : benchmarkList){
-            sizeList.add((Integer) benchmarkTest.get("_sizes"));
-            contextList.add((Integer) benchmarkTest.get("_dataContext"));
-            disambiguationList.add((Integer) benchmarkTest.get("_dataDisambiguation"));
-            rList.add((Integer) benchmarkTest.get("_dataR"));
+        for (LinkedHashMap benchmarkTest : benchmarkList) {
+            sizeList.add((Integer) benchmarkTest.get("_size"));
         }
+        String jsDataVariable = "labels: " + sizeList.toString() + ",\n";
+
+        jsDataVariable += "datasets : [ \n" +
+        drawGraph("_dataContextExtractor",benchmarkList, "Context & Corpus Lexicon Extractor") +
+        ",\n" +
+        drawGraph("_dataDisambiguation",benchmarkList, "Disambiguation") +
+        ",\n" +
+        drawGraph("_dataR",benchmarkList, "R coefficient") +
+        ",\n" +
+        drawGraph("_dataEvaluationExtractor",benchmarkList, "Context Evaluation Exporter") +
+        ",\n" +
+        drawGraph("_dataExporter",benchmarkList, "Exporter") +
+        "\n]";
+
         String js = String.join("\n", Files.readAllLines(Paths.get("src/test/resources/benchmark/graph.js")));
-        js = js.replace("labels: []", "labels: " + sizeList.toString());
-        js = js.replaceFirst("data: \\[\\]", "data: " + disambiguationList.toString());
-        js = js.replaceFirst("data: \\[\\]", "data: " + contextList.toString());
-        js = js.replaceFirst("data: \\[\\]", "data: " + rList.toString());
+        js = js.replace("{}",  "{\n"+ jsDataVariable +" }\n");
+
+        writeResultFile(js);
+    }
+
+    private void writeResultFile(String js) throws IOException {
         Files.write(Paths.get(_out + "/graph.js"),js.getBytes());
         Files.copy(
                 Paths.get(GRAPH_RESOURCE + "/Chart.js"),
@@ -161,17 +157,41 @@ public class Benchmark {
         );
     }
 
+    private String drawGraph(String jsonEntry, List<LinkedHashMap> benchmarkList, String name) {
+        Color color = generateRandomColor(null);
+        List<Integer> threadPerformance = new ArrayList<>();
+        for (LinkedHashMap benchmarkTest : benchmarkList) {
+            threadPerformance.add((Integer) benchmarkTest.get(jsonEntry));
+        }
+
+        return
+        "{"+
+        "label : \"" + name +"\","+
+        "data:" + threadPerformance.toString() + "," + 
+        "fill: false," +
+        "pointBorderColor: \"black\"," +
+        "pointBackgroundColor: \"black\"," +
+        "backgroundColor: \"rgba(" + color.getRed() + "," + color.getGreen() + "," + color.getBlue() + ",0.6)\","+
+        "borderColor: \"rgba(" + color.getRed() + "," + color.getGreen()+ "," +color.getBlue() +",0.6)\","+
+        "pointBorderWidth: 1,"+
+        "pointHoverRadius: 5,"+
+        "pointHoverBackgroundColor: \"black\","+
+        "pointHoverBorderColor: \"black\","+
+        "pointHoverBorderWidth: 2,"+
+        "pointRadius: 1," +
+        "}";
+    }
+
     /**
      * execute Thread and calculate CPU time
      * @param threadClass the org.atilf.thread to execute
      * @param <T> thread inherited class
      * @throws NoSuchMethodException throws an exception if constructor method cannot be called
      */
-    private <T extends Thread> long ThreadPerformance(Class<T> threadClass) throws NoSuchMethodException {
+    private <T extends Thread> void ThreadPerformance(Class<T> threadClass, long time) throws NoSuchMethodException {
         long startTime = System.nanoTime();
         try {
             threadClass.getConstructor(TermithIndex.class, int.class).newInstance(_termithIndex, 8).execute();
-
         } catch (InstantiationException | IllegalAccessException | InvocationTargetException
                 e) {
             LOGGER.error("cannot execute thread " + threadClass + " : " + e);
@@ -180,7 +200,8 @@ public class Benchmark {
         }
         long finishTime = System.nanoTime();
 
-        return TimeUnit.MINUTES.convert(finishTime - startTime, TimeUnit.NANOSECONDS);
+        time = TimeUnit.SECONDS.convert(finishTime - startTime, TimeUnit.NANOSECONDS);
+        _dataDisambiguation += time;
     }
 
     /**
@@ -237,12 +258,12 @@ public class Benchmark {
      * @throws NoSuchMethodException thrown an exception during the call of constructor with ThreadPerformance
      */
     public void execute() throws IOException, NoSuchMethodException {
-        this.setUp();
-        this.contextLexiconThread();
-        this.lexiconProfileThread();
-        this.evaluationThread();
-        this.disambiguationExporter();
-        this.writeJson();
+        setUp();
+        ThreadPerformance(ContextLexiconThread.class,_dataContextExtractor);
+        ThreadPerformance(LexiconProfileThread.class,_dataR);
+        ThreadPerformance(EvaluationThread.class,_dataEvaluationExtractor);
+        ThreadPerformance(DisambiguationExporterThread.class,_dataExporter);
+        writeJson();
     }
 
     public static void main(String[] args) throws IOException, NoSuchMethodException {
@@ -253,5 +274,20 @@ public class Benchmark {
         _duplicate = Integer.parseInt(args[4]);
         Benchmark benchmark = new Benchmark();
         benchmark.execute();
+    }
+
+    public Color generateRandomColor(Color mix) {
+        Random random = new Random();
+        int red = random.nextInt(256);
+        int green = random.nextInt(256);
+        int blue = random.nextInt(256);
+
+        // mix the color
+        if (mix != null) {
+            red = (red + mix.getRed()) / 2;
+            green = (green + mix.getGreen()) / 2;
+            blue = (blue + mix.getBlue()) / 2;
+        }
+        return new Color(red, green, blue);
     }
 }

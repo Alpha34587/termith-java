@@ -3,6 +3,8 @@ package org.atilf.benchmark;
 import org.atilf.models.disambiguation.CorpusLexicon;
 import org.atilf.models.disambiguation.LexiconProfile;
 import org.atilf.module.disambiguation.ContextExtractor;
+import org.xml.sax.Attributes;
+import org.xml.sax.SAXException;
 
 import java.util.HashMap;
 
@@ -29,5 +31,36 @@ class TermExtractor extends ContextExtractor{
     int countTerms() {
         execute();
         return _terms.size();
+    }
+
+    @Override
+    public void startElement(String uri, String localName, String qName, Attributes attributes)
+            throws SAXException {
+        switch (qName) {
+            case "ns:standOff":
+                _inStandOff = true;
+                break;
+        }
+        if (_inStandOff && qName.equals("span")){
+            extractTerms(attributes);
+        }
+    }
+
+    @Override
+    public void endElement(String uri,
+                           String localName, String qName) throws SAXException {
+        switch (qName) {
+            case "ns:standOff":
+                _inStandOff = false;
+                break;
+        }
+    }
+
+    /**
+     * the character event is used to extract the Pos/Lemma pair of a w element
+     */
+    @Override
+    public void characters(char ch[],
+                           int start, int length) throws SAXException {
     }
 }

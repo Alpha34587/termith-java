@@ -108,7 +108,7 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
      */
     boolean _inW = false;
     private boolean _inText = false;
-    private boolean _inStandOff = false;
+    protected boolean _inStandOff = false;
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ContextExtractor.class.getName());
 
