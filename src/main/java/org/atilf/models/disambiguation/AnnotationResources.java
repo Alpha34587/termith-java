@@ -12,7 +12,9 @@ public enum AnnotationResources {
     DM4("#DM4"),
     DA_ON("#DaOn"),
     DA_OFF("#DaOff"),
-    NO_DA("#noDa");
+    NO_DA("#noDa"),
+    LEX_ON("_lexOn"),
+    LEX_OFF("_lexOff");
 
     public String value;
 
