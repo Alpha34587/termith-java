@@ -23,12 +23,12 @@ public class ThresholdLexiconCleanerTest {
         coefficientMap.put("carré", 13f);
         coefficientMap.put("cercle",10f);
         _thresholdLexiconCleaner = new ThresholdLexiconCleaner(coefficientMap,
-                3, 13, -3, 13);
-        _thresholdLexiconCleaner.execute();
+                3, 13);
     }
 
     @Test
     public void execute() throws Exception {
+        _thresholdLexiconCleaner.execute();
         String word = "cercle";
         Assert.assertEquals("the size of the map must be equals",1,coefficientMap.size());
         Assert.assertTrue("the coefficient must contains only this entry : " + word,
