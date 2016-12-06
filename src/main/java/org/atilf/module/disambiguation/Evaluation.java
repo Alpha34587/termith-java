@@ -28,8 +28,8 @@ public class Evaluation implements Runnable{
     private final Map<String, EvaluationProfile> _evaluationProfile;
     private final Map<String, LexiconProfile> _contextLexicon;
     private final String _p;
-    private float _factorOn = 0f;
-    private float _factorOff = 0f;
+    float _factorOn = 0f;
+    float _factorOff = 0f;
     private static final Logger LOGGER = LoggerFactory.getLogger(Evaluation.class.getName());
 
     /**
@@ -107,7 +107,7 @@ public class Evaluation implements Runnable{
      * a terminology.
      * @param entry an EvaluationProfile of a term candidate
      */
-    private void compareFactor(EvaluationProfile entry) {
+    void compareFactor(EvaluationProfile entry) {
         if (_factorOff >= _factorOn){
             entry.setDisambiguationId(AnnotationResources.DA_OFF);
         }
@@ -124,7 +124,7 @@ public class Evaluation implements Runnable{
      * @param lexOn the terminology lexicalProfile of the current term candidate
      * @param lexOff the non-terminology lexicalProfile of the current term candidate
      */
-    private void computeFactor(EvaluationProfile entry,
+    public void computeFactor(EvaluationProfile entry,
                                 LexiconProfile lexOn,
                                 LexiconProfile lexOff) {
         LOGGER.debug("compute factor ...");

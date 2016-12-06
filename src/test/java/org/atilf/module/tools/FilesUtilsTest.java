@@ -1,7 +1,7 @@
 package org.atilf.module.tools;
 
 import org.junit.Assert;
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -16,15 +16,16 @@ import java.util.Map;
  * Created on 22/08/16.
  */
 public class FilesUtilsTest {
-    private String _path;
-    private Map<String, StringBuilder> _testMap = new HashMap<>();
 
-    @Before
-    public void setUp() throws Exception {
+    private static String _path;
+    private static Map<String, StringBuilder> _expectedMap = new HashMap<>();
+
+    @BeforeClass
+    public static void setUp() throws Exception {
         _path = FilesUtils.createTemporaryFolder("test");
-        _testMap.put("test1", new StringBuilder("test2"));
-        _testMap.put("test3", new StringBuilder("test4"));
-        FilesUtils.createFiles(_path, _testMap,"txt");
+        _expectedMap.put("test1", new StringBuilder("test2"));
+        _expectedMap.put("test3", new StringBuilder("test4"));
+        FilesUtils.createFiles(_path, _expectedMap,"txt");
     }
 
     @Test
@@ -37,7 +38,7 @@ public class FilesUtilsTest {
 
     @Test
     public void testFilesContent() {
-        _testMap.forEach((name, content) -> {
+        _expectedMap.forEach((name, content) -> {
             try {
                 System.out.println(content);
                 Assert.assertEquals("this file must contains",

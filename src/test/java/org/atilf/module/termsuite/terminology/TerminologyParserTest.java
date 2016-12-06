@@ -2,7 +2,7 @@ package org.atilf.module.termsuite.terminology;
 
 import org.atilf.models.termsuite.TermOffsetId;
 import org.junit.Assert;
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.nio.file.Paths;
@@ -16,19 +16,19 @@ import java.util.List;
  */
 public class TerminologyParserTest {
 
-    private TerminologyParser _terminologyParser;
-    private List<String> expectedFile = new ArrayList<>();
+    private static TerminologyParser _terminologyParser;
+    private static List<String> _expectedFile = new ArrayList<>();
 
-    @Before
-    public void setUp(){
+    @BeforeClass
+    public static void setUp(){
         _terminologyParser = new TerminologyParser(Paths.get("src/test/resources/terminology-json/terminology.json"));
     }
 
     @Test
     public void execute() throws Exception {
 
-        expectedFile.add("file1");
-        expectedFile.add("file2");
+        _expectedFile.add("file1");
+        _expectedFile.add("file2");
         List<String> file1 = new ArrayList<>();
         List<String> file2 = new ArrayList<>();
 
@@ -41,7 +41,7 @@ public class TerminologyParserTest {
         expected.put("file2",file2);
 
         _terminologyParser.execute();
-        expectedFile.forEach(
+        _expectedFile.forEach(
                 key -> _terminologyParser.getStandOffTerminology().get(key).forEach(
                         offset -> Assert.assertEquals("this object must be equals",
                                 expected.get(key)

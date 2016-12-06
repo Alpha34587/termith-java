@@ -6,7 +6,7 @@ import org.atilf.models.disambiguation.EvaluationProfile;
 import org.atilf.models.disambiguation.LexiconProfile;
 import org.atilf.models.termith.TermithIndex;
 import org.junit.Assert;
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -18,11 +18,11 @@ import java.util.Map;
  *         Created on 25/10/16.
  */
 public class EvaluationExtractorTest {
-    private EvaluationExtractor _evaluationExtractor;
-    private Map<String,EvaluationProfile> expectedMap = new HashMap<>();
-    private Map<String,EvaluationProfile> _observedMap;
-    @Before
-    public void setUp() throws IOException {
+    private static EvaluationExtractor _evaluationExtractor;
+    private static Map<String,EvaluationProfile> expectedMap = new HashMap<>();
+    private static Map<String,EvaluationProfile> _observedMap;
+    @BeforeClass
+    public static void setUp() throws IOException {
         TermithIndex termithIndex = new TermithIndex.Builder().build();
         termithIndex.getContextLexicon().put("entry-13471_lexOn",new LexiconProfile());
         termithIndex.getContextLexicon().put("entry-13471_lexOff",new LexiconProfile());

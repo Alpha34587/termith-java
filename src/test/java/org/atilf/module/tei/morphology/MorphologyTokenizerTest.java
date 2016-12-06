@@ -2,7 +2,7 @@ package org.atilf.module.tei.morphology;
 
 import org.atilf.module.termsuite.morphology.MorphologyParser;
 import org.junit.Assert;
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -13,23 +13,23 @@ import java.util.List;
  *         Created on 26/08/16.
  */
 public class MorphologyTokenizerTest {
-    private MorphologyTokenizer _syntaxBody;
-    private MorphologyTokenizer _syntaxBody2;
-    private MorphologyTokenizer _basicTokenInjector;
-    private MorphologyTokenizer _insideTokenInjector;
-    private MorphologyTokenizer _insideTokenInjector2;
-    private MorphologyTokenizer _commentTokenInjector;
-    private MorphologyTokenizer _symbolTokenInjector;
-    private MorphologyTokenizer _symbolTokenInjector2;
-    private MorphologyTokenizer _symbolTokenInjector3;
-    private MorphologyTokenizer _alignmentTokenInjector;
-    private MorphologyTokenizer _alignmentTokenInjector2;
-    private String _expectedStringBuilder;
-    private String _expectedStringBuilder2;
-    private List<String> _offsetIdAlignment;
+    private static  MorphologyTokenizer _observedSyntaxBody;
+    private static  MorphologyTokenizer _observedSyntaxBody2;
+    private static  MorphologyTokenizer _observedBasicTokenInjector;
+    private static  MorphologyTokenizer _observedInsideTokenInjector;
+    private static  MorphologyTokenizer _observedInsideTokenInjector2;
+    private static  MorphologyTokenizer _observedCommentTokenInjector;
+    private static  MorphologyTokenizer _observedSymbolTokenInjector;
+    private static  MorphologyTokenizer _observedSymbolTokenInjector2;
+    private static  MorphologyTokenizer _observedSymbolTokenInjector3;
+    private static  MorphologyTokenizer _observedAlignmentTokenInjector;
+    private static  MorphologyTokenizer _observedAlignmentTokenInjector2;
+    private static  String _expectedStringBuilder;
+    private static  String _expectedStringBuilder2;
+    private static  List<String> _offsetIdAlignment;
 
-    @Before
-    public void setUp() throws Exception {
+    @BeforeClass
+    public static void setUp() throws Exception {
 
         //bodySplitter test
         _expectedStringBuilder =
@@ -123,22 +123,22 @@ public class MorphologyTokenizerTest {
                         "Le chien mange des chips pas fraiche\n" +
                         "<!--lalalalal--></text>");
 
-        _syntaxBody = new MorphologyTokenizer(StringBuilder);
-        _syntaxBody2 = new MorphologyTokenizer(StringBuilder2);
-        _syntaxBody.teiTextSplitter();
-        _syntaxBody2.teiTextSplitter();
+        _observedSyntaxBody = new MorphologyTokenizer(StringBuilder);
+        _observedSyntaxBody2 = new MorphologyTokenizer(StringBuilder2);
+        _observedSyntaxBody.teiTextSplitter();
+        _observedSyntaxBody2.teiTextSplitter();
 
         MorphologyTokenizer syntaxBody3 = new MorphologyTokenizer(StringBuilder3);
         syntaxBody3.teiTextSplitter();
 
-        //_basicTokenInjector
+        //_observedBasicTokenInjector
         MorphologyParser basicMorphologyParser = new MorphologyParser();
         basicMorphologyParser.createToken("N", "le", 0, 2);
         basicMorphologyParser.createToken("N", "chien", 3, 8);
         basicMorphologyParser.createToken("N", "mange", 9, 14);
         basicMorphologyParser.createToken("N", "des", 15, 18);
         basicMorphologyParser.createToken("N", "pommes", 19, 25);
-        _basicTokenInjector = new MorphologyTokenizer(
+        _observedBasicTokenInjector = new MorphologyTokenizer(
                 new StringBuilder("le chien mange des pommes"),
                 new StringBuilder("<text>le chien mange des pommes</text>"),
                 basicMorphologyParser
@@ -151,7 +151,7 @@ public class MorphologyTokenizerTest {
         insideMorphologyParser.createToken("N","mange",9,14);
         insideMorphologyParser.createToken("N","des",15,18);
         insideMorphologyParser.createToken("N","pommes",19,25);
-        _insideTokenInjector = new MorphologyTokenizer(
+        _observedInsideTokenInjector = new MorphologyTokenizer(
                 new StringBuilder("le chien mange des pommes"),
                 new StringBuilder("<text>le <hi>chi</hi><hi>en</hi> mange de<s>s</s> <hi>pommes</hi></text>"),
                 insideMorphologyParser
@@ -166,13 +166,13 @@ public class MorphologyTokenizerTest {
         insideMorphologyParser2.createToken("N","bonnes",20,26);
         insideMorphologyParser2.createToken("N",")",26,27);
         insideMorphologyParser2.createToken("N","pommes",28,34);
-        _insideTokenInjector2 = new MorphologyTokenizer(
+        _observedInsideTokenInjector2 = new MorphologyTokenizer(
                 new StringBuilder("le chien mange des (bonnes) pommes"),
                 new StringBuilder("<text>le <hi>chi</hi><hi>en</hi> mange de<s>s</s> <hi>(bonnes<hi>)</hi> pommes</hi></text>"),
                 insideMorphologyParser2
         );
 
-        //_commentTokenInjector
+        //_observedCommentTokenInjector
 
         MorphologyParser commentMorphologyParser = new MorphologyParser();
         commentMorphologyParser.createToken("N", "le", 0, 2);
@@ -180,7 +180,7 @@ public class MorphologyTokenizerTest {
         commentMorphologyParser.createToken("N", "mange", 9, 14);
         commentMorphologyParser.createToken("N", "des", 15, 18);
         commentMorphologyParser.createToken("N", "pommes", 19, 25);
-        _commentTokenInjector = new MorphologyTokenizer(
+        _observedCommentTokenInjector = new MorphologyTokenizer(
                 new StringBuilder("le chien mange des pommes"),
                 new StringBuilder("<text>le<!--testtest--> <hi>chi</hi>en" +
                         " <!--test-->mange de<s>s</s><!--lalalal--><!--test--> " +
@@ -188,10 +188,10 @@ public class MorphologyTokenizerTest {
                 commentMorphologyParser
         );
 
-        //_symbolTokenInjector
+        //_observedSymbolTokenInjector
         MorphologyParser symbolMorphologyParser = new MorphologyParser();
 
-        _symbolTokenInjector = new MorphologyTokenizer(
+        _observedSymbolTokenInjector = new MorphologyTokenizer(
                 new StringBuilder("le &amp; &amp; chi&eacute;ien ma&diams;nge des pommes&amp;"),
                 new StringBuilder("le &amp; &amp; chi&eacute;ien ma&diams;nge des pommes&amp;"),
                 symbolMorphologyParser
@@ -205,7 +205,7 @@ public class MorphologyTokenizerTest {
         symbolMorphologyParser2.createToken("N", "mange", 15, 21);
         symbolMorphologyParser2.createToken("N", "des", 22, 26);
         symbolMorphologyParser2.createToken("N", "pommes", 27, 34);
-        _symbolTokenInjector2 = new MorphologyTokenizer(
+        _observedSymbolTokenInjector2 = new MorphologyTokenizer(
                 new StringBuilder("le &amp; &amp; chi&eacute;ien ma&diams;nge &diams;des pommes&amp;"),
                 new StringBuilder("<text>le &amp; &amp; chi&eacute;ien ma&diams;nge &diams;des pommes&amp;</text>"),
                 symbolMorphologyParser2
@@ -219,7 +219,7 @@ public class MorphologyTokenizerTest {
         symbolMorphologyParser3.createToken("N", "mange", 15, 22);
         symbolMorphologyParser3.createToken("N", "des", 23, 27);
         symbolMorphologyParser3.createToken("N", "pommes", 28, 35);
-        _symbolTokenInjector3 = new MorphologyTokenizer(
+        _observedSymbolTokenInjector3 = new MorphologyTokenizer(
                 new StringBuilder("le &amp; &amp; chi&eacute;ien ma&diams;&diams;nge &diams;des pommes&amp;"),
                 new StringBuilder("<text><hi>le</hi> &amp; &amp; <hi>chi</hi>&eacute;ien" +
                         " <hi>ma</hi><sub>&diams;&diams;</sub><sub>nge</sub> " +
@@ -239,14 +239,14 @@ public class MorphologyTokenizerTest {
         alignmentMorphologyParser.createToken("N", "assez", 26, 31);
         alignmentMorphologyParser.createToken("N", "délicieux", 33, 42);
         alignmentMorphologyParser.createToken("N", "<", 48, 49);
-        _alignmentTokenInjector = new MorphologyTokenizer(
+        _observedAlignmentTokenInjector = new MorphologyTokenizer(
                 new StringBuilder("le chien\nmange un fromage assez\n\ndélicieux  \n\n\n\n<"),
                 new StringBuilder("<text><head>le chien</head><p>mange " +
                         "<div>un froma<sup>ge</sup> assez" +
                         "</div></p><p>d&eacute;licieux  </p>\n\n\n&lt;</text>"),
                 alignmentMorphologyParser
         );
-        _alignmentTokenInjector.teiWordTokenizer();
+        _observedAlignmentTokenInjector.teiWordTokenizer();
 
         MorphologyParser alignmentMorphologyParser2 = new MorphologyParser();
         alignmentMorphologyParser2.createToken("N", "le", 0, 2);
@@ -256,14 +256,14 @@ public class MorphologyTokenizerTest {
         alignmentMorphologyParser2.createToken("N", "fromage", 18, 25);
         alignmentMorphologyParser2.createToken("N", "assez", 26, 31);
         alignmentMorphologyParser2.createToken("N", "délicieux", 33, 42);
-        _alignmentTokenInjector2 = new MorphologyTokenizer(
+        _observedAlignmentTokenInjector2 = new MorphologyTokenizer(
                 new StringBuilder("le chien\nmange \n< fromage assez\n\ndélicieux  \n\n\n\n"),
                 new StringBuilder("<text><head>le chien</head><p>mange " +
                         "<div>&lt; froma<sup>ge</sup> assez" +
                         "</div></p><p>d&eacute;licieux  </p>\n\n\n</text>"),
                 alignmentMorphologyParser2
         );
-            _alignmentTokenInjector2.teiWordTokenizer();
+            _observedAlignmentTokenInjector2.teiWordTokenizer();
 
         _offsetIdAlignment =  new ArrayList<>();
         _offsetIdAlignment.add("0, 2, [1]");
@@ -278,14 +278,14 @@ public class MorphologyTokenizerTest {
     @Test
     public void teiBodyspliterTest() throws Exception {
         Assert.assertEquals("this StringBuilder must be equals to :",
-                _syntaxBody.getXml().toString(), _expectedStringBuilder);
+                _observedSyntaxBody.getXml().toString(), _expectedStringBuilder);
         Assert.assertEquals("this StringBuilder must be equals to :",
-                _syntaxBody2.getXml().toString(), _expectedStringBuilder2);
+                _observedSyntaxBody2.getXml().toString(), _expectedStringBuilder2);
     }
 
     @Test
     public void basictokenInjectorTest() throws Exception {
-        _basicTokenInjector.teiWordTokenizer();
+        _observedBasicTokenInjector.teiWordTokenizer();
 
         Assert.assertEquals("tokenizeInjector basic test fail :",
                 "<text>" +
@@ -295,13 +295,13 @@ public class MorphologyTokenizerTest {
                         "<w xml:id=\"t4\">des</w> " +
                         "<w xml:id=\"t5\">pommes</w>" +
                         "</text>",
-                _basicTokenInjector.getTokenizeBuffer().toString()
+                _observedBasicTokenInjector.getTokenizeBuffer().toString()
         );
     }
 
     @Test
     public void insideTokenInjectorTest() throws Exception {
-        _insideTokenInjector.teiWordTokenizer();
+        _observedInsideTokenInjector.teiWordTokenizer();
         Assert.assertEquals("tokenizeInjector inside test fail :",
                 "<text>" +
                         "<w xml:id=\"t1\">le</w> " +
@@ -312,10 +312,10 @@ public class MorphologyTokenizerTest {
                         "<s><w xml:id=\"t6\">s</w></s> " +
                         "<hi><w xml:id=\"t7\">pommes</w></hi>" +
                         "</text>",
-                _insideTokenInjector.getTokenizeBuffer().toString()
+                _observedInsideTokenInjector.getTokenizeBuffer().toString()
         );
 
-        _insideTokenInjector2.teiWordTokenizer();
+        _observedInsideTokenInjector2.teiWordTokenizer();
         Assert.assertEquals("tokenizeInjector inside test fail :",
                 "<text>" +
                         "<w xml:id=\"t1\">le</w> " +
@@ -329,13 +329,13 @@ public class MorphologyTokenizerTest {
                         "<hi><w xml:id=\"t9\">)</w></hi> " +
                         "<w xml:id=\"t10\">pommes</w></hi>" +
                         "</text>",
-                _insideTokenInjector2.getTokenizeBuffer().toString()
+                _observedInsideTokenInjector2.getTokenizeBuffer().toString()
         );
     }
 
     @Test
     public void commentTokenInjector() throws Exception {
-        _commentTokenInjector.teiWordTokenizer();
+        _observedCommentTokenInjector.teiWordTokenizer();
         Assert.assertEquals("tokenizeInjector comment test fail :",
                 "<text>" +
                         "<w xml:id=\"t1\">le</w><!--testtest--> " +
@@ -346,15 +346,15 @@ public class MorphologyTokenizerTest {
                         "<s><w xml:id=\"t6\">s</w></s><!--lalalal--><!--test--> " +
                         "<hi><w xml:id=\"t7\">pommes</w></hi><!--lalala-->" +
                         "</text>",
-                _commentTokenInjector.getTokenizeBuffer().toString()
+                _observedCommentTokenInjector.getTokenizeBuffer().toString()
         );
     }
 
     @Test
     public void checkIfSymbolTest() throws Exception {
-        _symbolTokenInjector.teiWordTokenizer();
-        _symbolTokenInjector2.teiWordTokenizer();
-        _symbolTokenInjector3.teiWordTokenizer();
+        _observedSymbolTokenInjector.teiWordTokenizer();
+        _observedSymbolTokenInjector2.teiWordTokenizer();
+        _observedSymbolTokenInjector3.teiWordTokenizer();
 
         Assert.assertEquals("symbol execute test fails :",
                 "<text>" +
@@ -366,7 +366,7 @@ public class MorphologyTokenizerTest {
                         "<w xml:id=\"t6\">&diams;des</w> " +
                         "<w xml:id=\"t7\">pommes&amp;</w>" +
                         "</text>",
-                _symbolTokenInjector2.getTokenizeBuffer().toString());
+                _observedSymbolTokenInjector2.getTokenizeBuffer().toString());
 
         Assert.assertEquals("complex symbol execute test fails :",
                 "<text>" +
@@ -382,7 +382,7 @@ public class MorphologyTokenizerTest {
                         "<w xml:id=\"t10\">es</w> " +
                         "<hi><w xml:id=\"t11\">pommes&amp;</w></hi>" +
                         "</text>",
-                _symbolTokenInjector3.getTokenizeBuffer().toString());
+                _observedSymbolTokenInjector3.getTokenizeBuffer().toString());
 
     }
 
@@ -400,7 +400,7 @@ public class MorphologyTokenizerTest {
                         "<p><w xml:id=\"t8\">d&eacute;licieux</w>  </p>\n\n\n" +
                         "<w xml:id=\"t9\">&lt;</w>" +
                         "</text>",
-                _alignmentTokenInjector.getTokenizeBuffer().toString());
+                _observedAlignmentTokenInjector.getTokenizeBuffer().toString());
 
         Assert.assertEquals("text alignment test fails :",
                 "<text>" +
@@ -413,16 +413,16 @@ public class MorphologyTokenizerTest {
                         "<w xml:id=\"t7\">assez</w></div></p>" +
                         "<p><w xml:id=\"t8\">d&eacute;licieux</w>  </p>\n\n\n" +
                         "</text>",
-                _alignmentTokenInjector2.getTokenizeBuffer().toString());
+                _observedAlignmentTokenInjector2.getTokenizeBuffer().toString());
     }
 
     @Test
     public void checkOffsetId(){
 
-        _alignmentTokenInjector.getOffsetId().forEach(
+        _observedAlignmentTokenInjector.getOffsetId().forEach(
                 offsetId -> {
                     String observed = offsetId.getBegin() + ", " + offsetId.getEnd() + ", " + offsetId.getIds();
-                    String expected = _offsetIdAlignment.get(_alignmentTokenInjector.getOffsetId().indexOf(offsetId));
+                    String expected = _offsetIdAlignment.get(_observedAlignmentTokenInjector.getOffsetId().indexOf(offsetId));
                     Assert.assertEquals("this offset must be equals", expected, observed);
                 }
         );
