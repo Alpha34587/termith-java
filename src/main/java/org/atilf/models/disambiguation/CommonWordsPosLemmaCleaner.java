@@ -36,6 +36,11 @@ public class CommonWordsPosLemmaCleaner implements Runnable {
     }
 
     public void execute(){
-
+        _lex2.getSpecCoefficientMap().keySet().forEach(
+                key -> _lex1.getSpecCoefficientMap().keySet().remove(key)
+        );
+        _lex1.getSpecCoefficientMap().keySet().forEach(
+                key -> _lex2.getSpecCoefficientMap().keySet().remove(key)
+        );
     }
 }
