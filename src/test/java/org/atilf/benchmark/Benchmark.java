@@ -134,7 +134,7 @@ public class Benchmark {
         ",\n" +
         drawGraph("_dataR",benchmarkList, "R coefficient") +
         ",\n" +
-        drawGraph("_dataEvaluationExtractor",benchmarkList, "Context Evaluation Exporter") +
+        drawGraph("_dataEvaluationExtractor",benchmarkList, "Context Evaluation Extractor") +
         ",\n" +
         drawGraph("_dataExporter",benchmarkList, "Exporter") +
         "\n]";
@@ -184,11 +184,11 @@ public class Benchmark {
 
     /**
      * execute Thread and calculate CPU time
-     * @param threadClass the org.atilf.thread to execute
      * @param <T> thread inherited class
+     * @param threadClass the org.atilf.thread to execute
      * @throws NoSuchMethodException throws an exception if constructor method cannot be called
      */
-    private <T extends Thread> void ThreadPerformance(Class<T> threadClass, long time) throws NoSuchMethodException {
+    private <T extends Thread> long ThreadPerformance(Class<T> threadClass) throws NoSuchMethodException {
         long startTime = System.nanoTime();
         try {
             threadClass.getConstructor(TermithIndex.class, int.class).newInstance(_termithIndex, 8).execute();
@@ -200,8 +200,9 @@ public class Benchmark {
         }
         long finishTime = System.nanoTime();
 
-        time = TimeUnit.SECONDS.convert(finishTime - startTime, TimeUnit.NANOSECONDS);
+        long time = TimeUnit.SECONDS.convert(finishTime - startTime, TimeUnit.NANOSECONDS);
         _dataDisambiguation += time;
+        return time;
     }
 
     /**
@@ -259,10 +260,10 @@ public class Benchmark {
      */
     public void execute() throws IOException, NoSuchMethodException {
         setUp();
-        ThreadPerformance(ContextLexiconThread.class,_dataContextExtractor);
-        ThreadPerformance(LexiconProfileThread.class,_dataR);
-        ThreadPerformance(EvaluationThread.class,_dataEvaluationExtractor);
-        ThreadPerformance(DisambiguationExporterThread.class,_dataExporter);
+        _dataContextExtractor = ThreadPerformance(ContextLexiconThread.class);
+        _dataR = ThreadPerformance(LexiconProfileThread.class);
+        _dataEvaluationExtractor = ThreadPerformance(EvaluationThread.class);
+        _dataExporter = ThreadPerformance(DisambiguationExporterThread.class);
         writeJson();
     }
 
