@@ -1,5 +1,6 @@
 package org.atilf.thread.disambiguation;
 
+import org.atilf.models.disambiguation.CommonWordsPosLemmaCleaner;
 import org.atilf.models.disambiguation.DisambiguationXslResources;
 import org.atilf.models.termith.TermithIndex;
 import org.atilf.module.disambiguation.DisambiguationXslTransformer;
@@ -24,6 +25,8 @@ public class EvaluationThread extends Thread{
     private CountDownLatch _transformCounter;
     private CountDownLatch _extractorCounter;
     private CountDownLatch _cleanerCounter;
+    private CountDownLatch _commonCleanerCounter;
+
     /**
      * this constructor initialize the _termithIndex fields and initialize the _poolSize field with the default value
      * with the number of available processors.
@@ -59,6 +62,9 @@ public class EvaluationThread extends Thread{
             );
             _cleanerCounter = new CountDownLatch(
                     _termithIndex.getContextLexicon().size());
+
+            _commonCleanerCounter = new CountDownLatch(
+                    _termithIndex.getContextLexicon().size());
         }
         catch (IOException e) {
             _logger.error("could not find folder : ",e);
@@ -89,6 +95,29 @@ public class EvaluationThread extends Thread{
                 ))
         );
         _cleanerCounter.await();
+
+        /*
+        Common PosLemma cleaner
+         */
+        _termithIndex.getContextLexicon().forEach(
+                (key,value) ->
+                {
+                    String lexOff = key.replace("On","Off");
+                    if (key.contains("_lexOn") &&
+                            _termithIndex.getContextLexicon().containsKey(lexOff)) {
+                        _executorService.submit(new CommonWordsPosLemmaCleaner(
+                                key,
+                                value,
+                                _termithIndex.getContextLexicon().get(lexOff),
+                                _commonCleanerCounter
+                        ));
+                    }
+                    else {
+                        _commonCleanerCounter.countDown();
+                    }
+                }
+        );
+        _commonCleanerCounter.await();
 
         /*
         Transformation phase
