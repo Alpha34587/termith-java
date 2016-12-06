@@ -1,17 +1,20 @@
 package org.atilf.module.disambiguation;
 
+import org.atilf.models.disambiguation.ContextTerm;
+import org.atilf.models.disambiguation.ContextWord;
 import org.atilf.models.disambiguation.EvaluationProfile;
 import org.atilf.models.termith.TermithIndex;
 import org.atilf.module.tools.FilesUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.w3c.dom.NodeList;
+import org.xml.sax.Attributes;
+import org.xml.sax.SAXException;
 
-import javax.xml.xpath.XPathConstants;
-import javax.xml.xpath.XPathExpressionException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.CountDownLatch;
+
+import static org.atilf.models.disambiguation.AnnotationResources.NO_DM;
 
 /**
  * @author Simon Meoni
@@ -25,54 +28,72 @@ public class EvaluationExtractor extends ContextExtractor {
     private CountDownLatch _extactorCounter;
 
     public EvaluationExtractor(String p, TermithIndex termithIndex) {
-        super(p,termithIndex.getContextLexicon());
+        super(p,termithIndex.getContextLexicon(), null);
         _p = p;
         termithIndex.getEvaluationLexicon().put(FilesUtils.nameNormalizer(p),new HashMap<>());
         _evaluationLexicon = termithIndex.getEvaluationLexicon().get(FilesUtils.nameNormalizer(p));
     }
 
     public EvaluationExtractor(String p, TermithIndex termithIndex, CountDownLatch extactorCounter) {
-        super(p,termithIndex.getContextLexicon());
+        super(p,termithIndex.getContextLexicon(), null);
         _p = p;
         _extactorCounter = extactorCounter;
         termithIndex.getEvaluationLexicon().put(FilesUtils.nameNormalizer(p),new HashMap<>());
         _evaluationLexicon = termithIndex.getEvaluationLexicon().get(FilesUtils.nameNormalizer(p));
     }
 
+
     @Override
-    public void extractTerms() {
-        try {
-            NodeList nodes = (NodeList) _eSpanTerms.evaluate(_doc, XPathConstants.NODESET);
-            for (int i = 0; i < nodes.getLength(); i++) {
-                if (containInSpecLexicon(nodes.item(i).getAttributes().getNamedItem("corresp").getNodeValue())) {
-                    addToTermsQueues(nodes.item(i),nodes.item(i).getAttributes().getNamedItem("ana").getNodeValue());
-                }
-            }
-        } catch (XPathExpressionException e) {
-            LOGGER.error("error during the execute of document",e);
+    protected void extractTerms(Attributes attributes) {
+        String ana = attributes.getValue("ana");
+        String corresp = attributes.getValue("corresp");
+        if (ana.equals(NO_DM.getValue()) && inBothContextLexicon(corresp)) {
+            _terms.add(new ContextTerm(attributes.getValue("corresp"),
+                    ana,
+                    attributes.getValue("target")));
+            LOGGER.debug("term extracted: " + attributes.getValue("corresp"));
+        }
+        else if (inContextLexicon(corresp)){
+            _evaluationLexicon.put(normalizeKey(corresp,ana),new EvaluationProfile());
         }
     }
 
-    private boolean containInSpecLexicon(String corresp){
-        return (_contextLexicon.containsKey(corresp.substring(1) + "_lexOff") ||
-                _contextLexicon.containsKey(corresp.substring(1) + "_lexOn"));
+    protected void addWordToLexicon(String key, ContextWord contextWord){
+        if (!_evaluationLexicon.containsKey(key)){
+            _evaluationLexicon.put(key,new EvaluationProfile());
+        }
+        _evaluationLexicon.get(key).addOccurrence(contextWord.getPosLemma());
     }
 
-    @Override
-    protected void addOccToLexicalProfile(String word, String key){
-            if (!_evaluationLexicon.containsKey(key)){
-                _evaluationLexicon.put(key,new EvaluationProfile());
-            }
-            _evaluationLexicon.get(key).addOccurrence(word);
+    private boolean inBothContextLexicon(String corresp) {
+        return _contextLexicon.containsKey(corresp.replace("#","") + "_lexOn") &&
+                _contextLexicon.containsKey(corresp.replace("#","") + "_lexOff");
+    }
 
+    private boolean inContextLexicon(String corresp) {
+        return _contextLexicon.containsKey(corresp.replace("#","") + "_lexOn") ||
+                _contextLexicon.containsKey(corresp.replace("#","") + "_lexOff");
     }
 
     @Override
     public void run() {
-        LOGGER.debug("add " + _p + " to evaluation lexicon");
+        LOGGER.info("add " + _p + " to evaluation lexicon");
         this.execute();
         _extactorCounter.countDown();
-        LOGGER.debug(_p + " added");
+        LOGGER.info(_p + " added");
+    }
+
+    /**
+     * the character event is used to extract the Pos/Lemma pair of a w element
+     */
+    @Override
+    public void characters(char ch[],
+                           int start, int length) throws SAXException {
+        if (_inW){
+            String word = new String(ch,start,length);
+            _lastContextWord.setPosLemma(word);
+            _inW = false;
+        }
     }
 
     @Override

@@ -3,7 +3,7 @@ package org.atilf.module.termsuite.json;
 import org.antlr.v4.runtime.misc.Pair;
 import org.atilf.module.termsuite.morphology.MorphologyParser;
 import org.junit.Assert;
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,41 +18,29 @@ import java.util.Queue;
  *         Created on 25/08/16.
  */
 public class MorphologyParserTest {
-    private MorphologyParser _morphologyParser;
-    private MorphologyParser _cleanMorphologyParser;
-    private MorphologyParser expectedJsonReader;
-
+    private static MorphologyParser _morphologyParser;
+    private static MorphologyParser _expectedJsonReader;
     private Queue<Pair<Integer, Integer>> offsets = new LinkedList<>();
 
 
     private static final Logger LOGGER = LoggerFactory.getLogger(MorphologyParserTest.class);
 
-    @Before
-    public void setUp(){
-        //Parsing Test
-        _cleanMorphologyParser = new MorphologyParser();
+    @BeforeClass
+    public static void setUp(){
         _morphologyParser = new MorphologyParser(new File("src/test/resources/file/reader/json/file1.json"));
-        expectedJsonReader = new MorphologyParser();
-        expectedJsonReader.createToken("NN", "hearing", 22, 29);
-        expectedJsonReader.createToken("N", "research", 30, 38);
-        expectedJsonReader.createToken("CD", "125", 39, 42);
-        _morphologyParser.execute();
-
-        //Clean Test
-        offsets.add(new Pair<>(0,5));
-        offsets.add(new Pair<>(6,7));
-        offsets.add(new Pair<>(8,8));
-        offsets.add(new Pair<>(9,10));
-        offsets.add(new Pair<>(11,15));
-        offsets.add(new Pair<>(16,18));
+        _expectedJsonReader = new MorphologyParser();
+        _expectedJsonReader.createToken("NN", "hearing", 22, 29);
+        _expectedJsonReader.createToken("N", "research", 30, 38);
+        _expectedJsonReader.createToken("CD", "125", 39, 42);
     }
 
     @Test
     public void parsingTest(){
-        while (!expectedJsonReader.getTokenQueue().isEmpty() || !_morphologyParser.getTokenQueue().isEmpty()) {
+        _morphologyParser.execute();
+        while (!_expectedJsonReader.getTokenQueue().isEmpty() || !_morphologyParser.getTokenQueue().isEmpty()) {
             try {
 
-                MorphologyParser.Token expected = expectedJsonReader.getTokenQueue().poll();
+                MorphologyParser.Token expected = _expectedJsonReader.getTokenQueue().poll();
                 MorphologyParser.Token current = _morphologyParser.getTokenQueue().poll();
                 Assert.assertEquals("tokenStack must be equals :", expected.getBegin(),
                         current.getBegin());

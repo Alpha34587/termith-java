@@ -1,7 +1,10 @@
 package org.atilf.module.disambiguation;
 
+import org.atilf.models.disambiguation.AnnotationResources;
 import org.atilf.models.disambiguation.EvaluationProfile;
 import org.atilf.models.disambiguation.LexiconProfile;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Map;
 
@@ -24,18 +27,22 @@ public class Evaluation implements Runnable{
 
     private final Map<String, EvaluationProfile> _evaluationProfile;
     private final Map<String, LexiconProfile> _contextLexicon;
-    private float _factorOn = 0f;
-    private float _factorOff = 0f;
+    private final String _p;
+    float _factorOn = 0f;
+    float _factorOff = 0f;
+    private static final Logger LOGGER = LoggerFactory.getLogger(Evaluation.class.getName());
 
     /**
      * constructor of the Evaluation method
      * @param evaluationProfile the evaluationProfile of a termithIndex
      * @param contextLexicon the contextLexicon of a termithIndex
      */
-    public Evaluation(Map<String, EvaluationProfile> evaluationProfile, Map<String, LexiconProfile> contextLexicon) {
+    public Evaluation(String p, Map<String, EvaluationProfile> evaluationProfile,
+                      Map<String, LexiconProfile> contextLexicon) {
 
         _evaluationProfile = evaluationProfile;
         _contextLexicon = contextLexicon;
+        _p = p;
     }
 
     /**
@@ -49,6 +56,7 @@ public class Evaluation implements Runnable{
         _evaluationProfile.forEach(
                 (key,value) ->
                 {
+                    LOGGER.debug("evaluation for term candidate: " + key + "for file: " + _p);
                     /*
                     convert evaluationProfile key to LexiconProfile keys (suffix key with lexOn and lexOff)
                      */
@@ -60,7 +68,9 @@ public class Evaluation implements Runnable{
                      the term is not a terminology
                      */
                     if (!_contextLexicon.containsKey(lexEntryOn)){
-                        value.setDisambiguationId("DaOff");
+                        value.setDisambiguationId(AnnotationResources.DA_OFF);
+                        LOGGER.debug("term candidate: " + key + "for file: " + _p + " is not a terminology");
+
                     }
 
                     /*
@@ -68,7 +78,8 @@ public class Evaluation implements Runnable{
                      the term is terminology
                      */
                     else if (!_contextLexicon.containsKey(lexEntryOff)){
-                        value.setDisambiguationId("DaOn");
+                        value.setDisambiguationId(AnnotationResources.DA_ON);
+                        LOGGER.debug("term candidate: " + key + "for file: " + _p + " is a terminology");
                     }
 
                     /*
@@ -78,6 +89,7 @@ public class Evaluation implements Runnable{
                         /*
                         compute the _factorOn and _factorOff
                          */
+                        LOGGER.debug("compareing factor for term candidate: " + key + "in file: " + _p);
                         computeFactor(value, _contextLexicon.get(lexEntryOn), _contextLexicon.get(lexEntryOff));
                         /*
                         compare factors
@@ -95,12 +107,12 @@ public class Evaluation implements Runnable{
      * a terminology.
      * @param entry an EvaluationProfile of a term candidate
      */
-    private void compareFactor(EvaluationProfile entry) {
+    void compareFactor(EvaluationProfile entry) {
         if (_factorOff >= _factorOn){
-            entry.setDisambiguationId("DaOff");
+            entry.setDisambiguationId(AnnotationResources.DA_OFF);
         }
         else {
-            entry.setDisambiguationId("DaOn");
+            entry.setDisambiguationId(AnnotationResources.DA_ON);
         }
     }
 
@@ -112,9 +124,10 @@ public class Evaluation implements Runnable{
      * @param lexOn the terminology lexicalProfile of the current term candidate
      * @param lexOff the non-terminology lexicalProfile of the current term candidate
      */
-    private void computeFactor(EvaluationProfile entry,
+    public void computeFactor(EvaluationProfile entry,
                                 LexiconProfile lexOn,
                                 LexiconProfile lexOff) {
+        LOGGER.debug("compute factor ...");
         entry.forEach(
                 el -> {
                     _factorOn += occurrenceScore(lexOn.getSpecCoefficient(el),entry.count(el));
@@ -148,6 +161,8 @@ public class Evaluation implements Runnable{
      */
     @Override
     public void run() {
+        LOGGER.info("evaluate terms candidate from: " + _p);
         this.execute();
+        LOGGER.info("evaluation is finished for: " + _p);
     }
 }

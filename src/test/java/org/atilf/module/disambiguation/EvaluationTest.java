@@ -13,18 +13,23 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static org.atilf.models.disambiguation.AnnotationResources.DA_ON;
+
 /**
  * @author Simon Meoni
  *         Created on 25/10/16.
  */
 public class EvaluationTest {
-    private Map<String,EvaluationProfile> _evaluationProfileMap  = new HashMap<>();
-    private List<String> _disambIdObserved;
+
+    private static Map<String,EvaluationProfile> _evaluationProfileMap  = new HashMap<>();
+    private static List<String> _disambiguationIdObserved;
+    private static Evaluation _evaluation;
+    private static Map<String, LexiconProfile> _lexicalProfileMap = new HashMap<>();
+
 
     @Before
     public void setUp() throws Exception {
-        Map<String, LexiconProfile> lexicalProfileMap = new HashMap<>();
-        Evaluation evaluation = new Evaluation(_evaluationProfileMap, lexicalProfileMap);
+        _evaluation = new Evaluation("test",_evaluationProfileMap, _lexicalProfileMap);
 
         Multiset<String> entry1 = HashMultiset.create();
         entry1.add("du PRP:det");
@@ -57,13 +62,13 @@ public class EvaluationTest {
         entry3.add("le DET:ART");
         entry3.add("deux NUM");
 
-        lexicalProfileMap.put("entry-13471_lexOn",new LexiconProfile(entry3));
-        lexicalProfileMap.get("entry-13471_lexOn").addCoefficientSpec("du PRP:det", 1f);
-        lexicalProfileMap.get("entry-13471_lexOn").addCoefficientSpec("le DET:ART", 1f);
-        lexicalProfileMap.get("entry-13471_lexOn").addCoefficientSpec(". SENT", 1f);
-        lexicalProfileMap.get("entry-13471_lexOn").addCoefficientSpec("sur PRP", 1f);
-        lexicalProfileMap.get("entry-13471_lexOn").addCoefficientSpec("le DET:ART", 1f);
-        lexicalProfileMap.get("entry-13471_lexOn").addCoefficientSpec("deux NUM", 1f);
+        _lexicalProfileMap.put("entry-13471_lexOn",new LexiconProfile(entry3));
+        _lexicalProfileMap.get("entry-13471_lexOn").addCoefficientSpec("du PRP:det", 1f);
+        _lexicalProfileMap.get("entry-13471_lexOn").addCoefficientSpec("le DET:ART", 1f);
+        _lexicalProfileMap.get("entry-13471_lexOn").addCoefficientSpec(". SENT", 1f);
+        _lexicalProfileMap.get("entry-13471_lexOn").addCoefficientSpec("sur PRP", 1f);
+        _lexicalProfileMap.get("entry-13471_lexOn").addCoefficientSpec("le DET:ART", 1f);
+        _lexicalProfileMap.get("entry-13471_lexOn").addCoefficientSpec("deux NUM", 1f);
 
         Multiset<String> entry4 = HashMultiset.create();
         entry4.add("pêche NOM");
@@ -73,14 +78,14 @@ public class EvaluationTest {
         entry4.add("quelque PRO:IND");
         entry4.add("espèce NOM");
         entry4.add("il PRO:PER");
-        lexicalProfileMap.put("entry-13471_lexOff",new LexiconProfile(entry4));
-        lexicalProfileMap.get("entry-13471_lexOff").addCoefficientSpec("pêche NOM", 1f);
-        lexicalProfileMap.get("entry-13471_lexOff").addCoefficientSpec(", PUN", 1f);
-        lexicalProfileMap.get("entry-13471_lexOff").addCoefficientSpec("limiter VER:pper", 1f);
-        lexicalProfileMap.get("entry-13471_lexOff").addCoefficientSpec("à PRP", 1f);
-        lexicalProfileMap.get("entry-13471_lexOff").addCoefficientSpec("quelque PRO:IND", 1f);
-        lexicalProfileMap.get("entry-13471_lexOff").addCoefficientSpec("espèce NOM", 1f);
-        lexicalProfileMap.get("entry-13471_lexOff").addCoefficientSpec("il PRO:PER", 1f);
+        _lexicalProfileMap.put("entry-13471_lexOff",new LexiconProfile(entry4));
+        _lexicalProfileMap.get("entry-13471_lexOff").addCoefficientSpec("pêche NOM", 1f);
+        _lexicalProfileMap.get("entry-13471_lexOff").addCoefficientSpec(", PUN", 1f);
+        _lexicalProfileMap.get("entry-13471_lexOff").addCoefficientSpec("limiter VER:pper", 1f);
+        _lexicalProfileMap.get("entry-13471_lexOff").addCoefficientSpec("à PRP", 1f);
+        _lexicalProfileMap.get("entry-13471_lexOff").addCoefficientSpec("quelque PRO:IND", 1f);
+        _lexicalProfileMap.get("entry-13471_lexOff").addCoefficientSpec("espèce NOM", 1f);
+        _lexicalProfileMap.get("entry-13471_lexOff").addCoefficientSpec("il PRO:PER", 1f);
 
         Multiset<String> entry5 = HashMultiset.create();
         entry5.add("pêche NOM");
@@ -92,16 +97,16 @@ public class EvaluationTest {
         entry5.add("commun ADJ");
         entry5.add(". SENT");
         entry5.add("il PRO:PER");
-        lexicalProfileMap.put("entry-7263_lexOn",new LexiconProfile(entry5));
-        lexicalProfileMap.get("entry-7263_lexOn").addCoefficientSpec("pêche NOM", 1f);
-        lexicalProfileMap.get("entry-7263_lexOn").addCoefficientSpec(", PUN", 1f);
-        lexicalProfileMap.get("entry-7263_lexOn").addCoefficientSpec("limiter VER:pper", 1f);
-        lexicalProfileMap.get("entry-7263_lexOn").addCoefficientSpec("à PRP", 1f);
-        lexicalProfileMap.get("entry-7263_lexOn").addCoefficientSpec("quelque PRO:IND", 1f);
-        lexicalProfileMap.get("entry-7263_lexOn").addCoefficientSpec("espèce NOM", 1f);
-        lexicalProfileMap.get("entry-7263_lexOn").addCoefficientSpec("commun ADJ", 1f);
-        lexicalProfileMap.get("entry-7263_lexOn").addCoefficientSpec(". SENT", 1f);
-        lexicalProfileMap.get("entry-7263_lexOn").addCoefficientSpec("il PRO:PER", 1f);
+        _lexicalProfileMap.put("entry-7263_lexOn",new LexiconProfile(entry5));
+        _lexicalProfileMap.get("entry-7263_lexOn").addCoefficientSpec("pêche NOM", 1f);
+        _lexicalProfileMap.get("entry-7263_lexOn").addCoefficientSpec(", PUN", 1f);
+        _lexicalProfileMap.get("entry-7263_lexOn").addCoefficientSpec("limiter VER:pper", 1f);
+        _lexicalProfileMap.get("entry-7263_lexOn").addCoefficientSpec("à PRP", 1f);
+        _lexicalProfileMap.get("entry-7263_lexOn").addCoefficientSpec("quelque PRO:IND", 1f);
+        _lexicalProfileMap.get("entry-7263_lexOn").addCoefficientSpec("espèce NOM", 1f);
+        _lexicalProfileMap.get("entry-7263_lexOn").addCoefficientSpec("commun ADJ", 1f);
+        _lexicalProfileMap.get("entry-7263_lexOn").addCoefficientSpec(". SENT", 1f);
+        _lexicalProfileMap.get("entry-7263_lexOn").addCoefficientSpec("il PRO:PER", 1f);
 
         Multiset<String> entry6 = HashMultiset.create();
         entry6.add("pêche NOM");
@@ -116,30 +121,41 @@ public class EvaluationTest {
         entry6.add("commun ADJ");
         entry6.add(". SENT");
         entry6.add("il PRO:PER");
-        lexicalProfileMap.put("entry-7263_lexOff",new LexiconProfile(entry6));
-        lexicalProfileMap.get("entry-7263_lexOff").addCoefficientSpec("pêche NOM", 1f);
-        lexicalProfileMap.get("entry-7263_lexOff").addCoefficientSpec(", PUN", 1f);
-        lexicalProfileMap.get("entry-7263_lexOff").addCoefficientSpec("limiter VER:pper", 1f);
-        lexicalProfileMap.get("entry-7263_lexOff").addCoefficientSpec("à PRP", 1f);
-        lexicalProfileMap.get("entry-7263_lexOff").addCoefficientSpec("quelque PRO:IND", 1f);
-        lexicalProfileMap.get("entry-7263_lexOff").addCoefficientSpec("espèce NOM", 1f);
-        lexicalProfileMap.get("entry-7263_lexOff").addCoefficientSpec("commun ADJ", 1f);
-        lexicalProfileMap.get("entry-7263_lexOff").addCoefficientSpec(". SENT", 1f);
-        lexicalProfileMap.get("entry-7263_lexOff").addCoefficientSpec("il PRO:PER", 1f);
-        evaluation.execute();
+        _lexicalProfileMap.put("entry-7263_lexOff",new LexiconProfile(entry6));
+        _lexicalProfileMap.get("entry-7263_lexOff").addCoefficientSpec("pêche NOM", 1f);
+        _lexicalProfileMap.get("entry-7263_lexOff").addCoefficientSpec(", PUN", 1f);
+        _lexicalProfileMap.get("entry-7263_lexOff").addCoefficientSpec("limiter VER:pper", 1f);
+        _lexicalProfileMap.get("entry-7263_lexOff").addCoefficientSpec("à PRP", 1f);
+        _lexicalProfileMap.get("entry-7263_lexOff").addCoefficientSpec("quelque PRO:IND", 1f);
+        _lexicalProfileMap.get("entry-7263_lexOff").addCoefficientSpec("espèce NOM", 1f);
+        _lexicalProfileMap.get("entry-7263_lexOff").addCoefficientSpec("commun ADJ", 1f);
+        _lexicalProfileMap.get("entry-7263_lexOff").addCoefficientSpec(". SENT", 1f);
+        _lexicalProfileMap.get("entry-7263_lexOff").addCoefficientSpec("il PRO:PER", 1f);
 
-        _disambIdObserved = new ArrayList<>();
-        _disambIdObserved.add("DaOn");
-        _disambIdObserved.add("DaOn");
+        _disambiguationIdObserved = new ArrayList<>();
+        _disambiguationIdObserved.add(DA_ON.getValue());
+        _disambiguationIdObserved.add(DA_ON.getValue());
     }
 
     @Test
     public void execute() throws Exception {
+        _evaluation.execute();
         int cnt = 0;
         for (EvaluationProfile evaluationProfile : _evaluationProfileMap.values()) {
-            Assert.assertEquals("this value must be equals", _disambIdObserved.get(cnt),evaluationProfile.getDisambiguationId());
+            Assert.assertEquals("this value must be equals", _disambiguationIdObserved.get(cnt),evaluationProfile.getDisambiguationId());
             cnt++;
         }
+    }
+
+    @Test
+    public void computeFactor() throws Exception {
+        _evaluation.computeFactor(
+                _evaluationProfileMap.get("entry-13471_DM1"),
+                _lexicalProfileMap.get("entry-13471_lexOn"),
+                _lexicalProfileMap.get("entry-13471_lexOff")
+        );
+        Assert.assertEquals("the On factor must be equals to : ",6f,_evaluation._factorOn,0);
+        Assert.assertEquals("the On factor must be equals to : ",0f,_evaluation._factorOff,0);
     }
 
 }

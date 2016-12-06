@@ -1,5 +1,6 @@
 package org.atilf.module.exporter;
 
+import org.atilf.models.disambiguation.AnnotationResources;
 import org.atilf.models.disambiguation.EvaluationProfile;
 import org.atilf.models.termith.TermithIndex;
 import org.atilf.module.tools.FilesUtils;
@@ -94,14 +95,14 @@ public class DisambiguationTeiWriter implements Runnable {
                 String termId = correspVal.substring(1) + "_" + anaVal.substring(1);
                 if (_evaluationLexicon.containsKey(termId)) {
                     anaNode.setNodeValue(
-                            anaVal + " #" + _evaluationLexicon.get(termId).getDisambiguationId()
+                            anaVal + " " + _evaluationLexicon.get(termId).getDisambiguationId()
                     );
                     LOGGER.debug("write DaOn or DaOff value");
                 }
 
                 else {
                     anaNode.setNodeValue(
-                            anaVal + " #noDa"
+                            anaVal + " " + AnnotationResources.NO_DA
                     );
                 }
             }

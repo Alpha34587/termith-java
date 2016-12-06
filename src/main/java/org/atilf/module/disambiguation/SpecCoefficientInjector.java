@@ -12,6 +12,9 @@ import org.slf4j.LoggerFactory;
 
 import java.util.Objects;
 
+import static org.atilf.models.disambiguation.AnnotationResources.LEX_OFF;
+import static org.atilf.models.disambiguation.AnnotationResources.LEX_ON;
+
 /**
  * compute specificity coefficient for each word of a term candidate entry. the result is retained on the
  * _lexicalProfile field. This class call a R script with the library Rcaller.
@@ -19,11 +22,12 @@ import java.util.Objects;
  *         Created on 21/10/16.
  */
 public class SpecCoefficientInjector implements Runnable{
-    private final LexiconProfile _lexiconProfile;
-    private final RLexicon _rLexicon;
-    private final RLexicon _rContextLexicon;
+    private LexiconProfile _lexiconProfile;
+    private RLexicon _rLexicon;
+    private CorpusLexicon _corpusLexicon;
+    private boolean _computeSpecificities = true;
+    private RLexicon _rContextLexicon;
     private String _id;
-    private final CorpusLexicon _corpusLexicon;
     private static final Logger LOGGER = LoggerFactory.getLogger(SpecCoefficientInjector.class.getName());
 
     /**
@@ -55,20 +59,37 @@ public class SpecCoefficientInjector implements Runnable{
      *                 of the corpusLexicon and his size
      */
     public SpecCoefficientInjector(String id,TermithIndex termithIndex, RLexicon rLexicon){
-        _id = id;
-        _corpusLexicon = termithIndex.getCorpusLexicon();
-        _lexiconProfile = termithIndex.getContextLexicon().get(id);
-        _rLexicon = rLexicon;
-        _rContextLexicon = new RLexicon(_lexiconProfile, _corpusLexicon);
+        if (isLexiconPresent(termithIndex,id)) {
+            _id = id;
+            _corpusLexicon = termithIndex.getCorpusLexicon();
+            _lexiconProfile = termithIndex.getContextLexicon().get(id);
+            _rLexicon = rLexicon;
+            _rContextLexicon = new RLexicon(_lexiconProfile, _corpusLexicon);
+            _computeSpecificities = true;
+        }
+        else {
+            _computeSpecificities = false;
+        }
+    }
+
+    private boolean isLexiconPresent(TermithIndex termithIndex, String id) {
+        String on = id.split("_")[0] + LEX_ON.getValue();
+        String off = id.split("_")[0] + LEX_OFF.getValue();
+        return termithIndex.getContextLexicon().containsKey(on) && termithIndex.getContextLexicon().containsKey(off);
     }
 
     /**
      * call reduceToLexicalProfile method
      */
     public void execute() {
-
         try {
-            reduceToLexicalProfile(computeSpecCoefficient());
+            if (_computeSpecificities) {
+                reduceToLexicalProfile(computeSpecCoefficient());
+            }
+            else {
+                LOGGER.info("only terminology or non-terminology lexicon profile is present, " +
+                        "no need to compute coefficients for terminology entry : ", _id);
+            }
         }
         catch (Exception e){
             LOGGER.error("problem during the execution of SpecCoefficientInjector :", e);
@@ -96,6 +117,7 @@ public class SpecCoefficientInjector implements Runnable{
      * @return coefficients specificities
      */
     float[] computeSpecCoefficient() {
+        LOGGER.debug("compute specificity coefficient");
         /*
         instantiate rcaller
          */
@@ -153,6 +175,7 @@ public class SpecCoefficientInjector implements Runnable{
         rcaller.setRCode(code);
         rcaller.runAndReturnResult("res");
         rcaller.deleteTempFiles();
+        LOGGER.debug("specificity coefficient has been computed");
         return resToFloat(rcaller.getParser().getAsStringArray("res"));
     }
 

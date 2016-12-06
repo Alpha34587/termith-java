@@ -2,7 +2,7 @@ package org.atilf.module.disambiguation;
 
 import org.atilf.models.disambiguation.DisambiguationXslResources;
 import org.custommonkey.xmlunit.XMLUnit;
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.io.File;
@@ -16,9 +16,10 @@ import static org.custommonkey.xmlunit.XMLAssert.assertXMLEqual;
  *         Created on 02/11/16.
  */
 public class DisambiguationXslTransformerTest {
-    private DisambiguationXslTransformer _disambiguationXslTransformer;
-    @Before
-    public void setUp(){
+    private static DisambiguationXslTransformer _disambiguationXslTransformer;
+
+    @BeforeClass
+    public static void setUp(){
         _disambiguationXslTransformer = new DisambiguationXslTransformer(
                 new File("src/test/resources/corpus/disambiguation/tei/test1.xml"),
                 new DisambiguationXslResources()

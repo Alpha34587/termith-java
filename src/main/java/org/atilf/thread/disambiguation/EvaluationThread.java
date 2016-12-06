@@ -1,10 +1,12 @@
 package org.atilf.thread.disambiguation;
 
+import org.atilf.models.disambiguation.CommonWordsPosLemmaCleaner;
 import org.atilf.models.disambiguation.DisambiguationXslResources;
 import org.atilf.models.termith.TermithIndex;
 import org.atilf.module.disambiguation.DisambiguationXslTransformer;
 import org.atilf.module.disambiguation.Evaluation;
 import org.atilf.module.disambiguation.EvaluationExtractor;
+import org.atilf.module.disambiguation.ThresholdLexiconCleaner;
 import org.atilf.thread.Thread;
 
 import java.io.IOException;
@@ -21,7 +23,10 @@ import java.util.concurrent.TimeUnit;
 public class EvaluationThread extends Thread{
 
     private CountDownLatch _transformCounter;
-    private CountDownLatch _extactorCounter;
+    private CountDownLatch _extractorCounter;
+    private CountDownLatch _cleanerCounter;
+    private CountDownLatch _commonCleanerCounter;
+
     /**
      * this constructor initialize the _termithIndex fields and initialize the _poolSize field with the default value
      * with the number of available processors.
@@ -52,10 +57,16 @@ public class EvaluationThread extends Thread{
             _transformCounter = new CountDownLatch(
                     (int) Files.list(TermithIndex.getEvaluationPath()).count()
             );
-            _extactorCounter = new CountDownLatch(
+            _extractorCounter = new CountDownLatch(
                     (int) Files.list(TermithIndex.getEvaluationPath()).count()
             );
-        } catch (IOException e) {
+            _cleanerCounter = new CountDownLatch(
+                    _termithIndex.getContextLexicon().size());
+
+            _commonCleanerCounter = new CountDownLatch(
+                    _termithIndex.getContextLexicon().size());
+        }
+        catch (IOException e) {
             _logger.error("could not find folder : ",e);
         }
     }
@@ -72,32 +83,69 @@ public class EvaluationThread extends Thread{
         DisambiguationXslResources xslResources = new DisambiguationXslResources();
 
         /*
+        Threshold cleaner
+         */
+        _termithIndex.getContextLexicon().forEach(
+                (key,value) -> _executorService.submit(new ThresholdLexiconCleaner(
+                        key,
+                        value,
+                        3,
+                        15,
+                        _cleanerCounter
+                ))
+        );
+        _cleanerCounter.await();
+
+        /*
+        Common PosLemma cleaner
+         */
+        _termithIndex.getContextLexicon().forEach(
+                (key,value) ->
+                {
+                    String lexOff = key.replace("On","Off");
+                    if (key.contains("_lexOn") &&
+                            _termithIndex.getContextLexicon().containsKey(lexOff)) {
+                        _executorService.submit(new CommonWordsPosLemmaCleaner(
+                                key,
+                                value,
+                                _termithIndex.getContextLexicon().get(lexOff),
+                                _commonCleanerCounter
+                        ));
+                    }
+                    else {
+                        _commonCleanerCounter.countDown();
+                    }
+                }
+        );
+        _commonCleanerCounter.await();
+
+        /*
         Transformation phase
          */
         Files.list(TermithIndex.getEvaluationPath()).forEach(
                 p -> _executorService.submit(
                         new DisambiguationXslTransformer(
-                        p.toFile(),
-                        _transformCounter,
-                        _termithIndex.getEvaluationTransformedFiles(),
-                        xslResources)
+                                p.toFile(),
+                                _transformCounter,
+                                _termithIndex.getEvaluationTransformedFiles(),
+                                xslResources)
                 )
         );
-
         _transformCounter.await();
+
         /*
         Extraction phase
          */
         _termithIndex.getEvaluationTransformedFiles().values().forEach(
-                p -> _executorService.submit(new EvaluationExtractor(p.toString(), _termithIndex,_extactorCounter))
+                p -> _executorService.submit(new EvaluationExtractor(p.toString(), _termithIndex, _extractorCounter))
         );
 
-        _extactorCounter.await();
+        _extractorCounter.await();
         /*
         Evaluation phase
          */
         _termithIndex.getEvaluationLexicon().forEach(
-                (key,value) -> _executorService.submit(new Evaluation(value, _termithIndex.getContextLexicon()))
+                (p,value) -> _executorService.submit(new Evaluation(p, value, _termithIndex.getContextLexicon()))
         );
         _logger.info("Waiting EvaluationWorker executors to finish");
         _executorService.shutdown();

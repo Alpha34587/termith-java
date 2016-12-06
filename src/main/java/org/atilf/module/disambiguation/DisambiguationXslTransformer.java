@@ -86,7 +86,7 @@ public class DisambiguationXslTransformer extends TextExtractor {
             _transformCounter.countDown();
             LOGGER.info("Extraction done for file: " + _file);
         } catch (IOException e) {
-            LOGGER.error("File Exception",e);
+            LOGGER.error("File Exception: ",e);
         }
     }
 }

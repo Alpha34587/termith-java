@@ -22,7 +22,7 @@ public class RLexicon {
      */
     public RLexicon(CorpusLexicon corpus){
         _corpus = corpus;
-        _size = corpus.size();
+        _size = corpus.lexicalSize();
         _rName.append("c(");
         _rOcc.append("c(");
         _corpus.forEach(this::convertToRGlobal);

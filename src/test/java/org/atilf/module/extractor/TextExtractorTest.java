@@ -2,7 +2,7 @@ package org.atilf.module.extractor;
 
 import org.atilf.models.extractor.XslResources;
 import org.junit.Assert;
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.io.File;
@@ -14,9 +14,10 @@ import java.nio.file.Paths;
  * Created on 22/08/16.
  */
 public class TextExtractorTest {
-    private TextExtractor _textExtractor;
-    @Before
-    public void setUp(){
+    private static TextExtractor _textExtractor;
+
+    @BeforeClass
+    public static void setUp(){
         _textExtractor = new TextExtractor(new File("src/test/resources/corpus/xml/file1.xml"), new XslResources());
     }
 
