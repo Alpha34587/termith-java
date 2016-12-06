@@ -17,8 +17,9 @@ import static org.custommonkey.xmlunit.XMLAssert.assertXMLEqual;
  */
 public class DisambiguationXslTransformerTest {
     private static DisambiguationXslTransformer _disambiguationXslTransformer;
+
     @BeforeClass
-    public void setUp(){
+    public static void setUp(){
         _disambiguationXslTransformer = new DisambiguationXslTransformer(
                 new File("src/test/resources/corpus/disambiguation/tei/test1.xml"),
                 new DisambiguationXslResources()

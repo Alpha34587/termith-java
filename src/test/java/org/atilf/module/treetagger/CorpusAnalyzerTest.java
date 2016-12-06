@@ -3,10 +3,7 @@ package org.atilf.module.treetagger;
 import org.atilf.models.termith.TermithIndex;
 import org.atilf.models.termsuite.CorpusAnalyzer;
 import org.atilf.module.tools.FilesUtils;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Rule;
-import org.junit.Test;
+import org.junit.*;
 import org.junit.rules.TemporaryFolder;
 
 import java.nio.file.Path;
@@ -20,24 +17,20 @@ import java.util.Map;
  */
 public class CorpusAnalyzerTest {
 
-    private TermithIndex _termithIndex;
-    private Map<String,StringBuilder> _extractedText;
-    private CorpusAnalyzer _corpusAnalyzer;
+    private static  Map<String,StringBuilder> _extractedText;
+    private static  CorpusAnalyzer _corpusAnalyzer;
 
-    @Rule
-    public TemporaryFolder _temporaryFolder = new TemporaryFolder();
+    @ClassRule
+    public static TemporaryFolder _temporaryFolder = new TemporaryFolder();
 
-    public CorpusAnalyzerTest() {
-    }
+    @BeforeClass
+    public static void setUp() throws Exception {
 
-    @Before
-    public void setUp() throws Exception {
-
-        _termithIndex = new TermithIndex.Builder().export(_temporaryFolder.getRoot().getPath()).build();
-        _termithIndex.addText("1", FilesUtils.readFile(Paths.get("src/test/resources/corpus.analyzer/txt/file1.txt")));
-        _termithIndex.addText("2", FilesUtils.readFile(Paths.get("src/test/resources/corpus.analyzer/txt/file2.txt")));
-        _termithIndex.addText("3", FilesUtils.readFile(Paths.get("src/test/resources/corpus.analyzer/txt/file3.txt")));
-        _extractedText = convertExtractedText(_termithIndex.getExtractedText());
+        TermithIndex termithIndex = new TermithIndex.Builder().export(_temporaryFolder.getRoot().getPath()).build();
+        termithIndex.addText("1", FilesUtils.readFile(Paths.get("src/test/resources/corpus.analyzer/txt/file1.txt")));
+        termithIndex.addText("2", FilesUtils.readFile(Paths.get("src/test/resources/corpus.analyzer/txt/file2.txt")));
+        termithIndex.addText("3", FilesUtils.readFile(Paths.get("src/test/resources/corpus.analyzer/txt/file3.txt")));
+        _extractedText = convertExtractedText(termithIndex.getExtractedText());
         _corpusAnalyzer = new CorpusAnalyzer(_extractedText);
     }
 

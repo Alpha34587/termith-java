@@ -4,10 +4,7 @@ import org.atilf.models.termith.TermithIndex;
 import org.atilf.models.termsuite.CorpusAnalyzer;
 import org.atilf.models.treetagger.TagNormalizer;
 import org.atilf.module.termsuite.morphology.MorphologySerializer;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Rule;
-import org.junit.Test;
+import org.junit.*;
 import org.junit.rules.TemporaryFolder;
 
 import java.io.File;
@@ -20,20 +17,20 @@ import java.nio.file.Paths;
  *         Created on 05/09/16.
  */
 public class MorphologySerializerTest {
+    
+    private static  MorphologySerializer _morphologySerializerLemma;
+    private static  File _jsonResFile;
 
-    @Rule
-    public TemporaryFolder temporaryFolder = new TemporaryFolder();
-    private MorphologySerializer _morphologySerializerLemma;
-    private File _jsonResFile;
-    private TermithIndex _termithIndex;
-
-    @Before
-    public void setUp() throws IOException {
-        _termithIndex = new TermithIndex.Builder().export(temporaryFolder.getRoot().getPath()).build();
+    @ClassRule
+    public static TemporaryFolder temporaryFolder = new TemporaryFolder();
+    
+    @BeforeClass
+    public static void setUp() throws IOException {
+        TermithIndex termithIndex = new TermithIndex.Builder().export(temporaryFolder.getRoot().getPath()).build();
         TagNormalizer.initTag("en");
-        _termithIndex.addText("1",
+        termithIndex.addText("1",
                 new StringBuilder("\n \n \nJournal of Gerontology: PSYCHOLOGICAL patient (1998@)"));
-        CorpusAnalyzer corpusAnalyzer = new CorpusAnalyzer(CorpusAnalyzerTest.convertExtractedText(_termithIndex.getExtractedText()));
+        CorpusAnalyzer corpusAnalyzer = new CorpusAnalyzer(CorpusAnalyzerTest.convertExtractedText(termithIndex.getExtractedText()));
 
         StringBuilder tokenLemma = new StringBuilder(
                 "Journal\tNP\tJournal\n" +
@@ -57,10 +54,10 @@ public class MorphologySerializerTest {
     @Test
     public void executeTest() throws Exception {
         _morphologySerializerLemma.execute();
-        String observe = String.join("\n",Files.readAllLines(_jsonResFile.toPath()));
+        String observed = String.join("\n",Files.readAllLines(_jsonResFile.toPath()));
         String expected = String.join("\n", Files.readAllLines(Paths.get("src/test/resources/serialize/file1.json")));
         expected = expected.replace("test1.json", _jsonResFile.getAbsolutePath());
-        Assert.assertEquals("files content must be equals : ",expected,observe);
+        Assert.assertEquals("files content must be equals : ",expected,observed);
     }
 
 }
