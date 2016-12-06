@@ -25,6 +25,7 @@ public class EvaluationExtractorTest {
     public void setUp() throws IOException {
         TermithIndex termithIndex = new TermithIndex.Builder().build();
         termithIndex.getContextLexicon().put("entry-13471_lexOn",new LexiconProfile());
+        termithIndex.getContextLexicon().put("entry-13471_lexOff",new LexiconProfile());
 
         _evaluationExtractor = new EvaluationExtractor(
                 "src/test/resources/corpus/disambiguation/transform-tei/test1.xml",

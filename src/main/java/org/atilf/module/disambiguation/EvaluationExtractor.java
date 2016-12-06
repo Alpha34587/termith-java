@@ -47,11 +47,14 @@ public class EvaluationExtractor extends ContextExtractor {
     protected void extractTerms(Attributes attributes) {
         String ana = attributes.getValue("ana");
         String corresp = attributes.getValue("corresp");
-        if (ana.equals(NO_DM.getValue()) && InContextLexicon(corresp)) {
+        if (ana.equals(NO_DM.getValue()) && inBothContextLexicon(corresp)) {
             _terms.add(new ContextTerm(attributes.getValue("corresp"),
                     ana,
                     attributes.getValue("target")));
             LOGGER.debug("term extracted: " + attributes.getValue("corresp"));
+        }
+        else if (inContextLexicon(corresp)){
+            _evaluationLexicon.put(normalizeKey(corresp,ana),new EvaluationProfile());
         }
     }
 
@@ -62,7 +65,12 @@ public class EvaluationExtractor extends ContextExtractor {
         _evaluationLexicon.get(key).addOccurrence(contextWord.getPosLemma());
     }
 
-    private boolean InContextLexicon(String corresp) {
+    private boolean inBothContextLexicon(String corresp) {
+        return _contextLexicon.containsKey(corresp.replace("#","") + "_lexOn") &&
+                _contextLexicon.containsKey(corresp.replace("#","") + "_lexOff");
+    }
+
+    private boolean inContextLexicon(String corresp) {
         return _contextLexicon.containsKey(corresp.replace("#","") + "_lexOn") ||
                 _contextLexicon.containsKey(corresp.replace("#","") + "_lexOff");
     }
