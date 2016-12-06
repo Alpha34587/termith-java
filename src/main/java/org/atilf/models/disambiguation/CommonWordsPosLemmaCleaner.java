@@ -15,14 +15,14 @@ public class CommonWordsPosLemmaCleaner implements Runnable {
     private LexiconProfile _lex2;
     private static final Logger LOGGER = LoggerFactory.getLogger(CommonWordsPosLemmaCleaner.class.getName());
 
-    public CommonWordsPosLemmaCleaner(String key, LexiconProfile lex1, LexiconProfile lex2,
+    public CommonWordsPosLemmaCleaner(String key,LexiconProfile lex1, LexiconProfile lex2,
                                       CountDownLatch commonCleanerCounter) {
-        this(key, lex1, lex2);
+        this(lex1, lex2);
+        _key = key;
         _commonCleanerCounter = commonCleanerCounter;
     }
 
-    public CommonWordsPosLemmaCleaner(String key, LexiconProfile lex1, LexiconProfile lex2) {
-        _key = key;
+    public CommonWordsPosLemmaCleaner(LexiconProfile lex1, LexiconProfile lex2) {
         _lex1 = lex1;
         _lex2 = lex2;
     }
