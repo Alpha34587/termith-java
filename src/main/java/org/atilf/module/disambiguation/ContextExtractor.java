@@ -235,45 +235,53 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
         Deque<ContextTerm> termStackTemp = new ArrayDeque<>();
         if (termStack != null) {
             words.forEach(
-                    word -> extractContext(words, termStack, termStackTemp, word)
+                    word -> searchTermInContext(words, termStack, termStackTemp, word)
             );
         }
     }
 
-    private void extractContext(List<ContextWord> words, Deque<ContextTerm> termDeque, Deque<ContextTerm> termDequeTemp, ContextWord word) {
+    /**
+     * this method finds in the current context all terms who contains in this context. For each word in the context,
+     * the method check if the term of the top of the deque
+     * has a begin target equals to the current word. it this condition is satisfied
+     * the context is associated to this term. Finally, the term is removed to the _term parameter.
+     * @param words the current context
+     * @param termDeque the Deque of terms that we want to search in the words variable
+     * @param termDequeTemp the temporary Deque used to track the multi words terms
+     * @param word current browsed word
+     */
+    private void searchTermInContext(List<ContextWord> words, Deque<ContextTerm> termDeque, Deque<ContextTerm> termDequeTemp, ContextWord word) {
         if (!termDeque.isEmpty()) {
-            if (termDeque.peek().getBeginTag() != termDeque.peek().getEndTag()) {
-                if (word.getTarget() == termDeque.peek().getBeginTag()) {
+            if (word.getTarget() == termDeque.peek().getBeginTag()) {
+                if (termDeque.peek().getBeginTag() != termDeque.peek().getEndTag()) {
                     termDequeTemp.add(termDeque.pop());
-                    extractContext(words, termDeque, termDequeTemp, word);
                 }
-            } else {
-                if (word.getTarget() == termDeque.peek().getBeginTag()) {
-                    addWordsToLexicon(
-                            termDeque.peek(),
-                            words
-                    );
+                else {
+                    addWordsToLexicon(termDeque.peek(), words);
                     _terms.remove(termDeque.pop());
-                    extractContext(words, termDeque, termDequeTemp, word);
                 }
+                searchTermInContext(words, termDeque, termDequeTemp, word);
             }
         }
 
         if (!termDequeTemp.isEmpty() && termDequeTemp.peek().getEndTag() == word.getTarget()) {
-            addWordsToLexicon(
-                    termDequeTemp.peek(),
-                    words
-            );
+            addWordsToLexicon(termDequeTemp.peek(), words);
             _terms.remove(termDequeTemp.pop());
-            extractContext(words, termDeque, termDequeTemp, word);
+            searchTermInContext(words, termDeque, termDequeTemp, word);
         }
     }
 
+    /**
+     * get a sublist of _term field and return a Deque with these elements. The first element of the sublist has
+     * a target value inferior to the target value of the last words of the context (the variable words)
+     * @param words the current context
+     * @return a Deque with terms
+     */
     private Deque<ContextTerm> termAlignment(List<ContextWord> words) {
         Deque<ContextTerm> termDeque = new ArrayDeque<>();
         if (words.size() > 0) {
             Optional<ContextTerm> term = _terms.stream()
-                    .filter(t -> words.get(words.size()-1).getTarget() >= t.getBeginTag())
+                    .filter(t -> t.getBeginTag() <= words.get(words.size() - 1).getTarget())
                     .findFirst();
             if (term.isPresent()) {
                 _terms.subList(_terms.indexOf(term.get()),_terms.size() - 1).forEach(termDeque::add);
