@@ -91,9 +91,9 @@ import static org.atilf.models.disambiguation.AnnotationResources.*;
 public class ContextExtractor extends DefaultHandler implements Runnable {
 
     Map<String, LexiconProfile> _contextLexicon;
-    private Map<String,List<String>> _targetContext = new HashMap<>();
+    private Map<String,List<Integer>> _targetContext = new HashMap<>();
     private CorpusLexicon _corpusLexicon;
-    protected List<ContextTerm> _terms = new ArrayList<>();
+    protected List<ContextTerm> _terms = new LinkedList<>();
     private String _p;
     private File _xml;
 
@@ -216,11 +216,9 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
         }
         else if (!_inStandOff){
             _terms.sort((o1, o2) -> {
-                int t1 = Integer.parseInt(o1.getTarget().get(0).replace("t", ""));
-                int t2 = Integer.parseInt(o2.getTarget().get(0).replace("t", ""));
-                int comp = Integer.compare(t1,t2);
+                int comp = Integer.compare(o1.getBeginTag(),o2.getBeginTag());
                 if (comp == 0) {
-                    comp = ((Integer) o1.getTarget().size()).compareTo(o2.getTarget().size()) * -1;
+                    comp = Integer.compare(o1.getEndTag(),o2.getEndTag());
                 }
                 return comp;
             });
@@ -254,8 +252,8 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
         List<ContextWord> contextWords = _contextStack.peek();
         if (termsIt.hasNext() && !contextWords.isEmpty()){
             _currentTerm = termsIt.next();
-            int firstTermTarget = Integer.parseInt(_currentTerm.getTarget().get(0).replace("t", ""));
-            int lastStackTarget = Integer.parseInt(contextWords.get(contextWords.size()-1).getTarget().replace("t", ""));
+            int firstTermTarget = _currentTerm.getBeginTag();
+            int lastStackTarget = contextWords.get(contextWords.size()-1).getTarget();
             return firstTermTarget <= lastStackTarget;
         }
         else {
@@ -269,12 +267,13 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
      * @return true if _currentTerm is contained / false if _currentTerm is not contained
      */
     private boolean inWords(){
-        List<String> stackTargets = new ArrayList<>();
+        List<Integer> stackTargets = new ArrayList<>();
         /*
         fill stackTargets with all target of each words contains in the context on top of the stack
          */
         _contextStack.peek().forEach(contextWord -> stackTargets.add(contextWord.getTarget()));
-        return stackTargets.containsAll(_currentTerm.getTarget());
+        return stackTargets.contains(_currentTerm.getBeginTag())
+                && stackTargets.contains(_currentTerm.getEndTag());
     }
 
     /**
@@ -317,7 +316,7 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
          */
         context.forEach(
                 contextWord -> {
-                    String target = contextWord.getTarget();
+                    int target = contextWord.getTarget();
                     if (!_currentTerm.inTerm(target) && !inTargetContext(key,target)){
                         addWordToLexicon(key,contextWord);
                     }
@@ -334,13 +333,13 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
     }
 
 
-    protected boolean inTargetContext(String key, String target){
+    protected boolean inTargetContext(String key, int target){
         if (!_targetContext.containsKey(key)){
             _targetContext.put(key, Lists.newArrayList(target));
             return false;
         }
         else {
-            List<String> context = _targetContext.get(key);
+            List<Integer> context = _targetContext.get(key);
             if (context.contains(target)){
                 return true;
             }
