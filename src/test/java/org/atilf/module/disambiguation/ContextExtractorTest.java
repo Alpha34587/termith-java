@@ -15,7 +15,7 @@ import java.util.Map;
  * @author Simon Meoni
  *         Created on 17/10/16.
  */
-public class ContextExtractorTest {;
+public class ContextExtractorTest {
     private static Map<String,LexiconProfile> _expectedLexicon = new HashMap<>();
     private static Map<String,LexiconProfile> _observedLexicon = new HashMap<>();
     private static CorpusLexicon _observedCorpus = new CorpusLexicon(new HashMap<>(),new HashMap<>());

@@ -91,9 +91,9 @@ import static org.atilf.models.disambiguation.AnnotationResources.*;
 public class ContextExtractor extends DefaultHandler implements Runnable {
 
     Map<String, LexiconProfile> _contextLexicon;
-    private Map<String,List<String>> _targetContext = new HashMap<>();
+    private Map<String,List<Integer>> _targetContext = new HashMap<>();
     private CorpusLexicon _corpusLexicon;
-    protected List<ContextTerm> _terms = new ArrayList<>();
+    protected List<ContextTerm> _terms = new LinkedList<>();
     private String _p;
     private File _xml;
 
@@ -216,11 +216,9 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
         }
         else if (!_inStandOff){
             _terms.sort((o1, o2) -> {
-                int t1 = Integer.parseInt(o1.getTarget().get(0).replace("t", ""));
-                int t2 = Integer.parseInt(o2.getTarget().get(0).replace("t", ""));
-                int comp = Integer.compare(t1,t2);
+                int comp = Integer.compare(o1.getBeginTag(),o2.getBeginTag());
                 if (comp == 0) {
-                    comp = ((Integer) o1.getTarget().size()).compareTo(o2.getTarget().size()) * -1;
+                    comp = Integer.compare(o1.getEndTag(),o2.getEndTag());
                 }
                 return comp;
             });
@@ -232,50 +230,67 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
      * search if the context of the top of the stack contains a term. The context is remove if it not contains a term
      */
     private void searchTermsInContext() {
-        Iterator<ContextTerm> termsIt = _terms.iterator();
-        while (inContext(termsIt)){
-            if (inWords()) {
-                addWordsToLexicon(
-                        normalizeKey(_currentTerm.getCorresp(), _currentTerm.getAna()),
-                        _contextStack.peek()
-                );
-                termsIt.remove();
+        List<ContextWord> words = _contextStack.pop();
+        Deque<ContextTerm> termStack = termAlignment(words);
+        Deque<ContextTerm> termStackTemp = new ArrayDeque<>();
+        if (termStack != null) {
+            words.forEach(
+                    word -> searchTermInContext(words, termStack, termStackTemp, word)
+            );
+        }
+    }
+
+    /**
+     * this method finds in the current context all terms who contains in this context. For each word in the context,
+     * the method check if the term of the top of the deque
+     * has a begin target equals to the current word. it this condition is satisfied
+     * the context is associated to this term. Finally, the term is removed to the _term parameter.
+     * @param words the current context
+     * @param termDeque the Deque of terms that we want to search in the words variable
+     * @param termDequeTemp the temporary Deque used to track the multi words terms
+     * @param word current browsed word
+     */
+    private void searchTermInContext(List<ContextWord> words, Deque<ContextTerm> termDeque, Deque<ContextTerm> termDequeTemp, ContextWord word) {
+        if (!termDeque.isEmpty()) {
+            if (word.getTarget() == termDeque.peek().getBeginTag()) {
+                if (termDeque.peek().getBeginTag() != termDeque.peek().getEndTag()) {
+                    termDequeTemp.add(termDeque.pop());
+                }
+                else {
+                    addWordsToLexicon(termDeque.peek(), words);
+                    _terms.remove(termDeque.pop());
+                }
+                searchTermInContext(words, termDeque, termDequeTemp, word);
             }
         }
-        _contextStack.pop();
+
+        if (!termDequeTemp.isEmpty() && termDequeTemp.peek().getEndTag() == word.getTarget()) {
+            addWordsToLexicon(termDequeTemp.peek(), words);
+            _terms.remove(termDequeTemp.pop());
+            searchTermInContext(words, termDeque, termDequeTemp, word);
+        }
     }
 
     /**
-     * this method is used to check if the current context can probably contains the terms.
-     * @param termsIt the iterator of _terms
-     * @return return true if the first target word of the term is inferior or equal to the last target word.
+     * get a sublist of _term field and return a Deque with these elements. The first element of the sublist has
+     * a target value inferior to the target value of the last words of the context (the variable words)
+     * @param words the current context
+     * @return a Deque with terms
      */
-    private boolean inContext(Iterator<ContextTerm> termsIt) {
-        List<ContextWord> contextWords = _contextStack.peek();
-        if (termsIt.hasNext() && !contextWords.isEmpty()){
-            _currentTerm = termsIt.next();
-            int firstTermTarget = Integer.parseInt(_currentTerm.getTarget().get(0).replace("t", ""));
-            int lastStackTarget = Integer.parseInt(contextWords.get(contextWords.size()-1).getTarget().replace("t", ""));
-            return firstTermTarget <= lastStackTarget;
+    private Deque<ContextTerm> termAlignment(List<ContextWord> words) {
+        Deque<ContextTerm> termDeque = new ArrayDeque<>();
+        if (words.size() > 0) {
+            Optional<ContextTerm> term = _terms.stream()
+                    .filter(t -> t.getBeginTag() <= words.get(words.size() - 1).getTarget())
+                    .findFirst();
+            if (term.isPresent()) {
+                _terms.subList(_terms.indexOf(term.get()),_terms.size() - 1).forEach(termDeque::add);
+                return termDeque;
+            }
         }
-        else {
-            return false;
-        }
-
+        return null;
     }
 
-    /**
-     * check if an term occurrence is contained by a context
-     * @return true if _currentTerm is contained / false if _currentTerm is not contained
-     */
-    private boolean inWords(){
-        List<String> stackTargets = new ArrayList<>();
-        /*
-        fill stackTargets with all target of each words contains in the context on top of the stack
-         */
-        _contextStack.peek().forEach(contextWord -> stackTargets.add(contextWord.getTarget()));
-        return stackTargets.containsAll(_currentTerm.getTarget());
-    }
 
     /**
      * the character event is used to extract the Pos/Lemma pair of a w element
@@ -308,17 +323,18 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
 
     /**
      * add to lexicalProfile a context for terminology entry
-     * @param key the term id entry suffixes by _lexOn or _lexOff
+     * @param term the term id entry suffixes by _lexOn or _lexOff
      */
-    private void addWordsToLexicon(String key, List<ContextWord> context) {
+    private void addWordsToLexicon(ContextTerm term, List<ContextWord> context) {
 
         /*
         create new entry if the key not exists in the _contextLexicon field
          */
+        String key = normalizeKey(term.getCorresp(), term.getAna());
         context.forEach(
                 contextWord -> {
-                    String target = contextWord.getTarget();
-                    if (!_currentTerm.inTerm(target) && !inTargetContext(key,target)){
+                    int target = contextWord.getTarget();
+                    if (!term.inTerm(target) && !inTargetContext(key,target)){
                         addWordToLexicon(key,contextWord);
                     }
                 }
@@ -334,13 +350,13 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
     }
 
 
-    protected boolean inTargetContext(String key, String target){
+    protected boolean inTargetContext(String key, int target){
         if (!_targetContext.containsKey(key)){
             _targetContext.put(key, Lists.newArrayList(target));
             return false;
         }
         else {
-            List<String> context = _targetContext.get(key);
+            List<Integer> context = _targetContext.get(key);
             if (context.contains(target)){
                 return true;
             }
