@@ -1,7 +1,7 @@
 group 'org.atilf'
 apply plugin: 'java'
 apply plugin: 'idea'
-version '0.3'
+version '0.4'
 
 repositories {
     mavenCentral()
@@ -38,16 +38,17 @@ dependencies {
     testCompile group: 'org.mockito', name: 'mockito-all', version: '2.0.2-beta'
 }
 
-task fatJar(type: Jar) {
+jar {
     exclude 'META-INF/*.SF', 'META-INF/*.DSA', 'META-INF/*.RSA', 'META-INF/*.MF'
     manifest {
         attributes("Main-Class": "org.atilf.cli.TermithTreeTaggerCLI" )
     }
     baseName = project.name + '-all'
+    classifier = 'SNAPSHOT'
+    archiveName = "${baseName}-v${version}-${classifier}.${extension}"
     from {
         configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
     }
-    with jar
 }
 
 test {
