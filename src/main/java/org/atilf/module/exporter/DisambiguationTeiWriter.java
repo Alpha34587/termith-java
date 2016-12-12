@@ -102,7 +102,7 @@ public class DisambiguationTeiWriter implements Runnable {
 
                 else {
                     anaNode.setNodeValue(
-                            anaVal + " " + AnnotationResources.NO_DA
+                            anaVal + " " + AnnotationResources.NO_DA.getValue()
                     );
                 }
             }
