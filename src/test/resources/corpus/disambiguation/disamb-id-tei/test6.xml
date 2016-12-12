@@ -400,6 +400,13 @@
                     </f>
                 </fs>
             </span>
+            <span ana="#noDM #noDa" corresp="#entry-1000" target="#t51">
+                <fs>
+                    <f name="inflexionsWord">
+                        <string>enfouissement</string>
+                    </f>
+                </fs>
+            </span>
         </ns:listAnnotation>
     </ns:standOff>
     <text>
