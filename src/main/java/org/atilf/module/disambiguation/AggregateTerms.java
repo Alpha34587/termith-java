@@ -1,6 +1,7 @@
 package org.atilf.module.disambiguation;
 
 import org.atilf.models.disambiguation.EvaluationProfile;
+import org.atilf.models.disambiguation.ScoreTerm;
 
 import java.util.Map;
 
@@ -10,6 +11,7 @@ import java.util.Map;
 public class AggregateTerms implements Runnable {
     private final String _file;
     private final Map<String, EvaluationProfile> _terms;
+    private ScoreTerm _scoreTerm;
 
     public AggregateTerms(String file, Map<String, EvaluationProfile> terms) {
         _file = file;
