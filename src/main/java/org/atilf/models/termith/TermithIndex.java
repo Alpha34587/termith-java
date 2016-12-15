@@ -3,6 +3,7 @@ package org.atilf.models.termith;
 import org.apache.commons.io.FileUtils;
 import org.atilf.models.disambiguation.CorpusLexicon;
 import org.atilf.models.disambiguation.LexiconProfile;
+import org.atilf.models.disambiguation.ScoreTerm;
 import org.atilf.models.termsuite.TermOffsetId;
 import org.atilf.models.disambiguation.EvaluationProfile;
 import org.atilf.module.tools.FilesUtils;
@@ -39,7 +40,7 @@ public class TermithIndex {
     private Path _disambiguationAnnotation;
 
     /*
-    Disambiguation  core fields
+    Disambiguation core fields
      */
 
     private Map<String, LexiconProfile> _contextLexicon = new ConcurrentHashMap<>();
@@ -47,6 +48,7 @@ public class TermithIndex {
     private CorpusLexicon _corpusLexicon = new CorpusLexicon(new ConcurrentHashMap<>(),new ConcurrentHashMap<>());
     private Map<String, Path> _learningTransformedFiles = new ConcurrentHashMap<>();
     private Map<String, Path> _evaluationTransformedFiles = new ConcurrentHashMap<>();
+    private Map<String,ScoreTerm> _scoreTerms = new ConcurrentHashMap<>();
 
     /*
     CLI parameter
@@ -235,6 +237,10 @@ public class TermithIndex {
      * @return return a boolean
      */
     public static boolean isKeepFiles() { return _keepFiles; }
+
+    public Map<String, ScoreTerm> getScoreTerms() {
+        return _scoreTerms;
+    }
 
     /*
     Setter

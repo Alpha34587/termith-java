@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * The lexicon profile corresponds to a term associated to his context. Each words of the context
+ * The lexicon profile corresponds to a term associated to his _context. Each words of the _context
  * has a specificity coefficient computed by the SpecificityCoefficientInjector module.
  * @see org.atilf.module.disambiguation.SpecCoefficientInjector
  * @author Simon Meoni
