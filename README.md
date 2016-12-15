@@ -1,8 +1,8 @@
- # Termith-Java
+# Termith-Java
 
 Termith-java est une application java d'analyse de corpus au format tei. La batterie d'analyse effectuée par le programme est reporté dans des balises au format standOff. Les analyses proposées sont focalisées sur le fulltext du format tei. Cette application est développée dans le cadre du projet ISTEX, elle doit être assez performante afin de traiter des corpus volumineux.
 
-## Les Enrichissements
+## Les enrichissements
 
 - analyse morphosyntaxique à l'aide de treetagger ou de taslimane (à venir)
 - analyse terminologique à l'aide de termsuite
@@ -42,9 +42,22 @@ Il y a deux types d'analyses possibles :
   * l'option `-e` correspond au corpus d'évaluation à désambiguiser
   * l'option `-o` correspond chemin où seront écrit les résultats du corpus d'évaluation désambiguisé
 
+## Le format d'entrée
+
+Les fichiers du corpus doivent être au format tei et conforme à ce standard.
+En ce qui concerne la désambiguisation, les fichiers tei doivent contenir des annotations standOff concernant la morphosyntaxe et la terminologie. Les fichiers doivent être conforme au schéma standOff/tei qui se trouve [ici](https://github.com/laurentromary/stdfSpec/blob/AnnArbor/Schemas/standoff-proposal.rnc).   
+Voici un exemple de ces annotations et du fulltext tokénisé ci-dessous.
+
+### annotation morphosyntaxique
+
+### annotation terminologique
+
+## Annotations de la désambiguisation
+
 ## Liens Utiles
 
 - http://www.atilf.fr/ressources/termith/
 - https://github.com/termsuite
 - http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/
 - https://www.r-project.org/
+- http://www.tei-c.org/index.xml
