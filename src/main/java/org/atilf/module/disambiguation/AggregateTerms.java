@@ -11,11 +11,12 @@ import java.util.Map;
 public class AggregateTerms implements Runnable {
     private final String _file;
     private final Map<String, EvaluationProfile> _terms;
-    private ScoreTerm _scoreTerm;
+    private Map<String,ScoreTerm> _scoreTerm;
 
-    public AggregateTerms(String file, Map<String, EvaluationProfile> terms) {
+    public AggregateTerms(String file, Map<String, EvaluationProfile> terms, Map<String, ScoreTerm> scoreTerms) {
         _file = file;
         _terms = terms;
+        _scoreTerm = scoreTerms;
     }
 
     public void execute(){

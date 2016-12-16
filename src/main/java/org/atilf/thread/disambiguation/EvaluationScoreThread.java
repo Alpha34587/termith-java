@@ -53,7 +53,7 @@ public class EvaluationScoreThread extends Thread{
     @Override
     public void execute() throws IOException, InterruptedException, ExecutionException {
         _termithIndex.getEvaluationLexicon().forEach(
-                (p,value) -> _executorService.submit(new AggregateTerms(p,value, scoreTerm))
+                (p,value) -> _executorService.submit(new AggregateTerms(p,value,_termithIndex.getScoreTerms()))
         );
 
         _termithIndex.getScoreTerms().forEach(
