@@ -11,18 +11,13 @@ import org.junit.Test;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
-import static org.atilf.models.disambiguation.AnnotationResources.DM3;
-import static org.atilf.models.disambiguation.AnnotationResources.DM4;
-
 /**
  * @author Simon Meoni Created on 15/12/16.
  */
-public class AggregateTermsTest {
-    private static AggregateTerms _aggregateTerms;
+public class AggregateTeiTermsTest {
+    private static AggregateTeiTerms _aggregateTeiTerms;
     private static Map<String,ScoreTerm> _expectedScoreTerms = new ConcurrentHashMap<>();
     private static Map<String,ScoreTerm> _observedScoreTerms = new ConcurrentHashMap<>();
-
-    String _file  = "src/test/resources/corpus/disambiguation/transform-tei/test2.xml";
 
     @BeforeClass
     public static void setUp() throws Exception {
@@ -33,10 +28,11 @@ public class AggregateTermsTest {
         EvaluationProfile term1 = new EvaluationProfile();
         term1.setDisambiguationId(AnnotationResources.DA_OFF);
 
-        terms.put("entry-450_"+DM4.getValue(),term1);
-        terms.put("entry-13471_"+DM3.getValue(),term1);
+        terms.put("entry-450_DM4",term1);
+        terms.put("entry-13471_DM3",term1);
 
-        _aggregateTerms = new AggregateTerms("test3",terms,_observedScoreTerms);
+        String file = "src/test/resources/corpus/disambiguation/transform-tei/test3.xml";
+        _aggregateTeiTerms = new AggregateTeiTerms(file,terms,_observedScoreTerms);
 
         //expected result
         ContextWord t25 = new ContextWord("t25");
@@ -64,17 +60,17 @@ public class AggregateTermsTest {
 
 
         ScoreTerm score = new ScoreTerm();
-        score.setCorrectOccurences(1);
-        score.setTotalOccurences(1);
-        score.setMissingOccurence(0);
+        score.setCorrectOccurrence(1);
+        score.setTotalOccurrences(1);
+        score.setMissingOccurrence(0);
         score.addTermWords(Collections.singletonList(t25));
 
         _expectedScoreTerms.put("entry-450", score);
 
         score = new ScoreTerm();
-        score.setCorrectOccurences(1);
-        score.setTotalOccurences(2);
-        score.setMissingOccurence(1);
+        score.setCorrectOccurrence(1);
+        score.setTotalOccurrences(2);
+        score.setMissingOccurrence(1);
         List<ContextWord> words = new ArrayList<>();
         words.add(t13);
         words.add(t14);
@@ -86,25 +82,39 @@ public class AggregateTermsTest {
         _expectedScoreTerms.put("entry-13471",score);
 
         score = new ScoreTerm();
-        score.setCorrectOccurences(0);
-        score.setTotalOccurences(1);
-        score.setMissingOccurence(0);
+        score.setCorrectOccurrence(0);
+        score.setTotalOccurrences(1);
+        score.setMissingOccurrence(1);
+        words = new ArrayList<>();
+        words.add(t7);
+        words.add(t8);
+        score.addTermWords(words);
         _expectedScoreTerms.put("entry-575",score);
+
+        score = new ScoreTerm();
+        score.setCorrectOccurrence(0);
+        score.setTotalOccurrences(1);
+        score.setMissingOccurrence(1);
+        words = new ArrayList<>();
+        words.add(t46);
+        words.add(t47);
+        words.add(t48);
+        score.addTermWords(words);
         _expectedScoreTerms.put("entry-5750",score);
     }
 
     @Test
     public void execute() throws Exception {
-        _aggregateTerms.execute();
+        _aggregateTeiTerms.execute();
         _expectedScoreTerms.forEach(
                 (key,value) -> {
                     ScoreTerm observed = _observedScoreTerms.get(key);
                     Assert.assertEquals("these two correctOccurrences must be equals",
-                            value.getCorrectOccurences(),observed.getCorrectOccurences());
+                            value.getCorrectOccurrence(),observed.getCorrectOccurrence());
                     Assert.assertEquals("these two missingOccurrences must be equals",
-                            value.getMissingOccurence(),observed.getMissingOccurence());
+                            value.getMissingOccurrence(),observed.getMissingOccurrence());
                     Assert.assertEquals("these two totalOccurrences must be equals",
-                            value.getTotalOccurences(),observed.getTotalOccurences());
+                            value.getTotalOccurrences(),observed.getTotalOccurrences());
                     Assert.assertTrue("this two list of words must be equals",
                             value.getTermWords().equals(observed));
                 }

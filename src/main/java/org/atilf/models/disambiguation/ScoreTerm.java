@@ -11,14 +11,14 @@ import java.util.concurrent.CopyOnWriteArrayList;
  * @author Simon Meoni Created on 15/12/16.
  */
 public class ScoreTerm {
-    Map<String, Multiset<String>> _context = new ConcurrentHashMap<>();
-    List<List<ContextWord>> _termWords = new CopyOnWriteArrayList<>();
-    int _totalOccurences = 0;
-    int _correctOccurences = 0;
-    int _missingOccurence = 0;
-    float _recall = 0;
-    float _precision = 0;
-    float _f1Score = 0;
+    private Map<String, Multiset<String>> _context = new ConcurrentHashMap<>();
+    private List<List<ContextWord>> _termWords = new CopyOnWriteArrayList<>();
+    private int _totalOccurrences = 0;
+    private int _correctOccurrence = 0;
+    private int _missingOccurrence = 0;
+    private float _recall = 0;
+    private float _precision = 0;
+    private float _f1Score = 0;
 
     public void addTermWords(List<ContextWord> term){
         _termWords.add(term);
@@ -28,15 +28,16 @@ public class ScoreTerm {
         _context.put(filename,context);
     }
 
-    public void setTotalOccurences(int totalOccurences) {
-        _totalOccurences = totalOccurences;
+    public void setTotalOccurrences(int totalOccurrences) {
+        _totalOccurrences = totalOccurrences;
     }
 
-    public void setCorrectOccurences(int correctOccurences) {
-        _correctOccurences = correctOccurences;
+    public void setCorrectOccurrence(int correctOccurrence) {
+        _correctOccurrence = correctOccurrence;
     }
 
-    public void setMissingOccurence(int missingOccurence) {_missingOccurence = missingOccurence;}
+    public void setMissingOccurrence(int missingOccurrence) {
+        _missingOccurrence = missingOccurrence;}
 
     public void setRecall(float recall) {
         _recall = recall;
@@ -50,19 +51,31 @@ public class ScoreTerm {
         _f1Score = f1Score;
     }
 
+    public synchronized void incCorrectOccurence(){
+        _correctOccurrence++;
+    }
+    
+    public synchronized void incTotalOccurence(){
+        _totalOccurrences++;
+    }
+    
+    public synchronized void incMissingOccurence(){
+        _missingOccurrence++;
+    }
+    
     public List<List<ContextWord>> getTermWords() {
         return _termWords;
     }
 
-    public int getTotalOccurences() {
-        return _totalOccurences;
+    public int getTotalOccurrences() {
+        return _totalOccurrences;
     }
 
-    public int getCorrectOccurences() {
-        return _correctOccurences;
+    public int getCorrectOccurrence() {
+        return _correctOccurrence;
     }
 
-    public int getMissingOccurence() {
-        return _missingOccurence;
+    public int getMissingOccurrence() {
+        return _missingOccurrence;
     }
 }

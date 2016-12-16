@@ -1,7 +1,7 @@
 package org.atilf.thread.disambiguation;
 
 import org.atilf.models.termith.TermithIndex;
-import org.atilf.module.disambiguation.AggregateTerms;
+import org.atilf.module.disambiguation.AggregateTeiTerms;
 import org.atilf.module.disambiguation.ComputeTermsScore;
 import org.atilf.module.disambiguation.ComputeTotalTermsScore;
 import org.atilf.thread.Thread;
@@ -52,8 +52,10 @@ public class EvaluationScoreThread extends Thread{
      */
     @Override
     public void execute() throws IOException, InterruptedException, ExecutionException {
+        //transform tei file
+        //p <=> tei transform file (_outputPath)
         _termithIndex.getEvaluationLexicon().forEach(
-                (p,value) -> _executorService.submit(new AggregateTerms(p,value,_termithIndex.getScoreTerms()))
+                (p,value) -> _executorService.submit(new AggregateTeiTerms(p,value,_termithIndex.getScoreTerms()))
         );
 
         _termithIndex.getScoreTerms().forEach(

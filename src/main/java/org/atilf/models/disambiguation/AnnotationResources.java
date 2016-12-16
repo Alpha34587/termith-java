@@ -4,25 +4,36 @@ package org.atilf.models.disambiguation;
  * @author Simon Meoni Created on 28/11/16.
  */
 public enum AnnotationResources {
-    NO_DM ("#noDM"),
-    DM0("#DM0"),
-    DM1("#DM1"),
-    DM2("#DM2"),
-    DM3("#DM3"),
-    DM4("#DM4"),
     DA_ON("#DaOn"),
     DA_OFF("#DaOff"),
     NO_DA("#noDa"),
+    NO_DM ("#noDM", NO_DA),
+    DM0("#DM0", DA_OFF),
+    DM1("#DM1", DA_OFF),
+    DM2("#DM2", DA_OFF),
+    DM3("#DM3", DA_OFF),
+    DM4("#DM4", DA_ON),
     LEX_ON("_lexOn"),
     LEX_OFF("_lexOff");
 
     public String value;
+    private AnnotationResources autoAnnotation = null;
 
     AnnotationResources(String value) {
         this.value = value;
     }
 
+    AnnotationResources(String value, AnnotationResources autoAnnotation) {
+        this.value = value;
+        this.autoAnnotation = autoAnnotation;
+    }
+
+    public AnnotationResources getAutoAnnotation() {
+        return autoAnnotation;
+    }
+
     public String getValue() {
         return value;
     }
+
 }
