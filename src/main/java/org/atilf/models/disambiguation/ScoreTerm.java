@@ -19,6 +19,9 @@ public class ScoreTerm {
     private float _recall = 0;
     private float _precision = 0;
     private float _f1Score = 0;
+    private float _terminologyTrend = 0;
+    private float _ambiguityRate = 0;
+    private float _validatedOccurrence = 0;
 
     public void addTermWords(List<ContextWord> term){
         _termWords.add(term);
@@ -37,7 +40,33 @@ public class ScoreTerm {
     }
 
     public void setMissingOccurrence(int missingOccurrence) {
-        _missingOccurrence = missingOccurrence;}
+        _missingOccurrence = missingOccurrence;
+    }
+
+    public float getRecall() {
+        return _recall;
+    }
+
+    public float getPrecision() {
+        return _precision;
+    }
+
+    public float getF1Score() {
+        return _f1Score;
+    }
+
+    public float getAmbiguityRate() {
+        return _ambiguityRate;
+    }
+
+    public float getTerminologyTrend() {
+        return _terminologyTrend;
+    }
+
+
+    public float getValidatedOccurrence() {
+        return _validatedOccurrence;
+    }
 
     public void setRecall(float recall) {
         _recall = recall;
@@ -51,18 +80,31 @@ public class ScoreTerm {
         _f1Score = f1Score;
     }
 
+    public void setTerminologyTrend(float terminologyTrend) {
+        _terminologyTrend = terminologyTrend;
+    }
+
+    public void setAmbiguityRate(float ambiguityRate) {
+        _ambiguityRate = ambiguityRate;
+    }
+
+    public void setValidatedOccurrence(float validatedOccurrence) {
+        _validatedOccurrence = validatedOccurrence;
+    }
+
+
     public synchronized void incCorrectOccurence(){
         _correctOccurrence++;
     }
-    
+
     public synchronized void incTotalOccurence(){
         _totalOccurrences++;
     }
-    
+
     public synchronized void incMissingOccurence(){
         _missingOccurrence++;
     }
-    
+
     public List<List<ContextWord>> getTermWords() {
         return _termWords;
     }

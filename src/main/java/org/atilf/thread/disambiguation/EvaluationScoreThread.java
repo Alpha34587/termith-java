@@ -61,6 +61,7 @@ public class EvaluationScoreThread extends Thread{
         _termithIndex.getScoreTerms().forEach(
                 (p,value) -> _executorService.submit(new ComputeTermsScore(p,value))
         );
+
         _executorService.submit(new ComputeTotalTermsScore(_termithIndex.getScoreTerms()));
 
         //exportToJson
