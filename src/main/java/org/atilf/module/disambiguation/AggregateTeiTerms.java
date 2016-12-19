@@ -10,20 +10,20 @@ import org.xml.sax.helpers.DefaultHandler;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import java.util.*;
+import java.util.Map.Entry;
 
 /**
  * @author Simon Meoni Created on 15/12/16.
  */
 public class AggregateTeiTerms extends DefaultHandler implements Runnable {
-    private ContextWord _currentW;
-    private List<ContextWord> _wElements = new ArrayList<>();
-    private Deque<ContextTerm> _terms = new ArrayDeque<>();
-    private final String _xml;
-    private final Map<String, EvaluationProfile> _evaluationProfile;
-    private Map<String, ScoreTerm> _scoreTerm;
     private boolean _inStandOff = false;
     private boolean _inW = false;
-    private boolean _inText = false;
+    private Map<String, ScoreTerm> _scoreTerm;
+    private ContextWord _currentW;
+    private Deque<ContextTerm> _terms = new ArrayDeque<>();
+    private LinkedList<Entry<ContextTerm,Set<ContextWord>>> _termTemp = new LinkedList<>();
+    private final String _xml;
+    private final Map<String, EvaluationProfile> _evaluationProfile;
     private static final Logger LOGGER = LoggerFactory.getLogger(AggregateTeiTerms.class.getName());
 
     public AggregateTeiTerms(String xml, Map<String, EvaluationProfile> evaluationProfile, Map<String, ScoreTerm> scoreTerms) {
@@ -56,7 +56,6 @@ public class AggregateTeiTerms extends DefaultHandler implements Runnable {
                 LOGGER.info("term extraction started");
                 break;
             case "text":
-                _inText = true;
                 LOGGER.info("context extraction started");
                 break;
             case "w":
@@ -91,7 +90,7 @@ public class AggregateTeiTerms extends DefaultHandler implements Runnable {
     }
 
     private void verifyAnnotation(ScoreTerm scoreTerm, String ana, String disambiguationId) {
-        if (AnnotationResources.valueOf(ana) == AnnotationResources.valueOf(disambiguationId).getAutoAnnotation()){
+        if (disambiguationId.equals(AnnotationResources.valueOf(ana).getAutoAnnotation().getValue())){
             scoreTerm.incCorrectOccurence();
         }
     }
@@ -100,7 +99,7 @@ public class AggregateTeiTerms extends DefaultHandler implements Runnable {
     public void endElement(String uri,
                            String localName, String qName) throws SAXException {
         if(_inW){
-            _wElements.add(_currentW);
+            addPosLemmaToTerm();
         }
 
         switch (qName) {
@@ -109,7 +108,6 @@ public class AggregateTeiTerms extends DefaultHandler implements Runnable {
                 LOGGER.info("term extraction finished");
                 break;
             case "text":
-                _inText = false;
                 LOGGER.info("context extraction finished");
                 break;
             case "w":
@@ -118,6 +116,31 @@ public class AggregateTeiTerms extends DefaultHandler implements Runnable {
         }
     }
 
+    private void addPosLemmaToTerm() {
+        ContextTerm term = _terms.peek();
+        if (term != null) {
+            if (_currentW.getTarget() == term.getBeginTag()) {
+                if (term.getBeginTag() == term.getEndTag()) {
+                    _scoreTerm.get(term.getCorresp()).addTermWords(Collections.singletonList(_currentW));
+                } else {
+                    _termTemp.add(
+                            new AbstractMap.SimpleEntry<>(term, new HashSet<>())
+                    );
+                }
+                if (_terms.poll() != null)
+                    addPosLemmaToTerm();
+            }
+            _termTemp.forEach(
+                    el -> {
+                        el.getValue().add(_currentW);
+                        if (el.getKey().getEndTag() == _currentW.getTarget()) {
+                            _termTemp.remove(el);
+                            _scoreTerm.get(el.getKey().getCorresp()).addTermWords(new ArrayList<>(el.getValue()));
+                        }
+                    }
+            );
+        }
+    }
     @Override
     public void characters(char ch[],
                            int start, int length) throws SAXException {

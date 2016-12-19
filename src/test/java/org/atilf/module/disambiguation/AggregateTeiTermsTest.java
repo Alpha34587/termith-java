@@ -7,6 +7,7 @@ import org.atilf.models.disambiguation.ScoreTerm;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.mockito.internal.matchers.apachecommons.ReflectionEquals;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
@@ -28,8 +29,8 @@ public class AggregateTeiTermsTest {
         EvaluationProfile term1 = new EvaluationProfile();
         term1.setDisambiguationId(AnnotationResources.DA_OFF);
 
-        terms.put("entry-450_DM4",term1);
-        terms.put("entry-13471_DM3",term1);
+        terms.put("entry-450_DM1",term1);
+        terms.put("entry-13471_DM1",term1);
 
         String file = "src/test/resources/corpus/disambiguation/transform-tei/test3.xml";
         _aggregateTeiTerms = new AggregateTeiTerms(file,terms,_observedScoreTerms);
@@ -68,9 +69,9 @@ public class AggregateTeiTermsTest {
         _expectedScoreTerms.put("entry-450", score);
 
         score = new ScoreTerm();
-        score.setCorrectOccurrence(1);
+        score.setCorrectOccurrence(2);
         score.setTotalOccurrences(2);
-        score.setMissingOccurrence(1);
+        score.setMissingOccurrence(0);
         List<ContextWord> words = new ArrayList<>();
         words.add(t13);
         words.add(t14);
@@ -109,14 +110,20 @@ public class AggregateTeiTermsTest {
         _expectedScoreTerms.forEach(
                 (key,value) -> {
                     ScoreTerm observed = _observedScoreTerms.get(key);
-                    Assert.assertEquals("these two correctOccurrences must be equals",
+                    Assert.assertEquals("these two correctOccurrences must be equals for "
+                                    + key,
                             value.getCorrectOccurrence(),observed.getCorrectOccurrence());
-                    Assert.assertEquals("these two missingOccurrences must be equals",
+                    Assert.assertEquals("these two missingOccurrences must be equals for "
+                                    + key,
                             value.getMissingOccurrence(),observed.getMissingOccurrence());
-                    Assert.assertEquals("these two totalOccurrences must be equals",
+                    Assert.assertEquals("these two totalOccurrences must be equals for "
+                                    + key,
                             value.getTotalOccurrences(),observed.getTotalOccurrences());
-                    Assert.assertTrue("this two list of words must be equals",
-                            value.getTermWords().equals(observed));
+                    for (int i = 0; i < value.getTermWords().size(); i++) {
+                        Assert.assertTrue(
+                                "this two list of words must be equals ",
+                                new ReflectionEquals(value.getTermWords()).matches(observed.getTermWords()));
+                    }
                 }
         );
     }
