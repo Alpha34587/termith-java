@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?><TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:ns2="http://standoff.proposal" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns="http://standoff.proposal">
     <ns:standOff>
-        <span target="#t25" corresp="#entry-450" ana="#DM1"/>
-        <span target="#t13 #t14 #t15 #t16" corresp="#entry-13471" ana="#DM1"/>
-        <span target="#t49" corresp="#entry-990" ana="#noDM"/>
-        <span target="#t7 #t8" corresp="#entry-575" ana="#DM1"/>
-        <span target="#t18 #t19" corresp="#entry-35" ana="#DM1"/>
-        <span target="#t51" corresp="#entry-7263" ana="#DM4"/>
+        <span target="#t25" corresp="#entry-450" ana="#DM1" text=""/>
+        <span target="#t13 #t14 #t15 #t16" corresp="#entry-13471" ana="#DM1" text=""/>
+        <span target="#t49" corresp="#entry-990" ana="#noDM" text=""/>
+        <span target="#t7 #t8" corresp="#entry-575" ana="#DM1" text=""/>
+        <span target="#t18 #t19" corresp="#entry-35" ana="#DM1" text=""/>
+        <span target="#t51" corresp="#entry-7263" ana="#DM4" text=""/>
         <span target="#t30" corresp="#entry-7263" ana="#DM3"/>
-        <span target="#t46 #t47 #t48" corresp="#entry-5750" ana="#DM3"/>
-        <span target="#t13 #t14 #t15 #t16" corresp="#entry-13471" ana="#DM1"/>
+        <span target="#t46 #t47 #t48" corresp="#entry-5750" ana="#DM3" text=""/>
+        <span target="#t13 #t14 #t15 #t16" corresp="#entry-13471" ana="#DM1" text=""/>
     </ns:standOff>
     <text>
         <front>
