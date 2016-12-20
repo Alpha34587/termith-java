@@ -79,6 +79,7 @@ public class AggregateTeiTerms extends DefaultHandler implements Runnable {
         String target = attributes.getValue("target");
         _scoreTerm.putIfAbsent(corresp,new ScoreTerm());
         ScoreTerm scoreTerm = _scoreTerm.get(corresp);
+        scoreTerm.setFlexionsWords(attributes.getValue("text"));
         _terms.add(new ContextTerm(corresp,target));
         if ( (term = _evaluationProfile.get(key)) != null){
             verifyAnnotation(scoreTerm,ana,term.getDisambiguationId());

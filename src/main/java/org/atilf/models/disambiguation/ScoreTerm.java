@@ -13,6 +13,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class ScoreTerm {
     private Map<String, Multiset<String>> _context = new ConcurrentHashMap<>();
     private List<List<ContextWord>> _termWords = new CopyOnWriteArrayList<>();
+    private String _flexionsWords = "";
     private int _totalOccurrences = 0;
     private int _correctOccurrence = 0;
     private int _missingOccurrence = 0;
@@ -43,6 +44,10 @@ public class ScoreTerm {
         _missingOccurrence = missingOccurrence;
     }
 
+    public void setFlexionsWords(String flexionsWords) {
+        _flexionsWords = flexionsWords;
+    }
+
     public float getRecall() {
         return _recall;
     }
@@ -63,6 +68,9 @@ public class ScoreTerm {
         return _terminologyTrend;
     }
 
+    public synchronized String getFlexionsWords() {
+        return _flexionsWords;
+    }
 
     public float getValidatedOccurrence() {
         return _validatedOccurrence;

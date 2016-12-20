@@ -61,6 +61,7 @@ public class AggregateTeiTermsTest {
 
 
         ScoreTerm score = new ScoreTerm();
+        score.setFlexionsWords("d");
         score.setCorrectOccurrence(1);
         score.setTotalOccurrences(1);
         score.setMissingOccurrence(0);
@@ -69,6 +70,7 @@ public class AggregateTeiTermsTest {
         _expectedScoreTerms.put("entry-450", score);
 
         score = new ScoreTerm();
+        score.setFlexionsWords("b");
         score.setCorrectOccurrence(2);
         score.setTotalOccurrences(2);
         score.setMissingOccurrence(0);
@@ -83,6 +85,7 @@ public class AggregateTeiTermsTest {
         _expectedScoreTerms.put("entry-13471",score);
 
         score = new ScoreTerm();
+        score.setFlexionsWords("a");
         score.setCorrectOccurrence(0);
         score.setTotalOccurrences(1);
         score.setMissingOccurrence(1);
@@ -93,6 +96,7 @@ public class AggregateTeiTermsTest {
         _expectedScoreTerms.put("entry-575",score);
 
         score = new ScoreTerm();
+        score.setFlexionsWords("e");
         score.setCorrectOccurrence(0);
         score.setTotalOccurrences(1);
         score.setMissingOccurrence(1);
@@ -119,6 +123,9 @@ public class AggregateTeiTermsTest {
                     Assert.assertEquals("these two totalOccurrences must be equals for "
                                     + key,
                             value.getTotalOccurrences(),observed.getTotalOccurrences());
+                    Assert.assertEquals("these two flexionWords must be equals for "
+                                    + key,
+                            value.getFlexionsWords(),observed.getFlexionsWords());
                     for (int i = 0; i < value.getTermWords().size(); i++) {
                         Assert.assertTrue(
                                 "this two list of words must be equals ",
