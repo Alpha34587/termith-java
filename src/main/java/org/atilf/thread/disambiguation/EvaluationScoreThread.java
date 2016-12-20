@@ -1,5 +1,6 @@
 package org.atilf.thread.disambiguation;
 
+import org.atilf.models.disambiguation.TotalTermScore;
 import org.atilf.models.termith.TermithIndex;
 import org.atilf.module.disambiguation.AggregateTeiTerms;
 import org.atilf.module.disambiguation.ComputeTermsScore;
@@ -62,7 +63,7 @@ public class EvaluationScoreThread extends Thread{
                 (p,value) -> _executorService.submit(new ComputeTermsScore(p,value))
         );
 
-        _executorService.submit(new ComputeTotalTermsScore(_termithIndex.getScoreTerms()));
+        _executorService.submit(new ComputeTotalTermsScore(_termithIndex.getScoreTerms(),new TotalTermScore()));
 
         //exportToJson
         //exportToCsv
