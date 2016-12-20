@@ -1,19 +1,28 @@
 package org.atilf.thread.disambiguation;
 
+import org.atilf.models.disambiguation.DisambiguationXslResources;
 import org.atilf.models.disambiguation.TotalTermScore;
+import org.atilf.models.extractor.XslResources;
 import org.atilf.models.termith.TermithIndex;
 import org.atilf.module.disambiguation.AggregateTeiTerms;
 import org.atilf.module.disambiguation.ComputeTermsScore;
 import org.atilf.module.disambiguation.ComputeTotalTermsScore;
+import org.atilf.module.disambiguation.DisambiguationXslTransformer;
 import org.atilf.thread.Thread;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutionException;
 
 /**
  * @author Simon Meoni Created on 15/12/16.
  */
 public class EvaluationScoreThread extends Thread{
+    private final CountDownLatch _transformCounter;
+    private final CountDownLatch _aggregateCounter;
+    private final CountDownLatch _scoreCounter;
+
     /**
      * this constructor initialize the _termithIndex fields and initialize the _poolSize field with the default value
      * with the number of available processors.
@@ -21,8 +30,8 @@ public class EvaluationScoreThread extends Thread{
      * @param termithIndex
      *         the termithIndex is an object that contains the results of the process
      */
-    public EvaluationScoreThread(TermithIndex termithIndex) {
-        super(termithIndex);
+    public EvaluationScoreThread(TermithIndex termithIndex) throws IOException {
+        this(termithIndex,Thread.DEFAULT_POOL_SIZE);
     }
 
     /**
@@ -36,8 +45,12 @@ public class EvaluationScoreThread extends Thread{
      *
      * @see TermithIndex
      */
-    public EvaluationScoreThread(TermithIndex termithIndex, int poolSize) {
+    public EvaluationScoreThread(TermithIndex termithIndex, int poolSize) throws IOException {
+
         super(termithIndex, poolSize);
+        _transformCounter = new CountDownLatch((int) Files.list(TermithIndex.getOutputPath()).count());
+        _aggregateCounter = new CountDownLatch((int) Files.list(TermithIndex.getOutputPath()).count());
+        _scoreCounter = new CountDownLatch((int) Files.list(TermithIndex.getOutputPath()).count());
     }
 
     /**
@@ -53,20 +66,36 @@ public class EvaluationScoreThread extends Thread{
      */
     @Override
     public void execute() throws IOException, InterruptedException, ExecutionException {
-        //transform tei file
-        //p <=> tei transform file (_outputPath)
-        _termithIndex.getEvaluationLexicon().forEach(
-                (p,value) -> _executorService.submit(new AggregateTeiTerms(p,value,_termithIndex.getScoreTerms()))
+        XslResources xslResources = new DisambiguationXslResources();
+        Files.list(TermithIndex.getOutputPath()).forEach(
+                p -> {
+                        _executorService.submit(new DisambiguationXslTransformer(
+                                p.toFile(),
+                                _transformCounter,
+                                _termithIndex.getTransformOutputDisambiguationFile(),
+                                xslResources));
+                }
         );
+        _transformCounter.await();
 
-        _termithIndex.getScoreTerms().forEach(
+        _termithIndex.getEvaluationLexicon().forEach(
+                (p,value) -> _executorService.submit(new AggregateTeiTerms(
+                        _termithIndex.getTransformOutputDisambiguationFile().get(p).toString(),
+                        value,
+                        _termithIndex.getScoreTerms()))
+        );
+       _aggregateCounter.await();
+
+       _termithIndex.getScoreTerms().forEach(
                 (p,value) -> _executorService.submit(new ComputeTermsScore(p,value))
         );
+        _scoreCounter.await();
 
-        _executorService.submit(new ComputeTotalTermsScore(_termithIndex.getScoreTerms(),new TotalTermScore()));
+        _executorService.submit(new ComputeTotalTermsScore(_termithIndex.getScoreTerms(),new TotalTermScore())).get();
 
-        //exportToJson
-        //exportToCsv
-        //exportToGraphJs
+
+        //TODO exportToJson
+        //TODO exportToCsv
+        //TODO exportToGraphJs
     }
 }

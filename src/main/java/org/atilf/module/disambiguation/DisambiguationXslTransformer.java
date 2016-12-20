@@ -23,6 +23,7 @@ public class DisambiguationXslTransformer extends TextExtractor {
     private TermithIndex _termithIndex;
     private CountDownLatch _transformCounter;
     private Map<String, Path> _xmlTransformedMap;
+    private Path _outputPath;
     private static final Logger LOGGER = LoggerFactory.getLogger(DisambiguationXslTransformer.class.getName());
 
     /**
@@ -52,9 +53,16 @@ public class DisambiguationXslTransformer extends TextExtractor {
 
     public DisambiguationXslTransformer(File file, CountDownLatch transformCounter,
                                         Map<String, Path> xmlTransformedMap, XslResources xslResources){
+        this(file,transformCounter,xmlTransformedMap,xslResources,TermithIndex.getOutputPath());
+    }
+
+
+    public DisambiguationXslTransformer(File file, CountDownLatch transformCounter,
+                                        Map<String,Path> xmlTransformedMap, XslResources xslResources, Path outputPath){
         super(file,xslResources);
         _transformCounter = transformCounter;
         _xmlTransformedMap = xmlTransformedMap;
+        _outputPath = outputPath;
     }
 
     /**
@@ -77,7 +85,7 @@ public class DisambiguationXslTransformer extends TextExtractor {
                      */
                     FilesUtils.writeFile(
                             execute(),
-                            TermithIndex.getOutputPath(),
+                            _outputPath,
                             _file.getName())
             );
             /*

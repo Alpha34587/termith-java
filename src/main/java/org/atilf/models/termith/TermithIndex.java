@@ -49,6 +49,7 @@ public class TermithIndex {
     private Map<String, Path> _learningTransformedFiles = new ConcurrentHashMap<>();
     private Map<String, Path> _evaluationTransformedFiles = new ConcurrentHashMap<>();
     private Map<String,ScoreTerm> _scoreTerms = new ConcurrentHashMap<>();
+    private Map<String, Path> _transformOutputDisambiguationFile = new ConcurrentHashMap<>();
 
     /*
     CLI parameter
@@ -213,6 +214,10 @@ public class TermithIndex {
      * @return return the output path
      */
     public static Path getOutputPath() { return _outputPath;}
+
+    public Map<String, Path> getTransformOutputDisambiguationFile() {
+        return _transformOutputDisambiguationFile;
+    }
 
     /**
      * get the corpus language
