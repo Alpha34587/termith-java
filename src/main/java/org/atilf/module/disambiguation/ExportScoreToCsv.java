@@ -1,8 +1,10 @@
 package org.atilf.module.disambiguation;
 
 import org.atilf.models.disambiguation.ScoreTerm;
-import org.atilf.models.disambiguation.TotalTermScore;
+import org.atilf.models.termith.TermithIndex;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Map;
 
@@ -11,8 +13,8 @@ import java.util.Map;
  */
 public class ExportScoreToCsv extends ExportScoreToJson {
 
-    public ExportScoreToCsv(Map<String, ScoreTerm> scoreTerms, TotalTermScore totalTermScore) {
-        super(scoreTerms,totalTermScore);
+    public ExportScoreToCsv(Map<String, ScoreTerm> scoreTerms) {
+        super(scoreTerms,null);
     }
 
     @Override
@@ -22,5 +24,86 @@ public class ExportScoreToCsv extends ExportScoreToJson {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void execute() throws IOException {
+        FileWriter fileWriter = new FileWriter(TermithIndex.getOutputPath() + "/termith-score.csv");
+        BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+        bufferedWriter.write(
+                "\"FL CT\",\"Lg,POS\",\"Man On\",\"Man Off\",\"Nb occ\"," +
+                        "\"Accord\",\"Désaccord\",\"Sans réponse\",\"Tendance terminologique\"," +
+                        "\"Taux d'ambiguité\",\"Précision\",\"Rappel\",\"F-mesure\"\n"
+        );
+        _scoreTerms.forEach(
+                (key,value) -> {
+                    try {
+                        /*
+                        write flexions words
+                         */
+                        bufferedWriter.write("\"" + value.getFlexionsWords() + "\",");
+                        /*
+                        write language
+                         */
+                        bufferedWriter.write("\"\",");
+                        /*
+                        write pos
+                         */
+                        bufferedWriter.write("\"" + retrievePos(value) + "\",");
+                        /*
+                        write number of term annotation
+                         */
+                        bufferedWriter.write("\"" + (int)value.getValidatedOccurrence() + "\",");
+                        /*
+                        write number of non term annotation
+                         */
+                        bufferedWriter.write("\""
+                                +  (int)(value.getTotalOccurrences()
+                                - value.getMissingOccurrence() - value.getValidatedOccurrence())
+                                + "\",");
+                        /*
+                        write the number of total occurrence
+                         */
+                        bufferedWriter.write("\"" + value.getTotalOccurrences() + "\",");
+                        /*
+                        write the number of correct annotation
+                         */
+                        bufferedWriter.write("\"" + value.getCorrectOccurrence() + "\",");
+                        /*
+                        write the number of incorrect annotation
+                         */
+                        bufferedWriter.write("\"" +
+                                (value.getTotalOccurrences() - value.getMissingOccurrence() - value.getCorrectOccurrence())
+                                + "\",");
+                        /*
+                        write the number of missing occurrence
+                         */
+                        bufferedWriter.write("\"" + value.getMissingOccurrence() + "\",");
+                        /*
+                        write the terminology trend
+                         */
+                        bufferedWriter.write("\"" + value.getTerminologyTrend() + "\",");
+                        /*
+                        write the ambiguity rate
+                         */
+                        bufferedWriter.write("\"" + value.getAmbiguityRate() + "\",");
+                        /*
+                        write the recall
+                         */
+                        bufferedWriter.write("\"" + value.getRecall() + "\",");
+                        /*
+                        write the precision
+                         */
+                        bufferedWriter.write("\"" + value.getPrecision() + "\",");
+                        /*
+                        write the f1-score
+                         */
+                        bufferedWriter.write("\"" + value.getF1Score() + "\"\n");
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }}
+        );
+        bufferedWriter.flush();
+        bufferedWriter.close();
     }
 }

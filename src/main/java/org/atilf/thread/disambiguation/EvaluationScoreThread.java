@@ -93,7 +93,7 @@ public class EvaluationScoreThread extends Thread{
         ).get();
 
         _executorService.submit(new ExportScoreToJson(_termithIndex.getScoreTerms(),_termithIndex.getTotalTermScore()));
-        _executorService.submit(new ExportScoreToCsv(_termithIndex.getScoreTerms(),_termithIndex.getTotalTermScore())).get();
+        _executorService.submit(new ExportScoreToCsv(_termithIndex.getScoreTerms())).get();
         _executorService.submit(new ExportScoreToGraphJs());
         _executorService.shutdown();
         _executorService.awaitTermination(1L, TimeUnit.DAYS);

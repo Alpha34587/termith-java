@@ -19,10 +19,10 @@ import java.util.*;
  * @author Simon Meoni Created on 03/01/17.
  */
 public class ExportScoreToCsvTest {
-    private static File _expectedFile = new File("src/test/resources/corpus/disambiguation/score/test1.json");
+    private static File _expectedFile = new File("src/test/resources/corpus/disambiguation/score/test1.csv");
     private static Map<String,ScoreTerm> _scoreTerm = new HashMap<>();
     private static TotalTermScore _totalScoreTerm = new TotalTermScore();
-    private static ExportScoreToJson _exportScoreToJson = new ExportScoreToJson(_scoreTerm,_totalScoreTerm);
+    private static ExportScoreToCsv _exportScoreToCsv = new ExportScoreToCsv(_scoreTerm);
 
     @ClassRule
     public static TemporaryFolder temporaryFolder = new TemporaryFolder();
@@ -32,6 +32,10 @@ public class ExportScoreToCsvTest {
         ContextWord word1 = new ContextWord("t1");
         word1.setPosLemma("test1 NOM");
         ScoreTerm scoreTerm1 = new ScoreTerm();
+        scoreTerm1.setValidatedOccurrence(0);
+        scoreTerm1.setTotalOccurrences(7);
+        scoreTerm1.setCorrectOccurrence(7);
+        scoreTerm1.setMissingOccurrence(0);
         scoreTerm1.setFlexionsWords("test1");
         scoreTerm1.addTermWords(Collections.singletonList(word1));
         scoreTerm1.setRecall(0.5f);
@@ -46,6 +50,11 @@ public class ExportScoreToCsvTest {
         contextWords.add(word1);
         contextWords.add(word2);
         ScoreTerm scoreTerm2 = new ScoreTerm();
+        scoreTerm2.setValidatedOccurrence(0);
+        scoreTerm2.setTotalOccurrences(7);
+        scoreTerm2.setCorrectOccurrence(0);
+        scoreTerm2.setTotalOccurrences(7);
+        scoreTerm2.setMissingOccurrence(0);
         scoreTerm2.setFlexionsWords("test2");
         scoreTerm2.addTermWords(contextWords);
         scoreTerm2.setRecall(0.6f);
@@ -64,12 +73,12 @@ public class ExportScoreToCsvTest {
     }
     @Test
     public void execute() throws Exception {
-        _exportScoreToJson.execute();
+        _exportScoreToCsv.execute();
         Assert.assertEquals(
                 FileUtils.readFileToString(
                         _expectedFile, "utf-8"),
                 FileUtils.readFileToString(
-                        new File(TermithIndex.getOutputPath().toString() + "/termith-score.json"), "utf-8")
+                        new File(TermithIndex.getOutputPath().toString() + "/termith-score.csv"), "utf-8")
         );
     }
 }
