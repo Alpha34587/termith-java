@@ -19,6 +19,10 @@ public class ExportScoreToCsv implements Runnable {
 
     @Override
     public void run() {
+        execute();
+    }
+
+    protected void execute() {
 
     }
 }

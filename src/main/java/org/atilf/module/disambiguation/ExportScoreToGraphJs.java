@@ -6,6 +6,10 @@ package org.atilf.module.disambiguation;
 public class ExportScoreToGraphJs implements Runnable {
     @Override
     public void run() {
+        execute();
+    }
+
+    protected void execute() {
 
     }
 }

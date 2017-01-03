@@ -19,6 +19,10 @@ public class ExportScoreToJson implements Runnable {
 
     @Override
     public void run() {
+        execute();
+    }
+
+    protected void execute() {
 
     }
 }
