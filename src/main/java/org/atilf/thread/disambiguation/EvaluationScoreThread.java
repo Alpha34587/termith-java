@@ -1,19 +1,16 @@
 package org.atilf.thread.disambiguation;
 
 import org.atilf.models.disambiguation.DisambiguationXslResources;
-import org.atilf.models.disambiguation.TotalTermScore;
 import org.atilf.models.extractor.XslResources;
 import org.atilf.models.termith.TermithIndex;
-import org.atilf.module.disambiguation.AggregateTeiTerms;
-import org.atilf.module.disambiguation.ComputeTermsScore;
-import org.atilf.module.disambiguation.ComputeTotalTermsScore;
-import org.atilf.module.disambiguation.DisambiguationXslTransformer;
+import org.atilf.module.disambiguation.*;
 import org.atilf.thread.Thread;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author Simon Meoni Created on 15/12/16.
@@ -91,11 +88,14 @@ public class EvaluationScoreThread extends Thread{
         );
         _scoreCounter.await();
 
-        _executorService.submit(new ComputeTotalTermsScore(_termithIndex.getScoreTerms(),new TotalTermScore())).get();
+        _executorService.submit(
+                new ComputeTotalTermsScore(_termithIndex.getScoreTerms(),_termithIndex.getTotalTermScore())
+        ).get();
 
-
-        //TODO exportToJson
-        //TODO exportToCsv
-        //TODO exportToGraphJs
+        _executorService.submit(new ExportScoreToJson(_termithIndex.getScoreTerms(),_termithIndex.getTotalTermScore()));
+        _executorService.submit(new ExportScoreToCsv(_termithIndex.getScoreTerms(),_termithIndex.getTotalTermScore())).get();
+        _executorService.submit(new ExportScoreToGraphJs());
+        _executorService.shutdown();
+        _executorService.awaitTermination(1L, TimeUnit.DAYS);
     }
 }

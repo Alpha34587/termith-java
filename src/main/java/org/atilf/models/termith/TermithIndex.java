@@ -1,11 +1,8 @@
 package org.atilf.models.termith;
 
 import org.apache.commons.io.FileUtils;
-import org.atilf.models.disambiguation.CorpusLexicon;
-import org.atilf.models.disambiguation.LexiconProfile;
-import org.atilf.models.disambiguation.ScoreTerm;
+import org.atilf.models.disambiguation.*;
 import org.atilf.models.termsuite.TermOffsetId;
-import org.atilf.models.disambiguation.EvaluationProfile;
 import org.atilf.module.tools.FilesUtils;
 
 import java.io.File;
@@ -49,6 +46,7 @@ public class TermithIndex {
     private Map<String, Path> _learningTransformedFiles = new ConcurrentHashMap<>();
     private Map<String, Path> _evaluationTransformedFiles = new ConcurrentHashMap<>();
     private Map<String,ScoreTerm> _scoreTerms = new ConcurrentHashMap<>();
+    private TotalTermScore _totalTermScore = new TotalTermScore();
     private Map<String, Path> _transformOutputDisambiguationFile = new ConcurrentHashMap<>();
 
     /*
@@ -168,6 +166,8 @@ public class TermithIndex {
     public static Path getLearningPath() {return _learningPath;}
 
     public static Path getEvaluationPath() {return _evaluationPath;}
+
+    public TotalTermScore getTotalTermScore() { return _totalTermScore; }
 
     /**
      * the path of input corpus
