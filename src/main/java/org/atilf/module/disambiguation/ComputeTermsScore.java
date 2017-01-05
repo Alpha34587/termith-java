@@ -27,7 +27,7 @@ public class ComputeTermsScore implements Runnable {
     }
 
     protected void computeRecall(){
-         _scoreTerm.setRecall(1- ((float) _scoreTerm.getMissingOccurrence() / (float) _scoreTerm.getTotalOccurrences()));
+        _scoreTerm.setRecall(1- ((float) _scoreTerm.getMissingOccurrence() / (float) _scoreTerm.getTotalOccurrences()));
     }
 
     protected void computePrecision(){
@@ -35,9 +35,16 @@ public class ComputeTermsScore implements Runnable {
     }
 
     protected void computeF1score(){
-         float precisionFloat = _scoreTerm.getPrecision();
-         float recallFloat = _scoreTerm.getRecall();
-        _scoreTerm.setF1Score(2*((precisionFloat * recallFloat) / (precisionFloat + recallFloat)));
+        float precisionFloat = _scoreTerm.getPrecision();
+        float recallFloat = _scoreTerm.getRecall();
+        float f1Score = 2*((precisionFloat * recallFloat) / (precisionFloat + recallFloat));
+
+        if (Float.isNaN(f1Score)) {
+            _scoreTerm.setF1Score(0);
+        }
+        else {
+            _scoreTerm.setF1Score(f1Score);
+        }
     }
 
     protected void computeAmbiguityRate(){

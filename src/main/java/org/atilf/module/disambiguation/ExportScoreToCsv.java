@@ -6,6 +6,9 @@ import org.atilf.models.termith.TermithIndex;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
+import java.util.Locale;
 import java.util.Map;
 
 /**
@@ -28,6 +31,10 @@ public class ExportScoreToCsv extends ExportScoreToJson {
 
     @Override
     public void execute() throws IOException {
+        Locale.setDefault(new Locale("en", "US"));
+        DecimalFormat df = new DecimalFormat("#.####");
+        df.setRoundingMode(RoundingMode.CEILING);
+
         FileWriter fileWriter = new FileWriter(TermithIndex.getOutputPath() + "/termith-score.csv");
         BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
         bufferedWriter.write(
@@ -35,6 +42,7 @@ public class ExportScoreToCsv extends ExportScoreToJson {
                         "\"Accord\",\"Désaccord\",\"Sans réponse\",\"Tendance terminologique\"," +
                         "\"Taux d'ambiguité\",\"Précision\",\"Rappel\",\"F-mesure\"\n"
         );
+
         _scoreTerms.forEach(
                 (key,value) -> {
                     try {
@@ -82,23 +90,23 @@ public class ExportScoreToCsv extends ExportScoreToJson {
                         /*
                         write the terminology trend
                          */
-                        bufferedWriter.write("\"" + value.getTerminologyTrend() + "\",");
+                        bufferedWriter.write("\"" + df.format(value.getTerminologyTrend()) + "\",");
                         /*
                         write the ambiguity rate
                          */
-                        bufferedWriter.write("\"" + value.getAmbiguityRate() + "\",");
+                        bufferedWriter.write("\"" + df.format(value.getAmbiguityRate()) + "\",");
                         /*
                         write the recall
                          */
-                        bufferedWriter.write("\"" + value.getRecall() + "\",");
+                        bufferedWriter.write("\"" + df.format(value.getRecall()) + "\",");
                         /*
                         write the precision
                          */
-                        bufferedWriter.write("\"" + value.getPrecision() + "\",");
+                        bufferedWriter.write("\"" + df.format(value.getPrecision()) + "\",");
                         /*
                         write the f1-score
                          */
-                        bufferedWriter.write("\"" + value.getF1Score() + "\"\n");
+                        bufferedWriter.write("\"" + df.format(value.getF1Score()) + "\"\n");
                     } catch (IOException e) {
                         e.printStackTrace();
                     }}
