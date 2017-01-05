@@ -59,7 +59,7 @@ public class ExportScoreToCsv extends ExportScoreToJson {
                          */
                         bufferedWriter.write("\""
                                 +  (int)(value.getTotalOccurrences()
-                                - value.getMissingOccurrence() - value.getValidatedOccurrence())
+                                - value.getValidatedOccurrence())
                                 + "\",");
                         /*
                         write the number of total occurrence

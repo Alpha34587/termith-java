@@ -41,10 +41,12 @@ public class ComputeTermsScore implements Runnable {
     }
 
     protected void computeAmbiguityRate(){
-        if (_scoreTerm.getTerminologyTrend() <= 0.5){
+        if (_scoreTerm.getTerminologyTrend() <= 0.5f){
             _scoreTerm.setAmbiguityRate(_scoreTerm.getTerminologyTrend());
         }
-        _scoreTerm.setAmbiguityRate((1f - _scoreTerm.getTerminologyTrend()));
+        else {
+            _scoreTerm.setAmbiguityRate((1f - _scoreTerm.getTerminologyTrend()));
+        }
     }
 
     protected void computeTerminologyTrend(){
