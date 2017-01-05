@@ -18,8 +18,8 @@ public class ComputeTermsScore implements Runnable {
         computeRecall();
         computePrecision();
         computeF1score();
-        computeAmbiguityRate();
         computeTerminologyTrend();
+        computeAmbiguityRate();
     }
 
     @Override
@@ -37,7 +37,7 @@ public class ComputeTermsScore implements Runnable {
     protected void computeF1score(){
          float precisionFloat = _scoreTerm.getPrecision();
          float recallFloat = _scoreTerm.getRecall();
-        _scoreTerm.setF1Score((precisionFloat * recallFloat) / (precisionFloat + recallFloat));
+        _scoreTerm.setF1Score(2*((precisionFloat * recallFloat) / (precisionFloat + recallFloat)));
     }
 
     protected void computeAmbiguityRate(){

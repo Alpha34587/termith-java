@@ -31,7 +31,7 @@ public class ExportScoreToCsv extends ExportScoreToJson {
         FileWriter fileWriter = new FileWriter(TermithIndex.getOutputPath() + "/termith-score.csv");
         BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
         bufferedWriter.write(
-                "\"FL CT\",\"Lg,POS\",\"Man On\",\"Man Off\",\"Nb occ\"," +
+                "\"FL CT\",\"Lg\",\"POS\",\"Man On\",\"Man Off\",\"Nb occ\"," +
                         "\"Accord\",\"Désaccord\",\"Sans réponse\",\"Tendance terminologique\"," +
                         "\"Taux d'ambiguité\",\"Précision\",\"Rappel\",\"F-mesure\"\n"
         );
