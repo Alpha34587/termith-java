@@ -88,15 +88,15 @@ public class AggregateTeiTerms extends DefaultHandler implements Runnable {
         else {
             scoreTerm.incMissingOccurrence();
         }
+        if (AnnotationResources.valueOf(ana).equals(AnnotationResources.DM4)){
+            scoreTerm.incValidatedOccurrence();
+        }
         scoreTerm.incTotalOccurrence();
     }
 
     private void verifyAnnotation(ScoreTerm scoreTerm, String ana, String disambiguationId) {
         if (disambiguationId.equals(AnnotationResources.valueOf(ana).getAutoAnnotation().getValue())){
             scoreTerm.incCorrectOccurrence();
-        }
-        if (AnnotationResources.valueOf(ana) == AnnotationResources.DM4){
-            scoreTerm.incValidatedOccurrence();
         }
     }
 

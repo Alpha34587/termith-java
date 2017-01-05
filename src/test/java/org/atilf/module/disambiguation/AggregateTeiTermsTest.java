@@ -100,6 +100,7 @@ public class AggregateTeiTermsTest {
         score.setCorrectOccurrence(0);
         score.setTotalOccurrences(1);
         score.setMissingOccurrence(1);
+        score.setValidatedOccurrence(1);
         words = new ArrayList<>();
         words.add(t46);
         words.add(t47);
@@ -126,6 +127,9 @@ public class AggregateTeiTermsTest {
                     Assert.assertEquals("these two flexionWords must be equals for "
                                     + key,
                             value.getFlexionsWords(),observed.getFlexionsWords());
+                    Assert.assertEquals("these two validated occurrence must be equals for "
+                                    + key,
+                            value.getValidatedOccurrence(),observed.getValidatedOccurrence(),0f);
                     for (int i = 0; i < value.getTermWords().size(); i++) {
                         Assert.assertTrue(
                                 "this two list of words must be equals ",
