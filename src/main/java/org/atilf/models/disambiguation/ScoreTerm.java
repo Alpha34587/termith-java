@@ -17,12 +17,12 @@ public class ScoreTerm {
     private int _totalOccurrences = 0;
     private int _correctOccurrence = 0;
     private int _missingOccurrence = 0;
+    private float _validatedOccurrence = 0;
     private float _recall = 0;
     private float _precision = 0;
     private float _f1Score = 0;
     private float _terminologyTrend = 0;
     private float _ambiguityRate = 0;
-    private float _validatedOccurrence = 0;
 
     public void addTermWords(List<ContextWord> term){
         _termWords.add(term);
@@ -100,16 +100,17 @@ public class ScoreTerm {
         _validatedOccurrence = validatedOccurrence;
     }
 
-
-    public synchronized void incCorrectOccurence(){
-        _correctOccurrence++;
+    public synchronized void incValidatedOccurrence(){
+        _validatedOccurrence++;
     }
 
-    public synchronized void incTotalOccurence(){
+    public synchronized void incCorrectOccurrence(){_correctOccurrence++;}
+
+    public synchronized void incTotalOccurrence(){
         _totalOccurrences++;
     }
 
-    public synchronized void incMissingOccurence(){
+    public synchronized void incMissingOccurrence(){
         _missingOccurrence++;
     }
 

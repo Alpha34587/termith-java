@@ -81,18 +81,22 @@ public class AggregateTeiTerms extends DefaultHandler implements Runnable {
         ScoreTerm scoreTerm = _scoreTerm.get(corresp);
         scoreTerm.setFlexionsWords(attributes.getValue("text"));
         _terms.add(new ContextTerm(corresp,target));
+
         if ( (term = _evaluationProfile.get(key)) != null){
             verifyAnnotation(scoreTerm,ana,term.getDisambiguationId());
         }
         else {
-            scoreTerm.incMissingOccurence();
+            scoreTerm.incMissingOccurrence();
         }
-        scoreTerm.incTotalOccurence();
+        scoreTerm.incTotalOccurrence();
     }
 
     private void verifyAnnotation(ScoreTerm scoreTerm, String ana, String disambiguationId) {
         if (disambiguationId.equals(AnnotationResources.valueOf(ana).getAutoAnnotation().getValue())){
-            scoreTerm.incCorrectOccurence();
+            scoreTerm.incCorrectOccurrence();
+        }
+        if (AnnotationResources.valueOf(ana) == AnnotationResources.DM4){
+            scoreTerm.incValidatedOccurrence();
         }
     }
 

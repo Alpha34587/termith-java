@@ -20,7 +20,7 @@ public class ComputeTermsScoreTest {
         _observedScore.setAmbiguityRate(1);
         _expectedScore.setRecall(0.75f);
         _expectedScore.setPrecision(0.75f);
-        _expectedScore.setF1Score(0.375f);
+        _expectedScore.setF1Score(0.75f);
         _expectedScore.setTerminologyTrend(0.75f);
         _expectedScore.setAmbiguityRate(0.25f);
     }
