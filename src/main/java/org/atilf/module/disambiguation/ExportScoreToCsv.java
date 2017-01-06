@@ -96,14 +96,15 @@ public class ExportScoreToCsv extends ExportScoreToJson {
                          */
                         bufferedWriter.write("\"" + df.format(value.getAmbiguityRate()) + "\",");
                         /*
-                        write the recall
-                         */
-                        bufferedWriter.write("\"" + df.format(value.getRecall()) + "\",");
-                        /*
                         write the precision
                          */
                         bufferedWriter.write("\"" + df.format(value.getPrecision()) + "\",");
                         /*
+                        write the recall
+                         */
+                        bufferedWriter.write("\"" + df.format(value.getRecall()) + "\",");
+                        /*
+
                         write the f1-score
                          */
                         bufferedWriter.write("\"" + df.format(value.getF1Score()) + "\"\n");
