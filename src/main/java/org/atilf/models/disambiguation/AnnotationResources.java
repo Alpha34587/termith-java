@@ -36,4 +36,12 @@ public enum AnnotationResources {
         return value;
     }
 
+    public static AnnotationResources getAnnotations(String annotation){
+        for (AnnotationResources annotationResources : AnnotationResources.values()) {
+            if (annotationResources.getValue().equals(annotation)){
+                return annotationResources;
+            }
+        }
+        return null;
+    }
 }

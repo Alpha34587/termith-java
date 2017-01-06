@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:ns="http://standoff.proposal">
     <ns:standOff>
-        <span target="#t7 #t8" corresp="#entry-575" ana="#DM1" text="a"/>
+        <span target="#t7 #t8" corresp="#entry-575" ana="#DM1 #DaOn" text="a"/>
         <span target="#t13 #t14 #t15 #t16" corresp="#entry-13471" ana="#DM1" text="b"/>
         <span target="#t13 #t14 #t15 #t16" corresp="#entry-13471" ana="#DM1" text="b"/>
         <span target="#t25" corresp="#entry-450" ana="#DM1" text="d"/>

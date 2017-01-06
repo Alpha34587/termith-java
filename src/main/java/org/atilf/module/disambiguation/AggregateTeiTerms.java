@@ -44,7 +44,7 @@ public class AggregateTeiTerms extends DefaultHandler implements Runnable {
 
     @Override
     public void run() {
-
+        execute();
     }
 
     @Override
@@ -73,7 +73,7 @@ public class AggregateTeiTerms extends DefaultHandler implements Runnable {
 
     private void addTerms(Attributes attributes) {
         EvaluationProfile term;
-        String ana = attributes.getValue("ana").substring(1);
+        AnnotationResources ana = parseAna(attributes.getValue("ana"));
         String corresp = attributes.getValue("corresp").substring(1);
         String key =  corresp + "_" + ana;
         String target = attributes.getValue("target");
@@ -88,14 +88,25 @@ public class AggregateTeiTerms extends DefaultHandler implements Runnable {
         else {
             scoreTerm.incMissingOccurrence();
         }
-        if (AnnotationResources.valueOf(ana).equals(AnnotationResources.DM4)){
+        assert ana != null;
+        if (ana.equals(AnnotationResources.DM4)){
             scoreTerm.incValidatedOccurrence();
         }
         scoreTerm.incTotalOccurrence();
     }
 
-    private void verifyAnnotation(ScoreTerm scoreTerm, String ana, String disambiguationId) {
-        if (disambiguationId.equals(AnnotationResources.valueOf(ana).getAutoAnnotation().getValue())){
+    private AnnotationResources parseAna(String ana) {
+        for (String id : ana.split(" ")) {
+            AnnotationResources annotation = AnnotationResources.getAnnotations(id);
+            if(annotation != null)
+                if (annotation.getAutoAnnotation() != null)
+                    return annotation;
+        }
+        return null;
+    }
+
+    private void verifyAnnotation(ScoreTerm scoreTerm, AnnotationResources ana, String disambiguationId) {
+        if (disambiguationId.equals(ana.getAutoAnnotation().getValue())){
             scoreTerm.incCorrectOccurrence();
         }
     }
