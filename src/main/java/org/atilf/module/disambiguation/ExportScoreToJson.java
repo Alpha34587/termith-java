@@ -6,6 +6,8 @@ import org.atilf.models.disambiguation.ContextWord;
 import org.atilf.models.disambiguation.ScoreTerm;
 import org.atilf.models.disambiguation.TotalTermScore;
 import org.atilf.models.termith.TermithIndex;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -16,7 +18,8 @@ import java.util.Map;
  */
 public class ExportScoreToJson implements Runnable {
     final Map<String, ScoreTerm> _scoreTerms;
-    final TotalTermScore _totalTermScore;
+    private final TotalTermScore _totalTermScore;
+    private static final Logger LOGGER = LoggerFactory.getLogger(ExportScoreToCsv.class.getName());
 
     public ExportScoreToJson(Map<String, ScoreTerm> scoreTerms, TotalTermScore totalTermScore) {
         _scoreTerms = scoreTerms;
@@ -25,11 +28,13 @@ public class ExportScoreToJson implements Runnable {
 
     @Override
     public void run() {
+        LOGGER.info("exportation to json is started");
         try {
             execute();
         } catch (IOException e) {
-            e.printStackTrace();
+            LOGGER.error("cannot export in JSON",e);
         }
+        LOGGER.info("exportation to json is finished");
     }
 
     protected void execute() throws IOException {

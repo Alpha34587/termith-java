@@ -2,6 +2,8 @@ package org.atilf.module.disambiguation;
 
 import org.atilf.models.disambiguation.ScoreTerm;
 import org.atilf.models.disambiguation.TotalTermScore;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Map;
 
@@ -15,6 +17,7 @@ public class ComputeTotalTermsScore implements Runnable {
     private int _totalMissingOccurrences = 0;
     private int _totalCorrectOccurrences = 0;
     private TotalTermScore _totalTermScore;
+    private static final Logger LOGGER = LoggerFactory.getLogger(ComputeTotalTermsScore.class.getName());
 
     public ComputeTotalTermsScore(Map<String, ScoreTerm> scoreTerms, TotalTermScore totalTermScore) {
         _scoreTerms = scoreTerms;
@@ -53,6 +56,8 @@ public class ComputeTotalTermsScore implements Runnable {
     }
     @Override
     public void run() {
-
+        LOGGER.info("ComputeTotalTermScore is started");
+        execute();
+        LOGGER.info("ComputeTotalTermScore is finished");
     }
 }

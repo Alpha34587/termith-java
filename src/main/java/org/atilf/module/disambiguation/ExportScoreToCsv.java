@@ -2,6 +2,8 @@ package org.atilf.module.disambiguation;
 
 import org.atilf.models.disambiguation.ScoreTerm;
 import org.atilf.models.termith.TermithIndex;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -19,14 +21,17 @@ public class ExportScoreToCsv extends ExportScoreToJson {
     public ExportScoreToCsv(Map<String, ScoreTerm> scoreTerms) {
         super(scoreTerms,null);
     }
+    private static final Logger LOGGER = LoggerFactory.getLogger(ExportScoreToCsv.class.getName());
 
     @Override
     public void run() {
+        LOGGER.info("CSV exportation started");
         try {
             execute();
         } catch (IOException e) {
-            e.printStackTrace();
+            LOGGER.error("cannot export to CSV : ",e);
         }
+        LOGGER.info("CSV exportation is finished");
     }
 
     @Override

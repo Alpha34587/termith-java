@@ -1,6 +1,8 @@
 package org.atilf.module.disambiguation;
 
 import org.atilf.models.disambiguation.ScoreTerm;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author Simon Meoni Created on 15/12/16.
@@ -8,6 +10,7 @@ import org.atilf.models.disambiguation.ScoreTerm;
 public class ComputeTermsScore implements Runnable {
     private final String _term;
     private final ScoreTerm _scoreTerm;
+    private static final Logger LOGGER = LoggerFactory.getLogger(ComputeTermsScore.class.getName());
 
     public ComputeTermsScore(String term, ScoreTerm scoreTerm) {
         _term = term;
@@ -24,6 +27,9 @@ public class ComputeTermsScore implements Runnable {
 
     @Override
     public void run() {
+        LOGGER.info("compute score is started for : " + _term );
+        execute();
+        LOGGER.info("compute score is finished for : " + _term );
     }
 
     void computeRecall(){

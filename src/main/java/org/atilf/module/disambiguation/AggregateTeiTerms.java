@@ -38,13 +38,15 @@ public class AggregateTeiTerms extends DefaultHandler implements Runnable {
             SAXParser saxParser = factory.newSAXParser();
             saxParser.parse(_xml, this);
         } catch (Exception e) {
-            e.printStackTrace();
+            LOGGER.error("cannot parse this xml file stylesheet to :" + _xml);
         }
     }
 
     @Override
     public void run() {
+        LOGGER.info("aggregate terms is started for file : " + _xml);
         execute();
+        LOGGER.info("aggregate terms is finished for file : " + _xml);
     }
 
     @Override
