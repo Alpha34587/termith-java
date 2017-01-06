@@ -26,15 +26,15 @@ public class ComputeTermsScore implements Runnable {
     public void run() {
     }
 
-    protected void computeRecall(){
+    void computeRecall(){
         _scoreTerm.setRecall(1- ((float) _scoreTerm.getMissingOccurrence() / (float) _scoreTerm.getTotalOccurrences()));
     }
 
-    protected void computePrecision(){
+    void computePrecision(){
         _scoreTerm.setPrecision((float) _scoreTerm.getCorrectOccurrence() / (float) _scoreTerm.getTotalOccurrences());
     }
 
-    protected void computeF1score(){
+    void computeF1score(){
         float precisionFloat = _scoreTerm.getPrecision();
         float recallFloat = _scoreTerm.getRecall();
         float f1Score = 2*((precisionFloat * recallFloat) / (precisionFloat + recallFloat));
@@ -47,7 +47,7 @@ public class ComputeTermsScore implements Runnable {
         }
     }
 
-    protected void computeAmbiguityRate(){
+    void computeAmbiguityRate(){
         if (_scoreTerm.getTerminologyTrend() <= 0.5f){
             _scoreTerm.setAmbiguityRate(_scoreTerm.getTerminologyTrend());
         }
@@ -56,7 +56,7 @@ public class ComputeTermsScore implements Runnable {
         }
     }
 
-    protected void computeTerminologyTrend(){
+    void computeTerminologyTrend(){
         _scoreTerm.setTerminologyTrend(_scoreTerm.getValidatedOccurrence() / _scoreTerm.getTotalOccurrences());
     }
 }

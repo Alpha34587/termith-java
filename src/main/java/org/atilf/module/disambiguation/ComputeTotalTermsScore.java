@@ -28,7 +28,7 @@ public class ComputeTotalTermsScore implements Runnable {
         computeF1score();
     }
 
-    public void sum() {
+    void sum() {
         _scoreTerms.forEach(
                 (key,value) -> {
                     _totalOccurrences += value.getTotalOccurrences();
@@ -38,15 +38,15 @@ public class ComputeTotalTermsScore implements Runnable {
         );
     }
 
-    protected void computeRecall(){
+    void computeRecall(){
         _totalTermScore.setRecall(1 - ((float) _totalMissingOccurrences / (float) _totalOccurrences));
     }
 
-    protected void computePrecision(){
+    void computePrecision(){
         _totalTermScore.setPrecision((float) _totalCorrectOccurrences / (float) _totalOccurrences);
     }
 
-    protected void computeF1score(){
+    void computeF1score(){
         float precisionFloat = _totalTermScore.getPrecision();
         float recallFloat = _totalTermScore.getRecall();
         _totalTermScore.setF1score((precisionFloat * recallFloat) / (precisionFloat + recallFloat));

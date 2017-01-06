@@ -65,13 +65,11 @@ public class EvaluationScoreThread extends Thread{
     public void execute() throws IOException, InterruptedException, ExecutionException {
         XslResources xslResources = new DisambiguationXslResources();
         Files.list(TermithIndex.getOutputPath()).forEach(
-                p -> {
-                        _executorService.submit(new DisambiguationXslTransformer(
-                                p.toFile(),
-                                _transformCounter,
-                                _termithIndex.getTransformOutputDisambiguationFile(),
-                                xslResources));
-                }
+                p -> _executorService.submit(new DisambiguationXslTransformer(
+                        p.toFile(),
+                        _transformCounter,
+                        _termithIndex.getTransformOutputDisambiguationFile(),
+                        xslResources))
         );
         _transformCounter.await();
 
