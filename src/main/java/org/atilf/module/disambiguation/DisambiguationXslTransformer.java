@@ -49,6 +49,7 @@ public class DisambiguationXslTransformer extends TextExtractor {
         super(file,xslResources);
         _transformCounter = transformCounter;
         _xmlTransformedMap = termithIndex.getLearningTransformedFile();
+        _outputPath = TermithIndex.getOutputPath();
     }
 
     public DisambiguationXslTransformer(File file, CountDownLatch transformCounter,
