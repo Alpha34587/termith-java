@@ -87,25 +87,37 @@ public class AggregateTeiTermsTest {
         score = new ScoreTerm();
         score.setFlexionsWords("a");
         score.setCorrectOccurrence(0);
-        score.setTotalOccurrences(1);
-        score.setMissingOccurrence(1);
+        score.setTotalOccurrences(2);
+        score.setMissingOccurrence(2);
         words = new ArrayList<>();
         words.add(t7);
         words.add(t8);
+        List<ContextWord> words1 = new ArrayList<>();
+        words1.add(t7);
         score.addTermWords(words);
+        score.addTermWords(words1);
+
         _expectedScoreTerms.put("entry-575",score);
 
         score = new ScoreTerm();
         score.setFlexionsWords("e");
         score.setCorrectOccurrence(0);
-        score.setTotalOccurrences(1);
-        score.setMissingOccurrence(1);
+        score.setTotalOccurrences(3);
+        score.setMissingOccurrence(3);
         score.setValidatedOccurrence(1);
         words = new ArrayList<>();
+        words1 = new ArrayList<>();
+        List<ContextWord> words2 = new ArrayList<>();
+
         words.add(t46);
         words.add(t47);
         words.add(t48);
+        words1.add(t47);
+        words1.add(t48);
+        words2.add(t47);
         score.addTermWords(words);
+        score.addTermWords(words1);
+        score.addTermWords(words2);
         _expectedScoreTerms.put("entry-5750",score);
     }
 

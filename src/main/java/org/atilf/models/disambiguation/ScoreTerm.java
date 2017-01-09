@@ -24,7 +24,7 @@ public class ScoreTerm {
     private float _terminologyTrend = 0;
     private float _ambiguityRate = 0;
 
-    public void addTermWords(List<ContextWord> term){
+    public synchronized void addTermWords(List<ContextWord> term){
         _termWords.add(term);
     }
 

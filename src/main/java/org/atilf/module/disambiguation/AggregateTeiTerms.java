@@ -21,7 +21,7 @@ public class AggregateTeiTerms extends DefaultHandler implements Runnable {
     private Map<String, ScoreTerm> _scoreTerm;
     private ContextWord _currentW;
     private Deque<ContextTerm> _terms = new ArrayDeque<>();
-    private LinkedList<Entry<ContextTerm,Set<ContextWord>>> _termTemp = new LinkedList<>();
+    private Deque<Entry<ContextTerm,Set<ContextWord>>> _termTemp = new LinkedList<>();
     private final String _xml;
     private final Map<String, EvaluationProfile> _evaluationProfile;
     private static final Logger LOGGER = LoggerFactory.getLogger(AggregateTeiTerms.class.getName());
@@ -38,7 +38,7 @@ public class AggregateTeiTerms extends DefaultHandler implements Runnable {
             SAXParser saxParser = factory.newSAXParser();
             saxParser.parse(_xml, this);
         } catch (Exception e) {
-            LOGGER.error("cannot parse this xml file stylesheet to :" + _xml);
+            LOGGER.error("cannot parse this xml file :" + _xml, e);
         }
     }
 
@@ -141,31 +141,26 @@ public class AggregateTeiTerms extends DefaultHandler implements Runnable {
                 if (term.getBeginTag() == term.getEndTag()) {
                     _scoreTerm.get(term.getCorresp()).addTermWords(Collections.singletonList(_currentW));
                 } else {
-                    _termTemp.add(
-                            new AbstractMap.SimpleEntry<>(term, new HashSet<>())
-                    );
+                    _termTemp.add(new AbstractMap.SimpleEntry(term, new LinkedHashSet<>()));
                 }
-                if (_terms.poll() != null)
-                    addPosLemmaToTerm();
+                _terms.poll();
+                addPosLemmaToTerm();
             }
-            _termTemp.forEach(
-                    el -> {
-                        el.getValue().add(_currentW);
-                        if (el.getKey().getEndTag() == _currentW.getTarget()) {
-                            _termTemp.remove(el);
-                            _scoreTerm.get(el.getKey().getCorresp()).addTermWords(new ArrayList<>(el.getValue()));
-                        }
-                    }
-            );
+        }
+        _termTemp.forEach(el -> el.getValue().add(_currentW));
+
+        if(!_termTemp.isEmpty() && _termTemp.peek().getKey().getEndTag() == _currentW.getTarget()){
+            _scoreTerm.get(_termTemp.peek().getKey().getCorresp()).addTermWords(new ArrayList<>(_termTemp.poll().getValue()));
+            addPosLemmaToTerm();
         }
     }
+
     @Override
     public void characters(char ch[],
                            int start, int length) throws SAXException {
         if (_inW){
             String posLemma = new String(ch,start,length);
             _currentW.setPosLemma(posLemma);
-            LOGGER.debug("add pos lemma pair: "+ posLemma +" to corpus");
         }
     }
 }
