@@ -3,7 +3,6 @@ package org.atilf.benchmark;
 import com.fasterxml.jackson.annotation.JsonRootName;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.apache.commons.io.FileUtils;
 import org.atilf.models.disambiguation.DisambiguationXslResources;
 import org.atilf.models.termith.TermithIndex;
 import org.atilf.module.disambiguation.DisambiguationXslTransformer;
@@ -49,15 +48,22 @@ public class Benchmark {
     private ObjectMapper _mapper = new ObjectMapper();
     private TermithIndex _termithIndex;
 
-    private static String _learning;
-    private static String _evaluation;
-    private static String _out;
+    private String _learning;
+    private String _evaluation;
+    private String _out;
+
     private static final String GRAPH_RESOURCE = "src/test/resources/benchmark/";
     private static final Logger LOGGER = LoggerFactory.getLogger(Benchmark.class.getName());
 
     public void setUp() throws IOException {
         createTermithIndex();
         countTerms();
+    }
+
+    public Benchmark(String learning, String evaluation, String out) {
+        _learning = learning;
+        _evaluation = evaluation;
+        _out = out;
     }
 
     private void countTerms() throws IOException {
@@ -198,7 +204,7 @@ public class Benchmark {
 
     /**
      * execute each steps of benchmark
-     * @throws IOException thrown an exception during benchmar if a file had write or permission problems
+     * @throws IOException thrown an exception during benchmark if a file had write or permission problems
      * @throws NoSuchMethodException thrown an exception during the call of constructor with ThreadPerformance
      */
     public void execute() throws IOException, NoSuchMethodException {
@@ -208,15 +214,6 @@ public class Benchmark {
         _dataEvaluationExtractor = ThreadPerformance(EvaluationThread.class);
         _dataExporter = ThreadPerformance(DisambiguationExporterThread.class);
         writeJson();
-    }
-
-    public static void main(String[] args) throws IOException, NoSuchMethodException {
-        _learning = args[0];
-        _evaluation = args[1];
-        _out = FilesUtils.folderPathResolver(args[2]).toString();
-        Benchmark benchmark = new Benchmark();
-        benchmark.execute();
-        FileUtils.deleteDirectory(new File(_out));
     }
 
     public Color generateRandomColor() {
