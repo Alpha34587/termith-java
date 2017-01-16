@@ -47,6 +47,10 @@ public class DisambiguationCLI {
         Option debug = new Option("d","debug",true,"show debug log");
         debug.setRequired(false);
         debug.setArgs(0);
+        Option score = new Option("s","score",true,"evaluation of disambiguation");
+        score.setRequired(false);
+        score.setArgs(0);
+
 
         options.addOption(learning);
         options.addOption(evaluation);
@@ -55,25 +59,27 @@ public class DisambiguationCLI {
         options.addOption(terminology);
         options.addOption(debug);
         options.addOption(annotation);
+        options.addOption(score);
 
         try {
             CommandLine line = parser.parse( options, args );
-            TermithIndex termithIndex;
 
-            termithIndex = new TermithIndex.Builder()
+            TermithIndex.Builder termithBuilder = new TermithIndex.Builder()
                     .lang(line.getOptionValue("l"))
                     .learningFolder(line.getOptionValue("le"))
                     .evaluationFolder(line.getOptionValue("e"))
                     .terminology(line.getOptionValue("t"))
-                    .export(line.getOptionValue("o"))
-                    .build();
+                    .export(line.getOptionValue("o"));
             CLIUtils.setGlobalLogLevel(Level.INFO);
 
             if (line.hasOption("debug")){
                 CLIUtils.setGlobalLogLevel(Level.DEBUG);
             }
+            if (line.hasOption("score")){
+                termithBuilder.score(true);
+            }
 
-            new Disambiguation(termithIndex).execute();
+            new Disambiguation(termithBuilder.build()).execute();
 
         } catch (ParseException e) {
             LOGGER.error("There are some problems during execute arguments : ",e);

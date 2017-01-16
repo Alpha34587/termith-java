@@ -69,7 +69,10 @@ public class Disambiguation extends Runner {
         /*
         Score phase
          */
+        if (TermithIndex.isScore()){
             executeThread(EvaluationScoreThread.class,_termithIndex,_poolSize);
+        }
+
         } catch (InterruptedException | ExecutionException | IOException e) {
             _logger.error("error during execution of thread : ", e);
         }

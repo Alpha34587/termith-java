@@ -64,6 +64,7 @@ public class TermithIndex {
      */
     private static Path _learningPath;
     private static Path _evaluationPath;
+    private static boolean _score;
 
     /*
     Constructor
@@ -79,6 +80,7 @@ public class TermithIndex {
         _corpusSize = builder._corpusSize;
         _learningPath = builder._learningPath;
         _evaluationPath = builder._evaluationPath;
+        _score = builder._score;
     }
 
     /*
@@ -215,6 +217,10 @@ public class TermithIndex {
      */
     public static Path getOutputPath() { return _outputPath;}
 
+    public static boolean isScore() {
+        return _score;
+    }
+
     public Map<String, Path> getTransformOutputDisambiguationFile() {
         return _transformOutputDisambiguationFile;
     }
@@ -277,8 +283,8 @@ public class TermithIndex {
     }
 
     /*
-    Other method
-     */
+        Other method
+         */
     public void addText(String id, StringBuilder content) throws IOException {
 
         this.getExtractedText().put(id, FilesUtils.writeObject(content,TermithIndex._outputPath));
@@ -291,6 +297,7 @@ public class TermithIndex {
     {
         Path _outputPath = null;
         boolean _keepFiles = false;
+        boolean _score = false;
         List<Path> _terminology = new CopyOnWriteArrayList<>();
         String _lang;
         Path _base;
@@ -343,6 +350,11 @@ public class TermithIndex {
          */
         public Builder keepFiles(boolean activate){
             _keepFiles = activate;
+            return this;
+        }
+
+        public Builder score(boolean activate){
+            _score = activate;
             return this;
         }
 
