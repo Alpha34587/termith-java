@@ -1,10 +1,7 @@
 package org.atilf.runner;
 
 import org.atilf.models.termith.TermithIndex;
-import org.atilf.thread.disambiguation.ContextLexiconThread;
-import org.atilf.thread.disambiguation.DisambiguationExporterThread;
-import org.atilf.thread.disambiguation.EvaluationThread;
-import org.atilf.thread.disambiguation.LexiconProfileThread;
+import org.atilf.thread.disambiguation.*;
 
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
@@ -53,7 +50,6 @@ public class Disambiguation extends Runner {
     public void execute() {
         try {
             _logger.info("Pool size set to: " + _poolSize);
-
         /*
         Context extraction phase
          */
@@ -70,6 +66,13 @@ public class Disambiguation extends Runner {
         Export results
          */
             executeThread(DisambiguationExporterThread.class,_termithIndex,_poolSize);
+        /*
+        Score phase
+         */
+        if (TermithIndex.isScore()){
+            executeThread(EvaluationScoreThread.class,_termithIndex,_poolSize);
+        }
+
         } catch (InterruptedException | ExecutionException | IOException e) {
             _logger.error("error during execution of thread : ", e);
         }

@@ -1,10 +1,8 @@
 package org.atilf.models.termith;
 
 import org.apache.commons.io.FileUtils;
-import org.atilf.models.disambiguation.CorpusLexicon;
-import org.atilf.models.disambiguation.LexiconProfile;
+import org.atilf.models.disambiguation.*;
 import org.atilf.models.termsuite.TermOffsetId;
-import org.atilf.models.disambiguation.EvaluationProfile;
 import org.atilf.module.tools.FilesUtils;
 
 import java.io.File;
@@ -39,7 +37,7 @@ public class TermithIndex {
     private Path _disambiguationAnnotation;
 
     /*
-    Disambiguation  core fields
+    Disambiguation core fields
      */
 
     private Map<String, LexiconProfile> _contextLexicon = new ConcurrentHashMap<>();
@@ -47,6 +45,9 @@ public class TermithIndex {
     private CorpusLexicon _corpusLexicon = new CorpusLexicon(new ConcurrentHashMap<>(),new ConcurrentHashMap<>());
     private Map<String, Path> _learningTransformedFiles = new ConcurrentHashMap<>();
     private Map<String, Path> _evaluationTransformedFiles = new ConcurrentHashMap<>();
+    private Map<String,ScoreTerm> _scoreTerms = new ConcurrentHashMap<>();
+    private TotalTermScore _totalTermScore = new TotalTermScore();
+    private Map<String, Path> _transformOutputDisambiguationFile = new ConcurrentHashMap<>();
 
     /*
     CLI parameter
@@ -63,6 +64,7 @@ public class TermithIndex {
      */
     private static Path _learningPath;
     private static Path _evaluationPath;
+    private static boolean _score;
 
     /*
     Constructor
@@ -78,6 +80,7 @@ public class TermithIndex {
         _corpusSize = builder._corpusSize;
         _learningPath = builder._learningPath;
         _evaluationPath = builder._evaluationPath;
+        _score = builder._score;
     }
 
     /*
@@ -166,6 +169,8 @@ public class TermithIndex {
 
     public static Path getEvaluationPath() {return _evaluationPath;}
 
+    public TotalTermScore getTotalTermScore() { return _totalTermScore; }
+
     /**
      * the path of input corpus
      * @return return the path
@@ -212,6 +217,14 @@ public class TermithIndex {
      */
     public static Path getOutputPath() { return _outputPath;}
 
+    public static boolean isScore() {
+        return _score;
+    }
+
+    public Map<String, Path> getTransformOutputDisambiguationFile() {
+        return _transformOutputDisambiguationFile;
+    }
+
     /**
      * get the corpus language
      * @return return the language corpus
@@ -235,6 +248,10 @@ public class TermithIndex {
      * @return return a boolean
      */
     public static boolean isKeepFiles() { return _keepFiles; }
+
+    public Map<String, ScoreTerm> getScoreTerms() {
+        return _scoreTerms;
+    }
 
     /*
     Setter
@@ -266,8 +283,8 @@ public class TermithIndex {
     }
 
     /*
-    Other method
-     */
+        Other method
+         */
     public void addText(String id, StringBuilder content) throws IOException {
 
         this.getExtractedText().put(id, FilesUtils.writeObject(content,TermithIndex._outputPath));
@@ -280,6 +297,7 @@ public class TermithIndex {
     {
         Path _outputPath = null;
         boolean _keepFiles = false;
+        boolean _score = false;
         List<Path> _terminology = new CopyOnWriteArrayList<>();
         String _lang;
         Path _base;
@@ -332,6 +350,11 @@ public class TermithIndex {
          */
         public Builder keepFiles(boolean activate){
             _keepFiles = activate;
+            return this;
+        }
+
+        public Builder score(boolean activate){
+            _score = activate;
             return this;
         }
 

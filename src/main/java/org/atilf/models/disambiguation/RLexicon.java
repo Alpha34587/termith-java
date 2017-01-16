@@ -62,7 +62,7 @@ public class RLexicon {
     }
 
     /**
-     * get the id of the context Lexicon corresponds to the id of the CorpusLexicon class
+     * get the id of the _context Lexicon corresponds to the id of the CorpusLexicon class
      * @return the list of id of each words
      * @see CorpusLexicon
      */
@@ -71,7 +71,7 @@ public class RLexicon {
     }
 
     /**
-     * get the size of the context or Corpus
+     * get the size of the _context or Corpus
      * @return
      */
     public int getSize() { return _size; }

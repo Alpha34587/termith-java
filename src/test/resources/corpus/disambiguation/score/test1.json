@@ -1,0 +1,26 @@
+{
+  "total_score" : {
+    "recall" : 0.5,
+    "precision" : 0.4,
+    "f1_score" : 0.3
+  },
+  "terms" : [ {
+    "id" : "test1-id",
+    "text" : "test1",
+    "pos" : "NOM",
+    "recall" : 0.5,
+    "precision" : 0.4,
+    "f1_score" : 0.3,
+    "terminology_trend" : 0.6,
+    "ambiguity_rate" : 0.4
+  }, {
+    "id" : "test2-id",
+    "text" : "test2",
+    "pos" : "NOM ADJ",
+    "recall" : 0.6,
+    "precision" : 0.2,
+    "f1_score" : 0.4,
+    "terminology_trend" : 0.6,
+    "ambiguity_rate" : 0.4
+  } ]
+}

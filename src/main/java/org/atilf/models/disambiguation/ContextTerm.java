@@ -20,6 +20,14 @@ public class ContextTerm {
         _endTag = Integer.parseInt(tags.get(tags.size()-1));
     }
 
+
+    public ContextTerm(String corresp, String target) {
+        _corresp = corresp;
+        List<String> tags = Arrays.asList(target.replace("#t","").split(" "));
+        _beginTag = Integer.parseInt(tags.get(0));
+        _endTag = Integer.parseInt(tags.get(tags.size()-1));
+    }
+
     public String getCorresp() {
         return _corresp;
     }

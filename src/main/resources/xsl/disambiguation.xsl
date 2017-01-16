@@ -36,7 +36,6 @@
     </xsl:template>
 
     <xsl:template match="tei:w">
-
         <xsl:copy>
             <xsl:attribute name="xml:id">
                 <xsl:value-of select="@xml:id"/>
@@ -50,7 +49,15 @@
 
     <xsl:template match="ns:standOff[@type = 'wordForms']"/>
     <xsl:template match="tei:teiHeader"/>
-    <xsl:template match="tei:span//text()"/>
     <xsl:template match="tei:span//*"/>
+    <xsl:template match="tei:span">
+        <xsl:copy>
+            <xsl:copy-of select="@*"/>
+            <xsl:attribute name="text">
+                <xsl:value-of select=".//tei:string"/>
+            </xsl:attribute>
+        </xsl:copy>
+    </xsl:template>
+    <xsl:template match="tei:span//text()"/>
     <xsl:template match="tei:interpGrp"/>
 </xsl:stylesheet>

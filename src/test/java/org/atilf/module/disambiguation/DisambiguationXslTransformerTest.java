@@ -29,7 +29,7 @@ public class DisambiguationXslTransformerTest {
     @Test
     public void testXsltTransformation() throws Exception {
         XMLUnit.setIgnoreWhitespace(true);
-        assertXMLEqual("this two xml must be equals",
+        assertXMLEqual("this two xml must be equals :" +  _disambiguationXslTransformer.execute().toString(),
                 String.join("\n", Files.readAllLines(
                         Paths.get("src/test/resources/corpus/disambiguation/transform-tei/test1.xml"))),
                 _disambiguationXslTransformer.execute().toString()
