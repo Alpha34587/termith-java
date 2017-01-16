@@ -4,17 +4,26 @@ import org.atilf.models.disambiguation.ScoreTerm;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.concurrent.CountDownLatch;
+
 /**
  * @author Simon Meoni Created on 15/12/16.
  */
 public class ComputeTermsScore implements Runnable {
     private final String _term;
     private final ScoreTerm _scoreTerm;
+    private CountDownLatch _scoreCounter;
     private static final Logger LOGGER = LoggerFactory.getLogger(ComputeTermsScore.class.getName());
 
     public ComputeTermsScore(String term, ScoreTerm scoreTerm) {
         _term = term;
         _scoreTerm = scoreTerm;
+    }
+
+    public ComputeTermsScore(String p, ScoreTerm value, CountDownLatch scoreCounter) {
+        this(p,value);
+        _scoreCounter = scoreCounter;
+
     }
 
     public void execute(){
@@ -29,6 +38,7 @@ public class ComputeTermsScore implements Runnable {
     public void run() {
         LOGGER.info("compute score is started for : " + _term );
         execute();
+        _scoreCounter.countDown();
         LOGGER.info("compute score is finished for : " + _term );
     }
 

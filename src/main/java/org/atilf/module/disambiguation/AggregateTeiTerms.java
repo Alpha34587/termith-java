@@ -11,6 +11,7 @@ import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import java.util.*;
 import java.util.Map.Entry;
+import java.util.concurrent.CountDownLatch;
 
 /**
  * @author Simon Meoni Created on 15/12/16.
@@ -21,15 +22,23 @@ public class AggregateTeiTerms extends DefaultHandler implements Runnable {
     private Map<String, ScoreTerm> _scoreTerm;
     private ContextWord _currentW;
     private Deque<ContextTerm> _terms = new ArrayDeque<>();
-    private Deque<Entry<ContextTerm,Set<ContextWord>>> _termTemp = new LinkedList<>();
+    private List<Entry<ContextTerm,Set<ContextWord>>> _termTemp = new LinkedList<>();
+    private CountDownLatch _aggregateCounter;
     private final String _xml;
     private final Map<String, EvaluationProfile> _evaluationProfile;
     private static final Logger LOGGER = LoggerFactory.getLogger(AggregateTeiTerms.class.getName());
 
-    public AggregateTeiTerms(String xml, Map<String, EvaluationProfile> evaluationProfile, Map<String, ScoreTerm> scoreTerms) {
+    public AggregateTeiTerms(String xml, Map<String, EvaluationProfile> evaluationProfile,
+                             Map<String, ScoreTerm> scoreTerms) {
         _xml = xml;
         _evaluationProfile = evaluationProfile;
         _scoreTerm = scoreTerms;
+    }
+
+    public AggregateTeiTerms(String xml, Map<String, EvaluationProfile> evaluationProfile,
+                             Map<String, ScoreTerm> scoreTerms, CountDownLatch aggregateCounter) {
+        this(xml,  evaluationProfile, scoreTerms);
+        _aggregateCounter = aggregateCounter;
     }
 
     public void execute() {
@@ -46,6 +55,7 @@ public class AggregateTeiTerms extends DefaultHandler implements Runnable {
     public void run() {
         LOGGER.info("aggregate terms is started for file : " + _xml);
         execute();
+        _aggregateCounter.countDown();
         LOGGER.info("aggregate terms is finished for file : " + _xml);
     }
 
@@ -79,22 +89,23 @@ public class AggregateTeiTerms extends DefaultHandler implements Runnable {
         String corresp = attributes.getValue("corresp").substring(1);
         String key =  corresp + "_" + ana;
         String target = attributes.getValue("target");
-        _scoreTerm.putIfAbsent(corresp,new ScoreTerm());
-        ScoreTerm scoreTerm = _scoreTerm.get(corresp);
-        scoreTerm.setFlexionsWords(attributes.getValue("text"));
-        _terms.add(new ContextTerm(corresp,target));
-
-        if ( (term = _evaluationProfile.get(key)) != null){
-            verifyAnnotation(scoreTerm,ana,term.getDisambiguationId());
-        }
-        else {
-            scoreTerm.incMissingOccurrence();
-        }
         assert ana != null;
-        if (ana.equals(AnnotationResources.DM4)){
-            scoreTerm.incValidatedOccurrence();
+        if (!ana.equals(AnnotationResources.NO_DM)) {
+            _scoreTerm.putIfAbsent(corresp, new ScoreTerm());
+            ScoreTerm scoreTerm = _scoreTerm.get(corresp);
+            scoreTerm.setFlexionsWords(attributes.getValue("text"));
+            _terms.add(new ContextTerm(corresp, target));
+
+            if ((term = _evaluationProfile.get(key)) != null) {
+                verifyAnnotation(scoreTerm, ana, term.getDisambiguationId());
+            } else {
+                scoreTerm.incMissingOccurrence();
+            }
+            if (ana.equals(AnnotationResources.DM4)) {
+                scoreTerm.incValidatedOccurrence();
+            }
+            scoreTerm.incTotalOccurrence();
         }
-        scoreTerm.incTotalOccurrence();
     }
 
     private AnnotationResources parseAna(String ana) {
@@ -135,23 +146,23 @@ public class AggregateTeiTerms extends DefaultHandler implements Runnable {
     }
 
     private void addPosLemmaToTerm() {
-        ContextTerm term = _terms.peek();
-        if (term != null) {
-            if (_currentW.getTarget() == term.getBeginTag()) {
-                if (term.getBeginTag() == term.getEndTag()) {
-                    _scoreTerm.get(term.getCorresp()).addTermWords(Collections.singletonList(_currentW));
-                } else {
-                    _termTemp.add(new AbstractMap.SimpleEntry(term, new LinkedHashSet<>()));
-                }
-                _terms.poll();
-                addPosLemmaToTerm();
+        ContextTerm term;
+        while (!_terms.isEmpty() && (term = _terms.peek()).getBeginTag() <= _currentW.getTarget()) {
+            if (term.getBeginTag() == term.getEndTag()) {
+                _scoreTerm.get(term.getCorresp()).addTermWords(Collections.singletonList(_currentW));
+            } else {
+                _termTemp.add(new AbstractMap.SimpleEntry(term, new LinkedHashSet<>()));
             }
+            _terms.poll();
         }
-        _termTemp.forEach(el -> el.getValue().add(_currentW));
-
-        if(!_termTemp.isEmpty() && _termTemp.peek().getKey().getEndTag() == _currentW.getTarget()){
-            _scoreTerm.get(_termTemp.peek().getKey().getCorresp()).addTermWords(new ArrayList<>(_termTemp.poll().getValue()));
-            addPosLemmaToTerm();
+        Iterator<Entry<ContextTerm, Set<ContextWord>>> iter = _termTemp.iterator();
+        while (iter.hasNext()) {
+            Entry<ContextTerm, Set<ContextWord>> el = iter.next();
+            el.getValue().add(_currentW);
+            if (!_termTemp.isEmpty() && el.getKey().getEndTag() == _currentW.getTarget()){
+                _scoreTerm.get(el.getKey().getCorresp()).addTermWords(new ArrayList<>(el.getValue()));
+                iter.remove();
+            }
         }
     }
 

@@ -74,6 +74,7 @@ public class ExportScoreToJson implements Runnable {
 
     String retrievePos(ScoreTerm scoreTerm) {
         String pos = "";
+        LOGGER.info("extract term : " + scoreTerm.getFlexionsWords());
         for (ContextWord el : scoreTerm.getTermWords().get(0)) {
             pos += el.getPosLemma().split(" ")[1] + " ";
         }

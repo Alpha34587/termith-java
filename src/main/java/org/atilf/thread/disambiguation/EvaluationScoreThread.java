@@ -80,14 +80,14 @@ public class EvaluationScoreThread extends Thread{
                 (p,value) -> _executorService.submit(new AggregateTeiTerms(
                         _termithIndex.getTransformOutputDisambiguationFile().get(p).toString(),
                         value,
-                        _termithIndex.getScoreTerms()))
+                        _termithIndex.getScoreTerms(),_aggregateCounter))
         );
        _aggregateCounter.await();
         _logger.info("AggregateTeiTerms phase is finished");
 
         _logger.info("ComputeTermScore phase is started");
        _termithIndex.getScoreTerms().forEach(
-                (p,value) -> _executorService.submit(new ComputeTermsScore(p,value))
+                (p,value) -> _executorService.submit(new ComputeTermsScore(p,value,_scoreCounter))
         );
         _scoreCounter.await();
         _logger.info("ComputeTermScore phase is finished");
