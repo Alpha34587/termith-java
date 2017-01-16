@@ -59,7 +59,7 @@ public class WorkingFilesCleaner implements Runnable{
                         remove serialized java object
                          */
                         else {
-                            if (!file.getName().matches(".*(\\.xml|\\.json|\\.tbx)")) {
+                            if (!file.getName().matches(".*(\\.xml|\\.json|\\.tbx|\\.csv)")) {
                                 try {
                                     Files.delete(file.toPath());
                                 } catch (NoSuchFileException e) {

@@ -4,10 +4,13 @@ import org.atilf.models.disambiguation.DisambiguationXslResources;
 import org.atilf.models.extractor.XslResources;
 import org.atilf.models.termith.TermithIndex;
 import org.atilf.module.disambiguation.*;
+import org.atilf.module.tools.WorkingFilesCleaner;
 import org.atilf.thread.Thread;
 
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
@@ -65,13 +68,18 @@ public class EvaluationScoreThread extends Thread{
     public void execute() throws IOException, InterruptedException, ExecutionException {
         XslResources xslResources = new DisambiguationXslResources();
         _logger.info("transformation phase is started for EvaluationScoreThread");
+        Path scoreFolder = Files.createDirectory(Paths.get(TermithIndex.getOutputPath().toString() + "/score/"));
         Files.list(TermithIndex.getOutputPath()).forEach(
-                p -> _executorService.submit(new DisambiguationXslTransformer(
-                        p.toFile(),
-                        _transformCounter,
-                        _termithIndex.getTransformOutputDisambiguationFile(),
-                        xslResources))
-        );
+                p ->  {
+                    if (!Files.isDirectory(p)) {
+                        _executorService.submit(new DisambiguationXslTransformer(
+                                p.toFile(),
+                                _transformCounter,
+                                _termithIndex.getTransformOutputDisambiguationFile(),
+                                xslResources,
+                                scoreFolder));
+                    }
+                });
         _transformCounter.await();
         _logger.info("transformation phase is finished for EvaluationScoreThread");
 
@@ -101,6 +109,7 @@ public class EvaluationScoreThread extends Thread{
         _logger.info("Export phase is started");
         _executorService.submit(new ExportScoreToJson(_termithIndex.getScoreTerms(),_termithIndex.getTotalTermScore()));
         _executorService.submit(new ExportScoreToCsv(_termithIndex.getScoreTerms())).get();
+        _executorService.submit(new WorkingFilesCleaner(TermithIndex.getOutputPath(),false));
         _logger.info("Export phase is finished");
         _executorService.shutdown();
         _executorService.awaitTermination(1L, TimeUnit.DAYS);
