@@ -38,13 +38,14 @@ import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
  * Created on 18/11/16.
  */
 @JsonRootName("Iteration")
+@SuppressWarnings("WeakerAccess")
 public class Benchmark {
-    private Integer _size = 0;
-    private Long _dataContextExtractor = 0L;
-    private Long _dataDisambiguation = 0L;
-    private Long _dataR = 0L;
-    private Long _dataEvaluationExtractor = 0L;
-    private Long _dataExporter = 0L;
+    public Integer _size = 0;
+    public Long _dataContextExtractor = 0L;
+    public Long _dataDisambiguation = 0L;
+    public Long _dataR = 0L;
+    public Long _dataEvaluationExtractor = 0L;
+    public Long _dataExporter = 0L;
     private ObjectMapper _mapper = new ObjectMapper();
     private TermithIndex _termithIndex;
 
@@ -137,7 +138,7 @@ public class Benchmark {
     }
 
     private String drawGraph(String jsonEntry, List<LinkedHashMap> benchmarkList, String name) {
-        Color color = generateRandomColor(null);
+        Color color = generateRandomColor();
         List<Integer> threadPerformance = new ArrayList<>();
         for (LinkedHashMap benchmarkTest : benchmarkList) {
             threadPerformance.add((Integer) benchmarkTest.get(jsonEntry));
@@ -196,26 +197,6 @@ public class Benchmark {
     }
 
     /**
-     * Duplicate corpus
-     * @param i number of files copies
-     * @param corpus path of the duplicated corpus
-     * @param p name of the corpus
-     */
-    private void createFiles(int i, Path corpus, Path p) {
-        for (int j = 1; j < i+1; j++ ) {
-            try {
-                Files.copy(
-                        p,
-                        Paths.get(corpus + "/" + p.getFileName().toString().replace(".xml", "-" + j + ".xml")
-                        )
-                );
-            } catch (IOException e) {
-                LOGGER.error("cannot copy files : ", e);
-            }
-        }
-    }
-
-    /**
      * execute each steps of benchmark
      * @throws IOException thrown an exception during benchmar if a file had write or permission problems
      * @throws NoSuchMethodException thrown an exception during the call of constructor with ThreadPerformance
@@ -238,18 +219,13 @@ public class Benchmark {
         FileUtils.deleteDirectory(new File(_out));
     }
 
-    public Color generateRandomColor(Color mix) {
+    public Color generateRandomColor() {
         Random random = new Random();
         int red = random.nextInt(256);
         int green = random.nextInt(256);
         int blue = random.nextInt(256);
 
         // mix the color
-        if (mix != null) {
-            red = (red + mix.getRed()) / 2;
-            green = (green + mix.getGreen()) / 2;
-            blue = (blue + mix.getBlue()) / 2;
-        }
         return new Color(red, green, blue);
     }
 }
