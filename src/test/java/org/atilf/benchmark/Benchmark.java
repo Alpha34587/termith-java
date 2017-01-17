@@ -3,7 +3,6 @@ package org.atilf.benchmark;
 import com.fasterxml.jackson.annotation.JsonRootName;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.apache.commons.io.FileUtils;
 import org.atilf.models.disambiguation.DisambiguationXslResources;
 import org.atilf.models.termith.TermithIndex;
 import org.atilf.module.disambiguation.DisambiguationXslTransformer;
@@ -38,45 +37,33 @@ import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
  * Created on 18/11/16.
  */
 @JsonRootName("Iteration")
+@SuppressWarnings("WeakerAccess")
 public class Benchmark {
     public Integer _size = 0;
     public Long _dataContextExtractor = 0L;
     public Long _dataDisambiguation = 0L;
     public Long _dataR = 0L;
     public Long _dataEvaluationExtractor = 0L;
-    public Long _dataExporter = 0l;
+    public Long _dataExporter = 0L;
     private ObjectMapper _mapper = new ObjectMapper();
     private TermithIndex _termithIndex;
 
-    private static String _learning;
-    private static String _evaluation;
-    private static String _out;
-    private static File _temporaryFolder;
-    private static int _duplicate;
+    private String _learning;
+    private String _evaluation;
+    private String _out;
+
     private static final String GRAPH_RESOURCE = "src/test/resources/benchmark/";
     private static final Logger LOGGER = LoggerFactory.getLogger(Benchmark.class.getName());
 
     public void setUp() throws IOException {
-
-        if (_temporaryFolder.exists()){
-            FileUtils.deleteDirectory(_temporaryFolder);
-        }
-        if(!_temporaryFolder.mkdir()){
-            LOGGER.error("the temporary folder has not been created");
-        }
-        createTermithIndex(_duplicate);
-        warmUp();
+        createTermithIndex();
+        countTerms();
     }
 
-    private void warmUp() {
-        int i = 0;
-        while (i < 1000000) {i++;}
-        LOGGER.info("warm up finished");
-        try {
-            countTerms();
-        } catch (IOException e) {
-            LOGGER.error("cannot read file  : ", e);
-        }
+    public Benchmark(String learning, String evaluation, String out) {
+        _learning = learning;
+        _evaluation = evaluation;
+        _out = out;
     }
 
     private void countTerms() throws IOException {
@@ -87,7 +74,7 @@ public class Benchmark {
                     );
                     try {
                         Path path = FilesUtils.writeFile(transformer.execute(),
-                                _temporaryFolder.toPath(), file.getFileName().toString());
+                                Paths.get(_out), file.getFileName().toString());
                         TermExtractor termExtractor = new TermExtractor(path.toString());
                         _size += termExtractor.countTerms();
                     } catch (IOException e) {
@@ -110,7 +97,6 @@ public class Benchmark {
         _mapper.writerWithDefaultPrettyPrinter().writeValue(new File("history.json"), benchmarkList);
 
         plotViewer();
-        FileUtils.deleteDirectory(_temporaryFolder);
     }
 
     /**
@@ -128,16 +114,16 @@ public class Benchmark {
         String jsDataVariable = "labels: " + sizeList.toString() + ",\n";
 
         jsDataVariable += "datasets : [ \n" +
-        drawGraph("_dataContextExtractor",benchmarkList, "Context & Corpus Lexicon Extractor") +
-        ",\n" +
-        drawGraph("_dataDisambiguation",benchmarkList, "Disambiguation") +
-        ",\n" +
-        drawGraph("_dataR",benchmarkList, "R coefficient") +
-        ",\n" +
-        drawGraph("_dataEvaluationExtractor",benchmarkList, "Context Evaluation Extractor") +
-        ",\n" +
-        drawGraph("_dataExporter",benchmarkList, "Exporter") +
-        "\n]";
+                drawGraph("_dataContextExtractor",benchmarkList, "Context & Corpus Lexicon Extractor") +
+                ",\n" +
+                drawGraph("_dataDisambiguation",benchmarkList, "Disambiguation") +
+                ",\n" +
+                drawGraph("_dataR",benchmarkList, "R coefficient") +
+                ",\n" +
+                drawGraph("_dataEvaluationExtractor",benchmarkList, "Context Evaluation Extractor") +
+                ",\n" +
+                drawGraph("_dataExporter",benchmarkList, "Exporter") +
+                "\n]";
 
         String js = String.join("\n", Files.readAllLines(Paths.get("src/test/resources/benchmark/graph.js")));
         js = js.replace("{}",  "{\n"+ jsDataVariable +" }\n");
@@ -158,28 +144,28 @@ public class Benchmark {
     }
 
     private String drawGraph(String jsonEntry, List<LinkedHashMap> benchmarkList, String name) {
-        Color color = generateRandomColor(null);
+        Color color = generateRandomColor();
         List<Integer> threadPerformance = new ArrayList<>();
         for (LinkedHashMap benchmarkTest : benchmarkList) {
             threadPerformance.add((Integer) benchmarkTest.get(jsonEntry));
         }
 
         return
-        "{"+
-        "label : \"" + name +"\","+
-        "data:" + threadPerformance.toString() + "," + 
-        "fill: false," +
-        "pointBorderColor: \"black\"," +
-        "pointBackgroundColor: \"black\"," +
-        "backgroundColor: \"rgba(" + color.getRed() + "," + color.getGreen() + "," + color.getBlue() + ",0.6)\","+
-        "borderColor: \"rgba(" + color.getRed() + "," + color.getGreen()+ "," +color.getBlue() +",0.6)\","+
-        "pointBorderWidth: 1,"+
-        "pointHoverRadius: 5,"+
-        "pointHoverBackgroundColor: \"black\","+
-        "pointHoverBorderColor: \"black\","+
-        "pointHoverBorderWidth: 2,"+
-        "pointRadius: 1," +
-        "}";
+                "{"+
+                        "label : \"" + name +"\","+
+                        "data:" + threadPerformance.toString() + "," +
+                        "fill: false," +
+                        "pointBorderColor: \"black\"," +
+                        "pointBackgroundColor: \"black\"," +
+                        "backgroundColor: \"rgba(" + color.getRed() + "," + color.getGreen() + "," + color.getBlue() + ",0.6)\","+
+                        "borderColor: \"rgba(" + color.getRed() + "," + color.getGreen()+ "," +color.getBlue() +",0.6)\","+
+                        "pointBorderWidth: 1,"+
+                        "pointHoverRadius: 5,"+
+                        "pointHoverBackgroundColor: \"black\","+
+                        "pointHoverBorderColor: \"black\","+
+                        "pointHoverBorderWidth: 2,"+
+                        "pointRadius: 1," +
+                        "}";
     }
 
     /**
@@ -207,55 +193,18 @@ public class Benchmark {
 
     /**
      * create several termithIndex associated to different corpus
-     * @param i number of TermithIndex object
      */
-    private void createTermithIndex(int i) throws IOException {
-        Path root = Files.createDirectories(
-                Paths.get(_temporaryFolder.toString() + "/" + String.valueOf(i))
-        );
-        Path learning = Files.createDirectories(Paths.get(root.toString() + "/learning"));
-        Path evaluation = Files.createDirectories(Paths.get(root.toString() + "/evaluation"));
-        Path output = Files.createDirectories(Paths.get(root.toString() + "/out"));
-
-        Files.list(Paths.get(_learning)).forEach(
-                p -> createFiles(i, learning, p)
-        );
-
-        Files.list(Paths.get(Benchmark._evaluation)).forEach(
-                p -> createFiles(i, evaluation, p)
-        );
-
+    private void createTermithIndex() throws IOException {
         _termithIndex = new TermithIndex.Builder()
-                .learningFolder(learning.toString())
-                .evaluationFolder(evaluation.toString())
-                .export(output.toString())
+                .learningFolder(_learning)
+                .evaluationFolder(_evaluation)
+                .export(_out)
                 .build();
-
-    }
-
-    /**
-     * Duplicate corpus
-     * @param i number of files copies
-     * @param corpus path of the duplicated corpus
-     * @param p name of the corpus
-     */
-    private void createFiles(int i, Path corpus, Path p) {
-        for (int j = 1; j < i+1; j++ ) {
-            try {
-                Files.copy(
-                        p,
-                        Paths.get(corpus + "/" + p.getFileName().toString().replace(".xml", "-" + j + ".xml")
-                        )
-                );
-            } catch (IOException e) {
-                LOGGER.error("cannot copy files : ", e);
-            }
-        }
     }
 
     /**
      * execute each steps of benchmark
-     * @throws IOException thrown an exception during benchmar if a file had write or permission problems
+     * @throws IOException thrown an exception during benchmark if a file had write or permission problems
      * @throws NoSuchMethodException thrown an exception during the call of constructor with ThreadPerformance
      */
     public void execute() throws IOException, NoSuchMethodException {
@@ -267,28 +216,13 @@ public class Benchmark {
         writeJson();
     }
 
-    public static void main(String[] args) throws IOException, NoSuchMethodException {
-        _learning = args[0];
-        _evaluation = args[1];
-        _out = FilesUtils.folderPathResolver(args[2]).toString();
-        _temporaryFolder = new File(args[3]);
-        _duplicate = Integer.parseInt(args[4]);
-        Benchmark benchmark = new Benchmark();
-        benchmark.execute();
-    }
-
-    public Color generateRandomColor(Color mix) {
+    public Color generateRandomColor() {
         Random random = new Random();
         int red = random.nextInt(256);
         int green = random.nextInt(256);
         int blue = random.nextInt(256);
 
         // mix the color
-        if (mix != null) {
-            red = (red + mix.getRed()) / 2;
-            green = (green + mix.getGreen()) / 2;
-            blue = (blue + mix.getBlue()) / 2;
-        }
         return new Color(red, green, blue);
     }
 }
