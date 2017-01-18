@@ -1,10 +1,9 @@
 package org.atilf.module.disambiguation;
 
-import com.google.common.collect.Lists;
 import org.atilf.models.disambiguation.ContextTerm;
+import org.atilf.models.disambiguation.ContextWord;
 import org.atilf.models.disambiguation.CorpusLexicon;
 import org.atilf.models.disambiguation.LexiconProfile;
-import org.atilf.models.disambiguation.ContextWord;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.xml.sax.Attributes;
@@ -97,12 +96,8 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
     private String _p;
     private File _xml;
 
-    /*
-    variable used during SAX parsing
-     */
-    ContextTerm _currentTerm = null;
     ContextWord _lastContextWord;
-    private Stack<List<ContextWord>> _contextStack = new Stack<>();
+    private Stack<TreeMap<Integer,String>> _contextStack = new Stack<>();
     /*
     SAX condition
      */
@@ -184,12 +179,12 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
             extractTerms(attributes);
         }
         else if (_inText && !_inW && !qName.equals("text")){
-            _contextStack.push(new ArrayList<>());
+            _contextStack.push(new TreeMap<>());
         }
 
         else if (_inW){
             _lastContextWord = new ContextWord(attributes.getValue("xml:id"));
-            _contextStack.forEach(words -> words.add(_lastContextWord));
+
         }
     }
 
@@ -230,12 +225,12 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
      * search if the context of the top of the stack contains a term. The context is remove if it not contains a term
      */
     private void searchTermsInContext() {
-        List<ContextWord> words = _contextStack.pop();
+        TreeMap<Integer,String> words = _contextStack.pop();
         Deque<ContextTerm> termStack = termAlignment(words);
         Deque<ContextTerm> termStackTemp = new ArrayDeque<>();
         if (termStack != null) {
             words.forEach(
-                    word -> searchTermInContext(words, termStack, termStackTemp, word)
+                    (key,value) -> searchTermInContext(words, termStack, termStackTemp, key)
             );
         }
     }
@@ -248,11 +243,11 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
      * @param words the current context
      * @param termDeque the Deque of terms that we want to search in the words variable
      * @param termDequeTemp the temporary Deque used to track the multi words terms
-     * @param word current browsed word
+     * @param target current browsed word
      */
-    private void searchTermInContext(List<ContextWord> words, Deque<ContextTerm> termDeque, Deque<ContextTerm> termDequeTemp, ContextWord word) {
+    private void searchTermInContext(TreeMap<Integer, String> words, Deque<ContextTerm> termDeque, Deque<ContextTerm> termDequeTemp, Integer target) {
         if (!termDeque.isEmpty()) {
-            if (word.getTarget() == termDeque.peek().getBeginTag()) {
+            if (target == termDeque.peek().getBeginTag()) {
                 if (termDeque.peek().getBeginTag() != termDeque.peek().getEndTag()) {
                     termDequeTemp.add(termDeque.pop());
                 }
@@ -260,14 +255,14 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
                     addWordsToLexicon(termDeque.peek(), words);
                     _terms.remove(termDeque.pop());
                 }
-                searchTermInContext(words, termDeque, termDequeTemp, word);
+                searchTermInContext(words, termDeque, termDequeTemp, target);
             }
         }
 
-        if (!termDequeTemp.isEmpty() && termDequeTemp.peek().getEndTag() == word.getTarget()) {
+        if (!termDequeTemp.isEmpty() && termDequeTemp.peek().getEndTag() == target) {
             addWordsToLexicon(termDequeTemp.peek(), words);
             _terms.remove(termDequeTemp.pop());
-            searchTermInContext(words, termDeque, termDequeTemp, word);
+            searchTermInContext(words, termDeque, termDequeTemp, target);
         }
     }
 
@@ -277,11 +272,11 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
      * @param words the current context
      * @return a Deque with terms
      */
-    private Deque<ContextTerm> termAlignment(List<ContextWord> words) {
+    private Deque<ContextTerm> termAlignment(TreeMap<Integer, String> words) {
         Deque<ContextTerm> termDeque = new ArrayDeque<>();
         if (words.size() > 0) {
             Optional<ContextTerm> term = _terms.stream()
-                    .filter(t -> t.getBeginTag() <= words.get(words.size() - 1).getTarget())
+                    .filter(t -> t.getBeginTag() <= words.lastKey())
                     .findFirst();
             if (term.isPresent()) {
                 _terms.subList(_terms.indexOf(term.get()),_terms.size() - 1).forEach(termDeque::add);
@@ -302,6 +297,7 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
             String posLemma = new String(ch,start,length);
             _lastContextWord.setPosLemma(posLemma);
             _corpusLexicon.addOccurrence(posLemma);
+            _contextStack.forEach(words -> words.put(_lastContextWord.getTarget(),_lastContextWord.getPosLemma()));
             LOGGER.debug("add pos lemma pair: "+ posLemma +" to corpus");
             _inW = false;
         }
@@ -324,47 +320,28 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
     /**
      * add to lexicalProfile a context for terminology entry
      * @param term the term id entry suffixes by _lexOn or _lexOff
+     * @param context
      */
-    private void addWordsToLexicon(ContextTerm term, List<ContextWord> context) {
-
+    private void addWordsToLexicon(ContextTerm term, TreeMap<Integer, String> context) {
         /*
         create new entry if the key not exists in the _contextLexicon field
          */
         String key = normalizeKey(term.getCorresp(), term.getAna());
-        context.forEach(
-                contextWord -> {
-                    int target = contextWord.getTarget();
-                    if (!term.inTerm(target) && !inTargetContext(key,target)){
-                        addWordToLexicon(key,contextWord);
-                    }
-                }
-        );
-    }
+        SortedMap<Integer, String> leftContextTarget = context.subMap(0, true,term.getBeginTag(),true);
+        Map<Integer,String> contextTarget = new TreeMap<>(context.subMap(term.getEndTag(), true,context.lastKey(),true));
+        contextTarget.putAll(leftContextTarget);
 
-    protected void addWordToLexicon(String key, ContextWord contextWord){
-        if (!_contextLexicon.containsKey(key)){
-            _contextLexicon.put(key,new LexiconProfile());
+        if (!_targetContext.containsKey(key)) {
+            _targetContext.put(key, new ArrayList<>());
         }
-        _contextLexicon.get(key).addOccurrence(contextWord.getPosLemma());
-        LOGGER.debug("add words to term: " + key);
-    }
 
 
-    protected boolean inTargetContext(String key, int target){
-        if (!_targetContext.containsKey(key)){
-            _targetContext.put(key, Lists.newArrayList(target));
-            return false;
+        if (!_contextLexicon.containsKey(key)) {
+            _contextLexicon.put(key, new LexiconProfile());
         }
-        else {
-            List<Integer> context = _targetContext.get(key);
-            if (context.contains(target)){
-                return true;
-            }
-            else {
-                context.add(target);
-                return false;
-            }
-        }
+        _targetContext.get(key).forEach(contextTarget::remove);
+        _targetContext.get(key).addAll(new ArrayList<>(contextTarget.keySet()));
+        _contextLexicon.get(key).addOccurrences(new ArrayList<>(contextTarget.values()));
     }
 
     /**
