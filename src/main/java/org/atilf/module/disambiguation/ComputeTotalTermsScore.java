@@ -52,7 +52,7 @@ public class ComputeTotalTermsScore implements Runnable {
     void computeF1score(){
         float precisionFloat = _totalTermScore.getPrecision();
         float recallFloat = _totalTermScore.getRecall();
-        _totalTermScore.setF1score((precisionFloat * recallFloat) / (precisionFloat + recallFloat));
+        _totalTermScore.setF1score(2*((precisionFloat * recallFloat) / (precisionFloat + recallFloat)));
     }
     @Override
     public void run() {
