@@ -1,7 +1,6 @@
 package org.atilf.module.disambiguation;
 
 import org.atilf.models.disambiguation.ContextTerm;
-import org.atilf.models.disambiguation.ContextWord;
 import org.atilf.models.disambiguation.EvaluationProfile;
 import org.atilf.models.termith.TermithIndex;
 import org.atilf.module.tools.FilesUtils;
@@ -10,8 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.CountDownLatch;
 
 import static org.atilf.models.disambiguation.AnnotationResources.NO_DM;
@@ -58,13 +56,6 @@ public class EvaluationExtractor extends ContextExtractor {
         }
     }
 
-    protected void addWordToLexicon(String key, ContextWord contextWord){
-        if (!_evaluationLexicon.containsKey(key)){
-            _evaluationLexicon.put(key,new EvaluationProfile());
-        }
-        _evaluationLexicon.get(key).addOccurrence(contextWord.getPosLemma());
-    }
-
     private boolean inBothContextLexicon(String corresp) {
         return _contextLexicon.containsKey(corresp.replace("#","") + "_lexOn") &&
                 _contextLexicon.containsKey(corresp.replace("#","") + "_lexOff");
@@ -90,13 +81,38 @@ public class EvaluationExtractor extends ContextExtractor {
     public void characters(char ch[],
                            int start, int length) throws SAXException {
         if (_inW){
-            String word = new String(ch,start,length);
-            _lastContextWord.setPosLemma(word);
+            String posLemma = new String(ch,start,length);
+            _lastContextWord.setPosLemma(posLemma);
+            _contextStack.forEach(words -> words.put(_lastContextWord.getTarget(),_lastContextWord.getPosLemma()));
+            LOGGER.debug("add pos lemma pair: "+ posLemma +" to corpus");
             _inW = false;
         }
     }
 
     @Override
+    void addWordsToLexicon(ContextTerm term, TreeMap<Integer, String> context) {
+        /*
+        create new entry if the key not exists in the _contextLexicon field
+         */
+        String key = normalizeKey(term.getCorresp(), term.getAna());
+        SortedMap<Integer, String> leftContextTarget = context.subMap(0, true,term.getBeginTag(),true);
+        Map<Integer,String> contextTarget = new TreeMap<>(context.subMap(term.getEndTag(), true,context.lastKey(),true));
+        contextTarget.putAll(leftContextTarget);
+
+        if (!_targetContext.containsKey(key)) {
+            _targetContext.put(key, new ArrayList<>());
+        }
+
+
+        if (!_evaluationLexicon.containsKey(key)) {
+            _evaluationLexicon.put(key, new EvaluationProfile());
+        }
+        _targetContext.get(key).forEach(contextTarget::remove);
+        _targetContext.get(key).addAll(new ArrayList<>(contextTarget.keySet()));
+        _evaluationLexicon.get(key).addOccurrences(new ArrayList<>(contextTarget.values()));
+    }
+
+     @Override
     protected String normalizeKey(String c, String l) {
             return (c + "_" + l).replace("#", "");
     }

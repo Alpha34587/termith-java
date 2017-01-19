@@ -90,14 +90,14 @@ import static org.atilf.models.disambiguation.AnnotationResources.*;
 public class ContextExtractor extends DefaultHandler implements Runnable {
 
     Map<String, LexiconProfile> _contextLexicon;
-    private Map<String,List<Integer>> _targetContext = new HashMap<>();
     private CorpusLexicon _corpusLexicon;
     protected List<ContextTerm> _terms = new LinkedList<>();
     private String _p;
     private File _xml;
 
     ContextWord _lastContextWord;
-    private Stack<TreeMap<Integer,String>> _contextStack = new Stack<>();
+    Map<String,List<Integer>> _targetContext = new HashMap<>();
+    Stack<TreeMap<Integer,String>> _contextStack = new Stack<>();
     /*
     SAX condition
      */
@@ -322,7 +322,7 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
      * @param term the term id entry suffixes by _lexOn or _lexOff
      * @param context
      */
-    private void addWordsToLexicon(ContextTerm term, TreeMap<Integer, String> context) {
+    void addWordsToLexicon(ContextTerm term, TreeMap<Integer, String> context) {
         /*
         create new entry if the key not exists in the _contextLexicon field
          */

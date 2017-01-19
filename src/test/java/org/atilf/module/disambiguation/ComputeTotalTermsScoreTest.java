@@ -53,7 +53,7 @@ public class ComputeTotalTermsScoreTest {
         _totalTermScore.setPrecision(0.5f);
         _computeTotalTermsScore.computeF1score();
         Assert.assertEquals("the f1 score must be equals to : ",
-                0.25f,
+                0.5f,
                 _totalTermScore.getF1score(),
                 0f);
     }
