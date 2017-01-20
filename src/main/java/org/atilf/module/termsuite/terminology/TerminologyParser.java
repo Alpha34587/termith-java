@@ -5,9 +5,8 @@ import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonToken;
 import org.atilf.models.termith.TermithIndex;
 import org.atilf.models.termsuite.TermOffsetId;
+import org.atilf.module.Module;
 import org.atilf.module.tools.FilesUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.IOException;
@@ -24,14 +23,12 @@ import static org.atilf.models.termsuite.JsonTermResources.*;
  * @author Simon Meoni
  *         Created on 14/09/16.
  */
-public class TerminologyParser implements Runnable{
+public class TerminologyParser extends Module {
     private Path _path;
-    private TermithIndex _termithIndex;
     private Map<String,List<TermOffsetId>> _standOffTerminology = new ConcurrentHashMap<>();
     private Map<String,String> _idSource = new HashMap<>();
     private String _currentFile;
     private final JsonFactory _factory = new JsonFactory();
-    private static final Logger LOGGER = LoggerFactory.getLogger(TerminologyParser.class.getName());
 
     /**
      * constructor for TerminologyParser
@@ -39,8 +36,8 @@ public class TerminologyParser implements Runnable{
      * @param termithIndex the termithIndex of a process
      */
     public TerminologyParser(Path path, TermithIndex termithIndex) {
+        super(termithIndex);
         _path = path;
-        _termithIndex = termithIndex;
         _currentFile = "";
     }
 
@@ -49,6 +46,7 @@ public class TerminologyParser implements Runnable{
      * @param path the path of the terminology
      */
     TerminologyParser(Path path) {
+        super(null);
         _path = path;
         _currentFile = "";
     }
@@ -58,8 +56,8 @@ public class TerminologyParser implements Runnable{
      * @param termithIndex the termithIndex of a process
      */
     public TerminologyParser(TermithIndex termithIndex) {
+        super(termithIndex);
         _path = termithIndex.getJsonTerminology();
-        _termithIndex = termithIndex;
         _currentFile = "";
     }
 
@@ -79,7 +77,7 @@ public class TerminologyParser implements Runnable{
      * characters offsets and a file id
      * @throws IOException thrown a exception if the json file is malformed
      */
-    public void execute() throws IOException {
+    public void execute() {
         try {
 
             /*
@@ -127,7 +125,7 @@ public class TerminologyParser implements Runnable{
             }
         }
         catch (Exception e){
-            LOGGER.error("cannot parse file",e);
+            _logger.error("cannot parse file",e);
         }
     }
 
@@ -155,7 +153,7 @@ public class TerminologyParser implements Runnable{
     }
 
     /**
-     * parse terms occurences
+     * parse terms occurrences
      * @param jsonToken the current jsonToken
      * @param parser the current JsonParser
      * @param offsetId set value of this TermOffsetId Object
@@ -207,13 +205,9 @@ public class TerminologyParser implements Runnable{
      */
     @Override
     public void run() {
-        try {
-            this.execute();
-            _termithIndex.setTerminologyStandOff(getStandOffTerminology());
-            LOGGER.info("execute terminology ended");
-        } catch (IOException e) {
-            LOGGER.error("error during terminology execute", e);
-        }
+        super.run();
+        _termithIndex.setTerminologyStandOff(getStandOffTerminology());
+        _logger.info("execute terminology ended");
     }
 
 }
