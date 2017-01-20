@@ -7,6 +7,7 @@ import eu.project.ttc.engines.desc.TermSuiteCollection;
 import eu.project.ttc.tools.TermSuitePipeline;
 import eu.project.ttc.tools.cli.TermSuiteCLIUtils;
 import org.atilf.models.termith.TermithIndex;
+import org.atilf.module.Module;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -20,7 +21,7 @@ import java.nio.file.Paths;
  * @author Simon Meoni
  *         Created on 08/09/16.
  */
-public class TermsuitePipelineBuilder implements Runnable{
+public class TermsuitePipelineBuilder extends Module {
 
     private String _jsonCorpus;
     private TermSuitePipeline _termsuitePipeline;
@@ -32,7 +33,7 @@ public class TermsuitePipelineBuilder implements Runnable{
      * @param termithIndex
      */
     public TermsuitePipelineBuilder(TermithIndex termithIndex){
-        _termithIndex = termithIndex;
+        super(termithIndex);
         _jsonCorpus = TermithIndex.getOutputPath() + "/json";
         /*
         create path for terminologies in termithIndex
@@ -95,19 +96,10 @@ public class TermsuitePipelineBuilder implements Runnable{
      * run the termsuite pipeline
      */
     public void execute(){
-        _termsuitePipeline.run();
-    }
-
-    /**
-     *
-     */
-    @Override
-    public void run() {
         LOGGER.info("Run Termsuite Pipeline");
-        execute();
+        _termsuitePipeline.run();
         LOGGER.info("Finished execution of Termsuite Pipeline, result in :" +
                 TermithIndex.getOutputPath());
-
     }
 
     /**
