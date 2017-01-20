@@ -4,6 +4,7 @@ import org.atilf.models.termith.TermithIndex;
 import org.atilf.models.termsuite.CorpusAnalyzer;
 import org.atilf.models.termsuite.TextAnalyzer;
 import org.atilf.models.treetagger.TagNormalizer;
+import org.atilf.models.treetagger.TreeTaggerParameter;
 import org.atilf.module.tei.morphology.MorphologyTokenizer;
 import org.atilf.module.termsuite.morphology.MorphologySerializer;
 import org.atilf.module.tools.FilesUtils;

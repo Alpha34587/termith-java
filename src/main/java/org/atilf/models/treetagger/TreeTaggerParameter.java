@@ -1,4 +1,4 @@
-package org.atilf.module.treetagger;
+package org.atilf.models.treetagger;
 
 import java.util.Objects;
 
@@ -7,7 +7,7 @@ import java.util.Objects;
  * @author Simon Meoni
  *         Created on 02/09/16.
  */
-class TreeTaggerParameter {
+public class TreeTaggerParameter {
 
     private final String _treeTaggerHome;
     private boolean _sgml;
@@ -20,7 +20,7 @@ class TreeTaggerParameter {
      * @param lang           specify the lang used to tag files
      * @param treeTaggerHome the path of the application
      */
-    TreeTaggerParameter(boolean sgml, String lang, String treeTaggerHome) {
+    public TreeTaggerParameter(boolean sgml, String lang, String treeTaggerHome) {
         _sgml = sgml;
         _lang = lang;
         _treeTaggerHome = treeTaggerHome;
@@ -30,7 +30,7 @@ class TreeTaggerParameter {
      * parse the field value and return a string with the desired options for TreeTagger
      * @return return parameters
      */
-    String parse() {
+    public String parse() {
         String parameter = _treeTaggerHome + "/bin/tree-tagger " + _treeTaggerHome + "/lib/";
 
         if (Objects.equals(_lang, "fr")) {
