@@ -1,7 +1,6 @@
 package org.atilf.thread;
 
 import org.atilf.models.termith.TermithIndex;
-import org.atilf.observer.TermithObserver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -19,7 +18,6 @@ import java.util.concurrent.Executors;
  */
 public abstract class Thread {
     protected static final int DEFAULT_POOL_SIZE = Runtime.getRuntime().availableProcessors();
-    protected TermithObserver _termithObserver;
     protected final ExecutorService _executorService;
     protected final Logger _logger = LoggerFactory.getLogger(this.getClass().getName());
     protected TermithIndex _termithIndex;

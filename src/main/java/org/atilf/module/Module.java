@@ -16,7 +16,6 @@ public abstract class Module implements Runnable{
     public Module(TermithIndex termithIndex){
         _termithIndex = termithIndex;
         _termithObserver = new TermithObserver(
-                System.nanoTime(),
                 this.getClass().getName()
         );
         _termithIndex.getTermithObservable().addObserver(_termithObserver);

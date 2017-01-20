@@ -3,8 +3,10 @@ package org.atilf.observer;
 import org.atilf.module.timer.ProgressBarTimer;
 
 import java.text.NumberFormat;
+import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.TimerTask;
 
 /**
  * @author Simon Meoni Created on 19/01/17.
@@ -19,18 +21,17 @@ public class TermithObserver implements Observer {
     private String _name;
     private NumberFormat _format = NumberFormat.getInstance();
     private Runtime _runtime = Runtime.getRuntime();
-    private ProgressBarTimer _progressBarTimer = null;
+    private List<ProgressBarTimer> _progressBarTimers;
 
 
-    public TermithObserver(long startTime, String name, ProgressBarTimer progressBarTimer) {
-        _startTime = startTime;
-        _name = name;
-        _progressBarTimer = progressBarTimer;
-        progressBarTimer.run();
+    public TermithObserver(String name, List<ProgressBarTimer> progressBarTimers) {
+        this(name);
+        _progressBarTimers = progressBarTimers;
+        _progressBarTimers.forEach(TimerTask::run);
     }
 
-    public TermithObserver(long startTime, String name) {
-        _startTime = startTime;
+    public TermithObserver(String name) {
+        _startTime = System.nanoTime();
         _name = name;
     }
 

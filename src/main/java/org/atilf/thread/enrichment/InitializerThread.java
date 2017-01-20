@@ -3,7 +3,6 @@ package org.atilf.thread.enrichment;
 import org.atilf.models.extractor.XslResources;
 import org.atilf.models.termith.TermithIndex;
 import org.atilf.module.extractor.TextExtractor;
-import org.atilf.module.timer.ExtractTextTimer;
 import org.atilf.module.tools.CorpusMapper;
 import org.atilf.thread.Thread;
 
@@ -55,7 +54,6 @@ public class InitializerThread extends Thread{
         initialize XslResource & ExtractTextTimer
          */
         XslResources xslResources = new XslResources();
-        new ExtractTextTimer(_termithIndex,_logger).start();
 
         /*
         extract the text and map the path of the corpus into hashmap with identifier

@@ -2,7 +2,6 @@ package org.atilf.thread.enrichment;
 
 import org.atilf.models.tei.exporter.StandOffResources;
 import org.atilf.models.termith.TermithIndex;
-import org.atilf.module.timer.TeiWriterTimer;
 import org.atilf.module.exporter.TeiWriter;
 import org.atilf.thread.Thread;
 
@@ -42,11 +41,6 @@ public class ExporterThread extends Thread {
      * @throws InterruptedException throws java concurrent executorService exception
      */
     public void execute() throws InterruptedException {
-        /*
-         initializerExporter timer
-         */
-        new TeiWriterTimer(_termithIndex,_logger).start();
-
         /*
         initialize standoff resource object
          */

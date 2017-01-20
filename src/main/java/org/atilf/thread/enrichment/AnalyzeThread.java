@@ -1,15 +1,13 @@
 package org.atilf.thread.enrichment;
 
 import org.atilf.models.termith.TermithIndex;
+import org.atilf.models.termsuite.CorpusAnalyzer;
 import org.atilf.models.termsuite.MorphologyOffsetId;
 import org.atilf.module.extractor.TextExtractor;
 import org.atilf.module.termsuite.pipeline.TermsuitePipelineBuilder;
 import org.atilf.module.termsuite.terminology.TerminologyParser;
 import org.atilf.module.termsuite.terminology.TerminologyStandOff;
-import org.atilf.module.timer.JsonTimer;
-import org.atilf.module.timer.TokenizeTimer;
 import org.atilf.module.tools.FilesUtils;
-import org.atilf.models.termsuite.CorpusAnalyzer;
 import org.atilf.module.treetagger.TreeTaggerWorker;
 import org.atilf.thread.Thread;
 
@@ -96,13 +94,6 @@ public class AnalyzeThread extends Thread{
      * @see TerminologyStandOff
      */
     public void execute() throws InterruptedException, IOException, ExecutionException {
-
-        /*
-        Initialize Timer
-         */
-        new TokenizeTimer(_termithIndex,_logger).start();
-        new JsonTimer(_termithIndex,_logger).start();
-
         /*
         Build Corpus analyzer
          */
