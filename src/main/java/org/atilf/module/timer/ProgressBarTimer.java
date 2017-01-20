@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit;
  * @author Simon Meoni
  *         Created on 19/09/16.
  */
-abstract class ProgressBarTimer extends TimerTask {
+public abstract class ProgressBarTimer extends TimerTask {
 
     private Timer _timer = new Timer();
     private TermithObservable _termithObservable = new TermithObservable();
