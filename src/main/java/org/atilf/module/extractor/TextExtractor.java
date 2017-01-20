@@ -4,8 +4,6 @@ import org.atilf.models.extractor.XslResources;
 import org.atilf.models.termith.TermithIndex;
 import org.atilf.module.Module;
 import org.atilf.module.tools.FilesUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import javax.xml.transform.Source;
 import javax.xml.transform.Transformer;
@@ -22,7 +20,6 @@ import java.io.StringWriter;
  * Created on 25/07/16.
  */
 public class TextExtractor extends Module {
-    private final Logger LOGGER = LoggerFactory.getLogger(this.getClass().getName());
     protected File _file;
     protected TermithIndex _termithIndex;
     private XslResources _xslResources;
@@ -45,8 +42,7 @@ public class TextExtractor extends Module {
      * @param file Treated xml/tei _file
      * @param xslResources contains the parsed xsl stylesheet
      */
-    public TextExtractor(File file, XslResources xslResources) {
-        super(null);
+    protected TextExtractor(File file, XslResources xslResources) {
         _file = file;
         _xslResources = xslResources;
     }
@@ -70,7 +66,7 @@ public class TextExtractor extends Module {
         StreamResult streamResult = new StreamResult(stringWriter);
 
         try {
-            LOGGER.debug("apply " + _xslResources._stylesheet.toString() + "to xml file" + input.toString());
+            _logger.debug("apply " + _xslResources._stylesheet.toString() + "to xml file" + input.toString());
             /*
             get new transformer
              */
@@ -81,7 +77,7 @@ public class TextExtractor extends Module {
             transformer.transform(input, streamResult);
 
         } catch (TransformerException e) {
-            LOGGER.error("could not apply the xslt transformation to the file : " + _file.getAbsolutePath() + " ", e);
+            _logger.error("could not apply the xslt transformation to the file : " + _file.getAbsolutePath() + " ", e);
         }
 
         _extractedText =  new StringBuilder(stringWriter.getBuffer());
@@ -95,7 +91,7 @@ public class TextExtractor extends Module {
     public void run() {
         super.run();
         try {
-            LOGGER.debug("Extracting text of file: " + _file);
+            _logger.debug("Extracting text of file: " + _file);
             /*
             check if the result of the extraction is not empty
              */
@@ -110,12 +106,12 @@ public class TextExtractor extends Module {
             otherwise a log is thrown and the corpusSize is decremented by 1
              */
             else {
-                LOGGER.info(_file + " has empty body");
+                _logger.info(_file + " has empty body");
                 _termithIndex.setCorpusSize(_termithIndex.getCorpusSize() - 1);
             }
-            LOGGER.debug("Extraction done for file: " + _file);
+            _logger.debug("Extraction done for file: " + _file);
         } catch (IOException e) {
-            LOGGER.error("File Exception",e);
+            _logger.error("File Exception",e);
         }
     }
 }

@@ -10,8 +10,6 @@ import org.slf4j.LoggerFactory;
  *         Created on 19/09/16.
  */
 public class CLIUtils {
-    private static final Logger LOGGER = LoggerFactory.getLogger(CLIUtils.class.getName());
-
     /**
      * set log level
      * @param level the level of log that we want to show during the process

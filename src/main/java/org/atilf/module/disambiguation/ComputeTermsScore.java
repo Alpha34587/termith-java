@@ -1,45 +1,46 @@
 package org.atilf.module.disambiguation;
 
 import org.atilf.models.disambiguation.ScoreTerm;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.atilf.models.termith.TermithIndex;
+import org.atilf.module.Module;
 
 import java.util.concurrent.CountDownLatch;
 
 /**
  * @author Simon Meoni Created on 15/12/16.
  */
-public class ComputeTermsScore implements Runnable {
+public class ComputeTermsScore extends Module {
     private final String _term;
     private final ScoreTerm _scoreTerm;
     private CountDownLatch _scoreCounter;
-    private static final Logger LOGGER = LoggerFactory.getLogger(ComputeTermsScore.class.getName());
 
     public ComputeTermsScore(String term, ScoreTerm scoreTerm) {
         _term = term;
         _scoreTerm = scoreTerm;
     }
 
-    public ComputeTermsScore(String p, ScoreTerm value, CountDownLatch scoreCounter) {
-        this(p,value);
+    public ComputeTermsScore(String p, TermithIndex termithIndex, CountDownLatch scoreCounter) {
+        super(termithIndex);
+        _term = p;
+        _scoreTerm = _termithIndex.getScoreTerms().get(p);
         _scoreCounter = scoreCounter;
 
     }
 
     public void execute(){
+        _logger.info("compute score is started for : " + _term );
         computeRecall();
         computePrecision();
         computeF1score();
         computeTerminologyTrend();
         computeAmbiguityRate();
+        _logger.info("compute score is finished for : " + _term );
     }
 
     @Override
     public void run() {
-        LOGGER.info("compute score is started for : " + _term );
-        execute();
+        super.run();
         _scoreCounter.countDown();
-        LOGGER.info("compute score is finished for : " + _term );
     }
 
     void computeRecall(){

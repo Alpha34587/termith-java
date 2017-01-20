@@ -45,8 +45,7 @@ public class TerminologyParser extends Module {
      * constructor for TerminologyParser*
      * @param path the path of the terminology
      */
-    TerminologyParser(Path path) {
-        super(null);
+    protected TerminologyParser(Path path) {
         _path = path;
         _currentFile = "";
     }

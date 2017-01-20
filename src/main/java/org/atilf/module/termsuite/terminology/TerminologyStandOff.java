@@ -1,9 +1,10 @@
 package org.atilf.module.termsuite.terminology;
 
+import org.atilf.models.termith.TermithIndex;
 import org.atilf.models.termsuite.MorphologyOffsetId;
 import org.atilf.models.termsuite.TermOffsetId;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.atilf.module.Module;
+import org.atilf.module.tools.FilesUtils;
 
 import java.util.List;
 import java.util.NavigableMap;
@@ -17,20 +18,29 @@ import java.util.stream.Collectors;
  * @author Simon Meoni
  *         Created on 14/09/16.
  */
-public class TerminologyStandOff implements Runnable{
+public class TerminologyStandOff extends Module {
     private final List<MorphologyOffsetId> _morpho;
     private final List<TermOffsetId> _terminology;
     private NavigableMap<Integer,List<Integer>> _beginMap = new TreeMap<>();
     private NavigableMap<Integer,List<Integer>> _endMap = new TreeMap<>();
-    private static final Logger LOGGER = LoggerFactory.getLogger(TerminologyStandOff.class.getName());
     private String _id;
+
+
+
+    public TerminologyStandOff(String id, TermithIndex termithIndex) {
+        super(termithIndex);
+        _id = id;
+        _morpho = FilesUtils.readListObject(_termithIndex.getMorphologyStandOff().get(_id),MorphologyOffsetId.class);
+        _terminology = termithIndex.getTerminologyStandOff().get(_id);
+    }
+
 
     /**
      * constructor for TerminologyStandOff class
      * @param morpho the morphology entities analyzes by treetagger
      * @param terminology the terminologies occurrences compute by termsuite
      */
-    public TerminologyStandOff(List<MorphologyOffsetId> morpho, List<TermOffsetId> terminology) {
+    protected TerminologyStandOff(List<MorphologyOffsetId> morpho, List<TermOffsetId> terminology) {
         _morpho = morpho;
         _terminology = terminology;
     }
@@ -47,10 +57,12 @@ public class TerminologyStandOff implements Runnable{
      * the execute method calls fillNavigableMaps and retrieves for each term occurrences, words associated with them
      */
     public void execute() {
+        _logger.debug("retrieve morphosyntax id for file :" + _id);
         fillNavigableMaps();
         _terminology.forEach(
                 el -> el.setIds(retrieveMorphologyIds(el.getBegin(),el.getEnd()))
         );
+        _logger.debug("retrieve id task finished");
     }
 
     /**
@@ -92,15 +104,4 @@ public class TerminologyStandOff implements Runnable{
                 }
         );
     }
-
-    /**
-     * call execute method
-     */
-    @Override
-    public void run() {
-        LOGGER.debug("retrieve morphosyntax id for file :" + _id);
-        execute();
-        LOGGER.debug("retrieve id task finished");
-    }
-
 }

@@ -20,7 +20,6 @@ import java.util.concurrent.CountDownLatch;
  *         Created on 02/11/16.
  */
 public class DisambiguationXslTransformer extends TextExtractor {
-    private TermithIndex _termithIndex;
     private CountDownLatch _transformCounter;
     private Map<String, Path> _xmlTransformedMap;
     private Path _outputPath;
@@ -73,6 +72,7 @@ public class DisambiguationXslTransformer extends TextExtractor {
      */
     @Override
     public void run() {
+        super.run();
         try {
             LOGGER.info("convert xml file: " + _file.getAbsolutePath());
             _xmlTransformedMap.put(

@@ -5,11 +5,10 @@ import org.atilf.models.termsuite.CorpusAnalyzer;
 import org.atilf.models.termsuite.TextAnalyzer;
 import org.atilf.models.treetagger.TagNormalizer;
 import org.atilf.models.treetagger.TreeTaggerParameter;
+import org.atilf.module.Module;
 import org.atilf.module.tei.morphology.MorphologyTokenizer;
 import org.atilf.module.termsuite.morphology.MorphologySerializer;
 import org.atilf.module.tools.FilesUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.IOException;
@@ -23,11 +22,9 @@ import java.util.concurrent.CountDownLatch;
  * @author Simon Meoni
  *         Created on 16/09/16.
  */
-public class TreeTaggerWorker implements Runnable {
+public class TreeTaggerWorker extends Module {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(TreeTaggerWorker.class.getName());
     private final String _id;
-    private TermithIndex _termithIndex;
     private CountDownLatch _jsonCnt;
     private StringBuilder _txt;
     private String _jsonPath;
@@ -43,7 +40,7 @@ public class TreeTaggerWorker implements Runnable {
      */
     public TreeTaggerWorker(TermithIndex termithIndex, CorpusAnalyzer corpusAnalyzer, String id,
                             CountDownLatch jsonCnt) {
-        _termithIndex = termithIndex;
+        super(termithIndex);
         _jsonCnt = jsonCnt;
         _txt = FilesUtils.readObject(termithIndex.getExtractedText().get(id),StringBuilder.class);
         _jsonPath = TermithIndex.getOutputPath() + "/json/" + id + ".json";
@@ -57,7 +54,7 @@ public class TreeTaggerWorker implements Runnable {
              */
             Files.delete(termithIndex.getExtractedText().get(id));
         } catch (IOException e) {
-            LOGGER.error("could not delete file",e);
+            _logger.error("could not delete file",e);
         }
     }
 
@@ -65,7 +62,7 @@ public class TreeTaggerWorker implements Runnable {
      * the run method execute treeTaggerToJson module and MorphologyTokenizerWrapper module
      */
     @Override
-    public void run() {
+    public void execute() {
         /*
         call init method : create json folder in the working directory.
          */
@@ -83,7 +80,7 @@ public class TreeTaggerWorker implements Runnable {
             /*
             TreeTagger task and Json serialization
              */
-            LOGGER.debug("TreeTagger task started for :" + _id);
+            _logger.debug("TreeTagger task started for :" + _id);
             treeTaggerWrapper.execute();
 
             MorphologySerializer morphologySerializer = new MorphologySerializer(
@@ -94,12 +91,12 @@ public class TreeTaggerWorker implements Runnable {
             morphologySerializer.execute();
             _jsonCnt.countDown();
             _termithIndex.getSerializeJson().add(Paths.get(_jsonPath));
-            LOGGER.debug("TreeTagger task finished for : " + _id);
+            _logger.debug("TreeTagger task finished for : " + _id);
 
             /*
             tokenize xml file
              */
-            LOGGER.debug("tokenization and morphosyntax tasks started for : " + _jsonPath);
+            _logger.debug("tokenization and morphosyntax tasks started for : " + _jsonPath);
             File json = new File(_jsonPath);
             MorphologyTokenizer morphologyTokenizer = new MorphologyTokenizer(_txt, _xml, json);
             morphologyTokenizer.execute();
@@ -112,15 +109,15 @@ public class TreeTaggerWorker implements Runnable {
 
             _termithIndex.getMorphologyStandOff().put(json.getName().replace(".json",""),
                     FilesUtils.writeObject(morphologyTokenizer.getOffsetId(), TermithIndex.getOutputPath()));
-            LOGGER.debug("tokenization and morphosyntax tasks finished file : " + _jsonPath);
+            _logger.debug("tokenization and morphosyntax tasks finished file : " + _jsonPath);
 
         } catch (IOException e) {
-            LOGGER.error("error during execute TreeTagger data", e);
+            _logger.error("error during execute TreeTagger data", e);
         } catch (InterruptedException e) {
-            LOGGER.error("error during Tree Tagger Process : ",e);
+            _logger.error("error during Tree Tagger Process : ",e);
             Thread.currentThread().interrupt();
         } catch (Exception e) {
-            LOGGER.error("error during xml tokenization execute",e);
+            _logger.error("error during xml tokenization execute",e);
         }
     }
 
@@ -133,9 +130,9 @@ public class TreeTaggerWorker implements Runnable {
 
             TagNormalizer.initTag(TermithIndex.getLang());
             Files.createDirectories(Paths.get(TermithIndex.getOutputPath() + "/json"));
-            LOGGER.debug("create temporary text files in " + TermithIndex.getOutputPath() + "/json folder");
+            _logger.debug("create temporary text files in " + TermithIndex.getOutputPath() + "/json folder");
         } catch (IOException e) {
-            LOGGER.error("cannot create directories : ",e);
+            _logger.error("cannot create directories : ",e);
         }
     }
 }

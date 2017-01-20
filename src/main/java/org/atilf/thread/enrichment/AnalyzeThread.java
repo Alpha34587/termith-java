@@ -2,7 +2,6 @@ package org.atilf.thread.enrichment;
 
 import org.atilf.models.termith.TermithIndex;
 import org.atilf.models.termsuite.CorpusAnalyzer;
-import org.atilf.models.termsuite.MorphologyOffsetId;
 import org.atilf.module.extractor.TextExtractor;
 import org.atilf.module.termsuite.pipeline.TermsuitePipelineBuilder;
 import org.atilf.module.termsuite.terminology.TerminologyParser;
@@ -129,10 +128,7 @@ public class AnalyzeThread extends Thread{
          */
         _termithIndex.getMorphologyStandOff().forEach(
                 (id,value) -> _executorService.submit(
-                        new TerminologyStandOff(
-                                FilesUtils.readListObject(value,MorphologyOffsetId.class),
-                                _termithIndex.getTerminologyStandOff().get(id)
-                        )
+                        new TerminologyStandOff(id,_termithIndex)
                 )
         );
         _executorService.shutdown();

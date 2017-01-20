@@ -20,7 +20,7 @@ public abstract class Module implements Runnable{
         );
         _termithIndex.getTermithObservable().addObserver(_performanceObserver);
     }
-
+    public Module(){}
 
     protected void execute(){}
 

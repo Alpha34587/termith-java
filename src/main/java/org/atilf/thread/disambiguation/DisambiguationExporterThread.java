@@ -51,13 +51,10 @@ public class DisambiguationExporterThread extends Thread{
 
         Files.list(TermithIndex.getEvaluationPath()).forEach(
                 p ->
-                {
-                    String file = FilesUtils.nameNormalizer(p.toString());
-                    _executorService.submit(new DisambiguationTeiWriter(
-                        p.toString(),
-                        _termithIndex.getEvaluationLexicon().get(file)
-                        ));
-                }
+                        _executorService.submit(new DisambiguationTeiWriter(
+                                FilesUtils.nameNormalizer(p.toString()),
+                                _termithIndex
+                        ))
 
         );
         _logger.info("Waiting ContextExtractorWorker executors to finish");

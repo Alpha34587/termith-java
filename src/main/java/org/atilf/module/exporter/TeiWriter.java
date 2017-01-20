@@ -4,6 +4,7 @@ import org.atilf.models.tei.exporter.StandOffResources;
 import org.atilf.models.termith.TermithIndex;
 import org.atilf.models.termsuite.MorphologyOffsetId;
 import org.atilf.models.termsuite.TermOffsetId;
+import org.atilf.module.Module;
 import org.atilf.module.tools.FilesUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,7 +23,7 @@ import static org.atilf.models.tei.exporter.SpecialChXmlEscape.replaceXmlChar;
  * @author Simon Meoni
  *         Created on 16/09/16.
  */
-public class TeiWriter implements Runnable {
+public class TeiWriter extends Module{
 
     private Path _outputPath;
     private BufferedWriter _bufferedWriter = null;
@@ -82,11 +83,11 @@ public class TeiWriter implements Runnable {
      * @param outputPath the output path
      * @param standOffResources static resource used by teiWriter
      */
-    public TeiWriter(StringBuilder xmlCorpus,
-                     List<MorphologyOffsetId> morphologyOffsetIds,
-                     StringBuilder tokenizeBody,List<TermOffsetId> termOffsetIds,
-                     Path outputPath,
-                     StandOffResources standOffResources) {
+    private TeiWriter(StringBuilder xmlCorpus,
+                      List<MorphologyOffsetId> morphologyOffsetIds,
+                      StringBuilder tokenizeBody, List<TermOffsetId> termOffsetIds,
+                      Path outputPath,
+                      StandOffResources standOffResources) {
 
         _xmlCorpus = xmlCorpus;
         _morphologyOffsetIds = morphologyOffsetIds;
@@ -103,9 +104,9 @@ public class TeiWriter implements Runnable {
 
     /**
      * write the new file. Insert new standOff tags and tokenize body
-     * @throws IOException thrown an exception if _bufferedWriter fields throws an error during writing
      */
-    public void execute() throws IOException {
+    public void execute() {
+        LOGGER.debug("writing : " + _outputPath);
         try {
             //insert standoff namespace
             insertStandoffNs();
@@ -114,9 +115,8 @@ public class TeiWriter implements Runnable {
             //insert tokenize body
             insertBody();
             _bufferedWriter.close();
-        }
-        catch (Exception e){
-            LOGGER.error("could not write file",e);
+        } catch (Exception e) {
+            LOGGER.error("could not write file", e);
         }
     }
 
@@ -292,12 +292,7 @@ public class TeiWriter implements Runnable {
      */
     @Override
     public void run() {
-        LOGGER.debug("writing : " + _outputPath);
-        try {
-            execute();
-            _termithIndex.getOutputFile().add(_outputPath);
-        } catch (IOException e) {
-            LOGGER.error("errors during writing xml/tei file",e);
-        }
+        super.run();
+        _termithIndex.getOutputFile().add(_outputPath);
     }
 }

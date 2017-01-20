@@ -85,10 +85,10 @@ public class EvaluationThread extends Thread{
         /*
         Threshold cleaner
          */
-        _termithIndex.getContextLexicon().forEach(
-                (key,value) -> _executorService.submit(new ThresholdLexiconCleaner(
+        _termithIndex.getContextLexicon().keySet().forEach(
+                key -> _executorService.submit(new ThresholdLexiconCleaner(
                         key,
-                        value,
+                        _termithIndex,
                         3,
                         15,
                         _cleanerCounter
@@ -145,7 +145,7 @@ public class EvaluationThread extends Thread{
         Evaluation phase
          */
         _termithIndex.getEvaluationLexicon().forEach(
-                (p,value) -> _executorService.submit(new Evaluation(p, value, _termithIndex.getContextLexicon()))
+                (p,value) -> _executorService.submit(new Evaluation(p, _termithIndex))
         );
         _logger.info("Waiting EvaluationWorker executors to finish");
         _executorService.shutdown();

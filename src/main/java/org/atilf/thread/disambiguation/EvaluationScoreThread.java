@@ -94,21 +94,21 @@ public class EvaluationScoreThread extends Thread{
         _logger.info("AggregateTeiTerms phase is finished");
 
         _logger.info("ComputeTermScore phase is started");
-       _termithIndex.getScoreTerms().forEach(
-                (p,value) -> _executorService.submit(new ComputeTermsScore(p,value,_scoreCounter))
+       _termithIndex.getScoreTerms().keySet().forEach(
+                p -> _executorService.submit(new ComputeTermsScore(p,_termithIndex,_scoreCounter))
         );
         _scoreCounter.await();
         _logger.info("ComputeTermScore phase is finished");
 
         _logger.info("ComputeTotalTermsScore is started");
         _executorService.submit(
-                new ComputeTotalTermsScore(_termithIndex.getScoreTerms(),_termithIndex.getTotalTermScore())
+                new ComputeTotalTermsScore(_termithIndex)
         ).get();
         _logger.info("ComputeTotalTermsScore is finished");
 
         _logger.info("Export phase is started");
-        _executorService.submit(new ExportScoreToJson(_termithIndex.getScoreTerms(),_termithIndex.getTotalTermScore()));
-        _executorService.submit(new ExportScoreToCsv(_termithIndex.getScoreTerms())).get();
+        _executorService.submit(new ExportScoreToJson(_termithIndex));
+        _executorService.submit(new ExportScoreToCsv(_termithIndex)).get();
         _executorService.submit(new WorkingFilesCleaner(TermithIndex.getOutputPath(),false));
         _logger.info("Export phase is finished");
         _executorService.shutdown();

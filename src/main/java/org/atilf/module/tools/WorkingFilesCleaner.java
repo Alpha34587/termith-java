@@ -1,8 +1,7 @@
 package org.atilf.module.tools;
 
 import org.apache.commons.io.FileUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.atilf.module.Module;
 
 import java.io.File;
 import java.io.IOException;
@@ -15,8 +14,7 @@ import java.nio.file.Path;
  * @author Simon Meoni
  *         Created on 27/09/16.
  */
-public class WorkingFilesCleaner implements Runnable{
-    private static final Logger LOGGER = LoggerFactory.getLogger(WorkingFilesCleaner.class.getName());
+public class WorkingFilesCleaner extends Module{
     private final Path _outputPath;
     private final boolean _keepFiles;
 
@@ -36,6 +34,7 @@ public class WorkingFilesCleaner implements Runnable{
      */
     public void execute() {
         try {
+            _logger.debug("clean working directory : " + _outputPath);
             Files.list(_outputPath).forEach(
                     path -> {
                         File file = new File(path.toString());
@@ -43,7 +42,7 @@ public class WorkingFilesCleaner implements Runnable{
                         if _keepFiles is true and file is directory the file is kept
                          */
                         if (_keepFiles && file.isDirectory())
-                            LOGGER.info("keeping " + file.getAbsolutePath() + " directory");
+                            _logger.info("keeping " + file.getAbsolutePath() + " directory");
 
                         /*
                         the directory is deleted if _keepFiles is false
@@ -52,7 +51,7 @@ public class WorkingFilesCleaner implements Runnable{
                             try {
                                 FileUtils.deleteDirectory(file);
                             } catch (IOException e) {
-                                LOGGER.error("cannot delete directory",e);
+                                _logger.error("cannot delete directory",e);
                             }
                         }
                         /*
@@ -63,16 +62,16 @@ public class WorkingFilesCleaner implements Runnable{
                                 try {
                                     Files.delete(file.toPath());
                                 } catch (NoSuchFileException e) {
-                                    LOGGER.error("no such file or directory", e);
+                                    _logger.error("no such file or directory", e);
                                 } catch (IOException e) {
-                                    LOGGER.error("File permission problem", e);
+                                    _logger.error("File permission problem", e);
                                 }
                             }
                         }
                     }
             );
         } catch (IOException e) {
-            LOGGER.error("no such file or directory", e);
+            _logger.error("no such file or directory", e);
         }
     }
 
@@ -81,8 +80,6 @@ public class WorkingFilesCleaner implements Runnable{
      */
     @Override
     public void run() {
-        LOGGER.debug("clean working directory : " + _outputPath);
         execute();
-
     }
 }

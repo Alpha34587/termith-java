@@ -3,9 +3,8 @@ package org.atilf.module.exporter;
 import org.atilf.models.disambiguation.AnnotationResources;
 import org.atilf.models.disambiguation.EvaluationProfile;
 import org.atilf.models.termith.TermithIndex;
+import org.atilf.module.Module;
 import org.atilf.module.tools.FilesUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -24,15 +23,15 @@ import javax.xml.xpath.*;
 import java.io.IOException;
 import java.util.Map;
 
-import static org.atilf.models.disambiguation.ContextResources.*;
+import static org.atilf.models.disambiguation.ContextResources.NAMESPACE_CONTEXT;
+import static org.atilf.models.disambiguation.ContextResources.TEI_SPAN;
 
 /**
  * Write the result of disambiguation in tei file format
  * @author Simon Meoni
  *         Created on 25/10/16.
  */
-public class DisambiguationTeiWriter implements Runnable {
-    private static final Logger LOGGER = LoggerFactory.getLogger(TeiWriter.class.getName());
+public class DisambiguationTeiWriter extends Module {
     private final String _p;
     private final Map<String, EvaluationProfile> _evaluationLexicon;
     private DocumentBuilder _dBuilder;
@@ -45,7 +44,7 @@ public class DisambiguationTeiWriter implements Runnable {
      * @param p the file name
      * @param evaluationLexicon the evaluation lexicon that contains the result for disambiguation for one file
      */
-    public DisambiguationTeiWriter(String p, Map<String, EvaluationProfile> evaluationLexicon) {
+    private DisambiguationTeiWriter(String p, Map<String, EvaluationProfile> evaluationLexicon) {
         /*
         prepare dom parser
          */
@@ -58,16 +57,40 @@ public class DisambiguationTeiWriter implements Runnable {
             _dbFactory.setNamespaceAware(true);
             _dBuilder = _dbFactory.newDocumentBuilder();
         } catch (ParserConfigurationException e) {
-            LOGGER.error("error during the creation of documentBuilder object : ", e);
+            _logger.error("error during the creation of documentBuilder object : ", e);
         }
         try {
             _doc = _dBuilder.parse(p);
         } catch (SAXException | IOException e) {
-            LOGGER.error("error during the execute of document",e);
+            _logger.error("error during the execute of document",e);
+        }
+    }
+
+    public DisambiguationTeiWriter(String p, TermithIndex termithIndex) {
+        super(termithIndex);
+        /*
+        prepare dom parser
+         */
+        _p = p;
+        _evaluationLexicon = _termithIndex.getEvaluationLexicon().get(p);
+
+        _xpath.setNamespaceContext(NAMESPACE_CONTEXT);
+
+        try {
+            _dbFactory.setNamespaceAware(true);
+            _dBuilder = _dbFactory.newDocumentBuilder();
+        } catch (ParserConfigurationException e) {
+            _logger.error("error during the creation of documentBuilder object : ", e);
+        }
+        try {
+            _doc = _dBuilder.parse(p);
+        } catch (SAXException | IOException e) {
+            _logger.error("error during the execute of document",e);
         }
     }
 
     public void execute() {
+        _logger.debug("write tei disambiguation for :" + _p);
         XPathExpression span;
         try {
             /*
@@ -97,7 +120,7 @@ public class DisambiguationTeiWriter implements Runnable {
                     anaNode.setNodeValue(
                             anaVal + " " + _evaluationLexicon.get(termId).getDisambiguationId()
                     );
-                    LOGGER.debug("write DaOn or DaOff value");
+                    _logger.debug("write DaOn or DaOff value");
                 }
 
                 else {
@@ -120,22 +143,14 @@ public class DisambiguationTeiWriter implements Runnable {
                         + FilesUtils.nameNormalizer(_p) + ".xml");
                 transformer.transform(source, result);
             } catch (TransformerException e) {
-                LOGGER.error("error during file writing",e);
+                _logger.error("error during file writing",e);
             }
 
         } catch (XPathExpressionException e) {
-            LOGGER.error("error during the execute of document",e);
+            _logger.error("error during the execute of document",e);
+        }
+        finally {
+            _logger.debug("tei disambiguation is written for :" + _p);
         }
     }
-
-    /**
-     * call execute method
-     */
-    @Override
-    public void run() {
-        LOGGER.debug("write tei disambiguation for :" + _p);
-        execute();
-        LOGGER.debug("tei disambiguation is written for :" + _p);
-    }
-
 }

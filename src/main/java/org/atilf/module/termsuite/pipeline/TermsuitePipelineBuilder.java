@@ -8,8 +8,6 @@ import eu.project.ttc.tools.TermSuitePipeline;
 import eu.project.ttc.tools.cli.TermSuiteCLIUtils;
 import org.atilf.models.termith.TermithIndex;
 import org.atilf.module.Module;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -26,7 +24,6 @@ public class TermsuitePipelineBuilder extends Module {
     private String _jsonCorpus;
     private TermSuitePipeline _termsuitePipeline;
     private TermithIndex _termithIndex;
-    private static final Logger LOGGER = LoggerFactory.getLogger(TermsuitePipelineBuilder.class.getName());
 
     /**
      * this constructor initialize the pipeline with all parameters needed for termsuite
@@ -96,9 +93,9 @@ public class TermsuitePipelineBuilder extends Module {
      * run the termsuite pipeline
      */
     public void execute(){
-        LOGGER.info("Run Termsuite Pipeline");
+        _logger.info("Run Termsuite Pipeline");
         _termsuitePipeline.run();
-        LOGGER.info("Finished execution of Termsuite Pipeline, result in :" +
+        _logger.info("Finished execution of Termsuite Pipeline, result in :" +
                 TermithIndex.getOutputPath());
     }
 
@@ -121,7 +118,7 @@ public class TermsuitePipelineBuilder extends Module {
         try {
             Files.write(Paths.get(TermithIndex.getOutputPath() +"/termsuite-resources.jar"), ByteStreams.toByteArray(resourceAsStream));
         } catch (IOException e) {
-            LOGGER.error("cannot copy termsuite-resources.jar",e);
+            _logger.error("cannot copy termsuite-resources.jar",e);
         }
         return TermithIndex.getOutputPath() +"/termsuite-resources.jar";
     }

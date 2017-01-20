@@ -7,8 +7,7 @@ import org.atilf.models.disambiguation.LexiconProfile;
 import org.atilf.models.disambiguation.RLexicon;
 import org.atilf.models.disambiguation.RResources;
 import org.atilf.models.termith.TermithIndex;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.atilf.module.Module;
 
 import java.util.Objects;
 
@@ -21,14 +20,13 @@ import static org.atilf.models.disambiguation.AnnotationResources.LEX_ON;
  * @author Simon Meoni
  *         Created on 21/10/16.
  */
-public class SpecCoefficientInjector implements Runnable{
+public class SpecCoefficientInjector extends Module {
     private LexiconProfile _lexiconProfile;
     private RLexicon _rLexicon;
     private CorpusLexicon _corpusLexicon;
     private boolean _computeSpecificities = true;
     private RLexicon _rContextLexicon;
     private String _id;
-    private static final Logger LOGGER = LoggerFactory.getLogger(SpecCoefficientInjector.class.getName());
 
     /**
      *  constructor of SpecCoefficientInjector
@@ -59,6 +57,7 @@ public class SpecCoefficientInjector implements Runnable{
      *                 of the corpusLexicon and his size
      */
     public SpecCoefficientInjector(String id,TermithIndex termithIndex, RLexicon rLexicon){
+        super(termithIndex);
         if (isLexiconPresent(termithIndex,id)) {
             _id = id;
             _corpusLexicon = termithIndex.getCorpusLexicon();
@@ -82,18 +81,20 @@ public class SpecCoefficientInjector implements Runnable{
      * call reduceToLexicalProfile method
      */
     public void execute() {
+        _logger.info("compute specificities coefficient for : " + _id);
         try {
             if (_computeSpecificities) {
                 reduceToLexicalProfile(computeSpecCoefficient());
             }
             else {
-                LOGGER.info("only terminology or non-terminology lexicon profile is present, " +
+                _logger.info("only terminology or non-terminology lexicon profile is present, " +
                         "no need to compute coefficients for terminology entry : ", _id);
             }
         }
         catch (Exception e){
-            LOGGER.error("problem during the execution of SpecCoefficientInjector :", e);
+            _logger.error("problem during the execution of SpecCoefficientInjector :", e);
         }
+        _logger.info("specificities coefficient is computed for : " + _id);
     }
 
 
@@ -117,7 +118,7 @@ public class SpecCoefficientInjector implements Runnable{
      * @return coefficients specificities
      */
     float[] computeSpecCoefficient() {
-        LOGGER.debug("compute specificity coefficient");
+        _logger.debug("compute specificity coefficient");
         /*
         instantiate rcaller
          */
@@ -175,7 +176,7 @@ public class SpecCoefficientInjector implements Runnable{
         rcaller.setRCode(code);
         rcaller.runAndReturnResult("res");
         rcaller.deleteTempFiles();
-        LOGGER.debug("specificity coefficient has been computed");
+        _logger.debug("specificity coefficient has been computed");
         return resToFloat(rcaller.getParser().getAsStringArray("res"));
     }
 
@@ -184,26 +185,16 @@ public class SpecCoefficientInjector implements Runnable{
         for (int i = 0; i < res.length; i++){
             if (Objects.equals(res[i], "Inf")){
                 floatArray[i] = Float.POSITIVE_INFINITY;
-                LOGGER.error("positive infinity was return by R");
+                _logger.error("positive infinity was return by R");
             }
             else if (Objects.equals(res[i], "-Inf")){
                 floatArray[i] = Float.NEGATIVE_INFINITY;
-                LOGGER.error("negative infinity was return by R");
+                _logger.error("negative infinity was return by R");
             }
             else {
                 floatArray[i] = Float.parseFloat(res[i]);
             }
         }
         return floatArray;
-    }
-
-    /*
-    run execute method
-     */
-    @Override
-    public void run() {
-        LOGGER.info("compute specificities coefficient for : " + _id);
-        execute();
-        LOGGER.info("specificities coefficient is computed for : " + _id);
     }
 }
