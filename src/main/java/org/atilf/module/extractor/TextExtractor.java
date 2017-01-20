@@ -2,6 +2,7 @@ package org.atilf.module.extractor;
 
 import org.atilf.models.extractor.XslResources;
 import org.atilf.models.termith.TermithIndex;
+import org.atilf.module.Module;
 import org.atilf.module.tools.FilesUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,11 +21,12 @@ import java.io.StringWriter;
  * @author Simon Meoni
  * Created on 25/07/16.
  */
-public class TextExtractor implements Runnable{
+public class TextExtractor extends Module {
     private final Logger LOGGER = LoggerFactory.getLogger(this.getClass().getName());
     protected File _file;
     protected TermithIndex _termithIndex;
-    protected XslResources _xslResources;
+    private XslResources _xslResources;
+    private StringBuilder _extractedText;
 
     /**
      * constructor for textExtractor
@@ -33,8 +35,8 @@ public class TextExtractor implements Runnable{
      * @param termithIndex the termithIndex of a process
      */
     public TextExtractor(File file, TermithIndex termithIndex, XslResources xslResources) {
+        super(termithIndex);
         _file = file;
-        _termithIndex = termithIndex;
         _xslResources = xslResources;
     }
 
@@ -44,16 +46,20 @@ public class TextExtractor implements Runnable{
      * @param xslResources contains the parsed xsl stylesheet
      */
     public TextExtractor(File file, XslResources xslResources) {
+        super(null);
         _file = file;
         _xslResources = xslResources;
     }
 
+    public StringBuilder getExtractedText() {
+        return _extractedText;
+    }
+
     /**
      * this method apply an xsl stylesheet to a file given in the _file field. it extracts the plain text of the tei file
-     * @return the extracted text
-     * @throws IOException throw IO exception of StreamResult variable
      */
-    public StringBuilder execute() throws IOException {
+    public void execute() {
+        super.run();
         /*
         instantiate needed variables for transformation. The StringWriter variable is used to return
         the result as a StringBuilder variable
@@ -78,7 +84,7 @@ public class TextExtractor implements Runnable{
             LOGGER.error("could not apply the xslt transformation to the file : " + _file.getAbsolutePath() + " ", e);
         }
 
-        return new StringBuilder(stringWriter.getBuffer());
+        _extractedText =  new StringBuilder(stringWriter.getBuffer());
     }
 
     /*
@@ -87,21 +93,18 @@ public class TextExtractor implements Runnable{
      */
     @Override
     public void run() {
+        super.run();
         try {
             LOGGER.debug("Extracting text of file: " + _file);
             /*
-            call execute method
-             */
-            StringBuilder extractedText = execute();
-            /*
             check if the result of the extraction is not empty
              */
-            if (extractedText.length() != 0) {
+            if (_extractedText.length() != 0) {
                 /*
                 put the result into the extractedText Map
                  */
                 _termithIndex.getExtractedText().put(FilesUtils.nameNormalizer(_file.toString()),
-                        FilesUtils.writeObject(extractedText, TermithIndex.getOutputPath()));
+                        FilesUtils.writeObject(_extractedText, TermithIndex.getOutputPath()));
             }
             /*
             otherwise a log is thrown and the corpusSize is decremented by 1
