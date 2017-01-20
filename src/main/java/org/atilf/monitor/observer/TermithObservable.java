@@ -1,4 +1,4 @@
-package org.atilf.observer;
+package org.atilf.monitor.observer;
 
 import java.util.Observable;
 

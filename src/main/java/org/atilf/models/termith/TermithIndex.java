@@ -4,7 +4,7 @@ import org.apache.commons.io.FileUtils;
 import org.atilf.models.disambiguation.*;
 import org.atilf.models.termsuite.TermOffsetId;
 import org.atilf.module.tools.FilesUtils;
-import org.atilf.observer.TermithObservable;
+import org.atilf.monitor.observer.TermithObservable;
 
 import java.io.File;
 import java.io.IOException;

@@ -1,7 +1,7 @@
 package org.atilf.module;
 
 import org.atilf.models.termith.TermithIndex;
-import org.atilf.observer.TermithObserver;
+import org.atilf.monitor.observer.PerformanceObserver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -10,15 +10,15 @@ import org.slf4j.LoggerFactory;
  */
 public abstract class Module implements Runnable{
     protected final Logger _logger = LoggerFactory.getLogger(this.getClass().getName());
-    protected TermithObserver _termithObserver;
+    protected PerformanceObserver _performanceObserver;
     protected TermithIndex _termithIndex;
 
     public Module(TermithIndex termithIndex){
         _termithIndex = termithIndex;
-        _termithObserver = new TermithObserver(
+        _performanceObserver = new PerformanceObserver(
                 this.getClass().getName()
         );
-        _termithIndex.getTermithObservable().addObserver(_termithObserver);
+        _termithIndex.getTermithObservable().addObserver(_performanceObserver);
     }
 
 
@@ -28,6 +28,6 @@ public abstract class Module implements Runnable{
     public void run() {
         execute();
         _termithIndex.getTermithObservable().notifyObservers();
-        _termithIndex.getTermithObservable().deleteObserver(_termithObserver);
+        _termithIndex.getTermithObservable().deleteObserver(_performanceObserver);
     }
 }
