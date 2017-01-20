@@ -4,6 +4,7 @@ import org.apache.commons.io.FileUtils;
 import org.atilf.models.disambiguation.*;
 import org.atilf.models.termsuite.TermOffsetId;
 import org.atilf.module.tools.FilesUtils;
+import org.atilf.observer.TermithObservable;
 
 import java.io.File;
 import java.io.IOException;
@@ -24,6 +25,7 @@ public class TermithIndex {
     /*
     Termith fields
      */
+    private TermithObservable _termithObservable = new TermithObservable();
     private Path _corpus = null;
     private List<Path> _terminologies = new CopyOnWriteArrayList<>();
     private Map<String, Path> _tokenizeTeiBody = new ConcurrentHashMap<>();
@@ -158,6 +160,10 @@ public class TermithIndex {
      * @return return a list of path
      */
     public Map<String, Path> getEvaluationTransformedFiles() {return _evaluationTransformedFiles;}
+
+    public TermithObservable getTermithObservable() {
+        return _termithObservable;
+    }
 
     /**
      * return the list of serialized json file

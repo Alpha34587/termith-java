@@ -15,12 +15,26 @@ public class TermithObserver implements Observer {
     private long _allocatedMemory;
     private String _name;
 
-    private int _currentElementDone;
-    private int _totalElement;
+
+    public TermithObserver(long startTime, String name) {
+        _startTime = startTime;
+        _name = name;
+    }
 
     @Override
     public void update(Observable observable, Object o) {
 
     }
 
+    public long getElapsedTime() {
+        return _elapsedTime;
+    }
+
+    public long getAllocatedMemory() {
+        return _allocatedMemory;
+    }
+
+    public String getName() {
+        return _name;
+    }
 }
