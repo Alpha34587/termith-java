@@ -82,12 +82,12 @@ import static org.atilf.models.disambiguation.AnnotationResources.*;
  *         }
  *
  *        the principle is to find the parent node of the term candidate and extract all the w element except the
- *        node belongs to the occurence term candidate
+ *        node belongs to the occurrence term candidate
  * @author Simon Meoni
  *         Created on 14/10/16.
  *
  */
-public class ContextExtractor extends DefaultHandler implements Runnable {
+public class ContextExtractor extends DefaultHandler {
 
     Map<String, LexiconProfile> _contextLexicon;
     private CorpusLexicon _corpusLexicon;
@@ -147,7 +147,6 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
     /**
      * run method of Runnable class
      */
-    @Override
     public void run() {
         LOGGER.info("extract contexts from " + _p );
         this.execute();

@@ -28,24 +28,11 @@ import java.util.concurrent.CountDownLatch;
 public class DisambiguationXslTransformer extends Module{
     private CountDownLatch _transformCounter;
     private Map<String, Path> _xmlTransformedMap;
-    private TermithIndex _termithIndex;
     private Path _outputPath;
     private File _file;
     private XslResources _xslResources;
     private static final Logger LOGGER = LoggerFactory.getLogger(DisambiguationXslTransformer.class.getName());
     private StringBuilder _transformedContent;
-
-    /**
-     * constructor for textExtractor
-     * @param file Treated xml/tei _file
-     * @param xslResources contains the parsed xsl stylesheet
-     * @param termithIndex the termithIndex of a process
-     */
-    public DisambiguationXslTransformer(File file, TermithIndex termithIndex, XslResources xslResources) {
-        super(termithIndex);
-        _file = file;
-        _xslResources = xslResources;
-    }
 
     /**
      * constructor for textExtractor
