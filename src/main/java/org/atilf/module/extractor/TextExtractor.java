@@ -20,7 +20,7 @@ import java.io.StringWriter;
  * Created on 25/07/16.
  */
 public class TextExtractor extends Module {
-    protected File _file;
+    private File _file;
     protected TermithIndex _termithIndex;
     private XslResources _xslResources;
     private StringBuilder _extractedText;
@@ -42,12 +42,12 @@ public class TextExtractor extends Module {
      * @param file Treated xml/tei _file
      * @param xslResources contains the parsed xsl stylesheet
      */
-    protected TextExtractor(File file, XslResources xslResources) {
+    TextExtractor(File file, XslResources xslResources) {
         _file = file;
         _xslResources = xslResources;
     }
 
-    public StringBuilder getExtractedText() {
+    StringBuilder getExtractedText() {
         return _extractedText;
     }
 

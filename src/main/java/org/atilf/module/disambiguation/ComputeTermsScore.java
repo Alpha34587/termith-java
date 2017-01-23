@@ -14,7 +14,7 @@ public class ComputeTermsScore extends Module {
     private final ScoreTerm _scoreTerm;
     private CountDownLatch _scoreCounter;
 
-    public ComputeTermsScore(String term, ScoreTerm scoreTerm) {
+    ComputeTermsScore(String term, ScoreTerm scoreTerm) {
         _term = term;
         _scoreTerm = scoreTerm;
     }

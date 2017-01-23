@@ -49,7 +49,7 @@ public class MorphologyTokenizer {
      * @param xml the xml file
      * @param parser the morphology parser object when the execution of parsing is externalized
      */
-    public MorphologyTokenizer(StringBuilder txt, StringBuilder xml, MorphologyParser parser) {
+    MorphologyTokenizer(StringBuilder txt, StringBuilder xml, MorphologyParser parser) {
         _xml = xml;
         _txt = txt;
         _morphologyParser = parser;

@@ -28,8 +28,8 @@ public class AggregateTeiTerms extends DefaultHandler implements Runnable {
     private final Map<String, EvaluationProfile> _evaluationProfile;
     private static final Logger LOGGER = LoggerFactory.getLogger(AggregateTeiTerms.class.getName());
 
-    public AggregateTeiTerms(String xml, Map<String, EvaluationProfile> evaluationProfile,
-                             Map<String, ScoreTerm> scoreTerms) {
+    AggregateTeiTerms(String xml, Map<String, EvaluationProfile> evaluationProfile,
+                      Map<String, ScoreTerm> scoreTerms) {
         _xml = xml;
         _evaluationProfile = evaluationProfile;
         _scoreTerm = scoreTerms;

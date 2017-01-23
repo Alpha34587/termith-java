@@ -16,7 +16,7 @@ import java.util.Map;
  */
 public class ExportScoreToCsv extends ExportScoreToJson {
 
-    protected ExportScoreToCsv(Map<String, ScoreTerm> scoreTerms) {
+    ExportScoreToCsv(Map<String, ScoreTerm> scoreTerms) {
         super(scoreTerms,null);
     }
 

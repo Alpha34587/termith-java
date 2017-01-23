@@ -38,7 +38,7 @@ public class SpecCoefficientInjector extends Module {
      * @see RLexicon
      * @see CorpusLexicon
      */
-    public SpecCoefficientInjector(LexiconProfile lexiconProfile, RLexicon rLexicon, CorpusLexicon corpusLexicon) {
+    SpecCoefficientInjector(LexiconProfile lexiconProfile, RLexicon rLexicon, CorpusLexicon corpusLexicon) {
 
         _corpusLexicon = corpusLexicon;
         _lexiconProfile = lexiconProfile;

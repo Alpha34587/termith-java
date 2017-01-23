@@ -27,27 +27,15 @@ public class TerminologyParser extends Module {
     private Path _path;
     private Map<String,List<TermOffsetId>> _standOffTerminology = new ConcurrentHashMap<>();
     private Map<String,String> _idSource = new HashMap<>();
-    private String _currentFile;
+    private String _currentFile = "";
     private final JsonFactory _factory = new JsonFactory();
-
-    /**
-     * constructor for TerminologyParser
-     * @param path the path of the terminology
-     * @param termithIndex the termithIndex of a process
-     */
-    public TerminologyParser(Path path, TermithIndex termithIndex) {
-        super(termithIndex);
-        _path = path;
-        _currentFile = "";
-    }
 
     /**
      * constructor for TerminologyParser*
      * @param path the path of the terminology
      */
-    protected TerminologyParser(Path path) {
+    TerminologyParser(Path path) {
         _path = path;
-        _currentFile = "";
     }
 
     /**
@@ -57,14 +45,13 @@ public class TerminologyParser extends Module {
     public TerminologyParser(TermithIndex termithIndex) {
         super(termithIndex);
         _path = termithIndex.getJsonTerminology();
-        _currentFile = "";
     }
 
     /**
      * getter for parsed terminology
      * @return return Map<String, List<TermOffsetId>>
      */
-    public Map<String, List<TermOffsetId>> getStandOffTerminology() {
+    Map<String, List<TermOffsetId>> getStandOffTerminology() {
         return _standOffTerminology;
     }
 
@@ -102,7 +89,6 @@ public class TerminologyParser extends Module {
                 }
                 else if (inTerms) {
                     if (jsonToken == JsonToken.END_ARRAY && Objects.equals(parser.getCurrentName(), T_TERMS)) {
-                        inTerms = false;
                         break;
                     } else if (jsonToken == JsonToken.END_ARRAY && inOcc) {
                         inOcc = false;
@@ -138,8 +124,8 @@ public class TerminologyParser extends Module {
          */
         String realId =
                 FilesUtils.nameNormalizer(_idSource.get(_currentFile));
-        /**
-         * create an new entry if the file identifier does not exist in _standoffTerminology
+        /*
+          create an new entry if the file identifier does not exist in _standoffTerminology
          */
         if (_standOffTerminology.containsKey(realId)){
             _standOffTerminology.get(realId).add(new TermOffsetId(offsetId));

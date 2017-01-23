@@ -18,7 +18,7 @@ public class ComputeTotalTermsScore extends Module {
     private int _totalCorrectOccurrences = 0;
     private TotalTermScore _totalTermScore;
 
-    protected ComputeTotalTermsScore(Map<String, ScoreTerm> scoreTerms, TotalTermScore totalTermScore) {
+    ComputeTotalTermsScore(Map<String, ScoreTerm> scoreTerms, TotalTermScore totalTermScore) {
         _scoreTerms = scoreTerms;
         _totalTermScore = totalTermScore;
     }

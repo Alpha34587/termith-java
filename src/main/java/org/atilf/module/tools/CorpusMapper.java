@@ -26,14 +26,6 @@ public class CorpusMapper extends Module {
     }
 
     /**
-     * getter for corpusCnt
-     * @return return CountDownLatch
-     */
-    public CountDownLatch getCorpusCnt() {
-        return corpusCnt;
-    }
-
-    /**
      * put xml path on xmlCorpus hashmap
      */
     public void execute(){

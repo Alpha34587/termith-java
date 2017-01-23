@@ -36,8 +36,8 @@ public class Evaluation extends Module{
      * @param evaluationProfile the evaluationProfile of a termithIndex
      * @param contextLexicon the contextLexicon of a termithIndex
      */
-    protected Evaluation(String p, Map<String, EvaluationProfile> evaluationProfile,
-                      Map<String, LexiconProfile> contextLexicon) {
+    Evaluation(String p, Map<String, EvaluationProfile> evaluationProfile,
+               Map<String, LexiconProfile> contextLexicon) {
 
         _evaluationProfile = evaluationProfile;
         _contextLexicon = contextLexicon;

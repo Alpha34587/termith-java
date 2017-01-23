@@ -35,8 +35,8 @@ public class MorphologySerializer {
      * @param txt the plain text of the file
      * @param textAnalyzer the termsuite json metadata
      */
-    public MorphologySerializer(StringBuilder treeTaggerOutput, String jsonPath, StringBuilder txt
-            , TextAnalyzer textAnalyzer) {
+    public MorphologySerializer(StringBuilder treeTaggerOutput, String jsonPath, StringBuilder txt,
+                                TextAnalyzer textAnalyzer) {
         Collections.addAll(_tokenDeque, treeTaggerOutput.toString().split("\n"));
         _txt = txt;
         _jsonPath = jsonPath;

@@ -25,8 +25,6 @@ public class TerminologyStandOff extends Module {
     private NavigableMap<Integer,List<Integer>> _endMap = new TreeMap<>();
     private String _id;
 
-
-
     public TerminologyStandOff(String id, TermithIndex termithIndex) {
         super(termithIndex);
         _id = id;
@@ -40,7 +38,7 @@ public class TerminologyStandOff extends Module {
      * @param morpho the morphology entities analyzes by treetagger
      * @param terminology the terminologies occurrences compute by termsuite
      */
-    protected TerminologyStandOff(List<MorphologyOffsetId> morpho, List<TermOffsetId> terminology) {
+    TerminologyStandOff(List<MorphologyOffsetId> morpho, List<TermOffsetId> terminology) {
         _morpho = morpho;
         _terminology = terminology;
     }

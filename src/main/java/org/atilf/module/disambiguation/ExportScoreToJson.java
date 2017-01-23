@@ -19,7 +19,7 @@ public class ExportScoreToJson extends Module {
     final Map<String, ScoreTerm> _scoreTerms;
     private final TotalTermScore _totalTermScore;
 
-    protected ExportScoreToJson(Map<String, ScoreTerm> scoreTerms, TotalTermScore totalTermScore) {
+    ExportScoreToJson(Map<String, ScoreTerm> scoreTerms, TotalTermScore totalTermScore) {
         _scoreTerms = scoreTerms;
         _totalTermScore = totalTermScore;
     }

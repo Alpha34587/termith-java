@@ -23,7 +23,6 @@ public class TermsuitePipelineBuilder extends Module {
 
     private String _jsonCorpus;
     private TermSuitePipeline _termsuitePipeline;
-    private TermithIndex _termithIndex;
 
     /**
      * this constructor initialize the pipeline with all parameters needed for termsuite

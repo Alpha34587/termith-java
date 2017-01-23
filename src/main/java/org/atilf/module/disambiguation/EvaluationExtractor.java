@@ -25,7 +25,7 @@ public class EvaluationExtractor extends ContextExtractor {
     private String _p;
     private CountDownLatch _extactorCounter;
 
-    public EvaluationExtractor(String p, TermithIndex termithIndex) {
+    EvaluationExtractor(String p, TermithIndex termithIndex) {
         super(p,termithIndex.getContextLexicon(), null);
         _p = p;
         termithIndex.getEvaluationLexicon().put(FilesUtils.nameNormalizer(p),new HashMap<>());
