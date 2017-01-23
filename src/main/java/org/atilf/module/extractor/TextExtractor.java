@@ -55,7 +55,6 @@ public class TextExtractor extends Module {
      * this method apply an xsl stylesheet to a file given in the _file field. it extracts the plain text of the tei file
      */
     public void execute() {
-        super.run();
         /*
         instantiate needed variables for transformation. The StringWriter variable is used to return
         the result as a StringBuilder variable

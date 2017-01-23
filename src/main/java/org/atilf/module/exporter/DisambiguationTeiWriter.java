@@ -44,7 +44,7 @@ public class DisambiguationTeiWriter extends Module {
      * @param p the file name
      * @param evaluationLexicon the evaluation lexicon that contains the result for disambiguation for one file
      */
-    private DisambiguationTeiWriter(String p, Map<String, EvaluationProfile> evaluationLexicon) {
+    public DisambiguationTeiWriter(String p, Map<String, EvaluationProfile> evaluationLexicon) {
         /*
         prepare dom parser
          */

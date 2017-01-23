@@ -126,6 +126,7 @@ public class EvaluationThread extends Thread{
                 p -> _executorService.submit(
                         new DisambiguationXslTransformer(
                                 p.toFile(),
+                                _termithIndex,
                                 _transformCounter,
                                 _termithIndex.getEvaluationTransformedFiles(),
                                 xslResources)

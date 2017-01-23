@@ -74,6 +74,7 @@ public class EvaluationScoreThread extends Thread{
                     if (!Files.isDirectory(p)) {
                         _executorService.submit(new DisambiguationXslTransformer(
                                 p.toFile(),
+                                _termithIndex,
                                 _transformCounter,
                                 _termithIndex.getTransformOutputDisambiguationFile(),
                                 xslResources,

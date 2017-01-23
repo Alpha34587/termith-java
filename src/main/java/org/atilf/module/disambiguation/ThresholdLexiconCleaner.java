@@ -27,7 +27,7 @@ public class ThresholdLexiconCleaner extends Module {
         _cleanerCounter = cleanerCounter;
     }
 
-    private ThresholdLexiconCleaner(Map<String, Float> coefficientMap, int minThreshold, int maxThreshold) {
+    protected ThresholdLexiconCleaner(Map<String, Float> coefficientMap, int minThreshold, int maxThreshold) {
         _coefficientMap = coefficientMap;
         _minThreshold = minThreshold;
         _maxThreshold = maxThreshold;

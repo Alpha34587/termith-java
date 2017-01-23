@@ -23,9 +23,10 @@ public class TextExtractorTest {
 
     @Test
     public void testXsltTransformation() throws Exception {
+        _textExtractor.execute();
         Assert.assertEquals("the extracted text must be equal",
                 String.join("\n", Files.readAllLines(Paths.get("src/test/resources/corpus/txt/file1.txt"))),
-                _textExtractor.execute().toString()
+                _textExtractor.getExtractedText().toString()
         );
     }
 

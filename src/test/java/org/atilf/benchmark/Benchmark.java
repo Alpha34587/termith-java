@@ -73,7 +73,8 @@ public class Benchmark {
                             file.toFile(),new DisambiguationXslResources()
                     );
                     try {
-                        Path path = FilesUtils.writeFile(transformer.execute(),
+                        transformer.execute();
+                        Path path = FilesUtils.writeFile(transformer.getTransformedContent(),
                                 Paths.get(_out), file.getFileName().toString());
                         TermExtractor termExtractor = new TermExtractor(path.toString());
                         _size += termExtractor.countTerms();
