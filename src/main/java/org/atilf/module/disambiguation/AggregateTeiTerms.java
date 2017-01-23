@@ -37,7 +37,7 @@ public class AggregateTeiTerms extends DefaultHandler implements Runnable {
 
     public AggregateTeiTerms(String xml, Map<String, EvaluationProfile> evaluationProfile,
                              Map<String, ScoreTerm> scoreTerms, CountDownLatch aggregateCounter) {
-        this(xml,  evaluationProfile, scoreTerms);
+        this(xml, evaluationProfile, scoreTerms);
         _aggregateCounter = aggregateCounter;
     }
 

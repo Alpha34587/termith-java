@@ -138,8 +138,9 @@ public class EvaluationThread extends Thread{
         Extraction phase
          */
         _termithIndex.getEvaluationTransformedFiles().values().forEach(
-                p -> _executorService.submit(new EvaluationExtractor(p.toString(), _termithIndex, _extractorCounter))
-        );
+                p -> _executorService.submit(
+                        new EvaluationExtractor(p.toString(), _termithIndex, _extractorCounter)
+        ));
 
         _extractorCounter.await();
         /*

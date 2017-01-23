@@ -4,8 +4,6 @@ import org.atilf.models.extractor.XslResources;
 import org.atilf.models.termith.TermithIndex;
 import org.atilf.module.Module;
 import org.atilf.module.tools.FilesUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import javax.xml.transform.Source;
 import javax.xml.transform.Transformer;
@@ -31,7 +29,6 @@ public class DisambiguationXslTransformer extends Module{
     private Path _outputPath;
     private File _file;
     private XslResources _xslResources;
-    private static final Logger LOGGER = LoggerFactory.getLogger(DisambiguationXslTransformer.class.getName());
     private StringBuilder _transformedContent;
 
     /**
@@ -55,10 +52,11 @@ public class DisambiguationXslTransformer extends Module{
      */
     public DisambiguationXslTransformer(File file, CountDownLatch transformCounter,
                                         TermithIndex termithIndex, XslResources xslResources){
+
+        super(termithIndex);
         _file = file;
         _transformCounter = transformCounter;
         _xmlTransformedMap = termithIndex.getLearningTransformedFile();
-        _termithIndex = termithIndex;
         _xslResources = xslResources;
         _outputPath = TermithIndex.getOutputPath();
     }
@@ -71,8 +69,8 @@ public class DisambiguationXslTransformer extends Module{
 
     public DisambiguationXslTransformer(File file,TermithIndex termithIndex, CountDownLatch transformCounter,
                                         Map<String,Path> xmlTransformedMap, XslResources xslResources, Path outputPath){
+        super(termithIndex);
         _file = file;
-        _termithIndex = termithIndex;
         _transformCounter = transformCounter;
         _xmlTransformedMap = xmlTransformedMap;
         _xslResources = xslResources;
@@ -93,7 +91,7 @@ public class DisambiguationXslTransformer extends Module{
         super.run();
 
         try {
-            LOGGER.info("convert xml file: " + _file.getAbsolutePath());
+            _logger.info("convert xml file: " + _file.getAbsolutePath());
             _xmlTransformedMap.put(
                     FilesUtils.nameNormalizer(
                     /*
@@ -112,9 +110,9 @@ public class DisambiguationXslTransformer extends Module{
             decrease the counter
              */
             _transformCounter.countDown();
-            LOGGER.info("Extraction done for file: " + _file);
+            _logger.info("Extraction done for file: " + _file);
         } catch (IOException e) {
-            LOGGER.error("File Exception: ",e);
+            _logger.error("File Exception: ",e);
         }
     }
 

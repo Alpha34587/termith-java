@@ -21,7 +21,6 @@ import java.io.StringWriter;
  */
 public class TextExtractor extends Module {
     private File _file;
-    protected TermithIndex _termithIndex;
     private XslResources _xslResources;
     private StringBuilder _extractedText;
 

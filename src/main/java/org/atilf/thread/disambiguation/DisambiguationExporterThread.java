@@ -50,11 +50,13 @@ public class DisambiguationExporterThread extends Thread{
     public void execute() throws IOException, InterruptedException {
 
         Files.list(TermithIndex.getEvaluationPath()).forEach(
-                p ->
-                        _executorService.submit(new DisambiguationTeiWriter(
-                                FilesUtils.nameNormalizer(p.toString()),
-                                _termithIndex
-                        ))
+                p -> {
+                    String file = FilesUtils.nameNormalizer(p.toString());
+                    _executorService.submit(new DisambiguationTeiWriter(
+                            p.toString(),
+                            _termithIndex
+                    ));
+                }
 
         );
         _logger.info("Waiting ContextExtractorWorker executors to finish");

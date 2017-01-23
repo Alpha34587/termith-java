@@ -23,7 +23,7 @@ public class EvaluationExtractor extends ContextExtractor {
     private final Map<String, EvaluationProfile> _evaluationLexicon;
     private static final Logger LOGGER = LoggerFactory.getLogger(EvaluationExtractor.class.getName());
     private String _p;
-    private CountDownLatch _extactorCounter;
+    private CountDownLatch _extractorCounter;
 
     EvaluationExtractor(String p, TermithIndex termithIndex) {
         super(p,termithIndex.getContextLexicon(), null);
@@ -32,10 +32,10 @@ public class EvaluationExtractor extends ContextExtractor {
         _evaluationLexicon = termithIndex.getEvaluationLexicon().get(FilesUtils.nameNormalizer(p));
     }
 
-    public EvaluationExtractor(String p, TermithIndex termithIndex, CountDownLatch extactorCounter) {
+    public EvaluationExtractor(String p, TermithIndex termithIndex, CountDownLatch extractorCounter) {
         super(p,termithIndex.getContextLexicon(), null);
         _p = p;
-        _extactorCounter = extactorCounter;
+        _extractorCounter = extractorCounter;
         termithIndex.getEvaluationLexicon().put(FilesUtils.nameNormalizer(p),new HashMap<>());
         _evaluationLexicon = termithIndex.getEvaluationLexicon().get(FilesUtils.nameNormalizer(p));
     }
@@ -70,7 +70,7 @@ public class EvaluationExtractor extends ContextExtractor {
     public void run() {
         LOGGER.info("add " + _p + " to evaluation lexicon");
         this.execute();
-        _extactorCounter.countDown();
+        _extractorCounter.countDown();
         LOGGER.info(_p + " added");
     }
 

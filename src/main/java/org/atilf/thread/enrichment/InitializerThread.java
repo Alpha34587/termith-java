@@ -8,7 +8,6 @@ import org.atilf.thread.Thread;
 
 import java.io.IOException;
 import java.nio.file.Files;
-import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -18,8 +17,6 @@ import java.util.concurrent.TimeUnit;
  */
 public class InitializerThread extends Thread{
 
-    private CountDownLatch _corpusCnt;
-
     /**
      * this constructor initialize the _termithIndex fields and initialize the _poolSize field with the default value
      * with the number of available processors.
@@ -28,11 +25,6 @@ public class InitializerThread extends Thread{
      */
     public InitializerThread(TermithIndex termithIndex, int poolSize) {
         super(termithIndex,poolSize);
-        try {
-            _corpusCnt = new CountDownLatch((int)Files.list(TermithIndex.getBase()).count());
-        } catch (IOException e) {
-            _logger.error("cannot find corpus folder", e);
-        }
     }
 
     /**
@@ -61,12 +53,11 @@ public class InitializerThread extends Thread{
         Files.list(TermithIndex.getBase()).forEach(
                 p -> {
                     _executorService.submit(new TextExtractor(p.toFile(), _termithIndex, xslResources));
-                    _executorService.submit(new CorpusMapper(p, _termithIndex, _corpusCnt));
+                    _executorService.submit(new CorpusMapper(p, _termithIndex));
                 }
 
         );
         _logger.info("Waiting initCorpusWorker executors to finish");
-        _corpusCnt.await();
         _logger.info("initCorpusWorker finished");
         _executorService.shutdown();
         _executorService.awaitTermination(1L, TimeUnit.DAYS);

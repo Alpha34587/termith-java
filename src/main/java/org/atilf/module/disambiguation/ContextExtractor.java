@@ -87,7 +87,7 @@ import static org.atilf.models.disambiguation.AnnotationResources.*;
  *         Created on 14/10/16.
  *
  */
-public class ContextExtractor extends DefaultHandler {
+public class ContextExtractor extends DefaultHandler implements Runnable {
 
     Map<String, LexiconProfile> _contextLexicon;
     private CorpusLexicon _corpusLexicon;

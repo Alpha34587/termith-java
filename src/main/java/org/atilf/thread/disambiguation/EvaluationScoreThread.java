@@ -89,7 +89,8 @@ public class EvaluationScoreThread extends Thread{
                 (p,value) -> _executorService.submit(new AggregateTeiTerms(
                         _termithIndex.getTransformOutputDisambiguationFile().get(p).toString(),
                         value,
-                        _termithIndex.getScoreTerms(),_aggregateCounter))
+                        _termithIndex.getScoreTerms(),
+                        _aggregateCounter))
         );
        _aggregateCounter.await();
         _logger.info("AggregateTeiTerms phase is finished");

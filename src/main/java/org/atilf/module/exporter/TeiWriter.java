@@ -29,7 +29,6 @@ public class TeiWriter extends Module{
     private BufferedWriter _bufferedWriter = null;
     private StringBuilder _tokenizeBody;
     private StandOffResources _stdfRes;
-    private TermithIndex _termithIndex;
     private final StringBuilder _xmlCorpus;
     private final List<MorphologyOffsetId> _morphologyOffsetIds;
     private final List<TermOffsetId> _termOffsetIds;

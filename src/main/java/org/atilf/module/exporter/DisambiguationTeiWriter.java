@@ -72,7 +72,7 @@ public class DisambiguationTeiWriter extends Module {
         prepare dom parser
          */
         _p = p;
-        _evaluationLexicon = _termithIndex.getEvaluationLexicon().get(p);
+        _evaluationLexicon = _termithIndex.getEvaluationLexicon().get(FilesUtils.nameNormalizer(p));
 
         _xpath.setNamespaceContext(NAMESPACE_CONTEXT);
 

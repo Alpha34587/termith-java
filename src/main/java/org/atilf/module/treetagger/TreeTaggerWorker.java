@@ -89,7 +89,6 @@ public class TreeTaggerWorker extends Module {
                     _txt,
                     _textAnalyzer);
             morphologySerializer.execute();
-            _jsonCnt.countDown();
             _termithIndex.getSerializeJson().add(Paths.get(_jsonPath));
             _logger.debug("TreeTagger task finished for : " + _id);
 
@@ -110,7 +109,7 @@ public class TreeTaggerWorker extends Module {
             _termithIndex.getMorphologyStandOff().put(json.getName().replace(".json",""),
                     FilesUtils.writeObject(morphologyTokenizer.getOffsetId(), TermithIndex.getOutputPath()));
             _logger.debug("tokenization and morphosyntax tasks finished file : " + _jsonPath);
-
+            _jsonCnt.countDown();
         } catch (IOException e) {
             _logger.error("error during execute TreeTagger data", e);
         } catch (InterruptedException e) {

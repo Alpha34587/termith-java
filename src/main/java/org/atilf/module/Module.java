@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
  */
 public abstract class Module implements Runnable{
     protected final Logger _logger = LoggerFactory.getLogger(this.getClass().getName());
-    protected PerformanceObserver _performanceObserver;
+    private PerformanceObserver _performanceObserver;
     protected TermithIndex _termithIndex;
 
     public Module(TermithIndex termithIndex){
