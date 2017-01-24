@@ -1,7 +1,15 @@
 package org.atilf.models.disambiguation;
 
+import org.atilf.models.termith.TermithIndex;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.io.*;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * this class is the converted ContextLexicon or the CorpusLexicon into R format
@@ -15,7 +23,8 @@ public class RLexicon {
     private CorpusLexicon _corpus;
     private LexiconProfile _lexiconProfile;
     private List<String> _idContextLexicon;
-
+    private Path _csvPath;
+    private final static Logger LOGGER = LoggerFactory.getLogger(RLexicon.class);
     /**
      * constructor used to convert corpus into R variable
      * @param corpus
@@ -23,10 +32,8 @@ public class RLexicon {
     public RLexicon(CorpusLexicon corpus){
         _corpus = corpus;
         _size = corpus.lexicalSize();
-        _rName.append("c(");
-        _rOcc.append("c(");
         _corpus.forEach(this::convertToRGlobal);
-        closeRVariable();
+        writeFile();
     }
 
     /**
@@ -39,10 +46,34 @@ public class RLexicon {
         _corpus = corpus;
         _idContextLexicon = new ArrayList<>();
         _size = lexiconProfile.lexicalSize();
-        _rName.append("c(");
-        _rOcc.append("c(");
         _lexiconProfile.forEach(this::convertToRContext);
-        closeRVariable();
+        writeFile();
+
+    }
+
+    protected void writeFile(){
+        try {
+            _csvPath = Paths.get(TermithIndex.getOutputPath().toAbsolutePath() + "/" + UUID.randomUUID().toString());
+            File file = new File(_csvPath.toString());
+            _rName.deleteCharAt(_rName.length() - 1);
+            _rOcc.deleteCharAt(_rOcc.length() - 1);
+            BufferedWriter bufferedWriter = new BufferedWriter(
+                    new FileWriter(file)
+            );
+            bufferedWriter.append(_rName).append("\n");
+            bufferedWriter.append(_rOcc);
+            bufferedWriter.flush();
+            bufferedWriter.close();
+        }
+        catch (FileNotFoundException e) {
+            LOGGER.error("file not found : ", e);
+        } catch (IOException e) {
+            LOGGER.error("cannot write file :", e);
+        }
+    }
+
+    public Path getCsvPath() {
+        return _csvPath;
     }
 
     /**
@@ -54,7 +85,7 @@ public class RLexicon {
     }
 
     /**
-     * getter for the occurence of each words in R format
+     * getter for the occurrence of each words in R format
      * @return return a R variable
      */
     public StringBuffer getROcc() {
@@ -77,21 +108,11 @@ public class RLexicon {
     public int getSize() { return _size; }
 
     /**
-     * used to closed a R Variable
-     */
-    private void closeRVariable() {
-        _rName.deleteCharAt(_rName.length()-1);
-        _rOcc.deleteCharAt(_rOcc.length()-1);
-        _rName.append(")");
-        _rOcc.append(")");
-    }
-
-    /**
      * used to convert a corpus
      * @param word a word
      */
     private void convertToRGlobal(String word) {
-        _rName.append("\"").append(_corpus.getIdEntry(word)).append("\",");
+        _rName.append(_corpus.getIdEntry(word)).append(",");
         _rOcc.append(_corpus.count(word)).append(",");
     }
 
@@ -100,8 +121,7 @@ public class RLexicon {
      * @param word a word
      */
     private void convertToRContext(String word) {
-        _rName.append("\"").append(_corpus.getIdEntry(word)).append("\",");
-        _rOcc.append(_lexiconProfile.count(word)).append(",");
+        convertToRGlobal(word);
         _idContextLexicon.add(_corpus.getIdEntry(word));
     }
 }
