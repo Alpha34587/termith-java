@@ -117,6 +117,14 @@ println <- function(prefix, obj) {
     print(obj)
 }
 
+import_csv <- function(path) {
+    csv <- fread(path,header=TRUE,colClasses=NULL)
+    names <- names(csv)
+    res <- as.numeric(csv)
+    names(res) <- names
+    return(res)
+}
+
 phyper_right=function(v_white_drawn, v_num_white, v_num_black, num_drawn){
 
     # println("v_white_drawn: ", length(v_white_drawn))
