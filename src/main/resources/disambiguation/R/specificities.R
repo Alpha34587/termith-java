@@ -126,6 +126,10 @@ import_csv <- function(path) {
     return(res)
 }
 
+export_csv<- function(res,path) {
+    fwrite(res,file = path)
+}
+
 phyper_right=function(v_white_drawn, v_num_white, v_num_black, num_drawn){
 
     # println("v_white_drawn: ", length(v_white_drawn))

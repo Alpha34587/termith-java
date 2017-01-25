@@ -13,6 +13,8 @@ import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
 
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -97,31 +99,30 @@ public class SpecCoefficientInjectorTest {
 
     @Test
     public void computeSpecCoeff() throws Exception {
-        float[] observedResult = new SpecCoefficientInjector(
+        List<Float> observedResult = new SpecCoefficientInjector(
                 new LexiconProfile(_lexiconMultiset),
                 _rLexicon,
                 _corpusLexicon)
                 .computeSpecCoefficient();
-        float[] expectedResult = new float[]
-                {
-                0.1383f,
-                0.1383f,
-                0.1383f,
-                0.1383f,
-                0.1383f,
-                0.1383f,
-                0.1383f,
-                0.1383f,
-                0.1383f,
-                0.1383f,
-                0.1383f,
-                0.1383f,
-                0.1383f,
-                0.1383f,
-                0.1383f,
-                0.1383f
-        };
-        Assert.assertArrayEquals("this two arrays must be equals",expectedResult,observedResult,0);
+        List<Float> expectedResult = new LinkedList<>();
+        expectedResult.add(0.1383f);
+        expectedResult.add(0.1383f);
+        expectedResult.add(0.1383f);
+        expectedResult.add(0.1383f);
+        expectedResult.add(0.1383f);
+        expectedResult.add(0.1383f);
+        expectedResult.add(0.1383f);
+        expectedResult.add(0.1383f);
+        expectedResult.add(0.1383f);
+        expectedResult.add(0.1383f);
+        expectedResult.add(0.1383f);
+        expectedResult.add(0.1383f);
+        expectedResult.add(0.1383f);
+        expectedResult.add(0.1383f);
+        expectedResult.add(0.1383f);
+        expectedResult.add(0.1383f);
+
+        Assert.assertEquals("this two arrays must be equals",expectedResult,observedResult);
     }
 
 

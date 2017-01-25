@@ -10,7 +10,13 @@ import org.atilf.models.termith.TermithIndex;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Objects;
+import java.util.UUID;
 
 import static org.atilf.models.disambiguation.AnnotationResources.LEX_OFF;
 import static org.atilf.models.disambiguation.AnnotationResources.LEX_ON;
@@ -28,6 +34,7 @@ public class SpecCoefficientInjector implements Runnable{
     private boolean _computeSpecificities = true;
     private RLexicon _rContextLexicon;
     private String _id;
+    private String _rResultPath = TermithIndex.getOutputPath() + "/" + UUID.randomUUID().toString();
     private static final Logger LOGGER = LoggerFactory.getLogger(SpecCoefficientInjector.class.getName());
 
     /**
@@ -102,12 +109,12 @@ public class SpecCoefficientInjector implements Runnable{
      * @param specificityCoefficient this float array contains specificities coefficients for all words
      *                               of a lexical profile
      */
-    private void reduceToLexicalProfile(float[] specificityCoefficient) {
+    private void reduceToLexicalProfile(List<Float> specificityCoefficient) {
         int cnt = 0;
         for (String id : _rContextLexicon.getIdContextLexicon()) {
             _lexiconProfile.addCoefficientSpec(
                     _corpusLexicon.getLexicalEntry(Integer.parseInt(id)),
-                    specificityCoefficient[cnt]);
+                    specificityCoefficient.get(cnt));
             cnt++;
         }
     }
@@ -116,7 +123,7 @@ public class SpecCoefficientInjector implements Runnable{
      * this method calls the R script and compute specificity coefficient for each word of a context
      * @return coefficients specificities
      */
-    float[] computeSpecCoefficient() {
+    List<Float> computeSpecCoefficient() {
         LOGGER.debug("compute specificity coefficient");
         /*
         instantiate rcaller
@@ -163,30 +170,39 @@ public class SpecCoefficientInjector implements Runnable{
         code.addRCode("names(res) <- names(lexic)");
         code.addRCode("res <- res[match(names(sublexic),names(res))]");
         code.addRCode("names(res) <- NULL");
+        code.addRCode("export_csv(list(res),\"" + _rResultPath + "\")");
         /*
         execute script
          */
         rcaller.setRCode(code);
-        rcaller.runAndReturnResult("res");
+        rcaller.runOnly();
         rcaller.deleteTempFiles();
         LOGGER.debug("specificity coefficient has been computed");
-        return resToFloat(rcaller.getParser().getAsStringArray("res"));
+        return resToFloat();
     }
 
-    private float[] resToFloat(String[] res) {
-        float[] floatArray = new float[res.length];
-        for (int i = 0; i < res.length; i++){
-            if (Objects.equals(res[i], "Inf")){
-                floatArray[i] = Float.POSITIVE_INFINITY;
-                LOGGER.error("positive infinity was return by R");
+    private List<Float> resToFloat() {
+        List<Float> floatArray = new LinkedList<>();
+
+        try (BufferedReader br = new BufferedReader(new FileReader(_rResultPath))) {
+            String sCurrentLine;
+            while ((sCurrentLine = br.readLine()) != null) {
+                    if (Objects.equals(sCurrentLine, "Inf")){
+                        floatArray.add(Float.POSITIVE_INFINITY);
+                        LOGGER.error("positive infinity was return by R");
+                    }
+                    else if (Objects.equals(sCurrentLine, "-Inf")){
+                        floatArray.add(Float.NEGATIVE_INFINITY);
+                        LOGGER.error("negative infinity was return by R");
+                    }
+                    else {
+                        floatArray.add(Float.parseFloat(sCurrentLine));
+                    }
             }
-            else if (Objects.equals(res[i], "-Inf")){
-                floatArray[i] = Float.NEGATIVE_INFINITY;
-                LOGGER.error("negative infinity was return by R");
-            }
-            else {
-                floatArray[i] = Float.parseFloat(res[i]);
-            }
+            br.close();
+        }
+        catch (IOException e) {
+            LOGGER.error("cannot read result of R",e);
         }
         return floatArray;
     }
