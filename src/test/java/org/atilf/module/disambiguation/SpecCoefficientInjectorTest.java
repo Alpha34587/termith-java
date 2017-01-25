@@ -5,9 +5,12 @@ import com.google.common.collect.Multiset;
 import org.atilf.models.disambiguation.CorpusLexicon;
 import org.atilf.models.disambiguation.LexiconProfile;
 import org.atilf.models.disambiguation.RLexicon;
+import org.atilf.models.termith.TermithIndex;
 import org.junit.Assert;
 import org.junit.BeforeClass;
+import org.junit.ClassRule;
 import org.junit.Test;
+import org.junit.rules.TemporaryFolder;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -24,10 +27,12 @@ public class SpecCoefficientInjectorTest {
     private static Map<String, LexiconProfile> _contextLexicon = new HashMap<>();
     private static Map<String,float[]> _specificities = new HashMap<>();
 
+    @ClassRule
+    public static TemporaryFolder temporaryFolder = new TemporaryFolder();
 
     @BeforeClass
     public static void setUp() throws Exception {
-
+    new TermithIndex.Builder().export(temporaryFolder.getRoot().toString()).build();
     /*
     context initialization
      */

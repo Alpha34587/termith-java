@@ -31,6 +31,7 @@
 # specificities.probabilities           Calculate specificity probabilities on lexical table (call specificities.probabilities.vector)
 # specificities.probabilities.vector	Calculate specificity probabilities on vector (call phyper and phyper_right)
 # specificities.top						*PROTOTYPE* top n max or min specificity lines
+library("data.table")
 specificities.distribution.plot <- function(x, F, t, T) {
 
     # x: observed number of A words
@@ -118,10 +119,10 @@ println <- function(prefix, obj) {
 }
 
 import_csv <- function(path) {
-    csv <- fread(path,header=TRUE,colClasses=NULL)
-    names <- names(csv)
+    csv <- fread(path,header=TRUE)
+    names <-
     res <- as.numeric(csv)
-    names(res) <- names
+    names(res) <- names(csv)
     return(res)
 }
 

@@ -51,7 +51,7 @@ public class RLexicon {
 
     }
 
-    protected void writeFile(){
+    private void writeFile(){
         try {
             _csvPath = Paths.get(TermithIndex.getOutputPath().toAbsolutePath() + "/" + UUID.randomUUID().toString());
             File file = new File(_csvPath.toString());
@@ -103,7 +103,6 @@ public class RLexicon {
 
     /**
      * get the size of the _context or Corpus
-     * @return
      */
     public int getSize() { return _size; }
 
@@ -121,7 +120,8 @@ public class RLexicon {
      * @param word a word
      */
     private void convertToRContext(String word) {
-        convertToRGlobal(word);
+        _rName.append(_corpus.getIdEntry(word)).append(",");
+        _rOcc.append(_lexiconProfile.count(word)).append(",");
         _idContextLexicon.add(_corpus.getIdEntry(word));
     }
 }

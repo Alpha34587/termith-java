@@ -145,19 +145,13 @@ public class SpecCoefficientInjector implements Runnable{
         /*
         add occurrences numbers for all words of the corpus
          */
-        code.addRCode("lexic <-" + _rLexicon.getROcc());
-        /*
-        add all words of the corpus
-         */
-        code.addRCode("names(lexic) <-" + _rLexicon.getRName());
+        code.addRCode("lexic <- import_csv(\"" + _rLexicon.getCsvPath() + "\")");
+
         /*
         add occurrences numbers for all words of the context
          */
-        code.addRCode("sublexic <-" + _rContextLexicon.getROcc());
-        /*
-        add all words of the corpus
-         */
-        code.addRCode("names(sublexic) <-" + _rContextLexicon.getRName());
+        code.addRCode("sublexic <- import_csv(\"" + _rContextLexicon.getCsvPath() + "\")");
+
         /*
         compute specificities coefficient for all words of the corpus
          */
