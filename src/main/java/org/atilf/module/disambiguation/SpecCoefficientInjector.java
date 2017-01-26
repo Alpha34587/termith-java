@@ -2,6 +2,7 @@ package org.atilf.module.disambiguation;
 
 import org.atilf.models.disambiguation.CorpusLexicon;
 import org.atilf.models.disambiguation.LexiconProfile;
+import org.atilf.models.disambiguation.RConnectionPool;
 import org.atilf.models.disambiguation.RLexicon;
 import org.atilf.models.termith.TermithIndex;
 import org.rosuda.REngine.Rserve.RConnection;
@@ -28,6 +29,7 @@ import static org.atilf.models.disambiguation.AnnotationResources.LEX_ON;
  */
 public class SpecCoefficientInjector implements Runnable{
     private RConnection _rConnection;
+    private RConnectionPool _rConnectionPool;
     private LexiconProfile _lexiconProfile;
     private RLexicon _rLexicon;
     private CorpusLexicon _corpusLexicon;
@@ -90,9 +92,10 @@ public class SpecCoefficientInjector implements Runnable{
         }
     }
 
-    public SpecCoefficientInjector(String id, TermithIndex termithIndex, RLexicon rLexicon, RConnection rConnection) {
+    public SpecCoefficientInjector(String id, TermithIndex termithIndex, RLexicon rLexicon,
+                                   RConnectionPool rConnectionPool) {
         this(id,termithIndex,rLexicon);
-        _rConnection = rConnection;
+        _rConnectionPool = rConnectionPool;
     }
 
     private boolean isLexiconPresent(TermithIndex termithIndex, String id) {
@@ -140,7 +143,6 @@ public class SpecCoefficientInjector implements Runnable{
      */
     List<Float> computeSpecCoefficient(){
         try {
-            LOGGER.info("START");
             _rConnection.eval("tabCol <-" + "c(" + _rContextLexicon.getSize() + "," + _rLexicon.getSize() + ")");
             _rConnection.eval("names(tabCol) <- c(\"sublexicon\",\"complementary\")");
             _rConnection.eval("sublexic <- import_csv(\"" + _rContextLexicon.getCsvPath() + "\")");
@@ -150,7 +152,6 @@ public class SpecCoefficientInjector implements Runnable{
             _rConnection.eval("res <- res[match(names(sublexic),names(res))]");
             _rConnection.eval("names(res) <- NULL");
             _rConnection.eval("export_csv(list(res),\"" + _rResultPath + "\")");
-            LOGGER.info("END");
         } catch (RserveException e) {
             LOGGER.error("cannot execute R command",e);
         }
@@ -190,7 +191,9 @@ public class SpecCoefficientInjector implements Runnable{
     @Override
     public void run() {
         LOGGER.info("compute specificities coefficient for : " + _id);
+        _rConnection = _rConnectionPool.getRConnection(Thread.currentThread());
         execute();
+        _rConnectionPool.releaseThread(Thread.currentThread());
         LOGGER.info("specificities coefficient is computed for : " + _id);
     }
 }
