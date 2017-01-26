@@ -1,5 +1,6 @@
 package org.atilf.thread.disambiguation;
 
+import org.atilf.models.disambiguation.RConnectionPool;
 import org.atilf.models.disambiguation.RLexicon;
 import org.atilf.models.termith.TermithIndex;
 import org.atilf.module.disambiguation.SpecCoefficientInjector;
@@ -8,6 +9,8 @@ import org.atilf.thread.Thread;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.TimeUnit;
 
+import static java.lang.Thread.currentThread;
+
 /**
  * The LexiconProfileThread process the specificity coefficient for each pair of lemma/_pos of a termEntry contained by
  * _contextLexicon map of termithIndex
@@ -15,7 +18,6 @@ import java.util.concurrent.TimeUnit;
  *         Created on 12/10/16.
  */
 public class LexiconProfileThread extends Thread{
-
     /**
      * this constructor initialize the _termithIndex fields and initialize the _poolSize field with the default value
      * with the number of available processors.
@@ -52,20 +54,20 @@ public class LexiconProfileThread extends Thread{
         /*
         convert global corpus into R variable
          */
-        RLexicon rLexicon = new RLexicon(_termithIndex.getCorpusLexicon());
 
-        /*
-        compute lexical profile for each terms candidates entries
-         */
+        RLexicon rLexicon = new RLexicon(_termithIndex.getCorpusLexicon());
+        RConnectionPool RConnectionPool = new RConnectionPool(8,rLexicon);
         _termithIndex.getContextLexicon().forEach(
-                (key,value) -> _executorService.submit(new SpecCoefficientInjector(
+                (key, value) -> _executorService.submit(new SpecCoefficientInjector(
                         key,
                         _termithIndex,
-                        rLexicon))
+                        rLexicon,
+                        RConnectionPool))
         );
 
         _logger.info("Waiting SpecCoefficientInjector executors to finish");
         _executorService.shutdown();
         _executorService.awaitTermination(1L, TimeUnit.DAYS);
+        RConnectionPool.removeThread(currentThread());
     }
 }
