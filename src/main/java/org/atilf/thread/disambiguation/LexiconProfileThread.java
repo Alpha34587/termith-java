@@ -1,10 +1,14 @@
 package org.atilf.thread.disambiguation;
 
 import org.atilf.models.disambiguation.RLexicon;
+import org.atilf.models.disambiguation.RResources;
 import org.atilf.models.termith.TermithIndex;
 import org.atilf.module.disambiguation.SpecCoefficientInjector;
 import org.atilf.thread.Thread;
+import org.rosuda.REngine.Rserve.RConnection;
+import org.rosuda.REngine.Rserve.RserveException;
 
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.TimeUnit;
 
@@ -15,7 +19,7 @@ import java.util.concurrent.TimeUnit;
  *         Created on 12/10/16.
  */
 public class LexiconProfileThread extends Thread{
-
+    RConnection _rConnection;
     /**
      * this constructor initialize the _termithIndex fields and initialize the _poolSize field with the default value
      * with the number of available processors.
@@ -57,11 +61,27 @@ public class LexiconProfileThread extends Thread{
         /*
         compute lexical profile for each terms candidates entries
          */
+        try {
+            _rConnection = new RConnection();
+            _rConnection.eval(RResources.SCRIPT.toString());
+            _rConnection.eval("sumCol <-" + rLexicon.getSize());
+            _rConnection.eval("lexic <- import_csv(\"" + rLexicon.getCsvPath() + "\")");
+        } catch (RserveException e) {
+            _logger.error("cannot established connection with R server");
+        }
+
         _termithIndex.getContextLexicon().forEach(
-                (key,value) -> _executorService.submit(new SpecCoefficientInjector(
-                        key,
-                        _termithIndex,
-                        rLexicon))
+                (key, value) -> {
+                    try {
+                        _executorService.submit(new SpecCoefficientInjector(
+                                key,
+                                _termithIndex,
+                                rLexicon,
+                                _rConnection)).get();
+                    } catch (InterruptedException | ExecutionException e) {
+                        e.printStackTrace();
+                    }
+                }
         );
 
         _logger.info("Waiting SpecCoefficientInjector executors to finish");

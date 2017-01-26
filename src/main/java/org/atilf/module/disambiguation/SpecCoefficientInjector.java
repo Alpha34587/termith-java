@@ -1,12 +1,11 @@
 package org.atilf.module.disambiguation;
 
-import com.github.rcaller.rstuff.RCaller;
-import com.github.rcaller.rstuff.RCode;
 import org.atilf.models.disambiguation.CorpusLexicon;
 import org.atilf.models.disambiguation.LexiconProfile;
 import org.atilf.models.disambiguation.RLexicon;
-import org.atilf.models.disambiguation.RResources;
 import org.atilf.models.termith.TermithIndex;
+import org.rosuda.REngine.Rserve.RConnection;
+import org.rosuda.REngine.Rserve.RserveException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -28,6 +27,7 @@ import static org.atilf.models.disambiguation.AnnotationResources.LEX_ON;
  *         Created on 21/10/16.
  */
 public class SpecCoefficientInjector implements Runnable{
+    private RConnection _rConnection;
     private LexiconProfile _lexiconProfile;
     private RLexicon _rLexicon;
     private CorpusLexicon _corpusLexicon;
@@ -52,6 +52,11 @@ public class SpecCoefficientInjector implements Runnable{
         _corpusLexicon = corpusLexicon;
         _lexiconProfile = lexiconProfile;
         _rLexicon = rLexicon;
+        try {
+            _rConnection = new RConnection();
+        } catch (RserveException e) {
+            LOGGER.error("cannot established connection with the R server");
+        }
         /*
         instantiate _rContextLexicon
          */
@@ -66,7 +71,13 @@ public class SpecCoefficientInjector implements Runnable{
      *                 of the corpusLexicon and his size
      */
     public SpecCoefficientInjector(String id,TermithIndex termithIndex, RLexicon rLexicon){
+
         if (isLexiconPresent(termithIndex,id)) {
+            try {
+                _rConnection = new RConnection();
+            } catch (RserveException e) {
+                LOGGER.error("cannot established connection with the R server");
+            }
             _id = id;
             _corpusLexicon = termithIndex.getCorpusLexicon();
             _lexiconProfile = termithIndex.getContextLexicon().get(id);
@@ -77,6 +88,11 @@ public class SpecCoefficientInjector implements Runnable{
         else {
             _computeSpecificities = false;
         }
+    }
+
+    public SpecCoefficientInjector(String id, TermithIndex termithIndex, RLexicon rLexicon, RConnection rConnection) {
+        this(id,termithIndex,rLexicon);
+        _rConnection = rConnection;
     }
 
     private boolean isLexiconPresent(TermithIndex termithIndex, String id) {
@@ -118,68 +134,29 @@ public class SpecCoefficientInjector implements Runnable{
             cnt++;
         }
     }
-
     /**
      * this method calls the R script and compute specificity coefficient for each word of a context
      * @return coefficients specificities
      */
-    List<Float> computeSpecCoefficient() {
-        LOGGER.debug("compute specificity coefficient");
-        /*
-        instantiate rcaller
-         */
-        RCaller rcaller = RCaller.create();
-        /*
-        instantiate rcode and add the script, add some variable and execute specificities.lexicon function
-         */
-        RCode code = RCode.create();
-        /*
-        import R script
-         */
-        code.addRCode(RResources.SCRIPT.toString());
-        /*
-        add variable
-         */
-        /*
-        add size of the corpus
-         */
-        code.addRCode("sumCol <-" + _rLexicon.getSize());
-        /*
-        add size of the corpus and the size of the context
-         */
-        code.addRCode("tabCol <-" + "c(" + _rContextLexicon.getSize() + "," + _rLexicon.getSize() + ")");
-        code.addRCode("names(tabCol) <- c(\"sublexicon\",\"complementary\")");
-        /*
-        add occurrences numbers for all words of the corpus
-         */
-        code.addRCode("lexic <- import_csv(\"" + _rLexicon.getCsvPath() + "\")");
-
-        /*
-        add occurrences numbers for all words of the context
-         */
-        code.addRCode("sublexic <- import_csv(\"" + _rContextLexicon.getCsvPath() + "\")");
-
-        /*
-        compute specificities coefficient for all words of the corpus
-         */
-        code.addRCode("res <- specificities.lexicon(lexic,sublexic,sumCol,tabCol)");
-        /*
-        retained only specificities for words in the context
-         */
-        code.addRCode("res <- res[,1]");
-        code.addRCode("names(res) <- names(lexic)");
-        code.addRCode("res <- res[match(names(sublexic),names(res))]");
-        code.addRCode("names(res) <- NULL");
-        code.addRCode("export_csv(list(res),\"" + _rResultPath + "\")");
-        /*
-        execute script
-         */
-        rcaller.setRCode(code);
-        rcaller.runOnly();
-        rcaller.deleteTempFiles();
-        LOGGER.debug("specificity coefficient has been computed");
+    List<Float> computeSpecCoefficient(){
+        try {
+            LOGGER.info("START");
+            _rConnection.eval("tabCol <-" + "c(" + _rContextLexicon.getSize() + "," + _rLexicon.getSize() + ")");
+            _rConnection.eval("names(tabCol) <- c(\"sublexicon\",\"complementary\")");
+            _rConnection.eval("sublexic <- import_csv(\"" + _rContextLexicon.getCsvPath() + "\")");
+            _rConnection.eval("res <- specificities.lexicon(lexic,sublexic,sumCol,tabCol)");
+            _rConnection.eval("res <- res[,1]");
+            _rConnection.eval("names(res) <- names(lexic)");
+            _rConnection.eval("res <- res[match(names(sublexic),names(res))]");
+            _rConnection.eval("names(res) <- NULL");
+            _rConnection.eval("export_csv(list(res),\"" + _rResultPath + "\")");
+            LOGGER.info("END");
+        } catch (RserveException e) {
+            LOGGER.error("cannot execute R command",e);
+        }
         return resToFloat();
     }
+
 
     private List<Float> resToFloat() {
         List<Float> floatArray = new LinkedList<>();
