@@ -1,6 +1,6 @@
 package org.atilf.runner;
 
-import org.atilf.models.termith.TermithIndex;
+import org.atilf.models.TermithIndex;
 import org.atilf.thread.disambiguation.*;
 
 import java.io.IOException;

@@ -1,6 +1,6 @@
 package org.atilf.module.disambiguation.evaluation;
 
-import org.atilf.models.termith.TermithIndex;
+import org.atilf.models.TermithIndex;
 import org.atilf.module.Module;
 
 import java.util.Map;

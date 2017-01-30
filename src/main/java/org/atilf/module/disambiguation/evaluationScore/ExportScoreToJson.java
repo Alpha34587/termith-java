@@ -2,10 +2,10 @@ package org.atilf.module.disambiguation.evaluationScore;
 
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonGenerator;
+import org.atilf.models.TermithIndex;
 import org.atilf.models.disambiguation.ContextWord;
 import org.atilf.models.disambiguation.ScoreTerm;
 import org.atilf.models.disambiguation.TotalTermScore;
-import org.atilf.models.termith.TermithIndex;
 import org.atilf.module.Module;
 
 import java.io.FileWriter;

@@ -1,7 +1,7 @@
 package org.atilf.thread.enrichment;
 
-import org.atilf.models.extractor.XslResources;
-import org.atilf.models.termith.TermithIndex;
+import org.atilf.models.TermithIndex;
+import org.atilf.models.enrichment.XslResources;
 import org.atilf.module.enrichment.initializer.CorpusMapper;
 import org.atilf.module.enrichment.initializer.TextExtractor;
 import org.atilf.thread.Thread;

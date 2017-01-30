@@ -1,8 +1,8 @@
 package org.atilf.module.disambiguation.evaluationScore;
 
+import org.atilf.models.TermithIndex;
 import org.atilf.models.disambiguation.ScoreTerm;
 import org.atilf.models.disambiguation.TotalTermScore;
-import org.atilf.models.termith.TermithIndex;
 import org.atilf.module.Module;
 
 import java.util.Map;

@@ -1,7 +1,7 @@
 package org.atilf.thread.disambiguation;
 
+import org.atilf.models.TermithIndex;
 import org.atilf.models.disambiguation.DisambiguationXslResources;
-import org.atilf.models.termith.TermithIndex;
 import org.atilf.module.disambiguation.contextLexicon.ContextExtractor;
 import org.atilf.module.disambiguation.contextLexicon.DisambiguationXslTransformer;
 import org.atilf.thread.Thread;

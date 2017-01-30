@@ -1,6 +1,6 @@
 package org.atilf.module;
 
-import org.atilf.models.termith.TermithIndex;
+import org.atilf.models.TermithIndex;
 import org.atilf.monitor.observer.PerformanceObserver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

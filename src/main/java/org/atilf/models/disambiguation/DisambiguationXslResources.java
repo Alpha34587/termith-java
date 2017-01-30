@@ -1,6 +1,6 @@
 package org.atilf.models.disambiguation;
 
-import org.atilf.models.extractor.XslResources;
+import org.atilf.models.enrichment.XslResources;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

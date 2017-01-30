@@ -1,11 +1,11 @@
 package org.atilf.module.enrichment.exporter;
 
-import org.atilf.models.tei.exporter.StandOffResources;
-import org.atilf.models.termith.TermithIndex;
-import org.atilf.models.termsuite.MorphologyOffsetId;
-import org.atilf.models.termsuite.TermOffsetId;
+import org.atilf.models.TermithIndex;
+import org.atilf.models.enrichment.MorphologyOffsetId;
+import org.atilf.models.enrichment.StandOffResources;
+import org.atilf.models.enrichment.TermOffsetId;
 import org.atilf.module.Module;
-import org.atilf.module.tools.FilesUtils;
+import org.atilf.tools.FilesUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -16,7 +16,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
-import static org.atilf.models.tei.exporter.SpecialChXmlEscape.replaceXmlChar;
+import static org.atilf.models.enrichment.SpecialChXmlEscape.replaceXmlChar;
 
 /**
  * export result to tei/standOff annotation

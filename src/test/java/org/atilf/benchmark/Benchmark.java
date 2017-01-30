@@ -3,15 +3,15 @@ package org.atilf.benchmark;
 import com.fasterxml.jackson.annotation.JsonRootName;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.atilf.models.TermithIndex;
 import org.atilf.models.disambiguation.DisambiguationXslResources;
-import org.atilf.models.termith.TermithIndex;
 import org.atilf.module.disambiguation.contextLexicon.DisambiguationXslTransformer;
-import org.atilf.module.tools.FilesUtils;
 import org.atilf.thread.Thread;
 import org.atilf.thread.disambiguation.ContextLexiconThread;
 import org.atilf.thread.disambiguation.DisambiguationExporterThread;
 import org.atilf.thread.disambiguation.EvaluationThread;
 import org.atilf.thread.disambiguation.LexiconProfileThread;
+import org.atilf.tools.FilesUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

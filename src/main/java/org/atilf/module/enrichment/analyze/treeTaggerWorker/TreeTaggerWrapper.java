@@ -1,7 +1,7 @@
 package org.atilf.module.enrichment.analyze.treeTaggerWorker;
 
 import org.apache.commons.io.IOUtils;
-import org.atilf.models.treetagger.TreeTaggerParameter;
+import org.atilf.models.enrichment.TreeTaggerParameter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

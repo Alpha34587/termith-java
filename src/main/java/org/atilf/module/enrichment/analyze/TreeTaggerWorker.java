@@ -1,15 +1,15 @@
 package org.atilf.module.enrichment.analyze;
 
-import org.atilf.models.termith.TermithIndex;
-import org.atilf.models.termsuite.CorpusAnalyzer;
-import org.atilf.models.termsuite.TextAnalyzer;
-import org.atilf.models.treetagger.TagNormalizer;
-import org.atilf.models.treetagger.TreeTaggerParameter;
+import org.atilf.models.TermithIndex;
+import org.atilf.models.enrichment.CorpusAnalyzer;
+import org.atilf.models.enrichment.TagNormalizer;
+import org.atilf.models.enrichment.TextAnalyzer;
+import org.atilf.models.enrichment.TreeTaggerParameter;
 import org.atilf.module.Module;
 import org.atilf.module.enrichment.analyze.treeTaggerWorker.MorphologySerializer;
 import org.atilf.module.enrichment.analyze.treeTaggerWorker.MorphologyTokenizer;
 import org.atilf.module.enrichment.analyze.treeTaggerWorker.TreeTaggerWrapper;
-import org.atilf.module.tools.FilesUtils;
+import org.atilf.tools.FilesUtils;
 
 import java.io.File;
 import java.io.IOException;

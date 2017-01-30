@@ -1,7 +1,7 @@
 package org.atilf.thread.disambiguation;
 
+import org.atilf.models.TermithIndex;
 import org.atilf.models.disambiguation.RLexicon;
-import org.atilf.models.termith.TermithIndex;
 import org.atilf.module.disambiguation.lexiconProfile.SpecCoefficientInjector;
 import org.atilf.thread.Thread;
 

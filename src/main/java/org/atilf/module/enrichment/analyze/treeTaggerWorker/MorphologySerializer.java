@@ -2,8 +2,8 @@ package org.atilf.module.enrichment.analyze.treeTaggerWorker;
 
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonGenerator;
-import org.atilf.models.termsuite.TextAnalyzer;
-import org.atilf.models.treetagger.TagNormalizer;
+import org.atilf.models.enrichment.TagNormalizer;
+import org.atilf.models.enrichment.TextAnalyzer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

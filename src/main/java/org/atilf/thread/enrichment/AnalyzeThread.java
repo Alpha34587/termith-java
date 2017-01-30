@@ -1,14 +1,14 @@
 package org.atilf.thread.enrichment;
 
-import org.atilf.models.termith.TermithIndex;
-import org.atilf.models.termsuite.CorpusAnalyzer;
+import org.atilf.models.TermithIndex;
+import org.atilf.models.enrichment.CorpusAnalyzer;
 import org.atilf.module.enrichment.analyze.TerminologyParser;
 import org.atilf.module.enrichment.analyze.TerminologyStandOff;
 import org.atilf.module.enrichment.analyze.TermsuitePipelineBuilder;
 import org.atilf.module.enrichment.analyze.TreeTaggerWorker;
 import org.atilf.module.enrichment.initializer.TextExtractor;
-import org.atilf.module.tools.FilesUtils;
 import org.atilf.thread.Thread;
+import org.atilf.tools.FilesUtils;
 
 import java.io.IOException;
 import java.util.HashMap;

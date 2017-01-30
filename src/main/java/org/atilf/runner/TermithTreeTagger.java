@@ -1,6 +1,6 @@
 package org.atilf.runner;
 
-import org.atilf.models.termith.TermithIndex;
+import org.atilf.models.TermithIndex;
 import org.atilf.thread.enrichment.AnalyzeThread;
 import org.atilf.thread.enrichment.CleanerThread;
 import org.atilf.thread.enrichment.ExporterThread;

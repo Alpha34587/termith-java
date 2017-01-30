@@ -1,9 +1,9 @@
 package org.atilf.thread.disambiguation;
 
-import org.atilf.models.termith.TermithIndex;
+import org.atilf.models.TermithIndex;
 import org.atilf.module.disambiguation.disambiguationExporter.DisambiguationTeiWriter;
-import org.atilf.module.tools.FilesUtils;
 import org.atilf.thread.Thread;
+import org.atilf.tools.FilesUtils;
 
 import java.io.IOException;
 import java.nio.file.Files;

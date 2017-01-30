@@ -1,7 +1,7 @@
 package org.atilf.module.enrichment.analyze.treeTaggerWorker;
 
-import org.atilf.models.MorphologyParser;
-import org.atilf.models.termsuite.MorphologyOffsetId;
+import org.atilf.models.enrichment.MorphologyOffsetId;
+import org.atilf.models.enrichment.MorphologyParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

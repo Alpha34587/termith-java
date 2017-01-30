@@ -1,10 +1,10 @@
 package org.atilf.module.enrichment.analyze;
 
-import org.atilf.models.termith.TermithIndex;
-import org.atilf.models.termsuite.MorphologyOffsetId;
-import org.atilf.models.termsuite.TermOffsetId;
+import org.atilf.models.TermithIndex;
+import org.atilf.models.enrichment.MorphologyOffsetId;
+import org.atilf.models.enrichment.TermOffsetId;
 import org.atilf.module.Module;
-import org.atilf.module.tools.FilesUtils;
+import org.atilf.tools.FilesUtils;
 
 import java.util.List;
 import java.util.NavigableMap;

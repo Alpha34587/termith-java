@@ -1,8 +1,8 @@
 package org.atilf.thread.disambiguation;
 
+import org.atilf.models.TermithIndex;
 import org.atilf.models.disambiguation.DisambiguationXslResources;
-import org.atilf.models.extractor.XslResources;
-import org.atilf.models.termith.TermithIndex;
+import org.atilf.models.enrichment.XslResources;
 import org.atilf.module.disambiguation.contextLexicon.DisambiguationXslTransformer;
 import org.atilf.module.disambiguation.evaluationScore.*;
 import org.atilf.module.enrichment.cleaner.WorkingFilesCleaner;

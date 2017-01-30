@@ -1,10 +1,10 @@
 package org.atilf.module.disambiguation.disambiguationExporter;
 
+import org.atilf.models.TermithIndex;
 import org.atilf.models.disambiguation.AnnotationResources;
 import org.atilf.models.disambiguation.EvaluationProfile;
-import org.atilf.models.termith.TermithIndex;
 import org.atilf.module.Module;
-import org.atilf.module.tools.FilesUtils;
+import org.atilf.tools.FilesUtils;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;

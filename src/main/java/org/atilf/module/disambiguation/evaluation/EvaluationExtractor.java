@@ -1,10 +1,10 @@
 package org.atilf.module.disambiguation.evaluation;
 
+import org.atilf.models.TermithIndex;
 import org.atilf.models.disambiguation.ContextTerm;
 import org.atilf.models.disambiguation.EvaluationProfile;
-import org.atilf.models.termith.TermithIndex;
 import org.atilf.module.disambiguation.contextLexicon.ContextExtractor;
-import org.atilf.module.tools.FilesUtils;
+import org.atilf.tools.FilesUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.xml.sax.Attributes;

@@ -3,10 +3,10 @@ package org.atilf.module.enrichment.analyze;
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonToken;
-import org.atilf.models.termith.TermithIndex;
-import org.atilf.models.termsuite.TermOffsetId;
+import org.atilf.models.TermithIndex;
+import org.atilf.models.enrichment.TermOffsetId;
 import org.atilf.module.Module;
-import org.atilf.module.tools.FilesUtils;
+import org.atilf.tools.FilesUtils;
 
 import java.io.File;
 import java.io.IOException;
@@ -16,7 +16,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import static eu.project.ttc.readers.JsonCasConstants.F_BEGIN;
 import static eu.project.ttc.readers.JsonCasConstants.F_END;
-import static org.atilf.models.termsuite.JsonTermResources.*;
+import static org.atilf.models.enrichment.JsonTermResources.*;
 
 /**
  * parse termsuite json termsuite terminology
