@@ -4,6 +4,7 @@ import com.google.common.collect.HashMultiset;
 import com.google.common.collect.Multiset;
 import org.atilf.models.disambiguation.CorpusLexicon;
 import org.atilf.models.disambiguation.LexiconProfile;
+import org.atilf.module.disambiguation.contextLexicon.ContextExtractor;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;

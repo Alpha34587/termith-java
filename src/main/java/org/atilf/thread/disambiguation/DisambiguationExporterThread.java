@@ -1,7 +1,7 @@
 package org.atilf.thread.disambiguation;
 
 import org.atilf.models.termith.TermithIndex;
-import org.atilf.module.exporter.DisambiguationTeiWriter;
+import org.atilf.module.disambiguation.disambiguationExporter.DisambiguationTeiWriter;
 import org.atilf.module.tools.FilesUtils;
 import org.atilf.thread.Thread;
 

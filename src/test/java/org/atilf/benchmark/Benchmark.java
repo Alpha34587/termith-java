@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.atilf.models.disambiguation.DisambiguationXslResources;
 import org.atilf.models.termith.TermithIndex;
-import org.atilf.module.disambiguation.DisambiguationXslTransformer;
+import org.atilf.module.disambiguation.contextLexicon.DisambiguationXslTransformer;
 import org.atilf.module.tools.FilesUtils;
 import org.atilf.thread.Thread;
 import org.atilf.thread.disambiguation.ContextLexiconThread;

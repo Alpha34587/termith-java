@@ -4,7 +4,7 @@ import com.google.common.collect.HashMultiset;
 import org.atilf.models.disambiguation.AnnotationResources;
 import org.atilf.models.disambiguation.EvaluationProfile;
 import org.atilf.models.termith.TermithIndex;
-import org.atilf.module.exporter.DisambiguationTeiWriter;
+import org.atilf.module.disambiguation.disambiguationExporter.DisambiguationTeiWriter;
 import org.custommonkey.xmlunit.XMLUnit;
 import org.junit.BeforeClass;
 import org.junit.ClassRule;

@@ -2,7 +2,7 @@ package org.atilf.benchmark;
 
 import org.atilf.models.disambiguation.CorpusLexicon;
 import org.atilf.models.disambiguation.LexiconProfile;
-import org.atilf.module.disambiguation.ContextExtractor;
+import org.atilf.module.disambiguation.contextLexicon.ContextExtractor;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 

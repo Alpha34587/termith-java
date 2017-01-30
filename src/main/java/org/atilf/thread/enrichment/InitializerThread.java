@@ -2,8 +2,8 @@ package org.atilf.thread.enrichment;
 
 import org.atilf.models.extractor.XslResources;
 import org.atilf.models.termith.TermithIndex;
-import org.atilf.module.extractor.TextExtractor;
-import org.atilf.module.tools.CorpusMapper;
+import org.atilf.module.enrichment.initializer.CorpusMapper;
+import org.atilf.module.enrichment.initializer.TextExtractor;
 import org.atilf.thread.Thread;
 
 import java.io.IOException;

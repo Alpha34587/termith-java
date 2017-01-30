@@ -202,8 +202,8 @@ public class TermithIndex {
     }
 
     /**
-     * return the map who contains pairs of Term Entry/LexiconProfile
-     * @return return a map of String/LexiconProfile
+     * return the map who contains pairs of Term Entry/contextLexicon
+     * @return return a map of String/contextLexicon
      */
     public Map<String, LexiconProfile> getContextLexicon() {
         return _contextLexicon;

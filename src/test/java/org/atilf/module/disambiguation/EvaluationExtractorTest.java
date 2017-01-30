@@ -5,6 +5,7 @@ import com.google.common.collect.Multiset;
 import org.atilf.models.disambiguation.EvaluationProfile;
 import org.atilf.models.disambiguation.LexiconProfile;
 import org.atilf.models.termith.TermithIndex;
+import org.atilf.module.disambiguation.evaluation.EvaluationExtractor;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;

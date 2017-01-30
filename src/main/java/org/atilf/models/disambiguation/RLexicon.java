@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * this class is the converted ContextLexicon or the CorpusLexicon into R format
+ * this class is the converted contextLexicon or the CorpusLexicon into R format
  * @author Simon Meoni
  *         Created on 21/10/16.
  */

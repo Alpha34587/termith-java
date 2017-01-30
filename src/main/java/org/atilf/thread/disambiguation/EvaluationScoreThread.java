@@ -3,8 +3,9 @@ package org.atilf.thread.disambiguation;
 import org.atilf.models.disambiguation.DisambiguationXslResources;
 import org.atilf.models.extractor.XslResources;
 import org.atilf.models.termith.TermithIndex;
-import org.atilf.module.disambiguation.*;
-import org.atilf.module.tools.WorkingFilesCleaner;
+import org.atilf.module.disambiguation.contextLexicon.DisambiguationXslTransformer;
+import org.atilf.module.disambiguation.evaluationScore.*;
+import org.atilf.module.enrichment.cleaner.WorkingFilesCleaner;
 import org.atilf.thread.Thread;
 
 import java.io.IOException;

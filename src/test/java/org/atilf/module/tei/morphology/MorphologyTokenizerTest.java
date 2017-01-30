@@ -1,6 +1,7 @@
 package org.atilf.module.tei.morphology;
 
-import org.atilf.module.termsuite.morphology.MorphologyParser;
+import org.atilf.models.MorphologyParser;
+import org.atilf.module.enrichment.analyze.treeTaggerWorker.MorphologyTokenizer;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -13,7 +14,7 @@ import java.util.List;
  *         Created on 26/08/16.
  */
 public class MorphologyTokenizerTest {
-    private static  MorphologyTokenizer _observedSyntaxBody;
+    private static MorphologyTokenizer _observedSyntaxBody;
     private static  MorphologyTokenizer _observedSyntaxBody2;
     private static  MorphologyTokenizer _observedBasicTokenInjector;
     private static  MorphologyTokenizer _observedInsideTokenInjector;

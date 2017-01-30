@@ -2,7 +2,7 @@ package org.atilf.thread.disambiguation;
 
 import org.atilf.models.disambiguation.RLexicon;
 import org.atilf.models.termith.TermithIndex;
-import org.atilf.module.disambiguation.SpecCoefficientInjector;
+import org.atilf.module.disambiguation.lexiconprofile.SpecCoefficientInjector;
 import org.atilf.thread.Thread;
 
 import java.util.concurrent.ExecutorService;

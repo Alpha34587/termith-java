@@ -4,6 +4,7 @@ import org.atilf.models.disambiguation.AnnotationResources;
 import org.atilf.models.disambiguation.ContextWord;
 import org.atilf.models.disambiguation.EvaluationProfile;
 import org.atilf.models.disambiguation.ScoreTerm;
+import org.atilf.module.disambiguation.evaluationScore.AggregateTeiTerms;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;

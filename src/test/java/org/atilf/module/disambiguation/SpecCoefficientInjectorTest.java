@@ -5,6 +5,7 @@ import com.google.common.collect.Multiset;
 import org.atilf.models.disambiguation.CorpusLexicon;
 import org.atilf.models.disambiguation.LexiconProfile;
 import org.atilf.models.disambiguation.RLexicon;
+import org.atilf.module.disambiguation.lexiconprofile.SpecCoefficientInjector;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;

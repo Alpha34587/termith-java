@@ -1,6 +1,7 @@
 package org.atilf.module.disambiguation;
 
 import org.atilf.models.disambiguation.DisambiguationXslResources;
+import org.atilf.module.disambiguation.contextLexicon.DisambiguationXslTransformer;
 import org.custommonkey.xmlunit.XMLUnit;
 import org.junit.BeforeClass;
 import org.junit.Test;

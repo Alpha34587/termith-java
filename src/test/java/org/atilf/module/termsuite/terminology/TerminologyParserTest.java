@@ -1,6 +1,7 @@
 package org.atilf.module.termsuite.terminology;
 
 import org.atilf.models.termsuite.TermOffsetId;
+import org.atilf.module.enrichment.analyze.TerminologyParser;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;

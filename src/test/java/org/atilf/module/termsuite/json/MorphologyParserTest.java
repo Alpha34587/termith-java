@@ -1,7 +1,7 @@
 package org.atilf.module.termsuite.json;
 
 import org.antlr.v4.runtime.misc.Pair;
-import org.atilf.module.termsuite.morphology.MorphologyParser;
+import org.atilf.models.MorphologyParser;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;

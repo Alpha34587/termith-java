@@ -1,12 +1,12 @@
 package org.atilf.thread.disambiguation;
 
-import org.atilf.models.disambiguation.CommonWordsPosLemmaCleaner;
 import org.atilf.models.disambiguation.DisambiguationXslResources;
 import org.atilf.models.termith.TermithIndex;
-import org.atilf.module.disambiguation.DisambiguationXslTransformer;
-import org.atilf.module.disambiguation.Evaluation;
-import org.atilf.module.disambiguation.EvaluationExtractor;
-import org.atilf.module.disambiguation.ThresholdLexiconCleaner;
+import org.atilf.module.disambiguation.contextLexicon.DisambiguationXslTransformer;
+import org.atilf.module.disambiguation.evaluation.CommonWordsPosLemmaCleaner;
+import org.atilf.module.disambiguation.evaluation.Evaluation;
+import org.atilf.module.disambiguation.evaluation.EvaluationExtractor;
+import org.atilf.module.disambiguation.evaluation.ThresholdLexiconCleaner;
 import org.atilf.thread.Thread;
 
 import java.io.IOException;

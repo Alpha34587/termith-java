@@ -5,6 +5,7 @@ import org.atilf.models.disambiguation.ContextWord;
 import org.atilf.models.disambiguation.ScoreTerm;
 import org.atilf.models.disambiguation.TotalTermScore;
 import org.atilf.models.termith.TermithIndex;
+import org.atilf.module.disambiguation.evaluationScore.ExportScoreToCsv;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.ClassRule;

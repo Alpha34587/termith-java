@@ -3,8 +3,11 @@ package org.atilf.module.treetagger;
 import org.atilf.models.termith.TermithIndex;
 import org.atilf.models.termsuite.CorpusAnalyzer;
 import org.atilf.models.treetagger.TagNormalizer;
-import org.atilf.module.termsuite.morphology.MorphologySerializer;
-import org.junit.*;
+import org.atilf.module.enrichment.analyze.treeTaggerWorker.MorphologySerializer;
+import org.junit.Assert;
+import org.junit.BeforeClass;
+import org.junit.ClassRule;
+import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
 
 import java.io.File;

@@ -2,12 +2,12 @@ package org.atilf.thread.enrichment;
 
 import org.atilf.models.termith.TermithIndex;
 import org.atilf.models.termsuite.CorpusAnalyzer;
-import org.atilf.module.extractor.TextExtractor;
-import org.atilf.module.termsuite.pipeline.TermsuitePipelineBuilder;
-import org.atilf.module.termsuite.terminology.TerminologyParser;
-import org.atilf.module.termsuite.terminology.TerminologyStandOff;
+import org.atilf.module.enrichment.analyze.TerminologyParser;
+import org.atilf.module.enrichment.analyze.TerminologyStandOff;
+import org.atilf.module.enrichment.analyze.TermsuitePipelineBuilder;
+import org.atilf.module.enrichment.analyze.TreeTaggerWorker;
+import org.atilf.module.enrichment.initializer.TextExtractor;
 import org.atilf.module.tools.FilesUtils;
-import org.atilf.module.treetagger.TreeTaggerWorker;
 import org.atilf.thread.Thread;
 
 import java.io.IOException;

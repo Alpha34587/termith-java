@@ -2,6 +2,7 @@ package org.atilf.module.termsuite.terminology;
 
 import org.atilf.models.termsuite.MorphologyOffsetId;
 import org.atilf.models.termsuite.TermOffsetId;
+import org.atilf.module.enrichment.analyze.TerminologyStandOff;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -16,7 +17,7 @@ import java.util.List;
 public class TerminologyStandOffTest {
 
 
-    private static  TerminologyStandOff _observedSimpleStandOff;
+    private static TerminologyStandOff _observedSimpleStandOff;
     private static  TerminologyStandOff _observedMultiStandOff;
     private static  TerminologyStandOff _observedSymbolStandOff;
 

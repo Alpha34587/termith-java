@@ -2,6 +2,7 @@ package org.atilf.module.disambiguation;
 
 import org.atilf.models.disambiguation.ScoreTerm;
 import org.atilf.models.disambiguation.TotalTermScore;
+import org.atilf.module.disambiguation.evaluationScore.ComputeTotalTermsScore;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
