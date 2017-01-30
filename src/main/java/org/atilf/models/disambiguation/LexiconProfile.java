@@ -1,7 +1,7 @@
 package org.atilf.models.disambiguation;
 
 import com.google.common.collect.Multiset;
-import org.atilf.module.disambiguation.lexiconprofile.SpecCoefficientInjector;
+import org.atilf.module.disambiguation.lexiconProfile.SpecCoefficientInjector;
 
 import java.util.HashMap;
 import java.util.Map;

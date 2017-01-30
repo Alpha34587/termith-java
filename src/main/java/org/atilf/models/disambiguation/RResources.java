@@ -1,7 +1,7 @@
 package org.atilf.models.disambiguation;
 
 import org.apache.commons.io.IOUtils;
-import org.atilf.module.disambiguation.lexiconprofile.SpecCoefficientInjector;
+import org.atilf.module.disambiguation.lexiconProfile.SpecCoefficientInjector;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
