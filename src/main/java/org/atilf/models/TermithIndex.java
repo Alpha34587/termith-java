@@ -417,8 +417,8 @@ public class TermithIndex {
 
         /**
          * set annotation path
-         * @param disambiguationAnnotation disambiguation path
-         * @return return disambiguation path
+         * @param disambiguationAnnotation module.disambiguation path
+         * @return return module.disambiguation path
          */
         public Builder annotation(String disambiguationAnnotation) {
             _disambiguationAnnotation = FilesUtils.folderPathResolver(disambiguationAnnotation);

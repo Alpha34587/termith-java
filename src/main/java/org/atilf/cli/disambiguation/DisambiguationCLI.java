@@ -47,7 +47,7 @@ public class DisambiguationCLI {
         Option debug = new Option("d","debug",true,"show debug log");
         debug.setRequired(false);
         debug.setArgs(0);
-        Option score = new Option("s","score",true,"evaluation of disambiguation");
+        Option score = new Option("s","score",true,"evaluation of module.disambiguation");
         score.setRequired(false);
         score.setArgs(0);
 

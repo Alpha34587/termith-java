@@ -1,6 +1,5 @@
 package org.atilf.models.enrichment;
 
-import org.antlr.v4.runtime.misc.Pair;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -9,8 +8,6 @@ import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.util.EmptyStackException;
-import java.util.LinkedList;
-import java.util.Queue;
 
 /**
  * @author Simon Meoni
@@ -19,14 +16,13 @@ import java.util.Queue;
 public class MorphologyParserTest {
     private static MorphologyParser _morphologyParser;
     private static MorphologyParser _expectedJsonReader;
-    private Queue<Pair<Integer, Integer>> offsets = new LinkedList<>();
-
 
     private static final Logger LOGGER = LoggerFactory.getLogger(MorphologyParserTest.class);
 
     @BeforeClass
     public static void setUp(){
-        _morphologyParser = new MorphologyParser(new File("src/test/resources/file/reader/json/file1.json"));
+        _morphologyParser = new MorphologyParser(new File("src/test/resources/models/enrichment/" +
+                "morphologyParser/file1.json"));
         _expectedJsonReader = new MorphologyParser();
         _expectedJsonReader.createToken("NN", "hearing", 22, 29);
         _expectedJsonReader.createToken("N", "research", 30, 38);

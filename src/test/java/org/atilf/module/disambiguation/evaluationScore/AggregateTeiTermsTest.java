@@ -32,7 +32,7 @@ public class AggregateTeiTermsTest {
         terms.put("entry-450_DM1",term1);
         terms.put("entry-13471_DM1",term1);
 
-        String file = "src/test/resources/corpus/disambiguation/transform-tei/test3.xml";
+        String file = "src/test/resources/module/disambiguation/evaluationScore/aggregateTeiTerms/test1.xml";
         _aggregateTeiTerms = new AggregateTeiTerms(file,terms,_observedScoreTerms);
 
         //expected result

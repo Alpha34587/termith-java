@@ -19,7 +19,8 @@ import java.util.*;
  * @author Simon Meoni Created on 03/01/17.
  */
 public class ExportScoreToCsvTest {
-    private static File _expectedFile = new File("src/test/resources/corpus/disambiguation/score/test1.csv");
+    private static File _expectedFile = new File("src/test/resources/module/disambiguation/" +
+            "evaluationScore/exportToCsv/test1.csv");
     private static Map<String,ScoreTerm> _scoreTerm = new HashMap<>();
     private static TotalTermScore _totalScoreTerm = new TotalTermScore();
     private static ExportScoreToCsv _exportScoreToCsv = new ExportScoreToCsv(_scoreTerm);

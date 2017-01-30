@@ -19,7 +19,8 @@ import java.util.*;
  * @author Simon Meoni Created on 03/01/17.
  */
 public class ExportScoreToJsonTest {
-    private static File _expectedFile = new File("src/test/resources/corpus/disambiguation/score/test1.json");
+    private static File _expectedFile = new File("src/test/resources/module/disambiguation/" +
+            "evaluationScore/exportToJson/test1.json");
     private static Map<String,ScoreTerm> _scoreTerm = new HashMap<>();
     private static TotalTermScore _totalScoreTerm = new TotalTermScore();
     private static ExportScoreToJson _exportScoreToJson = new ExportScoreToJson(_scoreTerm,_totalScoreTerm);

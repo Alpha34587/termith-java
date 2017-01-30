@@ -27,7 +27,7 @@ import static org.atilf.models.disambiguation.ContextResources.NAMESPACE_CONTEXT
 import static org.atilf.models.disambiguation.ContextResources.TEI_SPAN;
 
 /**
- * Write the result of disambiguation in tei file format
+ * Write the result of module.disambiguation in tei file format
  * @author Simon Meoni
  *         Created on 25/10/16.
  */
@@ -42,7 +42,7 @@ public class DisambiguationTeiWriter extends Module {
     /**
      * constructor for DisambiguationTeiWriter
      * @param p the file name
-     * @param evaluationLexicon the evaluation lexicon that contains the result for disambiguation for one file
+     * @param evaluationLexicon the evaluation lexicon that contains the result for module.disambiguation for one file
      */
     public DisambiguationTeiWriter(String p, Map<String, EvaluationProfile> evaluationLexicon) {
         /*
@@ -90,7 +90,7 @@ public class DisambiguationTeiWriter extends Module {
     }
 
     public void execute() {
-        _logger.debug("write tei disambiguation for :" + _p);
+        _logger.debug("write tei module.disambiguation for :" + _p);
         XPathExpression span;
         try {
             /*
@@ -113,7 +113,7 @@ public class DisambiguationTeiWriter extends Module {
                 String anaVal = anaNode.getNodeValue();
 
                 /*
-                write result of disambiguation in ana attribute
+                write result of module.disambiguation in ana attribute
                  */
                 String termId = correspVal.substring(1) + "_" + anaVal.substring(1);
                 if (_evaluationLexicon.containsKey(termId)) {
@@ -150,7 +150,7 @@ public class DisambiguationTeiWriter extends Module {
             _logger.error("error during the execute of document",e);
         }
         finally {
-            _logger.debug("tei disambiguation is written for :" + _p);
+            _logger.debug("tei module.disambiguation is written for :" + _p);
         }
     }
 }

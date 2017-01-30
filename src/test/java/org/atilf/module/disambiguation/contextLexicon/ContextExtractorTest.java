@@ -154,7 +154,7 @@ public class ContextExtractorTest {
         _expectedCorpus.add("enfouissement NOM");
         _expectedCorpus.add(". SENT");
         _expectedCorpus.add("le DET:ART");
-        new ContextExtractor("src/test/resources/corpus/disambiguation/transform-tei/test2.xml",
+        new ContextExtractor("src/test/resources/module/disambiguation/contextLexicon/contextExtractor/test1.xml",
                 _observedLexicon,
                 _observedCorpus).execute();
     }

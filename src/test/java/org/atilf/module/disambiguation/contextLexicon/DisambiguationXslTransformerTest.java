@@ -21,7 +21,8 @@ public class DisambiguationXslTransformerTest {
     @BeforeClass
     public static void setUp(){
         _disambiguationXslTransformer = new DisambiguationXslTransformer(
-                new File("src/test/resources/corpus/disambiguation/tei/test1.xml"),
+                new File("src/test/resources/module/disambiguation/contextLexicon/" +
+                        "disambiguationXslTransformer/test1.xml"),
                 new DisambiguationXslResources()
         );
     }
@@ -32,7 +33,8 @@ public class DisambiguationXslTransformerTest {
         _disambiguationXslTransformer.execute();
         assertXMLEqual("this two xml must be equals :" +  _disambiguationXslTransformer.getTransformedContent(),
                 String.join("\n", Files.readAllLines(
-                        Paths.get("src/test/resources/corpus/disambiguation/transform-tei/test1.xml"))),
+                        Paths.get("src/test/resources/module/disambiguation/contextLexicon/" +
+                                "disambiguationXslTransformer/test2.xml"))),
                 _disambiguationXslTransformer.getTransformedContent().toString()
         );
     }

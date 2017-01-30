@@ -18,14 +18,16 @@ public class TextExtractorTest {
 
     @BeforeClass
     public static void setUp(){
-        _textExtractor = new TextExtractor(new File("src/test/resources/corpus/xml/file1.xml"), new XslResources());
+        _textExtractor = new TextExtractor(new File("src/test/resources/module/enrichment/" +
+                "initializer/textExtractor/file1.xml"), new XslResources());
     }
 
     @Test
     public void testXsltTransformation() throws Exception {
         _textExtractor.execute();
         Assert.assertEquals("the extracted text must be equal",
-                String.join("\n", Files.readAllLines(Paths.get("src/test/resources/corpus/txt/file1.txt"))),
+                String.join("\n", Files.readAllLines(Paths.get("src/test/resources/module/enrichment/" +
+                        "initializer/textExtractor/file1.txt"))),
                 _textExtractor.getExtractedText().toString()
         );
     }

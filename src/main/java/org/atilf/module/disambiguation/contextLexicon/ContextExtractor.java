@@ -24,7 +24,7 @@ import static org.atilf.models.disambiguation.AnnotationResources.*;
  *         - the context extractor moudule extract the context of a terminology entries of the learning corpus.
  *         - the extraction is performed on the working xml files format converted with the
  *         contextLexicon module
- *         (there are several examples in the folder : src/test/resources/corpus/disambiguation/transform-tei).
+ *         (there are several examples in the folder : src/test/resources/corpus/module.disambiguation/transform-tei).
  *         - the result of the process is retained on the _contextLexicon field. Each entry of this map is a pair
  *         of String/Multiset. The String corresponds to id of a term candidate suffixes with lexOn or lexOff :
  *         keys suffixes by lexOn is linked to the context (the lexicalProfile->multiset variable)

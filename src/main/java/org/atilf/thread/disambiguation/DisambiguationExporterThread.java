@@ -11,7 +11,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.TimeUnit;
 
 /**
- * export the result of the disambiguation to the tei/standoff xml file format
+ * export the result of the module.disambiguation to the tei/standoff xml file format
  * @author Simon Meoni
  *         Created on 25/10/16.
  */
@@ -41,7 +41,7 @@ public class DisambiguationExporterThread extends Thread{
     }
 
     /**
-     * this method add to the stack of executorService a work that consist to inject the result of terms disambiguation
+     * this method add to the stack of executorService a work that consist to inject the result of terms module.disambiguation
      * for each tei file in the corpus
      * @throws IOException thrown a IO exception if a file is not found or have a permission problem during the
      * xsl transformation phase

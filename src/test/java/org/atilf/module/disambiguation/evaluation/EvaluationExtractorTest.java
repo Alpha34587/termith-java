@@ -28,7 +28,7 @@ public class EvaluationExtractorTest {
         termithIndex.getContextLexicon().put("entry-13471_lexOff",new LexiconProfile());
 
         _evaluationExtractor = new EvaluationExtractor(
-                "src/test/resources/corpus/disambiguation/transform-tei/test1.xml",
+                "src/test/resources/module/disambiguation/evaluation/evaluationExtractor/test1.xml",
                 termithIndex);
 
         Multiset<String> entry1 = HashMultiset.create();

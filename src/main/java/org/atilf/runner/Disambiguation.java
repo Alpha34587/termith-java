@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
 /**
- * this is the disambiguation process of termITH
+ * this is the module.disambiguation process of termITH
  * @author Simon Meoni
  *         Created on 11/10/16.
  */

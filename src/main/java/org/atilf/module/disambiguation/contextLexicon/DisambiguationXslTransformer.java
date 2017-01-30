@@ -19,7 +19,7 @@ import java.util.concurrent.CountDownLatch;
 
 /**
  *         the contextLexicon convert tei file into xml working file format.
- *         There are some example on the folder : src/test/resources/corpus/disambiguation/transform-tei.
+ *         There are some example on the folder : src/test/resources/corpus/module.disambiguation/transform-tei.
  * @author Simon Meoni
  *         Created on 02/11/16.
  */

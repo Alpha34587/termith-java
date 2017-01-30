@@ -6,8 +6,8 @@ import com.google.common.collect.Multiset;
 import static org.atilf.models.disambiguation.AnnotationResources.NO_DA;
 
 /**
- * the evaluation contains the _context of a terms to evaluate and a the value of disambiguation.
- * the default value of the disambiguation is not noDa and can take three value : noDa, DaOn or DaOff
+ * the evaluation contains the _context of a terms to evaluate and a the value of module.disambiguation.
+ * the default value of the module.disambiguation is not noDa and can take three value : noDa, DaOn or DaOff
  * @author Simon Meoni
  *         Created on 24/10/16.
  */
@@ -30,8 +30,8 @@ public class EvaluationProfile extends Lexicon {
     }
 
     /**
-     * get the disambiguation id of this term
-     * @return the disambiguation of this term
+     * get the module.disambiguation id of this term
+     * @return the module.disambiguation of this term
      */
     public String getDisambiguationId() {
         return _disambiguationId.getValue();
