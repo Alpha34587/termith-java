@@ -15,7 +15,7 @@ import java.io.InputStream;
 public class StandOffResources {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(StandOffResources.class.getName());
-    private final static String PATH = "standoff/";
+    private final static String PATH = "models/enrichment/standoffResources/";
 
     public final StringBuilder LIST_ANNOTATION = indentation(readFile(PATH + "list-annotation.xml"), 2);
     public final StringBuilder MS_SPAN = indentation(readFile(PATH + "ms-span.xml"), 3);

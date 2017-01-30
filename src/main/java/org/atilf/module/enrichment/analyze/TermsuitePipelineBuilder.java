@@ -113,7 +113,7 @@ public class TermsuitePipelineBuilder extends Module {
      * @return the path of termsuite jar resource
      */
     private String exportResource(){
-        InputStream resourceAsStream = getClass().getClassLoader().getResourceAsStream("termsuite-lang/termsuite-resources.jar");
+        InputStream resourceAsStream = getClass().getClassLoader().getResourceAsStream("module/enrichment/analyze/termsuitePipelineBuilder/termsuite-resources.jar");
         try {
             Files.write(Paths.get(TermithIndex.getOutputPath() +"/termsuite-resources.jar"), ByteStreams.toByteArray(resourceAsStream));
         } catch (IOException e) {

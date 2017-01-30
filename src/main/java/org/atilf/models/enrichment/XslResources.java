@@ -23,7 +23,8 @@ public class XslResources {
     private static final Logger LOGGER = LoggerFactory.getLogger(XslResources.class.getName());
 
     public XslResources() {
-        _stylesheet = new StreamSource(getClass().getClassLoader().getResourceAsStream("xsl/ExtractText.xsl"));
+        _stylesheet = new StreamSource(getClass().getClassLoader()
+                .getResourceAsStream("models/enrichment/xslResource/extractText.xsl"));
         try {
             _factory = TransformerFactory.newInstance().newTemplates(_stylesheet);
         } catch (TransformerConfigurationException e) {

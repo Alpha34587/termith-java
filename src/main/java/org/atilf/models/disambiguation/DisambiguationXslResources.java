@@ -17,7 +17,8 @@ public class DisambiguationXslResources extends XslResources{
 
         private static final Logger LOGGER = LoggerFactory.getLogger(DisambiguationXslResources.class.getName());
         public DisambiguationXslResources() {
-            _stylesheet = new StreamSource(getClass().getClassLoader().getResourceAsStream("xsl/disambiguation.xsl"));
+            _stylesheet = new StreamSource(getClass().getClassLoader().getResourceAsStream("models/disambiguation/" +
+                    "disambiguationXslResources/disambiguation.xsl"));
             try {
                 _factory = TransformerFactory.newInstance().newTemplates(_stylesheet);
             } catch (TransformerConfigurationException e) {

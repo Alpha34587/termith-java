@@ -16,7 +16,8 @@ public class RResources {
     private static final Logger LOGGER = LoggerFactory.getLogger(RResources.class.getName());
     static {
         String script = null;
-        InputStream resourceAsStream = SpecCoefficientInjector.class.getResourceAsStream("/module/disambiguation/R/specificities.R");
+        InputStream resourceAsStream = SpecCoefficientInjector.class.getResourceAsStream("/models/disambiguation" +
+                "/rResources/specificities.R");
         try {
             script = IOUtils.toString(resourceAsStream, "UTF-8");
         } catch (IOException e) {
