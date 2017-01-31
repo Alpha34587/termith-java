@@ -3,7 +3,6 @@ package org.atilf.models;
 import org.apache.commons.io.FileUtils;
 import org.atilf.models.disambiguation.*;
 import org.atilf.models.enrichment.TermOffsetId;
-import org.atilf.monitor.observer.TermithObservable;
 import org.atilf.tools.FilesUtils;
 
 import java.io.File;
@@ -25,7 +24,6 @@ public class TermithIndex {
     /*
     Termith fields
      */
-    private TermithObservable _termithObservable = new TermithObservable();
     private Path _corpus = null;
     private List<Path> _terminologies = new CopyOnWriteArrayList<>();
     private Map<String, Path> _tokenizeTeiBody = new ConcurrentHashMap<>();
@@ -160,10 +158,6 @@ public class TermithIndex {
      * @return return a list of path
      */
     public Map<String, Path> getEvaluationTransformedFiles() {return _evaluationTransformedFiles;}
-
-    public TermithObservable getTermithObservable() {
-        return _termithObservable;
-    }
 
     /**
      * return the list of serialized json file

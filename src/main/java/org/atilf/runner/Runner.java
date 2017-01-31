@@ -1,7 +1,6 @@
 package org.atilf.runner;
 
 import org.atilf.models.TermithIndex;
-import org.atilf.monitor.observer.PerformanceObserver;
 import org.atilf.thread.Thread;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -64,9 +63,7 @@ public abstract class Runner {
         try {
             T thread = threadClass.getConstructor(TermithIndex.class, int.class)
                     .newInstance(termithIndex, poolSize);
-            _termithIndex.getTermithObservable().addObserver(new PerformanceObserver(threadClass.getName()));
-            thread.execute();
-            _termithIndex.getTermithObservable().notifyObservers();
+            thread.run();
         } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
             _logger.error("error during instantiation of object thread object : " + e);
         }

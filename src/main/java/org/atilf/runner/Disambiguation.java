@@ -54,7 +54,7 @@ public class Disambiguation extends Runner {
         Context extraction phase
          */
             executeThread(ContextLexiconThread.class,_termithIndex,_poolSize);
-                        /*
+        /*
         Lexicon profile processing
          */
             executeThread(LexiconProfileThread.class,_termithIndex, _poolSize);
@@ -69,9 +69,9 @@ public class Disambiguation extends Runner {
         /*
         Score phase
          */
-        if (TermithIndex.isScore()){
-            executeThread(EvaluationScoreThread.class,_termithIndex,_poolSize);
-        }
+            if (TermithIndex.isScore()){
+                executeThread(EvaluationScoreThread.class,_termithIndex,_poolSize);
+            }
 
         } catch (InterruptedException | ExecutionException | IOException e) {
             _logger.error("error during execution of thread : ", e);

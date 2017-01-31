@@ -1,7 +1,6 @@
 package org.atilf.monitor.timer;
 
 import org.atilf.models.TermithIndex;
-import org.atilf.monitor.observer.TermithObservable;
 import org.slf4j.Logger;
 
 import java.util.Timer;
@@ -11,14 +10,13 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 /**
- * abstract class for notify TermithObservable and add observer
+ * abstract class for notify TermithEventBus and add observer
  * @author Simon Meoni
  *         Created on 19/09/16.
  */
 public abstract class ProgressBarTimer extends TimerTask {
 
     private Timer _timer = new Timer();
-    private TermithObservable _termithObservable = new TermithObservable();
     protected TermithIndex _termithIndex;
     protected Logger _logger;
     private long _delay;
@@ -47,7 +45,7 @@ public abstract class ProgressBarTimer extends TimerTask {
         _logger = logger;
         _delay = 0;
         _interval = interval;
-//        _termithObservable.addObserver(new ProgressBarObserver(message),logger);
+//        _termithEventBus.addObserver(new ProgressBarObserver(message),logger);
     }
 
     /*
@@ -63,7 +61,7 @@ public abstract class ProgressBarTimer extends TimerTask {
      * @param done the number of task are done during process
      */
     protected void update(int done) {
-//        _termithObservable.changeValue(done,
+//        _termithEventBus.changeValue(done,
 //                _termithIndex.getCorpusSize(), _logger);
 //        if (_termithIndex.getCorpusSize() == done){
 //            _timer.cancel();
