@@ -2,6 +2,7 @@ package org.atilf.runner;
 
 import org.atilf.models.TermithIndex;
 import org.atilf.thread.disambiguation.*;
+import org.atilf.tools.BenchmarkFactory;
 
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
@@ -72,6 +73,8 @@ public class Disambiguation extends Runner {
             if (TermithIndex.isScore()){
                 executeThread(EvaluationScoreThread.class,_termithIndex,_poolSize);
             }
+            BenchmarkFactory.export(_termithIndex.getMemoryPerformanceEvents());
+            BenchmarkFactory.export(_termithIndex.getTimePerformanceEvents());
 
         } catch (InterruptedException | ExecutionException | IOException e) {
             _logger.error("error during execution of thread : ", e);
