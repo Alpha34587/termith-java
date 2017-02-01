@@ -4,6 +4,7 @@ import com.google.common.collect.HashMultiset;
 import com.google.common.collect.Multiset;
 import org.atilf.models.disambiguation.CorpusLexicon;
 import org.atilf.models.disambiguation.LexiconProfile;
+import org.atilf.models.disambiguation.RConnectionPool;
 import org.atilf.models.disambiguation.RLexicon;
 import org.atilf.models.termith.TermithIndex;
 import org.junit.Assert;
@@ -11,6 +12,7 @@ import org.junit.BeforeClass;
 import org.junit.ClassRule;
 import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
+import org.rosuda.REngine.Rserve.RConnection;
 
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -99,10 +101,12 @@ public class SpecCoefficientInjectorTest {
 
     @Test
     public void computeSpecCoeff() throws Exception {
+        RConnectionPool rConnectionPool = new RConnectionPool(1,_rLexicon);
+        RConnection rConnection = rConnectionPool.getRConnection(Thread.currentThread());
         List<Float> observedResult = new SpecCoefficientInjector(
                 new LexiconProfile(_lexiconMultiset),
                 _rLexicon,
-                _corpusLexicon)
+                _corpusLexicon,rConnection)
                 .computeSpecCoefficient();
         List<Float> expectedResult = new LinkedList<>();
         expectedResult.add(0.1383f);

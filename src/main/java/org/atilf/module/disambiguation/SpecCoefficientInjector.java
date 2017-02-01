@@ -49,16 +49,13 @@ public class SpecCoefficientInjector implements Runnable{
      * @see RLexicon
      * @see CorpusLexicon
      */
-    public SpecCoefficientInjector(LexiconProfile lexiconProfile, RLexicon rLexicon, CorpusLexicon corpusLexicon) {
+    protected SpecCoefficientInjector(LexiconProfile lexiconProfile, RLexicon rLexicon, CorpusLexicon corpusLexicon,
+                                      RConnection rConnection) {
 
         _corpusLexicon = corpusLexicon;
         _lexiconProfile = lexiconProfile;
         _rLexicon = rLexicon;
-        try {
-            _rConnection = new RConnection();
-        } catch (RserveException e) {
-            LOGGER.error("cannot established connection with the R server");
-        }
+        _rConnection = rConnection;
         /*
         instantiate _rContextLexicon
          */
