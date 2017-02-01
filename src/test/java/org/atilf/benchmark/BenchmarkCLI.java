@@ -1,11 +1,9 @@
 package org.atilf.benchmark;
 
 import org.apache.commons.cli.*;
-import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.File;
 import java.io.IOException;
 
 /**
@@ -36,7 +34,7 @@ public class BenchmarkCLI {
                     line.getOptionValue("e"),
                     line.getOptionValue("o"));
             benchmark.execute();
-            FileUtils.deleteDirectory(new File(line.getOptionValue("o")));
+//            FileUtils.deleteDirectory(new File(line.getOptionValue("o")));
         } catch (ParseException e) {
             LOGGER.error("There are some problems during execute arguments : ",e);
         }
