@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit;
 public class TimePerformanceEvent extends TermithEvent {
     private final long _startTime;
     private final List<TimePerformanceEvent> _timePerformanceEvents;
-
+    private long _elapsedTime;
     public TimePerformanceEvent(String name, List<TimePerformanceEvent> timePerformanceEvents) {
         super(name);
         _timePerformanceEvents = timePerformanceEvents;
@@ -20,10 +20,16 @@ public class TimePerformanceEvent extends TermithEvent {
     }
 
     public void countElapsedTime(){
-        long elapsedTime = System.nanoTime() - _startTime;
-        _logger.info(_name + " used  : " + TimeUnit.NANOSECONDS.toSeconds(elapsedTime) + "s");
+        _elapsedTime = TimeUnit.NANOSECONDS.toSeconds(System.nanoTime() - _startTime);
+
+        _logger.info(_name + " used  : " + _elapsedTime + "s");
         _timePerformanceEvents.add(this);
     }
+
+    public long getElapsedTime() {
+        return _elapsedTime;
+    }
+
     @AllowConcurrentEvents
     @Subscribe
     public void recordTermithTimeEvent(TimePerformanceEvent e) {

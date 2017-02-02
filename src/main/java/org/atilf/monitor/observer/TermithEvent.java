@@ -8,12 +8,14 @@ import org.slf4j.LoggerFactory;
  */
 public abstract class TermithEvent {
 
-    protected String _name;
-    protected final Logger _logger = LoggerFactory.getLogger(this.getClass().getName());
+    String _name;
+    protected final Logger _logger = LoggerFactory.getLogger(this.getClass());
 
-    public TermithEvent(String name) {
+    TermithEvent(String name) {
         _name = name;
     }
 
-
+    public String getName() {
+        return _name;
+    }
 }
