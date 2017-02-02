@@ -1,6 +1,4 @@
-package org.atilf.monitor.observer;
-
-import org.atilf.monitor.timer.ProgressBarTimer;
+package org.atilf.monitor.timer;
 
 import java.util.List;
 import java.util.Observable;

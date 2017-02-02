@@ -13,8 +13,8 @@ public class TimePerformanceEvent extends TermithEvent {
     private final long _startTime;
     private final List<TimePerformanceEvent> _timePerformanceEvents;
     private long _elapsedTime;
-    public TimePerformanceEvent(String name, List<TimePerformanceEvent> timePerformanceEvents) {
-        super(name);
+    public TimePerformanceEvent(String name, int corpusSize ,List<TimePerformanceEvent> timePerformanceEvents) {
+        super(name,corpusSize);
         _timePerformanceEvents = timePerformanceEvents;
         _startTime = System.nanoTime();
     }

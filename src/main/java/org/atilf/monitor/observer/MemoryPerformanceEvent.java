@@ -15,8 +15,8 @@ public class MemoryPerformanceEvent extends TermithEvent {
     private long _usedMemory;
     private final Runtime _rt = Runtime.getRuntime();
 
-    public MemoryPerformanceEvent(String name, List<MemoryPerformanceEvent> memoryPerformanceEvents) {
-        super(name);
+    public MemoryPerformanceEvent(String name, int corpusSize, List<MemoryPerformanceEvent> memoryPerformanceEvents) {
+        super(name,corpusSize);
         _memoryPerformanceEvents = memoryPerformanceEvents;
         _usedMemoryBefore = _rt.totalMemory() - _rt.freeMemory();
 

@@ -9,13 +9,19 @@ import org.slf4j.LoggerFactory;
 public abstract class TermithEvent {
 
     String _name;
+    int _corpusSize;
     protected final Logger _logger = LoggerFactory.getLogger(this.getClass());
 
-    TermithEvent(String name) {
+    TermithEvent(String name, int corpusSize) {
         _name = name;
+        _corpusSize = corpusSize;
     }
 
     public String getName() {
         return _name;
+    }
+
+    public int getCorpusSize() {
+        return _corpusSize;
     }
 }

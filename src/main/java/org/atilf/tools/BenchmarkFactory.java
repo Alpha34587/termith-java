@@ -152,6 +152,7 @@ public class BenchmarkFactory {
         private void modifyExistingJson(List<? extends TermithEvent> termithEvents,
                                         Class<? extends TermithEvent> termithClass, ObjectMapper mapper, ArrayNode node) {
             ObjectNode objectNode = mapper.createObjectNode();
+            objectNode.put("corpus_size",termithEvents.get(0).getCorpusSize());
             termithEvents.forEach(
                     el -> {
                         if (termithClass == TimePerformanceEvent.class) {
@@ -196,7 +197,7 @@ public class BenchmarkFactory {
             jg.writeStartObject();
             jg.writeArrayFieldStart("run");
             jg.writeStartObject();
-
+            jg.writeNumberField("corpus_size",termithEvents.get(0).getCorpusSize());
             if (termithClass == TimePerformanceEvent.class) {
                 termithEvents.forEach(el -> {
                     TimePerformanceEvent timePerformanceEvent = (TimePerformanceEvent) el;

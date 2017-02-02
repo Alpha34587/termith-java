@@ -49,10 +49,16 @@ public abstract class Thread implements Runnable{
     public Thread(TermithIndex termithIndex, int poolSize) {
         _termithIndex = termithIndex;
         _executorService = Executors.newFixedThreadPool(poolSize);
-        _timePerformanceEvent = new TimePerformanceEvent(this.getClass().getSimpleName(),
-                _termithIndex.getTimePerformanceEvents());
-        _memoryPerformanceEvent = new MemoryPerformanceEvent(this.getClass().getSimpleName(),
-                _termithIndex.getMemoryPerformanceEvents());
+        _timePerformanceEvent = new TimePerformanceEvent(
+                this.getClass().getSimpleName(),
+                _termithIndex.getCorpusSize(),
+                _termithIndex.getTimePerformanceEvents()
+        );
+        _memoryPerformanceEvent = new MemoryPerformanceEvent(
+                this.getClass().getSimpleName(),
+                _termithIndex.getCorpusSize(),
+                _termithIndex.getMemoryPerformanceEvents()
+        );
         _eventBus.register(_timePerformanceEvent);
         _eventBus.register(_memoryPerformanceEvent);
     }
