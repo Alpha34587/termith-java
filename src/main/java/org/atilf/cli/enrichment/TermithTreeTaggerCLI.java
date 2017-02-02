@@ -4,12 +4,14 @@ import ch.qos.logback.classic.Level;
 import org.apache.commons.cli.*;
 import org.atilf.models.TermithIndex;
 import org.atilf.runner.TermithTreeTagger;
+import org.atilf.tools.BenchmarkFactory;
 import org.atilf.tools.CLIUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.xml.transform.TransformerException;
 import java.io.IOException;
+import java.nio.file.Paths;
 
 /**
  * @author Simon Meoni
@@ -46,6 +48,8 @@ public class TermithTreeTaggerCLI {
         keep.setArgs(0);
         Option treetagger = new Option("tt","treetagger",true,"set TreeTagger path");
         treetagger.setRequired(true);
+        Option benchmark = new Option("b","benchmark",true,"export benchmark");
+        benchmark.setRequired(false);
 
         options.addOption(in);
         options.addOption(out);
@@ -53,6 +57,7 @@ public class TermithTreeTaggerCLI {
         options.addOption(treetagger);
         options.addOption(lang);
         options.addOption(keep);
+        options.addOption(benchmark);
 
         try {
             CommandLine line = parser.parse( options, args );
@@ -67,8 +72,13 @@ public class TermithTreeTaggerCLI {
                     .build();
             CLIUtils.setGlobalLogLevel(Level.INFO);
 
+
             if (line.hasOption("debug")){
                 CLIUtils.setGlobalLogLevel(Level.DEBUG);
+            }
+            if (line.hasOption("benchmark")) {
+                BenchmarkFactory._exportBenchmark = true;
+                BenchmarkFactory._performancePath = Paths.get(line.getOptionValue("benchmark"));
             }
             new TermithTreeTagger(termithIndex).execute();
         } catch (ParseException e) {

@@ -73,9 +73,11 @@ public class Disambiguation extends Runner {
             if (TermithIndex.isScore()){
                 executeThread(EvaluationScoreThread.class,_termithIndex,_poolSize);
             }
-            BenchmarkFactory.export(_termithIndex.getMemoryPerformanceEvents());
-            BenchmarkFactory.export(_termithIndex.getTimePerformanceEvents());
 
+            if (BenchmarkFactory._exportBenchmark) {
+                BenchmarkFactory.export(_termithIndex.getMemoryPerformanceEvents());
+                BenchmarkFactory.export(_termithIndex.getTimePerformanceEvents());
+            }
         } catch (InterruptedException | ExecutionException | IOException e) {
             _logger.error("error during execution of thread : ", e);
         }

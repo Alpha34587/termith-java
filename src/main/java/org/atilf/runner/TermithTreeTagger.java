@@ -64,10 +64,12 @@ public class TermithTreeTagger extends Runner {
          */
             executeThread(CleanerThread.class,_termithIndex,_poolSize);
 
-            BenchmarkFactory.export(_termithIndex.getMemoryPerformanceEvents());
-            BenchmarkFactory.export(_termithIndex.getTimePerformanceEvents());
+            if (BenchmarkFactory._exportBenchmark) {
+                BenchmarkFactory.export(_termithIndex.getMemoryPerformanceEvents());
+                BenchmarkFactory.export(_termithIndex.getTimePerformanceEvents());
+            }
         } catch (ExecutionException e) {
-            e.printStackTrace();
+            _logger.error("there are some errors during execution",e);
         }
 
     }

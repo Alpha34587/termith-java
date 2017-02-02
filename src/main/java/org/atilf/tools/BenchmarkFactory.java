@@ -6,7 +6,6 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import org.atilf.models.TermithIndex;
 import org.atilf.monitor.observer.MemoryPerformanceEvent;
 import org.atilf.monitor.observer.TermithEvent;
 import org.atilf.monitor.observer.TimePerformanceEvent;
@@ -19,16 +18,51 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
+import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
+
 /**
  * @author Simon Meoni Created on 31/01/17.
  */
 public class BenchmarkFactory {
-    public static Path _performancePath = TermithIndex.getOutputPath();
+    public static Path _performancePath;
+    public static boolean _exportBenchmark = false;
+    private static String _timeHistoryJson;
+    private static String _memoryHistoryJson;
+    private static final String GRAPH_RESOURCE = "src/main/resources/tools/benchmarkFactory";
     static final Logger LOGGER = LoggerFactory.getLogger(BenchmarkFactory.class.getName());
-    static final String TIME_HISTORY_JSON =  _performancePath + "/time_history.json";
-    static final String MEMORY_HISTORY_JSON = _performancePath + "/memory_history.json";
 
     public static void export(List<? extends TermithEvent> termithEvents){
+        if (!Files.exists(_performancePath)) {
+            try {
+                Files.createDirectory(_performancePath);
+            } catch (IOException e) {
+                LOGGER.error("cannot create directory");
+            }
+        }
+        try {
+            Files.copy(
+                    Paths.get(GRAPH_RESOURCE + "/Chart.js"),
+                    Paths.get(_performancePath + "/Chart.js"),REPLACE_EXISTING
+            );
+
+            Files.copy(
+                    Paths.get(GRAPH_RESOURCE + "/graph.html"),
+                    Paths.get(_performancePath + "/graph.html"),REPLACE_EXISTING
+            );
+
+            Files.copy(
+                    Paths.get(GRAPH_RESOURCE + "/graph.js"),
+                    Paths.get(_performancePath + "/graph.js"),REPLACE_EXISTING
+            );
+
+        } catch (IOException e) {
+            LOGGER.error("cannot copy resource graph file",e);
+        }
+
+
+        setTimeHistoryJson(_performancePath + "/time_history.json");
+        setMemoryHistoryJson(_performancePath + "/memory_history.json");
+
         Class<? extends TermithEvent> termithEventClass = termithEvents.get(0).getClass();
         if (termithEventClass == TimePerformanceEvent.class) {
             new TimeBenchmark(termithEvents).writeJson();
@@ -37,6 +71,22 @@ public class BenchmarkFactory {
             new MemoryBenchmark(termithEvents).writeJson();
 
         }
+    }
+
+    public static String getTimeHistoryJson() {
+        return _timeHistoryJson;
+    }
+
+    public static void setTimeHistoryJson(String _timeHistoryJson) {
+        BenchmarkFactory._timeHistoryJson = _timeHistoryJson;
+    }
+
+    public static String getMemoryHistoryJson() {
+        return _memoryHistoryJson;
+    }
+
+    public static void setMemoryHistoryJson(String _memoryHistoryJson) {
+        BenchmarkFactory._memoryHistoryJson = _memoryHistoryJson;
     }
 
     static class TimeBenchmark extends Benchmark{
@@ -49,7 +99,7 @@ public class BenchmarkFactory {
 
         void writeJson() {
 
-            if (!Files.exists(Paths.get(TIME_HISTORY_JSON))) {
+            if (!Files.exists(Paths.get(getTimeHistoryJson()))) {
                 initializeJson(_termithEvents,TimePerformanceEvent.class);
             }
             else {
@@ -67,7 +117,7 @@ public class BenchmarkFactory {
         }
 
         void writeJson() {
-            if (!Files.exists(Paths.get(MEMORY_HISTORY_JSON))) {
+            if (!Files.exists(Paths.get(getMemoryHistoryJson()))) {
                 initializeJson(_termithEvents,MemoryPerformanceEvent.class);
             }
             else {
@@ -84,10 +134,10 @@ public class BenchmarkFactory {
                 ObjectMapper mapper = new ObjectMapper();
                 try {
                     if (termithClass == TimePerformanceEvent.class) {
-                        file = new File(TIME_HISTORY_JSON);
+                        file = new File(getTimeHistoryJson());
                     }
                     else if (termithClass == MemoryPerformanceEvent.class) {
-                        file = new File(MEMORY_HISTORY_JSON);
+                        file = new File(getMemoryHistoryJson());
                     }
 
                     final JsonNode tree = mapper.readTree(file);
@@ -122,10 +172,10 @@ public class BenchmarkFactory {
             try {
                 FileOutputStream fos = null;
                 if (TimePerformanceEvent.class == termithClass) {
-                    fos = new FileOutputStream(TIME_HISTORY_JSON);
+                    fos = new FileOutputStream(getTimeHistoryJson());
                 }
                 else if (MemoryPerformanceEvent.class == termithClass) {
-                    fos = new FileOutputStream(MEMORY_HISTORY_JSON);
+                    fos = new FileOutputStream(getMemoryHistoryJson());
                 }
 
                 writeTermithEvents(termithEvents, fos ,termithClass);
