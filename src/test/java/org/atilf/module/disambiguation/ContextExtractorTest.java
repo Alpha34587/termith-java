@@ -80,6 +80,8 @@ public class ContextExtractorTest {
         thresholdEntry3.add("étude NOM");
         thresholdEntry3.add("comparer VER:pper");
         thresholdEntry3.add("archéo-ichtyofauniques ADJ");
+        thresholdEntry3.add("livrer VER:pper");
+        thresholdEntry3.add("par PRP");
       
         _thresholdExpectedLexicon.put("entry-575_lexOff",new LexiconProfile(thresholdEntry3));
 
@@ -214,8 +216,8 @@ public class ContextExtractorTest {
                 }
         );
 
-        Assert.assertEquals("the entry must be empty",
-                0,_thresholdObservedLexicon2.size());
+        Assert.assertEquals("this two lexicon must have the same size",
+                _expectedLexicon.size(),_thresholdObservedLexicon2.size());
     }
 
     @Test

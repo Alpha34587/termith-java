@@ -358,11 +358,17 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
         }
         else {
             if (term.getBeginTag() > _threshold) {
-                leftContextTarget = context.subMap(_threshold, true, term.getBeginTag(), true);
+                leftContextTarget = context.subMap(term.getBeginTag() - _threshold, true, term.getBeginTag(), true);
             }
-            if (term.getEndTag() < context.lastKey() - _threshold  ) {
+            else {
+                leftContextTarget = context.subMap(0, true, term.getBeginTag(),true);
+            }
+            if (context.lastKey() > term.getEndTag() + _threshold  ) {
                 rightContextTarget = new TreeMap<>(context.subMap(term.getEndTag(), true,
-                        context.lastKey() - _threshold, true));
+                        term.getEndTag() + _threshold, true));
+            }
+            else {
+                rightContextTarget = new TreeMap<>(context.subMap(term.getEndTag(), true, context.lastKey(),true));
             }
         }
         rightContextTarget.putAll(leftContextTarget);
