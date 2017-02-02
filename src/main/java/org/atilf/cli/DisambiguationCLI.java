@@ -50,7 +50,8 @@ public class DisambiguationCLI {
         Option score = new Option("s","score",true,"evaluation of disambiguation");
         score.setRequired(false);
         score.setArgs(0);
-
+        Option threshold = new Option("t","threshold",true,"context threshold");
+        threshold.setRequired(false);
 
         options.addOption(learning);
         options.addOption(evaluation);
@@ -60,6 +61,7 @@ public class DisambiguationCLI {
         options.addOption(debug);
         options.addOption(annotation);
         options.addOption(score);
+        options.addOption(threshold);
 
         try {
             CommandLine line = parser.parse( options, args );
@@ -77,6 +79,9 @@ public class DisambiguationCLI {
             }
             if (line.hasOption("score")){
                 termithBuilder.score(true);
+            }
+            if (line.hasOption("threshold")){
+                termithBuilder.threshold(Integer.parseInt(line.getOptionValue("t")));
             }
 
             new Disambiguation(termithBuilder.build()).execute();

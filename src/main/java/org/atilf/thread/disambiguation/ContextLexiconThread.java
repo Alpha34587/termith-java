@@ -19,7 +19,6 @@ import java.util.concurrent.TimeUnit;
 public class ContextLexiconThread extends Thread {
 
     private CountDownLatch _transformCounter;
-
     /**
      * this constructor initialize all the needed fields. The _transformCounter is a CountDownLatch object of
      * the java concurrent library. The _transformCounter is set to the number of the file of the corpus. At each
@@ -85,7 +84,8 @@ public class ContextLexiconThread extends Thread {
                     _executorService.submit(
                             new ContextExtractor(file.toString(),
                                     _termithIndex.getContextLexicon(),
-                                    _termithIndex.getCorpusLexicon()
+                                    _termithIndex.getCorpusLexicon(),
+                                    _termithIndex.getThresholdContext()
                             )
                     );
                 }
