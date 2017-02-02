@@ -15,6 +15,8 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.TimeUnit;
 
+import static org.atilf.runner.Runner.DEFAULT_POOL_SIZE;
+
 /**
  * Evaluate the corpus with the lexicalProfile creates with the LexiconProfileThread
  * @author Simon Meoni
@@ -35,7 +37,7 @@ public class EvaluationThread extends Thread{
      *         the termithIndex is an object that contains the results of the process*
      */
     public EvaluationThread(TermithIndex termithIndex) {
-        this(termithIndex,Thread.DEFAULT_POOL_SIZE);
+        this(termithIndex,DEFAULT_POOL_SIZE);
     }
 
     /**

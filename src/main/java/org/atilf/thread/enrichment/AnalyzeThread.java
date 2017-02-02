@@ -1,6 +1,7 @@
 package org.atilf.thread.enrichment;
 
 import org.atilf.models.termith.TermithIndex;
+import org.atilf.models.termsuite.CorpusAnalyzer;
 import org.atilf.models.termsuite.MorphologyOffsetId;
 import org.atilf.module.extractor.TextExtractor;
 import org.atilf.module.termsuite.pipeline.TermsuitePipelineBuilder;
@@ -9,7 +10,6 @@ import org.atilf.module.termsuite.terminology.TerminologyStandOff;
 import org.atilf.module.timer.JsonTimer;
 import org.atilf.module.timer.TokenizeTimer;
 import org.atilf.module.tools.FilesUtils;
-import org.atilf.models.termsuite.CorpusAnalyzer;
 import org.atilf.module.treetagger.TreeTaggerWorker;
 import org.atilf.thread.Thread;
 
@@ -20,6 +20,8 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.TimeUnit;
+
+import static org.atilf.runner.Runner.DEFAULT_POOL_SIZE;
 
 /**
  * The AnalyzeThread calls several modules classes which analyze the morphology of each file in the corpus and the
@@ -42,7 +44,7 @@ public class AnalyzeThread extends Thread{
      *         the termithIndex is an object that contains the results of the process
      */
     public AnalyzeThread(TermithIndex termithIndex) {
-        this(termithIndex,Thread.DEFAULT_POOL_SIZE);
+        this(termithIndex,DEFAULT_POOL_SIZE);
     }
 
     /**

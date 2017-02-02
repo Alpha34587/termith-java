@@ -4,6 +4,7 @@ import org.atilf.models.disambiguation.DisambiguationXslResources;
 import org.atilf.models.termith.TermithIndex;
 import org.atilf.module.disambiguation.ContextExtractor;
 import org.atilf.module.disambiguation.DisambiguationXslTransformer;
+import org.atilf.runner.Runner;
 import org.atilf.thread.Thread;
 
 import java.io.IOException;
@@ -42,7 +43,7 @@ public class ContextLexiconThread extends Thread {
     }
 
     public ContextLexiconThread(TermithIndex termithIndex) {
-            this(termithIndex,Thread.DEFAULT_POOL_SIZE);
+            this(termithIndex, Runner.DEFAULT_POOL_SIZE);
     }
 
     /**

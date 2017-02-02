@@ -9,6 +9,8 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import static org.atilf.runner.Runner.DEFAULT_POOL_SIZE;
+
 /**
  * the abstract class Thread is a main part of the workflow of the termith process. The runner classes call the
  * inherit Thread classes linearly.
@@ -17,7 +19,6 @@ import java.util.concurrent.Executors;
  * @author Simon Meoni Created on 10/11/16.
  */
 public abstract class Thread {
-    protected static final int DEFAULT_POOL_SIZE = Runtime.getRuntime().availableProcessors();
     protected final ExecutorService _executorService;
     protected final Logger _logger = LoggerFactory.getLogger(this.getClass().getName());
     protected TermithIndex _termithIndex;
