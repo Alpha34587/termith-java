@@ -2,11 +2,11 @@ package org.atilf.module.disambiguation.lexiconProfile;
 
 import com.google.common.collect.HashMultiset;
 import com.google.common.collect.Multiset;
+import org.atilf.models.TermithIndex;
 import org.atilf.models.disambiguation.CorpusLexicon;
 import org.atilf.models.disambiguation.LexiconProfile;
 import org.atilf.models.disambiguation.RConnectionPool;
 import org.atilf.models.disambiguation.RLexicon;
-import org.atilf.models.termith.TermithIndex;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.ClassRule;

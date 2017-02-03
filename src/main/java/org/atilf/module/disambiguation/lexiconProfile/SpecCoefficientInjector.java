@@ -1,10 +1,10 @@
 package org.atilf.module.disambiguation.lexiconProfile;
 
+import org.atilf.models.TermithIndex;
 import org.atilf.models.disambiguation.CorpusLexicon;
 import org.atilf.models.disambiguation.LexiconProfile;
 import org.atilf.models.disambiguation.RConnectionPool;
 import org.atilf.models.disambiguation.RLexicon;
-import org.atilf.models.termith.TermithIndex;
 import org.atilf.module.Module;
 import org.rosuda.REngine.Rserve.RConnection;
 import org.rosuda.REngine.Rserve.RserveException;
@@ -73,7 +73,7 @@ public class SpecCoefficientInjector extends Module {
             try {
                 _rConnection = new RConnection();
             } catch (RserveException e) {
-                LOGGER.error("cannot established connection with the R server");
+                _logger.error("cannot established connection with the R server");
             }
             _id = id;
             _corpusLexicon = termithIndex.getCorpusLexicon();
@@ -150,7 +150,7 @@ public class SpecCoefficientInjector extends Module {
             _rConnection.eval("names(res) <- NULL");
             _rConnection.eval("export_csv(list(res),\"" + _rResultPath + "\")");
         } catch (RserveException e) {
-            LOGGER.error("cannot execute R command",e);
+            _logger.error("cannot execute R command",e);
         }
         return resToFloat();
     }
@@ -164,11 +164,11 @@ public class SpecCoefficientInjector extends Module {
             while ((sCurrentLine = br.readLine()) != null) {
                     if (Objects.equals(sCurrentLine, "Inf")){
                         floatArray.add(Float.POSITIVE_INFINITY);
-                        LOGGER.error("positive infinity was return by R");
+                        _logger.error("positive infinity was return by R");
                     }
                     else if (Objects.equals(sCurrentLine, "-Inf")){
                         floatArray.add(Float.NEGATIVE_INFINITY);
-                        LOGGER.error("negative infinity was return by R");
+                        _logger.error("negative infinity was return by R");
                     }
                     else {
                         floatArray.add(Float.parseFloat(sCurrentLine));
@@ -177,7 +177,7 @@ public class SpecCoefficientInjector extends Module {
             br.close();
         }
         catch (IOException e) {
-            LOGGER.error("cannot read result of R",e);
+            _logger.error("cannot read result of R",e);
         }
         return floatArray;
     }
@@ -187,10 +187,10 @@ public class SpecCoefficientInjector extends Module {
      */
     @Override
     public void run() {
-        LOGGER.info("compute specificities coefficient for : " + _id);
+        _logger.info("compute specificities coefficient for : " + _id);
         _rConnection = _rConnectionPool.getRConnection(Thread.currentThread());
         execute();
         _rConnectionPool.releaseThread(Thread.currentThread());
-        LOGGER.info("specificities coefficient is computed for : " + _id);
+        _logger.info("specificities coefficient is computed for : " + _id);
     }
 }

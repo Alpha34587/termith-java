@@ -1,7 +1,7 @@
 package org.atilf.models.disambiguation;
 
 import org.apache.commons.io.FileUtils;
-import org.atilf.models.termith.TermithIndex;
+import org.atilf.models.TermithIndex;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.ClassRule;

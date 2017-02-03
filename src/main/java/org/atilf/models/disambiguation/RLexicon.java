@@ -1,6 +1,6 @@
 package org.atilf.models.disambiguation;
 
-import org.atilf.models.termith.TermithIndex;
+import org.atilf.models.TermithIndex;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
