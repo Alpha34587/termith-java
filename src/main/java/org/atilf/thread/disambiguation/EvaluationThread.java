@@ -1,12 +1,12 @@
 package org.atilf.thread.disambiguation;
 
-import org.atilf.models.disambiguation.CommonWordsPosLemmaCleaner;
+import org.atilf.models.TermithIndex;
 import org.atilf.models.disambiguation.DisambiguationXslResources;
-import org.atilf.models.termith.TermithIndex;
-import org.atilf.module.disambiguation.DisambiguationXslTransformer;
-import org.atilf.module.disambiguation.Evaluation;
-import org.atilf.module.disambiguation.EvaluationExtractor;
-import org.atilf.module.disambiguation.ThresholdLexiconCleaner;
+import org.atilf.module.disambiguation.contextLexicon.DisambiguationXslTransformer;
+import org.atilf.module.disambiguation.evaluation.CommonWordsPosLemmaCleaner;
+import org.atilf.module.disambiguation.evaluation.Evaluation;
+import org.atilf.module.disambiguation.evaluation.EvaluationExtractor;
+import org.atilf.module.disambiguation.evaluation.ThresholdLexiconCleaner;
 import org.atilf.thread.Thread;
 
 import java.io.IOException;
@@ -85,10 +85,10 @@ public class EvaluationThread extends Thread{
         /*
         Threshold cleaner
          */
-        _termithIndex.getContextLexicon().forEach(
-                (key,value) -> _executorService.submit(new ThresholdLexiconCleaner(
+        _termithIndex.getContextLexicon().keySet().forEach(
+                key -> _executorService.submit(new ThresholdLexiconCleaner(
                         key,
-                        value,
+                        _termithIndex,
                         3,
                         15,
                         _cleanerCounter
@@ -126,6 +126,7 @@ public class EvaluationThread extends Thread{
                 p -> _executorService.submit(
                         new DisambiguationXslTransformer(
                                 p.toFile(),
+                                _termithIndex,
                                 _transformCounter,
                                 _termithIndex.getEvaluationTransformedFiles(),
                                 xslResources)
@@ -137,15 +138,16 @@ public class EvaluationThread extends Thread{
         Extraction phase
          */
         _termithIndex.getEvaluationTransformedFiles().values().forEach(
-                p -> _executorService.submit(new EvaluationExtractor(p.toString(), _termithIndex, _extractorCounter))
-        );
+                p -> _executorService.submit(
+                        new EvaluationExtractor(p.toString(), _termithIndex, _extractorCounter)
+        ));
 
         _extractorCounter.await();
         /*
         Evaluation phase
          */
         _termithIndex.getEvaluationLexicon().forEach(
-                (p,value) -> _executorService.submit(new Evaluation(p, value, _termithIndex.getContextLexicon()))
+                (p,value) -> _executorService.submit(new Evaluation(p, _termithIndex))
         );
         _logger.info("Waiting EvaluationWorker executors to finish");
         _executorService.shutdown();

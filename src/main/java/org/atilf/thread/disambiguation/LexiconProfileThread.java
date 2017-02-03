@@ -1,9 +1,9 @@
 package org.atilf.thread.disambiguation;
 
 import org.atilf.models.disambiguation.RConnectionPool;
+import org.atilf.models.TermithIndex;
 import org.atilf.models.disambiguation.RLexicon;
-import org.atilf.models.termith.TermithIndex;
-import org.atilf.module.disambiguation.SpecCoefficientInjector;
+import org.atilf.module.disambiguation.lexiconProfile.SpecCoefficientInjector;
 import org.atilf.thread.Thread;
 
 import java.util.concurrent.ExecutorService;
@@ -18,6 +18,7 @@ import static java.lang.Thread.currentThread;
  *         Created on 12/10/16.
  */
 public class LexiconProfileThread extends Thread{
+
     /**
      * this constructor initialize the _termithIndex fields and initialize the _poolSize field with the default value
      * with the number of available processors.

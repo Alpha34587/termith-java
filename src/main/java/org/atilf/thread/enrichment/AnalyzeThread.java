@@ -1,17 +1,14 @@
 package org.atilf.thread.enrichment;
 
-import org.atilf.models.termith.TermithIndex;
-import org.atilf.models.termsuite.MorphologyOffsetId;
-import org.atilf.module.extractor.TextExtractor;
-import org.atilf.module.termsuite.pipeline.TermsuitePipelineBuilder;
-import org.atilf.module.termsuite.terminology.TerminologyParser;
-import org.atilf.module.termsuite.terminology.TerminologyStandOff;
-import org.atilf.module.timer.JsonTimer;
-import org.atilf.module.timer.TokenizeTimer;
-import org.atilf.module.tools.FilesUtils;
-import org.atilf.models.termsuite.CorpusAnalyzer;
-import org.atilf.module.treetagger.TreeTaggerWorker;
+import org.atilf.models.TermithIndex;
+import org.atilf.models.enrichment.CorpusAnalyzer;
+import org.atilf.module.enrichment.analyze.TerminologyParser;
+import org.atilf.module.enrichment.analyze.TerminologyStandOff;
+import org.atilf.module.enrichment.analyze.TermsuitePipelineBuilder;
+import org.atilf.module.enrichment.analyze.TreeTaggerWorker;
+import org.atilf.module.enrichment.initializer.TextExtractor;
 import org.atilf.thread.Thread;
+import org.atilf.tools.FilesUtils;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -96,13 +93,6 @@ public class AnalyzeThread extends Thread{
      * @see TerminologyStandOff
      */
     public void execute() throws InterruptedException, IOException, ExecutionException {
-
-        /*
-        Initialize Timer
-         */
-        new TokenizeTimer(_termithIndex,_logger).start();
-        new JsonTimer(_termithIndex,_logger).start();
-
         /*
         Build Corpus analyzer
          */
@@ -138,10 +128,7 @@ public class AnalyzeThread extends Thread{
          */
         _termithIndex.getMorphologyStandOff().forEach(
                 (id,value) -> _executorService.submit(
-                        new TerminologyStandOff(
-                                FilesUtils.readListObject(value,MorphologyOffsetId.class),
-                                _termithIndex.getTerminologyStandOff().get(id)
-                        )
+                        new TerminologyStandOff(id,_termithIndex)
                 )
         );
         _executorService.shutdown();

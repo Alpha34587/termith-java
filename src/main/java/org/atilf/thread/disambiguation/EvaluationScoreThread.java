@@ -1,10 +1,11 @@
 package org.atilf.thread.disambiguation;
 
+import org.atilf.models.TermithIndex;
 import org.atilf.models.disambiguation.DisambiguationXslResources;
-import org.atilf.models.extractor.XslResources;
-import org.atilf.models.termith.TermithIndex;
-import org.atilf.module.disambiguation.*;
-import org.atilf.module.tools.WorkingFilesCleaner;
+import org.atilf.models.enrichment.XslResources;
+import org.atilf.module.disambiguation.contextLexicon.DisambiguationXslTransformer;
+import org.atilf.module.disambiguation.evaluationScore.*;
+import org.atilf.module.enrichment.cleaner.WorkingFilesCleaner;
 import org.atilf.thread.Thread;
 
 import java.io.IOException;
@@ -74,6 +75,7 @@ public class EvaluationScoreThread extends Thread{
                     if (!Files.isDirectory(p)) {
                         _executorService.submit(new DisambiguationXslTransformer(
                                 p.toFile(),
+                                _termithIndex,
                                 _transformCounter,
                                 _termithIndex.getTransformOutputDisambiguationFile(),
                                 xslResources,
@@ -88,27 +90,28 @@ public class EvaluationScoreThread extends Thread{
                 (p,value) -> _executorService.submit(new AggregateTeiTerms(
                         _termithIndex.getTransformOutputDisambiguationFile().get(p).toString(),
                         value,
-                        _termithIndex.getScoreTerms(),_aggregateCounter))
+                        _termithIndex.getScoreTerms(),
+                        _aggregateCounter))
         );
        _aggregateCounter.await();
         _logger.info("AggregateTeiTerms phase is finished");
 
         _logger.info("ComputeTermScore phase is started");
-       _termithIndex.getScoreTerms().forEach(
-                (p,value) -> _executorService.submit(new ComputeTermsScore(p,value,_scoreCounter))
+       _termithIndex.getScoreTerms().keySet().forEach(
+                p -> _executorService.submit(new ComputeTermsScore(p,_termithIndex,_scoreCounter))
         );
         _scoreCounter.await();
         _logger.info("ComputeTermScore phase is finished");
 
         _logger.info("ComputeTotalTermsScore is started");
         _executorService.submit(
-                new ComputeTotalTermsScore(_termithIndex.getScoreTerms(),_termithIndex.getTotalTermScore())
+                new ComputeTotalTermsScore(_termithIndex)
         ).get();
         _logger.info("ComputeTotalTermsScore is finished");
 
         _logger.info("Export phase is started");
-        _executorService.submit(new ExportScoreToJson(_termithIndex.getScoreTerms(),_termithIndex.getTotalTermScore()));
-        _executorService.submit(new ExportScoreToCsv(_termithIndex.getScoreTerms())).get();
+        _executorService.submit(new ExportScoreToJson(_termithIndex));
+        _executorService.submit(new ExportScoreToCsv(_termithIndex)).get();
         _executorService.submit(new WorkingFilesCleaner(TermithIndex.getOutputPath(),false));
         _logger.info("Export phase is finished");
         _executorService.shutdown();

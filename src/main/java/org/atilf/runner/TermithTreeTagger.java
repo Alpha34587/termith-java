@@ -1,10 +1,11 @@
 package org.atilf.runner;
 
-import org.atilf.models.termith.TermithIndex;
+import org.atilf.models.TermithIndex;
 import org.atilf.thread.enrichment.AnalyzeThread;
 import org.atilf.thread.enrichment.CleanerThread;
 import org.atilf.thread.enrichment.ExporterThread;
 import org.atilf.thread.enrichment.InitializerThread;
+import org.atilf.tools.BenchmarkFactory;
 
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
@@ -62,8 +63,13 @@ public class TermithTreeTagger extends Runner {
         Clean working directory
          */
             executeThread(CleanerThread.class,_termithIndex,_poolSize);
+
+            if (BenchmarkFactory._exportBenchmark) {
+                BenchmarkFactory.export(_termithIndex.getMemoryPerformanceEvents());
+                BenchmarkFactory.export(_termithIndex.getTimePerformanceEvents());
+            }
         } catch (ExecutionException e) {
-            e.printStackTrace();
+            _logger.error("there are some errors during execution",e);
         }
 
     }

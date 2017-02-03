@@ -1,5 +1,6 @@
 package org.atilf.models.disambiguation;
 
+import org.atilf.module.disambiguation.evaluation.CommonWordsPosLemmaCleaner;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;

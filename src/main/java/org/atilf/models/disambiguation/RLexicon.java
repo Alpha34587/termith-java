@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.UUID;
 
 /**
- * this class is the converted ContextLexicon or the CorpusLexicon into R format
+ * this class is the converted contextLexicon or the CorpusLexicon into R format
  * @author Simon Meoni
  *         Created on 21/10/16.
  */

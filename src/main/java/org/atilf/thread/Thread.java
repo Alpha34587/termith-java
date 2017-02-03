@@ -1,6 +1,9 @@
 package org.atilf.thread;
 
-import org.atilf.models.termith.TermithIndex;
+import com.google.common.eventbus.EventBus;
+import org.atilf.models.TermithIndex;
+import org.atilf.monitor.observer.MemoryPerformanceEvent;
+import org.atilf.monitor.observer.TimePerformanceEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -16,11 +19,15 @@ import java.util.concurrent.Executors;
  * who process the file corpus
  * @author Simon Meoni Created on 10/11/16.
  */
-public abstract class Thread {
+public abstract class Thread implements Runnable{
     protected static final int DEFAULT_POOL_SIZE = Runtime.getRuntime().availableProcessors();
     protected final ExecutorService _executorService;
     protected final Logger _logger = LoggerFactory.getLogger(this.getClass().getName());
     protected TermithIndex _termithIndex;
+    protected EventBus _eventBus = new EventBus();
+    private TimePerformanceEvent _timePerformanceEvent;
+    private MemoryPerformanceEvent _memoryPerformanceEvent;
+
 
     /**
      * this constructor initialize the _termithIndex fields and initialize the _poolSize field with the default value
@@ -42,6 +49,18 @@ public abstract class Thread {
     public Thread(TermithIndex termithIndex, int poolSize) {
         _termithIndex = termithIndex;
         _executorService = Executors.newFixedThreadPool(poolSize);
+        _timePerformanceEvent = new TimePerformanceEvent(
+                this.getClass().getSimpleName(),
+                _termithIndex.getCorpusSize(),
+                _termithIndex.getTimePerformanceEvents()
+        );
+        _memoryPerformanceEvent = new MemoryPerformanceEvent(
+                this.getClass().getSimpleName(),
+                _termithIndex.getCorpusSize(),
+                _termithIndex.getMemoryPerformanceEvents()
+        );
+        _eventBus.register(_timePerformanceEvent);
+        _eventBus.register(_memoryPerformanceEvent);
     }
 
     protected Thread() {
@@ -55,5 +74,15 @@ public abstract class Thread {
      * @throws InterruptedException thrown if awaitTermination function is interrupted while waiting
      * @throws ExecutionException thrown a exception if a system process is interrupted
      */
-    public void execute() throws IOException, InterruptedException, ExecutionException {}
+    protected void execute() throws IOException, InterruptedException, ExecutionException {}
+
+    public void run(){
+        try {
+            execute();
+            _eventBus.post(_timePerformanceEvent);
+            _eventBus.post(_memoryPerformanceEvent);
+        } catch (IOException | InterruptedException | ExecutionException e) {
+            _logger.error("there are some errors during execution of " + this.getClass().getName() + " :",e);
+        }
+    }
 }

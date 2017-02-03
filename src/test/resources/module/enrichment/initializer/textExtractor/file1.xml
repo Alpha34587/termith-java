@@ -1,0 +1,1010 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Version 1.2 générée le 5-4-2016-->
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:lang="en">
+  <teiHeader>
+		<fileDesc>
+			<titleStmt>
+				<title/>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+			</publicationStmt>
+			<sourceDesc>
+				<p/>
+			</sourceDesc>
+		</fileDesc>
+	</teiHeader>
+  <text>
+    <body>
+      <div>
+        <p>
+Hearing Research 125 (1998) 131^146
+
+Responses of anteroventral cochlear nucleus neurons of the
+unanesthetized decerebrate cat to click pairs as simulated echoes
+K. Parham, H.-B. Zhao, Y. Ye, D.O. Kim *
+Division of Otolaryngology, Surgical Research Center, Department of Surgery, Neuroscience Program, The University of Connecticut Health Center,
+Farmington, CT 06030-1110, USA
+Received 21 April 1998; received in revised form 6 July 1998; accepted 12 July 1998
+
+Abstract
+To elucidate the contribution of the anteroventral cochlear nucleus (AVCN) to `echo' processing, this study documents the
+responses of AVCN neurons to simulated echoes and compares them to those of auditory nerve (AN) fibers. Single unit discharges
+were recorded from 121 units in the AVCN of 21 unanesthetized decerebrate cats in response to click pairs with inter-click intervals
+ranging from 1 to 32 ms between 45 and 105 dB SPL re 20 WPa. Units were classified according to the post-stimulus time histogram
+(PSTH) and excitatory-inhibitory response area (EI-area) schemes. Based on their spontaneous rates (SR), units were subdivided
+into low- ( 6 20 spikes/s) and high- ( s 20 spikes/s) SR groups. A majority of the units exhibited second-click responses whose
+recovery time courses were similar to those of AN fibers. These units included primary-like, chopper and onset units in the PSTH
+scheme and Types I, I/III and III units in the EI-area scheme. A minority of the units exhibited responses that were distinct from
+those of AN fibers, in that they had second-click response recovery times that were either markedly reduced or prolonged. This
+group of units included those with primary-like, chopper and onset PSTHs and Type I/III and III EI-areas. No significant difference
+was found in the second-click response among various PSTH or EI-area types. High-SR AVCN units exhibited a decrease in the
+second-click response with increasing level. In contrast, low-SR AVCN units showed little level-dependent change in the second-click
+responses. This SR-based difference was similar to that previously found among AN fibers. The present results suggest that,
+although a majority of AVCN units exhibit similar time courses of second-click response recovery to those of AN fibers, there do
+exist mechanisms in the cochlear nucleus that can substantially alter this representation. Furthermore, the difference between the
+second-click response recovery functions of low- and high-SR AVCN units and the consistency of this finding between AVCN and
+AN suggest that SR represents an important dimension for signal representation in the AVCN neurons. z 1998 Elsevier Science
+B.V. All rights reserved.
+Key words: Anteroventral cochlear nucleus; Echo processing; Click pair; Spontaneous rate
+
+1. Introduction
+In a reverberant environment, such as a lecture hall,
+an acoustic signal originating from one location is typically followed by its echoes that arrive at the ears from
+multiple directions. Nevertheless, a listener can correctly perceive a single auditory image and its correct
+direction. This phenomenon of the ¢rst wavefront taking precedence over later-arriving wavefronts has been
+referred to as the `law of the ¢rst wavefront' or `prece* Corresponding author. Tel.: +1 (860) 679-3690;
+Fax: +1 (860) 679-2451; E-mail: kim@neuron.uchc.edu
+
+dence e¡ect' (Wallach et al., 1949 ; Haas, 1951; Von
+Bekesy, 1960 ; Blauert, 1997). To gain an understanding
+of the mechanisms involved in auditory processing of
+the echoes, it would be useful to study this phenomenon
+across multiple structures within the ascending auditory
+pathway.
+We recently reported on echo processing features of
+the auditory nerve (AN) ¢bers in the unanesthetized
+decerebrate cat (Parham et al., 1996). A main ¢nding
+was that the recovery of the response to the trailing
+click of a click pair among AN ¢bers not only depended on stimulus parameters (i.e., interclick interval
+and click level) but also on ¢ber spontaneous rate (SR).
+
+0378-5955 / 98 / $19.00 ß 1998 Elsevier Science B.V. All rights reserved.
+PII: S 0 3 7 8 - 5 9 5 5 ( 9 8 ) 0 0 1 4 0 - 3
+
+HEARES 3104 29-10-98
+
+132
+
+K. Parham et al. / Hearing Research 125 (1998) 131^146
+
+High-SR ¢bers exhibited longer recovery times than
+their low-SR counterparts.
+The cochlear nucleus (CN) serves as the obligatory
+termination site of AN ¢bers. Anatomically, it can be
+subdivided into three main divisions : the anterior and
+posterior ventral cochlear nuclei (AVCN and PVCN,
+respectively) and the dorsal cochlear nucleus (DCN).
+Each subdivision is composed of populations of neurons that, by virtue of di¡erent combinations of intrinsic membrane properties and synaptic inputs, can express diverse responses to sound. As a result, the CN
+consists of an array of neurons whose responses fall on
+a continuum from a faithful preservation to a substantial transformation of the incoming a¡erent signals.
+These responses are conveyed to higher auditory centers
+along parallel pathways arising from the CN subdivisions.
+Based on their responses to sounds, CN neurons
+have been characterized according to two schemes :
+temporal discharge patterns re£ected in the post-stimulus time histogram (PSTH) scheme (e.g., Pfei¡er, 1966)
+and the expressions of excitatory and inhibitory regions
+and responsiveness to broad-band noise re£ected in the
+excitatory-inhibitory area (EI-area) scheme (e.g.,
+Young, 1984). The response types within the two
+schemes appear to be distributed di¡erentially within
+CN subdivisions and are correlated with di¡erent morphological classes of neurons in the CN. In the present
+context, the anatomical and physiological diversity of
+CN neurons gives rise to three important questions : (i)
+Is echo representation among CN neurons di¡erent
+from that among AN ¢bers? (ii) Do various physiological classes of CN neurons di¡er from one another with
+respect to echo representation ? (iii) Are SR-based differences in echo processing of AN ¢bers also present in
+the CN?
+Recently, Wickesberg (1996) reported that ventral
+cochlear nucleus (VCN) units showed rapid recovery
+of the second-click response in the anesthetized chinchilla. Units characterized by primary-like and chopper
+PSTHs showed 50% recovery by 2 ms interclick interval
+and a nearly complete recovery by 4 ms. Wickesberg
+also reported some variability in the responses of
+VCN neurons, in that a subset exhibited little to no
+reduction or enhanced response to the second click.
+In this study we attempt to elucidate the contribution
+of AVCN to echo processing. We systematically investigated the behaviors of AVCN neurons regarding their
+response recovery functions under a click-pair stimulus
+paradigm in decerebrate unanesthetized cats. In this
+assessment of AVCN behavior in response to click
+pairs, neurons were characterized according to both
+PSTH and EI-area schemes and SR-based di¡erences
+were investigated. Early results of this study were presented at a meeting of the Association for Research in
+Otolaryngology (Kim et al., 1992).
+
+2. Methods
+The care and use of animals reported on in this study
+were approved by the University of Connecticut Health
+Center Animal Care Committee (protocol title: `Physiology of the Cochlear Nucleus'; protocol number: 91014-97-2). The details of Section 2 are described elsewhere (Parham et al., 1996). Brie£y, we used unanesthetized decerebrate cats. We opened the left posterior
+fossa, aspirated a portion of the cerebellum, and exposed the CN. A micropipette was positioned over
+the AVCN which was visualized through an operating
+microscope. Single unit spike discharges were recorded
+using micropipettes ¢lled with 3 M sodium chloride or
+potassium acetate that had resistances of 20^50 M6. In
+some penetrations the recording location was marked
+by iontophoretic injection of markers, 10% biotinylated
+dextran amine or 10% horseradish peroxidase in 0.5 M
+potassium acetate in Tris bu¡er. As the electrode was
+advanced, we applied a tonal search stimulus whose
+frequency was swept with a triangular modulating
+waveform over 0^50 kHz with a modulation repetition
+period of 2 or 4 s. The level of the swept tone was in the
+range of 40^60 dB SPL (re 20 WPa). For each AVCN
+unit encountered, we recorded the following : (i) spontaneous discharge rate based on a 10- or 20-s sample
+without acoustic stimulation; (ii) response area curve
+representing discharges induced by 200-ms tone bursts
+(two repetitions) at various frequencies spaced at 50
+frequencies per decade on a logarithmic scale and at a
+constant dB SPL, typically 10^30 dB SPL ; from the
+response area we estimated the characteristic frequency
+(CF) (the frequency to which a unit is most sensitive) of
+the unit; (iii) responses to 60-dB SPL CF tone bursts
+(50 ms duration, 500 ms repetition interval, 5 ms rise/
+fall time, 60 repetitions) from which a post-stimulus
+time histogram was constructed ; (iv) responses to 200ms noise bursts (three repetitions, 5 ms rise/fall; 1000
+ms repetition interval) in 5-dB steps between 20^70 dB
+SPL (measured as rms level with A-weighting) ; and (v)
+responses to single rarefaction clicks and equilevel click
+pairs with inter-click intervals (ICI) ranging from 1 to
+32 ms ; repetition period of 500 ms, 40 repetitions, at 45,
+65, 85 and 105 dB SPL peak. The rarefaction clicks
+were produced by applying 30-Ws pulses to the earphone. The acoustic waveform of a single click recorded
+in the concha of the cat is shown in Fig. 1.
+Event times for spike discharges and stimulus
+markers were stored with 20 Ws resolution in the data
+¢les such that subsequent `o¡-line' analyses would have
+access to full information about spike discharge and
+stimulus events. Single units were classi¢ed according
+to the PSTH and EI-area schemes. Discharges of all
+units were examined for regularity based on the behavior of the coe¤cent of variation (CV) of spike discharges as a function of time (e.g., Young et al.,
+
+HEARES 3104 29-10-98
+
+K. Parham et al. / Hearing Research 125 (1998) 131^146
+
+133
+
+which overlaps with W2 (for details see Parham et al.,
+1996).
+At each ICI the level dependent di¡erences between
+SCRs of various unit types were statistically evaluated
+using analyses of variance (ANOVAs). Signi¢cant interactions were followed up by lower order ANOVAs and
+signi¢cant main e¡ects were further examined with Tukey HSD tests of mean comparisons.
+3. Results
+
+Fig. 1. An example of click waveform recorded from animal's concha in a sound-attenuating chamber.
+
+1988 ; Parham and Kim, 1992). Chopper units were
+subdivided into three subtypes : Chop-S (CV 6 0.35);
+Chop-T (CV increased from 6 0.35 to s 0.35 within
+the ¢rst 15 ms of the response) and Chop-O
+(CV s 0.35). Based on PSTH of the responses to pure
+tone at CF, onset units were identi¢ed based on a quantitative criterion that the ratio of the discharge rate over
+the ¢rst 5 ms of the response (Ronset ) to the last 40 ms of
+the response (Rsust .) be greater than 2.5.
+The procedure for analysis of single unit responses to
+click pairs is described in detail elsewhere (Parham et
+al., 1996). Brie£y, we examined the response of each
+AVCN unit to single clicks and click pairs in the
+form of PSTHs with binwidths of 0.08 ms. For graphical illustrations binwidths of 0.2 or 0.4 ms were used.
+To quantify the results, we de¢ned the time window
+that included all of the evoked spike discharges to the
+single click as W1. W1 was de¢ned for each unit and at
+each click level because response latency and duration
+varied among units and as a function of stimulus level.
+W1 served as the reference time window for subsequent
+computations of the responses to a click pair. The time
+window of the response to the second click of a pair
+(W2) was de¢ned as a window identical to W1 except
+for a delay by the amount of ICI. The second-click
+response (SCR) was expressed as percentage of the response to the ¢rst click. At short ICIs, the quanti¢cation of the SCR took into account the tail end of W1
+
+This study is based on the responses of 121 AVCN
+units recorded in 21 cats. Table 1 shows the number of
+AVCN units subdivided according to the PSTH and EIarea schemes. In the PSTH scheme, the majority of the
+units (93%) exhibited either primary-like (PL, 34%),
+chopper (Chop, 47%) or onset (On, 12%) PSTHs. The
+remaining units (7%) had unusual or non-descript
+PSTH appearances. The PL group (N = 41) included
+primary-like (98%) and primary-like-with-notch (2%)
+PSTH types. The Chop group (N = 57) was further subdivided into sustained (Chop-S, 33%), transient (ChopT, 53%) and other (Chop-O, 14%) chopper subtypes.
+The On group (N = 15) consisted of units exhibiting
+onset without sustained discharges (On-I, 13%), onset
+chopping (On-C, 47%), onset with low level of sustained activity (On-L, 33%) and onset followed by inhibition of spontaneous activity (On-inh, 7%). In the
+EI-area scheme, the majority of the units (77%) were
+characterized as Type I (5%), I/III (35%) or III (37%)
+with a minority falling into other categories (Type II,
+3%; Type IV, 1%). For the remaining 19% of the units,
+response to broadband noise was unavailable and these
+units were not classi¢ed in the EI-area scheme. Among
+the present PL units, 18 out of 41 units were EI-area
+Type III. This is a much greater tendency than a previous report (Shofner and Young, 1985). The reason for
+this di¡erence is not clear.
+Fig. 2 shows the responses of a low-SR PL/Type I/III
+unit to single clicks and click pairs. Responses of this
+unit to single clicks at 65 and 85 dB SPL peak are
+shown in the top PSTHs of the two left-most columns.
+The response was characterized by a large peak followed by a gradual decay of the response over 5^6
+
+Table 1
+Number of AVCN units in PSTH and EI-area classi¢cation schemes
+PSTH Type
+
+EI-area type
+I
+
+PL
+Chop
+On
+Unusual
+Total
+Percent
+
+I/III
+
+III
+
+II or IV
+
+Unclassi¢ed
+
+Total
+
+Percent
+
+6
+0
+0
+0
+6
+5
+
+9
+22
+7
+4
+42
+35
+
+18
+23
+3
+1
+45
+37
+
+1
+3
+1
+0
+5
+4
+
+7
+9
+4
+3
+23
+19
+
+41
+57
+15
+8
+121
+
+34
+47
+12
+7
+
+HEARES 3104 29-10-98
+
+134
+
+K. Parham et al. / Hearing Research 125 (1998) 131^146
+
+Fig. 2. The responses of a PL/Type I/III AVCN unit to clicks and click pairs. Upper right panel shows the PSTH of the response of this unit
+to tone bursts at characteristic frequency (CF). The coe¤cients of variation (CV) for this unit were 0.62 and 0.57 in the 2^14.9 and 20^39.9-ms
+time windows (called CVPÀIRXW and CVPHÀQWXW ), respectively. Responses to single click and click pairs at interclick intervals (ICI) between 1 and
+16 ms at 65 and 85 dB SPL are shown in the two left columns. Lower right panel shows the second click response as a function of ICI at 45,
+65 and 85 dB SPL and represents the percentage of recovery of second-click responses.
+
+ms. Responses to click pairs at short ICIs (1^3 ms),
+shown in the remaining rows of the two columns,
+tended to be slightly more prolonged than the response
+to single clicks. At larger ICIs the response to the second click was evident. As the ICI increased, the secondclick response gradually increased in strength such that
+by 16-ms ICI, the second-click response was similar to
+the ¢rst-click response. The lower right panel provides
+the magnitude of the second-click response as a function of ICI at 45, 65 and 85 dB SPL. The second-click
+response gradually recovered from near 25% at 1-ms
+ICI to above 50% by 4-ms ICI and to near a complete
+recovery (80^100%) by 16-ms ICI. This PL/Type I/III
+unit exhibited a slower recovery of the second-click response as click level was increased from 45 to 85 dB
+SPL.
+The behavior of the sample PL/Type I/III unit shown
+in Fig. 2 was typical of a majority of the units recorded
+from the AVCN in this study (to be shown further
+below) and resembled the behavior of AN ¢bers re-
+
+corded under similar conditions (Parham et al., 1996).
+However, a minority of the units exhibited responses to
+click pairs that were distinct from the typical behavior
+resembling AN ¢bers. The next ¢ve ¢gures (Figs. 3^7)
+illustrate units characterized by sustained and transient
+responses to pure tones that exhibited click pair responses that were distinct from that of the AN ¢bers.
+The three examples shown in Figs. 3^5 exhibited
+faster recovery of the second-click responses than AN
+¢bers. The responses of a Chop-S/Type III AVCN unit
+to single clicks and click pairs is shown in the two leftmost panels of Fig. 3. This unit's responses preserved
+the representation of both clicks of a pair at low and
+moderate stimulus levels (45 and 65 dB SPL), even at
+ICIs as short as 1 ms. At 45 dB SPL, the PSTH of the
+response of this unit to single clicks consisted of a single
+narrow peak. At 1-ms ICI the response to the second
+click is distinct and nearly equal to that of the ¢rst
+click. At 85 dB SPL, the single click response consisted
+of two peaks, separated by an interval (1.8 ms) which is
+
+HEARES 3104 29-10-98
+
+K. Parham et al. / Hearing Research 125 (1998) 131^146
+
+approximately equal to the interpeak interval of the
+PSTH of the response to the CF tone (upper right panel). The response to click pairs at 1-ms ICI was similar
+to that of the single-click response except that the second peak of the PSTH was narrower and taller (i.e.,
+distributed across fewer bins). A distinct response to
+the second click was present at 2-ms ICI which gradually recovered as ICI was increased to 32 ms. The lower
+right panel shows the second-click response recovery
+functions of this unit. At 45 and 65 dB SPL the second-click response remained near 100% for all ICIs, but
+at 85 dB SPL the second-click response recovered from
+0% at 1-ms ICI to 100% at 32 ms.
+The responses of another Chop-S/Type III AVCN
+unit are shown in Fig. 4. This unit exhibited a poor
+recovery of the second-click response at a low stimulus
+level for ICIs even up to 32-ms ICI, but strong secondclick response at high stimulus level even at 1-ms ICI.
+At 45 dB SPL a weak response to the second click was
+present by 2-ms ICI. Unlike previous examples, however, second-click response was completely absent by 8ms ICI and remained below 50% for ICIs up to 32 ms.
+In contrast, at 105 dB SPL the second-click response
+
+135
+
+was present at 1-ms ICI in the form of a broad peak.
+By 2-ms ICI the second-click response was nearly the
+same as that of the ¢rst. The second-click recovery
+functions of this unit are shown in the lower right panel. At 45 dB SPL the second-click response remained
+below 50%, but at 105 dB SPL the second-click response was recovered to 85^100% across all ICIs examined. At intermediate levels of 65 and 85 dB SPL the
+second-click response exhibited more rapid recovery
+than that expected from AN-like recoveries.
+Fig. 5 shows the responses of an On-C/Type I/III
+unit. At 65 dB SPL the second-click response was
+strong ( s 75%) across all ICIs. At other click levels
+the recovery of the second-click response was more
+gradual, although somewhat faster than those exhibited
+by AN ¢bers. For example, at 85 dB SPL the response
+to the second click was greater than 75% at ICIs beyond 3 ms.
+The next two examples shown in Figs. 6 and 7 exhibited slower recovery of the second-click response recovery function than AN ¢bers. The responses of a
+Chop-T AVCN unit is shown in Fig. 6. The secondclick response of this unit at 45 dB SPL exhibited a
+
+Fig. 3. The responses of a Chop-S/Type III AVCN unit to clicks and click pairs. The format of this ¢gure is the same as Fig. 2.
+CVPÀIRXW = 0.1; CVPHÀQWXW = 0.14; Ronset /RsustX = 1.0.
+
+HEARES 3104 29-10-98
+
+136
+
+K. Parham et al. / Hearing Research 125 (1998) 131^146
+
+Fig. 4. The responses of a Chop-S/Type III AVCN unit to clicks and click pairs. The format of this ¢gure is the same as Fig. 2 except that
+click levels of 105 dB SPL are included. CVPÀIRXW = 0.27; CVPHÀQWXW = 0.23; Ronset /RsustX = 1.7.
+
+strong response at 1-ms ICI, but weak responses at 3^8ms ICIs. The second-click response at 65 dB SPL was
+similar to that of 45 dB SPL (lower right panel). At 85
+dB SPL this unit exhibited a more gradual recovery
+(middle column and lower right panel).
+The responses of an On-L/Type I/III AVCN unit are
+shown in Fig. 7. This unit was characterized by a weak
+second-click response up to 32-ms ICI for all stimulus
+levels tested. Interestingly, the second-click response increased between 2- and 8-ms ICIs, but decreased for
+longer ICIs.
+Fig. 8 shows recovery functions for populations of
+primary-like (left column), chopper (middle column)
+and onset (right column) units at 45^105 dB SPL. Individual curves in Fig. 8 represent separate units, while
+the thick line in each panel represents the mean secondclick response recovery function. In general, the majority of the units exhibited recovery functions qualitatively similar to those observed at the level of the
+AN. However, a small number of non-AN-like recovery
+functions were observed in all three populations. Examples of fast recovery to the second click can be seen in
+
+primary-like (panel d), chopper (panels b, e and k) and
+onset (panels c and f) units. Examples of weak response
+to the second click can also be seen in primary-like
+(panel g), chopper (panels b, e, h and k) and onset
+(panels f, i and l) units.
+The mean recovery functions of the three main
+AVCN PSTH types are shown in Fig. 9a^c. Primarylike units showed little change in the mean second-click
+response with the click level (Fig. 9a). Only at 16- and
+32-ms ICIs were the second-click responses to 45 and 65
+dB SPL signi¢cantly greater than those at 105 dB SPL
+stimuli (Tukey HSD, P 6 0.05). Chopper units exhibited an orderly weakening of the mean second-click
+response as click level was increased from 45 to 85 dB
+SPL for 1^3-ms ICIs (Fig. 9b). However, at 105 dB SPL
+the chopper units showed the strongest mean secondclick responses for 1^3-ms ICIs. The mean second-click
+response of the onset units also decreased with increasing stimulus level (Fig. 9c). However, the level-dependent di¡erences among chopper and onset units were not
+statistically signi¢cant (P s 0.05).
+The mean second-click recovery functions of the
+
+HEARES 3104 29-10-98
+
+K. Parham et al. / Hearing Research 125 (1998) 131^146
+
+three unit types were similar at 65 and 85 dB SPL. At
+45 dB SPL the onset units exhibited more rapid recovery of the second-click to above 75% than the primarylike and chopper units (i.e., 3 vs. 4 ms, respectively).
+However, at 105 dB SPL the onset units exhibited slower recovery of the second-click response than the primary-like and chopper units (75% SCR: 7 vs. 6 ms,
+respectively). At 45 and 105 dB SPL the mean second-click recovery functions of the primary-like units
+were intermediate to those of the chopper and onset
+units. The di¡erences between the three PSTH types
+were not statistically signi¢cant (P s 0.05).
+The mean second-click recovery functions for the
+three EI-area types are shown in Fig. 9d^f. The mean
+second-click response of the Type I group increased as
+the stimulus level increased from 65 to 85 dB SPL (Fig.
+9d). Because of the small sample size for Type I units
+mean second-click response recovery functions are not
+available at 45 and 105 dB SPL. The mean second-click
+response decreased from 45 to 85 dB SPL for Type I/III
+and III units (Fig. 9e,f). However, at 105 dB SPL Type
+I/III and III units showed an increase in the mean second-click responses relative to those at 85 dB SPL (Fig.
+
+137
+
+9e,f). The mean second-click response recovery functions of the three EIA types di¡ered little when compared at each click level.
+Fig. 10 shows the SR distributions for AVCN units
+recorded in this study and a sample of AN ¢bers recorded in a previous study (Kim et al., 1991). The
+AVCN units were divided into low- ( 6 20 spikes/s,
+N = 76, 63%) and high-SR ( s 20 spikes/s, N = 45,
+37%) groups, as was previously done for AN ¢bers
+(Parham et al., 1996). The mean second-click response
+recovery functions of these two groups are shown in
+Fig. 11. Low-SR AVCN units showed little level-dependent changes in the second-click response recovery
+functions between 45 and 85 dB SPL. Interestingly, at
+105 dB SPL the low-SR AVCN units exhibited stronger
+second-click responses than at lower stimulus levels.
+One-way ANOVAs at each ICI indicated a signi¢cant
+main e¡ect of level only at the 2-ms ICI (F(3,124) =
+3.42, P = 0.02). In contrast, the high-SR AVCN units
+exhibited a more noticeable level-dependent decrease in
+the second-click response between 45 and 105 dB SPL.
+This decrease was statistically signi¢cant at 3-, 4- and 6ms ICIs (P 6 0.02). The mean recovery functions of the
+
+Fig. 5. The responses of an On-C/Type I/III AVCN unit to clicks and click pairs. The format of this ¢gure is the same as Fig. 2.
+CVPÀIRXW = 0.07; there were no spikes in the 20^39.9-ms window to calculate the CV and Ronset /RsustX .
+
+HEARES 3104 29-10-98
+
+138
+
+K. Parham et al. / Hearing Research 125 (1998) 131^146
+
+Fig. 6. The responses of a Chop-T AVCN unit to clicks and click pairs. Upper right panel shows the PSTH of the response of this unit to
+tone bursts at CF. The format of this ¢gure is the same as Fig. 2. CVPÀIRXW = 0.34; CVPHÀQWXW = 0.61; Ronset /RsustX = 1.3. This unit was classi¢ed
+as Chop-T type based the CV-vs.-time pattern even though chopping was not visible in the PSTH.
+
+two AVCN SR groups are compared to one another
+and their AN counterparts in Fig. 12. At 45 and 65
+dB SPL, the four populations exhibited similar second-click response recovery functions. One-way ANOVAs at 45 and 65 dB SPL showed no signi¢cant differences in mean second-click responses of the two SR
+groups. At 85 dB SPL, the high-SR AVCN and AN
+¢bers exhibited weaker second-click response recoveries
+than their low-SR counterparts. Two-way ANOVAs at
+each ICI at 85 dB SPL revealed main e¡ects of SR at all
+ICIs less than 32 ms (P 6 0.05) without any signi¢cant
+interaction with location (i.e., AN vs. CN).
+At 105 dB SPL di¡erences in second-click response
+between the low- and high-SR AVCN units are much
+more evident, with the high-SR AVCN units having
+weaker second-click response for ICIs less than 32 ms.
+The AN data for 105 dB SPL are not available. ANOVAs indicated that the second-click responses of the
+high-SR AVCN units were signi¢cantly weaker than
+their low-SR counterparts at all ICIs less than 8 ms
+(P 6 0.05).
+
+Since the second-click response recovery functions
+presented above are a relative measure, they do not
+convey information about the absolute neural activities.
+The latter information can be inferred by combining the
+relative recovery functions with an absolute measure of
+neural activities for various stimulus conditions. For
+this purpose, we examined the number of spikes elicited
+by single clicks at various levels, as shown in Fig. 13.
+For all groups, the mean number of spikes elicited by
+single clicks increased as the stimulus level increased
+(Fig. 13a). However, this increase was substantially
+larger for the high-SR AVCN and AN units. Consequently, the low-SR AVCN units and AN ¢bers consistently exhibited fewer spikes per click than their
+high-SR counterparts across all levels. The duration
+of the single-click response is shown in Fig. 13c.
+Although the response duration increased as stimulus
+level increased for all four groups, the response durations of high-SR AVCN units and AN ¢bers were
+consistently longer than those of their low-SR counterparts.
+
+HEARES 3104 29-10-98
+
+K. Parham et al. / Hearing Research 125 (1998) 131^146
+
+4. Discussion
+A majority of AVCN units recorded in this study
+exhibited second-click response recovery time courses
+that were similar to those of AN ¢bers. These units
+had primary-like, chopper and onset PSTHs and Types
+I, I/III and III EI-areas. A minority of AVCN units,
+however, exhibited second-click responses whose recovery time courses were markedly reduced or prolonged
+relative to those of AN ¢bers. The latter group of units
+had primary-like, chopper and onset PSTHs and Type
+I/III and III EI-areas. The mean second-click response
+recovery functions showed little di¡erence among the
+three main PSTH and EI-area types. When AVCN
+units were subdivided into low- and high-SR groups,
+however, a clear di¡erence in the second-click response
+recovery functions was found between the two SR
+groups.
+In this study, the responses of many AVCN neurons
+to single click stimuli were often prolonged. For example, multipeaked PSTHs of click responses were relatively common in low-CF (i.e., below 2 kHz) primarylike units. Similar to previous observations in the AN,
+
+139
+
+the PSTH of the responses of these low-CF primarylike units to clicks had a multi-peaked appearance, with
+the interpeak interval being equal to the 1/CF interval.
+Some high-CF CN units also had PSTHs of the response to click stimuli that were multi-peaked (e.g.,
+Figs. 3, 5 and 6). However, as previously noted by
+Kiang (1965), the inter-peak intervals in these highCF units did not correspond to 1/CF. Kiang's report
+did not classify CN units according to the PSTH type.
+In the current study, multi-peaked PSTHs among highCF units were associated with chopper and onset-chopper type units. The inter-peak intervals in the PSTHs of
+the response to the clicks in these units approximated
+those in the PSTHs of the responses to pure-tone bursts
+at their CFs.
+The level-dependent weakening of the second-click
+responses of high-SR AVCN units and their slower recovery relative to low-SR AVCN units are analogous to
+our earlier observations in the AN (Parham et al.,
+1996). Spontaneous activities of AVCN neurons appear
+to be mainly dependent on their AN inputs. Koerber et
+al. (1966) observed that, after cochlear destruction,
+spontaneous activity of AVCN neurons was abolished
+
+Fig. 7. The responses of an On-L/Type I/III AVCN unit to clicks and click pairs. The format of this ¢gure is the same as Fig. 2.
+CVPÀIRXW = 0.14; there were insu¤cient spikes in the 20^39.9-ms window to calculate the CV; Ronset /RsustX = 4.5.
+
+HEARES 3104 29-10-98
+
+140
+
+K. Parham et al. / Hearing Research 125 (1998) 131^146
+
+Fig. 8. The second-click recovery function for primary-like (left column), chopper (middle column) and onset (right column) AVCN units at
+the four stimulus levels (45, 65, 85 and 105 dB SPL). The thick line in each panel represents the mean second-click response recovery function.
+The number of units represented, N, is shown in each panel. Only those units with data available for three or more ICIs are included.
+
+suggesting that SR of AVCN neurons mainly arises
+from their AN a¡erent inputs. Therefore, the di¡erences between the two SR groups in the AVCN for the
+most part appear to be a re£ection of their AN a¡erent
+inputs.
+The results presented in this report o¡er a possible
+reason for the di¡erence in the dependence of the second-click response on the level between the two SR
+populations of the AN and AVCN, i.e., neuronal refractoriness. Gaumond et al. (1982) characterized refractoriness of AN ¢bers in terms of a conditional discharge probability conditioned on the time since the last
+spike, called tau, for a steady stimulus. The conditional
+discharge probability of an AN ¢ber typically was zero
+(i.e., completely refractory) for tau 6 0.75 ms, rapidly
+
+increased from zero to about 60% of a fully recovered
+value at tau = 4 ms, and more gradually increased to the
+fully recovered value (i.e., zero refractoriness) between
+4 and about 40 ms. Gaumond et al., 1982 (Figs. 12 and
+13) also observed that, when there were successive short
+(e.g., 6 10 ms) interspike intervals, the refractoriness of
+AN ¢bers was accumulated, i.e., the conditional discharge probability further decreased. The fact that the
+time courses (0 to about 40 ms) and general shapes of
+the two measures, i.e., second-click response vs. interclick interval and refractoriness vs. time since the last
+spike, are quite comparable to each other, supports the
+possibility that neuronal refractoriness is the main
+mechanism underlying the reduction and a gradual recovery of the second-click response being described in
+
+HEARES 3104 29-10-98
+
+K. Parham et al. / Hearing Research 125 (1998) 131^146
+
+the present report and in Parham et al. (1996). In Fig.
+13a, it is seen that, as the stimulus level was increased
+from 45 to 105 dB SPL, the mean absolute number of
+spikes increased from about 1 to 3 spikes per click for
+high-SR AN and AVCN units whereas they changed
+little for low-SR AN and AVCN units. It is also seen
+in Fig. 13c that the multiple spikes at high stimulus
+levels occurred over a period of about 4^10 ms. This
+corresponds to interspike intervals of about 2^4 ms.
+In view of the Gaumond et al. study discussed above,
+the refractoriness of a high-SR unit should be substantially greater during a period following the clicks presented at high levels than that at low levels because
+additional spikes were discharged with short interspike
+intervals at high stimulus levels. This expected change
+
+141
+
+in the amount of refractoriness of high-SR units with
+stimulus level is consistent with the decrease of secondclick response observed in high-SR AVCN units (Fig.
+11) and AN ¢bers (Parham et al., 1996, Fig. 7). Likewise, this reasoning as applied to low-SR units regarding their absolute number of spikes per click being
+nearly independent of stimulus level (Fig. 13a) predicts
+that their second-click response recovery functions
+should be nearly independent of stimulus level. LowSR AVCN units (Fig. 11) and AN ¢bers (Parham et
+al., 1996, Fig. 7) indeed exhibited much less dependence
+of their second-click recovery functions on stimulus level than their high-SR counterparts, largely consistent
+with the prediction. There is one discrepancy between
+the refractoriness-based prediction and the observation
+
+Fig. 9. Mean second-click response þ standard error of means (S.E.M.) vs. ICI for the three main PSTH types (primary-like, chopper and onset; panels a^c) and the three AVCN EIA types (Type I, Type I/III and Type III; panels d^f) at four stimulus levels (45, 65, 85, and 105 dB
+SPL). Mean recovery function for Type I units at 45 and 105 dB SPL are not available due to the small sample size.
+
+HEARES 3104 29-10-98
+
+142
+
+K. Parham et al. / Hearing Research 125 (1998) 131^146
+
+Fig. 10. Comparison of SR distribution of AN ¢ber and AVCN
+unit. The number of units represented, N, is shown in each panel.
+AN data are from Kim et al. (1991).
+
+in this regard. That is, the second-click response of lowSR AVCN units increased somewhat at 105 dB SPL
+compared with those at lower levels (Fig. 11, left panel)
+whereas, based on Fig. 13, one predicts that it should
+remain nearly constant with a slight decrease. The reason for this discrepancy is not clear.
+When one considers that the discharge behavior of
+an AVCN neuron is a¡ected by neuronal refractoriness,
+two components of refractoriness can be considered: (i)
+refractoriness of AN ¢bers acting as an input to the
+AVCN neuron, and (ii) refractoriness of the AVCN
+neuron. The present observations (Fig. 12) indicate
+that the second-click response recovery functions are
+
+rather similar between the AN ¢bers and AVCN neurons. In interpreting the second-click response recovery
+functions in terms of neuronal refractoriness, this similarity implies that the combined total refractoriness
+observed in AVCN units is similar to that in AN ¢bers.
+To our knowledge, direct examinations of neuronal refractoriness (analogous to the Gaumond et al. study)
+for AVCN neurons have not been reported. We believe
+that such a study should be useful.
+The faster recovery of the second-click response of
+low-SR AN ¢bers and AVCN neurons than their highSR counterparts contrasts with ¢ndings of forward
+masking studies using tone bursts at the level of the
+AN (Relkin and Pelli, 1987; Relkin and Doucet,
+1991) and CN (Boettcher et al., 1990; Shore, 1995).
+Forward masking studies noted that low-SR units required longer times for recovery of responses to tone
+bursts than high-SR units, opposite of the present observation of the second-click response. Previously, we
+considered that possible reasons for the discrepancy
+might include longer signal duration (tone burst) and
+a large level di¡erence between the masker and probe in
+the forward masking studies compared with click pairs
+of the present studies (Parham et al., 1996). Even when
+the masker and probe levels were nearly equal in the
+CN forward masking studies, low-SR neurons showed
+slower recovery than high-SR neurons (Boettcher et al.,
+1990 ; Shore, 1995). Therefore, the di¡erence between
+masker and probe levels does not explain the discrepancy between click-pair and forward masking studies.
+Di¡erent mechanisms may underlie the two phenomena. Adaptation at the inner hair cell and its a¡erent
+synapse and suppression of cochlear responses mediated
+by the olivocochlear e¡erent system (Bon¢ls and Puel,
+1987) may mainly underlie the forward masking phenomenon whereas neuronal refractoriness may mainly
+underlie the second-click response reduction phenomenon. We do not expect that the second-click response
+recovery function is mainly mediated by the e¡erent
+system because the click stimulus had a brief duration
+
+Fig. 11. Mean second-click recovery functions ( þ S.E.M.) for two populations of AVCN neurons at four stimulus levels. AVCN units are divided into a low-SR (SR 6 20 spikes/s) group and a high-SR (SR s 20 spikes/s) group.
+
+HEARES 3104 29-10-98
+
+K. Parham et al. / Hearing Research 125 (1998) 131^146
+
+143
+
+Fig. 12. Comparison of mean second-click recovery functions among low-SR and high-SR AN ¢bers and AVCN neurons at four stimulus levels (45, 65, 85 and 105 dB SPL). Data from AN ¢bers at 105 dB SPL are not available.
+
+(Fig. 1) presented with a long (500 ms) repetition period, whereas e¡erent-mediated e¡ect required a su¤ciently long (greater than 35 ms) stimulus (Bon¢ls and
+Puel, 1987).
+The similarity of the recovery rates of low- and highSR AVCN neurons to their AN counterparts supports
+the notion that SR may be an important axis in signal
+representation at the level of the CN. This conclusion is
+consistent with that of Shore (1995) in her study of
+forward masking in the VCN. The suggestion of an
+SR-based segregation of AN ¢ber projections to the
+CN, ¢rst made by anatomical studies (Leake and
+Snyder, 1989 ; Kawase and Liberman, 1992; Liberman,
+1991), has received additional neurophysiological support. Recent recordings from the AVCN showed that
+neurons in the marginal shell were predominantly low
+SR, whereas the central core included high- and low-SR
+neurons (Ghoshal and Kim, 1996, 1997).
+Since a majority of the AVCN units display AN-like
+behavior with respect to second-click responses, these
+neurons do not modify the AN a¡erent inputs but act
+to relay AN signals to higher auditory centers. In a
+forward masking study of CN neurons, Boettcher et
+al. (1990) arrived at a similar conclusion. A minority
+of AVCN units, however, showed echo processing behaviors that were distinct from those of the AN ¢bers.
+These units had primary-like, chopper and onset PSTH
+types. Forward masking studies in the CN have also
+identi¢ed neurons whose recovery from short-term
+adaptation is distinct from those of AN ¢bers (Boettcher et al., 1990; Shore, 1995). In vivo intracellular
+
+recording and labeling experiments have shown that
+PSTH types tend to be associated with morphological
+cell types in the AVCN (Rhode et al., 1983; Rouiller
+and Ryugo, 1984 ; Smith and Rhode, 1987, 1989; Ostapo¡ et al., 1994). For example, the primary-like responses are generally associated with bushy cells,
+whereas chopper responses are generally associated
+with multipolar cells. Since the unusual second-click
+recovery behaviors of some AVCN neurons were not
+associated with a distinct response type in the AVCN,
+the present observation suggests that these novel echo
+processing strategies may not be associated with a
+unique cell type in the AVCN.
+The unusual echo processing patterns of AVCN neurons consisted of neurons with either enhanced or suppressed representation of the echo relative to that of the
+AN ¢bers. The enhancement of the second-click response was observed at short ICIs (i.e., less than 4 ms)
+where individual AN ¢bers show typically weak
+responses (less than 50% ; Parham et al., 1996). The
+present study is the ¢rst to demonstrate the existence
+of neurons with very fast second-click response recovery times in the AVCN. One possible way to extract
+adequate information regarding the temporal position
+of an echo, is for some AVCN neurons to sample and
+integrate the responses of many AN ¢bers. In other
+words, convergence of several AN ¢ber inputs onto
+an AVCN neuron could lead to summation of temporally coincident excitatory post-synaptic potentials thus
+eliciting an action potential. This is analogous to previously proposed mechanisms for certain VCN neurons
+
+HEARES 3104 29-10-98
+
+144
+
+K. Parham et al. / Hearing Research 125 (1998) 131^146
+
+Fig. 13. Mean spike counts (a), absolute number of spikes (b) and
+mean response duration (c) in response to single clicks as a function
+of stimulus level among low- and high-SR AN ¢bers and AVCN
+units at four stimulus levels (45, 65, 85 and 105 dB SPL).
+
+(e.g., Smith and Rhode, 1986; Winter and Palmer,
+1995 ; Palmer et al., 1996). Responses of spherical bushy
+cells in the AVCN are dominated by their AN ¢ber
+inputs which are believed to be form one or two calyx-type endings on one bushy cell (e.g., Sento and
+Ryugo, 1989). Therefore, the spherical bushy cells are
+a poor candidate for this type of integration. More
+likely candidates are multipolar cells receiving boutontype endings from the AN which are distributed over
+their soma and proximal dendrites (Cant, 1981).
+The suppression of the second-click responses beyond that exhibited by the AN ¢bers is likely mediated
+by circuits releasing inhibitory neurotransmitters such
+as glycine and/or GABA in some CN neurons (Backo¡
+et al., 1997). Suppression of the second-click response
+of AVCN neurons could arise partly from intranuclear
+and/or descending inhibitory projections to AVCN neurons. The intranuclear mechanisms that may underlie
+such suppression have been discussed in detail elsewhere (Wickesberg and Oertel, 1990; Wickesberg,
+
+1996). Brie£y, one hypothesized source is the tuberculoventral neurons of the DCN which provide glycinergic input to the AVCN. In vitro excitation of these
+neurons through stimulation of AN ¢bers which project
+to tuberculoventral neurons, as well as AVCN neurons,
+showed inhibitory postsynaptic potentials in AVCN
+neurons about 2 ms after AN induced excitatory postsynaptic potentials. Wickesberg (1996) provided further
+support for this circuit in a pharmacological perturbation study. Wickesberg showed that, following application of lidocaine in the DCN, responses of 19% of the
+VCN units (primary-like and chopper type) to the trailing click increased. Such inputs could account for the
+trough-like recovery functions observed in this study
+(e.g., Fig. 6). For 62% of the VCN units, however,
+Wickesberg found that the response to the ¢rst click
+decreased after lidocaine administration. The reason
+for the latter unexpected ¢nding is not clear.
+In the AVCN, ICI at 50% recovery of the secondclick response ranged from 1.8 ms at 45 dB SPL to 3 ms
+at 85 dB SPL without any substantial di¡erences between the two AVCN SR groups (Fig. 12). This compares with 1.3^3 ms over the same stimulus level range
+in the AN (Parham et al., 1996). Thus, there was only a
+very slight increase in the average 50% recovery time in
+AVCN relative to the AN. The recovery functions of
+AVCN units are similar to those reported for units in
+the SOC by Fitzpatrick et al. (1995). Monaural units in
+the SOC exhibited second-click recovery functions that
+were analogous to those of AVCN neurons. The average 50% recovery time of monaural units in the SOC
+was V2 ms (Fitzpatrick et al., 1995). The fact that
+recovery functions in the SOC are comparable to those
+in the AVCN with the average 50% recovery times
+being similar in the two nuclei suggests that no signi¢cant modi¢cation of the echo processing occurs between
+these two structures. Substantial alterations apparently
+occur higher up at the level of the IC as the average
+50% recovery time increases to V6^20 ms (Yin, 1994;
+Fitzpatrick et al., 1995). Additional suppression mechanisms are interpreted to be present in the cortex, since
+in the auditory cortex the average 50% recovery times
+ranged up to 300^500 ms (Fitzpatrick et al., 1997,
+1998).
+Some of the auditory cortical neurons were observed
+to exhibit rapid recovery times of 6 2 ms (Fitzpatrick
+et al., 1997). Considering that the AVCN also contains
+neurons exhibiting comparably rapid recovery times
+(e.g., Figs. 3^5), the projections of such AVCN neurons
+could form the beginning of a channel that may convey
+information about the presence and nature of echoes.
+Such information may underlie the quality of the sound
+heard, i.e., its timbre (e.g., Blauert, 1997; Harris et al.,
+1963 ; Sayers and Toole, 1964). The projections from
+the majority of AVCN neurons, whose second-click responses recovery times are 2^10 ms, may represent the
+
+HEARES 3104 29-10-98
+
+K. Parham et al. / Hearing Research 125 (1998) 131^146
+
+beginning of a separate channel that may underlie the
+perception of the sound location, thus mediating the
+precedence e¡ect which has a time window of about
+2^10 ms (Wallach et al., 1949). In addition, certain
+neurons in the AVCN (present study) and higher auditory centers (e.g., Fitzpatrick et al., 1995, 1997), whose
+second-click recovery times are in the range of about
+ten to a few hundred milliseconds, may mediate a time
+window (`echo window') where a lagging sound (i.e.,
+echo) is heard but its perception is still a¡ected by a
+leading sound (Fitzpatrick et al., 1998).
+Based on the ¢ndings of our studies in the AN and
+AVCN, it is important in future studies to keep in mind
+two important variables: SR and stimulus level. In both
+AN and AVCN, the 50% recovery time of the secondclick response increased from 1.3 and 1.8 ms, respectively, to 3 ms between 45 and 85 dB SPL. At 105 dB
+SPL, however, the 50% recovery time for low-SR
+AVCN neurons was less than 1.5 ms, while that of
+high-SR AVCN neurons was V5 ms. Results for the
+AN at 105 dB SPL are not available for comparison.
+Given that both SR and stimulus level exert a substantial in£uence on echo processing, greater attention
+needs to be paid to these variables when making comparisons across structures.
+Regarding psychophysical studies of precedence effect which examined the in£uence of the overall stimulus level, we are aware of only one, Shinn-Cunningham et al. (1993). Using two stimulus levels (80 and 110
+dB SPL 1-ms noise bursts), they found: (i) that the
+stimulus level had relatively small in£uence on the
+strength of the precedence e¡ect; (ii) that the strength
+of the precedence e¡ect was little a¡ected by the stimulus level for 1-ms ICI (or `lag' of Shinn-Cunningham
+et al.) ; and (iii) that the strength of the precedence
+e¡ect tended to decrease somewhat at the higher stimulus level for 10-ms ICI. This psychophysical observation of a decrease of the precedence e¡ect strength with
+increasing stimulus level for 10-ms ICI appears to be in
+opposite direction to what one may anticipate from the
+neurophysiological observations of an increase of the
+recovery time with increasing stimulus level (Fig. 11
+of the present paper ; Figs. 7 and 11 of Parham et al.,
+1996). The reason for this apparent discrepancy is not
+clear.
+To summarize, a survey of the available results
+throughout the auditory pathway suggests that the response to a trailing sound or echo can be either weakened (a characteristic of the AN ¢bers), enhanced or
+suppressed. As we ascend the auditory pathway, suppression appears to become more robust or prolonged,
+but an enhanced representation of a simulated echo
+continues to persist. These results suggest that, with
+respect to echo processing, the CN may be the origin
+of several parallel channels within which the AN signal
+is either relayed or altered on its way to higher centers.
+
+145
+
+Acknowledgments
+This study was supported in part by the National
+Institute on Deafness and Other Communication Disorders, NIH, Grant P01-DC-01366. We thank Drs. S.
+Kuwada, D. Fitzpatrick, and A. Palmer for their helpful comments on this manuscript.
+References
+Backo¡, P.M., Palombi, P.S., Caspary, D.M., 1997. Glycinergic and
+GABAergic inputs a¡ect short-term suppression in the cochlear
+nucleus. Hear. Res. 110, 155^163.
+Von Bekesy, G., 1960. Experiments in Hearing. McGraw-Hill, New
+York, NY.
+Blauert, J., 1997. Spatial Hearing: The Psychophysics of Human
+Sound Localization. MIT Press, Cambridge, MA.
+Boettcher, F.A., Salvi, R.J., Saunders, S.S., 1990. Recovery from
+short-term adaptation in single neurons in the cochlear nucleus.
+Hear. Res. 48, 125^144.
+Bon¢ls, P., Puel, J.-L., 1987. Functional properties of the crossed part
+of the medial olivo-cochlear bundle. Hear. Res. 28, 125^130.
+Cant, N.B., 1981. The ¢ne structure of two types of stellate cells in the
+anterior division of the anteroventral cochlear nucleus of the cat.
+Neuroscience 6, 2643^2655.
+Fitzpatrick, D.C., Kuwada, S., Batra, R., Trahiotis, C., 1995. Neural
+responses to simple simulated echoes in the auditory brain stem of
+the unanesthetized rabbit. J. Neurophysiol. 74, 2469^2486.
+Fitzpatrick, D.C., Kuwada, S., Kim, D.O., 1998. Responses of neurons to click-pair stimuli: auditory nerve to auditory cortex. Assoc. Res. Otolaryngol. Abstr. 21.
+Fitzpatrick, D.C., Kuwada, S., Parham, K., 1997. Responses of neurons in the auditory cortex to click-pair stimuli. Assoc. Res. Otolaryngol. Abstr. 20, 207.
+Gaumond, R.P., Molnar, C.E., Kim, D.O., 1982. Stimulus and recovery dependence of cat cochlear nerve ¢ber spike discharge probability. J. Neurophysiol. 48, 856^873.
+Ghoshal, S., Kim, D.O., 1996. Marginal shell of the anteroventral
+cochlear nucleus: intensity coding in single units of the unanesthetized, decerebrate cat. Neurosci. Lett. 205, 71^74.
+Ghoshal, S., Kim, D.O., 1997. Marginal shell of the anteroventral
+cochlear nucleus: single-unit response properties in the unanesthetized decerebrate cat. J. Neurophysiol. 77, 2083^2097.
+Haas, H., 1951. The in£uence of a single echo on the audibility of
+speech. Acoustica 1, 49^58.
+Harris, G.G., Flanagan, J.L., Bernard, B.J., 1963. Binaural interaction of a click with a click pair. J. Acoust. Soc. Am. 35, 672^
+678.
+Kawase, T., Liberman, M.C., 1992. Spatial organization of the auditory nerve according to spontaneous discharge rate. J. Comp.
+Neurol. 319, 312^318.
+Kiang, N.Y.S., 1965. Stimulus coding in the auditory nerve and cochlear nucleus. Acta Oto-Laryng. 59, 186^200.
+Kim, D.O., Parham, K., Sirianni, J.G., Chang, S.O., 1991. Spatial
+response pro¢les of the posteroventral cochlear nucleus neurons
+and auditory-nerve ¢bers in unanesthetized decerebrate cats: responses to pure tones. J. Acoust. Soc. Am. 89, 2804^2817.
+Kim, D.O., Parham, K., Tracy, T., 1992. Responses of auditory nerve
+¢bers and anteroventral cochlear nucleus units to click pairs in
+unanesthetized decerebrate cats. Assoc. Res. Otolaryngol. Abstr.
+15, 16.
+Koerber, K.C., Pfei¡er, R.R., Warr, W.B., Kiang, N.Y., 1966. Spontaneous spike discharges from single units in the cochlear nucleus
+after destruction of the cochlea. Exp. Neurol. 16, 119^130.
+
+HEARES 3104 29-10-98
+
+146
+
+K. Parham et al. / Hearing Research 125 (1998) 131^146
+
+Leake, P.A., Snyder, R.L., 1989. Topographic organization of the
+central projections of the spiral ganglion in cats. J. Comp. Neurol.
+281, 612^629.
+Liberman, M.C., 1991. Central projections of auditory-nerve ¢bers of
+di¡ering spontaneous rate. I. Anteroventral cochlear nucleus.
+J. Comp. Neurol. 313, 240^258.
+Ostapo¡, E.M., Feng, J.J., Morest, D.K., 1994. A physiological and
+structural study of neuron types in the cochlear nucleus. II. Neuron types and their structural correlation with response properties.
+J. Comp. Neurol. 346, 19^42.
+Palmer, A.R., Jiang, D., Marshall, D.H., 1996. Responses of ventral
+cochlear nucleus onset and chopper units as a function of signal
+bandwidth. J. Neurophysiol. 75, 780^794.
+Parham, K., Kim, D.O., 1992. Analysis of temporal characteristics of
+dorsal cochlear nucleus neurons of unanesthetized decerebrate
+cats. J. Neurophysiol. 67, 1247^1263.
+Parham, K., Zhao, H.B., Kim, D.O., 1996. Responses of auditory
+nerve ¢bers of the unanesthetized decerebrate cat to the click pairs
+as simulated echoes. J. Neurophysiol. 76, 17^29.
+Pfei¡er, R.R., 1966. Classi¢cation of response patterns of spike discharges for units in the cochlear nucleus: tone-burst stimulation.
+Exp. Brain Res. 1, 220^235.
+Relkin, E.M., Pelli, D.G., 1987. Probe tone thresholds in the auditory
+nerve measured by two-interval forced-choice procedures.
+J. Acoust. Soc. Am. 82, 1679^1691.
+Relkin, E.M., Doucet, J.R., 1991. Recovery from prior stimulation. I:
+Relationship to spontaneous ¢ring rates of primary auditory neurons. Hear. Res. 55, 215^222.
+Rhode, W.S., Oertel, D., Smith, P.H., 1983. Physiological response
+properties of cells labeled intracellularly with horseradish peroxidase in cat ventral cochlear nucleus. J. Comp. Neurol. 213, 448^
+463.
+Rouiller, E.M., Ryugo, D.K., 1984. Intracellular marking of physiologically characterized cells in the ventral cochlear nucleus of the
+cat. J. Comp. Neurol. 225, 167^186.
+Sayers, B.McA., Toole, F.E., 1964. Acoustic-image lateralization
+judgments with binaural transients. J. Acoust. Soc. Am. 36,
+1199^1205.
+Sento, S., Ryugo, D.K., 1989. Endbulbs of Held and spherical bushy
+
+cells in cats: morphological correlates with physiological properties. J. Comp. Neurol. 280, 55^562.
+Shinn-Cunningham, B.G., Zurek, P.M., Durlach, N., 1993. Adjustment and discrimination measurements of the precedence e¡ect.
+J. Acoust. Soc. Am. 93, 2923^2932.
+Shofner, W.P., Young, E.D., 1985. Excitatory/inhibitory response
+types in the cochlear nucleus: relationships to discharge patterns
+and responses to electrical stimulation of the auditory nerve.
+J. Neurophysiol. 54, 917^939.
+Shore, S.E., 1995. Recovery of forward-masking responses in ventral
+cochlear nucleus neurons. Hear. Res. 82, 31^43.
+Smith, P.H., Rhode, W.S., 1986. Encoding timing and intensity in the
+ventral cochlear nucleus of the cat. J. Neurophysiol. 56, 261^286.
+Smith, P.H., Rhode, W.S., 1987. Characterization of HRP-labeled
+globular bushy cells in the cat anteroventral cochlear nucleus.
+J. Comp. Neurol. 266, 360^375.
+Smith, P.H., Rhode, W.S., 1989. Structural and functional properties
+distinguish two types of multipolar cells in the ventral cochlear
+nucleus. J. Comp. Neurol. 282, 595^616.
+Wallach, H., Newman, E.V., Rosenzwieg, M.R., 1949. The precedence e¡ect in sound localization. Am. J. Psychol. 57, 315^336.
+Wickesberg, R.E., 1996. Rapid inhibition in the cochlear nuclear complex of the chinchilla. J. Acoust. Soc. Am. 100, 1691^1702.
+Wickesberg, R.E., Oertel, D., 1990. Delayed, frequency-speci¢c inhibition in the cochlear nuclei of mice: a mechanism for monaural
+echo suppression. J. Neurosci. 10, 1762^1768.
+Winter, I.M., Palmer, A.R., 1995. Level dependence of cochlear nucleus onset unit responses and facilitation by second tones and
+broadband noise. J. Neurophysiol. 73, 141^159.
+Yin, T.C., 1994. Physiological correlates of the precedence e¡ect and
+summing localization in the inferior colliculus of the cat. J. Neurosci. 14, 5170^5186.
+Young, E.D., 1984. Response characteristics of neurons of the cochlear nuclei. In: Berlin, C.I. (Ed.), Hearing Science, Recent Advances. College-Hill Press, San Diego, CA, pp. 423^460.
+Young, E.D., Robert, J.M., Shofner, W.P., 1988. Regularity and latency of units in ventral cochlear nucleus: implications for unit
+classi¢cation and generation of response properties. J. Neurophysiol. 60, 1^29.
+
+HEARES 3104 29-10-98
+
+</p>
+      </div>
+    </body>
+    
+	<back/>
+  </text>
+</TEI>
