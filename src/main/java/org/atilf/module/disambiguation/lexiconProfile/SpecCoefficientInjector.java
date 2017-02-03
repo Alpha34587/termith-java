@@ -12,6 +12,8 @@ import org.rosuda.REngine.Rserve.RserveException;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
@@ -107,6 +109,13 @@ public class SpecCoefficientInjector extends Module {
         try {
             if (_computeSpecificities) {
                 reduceToLexicalProfile(computeSpecCoefficient());
+                try {
+                    Files.delete(Paths.get(_rResultPath));
+                    Files.delete(_rContextLexicon.getCsvPath());
+                }
+                catch (IOException e) {
+                    _logger.error("cannot remove file : " + _rResultPath, e);
+                }
             }
             else {
                 _logger.info("only terminology or non-terminology lexicon profile is present, " +
@@ -162,17 +171,17 @@ public class SpecCoefficientInjector extends Module {
         try (BufferedReader br = new BufferedReader(new FileReader(_rResultPath))) {
             String sCurrentLine;
             while ((sCurrentLine = br.readLine()) != null) {
-                    if (Objects.equals(sCurrentLine, "Inf")){
-                        floatArray.add(Float.POSITIVE_INFINITY);
-                        _logger.error("positive infinity was return by R");
-                    }
-                    else if (Objects.equals(sCurrentLine, "-Inf")){
-                        floatArray.add(Float.NEGATIVE_INFINITY);
-                        _logger.error("negative infinity was return by R");
-                    }
-                    else {
-                        floatArray.add(Float.parseFloat(sCurrentLine));
-                    }
+                if (Objects.equals(sCurrentLine, "Inf")){
+                    floatArray.add(Float.POSITIVE_INFINITY);
+                    _logger.error("positive infinity was return by R");
+                }
+                else if (Objects.equals(sCurrentLine, "-Inf")){
+                    floatArray.add(Float.NEGATIVE_INFINITY);
+                    _logger.error("negative infinity was return by R");
+                }
+                else {
+                    floatArray.add(Float.parseFloat(sCurrentLine));
+                }
             }
             br.close();
         }

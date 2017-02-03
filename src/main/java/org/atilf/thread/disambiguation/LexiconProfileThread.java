@@ -1,11 +1,13 @@
 package org.atilf.thread.disambiguation;
 
-import org.atilf.models.disambiguation.RConnectionPool;
 import org.atilf.models.TermithIndex;
+import org.atilf.models.disambiguation.RConnectionPool;
 import org.atilf.models.disambiguation.RLexicon;
 import org.atilf.module.disambiguation.lexiconProfile.SpecCoefficientInjector;
 import org.atilf.thread.Thread;
 
+import java.io.IOException;
+import java.nio.file.Files;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.TimeUnit;
 
@@ -51,7 +53,7 @@ public class LexiconProfileThread extends Thread{
      * words for each context of terms candidates entries (also known as lexical profile)
      * @throws InterruptedException thrown if awaitTermination function is interrupted while waiting
      */
-    public void execute() throws InterruptedException {
+    public void execute() throws InterruptedException, IOException {
         /*
         convert global corpus into R variable
          */
@@ -70,5 +72,6 @@ public class LexiconProfileThread extends Thread{
         _executorService.shutdown();
         _executorService.awaitTermination(1L, TimeUnit.DAYS);
         RConnectionPool.removeThread(currentThread());
+        Files.delete(rLexicon.getCsvPath());
     }
 }

@@ -51,9 +51,9 @@ public class EvaluationScoreThread extends Thread{
     public EvaluationScoreThread(TermithIndex termithIndex, int poolSize) throws IOException {
 
         super(termithIndex, poolSize);
-        _transformCounter = new CountDownLatch((int) Files.list(TermithIndex.getOutputPath()).count());
-        _aggregateCounter = new CountDownLatch((int) Files.list(TermithIndex.getOutputPath()).count());
-        _scoreCounter = new CountDownLatch((int) Files.list(TermithIndex.getOutputPath()).count());
+        _transformCounter = new CountDownLatch(termithIndex.getEvaluationTransformedFiles().size());
+        _aggregateCounter = new CountDownLatch(termithIndex.getEvaluationTransformedFiles().size());
+        _scoreCounter = new CountDownLatch(termithIndex.getEvaluationTransformedFiles().size());
     }
 
     /**
@@ -72,18 +72,17 @@ public class EvaluationScoreThread extends Thread{
         XslResources xslResources = new DisambiguationXslResources();
         _logger.info("transformation phase is started for EvaluationScoreThread");
         Path scoreFolder = Files.createDirectory(Paths.get(TermithIndex.getOutputPath().toString() + "/score/"));
-        Files.list(TermithIndex.getOutputPath()).forEach(
-                p ->  {
-                    if (!Files.isDirectory(p)) {
-                        _executorService.submit(new DisambiguationXslTransformer(
+        Files.list(TermithIndex.getOutputPath())
+                .filter(p -> !Files.isDirectory(p))
+                .filter(p -> p.toString().endsWith(".xml"))
+                .forEach(
+                        p -> _executorService.submit(new DisambiguationXslTransformer(
                                 p.toFile(),
                                 _termithIndex,
                                 _transformCounter,
                                 _termithIndex.getTransformOutputDisambiguationFile(),
                                 xslResources,
-                                scoreFolder));
-                    }
-                });
+                                scoreFolder)));
         _transformCounter.await();
         _logger.info("transformation phase is finished for EvaluationScoreThread");
 
@@ -95,11 +94,11 @@ public class EvaluationScoreThread extends Thread{
                         _termithIndex.getScoreTerms(),
                         _aggregateCounter))
         );
-       _aggregateCounter.await();
+        _aggregateCounter.await();
         _logger.info("AggregateTeiTerms phase is finished");
 
         _logger.info("ComputeTermScore phase is started");
-       _termithIndex.getScoreTerms().keySet().forEach(
+        _termithIndex.getScoreTerms().keySet().forEach(
                 p -> _executorService.submit(new ComputeTermsScore(p,_termithIndex,_scoreCounter))
         );
         _scoreCounter.await();
