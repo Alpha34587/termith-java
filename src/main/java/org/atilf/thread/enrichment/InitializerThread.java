@@ -10,6 +10,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.util.concurrent.TimeUnit;
 
+import static org.atilf.runner.Runner.DEFAULT_POOL_SIZE;
+
 /**
  * Extract the plain text of an xml file and retained the xml corpus file path into a map
  * @author Simon Meoni
@@ -33,7 +35,7 @@ public class InitializerThread extends Thread{
      * @param termithIndex the termithIndex is an object that contains the results of the process
      */
     public InitializerThread(TermithIndex termithIndex) {
-        this(termithIndex,Thread.DEFAULT_POOL_SIZE);
+        this(termithIndex,DEFAULT_POOL_SIZE);
     }
 
     /**

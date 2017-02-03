@@ -18,6 +18,8 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.TimeUnit;
 
+import static org.atilf.runner.Runner.DEFAULT_POOL_SIZE;
+
 /**
  * The AnalyzeThread calls several modules classes which analyze the morphology of each file in the corpus and the
  * terminology of the corpus. The morphology is analyzed with a treetagger wrapper. The result is serialized to
@@ -39,7 +41,7 @@ public class AnalyzeThread extends Thread{
      *         the termithIndex is an object that contains the results of the process
      */
     public AnalyzeThread(TermithIndex termithIndex) {
-        this(termithIndex,Thread.DEFAULT_POOL_SIZE);
+        this(termithIndex,DEFAULT_POOL_SIZE);
     }
 
     /**

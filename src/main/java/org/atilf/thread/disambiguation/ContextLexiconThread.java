@@ -11,6 +11,8 @@ import java.nio.file.Files;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
+import static org.atilf.runner.Runner.DEFAULT_POOL_SIZE;
+
 /**
  * transform files of a corpus into working file format and extract context of the terminology entry of corpus
  * @author Simon Meoni
@@ -42,7 +44,7 @@ public class ContextLexiconThread extends Thread {
     }
 
     public ContextLexiconThread(TermithIndex termithIndex) {
-            this(termithIndex,Thread.DEFAULT_POOL_SIZE);
+            this(termithIndex, DEFAULT_POOL_SIZE);
     }
 
     /**

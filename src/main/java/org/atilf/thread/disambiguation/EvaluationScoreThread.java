@@ -16,6 +16,8 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 
+import static org.atilf.runner.Runner.DEFAULT_POOL_SIZE;
+
 /**
  * @author Simon Meoni Created on 15/12/16.
  */
@@ -32,7 +34,7 @@ public class EvaluationScoreThread extends Thread{
      *         the termithIndex is an object that contains the results of the process
      */
     public EvaluationScoreThread(TermithIndex termithIndex) throws IOException {
-        this(termithIndex,Thread.DEFAULT_POOL_SIZE);
+        this(termithIndex,DEFAULT_POOL_SIZE);
     }
 
     /**

@@ -15,7 +15,7 @@ import java.util.concurrent.ExecutionException;
  */
 public abstract class Runner {
 
-    static final int DEFAULT_POOL_SIZE = Runtime.getRuntime().availableProcessors();
+    public static final int DEFAULT_POOL_SIZE = Runtime.getRuntime().availableProcessors();
     protected final Logger _logger = LoggerFactory.getLogger(this.getClass().getName());
     protected TermithIndex _termithIndex;
     protected int _poolSize;

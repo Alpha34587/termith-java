@@ -8,6 +8,8 @@ import org.atilf.thread.Thread;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.TimeUnit;
 
+import static org.atilf.runner.Runner.DEFAULT_POOL_SIZE;
+
 /**
  * The ExporterThread export the result of a the termithTreeTagger runner into a tei/standoff xml format
  * @author Simon Meoni

@@ -10,6 +10,8 @@ import java.nio.file.Files;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.TimeUnit;
 
+import static org.atilf.runner.Runner.DEFAULT_POOL_SIZE;
+
 /**
  * export the result of the module.disambiguation to the tei/standoff xml file format
  * @author Simon Meoni
