@@ -171,11 +171,11 @@ public class ContextExtractorTest {
                 _observedLexicon,
                 _observedCorpus).execute();
 
-        new ContextExtractor("src/test/resources/corpus/disambiguation/transform-tei/test2.xml",
+        new ContextExtractor("src/test/resources/module/disambiguation/contextLexicon/contextExtractor/test1.xml",
                 _thresholdObservedLexicon,
                 new CorpusLexicon(new HashMap<>(),new HashMap<>()),3).execute();
 
-        new ContextExtractor("src/test/resources/corpus/disambiguation/transform-tei/test2.xml",
+        new ContextExtractor("src/test/resources/module/disambiguation/contextLexicon/contextExtractor/test1.xml",
                 _thresholdObservedLexicon2,
                 new CorpusLexicon(new HashMap<>(),new HashMap<>()),60).execute();
     }

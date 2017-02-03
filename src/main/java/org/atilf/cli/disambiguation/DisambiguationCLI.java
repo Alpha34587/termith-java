@@ -66,6 +66,7 @@ public class DisambiguationCLI {
         options.addOption(annotation);
         options.addOption(score);
         options.addOption(benchmark);
+        options.addOption(threshold);
 
         try {
             CommandLine line = parser.parse( options, args );
