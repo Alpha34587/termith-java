@@ -18,6 +18,9 @@ import java.util.Map;
 public class ContextExtractorTest {
     private static Map<String,LexiconProfile> _expectedLexicon = new HashMap<>();
     private static Map<String,LexiconProfile> _observedLexicon = new HashMap<>();
+    private static Map<String,LexiconProfile> _thresholdObservedLexicon = new HashMap<>();
+    private static Map<String,LexiconProfile> _thresholdExpectedLexicon = new HashMap<>();
+    private static Map<String,LexiconProfile> _thresholdObservedLexicon2 = new HashMap<>();
     private static CorpusLexicon _observedCorpus = new CorpusLexicon(new HashMap<>(),new HashMap<>());
     private static Multiset<String> _expectedCorpus;
 
@@ -71,7 +74,17 @@ public class ContextExtractorTest {
         entry3.add("par PRP");
         entry3.add("deux NUM");
         _expectedLexicon.put("entry-575_lexOff",new LexiconProfile(entry3));
-        
+
+        Multiset<String> thresholdEntry3 = HashMultiset.create();
+        thresholdEntry3.add("un DET:ART");
+        thresholdEntry3.add("étude NOM");
+        thresholdEntry3.add("comparer VER:pper");
+        thresholdEntry3.add("archéo-ichtyofauniques ADJ");
+        thresholdEntry3.add("livrer VER:pper");
+        thresholdEntry3.add("par PRP");
+      
+        _thresholdExpectedLexicon.put("entry-575_lexOff",new LexiconProfile(thresholdEntry3));
+
         /*
         embedded multi case :  < w w T1 > T2 T3 w w w
          */
@@ -157,6 +170,14 @@ public class ContextExtractorTest {
         new ContextExtractor("src/test/resources/module/disambiguation/contextLexicon/contextExtractor/test1.xml",
                 _observedLexicon,
                 _observedCorpus).execute();
+
+        new ContextExtractor("src/test/resources/corpus/disambiguation/transform-tei/test2.xml",
+                _thresholdObservedLexicon,
+                new CorpusLexicon(new HashMap<>(),new HashMap<>()),3).execute();
+
+        new ContextExtractor("src/test/resources/corpus/disambiguation/transform-tei/test2.xml",
+                _thresholdObservedLexicon2,
+                new CorpusLexicon(new HashMap<>(),new HashMap<>()),60).execute();
     }
 
     @Test
@@ -179,6 +200,24 @@ public class ContextExtractorTest {
                     );
                 }
         );
+    }
+    @Test
+    public void extractThresholdLexiconProfile() throws Exception {
+
+        _thresholdExpectedLexicon.forEach(
+                (key, value) -> {
+                    Multiset observed = _thresholdObservedLexicon.get(key).getLexicalTable();
+                    value.getLexicalTable().forEach(
+                            el -> Assert.assertEquals("the occurrence of element must be equals at " + key +
+                                            " for the word : " + el,
+                                    value.getLexicalTable().count(el), observed.count(el)
+                            )
+                    );
+                }
+        );
+
+        Assert.assertEquals("this two lexicon must have the same size",
+                _expectedLexicon.size(),_thresholdObservedLexicon2.size());
     }
 
     @Test

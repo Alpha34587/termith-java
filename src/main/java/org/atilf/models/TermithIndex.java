@@ -52,6 +52,8 @@ public class TermithIndex {
     private TotalTermScore _totalTermScore = new TotalTermScore();
     private Map<String, Path> _transformOutputDisambiguationFile = new ConcurrentHashMap<>();
 
+    private final int _thresholdContext;
+
     /*
     CLI parameter
      */
@@ -61,7 +63,6 @@ public class TermithIndex {
     private static String _treeTaggerHome;
     private static Path _base;
     private static boolean _keepFiles;
-
     /*
     Disambiguation CLI parameter
      */
@@ -83,7 +84,8 @@ public class TermithIndex {
         _outputPath = builder._outputPath;
         _treeTaggerHome = builder._treeTaggerHome;
         _lang = builder._lang;
-        _corpusSize = builder._corpusSize;
+        _corpusSize = builder.getCorpusSize();
+        _thresholdContext = builder.getThresholdContext();
         _learningPath = builder._learningPath;
         _evaluationPath = builder._evaluationPath;
         _score = builder._score;
@@ -185,6 +187,10 @@ public class TermithIndex {
 
     public TotalTermScore getTotalTermScore() { return _totalTermScore; }
 
+    public int getThresholdContext() {
+        return _thresholdContext;
+    }
+
     /**
      * the path of input corpus
      * @return return the path
@@ -210,8 +216,8 @@ public class TermithIndex {
     }
 
     /**
-     * return the map who contains pairs of Term Entry/contextLexicon
-     * @return return a map of String/contextLexicon
+     * return the map who contains pairs of Term Entry/LexiconProfile
+     * @return return a map of String/LexiconProfile
      */
     public Map<String, LexiconProfile> getContextLexicon() {
         return _contextLexicon;
@@ -320,6 +326,7 @@ public class TermithIndex {
         Path _learningPath;
         Path _evaluationPath;
         private int _corpusSize = 0;
+        private int _thresholdContext = 0;
 
         /**
          * This method set the input folder path
@@ -329,7 +336,7 @@ public class TermithIndex {
          */
         public Builder baseFolder(String path) throws IOException {
             _base = FilesUtils.folderPathResolver(path);
-            _corpusSize = (int) Files.list(_base).count();
+            setCorpusSize((int) Files.list(_base).count());
             return this;
         }
 
@@ -352,7 +359,7 @@ public class TermithIndex {
          */
         public Builder evaluationFolder(String path) throws IOException {
             _evaluationPath = FilesUtils.folderPathResolver(path);
-            _corpusSize = (int) Files.list(_evaluationPath).count();
+            setCorpusSize((int) Files.list(_evaluationPath).count());
             return this;
         }
 
@@ -423,10 +430,15 @@ public class TermithIndex {
         }
 
 
+        public Builder threshold(int threshold) {
+            setThresholdContext(threshold);
+            return this;
+        }
+
         /**
          * set annotation path
-         * @param disambiguationAnnotation module.disambiguation path
-         * @return return module.disambiguation path
+         * @param disambiguationAnnotation disambiguation path
+         * @return return disambiguation path
          */
         public Builder annotation(String disambiguationAnnotation) {
             _disambiguationAnnotation = FilesUtils.folderPathResolver(disambiguationAnnotation);
@@ -440,6 +452,22 @@ public class TermithIndex {
          */
         public TermithIndex build() throws IOException {
             return new TermithIndex(this);
+        }
+
+        int getCorpusSize() {
+            return _corpusSize;
+        }
+
+        void setCorpusSize(int corpusSize) {
+            _corpusSize = corpusSize;
+        }
+
+        public int getThresholdContext() {
+            return _thresholdContext;
+        }
+
+        public void setThresholdContext(int thresholdContext) {
+            _thresholdContext = thresholdContext;
         }
     }
 }

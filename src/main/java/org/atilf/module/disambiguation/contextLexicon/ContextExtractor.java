@@ -94,7 +94,7 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
     protected List<ContextTerm> _terms = new LinkedList<>();
     private String _p;
     private File _xml;
-
+    private int _threshold = 0;
     protected ContextWord _lastContextWord;
     protected Map<String,List<Integer>> _targetContext = new HashMap<>();
     protected Stack<TreeMap<Integer,String>> _contextStack = new Stack<>();
@@ -126,6 +126,11 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
         _xml = new File(_p);
     }
 
+
+    public ContextExtractor(String p, Map<String, LexiconProfile> contextLexicon, CorpusLexicon corpusLexicon, int threshold){
+        this(p,contextLexicon,corpusLexicon);
+        _threshold = threshold;
+    }
     /**
      * getter for _terms fields
      * @return return a list of ContextTerms
@@ -327,21 +332,48 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
         create new entry if the key not exists in the _contextLexicon field
          */
         String key = normalizeKey(term.getCorresp(), term.getAna());
-        SortedMap<Integer, String> leftContextTarget = context.subMap(0, true,term.getBeginTag(),true);
-        Map<Integer,String> contextTarget = new TreeMap<>(context.subMap(term.getEndTag(), true,context.lastKey(),true));
-        contextTarget.putAll(leftContextTarget);
 
-        if (!_targetContext.containsKey(key)) {
-            _targetContext.put(key, new ArrayList<>());
+        Map<Integer,String> contextTarget = contextThreshold(term,context);
+        if (contextTarget.size() != 0) {
+            if (!_targetContext.containsKey(key)) {
+                _targetContext.put(key, new ArrayList<>());
+            }
+
+            if (!_contextLexicon.containsKey(key)) {
+                _contextLexicon.put(key, new LexiconProfile());
+            }
+            _targetContext.get(key).forEach(contextTarget::remove);
+            _targetContext.get(key).addAll(new ArrayList<>(contextTarget.keySet()));
+            _contextLexicon.get(key).addOccurrences(new ArrayList<>(contextTarget.values()));
         }
+    }
 
-
-        if (!_contextLexicon.containsKey(key)) {
-            _contextLexicon.put(key, new LexiconProfile());
+    private Map<Integer,String> contextThreshold(ContextTerm term, TreeMap<Integer, String> context){
+        Map<Integer,String> rightContextTarget = new TreeMap<>();
+        SortedMap<Integer, String> leftContextTarget = new TreeMap<>();
+        if (_threshold == 0){
+            leftContextTarget = context.subMap(0, true, term.getBeginTag(),true);
+            rightContextTarget = new TreeMap<>(context.subMap(term.getEndTag(), true,
+                    context.lastKey(),true));
         }
-        _targetContext.get(key).forEach(contextTarget::remove);
-        _targetContext.get(key).addAll(new ArrayList<>(contextTarget.keySet()));
-        _contextLexicon.get(key).addOccurrences(new ArrayList<>(contextTarget.values()));
+        else {
+            if (term.getBeginTag() > _threshold) {
+                leftContextTarget = context.subMap(term.getBeginTag() - _threshold, true, term.getBeginTag(), true);
+            }
+            else {
+                leftContextTarget = context.subMap(0, true, term.getBeginTag(),true);
+            }
+            if (context.lastKey() > term.getEndTag() + _threshold  ) {
+                rightContextTarget = new TreeMap<>(context.subMap(term.getEndTag(), true,
+                        term.getEndTag() + _threshold, true));
+            }
+            else {
+                rightContextTarget = new TreeMap<>(context.subMap(term.getEndTag(), true, context.lastKey(),true));
+            }
+        }
+        rightContextTarget.putAll(leftContextTarget);
+
+        return rightContextTarget;
     }
 
     /**

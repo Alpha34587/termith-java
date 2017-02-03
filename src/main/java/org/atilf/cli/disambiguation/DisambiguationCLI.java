@@ -54,7 +54,8 @@ public class DisambiguationCLI {
         score.setArgs(0);
         Option benchmark = new Option("b","benchmark",true,"export benchmark");
         benchmark.setRequired(false);
-
+        Option threshold = new Option("t","threshold",true,"context threshold");
+        threshold.setRequired(false);
 
         options.addOption(learning);
         options.addOption(evaluation);
@@ -83,6 +84,10 @@ public class DisambiguationCLI {
             if (line.hasOption("score")){
                 termithBuilder.score(true);
             }
+            if (line.hasOption("threshold")){
+                termithBuilder.threshold(Integer.parseInt(line.getOptionValue("t")));
+            }
+
             if (line.hasOption("benchmark")) {
                 BenchmarkFactory._exportBenchmark = true;
                 BenchmarkFactory._performancePath = Paths.get(line.getOptionValue("benchmark"));
