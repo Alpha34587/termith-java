@@ -70,7 +70,7 @@ public class Disambiguation extends Runner {
         /*
         Score phase
          */
-            if (TermithIndex.isScore()){
+            if (TermithIndex.getScorePath() != null){
                 executeThread(EvaluationScoreThread.class,_termithIndex,_poolSize);
             }
 

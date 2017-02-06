@@ -51,7 +51,6 @@ public class DisambiguationCLI {
         debug.setArgs(0);
         Option score = new Option("s","score",true,"evaluation of module.disambiguation");
         score.setRequired(false);
-        score.setArgs(0);
         Option benchmark = new Option("b","benchmark",true,"export benchmark");
         benchmark.setRequired(false);
         Option threshold = new Option("t","threshold",true,"context threshold");
@@ -83,7 +82,7 @@ public class DisambiguationCLI {
                 CLIUtils.setGlobalLogLevel(Level.DEBUG);
             }
             if (line.hasOption("score")){
-                termithBuilder.score(true);
+                termithBuilder.score(line.getOptionValue("s"));
             }
             if (line.hasOption("threshold")){
                 termithBuilder.threshold(Integer.parseInt(line.getOptionValue("t")));

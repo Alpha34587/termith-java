@@ -23,7 +23,7 @@ public class ExportScoreToJsonTest {
             "evaluationScore/exportToJson/test1.json");
     private static Map<String,ScoreTerm> _scoreTerm = new HashMap<>();
     private static TotalTermScore _totalScoreTerm = new TotalTermScore();
-    private static ExportScoreToJson _exportScoreToJson = new ExportScoreToJson(_scoreTerm,_totalScoreTerm);
+    private static ExportScoreToJson _exportScoreToJson;
 
     @ClassRule
     public static TemporaryFolder temporaryFolder = new TemporaryFolder();
@@ -62,6 +62,8 @@ public class ExportScoreToJsonTest {
         _totalScoreTerm.setPrecision(0.4f);
         _totalScoreTerm.setF1score(0.3f);
         new TermithIndex.Builder().export(temporaryFolder.getRoot().getAbsolutePath()).build();
+        _exportScoreToJson =
+                new ExportScoreToJson(_scoreTerm,_totalScoreTerm, TermithIndex.getOutputPath(),false);
     }
     @Test
     public void execute() throws Exception {

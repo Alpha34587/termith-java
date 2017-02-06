@@ -111,8 +111,8 @@ public class EvaluationScoreThread extends Thread{
         _logger.info("ComputeTotalTermsScore is finished");
 
         _logger.info("Export phase is started");
-        _executorService.submit(new ExportScoreToJson(_termithIndex));
-        _executorService.submit(new ExportScoreToCsv(_termithIndex)).get();
+        _executorService.submit(new ExportScoreToCsv(_termithIndex,TermithIndex.getScorePath()));
+        _executorService.submit(new ExportScoreToJson(_termithIndex, TermithIndex.getScorePath(), true)).get();
         _executorService.submit(new WorkingFilesCleaner(TermithIndex.getOutputPath(),false));
         _logger.info("Export phase is finished");
         _executorService.shutdown();
