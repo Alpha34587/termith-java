@@ -11,6 +11,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -68,7 +69,7 @@ public class TermithIndex {
      */
     private static Path _learningPath;
     private static Path _evaluationPath;
-    private static boolean _score;
+    private static Path _scorePath;
 
     private List<TimePerformanceEvent>  _timePerformanceEvents = new ArrayList<>();
     private List<MemoryPerformanceEvent> _memoryPerformanceEvents = new ArrayList<>();
@@ -88,7 +89,7 @@ public class TermithIndex {
         _thresholdContext = builder.getThresholdContext();
         _learningPath = builder._learningPath;
         _evaluationPath = builder._evaluationPath;
-        _score = builder._score;
+        _scorePath = builder._scorePath;
     }
 
     /*
@@ -237,8 +238,8 @@ public class TermithIndex {
      */
     public static Path getOutputPath() { return _outputPath;}
 
-    public static boolean isScore() {
-        return _score;
+    public static Path getScorePath() {
+        return _scorePath;
     }
 
     public Map<String, Path> getTransformOutputDisambiguationFile() {
@@ -317,7 +318,7 @@ public class TermithIndex {
     {
         Path _outputPath = null;
         boolean _keepFiles = false;
-        boolean _score = false;
+        Path _scorePath = null;
         List<Path> _terminology = new CopyOnWriteArrayList<>();
         String _lang;
         Path _base;
@@ -374,8 +375,15 @@ public class TermithIndex {
             return this;
         }
 
-        public Builder score(boolean activate){
-            _score = activate;
+        public Builder score(String scorePath) throws IOException {
+            _scorePath = Paths.get(scorePath);
+            File folder =_scorePath.toFile();
+            if (Files.exists(_scorePath)){
+                FileUtils.deleteDirectory(folder);
+            }
+            if (!folder.mkdir()){
+                throw new IOException("cannot create output folder");
+            }
             return this;
         }
 

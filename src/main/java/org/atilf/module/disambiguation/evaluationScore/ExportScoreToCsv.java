@@ -7,6 +7,7 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.math.RoundingMode;
+import java.nio.file.Path;
 import java.text.DecimalFormat;
 import java.util.Locale;
 import java.util.Map;
@@ -16,13 +17,15 @@ import java.util.Map;
  */
 public class ExportScoreToCsv extends ExportScoreToJson {
 
-    ExportScoreToCsv(Map<String, ScoreTerm> scoreTerms) {
-        super(scoreTerms,null);
+    ExportScoreToCsv(Map<String, ScoreTerm> scoreTerms, Path scoreFolder)
+    {
+        super(scoreTerms,null,scoreFolder,false);
     }
 
-    public ExportScoreToCsv(TermithIndex termithIndex) {
-        super(termithIndex);
+    public ExportScoreToCsv(TermithIndex termithIndex, Path scoreFolder) {
+        super(termithIndex, scoreFolder,false);
     }
+
     @Override
     public void execute() {
         _logger.info("CSV exportation started");
@@ -31,7 +34,7 @@ public class ExportScoreToCsv extends ExportScoreToJson {
             DecimalFormat df = new DecimalFormat("#.####");
             df.setRoundingMode(RoundingMode.CEILING);
 
-            FileWriter fileWriter = new FileWriter(TermithIndex.getOutputPath() + "/termith-score.csv");
+            FileWriter fileWriter = new FileWriter(_scoreFolder + "/termith-score.csv");
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             bufferedWriter.write(
                     "\"FL CT\",\"Lg\",\"POS\",\"Man On\",\"Man Off\",\"Nb occ\"," +

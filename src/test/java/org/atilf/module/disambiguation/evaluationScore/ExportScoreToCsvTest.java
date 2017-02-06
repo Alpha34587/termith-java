@@ -23,7 +23,7 @@ public class ExportScoreToCsvTest {
             "evaluationScore/exportToCsv/test1.csv");
     private static Map<String,ScoreTerm> _scoreTerm = new HashMap<>();
     private static TotalTermScore _totalScoreTerm = new TotalTermScore();
-    private static ExportScoreToCsv _exportScoreToCsv = new ExportScoreToCsv(_scoreTerm);
+    private static ExportScoreToCsv _exportScoreToCsv;
 
     @ClassRule
     public static TemporaryFolder temporaryFolder = new TemporaryFolder();
@@ -71,6 +71,7 @@ public class ExportScoreToCsvTest {
         _totalScoreTerm.setPrecision(0.4f);
         _totalScoreTerm.setF1score(0.3f);
         new TermithIndex.Builder().export(temporaryFolder.getRoot().getAbsolutePath()).build();
+        _exportScoreToCsv = new ExportScoreToCsv(_scoreTerm, TermithIndex.getOutputPath());
     }
     @Test
     public void execute() throws Exception {
