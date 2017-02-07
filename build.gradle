@@ -1,8 +1,26 @@
 group 'org.atilf'
 apply plugin: 'java'
 apply plugin: 'idea'
-
+apply plugin:'org.hidetake.ssh'
 version '0.5'
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'org.hidetake:gradle-ssh-plugin:2.7.2'
+    }
+}
+
+remotes {
+    arges {
+        role 'vm'
+        host = 'arges.atilf.fr'
+        user = 'smeoni'
+        identity = file("${System.getProperty('user.home')}/.ssh/id_rsa")
+    }
+}
 
 repositories {
     mavenCentral()
@@ -45,13 +63,25 @@ dependencies {
 jar {
     exclude 'META-INF/*.SF', 'META-INF/*.DSA', 'META-INF/*.RSA', 'META-INF/*.MF'
     manifest {
-        attributes("Main-Class": "org.atilf.cli.TermithTreeTaggerCLI" )
+        attributes("Main-Class": "org.atilf.cli.enrichment.TermithTreeTaggerCLI" )
     }
     baseName = project.name + '-all'
     classifier = 'SNAPSHOT'
     archiveName = "${baseName}-v${version}-${classifier}.${extension}"
     from {
         configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
+
+task deployJar {
+    tasks.jar.execute()
+    ssh.run {
+        session(remotes.arges) {
+            execute 'rm -f /usr/local/istex/*.jar'
+            put from : "/home/smeoni/IdeaProjects/termITH/build/libs/termITH-all-v${version}-SNAPSHOT.jar",
+                    into: '/usr/local/istex'
+            execute "ln -sf /usr/local/istex/termITH-all-v${version}-SNAPSHOT.jar /usr/local/istex/termith-jar"
+        }
     }
 }
 
