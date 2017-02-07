@@ -9,12 +9,23 @@ import java.util.List;
 public class ContextTerm {
     private String _corresp;
     private String _ana;
-    private List<String> _target;
+    private int _beginTag;
+    private int _endTag;
 
     public ContextTerm(String corresp, String ana, String target) {
         _corresp = corresp;
         _ana = ana;
-        _target = Arrays.asList(target.replace("#","").split(" "));
+        List<String> tags = Arrays.asList(target.replace("#t","").split(" "));
+        _beginTag = Integer.parseInt(tags.get(0));
+        _endTag = Integer.parseInt(tags.get(tags.size()-1));
+    }
+
+
+    public ContextTerm(String corresp, String target) {
+        _corresp = corresp;
+        List<String> tags = Arrays.asList(target.replace("#t","").split(" "));
+        _beginTag = Integer.parseInt(tags.get(0));
+        _endTag = Integer.parseInt(tags.get(tags.size()-1));
     }
 
     public String getCorresp() {
@@ -25,9 +36,16 @@ public class ContextTerm {
         return _ana;
     }
 
-    public List<String> getTarget() {
-        return _target;
+    public int getBeginTag() {
+        return _beginTag;
     }
 
-    public boolean inTerm(String target) { return _target.contains(target); }
+    public int getEndTag() {
+        return _endTag;
+    }
+
+    public boolean inTerm(int target) {
+        return _beginTag <= target && target <= _endTag;
+
+    }
 }

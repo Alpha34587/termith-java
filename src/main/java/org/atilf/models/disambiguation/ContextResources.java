@@ -16,7 +16,7 @@ import java.util.Iterator;
 public class ContextResources {
 
     /**
-     * declaration of namespace context :
+     * declaration of namespace _context :
      *  - ns & ns2 are namespaces for standoff annotation
      *  - tei is the namespace for tei format
      */
@@ -88,7 +88,7 @@ public class ContextResources {
          */
         TAG_GETTER = ".//tei:w";
         /*
-        used for extract context
+        used for extract _context
          */
         CONTEXT_GETTER_SIMPLE = "/tei:TEI/tei:text//tei:w[@xml:id = $c_id]/..";
         CONTEXT_GETTER_FIRST = "/tei:TEI/tei:text//tei:w[@xml:id = $first]/..";

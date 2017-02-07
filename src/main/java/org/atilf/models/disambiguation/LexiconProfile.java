@@ -1,14 +1,15 @@
 package org.atilf.models.disambiguation;
 
 import com.google.common.collect.Multiset;
+import org.atilf.module.disambiguation.lexiconProfile.SpecCoefficientInjector;
 
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * The lexicon profile corresponds to a term associated to his context. Each words of the context
+ * The lexicon profile corresponds to a term associated to his _context. Each words of the _context
  * has a specificity coefficient computed by the SpecificityCoefficientInjector module.
- * @see org.atilf.module.disambiguation.SpecCoefficientInjector
+ * @see SpecCoefficientInjector
  * @author Simon Meoni
  *         Created on 21/10/16.
  */

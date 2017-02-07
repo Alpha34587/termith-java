@@ -1,15 +1,17 @@
 package org.atilf.thread.disambiguation;
 
+import org.atilf.models.TermithIndex;
 import org.atilf.models.disambiguation.DisambiguationXslResources;
-import org.atilf.models.termith.TermithIndex;
-import org.atilf.module.disambiguation.ContextExtractor;
-import org.atilf.module.disambiguation.DisambiguationXslTransformer;
+import org.atilf.module.disambiguation.contextLexicon.ContextExtractor;
+import org.atilf.module.disambiguation.contextLexicon.DisambiguationXslTransformer;
 import org.atilf.thread.Thread;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
+
+import static org.atilf.runner.Runner.DEFAULT_POOL_SIZE;
 
 /**
  * transform files of a corpus into working file format and extract context of the terminology entry of corpus
@@ -19,7 +21,6 @@ import java.util.concurrent.TimeUnit;
 public class ContextLexiconThread extends Thread {
 
     private CountDownLatch _transformCounter;
-
     /**
      * this constructor initialize all the needed fields. The _transformCounter is a CountDownLatch object of
      * the java concurrent library. The _transformCounter is set to the number of the file of the corpus. At each
@@ -42,7 +43,7 @@ public class ContextLexiconThread extends Thread {
     }
 
     public ContextLexiconThread(TermithIndex termithIndex) {
-            this(termithIndex,Thread.DEFAULT_POOL_SIZE);
+            this(termithIndex, DEFAULT_POOL_SIZE);
     }
 
     /**
@@ -85,7 +86,8 @@ public class ContextLexiconThread extends Thread {
                     _executorService.submit(
                             new ContextExtractor(file.toString(),
                                     _termithIndex.getContextLexicon(),
-                                    _termithIndex.getCorpusLexicon()
+                                    _termithIndex.getCorpusLexicon(),
+                                    _termithIndex.getThresholdContext()
                             )
                     );
                 }

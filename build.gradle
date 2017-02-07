@@ -1,7 +1,8 @@
 group 'org.atilf'
 apply plugin: 'java'
 apply plugin: 'idea'
-version '0.4'
+
+version '0.5'
 
 repositories {
     mavenCentral()
@@ -28,11 +29,14 @@ dependencies {
         exclude module:'commons-io'
         exclude module:'jackson-core'
         exclude module:'slf4j-api'
+        exclude module: 'log4j-slf4j'
         exclude module:'commons-lang3'
+        exclude module:'logback-classic'
     }
-    compile group: 'com.github.jbytecode', name: 'RCaller', version: '3.0'
-    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.21'
-    compile group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.21'
+
+    compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.1.9'
+    compile group: 'org.rosuda.REngine', name: 'Rserve', version: '1.8.1'
+
     testCompile 'junit:junit:4.12'
     testCompile group: 'xmlunit', name: 'xmlunit', version: '1.6'
     testCompile group: 'org.mockito', name: 'mockito-all', version: '2.0.2-beta'

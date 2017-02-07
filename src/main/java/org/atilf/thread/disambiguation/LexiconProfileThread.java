@@ -1,12 +1,17 @@
 package org.atilf.thread.disambiguation;
 
+import org.atilf.models.TermithIndex;
+import org.atilf.models.disambiguation.RConnectionPool;
 import org.atilf.models.disambiguation.RLexicon;
-import org.atilf.models.termith.TermithIndex;
-import org.atilf.module.disambiguation.SpecCoefficientInjector;
+import org.atilf.module.disambiguation.lexiconProfile.SpecCoefficientInjector;
 import org.atilf.thread.Thread;
 
+import java.io.IOException;
+import java.nio.file.Files;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.TimeUnit;
+
+import static java.lang.Thread.currentThread;
 
 /**
  * The LexiconProfileThread process the specificity coefficient for each pair of lemma/_pos of a termEntry contained by
@@ -48,24 +53,25 @@ public class LexiconProfileThread extends Thread{
      * words for each context of terms candidates entries (also known as lexical profile)
      * @throws InterruptedException thrown if awaitTermination function is interrupted while waiting
      */
-    public void execute() throws InterruptedException {
+    public void execute() throws InterruptedException, IOException {
         /*
         convert global corpus into R variable
          */
-        RLexicon rLexicon = new RLexicon(_termithIndex.getCorpusLexicon());
 
-        /*
-        compute lexical profile for each terms candidates entries
-         */
+        RLexicon rLexicon = new RLexicon(_termithIndex.getCorpusLexicon());
+        RConnectionPool RConnectionPool = new RConnectionPool(8,rLexicon);
         _termithIndex.getContextLexicon().forEach(
-                (key,value) -> _executorService.submit(new SpecCoefficientInjector(
+                (key, value) -> _executorService.submit(new SpecCoefficientInjector(
                         key,
                         _termithIndex,
-                        rLexicon))
+                        rLexicon,
+                        RConnectionPool))
         );
 
         _logger.info("Waiting SpecCoefficientInjector executors to finish");
         _executorService.shutdown();
         _executorService.awaitTermination(1L, TimeUnit.DAYS);
+        RConnectionPool.removeThread(currentThread());
+        Files.delete(rLexicon.getCsvPath());
     }
 }

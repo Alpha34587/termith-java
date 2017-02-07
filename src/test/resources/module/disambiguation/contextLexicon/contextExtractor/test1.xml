@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:ns="http://standoff.proposal">
+    <ns:standOff>
+        <span target="#t25" corresp="#entry-450" ana="#DM1" text=""/>
+        <span target="#t13 #t14 #t15 #t16" corresp="#entry-13471" ana="#DM1" text=""/>
+        <span target="#t49" corresp="#entry-990" ana="#noDM" text=""/>
+        <span target="#t7 #t8" corresp="#entry-575" ana="#DM1" text=""/>
+        <span target="#t18 #t19" corresp="#entry-35" ana="#DM1" text=""/>
+        <span target="#t51" corresp="#entry-7263" ana="#DM4" text=""/>
+        <span target="#t30" corresp="#entry-7263" ana="#DM3"/>
+        <span target="#t46 #t47 #t48" corresp="#entry-5750" ana="#DM3" text=""/>
+        <span target="#t13 #t14 #t15 #t16" corresp="#entry-13471" ana="#DM1" text=""/>
+    </ns:standOff>
+    <text>
+        <front>
+            <div type="abstract" xml:lang="fr">
+                <p>
+                    <p>
+                        <w xml:id="t1">ce PRO:DEM</w>
+                        <w xml:id="t2">article NOM</w>
+                        <w xml:id="t3">présenter VER:pres</w>
+                        <w xml:id="t4">un DET:ART</w>
+                        <w xml:id="t5">étude NOM</w>
+                        <w xml:id="t6">comparer VER:pper</w>
+                        <w xml:id="t7">du PRP:det</w>
+                        <w xml:id="t8">donnée NOM</w>
+                        <s/>
+                        <w xml:id="t9">archéo-ichtyofauniques ADJ</w>
+                        <w xml:id="t10">livrer VER:pper</w>
+                        <w xml:id="t11">par PRP</w>
+                        <w xml:id="t12">deux NUM</w>
+                    </p>
+                    <w xml:id="t13">site NOM</w>
+                    <w xml:id="t14">de PRP</w>
+                    <head>
+                        <w xml:id="t15">le DET:ART</w>
+                        <w xml:id="t16">âge NOM</w>
+                        <w xml:id="t17">du PRP:det</w>
+                    </head>
+                </p>
+                <q>
+                    <w xml:id="t18">bronze NOM</w>
+                    <s><w xml:id="t19">. SENT</w></s>
+                    <w xml:id="t20">sur PRP</w>
+                    <w xml:id="t21">le DET:ART</w>
+                    <w xml:id="t22">deux NUM</w>
+                    <w xml:id="t23">site NOM</w>
+                </q>
+                <head>
+                    <w xml:id="t24">, PUN</w>
+                    <w xml:id="t25">le DET:ART</w>
+                    <s>
+                        <w xml:id="t26">pêche NOM</w>
+                        <w xml:id="t27">être VER:pres</w>
+                        <w xml:id="t28">un DET:ART</w>
+                    </s>
+                </head>
+                <p>
+                    <div>
+                        <p>
+                            <w xml:id="t29">pêche NOM</w>
+                            <w xml:id="t30">côtier ADJ</w>
+                            <w xml:id="t31">, PUN</w>
+                            <w xml:id="t32">limiter VER:pper</w>
+                            <w xml:id="t33">à PRP</w>
+                            <w xml:id="t34">quelque PRO:IND</w>
+                            <w xml:id="t35">espèce NOM</w>
+                            <w xml:id="t36">commun ADJ</w>
+                            <w xml:id="t37">. SENT</w>
+                            <w xml:id="t38">il PRO:PER</w>
+                        </p>
+                    </div>
+                </p>
+                <p>
+                    <w xml:id="t39">se PRO:PER</w>
+                    <w xml:id="t40">différencier VER:pres</w>
+                    <w xml:id="t41">principalement ADV</w>
+                    <w xml:id="t42">par PRP</w>
+                    <w xml:id="t43">le DET:ART</w>
+                    <cit>
+                        <s>
+                            <w xml:id="t44">type NOM</w>
+                            <w xml:id="t45">de PRP</w>
+                            <w xml:id="t46">rejet NOM</w>
+                        </s>
+                        <w xml:id="t47">précéder VER:ppre</w>
+                        <w xml:id="t48">leur DET:POS</w>
+                        <w xml:id="t49">enfouissement NOM</w>
+                        <w xml:id="t50">. SENT</w>
+                    </cit>
+                    <note>
+                        <w xml:id="t51">le DET:ART</w>
+                    </note>
+                </p>
+            </div>
+        </front>
+        <body>
+            <p/>
+        </body>
+        <back>
+            <div type="notes"/>
+        </back>
+    </text>
+</TEI>

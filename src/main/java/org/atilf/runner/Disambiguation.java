@@ -1,16 +1,14 @@
 package org.atilf.runner;
 
-import org.atilf.models.termith.TermithIndex;
-import org.atilf.thread.disambiguation.ContextLexiconThread;
-import org.atilf.thread.disambiguation.DisambiguationExporterThread;
-import org.atilf.thread.disambiguation.EvaluationThread;
-import org.atilf.thread.disambiguation.LexiconProfileThread;
+import org.atilf.models.TermithIndex;
+import org.atilf.thread.disambiguation.*;
+import org.atilf.tools.BenchmarkFactory;
 
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
 /**
- * this is the disambiguation process of termITH
+ * this is the module.disambiguation process of termITH
  * @author Simon Meoni
  *         Created on 11/10/16.
  */
@@ -53,12 +51,11 @@ public class Disambiguation extends Runner {
     public void execute() {
         try {
             _logger.info("Pool size set to: " + _poolSize);
-
         /*
         Context extraction phase
          */
             executeThread(ContextLexiconThread.class,_termithIndex,_poolSize);
-                        /*
+        /*
         Lexicon profile processing
          */
             executeThread(LexiconProfileThread.class,_termithIndex, _poolSize);
@@ -70,6 +67,17 @@ public class Disambiguation extends Runner {
         Export results
          */
             executeThread(DisambiguationExporterThread.class,_termithIndex,_poolSize);
+        /*
+        Score phase
+         */
+            if (TermithIndex.getScorePath() != null){
+                executeThread(EvaluationScoreThread.class,_termithIndex,_poolSize);
+            }
+
+            if (BenchmarkFactory._exportBenchmark) {
+                BenchmarkFactory.export(_termithIndex.getMemoryPerformanceEvents());
+                BenchmarkFactory.export(_termithIndex.getTimePerformanceEvents());
+            }
         } catch (InterruptedException | ExecutionException | IOException e) {
             _logger.error("error during execution of thread : ", e);
         }

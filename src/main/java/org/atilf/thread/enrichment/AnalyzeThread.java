@@ -1,17 +1,14 @@
 package org.atilf.thread.enrichment;
 
-import org.atilf.models.termith.TermithIndex;
-import org.atilf.models.termsuite.MorphologyOffsetId;
-import org.atilf.module.extractor.TextExtractor;
-import org.atilf.module.termsuite.pipeline.TermsuitePipelineBuilder;
-import org.atilf.module.termsuite.terminology.TerminologyParser;
-import org.atilf.module.termsuite.terminology.TerminologyStandOff;
-import org.atilf.module.timer.JsonTimer;
-import org.atilf.module.timer.TokenizeTimer;
-import org.atilf.module.tools.FilesUtils;
-import org.atilf.models.termsuite.CorpusAnalyzer;
-import org.atilf.module.treetagger.TreeTaggerWorker;
+import org.atilf.models.TermithIndex;
+import org.atilf.models.enrichment.CorpusAnalyzer;
+import org.atilf.module.enrichment.analyze.TerminologyParser;
+import org.atilf.module.enrichment.analyze.TerminologyStandOff;
+import org.atilf.module.enrichment.analyze.TermsuitePipelineBuilder;
+import org.atilf.module.enrichment.analyze.TreeTaggerWorker;
+import org.atilf.module.enrichment.initializer.TextExtractor;
 import org.atilf.thread.Thread;
+import org.atilf.tools.FilesUtils;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -20,6 +17,8 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.TimeUnit;
+
+import static org.atilf.runner.Runner.DEFAULT_POOL_SIZE;
 
 /**
  * The AnalyzeThread calls several modules classes which analyze the morphology of each file in the corpus and the
@@ -42,7 +41,7 @@ public class AnalyzeThread extends Thread{
      *         the termithIndex is an object that contains the results of the process
      */
     public AnalyzeThread(TermithIndex termithIndex) {
-        this(termithIndex,Thread.DEFAULT_POOL_SIZE);
+        this(termithIndex,DEFAULT_POOL_SIZE);
     }
 
     /**
@@ -96,13 +95,6 @@ public class AnalyzeThread extends Thread{
      * @see TerminologyStandOff
      */
     public void execute() throws InterruptedException, IOException, ExecutionException {
-
-        /*
-        Initialize Timer
-         */
-        new TokenizeTimer(_termithIndex,_logger).start();
-        new JsonTimer(_termithIndex,_logger).start();
-
         /*
         Build Corpus analyzer
          */
@@ -138,10 +130,7 @@ public class AnalyzeThread extends Thread{
          */
         _termithIndex.getMorphologyStandOff().forEach(
                 (id,value) -> _executorService.submit(
-                        new TerminologyStandOff(
-                                FilesUtils.readListObject(value,MorphologyOffsetId.class),
-                                _termithIndex.getTerminologyStandOff().get(id)
-                        )
+                        new TerminologyStandOff(id,_termithIndex)
                 )
         );
         _executorService.shutdown();

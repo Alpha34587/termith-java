@@ -1,13 +1,14 @@
 package org.atilf.thread.enrichment;
 
-import org.atilf.models.tei.exporter.StandOffResources;
-import org.atilf.models.termith.TermithIndex;
-import org.atilf.module.timer.TeiWriterTimer;
-import org.atilf.module.exporter.TeiWriter;
+import org.atilf.models.TermithIndex;
+import org.atilf.models.enrichment.StandOffResources;
+import org.atilf.module.enrichment.exporter.TeiWriter;
 import org.atilf.thread.Thread;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.TimeUnit;
+
+import static org.atilf.runner.Runner.DEFAULT_POOL_SIZE;
 
 /**
  * The ExporterThread export the result of a the termithTreeTagger runner into a tei/standoff xml format
@@ -42,11 +43,6 @@ public class ExporterThread extends Thread {
      * @throws InterruptedException throws java concurrent executorService exception
      */
     public void execute() throws InterruptedException {
-        /*
-         initializerExporter timer
-         */
-        new TeiWriterTimer(_termithIndex,_logger).start();
-
         /*
         initialize standoff resource object
          */

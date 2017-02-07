@@ -1,7 +1,7 @@
 package org.atilf.thread.enrichment;
 
-import org.atilf.models.termith.TermithIndex;
-import org.atilf.module.tools.WorkingFilesCleaner;
+import org.atilf.models.TermithIndex;
+import org.atilf.module.enrichment.cleaner.WorkingFilesCleaner;
 import org.atilf.thread.Thread;
 
 import java.util.concurrent.TimeUnit;

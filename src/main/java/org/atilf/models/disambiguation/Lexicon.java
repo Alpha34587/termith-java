@@ -4,6 +4,7 @@ import com.google.common.collect.ConcurrentHashMultiset;
 import com.google.common.collect.Multiset;
 
 import java.util.Iterator;
+import java.util.List;
 import java.util.function.Consumer;
 
 /**
@@ -62,6 +63,9 @@ public abstract class Lexicon implements Iterable<String> {
             return -1;
     }
 
+    public void addOccurrences(List<String> occurrences) {
+        _lexicalTable.addAll(occurrences);
+    }
     /**
      * override iterator
      * @return return String iterator

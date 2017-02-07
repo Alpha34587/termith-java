@@ -1,6 +1,6 @@
 package org.atilf.runner;
 
-import org.atilf.models.termith.TermithIndex;
+import org.atilf.models.TermithIndex;
 import org.atilf.thread.Thread;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,7 +15,7 @@ import java.util.concurrent.ExecutionException;
  */
 public abstract class Runner {
 
-    static final int DEFAULT_POOL_SIZE = Runtime.getRuntime().availableProcessors();
+    public static final int DEFAULT_POOL_SIZE = Runtime.getRuntime().availableProcessors();
     protected final Logger _logger = LoggerFactory.getLogger(this.getClass().getName());
     protected TermithIndex _termithIndex;
     protected int _poolSize;
@@ -63,8 +63,7 @@ public abstract class Runner {
         try {
             T thread = threadClass.getConstructor(TermithIndex.class, int.class)
                     .newInstance(termithIndex, poolSize);
-            thread.execute();
-
+            thread.run();
         } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
             _logger.error("error during instantiation of object thread object : " + e);
         }

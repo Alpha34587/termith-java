@@ -1,7 +1,7 @@
 package org.atilf.models.disambiguation;
 
 import org.apache.commons.io.IOUtils;
-import org.atilf.module.disambiguation.SpecCoefficientInjector;
+import org.atilf.module.disambiguation.lexiconProfile.SpecCoefficientInjector;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -16,7 +16,8 @@ public class RResources {
     private static final Logger LOGGER = LoggerFactory.getLogger(RResources.class.getName());
     static {
         String script = null;
-        InputStream resourceAsStream = SpecCoefficientInjector.class.getResourceAsStream("/disambiguation/R/specificities.R");
+        InputStream resourceAsStream = SpecCoefficientInjector.class.getResourceAsStream("/models/disambiguation" +
+                "/rResources/specificities.R");
         try {
             script = IOUtils.toString(resourceAsStream, "UTF-8");
         } catch (IOException e) {
