@@ -4,6 +4,7 @@ import org.atilf.models.TermithIndex;
 import org.atilf.models.disambiguation.DisambiguationXslResources;
 import org.atilf.models.enrichment.XslResources;
 import org.atilf.module.disambiguation.contextLexicon.DisambiguationXslTransformer;
+import org.atilf.module.disambiguation.disambiguationExporter.ContextJsonExporter;
 import org.atilf.module.disambiguation.evaluationScore.*;
 import org.atilf.module.enrichment.cleaner.WorkingFilesCleaner;
 import org.atilf.thread.Thread;
@@ -114,6 +115,7 @@ public class EvaluationScoreThread extends Thread{
         _executorService.submit(new ExportScoreToCsv(_termithIndex,TermithIndex.getScorePath()));
         _executorService.submit(new ExportScoreToJson(_termithIndex, TermithIndex.getScorePath(), true)).get();
         _executorService.submit(new WorkingFilesCleaner(TermithIndex.getOutputPath(),false));
+         _executorService.submit(new ContextJsonExporter(_termithIndex,TermithIndex.getScorePath())).get();
         _logger.info("Export phase is finished");
         _executorService.shutdown();
         _executorService.awaitTermination(1L, TimeUnit.DAYS);
