@@ -74,13 +74,15 @@ jar {
 }
 
 task deployJar {
-    tasks.jar.execute()
-    ssh.run {
-        session(remotes.arges) {
-            execute 'rm -f /usr/local/istex/*.jar'
-            put from : "/home/smeoni/IdeaProjects/termITH/build/libs/termITH-all-v${version}-SNAPSHOT.jar",
-                    into: '/usr/local/istex'
-            execute "ln -sf /usr/local/istex/termITH-all-v${version}-SNAPSHOT.jar /usr/local/istex/termith-jar"
+    doLast {
+        tasks.jar.execute()
+        ssh.run {
+            session(remotes.arges) {
+                execute 'rm -f /usr/local/istex/*.jar'
+                put from: "/home/smeoni/IdeaProjects/termITH/build/libs/termITH-all-v${version}-SNAPSHOT.jar",
+                        into: '/usr/local/istex'
+                execute "ln -sf /usr/local/istex/termITH-all-v${version}-SNAPSHOT.jar /usr/local/istex/termith-jar"
+            }
         }
     }
 }
