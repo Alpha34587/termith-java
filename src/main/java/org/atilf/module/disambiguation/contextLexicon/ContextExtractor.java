@@ -95,6 +95,7 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
     private String _p;
     private File _xml;
     private int _threshold = 0;
+    private String _currentPosLemma = "";
     protected ContextWord _lastContextWord;
     protected Map<String,List<Integer>> _targetContext = new HashMap<>();
     protected Stack<TreeMap<Integer,String>> _contextStack = new Stack<>();
@@ -245,7 +246,7 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
     }
 
     private boolean verifyPosTag(String pos) {
-        return _authorizedPOSTag.isEmpty() || _authorizedPOSTag.contains(pos);
+        return _authorizedPOSTag.isEmpty() || _authorizedPOSTag.contains(pos.split(":")[0]);
     }
 
     @Override
@@ -350,17 +351,22 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
      * the character event is used to extract the Pos/Lemma pair of a w element
      */
     @Override
-    public void characters(char ch[],
-                           int start, int length) throws SAXException {
-        String posLemma = new String(ch,start,length);
-        if (_inW && verifyNameElement(_elementName.peek())){
-            _lastContextWord.setPosLemma(posLemma);
-            if (verifyPosTag(posLemma.split((" "))[1])) {
-                _corpusLexicon.addOccurrence(posLemma);
+    public void characters(char ch[], int start, int length) throws SAXException {
+        String posLemma = _currentPosLemma.concat(new String(ch,start,length));
+        if (_inW && verifyNameElement(_elementName.peek())) {
+            if (posLemma.contains(" ")){
+                _lastContextWord.setPosLemma(posLemma);
+                if (verifyPosTag(posLemma.split((" "))[1])) {
+                    _corpusLexicon.addOccurrence(posLemma);
+                }
+                _contextStack.forEach(words -> words.put(_lastContextWord.getTarget(), _lastContextWord.getPosLemma()));
+                LOGGER.debug("add pos lemma pair: " + posLemma + " to corpus");
+                _inW = false;
+                _currentPosLemma = "";
             }
-            _contextStack.forEach(words -> words.put(_lastContextWord.getTarget(),_lastContextWord.getPosLemma()));
-            LOGGER.debug("add pos lemma pair: "+ posLemma +" to corpus");
-            _inW = false;
+            else {
+                _currentPosLemma += posLemma;
+            }
         }
     }
 
@@ -408,7 +414,9 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
     private Map<Integer,String> filterPos(Map<Integer, String> contextTarget) {
 
         if (!_authorizedPOSTag.isEmpty()) {
-            contextTarget.entrySet().removeIf(entry -> !_authorizedPOSTag.contains(entry.getValue().split(" ")[1]));
+            contextTarget.entrySet().removeIf(entry -> !_authorizedPOSTag.contains(
+                    entry.getValue().split(" ")[1].split(":")[0])
+            );
         }
         return contextTarget;
     }
@@ -455,5 +463,3 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
         }
     }
 }
-
-

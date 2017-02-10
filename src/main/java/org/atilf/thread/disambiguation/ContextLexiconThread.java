@@ -89,13 +89,20 @@ public class ContextLexiconThread extends Thread {
         includeElement.add("cit");
         includeElement.add("note");
         includeElement.add("q");
+        List<String> authorizedTag = new ArrayList<>();
+        authorizedTag.add("ADJ");
+        authorizedTag.add("VER");
+        authorizedTag.add("NOM");
+        authorizedTag.add("ADV");
+        authorizedTag.add("NAM");
         _termithIndex.getLearningTransformedFile().values().forEach(
                 (file) -> _executorService.submit(
                         new ContextExtractor(file.toString(),
                                 _termithIndex.getContextLexicon(),
                                 _termithIndex.getCorpusLexicon(),
                                 _termithIndex.getThresholdContext(),
-                                includeElement
+                                includeElement,
+                                authorizedTag
                         )
                 )
         );
