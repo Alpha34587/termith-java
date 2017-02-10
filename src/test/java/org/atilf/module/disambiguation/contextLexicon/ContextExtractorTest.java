@@ -20,6 +20,8 @@ import java.util.Map;
 public class ContextExtractorTest {
     private static Map<String,LexiconProfile> _expectedLexicon = new HashMap<>();
     private static Map<String,LexiconProfile> _observedLexicon = new HashMap<>();
+    private static Map<String, LexiconProfile> _observedTagLexicon = new HashMap<>();
+    private static Map<String,LexiconProfile> _expectedTagLexicon = new HashMap<>();
     private static Map<String,LexiconProfile> _thresholdObservedLexicon = new HashMap<>();
     private static Map<String,LexiconProfile> _thresholdExpectedLexicon = new HashMap<>();
     private static Map<String,LexiconProfile> _thresholdObservedLexicon2 = new HashMap<>();
@@ -46,6 +48,11 @@ public class ContextExtractorTest {
         entry1.add("deux NUM");
         _expectedLexicon.put("entry-13471_lexOff",new LexiconProfile(entry1));
 
+        Multiset<String> entryTag1 = HashMultiset.create();
+        entryTag1.add("article NOM");;
+        entryTag1.add("étude NOM");
+        entryTag1.add("donnée NOM");
+        _expectedTagLexicon.put("entry-13471_lexOff",new LexiconProfile(entryTag1));
         /*
         simple case : w w w w T w w w w
          */
@@ -60,7 +67,7 @@ public class ContextExtractorTest {
         entry2.add(". SENT");
         entry2.add("il PRO:PER");
         _expectedLexicon.put("entry-7263_lexOff",new LexiconProfile(entry2));
-
+        
         /*
         simple multi case : w w w T1 T2 w w w
          */
@@ -76,6 +83,11 @@ public class ContextExtractorTest {
         entry3.add("par PRP");
         entry3.add("deux NUM");
         _expectedLexicon.put("entry-575_lexOff",new LexiconProfile(entry3));
+
+        Multiset<String> entryTag3 = HashMultiset.create();
+        entryTag3.add("article NOM");
+        entryTag3.add("étude NOM");
+        _expectedTagLexicon.put("entry-575_lexOff",new LexiconProfile(entryTag3));
 
         Multiset<String> thresholdEntry3 = HashMultiset.create();
         thresholdEntry3.add("un DET:ART");
@@ -97,6 +109,11 @@ public class ContextExtractorTest {
         entry4.add(". SENT");
         _expectedLexicon.put("entry-5750_lexOff",new LexiconProfile(entry4));
 
+        Multiset<String> entryTag4 = HashMultiset.create();
+        entryTag4.add("type NOM");
+        entryTag4.add("enfouissement NOM");
+        _expectedTagLexicon.put("entry-5750_lexOff",new LexiconProfile(entryTag4));
+
         /*
         case : T1 <T2> w w w
          */
@@ -106,6 +123,10 @@ public class ContextExtractorTest {
         entry5.add("deux NUM");
         entry5.add("site NOM");
         _expectedLexicon.put("entry-35_lexOff",new LexiconProfile(entry5));
+
+        Multiset<String> entryTag5 = HashMultiset.create();
+        entryTag5.add("site NOM");
+        _expectedTagLexicon.put("entry-35_lexOff",new LexiconProfile(entryTag5));
 
         /*
         case : w T < w w w >
@@ -180,6 +201,10 @@ public class ContextExtractorTest {
                 _observedCorpus,includeElements).execute();
 
         new ContextExtractor("src/test/resources/module/disambiguation/contextLexicon/contextExtractor/test1.xml",
+                _observedTagLexicon,
+                new CorpusLexicon(new HashMap<>(),new HashMap<>())).execute();
+
+        new ContextExtractor("src/test/resources/module/disambiguation/contextLexicon/contextExtractor/test1.xml",
                 _thresholdObservedLexicon,
                 new CorpusLexicon(new HashMap<>(),new HashMap<>()),3).execute();
 
@@ -209,6 +234,29 @@ public class ContextExtractorTest {
                 }
         );
     }
+
+    @Test
+    public void extractTagLexiconProfile() throws Exception {
+
+        Assert.assertEquals(
+                "this two map must have the same size",
+                _expectedTagLexicon.size(),
+                _observedTagLexicon.size()
+        );
+
+        _expectedTagLexicon.forEach(
+                (key, value) -> {
+                    Multiset observed = _observedTagLexicon.get(key).getLexicalTable();
+                    value.getLexicalTable().forEach(
+                            el -> Assert.assertEquals("the occurrence of element must be equals at " + key +
+                                            " for the word : " + el,
+                                    value.getLexicalTable().count(el), observed.count(el)
+                            )
+                    );
+                }
+        );
+    }
+
     @Test
     public void extractThresholdLexiconProfile() throws Exception {
 
