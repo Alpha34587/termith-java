@@ -98,6 +98,8 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
     protected ContextWord _lastContextWord;
     protected Map<String,List<Integer>> _targetContext = new HashMap<>();
     protected Stack<TreeMap<Integer,String>> _contextStack = new Stack<>();
+    private Stack<String> _elementName = new Stack<>();
+    private List<String> _includeElement = new ArrayList<>();
     /*
     SAX condition
      */
@@ -130,6 +132,19 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
     public ContextExtractor(String p, Map<String, LexiconProfile> contextLexicon, CorpusLexicon corpusLexicon, int threshold){
         this(p,contextLexicon,corpusLexicon);
         _threshold = threshold;
+    }
+
+    public ContextExtractor(String p, Map<String, LexiconProfile> contextLexicon, CorpusLexicon corpusLexicon,
+                            int threshold, List<String> includeElement){
+        this(p,contextLexicon,corpusLexicon,threshold);
+        _includeElement = includeElement;
+    }
+
+
+    public ContextExtractor(String p, Map<String, LexiconProfile> contextLexicon, CorpusLexicon corpusLexicon,
+                            List<String> includeElement){
+        this(p,contextLexicon,corpusLexicon);
+        _includeElement = includeElement;
     }
     /**
      * getter for _terms fields
@@ -180,17 +195,22 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
                 _inW = true;
                 break;
         }
+        if (!_inW) {
+            _elementName.add(qName);
+        }
         if (_inStandOff && qName.equals("span")){
             extractTerms(attributes);
         }
         else if (_inText && !_inW && !qName.equals("text")){
             _contextStack.push(new TreeMap<>());
         }
-
-        else if (_inW){
+        else if (_inW && verifyNameElement(_elementName.peek())) {
             _lastContextWord = new ContextWord(attributes.getValue("xml:id"));
-
         }
+    }
+
+    private boolean verifyNameElement(String element) {
+        return _includeElement.isEmpty() || _includeElement.contains(element);
     }
 
     @Override
@@ -209,9 +229,8 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
                 _inW = false;
                 break;
         }
-
-
         if (_inText && !qName.equals("w")){
+            _elementName.pop();
             searchTermsInContext();
         }
         else if (!_inStandOff){
@@ -298,7 +317,7 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
     @Override
     public void characters(char ch[],
                            int start, int length) throws SAXException {
-        if (_inW){
+        if (_inW && verifyNameElement(_elementName.peek())){
             String posLemma = new String(ch,start,length);
             _lastContextWord.setPosLemma(posLemma);
             _corpusLexicon.addOccurrence(posLemma);
@@ -313,7 +332,7 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
      * @param attributes the attributes of a span element
      */
     protected void extractTerms(Attributes attributes) {
-        String ana = attributes.getValue("ana");
+        String ana = attributes.getValue("ana").split(" ")[0];
         if (!ana.equals(NO_DM.getValue())) {
             _terms.add(new ContextTerm(attributes.getValue("corresp"),
                     ana,
@@ -349,8 +368,8 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
     }
 
     private Map<Integer,String> contextThreshold(ContextTerm term, TreeMap<Integer, String> context){
-        Map<Integer,String> rightContextTarget = new TreeMap<>();
-        SortedMap<Integer, String> leftContextTarget = new TreeMap<>();
+        Map<Integer,String> rightContextTarget;
+        SortedMap<Integer, String> leftContextTarget;
         if (_threshold == 0){
             leftContextTarget = context.subMap(0, true, term.getBeginTag(),true);
             rightContextTarget = new TreeMap<>(context.subMap(term.getEndTag(), true,

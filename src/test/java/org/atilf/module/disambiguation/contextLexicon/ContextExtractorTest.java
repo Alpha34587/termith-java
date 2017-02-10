@@ -8,7 +8,9 @@ import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -167,9 +169,15 @@ public class ContextExtractorTest {
         _expectedCorpus.add("enfouissement NOM");
         _expectedCorpus.add(". SENT");
         _expectedCorpus.add("le DET:ART");
+        List<String> includeElements = new ArrayList<>();
+        includeElements.add("p");
+        includeElements.add("note");
+        includeElements.add("head");
+        includeElements.add("cit");
+        includeElements.add("q");
         new ContextExtractor("src/test/resources/module/disambiguation/contextLexicon/contextExtractor/test1.xml",
                 _observedLexicon,
-                _observedCorpus).execute();
+                _observedCorpus,includeElements).execute();
 
         new ContextExtractor("src/test/resources/module/disambiguation/contextLexicon/contextExtractor/test1.xml",
                 _thresholdObservedLexicon,

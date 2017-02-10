@@ -8,6 +8,8 @@ import org.atilf.thread.Thread;
 
 import java.io.IOException;
 import java.nio.file.Files;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
@@ -81,16 +83,21 @@ public class ContextLexiconThread extends Thread {
         /*
         Extraction phase
          */
+        List<String> includeElement = new ArrayList<>();
+        includeElement.add("p");
+        includeElement.add("head");
+        includeElement.add("cit");
+        includeElement.add("note");
+        includeElement.add("q");
         _termithIndex.getLearningTransformedFile().values().forEach(
-                (file) -> {
-                    _executorService.submit(
-                            new ContextExtractor(file.toString(),
-                                    _termithIndex.getContextLexicon(),
-                                    _termithIndex.getCorpusLexicon(),
-                                    _termithIndex.getThresholdContext()
-                            )
-                    );
-                }
+                (file) -> _executorService.submit(
+                        new ContextExtractor(file.toString(),
+                                _termithIndex.getContextLexicon(),
+                                _termithIndex.getCorpusLexicon(),
+                                _termithIndex.getThresholdContext(),
+                                includeElement
+                        )
+                )
         );
         _logger.info("Waiting ContextExtractor executors to finish");
         _executorService.shutdown();
