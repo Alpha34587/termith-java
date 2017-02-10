@@ -47,12 +47,6 @@ public class ContextExtractorTest {
         entry1.add("par PRP");
         entry1.add("deux NUM");
         _expectedLexicon.put("entry-13471_lexOff",new LexiconProfile(entry1));
-
-        Multiset<String> entryTag1 = HashMultiset.create();
-        entryTag1.add("article NOM");;
-        entryTag1.add("étude NOM");
-        entryTag1.add("donnée NOM");
-        _expectedTagLexicon.put("entry-13471_lexOff",new LexiconProfile(entryTag1));
         /*
         simple case : w w w w T w w w w
          */
@@ -67,6 +61,9 @@ public class ContextExtractorTest {
         entry2.add(". SENT");
         entry2.add("il PRO:PER");
         _expectedLexicon.put("entry-7263_lexOff",new LexiconProfile(entry2));
+        Multiset<String> entry2Tag = HashMultiset.create();
+        entry2Tag.add("quelque PRO:IND");
+        _expectedTagLexicon.put("entry-7263_lexOff",new LexiconProfile(entry2Tag));
         
         /*
         simple multi case : w w w T1 T2 w w w
@@ -83,11 +80,6 @@ public class ContextExtractorTest {
         entry3.add("par PRP");
         entry3.add("deux NUM");
         _expectedLexicon.put("entry-575_lexOff",new LexiconProfile(entry3));
-
-        Multiset<String> entryTag3 = HashMultiset.create();
-        entryTag3.add("article NOM");
-        entryTag3.add("étude NOM");
-        _expectedTagLexicon.put("entry-575_lexOff",new LexiconProfile(entryTag3));
 
         Multiset<String> thresholdEntry3 = HashMultiset.create();
         thresholdEntry3.add("un DET:ART");
@@ -108,12 +100,6 @@ public class ContextExtractorTest {
         entry4.add("enfouissement NOM");
         entry4.add(". SENT");
         _expectedLexicon.put("entry-5750_lexOff",new LexiconProfile(entry4));
-
-        Multiset<String> entryTag4 = HashMultiset.create();
-        entryTag4.add("type NOM");
-        entryTag4.add("enfouissement NOM");
-        _expectedTagLexicon.put("entry-5750_lexOff",new LexiconProfile(entryTag4));
-
         /*
         case : T1 <T2> w w w
          */
@@ -123,10 +109,6 @@ public class ContextExtractorTest {
         entry5.add("deux NUM");
         entry5.add("site NOM");
         _expectedLexicon.put("entry-35_lexOff",new LexiconProfile(entry5));
-
-        Multiset<String> entryTag5 = HashMultiset.create();
-        entryTag5.add("site NOM");
-        _expectedTagLexicon.put("entry-35_lexOff",new LexiconProfile(entryTag5));
 
         /*
         case : w T < w w w >
@@ -200,8 +182,10 @@ public class ContextExtractorTest {
                 _observedLexicon,
                 _observedCorpus,includeElements).execute();
 
+        List<String> authorizedTags = new ArrayList<>();
+        authorizedTags.add("PRO:IND");
         new ContextExtractor("src/test/resources/module/disambiguation/contextLexicon/contextExtractor/test1.xml",
-                _observedTagLexicon,
+                _observedTagLexicon, authorizedTags,
                 new CorpusLexicon(new HashMap<>(),new HashMap<>())).execute();
 
         new ContextExtractor("src/test/resources/module/disambiguation/contextLexicon/contextExtractor/test1.xml",

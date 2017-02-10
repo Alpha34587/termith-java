@@ -99,7 +99,9 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
     protected Map<String,List<Integer>> _targetContext = new HashMap<>();
     protected Stack<TreeMap<Integer,String>> _contextStack = new Stack<>();
     private Stack<String> _elementName = new Stack<>();
-    private List<String> _includeElement = new ArrayList<>();
+    protected List<String> _includeElement = new ArrayList<>();
+    protected List<String> _authorizedPOSTag = new ArrayList<>();
+
     /*
     SAX condition
      */
@@ -129,7 +131,8 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
     }
 
 
-    public ContextExtractor(String p, Map<String, LexiconProfile> contextLexicon, CorpusLexicon corpusLexicon, int threshold){
+    public ContextExtractor(String p, Map<String, LexiconProfile> contextLexicon,
+                            CorpusLexicon corpusLexicon, int threshold){
         this(p,contextLexicon,corpusLexicon);
         _threshold = threshold;
     }
@@ -146,6 +149,34 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
         this(p,contextLexicon,corpusLexicon);
         _includeElement = includeElement;
     }
+
+    public ContextExtractor(String p, Map<String, LexiconProfile> contextLexicon, List<String> authorizedPOSTag,
+                            CorpusLexicon corpusLexicon){
+        this(p,contextLexicon,corpusLexicon);
+        _authorizedPOSTag = authorizedPOSTag;
+
+    }
+
+    public ContextExtractor(String p, Map<String, LexiconProfile> contextLexicon, CorpusLexicon corpusLexicon,
+                            List<String> includeElement, List<String> authorizedPOSTag){
+        this(p,contextLexicon,corpusLexicon,includeElement);
+        _authorizedPOSTag = authorizedPOSTag;
+
+    }
+
+    public ContextExtractor(String p, Map<String, LexiconProfile> contextLexicon, CorpusLexicon corpusLexicon,
+                            int threshold, List<String> includeElement,List<String> authorizedPOSTag){
+        this(p,contextLexicon,corpusLexicon,threshold,includeElement);
+        _authorizedPOSTag = authorizedPOSTag;
+    }
+
+
+    public ContextExtractor(String p, Map<String, LexiconProfile> contextLexicon, CorpusLexicon corpusLexicon,
+                            List<String> authorizedPOSTag, int threshold){
+        this(p,contextLexicon,corpusLexicon,threshold);
+        _authorizedPOSTag = authorizedPOSTag;
+    }
+
     /**
      * getter for _terms fields
      * @return return a list of ContextTerms
@@ -211,6 +242,10 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
 
     private boolean verifyNameElement(String element) {
         return _includeElement.isEmpty() || _includeElement.contains(element);
+    }
+
+    private boolean verifyPosTag(String pos) {
+        return _authorizedPOSTag.isEmpty() || _authorizedPOSTag.contains(pos);
     }
 
     @Override
@@ -317,10 +352,12 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
     @Override
     public void characters(char ch[],
                            int start, int length) throws SAXException {
+        String posLemma = new String(ch,start,length);
         if (_inW && verifyNameElement(_elementName.peek())){
-            String posLemma = new String(ch,start,length);
             _lastContextWord.setPosLemma(posLemma);
-            _corpusLexicon.addOccurrence(posLemma);
+            if (verifyPosTag(posLemma.split((" "))[1])) {
+                _corpusLexicon.addOccurrence(posLemma);
+            }
             _contextStack.forEach(words -> words.put(_lastContextWord.getTarget(),_lastContextWord.getPosLemma()));
             LOGGER.debug("add pos lemma pair: "+ posLemma +" to corpus");
             _inW = false;
@@ -352,7 +389,7 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
          */
         String key = normalizeKey(term.getCorresp(), term.getAna());
 
-        Map<Integer,String> contextTarget = contextThreshold(term,context);
+        Map<Integer,String> contextTarget = filterPos(contextThreshold(term,context));
         if (contextTarget.size() != 0) {
             if (!_targetContext.containsKey(key)) {
                 _targetContext.put(key, new ArrayList<>());
@@ -362,9 +399,18 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
                 _contextLexicon.put(key, new LexiconProfile());
             }
             _targetContext.get(key).forEach(contextTarget::remove);
+
             _targetContext.get(key).addAll(new ArrayList<>(contextTarget.keySet()));
             _contextLexicon.get(key).addOccurrences(new ArrayList<>(contextTarget.values()));
         }
+    }
+
+    private Map<Integer,String> filterPos(Map<Integer, String> contextTarget) {
+
+        if (!_authorizedPOSTag.isEmpty()) {
+            contextTarget.entrySet().removeIf(entry -> !_authorizedPOSTag.contains(entry.getValue().split(" ")[1]));
+        }
+        return contextTarget;
     }
 
     private Map<Integer,String> contextThreshold(ContextTerm term, TreeMap<Integer, String> context){
