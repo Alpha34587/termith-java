@@ -246,7 +246,7 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
     }
 
     private boolean verifyPosTag(String pos) {
-        return _authorizedPOSTag.isEmpty() || _authorizedPOSTag.contains(pos.split(":")[0]);
+        return _authorizedPOSTag.isEmpty() || _authorizedPOSTag.contains(pos);
     }
 
     @Override
@@ -415,7 +415,7 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
 
         if (!_authorizedPOSTag.isEmpty()) {
             contextTarget.entrySet().removeIf(entry -> !_authorizedPOSTag.contains(
-                    entry.getValue().split(" ")[1].split(":")[0])
+                    entry.getValue().split(" ")[1])
             );
         }
         return contextTarget;
