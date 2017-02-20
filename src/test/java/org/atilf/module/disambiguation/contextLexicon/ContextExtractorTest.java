@@ -180,7 +180,7 @@ public class ContextExtractorTest {
         includeElements.add("q");
         new ContextExtractor("src/test/resources/module/disambiguation/contextLexicon/contextExtractor/test1.xml",
                 _observedLexicon,
-                _observedCorpus,includeElements).execute();
+                _observedCorpus).execute();
 
         List<String> authorizedTags = new ArrayList<>();
         authorizedTags.add("PRO:IND");
