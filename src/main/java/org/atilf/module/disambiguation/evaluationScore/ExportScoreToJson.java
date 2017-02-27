@@ -63,7 +63,7 @@ public class ExportScoreToJson extends Module {
                         try{
                             g.writeStartObject();
                             g.writeStringField("id",key);
-                            g.writeStringField("text",scoreTerm.getFlexionsWords());
+                            g.writeStringField("text",scoreTerm.getFlexingWords());
                             g.writeStringField("pos",retrievePos(scoreTerm));
                             g.writeNumberField("recall",scoreTerm.getRecall());
                             g.writeNumberField("precision",scoreTerm.getPrecision());
@@ -118,7 +118,7 @@ public class ExportScoreToJson extends Module {
 
     String retrievePos(ScoreTerm scoreTerm) {
         String pos = "";
-        _logger.info("extract term : " + scoreTerm.getFlexionsWords());
+        _logger.info("extract term : " + scoreTerm.getFlexingWords());
         for (ContextWord el : scoreTerm.getTermWords().get(0)) {
             pos += el.getPosLemma().split(" ")[1] + " ";
         }

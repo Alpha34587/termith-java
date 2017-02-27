@@ -48,7 +48,7 @@ public class ExportScoreToCsv extends ExportScoreToJson {
                         /*
                         write flexions words
                          */
-                            bufferedWriter.write("\"" + value.getFlexionsWords() + "\",");
+                            bufferedWriter.write("\"" + value.getFlexingWords() + "\",");
                         /*
                         write language
                          */

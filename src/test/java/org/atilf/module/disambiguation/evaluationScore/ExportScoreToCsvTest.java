@@ -37,7 +37,7 @@ public class ExportScoreToCsvTest {
         scoreTerm1.setTotalOccurrences(7);
         scoreTerm1.setCorrectOccurrence(7);
         scoreTerm1.setMissingOccurrence(0);
-        scoreTerm1.setFlexionsWords("test1");
+        scoreTerm1.setFlexingWords("test1");
         scoreTerm1.addTermWords(Collections.singletonList(word1));
         scoreTerm1.setRecall(0.5f);
         scoreTerm1.setPrecision(0.4f);
@@ -56,7 +56,7 @@ public class ExportScoreToCsvTest {
         scoreTerm2.setCorrectOccurrence(0);
         scoreTerm2.setTotalOccurrences(7);
         scoreTerm2.setMissingOccurrence(0);
-        scoreTerm2.setFlexionsWords("test2");
+        scoreTerm2.setFlexingWords("test2");
         scoreTerm2.addTermWords(contextWords);
         scoreTerm2.setRecall(0.6f);
         scoreTerm2.setPrecision(0.2f);

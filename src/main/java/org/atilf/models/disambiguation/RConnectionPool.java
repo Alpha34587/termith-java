@@ -25,9 +25,9 @@ public class RConnectionPool {
     }
 
     public RConnection getRConnection(Thread thread){
-        LOGGER.info("waiting Rserve connection ...");
+        LOGGER.info("waiting R server connection ...");
         _semaphore.acquireUninterruptibly();
-        LOGGER.info("Rserve connection established");
+        LOGGER.info("R server connection established");
         for (RConnectionThread rConnectionThread : _rConnectionThreads) {
             if (rConnectionThread._thread == null) {
                 rConnectionThread._thread = thread;

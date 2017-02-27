@@ -13,7 +13,7 @@ import java.util.Iterator;
  * @author Simon Meoni
  *         Created on 18/10/16.
  */
-public class ContextResources {
+public class DisambiguationExporterResource {
 
     /**
      * declaration of namespace _context :
@@ -64,7 +64,7 @@ public class ContextResources {
     public static final String CONTEXT_GETTER_LAST;
     public static final String CONTEXT_GETTER_FIRST;
 
-    private final static Logger LOGGER = LoggerFactory.getLogger(ContextResources.class);
+    private final static Logger LOGGER = LoggerFactory.getLogger(DisambiguationExporterResource.class);
     static {
         /*
         used for extract span

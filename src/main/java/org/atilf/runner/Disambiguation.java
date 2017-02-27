@@ -13,7 +13,7 @@ import java.util.concurrent.ExecutionException;
  *         Created on 11/10/16.
  */
 public class Disambiguation extends Runner {
-
+    
     /**
      * this constructor initializes the _termithIndex field.
      * @param termithIndex

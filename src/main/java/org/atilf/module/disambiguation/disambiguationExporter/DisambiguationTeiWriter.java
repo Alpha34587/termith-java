@@ -23,8 +23,8 @@ import javax.xml.xpath.*;
 import java.io.IOException;
 import java.util.Map;
 
-import static org.atilf.models.disambiguation.ContextResources.NAMESPACE_CONTEXT;
-import static org.atilf.models.disambiguation.ContextResources.TEI_SPAN;
+import static org.atilf.models.disambiguation.DisambiguationExporterResource.NAMESPACE_CONTEXT;
+import static org.atilf.models.disambiguation.DisambiguationExporterResource.TEI_SPAN;
 
 /**
  * Write the result of module.disambiguation in tei file format
