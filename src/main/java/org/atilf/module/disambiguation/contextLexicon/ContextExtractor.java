@@ -90,20 +90,24 @@ import static org.atilf.models.disambiguation.AnnotationResources.*;
 public class ContextExtractor extends DefaultHandler implements Runnable {
 
     protected Map<String, LexiconProfile> _contextLexicon;
-    private CorpusLexicon _corpusLexicon;
     protected List<ContextTerm> _terms = new LinkedList<>();
-    private String _p;
-    private File _xml;
-    private int _threshold = 0;
     protected ContextWord _lastContextWord;
     protected Map<String,List<Integer>> _targetContext = new HashMap<>();
     protected Stack<TreeMap<Integer,String>> _contextStack = new Stack<>();
+
+    private CorpusLexicon _corpusLexicon;
+    private String _p;
+    private File _xml;
+    private int _threshold = 0;
+    private String _currentPosLemma = "";
+    private List<String> _authorizedPOSTag = new ArrayList<>();
+
     /*
     SAX condition
      */
     protected boolean _inW = false;
     private boolean _inText = false;
-    protected boolean _inStandOff = false;
+    private boolean _inStandOff = false;
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ContextExtractor.class.getName());
 
@@ -125,12 +129,26 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
         _corpusLexicon = corpusLexicon;
         _xml = new File(_p);
     }
-
-
-    public ContextExtractor(String p, Map<String, LexiconProfile> contextLexicon, CorpusLexicon corpusLexicon, int threshold){
+    
+    ContextExtractor(String p, Map<String, LexiconProfile> contextLexicon, CorpusLexicon corpusLexicon,
+                     int threshold){
         this(p,contextLexicon,corpusLexicon);
         _threshold = threshold;
     }
+    
+    ContextExtractor(String p, Map<String, LexiconProfile> contextLexicon, List<String> authorizedPOSTag,
+                     CorpusLexicon corpusLexicon){
+        this(p,contextLexicon,corpusLexicon);
+        _authorizedPOSTag = authorizedPOSTag;
+
+    }
+
+    public ContextExtractor(String p, Map<String, LexiconProfile> contextLexicon, CorpusLexicon corpusLexicon,
+                            int threshold, List<String> authorizedPOSTag){
+        this(p,contextLexicon,corpusLexicon,threshold);
+        _authorizedPOSTag = authorizedPOSTag;
+    }
+
     /**
      * getter for _terms fields
      * @return return a list of ContextTerms
@@ -186,11 +204,14 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
         else if (_inText && !_inW && !qName.equals("text")){
             _contextStack.push(new TreeMap<>());
         }
-
-        else if (_inW){
+        else if (_inW) {
             _lastContextWord = new ContextWord(attributes.getValue("xml:id"));
-
         }
+    }
+
+
+    private boolean verifyPosTag(String pos) {
+        return _authorizedPOSTag.isEmpty() || _authorizedPOSTag.contains(pos);
     }
 
     @Override
@@ -209,8 +230,6 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
                 _inW = false;
                 break;
         }
-
-
         if (_inText && !qName.equals("w")){
             searchTermsInContext();
         }
@@ -296,15 +315,22 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
      * the character event is used to extract the Pos/Lemma pair of a w element
      */
     @Override
-    public void characters(char ch[],
-                           int start, int length) throws SAXException {
-        if (_inW){
-            String posLemma = new String(ch,start,length);
-            _lastContextWord.setPosLemma(posLemma);
-            _corpusLexicon.addOccurrence(posLemma);
-            _contextStack.forEach(words -> words.put(_lastContextWord.getTarget(),_lastContextWord.getPosLemma()));
-            LOGGER.debug("add pos lemma pair: "+ posLemma +" to corpus");
-            _inW = false;
+    public void characters(char ch[], int start, int length) throws SAXException {
+        String posLemma = _currentPosLemma.concat(new String(ch,start,length));
+        if (_inW) {
+            if (posLemma.contains(" ")){
+                _lastContextWord.setPosLemma(posLemma);
+                if (verifyPosTag(posLemma.split((" "))[1])) {
+                    _corpusLexicon.addOccurrence(posLemma);
+                }
+                _contextStack.forEach(words -> words.put(_lastContextWord.getTarget(), _lastContextWord.getPosLemma()));
+                LOGGER.debug("add pos lemma pair: " + posLemma + " to corpus");
+                _inW = false;
+                _currentPosLemma = "";
+            }
+            else {
+                _currentPosLemma += posLemma;
+            }
         }
     }
 
@@ -313,7 +339,7 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
      * @param attributes the attributes of a span element
      */
     protected void extractTerms(Attributes attributes) {
-        String ana = attributes.getValue("ana");
+        String ana = attributes.getValue("ana").split(" ")[0];
         if (!ana.equals(NO_DM.getValue())) {
             _terms.add(new ContextTerm(attributes.getValue("corresp"),
                     ana,
@@ -333,7 +359,7 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
          */
         String key = normalizeKey(term.getCorresp(), term.getAna());
 
-        Map<Integer,String> contextTarget = contextThreshold(term,context);
+        Map<Integer,String> contextTarget = filterPos(contextThreshold(term,context));
         if (contextTarget.size() != 0) {
             if (!_targetContext.containsKey(key)) {
                 _targetContext.put(key, new ArrayList<>());
@@ -343,14 +369,25 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
                 _contextLexicon.put(key, new LexiconProfile());
             }
             _targetContext.get(key).forEach(contextTarget::remove);
+
             _targetContext.get(key).addAll(new ArrayList<>(contextTarget.keySet()));
             _contextLexicon.get(key).addOccurrences(new ArrayList<>(contextTarget.values()));
         }
     }
 
+    private Map<Integer,String> filterPos(Map<Integer, String> contextTarget) {
+
+        if (!_authorizedPOSTag.isEmpty()) {
+            contextTarget.entrySet().removeIf(entry -> !_authorizedPOSTag.contains(
+                    entry.getValue().split(" ")[1])
+            );
+        }
+        return contextTarget;
+    }
+
     private Map<Integer,String> contextThreshold(ContextTerm term, TreeMap<Integer, String> context){
-        Map<Integer,String> rightContextTarget = new TreeMap<>();
-        SortedMap<Integer, String> leftContextTarget = new TreeMap<>();
+        Map<Integer,String> rightContextTarget;
+        SortedMap<Integer, String> leftContextTarget;
         if (_threshold == 0){
             leftContextTarget = context.subMap(0, true, term.getBeginTag(),true);
             rightContextTarget = new TreeMap<>(context.subMap(term.getEndTag(), true,
@@ -390,5 +427,3 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
         }
     }
 }
-
-
