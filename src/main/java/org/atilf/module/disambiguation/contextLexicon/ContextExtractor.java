@@ -95,6 +95,9 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
     protected Map<String,List<Integer>> _targetContext = new HashMap<>();
     protected Stack<TreeMap<Integer,String>> _contextStack = new Stack<>();
 
+    protected Stack<String> _elementsStack = new Stack<>();
+    protected List<String> _allowedElements = new ArrayList<>();
+
     private CorpusLexicon _corpusLexicon;
     private String _p;
     private File _xml;
@@ -159,6 +162,12 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
 
     public void execute() {
         try {
+            _allowedElements.add("p");
+            _allowedElements.add("cit");
+            _allowedElements.add("head");
+            _allowedElements.add("q");
+            _allowedElements.add("note");
+            _allowedElements.add("ab");
             SAXParserFactory factory = SAXParserFactory.newInstance();
             SAXParser saxParser = factory.newSAXParser();
             saxParser.parse(_xml,this);
@@ -202,6 +211,7 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
             extractTerms(attributes);
         }
         else if (_inText && !_inW && !qName.equals("text")){
+            _elementsStack.push(qName);
             _contextStack.push(new TreeMap<>());
         }
         else if (_inW) {
@@ -271,25 +281,47 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
      */
     private void searchTermInContext(TreeMap<Integer, String> words, Deque<ContextTerm> termDeque, Deque<ContextTerm> termDequeTemp, Integer target) {
         if (!termDeque.isEmpty()) {
+
             if (target == termDeque.peek().getBeginTag()) {
                 if (termDeque.peek().getBeginTag() != termDeque.peek().getEndTag()) {
-                    termDequeTemp.add(termDeque.pop());
+                    termDequeTemp.add(termDeque.peek());
                 }
-                else {
+                else if (isContext(words,termDeque.peek())){
                     addWordsToLexicon(termDeque.peek(), words);
-                    _terms.remove(termDeque.pop());
+                    _terms.remove(termDeque.peek());
                 }
+                termDeque.pop();
                 searchTermInContext(words, termDeque, termDequeTemp, target);
             }
         }
 
         if (!termDequeTemp.isEmpty() && termDequeTemp.peek().getEndTag() == target) {
-            addWordsToLexicon(termDequeTemp.peek(), words);
-            _terms.remove(termDequeTemp.pop());
+            if (isContext(words,termDequeTemp.peek())) {
+                addWordsToLexicon(termDequeTemp.peek(), words);
+                _terms.remove(termDequeTemp.peek());
+            }
+            termDequeTemp.pop();
             searchTermInContext(words, termDeque, termDequeTemp, target);
         }
     }
 
+    private boolean isContext(TreeMap<Integer, String> words, ContextTerm term){
+        if (_allowedElements.isEmpty()){
+            return true;
+        }
+
+        if (_allowedElements.contains(_elementsStack.peek())){
+            return true;
+        }
+
+        else {
+             int size = term.getEndTag() - term.getBeginTag() + 1;
+             if (size == words.size()){
+                 return false;
+             }
+             return true;
+        }
+    }
     /**
      * get a sublist of _term field and return a Deque with these elements. The first element of the sublist has
      * a target value inferior to the target value of the last words of the context (the variable words)
