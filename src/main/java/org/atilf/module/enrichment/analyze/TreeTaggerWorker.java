@@ -2,7 +2,6 @@ package org.atilf.module.enrichment.analyze;
 
 import org.atilf.models.TermithIndex;
 import org.atilf.models.enrichment.CorpusAnalyzer;
-import org.atilf.models.enrichment.TagNormalizer;
 import org.atilf.models.enrichment.TextAnalyzer;
 import org.atilf.models.enrichment.TreeTaggerParameter;
 import org.atilf.module.Module;
@@ -122,13 +121,11 @@ public class TreeTaggerWorker extends Module {
     }
 
     /**
-     * init method create json directory and initialize TagNormalizer according to language given by static field
+     * init method create json directory according to language given by static field
      * on the TermithIndex class
      */
     private void init(){
         try {
-
-            TagNormalizer.initTag(TermithIndex.getLang());
             Files.createDirectories(Paths.get(TermithIndex.getOutputPath() + "/json"));
             _logger.debug("create temporary text files in " + TermithIndex.getOutputPath() + "/json folder");
         } catch (IOException e) {

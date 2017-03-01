@@ -2,6 +2,7 @@ package org.atilf.thread.enrichment;
 
 import org.atilf.models.TermithIndex;
 import org.atilf.models.enrichment.CorpusAnalyzer;
+import org.atilf.models.enrichment.TagNormalizer;
 import org.atilf.module.enrichment.analyze.TerminologyParser;
 import org.atilf.module.enrichment.analyze.TerminologyStandOff;
 import org.atilf.module.enrichment.analyze.TermsuitePipelineBuilder;
@@ -99,7 +100,7 @@ public class AnalyzeThread extends Thread{
         Build Corpus analyzer
          */
         CorpusAnalyzer corpusAnalyzer = new CorpusAnalyzer(createTextHashmap());
-
+        TagNormalizer.initTag(TermithIndex.getLang());
         /*
         Write morphology json file
          */
