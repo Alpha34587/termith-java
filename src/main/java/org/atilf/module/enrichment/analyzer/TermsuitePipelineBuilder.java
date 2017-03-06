@@ -1,4 +1,4 @@
-package org.atilf.module.enrichment.analyze;
+package org.atilf.module.enrichment.analyzer;
 
 import ch.qos.logback.classic.Level;
 import com.google.common.io.ByteStreams;

@@ -1,4 +1,4 @@
-package org.atilf.module.enrichment.analyze;
+package org.atilf.module.enrichment.analyzer;
 
 import org.atilf.models.TermithIndex;
 import org.atilf.models.enrichment.MorphologyOffsetId;

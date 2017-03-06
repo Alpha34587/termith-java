@@ -1,14 +1,15 @@
-package org.atilf.thread.enrichment;
+package org.atilf.thread.enrichment.analyzer;
 
 import org.atilf.models.TermithIndex;
 import org.atilf.models.enrichment.CorpusAnalyzer;
 import org.atilf.models.enrichment.TagNormalizer;
-import org.atilf.module.enrichment.analyze.TerminologyParser;
-import org.atilf.module.enrichment.analyze.TerminologyStandOff;
-import org.atilf.module.enrichment.analyze.TermsuitePipelineBuilder;
-import org.atilf.module.enrichment.analyze.TreeTaggerWorker;
+import org.atilf.module.enrichment.analyzer.TerminologyParser;
+import org.atilf.module.enrichment.analyzer.TerminologyStandOff;
+import org.atilf.module.enrichment.analyzer.TermsuitePipelineBuilder;
+import org.atilf.module.enrichment.analyzer.TreeTaggerWorker;
 import org.atilf.module.enrichment.initializer.TextExtractor;
 import org.atilf.thread.Thread;
+import org.atilf.thread.enrichment.initializer.InitializerThread;
 import org.atilf.tools.FilesUtils;
 
 import java.io.IOException;
@@ -22,9 +23,9 @@ import java.util.concurrent.TimeUnit;
 import static org.atilf.runner.Runner.DEFAULT_POOL_SIZE;
 
 /**
- * The AnalyzeThread calls several modules classes which analyze the morphology of each file in the corpus and the
+ * The AnalyzeThread calls several modules classes which analyzer the morphology of each file in the corpus and the
  * terminology of the corpus. The morphology is analyzed with a treetagger wrapper. The result is serialized to
- * the json termsuite format. The terminology uses the json files write during the analyze of the morphology.
+ * the json termsuite format. The terminology uses the json files write during the analyzer of the morphology.
  * The terminology is export as two json and tbx files. Finally the result of the phase is prepared in order to
  * write them into the tei files of the corpus
  * @author Simon Meoni

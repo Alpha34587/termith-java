@@ -1,4 +1,4 @@
-package org.atilf.module.enrichment.analyze.treeTaggerWorker;
+package org.atilf.module.enrichment.analyzer.treeTaggerWorker;
 
 import org.atilf.models.enrichment.MorphologyOffsetId;
 import org.atilf.models.enrichment.MorphologyParser;

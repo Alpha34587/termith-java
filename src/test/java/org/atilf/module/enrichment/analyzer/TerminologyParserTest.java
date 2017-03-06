@@ -1,4 +1,4 @@
-package org.atilf.module.enrichment.analyze;
+package org.atilf.module.enrichment.analyzer;
 
 import org.atilf.models.enrichment.TermOffsetId;
 import org.junit.Assert;
@@ -21,7 +21,7 @@ public class TerminologyParserTest {
 
     @BeforeClass
     public static void setUp(){
-        _terminologyParser = new TerminologyParser(Paths.get("src/test/resources/module/enrichment/analyze/terminology.json"));
+        _terminologyParser = new TerminologyParser(Paths.get("src/test/resources/module/enrichment/analyzer/terminology.json"));
     }
 
     @Test

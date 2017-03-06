@@ -1,4 +1,4 @@
-package org.atilf.thread.enrichment;
+package org.atilf.thread.enrichment.cleaner;
 
 import org.atilf.models.TermithIndex;
 import org.atilf.module.enrichment.cleaner.WorkingFilesCleaner;

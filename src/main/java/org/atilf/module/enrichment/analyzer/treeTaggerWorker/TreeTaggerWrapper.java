@@ -1,4 +1,4 @@
-package org.atilf.module.enrichment.analyze.treeTaggerWorker;
+package org.atilf.module.enrichment.analyzer.treeTaggerWorker;
 
 import org.apache.commons.io.IOUtils;
 import org.atilf.models.enrichment.TreeTaggerParameter;

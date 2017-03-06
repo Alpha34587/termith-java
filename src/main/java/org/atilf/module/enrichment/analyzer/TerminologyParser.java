@@ -1,4 +1,4 @@
-package org.atilf.module.enrichment.analyze;
+package org.atilf.module.enrichment.analyzer;
 
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonParser;

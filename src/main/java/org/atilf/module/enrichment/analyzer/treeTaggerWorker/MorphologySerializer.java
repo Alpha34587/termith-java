@@ -1,4 +1,4 @@
-package org.atilf.module.enrichment.analyze.treeTaggerWorker;
+package org.atilf.module.enrichment.analyzer.treeTaggerWorker;
 
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonGenerator;

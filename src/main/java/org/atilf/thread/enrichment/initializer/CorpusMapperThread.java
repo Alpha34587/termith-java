@@ -1,9 +1,7 @@
-package org.atilf.thread.enrichment;
+package org.atilf.thread.enrichment.initializer;
 
 import org.atilf.models.TermithIndex;
-import org.atilf.models.enrichment.XslResources;
 import org.atilf.module.enrichment.initializer.CorpusMapper;
-import org.atilf.module.enrichment.initializer.TextExtractor;
 import org.atilf.thread.Thread;
 
 import java.io.IOException;
@@ -17,7 +15,7 @@ import static org.atilf.runner.Runner.DEFAULT_POOL_SIZE;
  * @author Simon Meoni
  * Created on 25/07/16.
  */
-public class InitializerThread extends Thread{
+public class CorpusMapperThread extends Thread{
 
     /**
      * this constructor initialize the _termithIndex fields and initialize the _poolSize field with the default value
@@ -25,7 +23,7 @@ public class InitializerThread extends Thread{
      * @param termithIndex the termithIndex is an object that contains the results of the process
      * @param poolSize the number of thread used during the process
      */
-    public InitializerThread(TermithIndex termithIndex, int poolSize) {
+    public CorpusMapperThread(TermithIndex termithIndex, int poolSize) {
         super(termithIndex,poolSize);
     }
 
@@ -34,7 +32,7 @@ public class InitializerThread extends Thread{
      * with the number of available processors.
      * @param termithIndex the termithIndex is an object that contains the results of the process
      */
-    public InitializerThread(TermithIndex termithIndex) {
+    public CorpusMapperThread(TermithIndex termithIndex) {
         this(termithIndex,DEFAULT_POOL_SIZE);
     }
 
@@ -45,18 +43,10 @@ public class InitializerThread extends Thread{
      */
     public void execute() throws IOException, InterruptedException {
         /*
-        initialize XslResource & ExtractTextTimer
-         */
-        XslResources xslResources = new XslResources();
-
-        /*
         extract the text and map the path of the corpus into hashmap with identifier
          */
         Files.list(TermithIndex.getBase()).forEach(
-                p -> {
-                    _executorService.submit(new TextExtractor(p.toFile(), _termithIndex, xslResources));
-                    _executorService.submit(new CorpusMapper(p, _termithIndex));
-                }
+                p -> _executorService.submit(new CorpusMapper(p, _termithIndex))
 
         );
         _logger.info("Waiting initCorpusWorker executors to finish");

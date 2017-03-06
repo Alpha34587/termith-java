@@ -1,4 +1,4 @@
-package org.atilf.module.enrichment.analyze.treeTaggerWorker;
+package org.atilf.module.enrichment.analyzer.treeTaggerWorker;
 
 import org.atilf.models.TermithIndex;
 import org.atilf.models.enrichment.CorpusAnalyzer;
@@ -58,7 +58,7 @@ public class MorphologySerializerTest {
     public void executeTest() throws Exception {
         _morphologySerializerLemma.execute();
         String observed = String.join("\n",Files.readAllLines(_jsonResFile.toPath()));
-        String expected = String.join("\n", Files.readAllLines(Paths.get("src/test/resources/module/enrichment/analyze/treeTaggerWorker/file1.json")));
+        String expected = String.join("\n", Files.readAllLines(Paths.get("src/test/resources/module/enrichment/analyzer/treeTaggerWorker/file1.json")));
         expected = expected.replace("test1.json", _jsonResFile.getAbsolutePath());
         Assert.assertEquals("files content must be equals : ",expected,observed);
     }

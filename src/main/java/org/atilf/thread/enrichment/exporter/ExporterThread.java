@@ -1,4 +1,4 @@
-package org.atilf.thread.enrichment;
+package org.atilf.thread.enrichment.exporter;
 
 import org.atilf.models.TermithIndex;
 import org.atilf.models.enrichment.StandOffResources;
