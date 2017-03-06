@@ -1,7 +1,11 @@
 package org.atilf.runner;
 
 import org.atilf.models.TermithIndex;
-import org.atilf.thread.disambiguation.*;
+import org.atilf.thread.disambiguation.contextLexicon.ContextLexiconThread;
+import org.atilf.thread.disambiguation.disambiguationExporter.DisambiguationExporterThread;
+import org.atilf.thread.disambiguation.evaluation.EvaluationThread;
+import org.atilf.thread.disambiguation.evaluationScore.EvaluationScoreThread;
+import org.atilf.thread.disambiguation.lexiconProfile.LexiconProfileThread;
 import org.atilf.tools.BenchmarkFactory;
 
 import java.io.IOException;

@@ -1,4 +1,4 @@
-package org.atilf.thread.disambiguation;
+package org.atilf.thread.disambiguation.evaluation;
 
 import org.atilf.models.TermithIndex;
 import org.atilf.models.disambiguation.DisambiguationXslResources;

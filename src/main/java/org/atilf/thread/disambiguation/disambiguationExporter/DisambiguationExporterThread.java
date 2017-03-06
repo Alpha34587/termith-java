@@ -1,4 +1,4 @@
-package org.atilf.thread.disambiguation;
+package org.atilf.thread.disambiguation.disambiguationExporter;
 
 import org.atilf.models.TermithIndex;
 import org.atilf.module.disambiguation.disambiguationExporter.DisambiguationTeiWriter;

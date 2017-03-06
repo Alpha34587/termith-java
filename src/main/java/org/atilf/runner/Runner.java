@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.util.Stack;
 import java.util.concurrent.ExecutionException;
 
 /**
@@ -19,6 +20,7 @@ public abstract class Runner {
     protected final Logger _logger = LoggerFactory.getLogger(this.getClass().getName());
     protected TermithIndex _termithIndex;
     protected int _poolSize;
+    protected Stack<Thread> ThreadStack;
 
     /**
      * this constructor initializes the _termithIndex field.

@@ -1,4 +1,4 @@
-package org.atilf.thread.disambiguation;
+package org.atilf.thread.disambiguation.lexiconProfile;
 
 import org.atilf.models.TermithIndex;
 import org.atilf.models.disambiguation.RConnectionPool;
