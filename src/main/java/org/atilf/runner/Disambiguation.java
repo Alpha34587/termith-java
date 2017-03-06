@@ -10,6 +10,7 @@ import org.atilf.thread.disambiguation.evaluation.EvaluationThread;
 import org.atilf.thread.disambiguation.evaluation.ThresholdLexiconCleanerThread;
 import org.atilf.thread.disambiguation.evaluationScore.*;
 import org.atilf.thread.disambiguation.lexiconProfile.LexiconProfileThread;
+import org.atilf.thread.enrichment.cleaner.WorkingFileCleanerThread;
 import org.atilf.tools.BenchmarkFactory;
 
 import java.io.IOException;
@@ -91,10 +92,14 @@ public class Disambiguation extends Runner {
                 executeThread(ContextJsonExporterThread.class,_termithIndex,_poolSize);
             }
 
+            executeThread(WorkingFileCleanerThread.class,_termithIndex,_poolSize);
+
             if (BenchmarkFactory._exportBenchmark) {
                 BenchmarkFactory.export(_termithIndex.getMemoryPerformanceEvents());
                 BenchmarkFactory.export(_termithIndex.getTimePerformanceEvents());
             }
+
+
         } catch (InterruptedException | ExecutionException | IOException e) {
             _logger.error("error during execution of thread : ", e);
         }

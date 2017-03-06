@@ -2,9 +2,10 @@ package org.atilf.runner;
 
 import org.atilf.models.TermithIndex;
 import org.atilf.thread.enrichment.analyzer.AnalyzeThread;
-import org.atilf.thread.enrichment.cleaner.CleanerThread;
+import org.atilf.thread.enrichment.cleaner.WorkingFileCleanerThread;
 import org.atilf.thread.enrichment.exporter.ExporterThread;
-import org.atilf.thread.enrichment.initializer.InitializerThread;
+import org.atilf.thread.enrichment.initializer.CorpusMapperThread;
+import org.atilf.thread.enrichment.initializer.TextExtractorThread;
 import org.atilf.tools.BenchmarkFactory;
 
 import java.io.IOException;
@@ -50,7 +51,8 @@ public class TermithTreeTagger extends Runner {
         /*
         Extraction text phase
          */
-            executeThread(InitializerThread.class,_termithIndex,_poolSize);
+            executeThread(CorpusMapperThread.class,_termithIndex,_poolSize);
+            executeThread(TextExtractorThread.class,_termithIndex,_poolSize);
                     /*
         Morphology and terminology analysis phase
          */
@@ -62,7 +64,7 @@ public class TermithTreeTagger extends Runner {
         /*
         Clean working directory
          */
-            executeThread(CleanerThread.class,_termithIndex,_poolSize);
+            executeThread(WorkingFileCleanerThread.class,_termithIndex,_poolSize);
 
             if (BenchmarkFactory._exportBenchmark) {
                 BenchmarkFactory.export(_termithIndex.getMemoryPerformanceEvents());

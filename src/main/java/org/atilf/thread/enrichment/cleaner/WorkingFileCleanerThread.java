@@ -11,9 +11,9 @@ import java.util.concurrent.TimeUnit;
  * @author Simon Meoni
  *         Created on 27/09/16.
  */
-public class CleanerThread extends Thread{
+public class WorkingFileCleanerThread extends Thread{
 
-    public CleanerThread(TermithIndex termithIndex, int poolSize) {
+    public WorkingFileCleanerThread(TermithIndex termithIndex, int poolSize) {
         super(termithIndex,poolSize);
     }
 

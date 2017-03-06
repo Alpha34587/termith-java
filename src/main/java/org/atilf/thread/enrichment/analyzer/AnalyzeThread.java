@@ -9,7 +9,6 @@ import org.atilf.module.enrichment.analyzer.TermsuitePipelineBuilder;
 import org.atilf.module.enrichment.analyzer.TreeTaggerWorker;
 import org.atilf.module.enrichment.initializer.TextExtractor;
 import org.atilf.thread.Thread;
-import org.atilf.thread.enrichment.initializer.InitializerThread;
 import org.atilf.tools.FilesUtils;
 
 import java.io.IOException;
@@ -65,7 +64,6 @@ public class AnalyzeThread extends Thread{
     /**
      * this method return the result of the InitializerThread.
      * @return it returns a hashmap who contains the extracted text of the previous step of each files
-     * @see InitializerThread
      * @see TextExtractor
      */
     private Map<String,StringBuilder> createTextHashmap(){
