@@ -23,13 +23,12 @@ public class AggregateTeiTerms extends DefaultHandler implements Runnable {
     private ContextWord _currentW;
     private Deque<ContextTerm> _terms = new ArrayDeque<>();
     private List<Entry<ContextTerm,Set<ContextWord>>> _termTemp = new LinkedList<>();
-    private CountDownLatch _aggregateCounter;
     private final String _xml;
     private final Map<String, EvaluationProfile> _evaluationProfile;
     private static final Logger LOGGER = LoggerFactory.getLogger(AggregateTeiTerms.class.getName());
 
-    AggregateTeiTerms(String xml, Map<String, EvaluationProfile> evaluationProfile,
-                      Map<String, ScoreTerm> scoreTerms) {
+    public AggregateTeiTerms(String xml, Map<String, EvaluationProfile> evaluationProfile,
+                             Map<String, ScoreTerm> scoreTerms) {
         _xml = xml;
         _evaluationProfile = evaluationProfile;
         _scoreTerm = scoreTerms;
@@ -38,7 +37,6 @@ public class AggregateTeiTerms extends DefaultHandler implements Runnable {
     public AggregateTeiTerms(String xml, Map<String, EvaluationProfile> evaluationProfile,
                              Map<String, ScoreTerm> scoreTerms, CountDownLatch aggregateCounter) {
         this(xml, evaluationProfile, scoreTerms);
-        _aggregateCounter = aggregateCounter;
     }
 
     public void execute() {
@@ -55,7 +53,6 @@ public class AggregateTeiTerms extends DefaultHandler implements Runnable {
     public void run() {
         LOGGER.info("aggregate terms is started for file : " + _xml);
         execute();
-        _aggregateCounter.countDown();
         LOGGER.info("aggregate terms is finished for file : " + _xml);
     }
 

@@ -57,7 +57,6 @@ public class LexiconProfileThread extends Thread{
         /*
         convert global corpus into R variable
          */
-
         RLexicon rLexicon = new RLexicon(_termithIndex.getCorpusLexicon());
         RConnectionPool RConnectionPool = new RConnectionPool(8,rLexicon);
         _termithIndex.getContextLexicon().forEach(

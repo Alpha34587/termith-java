@@ -8,7 +8,7 @@ import org.atilf.thread.disambiguation.evaluation.CommonWordsPosLemmaCleanerThre
 import org.atilf.thread.disambiguation.evaluation.EvaluationExtractorThread;
 import org.atilf.thread.disambiguation.evaluation.EvaluationThread;
 import org.atilf.thread.disambiguation.evaluation.ThresholdLexiconCleanerThread;
-import org.atilf.thread.disambiguation.evaluationScore.EvaluationScoreThread;
+import org.atilf.thread.disambiguation.evaluationScore.*;
 import org.atilf.thread.disambiguation.lexiconProfile.LexiconProfileThread;
 import org.atilf.tools.BenchmarkFactory;
 
@@ -82,7 +82,13 @@ public class Disambiguation extends Runner {
         Score phase
          */
             if (TermithIndex.getScorePath() != null){
-                executeThread(EvaluationScoreThread.class,_termithIndex,_poolSize);
+                executeThread(TransformXslScore.class,_termithIndex,_poolSize);
+                executeThread(AggregateTeiTermsThread.class,_termithIndex,_poolSize);
+                executeThread(ComputeTermsScoreThread.class,_termithIndex,_poolSize);
+                executeThread(ComputeTotalTermsScoreThread.class,_termithIndex,_poolSize);
+                executeThread(ExportToCsvThread.class,_termithIndex,_poolSize);
+                executeThread(ExportToJsonThread.class,_termithIndex,_poolSize);
+                executeThread(ContextJsonExporterThread.class,_termithIndex,_poolSize);
             }
 
             if (BenchmarkFactory._exportBenchmark) {
