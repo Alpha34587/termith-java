@@ -1,4 +1,4 @@
-package org.atilf.module.disambiguation.disambiguationExporter;
+package org.atilf.module.disambiguation.evaluationScore;
 
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonGenerator;

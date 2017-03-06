@@ -64,6 +64,18 @@ public class DisambiguationXslTransformerThread extends Thread {
                 )
         );
 
+        if (TermithIndex.getLearningPath() != TermithIndex.getEvaluationPath()) {
+            Files.list(TermithIndex.getEvaluationPath()).forEach(
+                    p -> _executorService.submit(
+                            new DisambiguationXslTransformer(
+                                    p.toFile(),
+                                    _termithIndex,
+                                    _termithIndex.getEvaluationTransformedFiles(),
+                                    xslResources)
+                    )
+            );
+        }
+
         _logger.info("Waiting ContextExtractor executors to finish");
         _executorService.shutdown();
         _executorService.awaitTermination(1L, TimeUnit.DAYS);

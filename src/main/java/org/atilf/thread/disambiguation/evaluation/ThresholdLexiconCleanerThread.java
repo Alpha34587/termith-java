@@ -1,7 +1,8 @@
 package org.atilf.thread.disambiguation.evaluation;
 
 import org.atilf.models.TermithIndex;
-import org.atilf.module.disambiguation.evaluation.Evaluation;
+import org.atilf.models.disambiguation.DisambiguationXslResources;
+import org.atilf.module.disambiguation.evaluation.ThresholdLexiconCleaner;
 import org.atilf.thread.Thread;
 
 import java.io.IOException;
@@ -15,7 +16,7 @@ import static org.atilf.runner.Runner.DEFAULT_POOL_SIZE;
  * @author Simon Meoni
  *         Created on 12/10/16.
  */
-public class EvaluationThread extends Thread{
+public class ThresholdLexiconCleanerThread extends Thread{
 
     /**
      * this constructor initialize the _termithIndex fields and initialize the _poolSize field with the default value
@@ -24,7 +25,7 @@ public class EvaluationThread extends Thread{
      * @param termithIndex
      *         the termithIndex is an object that contains the results of the process*
      */
-    public EvaluationThread(TermithIndex termithIndex) {
+    public ThresholdLexiconCleanerThread(TermithIndex termithIndex) {
         this(termithIndex,DEFAULT_POOL_SIZE);
     }
 
@@ -40,7 +41,7 @@ public class EvaluationThread extends Thread{
      * @see TermithIndex
      * @see ExecutorService
      */
-    public EvaluationThread(TermithIndex termithIndex, int poolSize) {
+    public ThresholdLexiconCleanerThread(TermithIndex termithIndex, int poolSize) {
         super(termithIndex, poolSize);
     }
 
@@ -53,11 +54,18 @@ public class EvaluationThread extends Thread{
      * @throws InterruptedException thrown if awaitTermination function is interrupted while waiting
      */
     public void execute() throws IOException, InterruptedException {
+        DisambiguationXslResources xslResources = new DisambiguationXslResources();
+
         /*
-        Evaluation phase
+        Threshold cleaner
          */
-        _termithIndex.getEvaluationLexicon().forEach(
-                (p,value) -> _executorService.submit(new Evaluation(p, _termithIndex))
+        _termithIndex.getContextLexicon().keySet().forEach(
+                key -> _executorService.submit(new ThresholdLexiconCleaner(
+                        key,
+                        _termithIndex,
+                        3,
+                        15
+                ))
         );
         _logger.info("Waiting EvaluationWorker executors to finish");
         _executorService.shutdown();

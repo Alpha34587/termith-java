@@ -4,7 +4,10 @@ import org.atilf.models.TermithIndex;
 import org.atilf.thread.disambiguation.contextLexicon.ContextExtractorThread;
 import org.atilf.thread.disambiguation.contextLexicon.DisambiguationXslTransformerThread;
 import org.atilf.thread.disambiguation.disambiguationExporter.DisambiguationExporterThread;
+import org.atilf.thread.disambiguation.evaluation.CommonWordsPosLemmaCleanerThread;
+import org.atilf.thread.disambiguation.evaluation.EvaluationExtractorThread;
 import org.atilf.thread.disambiguation.evaluation.EvaluationThread;
+import org.atilf.thread.disambiguation.evaluation.ThresholdLexiconCleanerThread;
 import org.atilf.thread.disambiguation.evaluationScore.EvaluationScoreThread;
 import org.atilf.thread.disambiguation.lexiconProfile.LexiconProfileThread;
 import org.atilf.tools.BenchmarkFactory;
@@ -67,6 +70,9 @@ public class Disambiguation extends Runner {
         /*
         Evaluation phase
          */
+            executeThread(ThresholdLexiconCleanerThread.class,_termithIndex,_poolSize);
+            executeThread(CommonWordsPosLemmaCleanerThread.class,_termithIndex,_poolSize);
+            executeThread(EvaluationExtractorThread.class,_termithIndex,_poolSize);
             executeThread(EvaluationThread.class,_termithIndex,_poolSize);
         /*
         Export results

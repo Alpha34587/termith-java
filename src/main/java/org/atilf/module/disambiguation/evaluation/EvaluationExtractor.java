@@ -11,7 +11,6 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 
 import java.util.*;
-import java.util.concurrent.CountDownLatch;
 
 import static org.atilf.models.disambiguation.AnnotationResources.NO_DM;
 
@@ -24,23 +23,13 @@ public class EvaluationExtractor extends ContextExtractor {
     private final Map<String, EvaluationProfile> _evaluationLexicon;
     private static final Logger LOGGER = LoggerFactory.getLogger(EvaluationExtractor.class.getName());
     private String _p;
-    private CountDownLatch _extractorCounter;
 
-    EvaluationExtractor(String p, TermithIndex termithIndex) {
+    public EvaluationExtractor(String p, TermithIndex termithIndex) {
         super(p,termithIndex.getContextLexicon(), null);
         _p = p;
         termithIndex.getEvaluationLexicon().put(FilesUtils.nameNormalizer(p),new HashMap<>());
         _evaluationLexicon = termithIndex.getEvaluationLexicon().get(FilesUtils.nameNormalizer(p));
     }
-
-    public EvaluationExtractor(String p, TermithIndex termithIndex, CountDownLatch extractorCounter) {
-        super(p,termithIndex.getContextLexicon(), null);
-        _p = p;
-        _extractorCounter = extractorCounter;
-        termithIndex.getEvaluationLexicon().put(FilesUtils.nameNormalizer(p),new HashMap<>());
-        _evaluationLexicon = termithIndex.getEvaluationLexicon().get(FilesUtils.nameNormalizer(p));
-    }
-
 
     @Override
     protected void extractTerms(Attributes attributes) {
@@ -71,7 +60,6 @@ public class EvaluationExtractor extends ContextExtractor {
     public void run() {
         LOGGER.info("add " + _p + " to evaluation lexicon");
         this.execute();
-        _extractorCounter.countDown();
         LOGGER.info(_p + " added");
     }
 

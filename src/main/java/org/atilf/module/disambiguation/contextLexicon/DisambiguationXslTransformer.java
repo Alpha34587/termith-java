@@ -15,7 +15,6 @@ import java.io.IOException;
 import java.io.StringWriter;
 import java.nio.file.Path;
 import java.util.Map;
-import java.util.concurrent.CountDownLatch;
 
 /**
  *         the contextLexicon convert tei file into xml working file format.
@@ -56,13 +55,13 @@ public class DisambiguationXslTransformer extends Module{
         _outputPath = TermithIndex.getOutputPath();
     }
 
-    public DisambiguationXslTransformer(File file, TermithIndex termithIndex, CountDownLatch transformCounter,
+    public DisambiguationXslTransformer(File file, TermithIndex termithIndex,
                                         Map<String, Path> xmlTransformedMap, XslResources xslResources){
-        this(file,termithIndex,transformCounter,xmlTransformedMap,xslResources,TermithIndex.getOutputPath());
+        this(file,termithIndex,xmlTransformedMap,xslResources,TermithIndex.getOutputPath());
     }
 
 
-    public DisambiguationXslTransformer(File file,TermithIndex termithIndex, CountDownLatch transformCounter,
+    public DisambiguationXslTransformer(File file,TermithIndex termithIndex,
                                         Map<String,Path> xmlTransformedMap, XslResources xslResources, Path outputPath){
         super(termithIndex);
         _file = file;

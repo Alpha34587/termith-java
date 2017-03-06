@@ -13,9 +13,6 @@ import org.xml.sax.helpers.DefaultHandler;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.*;
 
 import static org.atilf.models.disambiguation.AnnotationResources.*;
@@ -174,11 +171,6 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
     public void run() {
         LOGGER.info("extract contexts from " + _p );
         this.execute();
-        try {
-            Files.delete(Paths.get(_p));
-        } catch (IOException e) {
-            LOGGER.error("cannot delete file", e);
-        }
         LOGGER.info("all contexts in " + _p + "has been extracted");
     }
 

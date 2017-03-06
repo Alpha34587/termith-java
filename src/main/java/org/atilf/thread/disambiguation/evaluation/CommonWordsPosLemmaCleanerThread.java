@@ -1,7 +1,7 @@
 package org.atilf.thread.disambiguation.evaluation;
 
 import org.atilf.models.TermithIndex;
-import org.atilf.module.disambiguation.evaluation.Evaluation;
+import org.atilf.module.disambiguation.evaluation.CommonWordsPosLemmaCleaner;
 import org.atilf.thread.Thread;
 
 import java.io.IOException;
@@ -15,7 +15,7 @@ import static org.atilf.runner.Runner.DEFAULT_POOL_SIZE;
  * @author Simon Meoni
  *         Created on 12/10/16.
  */
-public class EvaluationThread extends Thread{
+public class CommonWordsPosLemmaCleanerThread extends Thread{
 
     /**
      * this constructor initialize the _termithIndex fields and initialize the _poolSize field with the default value
@@ -24,7 +24,7 @@ public class EvaluationThread extends Thread{
      * @param termithIndex
      *         the termithIndex is an object that contains the results of the process*
      */
-    public EvaluationThread(TermithIndex termithIndex) {
+    public CommonWordsPosLemmaCleanerThread(TermithIndex termithIndex) {
         this(termithIndex,DEFAULT_POOL_SIZE);
     }
 
@@ -40,7 +40,7 @@ public class EvaluationThread extends Thread{
      * @see TermithIndex
      * @see ExecutorService
      */
-    public EvaluationThread(TermithIndex termithIndex, int poolSize) {
+    public CommonWordsPosLemmaCleanerThread(TermithIndex termithIndex, int poolSize) {
         super(termithIndex, poolSize);
     }
 
@@ -53,12 +53,25 @@ public class EvaluationThread extends Thread{
      * @throws InterruptedException thrown if awaitTermination function is interrupted while waiting
      */
     public void execute() throws IOException, InterruptedException {
+
         /*
-        Evaluation phase
+        Common PosLemma cleaner
          */
-        _termithIndex.getEvaluationLexicon().forEach(
-                (p,value) -> _executorService.submit(new Evaluation(p, _termithIndex))
+        _termithIndex.getContextLexicon().forEach(
+                (key,value) ->
+                {
+                    String lexOff = key.replace("On","Off");
+                    if (key.contains("_lexOn") &&
+                            _termithIndex.getContextLexicon().containsKey(lexOff)) {
+                        _executorService.submit(new CommonWordsPosLemmaCleaner(
+                                key,
+                                value,
+                                _termithIndex.getContextLexicon().get(lexOff)
+                        ));
+                    }
+                }
         );
+
         _logger.info("Waiting EvaluationWorker executors to finish");
         _executorService.shutdown();
         _executorService.awaitTermination(1L, TimeUnit.DAYS);

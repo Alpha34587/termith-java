@@ -3,8 +3,6 @@ package org.atilf.thread.disambiguation.evaluationScore;
 import org.atilf.models.TermithIndex;
 import org.atilf.models.disambiguation.DisambiguationXslResources;
 import org.atilf.models.enrichment.XslResources;
-import org.atilf.module.disambiguation.contextLexicon.DisambiguationXslTransformer;
-import org.atilf.module.disambiguation.disambiguationExporter.ContextJsonExporter;
 import org.atilf.module.disambiguation.evaluationScore.*;
 import org.atilf.module.enrichment.cleaner.WorkingFilesCleaner;
 import org.atilf.thread.Thread;
@@ -73,18 +71,18 @@ public class EvaluationScoreThread extends Thread{
         XslResources xslResources = new DisambiguationXslResources();
         _logger.info("transformation phase is started for EvaluationScoreThread");
         Path scoreFolder = Files.createDirectory(Paths.get(TermithIndex.getOutputPath().toString() + "/score/"));
-        Files.list(TermithIndex.getOutputPath())
-                .filter(p -> !Files.isDirectory(p))
-                .filter(p -> p.toString().endsWith(".xml"))
-                .forEach(
-                        p -> _executorService.submit(new DisambiguationXslTransformer(
-                                p.toFile(),
-                                _termithIndex,
-                                _transformCounter,
-                                _termithIndex.getTransformOutputDisambiguationFile(),
-                                xslResources,
-                                scoreFolder)));
-        _transformCounter.await();
+//        Files.list(TermithIndex.getOutputPath())
+//                .filter(p -> !Files.isDirectory(p))
+//                .filter(p -> p.toString().endsWith(".xml"))
+//                .forEach(
+//                        p -> _executorService.submit(new DisambiguationXslTransformer(
+//                                p.toFile(),
+//                                _termithIndex,
+//                                _transformCounter,
+//                                _termithIndex.getTransformOutputDisambiguationFile(),
+//                                xslResources,
+//                                scoreFolder)));
+//        _transformCounter.await();
         _logger.info("transformation phase is finished for EvaluationScoreThread");
 
         _logger.info("AggregateTeiTerms phase is started : retrieve all the evaluated terms candidate");
