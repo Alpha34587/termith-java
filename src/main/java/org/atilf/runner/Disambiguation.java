@@ -1,7 +1,8 @@
 package org.atilf.runner;
 
 import org.atilf.models.TermithIndex;
-import org.atilf.thread.disambiguation.contextLexicon.ContextLexiconThread;
+import org.atilf.thread.disambiguation.contextLexicon.ContextExtractorThread;
+import org.atilf.thread.disambiguation.contextLexicon.DisambiguationXslTransformerThread;
 import org.atilf.thread.disambiguation.disambiguationExporter.DisambiguationExporterThread;
 import org.atilf.thread.disambiguation.evaluation.EvaluationThread;
 import org.atilf.thread.disambiguation.evaluationScore.EvaluationScoreThread;
@@ -46,7 +47,6 @@ public class Disambiguation extends Runner {
      *      corpus and compare context evaluation corpus and learning evaluation
      *      in order to determine the terminology or not a terms candidates in the evaluation corpus
      *      4) DisambiguationExporterThread : report the result on the associate tei file
-     *      @see ContextLexiconThread
      *      @see LexiconProfileThread
      *      @see EvaluationThread
      *      @see DisambiguationExporterThread
@@ -58,7 +58,8 @@ public class Disambiguation extends Runner {
         /*
         Context extraction phase
          */
-            executeThread(ContextLexiconThread.class,_termithIndex,_poolSize);
+            executeThread(DisambiguationXslTransformerThread.class,_termithIndex,_poolSize);
+            executeThread(ContextExtractorThread.class,_termithIndex,_poolSize);
         /*
         Lexicon profile processing
          */

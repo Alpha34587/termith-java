@@ -1,13 +1,11 @@
 package org.atilf.thread.disambiguation.contextLexicon;
 
 import org.atilf.models.TermithIndex;
-import org.atilf.models.disambiguation.DisambiguationXslResources;
 import org.atilf.module.disambiguation.contextLexicon.ContextExtractor;
 import org.atilf.module.disambiguation.contextLexicon.DisambiguationXslTransformer;
 import org.atilf.thread.Thread;
 
 import java.io.IOException;
-import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
@@ -20,9 +18,8 @@ import static org.atilf.runner.Runner.DEFAULT_POOL_SIZE;
  * @author Simon Meoni
  *         Created on 12/10/16.
  */
-public class ContextLexiconThread extends Thread {
+public class ContextExtractorThread extends Thread {
 
-    private CountDownLatch _transformCounter;
     /**
      * this constructor initialize all the needed fields. The _transformCounter is a CountDownLatch object of
      * the java concurrent library. The _transformCounter is set to the number of the file of the corpus. At each
@@ -33,19 +30,12 @@ public class ContextLexiconThread extends Thread {
      * @see CountDownLatch
      * @see TermithIndex
      */
-    public ContextLexiconThread(TermithIndex termithIndex, int poolSize) {
+    public ContextExtractorThread(TermithIndex termithIndex, int poolSize) {
         super(termithIndex, poolSize);
-        try {
-            _transformCounter = new CountDownLatch(
-                    (int) Files.list(TermithIndex.getLearningPath()).count()
-            );
-        } catch (IOException e) {
-            _logger.error("could not find folder : ",e);
-        }
     }
 
-    public ContextLexiconThread(TermithIndex termithIndex) {
-            this(termithIndex, DEFAULT_POOL_SIZE);
+    public ContextExtractorThread(TermithIndex termithIndex) {
+        this(termithIndex, DEFAULT_POOL_SIZE);
     }
 
     /**
@@ -61,28 +51,7 @@ public class ContextLexiconThread extends Thread {
 
     @Override
     public void execute() throws IOException, InterruptedException {
-        DisambiguationXslResources xslResources = new DisambiguationXslResources();
 
-        /*
-        Transformation phase
-         */
-        Files.list(TermithIndex.getLearningPath()).forEach(
-                p -> _executorService.submit(new DisambiguationXslTransformer(
-                        p.toFile(),
-                        _transformCounter,
-                        _termithIndex,
-                        xslResources)
-                )
-        );
-
-        /*
-        wait until the xsl transformation is done for all the corpus files
-         */
-        _transformCounter.await();
-
-        /*
-        Extraction phase
-         */
         List<String> includeElement = new ArrayList<>();
         includeElement.add("p");
         includeElement.add("head");

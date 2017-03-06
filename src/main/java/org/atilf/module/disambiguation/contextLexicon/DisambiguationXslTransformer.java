@@ -24,7 +24,6 @@ import java.util.concurrent.CountDownLatch;
  *         Created on 02/11/16.
  */
 public class DisambiguationXslTransformer extends Module{
-    private CountDownLatch _transformCounter;
     private Map<String, Path> _xmlTransformedMap;
     private Path _outputPath;
     private File _file;
@@ -43,19 +42,15 @@ public class DisambiguationXslTransformer extends Module{
 
     /**
      * constructor of contextLexicon module
-     * @param transformCounter the transformCounter in an object of java.util.concurrent. When the transformation
-     *                         is performed the counter is decreased. This counter is used in the ContextLexiconThread
-     *                         in order to wait that the transformation is performed for all the corpus
      * @param file input tei file
      * @param xslResources the xslResource object who have as field the parse xsl stylesheet
      *                     used to convert the input file
      */
-    public DisambiguationXslTransformer(File file, CountDownLatch transformCounter,
+    public DisambiguationXslTransformer(File file,
                                         TermithIndex termithIndex, XslResources xslResources){
 
         super(termithIndex);
         _file = file;
-        _transformCounter = transformCounter;
         _xmlTransformedMap = termithIndex.getLearningTransformedFile();
         _xslResources = xslResources;
         _outputPath = TermithIndex.getOutputPath();
@@ -71,7 +66,6 @@ public class DisambiguationXslTransformer extends Module{
                                         Map<String,Path> xmlTransformedMap, XslResources xslResources, Path outputPath){
         super(termithIndex);
         _file = file;
-        _transformCounter = transformCounter;
         _xmlTransformedMap = xmlTransformedMap;
         _xslResources = xslResources;
         _outputPath = outputPath;
@@ -109,7 +103,6 @@ public class DisambiguationXslTransformer extends Module{
             /*
             decrease the counter
              */
-            _transformCounter.countDown();
             _logger.info("Extraction done for file: " + _file);
         } catch (IOException e) {
             _logger.error("File Exception: ",e);
