@@ -361,7 +361,7 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
                 _currentPosLemma = "";
             }
             else {
-                _currentPosLemma += posLemma;
+                _currentPosLemma += new String(ch,start,length);
             }
         }
     }
