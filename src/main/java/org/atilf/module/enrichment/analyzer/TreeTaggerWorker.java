@@ -14,7 +14,6 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.concurrent.CountDownLatch;
 
 /**
  * TreeTagger Wrapper calls two modules : TreeTaggerToJson and  MorphologyTokenizerWrapper. The first module run the
@@ -25,23 +24,18 @@ import java.util.concurrent.CountDownLatch;
 public class TreeTaggerWorker extends Module {
 
     private final String _id;
-    private CountDownLatch _jsonCnt;
     private StringBuilder _txt;
     private String _jsonPath;
     private StringBuilder _xml;
     private TextAnalyzer _textAnalyzer;
 
     /**
-     *
-     * @param termithIndex the termithIndex of the associated Thread
+     *  @param termithIndex the termithIndex of the associated Thread
      * @param corpusAnalyzer this object contains the metadata used for write json file
      * @param id the name of the file in the map who contains the extracted text of the xml file
-     * @param jsonCnt this counter is decreased when the json file is wrote
      */
-    public TreeTaggerWorker(TermithIndex termithIndex, CorpusAnalyzer corpusAnalyzer, String id,
-                            CountDownLatch jsonCnt) {
+    public TreeTaggerWorker(TermithIndex termithIndex, CorpusAnalyzer corpusAnalyzer, String id) {
         super(termithIndex);
-        _jsonCnt = jsonCnt;
         _txt = FilesUtils.readObject(termithIndex.getExtractedText().get(id),StringBuilder.class);
         _jsonPath = TermithIndex.getOutputPath() + "/json/" + id + ".json";
         _textAnalyzer = corpusAnalyzer.getAnalyzedTexts().get(id);
@@ -109,7 +103,6 @@ public class TreeTaggerWorker extends Module {
             _termithIndex.getMorphologyStandOff().put(json.getName().replace(".json",""),
                     FilesUtils.writeObject(morphologyTokenizer.getOffsetId(), TermithIndex.getOutputPath()));
             _logger.debug("tokenization and morphosyntax tasks finished file : " + _jsonPath);
-            _jsonCnt.countDown();
         } catch (IOException e) {
             _logger.error("error during execute TreeTagger data", e);
         } catch (InterruptedException e) {

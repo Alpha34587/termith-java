@@ -34,7 +34,7 @@ public class TerminologyStandOff extends Module {
 
 
     /**
-     * constructor for TerminologyStandOff class
+     * constructor for TerminologyStandOffThread class
      * @param morpho the morphology entities analyzes by treetagger
      * @param terminology the terminologies occurrences compute by termsuite
      */

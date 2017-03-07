@@ -1,7 +1,10 @@
 package org.atilf.runner;
 
 import org.atilf.models.TermithIndex;
-import org.atilf.thread.enrichment.analyzer.AnalyzeThread;
+import org.atilf.thread.enrichment.analyzer.TerminologyParserThread;
+import org.atilf.thread.enrichment.analyzer.TerminologyStandOffThread;
+import org.atilf.thread.enrichment.analyzer.TermsuitePipelineBuilderThread;
+import org.atilf.thread.enrichment.analyzer.TreeTaggerWorkerThread;
 import org.atilf.thread.enrichment.cleaner.WorkingFileCleanerThread;
 import org.atilf.thread.enrichment.exporter.ExporterThread;
 import org.atilf.thread.enrichment.initializer.CorpusMapperThread;
@@ -56,7 +59,10 @@ public class TermithTreeTagger extends Runner {
                     /*
         Morphology and terminology analysis phase
          */
-            executeThread(AnalyzeThread.class,_termithIndex, _poolSize);
+            executeThread(TreeTaggerWorkerThread.class,_termithIndex, _poolSize);
+            executeThread(TermsuitePipelineBuilderThread.class,_termithIndex, _poolSize);
+            executeThread(TerminologyParserThread.class,_termithIndex, _poolSize);
+            executeThread(TerminologyStandOffThread.class,_termithIndex, _poolSize);
         /*
         Tei exportation phase
          */
