@@ -21,7 +21,7 @@ public class TerminologyParserTest {
 
     @BeforeClass
     public static void setUp(){
-        _terminologyParser = new TerminologyParser(Paths.get("src/test/resources/module/enrichment/analyzer/terminology.json"));
+        _terminologyParser = new TerminologyParser(Paths.get("src/test/resources/module/enrichment/analyze/terminology.json"));
     }
 
     @Test
