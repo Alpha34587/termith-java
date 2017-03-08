@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
+             typeLanguage="http://www.w3.org/2001/XMLSchema"
+             expressionLanguage="http://www.w3.org/1999/XPath"
+             targetNamespace="http://www.flowable.org/processdef">
+
+    <process id="termithTreeTagger" name="termithTreeTagger" isExecutable="true">
+
+        <startEvent id="startEvent"/>
+        <sequenceFlow id="flow1" sourceRef="startEvent" targetRef="fork" />
+
+        <parallelGateway id="fork" />
+        <serviceTask sourceRef="fork" targetRef="corpusMapper"/>
+        <serviceTask sourceRef="fork" targetRef="textExtractor"/>
+
+        <parallelGateway id="join"/>
+        <serviceTask sourceRef="join" targetRef="treeTaggerWorker" />
+
+        <serviceTask sourceRef="treeTaggerWorker" targetRef="endEvent" />
+        <endEvent id="endEvent"/>
+
+    </process>
+
+</definitions>
