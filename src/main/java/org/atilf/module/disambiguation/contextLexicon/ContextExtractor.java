@@ -231,6 +231,13 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
             case "ns:standOff":
                 _inStandOff = false;
                 LOGGER.info("term extraction finished");
+                _terms.sort((o1, o2) -> {
+                    int comp = Integer.compare(o1.getBeginTag(),o2.getBeginTag());
+                    if (comp == 0) {
+                        comp = Integer.compare(o1.getEndTag(),o2.getEndTag());
+                    }
+                    return comp;
+                });
                 break;
             case "text":
                 _inText = false;
@@ -243,16 +250,6 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
         if (_inText && !qName.equals("w")){
             searchTermsInContext();
         }
-        else if (!_inStandOff){
-            _terms.sort((o1, o2) -> {
-                int comp = Integer.compare(o1.getBeginTag(),o2.getBeginTag());
-                if (comp == 0) {
-                    comp = Integer.compare(o1.getEndTag(),o2.getEndTag());
-                }
-                return comp;
-            });
-        }
-
     }
 
     /**
@@ -267,6 +264,7 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
                     (key,value) -> searchTermInContext(words, termStack, termStackTemp, key)
             );
         }
+        _elementsStack.pop();
     }
 
     /**
@@ -335,7 +333,7 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
                     .filter(t -> t.getBeginTag() <= words.lastKey())
                     .findFirst();
             if (term.isPresent()) {
-                _terms.subList(_terms.indexOf(term.get()),_terms.size() - 1).forEach(termDeque::add);
+                _terms.subList(_terms.indexOf(term.get()),_terms.size()).forEach(termDeque::add);
                 return termDeque;
             }
         }
@@ -371,6 +369,7 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
      * @param attributes the attributes of a span element
      */
     protected void extractTerms(Attributes attributes) {
+
         String ana = attributes.getValue("ana").split(" ")[0];
         if (!ana.equals(NO_DM.getValue())) {
             _terms.add(new ContextTerm(attributes.getValue("corresp"),
@@ -400,7 +399,6 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
             if (!_contextLexicon.containsKey(key)) {
                 _contextLexicon.put(key, new LexiconProfile());
             }
-            _targetContext.get(key).forEach(contextTarget::remove);
 
             _targetContext.get(key).addAll(new ArrayList<>(contextTarget.keySet()));
             _contextLexicon.get(key).addOccurrences(new ArrayList<>(contextTarget.values()));

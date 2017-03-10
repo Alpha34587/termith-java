@@ -91,12 +91,12 @@ public class ContextLexiconThread extends Thread {
         includeElement.add("q");
 
         List<String> authorizedTag = new ArrayList<>();
-        authorizedTag.add("VER:pres");
         authorizedTag.add("NOM");
+        authorizedTag.add("NAM");
         authorizedTag.add("ADV");
         authorizedTag.add("ADJ");
+        authorizedTag.add("VER:pres");
         authorizedTag.add("VER:infi");
-        authorizedTag.add("NAM");
         authorizedTag.add("VER:pper");
         authorizedTag.add("VER:ppre");
         authorizedTag.add("VER:subp");
