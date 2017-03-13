@@ -95,8 +95,8 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
     protected Map<String,List<Integer>> _targetContext = new HashMap<>();
     protected Stack<TreeMap<Integer,String>> _contextStack = new Stack<>();
 
-    protected Stack<String> _elementsStack = new Stack<>();
-    protected List<String> _allowedElements = new ArrayList<>();
+    private Stack<String> _elementsStack = new Stack<>();
+    private List<String> _allowedElements = new ArrayList<>();
 
     private CorpusLexicon _corpusLexicon;
     private String _p;
@@ -312,13 +312,7 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
             return true;
         }
 
-        else {
-             int size = term.getEndTag() - term.getBeginTag() + 1;
-             if (size == words.size()){
-                 return false;
-             }
-             return true;
-        }
+        return term.getSize() != words.size();
     }
     /**
      * get a sublist of _term field and return a Deque with these elements. The first element of the sublist has
@@ -350,9 +344,6 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
         if (_inW) {
             if (posLemma.contains(" ")){
                 _lastContextWord.setPosLemma(posLemma);
-                if (verifyPosTag(posLemma.split((" "))[1])) {
-                    _corpusLexicon.addOccurrence(posLemma);
-                }
                 _contextStack.forEach(words -> words.put(_lastContextWord.getTarget(), _lastContextWord.getPosLemma()));
                 LOGGER.debug("add pos lemma pair: " + posLemma + " to corpus");
                 _inW = false;
@@ -382,25 +373,19 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
     /**
      * add to lexicalProfile a context for terminology entry
      * @param term the term id entry suffixes by _lexOn or _lexOff
-     * @param context
      */
     protected void addWordsToLexicon(ContextTerm term, TreeMap<Integer, String> context) {
         /*
         create new entry if the key not exists in the _contextLexicon field
          */
         String key = normalizeKey(term.getCorresp(), term.getAna());
-
         Map<Integer,String> contextTarget = filterPos(contextThreshold(term,context));
-        if (contextTarget.size() != 0) {
-            if (!_targetContext.containsKey(key)) {
-                _targetContext.put(key, new ArrayList<>());
-            }
 
+        if (contextTarget.size() != 0 && context.size() != term.getSize()) {
             if (!_contextLexicon.containsKey(key)) {
                 _contextLexicon.put(key, new LexiconProfile());
             }
-
-            _targetContext.get(key).addAll(new ArrayList<>(contextTarget.keySet()));
+            _corpusLexicon.addOccurrences(contextTarget.values());
             _contextLexicon.get(key).addOccurrences(new ArrayList<>(contextTarget.values()));
         }
     }
@@ -419,17 +404,19 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
         Map<Integer,String> rightContextTarget;
         SortedMap<Integer, String> leftContextTarget;
         if (_threshold == 0){
-            leftContextTarget = context.subMap(0, true, term.getBeginTag(),true);
-            rightContextTarget = new TreeMap<>(context.subMap(term.getEndTag(), true,
-                    context.lastKey(),true));
+            return new HashMap<>(context);
         }
         else {
+
+            //left context
             if (term.getBeginTag() > _threshold) {
                 leftContextTarget = context.subMap(term.getBeginTag() - _threshold, true, term.getBeginTag(), true);
             }
             else {
                 leftContextTarget = context.subMap(0, true, term.getBeginTag(),true);
             }
+
+            //right context
             if (context.lastKey() > term.getEndTag() + _threshold  ) {
                 rightContextTarget = new TreeMap<>(context.subMap(term.getEndTag(), true,
                         term.getEndTag() + _threshold, true));
