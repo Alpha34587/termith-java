@@ -152,6 +152,13 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
         _authorizedPOSTag = authorizedPOSTag;
     }
 
+    public ContextExtractor(String p, Map<String, LexiconProfile> contextLexicon, CorpusLexicon corpusLexicon,
+                            int threshold, List<String> authorizedPOSTag,List<String> allowedElements){
+        this(p,contextLexicon,corpusLexicon,threshold);
+        _authorizedPOSTag = authorizedPOSTag;
+        _allowedElements =allowedElements;
+    }
+
     /**
      * getter for _terms fields
      * @return return a list of ContextTerms
@@ -162,12 +169,6 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
 
     public void execute() {
         try {
-            _allowedElements.add("p");
-            _allowedElements.add("cit");
-            _allowedElements.add("head");
-            _allowedElements.add("q");
-            _allowedElements.add("note");
-            _allowedElements.add("ab");
             SAXParserFactory factory = SAXParserFactory.newInstance();
             SAXParser saxParser = factory.newSAXParser();
             saxParser.parse(_xml,this);

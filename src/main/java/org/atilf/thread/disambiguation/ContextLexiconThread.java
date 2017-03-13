@@ -112,7 +112,8 @@ public class ContextLexiconThread extends Thread {
                                 _termithIndex.getContextLexicon(),
                                 _termithIndex.getCorpusLexicon(),
                                 _termithIndex.getThresholdContext(),
-                                authorizedTag
+                                authorizedTag,
+                                includeElement
                         )
                 )
         );
