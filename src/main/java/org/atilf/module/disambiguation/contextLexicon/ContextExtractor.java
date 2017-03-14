@@ -227,10 +227,6 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
     }
 
 
-    private boolean verifyPosTag(String pos) {
-        return _authorizedPOSTag.isEmpty() || _authorizedPOSTag.contains(pos);
-    }
-
     @Override
     public void endElement(String uri,
                            String localName, String qName) throws SAXException {
@@ -292,7 +288,7 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
                     termDequeTemp.add(termDeque.peek());
                 }
                 else if (isContext(words,termDeque.peek())){
-                    addWordsToLexicon(termDeque.peek(), words);
+                    addContextToLexiconMap(termDeque.peek(), words);
                     _terms.remove(termDeque.peek());
                 }
                 termDeque.pop();
@@ -302,7 +298,7 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
 
         if (!termDequeTemp.isEmpty() && termDequeTemp.peek().getEndTag() == target) {
             if (isContext(words,termDequeTemp.peek())) {
-                addWordsToLexicon(termDequeTemp.peek(), words);
+                addContextToLexiconMap(termDequeTemp.peek(), words);
                 _terms.remove(termDequeTemp.peek());
             }
             termDequeTemp.pop();
@@ -381,7 +377,7 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
      * add to lexicalProfile a context for terminology entry
      * @param term the term id entry suffixes by _lexOn or _lexOff
      */
-    protected void addWordsToLexicon(ContextTerm term, TreeMap<Integer, String> context) {
+    private void addContextToLexiconMap(ContextTerm term, TreeMap<Integer, String> context) {
         /*
         create new entry if the key not exists in the _contextLexicon field
          */
@@ -389,12 +385,16 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
         Map<Integer,String> contextTarget = filterPos(contextThreshold(term,context));
 
         if (contextTarget.size() != 0 && context.size() != term.getSize()) {
-            if (!_contextLexicon.containsKey(key)) {
-                _contextLexicon.put(key, new LexiconProfile());
-            }
-            _corpusLexicon.addOccurrences(contextTarget.values());
-            _contextLexicon.get(key).addOccurrences(new ArrayList<>(contextTarget.values()));
+            addContextToLexicon(key, contextTarget);
         }
+    }
+
+    protected void addContextToLexicon(String key, Map<Integer, String> contextTarget) {
+        if (!_contextLexicon.containsKey(key)) {
+            _contextLexicon.put(key, new LexiconProfile());
+        }
+        _corpusLexicon.addContext(contextTarget.values());
+        _contextLexicon.get(key).addOccurrences(new ArrayList<>(contextTarget.values()));
     }
 
     private Map<Integer,String> filterPos(Map<Integer, String> contextTarget) {
