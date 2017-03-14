@@ -66,9 +66,7 @@ public class ContextExtractorTest {
         entry2.add("il PRO:PER");
         entry2.add("côtier ADJ");
         _expectedLexicon.put("entry-7263_lexOff",new LexiconProfile(entry2));
-        Multiset<String> entry2Tag = HashMultiset.create();
-        entry2Tag.add("quelque PRO:IND");
-        _expectedTagLexicon.put("entry-7263_lexOff",new LexiconProfile(entry2Tag));
+
         
         /*
         simple multi case : w w w T1 T2 w w w
@@ -87,20 +85,6 @@ public class ContextExtractorTest {
         entry3.add("par PRP");
         entry3.add("comparer VER:pper");
         _expectedLexicon.put("entry-575_lexOff",new LexiconProfile(entry3));
-
-        Multiset<String> thresholdEntry3 = HashMultiset.create();
-        thresholdEntry3.add("un DET:ART");
-        thresholdEntry3.add("étude NOM");
-        thresholdEntry3.add("comparer VER:pper");
-        thresholdEntry3.add("archéo-ichtyofauniques ADJ");
-        thresholdEntry3.add("livrer VER:pper");
-        thresholdEntry3.add("par PRP");
-        thresholdEntry3.add("du PRP:det");
-        thresholdEntry3.add("donnée NOM");
-
-
-
-        _thresholdExpectedLexicon.put("entry-575_lexOff",new LexiconProfile(thresholdEntry3));
 
         /*
         embedded multi case :  < w w T1 > T2 T3 w w w
@@ -144,6 +128,54 @@ public class ContextExtractorTest {
         _expectedCorpus.addAll(entry4);
         _expectedCorpus.addAll(entry5);
         _expectedCorpus.addAll(entry6);
+
+        //Tag lexicon
+
+        Multiset<String> entry1Tag = HashMultiset.create();
+        entry1Tag.add("quelque PRO:IND");
+        _expectedTagLexicon.put("entry-7263_lexOff",new LexiconProfile(entry1Tag));
+
+        //Threshold lexicon
+        Multiset<String> thresholdEntry2 = HashMultiset.create();
+        thresholdEntry2.add("livrer VER:pper",2);
+        thresholdEntry2.add("par PRP",2);
+        thresholdEntry2.add("deux NUM",2);
+        thresholdEntry2.add("site NOM",2);
+        thresholdEntry2.add("de PRP",2);
+        thresholdEntry2.add("le DET:ART",2);
+        thresholdEntry2.add("âge NOM",2);
+        thresholdEntry2.add("du PRP:det",2);
+        _thresholdExpectedLexicon.put("entry-13471_lexOff",new LexiconProfile(thresholdEntry2));
+
+        Multiset<String> thresholdEntry4 = HashMultiset.create();
+        thresholdEntry4.add("sur PRP");
+        thresholdEntry4.add("le DET:ART");
+        thresholdEntry4.add("deux NUM");
+        thresholdEntry4.add("bronze NOM");
+        thresholdEntry4.add(". SENT");
+        _thresholdExpectedLexicon.put("entry-35_lexOff",new LexiconProfile(thresholdEntry4));
+
+        Multiset<String> thresholdEntry5 = HashMultiset.create();
+        thresholdEntry5.add("pêche NOM");
+        thresholdEntry5.add(", PUN");
+        thresholdEntry5.add("limiter VER:pper");
+        thresholdEntry5.add("à PRP");
+        thresholdEntry5.add("côtier ADJ");
+        _thresholdExpectedLexicon.put("entry-7263_lexOff",new LexiconProfile(thresholdEntry5));
+
+        Multiset<String> thresholdEntry6 = HashMultiset.create();
+        thresholdEntry6.add("type NOM");
+        thresholdEntry6.add("de PRP");
+        thresholdEntry6.add("rejet NOM");
+        thresholdEntry6.add("précéder VER:ppre");
+        thresholdEntry6.add("leur DET:POS");
+        thresholdEntry6.add("enfouissement NOM");
+        thresholdEntry6.add(". SENT");
+        _thresholdExpectedLexicon.put("entry-5750_lexOff",new LexiconProfile(thresholdEntry6));
+
+        List<String> authorizedTags = new ArrayList<>();
+        authorizedTags.add("PRO:IND");
+
         List<String> includeElements = new ArrayList<>();
         includeElements.add("p");
         includeElements.add("cit");
@@ -151,12 +183,11 @@ public class ContextExtractorTest {
         includeElements.add("q");
         includeElements.add("note");
         includeElements.add("ab");
+
+        // execute context
         new ContextExtractor("src/test/resources/module/disambiguation/contextLexicon/contextExtractor/test1.xml",
                 _observedLexicon,
                 _observedCorpus,includeElements).execute();
-
-        List<String> authorizedTags = new ArrayList<>();
-        authorizedTags.add("PRO:IND");
         new ContextExtractor("src/test/resources/module/disambiguation/contextLexicon/contextExtractor/test1.xml",
                 _observedTagLexicon, authorizedTags,
                 new CorpusLexicon(new HashMap<>(),new HashMap<>())).execute();

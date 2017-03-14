@@ -132,7 +132,7 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
         _corpusLexicon = corpusLexicon;
         _xml = new File(_p);
     }
-    
+
     ContextExtractor(String p, Map<String, LexiconProfile> contextLexicon, CorpusLexicon corpusLexicon,
                      int threshold){
         this(p,contextLexicon,corpusLexicon);
@@ -144,7 +144,7 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
         this(p,contextLexicon,corpusLexicon);
         _allowedElements = allowedElements;
     }
-    
+
     ContextExtractor(String p, Map<String, LexiconProfile> contextLexicon, List<String> authorizedPOSTag,
                      CorpusLexicon corpusLexicon){
         this(p,contextLexicon,corpusLexicon);
@@ -408,33 +408,21 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
     }
 
     private Map<Integer,String> contextThreshold(ContextTerm term, TreeMap<Integer, String> context){
-        Map<Integer,String> rightContextTarget;
-        SortedMap<Integer, String> leftContextTarget;
         if (_threshold == 0){
             return new HashMap<>(context);
         }
         else {
+            SortedMap<Integer, String> thresholdContext = new TreeMap<>(context);
 
-            //left context
-            if (term.getBeginTag() > _threshold) {
-                leftContextTarget = context.subMap(term.getBeginTag() - _threshold, true, term.getBeginTag(), true);
+            if (term.getBeginTag()  > _threshold) {
+                thresholdContext = context.subMap(term.getBeginTag() - _threshold, true,context.lastKey(),true);
             }
-            else {
-                leftContextTarget = context.subMap(0, true, term.getBeginTag(),true);
+            if (term.getEndTag() + _threshold < context.lastKey()){
+                thresholdContext = thresholdContext.subMap(thresholdContext.firstKey(), term.getEndTag() +
+                        _threshold + 1 );
             }
-
-            //right context
-            if (context.lastKey() > term.getEndTag() + _threshold  ) {
-                rightContextTarget = new TreeMap<>(context.subMap(term.getEndTag(), true,
-                        term.getEndTag() + _threshold, true));
-            }
-            else {
-                rightContextTarget = new TreeMap<>(context.subMap(term.getEndTag(), true, context.lastKey(),true));
-            }
+            return thresholdContext;
         }
-        rightContextTarget.putAll(leftContextTarget);
-
-        return rightContextTarget;
     }
 
     /**
