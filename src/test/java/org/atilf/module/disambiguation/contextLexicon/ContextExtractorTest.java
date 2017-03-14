@@ -146,13 +146,14 @@ public class ContextExtractorTest {
         _expectedCorpus.addAll(entry6);
         List<String> includeElements = new ArrayList<>();
         includeElements.add("p");
-        includeElements.add("note");
-        includeElements.add("head");
         includeElements.add("cit");
+        includeElements.add("head");
         includeElements.add("q");
+        includeElements.add("note");
+        includeElements.add("ab");
         new ContextExtractor("src/test/resources/module/disambiguation/contextLexicon/contextExtractor/test1.xml",
                 _observedLexicon,
-                _observedCorpus).execute();
+                _observedCorpus,includeElements).execute();
 
         List<String> authorizedTags = new ArrayList<>();
         authorizedTags.add("PRO:IND");

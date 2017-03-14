@@ -138,6 +138,12 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
         this(p,contextLexicon,corpusLexicon);
         _threshold = threshold;
     }
+
+    ContextExtractor(String p, Map<String, LexiconProfile> contextLexicon, CorpusLexicon corpusLexicon,
+                     List<String> allowedElements){
+        this(p,contextLexicon,corpusLexicon);
+        _allowedElements = allowedElements;
+    }
     
     ContextExtractor(String p, Map<String, LexiconProfile> contextLexicon, List<String> authorizedPOSTag,
                      CorpusLexicon corpusLexicon){
