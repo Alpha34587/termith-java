@@ -63,6 +63,19 @@ public class ContextJsonExporter extends Module{
                                     }
                             );
                             g.writeEndObject();
+                            if (value.getSpecCoefficientMap().size() != 0) {
+                                g.writeObjectFieldStart("specificities");
+                                value.getSpecCoefficientMap().forEach(
+                                        (word, spec) -> {
+                                            try {
+                                                g.writeNumberField(word, spec);
+                                            } catch (IOException e) {
+                                                _logger.error("cannot write occurrence ", e);
+                                            }
+                                        }
+                                );
+                                g.writeEndObject();
+                            }
                             g.writeEndObject();
                         }catch(IOException e){
                             _logger.error("cannot write context : ",e);
