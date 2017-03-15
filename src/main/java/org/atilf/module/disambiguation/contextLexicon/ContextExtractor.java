@@ -311,11 +311,8 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
             return true;
         }
 
-        if (_allowedElements.contains(_elementsStack.peek())){
-            return true;
-        }
+        return _allowedElements.contains(_elementsStack.peek()) && term.getSize() != words.size();
 
-        return term.getSize() != words.size();
     }
     /**
      * get a sublist of _term field and return a Deque with these elements. The first element of the sublist has
