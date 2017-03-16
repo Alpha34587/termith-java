@@ -15,9 +15,9 @@
         <sequenceFlow sourceRef="fork" targetRef="textExtractor"/>
 
         <serviceTask id="corpusMapper" name="map corpus to hashMap"
-                     flowable:class="org.atilf.thread.enrichment.initializer.CorpusMapperDelegate"/>
+                     flowable:class="org.atilf.delegate.enrichment.initializer.CorpusMapperDelegate"/>
         <serviceTask id="textExtractor" name="extract text"
-                     flowable:class="org.atilf.thread.enrichment.initializer.TextExtractorDelegate"/>
+                     flowable:class="org.atilf.delegate.enrichment.initializer.TextExtractorDelegate"/>
 
         <sequenceFlow sourceRef="corpusMapper" targetRef="join"/>
         <sequenceFlow sourceRef="textExtractor" targetRef="join"/>

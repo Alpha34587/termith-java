@@ -9,8 +9,6 @@ import org.flowable.engine.impl.cfg.StandaloneProcessEngineConfiguration;
 import org.flowable.engine.repository.Deployment;
 import org.flowable.engine.repository.ProcessDefinition;
 import org.flowable.engine.runtime.ProcessInstance;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 
@@ -21,10 +19,9 @@ import java.io.IOException;
 public class Runner {
 
     public static final int DEFAULT_POOL_SIZE = Runtime.getRuntime().availableProcessors();
-    private final Logger _logger = LoggerFactory.getLogger(this.getClass().getName());
+    public static TermithIndex _termithIndex;
+    public static int _poolSize;
     private String _bpmnDiagram;
-    private static TermithIndex _termithIndex;
-    private int _poolSize;
 
     /**
      * this constructor initializes the _termithIndex field.
@@ -36,11 +33,11 @@ public class Runner {
     }
 
     /**
-     * this constructor initializes the _termithIndex field and the number of thread used during the process
+     * this constructor initializes the _termithIndex field and the number of delegate used during the process
      * @param termithIndex
      *         the termithIndex is an object that contains the results of the process
      * @param poolSize
-     *         the number of thread used during the process
+     *         the number of delegate used during the process
      */
     protected Runner(TermithIndex termithIndex, int poolSize) {
         _poolSize = poolSize;
@@ -54,7 +51,7 @@ public class Runner {
     }
 
     /**
-     * this method contains the process chain. This method calls inherited thread classes.
+     * this method contains the process chain. This method calls inherited delegate classes.
      * @throws IOException Throws an IO exception if a file is not found or have a permission problem during process
      * @throws InterruptedException thrown if awaitTermination function is interrupted while waiting
      */

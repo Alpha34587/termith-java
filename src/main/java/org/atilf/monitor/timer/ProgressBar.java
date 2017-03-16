@@ -13,7 +13,7 @@ public class ProgressBar {
 
     /**
      * initialize _progress bar properties.
-     * @param message the title of the observed thread
+     * @param message the title of the observed delegate
      */
     public ProgressBar(String message) {
         _message = message;
