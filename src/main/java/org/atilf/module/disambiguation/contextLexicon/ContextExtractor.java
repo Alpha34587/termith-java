@@ -287,7 +287,7 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
                 if (termDeque.peek().getBeginTag() != termDeque.peek().getEndTag()) {
                     termDequeTemp.add(termDeque.peek());
                 }
-                else if (isContext(words,termDeque.peek())){
+                else if (isContext()){
                     addContextToLexiconMap(termDeque.peek(), words);
                     _terms.remove(termDeque.peek());
                 }
@@ -297,7 +297,7 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
         }
 
         if (!termDequeTemp.isEmpty() && termDequeTemp.peek().getEndTag() == target) {
-            if (isContext(words,termDequeTemp.peek())) {
+            if (isContext()) {
                 addContextToLexiconMap(termDequeTemp.peek(), words);
                 _terms.remove(termDequeTemp.peek());
             }
@@ -306,12 +306,16 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
         }
     }
 
-    private boolean isContext(TreeMap<Integer, String> words, ContextTerm term){
+    private boolean isContext(){
         if (_allowedElements.isEmpty()){
             return true;
         }
 
-        return _allowedElements.contains(_elementsStack.peek()) && term.getSize() != words.size();
+        if (_allowedElements.contains(_elementsStack.peek())){
+            return true;
+        }
+
+        return false;
 
     }
     /**
@@ -390,7 +394,7 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
         if (!_contextLexicon.containsKey(key)) {
             _contextLexicon.put(key, new LexiconProfile());
         }
-        _corpusLexicon.addContext(contextTarget.values());
+        _corpusLexicon.addContext(new ArrayList<>(contextTarget.values()));
         _contextLexicon.get(key).addOccurrences(new ArrayList<>(contextTarget.values()));
     }
 
