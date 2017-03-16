@@ -1,13 +1,19 @@
 package org.atilf.thread.enrichment.analyzer;
 
 import org.atilf.models.TermithIndex;
+import org.atilf.models.enrichment.CorpusAnalyzer;
+import org.atilf.models.enrichment.TagNormalizer;
 import org.atilf.module.enrichment.analyzer.TerminologyParser;
 import org.atilf.module.enrichment.analyzer.TerminologyStandOff;
 import org.atilf.module.enrichment.analyzer.TermsuitePipelineBuilder;
 import org.atilf.module.enrichment.analyzer.TreeTaggerWorker;
-import org.atilf.thread.Thread;
+import org.atilf.module.enrichment.initializer.TextExtractor;
+import org.atilf.thread.Delegate;
+import org.atilf.tools.FilesUtils;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -15,7 +21,7 @@ import java.util.concurrent.TimeUnit;
 import static org.atilf.runner.Runner.DEFAULT_POOL_SIZE;
 
 /**
- * The TermsuitePipelineBuilderThread calls several modules classes which analyzer the morphology of each file in the corpus and the
+ * The TreeTaggerWorkerDelegate calls several modules classes which analyzer the morphology of each file in the corpus and the
  * terminology of the corpus. The morphology is analyzed with a treetagger wrapper. The result is serialized to
  * the json termsuite format. The terminology uses the json files write during the analyzer of the morphology.
  * The terminology is export as two json and tbx files. Finally the result of the phase is prepared in order to
@@ -23,7 +29,7 @@ import static org.atilf.runner.Runner.DEFAULT_POOL_SIZE;
  * @author Simon Meoni
  *         Created on 01/09/16.
  */
-public class TermsuitePipelineBuilderThread extends Thread{
+public class TreeTaggerWorkerDelegate extends Delegate {
 
     /**
      * this constructor initialize the _termithIndex fields and initialize the _poolSize field with the default value
@@ -32,7 +38,7 @@ public class TermsuitePipelineBuilderThread extends Thread{
      * @param termithIndex
      *         the termithIndex is an object that contains the results of the process
      */
-    public TermsuitePipelineBuilderThread(TermithIndex termithIndex) {
+    public TreeTaggerWorkerDelegate(TermithIndex termithIndex) {
         this(termithIndex,DEFAULT_POOL_SIZE);
     }
 
@@ -47,8 +53,26 @@ public class TermsuitePipelineBuilderThread extends Thread{
      * @see TermithIndex
      * @see ExecutorService
      */
-    public TermsuitePipelineBuilderThread(TermithIndex termithIndex, int poolSize) {
+    public TreeTaggerWorkerDelegate(TermithIndex termithIndex, int poolSize) {
         super(termithIndex, poolSize);
+    }
+
+    /**
+     * this method return the result of the InitializerThread.
+     * @return it returns a hashmap who contains the extracted text of the previous step of each files
+     * @see TextExtractor
+     */
+    private Map<String,StringBuilder> createTextHashMap(){
+        Map<String,StringBuilder> textMap = new HashMap<>();
+
+        /*
+        read extracted text of the previous phase and put the result to the hashmap. the filename is
+        the key of each entries
+         */
+        _termithIndex.getExtractedText().forEach(
+                (key,value) -> textMap.put(key,FilesUtils.readObject(value, StringBuilder.class))
+        );
+        return textMap;
     }
 
     /**
@@ -66,13 +90,23 @@ public class TermsuitePipelineBuilderThread extends Thread{
      * @see TerminologyParser
      * @see TerminologyStandOff
      */
-    public void execute() throws InterruptedException, IOException, ExecutionException {
-
+    public void executeTasks() throws InterruptedException, IOException, ExecutionException {
         /*
-        execute termsuite
+        Build Corpus analyzer
          */
-        _executorService.submit(new TermsuitePipelineBuilder(_termithIndex));
-
+        CorpusAnalyzer corpusAnalyzer = new CorpusAnalyzer(createTextHashMap());
+        TagNormalizer.initTag(TermithIndex.getLang());
+        /*
+        Write morphology json file
+         */
+        _termithIndex.getExtractedText().forEach((key, txt) ->
+                _executorService.submit(new TreeTaggerWorker(
+                        _termithIndex,
+                        corpusAnalyzer,
+                        key
+                ))
+        );
+        _logger.info("waiting that all json files are serialized");
         _executorService.shutdown();
         _executorService.awaitTermination(1L,TimeUnit.DAYS);
         _logger.info("terminology extraction finished");

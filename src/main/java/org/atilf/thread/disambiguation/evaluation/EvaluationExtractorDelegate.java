@@ -1,8 +1,8 @@
 package org.atilf.thread.disambiguation.evaluation;
 
 import org.atilf.models.TermithIndex;
-import org.atilf.module.disambiguation.evaluation.Evaluation;
-import org.atilf.thread.Thread;
+import org.atilf.module.disambiguation.evaluation.EvaluationExtractor;
+import org.atilf.thread.Delegate;
 
 import java.io.IOException;
 import java.util.concurrent.ExecutorService;
@@ -11,11 +11,11 @@ import java.util.concurrent.TimeUnit;
 import static org.atilf.runner.Runner.DEFAULT_POOL_SIZE;
 
 /**
- * Evaluate the corpus with the lexicalProfile creates with the LexiconProfileThread
+ * Evaluate the corpus with the lexicalProfile creates with the LexiconProfileDelegate
  * @author Simon Meoni
  *         Created on 12/10/16.
  */
-public class EvaluationThread extends Thread{
+public class EvaluationExtractorDelegate extends Delegate {
 
     /**
      * this constructor initialize the _termithIndex fields and initialize the _poolSize field with the default value
@@ -24,7 +24,7 @@ public class EvaluationThread extends Thread{
      * @param termithIndex
      *         the termithIndex is an object that contains the results of the process*
      */
-    public EvaluationThread(TermithIndex termithIndex) {
+    public EvaluationExtractorDelegate(TermithIndex termithIndex) {
         this(termithIndex,DEFAULT_POOL_SIZE);
     }
 
@@ -40,7 +40,8 @@ public class EvaluationThread extends Thread{
      * @see TermithIndex
      * @see ExecutorService
      */
-    public EvaluationThread(TermithIndex termithIndex, int poolSize) {
+    public EvaluationExtractorDelegate(TermithIndex termithIndex, int poolSize) {
+
         super(termithIndex, poolSize);
     }
 
@@ -52,14 +53,15 @@ public class EvaluationThread extends Thread{
      * xsl transformation phase
      * @throws InterruptedException thrown if awaitTermination function is interrupted while waiting
      */
-    public void execute() throws IOException, InterruptedException {
-        /*
-        Evaluation phase
-         */
-        _termithIndex.getEvaluationLexicon().forEach(
-                (p,value) -> _executorService.submit(new Evaluation(p, _termithIndex))
-        );
-        _logger.info("Waiting EvaluationWorker executors to finish");
+    public void executeTasks() throws IOException, InterruptedException {
+
+
+        _termithIndex.getEvaluationTransformedFiles().values().forEach(
+                p -> _executorService.submit(
+                        new EvaluationExtractor(p.toString(), _termithIndex)
+                ));
+
+        _logger.info("Waiting EvaluationExtractorWorker executors to finish");
         _executorService.shutdown();
         _executorService.awaitTermination(1L, TimeUnit.DAYS);
     }

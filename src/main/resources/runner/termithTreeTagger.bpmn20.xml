@@ -16,7 +16,7 @@
 
         <serviceTask id="corpusMapper" name="map corpus to hashMap"
                      flowable:class="org.atilf.thread.enrichment.initializer.CorpusMapperDelegate"/>
-        <serviceTask id="textExtractor" name="map corpus to hashMap"
+        <serviceTask id="textExtractor" name="extract text"
                      flowable:class="org.atilf.thread.enrichment.initializer.TextExtractorDelegate"/>
 
         <sequenceFlow sourceRef="corpusMapper" targetRef="join"/>

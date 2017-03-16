@@ -1,8 +1,8 @@
 package org.atilf.thread.disambiguation.evaluation;
 
 import org.atilf.models.TermithIndex;
-import org.atilf.module.disambiguation.evaluation.EvaluationExtractor;
-import org.atilf.thread.Thread;
+import org.atilf.module.disambiguation.evaluation.CommonWordsPosLemmaCleaner;
+import org.atilf.thread.Delegate;
 
 import java.io.IOException;
 import java.util.concurrent.ExecutorService;
@@ -11,11 +11,11 @@ import java.util.concurrent.TimeUnit;
 import static org.atilf.runner.Runner.DEFAULT_POOL_SIZE;
 
 /**
- * Evaluate the corpus with the lexicalProfile creates with the LexiconProfileThread
+ * Evaluate the corpus with the lexicalProfile creates with the LexiconProfileDelegate
  * @author Simon Meoni
  *         Created on 12/10/16.
  */
-public class EvaluationExtractorThread extends Thread{
+public class CommonWordsPosLemmaCleanerDelegate extends Delegate {
 
     /**
      * this constructor initialize the _termithIndex fields and initialize the _poolSize field with the default value
@@ -24,7 +24,7 @@ public class EvaluationExtractorThread extends Thread{
      * @param termithIndex
      *         the termithIndex is an object that contains the results of the process*
      */
-    public EvaluationExtractorThread(TermithIndex termithIndex) {
+    public CommonWordsPosLemmaCleanerDelegate(TermithIndex termithIndex) {
         this(termithIndex,DEFAULT_POOL_SIZE);
     }
 
@@ -40,8 +40,7 @@ public class EvaluationExtractorThread extends Thread{
      * @see TermithIndex
      * @see ExecutorService
      */
-    public EvaluationExtractorThread(TermithIndex termithIndex, int poolSize) {
-
+    public CommonWordsPosLemmaCleanerDelegate(TermithIndex termithIndex, int poolSize) {
         super(termithIndex, poolSize);
     }
 
@@ -53,15 +52,27 @@ public class EvaluationExtractorThread extends Thread{
      * xsl transformation phase
      * @throws InterruptedException thrown if awaitTermination function is interrupted while waiting
      */
-    public void execute() throws IOException, InterruptedException {
+    public void executeTasks() throws IOException, InterruptedException {
 
+        /*
+        Common PosLemma cleaner
+         */
+        _termithIndex.getContextLexicon().forEach(
+                (key,value) ->
+                {
+                    String lexOff = key.replace("On","Off");
+                    if (key.contains("_lexOn") &&
+                            _termithIndex.getContextLexicon().containsKey(lexOff)) {
+                        _executorService.submit(new CommonWordsPosLemmaCleaner(
+                                key,
+                                value,
+                                _termithIndex.getContextLexicon().get(lexOff)
+                        ));
+                    }
+                }
+        );
 
-        _termithIndex.getEvaluationTransformedFiles().values().forEach(
-                p -> _executorService.submit(
-                        new EvaluationExtractor(p.toString(), _termithIndex)
-                ));
-
-        _logger.info("Waiting EvaluationExtractorWorker executors to finish");
+        _logger.info("Waiting EvaluationWorker executors to finish");
         _executorService.shutdown();
         _executorService.awaitTermination(1L, TimeUnit.DAYS);
     }

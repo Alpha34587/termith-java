@@ -2,7 +2,7 @@ package org.atilf.thread.enrichment.initializer;
 
 import org.atilf.models.TermithIndex;
 import org.atilf.module.enrichment.initializer.CorpusMapper;
-import org.atilf.thread.Thread;
+import org.atilf.thread.Delegate;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -15,7 +15,7 @@ import static org.atilf.runner.Runner.DEFAULT_POOL_SIZE;
  * @author Simon Meoni
  * Created on 25/07/16.
  */
-public class CorpusMapperThread extends Thread{
+public class CorpusMapperDelegate extends Delegate {
 
     /**
      * this constructor initialize the _termithIndex fields and initialize the _poolSize field with the default value
@@ -23,7 +23,7 @@ public class CorpusMapperThread extends Thread{
      * @param termithIndex the termithIndex is an object that contains the results of the process
      * @param poolSize the number of thread used during the process
      */
-    public CorpusMapperThread(TermithIndex termithIndex, int poolSize) {
+    public CorpusMapperDelegate(TermithIndex termithIndex, int poolSize) {
         super(termithIndex,poolSize);
     }
 
@@ -32,16 +32,16 @@ public class CorpusMapperThread extends Thread{
      * with the number of available processors.
      * @param termithIndex the termithIndex is an object that contains the results of the process
      */
-    public CorpusMapperThread(TermithIndex termithIndex) {
+    public CorpusMapperDelegate(TermithIndex termithIndex) {
         this(termithIndex,DEFAULT_POOL_SIZE);
     }
 
     /**
-     * execute the extraction text task with the help of inner InitializerWorker class
+     * executeTasks the extraction text task with the help of inner InitializerWorker class
      * @throws IOException throws exception if a file is not find
      * @throws InterruptedException throws java concurrent executorService exception
      */
-    public void execute() throws IOException, InterruptedException {
+    public void executeTasks() throws IOException, InterruptedException {
         /*
         extract the text and map the path of the corpus into hashmap with identifier
          */

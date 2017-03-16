@@ -1,8 +1,8 @@
 package org.atilf.thread.disambiguation.evaluationScore;
 
 import org.atilf.models.TermithIndex;
-import org.atilf.module.disambiguation.evaluationScore.ExportScoreToJson;
-import org.atilf.thread.Thread;
+import org.atilf.module.disambiguation.evaluationScore.ContextJsonExporter;
+import org.atilf.thread.Delegate;
 
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
@@ -13,7 +13,8 @@ import static org.atilf.runner.Runner.DEFAULT_POOL_SIZE;
 /**
  * @author Simon Meoni Created on 15/12/16.
  */
-public class ExportToJsonThread extends Thread{
+public class ContextJsonExporterDelegate extends Delegate {
+
     /**
      * this constructor initialize the _termithIndex fields and initialize the _poolSize field with the default value
      * with the number of available processors.
@@ -21,7 +22,7 @@ public class ExportToJsonThread extends Thread{
      * @param termithIndex
      *         the termithIndex is an object that contains the results of the process
      */
-    public ExportToJsonThread(TermithIndex termithIndex) throws IOException {
+    public ContextJsonExporterDelegate(TermithIndex termithIndex) throws IOException {
         this(termithIndex,DEFAULT_POOL_SIZE);
     }
 
@@ -36,13 +37,13 @@ public class ExportToJsonThread extends Thread{
      *
      * @see TermithIndex
      */
-    public ExportToJsonThread(TermithIndex termithIndex, int poolSize) throws IOException {
+    public ContextJsonExporterDelegate(TermithIndex termithIndex, int poolSize) throws IOException {
 
         super(termithIndex, poolSize);
     }
 
     /**
-     * this method is used to execute the different steps of processing of a thread
+     * this method is used to executeTasks the different steps of processing of a thread
      *
      * @throws IOException
      *         thrown a IO exception if a file is not found or have a permission problem during the xsl transformation
@@ -53,9 +54,8 @@ public class ExportToJsonThread extends Thread{
      *         thrown a exception if a system process is interrupted
      */
     @Override
-    public void execute() throws IOException, InterruptedException, ExecutionException {
-
-        _executorService.submit(new ExportScoreToJson(_termithIndex, TermithIndex.getScorePath(), true)).get();
+    public void executeTasks() throws IOException, InterruptedException, ExecutionException {
+        _executorService.submit(new ContextJsonExporter(_termithIndex,TermithIndex.getScorePath())).get();
         _executorService.shutdown();
         _executorService.awaitTermination(1L, TimeUnit.DAYS);
     }

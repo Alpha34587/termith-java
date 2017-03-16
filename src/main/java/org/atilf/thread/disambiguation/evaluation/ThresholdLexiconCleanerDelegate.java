@@ -1,8 +1,9 @@
 package org.atilf.thread.disambiguation.evaluation;
 
 import org.atilf.models.TermithIndex;
-import org.atilf.module.disambiguation.evaluation.CommonWordsPosLemmaCleaner;
-import org.atilf.thread.Thread;
+import org.atilf.models.disambiguation.DisambiguationXslResources;
+import org.atilf.module.disambiguation.evaluation.ThresholdLexiconCleaner;
+import org.atilf.thread.Delegate;
 
 import java.io.IOException;
 import java.util.concurrent.ExecutorService;
@@ -11,11 +12,11 @@ import java.util.concurrent.TimeUnit;
 import static org.atilf.runner.Runner.DEFAULT_POOL_SIZE;
 
 /**
- * Evaluate the corpus with the lexicalProfile creates with the LexiconProfileThread
+ * Evaluate the corpus with the lexicalProfile creates with the LexiconProfileDelegate
  * @author Simon Meoni
  *         Created on 12/10/16.
  */
-public class CommonWordsPosLemmaCleanerThread extends Thread{
+public class ThresholdLexiconCleanerDelegate extends Delegate {
 
     /**
      * this constructor initialize the _termithIndex fields and initialize the _poolSize field with the default value
@@ -24,7 +25,7 @@ public class CommonWordsPosLemmaCleanerThread extends Thread{
      * @param termithIndex
      *         the termithIndex is an object that contains the results of the process*
      */
-    public CommonWordsPosLemmaCleanerThread(TermithIndex termithIndex) {
+    public ThresholdLexiconCleanerDelegate(TermithIndex termithIndex) {
         this(termithIndex,DEFAULT_POOL_SIZE);
     }
 
@@ -40,7 +41,7 @@ public class CommonWordsPosLemmaCleanerThread extends Thread{
      * @see TermithIndex
      * @see ExecutorService
      */
-    public CommonWordsPosLemmaCleanerThread(TermithIndex termithIndex, int poolSize) {
+    public ThresholdLexiconCleanerDelegate(TermithIndex termithIndex, int poolSize) {
         super(termithIndex, poolSize);
     }
 
@@ -52,26 +53,20 @@ public class CommonWordsPosLemmaCleanerThread extends Thread{
      * xsl transformation phase
      * @throws InterruptedException thrown if awaitTermination function is interrupted while waiting
      */
-    public void execute() throws IOException, InterruptedException {
+    public void executeTasks() throws IOException, InterruptedException {
+        DisambiguationXslResources xslResources = new DisambiguationXslResources();
 
         /*
-        Common PosLemma cleaner
+        Threshold cleaner
          */
-        _termithIndex.getContextLexicon().forEach(
-                (key,value) ->
-                {
-                    String lexOff = key.replace("On","Off");
-                    if (key.contains("_lexOn") &&
-                            _termithIndex.getContextLexicon().containsKey(lexOff)) {
-                        _executorService.submit(new CommonWordsPosLemmaCleaner(
-                                key,
-                                value,
-                                _termithIndex.getContextLexicon().get(lexOff)
-                        ));
-                    }
-                }
+        _termithIndex.getContextLexicon().keySet().forEach(
+                key -> _executorService.submit(new ThresholdLexiconCleaner(
+                        key,
+                        _termithIndex,
+                        3,
+                        15
+                ))
         );
-
         _logger.info("Waiting EvaluationWorker executors to finish");
         _executorService.shutdown();
         _executorService.awaitTermination(1L, TimeUnit.DAYS);

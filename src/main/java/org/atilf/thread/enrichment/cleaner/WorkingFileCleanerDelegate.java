@@ -2,7 +2,7 @@ package org.atilf.thread.enrichment.cleaner;
 
 import org.atilf.models.TermithIndex;
 import org.atilf.module.enrichment.cleaner.WorkingFilesCleaner;
-import org.atilf.thread.Thread;
+import org.atilf.thread.Delegate;
 
 import java.util.concurrent.TimeUnit;
 
@@ -11,9 +11,9 @@ import java.util.concurrent.TimeUnit;
  * @author Simon Meoni
  *         Created on 27/09/16.
  */
-public class WorkingFileCleanerThread extends Thread{
+public class WorkingFileCleanerDelegate extends Delegate {
 
-    public WorkingFileCleanerThread(TermithIndex termithIndex, int poolSize) {
+    public WorkingFileCleanerDelegate(TermithIndex termithIndex, int poolSize) {
         super(termithIndex,poolSize);
     }
 
@@ -22,7 +22,7 @@ public class WorkingFileCleanerThread extends Thread{
      * the json and txt folder
      * @throws InterruptedException throws java concurrent executorService exception
      */
-    public void execute() throws InterruptedException {
+    public void executeTasks() throws InterruptedException {
         _executorService.submit(new WorkingFilesCleaner(TermithIndex.getOutputPath(),TermithIndex.isKeepFiles()));
         _executorService.shutdown();
         _executorService.awaitTermination(1L, TimeUnit.DAYS);

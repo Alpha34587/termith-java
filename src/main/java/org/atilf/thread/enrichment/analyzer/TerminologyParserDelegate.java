@@ -5,7 +5,7 @@ import org.atilf.module.enrichment.analyzer.TerminologyParser;
 import org.atilf.module.enrichment.analyzer.TerminologyStandOff;
 import org.atilf.module.enrichment.analyzer.TermsuitePipelineBuilder;
 import org.atilf.module.enrichment.analyzer.TreeTaggerWorker;
-import org.atilf.thread.Thread;
+import org.atilf.thread.Delegate;
 
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit;
 import static org.atilf.runner.Runner.DEFAULT_POOL_SIZE;
 
 /**
- * The TerminologyStandOffThread calls several modules classes which analyzer the morphology of each file in the corpus and the
+ * The TerminologyParserDelegate calls several modules classes which analyzer the morphology of each file in the corpus and the
  * terminology of the corpus. The morphology is analyzed with a treetagger wrapper. The result is serialized to
  * the json termsuite format. The terminology uses the json files write during the analyzer of the morphology.
  * The terminology is export as two json and tbx files. Finally the result of the phase is prepared in order to
@@ -23,7 +23,8 @@ import static org.atilf.runner.Runner.DEFAULT_POOL_SIZE;
  * @author Simon Meoni
  *         Created on 01/09/16.
  */
-public class TerminologyStandOffThread extends Thread{
+public class TerminologyParserDelegate extends Delegate {
+
 
     /**
      * this constructor initialize the _termithIndex fields and initialize the _poolSize field with the default value
@@ -32,7 +33,7 @@ public class TerminologyStandOffThread extends Thread{
      * @param termithIndex
      *         the termithIndex is an object that contains the results of the process
      */
-    public TerminologyStandOffThread(TermithIndex termithIndex) {
+    public TerminologyParserDelegate(TermithIndex termithIndex) {
         this(termithIndex,DEFAULT_POOL_SIZE);
     }
 
@@ -47,7 +48,7 @@ public class TerminologyStandOffThread extends Thread{
      * @see TermithIndex
      * @see ExecutorService
      */
-    public TerminologyStandOffThread(TermithIndex termithIndex, int poolSize) {
+    public TerminologyParserDelegate(TermithIndex termithIndex, int poolSize) {
         super(termithIndex, poolSize);
     }
 
@@ -63,18 +64,13 @@ public class TerminologyStandOffThread extends Thread{
      * @throws ExecutionException throws an exception if a TreeTagger process is interrupted
      * @see TreeTaggerWorker
      * @see TermsuitePipelineBuilder
-     * @see TerminologyParser
+     * @see TerminologyParserDelegate
      * @see TerminologyStandOff
      */
-    public void execute() throws InterruptedException, IOException, ExecutionException {
-        /*
-        deserialize the termsuite terminology
-         */
-        _termithIndex.getMorphologyStandOff().forEach(
-                (id,value) -> _executorService.submit(
-                        new TerminologyStandOff(id,_termithIndex)
-                )
-        );
+    public void executeTasks() throws InterruptedException, IOException, ExecutionException {
+
+        _executorService.submit(new TerminologyParser(_termithIndex));
+
         _executorService.shutdown();
         _executorService.awaitTermination(1L,TimeUnit.DAYS);
         _logger.info("terminology extraction finished");

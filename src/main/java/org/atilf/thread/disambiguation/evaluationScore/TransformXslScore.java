@@ -4,7 +4,7 @@ import org.atilf.models.TermithIndex;
 import org.atilf.models.disambiguation.DisambiguationXslResources;
 import org.atilf.models.enrichment.XslResources;
 import org.atilf.module.disambiguation.contextLexicon.DisambiguationXslTransformer;
-import org.atilf.thread.Thread;
+import org.atilf.thread.Delegate;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -18,7 +18,7 @@ import static org.atilf.runner.Runner.DEFAULT_POOL_SIZE;
 /**
  * @author Simon Meoni Created on 15/12/16.
  */
-public class TransformXslScore extends Thread{
+public class TransformXslScore extends Delegate {
 
     /**
      * this constructor initialize the _termithIndex fields and initialize the _poolSize field with the default value
@@ -48,7 +48,7 @@ public class TransformXslScore extends Thread{
     }
 
     /**
-     * this method is used to execute the different steps of processing of a thread
+     * this method is used to executeTasks the different steps of processing of a thread
      *
      * @throws IOException
      *         thrown a IO exception if a file is not found or have a permission problem during the xsl transformation
@@ -59,7 +59,7 @@ public class TransformXslScore extends Thread{
      *         thrown a exception if a system process is interrupted
      */
     @Override
-    public void execute() throws IOException, InterruptedException, ExecutionException {
+    public void executeTasks() throws IOException, InterruptedException, ExecutionException {
         XslResources xslResources = new DisambiguationXslResources();
         _logger.info("transformation phase is started for TransformXslScore");
         Path scoreFolder = Files.createDirectory(Paths.get(TermithIndex.getOutputPath().toString() + "/score/"));

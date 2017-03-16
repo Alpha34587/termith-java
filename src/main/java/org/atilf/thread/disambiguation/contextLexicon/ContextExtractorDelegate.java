@@ -3,7 +3,7 @@ package org.atilf.thread.disambiguation.contextLexicon;
 import org.atilf.models.TermithIndex;
 import org.atilf.module.disambiguation.contextLexicon.ContextExtractor;
 import org.atilf.module.disambiguation.contextLexicon.DisambiguationXslTransformer;
-import org.atilf.thread.Thread;
+import org.atilf.thread.Delegate;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -18,7 +18,7 @@ import static org.atilf.runner.Runner.DEFAULT_POOL_SIZE;
  * @author Simon Meoni
  *         Created on 12/10/16.
  */
-public class ContextExtractorThread extends Thread {
+public class ContextExtractorDelegate extends Delegate {
 
     /**
      * this constructor initialize all the needed fields. The _transformCounter is a CountDownLatch object of
@@ -30,16 +30,16 @@ public class ContextExtractorThread extends Thread {
      * @see CountDownLatch
      * @see TermithIndex
      */
-    public ContextExtractorThread(TermithIndex termithIndex, int poolSize) {
+    public ContextExtractorDelegate(TermithIndex termithIndex, int poolSize) {
         super(termithIndex, poolSize);
     }
 
-    public ContextExtractorThread(TermithIndex termithIndex) {
+    public ContextExtractorDelegate(TermithIndex termithIndex) {
         this(termithIndex, DEFAULT_POOL_SIZE);
     }
 
     /**
-     * this method is used to execute the different phase of the context extraction process
+     * this method is used to executeTasks the different phase of the context extraction process
      * and the global corpus extraction process
      * @throws IOException thrown a IO exception if a file is not found or have a permission problem during the
      * xsl transformation phase
@@ -50,7 +50,7 @@ public class ContextExtractorThread extends Thread {
      */
 
     @Override
-    public void execute() throws IOException, InterruptedException {
+    public void executeTasks() throws IOException, InterruptedException {
 
         List<String> includeElement = new ArrayList<>();
         includeElement.add("p");

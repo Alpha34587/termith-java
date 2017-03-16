@@ -4,7 +4,7 @@ import org.atilf.models.TermithIndex;
 import org.atilf.models.disambiguation.RConnectionPool;
 import org.atilf.models.disambiguation.RLexicon;
 import org.atilf.module.disambiguation.lexiconProfile.SpecCoefficientInjector;
-import org.atilf.thread.Thread;
+import org.atilf.thread.Delegate;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -14,12 +14,12 @@ import java.util.concurrent.TimeUnit;
 import static java.lang.Thread.currentThread;
 
 /**
- * The LexiconProfileThread process the specificity coefficient for each pair of lemma/_pos of a termEntry contained by
+ * The LexiconProfileDelegate process the specificity coefficient for each pair of lemma/_pos of a termEntry contained by
  * _contextLexicon map of termithIndex
  * @author Simon Meoni
  *         Created on 12/10/16.
  */
-public class LexiconProfileThread extends Thread{
+public class LexiconProfileDelegate extends Delegate {
 
     /**
      * this constructor initialize the _termithIndex fields and initialize the _poolSize field with the default value
@@ -28,7 +28,7 @@ public class LexiconProfileThread extends Thread{
      * @param termithIndex
      *         the termithIndex is an object that contains the results of the process
      */
-    public LexiconProfileThread(TermithIndex termithIndex) {
+    public LexiconProfileDelegate(TermithIndex termithIndex) {
         super(termithIndex);
     }
 
@@ -44,7 +44,7 @@ public class LexiconProfileThread extends Thread{
      * @see TermithIndex
      * @see ExecutorService
      */
-    public LexiconProfileThread(TermithIndex termithIndex, int poolSize) {
+    public LexiconProfileDelegate(TermithIndex termithIndex, int poolSize) {
         super(termithIndex, poolSize);
     }
 
@@ -53,7 +53,7 @@ public class LexiconProfileThread extends Thread{
      * words for each context of terms candidates entries (also known as lexical profile)
      * @throws InterruptedException thrown if awaitTermination function is interrupted while waiting
      */
-    public void execute() throws InterruptedException, IOException {
+    public void executeTasks() throws InterruptedException, IOException {
         /*
         convert global corpus into R variable
          */

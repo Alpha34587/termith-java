@@ -21,10 +21,10 @@ import java.io.IOException;
 public class Runner {
 
     public static final int DEFAULT_POOL_SIZE = Runtime.getRuntime().availableProcessors();
-    protected final Logger _logger = LoggerFactory.getLogger(this.getClass().getName());
-    protected String _bpmnDiagram;
-    protected TermithIndex _termithIndex;
-    protected int _poolSize;
+    private final Logger _logger = LoggerFactory.getLogger(this.getClass().getName());
+    private String _bpmnDiagram;
+    private static TermithIndex _termithIndex;
+    private int _poolSize;
 
     /**
      * this constructor initializes the _termithIndex field.

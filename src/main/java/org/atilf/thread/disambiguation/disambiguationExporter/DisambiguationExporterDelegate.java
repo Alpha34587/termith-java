@@ -2,7 +2,7 @@ package org.atilf.thread.disambiguation.disambiguationExporter;
 
 import org.atilf.models.TermithIndex;
 import org.atilf.module.disambiguation.disambiguationExporter.DisambiguationTeiWriter;
-import org.atilf.thread.Thread;
+import org.atilf.thread.Delegate;
 import org.atilf.tools.FilesUtils;
 
 import java.io.IOException;
@@ -18,14 +18,14 @@ import static org.atilf.runner.Runner.DEFAULT_POOL_SIZE;
  *         Created on 25/10/16.
  */
 
-public class DisambiguationExporterThread extends Thread{
+public class DisambiguationExporterDelegate extends Delegate {
 
     /**
      * this constructor initialize the _termithIndex fields and initialize the _poolSize field with the default value
      * with the number of available processors.
      * @param termithIndex the termithIndex is an object that contains the results of the process*
      */
-    public DisambiguationExporterThread(TermithIndex termithIndex) {
+    public DisambiguationExporterDelegate(TermithIndex termithIndex) {
         super(termithIndex, DEFAULT_POOL_SIZE);
     }
 
@@ -37,7 +37,7 @@ public class DisambiguationExporterThread extends Thread{
      * @see TermithIndex
      * @see ExecutorService
      */
-    public DisambiguationExporterThread(TermithIndex termithIndex, int poolSize) {
+    public DisambiguationExporterDelegate(TermithIndex termithIndex, int poolSize) {
         super(termithIndex, poolSize);
 
     }
@@ -49,7 +49,7 @@ public class DisambiguationExporterThread extends Thread{
      * xsl transformation phase
      * @throws InterruptedException thrown if awaitTermination function is interrupted while waiting
      */
-    public void execute() throws IOException, InterruptedException {
+    public void executeTasks() throws IOException, InterruptedException {
 
         Files.list(TermithIndex.getEvaluationPath()).forEach(
                 p -> {
