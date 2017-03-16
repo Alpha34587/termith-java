@@ -11,6 +11,7 @@ import org.flowable.engine.repository.ProcessDefinition;
 import org.flowable.engine.runtime.ProcessInstance;
 
 import java.io.IOException;
+import java.nio.file.Path;
 
 /**
  * This class is used to create some Delegate inherited classes and executeTasks each of them linearly.
@@ -18,37 +19,37 @@ import java.io.IOException;
  */
 public class Runner {
 
-    public static final int DEFAULT_POOL_SIZE = Runtime.getRuntime().availableProcessors();
     public static TermithIndex _termithIndex;
     public static int _poolSize;
     private String _bpmnDiagram;
 
-    /**
-     * this constructor initializes the _termithIndex field.
-     * @param termithIndex
-     *         the termithIndex is an object that contains the results of the process
+    /*
+    common parameter
      */
-    protected Runner(TermithIndex termithIndex) {
-        this(termithIndex, DEFAULT_POOL_SIZE);
+
+    private static Path _base;
+    private static Path _out;
+
+    /*
+    terminology extraction parameter
+     */
+    private static String _lang;
+    private static String _treeTaggerHome;
+
+    /*
+    Disambiguation parameter
+     */
+    private static Path _learningPath;
+    private static Path _evaluationPath;
+    private static Path _scorePath;
+
+
+    public Runner(RunnerBuilder runnerBuilder) {
+        _poolSize = runnerBuilder._poolSize;
+        _termithIndex = runnerBuilder._termithIndex;
+        _bpmnDiagram = runnerBuilder._bpmnDiagram;
     }
 
-    /**
-     * this constructor initializes the _termithIndex field and the number of delegate used during the process
-     * @param termithIndex
-     *         the termithIndex is an object that contains the results of the process
-     * @param poolSize
-     *         the number of delegate used during the process
-     */
-    protected Runner(TermithIndex termithIndex, int poolSize) {
-        _poolSize = poolSize;
-        _termithIndex = termithIndex;
-    }
-
-    public Runner(TermithIndex termithIndex, String bpmnDiagram) {
-        _poolSize = DEFAULT_POOL_SIZE;
-        _termithIndex = termithIndex;
-        _bpmnDiagram = bpmnDiagram;
-    }
 
     /**
      * this method contains the process chain. This method calls inherited delegate classes.
@@ -68,7 +69,7 @@ public class Runner {
 
         RepositoryService repositoryService = processEngine.getRepositoryService();
         Deployment deployment = repositoryService.createDeployment()
-                .addClasspathResource("runner/termithTreeTagger.bpmn20.xml")
+                .addClasspathResource(_bpmnDiagram)
                 .deploy();
 
         ProcessDefinition processDefinition = repositoryService.createProcessDefinitionQuery()
