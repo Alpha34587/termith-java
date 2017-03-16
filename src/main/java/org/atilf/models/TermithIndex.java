@@ -3,8 +3,6 @@ package org.atilf.models;
 import org.apache.commons.io.FileUtils;
 import org.atilf.models.disambiguation.*;
 import org.atilf.models.enrichment.TermOffsetId;
-import org.atilf.monitor.observer.MemoryPerformanceEvent;
-import org.atilf.monitor.observer.TimePerformanceEvent;
 import org.atilf.tools.FilesUtils;
 
 import java.io.File;
@@ -12,7 +10,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -53,7 +50,7 @@ public class TermithIndex {
     private TotalTermScore _totalTermScore = new TotalTermScore();
     private Map<String, Path> _transformOutputDisambiguationFile = new ConcurrentHashMap<>();
 
-    private final int _thresholdContext;
+    private final int _thresholdContext = 0;
 
     /*
     CLI parameter
@@ -69,14 +66,13 @@ public class TermithIndex {
      */
     private static Path _learningPath;
     private static Path _evaluationPath;
-    private static Path _scorePath;
-
-    private List<TimePerformanceEvent>  _timePerformanceEvents = new ArrayList<>();
-    private List<MemoryPerformanceEvent> _memoryPerformanceEvents = new ArrayList<>();
+    private static Path _scorePath;;
 
     /*
     Constructor
      */
+
+    public TermithIndex() {}
 
     private TermithIndex(Builder builder) throws IOException {
         _disambiguationAnnotation = builder._disambiguationAnnotation;
@@ -86,7 +82,6 @@ public class TermithIndex {
         _treeTaggerHome = builder._treeTaggerHome;
         _lang = builder._lang;
         _corpusSize = builder.getCorpusSize();
-        _thresholdContext = builder.getThresholdContext();
         _learningPath = builder._learningPath;
         _evaluationPath = builder._evaluationPath;
         _scorePath = builder._scorePath;
@@ -95,14 +90,6 @@ public class TermithIndex {
     /*
     Getter
      */
-
-    public List<TimePerformanceEvent> getTimePerformanceEvents() {
-        return _timePerformanceEvents;
-    }
-
-    public List<MemoryPerformanceEvent> getMemoryPerformanceEvents() {
-        return _memoryPerformanceEvents;
-    }
 
     /**
      * get the path of terminologies in tbx or json

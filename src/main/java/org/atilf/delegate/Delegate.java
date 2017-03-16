@@ -27,6 +27,7 @@ public abstract class Delegate implements JavaDelegate{
     protected final Logger _logger = LoggerFactory.getLogger(this.getClass().getName());
     protected TermithIndex _termithIndex = Runner._termithIndex;
     private EventBus _eventBus = new EventBus();
+
     private TimePerformanceEvent _timePerformanceEvent;
     private MemoryPerformanceEvent _memoryPerformanceEvent;
 
@@ -55,12 +56,12 @@ public abstract class Delegate implements JavaDelegate{
         _timePerformanceEvent = new TimePerformanceEvent(
                 this.getClass().getSimpleName(),
                 _termithIndex.getCorpusSize(),
-                _termithIndex.getTimePerformanceEvents()
+                Runner.getTimePerformanceEvents()
         );
         _memoryPerformanceEvent = new MemoryPerformanceEvent(
                 this.getClass().getSimpleName(),
                 _termithIndex.getCorpusSize(),
-                _termithIndex.getMemoryPerformanceEvents()
+                Runner.getMemoryPerformanceEvents()
         );
         _eventBus.register(_timePerformanceEvent);
         _eventBus.register(_memoryPerformanceEvent);

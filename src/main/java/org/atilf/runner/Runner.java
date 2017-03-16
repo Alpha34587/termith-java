@@ -1,6 +1,8 @@
 package org.atilf.runner;
 
 import org.atilf.models.TermithIndex;
+import org.atilf.monitor.observer.MemoryPerformanceEvent;
+import org.atilf.monitor.observer.TimePerformanceEvent;
 import org.flowable.engine.ProcessEngine;
 import org.flowable.engine.ProcessEngineConfiguration;
 import org.flowable.engine.RepositoryService;
@@ -12,6 +14,8 @@ import org.flowable.engine.runtime.ProcessInstance;
 
 import java.io.IOException;
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * This class is used to create some Delegate inherited classes and executeTasks each of them linearly.
@@ -43,6 +47,8 @@ public class Runner {
     private static Path _evaluationPath;
     private static Path _scorePath;
 
+    private static List<TimePerformanceEvent> _timePerformanceEvents = new ArrayList<>();
+    private static List<MemoryPerformanceEvent> _memoryPerformanceEvents = new ArrayList<>();
 
     public Runner(RunnerBuilder runnerBuilder) {
         _poolSize = runnerBuilder._poolSize;
@@ -50,7 +56,13 @@ public class Runner {
         _bpmnDiagram = runnerBuilder._bpmnDiagram;
     }
 
+    public static List<TimePerformanceEvent> getTimePerformanceEvents() {
+        return _timePerformanceEvents;
+    }
 
+    public static List<MemoryPerformanceEvent> getMemoryPerformanceEvents() {
+        return _memoryPerformanceEvents;
+    }
     /**
      * this method contains the process chain. This method calls inherited delegate classes.
      * @throws IOException Throws an IO exception if a file is not found or have a permission problem during process
