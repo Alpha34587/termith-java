@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
+             xmlns:flowable="http://flowable.org/bpmn"
+             typeLanguage="http://www.w3.org/2001/XMLSchema"
+             expressionLanguage="http://www.w3.org/1999/XPath"
+             targetNamespace="http://www.flowable.org/processdef">
+
+    <process id="termithTreeTagger" name="termithTreeTagger" isExecutable="true">
+
+        <startEvent id="startEvent"/>
+
+        <sequenceFlow id="flow1" sourceRef="startEvent" targetRef="fork" />
+        <parallelGateway id="fork" />
+        <sequenceFlow sourceRef="fork" targetRef="corpusMapper"/>
+        <sequenceFlow sourceRef="fork" targetRef="textExtractor"/>
+
+        <serviceTask id="corpusMapper" name="map corpus to hashMap"
+                     flowable:class="org.atilf.thread.enrichment.initializer.CorpusMapperDelegate"/>
+        <serviceTask id="textExtractor" name="map corpus to hashMap"
+                     flowable:class="org.atilf.thread.enrichment.initializer.TextExtractorDelegate"/>
+
+        <sequenceFlow sourceRef="corpusMapper" targetRef="join"/>
+        <sequenceFlow sourceRef="textExtractor" targetRef="join"/>
+        <parallelGateway id="join"/>
+        <sequenceFlow sourceRef="join" targetRef="endEvent"/>
+        <endEvent id="endEvent"/>
+    </process>
+
+</definitions>

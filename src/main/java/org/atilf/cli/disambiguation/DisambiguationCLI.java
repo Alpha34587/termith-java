@@ -3,7 +3,6 @@ package org.atilf.cli.disambiguation;
 import ch.qos.logback.classic.Level;
 import org.apache.commons.cli.*;
 import org.atilf.models.TermithIndex;
-import org.atilf.runner.Disambiguation;
 import org.atilf.tools.BenchmarkFactory;
 import org.atilf.tools.CLIUtils;
 import org.slf4j.Logger;
@@ -12,6 +11,8 @@ import org.slf4j.LoggerFactory;
 import javax.xml.transform.TransformerException;
 import java.io.IOException;
 import java.nio.file.Paths;
+
+//import org.atilf.runner.Disambiguation;
 
 /**
  * @author Simon Meoni
@@ -92,10 +93,10 @@ public class DisambiguationCLI {
                 BenchmarkFactory._exportBenchmark = true;
                 BenchmarkFactory._performancePath = Paths.get(line.getOptionValue("benchmark"));
             }
-            new Disambiguation(termithBuilder.build()).execute();
+//            new Disambiguation(termithBuilder.build()).executeTasks();
 
         } catch (ParseException e) {
-            LOGGER.error("There are some problems during execute arguments : ",e);
+            LOGGER.error("There are some problems during executeTasks arguments : ",e);
         }
     }
 }

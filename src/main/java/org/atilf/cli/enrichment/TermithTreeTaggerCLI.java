@@ -3,7 +3,7 @@ package org.atilf.cli.enrichment;
 import ch.qos.logback.classic.Level;
 import org.apache.commons.cli.*;
 import org.atilf.models.TermithIndex;
-import org.atilf.runner.TermithTreeTagger;
+import org.atilf.runner.Runner;
 import org.atilf.tools.BenchmarkFactory;
 import org.atilf.tools.CLIUtils;
 import org.slf4j.Logger;
@@ -80,9 +80,9 @@ public class TermithTreeTaggerCLI {
                 BenchmarkFactory._exportBenchmark = true;
                 BenchmarkFactory._performancePath = Paths.get(line.getOptionValue("benchmark"));
             }
-            new TermithTreeTagger(termithIndex).execute();
+            new Runner(termithIndex, "runner/termithTreeTagger.bpmn20.xml").execute();
         } catch (ParseException e) {
-            LOGGER.error("There are some problems during execute arguments : ",e);
+            LOGGER.error("There are some problems during executeTasks arguments : ",e);
         }
     }
 }

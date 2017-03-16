@@ -4,18 +4,21 @@ import org.atilf.models.TermithIndex;
 import org.flowable.engine.ProcessEngine;
 import org.flowable.engine.ProcessEngineConfiguration;
 import org.flowable.engine.RepositoryService;
+import org.flowable.engine.RuntimeService;
 import org.flowable.engine.impl.cfg.StandaloneProcessEngineConfiguration;
 import org.flowable.engine.repository.Deployment;
+import org.flowable.engine.repository.ProcessDefinition;
+import org.flowable.engine.runtime.ProcessInstance;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 
 /**
- * This class is used to create some Thread inherited classes and execute each of them linearly.
+ * This class is used to create some Delegate inherited classes and executeTasks each of them linearly.
  * @author Simon Meoni Created on 10/11/16.
  */
-public abstract class Runner {
+public class Runner {
 
     public static final int DEFAULT_POOL_SIZE = Runtime.getRuntime().availableProcessors();
     protected final Logger _logger = LoggerFactory.getLogger(this.getClass().getName());
@@ -44,7 +47,7 @@ public abstract class Runner {
         _termithIndex = termithIndex;
     }
 
-    protected Runner(TermithIndex termithIndex, String bpmnDiagram) {
+    public Runner(TermithIndex termithIndex, String bpmnDiagram) {
         _poolSize = DEFAULT_POOL_SIZE;
         _termithIndex = termithIndex;
         _bpmnDiagram = bpmnDiagram;
@@ -68,7 +71,14 @@ public abstract class Runner {
 
         RepositoryService repositoryService = processEngine.getRepositoryService();
         Deployment deployment = repositoryService.createDeployment()
-                .addClasspathResource(_bpmnDiagram)
+                .addClasspathResource("runner/termithTreeTagger.bpmn20.xml")
                 .deploy();
+
+        ProcessDefinition processDefinition = repositoryService.createProcessDefinitionQuery()
+                .deploymentId(deployment.getId())
+                .singleResult();
+        RuntimeService runtimeService = processEngine.getRuntimeService();
+        ProcessInstance processInstance =
+                runtimeService.startProcessInstanceByKey(processDefinition.getKey());
     }
 }
