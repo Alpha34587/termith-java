@@ -54,7 +54,6 @@ public class RunnerBuilder {
 
     public RunnerBuilder setBase(String _base) {
         RunnerBuilder._base = FilesUtils.folderPathResolver(_base);
-        FilesUtils.createFolder(RunnerBuilder._base);
         return this;
     }
 

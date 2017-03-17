@@ -22,7 +22,38 @@
         <sequenceFlow sourceRef="corpusMapper" targetRef="join"/>
         <sequenceFlow sourceRef="textExtractor" targetRef="join"/>
         <parallelGateway id="join"/>
-        <sequenceFlow sourceRef="join" targetRef="endEvent"/>
+
+        <sequenceFlow sourceRef="join" targetRef="treeTaggerWorker"/>
+
+        <serviceTask id="treeTaggerWorker" name="treeTagger Json"
+                     flowable:class="org.atilf.delegate.enrichment.analyzer.TreeTaggerWorkerDelegate"/>
+
+        <sequenceFlow sourceRef="treeTaggerWorker" targetRef="termsuite"/>
+
+        <serviceTask id="termsuite" name="call termsuite pipeline"
+                     flowable:class="org.atilf.delegate.enrichment.analyzer.TermsuitePipelineBuilderDelegate"/>
+
+        <sequenceFlow sourceRef="termsuite" targetRef="termsuiteParser"/>
+
+        <serviceTask id="termsuiteParser" name="call termsuite parser"
+                     flowable:class="org.atilf.delegate.enrichment.analyzer.TerminologyParserDelegate"/>
+
+        <sequenceFlow sourceRef="termsuiteParser" targetRef="termsuiteStandoff"/>
+
+        <serviceTask id="termsuiteStandoff" name="call termsuite standOff"
+                     flowable:class="org.atilf.delegate.enrichment.analyzer.TerminologyStandOffDelegate"/>
+
+        <sequenceFlow sourceRef="termsuiteStandoff" targetRef="exporter"/>
+
+        <serviceTask id="exporter" name="export result in tei format"
+                     flowable:class="org.atilf.delegate.enrichment.exporter.ExporterDelegate"/>
+
+        <sequenceFlow sourceRef="exporter" targetRef="cleaner"/>
+
+        <serviceTask id="cleaner" name="export result in tei format"
+                     flowable:class="org.atilf.delegate.enrichment.cleaner.WorkingFileCleanerDelegate"/>
+
+        <sequenceFlow sourceRef="cleaner" targetRef="endEvent"/>
         <endEvent id="endEvent"/>
     </process>
 

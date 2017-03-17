@@ -24,7 +24,7 @@ public class Runner {
 
     public static TermithIndex _termithIndex;
     public static int _poolSize;
-    private String _bpmnDiagram;
+    private static String _bpmnDiagram;
 
     /*
     common parameter
