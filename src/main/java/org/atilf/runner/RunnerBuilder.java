@@ -1,15 +1,21 @@
 package org.atilf.runner;
 
 import org.atilf.models.TermithIndex;
+import org.atilf.tools.FilesUtils;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class RunnerBuilder {
 
-    TermithIndex _termithIndex;
-    String _bpmnDiagram;
     int _poolSize = Runtime.getRuntime().availableProcessors();
+    TermithIndex _termithIndex = new TermithIndex();
+    String _bpmnDiagram;
+
+    /*
+    remove maybe
+     */
+    int _corpusSize;
 
     /*
     common parameter
@@ -47,7 +53,8 @@ public class RunnerBuilder {
     }
 
     public RunnerBuilder setBase(String _base) {
-        RunnerBuilder._base = Paths.get(_base);
+        RunnerBuilder._base = FilesUtils.folderPathResolver(_base);
+        FilesUtils.createFolder(RunnerBuilder._base);
         return this;
     }
 
@@ -61,27 +68,31 @@ public class RunnerBuilder {
         return this;
     }
 
-    public RunnerBuilder setTreeTaggerHome(String _treeTaggerHome) {
-        RunnerBuilder._treeTaggerHome = _treeTaggerHome;
+    public RunnerBuilder setTreeTaggerHome(String treeTaggerHome) {
+        RunnerBuilder._treeTaggerHome = treeTaggerHome;
         return this;
     }
 
-    public RunnerBuilder setLearningPath(String _learningPath) {
-        RunnerBuilder._learningPath = Paths.get(_learningPath);
+    public RunnerBuilder setLearningPath(String learningPath) {
+        RunnerBuilder._learningPath = FilesUtils.folderPathResolver(learningPath);
+        FilesUtils.createFolder(RunnerBuilder._learningPath);
         return this;
     }
 
-    public RunnerBuilder setEvaluationPath(String _evaluationPath) {
-        RunnerBuilder._evaluationPath = Paths.get(_evaluationPath);
+    public RunnerBuilder setEvaluationPath(String evaluationPath) {
+        RunnerBuilder._evaluationPath = FilesUtils.folderPathResolver(evaluationPath);
+        FilesUtils.createFolder(RunnerBuilder._evaluationPath);
         return this;
     }
 
-    public RunnerBuilder setScorePath(String _scorePath) {
-        RunnerBuilder._scorePath = Paths.get(_scorePath);
+    public RunnerBuilder setScorePath(String scorePath) {
+        RunnerBuilder._scorePath = FilesUtils.folderPathResolver(scorePath);
+        FilesUtils.createFolder(RunnerBuilder._scorePath);
         return this;
     }
 
     public Runner createRunner() {
         return new Runner(this);
     }
+
 }

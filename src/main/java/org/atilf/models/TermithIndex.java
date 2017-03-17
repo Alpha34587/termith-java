@@ -1,15 +1,11 @@
 package org.atilf.models;
 
-import org.apache.commons.io.FileUtils;
 import org.atilf.models.disambiguation.*;
 import org.atilf.models.enrichment.TermOffsetId;
 import org.atilf.tools.FilesUtils;
 
-import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -73,19 +69,6 @@ public class TermithIndex {
      */
 
     public TermithIndex() {}
-
-    private TermithIndex(Builder builder) throws IOException {
-        _disambiguationAnnotation = builder._disambiguationAnnotation;
-        _base = builder._base;
-        _keepFiles = builder._keepFiles;
-        _outputPath = builder._outputPath;
-        _treeTaggerHome = builder._treeTaggerHome;
-        _lang = builder._lang;
-        _corpusSize = builder.getCorpusSize();
-        _learningPath = builder._learningPath;
-        _evaluationPath = builder._evaluationPath;
-        _scorePath = builder._scorePath;
-    }
 
     /*
     Getter
@@ -296,173 +279,5 @@ public class TermithIndex {
     public void addText(String id, StringBuilder content) throws IOException {
 
         this.getExtractedText().put(id, FilesUtils.writeObject(content,TermithIndex._outputPath));
-    }
-
-    /**
-     * This class is used to instance a termITH object
-     */
-    public static class Builder
-    {
-        Path _outputPath = null;
-        boolean _keepFiles = false;
-        Path _scorePath = null;
-        List<Path> _terminology = new CopyOnWriteArrayList<>();
-        String _lang;
-        Path _base;
-        String _treeTaggerHome;
-        Path _disambiguationAnnotation;
-        Path _learningPath;
-        Path _evaluationPath;
-        private int _corpusSize = 0;
-        private int _thresholdContext = 0;
-
-        /**
-         * This method set the input folder path
-         * @param path path of the _base corpus
-         * @return return the path of the _base corpus
-         * @throws IOException throws exception of folderResolver method
-         */
-        public Builder baseFolder(String path) throws IOException {
-            _base = FilesUtils.folderPathResolver(path);
-            setCorpusSize((int) Files.list(_base).count());
-            return this;
-        }
-
-        /**
-         * This method set the learning folder path
-         * @param path path of the _learningPath corpus
-         * @return return the path of the _learningPath corpus
-         * @throws IOException throws exception of folderResolver method
-         */
-        public Builder learningFolder(String path) throws IOException {
-            _learningPath = FilesUtils.folderPathResolver(path);
-            return this;
-        }
-
-        /**
-         * This method set the evaluation folder path
-         * @param path path of the _evaluationPath corpus
-         * @return return the path of the _evaluationPath corpus
-         * @throws IOException throws exception of folderResolver method
-         */
-        public Builder evaluationFolder(String path) throws IOException {
-            _evaluationPath = FilesUtils.folderPathResolver(path);
-            setCorpusSize((int) Files.list(_evaluationPath).count());
-            return this;
-        }
-
-        /**
-         * this method set a boolean that used to activate or not the _keepFiles : each step of the process will be export to
-         * the result folder
-         * @param activate boolean use to activate the "_keepFiles" mode
-         * @return value of the activate boolean
-         */
-        public Builder keepFiles(boolean activate){
-            _keepFiles = activate;
-            return this;
-        }
-
-        public Builder score(String scorePath) throws IOException {
-            _scorePath = Paths.get(scorePath);
-            File folder =_scorePath.toFile();
-            if (Files.exists(_scorePath)){
-                FileUtils.deleteDirectory(folder);
-            }
-            if (!folder.mkdir()){
-                throw new IOException("cannot create output folder");
-            }
-            return this;
-        }
-
-        /**
-         * set the output path of the result
-         * @param outputPath the output path
-         * @return return output path
-         */
-        public Builder export(String outputPath) throws IOException {
-            _outputPath = FilesUtils.folderPathResolver(outputPath);
-            File folder = _outputPath.toFile();
-            if (Files.exists(_outputPath)){
-                FileUtils.deleteDirectory(folder);
-            }
-            if (!folder.mkdir()){
-                throw new IOException("cannot create output folder");
-            }
-            return this;
-        }
-
-        /**
-         * set the _lang
-         * @param lang set language
-         * @return return string language
-         */
-        public Builder lang(String lang){
-            _lang = lang;
-            return this;
-        }
-
-        /**
-         * set the TreeTagger path
-         * @param treeTaggerHome TreeTagger path
-         * @return return TreeTagger path
-         */
-        public Builder treeTaggerHome(String treeTaggerHome) {
-            _treeTaggerHome = FilesUtils.folderPathResolver(treeTaggerHome).toString();
-            return this;
-        }
-
-        /**
-         * set json terminology path
-         * @param terminology TreeTagger path
-         * @return return TreeTagger path
-         */
-        public Builder terminology(String terminology) {
-            if (terminology == null)
-                _terminology.add(null);
-            else
-                _terminology.add(FilesUtils.folderPathResolver(terminology));
-            return this;
-        }
-
-
-        public Builder threshold(int threshold) {
-            setThresholdContext(threshold);
-            return this;
-        }
-
-        /**
-         * set annotation path
-         * @param disambiguationAnnotation disambiguation path
-         * @return return disambiguation path
-         */
-        public Builder annotation(String disambiguationAnnotation) {
-            _disambiguationAnnotation = FilesUtils.folderPathResolver(disambiguationAnnotation);
-            return this;
-        }
-
-        /**
-         * This method is used to finalize the building of the TermithText Object
-         * @see TermithIndex
-         * @return return termith object
-         */
-        public TermithIndex build() throws IOException {
-            return new TermithIndex(this);
-        }
-
-        int getCorpusSize() {
-            return _corpusSize;
-        }
-
-        void setCorpusSize(int corpusSize) {
-            _corpusSize = corpusSize;
-        }
-
-        public int getThresholdContext() {
-            return _thresholdContext;
-        }
-
-        public void setThresholdContext(int thresholdContext) {
-            _thresholdContext = thresholdContext;
-        }
     }
 }
