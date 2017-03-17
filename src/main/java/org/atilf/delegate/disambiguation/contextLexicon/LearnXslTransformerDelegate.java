@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
  * @author Simon Meoni
  *         Created on 12/10/16.
  */
-public class DisambiguationXslTransformerDelegate extends Delegate {
+public class LearnXslTransformerDelegate extends Delegate {
 
     @Override
     public void executeTasks() throws IOException, InterruptedException {
@@ -32,18 +32,6 @@ public class DisambiguationXslTransformerDelegate extends Delegate {
                         )
                 )
         );
-
-        if (Runner.getLearningPath() != Runner.getEvaluationPath()) {
-            Files.list(Runner.getEvaluationPath()).forEach(
-                    p -> _executorService.submit(
-                            new DisambiguationXslTransformer(
-                                    p.toFile(),
-                                    _termithIndex,
-                                    _termithIndex.getEvaluationTransformedFiles(),
-                                    xslResources)
-                    )
-            );
-        }
 
         _logger.info("Waiting ContextExtractor executors to finish");
         _executorService.shutdown();
