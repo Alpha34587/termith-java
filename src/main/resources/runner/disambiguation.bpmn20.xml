@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
+             xmlns:flowable="http://flowable.org/bpmn"
+             typeLanguage="http://www.w3.org/2001/XMLSchema"
+             expressionLanguage="http://www.w3.org/1999/XPath"
+             targetNamespace="http://www.flowable.org/processdef">
+
+    <process id="termithTreeTagger" name="termithTreeTagger" isExecutable="true">
+
+        <startEvent id="startEvent"/>
+
+        <sequenceFlow sourceRef="startEvent" targetRef="fork" />
+        <parallelGateway id="fork" />
+
+        <sequenceFlow sourceRef="fork" targetRef="xslLearn"/>
+        <sequenceFlow sourceRef="fork" targetRef="xslEvaluation"/>
+
+
+        <serviceTask id="xslLearn" name="transform tei learn corpus to working format "
+                     flowable:class="org.atilf.delegate.disambiguation.contextLexicon.LearnXslTransformerDelegate"/>
+        <serviceTask id="xslEvaluation" name="transform tei evluation corpus to working format "
+                     flowable:class="org.atilf.delegate.disambiguation.evaluation.EvaluationXslTransformerDelegate"/>
+
+        <sequenceFlow sourceRef="xslLearn" targetRef="learnExtractor"/>
+
+        <serviceTask id="learnExtractor" name="transform tei learn corpus to working format "
+                     flowable:class="org.atilf.delegate.disambiguation.contextLexicon.ContextExtractorDelegate"/>
+
+        <sequenceFlow sourceRef="learnExtractor" targetRef="forkLearn"/>
+        <parallelGateway id="forkLearn"/>
+        <sequenceFlow sourceRef="xslLearn" targetRef="forkLearn"/>
+        <sequenceFlow sourceRef="forkLearn" targetRef="posCleaner"/>
+        <sequenceFlow sourceRef="forkLearn" targetRef="thresholdCleaner"/>
+
+
+        <serviceTask id="posCleaner" name="clean common pos"
+                     flowable:class="org.atilf.delegate.disambiguation.contextLexicon.CommonWordsPosLemmaCleanerDelegate"/>
+        <serviceTask id="thresholdCleaner" name="remove non relevant occurences frequences"
+                     flowable:class="org.atilf.delegate.disambiguation.contextLexicon.ThresholdLexiconCleanerDelegate"/>
+
+        <sequenceFlow sourceRef="posCleaner" targetRef="joinEvaluation"/>
+        <sequenceFlow sourceRef="thresholdCleaner" targetRef="joinEvaluation"/>
+        <sequenceFlow sourceRef="xslEvaluation" targetRef="joinEvaluation"/>
+
+        <parallelGateway id="joinEvaluation"/>
+        <sequenceFlow sourceRef="joinEvaluation" targetRef="evaluationExtractor"/>
+        <serviceTask id="evaluationExtractor" name="extract context from evaluation corpus"
+                     flowable:class="org.atilf.delegate.disambiguation.evaluation.EvaluationExtractorDelegate"/>
+        
+        <sequenceFlow sourceRef="evaluationExtractor" targetRef="evaluation"/>
+        <serviceTask id="evaluation" name="comparaison between lexicon profile"
+                     flowable:class="org.atilf.delegate.disambiguation.evaluation.EvaluationDelegate"/>
+
+        <sequenceFlow sourceRef="evaluation" targetRef="exporter"/>
+        <serviceTask id="exporter" name="export result in tei"
+                     flowable:class="org.atilf.delegate.disambiguation.disambiguationExporter.DisambiguationExporterDelegate"/>
+
+
+        <sequenceFlow sourceRef="exporter" targetRef="endEvent"/>
+        <endEvent id="endEvent"/>
+    </process>
+
+</definitions>

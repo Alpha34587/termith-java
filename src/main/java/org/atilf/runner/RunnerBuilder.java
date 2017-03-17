@@ -74,13 +74,11 @@ public class RunnerBuilder {
 
     public RunnerBuilder setLearningPath(String learningPath) {
         RunnerBuilder._learningPath = FilesUtils.folderPathResolver(learningPath);
-        FilesUtils.createFolder(RunnerBuilder._learningPath);
         return this;
     }
 
     public RunnerBuilder setEvaluationPath(String evaluationPath) {
         RunnerBuilder._evaluationPath = FilesUtils.folderPathResolver(evaluationPath);
-        FilesUtils.createFolder(RunnerBuilder._evaluationPath);
         return this;
     }
 

@@ -1,7 +1,8 @@
-package org.atilf.delegate.disambiguation.evaluation;
+package org.atilf.delegate.disambiguation.contextLexicon;
 
 import org.atilf.delegate.Delegate;
-import org.atilf.module.disambiguation.evaluation.CommonWordsPosLemmaCleaner;
+import org.atilf.models.disambiguation.DisambiguationXslResources;
+import org.atilf.module.disambiguation.evaluation.ThresholdLexiconCleaner;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -11,7 +12,7 @@ import java.util.concurrent.TimeUnit;
  * @author Simon Meoni
  *         Created on 12/10/16.
  */
-public class CommonWordsPosLemmaCleanerDelegate extends Delegate {
+public class ThresholdLexiconCleanerDelegate extends Delegate {
 
     /**
      * this method is split in two parts. Firstly, for each file, the context is extract for each terms candidates.
@@ -22,25 +23,19 @@ public class CommonWordsPosLemmaCleanerDelegate extends Delegate {
      * @throws InterruptedException thrown if awaitTermination function is interrupted while waiting
      */
     public void executeTasks() throws IOException, InterruptedException {
+        DisambiguationXslResources xslResources = new DisambiguationXslResources();
 
         /*
-        Common PosLemma cleaner
+        Threshold cleaner
          */
-        _termithIndex.getContextLexicon().forEach(
-                (key,value) ->
-                {
-                    String lexOff = key.replace("On","Off");
-                    if (key.contains("_lexOn") &&
-                            _termithIndex.getContextLexicon().containsKey(lexOff)) {
-                        _executorService.submit(new CommonWordsPosLemmaCleaner(
-                                key,
-                                value,
-                                _termithIndex.getContextLexicon().get(lexOff)
-                        ));
-                    }
-                }
+        _termithIndex.getContextLexicon().keySet().forEach(
+                key -> _executorService.submit(new ThresholdLexiconCleaner(
+                        key,
+                        _termithIndex,
+                        3,
+                        15
+                ))
         );
-
         _logger.info("Waiting EvaluationWorker executors to finish");
         _executorService.shutdown();
         _executorService.awaitTermination(1L, TimeUnit.DAYS);

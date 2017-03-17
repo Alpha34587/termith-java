@@ -1,4 +1,4 @@
-package org.atilf.delegate.disambiguation.contextLexicon;
+package org.atilf.delegate.disambiguation.evaluation;
 
 import org.atilf.delegate.Delegate;
 import org.atilf.models.disambiguation.DisambiguationXslResources;

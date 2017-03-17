@@ -61,6 +61,7 @@ public class DisambiguationCLI {
 
             Runner runner = new RunnerBuilder()
                     .setLearningPath(line.getOptionValue("le"))
+                    .setBpmnDiagram("runner/disambiguation.bpmn20.xml")
                     .setEvaluationPath(line.getOptionValue("e"))
                     .setOut(line.getOptionValue("o"))
                     .createRunner();
