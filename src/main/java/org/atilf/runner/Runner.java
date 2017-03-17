@@ -10,7 +10,6 @@ import org.flowable.engine.RuntimeService;
 import org.flowable.engine.impl.cfg.StandaloneProcessEngineConfiguration;
 import org.flowable.engine.repository.Deployment;
 import org.flowable.engine.repository.ProcessDefinition;
-import org.flowable.engine.runtime.ProcessInstance;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -54,6 +53,17 @@ public class Runner {
         _poolSize = runnerBuilder._poolSize;
         _termithIndex = runnerBuilder._termithIndex;
         _bpmnDiagram = runnerBuilder._bpmnDiagram;
+        _base = RunnerBuilder._base;
+        _out = RunnerBuilder._out;
+        _lang = RunnerBuilder._lang;
+        _treeTaggerHome = RunnerBuilder._treeTaggerHome;
+        _learningPath = RunnerBuilder._learningPath;
+        _evaluationPath = RunnerBuilder._evaluationPath;
+        _scorePath = RunnerBuilder._scorePath;
+    }
+
+    public static Path getOut() {
+        return _out;
     }
 
     public static List<TimePerformanceEvent> getTimePerformanceEvents() {
@@ -63,6 +73,29 @@ public class Runner {
     public static List<MemoryPerformanceEvent> getMemoryPerformanceEvents() {
         return _memoryPerformanceEvents;
     }
+
+    public static Path getBase() {return _base;}
+
+    public static String getLang() {
+        return _lang;
+    }
+
+    public static Path getEvaluationPath() {
+        return _evaluationPath;
+    }
+
+    public static Path getLearningPath() {
+        return _learningPath;
+    }
+
+    public static Path getScorePath() {
+        return _scorePath;
+    }
+
+    public static String getTreeTaggerHome() {
+        return _treeTaggerHome;
+    }
+
     /**
      * this method contains the process chain. This method calls inherited delegate classes.
      * @throws IOException Throws an IO exception if a file is not found or have a permission problem during process
@@ -88,7 +121,7 @@ public class Runner {
                 .deploymentId(deployment.getId())
                 .singleResult();
         RuntimeService runtimeService = processEngine.getRuntimeService();
-        ProcessInstance processInstance =
-                runtimeService.startProcessInstanceByKey(processDefinition.getKey());
+
+        runtimeService.startProcessInstanceByKey(processDefinition.getKey());
     }
 }

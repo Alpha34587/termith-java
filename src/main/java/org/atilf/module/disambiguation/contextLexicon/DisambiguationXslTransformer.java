@@ -3,6 +3,7 @@ package org.atilf.module.disambiguation.contextLexicon;
 import org.atilf.models.TermithIndex;
 import org.atilf.models.enrichment.XslResources;
 import org.atilf.module.Module;
+import org.atilf.runner.Runner;
 import org.atilf.tools.FilesUtils;
 
 import javax.xml.transform.Source;
@@ -28,7 +29,6 @@ public class DisambiguationXslTransformer extends Module{
     private File _file;
     private XslResources _xslResources;
     private StringBuilder _transformedContent;
-
     /**
      * constructor for textExtractor
      * @param file Treated xml/tei _file
@@ -46,18 +46,18 @@ public class DisambiguationXslTransformer extends Module{
      *                     used to convert the input file
      */
     public DisambiguationXslTransformer(File file,
-                                        TermithIndex termithIndex, XslResources xslResources){
+                                        TermithIndex termithIndex, XslResources xslResources, Path outputPath){
 
         super(termithIndex);
         _file = file;
         _xmlTransformedMap = termithIndex.getLearningTransformedFile();
         _xslResources = xslResources;
-        _outputPath = TermithIndex.getOutputPath();
+        _outputPath = outputPath;
     }
 
     public DisambiguationXslTransformer(File file, TermithIndex termithIndex,
                                         Map<String, Path> xmlTransformedMap, XslResources xslResources){
-        this(file,termithIndex,xmlTransformedMap,xslResources,TermithIndex.getOutputPath());
+        this(file,termithIndex,xmlTransformedMap,xslResources, Runner.getOut());
     }
 
 

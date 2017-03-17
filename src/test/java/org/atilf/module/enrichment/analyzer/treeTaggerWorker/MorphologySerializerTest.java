@@ -1,8 +1,6 @@
 package org.atilf.module.enrichment.analyzer.treeTaggerWorker;
 
-import org.atilf.models.TermithIndex;
 import org.atilf.models.enrichment.CorpusAnalyzer;
-import org.atilf.models.enrichment.CorpusAnalyzerTest;
 import org.atilf.models.enrichment.TagNormalizer;
 import org.junit.Assert;
 import org.junit.BeforeClass;
@@ -14,6 +12,8 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author Simon Meoni
@@ -29,11 +29,11 @@ public class MorphologySerializerTest {
     
     @BeforeClass
     public static void setUp() throws IOException {
-        TermithIndex termithIndex = new TermithIndex.Builder().export(temporaryFolder.getRoot().getPath()).build();
         TagNormalizer.initTag("en");
-        termithIndex.addText("1",
-                new StringBuilder("\n \n \nJournal of Gerontology: PSYCHOLOGICAL patient (1998@)"));
-        CorpusAnalyzer corpusAnalyzer = new CorpusAnalyzer(CorpusAnalyzerTest.convertExtractedText(termithIndex.getExtractedText()));
+        Map<String,StringBuilder> textExtracted = new HashMap<>();
+        textExtracted.put("1",new StringBuilder("\n \n \nJournal of Gerontology: " +
+                "PSYCHOLOGICAL patient (1998@)"));
+        CorpusAnalyzer corpusAnalyzer = new CorpusAnalyzer(textExtracted);
 
         StringBuilder tokenLemma = new StringBuilder(
                 "Journal\tNP\tJournal\n" +

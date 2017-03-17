@@ -2,9 +2,7 @@ package org.atilf.models;
 
 import org.atilf.models.disambiguation.*;
 import org.atilf.models.enrichment.TermOffsetId;
-import org.atilf.tools.FilesUtils;
 
-import java.io.IOException;
 import java.nio.file.Path;
 import java.util.List;
 import java.util.Map;
@@ -31,7 +29,6 @@ public class TermithIndex {
     private List<Path> _serializeJson = new CopyOnWriteArrayList<>();
     private List<Path> _outputFile = new CopyOnWriteArrayList<>();
     private int _corpusSize;
-    private Path _disambiguationAnnotation;
 
     /*
     Disambiguation core fields
@@ -49,26 +46,10 @@ public class TermithIndex {
     private final int _thresholdContext = 0;
 
     /*
-    CLI parameter
-     */
-
-    private static Path _outputPath;
-    private static String _lang;
-    private static String _treeTaggerHome;
-    private static Path _base;
-    private static boolean _keepFiles;
-    /*
-    Disambiguation CLI parameter
-     */
-    private static Path _learningPath;
-    private static Path _evaluationPath;
-    private static Path _scorePath;;
-
-    /*
     Constructor
      */
 
-    public TermithIndex() {}
+    public TermithIndex(){}
 
     /*
     Getter
@@ -152,10 +133,6 @@ public class TermithIndex {
      */
     public List<Path> getSerializeJson() {return _serializeJson;}
 
-    public static Path getLearningPath() {return _learningPath;}
-
-    public static Path getEvaluationPath() {return _evaluationPath;}
-
     public TotalTermScore getTotalTermScore() { return _totalTermScore; }
 
     public int getThresholdContext() {
@@ -202,43 +179,9 @@ public class TermithIndex {
         return _extractedText;
     }
 
-    /**
-     * get the output path
-     * @return return the output path
-     */
-    public static Path getOutputPath() { return _outputPath;}
-
-    public static Path getScorePath() {
-        return _scorePath;
-    }
-
     public Map<String, Path> getTransformOutputDisambiguationFile() {
         return _transformOutputDisambiguationFile;
     }
-
-    /**
-     * get the corpus language
-     * @return return the language corpus
-     */
-    public static String getLang() { return _lang; }
-
-    /**
-     * get the path of treetagger executable
-     * @return the path of treetagger
-     */
-    public static String getTreeTaggerHome() { return _treeTaggerHome; }
-
-    /**
-     * get the path of the input folder
-     * @return return the input folder path
-     */
-    public static Path getBase() { return _base; }
-
-    /**
-     * get boolean for clean or not working folder
-     * @return return a boolean
-     */
-    public static boolean isKeepFiles() { return _keepFiles; }
 
     public Map<String, ScoreTerm> getScoreTerms() {
         return _scoreTerms;
@@ -271,13 +214,5 @@ public class TermithIndex {
      */
     public void setTerminologyStandOff(Map<String, List<TermOffsetId>> terminologyStandOff) {
         _terminologyStandOff = terminologyStandOff;
-    }
-
-    /*
-        Other method
-         */
-    public void addText(String id, StringBuilder content) throws IOException {
-
-        this.getExtractedText().put(id, FilesUtils.writeObject(content,TermithIndex._outputPath));
     }
 }

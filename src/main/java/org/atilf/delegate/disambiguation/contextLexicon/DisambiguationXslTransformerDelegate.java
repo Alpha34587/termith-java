@@ -1,9 +1,9 @@
 package org.atilf.delegate.disambiguation.contextLexicon;
 
 import org.atilf.delegate.Delegate;
-import org.atilf.models.TermithIndex;
 import org.atilf.models.disambiguation.DisambiguationXslResources;
 import org.atilf.module.disambiguation.contextLexicon.DisambiguationXslTransformer;
+import org.atilf.runner.Runner;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -23,16 +23,18 @@ public class DisambiguationXslTransformerDelegate extends Delegate {
         /*
         Transformation phase
          */
-        Files.list(TermithIndex.getLearningPath()).forEach(
+        Files.list(Runner.getLearningPath()).forEach(
                 p -> _executorService.submit(new DisambiguationXslTransformer(
                         p.toFile(),
                         _termithIndex,
-                        xslResources)
+                        xslResources,
+                        Runner.getOut()
+                        )
                 )
         );
 
-        if (TermithIndex.getLearningPath() != TermithIndex.getEvaluationPath()) {
-            Files.list(TermithIndex.getEvaluationPath()).forEach(
+        if (Runner.getLearningPath() != Runner.getEvaluationPath()) {
+            Files.list(Runner.getEvaluationPath()).forEach(
                     p -> _executorService.submit(
                             new DisambiguationXslTransformer(
                                     p.toFile(),

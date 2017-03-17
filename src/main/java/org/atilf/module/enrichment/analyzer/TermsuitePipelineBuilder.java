@@ -21,6 +21,8 @@ import java.nio.file.Paths;
  */
 public class TermsuitePipelineBuilder extends Module {
 
+    private final String _outputPath;
+    private final String _lang;
     private String _jsonCorpus;
     private TermSuitePipeline _termsuitePipeline;
 
@@ -28,9 +30,11 @@ public class TermsuitePipelineBuilder extends Module {
      * this constructor initialize the pipeline with all parameters needed for termsuite
      * @param termithIndex
      */
-    public TermsuitePipelineBuilder(TermithIndex termithIndex){
+    public TermsuitePipelineBuilder(TermithIndex termithIndex, String outputPath, String lang){
         super(termithIndex);
-        _jsonCorpus = TermithIndex.getOutputPath() + "/json";
+        _outputPath = outputPath;
+        _lang = lang;
+        _jsonCorpus = _outputPath + "/json";
         /*
         create path for terminologies in termithIndex
          */
@@ -39,7 +43,7 @@ public class TermsuitePipelineBuilder extends Module {
         /*
          create termsuitePipeline
          */
-        _termsuitePipeline = TermSuitePipeline.create(TermithIndex.getLang())
+        _termsuitePipeline = TermSuitePipeline.create(_lang)
                 /*
                  set Termsuite resource (it is a .jar version of termsuite resource)
                  */
@@ -95,7 +99,7 @@ public class TermsuitePipelineBuilder extends Module {
         _logger.info("Run Termsuite Pipeline");
         _termsuitePipeline.run();
         _logger.info("Finished execution of Termsuite Pipeline, result in :" +
-                TermithIndex.getOutputPath());
+                _outputPath);
     }
 
     /**
@@ -115,10 +119,10 @@ public class TermsuitePipelineBuilder extends Module {
     private String exportResource(){
         InputStream resourceAsStream = getClass().getClassLoader().getResourceAsStream("module/enrichment/analyze/termsuitePipelineBuilder/termsuite-resources.jar");
         try {
-            Files.write(Paths.get(TermithIndex.getOutputPath() +"/termsuite-resources.jar"), ByteStreams.toByteArray(resourceAsStream));
+            Files.write(Paths.get(_outputPath +"/termsuite-resources.jar"), ByteStreams.toByteArray(resourceAsStream));
         } catch (IOException e) {
             _logger.error("cannot copy termsuite-resources.jar",e);
         }
-        return TermithIndex.getOutputPath() +"/termsuite-resources.jar";
+        return _outputPath +"/termsuite-resources.jar";
     }
 }

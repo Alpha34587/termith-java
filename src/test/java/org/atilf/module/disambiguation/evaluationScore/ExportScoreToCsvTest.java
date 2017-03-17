@@ -1,7 +1,6 @@
 package org.atilf.module.disambiguation.evaluationScore;
 
 import org.apache.commons.io.FileUtils;
-import org.atilf.models.TermithIndex;
 import org.atilf.models.disambiguation.ContextWord;
 import org.atilf.models.disambiguation.ScoreTerm;
 import org.atilf.models.disambiguation.TotalTermScore;
@@ -70,8 +69,7 @@ public class ExportScoreToCsvTest {
         _totalScoreTerm.setRecall(0.5f);
         _totalScoreTerm.setPrecision(0.4f);
         _totalScoreTerm.setF1score(0.3f);
-        new TermithIndex.Builder().export(temporaryFolder.getRoot().getAbsolutePath()).build();
-        _exportScoreToCsv = new ExportScoreToCsv(_scoreTerm, TermithIndex.getOutputPath());
+        _exportScoreToCsv = new ExportScoreToCsv(_scoreTerm, temporaryFolder.getRoot().toPath());
     }
     @Test
     public void execute() throws Exception {
@@ -80,7 +78,7 @@ public class ExportScoreToCsvTest {
                 FileUtils.readFileToString(
                         _expectedFile, "utf-8"),
                 FileUtils.readFileToString(
-                        new File(TermithIndex.getOutputPath().toString() + "/termith-score.csv"), "utf-8")
+                        new File(temporaryFolder.getRoot().toString() + "/termith-score.csv"), "utf-8")
         );
     }
 }

@@ -1,8 +1,8 @@
 package org.atilf.delegate.disambiguation.evaluationScore;
 
 import org.atilf.delegate.Delegate;
-import org.atilf.models.TermithIndex;
 import org.atilf.module.disambiguation.evaluationScore.ExportScoreToJson;
+import org.atilf.runner.Runner;
 
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
@@ -27,7 +27,7 @@ public class ExportToJsonDelegate extends Delegate {
     @Override
     public void executeTasks() throws IOException, InterruptedException, ExecutionException {
 
-        _executorService.submit(new ExportScoreToJson(_termithIndex, TermithIndex.getScorePath(), true)).get();
+        _executorService.submit(new ExportScoreToJson(_termithIndex, Runner.getScorePath(), true)).get();
         _executorService.shutdown();
         _executorService.awaitTermination(1L, TimeUnit.DAYS);
     }

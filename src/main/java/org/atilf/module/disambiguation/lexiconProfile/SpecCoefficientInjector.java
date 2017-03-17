@@ -37,7 +37,7 @@ public class SpecCoefficientInjector extends Module {
     private boolean _computeSpecificities = true;
     private RLexicon _rContextLexicon;
     private String _id;
-    private String _rResultPath = TermithIndex.getOutputPath() + "/" + UUID.randomUUID().toString();
+    private String _rResultPath;
 
     /**
      *  constructor of SpecCoefficientInjector
@@ -50,16 +50,17 @@ public class SpecCoefficientInjector extends Module {
      * @see CorpusLexicon
      */
     protected SpecCoefficientInjector(LexiconProfile lexiconProfile, RLexicon rLexicon, CorpusLexicon corpusLexicon,
-                                      RConnection rConnection) {
+                                      RConnection rConnection, String outputPath) {
 
         _corpusLexicon = corpusLexicon;
         _lexiconProfile = lexiconProfile;
         _rLexicon = rLexicon;
         _rConnection = rConnection;
+        _rResultPath = outputPath + "/" + UUID.randomUUID().toString();
         /*
         instantiate _rContextLexicon
          */
-        _rContextLexicon = new RLexicon(_lexiconProfile, _corpusLexicon);
+        _rContextLexicon = new RLexicon(_lexiconProfile, _corpusLexicon,outputPath);
     }
 
     /**
@@ -69,7 +70,7 @@ public class SpecCoefficientInjector extends Module {
      * @param rLexicon the corpusLexicon converted into a RLexicon object that contains the R variable
      *                 of the corpusLexicon and his size
      */
-    public SpecCoefficientInjector(String id,TermithIndex termithIndex, RLexicon rLexicon){
+    public SpecCoefficientInjector(String id, TermithIndex termithIndex, RLexicon rLexicon, String outputPath){
         super(termithIndex);
         _id = id;
         if (isLexiconPresent(termithIndex,id)) {
@@ -81,17 +82,18 @@ public class SpecCoefficientInjector extends Module {
             _corpusLexicon = termithIndex.getCorpusLexicon();
             _lexiconProfile = termithIndex.getContextLexicon().get(id);
             _rLexicon = rLexicon;
-            _rContextLexicon = new RLexicon(_lexiconProfile, _corpusLexicon);
+            _rContextLexicon = new RLexicon(_lexiconProfile, _corpusLexicon,outputPath);
             _computeSpecificities = true;
+            _rResultPath = outputPath + "/" + UUID.randomUUID().toString();
         }
         else {
             _computeSpecificities = false;
         }
     }
 
-    public SpecCoefficientInjector(String id, TermithIndex termithIndex, RLexicon rLexicon,
+    public SpecCoefficientInjector(String id, TermithIndex termithIndex, RLexicon rLexicon, String outputPath,
                                    RConnectionPool rConnectionPool) {
-        this(id,termithIndex,rLexicon);
+        this(id,termithIndex,rLexicon,outputPath);
         _rConnectionPool = rConnectionPool;
     }
 

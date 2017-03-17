@@ -3,6 +3,7 @@ package org.atilf.delegate.enrichment.exporter;
 import org.atilf.delegate.Delegate;
 import org.atilf.models.enrichment.StandOffResources;
 import org.atilf.module.enrichment.exporter.TeiWriter;
+import org.atilf.runner.Runner;
 
 import java.util.concurrent.TimeUnit;
 
@@ -28,7 +29,8 @@ public class ExporterDelegate extends Delegate {
         export result
          */
         _termithIndex.getXmlCorpus().forEach(
-                (key,value) -> _executorService.submit(new TeiWriter(key, _termithIndex,standOffResources))
+                (key,value) -> _executorService.submit(new TeiWriter(key, _termithIndex,standOffResources,
+                        Runner.getOut().toString()))
         );
         _logger.info("Waiting executors to finish");
         _executorService.shutdown();

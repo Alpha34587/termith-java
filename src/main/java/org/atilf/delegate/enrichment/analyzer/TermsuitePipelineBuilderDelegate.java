@@ -5,6 +5,7 @@ import org.atilf.module.enrichment.analyzer.TerminologyParser;
 import org.atilf.module.enrichment.analyzer.TerminologyStandOff;
 import org.atilf.module.enrichment.analyzer.TermsuitePipelineBuilder;
 import org.atilf.module.enrichment.analyzer.TreeTaggerWorker;
+import org.atilf.runner.Runner;
 
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
@@ -41,7 +42,7 @@ public class TermsuitePipelineBuilderDelegate extends Delegate {
         /*
         executeTasks termsuite
          */
-        _executorService.submit(new TermsuitePipelineBuilder(_termithIndex));
+        _executorService.submit(new TermsuitePipelineBuilder(_termithIndex, Runner.getOut().toString(),Runner.getLang()));
 
         _executorService.shutdown();
         _executorService.awaitTermination(1L,TimeUnit.DAYS);

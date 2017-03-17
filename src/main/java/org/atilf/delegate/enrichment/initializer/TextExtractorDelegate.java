@@ -1,9 +1,9 @@
 package org.atilf.delegate.enrichment.initializer;
 
 import org.atilf.delegate.Delegate;
-import org.atilf.models.TermithIndex;
 import org.atilf.models.enrichment.XslResources;
 import org.atilf.module.enrichment.initializer.TextExtractor;
+import org.atilf.runner.Runner;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -30,7 +30,7 @@ public class TextExtractorDelegate extends Delegate {
         /*
         extract the text and map the path of the corpus into hashmap with identifier
          */
-        Files.list(TermithIndex.getBase()).forEach(
+        Files.list(Runner.getBase()).forEach(
                 p -> _executorService.submit(new TextExtractor(p.toFile(), _termithIndex, xslResources))
 
         );

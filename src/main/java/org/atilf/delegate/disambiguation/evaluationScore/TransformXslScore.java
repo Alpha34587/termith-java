@@ -1,10 +1,10 @@
 package org.atilf.delegate.disambiguation.evaluationScore;
 
 import org.atilf.delegate.Delegate;
-import org.atilf.models.TermithIndex;
 import org.atilf.models.disambiguation.DisambiguationXslResources;
 import org.atilf.models.enrichment.XslResources;
 import org.atilf.module.disambiguation.contextLexicon.DisambiguationXslTransformer;
+import org.atilf.runner.Runner;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -33,8 +33,8 @@ public class TransformXslScore extends Delegate {
     public void executeTasks() throws IOException, InterruptedException, ExecutionException {
         XslResources xslResources = new DisambiguationXslResources();
         _logger.info("transformation phase is started for TransformXslScore");
-        Path scoreFolder = Files.createDirectory(Paths.get(TermithIndex.getOutputPath().toString() + "/score/"));
-        Files.list(TermithIndex.getOutputPath())
+        Path scoreFolder = Files.createDirectory(Paths.get(Runner.getOut().toString() + "/score/"));
+        Files.list(Runner.getOut())
                 .filter(p -> !Files.isDirectory(p))
                 .filter(p -> p.toString().endsWith(".xml"))
                 .forEach(

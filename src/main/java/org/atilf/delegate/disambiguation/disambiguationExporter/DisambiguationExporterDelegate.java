@@ -1,8 +1,8 @@
 package org.atilf.delegate.disambiguation.disambiguationExporter;
 
 import org.atilf.delegate.Delegate;
-import org.atilf.models.TermithIndex;
 import org.atilf.module.disambiguation.disambiguationExporter.DisambiguationTeiWriter;
+import org.atilf.runner.Runner;
 import org.atilf.tools.FilesUtils;
 
 import java.io.IOException;
@@ -26,12 +26,13 @@ public class DisambiguationExporterDelegate extends Delegate {
      */
     public void executeTasks() throws IOException, InterruptedException {
 
-        Files.list(TermithIndex.getEvaluationPath()).forEach(
+        Files.list(Runner.getEvaluationPath()).forEach(
                 p -> {
                     String file = FilesUtils.nameNormalizer(p.toString());
                     _executorService.submit(new DisambiguationTeiWriter(
                             p.toString(),
-                            _termithIndex
+                            _termithIndex,
+                            Runner.getOut().toString()
                     ));
                 }
 

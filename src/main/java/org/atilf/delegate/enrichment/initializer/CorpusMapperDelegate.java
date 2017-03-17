@@ -1,8 +1,8 @@
 package org.atilf.delegate.enrichment.initializer;
 
 import org.atilf.delegate.Delegate;
-import org.atilf.models.TermithIndex;
 import org.atilf.module.enrichment.initializer.CorpusMapper;
+import org.atilf.runner.Runner;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -22,9 +22,9 @@ public class CorpusMapperDelegate extends Delegate {
      */
     public void executeTasks() throws IOException, InterruptedException {
         /*
-        extract the text and map the path of the corpus into hashmap with identifier
+        extract the text and map the path of the corpus into hashMap with identifier
          */
-        Files.list(TermithIndex.getBase()).forEach(
+        Files.list(Runner.getBase()).forEach(
                 p -> _executorService.submit(new CorpusMapper(p, _termithIndex))
 
         );

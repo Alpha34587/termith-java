@@ -1,7 +1,6 @@
 package org.atilf.delegate.enrichment.analyzer;
 
 import org.atilf.delegate.Delegate;
-import org.atilf.models.TermithIndex;
 import org.atilf.models.enrichment.CorpusAnalyzer;
 import org.atilf.models.enrichment.TagNormalizer;
 import org.atilf.module.enrichment.analyzer.TerminologyParser;
@@ -9,6 +8,7 @@ import org.atilf.module.enrichment.analyzer.TerminologyStandOff;
 import org.atilf.module.enrichment.analyzer.TermsuitePipelineBuilder;
 import org.atilf.module.enrichment.analyzer.TreeTaggerWorker;
 import org.atilf.module.enrichment.initializer.TextExtractor;
+import org.atilf.runner.Runner;
 import org.atilf.tools.FilesUtils;
 
 import java.io.IOException;
@@ -66,7 +66,7 @@ public class TreeTaggerWorkerDelegate extends Delegate {
         Build Corpus analyzer
          */
         CorpusAnalyzer corpusAnalyzer = new CorpusAnalyzer(createTextHashMap());
-        TagNormalizer.initTag(TermithIndex.getLang());
+        TagNormalizer.initTag(Runner.getLang());
         /*
         Write morphology json file
          */
@@ -74,7 +74,8 @@ public class TreeTaggerWorkerDelegate extends Delegate {
                 _executorService.submit(new TreeTaggerWorker(
                         _termithIndex,
                         corpusAnalyzer,
-                        key
+                        key,
+                        Runner.getOut().toString()
                 ))
         );
         _logger.info("waiting that all json files are serialized");
