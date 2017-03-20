@@ -43,8 +43,6 @@ public class TermithIndex {
     private TotalTermScore _totalTermScore = new TotalTermScore();
     private Map<String, Path> _transformOutputDisambiguationFile = new ConcurrentHashMap<>();
 
-    private final int _thresholdContext = 0;
-
     /*
     Constructor
      */
@@ -134,10 +132,6 @@ public class TermithIndex {
     public List<Path> getSerializeJson() {return _serializeJson;}
 
     public TotalTermScore getTotalTermScore() { return _totalTermScore; }
-
-    public int getThresholdContext() {
-        return _thresholdContext;
-    }
 
     /**
      * the path of input corpus

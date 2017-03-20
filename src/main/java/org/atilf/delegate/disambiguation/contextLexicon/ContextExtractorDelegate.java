@@ -35,7 +35,7 @@ public class ContextExtractorDelegate extends Delegate {
                         new ContextExtractor(file.toString(),
                                 _termithIndex.getContextLexicon(),
                                 _termithIndex.getCorpusLexicon(),
-                                _termithIndex.getThresholdContext(),
+                                getFlowableVariable("window",0),
                                 authorizedTag
                         )
                 )

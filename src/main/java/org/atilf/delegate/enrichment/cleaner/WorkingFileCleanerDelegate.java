@@ -19,7 +19,7 @@ public class WorkingFileCleanerDelegate extends Delegate {
      * @throws InterruptedException throws java concurrent executorService exception
      */
     public void executeTasks() throws InterruptedException {
-        _executorService.submit(new WorkingFilesCleaner(Runner.getOut(),true));
+        _executorService.submit(new WorkingFilesCleaner(Runner.getOut(),getFlowableVariable("fileCleaner",true)));
         _executorService.shutdown();
         _executorService.awaitTermination(1L, TimeUnit.DAYS);
     }

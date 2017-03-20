@@ -68,8 +68,14 @@ public abstract class Delegate implements JavaDelegate{
         _eventBus.register(_memoryPerformanceEvent);
     }
 
-    protected  <T extends Object> T checkFlowableVariable(String flowableName, T defaultValue){
+    protected  <T extends Object> T getFlowableVariable(String flowableName, T defaultValue){
 
-        return defaultValue;
+        T getVar = (T) _execution.getVariable(flowableName);
+
+        if (_execution.getVariable(flowableName) != null) {
+            return getVar;
+        } else {
+            return defaultValue;
+        }
     }
 }

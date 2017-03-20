@@ -32,8 +32,8 @@ public class ThresholdLexiconCleanerDelegate extends Delegate {
                 key -> _executorService.submit(new ThresholdLexiconCleaner(
                         key,
                         _termithIndex,
-                        3,
-                        15
+                        getFlowableVariable("freqMin",3),
+                        getFlowableVariable("freqMax",15)
                 ))
         );
         _logger.info("Waiting EvaluationWorker executors to finish");
