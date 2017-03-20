@@ -52,12 +52,27 @@
     <xsl:template match="tei:span//*"/>
     <xsl:template match="tei:span">
         <xsl:copy>
-            <xsl:copy-of select="@*"/>
+            <xsl:copy-of select="@*[not(name(.) = 'ana')]"/>
+            <xsl:choose>
+                <xsl:when test="contains(@ana, ' ')">
+                    <xsl:attribute name="ana">
+                        <xsl:value-of select="substring-before(@ana,' ')"/>
+                    </xsl:attribute>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:copy-of select="@ana"/>
+                </xsl:otherwise>
+            </xsl:choose>
             <xsl:attribute name="text">
                 <xsl:value-of select=".//tei:string"/>
             </xsl:attribute>
         </xsl:copy>
     </xsl:template>
+
+    <xsl:template match="tei:span/@*">
+
+    </xsl:template>
+
     <xsl:template match="tei:span//text()"/>
     <xsl:template match="tei:interpGrp"/>
 </xsl:stylesheet>

@@ -142,7 +142,7 @@ public class EvaluationTest {
         _evaluation.execute();
         int cnt = 0;
         for (EvaluationProfile evaluationProfile : _evaluationProfileMap.values()) {
-            Assert.assertEquals("this value must be equals", _disambiguationIdObserved.get(cnt),evaluationProfile.getDisambiguationId());
+            Assert.assertEquals("this value must be equals", _disambiguationIdObserved.get(cnt),evaluationProfile.getAutomaticAnnotation());
             cnt++;
         }
     }

@@ -97,7 +97,7 @@ public class AggregateTeiTerms extends DefaultHandler implements Runnable {
             _terms.add(new ContextTerm(corresp, target));
 
             if ((term = _evaluationProfile.get(key)) != null) {
-                verifyAnnotation(scoreTerm, ana, term.getDisambiguationId());
+                verifyAnnotation(scoreTerm, ana, term.getAutomaticAnnotation());
             } else {
                 scoreTerm.incMissingOccurrence();
             }
