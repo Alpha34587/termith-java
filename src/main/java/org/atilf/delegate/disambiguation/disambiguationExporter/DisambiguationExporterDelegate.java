@@ -4,7 +4,6 @@ import org.atilf.delegate.Delegate;
 import org.atilf.module.disambiguation.disambiguationExporter.DisambiguationTeiWriter;
 import org.atilf.runner.Runner;
 import org.atilf.tools.FilesUtils;
-import org.flowable.engine.delegate.DelegateExecution;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -24,9 +23,8 @@ public class DisambiguationExporterDelegate extends Delegate {
      * @throws IOException thrown a IO exception if a file is not found or have a permission problem during the
      * xsl transformation phase
      * @throws InterruptedException thrown if awaitTermination function is interrupted while waiting
-     * @param execution
      */
-    public void executeTasks(DelegateExecution execution) throws IOException, InterruptedException {
+    public void executeTasks() throws IOException, InterruptedException {
 
         Files.list(Runner.getEvaluationPath()).forEach(
                 p -> {

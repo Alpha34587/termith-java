@@ -4,7 +4,6 @@ import org.atilf.delegate.Delegate;
 import org.atilf.models.enrichment.XslResources;
 import org.atilf.module.enrichment.initializer.TextExtractor;
 import org.atilf.runner.Runner;
-import org.flowable.engine.delegate.DelegateExecution;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -21,9 +20,8 @@ public class TextExtractorDelegate extends Delegate {
      * executeTasks the extraction text task with the help of inner InitializerWorker class
      * @throws IOException throws exception if a file is not find
      * @throws InterruptedException throws java concurrent executorService exception
-     * @param execution
      */
-    public void executeTasks(DelegateExecution execution) throws IOException, InterruptedException {
+    public void executeTasks() throws IOException, InterruptedException {
         /*
         initialize XslResource & ExtractTextTimer
          */

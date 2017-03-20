@@ -27,7 +27,7 @@ public abstract class Delegate implements JavaDelegate{
     protected final Logger _logger = LoggerFactory.getLogger(this.getClass().getName());
     protected TermithIndex _termithIndex = Runner._termithIndex;
     private EventBus _eventBus = new EventBus();
-
+    private DelegateExecution _execution;
     private TimePerformanceEvent _timePerformanceEvent;
     private MemoryPerformanceEvent _memoryPerformanceEvent;
 
@@ -37,15 +37,14 @@ public abstract class Delegate implements JavaDelegate{
      * xsl transformation phase
      * @throws InterruptedException thrown if awaitTermination function is interrupted while waiting
      * @throws ExecutionException thrown a exception if a system process is interrupted
-     * @param execution
      */
-    protected void executeTasks(DelegateExecution execution) throws IOException, InterruptedException, ExecutionException {}
+    protected void executeTasks() throws IOException, InterruptedException, ExecutionException {}
 
     @Override
     public void execute(DelegateExecution execution) {
         try {
-            initialize();
-            executeTasks(execution);
+            initialize(execution);
+            executeTasks();
             _eventBus.post(_timePerformanceEvent);
             _eventBus.post(_memoryPerformanceEvent);
         } catch (IOException | InterruptedException | ExecutionException e) {
@@ -53,7 +52,8 @@ public abstract class Delegate implements JavaDelegate{
         }
     }
 
-    public void initialize(){
+    public void initialize(DelegateExecution execution){
+        _execution = execution;
         _timePerformanceEvent = new TimePerformanceEvent(
                 this.getClass().getSimpleName(),
                 _termithIndex.getCorpusSize(),
@@ -66,5 +66,10 @@ public abstract class Delegate implements JavaDelegate{
         );
         _eventBus.register(_timePerformanceEvent);
         _eventBus.register(_memoryPerformanceEvent);
+    }
+
+    protected  <T extends Object> T checkFlowableVariable(String flowableName, T defaultValue){
+
+        return defaultValue;
     }
 }

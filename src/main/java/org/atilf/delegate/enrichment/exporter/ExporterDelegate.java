@@ -4,7 +4,6 @@ import org.atilf.delegate.Delegate;
 import org.atilf.models.enrichment.StandOffResources;
 import org.atilf.module.enrichment.exporter.TeiWriter;
 import org.atilf.runner.Runner;
-import org.flowable.engine.delegate.DelegateExecution;
 
 import java.util.concurrent.TimeUnit;
 
@@ -18,9 +17,8 @@ public class ExporterDelegate extends Delegate {
     /**
      * this method export the result of process to the tei file format
      * @throws InterruptedException throws java concurrent executorService exception
-     * @param execution
      */
-    public void executeTasks(DelegateExecution execution) throws InterruptedException {
+    public void executeTasks() throws InterruptedException {
         /*
         initialize standoff resource object
          */

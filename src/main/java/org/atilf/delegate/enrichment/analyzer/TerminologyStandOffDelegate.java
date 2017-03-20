@@ -5,7 +5,6 @@ import org.atilf.module.enrichment.analyzer.TerminologyParser;
 import org.atilf.module.enrichment.analyzer.TerminologyStandOff;
 import org.atilf.module.enrichment.analyzer.TermsuitePipelineBuilder;
 import org.atilf.module.enrichment.analyzer.TreeTaggerWorker;
-import org.flowable.engine.delegate.DelegateExecution;
 
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
@@ -36,9 +35,8 @@ public class TerminologyStandOffDelegate extends Delegate {
      * @see TermsuitePipelineBuilder
      * @see TerminologyParser
      * @see TerminologyStandOff
-     * @param execution
      */
-    public void executeTasks(DelegateExecution execution) throws InterruptedException, IOException, ExecutionException {
+    public void executeTasks() throws InterruptedException, IOException, ExecutionException {
         /*
         deserialize the termsuite terminology
          */
