@@ -2,6 +2,7 @@ package org.atilf.delegate.disambiguation.contextLexicon;
 
 import org.atilf.delegate.Delegate;
 import org.atilf.module.disambiguation.contextLexicon.ContextExtractor;
+import org.flowable.engine.delegate.DelegateExecution;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -16,7 +17,7 @@ import java.util.concurrent.TimeUnit;
 public class ContextExtractorDelegate extends Delegate {
 
     @Override
-    public void executeTasks() throws IOException, InterruptedException {
+    public void executeTasks(DelegateExecution execution) throws IOException, InterruptedException {
 
         List<String> includeElement = new ArrayList<>();
         includeElement.add("p");

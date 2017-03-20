@@ -3,6 +3,7 @@ package org.atilf.delegate.enrichment.initializer;
 import org.atilf.delegate.Delegate;
 import org.atilf.module.enrichment.initializer.CorpusMapper;
 import org.atilf.runner.Runner;
+import org.flowable.engine.delegate.DelegateExecution;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -19,8 +20,9 @@ public class CorpusMapperDelegate extends Delegate {
      * executeTasks the extraction text task with the help of inner InitializerWorker class
      * @throws IOException throws exception if a file is not find
      * @throws InterruptedException throws java concurrent executorService exception
+     * @param execution
      */
-    public void executeTasks() throws IOException, InterruptedException {
+    public void executeTasks(DelegateExecution execution) throws IOException, InterruptedException {
         /*
         extract the text and map the path of the corpus into hashMap with identifier
          */

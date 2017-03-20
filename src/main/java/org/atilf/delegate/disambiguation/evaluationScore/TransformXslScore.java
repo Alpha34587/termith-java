@@ -5,6 +5,7 @@ import org.atilf.models.disambiguation.DisambiguationXslResources;
 import org.atilf.models.enrichment.XslResources;
 import org.atilf.module.disambiguation.contextLexicon.DisambiguationXslTransformer;
 import org.atilf.runner.Runner;
+import org.flowable.engine.delegate.DelegateExecution;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -28,9 +29,10 @@ public class TransformXslScore extends Delegate {
      *         thrown if awaitTermination function is interrupted while waiting
      * @throws ExecutionException
      *         thrown a exception if a system process is interrupted
+     * @param execution
      */
     @Override
-    public void executeTasks() throws IOException, InterruptedException, ExecutionException {
+    public void executeTasks(DelegateExecution execution) throws IOException, InterruptedException, ExecutionException {
         XslResources xslResources = new DisambiguationXslResources();
         _logger.info("transformation phase is started for TransformXslScore");
         Path scoreFolder = Files.createDirectory(Paths.get(Runner.getOut().toString() + "/score/"));

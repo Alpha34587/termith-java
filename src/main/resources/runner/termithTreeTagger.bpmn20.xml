@@ -7,6 +7,12 @@
 
     <process id="termithTreeTagger" name="termithTreeTagger" isExecutable="true">
 
+        <dataObject id="fileCleaner" name="fileCleaner" itemSubjectRef="xsd:boolean">
+            <extensionElements>
+                <flowable:value>false</flowable:value>
+            </extensionElements>
+        </dataObject>
+
         <startEvent id="startEvent"/>
 
         <sequenceFlow id="flow1" sourceRef="startEvent" targetRef="fork" />

@@ -10,6 +10,7 @@ import org.atilf.module.enrichment.analyzer.TreeTaggerWorker;
 import org.atilf.module.enrichment.initializer.TextExtractor;
 import org.atilf.runner.Runner;
 import org.atilf.tools.FilesUtils;
+import org.flowable.engine.delegate.DelegateExecution;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -60,8 +61,9 @@ public class TreeTaggerWorkerDelegate extends Delegate {
      * @see TermsuitePipelineBuilder
      * @see TerminologyParser
      * @see TerminologyStandOff
+     * @param execution
      */
-    public void executeTasks() throws InterruptedException, IOException, ExecutionException {
+    public void executeTasks(DelegateExecution execution) throws InterruptedException, IOException, ExecutionException {
         /*
         Build Corpus analyzer
          */

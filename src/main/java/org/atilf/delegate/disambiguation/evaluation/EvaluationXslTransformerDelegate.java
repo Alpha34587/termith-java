@@ -4,6 +4,7 @@ import org.atilf.delegate.Delegate;
 import org.atilf.models.disambiguation.DisambiguationXslResources;
 import org.atilf.module.disambiguation.contextLexicon.DisambiguationXslTransformer;
 import org.atilf.runner.Runner;
+import org.flowable.engine.delegate.DelegateExecution;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -17,7 +18,7 @@ import java.util.concurrent.TimeUnit;
 public class EvaluationXslTransformerDelegate extends Delegate {
 
     @Override
-    public void executeTasks() throws IOException, InterruptedException {
+    public void executeTasks(DelegateExecution execution) throws IOException, InterruptedException {
         DisambiguationXslResources xslResources = new DisambiguationXslResources();
 
         /*

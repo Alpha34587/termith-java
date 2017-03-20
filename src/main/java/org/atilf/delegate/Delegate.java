@@ -37,14 +37,15 @@ public abstract class Delegate implements JavaDelegate{
      * xsl transformation phase
      * @throws InterruptedException thrown if awaitTermination function is interrupted while waiting
      * @throws ExecutionException thrown a exception if a system process is interrupted
+     * @param execution
      */
-    protected void executeTasks() throws IOException, InterruptedException, ExecutionException {}
+    protected void executeTasks(DelegateExecution execution) throws IOException, InterruptedException, ExecutionException {}
 
     @Override
     public void execute(DelegateExecution execution) {
         try {
             initialize();
-            executeTasks();
+            executeTasks(execution);
             _eventBus.post(_timePerformanceEvent);
             _eventBus.post(_memoryPerformanceEvent);
         } catch (IOException | InterruptedException | ExecutionException e) {

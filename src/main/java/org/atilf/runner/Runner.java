@@ -123,5 +123,6 @@ public class Runner {
         RuntimeService runtimeService = processEngine.getRuntimeService();
 
         runtimeService.startProcessInstanceByKey(processDefinition.getKey());
+
     }
 }

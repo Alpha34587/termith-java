@@ -5,6 +5,7 @@ import org.atilf.models.disambiguation.RConnectionPool;
 import org.atilf.models.disambiguation.RLexicon;
 import org.atilf.module.disambiguation.lexiconProfile.SpecCoefficientInjector;
 import org.atilf.runner.Runner;
+import org.flowable.engine.delegate.DelegateExecution;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -24,8 +25,9 @@ public class LexiconProfileDelegate extends Delegate {
      * this is the method who converts global corpus into a R variable and compute the specificity coefficient for each
      * words for each context of terms candidates entries (also known as lexical profile)
      * @throws InterruptedException thrown if awaitTermination function is interrupted while waiting
+     * @param execution
      */
-    public void executeTasks() throws InterruptedException, IOException {
+    public void executeTasks(DelegateExecution execution) throws InterruptedException, IOException {
         /*
         convert global corpus into R variable
          */

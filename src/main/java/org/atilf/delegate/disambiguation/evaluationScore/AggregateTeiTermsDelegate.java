@@ -2,6 +2,7 @@ package org.atilf.delegate.disambiguation.evaluationScore;
 
 import org.atilf.delegate.Delegate;
 import org.atilf.module.disambiguation.evaluationScore.AggregateTeiTerms;
+import org.flowable.engine.delegate.DelegateExecution;
 
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
@@ -22,9 +23,10 @@ public class AggregateTeiTermsDelegate extends Delegate {
      *         thrown if awaitTermination function is interrupted while waiting
      * @throws ExecutionException
      *         thrown a exception if a system process is interrupted
+     * @param execution
      */
     @Override
-    public void executeTasks() throws IOException, InterruptedException, ExecutionException {
+    public void executeTasks(DelegateExecution execution) throws IOException, InterruptedException, ExecutionException {
         _logger.info("AggregateTeiTerms phase is started : retrieve all the evaluated terms candidate");
         _termithIndex.getEvaluationLexicon().forEach(
                 (p,value) -> _executorService.submit(new AggregateTeiTerms(

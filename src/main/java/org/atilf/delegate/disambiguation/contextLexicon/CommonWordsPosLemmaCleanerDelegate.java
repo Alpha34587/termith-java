@@ -2,6 +2,7 @@ package org.atilf.delegate.disambiguation.contextLexicon;
 
 import org.atilf.delegate.Delegate;
 import org.atilf.module.disambiguation.evaluation.CommonWordsPosLemmaCleaner;
+import org.flowable.engine.delegate.DelegateExecution;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -20,8 +21,9 @@ public class CommonWordsPosLemmaCleanerDelegate extends Delegate {
      * @throws IOException thrown a IO exception if a file is not found or have a permission problem during the
      * xsl transformation phase
      * @throws InterruptedException thrown if awaitTermination function is interrupted while waiting
+     * @param execution
      */
-    public void executeTasks() throws IOException, InterruptedException {
+    public void executeTasks(DelegateExecution execution) throws IOException, InterruptedException {
 
         /*
         Common PosLemma cleaner
