@@ -44,8 +44,6 @@ public class ContextTerm {
         return _endTag;
     }
 
-    public boolean inTerm(int target) {
-        return _beginTag <= target && target <= _endTag;
+    public int getSize() { return _endTag - _beginTag + 1;}
 
-    }
 }

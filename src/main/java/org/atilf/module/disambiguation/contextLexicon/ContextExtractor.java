@@ -95,6 +95,9 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
     protected Map<String,List<Integer>> _targetContext = new HashMap<>();
     protected Stack<TreeMap<Integer,String>> _contextStack = new Stack<>();
 
+    private Stack<String> _elementsStack = new Stack<>();
+    private List<String> _allowedElements = new ArrayList<>();
+
     private CorpusLexicon _corpusLexicon;
     private String _p;
     private File _xml;
@@ -129,13 +132,19 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
         _corpusLexicon = corpusLexicon;
         _xml = new File(_p);
     }
-    
+
     ContextExtractor(String p, Map<String, LexiconProfile> contextLexicon, CorpusLexicon corpusLexicon,
                      int threshold){
         this(p,contextLexicon,corpusLexicon);
         _threshold = threshold;
     }
-    
+
+    ContextExtractor(String p, Map<String, LexiconProfile> contextLexicon, CorpusLexicon corpusLexicon,
+                     List<String> allowedElements){
+        this(p,contextLexicon,corpusLexicon);
+        _allowedElements = allowedElements;
+    }
+
     ContextExtractor(String p, Map<String, LexiconProfile> contextLexicon, List<String> authorizedPOSTag,
                      CorpusLexicon corpusLexicon){
         this(p,contextLexicon,corpusLexicon);
@@ -147,6 +156,13 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
                             int threshold, List<String> authorizedPOSTag){
         this(p,contextLexicon,corpusLexicon,threshold);
         _authorizedPOSTag = authorizedPOSTag;
+    }
+
+    public ContextExtractor(String p, Map<String, LexiconProfile> contextLexicon, CorpusLexicon corpusLexicon,
+                            int threshold, List<String> authorizedPOSTag,List<String> allowedElements){
+        this(p,contextLexicon,corpusLexicon,threshold);
+        _authorizedPOSTag = authorizedPOSTag;
+        _allowedElements =allowedElements;
     }
 
     /**
@@ -202,6 +218,7 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
             extractTerms(attributes);
         }
         else if (_inText && !_inW && !qName.equals("text")){
+            _elementsStack.push(qName);
             _contextStack.push(new TreeMap<>());
         }
         else if (_inW) {
@@ -210,10 +227,6 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
     }
 
 
-    private boolean verifyPosTag(String pos) {
-        return _authorizedPOSTag.isEmpty() || _authorizedPOSTag.contains(pos);
-    }
-
     @Override
     public void endElement(String uri,
                            String localName, String qName) throws SAXException {
@@ -221,6 +234,13 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
             case "ns:standOff":
                 _inStandOff = false;
                 LOGGER.info("term extraction finished");
+                _terms.sort((o1, o2) -> {
+                    int comp = Integer.compare(o1.getBeginTag(),o2.getBeginTag());
+                    if (comp == 0) {
+                        comp = Integer.compare(o1.getEndTag(),o2.getEndTag());
+                    }
+                    return comp;
+                });
                 break;
             case "text":
                 _inText = false;
@@ -233,16 +253,6 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
         if (_inText && !qName.equals("w")){
             searchTermsInContext();
         }
-        else if (!_inStandOff){
-            _terms.sort((o1, o2) -> {
-                int comp = Integer.compare(o1.getBeginTag(),o2.getBeginTag());
-                if (comp == 0) {
-                    comp = Integer.compare(o1.getEndTag(),o2.getEndTag());
-                }
-                return comp;
-            });
-        }
-
     }
 
     /**
@@ -257,6 +267,7 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
                     (key,value) -> searchTermInContext(words, termStack, termStackTemp, key)
             );
         }
+        _elementsStack.pop();
     }
 
     /**
@@ -271,25 +282,42 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
      */
     private void searchTermInContext(TreeMap<Integer, String> words, Deque<ContextTerm> termDeque, Deque<ContextTerm> termDequeTemp, Integer target) {
         if (!termDeque.isEmpty()) {
+
             if (target == termDeque.peek().getBeginTag()) {
                 if (termDeque.peek().getBeginTag() != termDeque.peek().getEndTag()) {
-                    termDequeTemp.add(termDeque.pop());
+                    termDequeTemp.add(termDeque.peek());
                 }
-                else {
-                    addWordsToLexicon(termDeque.peek(), words);
-                    _terms.remove(termDeque.pop());
+                else if (isContext()){
+                    addContextToLexiconMap(termDeque.peek(), words);
+                    _terms.remove(termDeque.peek());
                 }
+                termDeque.pop();
                 searchTermInContext(words, termDeque, termDequeTemp, target);
             }
         }
 
         if (!termDequeTemp.isEmpty() && termDequeTemp.peek().getEndTag() == target) {
-            addWordsToLexicon(termDequeTemp.peek(), words);
-            _terms.remove(termDequeTemp.pop());
+            if (isContext()) {
+                addContextToLexiconMap(termDequeTemp.peek(), words);
+                _terms.remove(termDequeTemp.peek());
+            }
+            termDequeTemp.pop();
             searchTermInContext(words, termDeque, termDequeTemp, target);
         }
     }
 
+    private boolean isContext(){
+        if (_allowedElements.isEmpty()){
+            return true;
+        }
+
+        if (_allowedElements.contains(_elementsStack.peek())){
+            return true;
+        }
+
+        return false;
+
+    }
     /**
      * get a sublist of _term field and return a Deque with these elements. The first element of the sublist has
      * a target value inferior to the target value of the last words of the context (the variable words)
@@ -303,7 +331,7 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
                     .filter(t -> t.getBeginTag() <= words.lastKey())
                     .findFirst();
             if (term.isPresent()) {
-                _terms.subList(_terms.indexOf(term.get()),_terms.size() - 1).forEach(termDeque::add);
+                _terms.subList(_terms.indexOf(term.get()),_terms.size()).forEach(termDeque::add);
                 return termDeque;
             }
         }
@@ -320,16 +348,13 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
         if (_inW) {
             if (posLemma.contains(" ")){
                 _lastContextWord.setPosLemma(posLemma);
-                if (verifyPosTag(posLemma.split((" "))[1])) {
-                    _corpusLexicon.addOccurrence(posLemma);
-                }
                 _contextStack.forEach(words -> words.put(_lastContextWord.getTarget(), _lastContextWord.getPosLemma()));
                 LOGGER.debug("add pos lemma pair: " + posLemma + " to corpus");
                 _inW = false;
                 _currentPosLemma = "";
             }
             else {
-                _currentPosLemma += posLemma;
+                _currentPosLemma += new String(ch,start,length);
             }
         }
     }
@@ -351,28 +376,25 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
     /**
      * add to lexicalProfile a context for terminology entry
      * @param term the term id entry suffixes by _lexOn or _lexOff
-     * @param context
      */
-    protected void addWordsToLexicon(ContextTerm term, TreeMap<Integer, String> context) {
+    private void addContextToLexiconMap(ContextTerm term, TreeMap<Integer, String> context) {
         /*
         create new entry if the key not exists in the _contextLexicon field
          */
         String key = normalizeKey(term.getCorresp(), term.getAna());
-
         Map<Integer,String> contextTarget = filterPos(contextThreshold(term,context));
-        if (contextTarget.size() != 0) {
-            if (!_targetContext.containsKey(key)) {
-                _targetContext.put(key, new ArrayList<>());
-            }
 
-            if (!_contextLexicon.containsKey(key)) {
-                _contextLexicon.put(key, new LexiconProfile());
-            }
-            _targetContext.get(key).forEach(contextTarget::remove);
-
-            _targetContext.get(key).addAll(new ArrayList<>(contextTarget.keySet()));
-            _contextLexicon.get(key).addOccurrences(new ArrayList<>(contextTarget.values()));
+        if (contextTarget.size() != 0 && context.size() != term.getSize()) {
+            addContextToLexicon(key, contextTarget);
         }
+    }
+
+    protected void addContextToLexicon(String key, Map<Integer, String> contextTarget) {
+        if (!_contextLexicon.containsKey(key)) {
+            _contextLexicon.put(key, new LexiconProfile());
+        }
+        _corpusLexicon.addContext(new ArrayList<>(contextTarget.values()));
+        _contextLexicon.get(key).addOccurrences(new ArrayList<>(contextTarget.values()));
     }
 
     private Map<Integer,String> filterPos(Map<Integer, String> contextTarget) {
@@ -386,31 +408,21 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
     }
 
     private Map<Integer,String> contextThreshold(ContextTerm term, TreeMap<Integer, String> context){
-        Map<Integer,String> rightContextTarget;
-        SortedMap<Integer, String> leftContextTarget;
         if (_threshold == 0){
-            leftContextTarget = context.subMap(0, true, term.getBeginTag(),true);
-            rightContextTarget = new TreeMap<>(context.subMap(term.getEndTag(), true,
-                    context.lastKey(),true));
+            return new HashMap<>(context);
         }
         else {
-            if (term.getBeginTag() > _threshold) {
-                leftContextTarget = context.subMap(term.getBeginTag() - _threshold, true, term.getBeginTag(), true);
-            }
-            else {
-                leftContextTarget = context.subMap(0, true, term.getBeginTag(),true);
-            }
-            if (context.lastKey() > term.getEndTag() + _threshold  ) {
-                rightContextTarget = new TreeMap<>(context.subMap(term.getEndTag(), true,
-                        term.getEndTag() + _threshold, true));
-            }
-            else {
-                rightContextTarget = new TreeMap<>(context.subMap(term.getEndTag(), true, context.lastKey(),true));
-            }
-        }
-        rightContextTarget.putAll(leftContextTarget);
+            SortedMap<Integer, String> thresholdContext = new TreeMap<>(context);
 
-        return rightContextTarget;
+            if (term.getBeginTag()  > _threshold) {
+                thresholdContext = context.subMap(term.getBeginTag() - _threshold, true,context.lastKey(),true);
+            }
+            if (term.getEndTag() + _threshold < context.lastKey()){
+                thresholdContext = thresholdContext.subMap(thresholdContext.firstKey(), term.getEndTag() +
+                        _threshold + 1 );
+            }
+            return thresholdContext;
+        }
     }
 
     /**

@@ -45,7 +45,10 @@ public class EvaluationExtractorTest {
         entry1.add("par PRP");
         entry1.add("deux NUM");
         entry1.add("du PRP:det");
-
+        entry1.add("site NOM");
+        entry1.add("de PRP");
+        entry1.add("le DET:ART");
+        entry1.add("âge NOM");
         expectedMap.put("entry-13471_noDM",new EvaluationProfile(entry1));
         _observedMap = termithIndex.getEvaluationLexicon().get("test1");
     }

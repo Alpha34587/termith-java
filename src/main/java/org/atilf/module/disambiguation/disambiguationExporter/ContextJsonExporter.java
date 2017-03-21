@@ -31,6 +31,21 @@ public class ContextJsonExporter extends Module{
             );
             g.useDefaultPrettyPrinter();
             g.writeStartObject();
+            g.writeArrayFieldStart("corpus");
+            _termithIndex.getCorpusLexicon().getLexicalTable().elementSet().forEach(
+                    key -> {
+
+                        try {
+                            g.writeStartObject();
+                            g.writeNumberField(key,_termithIndex.getCorpusLexicon().getLexicalTable().count(key));
+                            g.writeEndObject();
+                        } catch (IOException e) {
+                            _logger.error("cannot write corpus occurrence",e);
+                        }
+
+                    }
+            );
+            g.writeEndArray();
             g.writeArrayFieldStart("terms");
             _termithIndex.getContextLexicon().forEach(
                     (key,value)->{
@@ -48,6 +63,19 @@ public class ContextJsonExporter extends Module{
                                     }
                             );
                             g.writeEndObject();
+                            if (value.getSpecCoefficientMap().size() != 0) {
+                                g.writeObjectFieldStart("specificities");
+                                value.getSpecCoefficientMap().forEach(
+                                        (word, spec) -> {
+                                            try {
+                                                g.writeNumberField(word, spec);
+                                            } catch (IOException e) {
+                                                _logger.error("cannot write occurrence ", e);
+                                            }
+                                        }
+                                );
+                                g.writeEndObject();
+                            }
                             g.writeEndObject();
                         }catch(IOException e){
                             _logger.error("cannot write context : ",e);
