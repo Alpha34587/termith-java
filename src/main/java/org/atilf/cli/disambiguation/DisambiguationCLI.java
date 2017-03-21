@@ -63,6 +63,7 @@ public class DisambiguationCLI {
                     .setLearningPath(line.getOptionValue("le"))
                     .setBpmnDiagram("runner/disambiguation.bpmn20.xml")
                     .setEvaluationPath(line.getOptionValue("e"))
+                    .setScorePath(line.getOptionValue("s"))
                     .setOut(line.getOptionValue("o"))
                     .createRunner();
             runner.execute();
