@@ -6,7 +6,7 @@ package org.atilf.models.disambiguation;
 public enum AnnotationResources {
     DA_ON("#DAOn"),
     DA_OFF("#DAOff"),
-    NO_DA("#noDa"),
+    NO_DA("#noDA^^"),
     NO_DM ("#noDM", NO_DA),
     DM0("#DM0", DA_OFF),
     DM1("#DM1", DA_OFF),
