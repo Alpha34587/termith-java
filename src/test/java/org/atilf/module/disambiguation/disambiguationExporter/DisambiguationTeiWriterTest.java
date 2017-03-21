@@ -1,7 +1,6 @@
 package org.atilf.module.disambiguation.disambiguationExporter;
 
 import com.google.common.collect.HashMultiset;
-import org.atilf.models.TermithIndex;
 import org.atilf.models.disambiguation.AnnotationResources;
 import org.atilf.models.disambiguation.EvaluationProfile;
 import org.custommonkey.xmlunit.XMLUnit;
@@ -30,7 +29,6 @@ public class DisambiguationTeiWriterTest {
 
     @BeforeClass
     public static void setUp() throws Exception {
-        new TermithIndex.Builder().export(temporaryFolder.getRoot().getPath()).build();
         _evaluationProfile.put("entry-13471_DM1", new EvaluationProfile(HashMultiset.create()));
         _evaluationProfile.put("entry-7263_DM3", new EvaluationProfile(HashMultiset.create()));
         _evaluationProfile.put("entry-990_noDM", new EvaluationProfile(HashMultiset.create()));
@@ -41,7 +39,8 @@ public class DisambiguationTeiWriterTest {
         DisambiguationTeiWriter teiWriter = new DisambiguationTeiWriter(
                 "/home/smeoni/IdeaProjects/termITH/src/test/resources/module/" +
                         "disambiguation/disambiguationExporter/disambiguationExporter/test1.xml",
-                _evaluationProfile
+                _evaluationProfile,
+                temporaryFolder.getRoot().toString()
         );
         teiWriter.execute();
     }
@@ -55,7 +54,7 @@ public class DisambiguationTeiWriterTest {
                         Paths.get("/home/smeoni/IdeaProjects/termITH/src/test/resources/module/disambiguation/" +
                                 "disambiguationExporter/disambiguationExporter/test2.xml"))
                 ),
-                String.join("\n",Files.readAllLines(Paths.get(TermithIndex.getOutputPath() + "/test1.xml")))
+                String.join("\n",Files.readAllLines(Paths.get(temporaryFolder.getRoot().toString() + "/test1.xml")))
                 );
     }
 

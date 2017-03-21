@@ -4,26 +4,22 @@ import org.atilf.models.TermithIndex;
 import org.atilf.models.disambiguation.ScoreTerm;
 import org.atilf.module.Module;
 
-import java.util.concurrent.CountDownLatch;
-
 /**
  * @author Simon Meoni Created on 15/12/16.
  */
 public class ComputeTermsScore extends Module {
     private final String _term;
     private final ScoreTerm _scoreTerm;
-    private CountDownLatch _scoreCounter;
 
-    ComputeTermsScore(String term, ScoreTerm scoreTerm) {
+    public ComputeTermsScore(String term, ScoreTerm scoreTerm) {
         _term = term;
         _scoreTerm = scoreTerm;
     }
 
-    public ComputeTermsScore(String p, TermithIndex termithIndex, CountDownLatch scoreCounter) {
+    public ComputeTermsScore(String p, TermithIndex termithIndex) {
         super(termithIndex);
         _term = p;
         _scoreTerm = _termithIndex.getScoreTerms().get(p);
-        _scoreCounter = scoreCounter;
 
     }
 
@@ -35,12 +31,6 @@ public class ComputeTermsScore extends Module {
         computeTerminologyTrend();
         computeAmbiguityRate();
         _logger.info("compute score is finished for : " + _term );
-    }
-
-    @Override
-    public void run() {
-        super.run();
-        _scoreCounter.countDown();
     }
 
     void computeRecall(){

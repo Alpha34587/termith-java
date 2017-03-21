@@ -4,7 +4,6 @@ import org.atilf.models.TermithIndex;
 import org.atilf.module.Module;
 
 import java.util.Map;
-import java.util.concurrent.CountDownLatch;
 
 /**
  * @author Simon Meoni
@@ -15,16 +14,14 @@ public class ThresholdLexiconCleaner extends Module {
     private final int _minThreshold;
     private final int _maxThreshold;
     private String _id;
-    private CountDownLatch _cleanerCounter;
 
     public ThresholdLexiconCleaner(String id, TermithIndex termithIndex, int minThreshold,
-                                   int maxThreshold, CountDownLatch cleanerCounter){
+                                   int maxThreshold){
         super(termithIndex);
         _coefficientMap = _termithIndex.getContextLexicon().get(id).getSpecCoefficientMap();
         _id = id;
         _minThreshold = minThreshold;
         _maxThreshold = maxThreshold;
-        _cleanerCounter = cleanerCounter;
     }
 
     ThresholdLexiconCleaner(Map<String, Float> coefficientMap, int minThreshold, int maxThreshold) {
@@ -35,9 +32,9 @@ public class ThresholdLexiconCleaner extends Module {
 
 
     public void execute(){
-        _logger.info("threshold cleaning started for : " + _id);
+        _logger.debug("threshold cleaning started for : " + _id);
         _coefficientMap.values().removeIf(this::isNotBetweenThreshold);
-        _logger.info("threshold cleaning finished for : " + _id);
+        _logger.debug("threshold cleaning finished for : " + _id);
     }
 
     boolean isNotBetweenThreshold(Float value) {
@@ -52,12 +49,5 @@ public class ThresholdLexiconCleaner extends Module {
             }
         }
         return true;
-    }
-
-
-    @Override
-    public void run() {
-        super.run();
-        _cleanerCounter.countDown();
     }
 }

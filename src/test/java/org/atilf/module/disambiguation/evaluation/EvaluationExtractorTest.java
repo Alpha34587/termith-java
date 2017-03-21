@@ -23,7 +23,7 @@ public class EvaluationExtractorTest {
     private static Map<String,EvaluationProfile> _observedMap;
     @BeforeClass
     public static void setUp() throws IOException {
-        TermithIndex termithIndex = new TermithIndex.Builder().build();
+        TermithIndex termithIndex = new TermithIndex();
         termithIndex.getContextLexicon().put("entry-13471_lexOn",new LexiconProfile());
         termithIndex.getContextLexicon().put("entry-13471_lexOff",new LexiconProfile());
 

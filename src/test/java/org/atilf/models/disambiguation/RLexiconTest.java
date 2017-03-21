@@ -1,7 +1,6 @@
 package org.atilf.models.disambiguation;
 
 import org.apache.commons.io.FileUtils;
-import org.atilf.models.TermithIndex;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.ClassRule;
@@ -30,7 +29,6 @@ public class RLexiconTest {
 
     @BeforeClass
     public static void setUp() throws Exception {
-        new TermithIndex.Builder().export(_temporaryFolder.getRoot().getAbsolutePath()).build();
         _csvContext = new File("src/test/resources/models.disambiguation/test-context.csv");
         _csvCorpus = new File("src/test/resources/models.disambiguation/test-corpus.csv");
         LexiconProfile lexiconProfile = new LexiconProfile();
@@ -50,8 +48,8 @@ public class RLexiconTest {
         corpus.addOccurrence("donnée NOM");
         corpus.addOccurrence("archéo-ichtyofauniques ADJ");
         corpus.addOccurrence("livrer VER:pper");
-        _rLexicon = new RLexicon(lexiconProfile,corpus);
-        _rCorpus = new RLexicon(corpus);
+        _rLexicon = new RLexicon(lexiconProfile,corpus,_temporaryFolder.getRoot().toString());
+        _rCorpus = new RLexicon(corpus,_temporaryFolder.getRoot().toString());
     }
 
     @Test

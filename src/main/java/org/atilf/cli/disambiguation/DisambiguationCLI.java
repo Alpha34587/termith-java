@@ -2,16 +2,16 @@ package org.atilf.cli.disambiguation;
 
 import ch.qos.logback.classic.Level;
 import org.apache.commons.cli.*;
-import org.atilf.models.TermithIndex;
-import org.atilf.runner.Disambiguation;
-import org.atilf.tools.BenchmarkFactory;
+import org.atilf.runner.Runner;
+import org.atilf.runner.RunnerBuilder;
 import org.atilf.tools.CLIUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.xml.transform.TransformerException;
 import java.io.IOException;
-import java.nio.file.Paths;
+
+//import org.atilf.runner.Disambiguation;
 
 /**
  * @author Simon Meoni
@@ -40,62 +40,34 @@ public class DisambiguationCLI {
         evaluation.setRequired(true);
         Option out = new Option("o","output",true,"output folder");
         out.setRequired(true);
-        Option lang = new Option("l","lang",true,"specify the language of the corpus");
-        lang.setRequired(false);
-        Option terminology = new Option("t","terminology",true,"set terminology path");
-        terminology.setRequired(false);
-        Option annotation = new Option("a","annotation",true,"set annotation json path");
-        annotation.setRequired(false);
         Option debug = new Option("d","debug",true,"show debug log");
         debug.setRequired(false);
         debug.setArgs(0);
         Option score = new Option("s","score",true,"evaluation of module.disambiguation");
-        score.setRequired(false);
-        Option benchmark = new Option("b","benchmark",true,"export benchmark");
-        benchmark.setRequired(false);
-        Option threshold = new Option("t","threshold",true,"context threshold");
-        threshold.setRequired(false);
+        score.setRequired(true);
 
         options.addOption(learning);
         options.addOption(evaluation);
         options.addOption(out);
-        options.addOption(lang);
-        options.addOption(terminology);
         options.addOption(debug);
-        options.addOption(annotation);
         options.addOption(score);
-        options.addOption(benchmark);
-        options.addOption(threshold);
 
         try {
             CommandLine line = parser.parse( options, args );
 
-            TermithIndex.Builder termithBuilder = new TermithIndex.Builder()
-                    .lang(line.getOptionValue("l"))
-                    .learningFolder(line.getOptionValue("le"))
-                    .evaluationFolder(line.getOptionValue("e"))
-                    .terminology(line.getOptionValue("t"))
-                    .export(line.getOptionValue("o"));
-            CLIUtils.setGlobalLogLevel(Level.INFO);
-
             if (line.hasOption("debug")){
                 CLIUtils.setGlobalLogLevel(Level.DEBUG);
             }
-            if (line.hasOption("score")){
-                termithBuilder.score(line.getOptionValue("s"));
-            }
-            if (line.hasOption("threshold")){
-                termithBuilder.threshold(Integer.parseInt(line.getOptionValue("t")));
-            }
 
-            if (line.hasOption("benchmark")) {
-                BenchmarkFactory._exportBenchmark = true;
-                BenchmarkFactory._performancePath = Paths.get(line.getOptionValue("benchmark"));
-            }
-            new Disambiguation(termithBuilder.build()).execute();
-
+            Runner runner = new RunnerBuilder()
+                    .setLearningPath(line.getOptionValue("le"))
+                    .setBpmnDiagram("runner/disambiguation.bpmn20.xml")
+                    .setEvaluationPath(line.getOptionValue("e"))
+                    .setOut(line.getOptionValue("o"))
+                    .createRunner();
+            runner.execute();
         } catch (ParseException e) {
-            LOGGER.error("There are some problems during execute arguments : ",e);
+            LOGGER.error("There are some problems during running : ",e);
         }
     }
 }
