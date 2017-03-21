@@ -36,7 +36,7 @@ public class TerminologyStandOffDelegate extends Delegate {
      * @see TerminologyParser
      * @see TerminologyStandOff
      */
-    public void executeTasks() throws InterruptedException, IOException, ExecutionException {
+    public void execute() throws InterruptedException, IOException, ExecutionException {
         /*
         deserialize the termsuite terminology
          */

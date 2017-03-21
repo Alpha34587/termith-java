@@ -25,7 +25,7 @@ public class LexiconProfileDelegate extends Delegate {
      * words for each context of terms candidates entries (also known as lexical profile)
      * @throws InterruptedException thrown if awaitTermination function is interrupted while waiting
      */
-    public void executeTasks() throws InterruptedException, IOException {
+    public void execute() throws InterruptedException, IOException {
         /*
         convert global corpus into R variable
          */

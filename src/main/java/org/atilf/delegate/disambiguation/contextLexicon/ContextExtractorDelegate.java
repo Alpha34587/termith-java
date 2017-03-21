@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit;
 public class ContextExtractorDelegate extends Delegate {
 
     @Override
-    public void executeTasks() throws IOException, InterruptedException {
+    public void execute() throws IOException, InterruptedException {
 
         List<String> includeElement = new ArrayList<>();
         includeElement.add("p");

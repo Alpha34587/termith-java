@@ -16,11 +16,11 @@ import java.util.concurrent.TimeUnit;
 public class CorpusMapperDelegate extends Delegate {
 
     /**
-     * executeTasks the extraction text task with the help of inner InitializerWorker class
+     * execute the extraction text task with the help of inner InitializerWorker class
      * @throws IOException throws exception if a file is not find
      * @throws InterruptedException throws java concurrent executorService exception
      */
-    public void executeTasks() throws IOException, InterruptedException {
+    public void execute() throws IOException, InterruptedException {
         /*
         extract the text and map the path of the corpus into hashMap with identifier
          */

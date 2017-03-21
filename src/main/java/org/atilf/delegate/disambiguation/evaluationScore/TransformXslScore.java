@@ -19,7 +19,7 @@ import java.util.concurrent.TimeUnit;
 public class TransformXslScore extends Delegate {
 
     /**
-     * this method is used to executeTasks the different steps of processing of a delegate
+     * this method is used to execute the different steps of processing of a delegate
      *
      * @throws IOException
      *         thrown a IO exception if a file is not found or have a permission problem during the xsl transformation
@@ -30,7 +30,7 @@ public class TransformXslScore extends Delegate {
      *         thrown a exception if a system process is interrupted
      */
     @Override
-    public void executeTasks() throws IOException, InterruptedException, ExecutionException {
+    public void execute() throws IOException, InterruptedException, ExecutionException {
         XslResources xslResources = new DisambiguationXslResources();
         _logger.info("transformation phase is started for TransformXslScore");
         Path scoreFolder = Files.createDirectory(Paths.get(Runner.getOut().toString() + "/score/"));

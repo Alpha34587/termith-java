@@ -22,7 +22,7 @@ public class ThresholdLexiconCleanerDelegate extends Delegate {
      * xsl transformation phase
      * @throws InterruptedException thrown if awaitTermination function is interrupted while waiting
      */
-    public void executeTasks() throws IOException, InterruptedException {
+    public void execute() throws IOException, InterruptedException {
         DisambiguationXslResources xslResources = new DisambiguationXslResources();
 
         /*

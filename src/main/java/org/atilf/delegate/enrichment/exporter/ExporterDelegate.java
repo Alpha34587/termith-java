@@ -18,7 +18,7 @@ public class ExporterDelegate extends Delegate {
      * this method export the result of process to the tei file format
      * @throws InterruptedException throws java concurrent executorService exception
      */
-    public void executeTasks() throws InterruptedException {
+    public void execute() throws InterruptedException {
         /*
         initialize standoff resource object
          */

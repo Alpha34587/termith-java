@@ -67,7 +67,7 @@ public class DisambiguationCLI {
                     .createRunner();
             runner.execute();
         } catch (ParseException e) {
-            LOGGER.error("There are some problems during executeTasks arguments : ",e);
+            LOGGER.error("There are some problems during running : ",e);
         }
     }
 }

@@ -18,7 +18,7 @@ import java.util.concurrent.Executors;
 /**
  * the abstract class Delegate is a main part of the workflow of the termith process. The runner classes call the
  * inherit Delegate classes linearly.
- * The executeTasks method is contains the multithreaded jobs (like the classes module inherited from the Runnable class)
+ * The execute method is contains the multithreaded jobs (like the classes module inherited from the Runnable class)
  * who process the file corpus
  * @author Simon Meoni Created on 10/11/16.
  */
@@ -32,19 +32,19 @@ public abstract class Delegate implements JavaDelegate{
     private MemoryPerformanceEvent _memoryPerformanceEvent;
 
     /**
-     * this method is used to executeTasks the different steps of processing of a delegate
+     * this method is used to execute the different steps of processing of a delegate
      * @throws IOException thrown a IO exception if a file is not found or have a permission problem during the
      * xsl transformation phase
      * @throws InterruptedException thrown if awaitTermination function is interrupted while waiting
      * @throws ExecutionException thrown a exception if a system process is interrupted
      */
-    protected void executeTasks() throws IOException, InterruptedException, ExecutionException {}
+    protected void execute() throws IOException, InterruptedException, ExecutionException {}
 
     @Override
     public void execute(DelegateExecution execution) {
         try {
             initialize(execution);
-            executeTasks();
+            execute();
             _eventBus.post(_timePerformanceEvent);
             _eventBus.post(_memoryPerformanceEvent);
         } catch (IOException | InterruptedException | ExecutionException e) {

@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * This class is used to create some Delegate inherited classes and executeTasks each of them linearly.
+ * This class is used to create some Delegate inherited classes and execute each of them linearly.
  * @author Simon Meoni Created on 10/11/16.
  */
 public class Runner {
