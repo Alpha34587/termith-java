@@ -4,9 +4,9 @@ package org.atilf.models.disambiguation;
  * @author Simon Meoni Created on 28/11/16.
  */
 public enum AnnotationResources {
-    DA_ON("#DaOn"),
-    DA_OFF("#DaOff"),
-    NO_DA("#noDa"),
+    DA_ON("#DAOn"),
+    DA_OFF("#DAOff"),
+    NO_DA("#noDA"),
     NO_DM ("#noDM", NO_DA),
     DM0("#DM0", DA_OFF),
     DM1("#DM1", DA_OFF),

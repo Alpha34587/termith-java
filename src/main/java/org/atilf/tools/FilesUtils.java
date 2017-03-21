@@ -1,5 +1,6 @@
 package org.atilf.tools;
 
+import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -60,7 +61,7 @@ public class FilesUtils {
     public static StringBuilder readFile(Path path){
         StringBuilder file = null;
         try {
-                    file = new StringBuilder(String.join("\n", Files.readAllLines(path)));
+            file = new StringBuilder(String.join("\n", Files.readAllLines(path)));
         } catch (IOException e) {
             LOGGER.error("cannot read file : ",e);
 
@@ -206,5 +207,21 @@ public class FilesUtils {
      */
     public static Path folderPathResolver(String path){
         return Paths.get(path).normalize();
+    }
+
+    public static void createFolder(Path path) {
+        File folder = path.toFile();
+        try {
+            if (Files.exists(path)){
+                FileUtils.deleteDirectory(folder);
+            }
+            if (!folder.mkdir()){
+                throw new IOException("cannot create output folder");
+            }
+        }
+        catch (IOException e) {
+            LOGGER.error("error during create folder method : ",e);
+        }
+
     }
 }

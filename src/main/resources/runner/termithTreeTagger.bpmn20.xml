@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
+             xmlns:flowable="http://flowable.org/bpmn"
+             typeLanguage="http://www.w3.org/2001/XMLSchema"
+             expressionLanguage="http://www.w3.org/1999/XPath"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             targetNamespace="http://www.flowable.org/processdef">
+
+    <process id="termithTreeTagger" name="termithTreeTagger" isExecutable="true">
+
+        <dataObject id="fileCleaner" name="fileCleaner" itemSubjectRef="xsd:boolean">
+            <extensionElements>
+                <flowable:value>false</flowable:value>
+            </extensionElements>
+        </dataObject>
+
+        <startEvent id="startEvent"/>
+
+        <sequenceFlow id="flow1" sourceRef="startEvent" targetRef="fork" />
+        <parallelGateway id="fork" />
+        <sequenceFlow sourceRef="fork" targetRef="corpusMapper"/>
+        <sequenceFlow sourceRef="fork" targetRef="textExtractor"/>
+
+        <serviceTask id="corpusMapper" name="map corpus to hashMap"
+                     flowable:class="org.atilf.delegate.enrichment.initializer.CorpusMapperDelegate"/>
+        <serviceTask id="textExtractor" name="extract text"
+                     flowable:class="org.atilf.delegate.enrichment.initializer.TextExtractorDelegate"/>
+
+        <sequenceFlow sourceRef="corpusMapper" targetRef="join"/>
+        <sequenceFlow sourceRef="textExtractor" targetRef="join"/>
+        <parallelGateway id="join"/>
+
+        <sequenceFlow sourceRef="join" targetRef="treeTaggerWorker"/>
+
+        <serviceTask id="treeTaggerWorker" name="treeTagger Json"
+                     flowable:class="org.atilf.delegate.enrichment.analyzer.TreeTaggerWorkerDelegate"/>
+
+        <sequenceFlow sourceRef="treeTaggerWorker" targetRef="termsuite"/>
+
+        <serviceTask id="termsuite" name="call termsuite pipeline"
+                     flowable:class="org.atilf.delegate.enrichment.analyzer.TermsuitePipelineBuilderDelegate"/>
+
+        <sequenceFlow sourceRef="termsuite" targetRef="termsuiteParser"/>
+
+        <serviceTask id="termsuiteParser" name="call termsuite parser"
+                     flowable:class="org.atilf.delegate.enrichment.analyzer.TerminologyParserDelegate"/>
+
+        <sequenceFlow sourceRef="termsuiteParser" targetRef="termsuiteStandoff"/>
+
+        <serviceTask id="termsuiteStandoff" name="call termsuite standOff"
+                     flowable:class="org.atilf.delegate.enrichment.analyzer.TerminologyStandOffDelegate"/>
+
+        <sequenceFlow sourceRef="termsuiteStandoff" targetRef="exporter"/>
+
+        <serviceTask id="exporter" name="export result in tei format"
+                     flowable:class="org.atilf.delegate.enrichment.exporter.ExporterDelegate"/>
+
+        <sequenceFlow sourceRef="exporter" targetRef="cleaner"/>
+
+        <serviceTask id="cleaner" name="export result in tei format"
+                     flowable:class="org.atilf.delegate.enrichment.cleaner.WorkingFileCleanerDelegate"/>
+
+        <sequenceFlow sourceRef="cleaner" targetRef="endEvent"/>
+        <endEvent id="endEvent"/>
+    </process>
+
+</definitions>

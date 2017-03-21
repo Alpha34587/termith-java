@@ -1,6 +1,5 @@
 package org.atilf.models.enrichment;
 
-import org.atilf.models.TermithIndex;
 import org.atilf.tools.FilesUtils;
 import org.junit.Assert;
 import org.junit.BeforeClass;
@@ -8,7 +7,6 @@ import org.junit.ClassRule;
 import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
 
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
@@ -19,7 +17,7 @@ import java.util.Map;
  */
 public class CorpusAnalyzerTest {
 
-    private static  Map<String,StringBuilder> _extractedText;
+    private static  Map<String,StringBuilder> _extractedText = new HashMap<>();
     private static  CorpusAnalyzer _corpusAnalyzer;
 
     @ClassRule
@@ -27,23 +25,13 @@ public class CorpusAnalyzerTest {
 
     @BeforeClass
     public static void setUp() throws Exception {
-        TermithIndex termithIndex = new TermithIndex.Builder().export(_temporaryFolder.getRoot().getPath()).build();
-        termithIndex.addText("1", FilesUtils.readFile(Paths.get("src/test/resources/models/enrichment/" +
+        _extractedText.put("1", FilesUtils.readFile(Paths.get("src/test/resources/models/enrichment/" +
                 "corpusAnalyzer/file1.txt")));
-        termithIndex.addText("2", FilesUtils.readFile(Paths.get("src/test/resources/models/enrichment/" +
+        _extractedText.put("2", FilesUtils.readFile(Paths.get("src/test/resources/models/enrichment/" +
                 "corpusAnalyzer/file2.txt")));
-        termithIndex.addText("3", FilesUtils.readFile(Paths.get("src/test/resources/models/enrichment/" +
+        _extractedText.put("3", FilesUtils.readFile(Paths.get("src/test/resources/models/enrichment/" +
                 "corpusAnalyzer/file3.txt")));
-        _extractedText = convertExtractedText(termithIndex.getExtractedText());
         _corpusAnalyzer = new CorpusAnalyzer(_extractedText);
-    }
-
-    public static Map<String,StringBuilder> convertExtractedText(Map<String, Path> extractedText){
-        Map<String,StringBuilder> map = new HashMap<>();
-        extractedText.forEach(
-                (key,value) -> map.put(key, FilesUtils.readObject(value,StringBuilder.class))
-        );
-        return map;
     }
 
     @Test

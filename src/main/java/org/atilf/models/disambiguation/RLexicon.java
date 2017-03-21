@@ -1,6 +1,5 @@
 package org.atilf.models.disambiguation;
 
-import org.atilf.models.TermithIndex;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,6 +17,7 @@ import java.util.UUID;
  */
 public class RLexicon {
     private int _size;
+    private String _outputPath;
     private StringBuffer _rName = new StringBuffer();
     private StringBuffer _rOcc = new StringBuffer();
     private CorpusLexicon _corpus;
@@ -29,9 +29,10 @@ public class RLexicon {
      * constructor used to convert corpus into R variable
      * @param corpus
      */
-    public RLexicon(CorpusLexicon corpus){
+    public RLexicon(CorpusLexicon corpus, String outputPath){
         _corpus = corpus;
         _size = corpus.lexicalSize();
+        _outputPath = outputPath;
         _corpus.forEach(this::convertToRGlobal);
         writeFile();
     }
@@ -41,9 +42,10 @@ public class RLexicon {
      * @param lexiconProfile the lexicon profile
      * @param corpus the corpus
      */
-    public RLexicon(LexiconProfile lexiconProfile, CorpusLexicon corpus) {
+    public RLexicon(LexiconProfile lexiconProfile, CorpusLexicon corpus, String outputPath) {
         _lexiconProfile = lexiconProfile;
         _corpus = corpus;
+        _outputPath = outputPath;
         _idContextLexicon = new ArrayList<>();
         _size = lexiconProfile.lexicalSize();
         _lexiconProfile.forEach(this::convertToRContext);
@@ -53,7 +55,7 @@ public class RLexicon {
 
     private void writeFile(){
         try {
-            _csvPath = Paths.get(TermithIndex.getOutputPath().toAbsolutePath() + "/" + UUID.randomUUID().toString());
+            _csvPath = Paths.get(_outputPath + "/" + UUID.randomUUID().toString());
             File file = new File(_csvPath.toString());
             _rName.deleteCharAt(_rName.length() - 1);
             _rOcc.deleteCharAt(_rOcc.length() - 1);

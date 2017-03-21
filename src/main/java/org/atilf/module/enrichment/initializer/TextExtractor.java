@@ -3,6 +3,7 @@ package org.atilf.module.enrichment.initializer;
 import org.atilf.models.TermithIndex;
 import org.atilf.models.enrichment.XslResources;
 import org.atilf.module.Module;
+import org.atilf.runner.Runner;
 import org.atilf.tools.FilesUtils;
 
 import javax.xml.transform.Source;
@@ -98,14 +99,13 @@ public class TextExtractor extends Module {
                 put the result into the extractedText Map
                  */
                 _termithIndex.getExtractedText().put(FilesUtils.nameNormalizer(_file.toString()),
-                        FilesUtils.writeObject(_extractedText, TermithIndex.getOutputPath()));
+                        FilesUtils.writeObject(_extractedText, Runner.getOut()));
             }
             /*
             otherwise a log is thrown and the corpusSize is decremented by 1
              */
             else {
                 _logger.info(_file + " has empty body");
-                _termithIndex.setCorpusSize(_termithIndex.getCorpusSize() - 1);
             }
             _logger.debug("Extraction done for file: " + _file);
         } catch (IOException e) {

@@ -1,7 +1,6 @@
 package org.atilf.module.disambiguation.evaluationScore;
 
 import org.apache.commons.io.FileUtils;
-import org.atilf.models.TermithIndex;
 import org.atilf.models.disambiguation.ContextWord;
 import org.atilf.models.disambiguation.ScoreTerm;
 import org.atilf.models.disambiguation.TotalTermScore;
@@ -33,7 +32,7 @@ public class ExportScoreToJsonTest {
         ContextWord word1 = new ContextWord("t1");
         word1.setPosLemma("test1 NOM");
         ScoreTerm scoreTerm1 = new ScoreTerm();
-        scoreTerm1.setFlexionsWords("test1");
+        scoreTerm1.setFlexingWords("test1");
         scoreTerm1.addTermWords(Collections.singletonList(word1));
         scoreTerm1.setRecall(0.5f);
         scoreTerm1.setPrecision(0.4f);
@@ -47,7 +46,7 @@ public class ExportScoreToJsonTest {
         contextWords.add(word1);
         contextWords.add(word2);
         ScoreTerm scoreTerm2 = new ScoreTerm();
-        scoreTerm2.setFlexionsWords("test2");
+        scoreTerm2.setFlexingWords("test2");
         scoreTerm2.addTermWords(contextWords);
         scoreTerm2.setRecall(0.6f);
         scoreTerm2.setPrecision(0.2f);
@@ -61,9 +60,8 @@ public class ExportScoreToJsonTest {
         _totalScoreTerm.setRecall(0.5f);
         _totalScoreTerm.setPrecision(0.4f);
         _totalScoreTerm.setF1score(0.3f);
-        new TermithIndex.Builder().export(temporaryFolder.getRoot().getAbsolutePath()).build();
         _exportScoreToJson =
-                new ExportScoreToJson(_scoreTerm,_totalScoreTerm, TermithIndex.getOutputPath(),false);
+                new ExportScoreToJson(_scoreTerm,_totalScoreTerm, temporaryFolder.getRoot().toPath(),false);
     }
     @Test
     public void execute() throws Exception {
@@ -72,7 +70,7 @@ public class ExportScoreToJsonTest {
         FileUtils.readFileToString(
                 _expectedFile, "utf-8"),
                 FileUtils.readFileToString(
-                        new File(TermithIndex.getOutputPath().toString() + "/termith-score.json"), "utf-8")
+                        new File(temporaryFolder.getRoot().toString() + "/termith-score.json"), "utf-8")
         );
     }
 }

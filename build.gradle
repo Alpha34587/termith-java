@@ -5,7 +5,7 @@ plugins {
 }
 
 group 'org.atilf'
-version '0.5'
+version '0.6'
 
 remotes {
     arges {
@@ -44,10 +44,19 @@ dependencies {
         exclude module: 'log4j-slf4j'
         exclude module:'commons-lang3'
         exclude module:'logback-classic'
+        exclude module:'spring-beans'
+        exclude module:'spring-core'
+        exclude module:'activation'
     }
 
     compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.1.9'
     compile group: 'org.rosuda.REngine', name: 'Rserve', version: '1.8.1'
+    compile group: 'com.h2database', name: 'h2', version: '1.4.193'
+    compile (group: 'org.flowable', name: 'flowable-engine', version: '6.0.0'){
+        exclude module:'slf4j-api'
+        exclude module:'jackson-databind'
+        exclude module:'activation'
+    }
 
     testCompile 'junit:junit:4.12'
     testCompile group: 'xmlunit', name: 'xmlunit', version: '1.6'

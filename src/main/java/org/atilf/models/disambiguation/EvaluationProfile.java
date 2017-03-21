@@ -12,7 +12,7 @@ import static org.atilf.models.disambiguation.AnnotationResources.NO_DA;
  *         Created on 24/10/16.
  */
 public class EvaluationProfile extends Lexicon {
-    private AnnotationResources _disambiguationId = NO_DA;
+    private AnnotationResources _automaticAnnotation = NO_DA;
 
     /**
      * a constructor for evaluationProfile
@@ -33,15 +33,15 @@ public class EvaluationProfile extends Lexicon {
      * get the module.disambiguation id of this term
      * @return the module.disambiguation of this term
      */
-    public String getDisambiguationId() {
-        return _disambiguationId.getValue();
+    public String getAutomaticAnnotation() {
+        return _automaticAnnotation.getValue();
     }
 
     /**
      * setter of disambiguationId
      * @param _disambiguationId AnnotationResource
      */
-    public void setDisambiguationId(AnnotationResources _disambiguationId) {
-        this._disambiguationId = _disambiguationId;
+    public void setAutomaticAnnotation(AnnotationResources _disambiguationId) {
+        this._automaticAnnotation = _disambiguationId;
     }
 }

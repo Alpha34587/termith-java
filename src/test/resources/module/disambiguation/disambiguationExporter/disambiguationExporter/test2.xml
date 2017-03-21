@@ -372,35 +372,35 @@
                 <interp xml:id="DM3">Occurrence du candidat terme validée au niveau syntaxique et disciplinaire</interp>
                 <interp xml:id="DM4">Occurrence du candidat terme validée à tous les niveaux d'annotation. Cette occurrence est considérée comme terminologique</interp>
             </interpGrp>
-            <span ana="#DM1 #DaOn" corresp="#entry-13471" target="#t13 #t14 #t15 #t16">
+            <span ana="#DM1 #DAOn" corresp="#entry-13471" target="#t13 #t14 #t15 #t16">
                 <fs>
                     <f name="inflexionsWord">
                         <string>sites de l'âge</string>
                     </f>
                 </fs>
             </span>
-            <span ana="#DM1 #DaOn" corresp="#entry-13471" target="#t16 #t17 #t18">
+            <span ana="#DM1 #DAOn" corresp="#entry-13471" target="#t16 #t17 #t18">
                 <fs>
                     <f name="inflexionsWord">
                         <string>âge du Bronze</string>
                     </f>
                 </fs>
             </span>
-            <span ana="#DM3 #DaOn" corresp="#entry-7263" target="#t30">
+            <span ana="#DM3 #DAOn" corresp="#entry-7263" target="#t30">
                 <fs>
                     <f name="inflexionsWord">
                         <string>côtière</string>
                     </f>
                 </fs>
             </span>
-            <span ana="#noDM #DaOff" corresp="#entry-990" target="#t49">
+            <span ana="#noDM #DAOff" corresp="#entry-990" target="#t49">
                 <fs>
                     <f name="inflexionsWord">
                         <string>enfouissement</string>
                     </f>
                 </fs>
             </span>
-            <span ana="#noDM #noDa" corresp="#entry-1000" target="#t51">
+            <span ana="#noDM #noDA" corresp="#entry-1000" target="#t51">
                 <fs>
                     <f name="inflexionsWord">
                         <string>enfouissement</string>

@@ -3,8 +3,8 @@ package org.atilf.models.disambiguation;
 import com.google.common.collect.ConcurrentHashMultiset;
 import com.google.common.collect.Multiset;
 
+import java.util.Collection;
 import java.util.Iterator;
-import java.util.List;
 import java.util.function.Consumer;
 
 /**
@@ -63,7 +63,7 @@ public abstract class Lexicon implements Iterable<String> {
             return -1;
     }
 
-    public void addOccurrences(List<String> occurrences) {
+    public void addOccurrences(Collection<String> occurrences) {
         _lexicalTable.addAll(occurrences);
     }
     /**

@@ -41,7 +41,7 @@ public class TeiWriter extends Module{
      * @param termithIndex the termithIndex of a process
      * @param standOffResources static resource used by teiWriter
      */
-    public TeiWriter(String key,TermithIndex termithIndex, StandOffResources standOffResources){
+    public TeiWriter(String key,TermithIndex termithIndex, StandOffResources standOffResources, String outputhPath){
         /*
          * read externals object and file related to the key and call the other constructor
          */
@@ -57,7 +57,7 @@ public class TeiWriter extends Module{
                 //the terminology
                 termithIndex.getTerminologyStandOff().get(key),
                 //the write output path
-                Paths.get(TermithIndex.getOutputPath() + "/" + key + ".xml"),
+                Paths.get(outputhPath + "/" + key + ".xml"),
                 standOffResources
         );
         try {
@@ -69,7 +69,7 @@ public class TeiWriter extends Module{
             LOGGER.error("cannot delete file",e);
         }
 
-        _outputPath = Paths.get(TermithIndex.getOutputPath() + "/" + key + ".xml");
+        _outputPath = Paths.get(outputhPath + "/" + key + ".xml");
         _termithIndex = termithIndex;
     }
 

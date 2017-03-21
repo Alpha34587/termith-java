@@ -1,5 +1,6 @@
 package org.atilf.models.disambiguation;
 
+import java.util.Collection;
 import java.util.Map;
 import java.util.function.Consumer;
 
@@ -45,6 +46,10 @@ public class CorpusLexicon extends Lexicon{
             _lexicalEntry.put(_counter, entry);
             _counter++;
         }
+    }
+
+    public synchronized void addContext(Collection<String> context){
+        context.forEach(this::addOccurrence);
     }
 
     /**

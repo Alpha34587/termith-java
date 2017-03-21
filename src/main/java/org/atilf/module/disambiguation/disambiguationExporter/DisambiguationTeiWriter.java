@@ -23,8 +23,8 @@ import javax.xml.xpath.*;
 import java.io.IOException;
 import java.util.Map;
 
-import static org.atilf.models.disambiguation.ContextResources.NAMESPACE_CONTEXT;
-import static org.atilf.models.disambiguation.ContextResources.TEI_SPAN;
+import static org.atilf.models.disambiguation.DisambiguationExporterResource.NAMESPACE_CONTEXT;
+import static org.atilf.models.disambiguation.DisambiguationExporterResource.TEI_SPAN;
 
 /**
  * Write the result of module.disambiguation in tei file format
@@ -34,6 +34,7 @@ import static org.atilf.models.disambiguation.ContextResources.TEI_SPAN;
 public class DisambiguationTeiWriter extends Module {
     private final String _p;
     private final Map<String, EvaluationProfile> _evaluationLexicon;
+    private String _outputPath;
     private DocumentBuilder _dBuilder;
     private Document _doc;
     private DocumentBuilderFactory _dbFactory = DocumentBuilderFactory.newInstance();
@@ -44,12 +45,13 @@ public class DisambiguationTeiWriter extends Module {
      * @param p the file name
      * @param evaluationLexicon the evaluation lexicon that contains the result for module.disambiguation for one file
      */
-    public DisambiguationTeiWriter(String p, Map<String, EvaluationProfile> evaluationLexicon) {
+    public DisambiguationTeiWriter(String p, Map<String, EvaluationProfile> evaluationLexicon, String outputPath) {
         /*
         prepare dom parser
          */
         _p = p;
         _evaluationLexicon = evaluationLexicon;
+        _outputPath = outputPath;
 
         _xpath.setNamespaceContext(NAMESPACE_CONTEXT);
 
@@ -66,13 +68,14 @@ public class DisambiguationTeiWriter extends Module {
         }
     }
 
-    public DisambiguationTeiWriter(String p, TermithIndex termithIndex) {
+    public DisambiguationTeiWriter(String p, TermithIndex termithIndex, String outputPath) {
         super(termithIndex);
         /*
         prepare dom parser
          */
         _p = p;
         _evaluationLexicon = _termithIndex.getEvaluationLexicon().get(FilesUtils.nameNormalizer(p));
+        _outputPath = outputPath;
 
         _xpath.setNamespaceContext(NAMESPACE_CONTEXT);
 
@@ -118,7 +121,7 @@ public class DisambiguationTeiWriter extends Module {
                 String termId = correspVal.substring(1) + "_" + anaVal.substring(1);
                 if (_evaluationLexicon.containsKey(termId)) {
                     anaNode.setNodeValue(
-                            anaVal + " " + _evaluationLexicon.get(termId).getDisambiguationId()
+                            anaVal + " " + _evaluationLexicon.get(termId).getAutomaticAnnotation()
                     );
                     _logger.debug("write DaOn or DaOff value");
                 }
@@ -139,7 +142,7 @@ public class DisambiguationTeiWriter extends Module {
                 transformer.setOutputProperty(OutputKeys.DOCTYPE_PUBLIC, "yes");
                 _doc.setXmlStandalone(true);
                 DOMSource source = new DOMSource(_doc);
-                StreamResult result = new StreamResult(TermithIndex.getOutputPath() + "/"
+                StreamResult result = new StreamResult(_outputPath + "/"
                         + FilesUtils.nameNormalizer(_p) + ".xml");
                 transformer.transform(source, result);
             } catch (TransformerException e) {

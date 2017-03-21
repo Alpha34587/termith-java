@@ -2,7 +2,6 @@ package org.atilf.module.disambiguation.lexiconProfile;
 
 import com.google.common.collect.HashMultiset;
 import com.google.common.collect.Multiset;
-import org.atilf.models.TermithIndex;
 import org.atilf.models.disambiguation.CorpusLexicon;
 import org.atilf.models.disambiguation.LexiconProfile;
 import org.atilf.models.disambiguation.RConnectionPool;
@@ -36,7 +35,6 @@ public class SpecCoefficientInjectorTest {
 
     @BeforeClass
     public static void setUp() throws Exception {
-    new TermithIndex.Builder().export(temporaryFolder.getRoot().toString()).build();
     /*
     context initialization
      */
@@ -96,7 +94,7 @@ public class SpecCoefficientInjectorTest {
     _corpusLexicon.addOccurrence("âge");
     _corpusLexicon.addOccurrence("du");
 
-    _rLexicon = new RLexicon(_corpusLexicon);
+    _rLexicon = new RLexicon(_corpusLexicon,temporaryFolder.getRoot().toString());
     }
 
     @Test
@@ -106,8 +104,11 @@ public class SpecCoefficientInjectorTest {
         List<Float> observedResult = new SpecCoefficientInjector(
                 new LexiconProfile(_lexiconMultiset),
                 _rLexicon,
-                _corpusLexicon,rConnection)
-                .computeSpecCoefficient();
+                _corpusLexicon,
+                rConnection,
+                temporaryFolder.getRoot().toString()
+                ).computeSpecCoefficient();
+
         List<Float> expectedResult = new LinkedList<>();
         expectedResult.add(0.1383f);
         expectedResult.add(0.1383f);

@@ -1,7 +1,6 @@
 package org.atilf.module.disambiguation.evaluationScore;
 
 import org.apache.commons.io.FileUtils;
-import org.atilf.models.TermithIndex;
 import org.atilf.models.disambiguation.ContextWord;
 import org.atilf.models.disambiguation.ScoreTerm;
 import org.atilf.models.disambiguation.TotalTermScore;
@@ -37,7 +36,7 @@ public class ExportScoreToCsvTest {
         scoreTerm1.setTotalOccurrences(7);
         scoreTerm1.setCorrectOccurrence(7);
         scoreTerm1.setMissingOccurrence(0);
-        scoreTerm1.setFlexionsWords("test1");
+        scoreTerm1.setFlexingWords("test1");
         scoreTerm1.addTermWords(Collections.singletonList(word1));
         scoreTerm1.setRecall(0.5f);
         scoreTerm1.setPrecision(0.4f);
@@ -56,7 +55,7 @@ public class ExportScoreToCsvTest {
         scoreTerm2.setCorrectOccurrence(0);
         scoreTerm2.setTotalOccurrences(7);
         scoreTerm2.setMissingOccurrence(0);
-        scoreTerm2.setFlexionsWords("test2");
+        scoreTerm2.setFlexingWords("test2");
         scoreTerm2.addTermWords(contextWords);
         scoreTerm2.setRecall(0.6f);
         scoreTerm2.setPrecision(0.2f);
@@ -70,8 +69,7 @@ public class ExportScoreToCsvTest {
         _totalScoreTerm.setRecall(0.5f);
         _totalScoreTerm.setPrecision(0.4f);
         _totalScoreTerm.setF1score(0.3f);
-        new TermithIndex.Builder().export(temporaryFolder.getRoot().getAbsolutePath()).build();
-        _exportScoreToCsv = new ExportScoreToCsv(_scoreTerm, TermithIndex.getOutputPath());
+        _exportScoreToCsv = new ExportScoreToCsv(_scoreTerm, temporaryFolder.getRoot().toPath());
     }
     @Test
     public void execute() throws Exception {
@@ -80,7 +78,7 @@ public class ExportScoreToCsvTest {
                 FileUtils.readFileToString(
                         _expectedFile, "utf-8"),
                 FileUtils.readFileToString(
-                        new File(TermithIndex.getOutputPath().toString() + "/termith-score.csv"), "utf-8")
+                        new File(temporaryFolder.getRoot().toString() + "/termith-score.csv"), "utf-8")
         );
     }
 }

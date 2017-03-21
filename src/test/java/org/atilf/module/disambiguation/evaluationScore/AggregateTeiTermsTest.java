@@ -27,7 +27,7 @@ public class AggregateTeiTermsTest {
         Map<String,EvaluationProfile> terms = new HashMap<>();
 
         EvaluationProfile term1 = new EvaluationProfile();
-        term1.setDisambiguationId(AnnotationResources.DA_OFF);
+        term1.setAutomaticAnnotation(AnnotationResources.DA_OFF);
 
         terms.put("entry-450_DM1",term1);
         terms.put("entry-13471_DM1",term1);
@@ -61,7 +61,7 @@ public class AggregateTeiTermsTest {
 
 
         ScoreTerm score = new ScoreTerm();
-        score.setFlexionsWords("d");
+        score.setFlexingWords("d");
         score.setCorrectOccurrence(1);
         score.setTotalOccurrences(1);
         score.setMissingOccurrence(0);
@@ -70,7 +70,7 @@ public class AggregateTeiTermsTest {
         _expectedScoreTerms.put("entry-450", score);
 
         score = new ScoreTerm();
-        score.setFlexionsWords("b");
+        score.setFlexingWords("b");
         score.setCorrectOccurrence(2);
         score.setTotalOccurrences(2);
         score.setMissingOccurrence(0);
@@ -85,7 +85,7 @@ public class AggregateTeiTermsTest {
         _expectedScoreTerms.put("entry-13471",score);
 
         score = new ScoreTerm();
-        score.setFlexionsWords("a");
+        score.setFlexingWords("a");
         score.setCorrectOccurrence(0);
         score.setTotalOccurrences(2);
         score.setMissingOccurrence(2);
@@ -100,7 +100,7 @@ public class AggregateTeiTermsTest {
         _expectedScoreTerms.put("entry-575",score);
 
         score = new ScoreTerm();
-        score.setFlexionsWords("e");
+        score.setFlexingWords("e");
         score.setCorrectOccurrence(0);
         score.setTotalOccurrences(3);
         score.setMissingOccurrence(3);
@@ -138,7 +138,7 @@ public class AggregateTeiTermsTest {
                             value.getTotalOccurrences(),observed.getTotalOccurrences());
                     Assert.assertEquals("these two flexionWords must be equals for "
                                     + key,
-                            value.getFlexionsWords(),observed.getFlexionsWords());
+                            value.getFlexingWords(),observed.getFlexingWords());
                     Assert.assertEquals("these two validated occurrence must be equals for "
                                     + key,
                             value.getValidatedOccurrence(),observed.getValidatedOccurrence(),0f);
