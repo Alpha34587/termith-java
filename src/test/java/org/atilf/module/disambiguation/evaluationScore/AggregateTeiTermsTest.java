@@ -27,7 +27,7 @@ public class AggregateTeiTermsTest {
         Map<String,EvaluationProfile> terms = new HashMap<>();
 
         EvaluationProfile term1 = new EvaluationProfile();
-        term1.setDisambiguationId(AnnotationResources.DA_OFF);
+        term1.setAutomaticAnnotation(AnnotationResources.DA_OFF);
 
         terms.put("entry-450_DM1",term1);
         terms.put("entry-13471_DM1",term1);

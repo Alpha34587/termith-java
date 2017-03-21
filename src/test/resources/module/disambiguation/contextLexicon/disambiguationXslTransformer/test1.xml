@@ -372,7 +372,7 @@
                 <interp xml:id="DM3">Occurrence du candidat terme validée au niveau syntaxique et disciplinaire</interp>
                 <interp xml:id="DM4">Occurrence du candidat terme validée à tous les niveaux d'annotation. Cette occurrence est considérée comme terminologique</interp>
             </interpGrp>
-            <span ana="#noDM" corresp="#entry-13471" target="#t13 #t14 #t15 #t16">
+            <span ana="#noDM #noDa" corresp="#entry-13471" target="#t13 #t14 #t15 #t16">
                 <fs>
                     <f name="inflexionsWord">
                         <string>sites de l'âge</string>

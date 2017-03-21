@@ -339,7 +339,7 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
      * @param attributes the attributes of a span element
      */
     protected void extractTerms(Attributes attributes) {
-        String ana = attributes.getValue("ana").split(" ")[0];
+        String ana = attributes.getValue("ana");
         if (!ana.equals(NO_DM.getValue())) {
             _terms.add(new ContextTerm(attributes.getValue("corresp"),
                     ana,

@@ -75,7 +75,7 @@ public class Evaluation extends Module{
                      the term is not a terminology
                      */
                     if (!_contextLexicon.containsKey(lexEntryOn)){
-                        value.setDisambiguationId(AnnotationResources.DA_OFF);
+                        value.setAutomaticAnnotation(AnnotationResources.DA_OFF);
                         _logger.debug("term candidate: " + key + "for file: " + _p + " is not a terminology");
 
                     }
@@ -85,7 +85,7 @@ public class Evaluation extends Module{
                      the term is terminology
                      */
                     else if (!_contextLexicon.containsKey(lexEntryOff)){
-                        value.setDisambiguationId(AnnotationResources.DA_ON);
+                        value.setAutomaticAnnotation(AnnotationResources.DA_ON);
                         _logger.debug("term candidate: " + key + "for file: " + _p + " is a terminology");
                     }
 
@@ -116,10 +116,10 @@ public class Evaluation extends Module{
      */
     private void compareFactor(EvaluationProfile entry) {
         if (_factorOff >= _factorOn){
-            entry.setDisambiguationId(AnnotationResources.DA_OFF);
+            entry.setAutomaticAnnotation(AnnotationResources.DA_OFF);
         }
         else {
-            entry.setDisambiguationId(AnnotationResources.DA_ON);
+            entry.setAutomaticAnnotation(AnnotationResources.DA_ON);
         }
     }
 

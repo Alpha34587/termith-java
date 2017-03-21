@@ -34,9 +34,9 @@ public class DisambiguationTeiWriterTest {
         _evaluationProfile.put("entry-13471_DM1", new EvaluationProfile(HashMultiset.create()));
         _evaluationProfile.put("entry-7263_DM3", new EvaluationProfile(HashMultiset.create()));
         _evaluationProfile.put("entry-990_noDM", new EvaluationProfile(HashMultiset.create()));
-        _evaluationProfile.get("entry-13471_DM1").setDisambiguationId(AnnotationResources.DA_ON);
-        _evaluationProfile.get("entry-7263_DM3").setDisambiguationId(AnnotationResources.DA_ON);
-        _evaluationProfile.get("entry-990_noDM").setDisambiguationId(AnnotationResources.DA_OFF);
+        _evaluationProfile.get("entry-13471_DM1").setAutomaticAnnotation(AnnotationResources.DA_ON);
+        _evaluationProfile.get("entry-7263_DM3").setAutomaticAnnotation(AnnotationResources.DA_ON);
+        _evaluationProfile.get("entry-990_noDM").setAutomaticAnnotation(AnnotationResources.DA_OFF);
 
         DisambiguationTeiWriter teiWriter = new DisambiguationTeiWriter(
                 "/home/smeoni/IdeaProjects/termITH/src/test/resources/module/" +

@@ -118,7 +118,7 @@ public class DisambiguationTeiWriter extends Module {
                 String termId = correspVal.substring(1) + "_" + anaVal.substring(1);
                 if (_evaluationLexicon.containsKey(termId)) {
                     anaNode.setNodeValue(
-                            anaVal + " " + _evaluationLexicon.get(termId).getDisambiguationId()
+                            anaVal + " " + _evaluationLexicon.get(termId).getAutomaticAnnotation()
                     );
                     _logger.debug("write DaOn or DaOff value");
                 }

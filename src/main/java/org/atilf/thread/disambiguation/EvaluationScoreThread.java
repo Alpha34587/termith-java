@@ -73,7 +73,7 @@ public class EvaluationScoreThread extends Thread{
         XslResources xslResources = new DisambiguationXslResources();
         _logger.info("transformation phase is started for EvaluationScoreThread");
         Path scoreFolder = Files.createDirectory(Paths.get(TermithIndex.getOutputPath().toString() + "/score/"));
-        Files.list(TermithIndex.getOutputPath())
+        Files.list(TermithIndex.getEvaluationPath())
                 .filter(p -> !Files.isDirectory(p))
                 .filter(p -> p.toString().endsWith(".xml"))
                 .forEach(
