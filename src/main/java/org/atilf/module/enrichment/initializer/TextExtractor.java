@@ -106,7 +106,6 @@ public class TextExtractor extends Module {
              */
             else {
                 _logger.info(_file + " has empty body");
-                _termithIndex.setCorpusSize(_termithIndex.getCorpusSize() - 1);
             }
             _logger.debug("Extraction done for file: " + _file);
         } catch (IOException e) {

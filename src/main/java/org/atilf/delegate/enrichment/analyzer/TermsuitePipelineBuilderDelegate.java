@@ -42,7 +42,8 @@ public class TermsuitePipelineBuilderDelegate extends Delegate {
         /*
         execute termsuite
          */
-        _executorService.submit(new TermsuitePipelineBuilder(_termithIndex, Runner.getOut().toString(),Runner.getLang()));
+        _executorService.submit(
+                new TermsuitePipelineBuilder(_termithIndex, Runner.getOut().toString(),Runner.getLang()));
 
         _executorService.shutdown();
         _executorService.awaitTermination(1L,TimeUnit.DAYS);

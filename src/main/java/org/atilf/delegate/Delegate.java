@@ -56,12 +56,12 @@ public abstract class Delegate implements JavaDelegate{
         _execution = execution;
         _timePerformanceEvent = new TimePerformanceEvent(
                 this.getClass().getSimpleName(),
-                _termithIndex.getCorpusSize(),
+                Runner.getCorpusSize(),
                 Runner.getTimePerformanceEvents()
         );
         _memoryPerformanceEvent = new MemoryPerformanceEvent(
                 this.getClass().getSimpleName(),
-                _termithIndex.getCorpusSize(),
+                Runner.getCorpusSize(),
                 Runner.getMemoryPerformanceEvents()
         );
         _eventBus.register(_timePerformanceEvent);

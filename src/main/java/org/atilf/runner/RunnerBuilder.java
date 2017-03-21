@@ -2,7 +2,11 @@ package org.atilf.runner;
 
 import org.atilf.models.TermithIndex;
 import org.atilf.tools.FilesUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -15,7 +19,7 @@ public class RunnerBuilder {
     /*
     remove maybe
      */
-    int _corpusSize;
+    static int _corpusSize;
 
     /*
     common parameter
@@ -36,6 +40,7 @@ public class RunnerBuilder {
     static Path _learningPath;
     static Path _evaluationPath;
     static Path _scorePath;
+    protected final Logger LOGGER = LoggerFactory.getLogger(this.getClass().getName());
 
     public RunnerBuilder setTermithIndex(TermithIndex termithIndex) {
         _termithIndex = termithIndex;
@@ -52,13 +57,19 @@ public class RunnerBuilder {
         return this;
     }
 
-    public RunnerBuilder setBase(String _base) {
+    public RunnerBuilder setBase(String _base){
         RunnerBuilder._base = FilesUtils.folderPathResolver(_base);
+        try {
+            RunnerBuilder._corpusSize = (int) Files.list(Paths.get(_base)).count();
+        } catch (IOException e) {
+            LOGGER.error("cannot find corpus : ",e);
+        }
         return this;
     }
 
     public RunnerBuilder setOut(String _out) {
         RunnerBuilder._out = Paths.get(_out);
+        FilesUtils.createFolder(RunnerBuilder._out);
         return this;
     }
 

@@ -19,7 +19,6 @@ public class TermithIndex {
     /*
     Termith fields
      */
-    private Path _corpus = null;
     private List<Path> _terminologies = new CopyOnWriteArrayList<>();
     private Map<String, Path> _tokenizeTeiBody = new ConcurrentHashMap<>();
     private Map<String, Path> _morphologyStandOff = new ConcurrentHashMap<>();
@@ -28,7 +27,6 @@ public class TermithIndex {
     private Map<String, Path> _xmlCorpus = new ConcurrentHashMap<>();
     private List<Path> _serializeJson = new CopyOnWriteArrayList<>();
     private List<Path> _outputFile = new CopyOnWriteArrayList<>();
-    private int _corpusSize;
 
     /*
     Disambiguation core fields
@@ -75,11 +73,6 @@ public class TermithIndex {
      */
     public CorpusLexicon getCorpusLexicon() { return _corpusLexicon; }
 
-    /**
-     * return the size of the corpus
-     * @return return the size of the corpus
-     */
-    public int getCorpusSize() {return _corpusSize;}
 
     /**
      * return the map who contains for each file a map of terms associated to evaluations profiles
@@ -133,13 +126,6 @@ public class TermithIndex {
 
     public TotalTermScore getTotalTermScore() { return _totalTermScore; }
 
-    /**
-     * the path of input corpus
-     * @return return the path
-     */
-    public Path getCorpus() {
-        return _corpus;
-    }
 
     /**
      * get the input xml files
@@ -184,22 +170,6 @@ public class TermithIndex {
     /*
     Setter
      */
-
-    /**
-     * set the size of the corpus
-     * @param corpusSize set the size of the corpus
-     */
-    public void setCorpusSize(int corpusSize) {
-        _corpusSize = corpusSize;
-    }
-
-    /**
-     * set the path of the corpus
-     * @param corpus the path of the corpus
-     */
-    public void setCorpus(Path corpus) {
-        _corpus = corpus;
-    }
 
     /**
      * set the terminologyStandOff

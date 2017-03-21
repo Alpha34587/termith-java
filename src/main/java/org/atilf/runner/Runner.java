@@ -25,7 +25,7 @@ public class Runner {
     public static TermithIndex _termithIndex;
     public static int _poolSize;
     private static String _bpmnDiagram;
-
+    private static int _corpusSize;
     /*
     common parameter
      */
@@ -60,6 +60,7 @@ public class Runner {
         _learningPath = RunnerBuilder._learningPath;
         _evaluationPath = RunnerBuilder._evaluationPath;
         _scorePath = RunnerBuilder._scorePath;
+        _corpusSize = RunnerBuilder._corpusSize;
     }
 
     public static Path getOut() {
@@ -94,6 +95,10 @@ public class Runner {
 
     public static String getTreeTaggerHome() {
         return _treeTaggerHome;
+    }
+
+    public static int getCorpusSize() {
+        return _corpusSize;
     }
 
     /**
