@@ -24,20 +24,32 @@ public class ContextExtractorDelegate extends Delegate {
         includeElement.add("cit");
         includeElement.add("note");
         includeElement.add("q");
+
         List<String> authorizedTag = new ArrayList<>();
-        authorizedTag.add("ADJ");
-        authorizedTag.add("VER");
         authorizedTag.add("NOM");
-        authorizedTag.add("ADV");
         authorizedTag.add("NAM");
+        authorizedTag.add("ADV");
+        authorizedTag.add("ADJ");
+        authorizedTag.add("VER:pres");
+        authorizedTag.add("VER:infi");
+        authorizedTag.add("VER:pper");
+        authorizedTag.add("VER:ppre");
+        authorizedTag.add("VER:subp");
+        authorizedTag.add("VER:cond");
+        authorizedTag.add("VER:simp");
+        authorizedTag.add("VER:futu");
+        authorizedTag.add("VER:impf");
+        authorizedTag.add("VER:subi");
+
         _termithIndex.getLearningTransformedFile().values().forEach(
                 (file) -> _executorService.submit(
                         new ContextExtractor(file.toString(),
                                 _termithIndex.getContextLexicon(),
                                 _termithIndex.getCorpusLexicon(),
                                 getFlowableVariable("window",0),
-                                authorizedTag
-                        )
+                                authorizedTag,
+                                includeElement
+                                )
                 )
         );
         _logger.info("Waiting ContextExtractor executors to finish");

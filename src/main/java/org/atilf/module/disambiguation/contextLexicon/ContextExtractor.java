@@ -369,14 +369,14 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
      * add to lexicalProfile a context for terminology entry
      * @param term the term id entry suffixes by _lexOn or _lexOff
      */
-    private void addContextToLexiconMap(ContextTerm term, TreeMap<Integer, String> context) {
+    private void addContextToLexiconMap(ContextTerm term, TreeMap<Integer, String> words) {
         /*
         create new entry if the key not exists in the _contextLexicon field
          */
         String key = normalizeKey(term.getCorresp(), term.getAna());
-        Map<Integer,String> contextTarget = filterPos(contextThreshold(term,context));
+        Map<Integer,String> contextTarget = filterPos(contextThreshold(term,words));
 
-        if (contextTarget.size() != 0 && context.size() != term.getSize()) {
+        if (contextTarget.size() != 0 && words.size() != term.getSize()) {
             addContextToLexicon(key, contextTarget);
         }
     }
@@ -399,17 +399,17 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
         return contextTarget;
     }
 
-    private Map<Integer,String> contextThreshold(ContextTerm term, TreeMap<Integer, String> context){
+    private Map<Integer,String> contextThreshold(ContextTerm term, TreeMap<Integer, String> words){
         if (_threshold == 0){
-            return new HashMap<>(context);
+            return new HashMap<>(words);
         }
         else {
-            SortedMap<Integer, String> thresholdContext = new TreeMap<>(context);
+            SortedMap<Integer, String> thresholdContext = new TreeMap<>(words);
 
             if (term.getBeginTag()  > _threshold) {
-                thresholdContext = context.subMap(term.getBeginTag() - _threshold, true,context.lastKey(),true);
+                thresholdContext = thresholdContext.subMap(term.getBeginTag() - _threshold, words.lastKey() + 1);
             }
-            if (term.getEndTag() + _threshold < context.lastKey()){
+            if (term.getEndTag() + _threshold < words.lastKey()){
                 thresholdContext = thresholdContext.subMap(thresholdContext.firstKey(), term.getEndTag() +
                         _threshold + 1 );
             }

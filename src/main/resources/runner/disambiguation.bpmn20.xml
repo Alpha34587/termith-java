@@ -14,14 +14,11 @@
             </extensionElements>
         </dataObject>
 
-        <dataObject id="window" name="window" itemSubjectRef="xsd:int">
+        <dataObject id="freqMin" name="freqMin" itemSubjectRef="xsd:int">
             <extensionElements>
-                <flowable:value>10</flowable:value>
+                <flowable:value>3</flowable:value>
             </extensionElements>
         </dataObject>
-
-
-
 
         <dataObject id="freqMax" name="freqMax" itemSubjectRef="xsd:int">
             <extensionElements>
