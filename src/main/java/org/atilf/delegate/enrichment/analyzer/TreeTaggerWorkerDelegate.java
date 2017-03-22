@@ -75,7 +75,9 @@ public class TreeTaggerWorkerDelegate extends Delegate {
                         _termithIndex,
                         corpusAnalyzer,
                         key,
-                        Runner.getOut().toString()
+                        Runner.getOut().toString(),
+                        Runner.getLang(),
+                        Runner.getTreeTaggerHome()
                 ))
         );
         _logger.info("waiting that all json files are serialized");
