@@ -101,11 +101,10 @@ public class TextExtractor extends Module {
                 _termithIndex.getExtractedText().put(FilesUtils.nameNormalizer(_file.toString()),
                         FilesUtils.writeObject(_extractedText, Runner.getOut()));
             }
-            /*
-            otherwise a log is thrown and the corpusSize is decremented by 1
-             */
+
             else {
                 _logger.info(_file + " has empty body");
+                _termithIndex.getXmlCorpus().remove(FilesUtils.nameNormalizer(_file.toString()));
             }
             _logger.debug("Extraction done for file: " + _file);
         } catch (IOException e) {
