@@ -45,9 +45,8 @@
         <serviceTask id="learnExtractor" name="transform tei learn corpus to working format "
                      flowable:class="org.atilf.delegate.disambiguation.contextLexicon.ContextExtractorDelegate"/>
 
-        <sequenceFlow sourceRef="learnExtractor" targetRef="forkLearn"/>
         <parallelGateway id="forkLearn"/>
-        <sequenceFlow sourceRef="xslLearn" targetRef="forkLearn"/>
+        <sequenceFlow sourceRef="learnExtractor" targetRef="forkLearn"/>
         <sequenceFlow sourceRef="forkLearn" targetRef="posCleaner"/>
         <sequenceFlow sourceRef="forkLearn" targetRef="thresholdCleaner"/>
 
