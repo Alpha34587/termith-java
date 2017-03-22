@@ -8,7 +8,6 @@ import org.atilf.module.Module;
 import org.atilf.module.enrichment.analyzer.treeTaggerWorker.MorphologySerializer;
 import org.atilf.module.enrichment.analyzer.treeTaggerWorker.MorphologyTokenizer;
 import org.atilf.module.enrichment.analyzer.treeTaggerWorker.TreeTaggerWrapper;
-import org.atilf.runner.Runner;
 import org.atilf.tools.FilesUtils;
 
 import java.io.File;
@@ -30,14 +29,20 @@ public class TreeTaggerWorker extends Module {
     private StringBuilder _xml;
     private TextAnalyzer _textAnalyzer;
     private String _outputPath;
+    private final String _lang;
+    private final String _treeTaggerHome;
+
     /**
      *  @param termithIndex the termithIndex of the associated Thread
      * @param corpusAnalyzer this object contains the metadata used for write json file
      * @param id the name of the file in the map who contains the extracted text of the xml file
      */
-    public TreeTaggerWorker(TermithIndex termithIndex, CorpusAnalyzer corpusAnalyzer, String id, String outputPath) {
+    public TreeTaggerWorker(TermithIndex termithIndex, CorpusAnalyzer corpusAnalyzer, String id, String outputPath,
+                            String lang, String treeTaggerHome) {
         super(termithIndex);
         _outputPath = outputPath;
+        _lang = lang;
+        _treeTaggerHome = treeTaggerHome;
         _txt = FilesUtils.readObject(termithIndex.getExtractedText().get(id),StringBuilder.class);
         _jsonPath = outputPath + "/json/" + id + ".json";
         _textAnalyzer = corpusAnalyzer.getAnalyzedTexts().get(id);
@@ -68,8 +73,8 @@ public class TreeTaggerWorker extends Module {
          */
         TreeTaggerWrapper treeTaggerWrapper = new TreeTaggerWrapper(
                 _txt,
-                new TreeTaggerParameter(false, Runner.getLang(), Runner.getTreeTaggerHome()),
-                Runner.getOut().toString()
+                new TreeTaggerParameter(false, _lang, _treeTaggerHome),
+                _outputPath
         );
 
         try {
@@ -100,10 +105,10 @@ public class TreeTaggerWorker extends Module {
             retained tokenize body and json file in the termithIndex
              */
             _termithIndex.getTokenizeTeiBody().put(json.getName().replace(".json",""),
-                    FilesUtils.writeObject(morphologyTokenizer.getTokenizeBuffer(), Runner.getOut()));
+                    FilesUtils.writeObject(morphologyTokenizer.getTokenizeBuffer(), Paths.get(_outputPath)));
 
             _termithIndex.getMorphologyStandOff().put(json.getName().replace(".json",""),
-                    FilesUtils.writeObject(morphologyTokenizer.getOffsetId(), Runner.getOut()));
+                    FilesUtils.writeObject(morphologyTokenizer.getOffsetId(), Paths.get(_outputPath)));
             _logger.debug("tokenization and morphosyntax tasks finished file : " + _jsonPath);
         } catch (IOException e) {
             _logger.error("error during execute TreeTagger data", e);
@@ -121,8 +126,8 @@ public class TreeTaggerWorker extends Module {
      */
     private void init(){
         try {
-            Files.createDirectories(Paths.get(Runner.getOut() + "/json"));
-            _logger.debug("create temporary text files in " + Runner.getOut() + "/json folder");
+            Files.createDirectories(Paths.get(_outputPath + "/json"));
+            _logger.debug("create temporary text files in " + _outputPath + "/json folder");
         } catch (IOException e) {
             _logger.error("cannot create directories : ",e);
         }
