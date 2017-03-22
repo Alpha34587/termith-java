@@ -43,14 +43,11 @@ public class DisambiguationCLI {
         Option debug = new Option("d","debug",true,"show debug log");
         debug.setRequired(false);
         debug.setArgs(0);
-        Option score = new Option("s","score",true,"evaluation of module.disambiguation");
-        score.setRequired(true);
 
         options.addOption(learning);
         options.addOption(evaluation);
         options.addOption(out);
         options.addOption(debug);
-        options.addOption(score);
 
         try {
             CommandLine line = parser.parse( options, args );
@@ -63,7 +60,6 @@ public class DisambiguationCLI {
                     .setLearningPath(line.getOptionValue("le"))
                     .setBpmnDiagram("runner/disambiguation.bpmn20.xml")
                     .setEvaluationPath(line.getOptionValue("e"))
-                    .setScorePath(line.getOptionValue("s"))
                     .setOut(line.getOptionValue("o"))
                     .createRunner();
             runner.execute();
