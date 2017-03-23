@@ -43,6 +43,6 @@ public class TerminologyParserDelegate extends Delegate {
 
         _executorService.shutdown();
         _executorService.awaitTermination(1L,TimeUnit.DAYS);
-        _logger.info("terminology extraction finished");
+        _logger.info("terminology parsing is finished");
     }
 }

@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * @author Simon Meoni Created on 15/12/16.
  */
-public class TransformXslScore extends Delegate {
+public class TransformXslScoreDelegate extends Delegate {
 
     /**
      * this method is used to execute the different steps of processing of a delegate

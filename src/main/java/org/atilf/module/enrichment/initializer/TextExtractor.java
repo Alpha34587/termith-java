@@ -108,7 +108,7 @@ public class TextExtractor extends Module {
             }
             _logger.debug("Extraction done for file: " + _file);
         } catch (IOException e) {
-            _logger.error("File Exception",e);
+            _logger.error("File Exception : ",e);
         }
     }
 }

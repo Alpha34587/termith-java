@@ -55,7 +55,7 @@ public class TerminologyStandOff extends Module {
      * the execute method calls fillNavigableMaps and retrieves for each term occurrences, words associated with them
      */
     public void execute() {
-        _logger.debug("retrieve morphosyntax id for file :" + _id);
+        _logger.debug("retrieve morphosyntax id for file : " + _id);
         fillNavigableMaps();
         _terminology.forEach(
                 el -> el.setIds(retrieveMorphologyIds(el.getBegin(),el.getEnd()))

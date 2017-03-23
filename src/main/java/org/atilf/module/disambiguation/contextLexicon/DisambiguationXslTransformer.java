@@ -84,7 +84,7 @@ public class DisambiguationXslTransformer extends Module{
         super.run();
 
         try {
-            _logger.info("convert xml file: " + _file.getAbsolutePath());
+            _logger.info("convert xml file : " + _file.getAbsolutePath());
             _xmlTransformedMap.put(
                     FilesUtils.nameNormalizer(
                     /*
@@ -102,9 +102,9 @@ public class DisambiguationXslTransformer extends Module{
             /*
             decrease the counter
              */
-            _logger.info("Extraction done for file: " + _file);
+            _logger.info("Extraction done for file : " + _file);
         } catch (IOException e) {
-            _logger.error("File Exception: ",e);
+            _logger.error("File Exception : ",e);
         }
     }
 

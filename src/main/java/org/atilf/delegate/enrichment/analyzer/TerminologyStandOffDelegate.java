@@ -47,6 +47,6 @@ public class TerminologyStandOffDelegate extends Delegate {
         );
         _executorService.shutdown();
         _executorService.awaitTermination(1L,TimeUnit.DAYS);
-        _logger.info("terminology extraction finished");
+        _logger.info("convert terminology into standOff is finished");
     }
 }

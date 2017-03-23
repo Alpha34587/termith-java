@@ -24,7 +24,7 @@ public class CorpusMapper extends Module {
     }
 
     /**
-     * put xml path on xmlCorpus hashmap
+     * put xml path on xmlCorpus hashMap
      */
     public void execute(){
         termithIndex.getXmlCorpus().put(FilesUtils.nameNormalizer(path.getFileName().toString()), path);

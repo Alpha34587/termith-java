@@ -204,7 +204,7 @@ public class BenchmarkFactory {
                     try {
                         jg.writeNumberField(timePerformanceEvent.getName(), timePerformanceEvent.getElapsedTime());
                     } catch (IOException e) {
-                        LOGGER.error("cannot write number value", e);
+                        LOGGER.error("cannot write number value : ", e);
                     }
                 });
             }
@@ -216,7 +216,7 @@ public class BenchmarkFactory {
                         jg.writeNumberField(memoryPerformanceEvent.getName(),
                                 memoryPerformanceEvent.getUsedMemory());
                     } catch (IOException e) {
-                        LOGGER.error("cannot write number value", e);
+                        LOGGER.error("cannot write number value : ", e);
                     }
                 });
             }

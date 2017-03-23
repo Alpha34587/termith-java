@@ -30,14 +30,14 @@ public class TreeTaggerWorkerDelegate extends Delegate {
 
     /**
      * this method return the result of the InitializerThread.
-     * @return it returns a hashmap who contains the extracted text of the previous step of each files
+     * @return it returns a hashMap who contains the extracted text of the previous step of each files
      * @see TextExtractor
      */
     private Map<String,StringBuilder> createTextHashMap(){
         Map<String,StringBuilder> textMap = new HashMap<>();
 
         /*
-        read extracted text of the previous phase and put the result to the hashmap. the filename is
+        read extracted text of the previous phase and put the result to the hashMap. the filename is
         the key of each entries
          */
         _termithIndex.getExtractedText().forEach(
@@ -83,6 +83,5 @@ public class TreeTaggerWorkerDelegate extends Delegate {
         _logger.info("waiting that all json files are serialized");
         _executorService.shutdown();
         _executorService.awaitTermination(1L,TimeUnit.DAYS);
-        _logger.info("terminology extraction finished");
     }
 }

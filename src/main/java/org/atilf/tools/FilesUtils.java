@@ -99,7 +99,7 @@ public class FilesUtils {
             oos.reset();
             oos.close();
         } catch (IOException e) {
-            LOGGER.error("could not write object",e);
+            LOGGER.error("could not write object : ",e);
         }
         finally {
             if (fos != null){
@@ -145,18 +145,18 @@ public class FilesUtils {
             in.close();
         }
         catch (IOException e) {
-            LOGGER.error("could not open file",e);
+            LOGGER.error("could not open file : ",e);
 
         }
         catch (ClassNotFoundException e) {
-            LOGGER.error("could import object",e);
+            LOGGER.error("could import object : ",e);
         }
         finally {
             if (fis != null){
                 try {
                     fis.close();
                 } catch (IOException e) {
-                    LOGGER.error("could not close object",e);
+                    LOGGER.error("could not close object : ",e);
                 }
             }
         }
@@ -182,18 +182,18 @@ public class FilesUtils {
             in.close();
         }
         catch (IOException e) {
-            LOGGER.error("could not open file",e);
+            LOGGER.error("could not open file : ",e);
 
         }
         catch (ClassNotFoundException e) {
-            LOGGER.error("could import object",e);
+            LOGGER.error("could import object : ",e);
         }
         finally {
             if (fis != null){
                 try {
                     fis.close();
                 } catch (IOException e) {
-                    LOGGER.error("could not close object",e);
+                    LOGGER.error("could not close object : ",e);
                 }
             }
         }
@@ -216,7 +216,7 @@ public class FilesUtils {
                 FileUtils.deleteDirectory(folder);
             }
             if (!folder.mkdir()){
-                throw new IOException("cannot create output folder");
+                throw new IOException("cannot create output folder " + folder.toString());
             }
         }
         catch (IOException e) {

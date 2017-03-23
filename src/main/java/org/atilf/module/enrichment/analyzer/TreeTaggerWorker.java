@@ -116,7 +116,7 @@ public class TreeTaggerWorker extends Module {
             _logger.error("error during Tree Tagger Process : ",e);
             Thread.currentThread().interrupt();
         } catch (Exception e) {
-            _logger.error("error during xml tokenization execute",e);
+            _logger.error("error during xml tokenization execute : ",e);
         }
     }
 

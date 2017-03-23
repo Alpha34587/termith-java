@@ -110,7 +110,7 @@ public class TerminologyParser extends Module {
             }
         }
         catch (Exception e){
-            _logger.error("cannot parse file",e);
+            _logger.error("cannot parse file : ",e);
         }
     }
 

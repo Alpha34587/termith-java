@@ -28,7 +28,7 @@ public class TextExtractorDelegate extends Delegate {
         XslResources xslResources = new XslResources();
 
         /*
-        extract the text and map the path of the corpus into hashmap with identifier
+        extract the text and map the path of the corpus into hashMap with identifier
          */
         Files.list(Runner.getBase()).forEach(
                 p -> _executorService.submit(new TextExtractor(p.toFile(), _termithIndex, xslResources))

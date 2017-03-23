@@ -134,7 +134,6 @@ public class Evaluation extends Module{
     void computeFactor(EvaluationProfile entry,
                        LexiconProfile lexOn,
                        LexiconProfile lexOff) {
-        _logger.debug("compute factor ...");
         entry.forEach(
                 el -> {
                     _factorOn += occurrenceScore(lexOn.getSpecCoefficient(el),entry.count(el));
