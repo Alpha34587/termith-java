@@ -3,7 +3,9 @@ package org.atilf.delegate.disambiguation.contextLexicon;
 import org.atilf.delegate.Delegate;
 import org.atilf.models.disambiguation.DisambiguationXslResources;
 import org.atilf.module.disambiguation.contextLexicon.DisambiguationXslTransformer;
+import org.atilf.monitor.timer.TermithProgressTimer;
 import org.atilf.runner.Runner;
+import org.flowable.engine.delegate.DelegateExecution;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -35,5 +37,20 @@ public class LearnXslTransformerDelegate extends Delegate {
         _logger.info("Waiting ContextExtractor executors to finish");
         _executorService.shutdown();
         _executorService.awaitTermination(1L, TimeUnit.DAYS);
+    }
+
+    @Override
+    public void initialize(DelegateExecution execution) {
+        super.initialize(execution);
+        try {
+            new TermithProgressTimer(_termithIndex.getLearningTransformedFile().values(),
+                    (int) Files.list(Runner.getLearningPath()).count(),
+                    this.getClass
+                            (),_executorService)
+                    .start();
+        } catch (IOException e) {
+            _logger.error("cannot list files");
+        }
+
     }
 }

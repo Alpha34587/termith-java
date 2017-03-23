@@ -2,11 +2,14 @@ package org.atilf.delegate.disambiguation.disambiguationExporter;
 
 import org.atilf.delegate.Delegate;
 import org.atilf.module.disambiguation.disambiguationExporter.DisambiguationTeiWriter;
+import org.atilf.monitor.timer.TermithProgressTimer;
 import org.atilf.runner.Runner;
-import org.atilf.tools.FilesUtils;
 
 import java.io.IOException;
 import java.nio.file.Files;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -26,17 +29,13 @@ public class DisambiguationExporterDelegate extends Delegate {
      */
     public void executeTasks() throws IOException, InterruptedException {
 
+        List<Future> futures = new ArrayList<>();
         Files.list(Runner.getEvaluationPath()).forEach(
-                p -> {
-                    String file = FilesUtils.nameNormalizer(p.toString());
-                    _executorService.submit(new DisambiguationTeiWriter(
-                            p.toString(),
-                            _termithIndex,
-                            Runner.getOut().toString()
-                    ));
-                }
-
-        );
+                p -> futures.add(_executorService.submit(new DisambiguationTeiWriter(
+                        p.toString(),
+                        _termithIndex,
+                        Runner.getOut().toString()))));
+        new TermithProgressTimer(futures,this.getClass(),_executorService).start();
         _logger.info("Waiting ContextExtractorWorker executors to finish");
         _executorService.shutdown();
         _executorService.awaitTermination(1L, TimeUnit.DAYS);
