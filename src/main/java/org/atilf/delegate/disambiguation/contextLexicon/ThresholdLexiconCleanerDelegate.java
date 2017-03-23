@@ -1,10 +1,13 @@
 package org.atilf.delegate.disambiguation.contextLexicon;
 
 import org.atilf.delegate.Delegate;
-import org.atilf.models.disambiguation.DisambiguationXslResources;
 import org.atilf.module.disambiguation.evaluation.ThresholdLexiconCleaner;
+import org.atilf.monitor.timer.TermithProgressTimer;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -22,22 +25,23 @@ public class ThresholdLexiconCleanerDelegate extends Delegate {
      * xsl transformation phase
      * @throws InterruptedException thrown if awaitTermination function is interrupted while waiting
      */
-    public void execute() throws IOException, InterruptedException {
-        DisambiguationXslResources xslResources = new DisambiguationXslResources();
-
+    public void executeTasks() throws IOException, InterruptedException {
         /*
         Threshold cleaner
          */
+        List<Future> futures = new ArrayList<>();
         _termithIndex.getContextLexicon().keySet().forEach(
-                key -> _executorService.submit(new ThresholdLexiconCleaner(
+                key ->  futures.add(_executorService.submit(new ThresholdLexiconCleaner(
                         key,
                         _termithIndex,
                         getFlowableVariable("freqMin",3),
-                        getFlowableVariable("freqMax",15)
+                        getFlowableVariable("freqMax",15))
                 ))
         );
+        new TermithProgressTimer(futures,this.getClass(),_executorService).start();
         _logger.info("Waiting EvaluationWorker executors to finish");
         _executorService.shutdown();
         _executorService.awaitTermination(1L, TimeUnit.DAYS);
+
     }
 }

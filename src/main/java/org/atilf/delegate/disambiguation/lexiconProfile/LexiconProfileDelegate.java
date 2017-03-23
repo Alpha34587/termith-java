@@ -5,6 +5,7 @@ import org.atilf.models.disambiguation.RConnectionPool;
 import org.atilf.models.disambiguation.RLexicon;
 import org.atilf.module.disambiguation.lexiconProfile.SpecCoefficientInjector;
 import org.atilf.runner.Runner;
+import org.flowable.engine.delegate.DelegateExecution;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -25,7 +26,7 @@ public class LexiconProfileDelegate extends Delegate {
      * words for each context of terms candidates entries (also known as lexical profile)
      * @throws InterruptedException thrown if awaitTermination function is interrupted while waiting
      */
-    public void execute() throws InterruptedException, IOException {
+    public void executeTasks() throws InterruptedException, IOException {
         /*
         convert global corpus into R variable
          */
@@ -45,5 +46,10 @@ public class LexiconProfileDelegate extends Delegate {
         _executorService.awaitTermination(1L, TimeUnit.DAYS);
         RConnectionPool.removeThread(currentThread());
         Files.delete(rLexicon.getCsvPath());
+    }
+
+    @Override
+    public void initialize(DelegateExecution execution) {
+        super.initialize(execution);
     }
 }

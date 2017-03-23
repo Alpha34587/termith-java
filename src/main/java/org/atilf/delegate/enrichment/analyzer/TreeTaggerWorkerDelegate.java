@@ -8,6 +8,7 @@ import org.atilf.module.enrichment.analyzer.TerminologyStandOff;
 import org.atilf.module.enrichment.analyzer.TermsuitePipelineBuilder;
 import org.atilf.module.enrichment.analyzer.TreeTaggerWorker;
 import org.atilf.module.enrichment.initializer.TextExtractor;
+import org.atilf.monitor.timer.TermithProgressTimer;
 import org.atilf.runner.Runner;
 import org.atilf.tools.FilesUtils;
 
@@ -61,7 +62,7 @@ public class TreeTaggerWorkerDelegate extends Delegate {
      * @see TerminologyParser
      * @see TerminologyStandOff
      */
-    public void execute() throws InterruptedException, IOException, ExecutionException {
+    public void executeTasks() throws InterruptedException, IOException, ExecutionException {
         /*
         Build Corpus analyzer
          */
@@ -81,6 +82,8 @@ public class TreeTaggerWorkerDelegate extends Delegate {
                 ))
         );
         _logger.info("waiting that all json files are serialized");
+        new TermithProgressTimer(_termithIndex.getSerializeJson(),Runner.getCorpusSize(),this.getClass(),_executorService)
+                .start();
         _executorService.shutdown();
         _executorService.awaitTermination(1L,TimeUnit.DAYS);
     }
