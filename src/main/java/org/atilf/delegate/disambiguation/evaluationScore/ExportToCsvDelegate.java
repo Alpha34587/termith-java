@@ -1,7 +1,7 @@
 package org.atilf.delegate.disambiguation.evaluationScore;
 
 import org.atilf.delegate.Delegate;
-import org.atilf.module.disambiguation.evaluationScore.ExportScoreToJson;
+import org.atilf.module.disambiguation.evaluationScore.ExportScoreToCsv;
 import org.atilf.runner.Runner;
 
 import java.io.IOException;
@@ -26,7 +26,7 @@ public class ExportToCsvDelegate extends Delegate {
      */
     @Override
     public void executeTasks() throws IOException, InterruptedException, ExecutionException {
-        _executorService.submit(new ExportScoreToJson(_termithIndex, Runner.getScorePath(), true)).get();
+        _executorService.submit(new ExportScoreToCsv(_termithIndex, Runner.getScorePath())).get();
         _executorService.shutdown();
         _executorService.awaitTermination(1L, TimeUnit.DAYS);
     }
