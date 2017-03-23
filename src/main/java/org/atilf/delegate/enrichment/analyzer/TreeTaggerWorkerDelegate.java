@@ -61,7 +61,7 @@ public class TreeTaggerWorkerDelegate extends Delegate {
      * @see TerminologyParser
      * @see TerminologyStandOff
      */
-    public void execute() throws InterruptedException, IOException, ExecutionException {
+    public void executeTasks() throws InterruptedException, IOException, ExecutionException {
         /*
         Build Corpus analyzer
          */
@@ -84,4 +84,6 @@ public class TreeTaggerWorkerDelegate extends Delegate {
         _executorService.shutdown();
         _executorService.awaitTermination(1L,TimeUnit.DAYS);
     }
+
+
 }

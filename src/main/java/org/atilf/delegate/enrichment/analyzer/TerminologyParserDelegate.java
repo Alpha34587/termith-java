@@ -37,7 +37,7 @@ public class TerminologyParserDelegate extends Delegate {
      * @see TerminologyParserDelegate
      * @see TerminologyStandOff
      */
-    public void execute() throws InterruptedException, IOException, ExecutionException {
+    public void executeTasks() throws InterruptedException, IOException, ExecutionException {
 
         _executorService.submit(new TerminologyParser(_termithIndex));
 

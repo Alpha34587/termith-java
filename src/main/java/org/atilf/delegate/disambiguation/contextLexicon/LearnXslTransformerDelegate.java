@@ -17,7 +17,7 @@ import java.util.concurrent.TimeUnit;
 public class LearnXslTransformerDelegate extends Delegate {
 
     @Override
-    public void execute() throws IOException, InterruptedException {
+    public void executeTasks() throws IOException, InterruptedException {
         DisambiguationXslResources xslResources = new DisambiguationXslResources();
 
         /*
