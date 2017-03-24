@@ -58,7 +58,7 @@
         <sequenceFlow sourceRef="exporter" targetRef="cleaner"/>
 
         <serviceTask id="cleaner" name="export result in tei format"
-                     flowable:class="org.atilf.delegate.enrichment.cleaner.WorkingFileCleanerDelegate"/>
+                     flowable:class="org.atilf.delegate.tools.WorkingFileCleanerDelegate"/>
 
         <sequenceFlow sourceRef="cleaner" targetRef="endEvent"/>
         <endEvent id="endEvent"/>

@@ -74,8 +74,11 @@
         <serviceTask id="exporter" name="export result in tei"
                      flowable:class="org.atilf.delegate.disambiguation.disambiguationExporter.DisambiguationExporterDelegate"/>
 
+        <sequenceFlow sourceRef="exporter" targetRef="cleaner"/>
+        <serviceTask id="cleaner" name="clean working directory"
+                     flowable:class="org.atilf.delegate.tools.WorkingFileCleanerDelegate"/>
 
-        <sequenceFlow sourceRef="exporter" targetRef="endEvent"/>
+        <sequenceFlow sourceRef="cleaner" targetRef="endEvent"/>
         <endEvent id="endEvent"/>
     </process>
 
