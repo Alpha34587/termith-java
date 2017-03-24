@@ -3,6 +3,7 @@ package org.atilf.delegate.enrichment.analyzer;
 import org.atilf.delegate.Delegate;
 import org.atilf.models.enrichment.CorpusAnalyzer;
 import org.atilf.models.enrichment.TagNormalizer;
+import org.atilf.models.enrichment.TreeTaggerParameter;
 import org.atilf.module.enrichment.analyzer.TerminologyParser;
 import org.atilf.module.enrichment.analyzer.TerminologyStandOff;
 import org.atilf.module.enrichment.analyzer.TermsuitePipelineBuilder;
@@ -68,6 +69,10 @@ public class TreeTaggerWorkerDelegate extends Delegate {
          */
         CorpusAnalyzer corpusAnalyzer = new CorpusAnalyzer(createTextHashMap());
         TagNormalizer.initTag(Runner.getLang());
+        TreeTaggerParameter treeTaggerParameter =  new TreeTaggerParameter(false, Runner.getLang(),
+                Runner.getTreeTaggerHome(),
+                Runner.getOut().toString());
+
         /*
         Write morphology json file
          */
@@ -78,7 +83,7 @@ public class TreeTaggerWorkerDelegate extends Delegate {
                         key,
                         Runner.getOut().toString(),
                         Runner.getLang(),
-                        Runner.getTreeTaggerHome()
+                        treeTaggerParameter
                 ))
         );
         _logger.info("waiting that all json files are serialized");
