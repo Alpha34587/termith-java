@@ -1,4 +1,4 @@
-package org.atilf.delegate.enrichment.cleaner;
+package org.atilf.delegate.tools;
 
 import org.atilf.delegate.Delegate;
 import org.atilf.module.tools.WorkingFilesCleaner;
