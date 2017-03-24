@@ -36,7 +36,7 @@ public class TerminologyStandOffDelegate extends Delegate {
      * @see TerminologyParser
      * @see TerminologyStandOff
      */
-    public void execute() throws InterruptedException, IOException, ExecutionException {
+    public void executeTasks() throws InterruptedException, IOException, ExecutionException {
         /*
         deserialize the termsuite terminology
          */
@@ -47,6 +47,6 @@ public class TerminologyStandOffDelegate extends Delegate {
         );
         _executorService.shutdown();
         _executorService.awaitTermination(1L,TimeUnit.DAYS);
-        _logger.info("terminology extraction finished");
+        _logger.info("convert terminology into standOff is finished");
     }
 }

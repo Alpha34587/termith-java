@@ -121,7 +121,7 @@ public class TermsuitePipelineBuilder extends Module {
         try {
             Files.write(Paths.get(_outputPath +"/termsuite-resources.jar"), ByteStreams.toByteArray(resourceAsStream));
         } catch (IOException e) {
-            _logger.error("cannot copy termsuite-resources.jar",e);
+            _logger.error("cannot copy termsuite-resources.jar : ",e);
         }
         return _outputPath +"/termsuite-resources.jar";
     }

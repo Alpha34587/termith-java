@@ -1,4 +1,4 @@
-package org.atilf.module.enrichment.cleaner;
+package org.atilf.module.tools;
 
 import org.apache.commons.io.FileUtils;
 import org.atilf.module.Module;
@@ -51,7 +51,7 @@ public class WorkingFilesCleaner extends Module{
                             try {
                                 FileUtils.deleteDirectory(file);
                             } catch (IOException e) {
-                                _logger.error("cannot delete directory",e);
+                                _logger.error("cannot delete directory : ",e);
                             }
                         }
                         /*
@@ -62,16 +62,16 @@ public class WorkingFilesCleaner extends Module{
                                 try {
                                     Files.delete(file.toPath());
                                 } catch (NoSuchFileException e) {
-                                    _logger.error("no such file or directory", e);
+                                    _logger.error("no such file or directory : ", e);
                                 } catch (IOException e) {
-                                    _logger.error("File permission problem", e);
+                                    _logger.error("File permission problem : ", e);
                                 }
                             }
                         }
                     }
             );
         } catch (IOException e) {
-            _logger.error("no such file or directory", e);
+            _logger.error("no such file or directory : ", e);
         }
     }
 

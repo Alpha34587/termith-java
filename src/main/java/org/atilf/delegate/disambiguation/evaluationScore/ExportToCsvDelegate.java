@@ -1,7 +1,7 @@
 package org.atilf.delegate.disambiguation.evaluationScore;
 
 import org.atilf.delegate.Delegate;
-import org.atilf.module.disambiguation.evaluationScore.ExportScoreToJson;
+import org.atilf.module.disambiguation.evaluationScore.ExportScoreToCsv;
 import org.atilf.runner.Runner;
 
 import java.io.IOException;
@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 public class ExportToCsvDelegate extends Delegate {
 
     /**
-     * this method is used to execute the different steps of processing of a delegate
+     * this method is used to executeTasks the different steps of processing of a delegate
      *
      * @throws IOException
      *         thrown a IO exception if a file is not found or have a permission problem during the xsl transformation
@@ -25,8 +25,8 @@ public class ExportToCsvDelegate extends Delegate {
      *         thrown a exception if a system process is interrupted
      */
     @Override
-    public void execute() throws IOException, InterruptedException, ExecutionException {
-        _executorService.submit(new ExportScoreToJson(_termithIndex, Runner.getScorePath(), true)).get();
+    public void executeTasks() throws IOException, InterruptedException, ExecutionException {
+        _executorService.submit(new ExportScoreToCsv(_termithIndex, Runner.getScorePath())).get();
         _executorService.shutdown();
         _executorService.awaitTermination(1L, TimeUnit.DAYS);
     }

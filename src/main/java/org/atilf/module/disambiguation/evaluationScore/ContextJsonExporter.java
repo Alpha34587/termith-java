@@ -40,7 +40,7 @@ public class ContextJsonExporter extends Module{
                             g.writeNumberField(key,_termithIndex.getCorpusLexicon().getLexicalTable().count(key));
                             g.writeEndObject();
                         } catch (IOException e) {
-                            _logger.error("cannot write corpus occurrence",e);
+                            _logger.error("cannot write corpus occurrence : ",e);
                         }
 
                     }
@@ -58,7 +58,7 @@ public class ContextJsonExporter extends Module{
                                         try {
                                             g.writeNumberField(occ, value.getLexicalTable().count(occ));
                                         } catch (IOException e) {
-                                            _logger.error("cannot write occurrence ",e);
+                                            _logger.error("cannot write occurrence : ",e);
                                         }
                                     }
                             );
@@ -70,7 +70,7 @@ public class ContextJsonExporter extends Module{
                                             try {
                                                 g.writeNumberField(word, spec);
                                             } catch (IOException e) {
-                                                _logger.error("cannot write occurrence ", e);
+                                                _logger.error("cannot write occurrence : ", e);
                                             }
                                         }
                                 );

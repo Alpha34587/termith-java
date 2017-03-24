@@ -5,7 +5,7 @@ import org.atilf.models.enrichment.MorphologyOffsetId;
 import org.atilf.models.enrichment.StandOffResources;
 import org.atilf.models.enrichment.TermOffsetId;
 import org.atilf.module.Module;
-import org.atilf.tools.FilesUtils;
+import org.atilf.module.tools.FilesUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -200,6 +200,7 @@ public class TeiWriter extends Module{
         _bufferedWriter.append(replaceTemplate(cut(new StringBuilder(_stdfRes.STANDOFF),false),"@type","candidatsTermes"));
         _bufferedWriter.append(_stdfRes.T_TEI_HEADER);
         _bufferedWriter.append(cut(_stdfRes.LIST_ANNOTATION,false));
+        _bufferedWriter.append(_stdfRes.T_INTERP_GRP);
         /*
         write his content
          */

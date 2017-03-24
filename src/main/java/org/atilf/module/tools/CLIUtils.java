@@ -1,4 +1,4 @@
-package org.atilf.tools;
+package org.atilf.module.tools;
 
 import ch.qos.logback.classic.Level;
 import org.slf4j.Logger;

@@ -1,6 +1,6 @@
 package org.atilf.models.enrichment;
 
-import org.atilf.tools.FilesUtils;
+import org.atilf.module.tools.FilesUtils;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.ClassRule;

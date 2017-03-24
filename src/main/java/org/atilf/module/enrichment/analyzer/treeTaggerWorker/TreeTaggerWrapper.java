@@ -8,10 +8,9 @@ import org.slf4j.LoggerFactory;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayDeque;
-import java.util.Deque;
 import java.util.UUID;
 import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 /**
  * send a text to a TreeTagger process and retrieve the result in the _ttOut field
@@ -108,7 +107,8 @@ public class TreeTaggerWrapper {
         bw.write(parsingText);
         bw.flush();
         bw.close();
-        LOGGER.debug("write treetagger input :"  + temp.getAbsolutePath());
+
+        LOGGER.debug("write file during a tree tagger tasks :"  + temp.getAbsolutePath());
         return temp.getAbsolutePath();
     }
 
@@ -116,56 +116,25 @@ public class TreeTaggerWrapper {
      * make each word separate by a space and punctuations in a new line.
      * @return return the execute text
      */
-    private String parsingText(){
-        Deque<String> oldPunctuations = new ArrayDeque<>();
-        Deque<String> newPunctuations = new ArrayDeque<>();
-        oldPunctuations.add(".");
-        oldPunctuations.add("?");
-        oldPunctuations.add("!");
-        oldPunctuations.add(";");
-        oldPunctuations.add(",");
-        oldPunctuations.add(",");
-        oldPunctuations.add(":");
-        oldPunctuations.add("(");
-        oldPunctuations.add(")");
-        oldPunctuations.add("[");
-        oldPunctuations.add("]");
-        oldPunctuations.add("{");
-        oldPunctuations.add("}");
-        oldPunctuations.add("\"");
-        oldPunctuations.add("\'");
+    private String parsingText() throws IOException, InterruptedException {
 
-        newPunctuations.add("\n.\n");
-        newPunctuations.add("\n?\n");
-        newPunctuations.add("\n!\n");
-        newPunctuations.add("\n;\n");
-        newPunctuations.add("\n,\n");
-        newPunctuations.add("\n,\n");
-        newPunctuations.add("\n:\n");
-        newPunctuations.add("\n(\n");
-        newPunctuations.add("\n)\n");
-        newPunctuations.add("\n[\n");
-        newPunctuations.add("\n]\n");
-        newPunctuations.add("\n{\n");
-        newPunctuations.add("\n}\n");
-        newPunctuations.add("\n\"\n");
-        newPunctuations.add("\n\'\n");
+        String tokenizePath = writeFile(_txt.toString());
+        Process p = Runtime.getRuntime().exec(new String[]{
+                _treeTaggerParameter.getTreeTaggerHome() + "/cmd/./utf8-tokenize.perl",
+                "-f",
+                tokenizePath});
 
-        /*
-        remove the page layout
-         */
-        String parseTxt = _txt.toString().trim();
-        /*
-        replace space by newline
-         */
-        parseTxt = parseTxt.replaceAll("\\s+", "\n");
-        /*
-        split punctuations
-         */
-        while (!oldPunctuations.isEmpty()) {
-                    parseTxt = parseTxt.replace(oldPunctuations.poll(), newPunctuations.poll());
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(p.getInputStream()));
+        String collect = bufferedReader.lines().collect(Collectors.joining("\n"));
+        int exitCode = p.waitFor();
+                if (exitCode != 0) {
+            throw new InterruptedException(IOUtils.toString(p.getErrorStream(),"UTF-8"));
+
         }
-
-        return parseTxt;
+        if (p.isAlive()){
+            p.destroy();
+        }
+        Files.delete(Paths.get(tokenizePath));
+        return collect;
     }
 }

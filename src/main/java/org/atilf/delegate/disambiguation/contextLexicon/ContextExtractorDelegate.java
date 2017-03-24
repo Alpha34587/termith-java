@@ -2,10 +2,12 @@ package org.atilf.delegate.disambiguation.contextLexicon;
 
 import org.atilf.delegate.Delegate;
 import org.atilf.module.disambiguation.contextLexicon.ContextExtractor;
+import org.atilf.monitor.timer.TermithProgressTimer;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -16,7 +18,7 @@ import java.util.concurrent.TimeUnit;
 public class ContextExtractorDelegate extends Delegate {
 
     @Override
-    public void execute() throws IOException, InterruptedException {
+    public void executeTasks() throws IOException, InterruptedException {
 
         List<String> includeElement = new ArrayList<>();
         includeElement.add("p");
@@ -41,17 +43,19 @@ public class ContextExtractorDelegate extends Delegate {
         authorizedTag.add("VER:impf");
         authorizedTag.add("VER:subi");
 
+        List<Future> futures = new ArrayList<>();
         _termithIndex.getLearningTransformedFile().values().forEach(
-                (file) -> _executorService.submit(
+                (file) -> futures.add(_executorService.submit(
                         new ContextExtractor(file.toString(),
                                 _termithIndex.getContextLexicon(),
                                 _termithIndex.getCorpusLexicon(),
                                 getFlowableVariable("window",0),
                                 authorizedTag,
                                 includeElement
-                                )
+                                ))
                 )
         );
+        new TermithProgressTimer(futures,this.getClass(),_executorService).start();
         _logger.info("Waiting ContextExtractor executors to finish");
         _executorService.shutdown();
         _executorService.awaitTermination(1L, TimeUnit.DAYS);

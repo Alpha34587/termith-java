@@ -37,16 +37,16 @@ public class TermsuitePipelineBuilderDelegate extends Delegate {
      * @see TerminologyParser
      * @see TerminologyStandOff
      */
-    public void execute() throws InterruptedException, IOException, ExecutionException {
+    public void executeTasks() throws InterruptedException, IOException, ExecutionException {
 
         /*
-        execute termsuite
+        executeTasks termsuite
          */
         _executorService.submit(
                 new TermsuitePipelineBuilder(_termithIndex, Runner.getOut().toString(),Runner.getLang()));
 
         _executorService.shutdown();
         _executorService.awaitTermination(1L,TimeUnit.DAYS);
-        _logger.info("terminology extraction finished");
+        _logger.info("termsuite step is finished");
     }
 }

@@ -11,17 +11,14 @@ import org.slf4j.LoggerFactory;
 import javax.xml.transform.TransformerException;
 import java.io.IOException;
 
-//import org.atilf.runner.Disambiguation;
-
 /**
- * @author Simon Meoni
- *         Created on 11/10/16.
+ * Created by smeoni on 23/03/17.
  */
-public class DisambiguationCLI {
+public class DisambiguationScoreCLI {
     private static final Options options = new Options();
     private static final Logger LOGGER = LoggerFactory.getLogger(DisambiguationCLI.class.getName());
 
-    private DisambiguationCLI() {
+    private DisambiguationScoreCLI() {
         throw new IllegalAccessError("Utility class");
     }
 
@@ -40,6 +37,8 @@ public class DisambiguationCLI {
         evaluation.setRequired(true);
         Option out = new Option("o","output",true,"output folder");
         out.setRequired(true);
+        Option score = new Option("s","score",true,"path of the score folder");
+        score.setRequired(true);
         Option debug = new Option("d","debug",true,"show debug log");
         debug.setRequired(false);
         debug.setArgs(0);
@@ -47,6 +46,7 @@ public class DisambiguationCLI {
         options.addOption(learning);
         options.addOption(evaluation);
         options.addOption(out);
+        options.addOption(score);
         options.addOption(debug);
 
         try {
@@ -58,8 +58,9 @@ public class DisambiguationCLI {
 
             Runner runner = new RunnerBuilder()
                     .setLearningPath(line.getOptionValue("le"))
-                    .setBpmnDiagram("runner/disambiguation.bpmn20.xml")
+                    .setBpmnDiagram("runner/disambiguationScore.bpmn20.xml")
                     .setEvaluationPath(line.getOptionValue("e"))
+                    .setScorePath(line.getOptionValue("s"))
                     .setOut(line.getOptionValue("o"))
                     .createRunner();
             runner.execute();

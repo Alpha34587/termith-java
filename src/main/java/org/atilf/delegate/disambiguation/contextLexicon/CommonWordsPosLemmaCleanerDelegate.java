@@ -2,8 +2,12 @@ package org.atilf.delegate.disambiguation.contextLexicon;
 
 import org.atilf.delegate.Delegate;
 import org.atilf.module.disambiguation.evaluation.CommonWordsPosLemmaCleaner;
+import org.atilf.monitor.timer.TermithProgressTimer;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -21,26 +25,27 @@ public class CommonWordsPosLemmaCleanerDelegate extends Delegate {
      * xsl transformation phase
      * @throws InterruptedException thrown if awaitTermination function is interrupted while waiting
      */
-    public void execute() throws IOException, InterruptedException {
+    public void executeTasks() throws IOException, InterruptedException {
 
         /*
         Common PosLemma cleaner
          */
+        List<Future> futures = new ArrayList<>();
         _termithIndex.getContextLexicon().forEach(
                 (key,value) ->
                 {
                     String lexOff = key.replace("On","Off");
                     if (key.contains("_lexOn") &&
                             _termithIndex.getContextLexicon().containsKey(lexOff)) {
-                        _executorService.submit(new CommonWordsPosLemmaCleaner(
+                        futures.add(_executorService.submit(new CommonWordsPosLemmaCleaner(
                                 key,
                                 value,
                                 _termithIndex.getContextLexicon().get(lexOff)
-                        ));
+                        )));
                     }
                 }
         );
-
+        new TermithProgressTimer(futures,this.getClass(),_executorService).start();
         _logger.info("Waiting EvaluationWorker executors to finish");
         _executorService.shutdown();
         _executorService.awaitTermination(1L, TimeUnit.DAYS);

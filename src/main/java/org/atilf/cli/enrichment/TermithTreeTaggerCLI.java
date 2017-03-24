@@ -2,9 +2,9 @@ package org.atilf.cli.enrichment;
 
 import ch.qos.logback.classic.Level;
 import org.apache.commons.cli.*;
+import org.atilf.module.tools.CLIUtils;
 import org.atilf.runner.Runner;
 import org.atilf.runner.RunnerBuilder;
-import org.atilf.tools.CLIUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

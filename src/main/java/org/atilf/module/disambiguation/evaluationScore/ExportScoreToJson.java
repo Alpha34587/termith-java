@@ -82,7 +82,7 @@ public class ExportScoreToJson extends Module {
             _logger.info("exportation to json is finished");
         }
         catch(IOException e){
-            _logger.error("cannot export in JSON",e);
+            _logger.error("cannot export in JSON : ",e);
 
         }
         if (_exportJs){

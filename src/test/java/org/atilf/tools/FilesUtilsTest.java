@@ -1,5 +1,6 @@
 package org.atilf.tools;
 
+import org.atilf.module.tools.FilesUtils;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;

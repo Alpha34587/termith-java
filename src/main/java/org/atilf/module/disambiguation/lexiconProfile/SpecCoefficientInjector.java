@@ -125,7 +125,7 @@ public class SpecCoefficientInjector extends Module {
             }
         }
         catch (Exception e){
-            _logger.error("problem during the execution of SpecCoefficientInjector :", e);
+            _logger.error("problem during the execution of SpecCoefficientInjector : ", e);
         }
     }
 
@@ -160,7 +160,7 @@ public class SpecCoefficientInjector extends Module {
             _rConnection.eval("names(res) <- NULL");
             _rConnection.eval("export_csv(list(res),\"" + _rResultPath + "\")");
         } catch (RserveException e) {
-            _logger.error("cannot execute R command",e);
+            _logger.error("cannot execute R command : " + _rConnection.getLastError(),e);
         }
         return resToFloat();
     }
@@ -174,11 +174,11 @@ public class SpecCoefficientInjector extends Module {
             while ((sCurrentLine = br.readLine()) != null) {
                 if (Objects.equals(sCurrentLine, "Inf")){
                     floatArray.add(Float.POSITIVE_INFINITY);
-                    _logger.error("positive infinity was return by R");
+                    _logger.error("positive infinity was return by R : " + _id);
                 }
                 else if (Objects.equals(sCurrentLine, "-Inf")){
                     floatArray.add(Float.NEGATIVE_INFINITY);
-                    _logger.error("negative infinity was return by R");
+                    _logger.error("negative infinity was return by R : " + _id);
                 }
                 else {
                     floatArray.add(Float.parseFloat(sCurrentLine));
@@ -187,7 +187,7 @@ public class SpecCoefficientInjector extends Module {
             br.close();
         }
         catch (IOException e) {
-            _logger.error("cannot read result of R",e);
+            _logger.error("cannot read result of R : ",e);
         }
         return floatArray;
     }

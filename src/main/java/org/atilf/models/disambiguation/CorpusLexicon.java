@@ -53,7 +53,7 @@ public class CorpusLexicon extends Lexicon{
     }
 
     /**
-     * @param word a word in the hashmap
+     * @param word a word in the hashMap
      * @return return the id associated to a word
      */
     public String getIdEntry(String word){
@@ -61,7 +61,7 @@ public class CorpusLexicon extends Lexicon{
     }
 
     /**
-     * @param id an id in the hashmap
+     * @param id an id in the hashMap
      * @return return the word associated to an id
      */
     public String getLexicalEntry(int id){

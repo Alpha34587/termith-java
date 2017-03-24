@@ -2,7 +2,7 @@ package org.atilf.module.enrichment.initializer;
 
 import org.atilf.models.TermithIndex;
 import org.atilf.module.Module;
-import org.atilf.tools.FilesUtils;
+import org.atilf.module.tools.FilesUtils;
 
 import java.nio.file.Path;
 
@@ -24,7 +24,7 @@ public class CorpusMapper extends Module {
     }
 
     /**
-     * put xml path on xmlCorpus hashmap
+     * put xml path on xmlCorpus hashMap
      */
     public void execute(){
         termithIndex.getXmlCorpus().put(FilesUtils.nameNormalizer(path.getFileName().toString()), path);

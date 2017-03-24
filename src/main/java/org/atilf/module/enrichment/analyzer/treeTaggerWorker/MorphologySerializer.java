@@ -199,21 +199,26 @@ public class MorphologySerializer {
         int begin = -1;
         int end = -1;
         int cpt = 0;
-        while (end == -1){
-            char ch = letterCharArray[cpt];
+        try {
+            while (end == -1) {
+                char ch = letterCharArray[cpt];
 
-            if (!findBegin && _txt.charAt(offset[0]) == ch) {
-                findBegin = true;
-                begin = offset[0];
+                if (!findBegin && _txt.charAt(offset[0]) == ch) {
+                    findBegin = true;
+                    begin = offset[0];
+                }
+
+                if (cpt == letterCharArray.length - 1 && _txt.charAt(offset[0]) == ch)
+                    end = offset[1];
+
+                if (findBegin)
+                    cpt++;
+                offset[0]++;
+                offset[1]++;
             }
-
-            if (cpt == letterCharArray.length -1  && _txt.charAt(offset[0]) == ch)
-                end = offset[1];
-
-            if (findBegin)
-                cpt++;
-            offset[0]++;
-            offset[1]++;
+        }
+        catch (ArrayIndexOutOfBoundsException e){
+            LOGGER.error("problem : " + word, e);
         }
         jGenerator.writeFieldName("begin");
         jGenerator.writeNumber(begin);

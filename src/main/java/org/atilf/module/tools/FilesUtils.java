@@ -1,4 +1,4 @@
-package org.atilf.tools;
+package org.atilf.module.tools;
 
 import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
@@ -27,7 +27,7 @@ public class FilesUtils {
      * @return return the path created
      * @throws IOException throw an exception if the name of the path is incorrect
      */
-    static String createTemporaryFolder(String path) throws IOException {
+    public static String createTemporaryFolder(String path) throws IOException {
         Path tempDir = Files.createTempDirectory(path);
         return tempDir.toString();
     }
@@ -38,7 +38,7 @@ public class FilesUtils {
      * @param corpus the corpus with the name of the file and his content
      * @param extension the extension expected of the created file
      */
-    static void createFiles(String path, Map<String, StringBuilder> corpus, String extension) {
+    public static void createFiles(String path, Map<String, StringBuilder> corpus, String extension) {
         corpus.forEach((filename, content) -> {
             try (BufferedWriter writer =
                          Files.newBufferedWriter(Paths.get(path + "/" + filename + "." + extension))){
@@ -99,7 +99,7 @@ public class FilesUtils {
             oos.reset();
             oos.close();
         } catch (IOException e) {
-            LOGGER.error("could not write object",e);
+            LOGGER.error("could not write object : ",e);
         }
         finally {
             if (fos != null){
@@ -145,18 +145,18 @@ public class FilesUtils {
             in.close();
         }
         catch (IOException e) {
-            LOGGER.error("could not open file",e);
+            LOGGER.error("could not open file : ",e);
 
         }
         catch (ClassNotFoundException e) {
-            LOGGER.error("could import object",e);
+            LOGGER.error("could import object : ",e);
         }
         finally {
             if (fis != null){
                 try {
                     fis.close();
                 } catch (IOException e) {
-                    LOGGER.error("could not close object",e);
+                    LOGGER.error("could not close object : ",e);
                 }
             }
         }
@@ -182,18 +182,18 @@ public class FilesUtils {
             in.close();
         }
         catch (IOException e) {
-            LOGGER.error("could not open file",e);
+            LOGGER.error("could not open file : ",e);
 
         }
         catch (ClassNotFoundException e) {
-            LOGGER.error("could import object",e);
+            LOGGER.error("could import object : ",e);
         }
         finally {
             if (fis != null){
                 try {
                     fis.close();
                 } catch (IOException e) {
-                    LOGGER.error("could not close object",e);
+                    LOGGER.error("could not close object : ",e);
                 }
             }
         }
@@ -216,7 +216,7 @@ public class FilesUtils {
                 FileUtils.deleteDirectory(folder);
             }
             if (!folder.mkdir()){
-                throw new IOException("cannot create output folder");
+                throw new IOException("cannot create output folder " + folder.toString());
             }
         }
         catch (IOException e) {

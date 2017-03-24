@@ -26,6 +26,14 @@ public class TreeTaggerParameter {
         _treeTaggerHome = treeTaggerHome;
     }
 
+    public String getTreeTaggerHome() {
+        return _treeTaggerHome;
+    }
+
+    public String getLang() {
+        return _lang;
+    }
+
     /**
      * parse the field value and return a string with the desired options for TreeTagger
      * @return return parameters

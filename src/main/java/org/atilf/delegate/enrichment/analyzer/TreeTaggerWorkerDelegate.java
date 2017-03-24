@@ -8,8 +8,9 @@ import org.atilf.module.enrichment.analyzer.TerminologyStandOff;
 import org.atilf.module.enrichment.analyzer.TermsuitePipelineBuilder;
 import org.atilf.module.enrichment.analyzer.TreeTaggerWorker;
 import org.atilf.module.enrichment.initializer.TextExtractor;
+import org.atilf.module.tools.FilesUtils;
+import org.atilf.monitor.timer.TermithProgressTimer;
 import org.atilf.runner.Runner;
-import org.atilf.tools.FilesUtils;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -30,14 +31,14 @@ public class TreeTaggerWorkerDelegate extends Delegate {
 
     /**
      * this method return the result of the InitializerThread.
-     * @return it returns a hashmap who contains the extracted text of the previous step of each files
+     * @return it returns a hashMap who contains the extracted text of the previous step of each files
      * @see TextExtractor
      */
     private Map<String,StringBuilder> createTextHashMap(){
         Map<String,StringBuilder> textMap = new HashMap<>();
 
         /*
-        read extracted text of the previous phase and put the result to the hashmap. the filename is
+        read extracted text of the previous phase and put the result to the hashMap. the filename is
         the key of each entries
          */
         _termithIndex.getExtractedText().forEach(
@@ -61,7 +62,7 @@ public class TreeTaggerWorkerDelegate extends Delegate {
      * @see TerminologyParser
      * @see TerminologyStandOff
      */
-    public void execute() throws InterruptedException, IOException, ExecutionException {
+    public void executeTasks() throws InterruptedException, IOException, ExecutionException {
         /*
         Build Corpus analyzer
          */
@@ -75,12 +76,15 @@ public class TreeTaggerWorkerDelegate extends Delegate {
                         _termithIndex,
                         corpusAnalyzer,
                         key,
-                        Runner.getOut().toString()
+                        Runner.getOut().toString(),
+                        Runner.getLang(),
+                        Runner.getTreeTaggerHome()
                 ))
         );
         _logger.info("waiting that all json files are serialized");
+        new TermithProgressTimer(_termithIndex.getSerializeJson(),Runner.getCorpusSize(),this.getClass(),_executorService)
+                .start();
         _executorService.shutdown();
         _executorService.awaitTermination(1L,TimeUnit.DAYS);
-        _logger.info("terminology extraction finished");
     }
 }
