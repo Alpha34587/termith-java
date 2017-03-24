@@ -4,7 +4,7 @@ import org.atilf.models.TermithIndex;
 import org.atilf.models.disambiguation.ContextTerm;
 import org.atilf.models.disambiguation.EvaluationProfile;
 import org.atilf.module.disambiguation.contextLexicon.ContextExtractor;
-import org.atilf.tools.FilesUtils;
+import org.atilf.module.tools.FilesUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.xml.sax.Attributes;
@@ -12,7 +12,6 @@ import org.xml.sax.Attributes;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.CountDownLatch;
 
 import static org.atilf.models.disambiguation.AnnotationResources.NO_DM;
 

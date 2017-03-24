@@ -1,7 +1,7 @@
 package org.atilf.delegate.enrichment.cleaner;
 
 import org.atilf.delegate.Delegate;
-import org.atilf.module.enrichment.cleaner.WorkingFilesCleaner;
+import org.atilf.module.tools.WorkingFilesCleaner;
 import org.atilf.runner.Runner;
 
 import java.util.concurrent.TimeUnit;

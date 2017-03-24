@@ -8,9 +8,9 @@ import org.atilf.module.enrichment.analyzer.TerminologyStandOff;
 import org.atilf.module.enrichment.analyzer.TermsuitePipelineBuilder;
 import org.atilf.module.enrichment.analyzer.TreeTaggerWorker;
 import org.atilf.module.enrichment.initializer.TextExtractor;
+import org.atilf.module.tools.FilesUtils;
 import org.atilf.monitor.timer.TermithProgressTimer;
 import org.atilf.runner.Runner;
-import org.atilf.tools.FilesUtils;
 
 import java.io.IOException;
 import java.util.HashMap;

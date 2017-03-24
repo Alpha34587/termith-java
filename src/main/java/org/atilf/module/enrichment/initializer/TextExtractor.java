@@ -3,8 +3,8 @@ package org.atilf.module.enrichment.initializer;
 import org.atilf.models.TermithIndex;
 import org.atilf.models.enrichment.XslResources;
 import org.atilf.module.Module;
+import org.atilf.module.tools.FilesUtils;
 import org.atilf.runner.Runner;
-import org.atilf.tools.FilesUtils;
 
 import javax.xml.transform.Source;
 import javax.xml.transform.Transformer;

@@ -2,7 +2,7 @@ package org.atilf.module.enrichment.initializer;
 
 import org.atilf.models.TermithIndex;
 import org.atilf.module.Module;
-import org.atilf.tools.FilesUtils;
+import org.atilf.module.tools.FilesUtils;
 
 import java.nio.file.Path;
 

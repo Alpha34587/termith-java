@@ -6,7 +6,7 @@ import com.fasterxml.jackson.core.JsonToken;
 import org.atilf.models.TermithIndex;
 import org.atilf.models.enrichment.TermOffsetId;
 import org.atilf.module.Module;
-import org.atilf.tools.FilesUtils;
+import org.atilf.module.tools.FilesUtils;
 
 import java.io.File;
 import java.io.IOException;

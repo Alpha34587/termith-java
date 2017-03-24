@@ -1,4 +1,4 @@
-package org.atilf.tools;
+package org.atilf.module.tools;
 
 import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
@@ -27,7 +27,7 @@ public class FilesUtils {
      * @return return the path created
      * @throws IOException throw an exception if the name of the path is incorrect
      */
-    static String createTemporaryFolder(String path) throws IOException {
+    public static String createTemporaryFolder(String path) throws IOException {
         Path tempDir = Files.createTempDirectory(path);
         return tempDir.toString();
     }
@@ -38,7 +38,7 @@ public class FilesUtils {
      * @param corpus the corpus with the name of the file and his content
      * @param extension the extension expected of the created file
      */
-    static void createFiles(String path, Map<String, StringBuilder> corpus, String extension) {
+    public static void createFiles(String path, Map<String, StringBuilder> corpus, String extension) {
         corpus.forEach((filename, content) -> {
             try (BufferedWriter writer =
                          Files.newBufferedWriter(Paths.get(path + "/" + filename + "." + extension))){

@@ -8,7 +8,7 @@ import org.atilf.module.Module;
 import org.atilf.module.enrichment.analyzer.treeTaggerWorker.MorphologySerializer;
 import org.atilf.module.enrichment.analyzer.treeTaggerWorker.MorphologyTokenizer;
 import org.atilf.module.enrichment.analyzer.treeTaggerWorker.TreeTaggerWrapper;
-import org.atilf.tools.FilesUtils;
+import org.atilf.module.tools.FilesUtils;
 
 import java.io.File;
 import java.io.IOException;

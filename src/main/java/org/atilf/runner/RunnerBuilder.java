@@ -1,7 +1,7 @@
 package org.atilf.runner;
 
 import org.atilf.models.TermithIndex;
-import org.atilf.tools.FilesUtils;
+import org.atilf.module.tools.FilesUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

@@ -1,4 +1,4 @@
-package org.atilf.module.enrichment.cleaner;
+package org.atilf.module.tools;
 
 import org.apache.commons.io.FileUtils;
 import org.atilf.module.Module;
