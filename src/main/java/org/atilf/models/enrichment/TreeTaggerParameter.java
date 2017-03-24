@@ -1,5 +1,13 @@
 package org.atilf.models.enrichment;
 
+import com.google.common.io.ByteStreams;
+import org.slf4j.Logger;
+
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Objects;
 
 /**
@@ -12,6 +20,8 @@ public class TreeTaggerParameter {
     private final String _treeTaggerHome;
     private boolean _sgml;
     private String _lang;
+    private String _tokenizePath;
+    private static final Logger LOGGER = org.slf4j.LoggerFactory.getLogger(TreeTaggerParameter.class.getName());
 
     /**
      * constructor for TreeTaggerParameter
@@ -20,14 +30,27 @@ public class TreeTaggerParameter {
      * @param lang           specify the lang used to tag files
      * @param treeTaggerHome the path of the application
      */
-    public TreeTaggerParameter(boolean sgml, String lang, String treeTaggerHome) {
+    public TreeTaggerParameter(boolean sgml, String lang, String treeTaggerHome, String outputPath) {
         _sgml = sgml;
         _lang = lang;
         _treeTaggerHome = treeTaggerHome;
+        _tokenizePath = copyTokenizeScript(outputPath);
     }
 
-    public String getTreeTaggerHome() {
-        return _treeTaggerHome;
+    private String copyTokenizeScript(String outputPath) {
+        InputStream resourceAsStream = getClass().getClassLoader().getResourceAsStream("module/enrichment/analyze/treeTaggerWorker/utf8-tokenize-custom.perl");
+        try {
+            Files.write(Paths.get(outputPath +"/utf8-tokenize-custom.perl"), ByteStreams.toByteArray
+                    (resourceAsStream));
+            new File(outputPath +"/utf8-tokenize-custom.perl").setExecutable(true);
+        } catch (IOException e) {
+            LOGGER.error("cannot copy termsuite-resources.jar : ",e);
+        }
+        return outputPath +"/utf8-tokenize-custom.perl";
+    }
+
+    public String getTokenizePath() {
+        return _tokenizePath;
     }
 
     public String getLang() {

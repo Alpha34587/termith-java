@@ -30,7 +30,7 @@ public class TreeTaggerWorker extends Module {
     private TextAnalyzer _textAnalyzer;
     private String _outputPath;
     private final String _lang;
-    private final String _treeTaggerHome;
+    private final TreeTaggerParameter _treeTaggerParameter;
 
     /**
      *  @param termithIndex the termithIndex of the associated Thread
@@ -38,11 +38,11 @@ public class TreeTaggerWorker extends Module {
      * @param id the name of the file in the map who contains the extracted text of the xml file
      */
     public TreeTaggerWorker(TermithIndex termithIndex, CorpusAnalyzer corpusAnalyzer, String id, String outputPath,
-                            String lang, String treeTaggerHome) {
+                            String lang, TreeTaggerParameter treeTaggerParameter) {
         super(termithIndex);
         _outputPath = outputPath;
         _lang = lang;
-        _treeTaggerHome = treeTaggerHome;
+        _treeTaggerParameter = treeTaggerParameter;
         _txt = FilesUtils.readObject(termithIndex.getExtractedText().get(id),StringBuilder.class);
         _jsonPath = outputPath + "/json/" + id + ".json";
         _textAnalyzer = corpusAnalyzer.getAnalyzedTexts().get(id);
@@ -73,7 +73,7 @@ public class TreeTaggerWorker extends Module {
          */
         TreeTaggerWrapper treeTaggerWrapper = new TreeTaggerWrapper(
                 _txt,
-                new TreeTaggerParameter(false, _lang, _treeTaggerHome),
+                _treeTaggerParameter,
                 _outputPath
         );
 

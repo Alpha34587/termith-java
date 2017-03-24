@@ -118,11 +118,16 @@ public class TreeTaggerWrapper {
      */
     private String parsingText() throws IOException, InterruptedException {
 
+        String lang;
+        if (_treeTaggerParameter.getLang().equals("fr")){
+            lang = "-f";
+        }
+        else {
+            lang = "-e";
+        }
+
         String tokenizePath = writeFile(_txt.toString());
-        Process p = Runtime.getRuntime().exec(new String[]{
-                _treeTaggerParameter.getTreeTaggerHome() + "/cmd/./utf8-tokenize.perl",
-                "-f",
-                tokenizePath});
+        Process p = Runtime.getRuntime().exec(new String[]{_treeTaggerParameter.getTokenizePath(),lang,tokenizePath});
 
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(p.getInputStream()));
         String collect = bufferedReader.lines().collect(Collectors.joining("\n"));
