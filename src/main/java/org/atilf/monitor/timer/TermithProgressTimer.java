@@ -23,7 +23,7 @@ public class TermithProgressTimer extends TimerTask {
     private Logger _logger;
     private final ExecutorService _executorService;
     private long _delay = 0;
-    private long _interval = 20000;
+    private long _interval = 5000;
     DecimalFormat df = new DecimalFormat("#.##");
 
 
