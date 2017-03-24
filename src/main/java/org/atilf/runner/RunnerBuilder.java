@@ -19,7 +19,7 @@ public class RunnerBuilder {
     /*
     remove maybe
      */
-    static int _corpusSize;
+    static int _corpusSize = 0;
 
     /*
     common parameter
@@ -85,11 +85,22 @@ public class RunnerBuilder {
 
     public RunnerBuilder setLearningPath(String learningPath) {
         RunnerBuilder._learningPath = FilesUtils.folderPathResolver(learningPath);
+        try {
+            RunnerBuilder._corpusSize += (int) Files.list(_learningPath).count();
+        } catch (IOException e) {
+            LOGGER.error("cannot find path");
+        }
+
         return this;
     }
 
     public RunnerBuilder setEvaluationPath(String evaluationPath) {
         RunnerBuilder._evaluationPath = FilesUtils.folderPathResolver(evaluationPath);
+        try {
+            RunnerBuilder._corpusSize += (int) Files.list(_evaluationPath).count();
+        } catch (IOException e) {
+            LOGGER.error("cannot find path");
+        }
         return this;
     }
 

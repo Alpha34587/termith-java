@@ -6,7 +6,7 @@
              expressionLanguage="http://www.w3.org/1999/XPath"
              targetNamespace="http://www.flowable.org/processdef">
 
-    <process id="termithTreeTagger" name="termithTreeTagger" isExecutable="true">
+    <process id="disambiguation" name="disambiguation" isExecutable="true">
 
         <dataObject id="fileCleaner" name="fileCleaner" itemSubjectRef="xsd:boolean">
             <extensionElements>
