@@ -2,12 +2,14 @@ package org.atilf.module.tools;
 
 import org.apache.commons.io.FileUtils;
 import org.atilf.module.Module;
+import org.atilf.runner.Runner;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 
 /**
  * clean working directory after processing
@@ -70,6 +72,18 @@ public class WorkingFilesCleaner extends Module{
                         }
                     }
             );
+
+            if (Runner.getLearningPath() != null && Runner.getLearningPath() != Runner.getEvaluationPath()){
+                Files.list(Runner.getLearningPath()).forEach(f -> {
+                            try {
+                                _logger.info("delete " + f.getFileName() + " of learning corpus");
+                                Files.delete(Paths.get(_outputPath + "/" + f.getFileName()));
+                            } catch (IOException e) {
+                                _logger.error("cannot delete files");
+                            }
+                        }
+                );
+            }
         } catch (IOException e) {
             _logger.error("no such file or directory : ", e);
         }
