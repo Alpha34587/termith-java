@@ -10,8 +10,8 @@
     <interp xml:id="DM0">Occurrence du candidat terme rejetée dès le niveau syntaxique</interp>
 </interpGrp>
 <interpGrp>
-<interp xml:id="DAOn">Occurrence du candidat terme validée au niveau terminologique selon le
-    système de désambiguïsation utilisé</interp>
-<interp xml:id="DAOff">Occurrence du candidat terme non valide par le système de
-    désambiguïsation</interp>
+    <interp xml:id="DAOn">Occurrence du candidat terme validée au niveau terminologique selon le
+        système de désambiguïsation utilisé</interp>
+    <interp xml:id="DAOff">Occurrence du candidat terme non valide par le système de
+        désambiguïsation</interp>
 </interpGrp>
