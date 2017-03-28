@@ -14,9 +14,12 @@ import org.atilf.monitor.timer.TermithProgressTimer;
 import org.atilf.runner.Runner;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -72,23 +75,23 @@ public class TreeTaggerWorkerDelegate extends Delegate {
         TreeTaggerParameter treeTaggerParameter =  new TreeTaggerParameter(false, Runner.getLang(),
                 Runner.getTreeTaggerHome(),
                 Runner.getOut().toString());
+        List<Future> futures = new ArrayList<>();
 
         /*
         Write morphology json file
          */
         _termithIndex.getExtractedText().forEach((key, txt) ->
-                _executorService.submit(new TreeTaggerWorker(
+                futures.add(_executorService.submit(new TreeTaggerWorker(
                         _termithIndex,
                         corpusAnalyzer,
                         key,
                         Runner.getOut().toString(),
                         Runner.getLang(),
                         treeTaggerParameter
-                ))
+                )))
         );
         _logger.info("waiting that all json files are serialized");
-        new TermithProgressTimer(_termithIndex.getSerializeJson(),Runner.getCorpusSize(),this.getClass(),_executorService)
-                .start();
+        new TermithProgressTimer(futures,TreeTaggerWorker.class,_executorService).start();
         _executorService.shutdown();
         _executorService.awaitTermination(1L,TimeUnit.DAYS);
     }

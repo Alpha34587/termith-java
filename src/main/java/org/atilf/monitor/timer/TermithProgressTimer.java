@@ -18,7 +18,6 @@ public class TermithProgressTimer extends TimerTask {
 
     private Collection _collection;
     private List<Future> _futures = new ArrayList<>();
-    private int _done;
     private ScheduledExecutorService _service = Executors.newSingleThreadScheduledExecutor();
     private Logger _logger;
     private final ExecutorService _executorService;
@@ -27,19 +26,12 @@ public class TermithProgressTimer extends TimerTask {
     DecimalFormat df = new DecimalFormat("#.##");
 
 
-    public TermithProgressTimer(Collection collection, int done, Class className, ExecutorService executorService) {
-        _collection = collection;
-        _done = done;
-        _logger = LoggerFactory.getLogger(this.getClass().getName() + " - " + className.getSimpleName());
-        _executorService = executorService;
-        df.setRoundingMode(RoundingMode.CEILING);
-    }
-
     public TermithProgressTimer(List<Future> futures, Class className, ExecutorService executorService) {
 
         _futures = futures;
         _logger = LoggerFactory.getLogger(this.getClass().getName() + " - " + className.getSimpleName());
         _executorService = executorService;
+        df.setRoundingMode(RoundingMode.CEILING);
     }
 
 
@@ -53,10 +45,6 @@ public class TermithProgressTimer extends TimerTask {
         if (_executorService.isTerminated()) {
             _service.shutdownNow();
         }
-        if (_futures.isEmpty()) {
-            showProgress(_collection.size(), _done);
-        }
-
         else {
             int progress = (int) _futures.stream().filter(future -> future.isDone()).count();
             showProgress(progress,_futures.size());
