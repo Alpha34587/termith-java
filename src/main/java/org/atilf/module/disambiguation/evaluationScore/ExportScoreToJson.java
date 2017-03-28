@@ -10,6 +10,7 @@ import org.atilf.module.Module;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -92,21 +93,25 @@ public class ExportScoreToJson extends Module {
 
     private void exportJs() {
         try {
+            InputStream chart = this.getClass().getClassLoader().getResourceAsStream("score/Chart.js");
+            InputStream graphJs = this.getClass().getClassLoader().getResourceAsStream("score/graph.js");
+            InputStream graphHtml = this.getClass().getClassLoader().getResourceAsStream("score/graph.html");
             Files.copy(
-                    Paths.get("src/main/resources/score/Chart.js"),
+
+                    chart,
                     Paths.get(_scoreFolder + "/Chart.js"),
                     REPLACE_EXISTING
             );
 
             Files.copy(
-                    Paths.get("src/main/resources/score/graph.js"),
+                    graphJs,
                     Paths.get(_scoreFolder + "/graph.js"),
                     REPLACE_EXISTING
             );
 
 
             Files.copy(
-                    Paths.get("src/main/resources/score/graph.html"),
+                    graphHtml,
                     Paths.get(_scoreFolder + "/graph.html"),
                     REPLACE_EXISTING
             );
