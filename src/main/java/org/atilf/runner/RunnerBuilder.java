@@ -13,6 +13,8 @@ import java.nio.file.Paths;
 public class RunnerBuilder {
 
     int _poolSize = Runtime.getRuntime().availableProcessors();
+    int _thresholdMax = 0;
+    int _thresholdMin = 0;
     TermithIndex _termithIndex = new TermithIndex();
     String _bpmnDiagram;
 
@@ -67,6 +69,14 @@ public class RunnerBuilder {
         return this;
     }
 
+    public void setThresholdMax(int thresholdMax) {
+        _thresholdMax = thresholdMax;
+    }
+
+    public void setThresholdMin(int thresholdMin) {
+        _thresholdMin = thresholdMin;
+    }
+
     public RunnerBuilder setOut(String _out) {
         RunnerBuilder._out = Paths.get(_out);
         FilesUtils.createFolder(RunnerBuilder._out);
@@ -104,14 +114,14 @@ public class RunnerBuilder {
         return this;
     }
 
-    public RunnerBuilder setScorePath(String scorePath) {
-        RunnerBuilder._scorePath = FilesUtils.folderPathResolver(scorePath);
-        FilesUtils.createFolder(RunnerBuilder._scorePath);
-        return this;
-    }
-
-    public Runner createRunner() {
-        return new Runner(this);
+    public Runner createRunner() throws Exception {
+        if (_thresholdMin >= _thresholdMax) {
+            throw new IllegalArgumentException("the minimum threshold is superior or equals to the maximum threshold");
+        }
+        else if (_thresholdMax < 0 || _thresholdMin < 0){
+            throw new IllegalArgumentException("one of these thresholds is negative");
+        }
+            return new Runner(this);
     }
 
 }

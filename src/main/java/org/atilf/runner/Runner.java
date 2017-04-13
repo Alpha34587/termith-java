@@ -14,7 +14,9 @@ import org.flowable.engine.repository.ProcessDefinition;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * This class is used to create some Delegate inherited classes and execute each of them linearly.
@@ -26,6 +28,8 @@ public class Runner {
     public static int _poolSize;
     private static String _bpmnDiagram;
     private static int _corpusSize;
+    private static int _thresholdMin;
+    private static int _thresholdMax;
     /*
     common parameter
      */
@@ -53,6 +57,8 @@ public class Runner {
         _poolSize = runnerBuilder._poolSize;
         _termithIndex = runnerBuilder._termithIndex;
         _bpmnDiagram = runnerBuilder._bpmnDiagram;
+        _thresholdMin = runnerBuilder._thresholdMin;
+        _thresholdMax = runnerBuilder._thresholdMax;
         _base = RunnerBuilder._base;
         _out = RunnerBuilder._out;
         _lang = RunnerBuilder._lang;
@@ -107,6 +113,7 @@ public class Runner {
      * @throws InterruptedException thrown if awaitTermination function is interrupted while waiting
      */
     public void execute() throws IOException, InterruptedException {
+        Map<String, Object> variables = new HashMap<>();
 
         ProcessEngineConfiguration cfg = new StandaloneProcessEngineConfiguration()
                 .setJdbcUrl("jdbc:h2:mem:flowable;DB_CLOSE_DELAY=-1")
@@ -114,6 +121,9 @@ public class Runner {
                 .setJdbcPassword("")
                 .setJdbcDriver("org.h2.Driver")
                 .setDatabaseSchemaUpdate(ProcessEngineConfiguration.DB_SCHEMA_UPDATE_TRUE);
+
+        variables.put("thresholdMin", _thresholdMin);
+        variables.put("thresholdMax", _thresholdMax);
 
         ProcessEngine processEngine = cfg.buildProcessEngine();
 
@@ -127,7 +137,7 @@ public class Runner {
                 .singleResult();
         RuntimeService runtimeService = processEngine.getRuntimeService();
 
-        runtimeService.startProcessInstanceByKey(processDefinition.getKey());
+        runtimeService.startProcessInstanceByKey(processDefinition.getKey(),variables);
 
     }
 }

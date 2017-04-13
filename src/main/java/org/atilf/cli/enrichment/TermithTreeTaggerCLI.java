@@ -68,6 +68,8 @@ public class TermithTreeTaggerCLI {
             runner.execute();
         } catch (ParseException e) {
             LOGGER.error("There are some problems during running : ",e);
+        } catch (Exception e) {
+            LOGGER.error("There are some problems during the creation of runner : ",e);
         }
     }
 }
