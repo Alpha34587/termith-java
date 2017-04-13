@@ -84,7 +84,7 @@ public class SpecCoefficientInjector extends Module {
             _rLexicon = rLexicon;
             _rContextLexicon = new RLexicon(_lexiconProfile, _corpusLexicon,outputPath);
             _computeSpecificities = true;
-            _rResultPath = outputPath + "/" + UUID.randomUUID().toString();
+            _rResultPath = Paths.get(outputPath + "/" + UUID.randomUUID().toString()).toAbsolutePath().toString();
         }
         else {
             _computeSpecificities = false;
@@ -160,7 +160,8 @@ public class SpecCoefficientInjector extends Module {
             _rConnection.eval("names(res) <- NULL");
             _rConnection.eval("export_csv(list(res),\"" + _rResultPath + "\")");
         } catch (RserveException e) {
-            _logger.error("cannot execute R command : " + _rConnection.getLastError(),e);
+            _logger.error("cannot execute R command : " + _rConnection.getLastError()
+                    ,e);
         }
         return resToFloat();
     }

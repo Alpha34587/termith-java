@@ -120,7 +120,6 @@ println <- function(prefix, obj) {
 
 import_csv <- function(path) {
     csv <- fread(path,header=TRUE)
-    names <-
     res <- as.numeric(csv)
     names(res) <- names(csv)
     return(res)

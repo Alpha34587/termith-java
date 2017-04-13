@@ -96,7 +96,7 @@ public class Evaluation extends Module{
                         /*
                         compute the _factorOn and _factorOff
                          */
-                        _logger.debug("compareing factor for term candidate: " + key + "in file: " + _p);
+                        _logger.debug("comparing factor for term candidate: " + key + "in file: " + _p);
                         computeFactor(value, _contextLexicon.get(lexEntryOn), _contextLexicon.get(lexEntryOff));
                         /*
                         compare factors

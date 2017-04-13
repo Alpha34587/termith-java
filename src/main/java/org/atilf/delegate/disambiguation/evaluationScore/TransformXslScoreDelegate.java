@@ -37,6 +37,7 @@ public class TransformXslScoreDelegate extends Delegate {
         Files.list(Runner.getOut())
                 .filter(p -> !Files.isDirectory(p))
                 .filter(p -> p.toString().endsWith(".xml"))
+                .filter(p -> _termithIndex.getEvaluationTransformedFiles().values().contains(p))
                 .forEach(
                         p -> _executorService.submit(new DisambiguationXslTransformer(
                                 p.toFile(),
