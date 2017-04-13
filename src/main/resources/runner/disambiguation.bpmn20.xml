@@ -16,13 +16,13 @@
 
         <dataObject id="freqMin" name="freqMin" itemSubjectRef="xsd:int">
             <extensionElements>
-                <flowable:value>3</flowable:value>
+                <flowable:value>0</flowable:value>
             </extensionElements>
         </dataObject>
 
         <dataObject id="freqMax" name="freqMax" itemSubjectRef="xsd:int">
             <extensionElements>
-                <flowable:value>15</flowable:value>
+                <flowable:value>0</flowable:value>
             </extensionElements>
         </dataObject>
 
@@ -44,6 +44,11 @@
 
         <serviceTask id="learnExtractor" name="transform tei learn corpus to working format "
                      flowable:class="org.atilf.delegate.disambiguation.contextLexicon.ContextExtractorDelegate"/>
+        <sequenceFlow sourceRef="learnExtractor" targetRef="RServe"/>
+
+        <serviceTask id="RServe" name="transform tei learn corpus to working format "
+                     flowable:class="org.atilf.delegate.disambiguation.lexiconProfile.LexiconProfileDelegate"/>
+        <sequenceFlow sourceRef="RServe" targetRef="forkLearn"/>
 
         <parallelGateway id="forkLearn"/>
         <sequenceFlow sourceRef="learnExtractor" targetRef="forkLearn"/>

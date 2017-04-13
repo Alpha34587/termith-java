@@ -13,8 +13,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.atilf.models.disambiguation.AnnotationResources.NO_DM;
-
 /**
  * @author Simon Meoni
  *         Created on 24/10/16.
@@ -35,16 +33,10 @@ public class EvaluationExtractor extends ContextExtractor {
     @Override
     protected void extractTerms(Attributes attributes) {
         String ana = attributes.getValue("ana");
-        String corresp = attributes.getValue("corresp");
-        if (ana.equals(NO_DM.getValue()) && inBothContextLexicon(corresp)) {
-            _terms.add(new ContextTerm(attributes.getValue("corresp"),
-                    ana,
-                    attributes.getValue("target")));
-            LOGGER.debug("term extracted: " + attributes.getValue("corresp"));
-        }
-        else if (inContextLexicon(corresp)){
-            _evaluationLexicon.put(normalizeKey(corresp,ana),new EvaluationProfile());
-        }
+        _terms.add(new ContextTerm(attributes.getValue("corresp"),
+                ana,
+                attributes.getValue("target")));
+        LOGGER.debug("term extracted: " + attributes.getValue("corresp"));
     }
 
     private boolean inBothContextLexicon(String corresp) {

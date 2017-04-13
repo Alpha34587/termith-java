@@ -3,7 +3,9 @@ package org.atilf.models.disambiguation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.*;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -55,7 +57,7 @@ public class RLexicon {
 
     private void writeFile(){
         try {
-            _csvPath = Paths.get(_outputPath + "/" + UUID.randomUUID().toString());
+            _csvPath = Paths.get(_outputPath + "/" + UUID.randomUUID().toString()).toAbsolutePath();
             File file = new File(_csvPath.toString());
             _rName.deleteCharAt(_rName.length() - 1);
             _rOcc.deleteCharAt(_rOcc.length() - 1);
@@ -66,11 +68,8 @@ public class RLexicon {
             bufferedWriter.append(_rOcc);
             bufferedWriter.flush();
             bufferedWriter.close();
-        }
-        catch (FileNotFoundException e) {
-            LOGGER.error("file not found : ", e);
-        } catch (IOException e) {
-            LOGGER.error("cannot write file :", e);
+        } catch (Exception e) {
+            LOGGER.error("cannot write file : " + _rName + " " + _lexiconProfile.getLexicalTable().toString(), e);
         }
     }
 
