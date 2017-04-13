@@ -29,17 +29,21 @@ public class ThresholdLexiconCleanerDelegate extends Delegate {
         /*
         Threshold cleaner
          */
-        List<Future> futures = new ArrayList<>();
-        _termithIndex.getContextLexicon().keySet().forEach(
-                key ->  futures.add(_executorService.submit(new ThresholdLexiconCleaner(
-                        key,
-                        _termithIndex,
-                        getFlowableVariable("freqMin",3),
-                        getFlowableVariable("freqMax",15))
-                ))
-        );
-        new TermithProgressTimer(futures,this.getClass(),_executorService).start();
-        _logger.info("Waiting EvaluationWorker executors to finish");
+        Integer thresholdMin = getFlowableVariable("thresholdMin", 0);
+        Integer thresholdMax = getFlowableVariable("thresholdMax", 0);
+        if (thresholdMin != 0 || thresholdMax != 0) {
+            List<Future> futures = new ArrayList<>();
+            _termithIndex.getContextLexicon().keySet().forEach(
+                    key -> futures.add(_executorService.submit(new ThresholdLexiconCleaner(
+                            key,
+                            _termithIndex,
+                            getFlowableVariable("thresholdMin", 3),
+                            getFlowableVariable("thresholdMax", 15))
+                    ))
+            );
+            new TermithProgressTimer(futures, this.getClass(), _executorService).start();
+            _logger.info("Waiting ThresholdWorker executors to finish");
+        }
         _executorService.shutdown();
         _executorService.awaitTermination(1L, TimeUnit.DAYS);
 

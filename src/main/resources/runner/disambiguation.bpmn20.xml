@@ -14,18 +14,6 @@
             </extensionElements>
         </dataObject>
 
-        <dataObject id="freqMin" name="freqMin" itemSubjectRef="xsd:int">
-            <extensionElements>
-                <flowable:value>0</flowable:value>
-            </extensionElements>
-        </dataObject>
-
-        <dataObject id="freqMax" name="freqMax" itemSubjectRef="xsd:int">
-            <extensionElements>
-                <flowable:value>0</flowable:value>
-            </extensionElements>
-        </dataObject>
-
         <startEvent id="startEvent"/>
 
         <sequenceFlow sourceRef="startEvent" targetRef="fork" />
@@ -37,7 +25,7 @@
 
         <serviceTask id="xslLearn" name="transform tei learn corpus to working format "
                      flowable:class="org.atilf.delegate.disambiguation.contextLexicon.LearnXslTransformerDelegate"/>
-        <serviceTask id="xslEvaluation" name="transform tei evluation corpus to working format "
+        <serviceTask id="xslEvaluation" name="transform tei evaluation corpus to working format "
                      flowable:class="org.atilf.delegate.disambiguation.evaluation.EvaluationXslTransformerDelegate"/>
 
         <sequenceFlow sourceRef="xslLearn" targetRef="learnExtractor"/>
