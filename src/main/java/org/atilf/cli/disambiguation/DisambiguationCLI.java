@@ -43,10 +43,16 @@ public class DisambiguationCLI {
         Option debug = new Option("d","debug",true,"show debug log");
         debug.setRequired(false);
         debug.setArgs(0);
+        Option thresholdMin = new Option("tmin","thresholdMin",true,"specificity profile threshold filter minimum");
+        thresholdMin.setRequired(false);
+        Option thresholdMax = new Option("tmax","thresholdMax",true,"specificity profile threshold filter maximum");
+        thresholdMax.setRequired(false);
 
         options.addOption(learning);
         options.addOption(evaluation);
         options.addOption(out);
+        options.addOption(thresholdMin);
+        options.addOption(thresholdMax);
         options.addOption(debug);
 
         try {
@@ -55,16 +61,22 @@ public class DisambiguationCLI {
             if (line.hasOption("debug")){
                 CLIUtils.setGlobalLogLevel(Level.DEBUG);
             }
-
-            Runner runner = new RunnerBuilder()
+            RunnerBuilder runnerBuilder = new RunnerBuilder()
                     .setLearningPath(line.getOptionValue("le"))
                     .setBpmnDiagram("runner/disambiguation.bpmn20.xml")
                     .setEvaluationPath(line.getOptionValue("e"))
-                    .setOut(line.getOptionValue("o"))
-                    .createRunner();
+                    .setOut(line.getOptionValue("o"));
+
+            if (line.hasOption("thresholdMin") && line.hasOption("thresholdMax")){
+                runnerBuilder.setThresholdMin(Integer.parseInt(line.getOptionValue("tmin")));
+                runnerBuilder.setThresholdMax(Integer.parseInt(line.getOptionValue("tmax")));
+            }
+            Runner runner = runnerBuilder.createRunner();
             runner.execute();
         } catch (ParseException e) {
             LOGGER.error("There are some problems during running : ",e);
+        } catch (Exception e) {
+            LOGGER.error("There are some problems during the creation of runner : ",e);
         }
     }
 }
