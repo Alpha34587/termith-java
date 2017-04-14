@@ -39,4 +39,15 @@ public class DisambiguationXslTransformerTest {
         );
     }
 
+    @Test
+    public void testTxmXsltTransformation() throws Exception {
+        XMLUnit.setIgnoreWhitespace(true);
+        _disambiguationXslTransformer.execute();
+        assertXMLEqual("this two xml must be equals :" +  _disambiguationXslTransformer.getTransformedContent(),
+                String.join("\n", Files.readAllLines(
+                        Paths.get("src/test/resources/module/disambiguation/contextLexicon/" +
+                                "disambiguationXslTransformer/test3.xml"))),
+                _disambiguationXslTransformer.getTransformedContent().toString()
+        );
+    }
 }
