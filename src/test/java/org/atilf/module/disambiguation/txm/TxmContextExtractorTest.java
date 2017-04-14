@@ -25,20 +25,23 @@ public class TxmContextExtractorTest {
         TxmContext _txmContext1 = new TxmContext();
         TxmContext _txmContext2 = new TxmContext();
 
-        _txmContext1.addElements("t26","pêche","NOM","pêche");
-        _txmContext1.addElements("t27","être","VER:pres","est");
-        _txmContext1.addElements("t28","un","DET:ART","une");
+        _txmContext1.addElements("26","pêche","NOM","pêche");
+        _txmContext1.addElements("27","être","VER:pres","est");
+        _txmContext1.addElements("28","un","DET:ART","une");
 
-        _txmContext2.addElements("t29","pêche","NOM","pêche");
-        _txmContext2.addElements("t30","côtier","ADJ","côtière");
-        _txmContext2.addElements("t32",",","PUN",".");
-        _txmContext2.addElements("t32","limiter","VER:pper","limite");
-        _txmContext2.addElements("t33","à","PRP","à" );
-        _txmContext2.addElements("t34","quelque","PRO:IND","quelques");
-        _txmContext2.addElements("t35","espèce","NOM","espèces");
-        _txmContext2.addElements("t36","commun","ADJ","communes");
-        _txmContext2.addElements("t37",".","SENT",".");
-        _txmContext2.addElements("t38","il","PRO:PER","il");
+        _txmContext2.addElements("29","pêche","NOM","pêche");
+        _txmContext2.addElements("30","côtier","ADJ","côtière");
+        _txmContext2.addElements("31",",","PUN",",");
+        _txmContext2.addElements("32","limiter","VER:pper","limite");
+        _txmContext2.addElements("33","à","PRP","à" );
+        _txmContext2.addElements("34","quelque","PRO:IND","quelques");
+        _txmContext2.addElements("35","espèce","NOM","espèces");
+        _txmContext2.addElements("36","commun","ADJ","communes");
+        _txmContext2.addElements("37",".","SENT",".");
+        _txmContext2.addElements("38","il","PRO:PER","il");
+
+        _txmContext1.setFilename("src/test/resources/module/disambiguation/txm/test1.xml");
+        _txmContext2.setFilename("src/test/resources/module/disambiguation/txm/test1.xml");
 
         _expectedTxmContexts.add(_txmContext1);
         _expectedTxmContexts.add(_txmContext2);
@@ -46,8 +49,9 @@ public class TxmContextExtractorTest {
     }
 
     @Test
-    public void extractLexiconProfile() throws Exception {
-        new TxmContextExtractor("src/test/resources/module/disambiguation/txm/test1.xml",_observedTxmContexts).execute();
+    public void extractTxmContext() throws Exception {
+        new TxmContextExtractor("src/test/resources/module/disambiguation/txm/test1.xml",_observedTxmContexts,"#DM4")
+                .execute();
         int i = 0;
         for (TxmContext expectedTxmContext : _expectedTxmContexts) {
             while(!expectedTxmContext.isEmpty()){

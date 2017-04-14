@@ -96,7 +96,7 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
     private List<String> _allowedElements = new ArrayList<>();
 
     private CorpusLexicon _corpusLexicon;
-    private String _p;
+    protected String _p;
     private File _xml;
     private int _threshold = 0;
     private String _currentPosLemma = "";
@@ -176,7 +176,7 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
             SAXParser saxParser = factory.newSAXParser();
             saxParser.parse(_xml,this);
         } catch (Exception e) {
-            e.printStackTrace();
+            LOGGER.error("cannot parse xml",e);
         }
     }
 
@@ -206,10 +206,10 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
                 _inW = true;
                 break;
         }
-        if (_inStandOff && qName.equals("span")){
+        if (_inStandOff && "span".equals(qName)){
             extractTerms(attributes);
         }
-        else if (_inText && !_inW && !qName.equals("text")){
+        else if (_inText && !_inW && !"text".equals(qName)){
             _elementsStack.push(qName);
             _contextStack.push(new TreeMap<>());
         }
@@ -242,7 +242,7 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
                 _inW = false;
                 break;
         }
-        if (_inText && !qName.equals("w")){
+        if (_inText && !"w".equals(qName)){
             searchTermsInContext();
         }
     }
@@ -273,19 +273,15 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
      * @param target current browsed word
      */
     private void searchTermInContext(TreeMap<Integer, String> words, Deque<ContextTerm> termDeque, Deque<ContextTerm> termDequeTemp, Integer target) {
-        if (!termDeque.isEmpty()) {
-
-            if (target == termDeque.peek().getBeginTag()) {
-                if (termDeque.peek().getBeginTag() != termDeque.peek().getEndTag()) {
-                    termDequeTemp.add(termDeque.peek());
-                }
-                else if (isContext()){
-                    addContextToLexiconMap(termDeque.peek(), words);
-                    _terms.remove(termDeque.peek());
-                }
-                termDeque.pop();
-                searchTermInContext(words, termDeque, termDequeTemp, target);
+        if (!termDeque.isEmpty() && target == termDeque.peek().getBeginTag()) {
+            if (termDeque.peek().getBeginTag() != termDeque.peek().getEndTag()) {
+                termDequeTemp.add(termDeque.peek());
+            } else if (isContext()) {
+                addContextToLexiconMap(termDeque.peek(), words);
+                _terms.remove(termDeque.peek());
             }
+            termDeque.pop();
+            searchTermInContext(words, termDeque, termDequeTemp, target);
         }
 
         if (!termDequeTemp.isEmpty() && termDequeTemp.peek().getEndTag() == target) {
@@ -327,7 +323,7 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
                 return termDeque;
             }
         }
-        return null;
+        return new ArrayDeque<>();
     }
 
 
@@ -335,7 +331,7 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
      * the character event is used to extract the Pos/Lemma pair of a w element
      */
     @Override
-    public void characters(char ch[], int start, int length) throws SAXException {
+    public void characters(char[] ch, int start, int length) throws SAXException {
         String posLemma = _currentPosLemma.concat(new String(ch,start,length));
         if (_inW) {
             if (posLemma.contains(" ")){
