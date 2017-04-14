@@ -1,25 +1,21 @@
 package org.atilf.module.disambiguation.txm;
 
-import org.atilf.models.disambiguation.CorpusLexicon;
-import org.atilf.models.disambiguation.LexiconProfile;
+import org.atilf.models.disambiguation.TxmContext;
 import org.atilf.module.disambiguation.contextLexicon.ContextExtractor;
 
+import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by smeoni on 14/04/17.
  */
 public class TxmContextExtractor extends ContextExtractor {
-    public TxmContextExtractor(String p, Map<String, LexiconProfile> contextLexicon, CorpusLexicon corpusLexicon) {
-        super(p, contextLexicon, corpusLexicon);
-    }
 
-    public TxmContextExtractor(String p, Map<String, LexiconProfile> contextLexicon, CorpusLexicon corpusLexicon, int threshold, List<String> authorizedPOSTag) {
-        super(p, contextLexicon, corpusLexicon, threshold, authorizedPOSTag);
-    }
 
-    public TxmContextExtractor(String p, Map<String, LexiconProfile> contextLexicon, CorpusLexicon corpusLexicon, int threshold, List<String> authorizedPOSTag, List<String> allowedElements) {
-        super(p, contextLexicon, corpusLexicon, threshold, authorizedPOSTag, allowedElements);
+    private final HashMap<String, List<TxmContext>> _observedTxmContexts;
+
+    public TxmContextExtractor(String p, HashMap<String, List<TxmContext>> observedTxmContexts) {
+        super(p, null, null);
+        _observedTxmContexts = observedTxmContexts;
     }
 }
