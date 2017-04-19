@@ -42,39 +42,39 @@
     </teiHeader>
     <text id="test1.xml">
         <s n="1" id="1">
-            <w id="w_test1" n="1">
+            <w id="w_test1_1" n="1">
                 <txm:form>le</txm:form>
                 <txm:ana resp="#txm" type="#frpos">DET</txm:ana>
                 <txm:ana resp="#txm" type="#frlemma">le</txm:ana>
             </w>
-            <w id="w_test1" n="2">
+            <w id="w_test1_2" n="2">
                 <txm:form>chat</txm:form>
                 <txm:ana resp="#txm" type="#frpos">NOM</txm:ana>
                 <txm:ana resp="#txm" type="#frlemma">chat</txm:ana>
             </w>
-            <w id="w_test1" n="3">
+            <w id="w_test1_3" n="3">
                 <txm:form>mange</txm:form>
                 <txm:ana resp="#txm" type="#frpos">VER</txm:ana>
                 <txm:ana resp="#txm" type="#frlemma">manger</txm:ana>
             </w>
-            <w id="w_test1" n="4">
+            <w id="w_test1_4" n="4">
                 <txm:form>une</txm:form>
                 <txm:ana resp="#txm" type="#frpos">DET</txm:ana>
                 <txm:ana resp="#txm" type="#frlemma">une</txm:ana>
             </w>
-            <w id="w_test1" n="5">
+            <w id="w_test1_5" n="5">
                 <txm:form>pommes</txm:form>
                 <txm:ana resp="#txm" type="#frpos">NOM</txm:ana>
                 <txm:ana resp="#txm" type="#frlemma">pomme</txm:ana>
             </w>
         </s>
         <s n="2" id="2">
-            <w id="w_test1" n="10">
+            <w id="w_test1_10" n="10">
                 <txm:form>le</txm:form>
                 <txm:ana resp="#txm" type="#frpos">DET</txm:ana>
                 <txm:ana resp="#txm" type="#frlemma">le</txm:ana>
             </w>
-            <w id="w_test1" n="11">
+            <w id="w_test1_11" n="11">
                 <txm:form>chien</txm:form>
                 <txm:ana resp="#txm" type="#frpos">NOM</txm:ana>
                 <txm:ana resp="#txm" type="#frlemma">chien</txm:ana>

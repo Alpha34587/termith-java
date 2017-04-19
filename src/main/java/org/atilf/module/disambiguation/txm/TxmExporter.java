@@ -61,7 +61,7 @@ public class TxmExporter extends Module {
             while (!txmContext.isEmpty()){
                 Map<String,String> map = txmContext.getTxmWord();
                 writer.writeStartElement("w");
-                writer.writeAttribute("id","w_" + _p);
+                writer.writeAttribute("id","w_" + _p + "_" + map.get(TARGET));
                 writer.writeAttribute("n",map.get(TARGET));
 
                 writer.writeStartElement("txm:form");
