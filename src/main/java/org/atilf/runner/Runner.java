@@ -49,7 +49,7 @@ public class Runner {
     private static Path _learningPath;
     private static Path _evaluationPath;
     private static Path _scorePath;
-
+    private static Path _txmInputPath;
     private static List<TimePerformanceEvent> _timePerformanceEvents = new ArrayList<>();
     private static List<MemoryPerformanceEvent> _memoryPerformanceEvents = new ArrayList<>();
 
@@ -59,6 +59,7 @@ public class Runner {
         _bpmnDiagram = runnerBuilder._bpmnDiagram;
         _thresholdMin = runnerBuilder._thresholdMin;
         _thresholdMax = runnerBuilder._thresholdMax;
+        _txmInputPath = RunnerBuilder._txmInputPath;
         _base = RunnerBuilder._base;
         _out = RunnerBuilder._out;
         _lang = RunnerBuilder._lang;
@@ -98,6 +99,8 @@ public class Runner {
     public static Path getScorePath() {
         return _scorePath;
     }
+
+    public static Path getTxmInputPath() {return _txmInputPath;}
 
     public static String getTreeTaggerHome() {
         return _treeTaggerHome;

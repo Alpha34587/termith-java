@@ -15,16 +15,21 @@ import java.util.*;
 public class TxmContextExtractor extends ContextExtractor {
 
 
-    private Map<String, List<TxmContext>> _txmContexts = new HashMap<>();
+    private Map<String, List<TxmContext>> _txmContexts;
     private String _annotation;
     private static final Logger LOGGER = LoggerFactory.getLogger(TxmContextExtractor.class.getName());
 
-    public TxmContextExtractor(String p, Map<String, List<TxmContext>> txmContexts, String annotation) {
+    public TxmContextExtractor(String p, Map<String,List<TxmContext>> txmContexts, String annotation) {
         super(p, null, null);
         _txmContexts = txmContexts;
         _annotation = annotation;
     }
-
+    public TxmContextExtractor(String p, Map<String,List<TxmContext>> txmContexts, int window,String annotation,
+                               List<String> allowedElements, List<String> authorizedTag) {
+        super(p, null, null,window,allowedElements,authorizedTag);
+        _txmContexts = txmContexts;
+        _annotation = annotation;
+    }
 
     @Override
     protected void extractTerms(Attributes attributes) {

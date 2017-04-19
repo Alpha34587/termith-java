@@ -18,7 +18,7 @@
         <sequenceFlow sourceRef="startEvent" targetRef="txmTransformer"/>
 
         <serviceTask id="txmTransformer" name="transform tei learn corpus to working format "
-                     flowable:class="org.atilf.delegate.disambiguation.txm.TxmXsltTransformerDelegate"/>
+                     flowable:class="org.atilf.delegate.disambiguation.txm.TxmXslTransformerDelegate"/>
         <sequenceFlow sourceRef="txmTransformer" targetRef="txmContextExtractor"/>
         <serviceTask id="txmContextExtractor" name="extract context"
                      flowable:class="org.atilf.delegate.disambiguation.txm.TxmContextExtractorDelegate"/>

@@ -22,12 +22,11 @@ public class TxmExporter extends Module {
     private static final  String TARGET = "target";
     private static final String TITLE = "title";
 
-    TxmExporter(String p, List<TxmContext> txmContext, String outputPath) {
+    public TxmExporter(String p, List<TxmContext> txmContext, String outputPath) {
         _p = p;
         _TxmContext = txmContext;
         _outputPath = outputPath;
     }
-
     @Override
     protected void execute() {
         XMLOutputFactory output = XMLOutputFactory.newInstance();

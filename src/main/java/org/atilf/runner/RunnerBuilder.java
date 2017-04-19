@@ -42,6 +42,7 @@ public class RunnerBuilder {
     static Path _learningPath;
     static Path _evaluationPath;
     static Path _scorePath;
+    static Path _txmInputPath;
     protected final Logger LOGGER = LoggerFactory.getLogger(this.getClass().getName());
 
     public RunnerBuilder setTermithIndex(TermithIndex termithIndex) {
