@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
+             xmlns:flowable="http://flowable.org/bpmn"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             typeLanguage="http://www.w3.org/2001/XMLSchema"
+             expressionLanguage="http://www.w3.org/1999/XPath"
+             targetNamespace="http://www.flowable.org/processdef">
+
+    <process id="disambiguation" name="disambiguation" isExecutable="true">
+
+        <dataObject id="fileCleaner" name="fileCleaner" itemSubjectRef="xsd:boolean">
+            <extensionElements>
+                <flowable:value>false</flowable:value>
+            </extensionElements>
+        </dataObject>
+
+        <startEvent id="startEvent"/>
+        <sequenceFlow sourceRef="startEvent" targetRef="txmTransformer"/>
+
+        <serviceTask id="txmTransformer" name="transform tei learn corpus to working format "
+                     flowable:class="org.atilf.delegate.disambiguation.txm.TxmXsltTransformerDelegate"/>
+        <sequenceFlow sourceRef="txmTransformer" targetRef="txmContextExtractor"/>
+        <serviceTask id="txmContextExtractor" name="extract context"
+                     flowable:class="org.atilf.delegate.disambiguation.txm.TxmContextExtractorDelegate"/>
+        <sequenceFlow sourceRef="txmContextExtractor" targetRef="txmExporter"/>
+        <serviceTask id="txmExporter" name="export context to txm format"
+                     flowable:class="org.atilf.delegate.disambiguation.txm.TxmExporterDelegate"/>
+
+        <sequenceFlow sourceRef="txmExporter" targetRef="cleaner"/>
+        <serviceTask id="cleaner" name="clean working directory"
+                     flowable:class="org.atilf.delegate.tools.WorkingFileCleanerDelegate"/>
+        <sequenceFlow sourceRef="cleaner" targetRef="endEvent"/>
+        <endEvent id="endEvent"/>
+    </process>
+
+</definitions>
