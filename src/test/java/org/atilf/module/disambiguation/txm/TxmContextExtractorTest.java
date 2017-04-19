@@ -8,6 +8,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by smeoni on 14/04/17.
@@ -40,8 +41,8 @@ public class TxmContextExtractorTest {
         _txmContext2.addElements("37",".","SENT",".");
         _txmContext2.addElements("38","il","PRO:PER","il");
 
-        _txmContext1.setFilename("src/test/resources/module/disambiguation/txm/test1.xml");
-        _txmContext2.setFilename("src/test/resources/module/disambiguation/txm/test1.xml");
+        _txmContext1.setFilename("src/test/resources/module/disambiguation/txm/txmContextExtractor/test1.xml");
+        _txmContext2.setFilename("src/test/resources/module/disambiguation/txm/txmContextExtractor/test1.xml");
 
         _expectedTxmContexts.add(_txmContext1);
         _expectedTxmContexts.add(_txmContext2);
@@ -50,7 +51,8 @@ public class TxmContextExtractorTest {
 
     @Test
     public void extractTxmContext() throws Exception {
-        new TxmContextExtractor("src/test/resources/module/disambiguation/txm/test1.xml",_observedTxmContexts,"#DM4")
+        new TxmContextExtractor("src/test/resources/module/disambiguation/txm/txmContextExtractor/test1.xml",
+                _observedTxmContexts,"#DM4")
                 .execute();
         int i = 0;
         for (TxmContext expectedTxmContext : _expectedTxmContexts) {
@@ -62,11 +64,12 @@ public class TxmContextExtractorTest {
         }
     }
 
-    public String ToString(TxmContext txmContext){
+    private String ToString(TxmContext txmContext){
+        Map<String,String> map = txmContext.getTxmWord();
         return txmContext.getFilename() +
-                " " + txmContext.getTarget() +
-                " " + txmContext.getLemma() +
-                " " + txmContext.getPos() +
-                " " + txmContext.getWord();
+                " " + map.get("target") +
+                " " + map.get("lemma") +
+                " " + map.get("pos") +
+                " " + map.get("word");
     }
 }

@@ -1,16 +1,18 @@
 package org.atilf.models.disambiguation;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Stack;
 
 /**
  * Created by smeoni on 14/04/17.
  */
 public class TxmContext extends LexiconProfile{
-    Stack<String> _lemma = new Stack<>();
-    Stack<String> _pos = new Stack<>();
-    Stack<String> _word = new Stack<>();
-    Stack<String> _target = new Stack<>();
-    String _filename = "";
+    private Stack<String> _lemma = new Stack<>();
+    private Stack<String> _pos = new Stack<>();
+    private Stack<String> _word = new Stack<>();
+    private Stack<String> _target = new Stack<>();
+    private String _filename = "";
     public void addElements(String target,String lemma, String pos, String word){
         _lemma.add(lemma);
         _pos.add(pos);
@@ -18,24 +20,15 @@ public class TxmContext extends LexiconProfile{
         _target.add(target);
     }
 
-    public String getLemma() {
-        return _lemma.pop();
-    }
-
-    public String getPos() {
-        return _pos.pop();
-    }
-
-    public String getWord() {
-        return _word.pop();
-    }
-
-    public String getTarget() {
-        return _target.pop();
-    }
-
-    public String getFilename() {
-        return _filename;
+    public Map<String,String> getTxmWord() {
+        Map<String, String> resMap = new HashMap<>();
+        if (!_lemma.isEmpty()) {
+            resMap.put("lemma", _lemma.pop());
+            resMap.put("pos", _pos.pop());
+            resMap.put("word", _word.pop());
+            resMap.put("target", _target.pop());
+        }
+        return resMap;
     }
 
     public boolean isEmpty(){
@@ -44,5 +37,9 @@ public class TxmContext extends LexiconProfile{
 
     public void setFilename(String filename) {
         this._filename = filename;
+    }
+
+    public String getFilename() {
+        return _filename;
     }
 }
