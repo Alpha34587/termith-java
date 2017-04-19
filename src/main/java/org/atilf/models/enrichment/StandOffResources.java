@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 /**
- * this class contains the xml fragment of used to write standoff annotation
+ * this class contains the xml fragment of used to write standoff _annotation
  * @author Simon Meoni
  *         Created on 14/09/16.
  */
@@ -17,7 +17,7 @@ public class StandOffResources {
     private static final Logger LOGGER = LoggerFactory.getLogger(StandOffResources.class.getName());
     private final static String PATH = "models/enrichment/standoffResources/";
 
-    public final StringBuilder LIST_ANNOTATION = indentation(readFile(PATH + "list-annotation.xml"), 2);
+    public final StringBuilder LIST_ANNOTATION = indentation(readFile(PATH + "list-_annotation.xml"), 2);
     public final StringBuilder MS_SPAN = indentation(readFile(PATH + "ms-span.xml"), 3);
     public final StringBuilder T_SPAN = indentation(readFile(PATH + "t-span.xml"), 3);
     public final StringBuilder MS_TEI_HEADER = indentation(readFile(PATH + "ms-tei-header.xml"), 2);

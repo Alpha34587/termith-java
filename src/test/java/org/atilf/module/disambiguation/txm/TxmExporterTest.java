@@ -39,7 +39,7 @@ public class TxmExporterTest {
         context2.setFilename("2");
         _txmContextList.add(context1);
         _txmContextList.add(context2);
-        _txmExporter = new TxmExporter("test1.xml",_txmContextList,temporaryFolder.getRoot().getAbsolutePath());
+        _txmExporter = new TxmExporter("test1",_txmContextList,temporaryFolder.getRoot().getAbsolutePath());
     }
 
     @Test

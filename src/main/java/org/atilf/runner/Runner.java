@@ -30,6 +30,8 @@ public class Runner {
     private static int _corpusSize;
     private static int _thresholdMin;
     private static int _thresholdMax;
+    public static String _annotation;
+
     /*
     common parameter
      */
@@ -68,6 +70,7 @@ public class Runner {
         _evaluationPath = RunnerBuilder._evaluationPath;
         _scorePath = RunnerBuilder._scorePath;
         _corpusSize = RunnerBuilder._corpusSize;
+        _annotation = RunnerBuilder._annotation;
     }
 
     public static Path getOut() {
@@ -127,6 +130,7 @@ public class Runner {
 
         variables.put("thresholdMin", _thresholdMin);
         variables.put("thresholdMax", _thresholdMax);
+        variables.put("annotation",_annotation);
 
         ProcessEngine processEngine = cfg.buildProcessEngine();
 

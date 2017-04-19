@@ -32,7 +32,7 @@ public class TxmExporter extends Module {
         XMLOutputFactory output = XMLOutputFactory.newInstance();
         try {
             XMLStreamWriter writer = new IndentingXMLStreamWriter(output.createXMLStreamWriter(new FileWriter
-                    (_outputPath + "/" + _p)));
+                    (_outputPath + "/" + _p + ".xml")));
 
             writer.writeStartDocument();
             writer.writeStartElement("TEI");
@@ -53,7 +53,7 @@ public class TxmExporter extends Module {
 
     private void writerText(XMLStreamWriter writer) throws XMLStreamException {
         writer.writeStartElement("text");
-        writer.writeAttribute("id",_p);
+        writer.writeAttribute("id",_p+".xml");
         for (TxmContext txmContext : _TxmContext) {
             writer.writeStartElement("s");
             writer.writeAttribute("n",String.valueOf(_TxmContext.indexOf(txmContext)+1));
@@ -61,7 +61,7 @@ public class TxmExporter extends Module {
             while (!txmContext.isEmpty()){
                 Map<String,String> map = txmContext.getTxmWord();
                 writer.writeStartElement("w");
-                writer.writeAttribute("id","w_" + _p.replace(".xml",""));
+                writer.writeAttribute("id","w_" + _p);
                 writer.writeAttribute("n",map.get(TARGET));
 
                 writer.writeStartElement("txm:form");
@@ -92,7 +92,7 @@ public class TxmExporter extends Module {
         writer.writeStartElement("fileDesc");
         writer.writeStartElement("titleStmt");
         writer.writeStartElement(TITLE);
-        writer.writeCharacters(_p);
+        writer.writeCharacters(_p+".xml");
         writer.writeEndElement();
         writer.writeEndElement();
         writer.writeEmptyElement("publicationStmt");
@@ -134,7 +134,7 @@ public class TxmExporter extends Module {
         writer.writeAttribute("id","frpos");
         writer.writeStartElement("bibl");
         writer.writeStartElement(TITLE);
-        writer.writeCharacters("see " + _p);
+        writer.writeCharacters("see " + _p+".xml");
         writer.writeEndElement();
         writer.writeEndElement();
         writer.writeEndElement();
@@ -142,7 +142,7 @@ public class TxmExporter extends Module {
         writer.writeAttribute("id","frlemma");
         writer.writeStartElement("bibl");
         writer.writeStartElement(TITLE);
-        writer.writeCharacters("see " + _p);
+        writer.writeCharacters("see " + _p+".xml");
         writer.writeEndElement();
         writer.writeEndElement();
         writer.writeEndElement();

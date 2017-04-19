@@ -11,17 +11,14 @@ import org.slf4j.LoggerFactory;
 import javax.xml.transform.TransformerException;
 import java.io.IOException;
 
-//import org.atilf.runner.Disambiguation;
-
 /**
- * @author Simon Meoni
- *         Created on 11/10/16.
+ * Created by smeoni on 19/04/17.
  */
-public class DisambiguationCLI {
+public class TxmSerializerCLI {
     private static final Options options = new Options();
     private static final Logger LOGGER = LoggerFactory.getLogger(DisambiguationCLI.class.getName());
 
-    private DisambiguationCLI() {
+    private TxmSerializerCLI() {
         throw new IllegalAccessError("Utility class");
     }
 
@@ -34,45 +31,33 @@ public class DisambiguationCLI {
     public static void main(String[] args) throws IOException, InterruptedException, TransformerException {
         CommandLineParser parser = new PosixParser();
 
-        Option learning = new Option("le","learning",true,"path of the learning corpus in tei format");
+        Option learning = new Option("i","input",true,"path of the learning corpus in tei format");
         learning.setRequired(true);
-        Option evaluation = new Option("e","evaluation",true,"path of the evaluation corpus in tei format");
-        evaluation.setRequired(true);
         Option out = new Option("o","output",true,"output folder");
         out.setRequired(true);
         Option debug = new Option("d","debug",true,"show debug log");
         debug.setRequired(false);
         debug.setArgs(0);
-        Option thresholdMin = new Option("tmin","thresholdMin",true,"specificity profile threshold filter minimum");
-        thresholdMin.setRequired(false);
-        Option thresholdMax = new Option("tmax","thresholdMax",true,"specificity profile threshold filter maximum");
-        thresholdMax.setRequired(false);
+        Option annotation = new Option("a","_annotation",true,"which auto/manual annotation should be extracted ?");
+        annotation.setRequired(true);
 
         options.addOption(learning);
-        options.addOption(evaluation);
         options.addOption(out);
-        options.addOption(thresholdMin);
-        options.addOption(thresholdMax);
         options.addOption(debug);
+        options.addOption(annotation);
 
         try {
             CommandLine line = parser.parse( options, args );
-
             if (line.hasOption("debug")){
                 CLIUtils.setGlobalLogLevel(Level.DEBUG);
             }
+
             RunnerBuilder runnerBuilder = new RunnerBuilder()
-                    .setLearningPath(line.getOptionValue("le"))
-                    .setBpmnDiagram("runner/disambiguation.bpmn20.xml")
-                    .setEvaluationPath(line.getOptionValue("e"))
+                    .setTxmInputPath(line.getOptionValue("i"))
+                    .setBpmnDiagram("runner/txmSerializer.bpmn20.xml")
+                    .setAnnotation(line.getOptionValue("a"))
                     .setOut(line.getOptionValue("o"));
 
-            if (line.hasOption("thresholdMin") && line.hasOption("thresholdMax")){
-                runnerBuilder.setThresholds(
-                        Integer.parseInt(line.getOptionValue("tmin")),
-                        Integer.parseInt(line.getOptionValue("tmax"))
-                );
-            }
             Runner runner = runnerBuilder.createRunner();
             runner.execute();
         } catch (ParseException e) {
