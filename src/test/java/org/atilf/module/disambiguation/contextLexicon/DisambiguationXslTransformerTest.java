@@ -1,6 +1,7 @@
 package org.atilf.module.disambiguation.contextLexicon;
 
 import org.atilf.models.disambiguation.DisambiguationXslResources;
+import org.atilf.models.disambiguation.TxmXslResource;
 import org.custommonkey.xmlunit.XMLUnit;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -17,6 +18,7 @@ import static org.custommonkey.xmlunit.XMLAssert.assertXMLEqual;
  */
 public class DisambiguationXslTransformerTest {
     private static DisambiguationXslTransformer _disambiguationXslTransformer;
+    private static DisambiguationXslTransformer _txmXslTransformer;
 
     @BeforeClass
     public static void setUp(){
@@ -24,6 +26,12 @@ public class DisambiguationXslTransformerTest {
                 new File("src/test/resources/module/disambiguation/contextLexicon/" +
                         "disambiguationXslTransformer/test1.xml"),
                 new DisambiguationXslResources()
+        );
+
+        _txmXslTransformer = new DisambiguationXslTransformer(
+                new File("src/test/resources/module/disambiguation/contextLexicon/" +
+                        "disambiguationXslTransformer/test1.xml"),
+                new TxmXslResource()
         );
     }
 
@@ -39,4 +47,15 @@ public class DisambiguationXslTransformerTest {
         );
     }
 
+    @Test
+    public void testTxmXsltTransformation() throws Exception {
+        XMLUnit.setIgnoreWhitespace(true);
+        _txmXslTransformer.execute();
+        assertXMLEqual("this two xml must be equals :" +  _txmXslTransformer.getTransformedContent(),
+                String.join("\n", Files.readAllLines(
+                        Paths.get("src/test/resources/module/disambiguation/contextLexicon/" +
+                                "disambiguationXslTransformer/test3.xml"))),
+                _txmXslTransformer.getTransformedContent().toString()
+        );
+    }
 }
