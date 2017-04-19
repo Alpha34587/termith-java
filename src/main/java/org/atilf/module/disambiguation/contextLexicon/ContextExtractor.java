@@ -99,7 +99,7 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
     protected String _p;
     private File _xml;
     private int _threshold = 0;
-    private String _currentPosLemma = "";
+    protected String _currentPosLemma = "";
     private List<String> _authorizedPOSTag = new ArrayList<>();
 
     /*

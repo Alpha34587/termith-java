@@ -6,6 +6,7 @@ import org.atilf.module.disambiguation.contextLexicon.ContextExtractor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.xml.sax.Attributes;
+import org.xml.sax.SAXException;
 
 import java.util.*;
 
@@ -58,6 +59,23 @@ public class TxmContextExtractor extends ContextExtractor {
 
         context.setFilename(_p);
         _txmContexts.get(key).add(context);
+    }
+
+    @Override
+    public void characters(char[] ch, int start, int length) throws SAXException {
+        String posLemma = _currentPosLemma.concat(new String(ch,start,length));
+        if (_inW) {
+            if (posLemma.split(" ").length == 3){
+                _lastContextWord.setPosLemma(posLemma);
+                _contextStack.forEach(words -> words.put(_lastContextWord.getTarget(), _lastContextWord.getPosLemma()));
+                LOGGER.debug("add pos lemma pair: " + posLemma + " to corpus");
+                _inW = false;
+                _currentPosLemma = "";
+            }
+            else {
+                _currentPosLemma += new String(ch,start,length);
+            }
+        }
     }
 
     @Override
