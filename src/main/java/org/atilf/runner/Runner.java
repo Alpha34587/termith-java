@@ -30,6 +30,8 @@ public class Runner {
     private static int _corpusSize;
     private static int _thresholdMin;
     private static int _thresholdMax;
+    public static String _annotation;
+
     /*
     common parameter
      */
@@ -49,7 +51,7 @@ public class Runner {
     private static Path _learningPath;
     private static Path _evaluationPath;
     private static Path _scorePath;
-
+    private static Path _txmInputPath;
     private static List<TimePerformanceEvent> _timePerformanceEvents = new ArrayList<>();
     private static List<MemoryPerformanceEvent> _memoryPerformanceEvents = new ArrayList<>();
 
@@ -59,6 +61,7 @@ public class Runner {
         _bpmnDiagram = runnerBuilder._bpmnDiagram;
         _thresholdMin = runnerBuilder._thresholdMin;
         _thresholdMax = runnerBuilder._thresholdMax;
+        _txmInputPath = RunnerBuilder._txmInputPath;
         _base = RunnerBuilder._base;
         _out = RunnerBuilder._out;
         _lang = RunnerBuilder._lang;
@@ -67,6 +70,7 @@ public class Runner {
         _evaluationPath = RunnerBuilder._evaluationPath;
         _scorePath = RunnerBuilder._scorePath;
         _corpusSize = RunnerBuilder._corpusSize;
+        _annotation = RunnerBuilder._annotation;
     }
 
     public static Path getOut() {
@@ -99,6 +103,8 @@ public class Runner {
         return _scorePath;
     }
 
+    public static Path getTxmInputPath() {return _txmInputPath;}
+
     public static String getTreeTaggerHome() {
         return _treeTaggerHome;
     }
@@ -124,6 +130,7 @@ public class Runner {
 
         variables.put("thresholdMin", _thresholdMin);
         variables.put("thresholdMax", _thresholdMax);
+        variables.put("annotation",_annotation);
 
         ProcessEngine processEngine = cfg.buildProcessEngine();
 

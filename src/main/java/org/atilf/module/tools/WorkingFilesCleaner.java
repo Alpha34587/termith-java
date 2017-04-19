@@ -72,8 +72,19 @@ public class WorkingFilesCleaner extends Module{
                         }
                     }
             );
+            if (Runner.getTxmInputPath() != null){
+                Files.list(Runner.getTxmInputPath()).forEach(f -> {
+                            try {
+                                _logger.info("delete " + f.getFileName() + " of learning corpus");
+                                Files.delete(Paths.get(_outputPath + "/" + f.getFileName()));
+                            } catch (IOException e) {
+                                _logger.error("cannot delete files");
+                            }
+                        }
+                );
+            }
 
-            if (Runner.getLearningPath() != null && Runner.getLearningPath() != Runner.getEvaluationPath()){
+                    if (Runner.getLearningPath() != null && Runner.getLearningPath() != Runner.getEvaluationPath()){
                 Files.list(Runner.getLearningPath()).forEach(f -> {
                             try {
                                 _logger.info("delete " + f.getFileName() + " of learning corpus");

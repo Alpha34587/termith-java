@@ -34,6 +34,7 @@ public class TermithIndex {
 
     private Map<String, LexiconProfile> _contextLexicon = new ConcurrentHashMap<>();
     private Map<String,Map<String, EvaluationProfile>> _evaluationLexicon = new ConcurrentHashMap<>();
+    private Map<String, List<TxmContext>> _TermsTxmContext = new ConcurrentHashMap<>();
     private CorpusLexicon _corpusLexicon = new CorpusLexicon(new ConcurrentHashMap<>(),new ConcurrentHashMap<>());
     private Map<String, Path> _learningTransformedFiles = new ConcurrentHashMap<>();
     private Map<String, Path> _evaluationTransformedFiles = new ConcurrentHashMap<>();
@@ -126,6 +127,9 @@ public class TermithIndex {
 
     public TotalTermScore getTotalTermScore() { return _totalTermScore; }
 
+    public Map<String, List<TxmContext>> getTermsTxmContext() {
+        return _TermsTxmContext;
+    }
 
     /**
      * get the input xml files
