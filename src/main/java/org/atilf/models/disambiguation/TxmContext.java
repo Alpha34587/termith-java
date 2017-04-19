@@ -1,17 +1,18 @@
 package org.atilf.models.disambiguation;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Stack;
 
 /**
  * Created by smeoni on 14/04/17.
  */
 public class TxmContext extends LexiconProfile{
-    private Stack<String> _lemma = new Stack<>();
-    private Stack<String> _pos = new Stack<>();
-    private Stack<String> _word = new Stack<>();
-    private Stack<String> _target = new Stack<>();
+    private Deque<String> _lemma = new ArrayDeque<>();
+    private Deque<String> _pos = new ArrayDeque<>();
+    private Deque<String> _word = new ArrayDeque<>();
+    private Deque<String> _target = new ArrayDeque<>();
     private String _filename = "";
     public void addElements(String target,String lemma, String pos, String word){
         _lemma.add(lemma);

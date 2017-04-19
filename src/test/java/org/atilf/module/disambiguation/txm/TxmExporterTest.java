@@ -27,15 +27,15 @@ public class TxmExporterTest {
     @BeforeClass
     public static void setUp() throws Exception {
         TxmContext context1 = new TxmContext();
-        context1.addElements("5","pomme","NOM","pommes");
-        context1.addElements("4","une","DET","une");
-        context1.addElements("3","manger","VER","mange");
-        context1.addElements("2","chat","NOM","chat");
         context1.addElements("1","le","DET","le");
+        context1.addElements("2","chat","NOM","chat");
+        context1.addElements("3","manger","VER","mange");
+        context1.addElements("4","une","DET","une");
+        context1.addElements("5","pomme","NOM","pommes");
         context1.setFilename("1");
         TxmContext context2 = new TxmContext();
-        context2.addElements("11","chien","NOM","chien");
         context2.addElements("10","le","DET","le");
+        context2.addElements("11","chien","NOM","chien");
         context2.setFilename("2");
         _txmContextList.add(context1);
         _txmContextList.add(context2);
