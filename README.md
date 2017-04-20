@@ -48,9 +48,9 @@ Le module d'extraction terminologique
       </fileDesc>
     </teiHeader>
     <ns:listAnnotation>
-      <!-- les éléments span correspondent à l'analyse morpho-syntaxique réalisé 
+      <!-- les éléments span correspondent à l'analyse morpho-syntaxique réalisée 
        pour chaque token par la chaîne d'extraction terminologique : 
-      cette opération est réalisé au préalable avant la phase d'analyse terminologique. 
+      cette opération est réalisée au préalable avant la phase d'analyse terminologique. 
       l'attribut target correspond à l'xml:id du token présent dans l'élément text du fichier --> 
       <span target="#t1">
         <fs>
@@ -58,7 +58,7 @@ Le module d'extraction terminologique
           <f name="lemma">
             <string>un</string>
           </f>
-         <!-- l'élément ci-dessous correspond à l'étiquette syntaxique attribuer à ce token -->
+         <!-- l'élément ci-dessous correspond à l'étiquette syntaxique attribuée à ce token -->
           <f name="pos">
             <symbol value="DET:ART"/>
           </f>
@@ -133,7 +133,7 @@ Le module d'extraction terminologique
     </teiHeader>
     <ns:listAnnotation>
      <!-- les élément span correspondent au occurrence de terme extraite. 
-     L'attribut target correspond au tokens du texte qui compose cette occurrence de terme.
+     L'attribut target correspond au token du texte qui compose cette occurrence de terme.
      L'attribut corresp correspond à l'id d'une entrée terminologique présente dans la terminologie 
      généré par la chaîne de traitements. 
      l'attribut ana a pour valeur l'ensemble des annotations lié à ce termes -->
@@ -301,7 +301,7 @@ Le module d'extraction terminologique
 3. installer les librairie R suivantes : `data.table` & `Rserve`
 4. pour installer `Rserve` :
     1. ouvrir un terminal et lancer la commande `R`
-    2. dans l'interpréteur de commande R, taper la commande : `install.packages("Rserve")` et suivre les instructions
+    2. dans l'interprétateur de commande R, taper la commande : `install.packages("Rserve")` et suivre les instructions
     3. taper ensuite la commmande `library('Rserve')` pour charger la librairie précédemment installé
     4. taper ensuite `Rserve()` pour lancer le serveur R. un sous-processus est lancé en tâche de fond, le terminal peut être fermé.
 5. pour installer `data.table`, il faut lancer une instance de R (comme ci-dessus) et lancer la commande `install.packages('data.table')`
