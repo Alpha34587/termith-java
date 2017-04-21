@@ -1,7 +1,6 @@
 package org.atilf.runner;
 
 import org.atilf.models.TermithIndex;
-import org.atilf.models.disambiguation.AnnotationResources;
 import org.atilf.module.tools.FilesUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -53,9 +52,6 @@ public class RunnerBuilder {
     }
 
     public RunnerBuilder setAnnotation(String annotation) {
-        if (AnnotationResources.getAnnotations(annotation) == null) {
-            throw new IllegalArgumentException("this annotation doesn't exists on the disambiguation method");
-        }
         RunnerBuilder._annotation = annotation;
         return this;
     }

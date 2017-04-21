@@ -18,6 +18,13 @@ public class TxmExporterDelegate extends Delegate {
     public void executeTasks() throws IOException, InterruptedException {
 
         List<Future> futures = new ArrayList<>();
+        if (_termithIndex.getTermsTxmContext().isEmpty()){
+            throw  new InterruptedException("no context are extracted by the txmContextExtractor, perhaps the " +
+                    "annotation argument are not well-formed : " + getFlowableVariable("annotation","")
+                    + " or there are no such annotations on this corpus ? try 'grep \"" + getFlowableVariable
+                    ("annotation","") + "\" " + Runner.getTxmInputPath
+                    () +"/*'");
+        }
         _termithIndex.getTermsTxmContext().forEach(
                 (k,v) -> futures.add(_executorService.submit(new TxmExporter(k,v,Runner.getOut().toString())))
         );

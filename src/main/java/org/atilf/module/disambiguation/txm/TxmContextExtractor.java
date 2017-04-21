@@ -35,12 +35,18 @@ public class TxmContextExtractor extends ContextExtractor {
     @Override
     protected void extractTerms(Attributes attributes) {
         String ana = attributes.getValue("ana");
-        if (ana.equals(_annotation)) {
+        if (isAnaEqual(ana,_annotation)) {
             _terms.add(new ContextTerm(attributes.getValue("corresp"),
                     ana,
                     attributes.getValue("target")));
             LOGGER.debug("term extracted: " + attributes.getValue("corresp"));
         }
+    }
+
+    private boolean isAnaEqual(String observedAna, String expectedAna) {
+        String[] splitObservedAna = observedAna.split(" ");
+        String[] splitExpectedAna = expectedAna.split(" ");
+        return Arrays.asList(splitObservedAna).containsAll(Arrays.asList(splitExpectedAna));
     }
 
     @Override

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:ns="http://standoff.proposal">
     <ns:standOff>
-        <span ana="#noDM" corresp="#entry-13471" target="#t13 #t14 #t15 #t16" text="sites de l'âge"/>
+        <span ana="#noDM #noDa" corresp="#entry-13471" target="#t13 #t14 #t15 #t16" text="sites de l'âge"/>
         <span ana="#noDM" corresp="#entry-13471" target="#t13 #t14 #t15 #t16" text="sites de l'âge"/>
     </ns:standOff>
     <text>
