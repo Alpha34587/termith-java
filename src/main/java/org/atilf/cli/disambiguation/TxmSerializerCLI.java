@@ -38,7 +38,8 @@ public class TxmSerializerCLI {
         Option debug = new Option("d","debug",true,"show debug log");
         debug.setRequired(false);
         debug.setArgs(0);
-        Option annotation = new Option("a","_annotation",true,"which auto/manual annotation should be extracted ?");
+        Option annotation = new Option("a","annotation",true,"which auto/manual annotations should be extracted " +
+                "?");
         annotation.setRequired(true);
 
         options.addOption(learning);
