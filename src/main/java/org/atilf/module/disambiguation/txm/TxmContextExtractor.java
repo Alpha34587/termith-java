@@ -11,8 +11,9 @@ import org.xml.sax.SAXException;
 import java.util.*;
 
 /**
- * Created by smeoni on 14/04/17.
+ * Created by Simon Meoni on 14/04/17.
  */
+
 public class TxmContextExtractor extends ContextExtractor {
 
 

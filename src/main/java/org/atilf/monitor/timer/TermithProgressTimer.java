@@ -12,8 +12,9 @@ import java.util.TimerTask;
 import java.util.concurrent.*;
 
 /**
- * Created by smeoni on 23/03/17.
+ * Created by Simon Meoni on 23/03/17.
  */
+
 public class TermithProgressTimer extends TimerTask {
 
     private Collection _collection;

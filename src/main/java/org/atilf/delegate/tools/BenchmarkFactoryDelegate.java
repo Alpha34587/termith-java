@@ -11,7 +11,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Created by smeoni on 24/03/17.
+ * Created by Simon Meoni on 24/03/17.
  */
 public class BenchmarkFactoryDelegate extends Delegate{
 

@@ -12,8 +12,9 @@ import javax.xml.transform.TransformerException;
 import java.io.IOException;
 
 /**
- * Created by smeoni on 19/04/17.
+ * Created by Simon Meoni on 19/04/17.
  */
+
 public class TxmSerializerCLI {
     private static final Options options = new Options();
     private static final Logger LOGGER = LoggerFactory.getLogger(DisambiguationCLI.class.getName());

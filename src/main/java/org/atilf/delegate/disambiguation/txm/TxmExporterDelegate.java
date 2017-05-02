@@ -12,7 +12,7 @@ import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Created by smeoni on 19/04/17.
+ * Created by Simon Meoni on 19/04/17.
  */
 public class TxmExporterDelegate extends Delegate {
     public void executeTasks() throws IOException, InterruptedException {
