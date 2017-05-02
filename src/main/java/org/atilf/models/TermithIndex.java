@@ -46,9 +46,7 @@ public class TermithIndex {
     Constructor
      */
 
-    private TermithIndex(){
-        throw new UnsupportedOperationException();
-    }
+    public TermithIndex(){}
 
     /*
     Getter

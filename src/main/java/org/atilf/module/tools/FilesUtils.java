@@ -21,6 +21,9 @@ import java.util.UUID;
 public class FilesUtils {
     private static final Logger LOGGER = LoggerFactory.getLogger(FilesUtils.class.getName());
 
+    private FilesUtils() {
+        throw new IllegalAccessError("Utility class");
+    }
     /**
      * Create temporary folder with a name
      * @param path the name of the temporary folder
@@ -88,23 +91,13 @@ public class FilesUtils {
      * @throws IOException thrown an exception if the object is not writable
      */
     public static Path writeObject(Object o,Path workingPath) throws IOException {
-        FileOutputStream fos = null;
-        ObjectOutputStream oos;
         Path path = Paths.get(workingPath + "/" + UUID.randomUUID().toString());
-        try {
-            fos = new FileOutputStream(path.toString());
-            oos = new ObjectOutputStream(fos);
+        FileOutputStream fos = new FileOutputStream(path.toString());
+        try(ObjectOutputStream oos = new ObjectOutputStream(fos))
+        {
             oos.writeObject(o);
-            oos.flush();
-            oos.reset();
-            oos.close();
         } catch (IOException e) {
             LOGGER.error("could not write object : ",e);
-        }
-        finally {
-            if (fos != null){
-                fos.close();
-            }
         }
         return path;
     }
@@ -140,13 +133,12 @@ public class FilesUtils {
      */
     @SuppressWarnings("unchecked")
     public static <T> List<T> readListObject(Path filePath, Class<T> type){
-
-        ObjectInputStream in;
-        FileInputStream fis = null;
         Object o = null;
-        try {
-            fis = new FileInputStream(new File(filePath.toString()));
-            in = new ObjectInputStream(fis);
+
+        try (
+                FileInputStream fis = new FileInputStream(new File(filePath.toString()));
+                ObjectInputStream in = new ObjectInputStream(fis)
+        ){
             o = in.readObject();
             in.close();
         }
@@ -156,15 +148,6 @@ public class FilesUtils {
         }
         catch (ClassNotFoundException e) {
             LOGGER.error("could import object : ",e);
-        }
-        finally {
-            if (fis != null){
-                try {
-                    fis.close();
-                } catch (IOException e) {
-                    LOGGER.error("could not close object : ",e);
-                }
-            }
         }
         return (List<T>) o;
     }
@@ -178,12 +161,12 @@ public class FilesUtils {
      */
     public static <T>T readObject(Path filePath, Class<T> type){
 
-        ObjectInputStream in;
-        FileInputStream fis = null;
         Object o = null;
-        try {
-            fis = new FileInputStream(new File(filePath.toString()));
-            in = new ObjectInputStream(fis);
+        try (
+                FileInputStream fis = new FileInputStream(new File(filePath.toString()));
+                ObjectInputStream in = new ObjectInputStream(fis);
+        )
+        {
             o = in.readObject();
             in.close();
         }
@@ -193,15 +176,6 @@ public class FilesUtils {
         }
         catch (ClassNotFoundException e) {
             LOGGER.error("could import object : ",e);
-        }
-        finally {
-            if (fis != null){
-                try {
-                    fis.close();
-                } catch (IOException e) {
-                    LOGGER.error("could not close object : ",e);
-                }
-            }
         }
         return type.cast(o);
     }

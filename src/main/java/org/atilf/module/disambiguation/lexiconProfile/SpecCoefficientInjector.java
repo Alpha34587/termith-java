@@ -112,13 +112,8 @@ public class SpecCoefficientInjector extends Module {
         try {
             if (_computeSpecificities) {
                 reduceToLexicalProfile(computeSpecCoefficient());
-                try {
-                    Files.delete(Paths.get(_rResultPath));
-                    Files.delete(_rContextLexicon.getCsvPath());
-                }
-                catch (IOException e) {
-                    _logger.error("cannot remove file : " + _rResultPath, e);
-                }
+                Files.delete(Paths.get(_rResultPath));
+                Files.delete(_rContextLexicon.getCsvPath());
                 _logger.debug("specificities coefficient is computed for : {}",_id);
             }
             else {
