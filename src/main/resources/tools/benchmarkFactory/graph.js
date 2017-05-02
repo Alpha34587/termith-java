@@ -21,22 +21,13 @@ var draw = function draw(id,data,yAxe){
       }
     }
 
-    var myLineChart = new Chart(ctx, {
-      type: 'line',
-      data: data,
-      options : options
-
-    });
-  })
-}
-
 function parse_json(file,callback,id,yAxe){
   var data = {}
   data["labels"] = [];
   data["datasets"] = [];
-  values = {};
+  var values = {};
   $.getJSON(file, function(json) {
-    json["run"].forEach(function(el,index,array){
+    json["run"].forEach(function(el,index){
       if(index === 0){
         for (var label in el) {
           values[label] = []
