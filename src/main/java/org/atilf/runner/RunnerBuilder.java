@@ -12,7 +12,7 @@ import java.nio.file.Paths;
 
 public class RunnerBuilder {
 
-    public static String _annotation;
+    String _annotation;
     int _poolSize = Runtime.getRuntime().availableProcessors();
     int _thresholdMax = 0;
     int _thresholdMin = 0;
@@ -22,28 +22,28 @@ public class RunnerBuilder {
     /*
     remove maybe
      */
-    static int _corpusSize = 0;
+    int _corpusSize = 0;
 
     /*
     common parameter
      */
 
-    static Path _base;
-    static Path _out;
+    Path _base;
+    Path _out;
 
     /*
     terminology extraction parameter
      */
-    static String _lang;
-    static String _treeTaggerHome;
+    String _lang;
+    String _treeTaggerHome;
 
     /*
     Disambiguation parameter
      */
-    static Path _learningPath;
-    static Path _evaluationPath;
-    static Path _scorePath;
-    static Path _txmInputPath;
+    Path _learningPath;
+    Path _evaluationPath;
+    Path _scorePath;
+    Path _txmInputPath;
     protected final Logger LOGGER = LoggerFactory.getLogger(this.getClass().getName());
 
     public RunnerBuilder setTermithIndex(TermithIndex termithIndex) {
@@ -52,7 +52,7 @@ public class RunnerBuilder {
     }
 
     public RunnerBuilder setAnnotation(String annotation) {
-        RunnerBuilder._annotation = annotation;
+        _annotation = annotation;
         return this;
     }
 
@@ -66,18 +66,18 @@ public class RunnerBuilder {
         return this;
     }
 
-    public RunnerBuilder setBase(String _base){
-        RunnerBuilder._base = FilesUtils.folderPathResolver(_base);
+    public RunnerBuilder setBase(String base){
+        _base = FilesUtils.folderPathResolver(base);
         try {
-            RunnerBuilder._corpusSize = (int) Files.list(Paths.get(_base)).count();
+            _corpusSize = (int) Files.list(Paths.get(base)).count();
         } catch (IOException e) {
             LOGGER.error("cannot find corpus : ",e);
         }
         return this;
     }
 
-    public RunnerBuilder setTxmInputPath(String _txmInputPath) {
-        RunnerBuilder._txmInputPath = FilesUtils.folderPathResolver(_txmInputPath);
+    public RunnerBuilder setTxmInputPath(String txmInputPath) {
+        _txmInputPath = FilesUtils.folderPathResolver(txmInputPath);
         return this;
     }
 
@@ -93,39 +93,39 @@ public class RunnerBuilder {
         return this;
     }
 
-    public RunnerBuilder setOut(String _out) {
-        RunnerBuilder._out = Paths.get(_out);
-        FilesUtils.createFolder(RunnerBuilder._out);
+    public RunnerBuilder setOut(String out) {
+        _out = Paths.get(out);
+        FilesUtils.createFolder(_out);
         return this;
     }
 
-    public RunnerBuilder setLang(String _lang) {
-        RunnerBuilder._lang = _lang;
+    public RunnerBuilder setLang(String lang) {
+        _lang = lang;
         return this;
     }
 
     public RunnerBuilder setTreeTaggerHome(String treeTaggerHome) {
-        RunnerBuilder._treeTaggerHome = treeTaggerHome;
+        _treeTaggerHome = treeTaggerHome;
         return this;
     }
 
     public RunnerBuilder setLearningPath(String learningPath) {
-        RunnerBuilder._learningPath = FilesUtils.folderPathResolver(learningPath);
+        _learningPath = FilesUtils.folderPathResolver(learningPath);
         try {
-            RunnerBuilder._corpusSize += (int) Files.list(_learningPath).count();
+            _corpusSize += (int) Files.list(_learningPath).count();
         } catch (IOException e) {
-            LOGGER.error("cannot find path");
+            LOGGER.error("cannot find path",e);
         }
 
         return this;
     }
 
     public RunnerBuilder setEvaluationPath(String evaluationPath) {
-        RunnerBuilder._evaluationPath = FilesUtils.folderPathResolver(evaluationPath);
+        _evaluationPath = FilesUtils.folderPathResolver(evaluationPath);
         try {
-            RunnerBuilder._corpusSize += (int) Files.list(_evaluationPath).count();
+            _corpusSize += (int) Files.list(_evaluationPath).count();
         } catch (IOException e) {
-            LOGGER.error("cannot find path");
+            LOGGER.error("cannot find path",e);
         }
         return this;
     }

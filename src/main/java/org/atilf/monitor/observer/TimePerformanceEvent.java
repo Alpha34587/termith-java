@@ -22,7 +22,7 @@ public class TimePerformanceEvent extends TermithEvent {
     public void countElapsedTime(){
         _elapsedTime = TimeUnit.NANOSECONDS.toSeconds(System.nanoTime() - _startTime);
 
-        _logger.info(_name + " used  : " + _elapsedTime + "s");
+        _logger.info("{} used  : {} s", _name, _elapsedTime);
         _timePerformanceEvents.add(this);
     }
 

@@ -54,6 +54,7 @@ public class TextExtractor extends Module {
     /**
      * this method apply an xsl stylesheet to a file given in the _file field. it extracts the plain text of the tei file
      */
+    @Override
     public void execute() {
         /*
         instantiate needed variables for transformation. The StringWriter variable is used to return
@@ -65,7 +66,11 @@ public class TextExtractor extends Module {
         StreamResult streamResult = new StreamResult(stringWriter);
 
         try {
-            _logger.debug("apply " + _xslResources._stylesheet.toString() + "to xml file" + input.toString());
+            _logger.debug(
+                    "apply {} to xml file {}",
+                    _xslResources._stylesheet.toString(),
+                    input.toString()
+            );
             /*
             get new transformer
              */
@@ -90,7 +95,7 @@ public class TextExtractor extends Module {
     public void run() {
         super.run();
         try {
-            _logger.debug("Extracting text of file: " + _file);
+            _logger.debug("Extracting text of file: {}",_file);
             /*
             check if the result of the extraction is not empty
              */
@@ -103,10 +108,10 @@ public class TextExtractor extends Module {
             }
 
             else {
-                _logger.info(_file + " has empty body");
+                _logger.info("{} has empty body",_file);
                 _termithIndex.getXmlCorpus().remove(FilesUtils.nameNormalizer(_file.toString()));
             }
-            _logger.debug("Extraction done for file: " + _file);
+            _logger.debug("Extraction done for file: {}",_file);
         } catch (IOException e) {
             _logger.error("File Exception : ",e);
         }

@@ -34,6 +34,7 @@ public class WorkingFilesCleaner extends Module{
     /**
      * remove subfolder working directory if _keepFiles is false
      */
+    @Override
     public void execute() {
         try {
             _logger.debug("clean working directory : " + _outputPath);

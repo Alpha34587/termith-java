@@ -118,10 +118,16 @@ public class FilesUtils {
      * @throws IOException thrown an exception if the file is not writable
      */
     public static Path writeFile(StringBuilder content, Path workingPath, String filename) throws IOException {
+        BufferedWriter bufferedWriter = null;
         Path filePath = folderPathResolver(workingPath.toString() + "/" + filename);
-        BufferedWriter bufferedWriter = Files.newBufferedWriter(filePath);
-        bufferedWriter.append(content);
-        bufferedWriter.close();
+        try {
+            bufferedWriter = Files.newBufferedWriter(filePath);
+            bufferedWriter.append(content);
+        }
+        finally {
+            assert bufferedWriter != null;
+            bufferedWriter.close();
+        }
         return filePath;
     }
 
@@ -212,7 +218,7 @@ public class FilesUtils {
     public static void createFolder(Path path) {
         File folder = path.toFile();
         try {
-            if (Files.exists(path)){
+            if (path.toFile().exists()){
                 FileUtils.deleteDirectory(folder);
             }
             if (!folder.mkdir()){

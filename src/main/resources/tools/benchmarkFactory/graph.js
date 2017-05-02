@@ -23,9 +23,9 @@ var draw = function draw(id,data,yAxe){
 
 function parse_json(file,callback,id,yAxe){
   var data = {}
+  var values = {};
   data["labels"] = [];
   data["datasets"] = [];
-  var values = {};
   $.getJSON(file, function(json) {
     json["run"].forEach(function(el,index){
       if(index === 0){

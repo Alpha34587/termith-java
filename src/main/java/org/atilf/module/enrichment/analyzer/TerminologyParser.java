@@ -63,6 +63,7 @@ public class TerminologyParser extends Module {
      * characters offsets and a file id
      * @throws IOException thrown a exception if the json file is malformed
      */
+    @Override
     public void execute() {
         try {
 

@@ -11,6 +11,10 @@ import java.util.concurrent.ConcurrentHashMap;
 public class SpecialChXmlEscape {
     protected final static Map<String, String> XML_SPEC_CH = new ConcurrentHashMap<>();
 
+    private SpecialChXmlEscape() {
+        throw new IllegalAccessError("Utility class");
+    }
+
     static {
         XML_SPEC_CH.put("\"", "&quot;");
         XML_SPEC_CH.put("&", "&amp;");
@@ -25,9 +29,10 @@ public class SpecialChXmlEscape {
      * @return the converted character
      */
     public static String replaceXmlChar(String ch){
+        String res = "";
         for (Map.Entry <String,String> entry : XML_SPEC_CH.entrySet()){
-            ch = ch.replace(entry.getKey(),entry.getValue());
+            res = ch.replace(entry.getKey(),entry.getValue());
         }
-        return ch;
+        return res;
     }
 }

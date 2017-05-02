@@ -25,9 +25,9 @@ public class CommonWordsPosLemmaCleaner implements Runnable {
 
     @Override
     public void run() {
-        LOGGER.debug("common pos/lemma cleaner started for : %s", _key);
+        LOGGER.debug("common pos/lemma cleaner started for : {}", _key);
         execute();
-        LOGGER.debug("common pos/lemma cleaner finished for : %s", _key);
+        LOGGER.debug("common pos/lemma cleaner finished for : {}", _key);
     }
 
     public void execute(){

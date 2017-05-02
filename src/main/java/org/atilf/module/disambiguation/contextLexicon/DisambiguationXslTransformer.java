@@ -102,7 +102,7 @@ public class DisambiguationXslTransformer extends Module{
             /*
             decrease the counter
              */
-            _logger.info("Extraction done for file : " + _file);
+            _logger.info("Extraction done for file : {}",_file);
         } catch (IOException e) {
             _logger.error("File Exception : ",e);
         }
@@ -120,7 +120,11 @@ public class DisambiguationXslTransformer extends Module{
         StreamResult streamResult = new StreamResult(stringWriter);
 
         try {
-            _logger.debug("apply " + _xslResources._stylesheet.toString() + "to xml file" + input.toString());
+            _logger.debug(
+                    "apply {} to xml file {}",
+                    _xslResources._stylesheet.toString(),
+                    input.toString()
+            );
             /*
             get new transformer
              */

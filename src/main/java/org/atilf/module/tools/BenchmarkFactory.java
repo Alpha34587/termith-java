@@ -55,7 +55,7 @@ public class BenchmarkFactory extends Module {
 
     @Override
     public void run() {
-        if (!Files.exists(_performancePath)) {
+        if (!_performancePath.toFile().exists()) {
             try {
                 Files.createDirectory(_performancePath);
             } catch (IOException e) {
@@ -106,7 +106,7 @@ public class BenchmarkFactory extends Module {
 
         void writeJson() {
 
-            if (!Files.exists(Paths.get(getTimeHistoryJson()))) {
+            if (!Paths.get(getTimeHistoryJson()).toFile().exists()) {
                 initializeJson(_termithEvents,TimePerformanceEvent.class);
             }
             else {
@@ -124,7 +124,7 @@ public class BenchmarkFactory extends Module {
         }
 
         void writeJson() {
-            if (!Files.exists(Paths.get(getMemoryHistoryJson()))) {
+            if (!Paths.get(getMemoryHistoryJson()).toFile().exists()) {
                 initializeJson(_termithEvents,MemoryPerformanceEvent.class);
             }
             else {

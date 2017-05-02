@@ -35,7 +35,7 @@ public class TransformXslScoreDelegate extends Delegate {
         _logger.info("transformation phase is started for TransformXslScore");
         Path scoreFolder = Files.createDirectory(Paths.get(Runner.getOut().toString() + "/score/"));
         Files.list(Runner.getOut())
-                .filter(p -> !Files.isDirectory(p))
+                .filter(p -> !p.toFile().isDirectory())
                 .filter(p -> p.toString().endsWith(".xml"))
                 .filter(p -> _termithIndex.getEvaluationTransformedFiles().values().contains(p))
                 .forEach(

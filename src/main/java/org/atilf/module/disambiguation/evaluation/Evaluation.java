@@ -57,7 +57,7 @@ public class Evaluation extends Module{
      */
     @Override
     public void execute() {
-        _logger.info("evaluate terms candidate from: %s", _p);
+        _logger.info("evaluate terms candidate from: {}", _p);
         /*
         browse evaluation profile ("for each terms of a file")
          */
@@ -106,7 +106,7 @@ public class Evaluation extends Module{
                     }
                 }
         );
-        _logger.info("evaluation is finished for: %s",_p);
+        _logger.info("evaluation is finished for: {}",_p);
     }
 
     /**

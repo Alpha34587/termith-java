@@ -49,9 +49,9 @@ public class EvaluationExtractor extends ContextExtractor {
 
     @Override
     public void run() {
-        LOGGER.info("add %s to evaluation lexicon",_p);
+        LOGGER.info("add {} to evaluation lexicon",_p);
         this.execute();
-        LOGGER.info("%s added",_p);
+        LOGGER.info("{} added",_p);
     }
 
     @Override

@@ -13,4 +13,8 @@ public class JsonTermResources {
     public final static String T_TERMS = "terms";
     public final static String T_OCC = "occurrences";
     public final static String T_INPUT = "input_sources";
+
+    private JsonTermResources() {
+        throw new IllegalAccessError("Utility class");
+    }
 }

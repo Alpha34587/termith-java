@@ -25,6 +25,7 @@ public class TextExtractorDelegate extends Delegate {
      * @throws IOException throws exception if a file is not find
      * @throws InterruptedException throws java concurrent executorService exception
      */
+    @Override
     public void executeTasks() throws IOException, InterruptedException {
         /*
         initialize XslResource & ExtractTextTimer

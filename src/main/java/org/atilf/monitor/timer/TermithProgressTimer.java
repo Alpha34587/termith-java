@@ -6,7 +6,6 @@ import org.slf4j.LoggerFactory;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.TimerTask;
 import java.util.concurrent.*;
@@ -17,7 +16,6 @@ import java.util.concurrent.*;
 
 public class TermithProgressTimer extends TimerTask {
 
-    private Collection _collection;
     private List<Future> _futures = new ArrayList<>();
     private ScheduledExecutorService _service = Executors.newSingleThreadScheduledExecutor();
     private Logger _logger;
@@ -47,14 +45,14 @@ public class TermithProgressTimer extends TimerTask {
             _service.shutdownNow();
         }
         else {
-            int progress = (int) _futures.stream().filter(future -> future.isDone()).count();
+            int progress = (int) _futures.stream().filter(Future::isDone).count();
             showProgress(progress,_futures.size());
         }
     }
 
     private void showProgress(int progress, int done) {
         float absoluteProgression = ((float) progress / (float) done) * 100;
-        _logger.info("progress : " + progress + "/" + done + " [" + df.format(absoluteProgression) + "%]");
+        _logger.info("progress : {}/{} [{}%]", progress, done, df.format(absoluteProgression));
     }
 
 }

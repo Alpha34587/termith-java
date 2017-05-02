@@ -95,11 +95,11 @@ public class TermsuitePipelineBuilder extends Module {
     /**
      * run the termsuite pipeline
      */
+    @Override
     public void execute(){
         _logger.info("Run Termsuite Pipeline");
         _termsuitePipeline.run();
-        _logger.info("Finished execution of Termsuite Pipeline, result in :" +
-                _outputPath);
+        _logger.info("Finished execution of Termsuite Pipeline, result in : {}",_outputPath);
     }
 
     /**

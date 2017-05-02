@@ -105,10 +105,15 @@ public class TreeTaggerWrapper {
         File temp = new File( _outputPath + "/" + UUID.randomUUID().toString() + ".tt");
         FileWriter fileWriter = new FileWriter(temp);
         BufferedWriter bw = new BufferedWriter(fileWriter);
-        bw.write(parsingText);
-        bw.flush();
-        bw.close();
-        fileWriter.close();
+        try {
+            bw.write(parsingText);
+            bw.flush();
+        }
+        finally {
+            bw.close();
+            fileWriter.close();
+
+        }
         LOGGER.debug("write file during a tree tagger tasks :"  + temp.getAbsolutePath());
         return temp.getAbsolutePath();
     }

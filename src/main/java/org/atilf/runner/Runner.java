@@ -30,7 +30,7 @@ public class Runner {
     private static int _corpusSize;
     private static int _thresholdMin;
     private static int _thresholdMax;
-    public static String _annotation;
+    private static String _annotation;
 
     /*
     common parameter
@@ -61,16 +61,16 @@ public class Runner {
         _bpmnDiagram = runnerBuilder._bpmnDiagram;
         _thresholdMin = runnerBuilder._thresholdMin;
         _thresholdMax = runnerBuilder._thresholdMax;
-        _txmInputPath = RunnerBuilder._txmInputPath;
-        _base = RunnerBuilder._base;
-        _out = RunnerBuilder._out;
-        _lang = RunnerBuilder._lang;
-        _treeTaggerHome = RunnerBuilder._treeTaggerHome;
-        _learningPath = RunnerBuilder._learningPath;
-        _evaluationPath = RunnerBuilder._evaluationPath;
-        _scorePath = RunnerBuilder._scorePath;
-        _corpusSize = RunnerBuilder._corpusSize;
-        _annotation = RunnerBuilder._annotation;
+        _txmInputPath = runnerBuilder._txmInputPath;
+        _base = runnerBuilder._base;
+        _out = runnerBuilder._out;
+        _lang = runnerBuilder._lang;
+        _treeTaggerHome = runnerBuilder._treeTaggerHome;
+        _learningPath = runnerBuilder._learningPath;
+        _evaluationPath = runnerBuilder._evaluationPath;
+        _scorePath = runnerBuilder._scorePath;
+        _corpusSize = runnerBuilder._corpusSize;
+        _annotation = runnerBuilder._annotation;
     }
 
     public static Path getOut() {

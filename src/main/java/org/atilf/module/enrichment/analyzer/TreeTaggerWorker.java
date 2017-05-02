@@ -79,7 +79,7 @@ public class TreeTaggerWorker extends Module {
             /*
             TreeTagger task and Json serialization
              */
-            _logger.debug("TreeTagger task started for :" + _id);
+            _logger.debug("TreeTagger task started for : {}",_id);
             treeTaggerWrapper.execute();
 
             MorphologySerializer morphologySerializer = new MorphologySerializer(
@@ -89,12 +89,12 @@ public class TreeTaggerWorker extends Module {
                     _textAnalyzer);
             morphologySerializer.execute();
             _termithIndex.getSerializeJson().add(Paths.get(_jsonPath));
-            _logger.debug("TreeTagger task finished for : " + _id);
+            _logger.debug("TreeTagger task finished for : {}",_id);
 
             /*
             tokenize xml file
              */
-            _logger.debug("tokenization and morphosyntax tasks started for : " + _jsonPath);
+            _logger.debug("tokenization and morphosyntax tasks started for : {}",_jsonPath);
             File json = new File(_jsonPath);
             MorphologyTokenizer morphologyTokenizer = new MorphologyTokenizer(_txt, _xml, json);
             morphologyTokenizer.execute();
@@ -107,7 +107,7 @@ public class TreeTaggerWorker extends Module {
 
             _termithIndex.getMorphologyStandOff().put(json.getName().replace(".json",""),
                     FilesUtils.writeObject(morphologyTokenizer.getOffsetId(), Paths.get(_outputPath)));
-            _logger.debug("tokenization and morphosyntax tasks finished file : " + _jsonPath);
+            _logger.debug("tokenization and morphosyntax tasks finished file : {}",_jsonPath);
         } catch (IOException e) {
             _logger.error("error during execute TreeTagger data", e);
         } catch (InterruptedException e) {
@@ -125,7 +125,7 @@ public class TreeTaggerWorker extends Module {
     private void init(){
         try {
             Files.createDirectories(Paths.get(_outputPath + "/json"));
-            _logger.debug("create temporary text files in " + _outputPath + "/json folder");
+            _logger.debug("create temporary text files in {}/json folder",_outputPath);
         } catch (IOException e) {
             _logger.error("cannot create directories : ",e);
         }
