@@ -103,11 +103,12 @@ public class TreeTaggerWrapper {
      */
     private String writeFile(String parsingText) throws IOException {
         File temp = new File( _outputPath + "/" + UUID.randomUUID().toString() + ".tt");
-        BufferedWriter bw = new BufferedWriter(new FileWriter(temp));
+        FileWriter fileWriter = new FileWriter(temp);
+        BufferedWriter bw = new BufferedWriter(fileWriter);
         bw.write(parsingText);
         bw.flush();
         bw.close();
-
+        fileWriter.close();
         LOGGER.debug("write file during a tree tagger tasks :"  + temp.getAbsolutePath());
         return temp.getAbsolutePath();
     }
@@ -119,7 +120,7 @@ public class TreeTaggerWrapper {
     private String parsingText() throws IOException, InterruptedException {
 
         String lang;
-        if (_treeTaggerParameter.getLang().equals("fr")){
+        if ("fr".equals(_treeTaggerParameter.getLang())){
             lang = "-f";
         }
         else {

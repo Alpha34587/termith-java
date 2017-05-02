@@ -55,8 +55,9 @@ public class Evaluation extends Module{
      * this execute method browses the _evaluationProfile field and call computeFactor & compareFactor method if the
      * term candidate have a lexOn and a lexOff context in the _contextLexicon field
      */
+    @Override
     public void execute() {
-        _logger.info("evaluate terms candidate from: " + _p);
+        _logger.info("evaluate terms candidate from: %s", _p);
         /*
         browse evaluation profile ("for each terms of a file")
          */
@@ -105,7 +106,7 @@ public class Evaluation extends Module{
                     }
                 }
         );
-        _logger.info("evaluation is finished for: " + _p);
+        _logger.info("evaluation is finished for: %s",_p);
     }
 
     /**

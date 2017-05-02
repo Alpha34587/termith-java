@@ -87,7 +87,6 @@ public class TreeTaggerWorkerDelegate extends Delegate {
                         corpusAnalyzer,
                         key,
                         Runner.getOut().toString(),
-                        Runner.getLang(),
                         treeTaggerParameter
                 )))
         );

@@ -11,7 +11,6 @@ import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import java.util.*;
 import java.util.Map.Entry;
-import java.util.concurrent.CountDownLatch;
 
 /**
  * @author Simon Meoni Created on 15/12/16.
@@ -34,11 +33,6 @@ public class AggregateTeiTerms extends DefaultHandler implements Runnable {
         _scoreTerm = scoreTerms;
     }
 
-    public AggregateTeiTerms(String xml, Map<String, EvaluationProfile> evaluationProfile,
-                             Map<String, ScoreTerm> scoreTerms, CountDownLatch aggregateCounter) {
-        this(xml, evaluationProfile, scoreTerms);
-    }
-
     public void execute() {
         try {
             SAXParserFactory factory = SAXParserFactory.newInstance();
@@ -51,9 +45,9 @@ public class AggregateTeiTerms extends DefaultHandler implements Runnable {
 
     @Override
     public void run() {
-        LOGGER.info("aggregate terms is started for file : " + _xml);
+        LOGGER.info("aggregate terms is started for file : %s", _xml);
         execute();
-        LOGGER.info("aggregate terms is finished for file : " + _xml);
+        LOGGER.info("aggregate terms is finished for file : %s", _xml);
     }
 
     @Override
@@ -71,7 +65,7 @@ public class AggregateTeiTerms extends DefaultHandler implements Runnable {
                 _inW = true;
                 break;
         }
-        if (_inStandOff && qName.equals("span")) {
+        if (_inStandOff && "span".equals(qName)) {
             addTerms(attributes);
         }
 
@@ -108,8 +102,7 @@ public class AggregateTeiTerms extends DefaultHandler implements Runnable {
     private AnnotationResources parseAna(String ana) {
         for (String id : ana.split(" ")) {
             AnnotationResources annotation = AnnotationResources.getAnnotations(id);
-            if(annotation != null)
-                if (annotation.getAutoAnnotation() != null)
+            if(annotation != null && annotation.getAutoAnnotation() != null)
                     return annotation;
         }
         return null;
@@ -164,7 +157,7 @@ public class AggregateTeiTerms extends DefaultHandler implements Runnable {
     }
 
     @Override
-    public void characters(char ch[],
+    public void characters(char[] ch,
                            int start, int length) throws SAXException {
         if (_inW){
             String posLemma = new String(ch,start,length);

@@ -28,7 +28,6 @@ public class TagNormalizer {
                 break;
             case "fr" :
                 _ttTag = parseResource("/models/enrichment/tagNormalizer/treeTaggerMultexTagFr.json");
-                ;
                 break;
             default:
                 throw new IllegalArgumentException("this language is not support : " + lang);

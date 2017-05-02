@@ -92,8 +92,9 @@ public class DisambiguationTeiWriter extends Module {
         }
     }
 
+    @Override
     public void execute() {
-        _logger.debug("write tei module.disambiguation for :" + _p);
+        _logger.debug("write tei module.disambiguation for : %s",_p);
         XPathExpression span;
         try {
             /*

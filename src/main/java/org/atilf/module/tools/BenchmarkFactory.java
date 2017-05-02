@@ -59,7 +59,7 @@ public class BenchmarkFactory extends Module {
             try {
                 Files.createDirectory(_performancePath);
             } catch (IOException e) {
-                _logger.error("cannot create directory");
+                _logger.error("cannot create directory",e);
             }
         }
         try {

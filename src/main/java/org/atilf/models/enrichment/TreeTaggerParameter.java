@@ -38,19 +38,20 @@ public class TreeTaggerParameter {
     }
 
     private String copyTokenizeScript(String outputPath) {
+        String perlPath =  outputPath + "/utf8-tokenize-custom.perl";
         InputStream resourceAsStream = getClass().getClassLoader().getResourceAsStream("module/enrichment/analyze/treeTaggerWorker/utf8-tokenize-custom.perl");
         try {
-            Files.write(Paths.get(outputPath +"/utf8-tokenize-custom.perl"), ByteStreams.toByteArray
+            Files.write(Paths.get(perlPath), ByteStreams.toByteArray
                     (resourceAsStream));
 
-            boolean tryExecutable = new File(outputPath + "/utf8-tokenize-custom.perl").setExecutable(true);
+            boolean tryExecutable = new File(perlPath).setExecutable(true);
             if (!tryExecutable){
                 throw new IOException("copy of utf8-tokenize-custom.perl failed, the file cannot be executable");
             }
         } catch (IOException e) {
             LOGGER.error("cannot copy termsuite-resources.jar : ",e);
         }
-        return outputPath +"/utf8-tokenize-custom.perl";
+        return perlPath;
     }
 
     public String getTokenizePath() {

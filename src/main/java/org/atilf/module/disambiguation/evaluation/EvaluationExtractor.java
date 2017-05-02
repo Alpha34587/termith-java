@@ -21,11 +21,9 @@ public class EvaluationExtractor extends ContextExtractor {
 
     private final Map<String, EvaluationProfile> _evaluationLexicon;
     private static final Logger LOGGER = LoggerFactory.getLogger(EvaluationExtractor.class.getName());
-    private String _p;
 
     public EvaluationExtractor(String p, TermithIndex termithIndex) {
         super(p,termithIndex.getContextLexicon(), null);
-        _p = p;
         termithIndex.getEvaluationLexicon().put(FilesUtils.nameNormalizer(p),new HashMap<>());
         _evaluationLexicon = termithIndex.getEvaluationLexicon().get(FilesUtils.nameNormalizer(p));
     }
@@ -51,9 +49,9 @@ public class EvaluationExtractor extends ContextExtractor {
 
     @Override
     public void run() {
-        LOGGER.info("add " + _p + " to evaluation lexicon");
+        LOGGER.info("add %s to evaluation lexicon",_p);
         this.execute();
-        LOGGER.info(_p + " added");
+        LOGGER.info("%s added",_p);
     }
 
     @Override
