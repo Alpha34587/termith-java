@@ -30,7 +30,7 @@ public class MemoryPerformanceEvent extends TermithEvent {
 
     private void usedMemory() {
         _usedMemory = Math.abs(_usedMemoryBefore - (_rt.maxMemory() - _rt.freeMemory())) / (1024 * 1024);
-        _logger.info(_name + " takes  : " + _usedMemory + "Mo");
+        _logger.info(_name + " takes  : %s Mo",_usedMemory);
         _memoryPerformanceEvents.add(this);
     }
 

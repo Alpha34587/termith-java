@@ -18,6 +18,7 @@ public class WorkingFileCleanerDelegate extends Delegate {
      * the json and txt folder
      * @throws InterruptedException throws java concurrent executorService exception
      */
+    @Override
     public void executeTasks() throws InterruptedException {
         _executorService.submit(new WorkingFilesCleaner(Runner.getOut(),getFlowableVariable("fileCleaner",true)));
         _executorService.shutdown();

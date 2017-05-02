@@ -29,6 +29,7 @@ public class ComputeTotalTermsScore extends Module {
         _totalTermScore = termithIndex.getTotalTermScore();
     }
 
+    @Override
     public void execute() {
         _logger.info("ComputeTotalTermScore is started");
         sum();

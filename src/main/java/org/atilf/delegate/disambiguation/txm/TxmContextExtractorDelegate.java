@@ -44,7 +44,7 @@ public class TxmContextExtractorDelegate extends Delegate{
 
         List<Future> futures = new ArrayList<>();
         Files.list(Runner.getOut()).forEach(
-                (file) -> futures.add(_executorService.submit(
+                file -> futures.add(_executorService.submit(
                         new TxmContextExtractor(file.toString(),
                                 _termithIndex.getTermsTxmContext(),
                                 getFlowableVariable("window",0),

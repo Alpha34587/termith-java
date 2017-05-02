@@ -16,7 +16,8 @@ public enum AnnotationResources {
     LEX_ON("_lexOn"),
     LEX_OFF("_lexOff");
 
-    public String value;
+    private String value;
+
     private AnnotationResources autoAnnotation = null;
 
     AnnotationResources(String value) {

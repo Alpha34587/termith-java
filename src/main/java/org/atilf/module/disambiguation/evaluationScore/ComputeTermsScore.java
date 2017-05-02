@@ -23,14 +23,15 @@ public class ComputeTermsScore extends Module {
 
     }
 
+    @Override
     public void execute(){
-        _logger.info("compute score is started for : " + _term );
+        _logger.info("compute score is started for : %s",_term );
         computeRecall();
         computePrecision();
         computeF1score();
         computeTerminologyTrend();
         computeAmbiguityRate();
-        _logger.info("compute score is finished for : " + _term );
+        _logger.info("compute score is finished for : %s",_term );
     }
 
     void computeRecall(){

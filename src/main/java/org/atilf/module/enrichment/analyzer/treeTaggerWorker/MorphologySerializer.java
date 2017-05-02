@@ -62,7 +62,7 @@ public class MorphologySerializer {
         jg.writeEndObject();
         jg.flush();
         writer.close();
-        LOGGER.debug("write file " + _jsonPath);
+        LOGGER.debug("write file %s",_jsonPath);
     }
 
     /**

@@ -44,7 +44,7 @@ public class ScoreTerm {
         _missingOccurrence = missingOccurrence;
     }
 
-    public void setFlexingWords(String flexingWords) {
+    public synchronized void setFlexingWords(String flexingWords) {
         _flexingWords = flexingWords;
     }
 

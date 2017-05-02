@@ -108,12 +108,13 @@ public class ExportScoreToCsv extends ExportScoreToJson {
                          */
                             bufferedWriter.write("\"" + df.format(value.getF1Score()) + "\"\n");
                         } catch (IOException e) {
-                            e.printStackTrace();
+                            _logger.error("cannot write csv file",e);
                         }
                     }
             );
             bufferedWriter.flush();
             bufferedWriter.close();
+            fileWriter.close();
         }
         catch (IOException e) {
             _logger.error("cannot export to CSV : ",e);

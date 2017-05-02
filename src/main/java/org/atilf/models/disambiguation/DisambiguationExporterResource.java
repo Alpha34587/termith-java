@@ -1,8 +1,5 @@
 package org.atilf.models.disambiguation;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import javax.xml.XMLConstants;
 import javax.xml.namespace.NamespaceContext;
 import java.util.Iterator;
@@ -14,6 +11,10 @@ import java.util.Iterator;
  *         Created on 18/10/16.
  */
 public class DisambiguationExporterResource {
+
+    private DisambiguationExporterResource() {
+        throw new IllegalAccessError("Utility class");
+    }
 
     /**
      * declaration of namespace _context :
@@ -64,7 +65,6 @@ public class DisambiguationExporterResource {
     public static final String CONTEXT_GETTER_LAST;
     public static final String CONTEXT_GETTER_FIRST;
 
-    private final static Logger LOGGER = LoggerFactory.getLogger(DisambiguationExporterResource.class);
     static {
         /*
         used for extract span

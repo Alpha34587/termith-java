@@ -10,6 +10,11 @@ import org.slf4j.LoggerFactory;
  *         Created on 19/09/16.
  */
 public class CLIUtils {
+
+    private CLIUtils() {
+        throw new IllegalAccessError("Utility class");
+    }
+
     /**
      * set log level
      * @param level the level of log that we want to show during the process

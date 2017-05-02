@@ -42,7 +42,11 @@ public class TreeTaggerParameter {
         try {
             Files.write(Paths.get(outputPath +"/utf8-tokenize-custom.perl"), ByteStreams.toByteArray
                     (resourceAsStream));
-            new File(outputPath +"/utf8-tokenize-custom.perl").setExecutable(true);
+
+            boolean tryExecutable = new File(outputPath + "/utf8-tokenize-custom.perl").setExecutable(true);
+            if (!tryExecutable){
+                throw new IOException("copy of utf8-tokenize-custom.perl failed, the file cannot be executable");
+            }
         } catch (IOException e) {
             LOGGER.error("cannot copy termsuite-resources.jar : ",e);
         }
