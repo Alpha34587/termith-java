@@ -3,7 +3,6 @@ package org.atilf.delegate.disambiguation.txm;
 import org.atilf.delegate.Delegate;
 import org.atilf.module.disambiguation.txm.TxmContextExtractor;
 import org.atilf.monitor.timer.TermithProgressTimer;
-import org.atilf.runner.Runner;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -43,7 +42,7 @@ public class TxmContextExtractorDelegate extends Delegate{
         authorizedTag.add("VER:subi");
 
         List<Future> futures = new ArrayList<>();
-        Files.list(Runner.getOut()).forEach(
+        Files.list(getFlowableVariable("out",null)).forEach(
                 file -> futures.add(_executorService.submit(
                         new TxmContextExtractor(file.toString(),
                                 _termithIndex.getTermsTxmContext(),

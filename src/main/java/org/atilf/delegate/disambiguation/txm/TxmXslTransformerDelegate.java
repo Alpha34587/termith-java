@@ -6,7 +6,6 @@ import org.atilf.models.disambiguation.DisambiguationXslResources;
 import org.atilf.models.disambiguation.TxmXslResource;
 import org.atilf.module.disambiguation.contextLexicon.DisambiguationXslTransformer;
 import org.atilf.monitor.timer.TermithProgressTimer;
-import org.atilf.runner.Runner;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -27,12 +26,12 @@ public class TxmXslTransformerDelegate extends Delegate {
         /*
         Transformation phase
          */
-        Files.list(Runner.getTxmInputPath()).forEach(
+        Files.list(getFlowableVariable("txmInputPath",null)).forEach(
                 p -> futures.add(_executorService.submit(new DisambiguationXslTransformer(
                                 p.toFile(),
                                 _termithIndex,
                                 xslResources,
-                                Runner.getOut()
+                                getFlowableVariable("out",null)
                         ))
                 )
         );

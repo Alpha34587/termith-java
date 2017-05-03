@@ -4,7 +4,6 @@ import org.atilf.delegate.Delegate;
 import org.atilf.models.disambiguation.RConnectionPool;
 import org.atilf.models.disambiguation.RLexicon;
 import org.atilf.module.disambiguation.lexiconProfile.SpecCoefficientInjector;
-import org.atilf.runner.Runner;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -30,14 +29,14 @@ public class LexiconProfileDelegate extends Delegate {
         /*
         convert global corpus into R variable
          */
-        RLexicon rLexicon = new RLexicon(_termithIndex.getCorpusLexicon(), Runner.getOut().toString());
+        RLexicon rLexicon = new RLexicon(_termithIndex.getCorpusLexicon(), getFlowableVariable("out",null).toString());
         RConnectionPool RConnectionPool = new RConnectionPool(8,rLexicon);
         _termithIndex.getContextLexicon().forEach(
                 (key, value) -> _executorService.submit(new SpecCoefficientInjector(
                         key,
                         _termithIndex,
                         rLexicon,
-                        Runner.getOut().toString(),
+                        getFlowableVariable("out",null).toString(),
                         RConnectionPool))
         );
 

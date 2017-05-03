@@ -2,7 +2,6 @@ package org.atilf.delegate.tools;
 
 import org.atilf.delegate.Delegate;
 import org.atilf.module.tools.BenchmarkFactory;
-import org.atilf.runner.Runner;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -23,8 +22,12 @@ public class BenchmarkFactoryDelegate extends Delegate{
         /*
         executeTasks termsuite
          */
-        _executorService.submit(new BenchmarkFactory(Runner.getMemoryPerformanceEvents(),path)).get();
-        _executorService.submit(new BenchmarkFactory(Runner.getTimePerformanceEvents(),path)).get();
+        _executorService.submit(
+                new BenchmarkFactory(getFlowableVariable("timePerformanceEvents",null),path)
+        ).get();
+        _executorService.submit(
+                new BenchmarkFactory(getFlowableVariable("memoryPerformanceEvents",null),path)
+        ).get();
 
         _executorService.shutdown();
         _executorService.awaitTermination(1L, TimeUnit.DAYS);

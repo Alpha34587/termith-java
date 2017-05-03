@@ -2,7 +2,6 @@ package org.atilf.delegate.enrichment.initializer;
 
 import org.atilf.delegate.Delegate;
 import org.atilf.module.enrichment.initializer.CorpusMapper;
-import org.atilf.runner.Runner;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -25,7 +24,7 @@ public class CorpusMapperDelegate extends Delegate {
         /*
         extract the text and map the path of the corpus into hashMap with identifier
          */
-        Files.list(Runner.getBase()).forEach(
+        Files.list(getFlowableVariable("base",null)).forEach(
                 p -> _executorService.submit(new CorpusMapper(p, _termithIndex))
 
         );

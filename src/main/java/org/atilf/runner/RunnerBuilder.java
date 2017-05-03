@@ -42,7 +42,6 @@ public class RunnerBuilder {
      */
     Path _learningPath;
     Path _evaluationPath;
-    Path _scorePath;
     Path _txmInputPath;
     protected final Logger LOGGER = LoggerFactory.getLogger(this.getClass().getName());
 

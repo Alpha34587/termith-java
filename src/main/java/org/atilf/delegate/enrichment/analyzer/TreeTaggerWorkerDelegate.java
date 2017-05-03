@@ -11,7 +11,6 @@ import org.atilf.module.enrichment.analyzer.TreeTaggerWorker;
 import org.atilf.module.enrichment.initializer.TextExtractor;
 import org.atilf.module.tools.FilesUtils;
 import org.atilf.monitor.timer.TermithProgressTimer;
-import org.atilf.runner.Runner;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -72,10 +71,13 @@ public class TreeTaggerWorkerDelegate extends Delegate {
         Build Corpus analyzer
          */
         CorpusAnalyzer corpusAnalyzer = new CorpusAnalyzer(createTextHashMap());
-        TagNormalizer.initTag(Runner.getLang());
-        TreeTaggerParameter treeTaggerParameter =  new TreeTaggerParameter(false, Runner.getLang(),
-                Runner.getTreeTaggerHome(),
-                Runner.getOut().toString());
+        TagNormalizer.initTag(getFlowableVariable("lang",null));
+        TreeTaggerParameter treeTaggerParameter =  new TreeTaggerParameter(
+                false,
+                getFlowableVariable("lang",null),
+                getFlowableVariable("treeTaggerHome",null),
+                getFlowableVariable("out",null).toString()
+        );
         List<Future> futures = new ArrayList<>();
 
         /*
@@ -86,7 +88,7 @@ public class TreeTaggerWorkerDelegate extends Delegate {
                         _termithIndex,
                         corpusAnalyzer,
                         key,
-                        Runner.getOut().toString(),
+                        getFlowableVariable("out",null).toString(),
                         treeTaggerParameter
                 )))
         );

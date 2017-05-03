@@ -1,6 +1,9 @@
 package org.atilf.models;
 
-import org.atilf.models.disambiguation.*;
+import org.atilf.models.disambiguation.CorpusLexicon;
+import org.atilf.models.disambiguation.EvaluationProfile;
+import org.atilf.models.disambiguation.LexiconProfile;
+import org.atilf.models.disambiguation.TxmContext;
 import org.atilf.models.enrichment.TermOffsetId;
 
 import java.nio.file.Path;
@@ -38,9 +41,6 @@ public class TermithIndex {
     private CorpusLexicon _corpusLexicon = new CorpusLexicon(new ConcurrentHashMap<>(),new ConcurrentHashMap<>());
     private Map<String, Path> _learningTransformedFiles = new ConcurrentHashMap<>();
     private Map<String, Path> _evaluationTransformedFiles = new ConcurrentHashMap<>();
-    private Map<String,ScoreTerm> _scoreTerms = new ConcurrentHashMap<>();
-    private TotalTermScore _totalTermScore = new TotalTermScore();
-    private Map<String, Path> _transformOutputDisambiguationFile = new ConcurrentHashMap<>();
 
     /*
     Constructor
@@ -125,8 +125,6 @@ public class TermithIndex {
      */
     public List<Path> getSerializeJson() {return _serializeJson;}
 
-    public TotalTermScore getTotalTermScore() { return _totalTermScore; }
-
     public Map<String, List<TxmContext>> getTermsTxmContext() {
         return _TermsTxmContext;
     }
@@ -161,14 +159,6 @@ public class TermithIndex {
      */
     public Map<String, Path> getExtractedText() {
         return _extractedText;
-    }
-
-    public Map<String, Path> getTransformOutputDisambiguationFile() {
-        return _transformOutputDisambiguationFile;
-    }
-
-    public Map<String, ScoreTerm> getScoreTerms() {
-        return _scoreTerms;
     }
 
     /*

@@ -4,7 +4,6 @@ import org.atilf.delegate.Delegate;
 import org.atilf.models.enrichment.XslResources;
 import org.atilf.module.enrichment.initializer.TextExtractor;
 import org.atilf.monitor.timer.TermithProgressTimer;
-import org.atilf.runner.Runner;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -35,7 +34,7 @@ public class TextExtractorDelegate extends Delegate {
         /*
         extract the text and map the path of the corpus into hashMap with identifier
          */
-        Files.list(Runner.getBase()).forEach(
+        Files.list(getFlowableVariable("base",null)).forEach(
                 p -> futures.add(_executorService.submit(new TextExtractor(p.toFile(), _termithIndex, xslResources)))
 
         );

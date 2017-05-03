@@ -1,13 +1,13 @@
 package org.atilf.runner;
 
 import org.atilf.models.TermithIndex;
-import org.atilf.monitor.observer.MemoryPerformanceEvent;
-import org.atilf.monitor.observer.TimePerformanceEvent;
 import org.flowable.engine.ProcessEngine;
 import org.flowable.engine.ProcessEngineConfiguration;
 import org.flowable.engine.RepositoryService;
 import org.flowable.engine.RuntimeService;
 import org.flowable.engine.impl.cfg.StandaloneProcessEngineConfiguration;
+import org.flowable.engine.impl.variable.CustomObjectType;
+import org.flowable.engine.impl.variable.VariableType;
 import org.flowable.engine.repository.Deployment;
 import org.flowable.engine.repository.ProcessDefinition;
 
@@ -16,7 +16,6 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * This class is used to create some Delegate inherited classes and execute each of them linearly.
@@ -24,113 +23,49 @@ import java.util.Map;
  */
 public class Runner {
 
-    public static TermithIndex _termithIndex;
-    public static int _poolSize;
-    private static String _bpmnDiagram;
-    private static int _corpusSize;
-    private static int _thresholdMin;
-    private static int _thresholdMax;
-    private static String _annotation;
+    private String _bpmnDiagram;
 
-    /*
-    common parameter
-     */
 
-    private static Path _base;
-    private static Path _out;
-
-    /*
-    terminology extraction parameter
-     */
-    private static String _lang;
-    private static String _treeTaggerHome;
-
-    /*
-    Disambiguation parameter
-     */
-    private static Path _learningPath;
-    private static Path _evaluationPath;
-    private static Path _scorePath;
-    private static Path _txmInputPath;
-    private static List<TimePerformanceEvent> _timePerformanceEvents = new ArrayList<>();
-    private static List<MemoryPerformanceEvent> _memoryPerformanceEvents = new ArrayList<>();
+    private HashMap<String,Object> _flowableVariable = new HashMap<>();
+    private List<VariableType> _variableTypes = new ArrayList<>();
 
     public Runner(RunnerBuilder runnerBuilder) {
-        _poolSize = runnerBuilder._poolSize;
-        _termithIndex = runnerBuilder._termithIndex;
         _bpmnDiagram = runnerBuilder._bpmnDiagram;
-        _thresholdMin = runnerBuilder._thresholdMin;
-        _thresholdMax = runnerBuilder._thresholdMax;
-        _txmInputPath = runnerBuilder._txmInputPath;
-        _base = runnerBuilder._base;
-        _out = runnerBuilder._out;
-        _lang = runnerBuilder._lang;
-        _treeTaggerHome = runnerBuilder._treeTaggerHome;
-        _learningPath = runnerBuilder._learningPath;
-        _evaluationPath = runnerBuilder._evaluationPath;
-        _scorePath = runnerBuilder._scorePath;
-        _corpusSize = runnerBuilder._corpusSize;
-        _annotation = runnerBuilder._annotation;
+        _flowableVariable.put("poolSize", runnerBuilder._poolSize);
+        _flowableVariable.put("termithIndex", runnerBuilder._termithIndex);
+        _flowableVariable.put("thresholdMin", runnerBuilder._thresholdMin);
+        _flowableVariable.put("thresholdMax", runnerBuilder._thresholdMax);
+        _flowableVariable.put("txmInputPath", runnerBuilder._txmInputPath);
+        _flowableVariable.put("base", runnerBuilder._base);
+        _flowableVariable.put("out", runnerBuilder._out);
+        _flowableVariable.put("lang", runnerBuilder._lang);
+        _flowableVariable.put("treeTaggerHome", runnerBuilder._treeTaggerHome);
+        _flowableVariable.put("learningPath", runnerBuilder._learningPath);
+        _flowableVariable.put("evaluationPath", runnerBuilder._evaluationPath);
+        _flowableVariable.put("corpusSize", runnerBuilder._corpusSize);
+        _flowableVariable.put("annotation", runnerBuilder._annotation);
+        _flowableVariable.put("timePerformanceEvents",new ArrayList<>());
+        _flowableVariable.put("memoryPerformanceEvents",new ArrayList<>());
+
     }
 
-    public static Path getOut() {
-        return _out;
-    }
-
-    public static List<TimePerformanceEvent> getTimePerformanceEvents() {
-        return _timePerformanceEvents;
-    }
-
-    public static List<MemoryPerformanceEvent> getMemoryPerformanceEvents() {
-        return _memoryPerformanceEvents;
-    }
-
-    public static Path getBase() {return _base;}
-
-    public static String getLang() {
-        return _lang;
-    }
-
-    public static Path getEvaluationPath() {
-        return _evaluationPath;
-    }
-
-    public static Path getLearningPath() {
-        return _learningPath;
-    }
-
-    public static Path getScorePath() {
-        return _scorePath;
-    }
-
-    public static Path getTxmInputPath() {return _txmInputPath;}
-
-    public static String getTreeTaggerHome() {
-        return _treeTaggerHome;
-    }
-
-    public static int getCorpusSize() {
-        return _corpusSize;
-    }
 
     /**
      * this method contains the process chain. This method calls inherited delegate classes.
      * @throws IOException Throws an IO exception if a file is not found or have a permission problem during process
      * @throws InterruptedException thrown if awaitTermination function is interrupted while waiting
      */
-    public void execute() throws IOException, InterruptedException {
-        Map<String, Object> variables = new HashMap<>();
+    public void execute(){
 
+        initVariableType();
         ProcessEngineConfiguration cfg = new StandaloneProcessEngineConfiguration()
+                .setCustomPreVariableTypes(_variableTypes)
                 .setJdbcUrl("jdbc:h2:mem:flowable;DB_CLOSE_DELAY=-1")
                 .setJdbcUsername("sa")
                 .setJdbcPassword("")
                 .setJdbcDriver("org.h2.Driver")
                 .setDatabaseSchemaUpdate(ProcessEngineConfiguration.DB_SCHEMA_UPDATE_TRUE);
 
-        variables.put("thresholdMin", _thresholdMin);
-        variables.put("thresholdMax", _thresholdMax);
-        variables.put("annotation",_annotation);
 
         ProcessEngine processEngine = cfg.buildProcessEngine();
 
@@ -143,8 +78,13 @@ public class Runner {
                 .deploymentId(deployment.getId())
                 .singleResult();
         RuntimeService runtimeService = processEngine.getRuntimeService();
+        runtimeService.startProcessInstanceByKey(processDefinition.getKey(),_flowableVariable);
 
-        runtimeService.startProcessInstanceByKey(processDefinition.getKey(),variables);
+    }
 
+    private void initVariableType() {
+        _variableTypes.add(new CustomObjectType("TermithIndex",TermithIndex.class.getClass()));
+        _variableTypes.add(new CustomObjectType("Path",Path.class.getClass()));
+        _variableTypes.add(new CustomObjectType("ArrayList",List.class.getClass()));
     }
 }
