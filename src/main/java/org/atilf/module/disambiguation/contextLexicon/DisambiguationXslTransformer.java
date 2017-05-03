@@ -4,7 +4,6 @@ import org.atilf.models.TermithIndex;
 import org.atilf.models.enrichment.XslResources;
 import org.atilf.module.Module;
 import org.atilf.module.tools.FilesUtils;
-import org.atilf.runner.Runner;
 
 import javax.xml.transform.Source;
 import javax.xml.transform.Transformer;
@@ -53,11 +52,6 @@ public class DisambiguationXslTransformer extends Module{
         _xmlTransformedMap = termithIndex.getLearningTransformedFile();
         _xslResources = xslResources;
         _outputPath = outputPath;
-    }
-
-    public DisambiguationXslTransformer(File file, TermithIndex termithIndex,
-                                        Map<String, Path> xmlTransformedMap, XslResources xslResources){
-        this(file,termithIndex,xmlTransformedMap,xslResources, Runner.getOut());
     }
 
 
@@ -118,13 +112,15 @@ public class DisambiguationXslTransformer extends Module{
         Transformer transformer;
         StringWriter stringWriter = new StringWriter();
         StreamResult streamResult = new StreamResult(stringWriter);
-
-        try {
+        if(_logger.isDebugEnabled()) {
             _logger.debug(
                     "apply {} to xml file {}",
                     _xslResources._stylesheet.toString(),
                     input.toString()
             );
+        }
+        try {
+
             /*
             get new transformer
              */

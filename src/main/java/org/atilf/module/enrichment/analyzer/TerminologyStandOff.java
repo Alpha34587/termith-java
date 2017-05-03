@@ -28,7 +28,7 @@ public class TerminologyStandOff extends Module {
     public TerminologyStandOff(String id, TermithIndex termithIndex) {
         super(termithIndex);
         _id = id;
-        _morpho = FilesUtils.readListObject(_termithIndex.getMorphologyStandOff().get(_id),MorphologyOffsetId.class);
+        _morpho = FilesUtils.readListObject(_termithIndex.getMorphologyStandOff().get(_id));
         _terminology = termithIndex.getTerminologyStandOff().get(_id);
     }
 

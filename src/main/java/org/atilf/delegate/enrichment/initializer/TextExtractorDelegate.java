@@ -35,7 +35,8 @@ public class TextExtractorDelegate extends Delegate {
         extract the text and map the path of the corpus into hashMap with identifier
          */
         Files.list(getFlowableVariable("base",null)).forEach(
-                p -> futures.add(_executorService.submit(new TextExtractor(p.toFile(), _termithIndex, xslResources)))
+                p -> futures.add(_executorService.submit(new TextExtractor(p.toFile(), _termithIndex,
+                        getFlowableVariable("out",null),xslResources)))
 
         );
         new TermithProgressTimer(futures,this.getClass(),_executorService).start();

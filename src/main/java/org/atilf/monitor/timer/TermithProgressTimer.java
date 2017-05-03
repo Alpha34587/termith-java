@@ -52,7 +52,9 @@ public class TermithProgressTimer extends TimerTask {
 
     private void showProgress(int progress, int done) {
         float absoluteProgression = ((float) progress / (float) done) * 100;
-        _logger.info("progress : {}/{} [{}%]", progress, done, df.format(absoluteProgression));
+        if (_logger.isInfoEnabled()) {
+            _logger.info("progress : {}/{} [{}%]", progress, done, df.format(absoluteProgression));
+        }
     }
 
 }

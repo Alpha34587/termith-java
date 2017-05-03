@@ -89,10 +89,9 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
     protected Map<String, LexiconProfile> _contextLexicon;
     protected List<ContextTerm> _terms = new LinkedList<>();
     protected ContextWord _lastContextWord;
-    protected Map<String,List<Integer>> _targetContext = new HashMap<>();
-    protected Stack<TreeMap<Integer,String>> _contextStack = new Stack<>();
+    protected Deque<TreeMap<Integer,String>> _contextStack = new ArrayDeque<>();
 
-    private Stack<String> _elementsStack = new Stack<>();
+    private Deque<String> _elementsStack = new ArrayDeque<>();
     private List<String> _allowedElements = new ArrayList<>();
 
     private CorpusLexicon _corpusLexicon;

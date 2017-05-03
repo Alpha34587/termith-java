@@ -56,18 +56,15 @@ public class RLexicon {
     }
 
     private void writeFile(){
-        try {
-            _csvPath = Paths.get(_outputPath + "/" + UUID.randomUUID().toString()).toAbsolutePath();
-            File file = new File(_csvPath.toString());
+        _csvPath = Paths.get(_outputPath + "/" + UUID.randomUUID().toString()).toAbsolutePath();
+        File file = new File(_csvPath.toString());
+        try(FileWriter fileWriter = new FileWriter(file);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter))
+        {
             _rName.deleteCharAt(_rName.length() - 1);
             _rOcc.deleteCharAt(_rOcc.length() - 1);
-            BufferedWriter bufferedWriter = new BufferedWriter(
-                    new FileWriter(file)
-            );
             bufferedWriter.append(_rName).append("\n");
-            bufferedWriter.append(_rOcc);
-            bufferedWriter.flush();
-            bufferedWriter.close();
+            bufferedWriter.append(_rOcc).append("\n");
         } catch (Exception e) {
             LOGGER.error("cannot write file : " + _rName + " " + _lexiconProfile.getLexicalTable().toString(), e);
         }

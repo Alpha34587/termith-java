@@ -34,7 +34,8 @@ public class EvaluationXslTransformerDelegate extends Delegate {
                                     p.toFile(),
                                     _termithIndex,
                                     _termithIndex.getEvaluationTransformedFiles(),
-                                    xslResources)
+                                    xslResources,
+                                    getFlowableVariable("out",null))
                     ))
             );
         }

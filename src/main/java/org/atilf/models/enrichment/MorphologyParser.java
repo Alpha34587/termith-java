@@ -28,11 +28,6 @@ public class MorphologyParser {
 
 
     /**
-     * empty constructor for MorphologyParser
-     */
-    public MorphologyParser(){}
-
-    /**
      * constructor for MorphologyParser
      * @param file the file to parse
      */

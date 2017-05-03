@@ -1,6 +1,5 @@
 package org.atilf.runner;
 
-import org.atilf.models.TermithIndex;
 import org.flowable.engine.ProcessEngine;
 import org.flowable.engine.ProcessEngineConfiguration;
 import org.flowable.engine.RepositoryService;
@@ -12,7 +11,6 @@ import org.flowable.engine.repository.Deployment;
 import org.flowable.engine.repository.ProcessDefinition;
 
 import java.io.IOException;
-import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -30,6 +28,10 @@ public class Runner {
     private List<VariableType> _variableTypes = new ArrayList<>();
 
     public Runner(RunnerBuilder runnerBuilder) {
+        _variableTypes.add(new CustomObjectType("TermithIndex",runnerBuilder._termithIndex.getClass()));
+        _variableTypes.add(new CustomObjectType("Path",runnerBuilder._out.getClass()));
+        _variableTypes.add(new CustomObjectType("ArrayList",List.class.getClass()));
+
         _bpmnDiagram = runnerBuilder._bpmnDiagram;
         _flowableVariable.put("poolSize", runnerBuilder._poolSize);
         _flowableVariable.put("termithIndex", runnerBuilder._termithIndex);
@@ -46,7 +48,6 @@ public class Runner {
         _flowableVariable.put("annotation", runnerBuilder._annotation);
         _flowableVariable.put("timePerformanceEvents",new ArrayList<>());
         _flowableVariable.put("memoryPerformanceEvents",new ArrayList<>());
-
     }
 
 
@@ -56,8 +57,6 @@ public class Runner {
      * @throws InterruptedException thrown if awaitTermination function is interrupted while waiting
      */
     public void execute(){
-
-        initVariableType();
         ProcessEngineConfiguration cfg = new StandaloneProcessEngineConfiguration()
                 .setCustomPreVariableTypes(_variableTypes)
                 .setJdbcUrl("jdbc:h2:mem:flowable;DB_CLOSE_DELAY=-1")
@@ -79,12 +78,5 @@ public class Runner {
                 .singleResult();
         RuntimeService runtimeService = processEngine.getRuntimeService();
         runtimeService.startProcessInstanceByKey(processDefinition.getKey(),_flowableVariable);
-
-    }
-
-    private void initVariableType() {
-        _variableTypes.add(new CustomObjectType("TermithIndex",TermithIndex.class.getClass()));
-        _variableTypes.add(new CustomObjectType("Path",Path.class.getClass()));
-        _variableTypes.add(new CustomObjectType("ArrayList",List.class.getClass()));
     }
 }

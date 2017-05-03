@@ -2,7 +2,6 @@ package org.atilf.module.tools;
 
 import org.apache.commons.io.FileUtils;
 import org.atilf.module.Module;
-import org.atilf.runner.Runner;
 
 import java.io.File;
 import java.io.IOException;
@@ -19,16 +18,23 @@ import java.nio.file.Paths;
 public class WorkingFilesCleaner extends Module{
     private final Path _outputPath;
     private final boolean _keepFiles;
+    private Path _learningPath = null;
+    private Path _evaluationPath = null;
+    private Path _txmInputPath = null;
 
     /**
      * constructor for WorkingFilesCleaner module
-     *
-     * @param outputPath the path of the working directory
+     *  @param outputPath the path of the working directory
+     * @param learningPath
      * @param keepFiles if this value is true all subfolder of the directory is kept
      */
-    public WorkingFilesCleaner(Path outputPath, boolean keepFiles) {
+    public WorkingFilesCleaner(Path outputPath, Path learningPath, Path evaluationPath,
+                               Path txmInputPath, boolean keepFiles) {
         _outputPath = outputPath;
+        _evaluationPath = evaluationPath;
+        _txmInputPath = txmInputPath;
         _keepFiles = keepFiles;
+        _learningPath = learningPath;
     }
 
     /**
@@ -47,8 +53,8 @@ public class WorkingFilesCleaner extends Module{
     }
 
     private void cleanLearningDirectory() throws IOException {
-        if (Runner.getLearningPath() != null && Runner.getLearningPath() != Runner.getEvaluationPath()){
-            Files.list(Runner.getLearningPath()).forEach(f -> {
+        if (_learningPath != null && _learningPath != _evaluationPath){
+            Files.list(_learningPath).forEach(f -> {
                         _logger.info("delete " + f.getFileName() + " of learning corpus");
                         try {
                             Files.delete(Paths.get(_outputPath + "/" + f.getFileName()));
@@ -61,8 +67,8 @@ public class WorkingFilesCleaner extends Module{
     }
 
     private void cleanTxmInputDirectory() throws IOException {
-        if (Runner.getTxmInputPath() != null){
-            Files.list(Runner.getTxmInputPath()).forEach(f -> {
+        if (_txmInputPath != null){
+            Files.list(_txmInputPath).forEach(f -> {
                         try {
                             _logger.info("delete " + f.getFileName() + " of learning corpus");
                             Files.delete(Paths.get(_outputPath + "/" + f.getFileName()));

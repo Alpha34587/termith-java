@@ -10,7 +10,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -55,27 +54,20 @@ public abstract class Delegate implements JavaDelegate{
     public void initialize(DelegateExecution execution){
 
 
-
-        int poolSize = getFlowableVariable("poolSize",0);
-        List<MemoryPerformanceEvent> memoryPerformanceEvents =
-                getFlowableVariable("memoryPerformanceEvents",null);
-        List<TimePerformanceEvent> timePerformanceEvents =
-                getFlowableVariable("timePerformanceEvents",null);
-        int corpusSize = getFlowableVariable("corpusSize",0);
-
         _execution = execution;
+
         _termithIndex = getFlowableVariable("termithIndex",null);
-        _executorService = Executors.newFixedThreadPool(poolSize);
+        _executorService = Executors.newFixedThreadPool(getFlowableVariable("poolSize",0));
 
         _timePerformanceEvent = new TimePerformanceEvent(
                 this.getClass().getSimpleName(),
-                corpusSize,
-                timePerformanceEvents
+                getFlowableVariable("corpusSize",0),
+                getFlowableVariable("timePerformanceEvents",null)
         );
         _memoryPerformanceEvent = new MemoryPerformanceEvent(
                 this.getClass().getSimpleName(),
-                corpusSize,
-                memoryPerformanceEvents
+                getFlowableVariable("corpusSize",0),
+                getFlowableVariable("memoryPerformanceEvents",null)
         );
 
         _eventBus.register(_timePerformanceEvent);

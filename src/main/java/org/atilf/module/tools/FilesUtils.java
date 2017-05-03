@@ -127,12 +127,11 @@ public class FilesUtils {
     /**
      * read a list of generic object type
      * @param filePath the path of the file
-     * @param type the type of the object
      * @param <T> the generic type T
      * @return the list of T object
      */
     @SuppressWarnings("unchecked")
-    public static <T> List<T> readListObject(Path filePath, Class<T> type){
+    public static <T> List<T> readListObject(Path filePath){
         Object o = null;
 
         try (

@@ -50,8 +50,7 @@ public class TeiWriter extends Module{
                 FilesUtils.readFile(termithIndex.getXmlCorpus().get(key)),
                 //morphologyOffsetIds
                 FilesUtils.readListObject(
-                        termithIndex.getMorphologyStandOff().get(key),
-                        MorphologyOffsetId.class),
+                        termithIndex.getMorphologyStandOff().get(key)),
                 //the tokenize body
                 FilesUtils.readObject(termithIndex.getTokenizeTeiBody().get(key),StringBuilder.class),
                 //the terminology

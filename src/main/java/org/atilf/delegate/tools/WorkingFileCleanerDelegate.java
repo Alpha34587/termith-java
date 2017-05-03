@@ -19,7 +19,15 @@ public class WorkingFileCleanerDelegate extends Delegate {
      */
     @Override
     public void executeTasks() throws InterruptedException {
-        _executorService.submit(new WorkingFilesCleaner(getFlowableVariable("out",null),getFlowableVariable("fileCleaner",true)));
+        _executorService.submit(
+                new WorkingFilesCleaner(
+                        getFlowableVariable("out",null),
+                        getFlowableVariable("learningPath",null),
+                        getFlowableVariable("evaluationPath",null),
+                        getFlowableVariable("txmInputPath",null),
+                        getFlowableVariable("fileCleaner",true)
+                )
+        );
         _executorService.shutdown();
         _executorService.awaitTermination(1L, TimeUnit.DAYS);
     }
