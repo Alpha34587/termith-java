@@ -64,7 +64,7 @@ public class RLexicon {
             _rName.deleteCharAt(_rName.length() - 1);
             _rOcc.deleteCharAt(_rOcc.length() - 1);
             bufferedWriter.append(_rName).append("\n");
-            bufferedWriter.append(_rOcc).append("\n");
+            bufferedWriter.append(_rOcc);
         } catch (Exception e) {
             LOGGER.error("cannot write file : " + _rName + " " + _lexiconProfile.getLexicalTable().toString(), e);
         }
