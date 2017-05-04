@@ -52,7 +52,6 @@ public class RLexicon {
         _size = lexiconProfile.lexicalSize();
         _lexiconProfile.forEach(this::convertToRContext);
         writeFile();
-
     }
 
     private void writeFile(){
@@ -74,21 +73,6 @@ public class RLexicon {
         return _csvPath;
     }
 
-    /**
-     * getter for the name of the column for R
-     * @return return the R columns
-     */
-    public StringBuffer getRName() {
-        return _rName;
-    }
-
-    /**
-     * getter for the occurrence of each words in R format
-     * @return return a R variable
-     */
-    public StringBuffer getROcc() {
-        return _rOcc;
-    }
 
     /**
      * get the id of the _context Lexicon corresponds to the id of the CorpusLexicon class

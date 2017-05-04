@@ -19,7 +19,7 @@ public class TextAnalyzer {
     /**
      * the empty constructor of TextAnalyzer
      */
-    public TextAnalyzer(){}
+    TextAnalyzer(){}
 
     /**
      * the constructor of TextAnalyzer, this constructor set all the parameter fields of this class

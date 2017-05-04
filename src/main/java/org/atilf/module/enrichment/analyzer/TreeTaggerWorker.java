@@ -30,7 +30,7 @@ public class TreeTaggerWorker extends Module {
     private TextAnalyzer _textAnalyzer;
     private String _outputPath;
     private final TreeTaggerParameter _treeTaggerParameter;
-
+    private final static String JSON = ".json";
     /**
      *  @param termithIndex the termithIndex of the associated Thread
      * @param corpusAnalyzer this object contains the metadata used for write json file
@@ -42,7 +42,7 @@ public class TreeTaggerWorker extends Module {
         _outputPath = outputPath;
         _treeTaggerParameter = treeTaggerParameter;
         _txt = FilesUtils.readObject(termithIndex.getExtractedText().get(id),StringBuilder.class);
-        _jsonPath = outputPath + "/json/" + id + ".json";
+        _jsonPath = outputPath + "/json/" + id + JSON;
         _textAnalyzer = corpusAnalyzer.getAnalyzedTexts().get(id);
         _xml = FilesUtils.readFile(termithIndex.getXmlCorpus().get(id));
         _id = id;
@@ -102,10 +102,10 @@ public class TreeTaggerWorker extends Module {
             /*
             retained tokenize body and json file in the termithIndex
              */
-            _termithIndex.getTokenizeTeiBody().put(json.getName().replace(".json",""),
+            _termithIndex.getTokenizeTeiBody().put(json.getName().replace(JSON,""),
                     FilesUtils.writeObject(morphologyTokenizer.getTokenizeBuffer(), Paths.get(_outputPath)));
 
-            _termithIndex.getMorphologyStandOff().put(json.getName().replace(".json",""),
+            _termithIndex.getMorphologyStandOff().put(json.getName().replace(JSON,""),
                     FilesUtils.writeObject(morphologyTokenizer.getOffsetId(), Paths.get(_outputPath)));
             _logger.debug("tokenization and morphosyntax tasks finished file : {}",_jsonPath);
         } catch (IOException e) {

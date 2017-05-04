@@ -41,7 +41,7 @@ public class TermOffsetId extends OffsetId {
     /**
      * empty constructor of TermOffsetId
      */
-    public TermOffsetId() {}
+    public TermOffsetId(){}
 
     /**
      * setter for _word field
@@ -70,7 +70,7 @@ public class TermOffsetId extends OffsetId {
      * @param ids the list of xml id
      */
     public void setIds(List<Integer> ids){
-        _ids.addAll(ids);
+        getIds().addAll(ids);
     }
 
     /**
