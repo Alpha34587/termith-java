@@ -77,7 +77,7 @@ public class SpecCoefficientInjector extends Module {
             try {
                 _rConnection = new RConnection();
             } catch (RserveException e) {
-                _logger.error("cannot established connection with the R server");
+                _logger.error("cannot established connection with the R server",e);
             }
             _corpusLexicon = termithIndex.getCorpusLexicon();
             _lexiconProfile = termithIndex.getContextLexicon().get(id);
@@ -106,22 +106,18 @@ public class SpecCoefficientInjector extends Module {
     /**
      * call reduceToLexicalProfile method
      */
+    @Override
     public void execute() {
-        _logger.debug("compute specificities coefficient for : " + _id);
+        _logger.debug("compute specificities coefficient for : {}",_id);
         try {
             if (_computeSpecificities) {
                 reduceToLexicalProfile(computeSpecCoefficient());
-                try {
-                    Files.delete(Paths.get(_rResultPath));
-                    Files.delete(_rContextLexicon.getCsvPath());
-                }
-                catch (IOException e) {
-                    _logger.error("cannot remove file : " + _rResultPath, e);
-                }
-                _logger.debug("specificities coefficient is computed for : " + _id);
+                Files.delete(Paths.get(_rResultPath));
+                Files.delete(_rContextLexicon.getCsvPath());
+                _logger.debug("specificities coefficient is computed for : {}",_id);
             }
             else {
-                _logger.debug("only terminology or non-terminology lexicon profile is present for : " +  _id);
+                _logger.debug("only terminology or non-terminology lexicon profile is present for : {}",_id);
             }
         }
         catch (Exception e){
@@ -175,11 +171,11 @@ public class SpecCoefficientInjector extends Module {
             while ((sCurrentLine = br.readLine()) != null) {
                 if (Objects.equals(sCurrentLine, "Inf")){
                     floatArray.add(Float.POSITIVE_INFINITY);
-                    _logger.error("positive infinity was return by R : " + _id);
+                    _logger.error("positive infinity was return by R : {}",_id);
                 }
                 else if (Objects.equals(sCurrentLine, "-Inf")){
                     floatArray.add(Float.NEGATIVE_INFINITY);
-                    _logger.error("negative infinity was return by R : " + _id);
+                    _logger.error("negative infinity was return by R : {}",_id);
                 }
                 else {
                     floatArray.add(Float.parseFloat(sCurrentLine));
@@ -198,10 +194,10 @@ public class SpecCoefficientInjector extends Module {
      */
     @Override
     public void run() {
-        _logger.info("compute specificities coefficient for : " + _id);
+        _logger.info("compute specificities coefficient for : {}",_id);
         _rConnection = _rConnectionPool.getRConnection(Thread.currentThread());
         execute();
         _rConnectionPool.releaseThread(Thread.currentThread());
-        _logger.info("specificities coefficient is computed for : " + _id);
+        _logger.info("specificities coefficient is computed for : {}",_id);
     }
 }

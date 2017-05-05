@@ -16,6 +16,7 @@ import javax.xml.transform.stream.StreamSource;
 public class DisambiguationXslResources extends XslResources{
 
         private static final Logger LOGGER = LoggerFactory.getLogger(DisambiguationXslResources.class.getName());
+
         public DisambiguationXslResources() {
             _stylesheet = new StreamSource(getClass().getClassLoader().getResourceAsStream("models/disambiguation/" +
                     "disambiguationXslResources/disambiguation.xsl"));

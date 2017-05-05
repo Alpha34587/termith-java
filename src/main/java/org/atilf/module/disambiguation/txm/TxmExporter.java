@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by smeoni on 14/04/17.
+ * Created by Simon Meoni on 14/04/17.
  */
 public class TxmExporter extends Module {
     private final String _p;

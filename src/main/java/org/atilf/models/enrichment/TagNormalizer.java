@@ -17,18 +17,20 @@ import java.util.Map;
  */
 public class TagNormalizer {
 
-    private static Map<String,String> _ttTag;
+    private static Map<String,String> ttTag;
     private static final Logger _LOGGER = LoggerFactory.getLogger(TagNormalizer.class);
 
+    private TagNormalizer() {
+        throw new IllegalAccessError("Utility class");
+    }
 
     public static void initTag(String lang){
         switch (lang) {
             case "en" :
-                _ttTag = parseResource("/models/enrichment/tagNormalizer/treeTaggerMultexTagEn.json");
+                ttTag = parseResource("/models/enrichment/tagNormalizer/treeTaggerMultexTagEn.json");
                 break;
             case "fr" :
-                _ttTag = parseResource("/models/enrichment/tagNormalizer/treeTaggerMultexTagFr.json");
-                ;
+                ttTag = parseResource("/models/enrichment/tagNormalizer/treeTaggerMultexTagFr.json");
                 break;
             default:
                 throw new IllegalArgumentException("this language is not support : " + lang);
@@ -58,12 +60,12 @@ public class TagNormalizer {
 
         }
         catch (IOException e) {
-            _LOGGER.error("cannot parse json file");
+            _LOGGER.error("cannot parse json file",e);
         }
         return result;
     }
 
     public static String normalize(String token) {
-        return _ttTag.get(token);
+        return ttTag.get(token);
     }
 }

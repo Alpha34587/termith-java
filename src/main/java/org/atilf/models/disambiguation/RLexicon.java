@@ -52,22 +52,18 @@ public class RLexicon {
         _size = lexiconProfile.lexicalSize();
         _lexiconProfile.forEach(this::convertToRContext);
         writeFile();
-
     }
 
     private void writeFile(){
-        try {
-            _csvPath = Paths.get(_outputPath + "/" + UUID.randomUUID().toString()).toAbsolutePath();
-            File file = new File(_csvPath.toString());
+        _csvPath = Paths.get(_outputPath + "/" + UUID.randomUUID().toString()).toAbsolutePath();
+        File file = new File(_csvPath.toString());
+        try(FileWriter fileWriter = new FileWriter(file);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter))
+        {
             _rName.deleteCharAt(_rName.length() - 1);
             _rOcc.deleteCharAt(_rOcc.length() - 1);
-            BufferedWriter bufferedWriter = new BufferedWriter(
-                    new FileWriter(file)
-            );
             bufferedWriter.append(_rName).append("\n");
             bufferedWriter.append(_rOcc);
-            bufferedWriter.flush();
-            bufferedWriter.close();
         } catch (Exception e) {
             LOGGER.error("cannot write file : " + _rName + " " + _lexiconProfile.getLexicalTable().toString(), e);
         }
@@ -77,21 +73,6 @@ public class RLexicon {
         return _csvPath;
     }
 
-    /**
-     * getter for the name of the column for R
-     * @return return the R columns
-     */
-    public StringBuffer getRName() {
-        return _rName;
-    }
-
-    /**
-     * getter for the occurrence of each words in R format
-     * @return return a R variable
-     */
-    public StringBuffer getROcc() {
-        return _rOcc;
-    }
 
     /**
      * get the id of the _context Lexicon corresponds to the id of the CorpusLexicon class

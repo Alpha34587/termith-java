@@ -4,7 +4,6 @@ import org.atilf.models.TermithIndex;
 import org.atilf.models.enrichment.XslResources;
 import org.atilf.module.Module;
 import org.atilf.module.tools.FilesUtils;
-import org.atilf.runner.Runner;
 
 import javax.xml.transform.Source;
 import javax.xml.transform.Transformer;
@@ -14,6 +13,7 @@ import javax.xml.transform.stream.StreamSource;
 import java.io.File;
 import java.io.IOException;
 import java.io.StringWriter;
+import java.nio.file.Path;
 
 /**
  * The textExtractor class is used extract the plain text of a tei file
@@ -22,6 +22,7 @@ import java.io.StringWriter;
  */
 public class TextExtractor extends Module {
     private File _file;
+    private Path _out;
     private XslResources _xslResources;
     private StringBuilder _extractedText;
 
@@ -31,9 +32,10 @@ public class TextExtractor extends Module {
      * @param xslResources contains the parsed xsl stylesheet
      * @param termithIndex the termithIndex of a process
      */
-    public TextExtractor(File file, TermithIndex termithIndex, XslResources xslResources) {
+    public TextExtractor(File file, TermithIndex termithIndex, Path out, XslResources xslResources) {
         super(termithIndex);
         _file = file;
+        _out = out;
         _xslResources = xslResources;
     }
 
@@ -54,6 +56,7 @@ public class TextExtractor extends Module {
     /**
      * this method apply an xsl stylesheet to a file given in the _file field. it extracts the plain text of the tei file
      */
+    @Override
     public void execute() {
         /*
         instantiate needed variables for transformation. The StringWriter variable is used to return
@@ -63,9 +66,15 @@ public class TextExtractor extends Module {
         Transformer transformer;
         StringWriter stringWriter = new StringWriter();
         StreamResult streamResult = new StreamResult(stringWriter);
-
+        if (_logger.isDebugEnabled()) {
+            _logger.debug(
+                    "apply {} to xml file {}",
+                    _xslResources._stylesheet.toString(),
+                    input.toString()
+            );
+        }
         try {
-            _logger.debug("apply " + _xslResources._stylesheet.toString() + "to xml file" + input.toString());
+
             /*
             get new transformer
              */
@@ -90,7 +99,7 @@ public class TextExtractor extends Module {
     public void run() {
         super.run();
         try {
-            _logger.debug("Extracting text of file: " + _file);
+            _logger.debug("Extracting text of file: {}",_file);
             /*
             check if the result of the extraction is not empty
              */
@@ -99,14 +108,14 @@ public class TextExtractor extends Module {
                 put the result into the extractedText Map
                  */
                 _termithIndex.getExtractedText().put(FilesUtils.nameNormalizer(_file.toString()),
-                        FilesUtils.writeObject(_extractedText, Runner.getOut()));
+                        FilesUtils.writeObject(_extractedText, _out));
             }
 
             else {
-                _logger.info(_file + " has empty body");
+                _logger.info("{} has empty body",_file);
                 _termithIndex.getXmlCorpus().remove(FilesUtils.nameNormalizer(_file.toString()));
             }
-            _logger.debug("Extraction done for file: " + _file);
+            _logger.debug("Extraction done for file: {}",_file);
         } catch (IOException e) {
             _logger.error("File Exception : ",e);
         }

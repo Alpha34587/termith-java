@@ -2,7 +2,6 @@ package org.atilf.delegate.tools;
 
 import org.atilf.delegate.Delegate;
 import org.atilf.module.tools.WorkingFilesCleaner;
-import org.atilf.runner.Runner;
 
 import java.util.concurrent.TimeUnit;
 
@@ -18,8 +17,17 @@ public class WorkingFileCleanerDelegate extends Delegate {
      * the json and txt folder
      * @throws InterruptedException throws java concurrent executorService exception
      */
+    @Override
     public void executeTasks() throws InterruptedException {
-        _executorService.submit(new WorkingFilesCleaner(Runner.getOut(),getFlowableVariable("fileCleaner",true)));
+        _executorService.submit(
+                new WorkingFilesCleaner(
+                        getFlowableVariable("out",null),
+                        getFlowableVariable("learningPath",null),
+                        getFlowableVariable("evaluationPath",null),
+                        getFlowableVariable("txmInputPath",null),
+                        getFlowableVariable("fileCleaner",true)
+                )
+        );
         _executorService.shutdown();
         _executorService.awaitTermination(1L, TimeUnit.DAYS);
     }

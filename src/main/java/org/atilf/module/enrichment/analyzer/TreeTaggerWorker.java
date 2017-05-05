@@ -29,22 +29,20 @@ public class TreeTaggerWorker extends Module {
     private StringBuilder _xml;
     private TextAnalyzer _textAnalyzer;
     private String _outputPath;
-    private final String _lang;
     private final TreeTaggerParameter _treeTaggerParameter;
-
+    private final static String JSON = ".json";
     /**
      *  @param termithIndex the termithIndex of the associated Thread
      * @param corpusAnalyzer this object contains the metadata used for write json file
      * @param id the name of the file in the map who contains the extracted text of the xml file
      */
     public TreeTaggerWorker(TermithIndex termithIndex, CorpusAnalyzer corpusAnalyzer, String id, String outputPath,
-                            String lang, TreeTaggerParameter treeTaggerParameter) {
+                            TreeTaggerParameter treeTaggerParameter) {
         super(termithIndex);
         _outputPath = outputPath;
-        _lang = lang;
         _treeTaggerParameter = treeTaggerParameter;
         _txt = FilesUtils.readObject(termithIndex.getExtractedText().get(id),StringBuilder.class);
-        _jsonPath = outputPath + "/json/" + id + ".json";
+        _jsonPath = outputPath + "/json/" + id + JSON;
         _textAnalyzer = corpusAnalyzer.getAnalyzedTexts().get(id);
         _xml = FilesUtils.readFile(termithIndex.getXmlCorpus().get(id));
         _id = id;
@@ -81,7 +79,7 @@ public class TreeTaggerWorker extends Module {
             /*
             TreeTagger task and Json serialization
              */
-            _logger.debug("TreeTagger task started for :" + _id);
+            _logger.debug("TreeTagger task started for : {}",_id);
             treeTaggerWrapper.execute();
 
             MorphologySerializer morphologySerializer = new MorphologySerializer(
@@ -91,12 +89,12 @@ public class TreeTaggerWorker extends Module {
                     _textAnalyzer);
             morphologySerializer.execute();
             _termithIndex.getSerializeJson().add(Paths.get(_jsonPath));
-            _logger.debug("TreeTagger task finished for : " + _id);
+            _logger.debug("TreeTagger task finished for : {}",_id);
 
             /*
             tokenize xml file
              */
-            _logger.debug("tokenization and morphosyntax tasks started for : " + _jsonPath);
+            _logger.debug("tokenization and morphosyntax tasks started for : {}",_jsonPath);
             File json = new File(_jsonPath);
             MorphologyTokenizer morphologyTokenizer = new MorphologyTokenizer(_txt, _xml, json);
             morphologyTokenizer.execute();
@@ -104,12 +102,12 @@ public class TreeTaggerWorker extends Module {
             /*
             retained tokenize body and json file in the termithIndex
              */
-            _termithIndex.getTokenizeTeiBody().put(json.getName().replace(".json",""),
+            _termithIndex.getTokenizeTeiBody().put(json.getName().replace(JSON,""),
                     FilesUtils.writeObject(morphologyTokenizer.getTokenizeBuffer(), Paths.get(_outputPath)));
 
-            _termithIndex.getMorphologyStandOff().put(json.getName().replace(".json",""),
+            _termithIndex.getMorphologyStandOff().put(json.getName().replace(JSON,""),
                     FilesUtils.writeObject(morphologyTokenizer.getOffsetId(), Paths.get(_outputPath)));
-            _logger.debug("tokenization and morphosyntax tasks finished file : " + _jsonPath);
+            _logger.debug("tokenization and morphosyntax tasks finished file : {}",_jsonPath);
         } catch (IOException e) {
             _logger.error("error during execute TreeTagger data", e);
         } catch (InterruptedException e) {
@@ -127,7 +125,7 @@ public class TreeTaggerWorker extends Module {
     private void init(){
         try {
             Files.createDirectories(Paths.get(_outputPath + "/json"));
-            _logger.debug("create temporary text files in " + _outputPath + "/json folder");
+            _logger.debug("create temporary text files in {}/json folder",_outputPath);
         } catch (IOException e) {
             _logger.error("cannot create directories : ",e);
         }

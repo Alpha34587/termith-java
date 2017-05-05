@@ -11,8 +11,9 @@ import org.xml.sax.SAXException;
 import java.util.*;
 
 /**
- * Created by smeoni on 14/04/17.
+ * Created by Simon Meoni on 14/04/17.
  */
+
 public class TxmContextExtractor extends ContextExtractor {
 
 
@@ -74,7 +75,7 @@ public class TxmContextExtractor extends ContextExtractor {
             if (posLemma.split(" ").length == 3){
                 _lastContextWord.setPosLemma(posLemma);
                 _contextStack.forEach(words -> words.put(_lastContextWord.getTarget(), _lastContextWord.getPosLemma()));
-                LOGGER.debug("add pos lemma pair: " + posLemma + " to corpus");
+                LOGGER.debug("add pos lemma pair: {} to corpus",posLemma);
                 _inW = false;
                 _currentPosLemma = "";
             }

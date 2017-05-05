@@ -62,7 +62,7 @@ public class MorphologyOffsetId extends OffsetId{
      * @param id the id
      */
     public static void addId(List<MorphologyOffsetId> offsetIds, int id){
-        offsetIds.get(offsetIds.size()-1)._ids.add(id);
+        offsetIds.get(offsetIds.size()-1).getIds().add(id);
     }
 
     /**

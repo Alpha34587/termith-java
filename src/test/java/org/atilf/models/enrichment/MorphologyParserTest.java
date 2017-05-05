@@ -23,7 +23,7 @@ public class MorphologyParserTest {
     public static void setUp(){
         _morphologyParser = new MorphologyParser(new File("src/test/resources/models/enrichment/" +
                 "morphologyParser/file1.json"));
-        _expectedJsonReader = new MorphologyParser();
+        _expectedJsonReader = new MorphologyParser(new File("test"));
         _expectedJsonReader.createToken("NN", "hearing", 22, 29);
         _expectedJsonReader.createToken("N", "research", 30, 38);
         _expectedJsonReader.createToken("CD", "125", 39, 42);

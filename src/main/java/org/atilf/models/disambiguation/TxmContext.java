@@ -6,8 +6,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by smeoni on 14/04/17.
- */
+ * Created by Simon Meoni on 14/04/17.
+*/
 public class TxmContext extends LexiconProfile{
     private Deque<String> _lemma = new ArrayDeque<>();
     private Deque<String> _pos = new ArrayDeque<>();

@@ -14,6 +14,11 @@ import java.io.InputStream;
 public class RResources {
     public static final StringBuilder SCRIPT;
     private static final Logger LOGGER = LoggerFactory.getLogger(RResources.class.getName());
+
+    private RResources() {
+        throw new IllegalAccessError("Utility class");
+    }
+
     static {
         String script = null;
         InputStream resourceAsStream = SpecCoefficientInjector.class.getResourceAsStream("/models/disambiguation" +

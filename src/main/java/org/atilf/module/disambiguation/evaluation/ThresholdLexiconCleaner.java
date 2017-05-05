@@ -31,10 +31,11 @@ public class ThresholdLexiconCleaner extends Module {
     }
 
 
+    @Override
     public void execute(){
-        _logger.debug("threshold cleaning started for : " + _id);
+        _logger.debug("threshold cleaning started for : {}",_id);
         _coefficientMap.values().removeIf(this::isNotBetweenThreshold);
-        _logger.debug("threshold cleaning finished for : " + _id);
+        _logger.debug("threshold cleaning finished for : {}",_id);
     }
 
     boolean isNotBetweenThreshold(Float value) {

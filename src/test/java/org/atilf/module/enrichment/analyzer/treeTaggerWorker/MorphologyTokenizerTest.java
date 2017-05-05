@@ -5,6 +5,7 @@ import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -132,7 +133,7 @@ public class MorphologyTokenizerTest {
         syntaxBody3.teiTextSplitter();
 
         //_observedBasicTokenInjector
-        MorphologyParser basicMorphologyParser = new MorphologyParser();
+        MorphologyParser basicMorphologyParser = new MorphologyParser(new File("test"));
         basicMorphologyParser.createToken("N", "le", 0, 2);
         basicMorphologyParser.createToken("N", "chien", 3, 8);
         basicMorphologyParser.createToken("N", "mange", 9, 14);
@@ -145,7 +146,7 @@ public class MorphologyTokenizerTest {
         );
 
         //insideTokenInjector
-        MorphologyParser insideMorphologyParser = new MorphologyParser();
+        MorphologyParser insideMorphologyParser = new MorphologyParser(new File("test"));
         insideMorphologyParser.createToken("N","le",0,2);
         insideMorphologyParser.createToken("N","chien",3,8);
         insideMorphologyParser.createToken("N","mange",9,14);
@@ -157,7 +158,7 @@ public class MorphologyTokenizerTest {
                 insideMorphologyParser
         );
 
-        MorphologyParser insideMorphologyParser2 = new MorphologyParser();
+        MorphologyParser insideMorphologyParser2 = new MorphologyParser(new File("test"));
         insideMorphologyParser2.createToken("N","le",0,2);
         insideMorphologyParser2.createToken("N","chien",3,8);
         insideMorphologyParser2.createToken("N","mange",9,14);
@@ -174,7 +175,7 @@ public class MorphologyTokenizerTest {
 
         //_observedCommentTokenInjector
 
-        MorphologyParser commentMorphologyParser = new MorphologyParser();
+        MorphologyParser commentMorphologyParser = new MorphologyParser(new File("test"));
         commentMorphologyParser.createToken("N", "le", 0, 2);
         commentMorphologyParser.createToken("N", "chien", 3, 8);
         commentMorphologyParser.createToken("N", "mange", 9, 14);
@@ -189,7 +190,7 @@ public class MorphologyTokenizerTest {
         );
 
         //_observedSymbolTokenInjector
-        MorphologyParser symbolMorphologyParser = new MorphologyParser();
+        MorphologyParser symbolMorphologyParser = new MorphologyParser(new File("test"));
 
         _observedSymbolTokenInjector = new MorphologyTokenizer(
                 new StringBuilder("le &amp; &amp; chi&eacute;ien ma&diams;nge des pommes&amp;"),
@@ -197,7 +198,7 @@ public class MorphologyTokenizerTest {
                 symbolMorphologyParser
         );
 
-        MorphologyParser symbolMorphologyParser2 = new MorphologyParser();
+        MorphologyParser symbolMorphologyParser2 = new MorphologyParser(new File("test"));
         symbolMorphologyParser2.createToken("N", "le", 0, 2);
         symbolMorphologyParser2.createToken("N", "&amp;", 3, 4);
         symbolMorphologyParser2.createToken("N", "&amp;", 5, 6);
@@ -211,7 +212,7 @@ public class MorphologyTokenizerTest {
                 symbolMorphologyParser2
         );
 
-        MorphologyParser symbolMorphologyParser3 = new MorphologyParser();
+        MorphologyParser symbolMorphologyParser3 = new MorphologyParser(new File("test"));
         symbolMorphologyParser3.createToken("N", "le", 0, 2);
         symbolMorphologyParser3.createToken("N", "&amp;", 3, 4);
         symbolMorphologyParser3.createToken("N", "&amp;", 5, 6);
@@ -230,7 +231,7 @@ public class MorphologyTokenizerTest {
         );
 
 
-        MorphologyParser alignmentMorphologyParser = new MorphologyParser();
+        MorphologyParser alignmentMorphologyParser = new MorphologyParser(new File("test"));
         alignmentMorphologyParser.createToken("N", "le", 0, 2);
         alignmentMorphologyParser.createToken("N", "chien", 3 , 8);
         alignmentMorphologyParser.createToken("N", "mange", 9, 14);
@@ -248,7 +249,7 @@ public class MorphologyTokenizerTest {
         );
         _observedAlignmentTokenInjector.teiWordTokenizer();
 
-        MorphologyParser alignmentMorphologyParser2 = new MorphologyParser();
+        MorphologyParser alignmentMorphologyParser2 = new MorphologyParser(new File("test"));
         alignmentMorphologyParser2.createToken("N", "le", 0, 2);
         alignmentMorphologyParser2.createToken("N", "chien", 3 , 8);
         alignmentMorphologyParser2.createToken("N", "mange", 9, 14);

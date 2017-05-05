@@ -45,7 +45,7 @@ public class ContextExtractorDelegate extends Delegate {
 
         List<Future> futures = new ArrayList<>();
         _termithIndex.getLearningTransformedFile().values().forEach(
-                (file) -> futures.add(_executorService.submit(
+                file -> futures.add(_executorService.submit(
                         new ContextExtractor(file.toString(),
                                 _termithIndex.getContextLexicon(),
                                 _termithIndex.getCorpusLexicon(),

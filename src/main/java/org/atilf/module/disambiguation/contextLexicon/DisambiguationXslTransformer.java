@@ -4,7 +4,6 @@ import org.atilf.models.TermithIndex;
 import org.atilf.models.enrichment.XslResources;
 import org.atilf.module.Module;
 import org.atilf.module.tools.FilesUtils;
-import org.atilf.runner.Runner;
 
 import javax.xml.transform.Source;
 import javax.xml.transform.Transformer;
@@ -55,11 +54,6 @@ public class DisambiguationXslTransformer extends Module{
         _outputPath = outputPath;
     }
 
-    public DisambiguationXslTransformer(File file, TermithIndex termithIndex,
-                                        Map<String, Path> xmlTransformedMap, XslResources xslResources){
-        this(file,termithIndex,xmlTransformedMap,xslResources, Runner.getOut());
-    }
-
 
     public DisambiguationXslTransformer(File file,TermithIndex termithIndex,
                                         Map<String,Path> xmlTransformedMap, XslResources xslResources, Path outputPath){
@@ -102,7 +96,7 @@ public class DisambiguationXslTransformer extends Module{
             /*
             decrease the counter
              */
-            _logger.info("Extraction done for file : " + _file);
+            _logger.info("Extraction done for file : {}",_file);
         } catch (IOException e) {
             _logger.error("File Exception : ",e);
         }
@@ -118,9 +112,15 @@ public class DisambiguationXslTransformer extends Module{
         Transformer transformer;
         StringWriter stringWriter = new StringWriter();
         StreamResult streamResult = new StreamResult(stringWriter);
-
+        if(_logger.isDebugEnabled()) {
+            _logger.debug(
+                    "apply {} to xml file {}",
+                    _xslResources._stylesheet.toString(),
+                    input.toString()
+            );
+        }
         try {
-            _logger.debug("apply " + _xslResources._stylesheet.toString() + "to xml file" + input.toString());
+
             /*
             get new transformer
              */

@@ -64,7 +64,7 @@ public class DisambiguationTeiWriter extends Module {
         try {
             _doc = _dBuilder.parse(p);
         } catch (SAXException | IOException e) {
-            _logger.error("error during the execute of document",e);
+            _logger.error("error during the execution of module : {}",p,e);
         }
     }
 
@@ -88,12 +88,13 @@ public class DisambiguationTeiWriter extends Module {
         try {
             _doc = _dBuilder.parse(p);
         } catch (SAXException | IOException e) {
-            _logger.error("error during the execute of document",e);
+            _logger.error("sax error during the document parsing",e);
         }
     }
 
+    @Override
     public void execute() {
-        _logger.debug("write tei module.disambiguation for :" + _p);
+        _logger.debug("write tei module.disambiguation for : {}",_p);
         XPathExpression span;
         try {
             /*
@@ -132,28 +133,27 @@ public class DisambiguationTeiWriter extends Module {
                     );
                 }
             }
-            try {
-                /*
-                write result
-                 */
-                TransformerFactory transformerFactory = TransformerFactory.newInstance();
-                Transformer transformer = transformerFactory.newTransformer();
-                transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-                transformer.setOutputProperty(OutputKeys.DOCTYPE_PUBLIC, "yes");
-                _doc.setXmlStandalone(true);
-                DOMSource source = new DOMSource(_doc);
-                StreamResult result = new StreamResult(_outputPath + "/"
-                        + FilesUtils.nameNormalizer(_p) + ".xml");
-                transformer.transform(source, result);
-            } catch (TransformerException e) {
-                _logger.error("error during file writing",e);
-            }
+
+            /*
+            write result
+             */
+            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+            Transformer transformer = transformerFactory.newTransformer();
+            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+            transformer.setOutputProperty(OutputKeys.DOCTYPE_PUBLIC, "yes");
+            _doc.setXmlStandalone(true);
+
+            DOMSource source = new DOMSource(_doc);
+            StreamResult result = new StreamResult(_outputPath + "/"
+                    + FilesUtils.nameNormalizer(_p) + ".xml");
+            transformer.transform(source, result);
 
         } catch (XPathExpressionException e) {
-            _logger.error("error during the execute of document",e);
-        }
-        finally {
-            _logger.debug("tei module.disambiguation is written for :" + _p);
+            _logger.error("cannot serialize xpath expression",e);
+        } catch (TransformerException e) {
+            _logger.error("cannot transform the source file {}",_p,e);
+        } finally {
+            _logger.debug("tei module.disambiguation is written for : {}",_p);
         }
     }
 }

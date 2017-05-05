@@ -4,7 +4,6 @@ import org.atilf.delegate.Delegate;
 import org.atilf.models.enrichment.StandOffResources;
 import org.atilf.module.enrichment.exporter.TeiWriter;
 import org.atilf.monitor.timer.TermithProgressTimer;
-import org.atilf.runner.Runner;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +21,7 @@ public class ExporterDelegate extends Delegate {
      * this method export the result of process to the tei file format
      * @throws InterruptedException throws java concurrent executorService exception
      */
+    @Override
     public void executeTasks() throws InterruptedException {
         /*
         initialize standoff resource object
@@ -34,7 +34,7 @@ public class ExporterDelegate extends Delegate {
          */
         _termithIndex.getXmlCorpus().forEach(
                 (key,value) -> futures.add(_executorService.submit(new TeiWriter(key, _termithIndex,standOffResources,
-                        Runner.getOut().toString())))
+                        getFlowableVariable("out",null).toString())))
         );
         new TermithProgressTimer(futures,this.getClass(),_executorService).start();
         _logger.info("Waiting exporters tasks to finish");

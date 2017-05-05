@@ -28,7 +28,7 @@ public class TerminologyStandOff extends Module {
     public TerminologyStandOff(String id, TermithIndex termithIndex) {
         super(termithIndex);
         _id = id;
-        _morpho = FilesUtils.readListObject(_termithIndex.getMorphologyStandOff().get(_id),MorphologyOffsetId.class);
+        _morpho = FilesUtils.readListObject(_termithIndex.getMorphologyStandOff().get(_id));
         _terminology = termithIndex.getTerminologyStandOff().get(_id);
     }
 
@@ -54,8 +54,9 @@ public class TerminologyStandOff extends Module {
     /**
      * the execute method calls fillNavigableMaps and retrieves for each term occurrences, words associated with them
      */
+    @Override
     public void execute() {
-        _logger.debug("retrieve morphosyntax id for file : " + _id);
+        _logger.debug("retrieve morphosyntax id for file : {}",_id);
         fillNavigableMaps();
         _terminology.forEach(
                 el -> el.setIds(retrieveMorphologyIds(el.getBegin(),el.getEnd()))

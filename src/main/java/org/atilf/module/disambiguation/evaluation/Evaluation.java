@@ -55,15 +55,16 @@ public class Evaluation extends Module{
      * this execute method browses the _evaluationProfile field and call computeFactor & compareFactor method if the
      * term candidate have a lexOn and a lexOff context in the _contextLexicon field
      */
+    @Override
     public void execute() {
-        _logger.info("evaluate terms candidate from: " + _p);
+        _logger.info("evaluate terms candidate from: {}", _p);
         /*
         browse evaluation profile ("for each terms of a file")
          */
         _evaluationProfile.forEach(
                 (key,value) ->
                 {
-                    _logger.debug("evaluation for term candidate: " + key + "for file: " + _p);
+                    _logger.debug("evaluation for term candidate: {} for file: {}", key, _p);
                     /*
                     convert evaluationProfile key to contextLexicon keys (suffix key with lexOn and lexOff)
                      */
@@ -76,7 +77,7 @@ public class Evaluation extends Module{
                      */
                     if (!_contextLexicon.containsKey(lexEntryOn)){
                         value.setAutomaticAnnotation(AnnotationResources.DA_OFF);
-                        _logger.debug("term candidate: " + key + "for file: " + _p + " is not a terminology");
+                        _logger.debug("term candidate: {} for file: {} is not a terminology", key, _p);
 
                     }
 
@@ -86,7 +87,7 @@ public class Evaluation extends Module{
                      */
                     else if (!_contextLexicon.containsKey(lexEntryOff)){
                         value.setAutomaticAnnotation(AnnotationResources.DA_ON);
-                        _logger.debug("term candidate: " + key + "for file: " + _p + " is a terminology");
+                        _logger.debug("term candidate: {} for file: {} is a terminology", key, _p);
                     }
 
                     /*
@@ -96,7 +97,7 @@ public class Evaluation extends Module{
                         /*
                         compute the _factorOn and _factorOff
                          */
-                        _logger.debug("comparing factor for term candidate: " + key + "in file: " + _p);
+                        _logger.debug("comparing factor for term candidate: {} in file: {}", key, _p);
                         computeFactor(value, _contextLexicon.get(lexEntryOn), _contextLexicon.get(lexEntryOff));
                         /*
                         compare factors
@@ -105,7 +106,7 @@ public class Evaluation extends Module{
                     }
                 }
         );
-        _logger.info("evaluation is finished for: " + _p);
+        _logger.info("evaluation is finished for: {}",_p);
     }
 
     /**

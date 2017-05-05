@@ -68,7 +68,7 @@ public class RConnectionPool {
                 _rConnection.eval("sumCol <-" + rLexicon.getSize());
                 _rConnection.eval("lexic <- import_csv(\"" + rLexicon.getCsvPath() + "\")");
             } catch (RserveException e) {
-                LOGGER.error("cannot established connection with R server");
+                LOGGER.error("cannot established connection with R server",e);
             }
         }
     }

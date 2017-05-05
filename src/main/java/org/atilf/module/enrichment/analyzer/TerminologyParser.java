@@ -29,7 +29,9 @@ public class TerminologyParser extends Module {
     private Map<String,String> _idSource = new HashMap<>();
     private String _currentFile = "";
     private final JsonFactory _factory = new JsonFactory();
-
+    boolean _inTerms = false;
+    boolean _inSource = false;
+    boolean _inOcc = false;
     /**
      * constructor for TerminologyParser*
      * @param path the path of the terminology
@@ -63,6 +65,7 @@ public class TerminologyParser extends Module {
      * characters offsets and a file id
      * @throws IOException thrown a exception if the json file is malformed
      */
+    @Override
     public void execute() {
         try {
 
@@ -74,44 +77,51 @@ public class TerminologyParser extends Module {
             /*
             test variables
              */
-            boolean inTerms = false;
-            boolean inSource = false;
-            boolean inOcc = false;
+
             TermOffsetId offsetId = new TermOffsetId();
 
             while ((jsonToken = parser.nextToken()) != null) {
 
-                if (inSource) {
-                    if (jsonToken == JsonToken.END_OBJECT) {
-                        inSource = false;
-                    }
-                    extractInputSource(jsonToken, parser);
+                if (_inSource) {
+                    writeSource(parser, jsonToken);
                 }
-                else if (inTerms) {
+                else if (_inTerms) {
                     if (jsonToken == JsonToken.END_ARRAY && Objects.equals(parser.getCurrentName(), T_TERMS)) {
                         break;
-                    } else if (jsonToken == JsonToken.END_ARRAY && inOcc) {
-                        inOcc = false;
-                    } else if (jsonToken == JsonToken.END_OBJECT && inOcc) {
-                        fillTerminology(offsetId);
-                    } else if (Objects.equals(parser.getCurrentName(), T_OCC)) {
-                        inOcc = true;
                     }
-                    extractTerm(jsonToken, parser, offsetId);
+                    writeTerms(parser, jsonToken, offsetId);
                 }
 
                 else if (T_INPUT.equals(parser.getParsingContext().getCurrentName())) {
-                    inSource = true;
+                    _inSource = true;
                 }
 
                 else if (T_TERMS.equals(parser.getParsingContext().getCurrentName())) {
-                    inTerms = true;
+                    _inTerms = true;
                 }
             }
         }
         catch (Exception e){
             _logger.error("cannot parse file : ",e);
         }
+    }
+
+    private void writeTerms(JsonParser parser, JsonToken jsonToken, TermOffsetId offsetId) throws IOException {
+        if (jsonToken == JsonToken.END_ARRAY && _inOcc) {
+            _inOcc = false;
+        } else if (jsonToken == JsonToken.END_OBJECT && _inOcc) {
+            fillTerminology(offsetId);
+        } else if (Objects.equals(parser.getCurrentName(), T_OCC)) {
+            _inOcc = true;
+        }
+        extractTerm(jsonToken, parser, offsetId);
+    }
+
+    private void writeSource(JsonParser parser, JsonToken jsonToken) throws IOException {
+        if (jsonToken == JsonToken.END_OBJECT) {
+            _inSource = false;
+        }
+        extractInputSource(jsonToken, parser);
     }
 
     /**

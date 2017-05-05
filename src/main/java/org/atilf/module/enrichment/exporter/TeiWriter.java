@@ -50,8 +50,7 @@ public class TeiWriter extends Module{
                 FilesUtils.readFile(termithIndex.getXmlCorpus().get(key)),
                 //morphologyOffsetIds
                 FilesUtils.readListObject(
-                        termithIndex.getMorphologyStandOff().get(key),
-                        MorphologyOffsetId.class),
+                        termithIndex.getMorphologyStandOff().get(key)),
                 //the tokenize body
                 FilesUtils.readObject(termithIndex.getTokenizeTeiBody().get(key),StringBuilder.class),
                 //the terminology
@@ -104,8 +103,9 @@ public class TeiWriter extends Module{
     /**
      * write the new file. Insert new standOff tags and tokenize body
      */
+    @Override
     public void execute() {
-        LOGGER.debug("writing : " + _outputPath);
+        LOGGER.debug("writing : {}",_outputPath);
         try {
             //insert standoff namespace
             insertStandoffNs();
@@ -280,9 +280,9 @@ public class TeiWriter extends Module{
      * @return the xml target
      */
     private String serializeId(List<Integer> ids) {
-        String target = "";
+        StringBuilder target = new StringBuilder();
         for (int id : ids) {
-            target += "#t" + id + " ";
+            target.append("#t").append(id).append(" ");
         }
         return target.substring(0,target.length() - 1);
     }

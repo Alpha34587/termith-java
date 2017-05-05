@@ -89,10 +89,9 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
     protected Map<String, LexiconProfile> _contextLexicon;
     protected List<ContextTerm> _terms = new LinkedList<>();
     protected ContextWord _lastContextWord;
-    protected Map<String,List<Integer>> _targetContext = new HashMap<>();
-    protected Stack<TreeMap<Integer,String>> _contextStack = new Stack<>();
+    protected Deque<TreeMap<Integer,String>> _contextStack = new ArrayDeque<>();
 
-    private Stack<String> _elementsStack = new Stack<>();
+    private Deque<String> _elementsStack = new ArrayDeque<>();
     private List<String> _allowedElements = new ArrayList<>();
 
     private CorpusLexicon _corpusLexicon;
@@ -185,9 +184,9 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
      */
     @Override
     public void run() {
-        LOGGER.info("extract contexts from " + _p );
+        LOGGER.info("extract contexts from {}",_p );
         this.execute();
-        LOGGER.info("all contexts in " + _p + "has been extracted");
+        LOGGER.info("all contexts in {} has been extracted",_p);
     }
 
     @Override
@@ -337,7 +336,7 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
             if (posLemma.contains(" ")){
                 _lastContextWord.setPosLemma(posLemma);
                 _contextStack.forEach(words -> words.put(_lastContextWord.getTarget(), _lastContextWord.getPosLemma()));
-                LOGGER.debug("add pos lemma pair: " + posLemma + " to corpus");
+                LOGGER.debug("add pos lemma pair: {} to corpus",posLemma);
                 _inW = false;
                 _currentPosLemma = "";
             }

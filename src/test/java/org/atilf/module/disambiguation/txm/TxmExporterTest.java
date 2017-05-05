@@ -15,7 +15,7 @@ import java.util.List;
 import static org.custommonkey.xmlunit.XMLAssert.assertXMLEqual;
 
 /**
- * Created by smeoni on 14/04/17.
+ * Created by Simon Meoni on 14/04/17.
  */
 public class TxmExporterTest {
     private static List<TxmContext> _txmContextList = new ArrayList<>();

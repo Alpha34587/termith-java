@@ -8,7 +8,7 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.stream.StreamSource;
 
 /**
- * Created by smeoni on 14/04/17.
+ * Created by Simon Meoni on 14/04/17.
  */
 public class TxmXslResource extends DisambiguationXslResources{
     private static final Logger LOGGER = LoggerFactory.getLogger(DisambiguationXslResources.class.getName());

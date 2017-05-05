@@ -4,7 +4,6 @@ import org.atilf.delegate.Delegate;
 import org.atilf.models.disambiguation.DisambiguationXslResources;
 import org.atilf.module.disambiguation.contextLexicon.DisambiguationXslTransformer;
 import org.atilf.monitor.timer.TermithProgressTimer;
-import org.atilf.runner.Runner;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -27,14 +26,16 @@ public class EvaluationXslTransformerDelegate extends Delegate {
         /*
         Transformation phase
          */
-        if (Runner.getLearningPath() != Runner.getEvaluationPath()) {
-            Files.list(Runner.getEvaluationPath()).forEach(
+        if (getFlowableVariable("learningPath",null) !=
+                getFlowableVariable("evaluationPath",null)) {
+            Files.list(getFlowableVariable("evaluationPath",null)).forEach(
                     p -> futures.add(_executorService.submit(
                             new DisambiguationXslTransformer(
                                     p.toFile(),
                                     _termithIndex,
                                     _termithIndex.getEvaluationTransformedFiles(),
-                                    xslResources)
+                                    xslResources,
+                                    getFlowableVariable("out",null))
                     ))
             );
         }

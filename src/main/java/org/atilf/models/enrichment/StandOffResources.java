@@ -17,7 +17,7 @@ public class StandOffResources {
     private static final Logger LOGGER = LoggerFactory.getLogger(StandOffResources.class.getName());
     private final static String PATH = "models/enrichment/standoffResources/";
 
-    public final StringBuilder LIST_ANNOTATION = indentation(readFile(PATH + "list-_annotation.xml"), 2);
+    public final StringBuilder LIST_ANNOTATION = indentation(readFile(PATH + "list-annotation.xml"), 2);
     public final StringBuilder MS_SPAN = indentation(readFile(PATH + "ms-span.xml"), 3);
     public final StringBuilder T_SPAN = indentation(readFile(PATH + "t-span.xml"), 3);
     public final StringBuilder MS_TEI_HEADER = indentation(readFile(PATH + "ms-tei-header.xml"), 2);
@@ -53,17 +53,17 @@ public class StandOffResources {
      * @return the transformed fragment
      */
     private StringBuilder indentation(String input, int level) {
-        String output = "";
-        String identation = "";
+        StringBuilder output = new StringBuilder();
+        StringBuilder indentation = new StringBuilder();
         while (level != 0) {
-            identation += "\t";
+            indentation.append("\t");
             level--;
         }
 
         for (String line : input.split("(?<=\n)")) {
-            output += identation + line;
+            output.append(indentation).append(line);
         }
 
-        return new StringBuilder(output);
+        return output;
     }
 }

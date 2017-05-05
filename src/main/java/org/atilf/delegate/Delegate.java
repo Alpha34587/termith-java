@@ -4,7 +4,6 @@ import com.google.common.eventbus.EventBus;
 import org.atilf.models.TermithIndex;
 import org.atilf.monitor.observer.MemoryPerformanceEvent;
 import org.atilf.monitor.observer.TimePerformanceEvent;
-import org.atilf.runner.Runner;
 import org.flowable.engine.delegate.DelegateExecution;
 import org.flowable.engine.delegate.JavaDelegate;
 import org.slf4j.Logger;
@@ -23,13 +22,13 @@ import java.util.concurrent.Executors;
  * @author Simon Meoni Created on 10/11/16.
  */
 public abstract class Delegate implements JavaDelegate{
-    protected final ExecutorService _executorService = Executors.newFixedThreadPool(Runner._poolSize);
-    protected final Logger _logger = LoggerFactory.getLogger(this.getClass().getName());
-    protected TermithIndex _termithIndex = Runner._termithIndex;
     private EventBus _eventBus = new EventBus();
     private DelegateExecution _execution;
+    protected TermithIndex _termithIndex;
+    protected ExecutorService _executorService;
     private TimePerformanceEvent _timePerformanceEvent;
     private MemoryPerformanceEvent _memoryPerformanceEvent;
+    protected final Logger _logger = LoggerFactory.getLogger(this.getClass().getName());
 
     /**
      * this method is used to executeTasks the different steps of processing of a delegate
@@ -53,23 +52,29 @@ public abstract class Delegate implements JavaDelegate{
     }
 
     public void initialize(DelegateExecution execution){
+
+
         _execution = execution;
+
+        _termithIndex = getFlowableVariable("termithIndex",null);
+        _executorService = Executors.newFixedThreadPool(getFlowableVariable("poolSize",0));
+
         _timePerformanceEvent = new TimePerformanceEvent(
                 this.getClass().getSimpleName(),
-                Runner.getCorpusSize(),
-                Runner.getTimePerformanceEvents()
+                getFlowableVariable("corpusSize",0),
+                getFlowableVariable("timePerformanceEvents",null)
         );
         _memoryPerformanceEvent = new MemoryPerformanceEvent(
                 this.getClass().getSimpleName(),
-                Runner.getCorpusSize(),
-                Runner.getMemoryPerformanceEvents()
+                getFlowableVariable("corpusSize",0),
+                getFlowableVariable("memoryPerformanceEvents",null)
         );
 
         _eventBus.register(_timePerformanceEvent);
         _eventBus.register(_memoryPerformanceEvent);
     }
 
-    protected  <T extends Object> T getFlowableVariable(String flowableName, T defaultValue){
+    protected <T extends Object> T getFlowableVariable(String flowableName, T defaultValue){
 
         T getVar = (T) _execution.getVariable(flowableName);
 
