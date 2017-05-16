@@ -7,11 +7,11 @@ Cette application est développée dans le cadre du projet ISTEX, elle doit êtr
 
 Le module d'extraction terminologique
 1. analyse morphosyntaxique et tokenisation à l'aide de treetagger ou de taslimane (l'implémentation de talismane est en cours)
-2. extraction terminologique à l'aide de [termsuite](http://termsuite.github.io/) et génération d'une terminologie au format json et tbx 
+2. extraction terminologique à l'aide de [termsuite](http://termsuite.github.io/) et génération d'une terminologie au format json et tbx
 3. le résultat de cette procédure produits 3 types d'enrichissements standOff par fichier tei/xml du corpus:
     - une tokenisation sur l'éléments `text`
     - l'ajout d'un élément standOff (l'attribut type a pour valeur `wordForms`) qui contient l'ensemble l'analyse morphosyntaxique
-    - l'ajout d'un élément standOff (l'attribut type a pour valeur `candidatsTermes`) qui contient l'ensemble de l'extraction terminologique. 
+    - l'ajout d'un élément standOff (l'attribut type a pour valeur `candidatsTermes`) qui contient l'ensemble de l'extraction terminologique.
 
 ### exemple de fichier de sortie
 
@@ -48,10 +48,10 @@ Le module d'extraction terminologique
       </fileDesc>
     </teiHeader>
     <ns:listAnnotation>
-      <!-- les éléments span correspondent à l'analyse morpho-syntaxique réalisée 
-       pour chaque token par la chaîne d'extraction terminologique : 
-      cette opération est réalisée au préalable avant la phase d'analyse terminologique. 
-      l'attribut target correspond à l'xml:id du token présent dans l'élément text du fichier --> 
+      <!-- les éléments span correspondent à l'analyse morpho-syntaxique réalisée
+       pour chaque token par la chaîne d'extraction terminologique :
+      cette opération est réalisée au préalable avant la phase d'analyse terminologique.
+      l'attribut target correspond à l'xml:id du token présent dans l'élément text du fichier -->
       <span target="#t1">
         <fs>
          <!-- l'élément ci-dessous correspond à la forme lemmatisé du token concerné -->
@@ -132,10 +132,10 @@ Le module d'extraction terminologique
       </fileDesc>
     </teiHeader>
     <ns:listAnnotation>
-     <!-- les élément span correspondent au occurrence de terme extraite. 
+     <!-- les élément span correspondent au occurrence de terme extraite.
      L'attribut target correspond au token du texte qui compose cette occurrence de terme.
-     L'attribut corresp correspond à l'id d'une entrée terminologique présente dans la terminologie 
-     généré par la chaîne de traitements. 
+     L'attribut corresp correspond à l'id d'une entrée terminologique présente dans la terminologie
+     généré par la chaîne de traitements.
      l'attribut ana a pour valeur l'ensemble des annotations lié à ce termes -->
       <span target="#t2" corresp="#TS2.0-entry-5082">
         <fs>
@@ -160,8 +160,8 @@ Le module d'extraction terminologique
       <p>
         <!-- avant tout traitement, le texte de l'élément text du fichier est tokénisé.
         chaque token est englobé par un élément w qui pour attribut un xml:id.
-        les valeurs d'attribut sont préfixé par t et ordonné par ordre croissant 
-        selon son emplacement dans le texte. 
+        les valeurs d'attribut sont préfixé par t et ordonné par ordre croissant
+        selon son emplacement dans le texte.
         Cette nomenclature est utilisé lors de la désambiguisation et doit être respecté. -->
         <w xml:id="t1">Un</w>
         <w xml:id="t2">moulage</w>
@@ -186,7 +186,7 @@ Le module d'extraction terminologique
     - DaOff si le candidat terme est considéré comme non-terminologique
     - noDa si la procédure n'a pris aucune décision
 
-## exemple d'annotations manuelles 
+## exemple d'annotations manuelles
 ```xml
   <!-- un exemple d'extraction terminologique -->
   <ns:standOff type="candidatsTermes">
@@ -204,10 +204,10 @@ Le module d'extraction terminologique
       </fileDesc>
     </teiHeader>
     <ns:listAnnotation>
-     <!-- les élément span correspondent au occurrence de terme extraite. 
+     <!-- les élément span correspondent au occurrence de terme extraite.
      L'attribut target correspond au tokens du texte qui compose cette occurrence de terme.
-     L'attribut corresp correspond à l'id d'une entrée terminologique présente dans la terminologie 
-     généré par la chaîne de traitements. 
+     L'attribut corresp correspond à l'id d'une entrée terminologique présente dans la terminologie
+     généré par la chaîne de traitements.
      l'attribut ana a pour valeur l'ensemble des annotations lié à ce termes -->
            <interpGrp>
         <interp xml:id="DM1">Occurrence du candidat terme validée seulement au niveau syntaxique</interp>
@@ -267,10 +267,10 @@ Le module d'extraction terminologique
         <interp xml:id="DAOn">Occurrence du candidat terme validée au niveau terminologique selon le système de désambiguïsation utilisé</interp>
         <interp xml:id="DAOff">Occurrence du candidat terme non valide par le système de désambiguïsation</interp>
       </interpGrp>
-     <!-- les élément span correspondent au occurrence de terme extraite. 
+     <!-- les élément span correspondent au occurrence de terme extraite.
      L'attribut target correspond au tokens du texte qui compose cette occurrence de terme.
-     L'attribut corresp correspond à l'id d'une entrée terminologique présente dans la terminologie 
-     généré par la chaîne de traitements. 
+     L'attribut corresp correspond à l'id d'une entrée terminologique présente dans la terminologie
+     généré par la chaîne de traitements.
      l'attribut ana a pour valeur l'ensemble des annotations lié à ce termes -->
       <span target="#t2" corresp="#TS2.0-entry-5082" ana="#DM3 #DAOff">
         <fs>
@@ -309,7 +309,7 @@ Le module d'extraction terminologique
 ## Comment utiliser Termith-Java ?
 
 1. pour le module d'extraction terminologique est appelé avec la commande suivante :
-`termITH-all-v0.4-SNAPSHOT.jar org.atilf.cli.TermithTreeTaggerCLI`
+`termITH-all-vlastest-SNAPSHOT.jar -cp org.atilf.cli.TermithTreeTaggerCLI`
 `-i /chemin/vers/corpus/tei`
 `-o /chemin/vers/sortie`
 `-l en`
@@ -320,7 +320,7 @@ Le module d'extraction terminologique
       * l'option `-tt` au chemin du **dossier d'installation** de treetagger  
 
 2. Le module de désambiguisation est appelé avec la commande suivante :
-`org.atilf.cli.DisambiguationCLI`
+`termITH-all-vlastest-SNAPSHOT.jar -cp org.atilf.cli.DisambiguationCLI`
 `-le /home/smeoni/Documents/desamb/res/learning-test`
 `-e /home/smeoni/Documents/desamb/res/evaluation`
 `-o /home/smeoni/Documents/test/archeo-desamb`
@@ -328,6 +328,14 @@ Le module d'extraction terminologique
       * l'option `-e` correspond au corpus d'évaluation à désambiguiser
       * l'option `-o` correspond chemin où seront écrit les résultats du corpus d'évaluation désambiguisé
 
+3. Le module de d'extraction de contexte au format txm est appelé avec la commande suivante :
+`termITH-all-vlastest-SNAPSHOT.jar -cp org.atilf.cli.TxmSerializerCLI`
+`-i /home/smeoni/Documents/desamb/res/learning-test`
+`-a #DM4 #DAOn`
+`-o /home/smeoni/Documents/test/archeo-desamb`
+      * l'option `-i` correspond au corpus d'entrée
+      * l'option `-a` correspond à la valeur des annotations des occurrences de candidats termes. Les contextes extraits seront seulement ceux dont l'occurrence de candidats termes a été annoté avec l'ensemble des annotations en argument      
+      * l'option `-o` correspond chemin où seront écrit les résultats de l'extraction de contexte (un fichiers par candidats termes)
 ## Liens Utiles
 
 - http://www.atilf.fr/ressources/termith/

@@ -33,6 +33,14 @@ public class TxmContextExtractor extends ContextExtractor {
         _annotation = annotation;
     }
 
+    public TxmContextExtractor(String p, Map<String,List<TxmContext>> txmContexts, int window,String annotation,
+                               List<String> allowedElements) {
+        super(p, null, null,window,new ArrayList<>(),allowedElements);
+        _txmContexts = txmContexts;
+        _annotation = annotation;
+    }
+
+
     @Override
     protected void extractTerms(Attributes attributes) {
         String ana = attributes.getValue("ana");
