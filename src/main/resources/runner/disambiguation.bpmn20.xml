@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
              xmlns:flowable="http://flowable.org/bpmn"
-             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
              typeLanguage="http://www.w3.org/2001/XMLSchema"
              expressionLanguage="http://www.w3.org/1999/XPath"
              targetNamespace="http://www.flowable.org/processdef">
@@ -30,9 +29,14 @@
 
         <sequenceFlow sourceRef="xslLearn" targetRef="learnExtractor"/>
 
-        <serviceTask id="learnExtractor" name="transform tei learn corpus to working format "
+        <serviceTask id="learnExtractor" name="extract context for learning"
                      flowable:class="org.atilf.delegate.disambiguation.contextLexicon.ContextExtractorDelegate"/>
-        <sequenceFlow sourceRef="learnExtractor" targetRef="RServe"/>
+        <sequenceFlow sourceRef="learnExtractor" targetRef="heuristicFilter"/>
+
+        <serviceTask id="heuristicFilter" name="remove context with only one type of profile"
+                     flowable:class="org.atilf.delegate.disambiguation.contextLexicon.HeuristicsContextFilterDelegate"/>
+
+        <sequenceFlow sourceRef="heuristicFilter" targetRef="RServe"/>
 
         <serviceTask id="RServe" name="transform tei learn corpus to working format "
                      flowable:class="org.atilf.delegate.disambiguation.lexiconProfile.LexiconProfileDelegate"/>

@@ -30,6 +30,10 @@ public class HeuristicsContextFilter extends Module{
         entries.stream()
                 .filter(el -> !_contextLexiconMap.containsKey(el.replace("lexOn","lexOff"))
                 || !_contextLexiconMap.containsKey(el.replace("lexOff","lexOn")))
-                .forEach(el -> _contextLexiconMap.remove(el));
+                .forEach(el ->
+                {
+                    _logger.info("remove {} entry",el);
+                    _contextLexiconMap.remove(el);
+                });
     }
 }
