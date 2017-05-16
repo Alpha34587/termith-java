@@ -53,7 +53,7 @@ public class WorkingFilesCleaner extends Module{
     }
 
     private void cleanLearningDirectory() throws IOException {
-        if (_learningPath != null && _learningPath != _evaluationPath){
+        if (_learningPath != null && !_learningPath.equals(_evaluationPath)){
             Files.list(_learningPath).forEach(f -> {
                         _logger.info("delete " + f.getFileName() + " of learning corpus");
                         try {
