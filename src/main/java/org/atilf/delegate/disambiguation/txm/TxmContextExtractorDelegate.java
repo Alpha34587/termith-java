@@ -25,22 +25,6 @@ public class TxmContextExtractorDelegate extends Delegate{
         includeElement.add("note");
         includeElement.add("q");
 
-        List<String> authorizedTag = new ArrayList<>();
-        authorizedTag.add("NOM");
-        authorizedTag.add("NAM");
-        authorizedTag.add("ADV");
-        authorizedTag.add("ADJ");
-        authorizedTag.add("VER:pres");
-        authorizedTag.add("VER:infi");
-        authorizedTag.add("VER:pper");
-        authorizedTag.add("VER:ppre");
-        authorizedTag.add("VER:subp");
-        authorizedTag.add("VER:cond");
-        authorizedTag.add("VER:simp");
-        authorizedTag.add("VER:futu");
-        authorizedTag.add("VER:impf");
-        authorizedTag.add("VER:subi");
-
         List<Future> futures = new ArrayList<>();
         Files.list(getFlowableVariable("out",null)).forEach(
                 file -> futures.add(_executorService.submit(
@@ -48,7 +32,6 @@ public class TxmContextExtractorDelegate extends Delegate{
                                 _termithIndex.getTermsTxmContext(),
                                 getFlowableVariable("window",0),
                                 getFlowableVariable("annotation",""),
-                                authorizedTag,
                                 includeElement
                         ))
                 )
