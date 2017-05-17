@@ -71,11 +71,15 @@ public class Evaluation extends Module{
                     String lexEntryOn = formatEntry(key,"On");
                     String lexEntryOff = formatEntry(key, "Off");
 
+                    if (!_contextLexicon.containsKey(lexEntryOff) && !_contextLexicon.containsKey(lexEntryOn)){
+                        _logger.debug("term candidate: {} for file: {} does not have a specificities profile", key,
+                                _p);
+                    }
                     /*
                     check if _contextLexicon not contains the terminology context of the term. In this case,
                      the term is not a terminology
                      */
-                    if (!_contextLexicon.containsKey(lexEntryOn)){
+                    else if (!_contextLexicon.containsKey(lexEntryOn)){
                         value.setAutomaticAnnotation(AnnotationResources.DA_OFF);
                         _logger.debug("term candidate: {} for file: {} is not a terminology", key, _p);
 
