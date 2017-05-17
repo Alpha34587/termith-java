@@ -3,6 +3,7 @@
              xmlns:flowable="http://flowable.org/bpmn"
              typeLanguage="http://www.w3.org/2001/XMLSchema"
              expressionLanguage="http://www.w3.org/1999/XPath"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
              targetNamespace="http://www.flowable.org/processdef">
 
     <process id="disambiguation" name="disambiguation" isExecutable="true">
