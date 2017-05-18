@@ -80,7 +80,7 @@ public class TxmContextExtractor extends ContextExtractor {
     public void characters(char[] ch, int start, int length) throws SAXException {
         String posLemma = _currentPosLemma.concat(new String(ch,start,length));
         if (_inW) {
-            if (posLemma.split(" ").length == 3){
+            if (posLemma.split(" ").length >= 3){
                 _lastContextWord.setPosLemma(posLemma);
                 _contextStack.forEach(words -> words.put(_lastContextWord.getTarget(), _lastContextWord.getPosLemma()));
                 LOGGER.debug("add pos lemma pair: {} to corpus",posLemma);
