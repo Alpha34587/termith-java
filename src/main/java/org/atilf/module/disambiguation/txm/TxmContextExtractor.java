@@ -46,7 +46,7 @@ public class TxmContextExtractor extends ContextExtractor {
         String ana = attributes.getValue("ana");
         if (isAnaEqual(ana,_annotation)) {
             _terms.add(new ContextTerm(attributes.getValue("corresp"),
-                    ana.replace(" ","-"),
+                    ana.replace(" ","_"),
                     attributes.getValue("target")));
             LOGGER.debug("term extracted: " + attributes.getValue("corresp"));
         }
