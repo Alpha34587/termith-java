@@ -315,7 +315,7 @@ public class ContextExtractor extends DefaultHandler implements Runnable {
         Deque<ContextTerm> termDeque = new ArrayDeque<>();
         if (words.size() > 0) {
             Optional<ContextTerm> term = _terms.stream()
-                    .filter(t -> t.getBeginTag() <= words.lastKey())
+                    .filter(t -> t.getBeginTag() >= words.firstKey() && t.getBeginTag() <= words.lastKey())
                     .findFirst();
             if (term.isPresent()) {
                 _terms.subList(_terms.indexOf(term.get()),_terms.size()).forEach(termDeque::add);
