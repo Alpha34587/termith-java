@@ -18,7 +18,6 @@ public class PhraseologyProjectorTest {
 
     private static PhraseologyResources phraseologyResources = new PhraseologyResources("fr");
     private static List<MorphologyOffsetId> morphologyOffsetIds = new ArrayList<>();
-    private static List<PhraseoOffsetId> expectedPhraseoOffsetIds = new ArrayList<>();
     private static List<PhraseoOffsetId> observedPhraseoOffsetIds = new ArrayList<>();
 
 
@@ -29,33 +28,22 @@ public class PhraseologyProjectorTest {
         morphologyOffsetIds.add(new MorphologyOffsetId(0,0,"mange","",3));
         morphologyOffsetIds.add(new MorphologyOffsetId(0,0,"une","",4));
         morphologyOffsetIds.add(new MorphologyOffsetId(0,0,"pizza","",5));
-        morphologyOffsetIds.add(new MorphologyOffsetId(0,0,"en","",6));
-        morphologyOffsetIds.add(new MorphologyOffsetId(0,0,"outre","",7));
-        morphologyOffsetIds.add(new MorphologyOffsetId(0,0,"il","",8));
-        morphologyOffsetIds.add(new MorphologyOffsetId(0,0,"aime","",9));
-        morphologyOffsetIds.add(new MorphologyOffsetId(0,0,"ça","",10));
-        morphologyOffsetIds.add(new MorphologyOffsetId(0,0,"de","",11));
-        morphologyOffsetIds.add(new MorphologyOffsetId(0,0,"plus","",12));
-        morphologyOffsetIds.add(new MorphologyOffsetId(0,0,"elle","",13));
-        morphologyOffsetIds.add(new MorphologyOffsetId(0,0,"est","",14));
-        morphologyOffsetIds.add(new MorphologyOffsetId(0,0,"grande","",15));
-        morphologyOffsetIds.add(new MorphologyOffsetId(0,0,"par","",16));
-        morphologyOffsetIds.add(new MorphologyOffsetId(0,0,"conséquent","",17));
-        morphologyOffsetIds.add(new MorphologyOffsetId(0,0,"il","",18));
-        morphologyOffsetIds.add(new MorphologyOffsetId(0,0,"meurt","",19));
-
-        expectedPhraseoOffsetIds.add(new PhraseoOffsetId(0,0,3,"en outre"));
-        expectedPhraseoOffsetIds.add(new PhraseoOffsetId(0,0,4,"de plus"));
-        expectedPhraseoOffsetIds.add(new PhraseoOffsetId(0,0,39,"par conséquent"));
-
+        morphologyOffsetIds.add(new MorphologyOffsetId(0,0,"à","",6));
+        morphologyOffsetIds.add(new MorphologyOffsetId(0,0,"défaut","",7));
+        morphologyOffsetIds.add(new MorphologyOffsetId(0,0,"de","",8));
+        morphologyOffsetIds.add(new MorphologyOffsetId(0,0,"tomates","",9));
+        morphologyOffsetIds.add(new MorphologyOffsetId(0,0,"à","",10));
+        morphologyOffsetIds.add(new MorphologyOffsetId(0,0,"tout","",11));
+        morphologyOffsetIds.add(new MorphologyOffsetId(0,0,"le","",12));
+        morphologyOffsetIds.add(new MorphologyOffsetId(0,0,"moins","",13));
     }
 
     @Test
     public void execute() throws Exception {
-        new PhraseologyProjector("", morphologyOffsetIds, observedPhraseoOffsetIds).execute();
-        String expectedId = "[ 3, 4, 39 ]";
+        new PhraseologyProjector("", morphologyOffsetIds, observedPhraseoOffsetIds,phraseologyResources).execute();
+        String expectedId = "[1, 3, 1041]";
         List<Integer> observedId = new ArrayList<>();
-        String expectedMorphoId = "[ 6, 7, 11, 12, 16, 17 ]";
+        String expectedMorphoId = "[6, 7, 8, 6, 7, 8, 10, 11, 12, 13]";
         List<Integer> observedMorphoId = new ArrayList<>();
         observedPhraseoOffsetIds.forEach(
                 el -> {
@@ -65,9 +53,10 @@ public class PhraseologyProjectorTest {
 
         );
 
-        Assert.assertEquals(observedId.toString(), expectedId, "this two list of ids must be equals");
-        Assert.assertEquals(observedMorphoId.toString(), expectedMorphoId, "this two list of morphologies ids  must be" +
-                " equals");
+        Assert.assertEquals("this two list of ids must be equals", observedId.toString(), expectedId);
+        Assert.assertEquals("this two list of morphologies ids  must be  equals",
+                observedMorphoId.toString(),
+                expectedMorphoId);
 
     }
 }

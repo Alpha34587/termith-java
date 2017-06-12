@@ -32,7 +32,7 @@ public class PhraseologyResources {
         switch (lang) {
             case "fr" :
                 parseResource(
-                        "module/enrichment/lexicalResourceProjection/transdisciplinaryLexicsProjector/TransdisciplinaryResource.json"
+                        "module/enrichment/lexicalResourceProjection/phraseologyProjector/PhraseologyResource.json"
                 );
                 break;
             default:
@@ -62,11 +62,11 @@ public class PhraseologyResources {
                 }
                 if(inWords && jParser.getCurrentToken() == JsonToken.END_ARRAY){
                     inWords = false;
-                    if (!phraseologyMap.containsKey(memWord)){
-                        phraseologyMap.put(new String(memWord),new ArrayList<>());
+                    if (!phraseologyMap.containsKey(memWord.trim())){
+                        phraseologyMap.put(memWord.trim(),new ArrayList<>());
 
                     }
-                    phraseologyMap.get(memWord).add(memForm);
+                    phraseologyMap.get(memWord.trim()).add(memForm);
                 }
             }
 

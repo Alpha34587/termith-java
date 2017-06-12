@@ -12,7 +12,7 @@ import java.util.List;
 public abstract class OffsetId implements Serializable {
     int _begin;
     int _end;
-    private List<Integer> _ids = new ArrayList<>();
+    protected List<Integer> _ids = new ArrayList<>();
 
     /**
      * constructor of OffsetId

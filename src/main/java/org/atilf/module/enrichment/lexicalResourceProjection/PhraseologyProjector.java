@@ -44,37 +44,39 @@ public class PhraseologyProjector extends Module{
         int memWordSize = wordsize;
         for (MorphologyOffsetId mOffsetId : _morpho) {
             wordsize = Integer.valueOf(memWordSize);
-            String currentLemma = "";
+            String currentLemma = mOffsetId.getLemma() + " ";
             List<MorphologyOffsetId> currentMorphoOffsetId = new ArrayList<>();
+            currentMorphoOffsetId.add(mOffsetId);
             while(wordsize <= wordSizeThreshlod){
-                int wordAfter = _morpho.indexOf(mOffsetId) + wordsize;
-                if (wordAfter < _morpho.size())
-                    if (wordAfter < _morpho.size()) {
-                        currentLemma += mOffsetId.getLemma() + " ";
-                        currentMorphoOffsetId.add(mOffsetId);
-                        currentLemma = currentLemma.trim();
-                        if(_phraseologyResources.getPhraseologyMap().containsKey(currentLemma)){
-                            addToProjectedData(currentMorphoOffsetId,_phraseologyResources.getPhraseologyMap().get(currentLemma));
-                        }
-                        wordsize++;
+                int wordAfter = _morpho.indexOf(mOffsetId) + wordsize - 1;
+                if (wordAfter < _morpho.size()) {
+                    currentLemma += _morpho.get(wordAfter).getLemma() + " ";
+                    currentMorphoOffsetId.add(_morpho.get(wordAfter));
+                    if(_phraseologyResources.getPhraseologyMap().containsKey(currentLemma.trim())){
+                        addToProjectedData(currentMorphoOffsetId,
+                                _phraseologyResources.getPhraseologyMap().get(currentLemma.trim()));
                     }
-                    else {
-                        break;
-                    }
+                    wordsize++;
+                }
+                else {
+                    break;
+                }
 
             }
         }
     }
 
     private void addToProjectedData(List<MorphologyOffsetId> listMorphologyOffsetId, List<Integer> EntryIds) {
-        String lemma = String.valueOf(listMorphologyOffsetId.stream().map(MorphologyOffsetId::getLemma).reduce
-                (String::concat));
-        EntryIds.forEach(
-                id -> {
-                    _phraseoOffsetIds.add(new PhraseoOffsetId(listMorphologyOffsetId.get(0).getBegin(),
-                            listMorphologyOffsetId.get(listMorphologyOffsetId.size()-1).getEnd(),id,lemma));
-                }
-        );
+        String lemma = "";
+        List<Integer> ids = new ArrayList<>();
+        for (MorphologyOffsetId morphologyOffsetId : listMorphologyOffsetId) {
+            lemma += morphologyOffsetId.getLemma() + " ";
+            ids.addAll(morphologyOffsetId.getIds());
+        }
+        lemma = lemma.trim();
+        for (Integer entryId : EntryIds) {
+            _phraseoOffsetIds.add(new PhraseoOffsetId(listMorphologyOffsetId.get(0).getBegin(),
+                    listMorphologyOffsetId.get(listMorphologyOffsetId.size() - 1).getEnd(), entryId, lemma,ids));
+        }
     }
-
 }
