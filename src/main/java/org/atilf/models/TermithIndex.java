@@ -4,7 +4,9 @@ import org.atilf.models.disambiguation.CorpusLexicon;
 import org.atilf.models.disambiguation.EvaluationProfile;
 import org.atilf.models.disambiguation.LexiconProfile;
 import org.atilf.models.disambiguation.TxmContext;
+import org.atilf.models.enrichment.PhraseoOffsetId;
 import org.atilf.models.enrichment.TermOffsetId;
+import org.atilf.models.enrichment.TransdisciplinaryOffsetId;
 
 import java.nio.file.Path;
 import java.util.List;
@@ -30,7 +32,8 @@ public class TermithIndex {
     private Map<String, Path> _xmlCorpus = new ConcurrentHashMap<>();
     private List<Path> _serializeJson = new CopyOnWriteArrayList<>();
     private List<Path> _outputFile = new CopyOnWriteArrayList<>();
-
+    private Map<String, List<TransdisciplinaryOffsetId>> _transOffetId = new ConcurrentHashMap<>();
+    private Map<String, List<PhraseoOffsetId>> _phraseoOffetId = new ConcurrentHashMap<>();
     /*
     Disambiguation core fields
      */
@@ -74,6 +77,13 @@ public class TermithIndex {
      */
     public CorpusLexicon getCorpusLexicon() { return _corpusLexicon; }
 
+    public Map<String, List<TransdisciplinaryOffsetId>> getTransOffetId() {
+        return _transOffetId;
+    }
+
+    public Map<String, List<PhraseoOffsetId>> getPhraseoOffetId() {
+        return _phraseoOffetId;
+    }
 
     /**
      * return the map who contains for each file a map of terms associated to evaluations profiles
