@@ -7,26 +7,23 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by Simon Meoni on 12/06/17.
  */
-public class lexicalResourceProjectionResources {
+public class LexicalResourceProjectionResources {
 
     private static Map<String,List<Integer>> phraseologyMap = new HashMap<>();
     private final Logger _logger = LoggerFactory.getLogger(getClass().getName());
     public final static String PH_TYPE = "ph";
     public final static String LST_TYPE = "lst";
 
-    public lexicalResourceProjectionResources(String lang, String type) {
+    public LexicalResourceProjectionResources(String lang, String type) {
         initResource(lang, type);
     }
 
-    public Map<String, List<Integer>> getPhraseologyMap() {
+    public Map<String, List<Integer>> getResourceMap() {
         return phraseologyMap;
     }
 
@@ -35,19 +32,19 @@ public class lexicalResourceProjectionResources {
         switch (langType) {
             case "fr " + PH_TYPE :
                 parseResource(
-                        "models/enrichment/lexicalResourceProjection/PhraseologyResource.json"
-                );
+                        "models/enrichment/lexicalResourceProjection/PhraseologyResource.json",type);
                 break;
             case "fr " + LST_TYPE :
                 parseResource(
-                        "models/enrichment/lexicalResourceProjection/TransdisciplinaryResource.json"
-                );
+                        "models/enrichment/lexicalResourceProjection/TransdisciplinaryResource.json",type);
+                break;
             default:
                 throw new IllegalArgumentException("this language is not support : " + lang);
+
         }
     }
 
-    private void parseResource(String file) {
+    private void parseResource(String file, String type) {
         boolean inWords = false;
         int memForm = 0;
         String memWord = "";
@@ -56,14 +53,22 @@ public class lexicalResourceProjectionResources {
             JsonParser jParser = jFactory.createParser(getClass().getClassLoader().getResourceAsStream(file));
 
             while (jParser.nextToken() != null) {
-                if (jParser.getCurrentName() == "formeId") {
-                    memForm = jParser.nextIntValue(0);
+
+                if (type.equals(LST_TYPE)) {
+                    if (Objects.equals(jParser.getCurrentName(), "formeId")) {
+                        memForm = jParser.nextIntValue(0);
+                    }
                 }
-                if (jParser.getCurrentName() == "words" && jParser.getCurrentToken() == JsonToken.START_ARRAY) {
+                else {
+                    if (Objects.equals(jParser.getCurrentName(), "phraseoEntryId")) {
+                        memForm = Integer.parseInt(jParser.nextTextValue().split("_")[1]);
+                    }
+                }
+                if (Objects.equals(jParser.getCurrentName(), "words") && jParser.getCurrentToken() == JsonToken.START_ARRAY) {
                     inWords = true;
                     memWord = "";
                 }
-                if (jParser.getCurrentName() == "formeTreeTagger" && inWords) {
+                if (Objects.equals(jParser.getCurrentName(), "formeTreeTagger") && inWords) {
                     inWords = true;
                     memWord += jParser.nextTextValue() + " ";
                 }

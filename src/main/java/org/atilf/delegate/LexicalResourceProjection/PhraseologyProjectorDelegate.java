@@ -1,7 +1,7 @@
-package org.atilf.delegate.lexicalResourceProjection;
+package org.atilf.delegate.LexicalResourceProjection;
 
 import org.atilf.delegate.Delegate;
-import org.atilf.models.enrichment.lexicalResourceProjectionResources;
+import org.atilf.models.enrichment.LexicalResourceProjectionResources;
 import org.atilf.module.enrichment.analyzer.TreeTaggerWorker;
 import org.atilf.module.enrichment.lexicalResourceProjection.PhraseologyProjector;
 import org.atilf.monitor.timer.TermithProgressTimer;
@@ -13,7 +13,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
-import static org.atilf.models.enrichment.lexicalResourceProjectionResources.PH_TYPE;
+import static org.atilf.models.enrichment.LexicalResourceProjectionResources.PH_TYPE;
 
 /**
  * Created by Simon Meoni on 12/06/17.
@@ -21,7 +21,7 @@ import static org.atilf.models.enrichment.lexicalResourceProjectionResources.PH_
 public class PhraseologyProjectorDelegate extends Delegate {
     @Override
     protected void executeTasks() throws IOException, InterruptedException, ExecutionException {
-        lexicalResourceProjectionResources lexicalResourceProjectionResources = new lexicalResourceProjectionResources(
+        LexicalResourceProjectionResources lexicalResourceProjectionResources = new LexicalResourceProjectionResources(
                 getFlowableVariable("lang",null), PH_TYPE
         );
         List<Future> futures = new ArrayList<>();

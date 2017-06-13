@@ -1,14 +1,16 @@
 package org.atilf.module.enrichment.lexicalResourceProjection;
 
 import org.atilf.models.TermithIndex;
+import org.atilf.models.enrichment.LexicalResourceProjectionResources;
 import org.atilf.models.enrichment.MorphologyOffsetId;
 import org.atilf.models.enrichment.PhraseoOffsetId;
-import org.atilf.models.enrichment.lexicalResourceProjectionResources;
 import org.atilf.module.Module;
 import org.atilf.module.tools.FilesUtils;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Simon Meoni on 12/06/17.
@@ -17,18 +19,17 @@ public class PhraseologyProjector extends Module{
 
     private List<MorphologyOffsetId> _morpho;
     private final List<PhraseoOffsetId> _phraseoOffsetIds;
-    private lexicalResourceProjectionResources _lexicalResourceProjectionResources;
-    private List<PhraseoOffsetId> _phraseo;
+    private LexicalResourceProjectionResources _lexicalResourceProjectionResources;
     private String _id;
 
-    public PhraseologyProjector(String id, TermithIndex termithIndex, lexicalResourceProjectionResources lexicalResourceProjectionResources) {
+    public PhraseologyProjector(String id, TermithIndex termithIndex, LexicalResourceProjectionResources lexicalResourceProjectionResources) {
         this(id,FilesUtils.readListObject(termithIndex.getMorphologyStandOff().get(id)),termithIndex
                 .getPhraseoOffetId().get(id), lexicalResourceProjectionResources);
         _id = id;
     }
 
-    public PhraseologyProjector(String id, List<MorphologyOffsetId> morpho, List<PhraseoOffsetId> phraseoOffsetIds,
-                                lexicalResourceProjectionResources lexicalResourceProjectionResources){
+    PhraseologyProjector(String id, List<MorphologyOffsetId> morpho, List<PhraseoOffsetId> phraseoOffsetIds,
+                         LexicalResourceProjectionResources lexicalResourceProjectionResources){
         _id = id;
         _morpho = morpho;
         _phraseoOffsetIds = phraseoOffsetIds;
@@ -37,10 +38,12 @@ public class PhraseologyProjector extends Module{
 
     @Override
     protected void execute() {
-        detectMultiwords(2,5);
+        _logger.info("projection of phraseologie for file : {} is started",_id);
+        detectwords(2,5);
+        _logger.info("projection of phraseologie for file : {} is finished",_id);
     }
 
-    private void detectMultiwords(int wordsize,int wordSizeThreshlod) {
+    void detectwords(int wordsize, int wordSizeThreshlod) {
         int memWordSize = wordsize;
         for (MorphologyOffsetId mOffsetId : _morpho) {
             wordsize = Integer.valueOf(memWordSize);
@@ -52,9 +55,10 @@ public class PhraseologyProjector extends Module{
                 if (wordAfter < _morpho.size()) {
                     currentLemma += _morpho.get(wordAfter).getLemma() + " ";
                     currentMorphoOffsetId.add(_morpho.get(wordAfter));
-                    if(_lexicalResourceProjectionResources.getPhraseologyMap().containsKey(currentLemma.trim())){
+                    if(_lexicalResourceProjectionResources.getResourceMap().containsKey(currentLemma.trim())){
+                        _logger.debug("detection of expression : {}",currentLemma);
                         addToProjectedData(currentMorphoOffsetId,
-                                _lexicalResourceProjectionResources.getPhraseologyMap().get(currentLemma.trim()));
+                                _lexicalResourceProjectionResources.getResourceMap().get(currentLemma.trim()));
                     }
                     wordsize++;
                 }
@@ -68,15 +72,19 @@ public class PhraseologyProjector extends Module{
 
     private void addToProjectedData(List<MorphologyOffsetId> listMorphologyOffsetId, List<Integer> EntryIds) {
         String lemma = "";
-        List<Integer> ids = new ArrayList<>();
+        Set<Integer> ids = new HashSet<>();
         for (MorphologyOffsetId morphologyOffsetId : listMorphologyOffsetId) {
             lemma += morphologyOffsetId.getLemma() + " ";
             ids.addAll(morphologyOffsetId.getIds());
         }
         lemma = lemma.trim();
         for (Integer entryId : EntryIds) {
-            _phraseoOffsetIds.add(new PhraseoOffsetId(listMorphologyOffsetId.get(0).getBegin(),
-                    listMorphologyOffsetId.get(listMorphologyOffsetId.size() - 1).getEnd(), entryId, lemma,ids));
+            addNewEntry(listMorphologyOffsetId, lemma, new ArrayList<>(ids), entryId);
         }
+    }
+
+    protected void addNewEntry(List<MorphologyOffsetId> listMorphologyOffsetId, String lemma, List<Integer> ids, Integer entryId) {
+        _phraseoOffsetIds.add(new PhraseoOffsetId(listMorphologyOffsetId.get(0).getBegin(),
+                listMorphologyOffsetId.get(listMorphologyOffsetId.size() - 1).getEnd(), entryId, lemma,ids));
     }
 }
