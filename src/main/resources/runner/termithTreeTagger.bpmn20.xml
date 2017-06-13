@@ -3,7 +3,6 @@
              xmlns:flowable="http://flowable.org/bpmn"
              typeLanguage="http://www.w3.org/2001/XMLSchema"
              expressionLanguage="http://www.w3.org/1999/XPath"
-             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
              targetNamespace="http://www.flowable.org/processdef">
 
     <process id="termithTreeTagger" name="termithTreeTagger" isExecutable="true">
@@ -50,7 +49,17 @@
         <serviceTask id="termsuiteStandoff" name="call termsuite standOff"
                      flowable:class="org.atilf.delegate.enrichment.analyzer.TerminologyStandOffDelegate"/>
 
-        <sequenceFlow sourceRef="termsuiteStandoff" targetRef="exporter"/>
+        <sequenceFlow sourceRef="termsuiteStandoff" targetRef="phraseo"/>
+
+        <serviceTask id="phraseo" name="extract phraseology"
+                     flowable:class="org.atilf.module.enrichment.lexicalResourceProjection.PhraseologyProjector"/>
+
+        <sequenceFlow sourceRef="phraseo" targetRef="lst"/>
+
+        <serviceTask id="lst" name="extract transdisciplinary words"
+                     flowable:class="org.atilf.module.enrichment.lexicalResourceProjection.TransdisciplinaryLexicsProjector"/>
+
+        <sequenceFlow sourceRef="lst" targetRef="exporter"/>
 
         <serviceTask id="exporter" name="export result in tei format"
                      flowable:class="org.atilf.delegate.enrichment.exporter.ExporterDelegate"/>
