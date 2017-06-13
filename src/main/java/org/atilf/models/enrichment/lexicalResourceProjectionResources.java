@@ -15,26 +15,33 @@ import java.util.Map;
 /**
  * Created by Simon Meoni on 12/06/17.
  */
-public class PhraseologyResources {
+public class lexicalResourceProjectionResources {
 
     private static Map<String,List<Integer>> phraseologyMap = new HashMap<>();
     private final Logger _logger = LoggerFactory.getLogger(getClass().getName());
+    public final static String PH_TYPE = "ph";
+    public final static String LST_TYPE = "lst";
 
-    public PhraseologyResources(String lang) {
-        initResource(lang);
+    public lexicalResourceProjectionResources(String lang, String type) {
+        initResource(lang, type);
     }
 
     public Map<String, List<Integer>> getPhraseologyMap() {
         return phraseologyMap;
     }
 
-    public void initResource(String lang){
-        switch (lang) {
-            case "fr" :
+    public void initResource(String lang, String type){
+        String langType = lang + " " + type;
+        switch (langType) {
+            case "fr " + PH_TYPE :
                 parseResource(
-                        "module/enrichment/lexicalResourceProjection/phraseologyProjector/PhraseologyResource.json"
+                        "models/enrichment/lexicalResourceProjection/PhraseologyResource.json"
                 );
                 break;
+            case "fr " + LST_TYPE :
+                parseResource(
+                        "models/enrichment/lexicalResourceProjection/TransdisciplinaryResource.json"
+                );
             default:
                 throw new IllegalArgumentException("this language is not support : " + lang);
         }

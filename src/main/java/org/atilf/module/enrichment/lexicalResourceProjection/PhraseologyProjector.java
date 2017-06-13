@@ -3,7 +3,7 @@ package org.atilf.module.enrichment.lexicalResourceProjection;
 import org.atilf.models.TermithIndex;
 import org.atilf.models.enrichment.MorphologyOffsetId;
 import org.atilf.models.enrichment.PhraseoOffsetId;
-import org.atilf.models.enrichment.PhraseologyResources;
+import org.atilf.models.enrichment.lexicalResourceProjectionResources;
 import org.atilf.module.Module;
 import org.atilf.module.tools.FilesUtils;
 
@@ -17,22 +17,22 @@ public class PhraseologyProjector extends Module{
 
     private List<MorphologyOffsetId> _morpho;
     private final List<PhraseoOffsetId> _phraseoOffsetIds;
-    private PhraseologyResources _phraseologyResources;
+    private lexicalResourceProjectionResources _lexicalResourceProjectionResources;
     private List<PhraseoOffsetId> _phraseo;
     private String _id;
 
-    public PhraseologyProjector(String id, TermithIndex termithIndex, PhraseologyResources phraseologyResources) {
+    public PhraseologyProjector(String id, TermithIndex termithIndex, lexicalResourceProjectionResources lexicalResourceProjectionResources) {
         this(id,FilesUtils.readListObject(termithIndex.getMorphologyStandOff().get(id)),termithIndex
-                .getPhraseoOffetId().get(id),phraseologyResources);
+                .getPhraseoOffetId().get(id), lexicalResourceProjectionResources);
         _id = id;
     }
 
     public PhraseologyProjector(String id, List<MorphologyOffsetId> morpho, List<PhraseoOffsetId> phraseoOffsetIds,
-                                PhraseologyResources phraseologyResources){
+                                lexicalResourceProjectionResources lexicalResourceProjectionResources){
         _id = id;
         _morpho = morpho;
         _phraseoOffsetIds = phraseoOffsetIds;
-        _phraseologyResources = phraseologyResources;
+        _lexicalResourceProjectionResources = lexicalResourceProjectionResources;
     }
 
     @Override
@@ -52,9 +52,9 @@ public class PhraseologyProjector extends Module{
                 if (wordAfter < _morpho.size()) {
                     currentLemma += _morpho.get(wordAfter).getLemma() + " ";
                     currentMorphoOffsetId.add(_morpho.get(wordAfter));
-                    if(_phraseologyResources.getPhraseologyMap().containsKey(currentLemma.trim())){
+                    if(_lexicalResourceProjectionResources.getPhraseologyMap().containsKey(currentLemma.trim())){
                         addToProjectedData(currentMorphoOffsetId,
-                                _phraseologyResources.getPhraseologyMap().get(currentLemma.trim()));
+                                _lexicalResourceProjectionResources.getPhraseologyMap().get(currentLemma.trim()));
                     }
                     wordsize++;
                 }

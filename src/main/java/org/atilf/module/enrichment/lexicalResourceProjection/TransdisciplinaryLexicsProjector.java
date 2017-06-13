@@ -1,7 +1,7 @@
 package org.atilf.module.enrichment.lexicalResourceProjection;
 
 import org.atilf.models.TermithIndex;
-import org.atilf.models.enrichment.PhraseologyResources;
+import org.atilf.models.enrichment.lexicalResourceProjectionResources;
 
 import java.util.HashMap;
 
@@ -9,7 +9,7 @@ import java.util.HashMap;
  * Created by Simon Meoni on 12/06/17.
  */
 public class TransdisciplinaryLexicsProjector extends PhraseologyProjector {
-    public TransdisciplinaryLexicsProjector(String id, TermithIndex termithIndex, PhraseologyResources transdisciplinaryResource) {
+    public TransdisciplinaryLexicsProjector(String id, TermithIndex termithIndex, lexicalResourceProjectionResources transdisciplinaryResource) {
         super(id, termithIndex, transdisciplinaryResource);
     }
 

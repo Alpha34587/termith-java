@@ -2,7 +2,7 @@ package org.atilf.module.enrichment.lexicalResourceProjection;
 
 import org.atilf.models.enrichment.MorphologyOffsetId;
 import org.atilf.models.enrichment.PhraseoOffsetId;
-import org.atilf.models.enrichment.PhraseologyResources;
+import org.atilf.models.enrichment.lexicalResourceProjectionResources;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -10,13 +10,16 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.atilf.models.enrichment.lexicalResourceProjectionResources.PH_TYPE;
+
 /**
  * Created by Simon Meoni on 12/06/17.
  */
 public class PhraseologyProjectorTest {
 
 
-    private static PhraseologyResources phraseologyResources = new PhraseologyResources("fr");
+    private static lexicalResourceProjectionResources lexicalResourceProjectionResources = new
+            lexicalResourceProjectionResources("fr", PH_TYPE);
     private static List<MorphologyOffsetId> morphologyOffsetIds = new ArrayList<>();
     private static List<PhraseoOffsetId> observedPhraseoOffsetIds = new ArrayList<>();
 
@@ -40,7 +43,7 @@ public class PhraseologyProjectorTest {
 
     @Test
     public void execute() throws Exception {
-        new PhraseologyProjector("", morphologyOffsetIds, observedPhraseoOffsetIds,phraseologyResources).execute();
+        new PhraseologyProjector("", morphologyOffsetIds, observedPhraseoOffsetIds, lexicalResourceProjectionResources).execute();
         String expectedId = "[1, 3, 1041]";
         List<Integer> observedId = new ArrayList<>();
         String expectedMorphoId = "[6, 7, 8, 6, 7, 8, 10, 11, 12, 13]";
