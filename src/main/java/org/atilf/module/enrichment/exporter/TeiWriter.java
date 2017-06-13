@@ -55,8 +55,8 @@ public class TeiWriter extends Module{
                 FilesUtils.readObject(termithIndex.getTokenizeTeiBody().get(key),StringBuilder.class),
                 //the terminology
                 termithIndex.getTerminologyStandOff().get(key),
-                termithIndex.getPhraseoOffetId().get(key),
-                termithIndex.getTransOffetId().get(key),
+                termithIndex.getPhraseoOffsetId().get(key),
+                termithIndex.getTransOffsetId().get(key),
                 //the write output path
                 Paths.get(outputhPath + "/" + key + ".xml"),
                 standOffResources
@@ -234,7 +234,9 @@ public class TeiWriter extends Module{
          */
         _bufferedWriter.append(replaceTemplate(cut(new StringBuilder(_stdfRes.STANDOFF),false),"@type",type));
         _bufferedWriter.append(teiHeaderTemplate);
-        _bufferedWriter.append(cut(_stdfRes.LIST_ANNOTATION,false));
+        if (type.equals("candidatsTermes")) {
+            _bufferedWriter.append(cut(_stdfRes.LIST_ANNOTATION, false));
+        }
         _bufferedWriter.append(_stdfRes.T_INTERP_GRP);
         /*
         write his content

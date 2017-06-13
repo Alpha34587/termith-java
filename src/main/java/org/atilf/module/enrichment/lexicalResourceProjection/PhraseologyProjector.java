@@ -17,21 +17,20 @@ import java.util.List;
 public class PhraseologyProjector extends Module{
 
     private List<MorphologyOffsetId> _morpho;
-    private final List<PhraseoOffsetId> _phraseoOffsetIds;
-    private LexicalResourceProjectionResources _lexicalResourceProjectionResources;
+    private List<PhraseoOffsetId> _phraseoOffsetIds =new ArrayList<>();
+    protected LexicalResourceProjectionResources _lexicalResourceProjectionResources;
     private String _id;
 
     public PhraseologyProjector(String id, TermithIndex termithIndex, LexicalResourceProjectionResources lexicalResourceProjectionResources) {
-        this(id,FilesUtils.readListObject(termithIndex.getMorphologyStandOff().get(id)),termithIndex
-                .getPhraseoOffetId().get(id), lexicalResourceProjectionResources);
+        this(id,FilesUtils.readListObject(termithIndex.getMorphologyStandOff().get(id)), lexicalResourceProjectionResources);
+        termithIndex.getPhraseoOffsetId().put(_id,_phraseoOffsetIds);
         _id = id;
     }
 
-    PhraseologyProjector(String id, List<MorphologyOffsetId> morpho, List<PhraseoOffsetId> phraseoOffsetIds,
+    PhraseologyProjector(String id, List<MorphologyOffsetId> morpho,
                          LexicalResourceProjectionResources lexicalResourceProjectionResources){
         _id = id;
         _morpho = morpho;
-        _phraseoOffsetIds = phraseoOffsetIds;
         _lexicalResourceProjectionResources = lexicalResourceProjectionResources;
     }
 
@@ -87,6 +86,7 @@ public class PhraseologyProjector extends Module{
 
     protected void addNewEntry(List<MorphologyOffsetId> listMorphologyOffsetId, String lemma, List<Integer> ids, Integer entryId) {
         _phraseoOffsetIds.add(new PhraseoOffsetId(listMorphologyOffsetId.get(0).getBegin(),
-                listMorphologyOffsetId.get(listMorphologyOffsetId.size() - 1).getEnd(), entryId, lemma,ids));
+                listMorphologyOffsetId.get(listMorphologyOffsetId.size() - 1).getEnd(), entryId,
+                _lexicalResourceProjectionResources.getPhraseologyWordsMap().get(lemma),ids));
     }
 }

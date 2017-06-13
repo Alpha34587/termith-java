@@ -52,12 +52,12 @@
         <sequenceFlow sourceRef="termsuiteStandoff" targetRef="phraseo"/>
 
         <serviceTask id="phraseo" name="extract phraseology"
-                     flowable:class="org.atilf.module.enrichment.lexicalResourceProjection.PhraseologyProjector"/>
+                     flowable:class="org.atilf.delegate.enrichment.LexicalResourceProjection.PhraseologyProjectorDelegate"/>
 
         <sequenceFlow sourceRef="phraseo" targetRef="lst"/>
 
         <serviceTask id="lst" name="extract transdisciplinary words"
-                     flowable:class="org.atilf.module.enrichment.lexicalResourceProjection.TransdisciplinaryLexicsProjector"/>
+                     flowable:class="org.atilf.delegate.enrichment.LexicalResourceProjection.TransdisciplinaryLexicsProjectorDelegate"/>
 
         <sequenceFlow sourceRef="lst" targetRef="exporter"/>
 

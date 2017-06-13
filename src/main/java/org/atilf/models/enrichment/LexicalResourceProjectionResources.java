@@ -14,7 +14,8 @@ import java.util.*;
  */
 public class LexicalResourceProjectionResources {
 
-    private static Map<String,List<Integer>> phraseologyMap = new HashMap<>();
+    private Map<String,List<Integer>> phraseologyIdMap = new HashMap<>();
+    private Map<String,String> phraseologyWordsMap = new HashMap<>();
     private final Logger _logger = LoggerFactory.getLogger(getClass().getName());
     public final static String PH_TYPE = "ph";
     public final static String LST_TYPE = "lst";
@@ -24,7 +25,11 @@ public class LexicalResourceProjectionResources {
     }
 
     public Map<String, List<Integer>> getResourceMap() {
-        return phraseologyMap;
+        return phraseologyIdMap;
+    }
+
+    public Map<String, String> getPhraseologyWordsMap() {
+        return phraseologyWordsMap;
     }
 
     public void initResource(String lang, String type){
@@ -48,6 +53,7 @@ public class LexicalResourceProjectionResources {
         boolean inWords = false;
         int memForm = 0;
         String memWord = "";
+        String memLibelle = "";
         try {
             JsonFactory jFactory = new JsonFactory();
             JsonParser jParser = jFactory.createParser(getClass().getClassLoader().getResourceAsStream(file));
@@ -64,6 +70,9 @@ public class LexicalResourceProjectionResources {
                         memForm = Integer.parseInt(jParser.nextTextValue().split("_")[1]);
                     }
                 }
+                if (Objects.equals(jParser.getCurrentName(), "libelle")) {
+                    memLibelle = jParser.nextTextValue();
+                }
                 if (Objects.equals(jParser.getCurrentName(), "words") && jParser.getCurrentToken() == JsonToken.START_ARRAY) {
                     inWords = true;
                     memWord = "";
@@ -74,11 +83,11 @@ public class LexicalResourceProjectionResources {
                 }
                 if(inWords && jParser.getCurrentToken() == JsonToken.END_ARRAY){
                     inWords = false;
-                    if (!phraseologyMap.containsKey(memWord.trim())){
-                        phraseologyMap.put(memWord.trim(),new ArrayList<>());
-
+                    if (!phraseologyIdMap.containsKey(memWord.trim())){
+                        phraseologyIdMap.put(memWord.trim(),new ArrayList<>());
+                        phraseologyWordsMap.put(memWord.trim(),memLibelle);
                     }
-                    phraseologyMap.get(memWord.trim()).add(memForm);
+                    phraseologyIdMap.get(memWord.trim()).add(memForm);
                 }
             }
 

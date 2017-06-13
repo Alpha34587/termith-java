@@ -32,8 +32,8 @@ public class TermithIndex {
     private Map<String, Path> _xmlCorpus = new ConcurrentHashMap<>();
     private List<Path> _serializeJson = new CopyOnWriteArrayList<>();
     private List<Path> _outputFile = new CopyOnWriteArrayList<>();
-    private Map<String, List<TransdisciplinaryOffsetId>> _transOffetId = new ConcurrentHashMap<>();
-    private Map<String, List<PhraseoOffsetId>> _phraseoOffetId = new ConcurrentHashMap<>();
+    private Map<String, List<TransdisciplinaryOffsetId>> _transOffsetId = new ConcurrentHashMap<>();
+    private Map<String, List<PhraseoOffsetId>> _phraseoOffsetId = new ConcurrentHashMap<>();
     /*
     Disambiguation core fields
      */
@@ -77,12 +77,12 @@ public class TermithIndex {
      */
     public CorpusLexicon getCorpusLexicon() { return _corpusLexicon; }
 
-    public Map<String, List<TransdisciplinaryOffsetId>> getTransOffetId() {
-        return _transOffetId;
+    public Map<String, List<TransdisciplinaryOffsetId>> getTransOffsetId() {
+        return _transOffsetId;
     }
 
-    public Map<String, List<PhraseoOffsetId>> getPhraseoOffetId() {
-        return _phraseoOffetId;
+    public Map<String, List<PhraseoOffsetId>> getPhraseoOffsetId() {
+        return _phraseoOffsetId;
     }
 
     /**
