@@ -1,9 +1,7 @@
 package org.atilf.module.enrichment.exporter;
 
 import org.atilf.models.TermithIndex;
-import org.atilf.models.enrichment.MorphologyOffsetId;
-import org.atilf.models.enrichment.StandOffResources;
-import org.atilf.models.enrichment.TermOffsetId;
+import org.atilf.models.enrichment.*;
 import org.atilf.module.Module;
 import org.atilf.module.tools.FilesUtils;
 import org.slf4j.Logger;
@@ -32,6 +30,8 @@ public class TeiWriter extends Module{
     private final StringBuilder _xmlCorpus;
     private final List<MorphologyOffsetId> _morphologyOffsetIds;
     private final List<TermOffsetId> _termOffsetIds;
+    private final List<PhraseoOffsetId> _phraseoOffsetIds;
+    private final List<TransdisciplinaryOffsetId> _transdisciplinaryOffsetIds;
     private static final Logger LOGGER = LoggerFactory.getLogger(TeiWriter.class.getName());
 
 
@@ -55,6 +55,8 @@ public class TeiWriter extends Module{
                 FilesUtils.readObject(termithIndex.getTokenizeTeiBody().get(key),StringBuilder.class),
                 //the terminology
                 termithIndex.getTerminologyStandOff().get(key),
+                termithIndex.getPhraseoOffetId().get(key),
+                termithIndex.getTransOffetId().get(key),
                 //the write output path
                 Paths.get(outputhPath + "/" + key + ".xml"),
                 standOffResources
@@ -84,6 +86,8 @@ public class TeiWriter extends Module{
     private TeiWriter(StringBuilder xmlCorpus,
                       List<MorphologyOffsetId> morphologyOffsetIds,
                       StringBuilder tokenizeBody, List<TermOffsetId> termOffsetIds,
+                      List<PhraseoOffsetId> phraseoOffsetIds,
+                      List<TransdisciplinaryOffsetId> transdisciplinaryOffsetIds,
                       Path outputPath,
                       StandOffResources standOffResources) {
 
@@ -91,6 +95,8 @@ public class TeiWriter extends Module{
         _morphologyOffsetIds = morphologyOffsetIds;
         _tokenizeBody = tokenizeBody;
         _termOffsetIds = termOffsetIds;
+        _transdisciplinaryOffsetIds = transdisciplinaryOffsetIds;
+        _phraseoOffsetIds = phraseoOffsetIds;
         _stdfRes = standOffResources;
         try {
             _bufferedWriter = Files.newBufferedWriter(outputPath);
@@ -174,6 +180,30 @@ public class TeiWriter extends Module{
             serializeTerminology(_termOffsetIds);
         }
 
+        /*
+        inject phraseo & lst
+         */
+        if (_phraseoOffsetIds != null &&
+                !_phraseoOffsetIds.isEmpty()){
+            serializePhraseology(_phraseoOffsetIds);
+        }
+        if (_transdisciplinaryOffsetIds != null &&
+                !_transdisciplinaryOffsetIds.isEmpty()){
+            serializeTransdisciplinary(_transdisciplinaryOffsetIds);
+        }
+
+
+
+    }
+
+    private void serializeTransdisciplinary(List<TransdisciplinaryOffsetId> transdisciplinaryOffsetIds) throws IOException {
+        serializeOffsetId(transdisciplinaryOffsetIds,"lexiquesTransdisciplinaire",
+                _stdfRes.LST_SPAN,
+                _stdfRes.LST_TEI_HEADER);
+    }
+
+    private void serializePhraseology(List<PhraseoOffsetId> phraseoOffsetIds) throws IOException {
+        serializeOffsetId(phraseoOffsetIds,"syntagmeDefinis",_stdfRes.PH_SPAN,_stdfRes.PH_TEI_HEADER);
     }
 
     /**
@@ -182,10 +212,15 @@ public class TeiWriter extends Module{
      * @throws IOException thrown an exception if _bufferedWriter fields throws an error during writing
      */
     private void serializeTerminology(List<TermOffsetId> termOffsetIds) throws IOException {
+        serializeOffsetId(termOffsetIds,"candidatsTermes",_stdfRes.T_SPAN,_stdfRes.T_TEI_HEADER);
+    }
 
-        /*
-        reorder the list
-         */
+    private void serializeOffsetId(List<? extends TermOffsetId> termOffsetIds, String type, StringBuilder
+            spanTemplate, StringBuilder teiHeaderTemplate) throws
+            IOException {
+    /*
+    reorder the list
+     */
         termOffsetIds.sort((o1, o2) -> {
             int comp = o1.getIds().get(0).compareTo(o2.getIds().get(0));
             if (comp == 0) {
@@ -197,8 +232,8 @@ public class TeiWriter extends Module{
         /*
         write the standoff element root
          */
-        _bufferedWriter.append(replaceTemplate(cut(new StringBuilder(_stdfRes.STANDOFF),false),"@type","candidatsTermes"));
-        _bufferedWriter.append(_stdfRes.T_TEI_HEADER);
+        _bufferedWriter.append(replaceTemplate(cut(new StringBuilder(_stdfRes.STANDOFF),false),"@type",type));
+        _bufferedWriter.append(teiHeaderTemplate);
         _bufferedWriter.append(cut(_stdfRes.LIST_ANNOTATION,false));
         _bufferedWriter.append(_stdfRes.T_INTERP_GRP);
         /*
@@ -208,7 +243,7 @@ public class TeiWriter extends Module{
             /*
             write a span element
              */
-            StringBuilder entry = new StringBuilder(_stdfRes.T_SPAN);
+            StringBuilder entry = new StringBuilder(spanTemplate);
             replaceTemplate(entry,"@target", serializeId(token.getIds()));
             replaceTemplate(entry, "@corresp", String.valueOf(token.getTermId()));
             replaceTemplate(entry, "@string", replaceXmlChar(token.getWord()));
@@ -220,6 +255,7 @@ public class TeiWriter extends Module{
         _bufferedWriter.append(cut(_stdfRes.LIST_ANNOTATION,true));
         _bufferedWriter.append(cut(_stdfRes.STANDOFF,true));
     }
+
     /**
      * return the start tag or the close tag of a resource from _stdfRes
      * @return the start tag or close tag

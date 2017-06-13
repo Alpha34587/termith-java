@@ -1,0 +1,47 @@
+<teiHeader>
+    <fileDesc>
+        <titleStmt>
+            <title>Annotation en occurrences de syntagmes définis issus du TLFi</title>
+            <author role="annotator">ATILF</author>
+            <author role="detection">ATILF</author>
+        </titleStmt>
+        <publicationStmt>
+            <distributor>ATILF (Analyse et Traitement Informatique de la Langue
+                Française)</distributor>
+            <availability>
+                <licence target="http://creativecommons.org/licenses/by/4.0/" corresp="#licenceCC"/>
+            </availability>
+        </publicationStmt>
+        <sourceDesc>
+            <p>Annotation en occurrences de syntagmes définis du document <ref target="#termithIdentifier"/> générée automatiquement dans le cadre du projet
+                TermITH</p>
+        </sourceDesc>
+    </fileDesc>
+    <encodingDesc>
+        <appInfo>
+            <application ident="Termith" version="1.0">
+                <label>atilf:termith:phase13:syntagmesDefinis</label>
+            </application>
+        </appInfo>
+        <projectDesc>
+            <p>Le lexique des syntagmes définis issus du TLFi, TLF'Phraseo, est actuellement
+                disponible sur le site d'Ortolang <ref target="https://hdl.handle.net/11403/tlfphraseo"/>.</p>
+            <p>TLF'Phraseo est le résultat d'un extraction des syntagmes encodés comme définis
+                dans le TLFi dans une version normalisée mais non classifiée d'un point de vue
+                phraséologique</p>
+            <p>TLF'Phraseo a été projeté sur les documents du projet sur la base d'une
+                reconnaissance en forme lemmatisée et étiquette grammaticale.</p>
+            <p>Ces indications morphosyntaxiques sont encodées dans l'annotation &lt;ns:standOff
+                type="wordForms"&gt;.</p>
+            <p>Une occurrence de syntagme défini contient les mêmes éléments que le syntagme
+                correspondant dans le lexique et les contient dans le même ordre.</p>
+            <p>Chaque occurrence de syntagme défini est représentée par un élément &lt;span&gt;
+                dont l'attribut @target a pour valeur les identifiants des tokens qui la constitue
+                et l'attribut @corresp a pour valeur l'identifiant de la description du syntagme
+                dans le lexique TLF'Phraseo.</p>
+            <p>La forme d'une occurrence de syntagme défini est décrite par une structure de
+                traits &lt;fs&gt; qui contient comme unique trait &lt;f&gt; la forme textuelle de
+                l'occurrence intégrée dans un élément &lt;string&gt;.</p>
+        </projectDesc>
+    </encodingDesc>
+</teiHeader>
