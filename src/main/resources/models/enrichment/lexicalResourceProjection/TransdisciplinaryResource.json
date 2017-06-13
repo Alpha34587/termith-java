@@ -4,10 +4,17 @@
     "words": [
       {
         "formeInitiale": "d'",
-        "formeTreeTagger": "d'ailleurs",
-        "POS": "ADV",
-        "largeurContexte": 1,
+        "formeTreeTagger": "de",
+        "POS": "PRP",
+        "largeurContexte": 2,
         "ordreMotDansForme": 1
+      },
+      {
+        "formeInitiale": "ailleurs",
+        "formeTreeTagger": "ailleurs",
+        "POS": "ADV",
+        "largeurContexte": 2,
+        "ordreMotDansForme": 2
       }
     ],
     "categorie": "ADV",
@@ -426,22 +433,29 @@
         "formeInitiale": "en",
         "formeTreeTagger": "en",
         "POS": "PRP",
-        "largeurContexte": 3,
+        "largeurContexte": 4,
         "ordreMotDansForme": 1
       },
       {
         "formeInitiale": "d'",
-        "formeTreeTagger": "d'autres",
-        "POS": "ADJ",
-        "largeurContexte": 3,
+        "formeTreeTagger": "de",
+        "POS": "PRP",
+        "largeurContexte": 4,
         "ordreMotDansForme": 2
       },
       {
         "formeInitiale": "autres",
+        "formeTreeTagger": "autre",
+        "POS": "ADJ",
+        "largeurContexte": 4,
+        "ordreMotDansForme": 3
+      },
+      {
+        "formeInitiale": "termes",
         "formeTreeTagger": "terme",
         "POS": "NOM",
-        "largeurContexte": 3,
-        "ordreMotDansForme": 3
+        "largeurContexte": 4,
+        "ordreMotDansForme": 4
       }
     ],
     "categorie": "ADV",
@@ -916,29 +930,36 @@
         "formeInitiale": "quoi",
         "formeTreeTagger": "quoi",
         "POS": "PRO",
-        "largeurContexte": 4,
+        "largeurContexte": 5,
         "ordreMotDansForme": 1
       },
       {
         "formeInitiale": "qu'",
-        "formeTreeTagger": "qu'il",
-        "POS": "VER:futu",
-        "largeurContexte": 4,
+        "formeTreeTagger": "que",
+        "POS": "KON",
+        "largeurContexte": 5,
         "ordreMotDansForme": 2
       },
       {
         "formeInitiale": "il",
-        "formeTreeTagger": "en",
+        "formeTreeTagger": "il",
         "POS": "PRO:PER",
-        "largeurContexte": 4,
+        "largeurContexte": 5,
         "ordreMotDansForme": 3
       },
       {
         "formeInitiale": "en",
+        "formeTreeTagger": "en",
+        "POS": "PRO:PER",
+        "largeurContexte": 5,
+        "ordreMotDansForme": 4
+      },
+      {
+        "formeInitiale": "soit",
         "formeTreeTagger": "être",
         "POS": "VER:subp",
-        "largeurContexte": 4,
-        "ordreMotDansForme": 4
+        "largeurContexte": 5,
+        "ordreMotDansForme": 5
       }
     ],
     "categorie": "ADV",
@@ -1411,10 +1432,17 @@
     "words": [
       {
         "formeInitiale": "d'",
-        "formeTreeTagger": "d'abord",
-        "POS": "ADV",
-        "largeurContexte": 1,
+        "formeTreeTagger": "de",
+        "POS": "PRP",
+        "largeurContexte": 2,
         "ordreMotDansForme": 1
+      },
+      {
+        "formeInitiale": "abord",
+        "formeTreeTagger": "abord",
+        "POS": "NOM",
+        "largeurContexte": 2,
+        "ordreMotDansForme": 2
       }
     ],
     "categorie": "ADV",
@@ -1432,17 +1460,24 @@
     "words": [
       {
         "formeInitiale": "d'",
-        "formeTreeTagger": "d'autre",
-        "POS": "NOM",
-        "largeurContexte": 2,
+        "formeTreeTagger": "de",
+        "POS": "PRP",
+        "largeurContexte": 3,
         "ordreMotDansForme": 1
       },
       {
         "formeInitiale": "autre",
+        "formeTreeTagger": "autre",
+        "POS": "ADJ",
+        "largeurContexte": 3,
+        "ordreMotDansForme": 2
+      },
+      {
+        "formeInitiale": "part",
         "formeTreeTagger": "part",
         "POS": "NOM",
-        "largeurContexte": 2,
-        "ordreMotDansForme": 2
+        "largeurContexte": 3,
+        "ordreMotDansForme": 3
       }
     ],
     "categorie": "ADV",
@@ -1460,10 +1495,17 @@
     "words": [
       {
         "formeInitiale": "d'",
-        "formeTreeTagger": "d'emblée",
-        "POS": "VER:pper",
-        "largeurContexte": 1,
+        "formeTreeTagger": "de",
+        "POS": "PRP",
+        "largeurContexte": 2,
         "ordreMotDansForme": 1
+      },
+      {
+        "formeInitiale": "emblée",
+        "formeTreeTagger": "emblée",
+        "POS": "ADV",
+        "largeurContexte": 2,
+        "ordreMotDansForme": 2
       }
     ],
     "categorie": "ADV",
@@ -1481,17 +1523,24 @@
     "words": [
       {
         "formeInitiale": "d'",
-        "formeTreeTagger": "d'une",
-        "POS": "NOM",
-        "largeurContexte": 2,
+        "formeTreeTagger": "de",
+        "POS": "PRP",
+        "largeurContexte": 3,
         "ordreMotDansForme": 1
       },
       {
         "formeInitiale": "une",
+        "formeTreeTagger": "un",
+        "POS": "DET:ART",
+        "largeurContexte": 3,
+        "ordreMotDansForme": 2
+      },
+      {
+        "formeInitiale": "part",
         "formeTreeTagger": "part",
         "POS": "NOM",
-        "largeurContexte": 2,
-        "ordreMotDansForme": 2
+        "largeurContexte": 3,
+        "ordreMotDansForme": 3
       }
     ],
     "categorie": "ADV",
@@ -1658,15 +1707,22 @@
         "formeInitiale": "tout",
         "formeTreeTagger": "tout",
         "POS": "ADV",
-        "largeurContexte": 2,
+        "largeurContexte": 3,
         "ordreMotDansForme": 1
       },
       {
         "formeInitiale": "d'",
-        "formeTreeTagger": "d'abord",
-        "POS": "ADV",
-        "largeurContexte": 2,
+        "formeTreeTagger": "de",
+        "POS": "PRP",
+        "largeurContexte": 3,
         "ordreMotDansForme": 2
+      },
+      {
+        "formeInitiale": "abord",
+        "formeTreeTagger": "abord",
+        "POS": "NOM",
+        "largeurContexte": 3,
+        "ordreMotDansForme": 3
       }
     ],
     "categorie": "ADV",
@@ -1840,15 +1896,22 @@
         "formeInitiale": "en",
         "formeTreeTagger": "en",
         "POS": "PRP",
-        "largeurContexte": 2,
+        "largeurContexte": 3,
         "ordreMotDansForme": 1
       },
       {
         "formeInitiale": "l'",
-        "formeTreeTagger": "l'occurrence",
-        "POS": "NOM",
-        "largeurContexte": 2,
+        "formeTreeTagger": "le",
+        "POS": "DET:ART",
+        "largeurContexte": 3,
         "ordreMotDansForme": 2
+      },
+      {
+        "formeInitiale": "occurrence",
+        "formeTreeTagger": "occurrence",
+        "POS": "NOM",
+        "largeurContexte": 3,
+        "ordreMotDansForme": 3
       }
     ],
     "categorie": "ADV",
@@ -1894,17 +1957,24 @@
     "words": [
       {
         "formeInitiale": "d'",
-        "formeTreeTagger": "d'autant",
-        "POS": "ADV",
-        "largeurContexte": 2,
+        "formeTreeTagger": "de",
+        "POS": "PRP",
+        "largeurContexte": 3,
         "ordreMotDansForme": 1
       },
       {
         "formeInitiale": "autant",
+        "formeTreeTagger": "autant",
+        "POS": "ADV",
+        "largeurContexte": 3,
+        "ordreMotDansForme": 2
+      },
+      {
+        "formeInitiale": "plus",
         "formeTreeTagger": "plus",
         "POS": "ADV",
-        "largeurContexte": 2,
-        "ordreMotDansForme": 2
+        "largeurContexte": 3,
+        "ordreMotDansForme": 3
       }
     ],
     "categorie": "ADV",
@@ -2099,15 +2169,22 @@
         "formeInitiale": "à",
         "formeTreeTagger": "à",
         "POS": "PRP",
-        "largeurContexte": 2,
+        "largeurContexte": 3,
         "ordreMotDansForme": 1
       },
       {
         "formeInitiale": "l'",
-        "formeTreeTagger": "l'inverse",
-        "POS": "NOM",
-        "largeurContexte": 2,
+        "formeTreeTagger": "le",
+        "POS": "DET:ART",
+        "largeurContexte": 3,
         "ordreMotDansForme": 2
+      },
+      {
+        "formeInitiale": "inverse",
+        "formeTreeTagger": "inverse",
+        "POS": "NOM",
+        "largeurContexte": 3,
+        "ordreMotDansForme": 3
       }
     ],
     "categorie": "ADV",
@@ -2127,15 +2204,22 @@
         "formeInitiale": "à",
         "formeTreeTagger": "à",
         "POS": "PRP",
-        "largeurContexte": 2,
+        "largeurContexte": 3,
         "ordreMotDansForme": 1
       },
       {
         "formeInitiale": "l'",
-        "formeTreeTagger": "l'opposé",
-        "POS": "ADJ",
-        "largeurContexte": 2,
+        "formeTreeTagger": "le",
+        "POS": "DET:ART",
+        "largeurContexte": 3,
         "ordreMotDansForme": 2
+      },
+      {
+        "formeInitiale": "opposé",
+        "formeTreeTagger": "opposer",
+        "POS": "VER:pper",
+        "largeurContexte": 3,
+        "ordreMotDansForme": 3
       }
     ],
     "categorie": "ADV",
@@ -3576,15 +3660,22 @@
         "formeInitiale": "à",
         "formeTreeTagger": "à",
         "POS": "PRP",
-        "largeurContexte": 2,
+        "largeurContexte": 3,
         "ordreMotDansForme": 1
       },
       {
         "formeInitiale": "l'",
-        "formeTreeTagger": "l'extérieur",
-        "POS": "NOM",
-        "largeurContexte": 2,
+        "formeTreeTagger": "le",
+        "POS": "DET:ART",
+        "largeurContexte": 3,
         "ordreMotDansForme": 2
+      },
+      {
+        "formeInitiale": "extérieur",
+        "formeTreeTagger": "extérieur",
+        "POS": "NOM",
+        "largeurContexte": 3,
+        "ordreMotDansForme": 3
       }
     ],
     "categorie": "ADV",
@@ -3807,15 +3898,22 @@
         "formeInitiale": "à",
         "formeTreeTagger": "à",
         "POS": "PRP",
-        "largeurContexte": 2,
+        "largeurContexte": 3,
         "ordreMotDansForme": 1
       },
       {
         "formeInitiale": "l'",
-        "formeTreeTagger": "l'étranger",
-        "POS": "VER:infi",
-        "largeurContexte": 2,
+        "formeTreeTagger": "le",
+        "POS": "DET:ART",
+        "largeurContexte": 3,
         "ordreMotDansForme": 2
+      },
+      {
+        "formeInitiale": "étranger",
+        "formeTreeTagger": "étranger",
+        "POS": "ADJ",
+        "largeurContexte": 3,
+        "ordreMotDansForme": 3
       }
     ],
     "categorie": "ADV",
@@ -3835,15 +3933,22 @@
         "formeInitiale": "à",
         "formeTreeTagger": "à",
         "POS": "PRP",
-        "largeurContexte": 2,
+        "largeurContexte": 3,
         "ordreMotDansForme": 1
       },
       {
         "formeInitiale": "l'",
-        "formeTreeTagger": "l'intérieur",
-        "POS": "NOM",
-        "largeurContexte": 2,
+        "formeTreeTagger": "le",
+        "POS": "DET:ART",
+        "largeurContexte": 3,
         "ordreMotDansForme": 2
+      },
+      {
+        "formeInitiale": "intérieur",
+        "formeTreeTagger": "intérieur",
+        "POS": "NOM",
+        "largeurContexte": 3,
+        "ordreMotDansForme": 3
       }
     ],
     "categorie": "ADV",
@@ -3954,15 +4059,22 @@
         "formeInitiale": "de",
         "formeTreeTagger": "de",
         "POS": "PRP",
-        "largeurContexte": 2,
+        "largeurContexte": 3,
         "ordreMotDansForme": 1
       },
       {
         "formeInitiale": "l'",
-        "formeTreeTagger": "l'extérieur",
-        "POS": "NOM",
-        "largeurContexte": 2,
+        "formeTreeTagger": "le",
+        "POS": "DET:ART",
+        "largeurContexte": 3,
         "ordreMotDansForme": 2
+      },
+      {
+        "formeInitiale": "extérieur",
+        "formeTreeTagger": "extérieur",
+        "POS": "NOM",
+        "largeurContexte": 3,
+        "ordreMotDansForme": 3
       }
     ],
     "categorie": "ADV",
@@ -4430,15 +4542,22 @@
         "formeInitiale": "à",
         "formeTreeTagger": "à",
         "POS": "PRP",
-        "largeurContexte": 2,
+        "largeurContexte": 3,
         "ordreMotDansForme": 1
       },
       {
         "formeInitiale": "l'",
-        "formeTreeTagger": "l'envi",
-        "POS": "NOM",
-        "largeurContexte": 2,
+        "formeTreeTagger": "le",
+        "POS": "DET:ART",
+        "largeurContexte": 3,
         "ordreMotDansForme": 2
+      },
+      {
+        "formeInitiale": "envi",
+        "formeTreeTagger": "envi",
+        "POS": "ADV",
+        "largeurContexte": 3,
+        "ordreMotDansForme": 3
       }
     ],
     "categorie": "ADV",
@@ -4605,15 +4724,22 @@
         "formeInitiale": "à",
         "formeTreeTagger": "à",
         "POS": "PRP",
-        "largeurContexte": 2,
+        "largeurContexte": 3,
         "ordreMotDansForme": 1
       },
       {
         "formeInitiale": "l'",
-        "formeTreeTagger": "l'infini",
-        "POS": "NOM",
-        "largeurContexte": 2,
+        "formeTreeTagger": "le",
+        "POS": "DET:ART",
+        "largeurContexte": 3,
         "ordreMotDansForme": 2
+      },
+      {
+        "formeInitiale": "infini",
+        "formeTreeTagger": "infini",
+        "POS": "NOM",
+        "largeurContexte": 3,
+        "ordreMotDansForme": 3
       }
     ],
     "categorie": "ADV",
@@ -4631,17 +4757,24 @@
     "words": [
       {
         "formeInitiale": "jusqu'",
-        "formeTreeTagger": "jusqu'au",
-        "POS": "NOM",
-        "largeurContexte": 2,
+        "formeTreeTagger": "jusque",
+        "POS": "PRP",
+        "largeurContexte": 3,
         "ordreMotDansForme": 1
       },
       {
         "formeInitiale": "au",
+        "formeTreeTagger": "au",
+        "POS": "PRP:det",
+        "largeurContexte": 3,
+        "ordreMotDansForme": 2
+      },
+      {
+        "formeInitiale": "bout",
         "formeTreeTagger": "bout",
         "POS": "NOM",
-        "largeurContexte": 2,
-        "ordreMotDansForme": 2
+        "largeurContexte": 3,
+        "ordreMotDansForme": 3
       }
     ],
     "categorie": "ADV",
@@ -4934,29 +5067,36 @@
         "formeInitiale": "de",
         "formeTreeTagger": "de",
         "POS": "PRP",
-        "largeurContexte": 4,
+        "largeurContexte": 5,
         "ordreMotDansForme": 1
       },
       {
         "formeInitiale": "part",
         "formeTreeTagger": "part",
         "POS": "NOM",
-        "largeurContexte": 4,
+        "largeurContexte": 5,
         "ordreMotDansForme": 2
       },
       {
         "formeInitiale": "et",
         "formeTreeTagger": "et",
         "POS": "KON",
-        "largeurContexte": 4,
+        "largeurContexte": 5,
         "ordreMotDansForme": 3
       },
       {
         "formeInitiale": "d'",
-        "formeTreeTagger": "d'autre",
-        "POS": "NOM",
-        "largeurContexte": 4,
+        "formeTreeTagger": "de",
+        "POS": "PRP",
+        "largeurContexte": 5,
         "ordreMotDansForme": 4
+      },
+      {
+        "formeInitiale": "autre",
+        "formeTreeTagger": "autre",
+        "POS": "ADJ",
+        "largeurContexte": 5,
+        "ordreMotDansForme": 5
       }
     ],
     "categorie": "ADV",
@@ -5074,15 +5214,22 @@
         "formeInitiale": "à",
         "formeTreeTagger": "à",
         "POS": "PRP",
-        "largeurContexte": 2,
+        "largeurContexte": 3,
         "ordreMotDansForme": 1
       },
       {
         "formeInitiale": "l'",
-        "formeTreeTagger": "l'arrière",
-        "POS": "NOM",
-        "largeurContexte": 2,
+        "formeTreeTagger": "le",
+        "POS": "DET:ART",
+        "largeurContexte": 3,
         "ordreMotDansForme": 2
+      },
+      {
+        "formeInitiale": "arrière",
+        "formeTreeTagger": "arrière",
+        "POS": "NOM",
+        "largeurContexte": 3,
+        "ordreMotDansForme": 3
       }
     ],
     "categorie": "ADV",
@@ -5263,15 +5410,22 @@
         "formeInitiale": "à",
         "formeTreeTagger": "à",
         "POS": "PRP",
-        "largeurContexte": 2,
+        "largeurContexte": 3,
         "ordreMotDansForme": 1
       },
       {
         "formeInitiale": "l'",
-        "formeTreeTagger": "l'amiable",
-        "POS": "ADJ",
-        "largeurContexte": 2,
+        "formeTreeTagger": "le",
+        "POS": "DET:ART",
+        "largeurContexte": 3,
         "ordreMotDansForme": 2
+      },
+      {
+        "formeInitiale": "amiable",
+        "formeTreeTagger": "amiable",
+        "POS": "ADJ",
+        "largeurContexte": 3,
+        "ordreMotDansForme": 3
       }
     ],
     "categorie": "ADV",
@@ -5319,15 +5473,22 @@
         "formeInitiale": "à",
         "formeTreeTagger": "à",
         "POS": "PRP",
-        "largeurContexte": 2,
+        "largeurContexte": 3,
         "ordreMotDansForme": 1
       },
       {
         "formeInitiale": "l'",
-        "formeTreeTagger": "l'unanimité",
-        "POS": "NOM",
-        "largeurContexte": 2,
+        "formeTreeTagger": "le",
+        "POS": "DET:ART",
+        "largeurContexte": 3,
         "ordreMotDansForme": 2
+      },
+      {
+        "formeInitiale": "unanimité",
+        "formeTreeTagger": "unanimité",
+        "POS": "NOM",
+        "largeurContexte": 3,
+        "ordreMotDansForme": 3
       }
     ],
     "categorie": "ADV",
@@ -5347,15 +5508,22 @@
         "formeInitiale": "à",
         "formeTreeTagger": "à",
         "POS": "PRP",
-        "largeurContexte": 2,
+        "largeurContexte": 3,
         "ordreMotDansForme": 1
       },
       {
         "formeInitiale": "l'",
-        "formeTreeTagger": "l'usage",
-        "POS": "NOM",
-        "largeurContexte": 2,
+        "formeTreeTagger": "le",
+        "POS": "DET:ART",
+        "largeurContexte": 3,
         "ordreMotDansForme": 2
+      },
+      {
+        "formeInitiale": "usage",
+        "formeTreeTagger": "usage",
+        "POS": "NOM",
+        "largeurContexte": 3,
+        "ordreMotDansForme": 3
       }
     ],
     "categorie": "ADV",
@@ -7600,24 +7768,31 @@
     "words": [
       {
         "formeInitiale": "d'",
-        "formeTreeTagger": "d'une",
-        "POS": "VER:pres",
-        "largeurContexte": 3,
+        "formeTreeTagger": "de",
+        "POS": "PRP",
+        "largeurContexte": 4,
         "ordreMotDansForme": 1
       },
       {
         "formeInitiale": "une",
-        "formeTreeTagger": "certain",
-        "POS": "PRO:IND",
-        "largeurContexte": 3,
+        "formeTreeTagger": "un",
+        "POS": "DET:ART",
+        "largeurContexte": 4,
         "ordreMotDansForme": 2
       },
       {
         "formeInitiale": "certaine",
+        "formeTreeTagger": "certain",
+        "POS": "ADJ",
+        "largeurContexte": 4,
+        "ordreMotDansForme": 3
+      },
+      {
+        "formeInitiale": "manière",
         "formeTreeTagger": "manière",
         "POS": "NOM",
-        "largeurContexte": 3,
-        "ordreMotDansForme": 3
+        "largeurContexte": 4,
+        "ordreMotDansForme": 4
       }
     ],
     "categorie": "ADV",
@@ -7635,24 +7810,31 @@
     "words": [
       {
         "formeInitiale": "d'",
-        "formeTreeTagger": "d'une",
-        "POS": "NOM",
-        "largeurContexte": 3,
+        "formeTreeTagger": "de",
+        "POS": "PRP",
+        "largeurContexte": 4,
         "ordreMotDansForme": 1
       },
       {
         "formeInitiale": "une",
-        "formeTreeTagger": "façon",
-        "POS": "NOM",
-        "largeurContexte": 3,
+        "formeTreeTagger": "un",
+        "POS": "DET:ART",
+        "largeurContexte": 4,
         "ordreMotDansForme": 2
       },
       {
         "formeInitiale": "façon",
+        "formeTreeTagger": "façon",
+        "POS": "NOM",
+        "largeurContexte": 4,
+        "ordreMotDansForme": 3
+      },
+      {
+        "formeInitiale": "générale",
         "formeTreeTagger": "général",
         "POS": "ADJ",
-        "largeurContexte": 3,
-        "ordreMotDansForme": 3
+        "largeurContexte": 4,
+        "ordreMotDansForme": 4
       }
     ],
     "categorie": "ADV",
@@ -7670,24 +7852,31 @@
     "words": [
       {
         "formeInitiale": "d'",
-        "formeTreeTagger": "d'une",
-        "POS": "NOM",
-        "largeurContexte": 3,
+        "formeTreeTagger": "de",
+        "POS": "PRP",
+        "largeurContexte": 4,
         "ordreMotDansForme": 1
       },
       {
         "formeInitiale": "une",
-        "formeTreeTagger": "manière",
-        "POS": "NOM",
-        "largeurContexte": 3,
+        "formeTreeTagger": "un",
+        "POS": "DET:ART",
+        "largeurContexte": 4,
         "ordreMotDansForme": 2
       },
       {
         "formeInitiale": "manière",
+        "formeTreeTagger": "manière",
+        "POS": "NOM",
+        "largeurContexte": 4,
+        "ordreMotDansForme": 3
+      },
+      {
+        "formeInitiale": "générale",
         "formeTreeTagger": "général",
         "POS": "ADJ",
-        "largeurContexte": 3,
-        "ordreMotDansForme": 3
+        "largeurContexte": 4,
+        "ordreMotDansForme": 4
       }
     ],
     "categorie": "ADV",
@@ -7707,15 +7896,22 @@
         "formeInitiale": "dans",
         "formeTreeTagger": "dans",
         "POS": "PRP",
-        "largeurContexte": 2,
+        "largeurContexte": 3,
         "ordreMotDansForme": 1
       },
       {
         "formeInitiale": "l'",
-        "formeTreeTagger": "l'ensemble",
-        "POS": "ADJ",
-        "largeurContexte": 2,
+        "formeTreeTagger": "le",
+        "POS": "DET:ART",
+        "largeurContexte": 3,
         "ordreMotDansForme": 2
+      },
+      {
+        "formeInitiale": "ensemble",
+        "formeTreeTagger": "ensemble",
+        "POS": "NOM",
+        "largeurContexte": 3,
+        "ordreMotDansForme": 3
       }
     ],
     "categorie": "ADV",
@@ -8715,15 +8911,22 @@
         "formeInitiale": "à",
         "formeTreeTagger": "à",
         "POS": "PRP",
-        "largeurContexte": 2,
+        "largeurContexte": 3,
         "ordreMotDansForme": 1
       },
       {
         "formeInitiale": "l'",
-        "formeTreeTagger": "l'évidence",
-        "POS": "NOM",
-        "largeurContexte": 2,
+        "formeTreeTagger": "le",
+        "POS": "DET:ART",
+        "largeurContexte": 3,
         "ordreMotDansForme": 2
+      },
+      {
+        "formeInitiale": "évidence",
+        "formeTreeTagger": "évidence",
+        "POS": "NOM",
+        "largeurContexte": 3,
+        "ordreMotDansForme": 3
       }
     ],
     "categorie": "ADV",
@@ -9541,15 +9744,22 @@
         "formeInitiale": "à",
         "formeTreeTagger": "à",
         "POS": "PRP",
-        "largeurContexte": 2,
+        "largeurContexte": 3,
         "ordreMotDansForme": 1
       },
       {
         "formeInitiale": "l'",
-        "formeTreeTagger": "l'avance",
-        "POS": "NOM",
-        "largeurContexte": 2,
+        "formeTreeTagger": "le",
+        "POS": "DET:ART",
+        "largeurContexte": 3,
         "ordreMotDansForme": 2
+      },
+      {
+        "formeInitiale": "avance",
+        "formeTreeTagger": "avance",
+        "POS": "NOM",
+        "largeurContexte": 3,
+        "ordreMotDansForme": 3
       }
     ],
     "categorie": "ADV",
@@ -9569,22 +9779,29 @@
         "formeInitiale": "à",
         "formeTreeTagger": "à",
         "POS": "PRP",
-        "largeurContexte": 3,
+        "largeurContexte": 4,
         "ordreMotDansForme": 1
       },
       {
         "formeInitiale": "l'",
-        "formeTreeTagger": "l'heure",
-        "POS": "NOM",
-        "largeurContexte": 3,
+        "formeTreeTagger": "le",
+        "POS": "DET:ART",
+        "largeurContexte": 4,
         "ordreMotDansForme": 2
       },
       {
         "formeInitiale": "heure",
+        "formeTreeTagger": "heure",
+        "POS": "NOM",
+        "largeurContexte": 4,
+        "ordreMotDansForme": 3
+      },
+      {
+        "formeInitiale": "actuelle",
         "formeTreeTagger": "actuel",
         "POS": "ADJ",
-        "largeurContexte": 3,
-        "ordreMotDansForme": 3
+        "largeurContexte": 4,
+        "ordreMotDansForme": 4
       }
     ],
     "categorie": "ADV",
@@ -9947,15 +10164,22 @@
         "formeInitiale": "à",
         "formeTreeTagger": "à",
         "POS": "PRP",
-        "largeurContexte": 2,
+        "largeurContexte": 3,
         "ordreMotDansForme": 1
       },
       {
         "formeInitiale": "l'",
-        "formeTreeTagger": "l'avenir",
-        "POS": "VER:infi",
-        "largeurContexte": 2,
+        "formeTreeTagger": "le",
+        "POS": "DET:ART",
+        "largeurContexte": 3,
         "ordreMotDansForme": 2
+      },
+      {
+        "formeInitiale": "avenir",
+        "formeTreeTagger": "avenir",
+        "POS": "NOM",
+        "largeurContexte": 3,
+        "ordreMotDansForme": 3
       }
     ],
     "categorie": "ADV",
@@ -9975,15 +10199,22 @@
         "formeInitiale": "à",
         "formeTreeTagger": "à",
         "POS": "PRP",
-        "largeurContexte": 2,
+        "largeurContexte": 3,
         "ordreMotDansForme": 1
       },
       {
         "formeInitiale": "l'",
-        "formeTreeTagger": "l'horizon",
-        "POS": "NOM",
-        "largeurContexte": 2,
+        "formeTreeTagger": "le",
+        "POS": "DET:ART",
+        "largeurContexte": 3,
         "ordreMotDansForme": 2
+      },
+      {
+        "formeInitiale": "horizon",
+        "formeTreeTagger": "horizon",
+        "POS": "NOM",
+        "largeurContexte": 3,
+        "ordreMotDansForme": 3
       }
     ],
     "categorie": "ADV",
@@ -10003,15 +10234,22 @@
         "formeInitiale": "à",
         "formeTreeTagger": "à",
         "POS": "PRP",
-        "largeurContexte": 2,
+        "largeurContexte": 3,
         "ordreMotDansForme": 1
       },
       {
         "formeInitiale": "l'",
-        "formeTreeTagger": "l'occasion",
-        "POS": "NOM",
-        "largeurContexte": 2,
+        "formeTreeTagger": "le",
+        "POS": "DET:ART",
+        "largeurContexte": 3,
         "ordreMotDansForme": 2
+      },
+      {
+        "formeInitiale": "occasion",
+        "formeTreeTagger": "occasion",
+        "POS": "NOM",
+        "largeurContexte": 3,
+        "ordreMotDansForme": 3
       }
     ],
     "categorie": "ADV",
@@ -10031,29 +10269,36 @@
         "formeInitiale": "à",
         "formeTreeTagger": "à",
         "POS": "PRP",
-        "largeurContexte": 4,
+        "largeurContexte": 5,
         "ordreMotDansForme": 1
       },
       {
         "formeInitiale": "l'",
-        "formeTreeTagger": "l'ordre",
-        "POS": "VER:infi",
-        "largeurContexte": 4,
+        "formeTreeTagger": "le",
+        "POS": "DET:ART",
+        "largeurContexte": 5,
         "ordreMotDansForme": 2
       },
       {
         "formeInitiale": "ordre",
-        "formeTreeTagger": "du",
-        "POS": "PRP:det",
-        "largeurContexte": 4,
+        "formeTreeTagger": "ordre",
+        "POS": "NOM",
+        "largeurContexte": 5,
         "ordreMotDansForme": 3
       },
       {
         "formeInitiale": "du",
+        "formeTreeTagger": "du",
+        "POS": "PRP:det",
+        "largeurContexte": 5,
+        "ordreMotDansForme": 4
+      },
+      {
+        "formeInitiale": "jour",
         "formeTreeTagger": "jour",
         "POS": "NOM",
-        "largeurContexte": 4,
-        "ordreMotDansForme": 4
+        "largeurContexte": 5,
+        "ordreMotDansForme": 5
       }
     ],
     "categorie": "ADV",
@@ -10073,15 +10318,22 @@
         "formeInitiale": "à",
         "formeTreeTagger": "à",
         "POS": "PRP",
-        "largeurContexte": 2,
+        "largeurContexte": 3,
         "ordreMotDansForme": 1
       },
       {
         "formeInitiale": "l'",
-        "formeTreeTagger": "l'origine",
-        "POS": "NOM",
-        "largeurContexte": 2,
+        "formeTreeTagger": "le",
+        "POS": "DET:ART",
+        "largeurContexte": 3,
         "ordreMotDansForme": 2
+      },
+      {
+        "formeInitiale": "origine",
+        "formeTreeTagger": "origine",
+        "POS": "NOM",
+        "largeurContexte": 3,
+        "ordreMotDansForme": 3
       }
     ],
     "categorie": "ADV",
@@ -10764,10 +11016,17 @@
     "words": [
       {
         "formeInitiale": "d'",
-        "formeTreeTagger": "d'abord",
-        "POS": "ADV",
-        "largeurContexte": 1,
+        "formeTreeTagger": "de",
+        "POS": "PRP",
+        "largeurContexte": 2,
         "ordreMotDansForme": 1
+      },
+      {
+        "formeInitiale": "abord",
+        "formeTreeTagger": "abord",
+        "POS": "NOM",
+        "largeurContexte": 2,
+        "ordreMotDansForme": 2
       }
     ],
     "categorie": "ADV",
@@ -10785,24 +11044,31 @@
     "words": [
       {
         "formeInitiale": "d'",
-        "formeTreeTagger": "d'ores",
-        "POS": "VER:pres",
-        "largeurContexte": 3,
+        "formeTreeTagger": "de",
+        "POS": "PRP",
+        "largeurContexte": 4,
         "ordreMotDansForme": 1
       },
       {
         "formeInitiale": "ores",
-        "formeTreeTagger": "et",
-        "POS": "KON",
-        "largeurContexte": 3,
+        "formeTreeTagger": "ores",
+        "POS": "ADV",
+        "largeurContexte": 4,
         "ordreMotDansForme": 2
       },
       {
         "formeInitiale": "et",
+        "formeTreeTagger": "et",
+        "POS": "KON",
+        "largeurContexte": 4,
+        "ordreMotDansForme": 3
+      },
+      {
+        "formeInitiale": "déjà",
         "formeTreeTagger": "déjà",
         "POS": "ADV",
-        "largeurContexte": 3,
-        "ordreMotDansForme": 3
+        "largeurContexte": 4,
+        "ordreMotDansForme": 4
       }
     ],
     "categorie": "ADV",
@@ -11473,15 +11739,22 @@
         "formeInitiale": "pour",
         "formeTreeTagger": "pour",
         "POS": "PRP",
-        "largeurContexte": 2,
+        "largeurContexte": 3,
         "ordreMotDansForme": 1
       },
       {
         "formeInitiale": "l'",
-        "formeTreeTagger": "l'instant",
-        "POS": "VER:ppre",
-        "largeurContexte": 2,
+        "formeTreeTagger": "le",
+        "POS": "DET:ART",
+        "largeurContexte": 3,
         "ordreMotDansForme": 2
+      },
+      {
+        "formeInitiale": "instant",
+        "formeTreeTagger": "instant",
+        "POS": "NOM",
+        "largeurContexte": 3,
+        "ordreMotDansForme": 3
       }
     ],
     "categorie": "ADV",
@@ -12377,15 +12650,22 @@
         "formeInitiale": "cette",
         "formeTreeTagger": "ce",
         "POS": "PRO:DEM",
-        "largeurContexte": 2,
+        "largeurContexte": 3,
         "ordreMotDansForme": 1
       },
       {
         "formeInitiale": "fois-ci",
-        "formeTreeTagger": "fois-ci",
-        "POS": "VER:pper",
-        "largeurContexte": 2,
+        "formeTreeTagger": "foi|fois",
+        "POS": "NOM",
+        "largeurContexte": 3,
         "ordreMotDansForme": 2
+      },
+      {
+        "formeInitiale": null,
+        "formeTreeTagger": "-ci",
+        "POS": "ADV",
+        "largeurContexte": 3,
+        "ordreMotDansForme": 3
       }
     ],
     "categorie": "ADV",
@@ -12510,15 +12790,22 @@
         "formeInitiale": "dans",
         "formeTreeTagger": "dans",
         "POS": "PRP",
-        "largeurContexte": 2,
+        "largeurContexte": 3,
         "ordreMotDansForme": 1
       },
       {
         "formeInitiale": "l'",
-        "formeTreeTagger": "l'immédiat",
-        "POS": "NOM",
-        "largeurContexte": 2,
+        "formeTreeTagger": "le",
+        "POS": "DET:ART",
+        "largeurContexte": 3,
         "ordreMotDansForme": 2
+      },
+      {
+        "formeInitiale": "immédiat",
+        "formeTreeTagger": "immédiat",
+        "POS": "NOM",
+        "largeurContexte": 3,
+        "ordreMotDansForme": 3
       }
     ],
     "categorie": "ADV",
@@ -12732,17 +13019,24 @@
     "words": [
       {
         "formeInitiale": "jusqu'",
-        "formeTreeTagger": "jusqu'à",
-        "POS": "NOM",
-        "largeurContexte": 2,
+        "formeTreeTagger": "jusque",
+        "POS": "PRP",
+        "largeurContexte": 3,
         "ordreMotDansForme": 1
       },
       {
         "formeInitiale": "à",
+        "formeTreeTagger": "à",
+        "POS": "PRP",
+        "largeurContexte": 3,
+        "ordreMotDansForme": 2
+      },
+      {
+        "formeInitiale": "aujourd'",
         "formeTreeTagger": "aujourd'hui",
         "POS": "ADV",
-        "largeurContexte": 2,
-        "ordreMotDansForme": 2
+        "largeurContexte": 3,
+        "ordreMotDansForme": 3
       }
     ],
     "categorie": "ADV",
@@ -12760,17 +13054,24 @@
     "words": [
       {
         "formeInitiale": "jusqu'",
-        "formeTreeTagger": "jusqu'à",
-        "POS": "NOM",
-        "largeurContexte": 2,
+        "formeTreeTagger": "jusque",
+        "POS": "PRP",
+        "largeurContexte": 3,
         "ordreMotDansForme": 1
       },
       {
         "formeInitiale": "à",
+        "formeTreeTagger": "à",
+        "POS": "PRP",
+        "largeurContexte": 3,
+        "ordreMotDansForme": 2
+      },
+      {
+        "formeInitiale": "maintenant",
         "formeTreeTagger": "maintenant",
         "POS": "ADV",
-        "largeurContexte": 2,
-        "ordreMotDansForme": 2
+        "largeurContexte": 3,
+        "ordreMotDansForme": 3
       }
     ],
     "categorie": "ADV",
@@ -12788,17 +13089,24 @@
     "words": [
       {
         "formeInitiale": "jusqu'",
-        "formeTreeTagger": "jusqu'à",
-        "POS": "NOM",
-        "largeurContexte": 2,
+        "formeTreeTagger": "jusque",
+        "POS": "PRP",
+        "largeurContexte": 3,
         "ordreMotDansForme": 1
       },
       {
         "formeInitiale": "à",
+        "formeTreeTagger": "à",
+        "POS": "PRP",
+        "largeurContexte": 3,
+        "ordreMotDansForme": 2
+      },
+      {
+        "formeInitiale": "présent",
         "formeTreeTagger": "présent",
         "POS": "ADJ",
-        "largeurContexte": 2,
-        "ordreMotDansForme": 2
+        "largeurContexte": 3,
+        "ordreMotDansForme": 3
       }
     ],
     "categorie": "ADV",
@@ -12816,10 +13124,17 @@
     "words": [
       {
         "formeInitiale": "jusqu'",
-        "formeTreeTagger": "jusqu'alors",
-        "POS": "NOM",
-        "largeurContexte": 1,
+        "formeTreeTagger": "jusque",
+        "POS": "PRP",
+        "largeurContexte": 2,
         "ordreMotDansForme": 1
+      },
+      {
+        "formeInitiale": "alors",
+        "formeTreeTagger": "alors",
+        "POS": "ADV",
+        "largeurContexte": 2,
+        "ordreMotDansForme": 2
       }
     ],
     "categorie": "ADV",
@@ -12837,10 +13152,17 @@
     "words": [
       {
         "formeInitiale": "jusqu'",
-        "formeTreeTagger": "jusqu'ici",
-        "POS": "NOM",
-        "largeurContexte": 1,
+        "formeTreeTagger": "jusque",
+        "POS": "PRP",
+        "largeurContexte": 2,
         "ordreMotDansForme": 1
+      },
+      {
+        "formeInitiale": "ici",
+        "formeTreeTagger": "ici",
+        "POS": "ADV",
+        "largeurContexte": 2,
+        "ordreMotDansForme": 2
       }
     ],
     "categorie": "ADV",
@@ -13154,15 +13476,22 @@
         "formeInitiale": "pour",
         "formeTreeTagger": "pour",
         "POS": "PRP",
-        "largeurContexte": 2,
+        "largeurContexte": 3,
         "ordreMotDansForme": 1
       },
       {
         "formeInitiale": "l'",
-        "formeTreeTagger": "l'heure",
-        "POS": "NOM",
-        "largeurContexte": 2,
+        "formeTreeTagger": "le",
+        "POS": "DET:ART",
+        "largeurContexte": 3,
         "ordreMotDansForme": 2
+      },
+      {
+        "formeInitiale": "heure",
+        "formeTreeTagger": "heure",
+        "POS": "NOM",
+        "largeurContexte": 3,
+        "ordreMotDansForme": 3
       }
     ],
     "categorie": "ADV",
