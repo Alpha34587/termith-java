@@ -37,16 +37,17 @@ public class TransdisciplinaryLexicsProjectorTest {
         morphologyOffsetIds.add(new MorphologyOffsetId(0,0,"par","",10));
         morphologyOffsetIds.add(new MorphologyOffsetId(0,0,"conséquent","",11));
         morphologyOffsetIds.add(new MorphologyOffsetId(0,0,"il","",12));
-        morphologyOffsetIds.add(new MorphologyOffsetId(0,0,"meurt","",13));
+        morphologyOffsetIds.add(new MorphologyOffsetId(0,0,"est","",13));
+        morphologyOffsetIds.add(new MorphologyOffsetId(0,0,"absent","",14));
     }
 
     @Test
     public void execute() throws Exception {
         new TransdisciplinaryLexicsProjector("", morphologyOffsetIds, transdisciplinaryOffsetIds, lexicalResourceProjectionResources)
                 .execute();
-        String expectedId = "[1, 39]";
+        String expectedId = "[1, 39, 428]";
         List<Integer> observedId = new ArrayList<>();
-        String expectedMorphoId = "[6, 7, 10, 11]";
+        String expectedMorphoId = "[6, 7, 10, 11, 14]";
         List<Integer> observedMorphoId = new ArrayList<>();
         transdisciplinaryOffsetIds.forEach(
                 el -> {

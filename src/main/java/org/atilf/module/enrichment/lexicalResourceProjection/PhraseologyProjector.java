@@ -10,7 +10,6 @@ import org.atilf.module.tools.FilesUtils;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 /**
  * Created by Simon Meoni on 12/06/17.
@@ -51,10 +50,13 @@ public class PhraseologyProjector extends Module{
             List<MorphologyOffsetId> currentMorphoOffsetId = new ArrayList<>();
             currentMorphoOffsetId.add(mOffsetId);
             while(wordsize <= wordSizeThreshlod){
+
                 int wordAfter = _morpho.indexOf(mOffsetId) + wordsize - 1;
                 if (wordAfter < _morpho.size()) {
-                    currentLemma += _morpho.get(wordAfter).getLemma() + " ";
-                    currentMorphoOffsetId.add(_morpho.get(wordAfter));
+                    if (wordsize > 1) {
+                        currentLemma += _morpho.get(wordAfter).getLemma() + " ";
+                        currentMorphoOffsetId.add(_morpho.get(wordAfter));
+                    }
                     if(_lexicalResourceProjectionResources.getResourceMap().containsKey(currentLemma.trim())){
                         _logger.debug("detection of expression : {}",currentLemma);
                         addToProjectedData(currentMorphoOffsetId,
@@ -72,13 +74,13 @@ public class PhraseologyProjector extends Module{
 
     private void addToProjectedData(List<MorphologyOffsetId> listMorphologyOffsetId, List<Integer> EntryIds) {
         String lemma = "";
-        Set<Integer> ids = new HashSet<>();
+        List<Integer> ids = new ArrayList<>();
         for (MorphologyOffsetId morphologyOffsetId : listMorphologyOffsetId) {
             lemma += morphologyOffsetId.getLemma() + " ";
             ids.addAll(morphologyOffsetId.getIds());
         }
         lemma = lemma.trim();
-        for (Integer entryId : EntryIds) {
+        for (Integer entryId : new HashSet<>(EntryIds)) {
             addNewEntry(listMorphologyOffsetId, lemma, new ArrayList<>(ids), entryId);
         }
     }

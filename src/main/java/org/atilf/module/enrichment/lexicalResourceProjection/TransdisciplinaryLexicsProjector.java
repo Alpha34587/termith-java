@@ -26,7 +26,7 @@ public class TransdisciplinaryLexicsProjector extends PhraseologyProjector {
 
     @Override
     protected void execute() {
-        detectwords(2,5);
+        detectwords(1,5);
     }
 
     @Override
