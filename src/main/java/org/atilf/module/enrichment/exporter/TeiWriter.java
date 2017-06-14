@@ -235,9 +235,9 @@ public class TeiWriter extends Module{
         _bufferedWriter.append(replaceTemplate(cut(new StringBuilder(_stdfRes.STANDOFF),false),"@type",type));
         _bufferedWriter.append(teiHeaderTemplate);
         if (type.equals("candidatsTermes")) {
-            _bufferedWriter.append(cut(_stdfRes.LIST_ANNOTATION, false));
+            _bufferedWriter.append(_stdfRes.T_INTERP_GRP);
         }
-        _bufferedWriter.append(_stdfRes.T_INTERP_GRP);
+        _bufferedWriter.append(cut(_stdfRes.LIST_ANNOTATION, false));
         /*
         write his content
          */
