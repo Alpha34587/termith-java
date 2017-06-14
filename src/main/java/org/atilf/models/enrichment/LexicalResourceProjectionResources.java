@@ -81,7 +81,10 @@ public class LexicalResourceProjectionResources {
                     inWords = true;
                     memWord += jParser.nextTextValue() + " ";
                 }
-                if(inWords && jParser.getCurrentToken() == JsonToken.END_ARRAY){
+                if(inWords && jParser.getCurrentToken() == JsonToken.END_ARRAY) {
+                    inWords = false;
+                }
+                if(!inWords && jParser.getCurrentToken() == JsonToken.END_OBJECT){
                     inWords = false;
                     if (!phraseologyIdMap.containsKey(memWord.trim())){
                         phraseologyIdMap.put(memWord.trim(),new ArrayList<>());
