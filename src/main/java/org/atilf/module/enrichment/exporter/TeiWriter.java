@@ -197,13 +197,13 @@ public class TeiWriter extends Module{
     }
 
     private void serializeTransdisciplinary(List<TransdisciplinaryOffsetId> transdisciplinaryOffsetIds) throws IOException {
-        serializeOffsetId(transdisciplinaryOffsetIds,"lexiquesTransdisciplinaire",
+        serializeOffsetId(transdisciplinaryOffsetIds,"lexiquesTransdisciplinaires",
                 _stdfRes.LST_SPAN,
                 _stdfRes.LST_TEI_HEADER);
     }
 
     private void serializePhraseology(List<PhraseoOffsetId> phraseoOffsetIds) throws IOException {
-        serializeOffsetId(phraseoOffsetIds,"syntagmeDefinis",_stdfRes.PH_SPAN,_stdfRes.PH_TEI_HEADER);
+        serializeOffsetId(phraseoOffsetIds,"syntagmesDefinis",_stdfRes.PH_SPAN,_stdfRes.PH_TEI_HEADER);
     }
 
     /**
