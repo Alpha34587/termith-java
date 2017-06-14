@@ -20,7 +20,7 @@ import static org.atilf.models.enrichment.LexicalResourceProjectionResources.LST
 public class TransdisciplinaryLexicsProjectorDelegate extends Delegate {
     @Override
     protected void executeTasks() throws IOException, InterruptedException, ExecutionException {
-        if ( getFlowableVariable("lang",null) == "fr") {
+        if (getFlowableVariable("lang",null).equals("fr")) {
 
             LexicalResourceProjectionResources lexicalResourceProjectionResources =
                     new LexicalResourceProjectionResources(
