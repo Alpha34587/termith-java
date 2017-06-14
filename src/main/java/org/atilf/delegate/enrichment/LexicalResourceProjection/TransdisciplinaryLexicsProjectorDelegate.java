@@ -20,26 +20,30 @@ import static org.atilf.models.enrichment.LexicalResourceProjectionResources.LST
 public class TransdisciplinaryLexicsProjectorDelegate extends Delegate {
     @Override
     protected void executeTasks() throws IOException, InterruptedException, ExecutionException {
+        if ( getFlowableVariable("lang",null) == "fr") {
 
-        LexicalResourceProjectionResources lexicalResourceProjectionResources =
-                new LexicalResourceProjectionResources(
-                        getFlowableVariable("lang",null),
-                        LST_TYPE
-                );
+            LexicalResourceProjectionResources lexicalResourceProjectionResources =
+                    new LexicalResourceProjectionResources(
+                            getFlowableVariable("lang",null),
+                            LST_TYPE
+                    );
 
-        List<Future> futures = new ArrayList<>();
-        _termithIndex.getMorphologyStandOff().forEach(
-                (id,value) -> {
-                    _termithIndex.getTransOffsetId().put(id,new ArrayList<>());
-                    futures.add(_executorService.submit(new TransdisciplinaryLexicsProjector(id, _termithIndex,
-                            lexicalResourceProjectionResources)));
-                }
-        );
-        _logger.info("waiting that all files are treated");
-        new TermithProgressTimer(futures,TransdisciplinaryLexicsProjectorDelegate.class,_executorService).start();
-        _executorService.shutdown();
-        _executorService.awaitTermination(1L, TimeUnit.DAYS);
-        _logger.info("Phraseology projection step is finished");
-
+            List<Future> futures = new ArrayList<>();
+            _termithIndex.getMorphologyStandOff().forEach(
+                    (id,value) -> {
+                        _termithIndex.getTransOffsetId().put(id,new ArrayList<>());
+                        futures.add(_executorService.submit(new TransdisciplinaryLexicsProjector(id, _termithIndex,
+                                lexicalResourceProjectionResources)));
+                    }
+            );
+            _logger.info("waiting that all files are treated");
+            new TermithProgressTimer(futures,TransdisciplinaryLexicsProjectorDelegate.class,_executorService).start();
+            _executorService.shutdown();
+            _executorService.awaitTermination(1L, TimeUnit.DAYS);
+            _logger.info("Phraseology projection step is finished");
+        }
+        else {
+            _logger.info("this language is not support, the resource for this language not exists");
+        }
     }
 }

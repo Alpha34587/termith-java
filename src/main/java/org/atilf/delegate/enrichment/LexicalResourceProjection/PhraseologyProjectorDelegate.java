@@ -20,21 +20,25 @@ import static org.atilf.models.enrichment.LexicalResourceProjectionResources.PH_
 public class PhraseologyProjectorDelegate extends Delegate {
     @Override
     protected void executeTasks() throws IOException, InterruptedException, ExecutionException {
-        LexicalResourceProjectionResources lexicalResourceProjectionResources = new LexicalResourceProjectionResources(
-                getFlowableVariable("lang",null), PH_TYPE
-        );
-        List<Future> futures = new ArrayList<>();
-        _termithIndex.getMorphologyStandOff().forEach(
-                (id,value) -> {
-                    _termithIndex.getPhraseoOffsetId().put(id,new ArrayList<>());
-                    futures.add(_executorService.submit(new PhraseologyProjector(id, _termithIndex, lexicalResourceProjectionResources)));
-                }
-        );
-        _logger.info("waiting that all files are treated");
-        new TermithProgressTimer(futures,PhraseologyProjectorDelegate.class,_executorService).start();
-        _executorService.shutdown();
-        _executorService.awaitTermination(1L, TimeUnit.DAYS);
-        _logger.info("Phraseology projection step is finished");
-
+        if ( getFlowableVariable("lang",null) == "fr") {
+            LexicalResourceProjectionResources lexicalResourceProjectionResources = new LexicalResourceProjectionResources(
+                    getFlowableVariable("lang", null), PH_TYPE
+            );
+            List<Future> futures = new ArrayList<>();
+            _termithIndex.getMorphologyStandOff().forEach(
+                    (id, value) -> {
+                        _termithIndex.getPhraseoOffsetId().put(id, new ArrayList<>());
+                        futures.add(_executorService.submit(new PhraseologyProjector(id, _termithIndex, lexicalResourceProjectionResources)));
+                    }
+            );
+            _logger.info("waiting that all files are treated");
+            new TermithProgressTimer(futures, PhraseologyProjectorDelegate.class, _executorService).start();
+            _executorService.shutdown();
+            _executorService.awaitTermination(1L, TimeUnit.DAYS);
+            _logger.info("Phraseology projection step is finished");
+        }
+        else {
+            _logger.info("this language is not support, the resource for this language not exists");
+        }
     }
 }
