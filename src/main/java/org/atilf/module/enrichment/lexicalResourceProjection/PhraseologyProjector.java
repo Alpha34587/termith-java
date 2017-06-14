@@ -17,21 +17,21 @@ import java.util.List;
 public class PhraseologyProjector extends Module{
 
     private List<MorphologyOffsetId> _morpho;
-    private List<PhraseoOffsetId> _phraseoOffsetIds =new ArrayList<>();
+    private List<PhraseoOffsetId> _phraseoOffsetIds;
     protected LexicalResourceProjectionResources _lexicalResourceProjectionResources;
     private String _id;
 
     public PhraseologyProjector(String id, TermithIndex termithIndex, LexicalResourceProjectionResources lexicalResourceProjectionResources) {
-        this(id,FilesUtils.readListObject(termithIndex.getMorphologyStandOff().get(id)), lexicalResourceProjectionResources);
-        termithIndex.getPhraseoOffsetId().put(_id,_phraseoOffsetIds);
-        _id = id;
+        this(id,FilesUtils.readListObject(termithIndex.getMorphologyStandOff().get(id)),termithIndex.getPhraseoOffsetId().get(id),
+                lexicalResourceProjectionResources);
     }
 
-    PhraseologyProjector(String id, List<MorphologyOffsetId> morpho,
+    PhraseologyProjector(String id, List<MorphologyOffsetId> morpho, List<PhraseoOffsetId> phraseoOffsetIds,
                          LexicalResourceProjectionResources lexicalResourceProjectionResources){
         _id = id;
         _morpho = morpho;
         _lexicalResourceProjectionResources = lexicalResourceProjectionResources;
+        _phraseoOffsetIds = phraseoOffsetIds;
     }
 
     @Override

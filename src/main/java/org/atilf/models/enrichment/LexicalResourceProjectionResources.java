@@ -87,7 +87,9 @@ public class LexicalResourceProjectionResources {
                         phraseologyIdMap.put(memWord.trim(),new ArrayList<>());
                         phraseologyWordsMap.put(memWord.trim(),memLibelle);
                     }
-                    phraseologyIdMap.get(memWord.trim()).add(memForm);
+                    if (!phraseologyIdMap.get(memWord.trim()).contains(memForm)){
+                        phraseologyIdMap.get(memWord.trim()).add(memForm);
+                    }
                 }
             }
 

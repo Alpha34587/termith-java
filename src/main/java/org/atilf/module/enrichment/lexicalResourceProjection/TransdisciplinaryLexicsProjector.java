@@ -4,6 +4,7 @@ import org.atilf.models.TermithIndex;
 import org.atilf.models.enrichment.LexicalResourceProjectionResources;
 import org.atilf.models.enrichment.MorphologyOffsetId;
 import org.atilf.models.enrichment.TransdisciplinaryOffsetId;
+import org.atilf.module.tools.FilesUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,13 +17,17 @@ public class TransdisciplinaryLexicsProjector extends PhraseologyProjector {
     List<TransdisciplinaryOffsetId> _transdisciplinaryOffsetIds = new ArrayList<>();
 
     public TransdisciplinaryLexicsProjector(String id, TermithIndex termithIndex, LexicalResourceProjectionResources transdisciplinaryResource) {
-        super(id, termithIndex, transdisciplinaryResource);
-        termithIndex.getTransOffsetId().put(id,_transdisciplinaryOffsetIds);
+        this(
+                id,
+                FilesUtils.readListObject(termithIndex.getMorphologyStandOff().get(id)),
+                termithIndex.getTransOffsetId().get(id),
+                transdisciplinaryResource
+        );
     }
 
     protected TransdisciplinaryLexicsProjector(String id, List<MorphologyOffsetId> morpho, List<TransdisciplinaryOffsetId> transdisciplinaryOffsetIds,
                                                LexicalResourceProjectionResources lexicalResourceProjectionResources) {
-        super(id, morpho, lexicalResourceProjectionResources);
+        super(id, morpho, null,lexicalResourceProjectionResources);
         _transdisciplinaryOffsetIds = transdisciplinaryOffsetIds;
     }
 
