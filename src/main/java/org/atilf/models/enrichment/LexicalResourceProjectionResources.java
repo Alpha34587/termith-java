@@ -50,41 +50,93 @@ public class LexicalResourceProjectionResources {
     }
 
     private void parseResource(String file, String type) {
+
+        if (type == LST_TYPE){
+            parseLst(file);
+        }
+        else {
+            parsePh(file);
+        }
+    }
+
+    private void parsePh(String file) {
         boolean inWords = false;
         int memForm = 0;
         String memWord = "";
         String memLibelle = "";
         try {
+
             JsonFactory jFactory = new JsonFactory();
             JsonParser jParser = jFactory.createParser(getClass().getClassLoader().getResourceAsStream(file));
 
             while (jParser.nextToken() != null) {
 
-                if (type.equals(LST_TYPE)) {
-                    if (Objects.equals(jParser.getCurrentName(), "formeId")) {
-                        memForm = jParser.nextIntValue(0);
-                    }
+                if (Objects.equals(jParser.getCurrentName(), "phraseoEntryId")) {
+                    memForm = Integer.parseInt(jParser.nextTextValue().split("_")[1]);
                 }
-                else {
-                    if (Objects.equals(jParser.getCurrentName(), "phraseoEntryId")) {
-                        memForm = Integer.parseInt(jParser.nextTextValue().split("_")[1]);
-                    }
-                }
-                if (Objects.equals(jParser.getCurrentName(), "libelle")) {
+                else if (Objects.equals(jParser.getCurrentName(), "libelle")) {
                     memLibelle = jParser.nextTextValue();
                 }
-                if (Objects.equals(jParser.getCurrentName(), "words") && jParser.getCurrentToken() == JsonToken.START_ARRAY) {
+                else if (Objects.equals(jParser.getCurrentName(), "words") && jParser.getCurrentToken() == JsonToken
+                        .START_ARRAY) {
                     inWords = true;
                     memWord = "";
                 }
-                if (Objects.equals(jParser.getCurrentName(), "formeTreeTagger") && inWords) {
+                else if (Objects.equals(jParser.getCurrentName(), "formeTreeTagger") && inWords) {
+                    memWord += jParser.nextTextValue() + " ";
+                }
+                else if(inWords && jParser.getCurrentToken() == JsonToken.END_ARRAY) {
+                    inWords = false;
+                    if (!phraseologyIdMap.containsKey(memWord.trim())){
+                        phraseologyIdMap.put(memWord.trim(),new ArrayList<>());
+                        phraseologyWordsMap.put(memWord.trim(),memLibelle);
+                    }
+                    if (!phraseologyIdMap.get(memWord.trim()).contains(memForm)){
+                        phraseologyIdMap.get(memWord.trim()).add(memForm);
+                    }
+                }
+            }
+
+            jParser.close();
+
+        }
+        catch (IOException e) {
+            _logger.error("cannot parse json file",e);
+        }
+    }
+
+    private void parseLst(String file) {
+        boolean inWords = false;
+        int memForm = 0;
+        String memWord = "";
+        String memLibelle = "";
+        try {
+
+            JsonFactory jFactory = new JsonFactory();
+            JsonParser jParser = jFactory.createParser(getClass().getClassLoader().getResourceAsStream(file));
+
+            while (jParser.nextToken() != null) {
+
+                if (Objects.equals(jParser.getCurrentName(), "formeId")) {
+                    memForm = jParser.nextIntValue(0);
+                }
+
+                else if (Objects.equals(jParser.getCurrentName(), "libelle")) {
+                    memLibelle = jParser.nextTextValue();
+                }
+                else if (Objects.equals(jParser.getCurrentName(), "words") && jParser.getCurrentToken() == JsonToken
+                        .START_ARRAY) {
+                    inWords = true;
+                    memWord = "";
+                }
+                else if (Objects.equals(jParser.getCurrentName(), "formeTreeTagger") && inWords) {
                     inWords = true;
                     memWord += jParser.nextTextValue() + " ";
                 }
-                if(inWords && jParser.getCurrentToken() == JsonToken.END_ARRAY) {
+                else if(inWords && jParser.getCurrentToken() == JsonToken.END_ARRAY) {
                     inWords = false;
                 }
-                if(!inWords && jParser.getCurrentToken() == JsonToken.END_OBJECT){
+                else if(!inWords && jParser.getCurrentToken() == JsonToken.END_OBJECT){
                     inWords = false;
                     if (!phraseologyIdMap.containsKey(memWord.trim())){
                         phraseologyIdMap.put(memWord.trim(),new ArrayList<>());
