@@ -30,8 +30,8 @@ public class TeiWriter extends Module{
     private final StringBuilder _xmlCorpus;
     private final List<MorphologyOffsetId> _morphologyOffsetIds;
     private final List<MultiWordsOffsetId> _multiWordsOffsetIds;
-    private final List<ResourceProjectorOffsetId> _resourceProjectorOffsetIds;
-    private final List<ResourceProjectorOffsetId> _transdisciplinaryOffsetIds;
+    private final List<MultiWordsOffsetId> _resourceProjectorOffsetIds;
+    private final List<MultiWordsOffsetId> _transdisciplinaryOffsetIds;
     private static final Logger LOGGER = LoggerFactory.getLogger(TeiWriter.class.getName());
 
 
@@ -86,8 +86,8 @@ public class TeiWriter extends Module{
     private TeiWriter(StringBuilder xmlCorpus,
                       List<MorphologyOffsetId> morphologyOffsetIds,
                       StringBuilder tokenizeBody, List<MultiWordsOffsetId> multiWordsOffsetIds,
-                      List<ResourceProjectorOffsetId> resourceProjectorOffsetIds,
-                      List<ResourceProjectorOffsetId> transdisciplinaryOffsetIds,
+                      List<MultiWordsOffsetId> resourceProjectorOffsetIds,
+                      List<MultiWordsOffsetId> transdisciplinaryOffsetIds,
                       Path outputPath,
                       StandOffResources standOffResources) {
 
@@ -196,13 +196,13 @@ public class TeiWriter extends Module{
 
     }
 
-    private void serializeTransdisciplinary(List<ResourceProjectorOffsetId> transdisciplinaryOffsetIds) throws IOException {
+    private void serializeTransdisciplinary(List<MultiWordsOffsetId> transdisciplinaryOffsetIds) throws IOException {
         serializeOffsetId(transdisciplinaryOffsetIds,"lexiquesTransdisciplinaires",
                 _standOffRessources.LST_SPAN,
                 _standOffRessources.LST_TEI_HEADER);
     }
 
-    private void serializePhraseology(List<ResourceProjectorOffsetId> resourceProjectorOffsetIds) throws IOException {
+    private void serializePhraseology(List<MultiWordsOffsetId> resourceProjectorOffsetIds) throws IOException {
         serializeOffsetId(resourceProjectorOffsetIds,"syntagmesDefinis", _standOffRessources.PH_SPAN, _standOffRessources.PH_TEI_HEADER);
     }
 

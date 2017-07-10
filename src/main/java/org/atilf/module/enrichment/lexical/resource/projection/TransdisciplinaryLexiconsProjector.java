@@ -3,7 +3,7 @@ package org.atilf.module.enrichment.lexical.resource.projection;
 import org.atilf.models.TermithIndex;
 import org.atilf.models.enrichment.LexicalResourceProjectionResources;
 import org.atilf.models.enrichment.MorphologyOffsetId;
-import org.atilf.models.enrichment.ResourceProjectorOffsetId;
+import org.atilf.models.enrichment.MultiWordsOffsetId;
 import org.atilf.module.tools.FilesUtils;
 
 import java.util.ArrayList;
@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class TransdisciplinaryLexiconsProjector extends PhraseologyProjector {
 
-    List<ResourceProjectorOffsetId> _transdisciplinaryOffsetIds = new ArrayList<>();
+    List<MultiWordsOffsetId> _transdisciplinaryOffsetIds = new ArrayList<>();
 
     public TransdisciplinaryLexiconsProjector(String id, TermithIndex termithIndex,
                                               LexicalResourceProjectionResources transdisciplinaryResource) {
@@ -27,7 +27,7 @@ public class TransdisciplinaryLexiconsProjector extends PhraseologyProjector {
     }
 
     protected TransdisciplinaryLexiconsProjector(String id, List<MorphologyOffsetId> morpho,
-                                                 List<ResourceProjectorOffsetId> transdisciplinaryOffsetIds,
+                                                 List<MultiWordsOffsetId> transdisciplinaryOffsetIds,
                                                  LexicalResourceProjectionResources lexicalResourceProjectionResources) {
         super(id, morpho, null,lexicalResourceProjectionResources);
         _transdisciplinaryOffsetIds = transdisciplinaryOffsetIds;
@@ -41,7 +41,7 @@ public class TransdisciplinaryLexiconsProjector extends PhraseologyProjector {
     @Override
     protected void addNewEntry(List<MorphologyOffsetId> listMorphologyOffsetId, String lemma,
                                List<Integer> ids, Integer entryId) {
-        _transdisciplinaryOffsetIds.add(new ResourceProjectorOffsetId(listMorphologyOffsetId.get(0).getBegin(),
+        _transdisciplinaryOffsetIds.add(new MultiWordsOffsetId(listMorphologyOffsetId.get(0).getBegin(),
                 listMorphologyOffsetId.get(listMorphologyOffsetId.size() - 1).getEnd(), entryId,
                 _lexicalResourceProjectionResources.getMultiWordsMap().get(lemma),ids));
     }

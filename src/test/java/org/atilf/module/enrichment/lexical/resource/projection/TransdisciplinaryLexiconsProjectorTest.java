@@ -2,7 +2,7 @@ package org.atilf.module.enrichment.lexical.resource.projection;
 
 import org.atilf.models.enrichment.LexicalResourceProjectionResources;
 import org.atilf.models.enrichment.MorphologyOffsetId;
-import org.atilf.models.enrichment.ResourceProjectorOffsetId;
+import org.atilf.models.enrichment.MultiWordsOffsetId;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -20,7 +20,7 @@ public class TransdisciplinaryLexiconsProjectorTest {
     private static LexicalResourceProjectionResources lexicalResourceProjectionResources = new
             LexicalResourceProjectionResources("fr", LST_TYPE);
     private static List<MorphologyOffsetId> morphologyOffsetIds = new ArrayList<>();
-    private static List<ResourceProjectorOffsetId> transdisciplinaryOffsetIds = new ArrayList<>();
+    private static List<MultiWordsOffsetId> transdisciplinaryOffsetIds = new ArrayList<>();
 
 
     @BeforeClass

@@ -3,7 +3,7 @@ package org.atilf.module.enrichment.lexical.resource.projection;
 import org.atilf.models.TermithIndex;
 import org.atilf.models.enrichment.LexicalResourceProjectionResources;
 import org.atilf.models.enrichment.MorphologyOffsetId;
-import org.atilf.models.enrichment.ResourceProjectorOffsetId;
+import org.atilf.models.enrichment.MultiWordsOffsetId;
 import org.atilf.module.Module;
 import org.atilf.module.tools.FilesUtils;
 
@@ -17,7 +17,7 @@ import java.util.List;
 public class PhraseologyProjector extends Module{
 
     private List<MorphologyOffsetId> _morphologyOffset;
-    private List<ResourceProjectorOffsetId> _resourceProjectorOffsetIds;
+    private List<MultiWordsOffsetId> _resourceProjectorOffsetIds;
     LexicalResourceProjectionResources _lexicalResourceProjectionResources;
     private String _id;
 
@@ -26,7 +26,7 @@ public class PhraseologyProjector extends Module{
                 lexicalResourceProjectionResources);
     }
 
-    PhraseologyProjector(String id, List<MorphologyOffsetId> morphologyOffset, List<ResourceProjectorOffsetId> resourceProjectorOffsetIds,
+    PhraseologyProjector(String id, List<MorphologyOffsetId> morphologyOffset, List<MultiWordsOffsetId> resourceProjectorOffsetIds,
                          LexicalResourceProjectionResources lexicalResourceProjectionResources){
         _id = id;
         _morphologyOffset = morphologyOffset;
@@ -86,7 +86,7 @@ public class PhraseologyProjector extends Module{
     }
 
     protected void addNewEntry(List<MorphologyOffsetId> listMorphologyOffsetId, String lemma, List<Integer> ids, Integer entryId) {
-        _resourceProjectorOffsetIds.add(new ResourceProjectorOffsetId(listMorphologyOffsetId.get(0).getBegin(),
+        _resourceProjectorOffsetIds.add(new MultiWordsOffsetId(listMorphologyOffsetId.get(0).getBegin(),
                 listMorphologyOffsetId.get(listMorphologyOffsetId.size() - 1).getEnd(), entryId,
                 _lexicalResourceProjectionResources.getMultiWordsMap().get(lemma),ids));
     }

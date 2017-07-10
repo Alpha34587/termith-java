@@ -43,6 +43,11 @@ public class MultiWordsOffsetId extends OffsetId {
      */
     public MultiWordsOffsetId(){}
 
+    public MultiWordsOffsetId(int begin, int end, Integer id, String word, List<Integer> ids) {
+        this(begin, end, id, word);
+        _ids = ids;
+    }
+
     /**
      * setter for _word field
      * @param word a string of a word
