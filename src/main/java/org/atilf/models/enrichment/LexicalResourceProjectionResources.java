@@ -14,11 +14,11 @@ import java.util.*;
  */
 public class LexicalResourceProjectionResources {
 
+    public static final String PH_TYPE = "ph";
+    public static final String LST_TYPE = "lst";
     private Map<String,List<Integer>> phraseologyIdMap = new HashMap<>();
-    private Map<String,String> phraseologyWordsMap = new HashMap<>();
+    private Map<String,String> multiWordsMap = new HashMap<>();
     private final Logger _logger = LoggerFactory.getLogger(getClass().getName());
-    public final static String PH_TYPE = "ph";
-    public final static String LST_TYPE = "lst";
 
     public LexicalResourceProjectionResources(String lang, String type) {
         initResource(lang, type);
@@ -28,8 +28,8 @@ public class LexicalResourceProjectionResources {
         return phraseologyIdMap;
     }
 
-    public Map<String, String> getPhraseologyWordsMap() {
-        return phraseologyWordsMap;
+    public Map<String, String> getMultiWordsMap() {
+        return multiWordsMap;
     }
 
     public void initResource(String lang, String type){
@@ -87,13 +87,7 @@ public class LexicalResourceProjectionResources {
                 }
                 else if(inWords && jParser.getCurrentToken() == JsonToken.END_ARRAY) {
                     inWords = false;
-                    if (!phraseologyIdMap.containsKey(memWord.trim())){
-                        phraseologyIdMap.put(memWord.trim(),new ArrayList<>());
-                        phraseologyWordsMap.put(memWord.trim(),memLibelle);
-                    }
-                    if (!phraseologyIdMap.get(memWord.trim()).contains(memForm)){
-                        phraseologyIdMap.get(memWord.trim()).add(memForm);
-                    }
+                    addToPhraseologyMap(memForm, memWord, memLibelle);
                 }
             }
 
@@ -102,6 +96,16 @@ public class LexicalResourceProjectionResources {
         }
         catch (IOException e) {
             _logger.error("cannot parse json file",e);
+        }
+    }
+
+    private void addToPhraseologyMap(int memForm, String memWord, String memLibelle) {
+        if (!phraseologyIdMap.containsKey(memWord.trim())){
+            phraseologyIdMap.put(memWord.trim(),new ArrayList<>());
+            multiWordsMap.put(memWord.trim(),memLibelle);
+        }
+        if (!phraseologyIdMap.get(memWord.trim()).contains(memForm)){
+            phraseologyIdMap.get(memWord.trim()).add(memForm);
         }
     }
 
@@ -138,13 +142,7 @@ public class LexicalResourceProjectionResources {
                 }
                 else if(!inWords && jParser.getCurrentToken() == JsonToken.END_OBJECT){
                     inWords = false;
-                    if (!phraseologyIdMap.containsKey(memWord.trim())){
-                        phraseologyIdMap.put(memWord.trim(),new ArrayList<>());
-                        phraseologyWordsMap.put(memWord.trim(),memLibelle);
-                    }
-                    if (!phraseologyIdMap.get(memWord.trim()).contains(memForm)){
-                        phraseologyIdMap.get(memWord.trim()).add(memForm);
-                    }
+                    addToPhraseologyMap(memForm, memWord, memLibelle);
                 }
             }
 

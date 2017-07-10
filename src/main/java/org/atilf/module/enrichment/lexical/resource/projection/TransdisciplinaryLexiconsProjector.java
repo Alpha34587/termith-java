@@ -43,7 +43,7 @@ public class TransdisciplinaryLexiconsProjector extends PhraseologyProjector {
                                List<Integer> ids, Integer entryId) {
         _transdisciplinaryOffsetIds.add(new ResourceProjectorOffsetId(listMorphologyOffsetId.get(0).getBegin(),
                 listMorphologyOffsetId.get(listMorphologyOffsetId.size() - 1).getEnd(), entryId,
-                _lexicalResourceProjectionResources.getPhraseologyWordsMap().get(lemma),ids));
+                _lexicalResourceProjectionResources.getMultiWordsMap().get(lemma),ids));
     }
 }
 
