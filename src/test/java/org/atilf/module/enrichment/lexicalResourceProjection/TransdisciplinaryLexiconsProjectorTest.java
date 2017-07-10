@@ -15,7 +15,7 @@ import static org.atilf.models.enrichment.LexicalResourceProjectionResources.LST
 /**
  * Created by Simon Meoni on 13/06/17.
  */
-public class TransdisciplinaryLexicsProjectorTest {
+public class TransdisciplinaryLexiconsProjectorTest {
 
     private static LexicalResourceProjectionResources lexicalResourceProjectionResources = new
             LexicalResourceProjectionResources("fr", LST_TYPE);
@@ -43,7 +43,7 @@ public class TransdisciplinaryLexicsProjectorTest {
 
     @Test
     public void execute() throws Exception {
-        new TransdisciplinaryLexicsProjector("", morphologyOffsetIds, transdisciplinaryOffsetIds, lexicalResourceProjectionResources)
+        new TransdisciplinaryLexiconsProjector("", morphologyOffsetIds, transdisciplinaryOffsetIds, lexicalResourceProjectionResources)
                 .execute();
         String expectedId = "[1, 39, 428]";
         List<Integer> observedId = new ArrayList<>();

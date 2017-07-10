@@ -2,7 +2,7 @@ package org.atilf.delegate.enrichment.LexicalResourceProjection;
 
 import org.atilf.delegate.Delegate;
 import org.atilf.models.enrichment.LexicalResourceProjectionResources;
-import org.atilf.module.enrichment.lexicalResourceProjection.TransdisciplinaryLexicsProjector;
+import org.atilf.module.enrichment.lexicalResourceProjection.TransdisciplinaryLexiconsProjector;
 import org.atilf.monitor.timer.TermithProgressTimer;
 
 import java.io.IOException;
@@ -17,7 +17,7 @@ import static org.atilf.models.enrichment.LexicalResourceProjectionResources.LST
 /**
  * Created by Simon Meoni on 12/06/17.
  */
-public class TransdisciplinaryLexicsProjectorDelegate extends Delegate {
+public class TransdisciplinaryLexiconsProjectorDelegate extends Delegate {
     @Override
     protected void executeTasks() throws IOException, InterruptedException, ExecutionException {
         if (getFlowableVariable("lang",null).equals("fr")) {
@@ -32,12 +32,12 @@ public class TransdisciplinaryLexicsProjectorDelegate extends Delegate {
             _termithIndex.getMorphologyStandOff().forEach(
                     (id,value) -> {
                         _termithIndex.getTransOffsetId().put(id,new ArrayList<>());
-                        futures.add(_executorService.submit(new TransdisciplinaryLexicsProjector(id, _termithIndex,
+                        futures.add(_executorService.submit(new TransdisciplinaryLexiconsProjector(id, _termithIndex,
                                 lexicalResourceProjectionResources)));
                     }
             );
             _logger.info("waiting that all files are treated");
-            new TermithProgressTimer(futures,TransdisciplinaryLexicsProjectorDelegate.class,_executorService).start();
+            new TermithProgressTimer(futures,TransdisciplinaryLexiconsProjectorDelegate.class,_executorService).start();
             _executorService.shutdown();
             _executorService.awaitTermination(1L, TimeUnit.DAYS);
             _logger.info("Phraseology projection step is finished");

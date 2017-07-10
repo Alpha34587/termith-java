@@ -12,11 +12,12 @@ import java.util.List;
 /**
  * Created by Simon Meoni on 12/06/17.
  */
-public class TransdisciplinaryLexicsProjector extends PhraseologyProjector {
+public class TransdisciplinaryLexiconsProjector extends PhraseologyProjector {
 
     List<TransdisciplinaryOffsetId> _transdisciplinaryOffsetIds = new ArrayList<>();
 
-    public TransdisciplinaryLexicsProjector(String id, TermithIndex termithIndex, LexicalResourceProjectionResources transdisciplinaryResource) {
+    public TransdisciplinaryLexiconsProjector(String id, TermithIndex termithIndex,
+                                              LexicalResourceProjectionResources transdisciplinaryResource) {
         this(
                 id,
                 FilesUtils.readListObject(termithIndex.getMorphologyStandOff().get(id)),
@@ -25,8 +26,9 @@ public class TransdisciplinaryLexicsProjector extends PhraseologyProjector {
         );
     }
 
-    protected TransdisciplinaryLexicsProjector(String id, List<MorphologyOffsetId> morpho, List<TransdisciplinaryOffsetId> transdisciplinaryOffsetIds,
-                                               LexicalResourceProjectionResources lexicalResourceProjectionResources) {
+    protected TransdisciplinaryLexiconsProjector(String id, List<MorphologyOffsetId> morpho,
+                                                 List<TransdisciplinaryOffsetId> transdisciplinaryOffsetIds,
+                                                 LexicalResourceProjectionResources lexicalResourceProjectionResources) {
         super(id, morpho, null,lexicalResourceProjectionResources);
         _transdisciplinaryOffsetIds = transdisciplinaryOffsetIds;
     }
@@ -37,7 +39,8 @@ public class TransdisciplinaryLexicsProjector extends PhraseologyProjector {
     }
 
     @Override
-    protected void addNewEntry(List<MorphologyOffsetId> listMorphologyOffsetId, String lemma, List<Integer> ids, Integer entryId) {
+    protected void addNewEntry(List<MorphologyOffsetId> listMorphologyOffsetId, String lemma,
+                               List<Integer> ids, Integer entryId) {
         _transdisciplinaryOffsetIds.add(new TransdisciplinaryOffsetId(listMorphologyOffsetId.get(0).getBegin(),
                 listMorphologyOffsetId.get(listMorphologyOffsetId.size() - 1).getEnd(), entryId,
                 _lexicalResourceProjectionResources.getPhraseologyWordsMap().get(lemma),ids));

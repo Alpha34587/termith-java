@@ -58,7 +58,7 @@
         <sequenceFlow sourceRef="phraseo" targetRef="lst"/>
 
         <serviceTask id="lst" name="extract transdisciplinary words"
-                     flowable:class="org.atilf.delegate.enrichment.LexicalResourceProjection.TransdisciplinaryLexicsProjectorDelegate"/>
+                     flowable:class="org.atilf.delegate.enrichment.LexicalResourceProjection.TransdisciplinaryLexiconsProjectorDelegate"/>
 
         <sequenceFlow sourceRef="lst" targetRef="exporter"/>
 
