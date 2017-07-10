@@ -1,8 +1,8 @@
-package org.atilf.delegate.enrichment.LexicalResourceProjection;
+package org.atilf.delegate.enrichment.lexical.resource.projection;
 
 import org.atilf.delegate.Delegate;
 import org.atilf.models.enrichment.LexicalResourceProjectionResources;
-import org.atilf.module.enrichment.lexicalResourceProjection.PhraseologyProjector;
+import org.atilf.module.enrichment.lexical.resource.projection.PhraseologyProjector;
 import org.atilf.monitor.timer.TermithProgressTimer;
 
 import java.io.IOException;

@@ -1,4 +1,4 @@
-package org.atilf.module.enrichment.lexicalResourceProjection;
+package org.atilf.module.enrichment.lexical.resource.projection;
 
 import org.atilf.models.TermithIndex;
 import org.atilf.models.enrichment.LexicalResourceProjectionResources;
@@ -16,9 +16,9 @@ import java.util.List;
  */
 public class PhraseologyProjector extends Module{
 
-    private List<MorphologyOffsetId> _morpho;
+    private List<MorphologyOffsetId> _morphologyOffset;
     private List<ResourceProjectorOffsetId> _resourceProjectorOffsetIds;
-    protected LexicalResourceProjectionResources _lexicalResourceProjectionResources;
+    LexicalResourceProjectionResources _lexicalResourceProjectionResources;
     private String _id;
 
     public PhraseologyProjector(String id, TermithIndex termithIndex, LexicalResourceProjectionResources lexicalResourceProjectionResources) {
@@ -26,10 +26,10 @@ public class PhraseologyProjector extends Module{
                 lexicalResourceProjectionResources);
     }
 
-    PhraseologyProjector(String id, List<MorphologyOffsetId> morpho, List<ResourceProjectorOffsetId> resourceProjectorOffsetIds,
+    PhraseologyProjector(String id, List<MorphologyOffsetId> morphologyOffset, List<ResourceProjectorOffsetId> resourceProjectorOffsetIds,
                          LexicalResourceProjectionResources lexicalResourceProjectionResources){
         _id = id;
-        _morpho = morpho;
+        _morphologyOffset = morphologyOffset;
         _lexicalResourceProjectionResources = lexicalResourceProjectionResources;
         _resourceProjectorOffsetIds = resourceProjectorOffsetIds;
     }
@@ -43,25 +43,26 @@ public class PhraseologyProjector extends Module{
 
     void detectWords(int wordSize, int wordSizeThreshold) {
         int memWordSize = wordSize;
-        for (MorphologyOffsetId mOffsetId : _morpho) {
-            wordSize = Integer.valueOf(memWordSize);
-            String currentLemma = mOffsetId.getLemma() + " ";
-            List<MorphologyOffsetId> currentMorphoOffsetId = new ArrayList<>();
-            currentMorphoOffsetId.add(mOffsetId);
-            while(wordSize <= wordSizeThreshold){
+        for (MorphologyOffsetId mOffsetId : _morphologyOffset) {
+            int currentWordSize = memWordSize;
+            StringBuilder currentLemma = new StringBuilder(mOffsetId.getLemma() + " ");
+            List<MorphologyOffsetId> currentMorphologyOffsetId = new ArrayList<>();
+            currentMorphologyOffsetId.add(mOffsetId);
+            while(currentWordSize <= wordSizeThreshold){
 
-                int wordAfter = _morpho.indexOf(mOffsetId) + wordSize - 1;
-                if (wordAfter < _morpho.size()) {
-                    if (wordSize > 1) {
-                        currentLemma += _morpho.get(wordAfter).getLemma() + " ";
-                        currentMorphoOffsetId.add(_morpho.get(wordAfter));
+                int wordAfter = _morphologyOffset.indexOf(mOffsetId) + currentWordSize - 1;
+                if (wordAfter < _morphologyOffset.size()) {
+                    if (currentWordSize > 1) {
+                        currentLemma.append(_morphologyOffset.get(wordAfter).getLemma()).append(" ");
+                        currentMorphologyOffsetId.add(_morphologyOffset.get(wordAfter));
                     }
-                    if(_lexicalResourceProjectionResources.getResourceMap().containsKey(currentLemma.trim())){
+                    String currentTrimmedLemma = currentLemma.toString().trim();
+                    if(_lexicalResourceProjectionResources.getResourceMap().containsKey(currentTrimmedLemma)){
                         _logger.debug("detection of expression : {}",currentLemma);
-                        addToProjectedData(currentMorphoOffsetId,
-                                _lexicalResourceProjectionResources.getResourceMap().get(currentLemma.trim()));
+                        addToProjectedData(currentMorphologyOffsetId,
+                                _lexicalResourceProjectionResources.getResourceMap().get(currentTrimmedLemma));
                     }
-                    wordSize++;
+                    currentWordSize++;
                 }
                 else {
                     break;
@@ -71,16 +72,16 @@ public class PhraseologyProjector extends Module{
         }
     }
 
-    private void addToProjectedData(List<MorphologyOffsetId> listMorphologyOffsetId, List<Integer> EntryIds) {
-        String lemma = "";
+    private void addToProjectedData(List<MorphologyOffsetId> listMorphologyOffsetId, List<Integer> entryIds) {
+        StringBuilder lemma = new StringBuilder("");
         List<Integer> ids = new ArrayList<>();
         for (MorphologyOffsetId morphologyOffsetId : listMorphologyOffsetId) {
-            lemma += morphologyOffsetId.getLemma() + " ";
+            lemma.append(morphologyOffsetId.getLemma()).append(" ");
             ids.addAll(morphologyOffsetId.getIds());
         }
-        lemma = lemma.trim();
-        for (Integer entryId : new HashSet<>(EntryIds)) {
-            addNewEntry(listMorphologyOffsetId, lemma, new ArrayList<>(ids), entryId);
+        String trimmedLemma = lemma.toString().trim();
+        for (Integer entryId : new HashSet<>(entryIds)) {
+            addNewEntry(listMorphologyOffsetId, trimmedLemma, new ArrayList<>(ids), entryId);
         }
     }
 

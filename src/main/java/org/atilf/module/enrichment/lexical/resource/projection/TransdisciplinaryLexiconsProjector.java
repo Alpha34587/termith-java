@@ -1,4 +1,4 @@
-package org.atilf.module.enrichment.lexicalResourceProjection;
+package org.atilf.module.enrichment.lexical.resource.projection;
 
 import org.atilf.models.TermithIndex;
 import org.atilf.models.enrichment.LexicalResourceProjectionResources;
