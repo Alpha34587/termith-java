@@ -29,9 +29,9 @@ public class TeiWriter extends Module{
     private StandOffResources _standOffRessources;
     private final StringBuilder _xmlCorpus;
     private final List<MorphologyOffsetId> _morphologyOffsetIds;
-    private final List<TermOffsetId> _termOffsetIds;
-    private final List<ResourceProjectorOffsetId> _resourceProjectorOffsetIds;
-    private final List<ResourceProjectorOffsetId> _transdisciplinaryOffsetIds;
+    private final List<MultiWordsOffsetId> _multiWordsOffsetIds;
+    private final List<MultiWordsOffsetId> _resourceProjectorOffsetIds;
+    private final List<MultiWordsOffsetId> _transdisciplinaryOffsetIds;
     private static final Logger LOGGER = LoggerFactory.getLogger(TeiWriter.class.getName());
 
 
@@ -79,22 +79,22 @@ public class TeiWriter extends Module{
      * @param xmlCorpus the xmlFile
      * @param morphologyOffsetIds morphology tags
      * @param tokenizeBody the tokenize body
-     * @param termOffsetIds term entries tags
+     * @param multiWordsOffsetIds term entries tags
      * @param outputPath the output path
      * @param standOffResources static resource used by teiWriter
      */
     private TeiWriter(StringBuilder xmlCorpus,
                       List<MorphologyOffsetId> morphologyOffsetIds,
-                      StringBuilder tokenizeBody, List<TermOffsetId> termOffsetIds,
-                      List<ResourceProjectorOffsetId> resourceProjectorOffsetIds,
-                      List<ResourceProjectorOffsetId> transdisciplinaryOffsetIds,
+                      StringBuilder tokenizeBody, List<MultiWordsOffsetId> multiWordsOffsetIds,
+                      List<MultiWordsOffsetId> resourceProjectorOffsetIds,
+                      List<MultiWordsOffsetId> transdisciplinaryOffsetIds,
                       Path outputPath,
                       StandOffResources standOffResources) {
 
         _xmlCorpus = xmlCorpus;
         _morphologyOffsetIds = morphologyOffsetIds;
         _tokenizeBody = tokenizeBody;
-        _termOffsetIds = termOffsetIds;
+        _multiWordsOffsetIds = multiWordsOffsetIds;
         _transdisciplinaryOffsetIds = transdisciplinaryOffsetIds;
         _resourceProjectorOffsetIds = resourceProjectorOffsetIds;
         _standOffRessources = standOffResources;
@@ -175,9 +175,9 @@ public class TeiWriter extends Module{
         /*
         inject terminology
          */
-        if (_termOffsetIds != null &&
-                !_termOffsetIds.isEmpty()){
-            serializeTerminology(_termOffsetIds);
+        if (_multiWordsOffsetIds != null &&
+                !_multiWordsOffsetIds.isEmpty()){
+            serializeTerminology(_multiWordsOffsetIds);
         }
 
         /*
@@ -196,26 +196,26 @@ public class TeiWriter extends Module{
 
     }
 
-    private void serializeTransdisciplinary(List<ResourceProjectorOffsetId> transdisciplinaryOffsetIds) throws IOException {
+    private void serializeTransdisciplinary(List<MultiWordsOffsetId> transdisciplinaryOffsetIds) throws IOException {
         serializeOffsetId(transdisciplinaryOffsetIds,"lexiquesTransdisciplinaires",
                 _standOffRessources.LST_SPAN,
                 _standOffRessources.LST_TEI_HEADER);
     }
 
-    private void serializePhraseology(List<ResourceProjectorOffsetId> resourceProjectorOffsetIds) throws IOException {
+    private void serializePhraseology(List<MultiWordsOffsetId> resourceProjectorOffsetIds) throws IOException {
         serializeOffsetId(resourceProjectorOffsetIds,"syntagmesDefinis", _standOffRessources.PH_SPAN, _standOffRessources.PH_TEI_HEADER);
     }
 
     /**
-     * this method convert a list of TermOffsetId into a standoff element
-     * @param termOffsetIds the TermOffsetId list
+     * this method convert a list of MultiWordsOffsetId into a standoff element
+     * @param multiWordsOffsetIds the MultiWordsOffsetId list
      * @throws IOException thrown an exception if _bufferedWriter fields throws an error during writing
      */
-    private void serializeTerminology(List<TermOffsetId> termOffsetIds) throws IOException {
-        serializeOffsetId(termOffsetIds,"candidatsTermes", _standOffRessources.T_SPAN, _standOffRessources.T_TEI_HEADER);
+    private void serializeTerminology(List<MultiWordsOffsetId> multiWordsOffsetIds) throws IOException {
+        serializeOffsetId(multiWordsOffsetIds,"candidatsTermes", _standOffRessources.T_SPAN, _standOffRessources.T_TEI_HEADER);
     }
 
-    private void serializeOffsetId(List<? extends TermOffsetId> termOffsetIds, String type, StringBuilder
+    private void serializeOffsetId(List<? extends MultiWordsOffsetId> termOffsetIds, String type, StringBuilder
             spanTemplate, StringBuilder teiHeaderTemplate) throws
             IOException {
     /*
@@ -241,7 +241,7 @@ public class TeiWriter extends Module{
         /*
         write his content
          */
-        for (TermOffsetId token : termOffsetIds) {
+        for (MultiWordsOffsetId token : termOffsetIds) {
             /*
             write a span element
              */
