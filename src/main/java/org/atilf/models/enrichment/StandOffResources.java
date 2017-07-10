@@ -20,8 +20,12 @@ public class StandOffResources {
     public final StringBuilder LIST_ANNOTATION = indentation(readFile(PATH + "list-annotation.xml"), 2);
     public final StringBuilder MS_SPAN = indentation(readFile(PATH + "ms-span.xml"), 3);
     public final StringBuilder T_SPAN = indentation(readFile(PATH + "t-span.xml"), 3);
+    public final StringBuilder PH_SPAN = indentation(readFile(PATH + "ph-span.xml"), 3);
+    public final StringBuilder LST_SPAN = indentation(readFile(PATH + "lst-span.xml"), 3);
     public final StringBuilder MS_TEI_HEADER = indentation(readFile(PATH + "ms-tei-header.xml"), 2);
     public final StringBuilder T_TEI_HEADER = indentation(readFile(PATH + "t-tei-header.xml"), 2);
+    public final StringBuilder PH_TEI_HEADER = indentation(readFile(PATH + "ph-tei-header.xml"), 2);
+    public final StringBuilder LST_TEI_HEADER = indentation(readFile(PATH + "lst-tei-header.xml"), 2);
     public final StringBuilder T_INTERP_GRP = indentation(readFile(PATH + "t-interp-grp.xml"), 2);
     public final StringBuilder STANDOFF = indentation(readFile(PATH + "standoff.xml"), 1);
     public final StringBuilder NS = indentation(readFile(PATH + "ns.txt"),0);
