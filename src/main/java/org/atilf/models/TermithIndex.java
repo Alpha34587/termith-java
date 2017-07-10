@@ -5,7 +5,7 @@ import org.atilf.models.disambiguation.EvaluationProfile;
 import org.atilf.models.disambiguation.LexiconProfile;
 import org.atilf.models.disambiguation.TxmContext;
 import org.atilf.models.enrichment.ResourceProjectorOffsetId;
-import org.atilf.models.enrichment.TermOffsetId;
+import org.atilf.models.enrichment.MultiWordsOffsetId;
 
 import java.nio.file.Path;
 import java.util.List;
@@ -26,7 +26,7 @@ public class TermithIndex {
     private List<Path> _terminologies = new CopyOnWriteArrayList<>();
     private Map<String, Path> _tokenizeTeiBody = new ConcurrentHashMap<>();
     private Map<String, Path> _morphologyStandOff = new ConcurrentHashMap<>();
-    private Map<String, List<TermOffsetId>> _terminologyStandOff = new ConcurrentHashMap<>();
+    private Map<String, List<MultiWordsOffsetId>> _terminologyStandOff = new ConcurrentHashMap<>();
     private Map<String, Path> _extractedText = new ConcurrentHashMap<>();
     private Map<String, Path> _xmlCorpus = new ConcurrentHashMap<>();
     private List<Path> _serializeJson = new CopyOnWriteArrayList<>();
@@ -102,9 +102,9 @@ public class TermithIndex {
 
     /**
      * return the deserialize terminology
-     * @return return a Map<String, List<TermOffsetId>>
+     * @return return a Map<String, List<MultiWordsOffsetId>>
      */
-    public Map<String, List<TermOffsetId>> getTerminologyStandOff() {
+    public Map<String, List<MultiWordsOffsetId>> getTerminologyStandOff() {
         return _terminologyStandOff;
     }
 
@@ -176,10 +176,10 @@ public class TermithIndex {
 
     /**
      * set the terminologyStandOff
-     * @param terminologyStandOff list of TermOffsetId
-     * @see TermOffsetId
+     * @param terminologyStandOff list of MultiWordsOffsetId
+     * @see MultiWordsOffsetId
      */
-    public void setTerminologyStandOff(Map<String, List<TermOffsetId>> terminologyStandOff) {
+    public void setTerminologyStandOff(Map<String, List<MultiWordsOffsetId>> terminologyStandOff) {
         _terminologyStandOff = terminologyStandOff;
     }
 }

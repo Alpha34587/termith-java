@@ -7,7 +7,7 @@ import java.util.List;
  * @author Simon Meoni
  *         Created on 14/09/16.
  */
-public class TermOffsetId extends OffsetId {
+public class MultiWordsOffsetId extends OffsetId {
     private String _word;
     private int _termId;
 
@@ -18,7 +18,7 @@ public class TermOffsetId extends OffsetId {
      * @param word word of a term occurrence
      * @param id the xml id of a term occurrence
      */
-    public TermOffsetId(int begin, int end, int id, String word) {
+    public MultiWordsOffsetId(int begin, int end, int id, String word) {
         super();
         _begin = begin;
         _end = end;
@@ -31,7 +31,7 @@ public class TermOffsetId extends OffsetId {
      * clone a termOffsetId
      * @param other a termOffsetId
      */
-    public TermOffsetId(TermOffsetId other) {
+    public MultiWordsOffsetId(MultiWordsOffsetId other) {
         _begin = other._begin;
         _end = other._end;
         _word = other._word;
@@ -39,9 +39,9 @@ public class TermOffsetId extends OffsetId {
     }
 
     /**
-     * empty constructor of TermOffsetId
+     * empty constructor of MultiWordsOffsetId
      */
-    public TermOffsetId(){}
+    public MultiWordsOffsetId(){}
 
     /**
      * setter for _word field

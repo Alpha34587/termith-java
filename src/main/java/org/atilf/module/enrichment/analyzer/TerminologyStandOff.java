@@ -2,7 +2,7 @@ package org.atilf.module.enrichment.analyzer;
 
 import org.atilf.models.TermithIndex;
 import org.atilf.models.enrichment.MorphologyOffsetId;
-import org.atilf.models.enrichment.TermOffsetId;
+import org.atilf.models.enrichment.MultiWordsOffsetId;
 import org.atilf.module.Module;
 import org.atilf.module.tools.FilesUtils;
 
@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
  */
 public class TerminologyStandOff extends Module {
     private final List<MorphologyOffsetId> _morpho;
-    private final List<TermOffsetId> _terminology;
+    private final List<MultiWordsOffsetId> _terminology;
     private NavigableMap<Integer,List<Integer>> _beginMap = new TreeMap<>();
     private NavigableMap<Integer,List<Integer>> _endMap = new TreeMap<>();
     private String _id;
@@ -38,16 +38,16 @@ public class TerminologyStandOff extends Module {
      * @param morpho the morphology entities analyzes by treetagger
      * @param terminology the terminologies occurrences compute by termsuite
      */
-    TerminologyStandOff(List<MorphologyOffsetId> morpho, List<TermOffsetId> terminology) {
+    TerminologyStandOff(List<MorphologyOffsetId> morpho, List<MultiWordsOffsetId> terminology) {
         _morpho = morpho;
         _terminology = terminology;
     }
 
     /**
      * getter for _terminology field
-     * @return return List<TermOffsetId>
+     * @return return List<MultiWordsOffsetId>
      */
-    public List<TermOffsetId> getTerminology() {
+    public List<MultiWordsOffsetId> getTerminology() {
         return _terminology;
     }
 
