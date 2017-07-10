@@ -31,7 +31,7 @@ public class TransdisciplinaryLexiconsProjectorDelegate extends Delegate {
             List<Future> futures = new ArrayList<>();
             _termithIndex.getMorphologyStandOff().forEach(
                     (id,value) -> {
-                        _termithIndex.getTransOffsetId().put(id,new ArrayList<>());
+                        _termithIndex.getTransdisciplinaryOffsetId().put(id,new ArrayList<>());
                         futures.add(_executorService.submit(new TransdisciplinaryLexiconsProjector(id, _termithIndex,
                                 lexicalResourceProjectionResources)));
                     }

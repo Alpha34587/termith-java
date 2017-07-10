@@ -26,12 +26,12 @@ public class TeiWriter extends Module{
     private Path _outputPath;
     private BufferedWriter _bufferedWriter = null;
     private StringBuilder _tokenizeBody;
-    private StandOffResources _stdfRes;
+    private StandOffResources _standOffRessources;
     private final StringBuilder _xmlCorpus;
     private final List<MorphologyOffsetId> _morphologyOffsetIds;
     private final List<TermOffsetId> _termOffsetIds;
-    private final List<PhraseoOffsetId> _phraseoOffsetIds;
-    private final List<TransdisciplinaryOffsetId> _transdisciplinaryOffsetIds;
+    private final List<ResourceProjectorOffsetId> _resourceProjectorOffsetIds;
+    private final List<ResourceProjectorOffsetId> _transdisciplinaryOffsetIds;
     private static final Logger LOGGER = LoggerFactory.getLogger(TeiWriter.class.getName());
 
 
@@ -56,7 +56,7 @@ public class TeiWriter extends Module{
                 //the terminology
                 termithIndex.getTerminologyStandOff().get(key),
                 termithIndex.getPhraseoOffsetId().get(key),
-                termithIndex.getTransOffsetId().get(key),
+                termithIndex.getTransdisciplinaryOffsetId().get(key),
                 //the write output path
                 Paths.get(outputhPath + "/" + key + ".xml"),
                 standOffResources
@@ -86,8 +86,8 @@ public class TeiWriter extends Module{
     private TeiWriter(StringBuilder xmlCorpus,
                       List<MorphologyOffsetId> morphologyOffsetIds,
                       StringBuilder tokenizeBody, List<TermOffsetId> termOffsetIds,
-                      List<PhraseoOffsetId> phraseoOffsetIds,
-                      List<TransdisciplinaryOffsetId> transdisciplinaryOffsetIds,
+                      List<ResourceProjectorOffsetId> resourceProjectorOffsetIds,
+                      List<ResourceProjectorOffsetId> transdisciplinaryOffsetIds,
                       Path outputPath,
                       StandOffResources standOffResources) {
 
@@ -96,8 +96,8 @@ public class TeiWriter extends Module{
         _tokenizeBody = tokenizeBody;
         _termOffsetIds = termOffsetIds;
         _transdisciplinaryOffsetIds = transdisciplinaryOffsetIds;
-        _phraseoOffsetIds = phraseoOffsetIds;
-        _stdfRes = standOffResources;
+        _resourceProjectorOffsetIds = resourceProjectorOffsetIds;
+        _standOffRessources = standOffResources;
         try {
             _bufferedWriter = Files.newBufferedWriter(outputPath);
         } catch (IOException e) {
@@ -130,7 +130,7 @@ public class TeiWriter extends Module{
      */
     private void insertStandoffNs(){
         int teiTag = _xmlCorpus.indexOf("<TEI ") + 5;
-        _xmlCorpus.insert(teiTag, _stdfRes.NS.substring(0, _stdfRes.NS.length() - 1) + " ");
+        _xmlCorpus.insert(teiTag, _standOffRessources.NS.substring(0, _standOffRessources.NS.length() - 1) + " ");
     }
 
     /**
@@ -183,9 +183,9 @@ public class TeiWriter extends Module{
         /*
         inject phraseo & lst
          */
-        if (_phraseoOffsetIds != null &&
-                !_phraseoOffsetIds.isEmpty()){
-            serializePhraseology(_phraseoOffsetIds);
+        if (_resourceProjectorOffsetIds != null &&
+                !_resourceProjectorOffsetIds.isEmpty()){
+            serializePhraseology(_resourceProjectorOffsetIds);
         }
         if (_transdisciplinaryOffsetIds != null &&
                 !_transdisciplinaryOffsetIds.isEmpty()){
@@ -196,14 +196,14 @@ public class TeiWriter extends Module{
 
     }
 
-    private void serializeTransdisciplinary(List<TransdisciplinaryOffsetId> transdisciplinaryOffsetIds) throws IOException {
+    private void serializeTransdisciplinary(List<ResourceProjectorOffsetId> transdisciplinaryOffsetIds) throws IOException {
         serializeOffsetId(transdisciplinaryOffsetIds,"lexiquesTransdisciplinaires",
-                _stdfRes.LST_SPAN,
-                _stdfRes.LST_TEI_HEADER);
+                _standOffRessources.LST_SPAN,
+                _standOffRessources.LST_TEI_HEADER);
     }
 
-    private void serializePhraseology(List<PhraseoOffsetId> phraseoOffsetIds) throws IOException {
-        serializeOffsetId(phraseoOffsetIds,"syntagmesDefinis",_stdfRes.PH_SPAN,_stdfRes.PH_TEI_HEADER);
+    private void serializePhraseology(List<ResourceProjectorOffsetId> resourceProjectorOffsetIds) throws IOException {
+        serializeOffsetId(resourceProjectorOffsetIds,"syntagmesDefinis", _standOffRessources.PH_SPAN, _standOffRessources.PH_TEI_HEADER);
     }
 
     /**
@@ -212,7 +212,7 @@ public class TeiWriter extends Module{
      * @throws IOException thrown an exception if _bufferedWriter fields throws an error during writing
      */
     private void serializeTerminology(List<TermOffsetId> termOffsetIds) throws IOException {
-        serializeOffsetId(termOffsetIds,"candidatsTermes",_stdfRes.T_SPAN,_stdfRes.T_TEI_HEADER);
+        serializeOffsetId(termOffsetIds,"candidatsTermes", _standOffRessources.T_SPAN, _standOffRessources.T_TEI_HEADER);
     }
 
     private void serializeOffsetId(List<? extends TermOffsetId> termOffsetIds, String type, StringBuilder
@@ -232,12 +232,12 @@ public class TeiWriter extends Module{
         /*
         write the standoff element root
          */
-        _bufferedWriter.append(replaceTemplate(cut(new StringBuilder(_stdfRes.STANDOFF),false),"@type",type));
+        _bufferedWriter.append(replaceTemplate(cut(new StringBuilder(_standOffRessources.STANDOFF),false),"@type",type));
         _bufferedWriter.append(teiHeaderTemplate);
         if (type.equals("candidatsTermes")) {
-            _bufferedWriter.append(_stdfRes.T_INTERP_GRP);
+            _bufferedWriter.append(_standOffRessources.T_INTERP_GRP);
         }
-        _bufferedWriter.append(cut(_stdfRes.LIST_ANNOTATION, false));
+        _bufferedWriter.append(cut(_standOffRessources.LIST_ANNOTATION, false));
         /*
         write his content
          */
@@ -254,12 +254,12 @@ public class TeiWriter extends Module{
         /*
         write end elements
          */
-        _bufferedWriter.append(cut(_stdfRes.LIST_ANNOTATION,true));
-        _bufferedWriter.append(cut(_stdfRes.STANDOFF,true));
+        _bufferedWriter.append(cut(_standOffRessources.LIST_ANNOTATION,true));
+        _bufferedWriter.append(cut(_standOffRessources.STANDOFF,true));
     }
 
     /**
-     * return the start tag or the close tag of a resource from _stdfRes
+     * return the start tag or the close tag of a resource from _standOffRessources
      * @return the start tag or close tag
      */
     private StringBuilder cut(StringBuilder template,boolean closedTag) {
@@ -292,9 +292,9 @@ public class TeiWriter extends Module{
         /*
         write standOff element root
          */
-        _bufferedWriter.append(replaceTemplate(cut(_stdfRes.STANDOFF,false),"@type","wordForms"));
-        _bufferedWriter.append(_stdfRes.MS_TEI_HEADER);
-        _bufferedWriter.append(cut(_stdfRes.LIST_ANNOTATION,false));
+        _bufferedWriter.append(replaceTemplate(cut(_standOffRessources.STANDOFF,false),"@type","wordForms"));
+        _bufferedWriter.append(_standOffRessources.MS_TEI_HEADER);
+        _bufferedWriter.append(cut(_standOffRessources.LIST_ANNOTATION,false));
         /*
         write content of standOff element
          */
@@ -302,14 +302,14 @@ public class TeiWriter extends Module{
             /*
             write span element
              */
-            StringBuilder entry = new StringBuilder(_stdfRes.MS_SPAN);
+            StringBuilder entry = new StringBuilder(_standOffRessources.MS_SPAN);
             replaceTemplate(entry, "@target", serializeId(token.getIds()));
             replaceTemplate(entry, "@lemma", replaceXmlChar(token.getLemma().replace("<unknown>", "@unknown")));
             replaceTemplate(entry, "@pos", token.getTag());
             _bufferedWriter.append(entry);
         }
-        _bufferedWriter.append(cut(_stdfRes.LIST_ANNOTATION,true));
-        _bufferedWriter.append(cut(_stdfRes.STANDOFF,true));
+        _bufferedWriter.append(cut(_standOffRessources.LIST_ANNOTATION,true));
+        _bufferedWriter.append(cut(_standOffRessources.STANDOFF,true));
     }
 
     /**

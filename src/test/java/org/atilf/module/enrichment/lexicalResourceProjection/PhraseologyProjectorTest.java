@@ -2,7 +2,7 @@ package org.atilf.module.enrichment.lexicalResourceProjection;
 
 import org.atilf.models.enrichment.LexicalResourceProjectionResources;
 import org.atilf.models.enrichment.MorphologyOffsetId;
-import org.atilf.models.enrichment.PhraseoOffsetId;
+import org.atilf.models.enrichment.ResourceProjectorOffsetId;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -20,7 +20,7 @@ public class PhraseologyProjectorTest {
     private static LexicalResourceProjectionResources lexicalResourceProjectionResources = new
             LexicalResourceProjectionResources("fr", PH_TYPE);
     private static List<MorphologyOffsetId> morphologyOffsetIds = new ArrayList<>();
-    private static List<PhraseoOffsetId> observedPhraseoOffsetIds = new ArrayList<>();
+    private static List<ResourceProjectorOffsetId> observedResourceProjectorOffsetIds = new ArrayList<>();
 
 
     @BeforeClass
@@ -42,12 +42,12 @@ public class PhraseologyProjectorTest {
 
     @Test
     public void execute() throws Exception {
-        new PhraseologyProjector("", morphologyOffsetIds, observedPhraseoOffsetIds, lexicalResourceProjectionResources).execute();
+        new PhraseologyProjector("", morphologyOffsetIds, observedResourceProjectorOffsetIds, lexicalResourceProjectionResources).execute();
         String expectedId = "[15303, 31180]";
         List<Integer> observedId = new ArrayList<>();
         String expectedMorphoId = "[6, 7, 8, 10, 11, 12, 13]";
         List<Integer> observedMorphoId = new ArrayList<>();
-        observedPhraseoOffsetIds.forEach(
+        observedResourceProjectorOffsetIds.forEach(
                 el -> {
                     observedId.add(el.getTermId());
                     observedMorphoId.addAll(el.getIds());

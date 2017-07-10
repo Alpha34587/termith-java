@@ -4,9 +4,8 @@ import org.atilf.models.disambiguation.CorpusLexicon;
 import org.atilf.models.disambiguation.EvaluationProfile;
 import org.atilf.models.disambiguation.LexiconProfile;
 import org.atilf.models.disambiguation.TxmContext;
-import org.atilf.models.enrichment.PhraseoOffsetId;
+import org.atilf.models.enrichment.ResourceProjectorOffsetId;
 import org.atilf.models.enrichment.TermOffsetId;
-import org.atilf.models.enrichment.TransdisciplinaryOffsetId;
 
 import java.nio.file.Path;
 import java.util.List;
@@ -32,8 +31,8 @@ public class TermithIndex {
     private Map<String, Path> _xmlCorpus = new ConcurrentHashMap<>();
     private List<Path> _serializeJson = new CopyOnWriteArrayList<>();
     private List<Path> _outputFile = new CopyOnWriteArrayList<>();
-    private Map<String, List<TransdisciplinaryOffsetId>> _transOffsetId = new ConcurrentHashMap<>();
-    private Map<String, List<PhraseoOffsetId>> _phraseoOffsetId = new ConcurrentHashMap<>();
+    private Map<String, List<ResourceProjectorOffsetId>> _transdisciplinaryOffsetId = new ConcurrentHashMap<>();
+    private Map<String, List<ResourceProjectorOffsetId>> _phraseoOffsetId = new ConcurrentHashMap<>();
     /*
     Disambiguation core fields
      */
@@ -77,11 +76,11 @@ public class TermithIndex {
      */
     public CorpusLexicon getCorpusLexicon() { return _corpusLexicon; }
 
-    public Map<String, List<TransdisciplinaryOffsetId>> getTransOffsetId() {
-        return _transOffsetId;
+    public Map<String, List<ResourceProjectorOffsetId>> getTransdisciplinaryOffsetId() {
+        return _transdisciplinaryOffsetId;
     }
 
-    public Map<String, List<PhraseoOffsetId>> getPhraseoOffsetId() {
+    public Map<String, List<ResourceProjectorOffsetId>> getPhraseoOffsetId() {
         return _phraseoOffsetId;
     }
 

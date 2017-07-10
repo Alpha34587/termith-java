@@ -3,7 +3,7 @@ package org.atilf.module.enrichment.lexicalResourceProjection;
 import org.atilf.models.TermithIndex;
 import org.atilf.models.enrichment.LexicalResourceProjectionResources;
 import org.atilf.models.enrichment.MorphologyOffsetId;
-import org.atilf.models.enrichment.PhraseoOffsetId;
+import org.atilf.models.enrichment.ResourceProjectorOffsetId;
 import org.atilf.module.Module;
 import org.atilf.module.tools.FilesUtils;
 
@@ -17,7 +17,7 @@ import java.util.List;
 public class PhraseologyProjector extends Module{
 
     private List<MorphologyOffsetId> _morpho;
-    private List<PhraseoOffsetId> _phraseoOffsetIds;
+    private List<ResourceProjectorOffsetId> _resourceProjectorOffsetIds;
     protected LexicalResourceProjectionResources _lexicalResourceProjectionResources;
     private String _id;
 
@@ -26,33 +26,33 @@ public class PhraseologyProjector extends Module{
                 lexicalResourceProjectionResources);
     }
 
-    PhraseologyProjector(String id, List<MorphologyOffsetId> morpho, List<PhraseoOffsetId> phraseoOffsetIds,
+    PhraseologyProjector(String id, List<MorphologyOffsetId> morpho, List<ResourceProjectorOffsetId> resourceProjectorOffsetIds,
                          LexicalResourceProjectionResources lexicalResourceProjectionResources){
         _id = id;
         _morpho = morpho;
         _lexicalResourceProjectionResources = lexicalResourceProjectionResources;
-        _phraseoOffsetIds = phraseoOffsetIds;
+        _resourceProjectorOffsetIds = resourceProjectorOffsetIds;
     }
 
     @Override
     protected void execute() {
-        _logger.info("projection of phraseologie for file : {} is started",_id);
-        detectwords(2,5);
-        _logger.info("projection of phraseologie for file : {} is finished",_id);
+        _logger.info("projection of phraseology for file : {} is started",_id);
+        detectWords(2,5);
+        _logger.info("projection of phraseology for file : {} is finished",_id);
     }
 
-    void detectwords(int wordsize, int wordSizeThreshlod) {
-        int memWordSize = wordsize;
+    void detectWords(int wordSize, int wordSizeThreshold) {
+        int memWordSize = wordSize;
         for (MorphologyOffsetId mOffsetId : _morpho) {
-            wordsize = Integer.valueOf(memWordSize);
+            wordSize = Integer.valueOf(memWordSize);
             String currentLemma = mOffsetId.getLemma() + " ";
             List<MorphologyOffsetId> currentMorphoOffsetId = new ArrayList<>();
             currentMorphoOffsetId.add(mOffsetId);
-            while(wordsize <= wordSizeThreshlod){
+            while(wordSize <= wordSizeThreshold){
 
-                int wordAfter = _morpho.indexOf(mOffsetId) + wordsize - 1;
+                int wordAfter = _morpho.indexOf(mOffsetId) + wordSize - 1;
                 if (wordAfter < _morpho.size()) {
-                    if (wordsize > 1) {
+                    if (wordSize > 1) {
                         currentLemma += _morpho.get(wordAfter).getLemma() + " ";
                         currentMorphoOffsetId.add(_morpho.get(wordAfter));
                     }
@@ -61,7 +61,7 @@ public class PhraseologyProjector extends Module{
                         addToProjectedData(currentMorphoOffsetId,
                                 _lexicalResourceProjectionResources.getResourceMap().get(currentLemma.trim()));
                     }
-                    wordsize++;
+                    wordSize++;
                 }
                 else {
                     break;
@@ -85,7 +85,7 @@ public class PhraseologyProjector extends Module{
     }
 
     protected void addNewEntry(List<MorphologyOffsetId> listMorphologyOffsetId, String lemma, List<Integer> ids, Integer entryId) {
-        _phraseoOffsetIds.add(new PhraseoOffsetId(listMorphologyOffsetId.get(0).getBegin(),
+        _resourceProjectorOffsetIds.add(new ResourceProjectorOffsetId(listMorphologyOffsetId.get(0).getBegin(),
                 listMorphologyOffsetId.get(listMorphologyOffsetId.size() - 1).getEnd(), entryId,
                 _lexicalResourceProjectionResources.getPhraseologyWordsMap().get(lemma),ids));
     }
