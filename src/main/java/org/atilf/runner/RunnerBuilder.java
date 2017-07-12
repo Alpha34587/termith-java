@@ -19,6 +19,7 @@ public class RunnerBuilder {
     TermithIndex _termithIndex = new TermithIndex();
     String _bpmnDiagram;
 
+
     /*
     remove maybe
      */
@@ -43,6 +44,7 @@ public class RunnerBuilder {
     Path _learningPath;
     Path _evaluationPath;
     Path _txmInputPath;
+    TermithResourceManager _resourceManager;
     protected final Logger LOGGER = LoggerFactory.getLogger(this.getClass().getName());
 
     public RunnerBuilder setTermithIndex(TermithIndex termithIndex) {
@@ -63,6 +65,11 @@ public class RunnerBuilder {
     public RunnerBuilder setBpmnDiagram(String bpmnDiagram) {
         _bpmnDiagram = bpmnDiagram;
         return this;
+    }
+
+    public void setResourceManager(String resourceManager) throws Exception {
+        TermithResourceManager.addToClasspath(resourceManager);
+
     }
 
     public RunnerBuilder setBase(String base){

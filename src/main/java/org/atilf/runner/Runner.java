@@ -22,8 +22,6 @@ import java.util.List;
 public class Runner {
 
     private String _bpmnDiagram;
-
-
     private HashMap<String,Object> _flowableVariable = new HashMap<>();
     private List<VariableType> _variableTypes = new ArrayList<>();
 
