@@ -4,7 +4,7 @@
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
-
+src/main/resources/
 # Package Files #
 *.war
 *.ear

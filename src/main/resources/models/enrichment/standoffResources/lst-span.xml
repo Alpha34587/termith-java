@@ -1,7 +1,0 @@
-<span target="@target" corresp="#lst-@corresp">
-    <fs>
-        <f name="inflexionWord">
-            <string>@string</string>
-        </f>
-    </fs>
-</span>
