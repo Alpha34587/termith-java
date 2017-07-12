@@ -43,12 +43,15 @@ public class TermithTreeTaggerCLI {
         debug.setArgs(0);
         Option treetagger = new Option("tt","treetagger",true,"set TreeTagger path");
         treetagger.setRequired(true);
+        Option resource = new Option("r","resource",true,"set Resource path");
+        resource.setRequired(true);
 
         options.addOption(in);
         options.addOption(out);
         options.addOption(debug);
         options.addOption(treetagger);
         options.addOption(lang);
+        options.addOption(resource);
 
         try {
             CommandLine line = parser.parse( options, args );
@@ -58,7 +61,7 @@ public class TermithTreeTaggerCLI {
             }
 
             Runner runner = new RunnerBuilder()
-                    .setBpmnDiagram("runner/termithTreeTagger.bpmn20.xml")
+                    .setResourceManager(line.getOptionValue("r"))
                     .setBase(line.getOptionValue("i"))
                     .setLang(line.getOptionValue("l"))
                     .setTreeTaggerHome(line.getOptionValue("tt"))

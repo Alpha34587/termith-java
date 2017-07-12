@@ -10,6 +10,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+import static org.atilf.runner.TermithResourceManager.*;
+
 public class RunnerBuilder {
 
     String _annotation;
@@ -44,7 +46,6 @@ public class RunnerBuilder {
     Path _learningPath;
     Path _evaluationPath;
     Path _txmInputPath;
-    TermithResourceManager _resourceManager;
     protected final Logger LOGGER = LoggerFactory.getLogger(this.getClass().getName());
 
     public RunnerBuilder setTermithIndex(TermithIndex termithIndex) {
@@ -63,13 +64,26 @@ public class RunnerBuilder {
     }
 
     public RunnerBuilder setBpmnDiagram(String bpmnDiagram) {
-        _bpmnDiagram = bpmnDiagram;
+        switch (bpmnDiagram){
+            case "disambiguation":
+                _bpmnDiagram = TermithResourcePath.DISAMBIGUATION_BPMN_DIAGRAM.getPath();
+                break;
+            case "termithTreeTagger":
+                _bpmnDiagram = TermithResourcePath.DISAMBIGUATION_BPMN_DIAGRAM.getPath();
+                break;
+            case "custom":
+                _bpmnDiagram = TermithResourcePath.CUSTOM_BPMN_DIAGRAM.getPath();
+                break;
+            default:
+                LOGGER.error("this bpmn schema does not exist",new IllegalStateException());
+                break;
+        }
         return this;
     }
 
-    public void setResourceManager(String resourceManager) throws Exception {
-        TermithResourceManager.addToClasspath(resourceManager);
-
+    public RunnerBuilder setResourceManager(String resourceManager) throws Exception {
+        addToClasspath(resourceManager);
+        return this;
     }
 
     public RunnerBuilder setBase(String base){
@@ -139,5 +153,4 @@ public class RunnerBuilder {
     public Runner createRunner() throws Exception {
             return new Runner(this);
     }
-
 }
