@@ -63,21 +63,8 @@ public class RunnerBuilder {
         return this;
     }
 
-    public RunnerBuilder setBpmnDiagram(String bpmnDiagram) {
-        switch (bpmnDiagram){
-            case "disambiguation":
-                _bpmnDiagram = TermithResourcePath.DISAMBIGUATION_BPMN_DIAGRAM.getPath();
-                break;
-            case "termithTreeTagger":
-                _bpmnDiagram = TermithResourcePath.DISAMBIGUATION_BPMN_DIAGRAM.getPath();
-                break;
-            case "custom":
-                _bpmnDiagram = TermithResourcePath.CUSTOM_BPMN_DIAGRAM.getPath();
-                break;
-            default:
-                LOGGER.error("this bpmn schema does not exist",new IllegalStateException());
-                break;
-        }
+    public RunnerBuilder setBpmnDiagram(String bpmnDiagramFilename) {
+        _bpmnDiagram = TermithResourcePath.CUSTOM_BPMN_DIAGRAM.getPath() + bpmnDiagramFilename;
         return this;
     }
 
@@ -151,6 +138,6 @@ public class RunnerBuilder {
     }
 
     public Runner createRunner() throws Exception {
-            return new Runner(this);
+        return new Runner(this);
     }
 }
