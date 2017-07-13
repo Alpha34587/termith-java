@@ -64,11 +64,12 @@ public class RunnerBuilder {
     }
 
     public RunnerBuilder setBpmnDiagram(String bpmnDiagramFilename) {
-        _bpmnDiagram = TermithResourcePath.CUSTOM_BPMN_DIAGRAM.getPath() + bpmnDiagramFilename;
+        _bpmnDiagram = TermithResource.CUSTOM_BPMN_DIAGRAM.getPath() + bpmnDiagramFilename;
         return this;
     }
 
     public RunnerBuilder setResourceManager(String resourceManager) throws Exception {
+        TermithResource.setLang(_lang);
         addToClasspath(resourceManager);
         return this;
     }
