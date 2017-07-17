@@ -5,7 +5,7 @@
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 src/main/resources/
-src/test/resources/termith-resources
+src/test/resources/termith-resources/
 # Package Files #
 *.war
 *.ear
