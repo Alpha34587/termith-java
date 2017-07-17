@@ -56,43 +56,12 @@ public class DisambiguationExporterResource {
      * some xpath
      */
     public static final String TEI_SPAN;
-    public static final String SPAN;
-    public static final String TARGET;
-    public static final String CORRESP;
-    public static final String ANA;
-    public static final String CONTEXT_GETTER_SIMPLE;
-    public static final String TAG_GETTER;
-    public static final String CONTEXT_GETTER_LAST;
-    public static final String CONTEXT_GETTER_FIRST;
 
     static {
         /*
         used for extract span
          */
         TEI_SPAN = "//ns:standOff[@type = 'candidatsTermes']/ns:listAnnotation/tei:span";
-        SPAN = "//ns:standOff/tei:span";
-        /*
-        used for extract target attribute of term candidate
-         */
-        TARGET = "@target";
-        /*
-        used for extract corresp attribute of term candidate
-         */
-        CORRESP = "@corresp";
-        /*
-        used for extract ana attribute of term candidate
-         */
-        ANA = "@ana";
-        /*
-        used for extract tei:w element
-         */
-        TAG_GETTER = ".//tei:w";
-        /*
-        used for extract _context
-         */
-        CONTEXT_GETTER_SIMPLE = "/tei:TEI/tei:text//tei:w[@xml:id = $c_id]/..";
-        CONTEXT_GETTER_FIRST = "/tei:TEI/tei:text//tei:w[@xml:id = $first]/..";
-        CONTEXT_GETTER_LAST = "/tei:TEI/tei:text//tei:w[@xml:id = $last]/..";
     }
 
 }

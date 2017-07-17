@@ -53,6 +53,7 @@ public class TermithResourceManager {
         public String getPath() {
             return _path.replace("[LANG]",lang);
         }
+
         public static void setLang(String lang) {
             TermithResource.lang = lang;
         }

@@ -22,13 +22,16 @@ public class XslResources {
     public Source _stylesheet;
     private static final Logger LOGGER = LoggerFactory.getLogger(XslResources.class.getName());
 
-    public XslResources() {
+    public XslResources(String resourcePath) {
         _stylesheet = new StreamSource(getClass().getClassLoader()
-                .getResourceAsStream("models/enrichment/xslResource/extractText.xsl"));
+                .getResourceAsStream(resourcePath));
         try {
             _factory = TransformerFactory.newInstance().newTemplates(_stylesheet);
         } catch (TransformerConfigurationException e) {
             LOGGER.error("cannot parse xsl stylesheet",e);
         }
+    }
+
+    public XslResources() {
     }
 }

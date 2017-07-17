@@ -2,6 +2,7 @@ package org.atilf.module.disambiguation.contextLexicon;
 
 import org.atilf.models.disambiguation.DisambiguationXslResources;
 import org.atilf.models.disambiguation.TxmXslResource;
+import org.atilf.runner.TermithResourceManager;
 import org.custommonkey.xmlunit.XMLUnit;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -10,6 +11,7 @@ import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
+import static org.atilf.runner.TermithResourceManager.*;
 import static org.custommonkey.xmlunit.XMLAssert.assertXMLEqual;
 
 /**
@@ -25,13 +27,13 @@ public class DisambiguationXslTransformerTest {
         _disambiguationXslTransformer = new DisambiguationXslTransformer(
                 new File("src/test/resources/module/disambiguation/contextLexicon/" +
                         "disambiguationXslTransformer/test1.xml"),
-                new DisambiguationXslResources()
+                new DisambiguationXslResources("termith-resources/all/xsl_stylesheet/disambiguation.xsl")
         );
 
         _txmXslTransformer = new DisambiguationXslTransformer(
                 new File("src/test/resources/module/disambiguation/contextLexicon/" +
                         "disambiguationXslTransformer/test1.xml"),
-                new TxmXslResource()
+                new TxmXslResource("termith-resources/all/xsl_stylesheet/txm.xsl")
         );
     }
 

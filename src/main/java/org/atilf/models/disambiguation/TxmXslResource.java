@@ -13,9 +13,8 @@ import javax.xml.transform.stream.StreamSource;
 public class TxmXslResource extends DisambiguationXslResources{
     private static final Logger LOGGER = LoggerFactory.getLogger(DisambiguationXslResources.class.getName());
 
-    public TxmXslResource() {
-        _stylesheet = new StreamSource(getClass().getClassLoader().getResourceAsStream("models/disambiguation/" +
-                "disambiguationXslResources/txm.xsl"));
+    public TxmXslResource(String resourcePath) {
+        _stylesheet = new StreamSource(getClass().getClassLoader().getResourceAsStream(resourcePath));
         try {
             _factory = TransformerFactory.newInstance().newTemplates(_stylesheet);
         } catch (TransformerConfigurationException e) {

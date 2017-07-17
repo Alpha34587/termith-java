@@ -32,21 +32,8 @@ public class LexicalResourceProjectionResources {
         return multiWordsMap;
     }
 
-    public void initResource(String lang, String type){
-        String langType = lang + " " + type;
-        switch (langType) {
-            case "fr " + PH_TYPE :
-                parseResource(
-                        "models/enrichment/lexicalResourceProjection/PhraseologyResource.json",type);
-                break;
-            case "fr " + LST_TYPE :
-                parseResource(
-                        "models/enrichment/lexicalResourceProjection/TransdisciplinaryResource.json",type);
-                break;
-            default:
-                throw new IllegalArgumentException("this language is not support : " + lang);
-
-        }
+    public void initResource(String type, String resourcePath){
+                parseResource(resourcePath,type);
     }
 
     private void parseResource(String file, String type) {
