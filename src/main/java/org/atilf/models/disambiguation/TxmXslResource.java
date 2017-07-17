@@ -14,11 +14,6 @@ public class TxmXslResource extends DisambiguationXslResources{
     private static final Logger LOGGER = LoggerFactory.getLogger(DisambiguationXslResources.class.getName());
 
     public TxmXslResource(String resourcePath) {
-        _stylesheet = new StreamSource(getClass().getClassLoader().getResourceAsStream(resourcePath));
-        try {
-            _factory = TransformerFactory.newInstance().newTemplates(_stylesheet);
-        } catch (TransformerConfigurationException e) {
-            LOGGER.error("cannot parse xsl stylesheet",e);
-        }
+        super(resourcePath);
     }
 }

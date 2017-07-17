@@ -3,6 +3,7 @@ package org.atilf.module.enrichment.lexical.resource.projection;
 import org.atilf.models.enrichment.LexicalResourceProjectionResources;
 import org.atilf.models.enrichment.MorphologyOffsetId;
 import org.atilf.models.enrichment.MultiWordsOffsetId;
+import org.atilf.runner.TermithResourceManager;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -16,15 +17,15 @@ import static org.atilf.models.enrichment.LexicalResourceProjectionResources.PH_
  * Created by Simon Meoni on 12/06/17.
  */
 public class PhraseologyProjectorTest {
-
-    private static LexicalResourceProjectionResources lexicalResourceProjectionResources = new
-            LexicalResourceProjectionResources("fr", PH_TYPE);
+    private static LexicalResourceProjectionResources lexicalResourceProjectionResources;
     private static List<MorphologyOffsetId> morphologyOffsetIds = new ArrayList<>();
     private static List<MultiWordsOffsetId> observedMultiWordsOffsetIds = new ArrayList<>();
 
 
     @BeforeClass
     public static void setUp(){
+        TermithResourceManager.TermithResource.setLang("fr");
+        lexicalResourceProjectionResources = new LexicalResourceProjectionResources("termith-resources/fr/lexical_resources/PhraseologyResource.json", PH_TYPE);
         morphologyOffsetIds.add(new MorphologyOffsetId(0,0,"le","",1));
         morphologyOffsetIds.add(new MorphologyOffsetId(0,0,"chat","",2));
         morphologyOffsetIds.add(new MorphologyOffsetId(0,0,"mange","",3));

@@ -18,7 +18,7 @@ import static org.atilf.models.enrichment.LexicalResourceProjectionResources.LST
 public class TransdisciplinaryLexiconsProjectorTest {
 
     private static LexicalResourceProjectionResources lexicalResourceProjectionResources = new
-            LexicalResourceProjectionResources("fr", LST_TYPE);
+            LexicalResourceProjectionResources("termith-resources/fr/lexical_resources/TransdisciplinaryResource.json", LST_TYPE);
     private static List<MorphologyOffsetId> morphologyOffsetIds = new ArrayList<>();
     private static List<MultiWordsOffsetId> transdisciplinaryOffsetIds = new ArrayList<>();
 

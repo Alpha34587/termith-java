@@ -19,7 +19,7 @@ public class TextExtractorTest {
     @BeforeClass
     public static void setUp(){
         _textExtractor = new TextExtractor(new File("src/test/resources/module/enrichment/" +
-                "initializer/textExtractor/file1.xml"), new XslResources());
+                "initializer/textExtractor/file1.xml"), new XslResources("termith-resources/all/xsl_stylesheet/extractText.xsl"));
     }
 
     @Test

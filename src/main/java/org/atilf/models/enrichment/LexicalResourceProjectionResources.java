@@ -20,8 +20,8 @@ public class LexicalResourceProjectionResources {
     private Map<String,String> multiWordsMap = new HashMap<>();
     private final Logger _logger = LoggerFactory.getLogger(getClass().getName());
 
-    public LexicalResourceProjectionResources(String lang, String type) {
-        initResource(lang, type);
+    public LexicalResourceProjectionResources(String resourcePath, String type) {
+        parseResource(resourcePath, type);
     }
 
     public Map<String, List<Integer>> getResourceMap() {
@@ -32,17 +32,13 @@ public class LexicalResourceProjectionResources {
         return multiWordsMap;
     }
 
-    public void initResource(String type, String resourcePath){
-                parseResource(resourcePath,type);
-    }
-
-    private void parseResource(String file, String type) {
+    private void parseResource(String resourcePath, String type) {
 
         if (type == LST_TYPE){
-            parseLst(file);
+            parseLst(resourcePath);
         }
         else {
-            parsePh(file);
+            parsePh(resourcePath);
         }
     }
 

@@ -31,7 +31,4 @@ public class XslResources {
             LOGGER.error("cannot parse xsl stylesheet",e);
         }
     }
-
-    public XslResources() {
-    }
 }
