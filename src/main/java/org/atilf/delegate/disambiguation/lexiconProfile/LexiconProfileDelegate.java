@@ -3,7 +3,10 @@ package org.atilf.delegate.disambiguation.lexiconProfile;
 import org.atilf.delegate.Delegate;
 import org.atilf.models.disambiguation.RConnectionPool;
 import org.atilf.models.disambiguation.RLexicon;
+import org.atilf.models.disambiguation.RResources;
 import org.atilf.module.disambiguation.lexiconProfile.SpecCoefficientInjector;
+import org.atilf.runner.TermithResourceManager;
+import org.atilf.runner.TermithResourceManager.TermithResource;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -29,21 +32,25 @@ public class LexiconProfileDelegate extends Delegate {
         /*
         convert global corpus into R variable
          */
-        RLexicon rLexicon = new RLexicon(_termithIndex.getCorpusLexicon(), getFlowableVariable("out",null).toString());
-        RConnectionPool RConnectionPool = new RConnectionPool(8,rLexicon);
+        RLexicon rLexicon = new RLexicon(
+                _termithIndex.getCorpusLexicon(),
+                getFlowableVariable("out",null).toString()
+        );
+        RResources.init(TermithResource.DISAMBIGUATION_R_SCRIPT.getPath());
+        RConnectionPool rConnectionPool = new RConnectionPool(8,rLexicon);
         _termithIndex.getContextLexicon().forEach(
                 (key, value) -> _executorService.submit(new SpecCoefficientInjector(
                         key,
                         _termithIndex,
                         rLexicon,
                         getFlowableVariable("out",null).toString(),
-                        RConnectionPool))
+                        rConnectionPool))
         );
 
         _logger.info("Waiting SpecCoefficientInjector executors to finish");
         _executorService.shutdown();
         _executorService.awaitTermination(1L, TimeUnit.DAYS);
-        RConnectionPool.removeThread(currentThread());
+        rConnectionPool.removeThread(currentThread());
         Files.delete(rLexicon.getCsvPath());
     }
 }

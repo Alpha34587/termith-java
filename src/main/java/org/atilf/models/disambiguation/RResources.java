@@ -12,23 +12,26 @@ import java.io.InputStream;
  * @author Simon Meoni Created on 28/11/16.
  */
 public class RResources {
-    public static final StringBuilder SCRIPT;
+    private static StringBuilder script;
     private static final Logger LOGGER = LoggerFactory.getLogger(RResources.class.getName());
 
     private RResources() {
         throw new IllegalAccessError("Utility class");
     }
 
-    static {
+    public static void init(String resourcePath){
         String script = null;
-        InputStream resourceAsStream = SpecCoefficientInjector.class.getResourceAsStream("/models/disambiguation" +
-                "/rResources/specificities.R");
+        InputStream resourceAsStream = SpecCoefficientInjector.class.getResourceAsStream(resourcePath);
         try {
             script = IOUtils.toString(resourceAsStream, "UTF-8");
         } catch (IOException e) {
             LOGGER.error("cannot read R resource",e);
         }
         assert script != null;
-        SCRIPT = new StringBuilder(script);
+        RResources.script = new StringBuilder(script);
+    }
+
+    public static StringBuilder getScript() {
+        return script;
     }
 }

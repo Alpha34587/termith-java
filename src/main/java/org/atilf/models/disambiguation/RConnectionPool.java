@@ -64,7 +64,7 @@ public class RConnectionPool {
         RConnectionThread(RLexicon rLexicon){
             try {
                 _rConnection = new RConnection();
-                _rConnection.eval(RResources.SCRIPT.toString());
+                _rConnection.eval(RResources.getScript().toString());
                 _rConnection.eval("sumCol <-" + rLexicon.getSize());
                 _rConnection.eval("lexic <- import_csv(\"" + rLexicon.getCsvPath() + "\")");
             } catch (RserveException e) {

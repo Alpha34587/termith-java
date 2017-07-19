@@ -2,10 +2,7 @@ package org.atilf.module.disambiguation.lexiconProfile;
 
 import com.google.common.collect.HashMultiset;
 import com.google.common.collect.Multiset;
-import org.atilf.models.disambiguation.CorpusLexicon;
-import org.atilf.models.disambiguation.LexiconProfile;
-import org.atilf.models.disambiguation.RConnectionPool;
-import org.atilf.models.disambiguation.RLexicon;
+import org.atilf.models.disambiguation.*;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.ClassRule;
@@ -28,7 +25,6 @@ public class SpecCoefficientInjectorTest {
     private static Multiset<String> _lexiconMultiset = HashMultiset.create();
     private static RLexicon _rLexicon;
     private static Map<String, LexiconProfile> _contextLexicon = new HashMap<>();
-    private static Map<String,float[]> _specificities = new HashMap<>();
 
     @ClassRule
     public static TemporaryFolder temporaryFolder = new TemporaryFolder();
@@ -99,6 +95,7 @@ public class SpecCoefficientInjectorTest {
 
     @Test
     public void computeSpecCoeff() throws Exception {
+        RResources.init("/termith-resources/all/r_script/specificities.R");
         RConnectionPool rConnectionPool = new RConnectionPool(1,_rLexicon);
         RConnection rConnection = rConnectionPool.getRConnection(Thread.currentThread());
         List<Float> observedResult = new SpecCoefficientInjector(

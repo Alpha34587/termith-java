@@ -17,32 +17,23 @@ import java.util.Map;
  */
 public class TagNormalizer {
 
-    private static Map<String,String> ttTag;
+    private static Map<String,String> _ttTag;
     private static final Logger _LOGGER = LoggerFactory.getLogger(TagNormalizer.class);
 
     private TagNormalizer() {
         throw new IllegalAccessError("Utility class");
     }
 
-    public static void initTag(String lang){
-        switch (lang) {
-            case "en" :
-                ttTag = parseResource("/models/enrichment/tagNormalizer/treeTaggerMultexTagEn.json");
-                break;
-            case "fr" :
-                ttTag = parseResource("/models/enrichment/tagNormalizer/treeTaggerMultexTagFr.json");
-                break;
-            default:
-                throw new IllegalArgumentException("this language is not support : " + lang);
-        }
+    public static void initTag(String resourcePath){
+        _ttTag = parseResource(resourcePath);
     }
 
-    private static Map<String,String> parseResource(String file) {
+    private static Map<String,String> parseResource(String resourcePath) {
         Map<String,String> result = new HashMap<>();
         boolean inTag = false;
         try {
             JsonFactory jFactory = new JsonFactory();
-            JsonParser jParser = jFactory.createParser(TagNormalizer.class.getResourceAsStream(file));
+            JsonParser jParser = jFactory.createParser(TagNormalizer.class.getResourceAsStream(resourcePath));
 
             while (jParser.nextToken() != null) {
                 if (jParser.getCurrentName() == "tag") {
@@ -66,6 +57,6 @@ public class TagNormalizer {
     }
 
     public static String normalize(String token) {
-        return ttTag.get(token);
+        return _ttTag.get(token);
     }
 }
