@@ -1,4 +1,4 @@
-package org.atilf.models.disambiguation;
+package org.atilf.resources.disambiguation;
 
 import org.apache.commons.io.IOUtils;
 import org.atilf.module.disambiguation.lexiconProfile.SpecCoefficientInjector;

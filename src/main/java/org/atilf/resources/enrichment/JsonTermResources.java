@@ -1,4 +1,4 @@
-package org.atilf.models.enrichment;
+package org.atilf.resources.enrichment;
 
 /**
  * the element to catch during the Terminology parsing

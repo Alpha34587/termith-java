@@ -1,7 +1,7 @@
 package org.atilf.module.enrichment.lexical.resource.projection;
 
 import org.atilf.models.TermithIndex;
-import org.atilf.models.enrichment.LexicalResourceProjectionResources;
+import org.atilf.resources.enrichment.LexicalResourceProjectionResources;
 import org.atilf.models.enrichment.MorphologyOffsetId;
 import org.atilf.models.enrichment.MultiWordsOffsetId;
 import org.atilf.module.tools.FilesUtils;

@@ -1,6 +1,6 @@
 package org.atilf.module.enrichment.lexical.resource.projection;
 
-import org.atilf.models.enrichment.LexicalResourceProjectionResources;
+import org.atilf.resources.enrichment.LexicalResourceProjectionResources;
 import org.atilf.models.enrichment.MorphologyOffsetId;
 import org.atilf.models.enrichment.MultiWordsOffsetId;
 import org.atilf.runner.TermithResourceManager;
@@ -11,7 +11,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.atilf.models.enrichment.LexicalResourceProjectionResources.PH_TYPE;
+import static org.atilf.resources.enrichment.LexicalResourceProjectionResources.PH_TYPE;
 
 /**
  * Created by Simon Meoni on 12/06/17.

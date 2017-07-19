@@ -3,9 +3,8 @@ package org.atilf.delegate.disambiguation.lexiconProfile;
 import org.atilf.delegate.Delegate;
 import org.atilf.models.disambiguation.RConnectionPool;
 import org.atilf.models.disambiguation.RLexicon;
-import org.atilf.models.disambiguation.RResources;
+import org.atilf.resources.disambiguation.RResources;
 import org.atilf.module.disambiguation.lexiconProfile.SpecCoefficientInjector;
-import org.atilf.runner.TermithResourceManager;
 import org.atilf.runner.TermithResourceManager.TermithResource;
 
 import java.io.IOException;

@@ -1,4 +1,4 @@
-package org.atilf.models.enrichment;
+package org.atilf.resources.enrichment;
 
 import org.atilf.module.enrichment.initializer.TextExtractor;
 import org.slf4j.Logger;

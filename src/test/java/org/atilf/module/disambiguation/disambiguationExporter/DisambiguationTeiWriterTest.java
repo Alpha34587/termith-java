@@ -1,7 +1,7 @@
 package org.atilf.module.disambiguation.disambiguationExporter;
 
 import com.google.common.collect.HashMultiset;
-import org.atilf.models.disambiguation.AnnotationResources;
+import org.atilf.resources.disambiguation.AnnotationResources;
 import org.atilf.models.disambiguation.EvaluationProfile;
 import org.custommonkey.xmlunit.XMLUnit;
 import org.junit.BeforeClass;

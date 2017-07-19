@@ -1,4 +1,4 @@
-package org.atilf.models.disambiguation;
+package org.atilf.resources.disambiguation;
 
 /**
  * @author Simon Meoni Created on 28/11/16.

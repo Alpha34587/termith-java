@@ -19,8 +19,8 @@ import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
-import static org.atilf.models.disambiguation.AnnotationResources.LEX_OFF;
-import static org.atilf.models.disambiguation.AnnotationResources.LEX_ON;
+import static org.atilf.resources.disambiguation.AnnotationResources.LEX_OFF;
+import static org.atilf.resources.disambiguation.AnnotationResources.LEX_ON;
 
 /**
  * compute specificity coefficient for each word of a term candidate entry. the result is retained on the

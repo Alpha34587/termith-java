@@ -4,6 +4,7 @@ import org.atilf.models.TermithIndex;
 import org.atilf.models.enrichment.*;
 import org.atilf.module.Module;
 import org.atilf.module.tools.FilesUtils;
+import org.atilf.resources.enrichment.StandOffResources;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

@@ -1,12 +1,8 @@
-package org.atilf.models.disambiguation;
+package org.atilf.resources.disambiguation;
 
-import org.atilf.models.enrichment.XslResources;
+import org.atilf.resources.enrichment.XslResources;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import javax.xml.transform.TransformerConfigurationException;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.stream.StreamSource;
 
 /**
  * the xsl resource used during the module.disambiguation. the xsl stylesheet converts tei file into working file format

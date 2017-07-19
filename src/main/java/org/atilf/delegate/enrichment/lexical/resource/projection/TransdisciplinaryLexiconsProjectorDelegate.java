@@ -1,7 +1,7 @@
 package org.atilf.delegate.enrichment.lexical.resource.projection;
 
 import org.atilf.delegate.Delegate;
-import org.atilf.models.enrichment.LexicalResourceProjectionResources;
+import org.atilf.resources.enrichment.LexicalResourceProjectionResources;
 import org.atilf.module.enrichment.lexical.resource.projection.TransdisciplinaryLexiconsProjector;
 import org.atilf.monitor.timer.TermithProgressTimer;
 
@@ -12,7 +12,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
-import static org.atilf.models.enrichment.LexicalResourceProjectionResources.LST_TYPE;
+import static org.atilf.resources.enrichment.LexicalResourceProjectionResources.LST_TYPE;
 
 /**
  * Created by Simon Meoni on 12/06/17.

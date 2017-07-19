@@ -1,4 +1,4 @@
-package org.atilf.models.enrichment;
+package org.atilf.resources.enrichment;
 
 import com.google.common.io.ByteStreams;
 import org.slf4j.Logger;
@@ -39,11 +39,11 @@ public class TreeTaggerParameter {
 
     private String copyTokenizeScript(String outputPath) {
         String perlPath =  outputPath + "/utf8-tokenize-custom.perl";
-        InputStream resourceAsStream = getClass().getClassLoader().getResourceAsStream("module/enrichment/analyze/treeTaggerWorker/utf8-tokenize-custom.perl");
+        InputStream resourceAsStream = getClass().getClassLoader().getResourceAsStream(
+                "module/enrichment/analyze/treeTaggerWorker/utf8-tokenize-custom.perl"
+        );
         try {
-            Files.write(Paths.get(perlPath), ByteStreams.toByteArray
-                    (resourceAsStream));
-
+            Files.write(Paths.get(perlPath), ByteStreams.toByteArray(resourceAsStream));
             boolean tryExecutable = new File(perlPath).setExecutable(true);
             if (!tryExecutable){
                 throw new IOException("copy of utf8-tokenize-custom.perl failed, the file cannot be executable");

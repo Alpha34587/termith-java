@@ -1,5 +1,6 @@
 package org.atilf.models.disambiguation;
 
+import org.atilf.resources.disambiguation.RResources;
 import org.rosuda.REngine.Rserve.RConnection;
 import org.rosuda.REngine.Rserve.RserveException;
 import org.slf4j.Logger;

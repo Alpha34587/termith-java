@@ -1,7 +1,7 @@
 package org.atilf.delegate.enrichment.exporter;
 
 import org.atilf.delegate.Delegate;
-import org.atilf.models.enrichment.StandOffResources;
+import org.atilf.resources.enrichment.StandOffResources;
 import org.atilf.module.enrichment.exporter.TeiWriter;
 import org.atilf.monitor.timer.TermithProgressTimer;
 

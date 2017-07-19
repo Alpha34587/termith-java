@@ -1,6 +1,6 @@
 package org.atilf.module.enrichment.initializer;
 
-import org.atilf.models.enrichment.XslResources;
+import org.atilf.resources.enrichment.XslResources;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;

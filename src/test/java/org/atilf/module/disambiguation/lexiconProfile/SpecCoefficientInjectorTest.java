@@ -3,6 +3,7 @@ package org.atilf.module.disambiguation.lexiconProfile;
 import com.google.common.collect.HashMultiset;
 import com.google.common.collect.Multiset;
 import org.atilf.models.disambiguation.*;
+import org.atilf.resources.disambiguation.RResources;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.ClassRule;

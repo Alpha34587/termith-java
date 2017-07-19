@@ -1,4 +1,4 @@
-package org.atilf.models.disambiguation;
+package org.atilf.resources.disambiguation;
 
 import javax.xml.XMLConstants;
 import javax.xml.namespace.NamespaceContext;

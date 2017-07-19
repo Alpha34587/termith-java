@@ -1,10 +1,9 @@
 package org.atilf.delegate.disambiguation.evaluation;
 
 import org.atilf.delegate.Delegate;
-import org.atilf.models.disambiguation.DisambiguationXslResources;
+import org.atilf.resources.disambiguation.DisambiguationXslResources;
 import org.atilf.module.disambiguation.contextLexicon.DisambiguationXslTransformer;
 import org.atilf.monitor.timer.TermithProgressTimer;
-import org.atilf.runner.TermithResourceManager;
 
 import java.io.IOException;
 import java.nio.file.Files;

@@ -1,4 +1,4 @@
-package org.atilf.models.enrichment;
+package org.atilf.resources.enrichment;
 
 import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;

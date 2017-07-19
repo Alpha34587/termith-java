@@ -1,10 +1,9 @@
 package org.atilf.delegate.enrichment.initializer;
 
 import org.atilf.delegate.Delegate;
-import org.atilf.models.enrichment.XslResources;
+import org.atilf.resources.enrichment.XslResources;
 import org.atilf.module.enrichment.initializer.TextExtractor;
 import org.atilf.monitor.timer.TermithProgressTimer;
-import org.atilf.runner.TermithResourceManager;
 
 import java.io.IOException;
 import java.nio.file.Files;
