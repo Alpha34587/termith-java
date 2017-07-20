@@ -52,7 +52,7 @@ public class TreeTaggerParameter {
         String parameter = _treeTaggerHome + "/bin/tree-tagger " + _treeTaggerHome + "/lib/";
 
         if (Objects.equals(_lang, "fr")) {
-            parameter += "french.par ";
+            parameter += "french-utf8.par ";
         }
         else if (Objects.equals(_lang,"en")) {
             parameter += "english-utf8.par ";
