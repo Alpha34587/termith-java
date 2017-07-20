@@ -6,6 +6,7 @@ import org.junit.rules.TemporaryFolder;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.Map;
 
 import static org.junit.Assert.*;
 
@@ -14,19 +15,21 @@ import static org.junit.Assert.*;
  */
 public class TreeTaggerWrapperTest {
     private static TreeTaggerWrapper _treeTaggerWrapper;
-    private static TreeTaggerParameter _treeTaggerParameter;
+    private final static String TREETAGGERHOME =  "/opt/treetagger";
     @ClassRule
     public static TemporaryFolder _temporaryFolder = new TemporaryFolder();
     @BeforeClass
     public static void setUp() throws Exception {
-        _treeTaggerParameter = new TreeTaggerParameter(false,"fr","/opt/treetagger");
+        String getenv = System.getenv("TREETAGGER_HOME");
+        TreeTaggerParameter treeTaggerParameter = new TreeTaggerParameter(false, "fr", TREETAGGERHOME);
         _treeTaggerWrapper = new TreeTaggerWrapper(
                 new StringBuilder("le chat"),
-                _treeTaggerParameter,
+                treeTaggerParameter,
                 _temporaryFolder.getRoot().getPath()
         );
     }
 
+    @Ignore
     @Test
     public void execute() throws Exception {
         _treeTaggerWrapper.execute();
