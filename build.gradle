@@ -88,7 +88,7 @@ task deployJar << {
 }
 task checkTermithResources{
     println(":checkTermithResources")
-    def folder = new File("./src/test/resources/termith-resources")
+    def folder = new File("./src/main/resources/termith-resources")
     if( !folder.exists() ) {
         exec {
             executable "sh"

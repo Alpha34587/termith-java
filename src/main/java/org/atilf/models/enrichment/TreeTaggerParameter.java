@@ -30,7 +30,7 @@ public class TreeTaggerParameter {
      * @param lang           specify the lang used to tag files
      * @param treeTaggerHome the path of the application
      */
-    public TreeTaggerParameter(boolean sgml, String lang, String treeTaggerHome, String outputPath) {
+    public TreeTaggerParameter(boolean sgml, String lang, String treeTaggerHome) {
         _sgml = sgml;
         _lang = lang;
         _treeTaggerHome = treeTaggerHome;

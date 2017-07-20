@@ -75,8 +75,7 @@ public class TreeTaggerWorkerDelegate extends Delegate {
         TreeTaggerParameter treeTaggerParameter =  new TreeTaggerParameter(
                 false,
                 getFlowableVariable("lang",null),
-                getFlowableVariable("treeTaggerHome",null),
-                getFlowableVariable("out",null).toString()
+                getFlowableVariable("treeTaggerHome",null)
         );
         List<Future> futures = new ArrayList<>();
 
