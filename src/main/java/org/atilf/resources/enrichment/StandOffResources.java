@@ -15,7 +15,6 @@ import java.io.InputStream;
 public class StandOffResources {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(StandOffResources.class.getName());
-    private final static String PATH = "models/enrichment/standoffResources/";
 
     public static StringBuilder LIST_ANNOTATION;
     public static StringBuilder MS_SPAN;
@@ -32,18 +31,18 @@ public class StandOffResources {
 
 
     public static void init(String resourcePath){
-         LIST_ANNOTATION = indentation(readFile(PATH + "list-annotation.xml"), 2);
-         MS_SPAN = indentation(readFile(PATH + "ms-span.xml"), 3);
-         T_SPAN = indentation(readFile(PATH + "t-span.xml"), 3);
-         PH_SPAN = indentation(readFile(PATH + "ph-span.xml"), 3);
-         LST_SPAN = indentation(readFile(PATH + "lst-span.xml"), 3);
-         MS_TEI_HEADER = indentation(readFile(PATH + "ms-tei-header.xml"), 2);
-         T_TEI_HEADER = indentation(readFile(PATH + "t-tei-header.xml"), 2);
-         PH_TEI_HEADER = indentation(readFile(PATH + "ph-tei-header.xml"), 2);
-         LST_TEI_HEADER = indentation(readFile(PATH + "lst-tei-header.xml"), 2);
-         T_INTERP_GRP = indentation(readFile(PATH + "t-interp-grp.xml"), 2);
-         STANDOFF = indentation(readFile(PATH + "standoff.xml"), 1);
-         NS = indentation(readFile(PATH + "ns.txt"),0);
+         LIST_ANNOTATION = indentation(readFile(resourcePath + "list-annotation.xml"), 2);
+         MS_SPAN = indentation(readFile(resourcePath + "ms-span.xml"), 3);
+         T_SPAN = indentation(readFile(resourcePath + "t-span.xml"), 3);
+         PH_SPAN = indentation(readFile(resourcePath + "ph-span.xml"), 3);
+         LST_SPAN = indentation(readFile(resourcePath + "lst-span.xml"), 3);
+         MS_TEI_HEADER = indentation(readFile(resourcePath + "ms-tei-header.xml"), 2);
+         T_TEI_HEADER = indentation(readFile(resourcePath + "t-tei-header.xml"), 2);
+         PH_TEI_HEADER = indentation(readFile(resourcePath + "ph-tei-header.xml"), 2);
+         LST_TEI_HEADER = indentation(readFile(resourcePath + "lst-tei-header.xml"), 2);
+         T_INTERP_GRP = indentation(readFile(resourcePath + "t-interp-grp.xml"), 2);
+         STANDOFF = indentation(readFile(resourcePath + "standoff.xml"), 1);
+         NS = indentation(readFile(resourcePath + "ns.txt"),0);
     }
     /**
      * read a fragment
