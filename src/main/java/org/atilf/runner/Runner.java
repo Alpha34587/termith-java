@@ -32,18 +32,19 @@ public class Runner {
 
         _bpmnDiagram = runnerBuilder._bpmnDiagram;
         _flowableVariable.put("poolSize", runnerBuilder._poolSize);
-        _flowableVariable.put("termithIndex", runnerBuilder._termithIndex);
         _flowableVariable.put("thresholdMin", runnerBuilder._thresholdMin);
         _flowableVariable.put("thresholdMax", runnerBuilder._thresholdMax);
-        _flowableVariable.put("txmInputPath", runnerBuilder._txmInputPath);
-        _flowableVariable.put("base", runnerBuilder._base);
-        _flowableVariable.put("out", runnerBuilder._out);
         _flowableVariable.put("lang", runnerBuilder._lang);
         _flowableVariable.put("treeTaggerHome", runnerBuilder._treeTaggerHome);
-        _flowableVariable.put("learningPath", runnerBuilder._learningPath);
-        _flowableVariable.put("evaluationPath", runnerBuilder._evaluationPath);
         _flowableVariable.put("corpusSize", runnerBuilder._corpusSize);
         _flowableVariable.put("annotation", runnerBuilder._annotation);
+
+        _flowableVariable.put("txmInputPath", runnerBuilder._txmInputPath);
+        _flowableVariable.put("learningPath", runnerBuilder._learningPath);
+        _flowableVariable.put("evaluationPath", runnerBuilder._evaluationPath);
+        _flowableVariable.put("out", runnerBuilder._out);
+        _flowableVariable.put("base", runnerBuilder._base);
+        _flowableVariable.put("termithIndex", runnerBuilder._termithIndex);
         _flowableVariable.put("timePerformanceEvents",new ArrayList<>());
         _flowableVariable.put("memoryPerformanceEvents",new ArrayList<>());
     }
