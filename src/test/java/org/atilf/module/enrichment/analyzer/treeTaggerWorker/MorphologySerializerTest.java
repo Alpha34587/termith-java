@@ -29,7 +29,7 @@ public class MorphologySerializerTest {
     
     @BeforeClass
     public static void setUp() throws IOException {
-        TagNormalizer.initTag("en");
+        TagNormalizer.initTag("/termith-resources/en/treetagger_multex/treeTaggerMultexTag.json");
         Map<String,StringBuilder> textExtracted = new HashMap<>();
         textExtracted.put("1",new StringBuilder("\n \n \nJournal of Gerontology: " +
                 "PSYCHOLOGICAL patient (1998@)"));

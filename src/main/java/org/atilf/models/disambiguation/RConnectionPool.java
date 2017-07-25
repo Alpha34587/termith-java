@@ -1,5 +1,6 @@
 package org.atilf.models.disambiguation;
 
+import org.atilf.resources.disambiguation.RResources;
 import org.rosuda.REngine.Rserve.RConnection;
 import org.rosuda.REngine.Rserve.RserveException;
 import org.slf4j.Logger;
@@ -64,7 +65,7 @@ public class RConnectionPool {
         RConnectionThread(RLexicon rLexicon){
             try {
                 _rConnection = new RConnection();
-                _rConnection.eval(RResources.SCRIPT.toString());
+                _rConnection.eval(RResources.getScript().toString());
                 _rConnection.eval("sumCol <-" + rLexicon.getSize());
                 _rConnection.eval("lexic <- import_csv(\"" + rLexicon.getCsvPath() + "\")");
             } catch (RserveException e) {

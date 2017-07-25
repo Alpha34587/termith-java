@@ -16,7 +16,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import static eu.project.ttc.readers.JsonCasConstants.F_BEGIN;
 import static eu.project.ttc.readers.JsonCasConstants.F_END;
-import static org.atilf.models.enrichment.JsonTermResources.*;
+import static org.atilf.resources.enrichment.JsonTermResources.*;
 
 /**
  * parse termsuite json termsuite terminology

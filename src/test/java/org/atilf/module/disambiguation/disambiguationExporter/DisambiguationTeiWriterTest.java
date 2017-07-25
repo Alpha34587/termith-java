@@ -1,7 +1,7 @@
 package org.atilf.module.disambiguation.disambiguationExporter;
 
 import com.google.common.collect.HashMultiset;
-import org.atilf.models.disambiguation.AnnotationResources;
+import org.atilf.resources.disambiguation.AnnotationResources;
 import org.atilf.models.disambiguation.EvaluationProfile;
 import org.custommonkey.xmlunit.XMLUnit;
 import org.junit.BeforeClass;
@@ -37,7 +37,7 @@ public class DisambiguationTeiWriterTest {
         _evaluationProfile.get("entry-990_noDM").setAutomaticAnnotation(AnnotationResources.DA_OFF);
 
         DisambiguationTeiWriter teiWriter = new DisambiguationTeiWriter(
-                "/home/smeoni/IdeaProjects/termITH/src/test/resources/module/" +
+                "src/test/resources/module/" +
                         "disambiguation/disambiguationExporter/disambiguationExporter/test1.xml",
                 _evaluationProfile,
                 temporaryFolder.getRoot().toString()
@@ -51,7 +51,7 @@ public class DisambiguationTeiWriterTest {
         assertXMLEqual(
                 "these files must be equals",
                 String.join("\n",Files.readAllLines(
-                        Paths.get("/home/smeoni/IdeaProjects/termITH/src/test/resources/module/disambiguation/" +
+                        Paths.get("src/test/resources/module/disambiguation/" +
                                 "disambiguationExporter/disambiguationExporter/test2.xml"))
                 ),
                 String.join("\n",Files.readAllLines(Paths.get(temporaryFolder.getRoot().toString() + "/test1.xml")))

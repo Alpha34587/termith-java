@@ -1,7 +1,7 @@
 package org.atilf.module.disambiguation.evaluation;
 
 import org.atilf.models.TermithIndex;
-import org.atilf.models.disambiguation.AnnotationResources;
+import org.atilf.resources.disambiguation.AnnotationResources;
 import org.atilf.models.disambiguation.EvaluationProfile;
 import org.atilf.models.disambiguation.LexiconProfile;
 import org.atilf.module.Module;

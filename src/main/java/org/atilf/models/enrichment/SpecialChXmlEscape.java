@@ -21,6 +21,7 @@ public class SpecialChXmlEscape {
         XML_SPEC_CH.put("'", "&apos;");
         XML_SPEC_CH.put("<", "&lt;");
         XML_SPEC_CH.put(">", "&gt;");
+        XML_SPEC_CH.put("<unknown>", "@unknown");
     }
 
     /**

@@ -1,6 +1,6 @@
 package org.atilf.module.enrichment.lexical.resource.projection;
 
-import org.atilf.models.enrichment.LexicalResourceProjectionResources;
+import org.atilf.resources.enrichment.LexicalResourceProjectionResources;
 import org.atilf.models.enrichment.MorphologyOffsetId;
 import org.atilf.models.enrichment.MultiWordsOffsetId;
 import org.junit.Assert;
@@ -10,7 +10,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.atilf.models.enrichment.LexicalResourceProjectionResources.LST_TYPE;
+import static org.atilf.resources.enrichment.LexicalResourceProjectionResources.LST_TYPE;
 
 /**
  * Created by Simon Meoni on 13/06/17.
@@ -18,7 +18,7 @@ import static org.atilf.models.enrichment.LexicalResourceProjectionResources.LST
 public class TransdisciplinaryLexiconsProjectorTest {
 
     private static LexicalResourceProjectionResources lexicalResourceProjectionResources = new
-            LexicalResourceProjectionResources("fr", LST_TYPE);
+            LexicalResourceProjectionResources("termith-resources/fr/lexical_resources/TransdisciplinaryResource.json", LST_TYPE);
     private static List<MorphologyOffsetId> morphologyOffsetIds = new ArrayList<>();
     private static List<MultiWordsOffsetId> transdisciplinaryOffsetIds = new ArrayList<>();
 

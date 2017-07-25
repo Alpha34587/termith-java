@@ -75,7 +75,6 @@ jar {
         configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
     }
 }
-
 task deployJar << {
         tasks.jar.execute()
         ssh.run {
@@ -86,6 +85,22 @@ task deployJar << {
                 execute "ln -sf /usr/local/istex/termITH-all-v${version}-SNAPSHOT.jar /usr/local/istex/termith-jar"
             }
         }
+}
+task checkTermithResources{
+    println(":checkTermithResources")
+    def folder = new File("./src/main/resources/termith-resources")
+    if( !folder.exists() ) {
+        exec {
+            executable "sh"
+            args "-c", "git clone git@github.com:simonmeoni/termith-resources.git src/main/resources/termith-resources"
+        }
+    }
+    else {
+        exec {
+            executable "sh"
+            args "-c", "cd " + folder + "&& git pull"
+        }
+    }
 }
 
 test {

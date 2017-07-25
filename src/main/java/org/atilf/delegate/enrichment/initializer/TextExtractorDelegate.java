@@ -1,7 +1,7 @@
 package org.atilf.delegate.enrichment.initializer;
 
 import org.atilf.delegate.Delegate;
-import org.atilf.models.enrichment.XslResources;
+import org.atilf.resources.enrichment.XslResources;
 import org.atilf.module.enrichment.initializer.TextExtractor;
 import org.atilf.monitor.timer.TermithProgressTimer;
 
@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
+
+import static org.atilf.runner.TermithResourceManager.*;
 
 /**
  * Extract the plain text of an xml file and retained the xml corpus file path into a map
@@ -29,7 +31,7 @@ public class TextExtractorDelegate extends Delegate {
         /*
         initialize XslResource & ExtractTextTimer
          */
-        XslResources xslResources = new XslResources();
+        XslResources xslResources = new XslResources(TermithResource.TEXT_XSL.getPath());
         List<Future> futures = new ArrayList<>();
         /*
         extract the text and map the path of the corpus into hashMap with identifier

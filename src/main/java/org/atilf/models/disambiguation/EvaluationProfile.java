@@ -2,8 +2,9 @@ package org.atilf.models.disambiguation;
 
 import com.google.common.collect.HashMultiset;
 import com.google.common.collect.Multiset;
+import org.atilf.resources.disambiguation.AnnotationResources;
 
-import static org.atilf.models.disambiguation.AnnotationResources.NO_DA;
+import static org.atilf.resources.disambiguation.AnnotationResources.NO_DA;
 
 /**
  * the evaluation contains the _context of a terms to evaluate and a the value of module.disambiguation.

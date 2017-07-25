@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static org.atilf.models.disambiguation.AnnotationResources.DA_ON;
+import static org.atilf.resources.disambiguation.AnnotationResources.DA_ON;
 
 /**
  * @author Simon Meoni

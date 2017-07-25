@@ -15,7 +15,7 @@ import javax.xml.parsers.SAXParserFactory;
 import java.io.File;
 import java.util.*;
 
-import static org.atilf.models.disambiguation.AnnotationResources.*;
+import static org.atilf.resources.disambiguation.AnnotationResources.*;
 
 /**
  *         - the context extractor moudule extract the context of a terminology entries of the learning corpus.

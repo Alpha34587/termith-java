@@ -30,30 +30,12 @@ public class TreeTaggerParameter {
      * @param lang           specify the lang used to tag files
      * @param treeTaggerHome the path of the application
      */
-    public TreeTaggerParameter(boolean sgml, String lang, String treeTaggerHome, String outputPath) {
+    public TreeTaggerParameter(boolean sgml, String lang, String treeTaggerHome) {
         _sgml = sgml;
         _lang = lang;
         _treeTaggerHome = treeTaggerHome;
-        _tokenizePath = copyTokenizeScript(outputPath);
+        _tokenizePath = treeTaggerHome + "/cmd/utf8-tokenize.perl";
     }
-
-    private String copyTokenizeScript(String outputPath) {
-        String perlPath =  outputPath + "/utf8-tokenize-custom.perl";
-        InputStream resourceAsStream = getClass().getClassLoader().getResourceAsStream("module/enrichment/analyze/treeTaggerWorker/utf8-tokenize-custom.perl");
-        try {
-            Files.write(Paths.get(perlPath), ByteStreams.toByteArray
-                    (resourceAsStream));
-
-            boolean tryExecutable = new File(perlPath).setExecutable(true);
-            if (!tryExecutable){
-                throw new IOException("copy of utf8-tokenize-custom.perl failed, the file cannot be executable");
-            }
-        } catch (IOException e) {
-            LOGGER.error("cannot copy termsuite-resources.jar : ",e);
-        }
-        return perlPath;
-    }
-
     public String getTokenizePath() {
         return _tokenizePath;
     }
@@ -70,7 +52,7 @@ public class TreeTaggerParameter {
         String parameter = _treeTaggerHome + "/bin/tree-tagger " + _treeTaggerHome + "/lib/";
 
         if (Objects.equals(_lang, "fr")) {
-            parameter += "french.par ";
+            parameter += "french-utf8.par ";
         }
         else if (Objects.equals(_lang,"en")) {
             parameter += "english-utf8.par ";

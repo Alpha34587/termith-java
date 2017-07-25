@@ -1,9 +1,10 @@
 package org.atilf.delegate.enrichment.exporter;
 
 import org.atilf.delegate.Delegate;
-import org.atilf.models.enrichment.StandOffResources;
+import org.atilf.resources.enrichment.StandOffResources;
 import org.atilf.module.enrichment.exporter.TeiWriter;
 import org.atilf.monitor.timer.TermithProgressTimer;
+import org.atilf.runner.TermithResourceManager.TermithResource;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,13 +28,13 @@ public class ExporterDelegate extends Delegate {
         initialize standoff resource object
          */
 
-        StandOffResources standOffResources = new StandOffResources();
+        StandOffResources.init(TermithResource.STANDOFF_FRAGMENTS.getPath());
         List<Future> futures = new ArrayList<>();
         /*
         export result
          */
         _termithIndex.getXmlCorpus().forEach(
-                (key,value) -> futures.add(_executorService.submit(new TeiWriter(key, _termithIndex,standOffResources,
+                (key,value) -> futures.add(_executorService.submit(new TeiWriter(key, _termithIndex,
                         getFlowableVariable("out",null).toString())))
         );
         new TermithProgressTimer(futures,this.getClass(),_executorService).start();

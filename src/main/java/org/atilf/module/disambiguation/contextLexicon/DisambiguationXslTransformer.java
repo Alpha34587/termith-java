@@ -1,7 +1,7 @@
 package org.atilf.module.disambiguation.contextLexicon;
 
 import org.atilf.models.TermithIndex;
-import org.atilf.models.enrichment.XslResources;
+import org.atilf.resources.enrichment.XslResources;
 import org.atilf.module.Module;
 import org.atilf.module.tools.FilesUtils;
 

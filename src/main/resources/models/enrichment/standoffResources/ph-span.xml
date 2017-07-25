@@ -1,7 +1,0 @@
-<span target="@target" corresp="#phraseo-@corresp">
-    <fs>
-        <f name="inflexionWord">
-            <string>@string</string>
-        </f>
-    </fs>
-</span>
