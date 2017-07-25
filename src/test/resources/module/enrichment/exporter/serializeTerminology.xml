@@ -1,0 +1,88 @@
+	<ns:standOff type="candidatsTermes">
+		<teiHeader>
+		    <fileDesc>
+		        <titleStmt>
+		            <title>Annotations en occurrences de candidats termes désambiguïsées</title>
+		            <author role="annotator">ATILF</author>
+		            <author role="term detection">LINA</author>
+		        </titleStmt>
+		        <publicationStmt>
+		            <distributor>ATILF (Analyse et Traitement Informatique de la Langue
+		                Française)</distributor>
+		            <availability>
+		                <licence target="http://creativecommons.org/licenses/by/4.0/" corresp="#licenceCC"/>
+		            </availability>
+		        </publicationStmt>
+		        <sourceDesc>
+		            <p>Annotation en occurrences de candidats termes désambiguïsées du document <ref
+		                    target="#termithIdentifier"/> générée automatiquement dans le cadre du projet
+		                TermITH</p>
+		        </sourceDesc>
+		    </fileDesc>
+		    <encodingDesc>
+		        <appInfo>
+		            <application ident="Termith" version="1.0">
+		                <label>atilf:termith:phase10:candidatsTermes</label>
+		            </application>
+		            <application version="2.0" ident="TermSuite">
+		                <label>TS2.0</label>
+		            </application>
+		            <application version="1.4" ident="TermSuite">
+		                <label>TS1.4</label>
+		            </application>
+		        </appInfo>
+		        <projectDesc>
+		            <p>Les candidats termes et la liste de leurs occurrences sont fournies par un module de la
+		                plateforme d'extraction terminologique TermSuite2.0 dans un fichier externe json.</p>
+		            <p>La liste des candidats termes uniquement est fournie par le même module en tbx.</p>
+		            <p>Une autre version du fichier tbx a été produite par une version antérieure de
+		                TermSuite, TermSuite1.4.</p>
+		            <p>Chaque &lt;span&gt; correspond à une occurrence de candidat terme.</p>
+		            <p>Pour chacune d'elles, l'attribut @target contient la liste des tokens qui composent
+		                l'occurrence de candidat terme décrite, l'attribut @corresp contient l'identifiant du
+		                candidat terme dans la terminologie produite par TermSuite2 #TS2.0-entry et dans la
+		                terminologie porduite par TermSuite1.4 le cas échéant #TS1.4-entry.</p>
+		            <p>a forme de chaque occurrence de candidat est encodée sous la forme d'une structure de
+		                traits &lt;fs&gt; qui contient uniquement un trait décrivant la forme de l'occurrence
+		                qu'on trouve dans le texte f/@name="inflexionWords" qui contient un élément
+		                &lt;string&gt;.</p>
+		            <p>Les résultats de désambiguïsation sont indiqués à l'aide l'attribut @ana.</p>
+		            <p>La signification de chacune des valeurs &lt;interp/&gt; est décrite dans l'élément
+		                &lt;interpGrp&gt;.</p>
+		            <p>Les valeurs de désambiguïsation manuelle commencent par #DM ou sont égales à #noDM
+		                lorsque l'occurrence n'a pas été désambiguïsée manuellement.</p>
+		            <p>Les valeurs de désambiguïsation automatique commencent par #DA ou sont égales à #noDA
+		                lorsque le système de désambiguïsation n'a pas fourni de réponse.</p>
+		        </projectDesc>
+		    </encodingDesc>
+		</teiHeader>
+		
+		<interpGrp>
+		    <interp xml:id="DM1">Occurrence du candidat terme validée seulement au niveau
+		        syntaxique</interp>
+		    <interp xml:id="DM2">Occurrence du candidat terme validée au niveau scientifique et
+		        syntaxique</interp>
+		    <interp xml:id="DM3">Occurrence du candidat terme validée au niveau disciplinaire,
+		        scientifique et syntaxique</interp>
+		    <interp xml:id="DM4">Occurrence du candidat terme validée sur tous les niveaux d'annotation.
+		        Elle est validée au niveau terminologique</interp>
+		    <interp xml:id="DM0">Occurrence du candidat terme rejetée dès le niveau syntaxique</interp>
+		</interpGrp>
+		<interpGrp>
+		    <interp xml:id="DAOn">Occurrence du candidat terme validée au niveau terminologique selon le
+		        système de désambiguïsation utilisé</interp>
+		    <interp xml:id="DAOff">Occurrence du candidat terme non valide par le système de
+		        désambiguïsation</interp>
+		</interpGrp>
+		
+		<ns:listAnnotation>
+			<span target="#t1" corresp="#TS2.0-entry-1">
+			    <fs>
+			        <f name="inflexionWord">
+			            <string>chat</string>
+			        </f>
+			    </fs>
+			</span>
+			
+		</ns:listAnnotation>
+	</ns:standOff>

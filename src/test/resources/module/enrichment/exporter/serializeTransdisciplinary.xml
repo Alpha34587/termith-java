@@ -1,0 +1,61 @@
+	<ns:standOff type="lexiquesTransdisciplinaires">
+		  <teiHeader>
+		    <fileDesc>
+		      <titleStmt>
+		        <title>Annotation en occurrences du lexique transdisciplinaire</title>
+		        <author role="annotator">ATILF</author>
+		        <author role="resource constituion">LIDILEM</author>
+		      </titleStmt>
+		      <publicationStmt>
+		        <distributor>ATILF (Analyse et Traitement Informatique de la Langue
+		                  Française)</distributor>
+		        <availability>
+		          <licence target="http://creativecommons.org/licenses/by/4.0/" corresp="#licenceCC"/>
+		        </availability>
+		      </publicationStmt>
+		      <sourceDesc>
+		        <p>Annotation en occurrences de lexèmes transdisciplinaires du document <ref target="#termithIdentifier"/> générée automatiquement dans le cadre du projet
+		                  TermITH</p>
+		      </sourceDesc>
+		    </fileDesc>
+		    <encodingDesc>
+		      <appInfo>
+		        <application ident="Termith" version="1.0">
+		          <label>atilf:termith:phase15:lexiqueTransdisciplinaire</label>
+		        </application>
+		      </appInfo>
+		      <projectDesc>
+		        <p>Le lexique trandisciplinaire a été mis à jour et enrichi dans le cadre du projet
+		                     <ref target="#TermITH-project"/>. </p>
+		        <p>Il est actuellement disponible pour les membres du projet sur le site privé du
+		                  projet.</p>
+		        <p>Les items simples et complexes du lexique transdisciplinaire ont été projetés sur
+		                  les documents du projet lorsque ces items étaient contigus et non ambigus.</p>
+		        <p>De plus, ces items sont projetés sur la base d'une reconnaissance en forme
+		                  lemmatisée et étiquette grammaticale.</p>
+		        <p>Ces indications morphosyntaxiques sont encodées dans l'annotation &lt;ns:standOff
+		                  type="wordForms"&gt;.</p>
+		        <p>Une occurrence d'item du lexique transdisciplinaire contient les mêmes éléments
+		                  que l'item correspondant dans le lexique et les contient dans le même ordre.</p>
+		        <p>Chaque occurrence d'item du lexique transdisciplinaire est représentée par un
+		                  élément &lt;span&gt; dont l'attribut @target a pour valeur les identifiants des
+		                  tokens qui la constitue et l'attribut @corresp a pour valeur l'identifiant de
+		                  l'item dans le lexique transdisciplinaire.</p>
+		        <p>La forme d'une occurrence d'un item du lexique transdisciplinaire est décrite par
+		                  une structure de traits &lt;fs&gt; qui contient comme unique trait &lt;f&gt; la
+		                  forme textuelle de l'occurrence intégrée dans un élément &lt;string&gt;.</p>
+		      </projectDesc>
+		    </encodingDesc>
+		  </teiHeader>
+		
+		<ns:listAnnotation>
+			<span target="#t1 #t2" corresp="#lst-1">
+			    <fs>
+			        <f name="inflexionWord">
+			            <string>au moins</string>
+			        </f>
+			    </fs>
+			</span>
+			
+		</ns:listAnnotation>
+	</ns:standOff>

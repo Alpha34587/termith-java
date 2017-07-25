@@ -1,9 +1,12 @@
 package org.atilf.module.enrichment.exporter;
-
 import org.atilf.models.enrichment.MorphologyOffsetId;
 import org.atilf.models.enrichment.MultiWordsOffsetId;
 import org.atilf.resources.enrichment.StandOffResources;
-import org.junit.*;
+import org.custommonkey.xmlunit.XMLUnit;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.ClassRule;
+import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
 
 import java.io.IOException;
@@ -11,7 +14,10 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+
+import static org.custommonkey.xmlunit.XMLAssert.assertXMLEqual;
 
 /**
  * Created by Simon Meoni on 21/07/17.
@@ -50,7 +56,7 @@ public class TeiWriterTest {
         _morphologyOffsetIds.add(new MorphologyOffsetId(13,17,"chat","NOM",5));
         _morphologyOffsetIds.add(new MorphologyOffsetId(18,22,"dort","VERB",6));
 
-        _termsOffsetIds.add(new MultiWordsOffsetId(13,17,1,"chat"));
+        _termsOffsetIds.add(new MultiWordsOffsetId(13,17,1,"chat", Collections.singletonList(1)));
 
         _phraseologyOffsetIds.add(new MultiWordsOffsetId(13,22,1,"chat dort", Arrays.asList(5,6)));
         _transdisciplinaryOffsetIds.add(new MultiWordsOffsetId(0,8,1,"au moins",Arrays.asList(1,2)));
@@ -105,17 +111,24 @@ public class TeiWriterTest {
         _teiWriter.serializeTransdisciplinary(_transdisciplinaryOffsetIds);
         Assert.assertEquals(
                 "these two strings must be equals",
-                "",
+                String.join("\n",Files.readAllLines(
+                        Paths.get("src/test/resources/module/enrichment/exporter/serializeTransdisciplinary.xml")
+                        )
+                ),
                 getBufferWriter()
         );
     }
 
     @Test
     public void serializePhraseology() throws Exception {
-        _teiWriter.serializeTransdisciplinary(_phraseologyOffsetIds);
+        _teiWriter.serializePhraseology(_phraseologyOffsetIds);
+
         Assert.assertEquals(
                 "these two strings must be equals",
-                "",
+                String.join("\n",Files.readAllLines(
+                        Paths.get("src/test/resources/module/enrichment/exporter/serializePhraseology.xml")
+                        )
+                ),
                 getBufferWriter()
         );
     }
@@ -125,7 +138,10 @@ public class TeiWriterTest {
         _teiWriter.serializeTerminology(_termsOffsetIds);
         Assert.assertEquals(
                 "these two strings must be equals",
-                "",
+                String.join("\n",Files.readAllLines(
+                        Paths.get("src/test/resources/module/enrichment/exporter/serializeTerminology.xml")
+                        )
+                ),
                 getBufferWriter()
         );
     }
@@ -134,13 +150,13 @@ public class TeiWriterTest {
     public void cut() throws Exception {
         Assert.assertEquals(
                 "these two strings must be equals",
-                "",
-                _teiWriter.cut(new StringBuilder("<p>this a test</p>"),true)
+                _teiWriter.cut(new StringBuilder("<p>\n</p>"),true).toString(),
+                "</p>"
         );
         Assert.assertEquals(
                 "these two strings must be equals",
-                "",
-                _teiWriter.cut(new StringBuilder("<p>this a test</p>"),false)
+                _teiWriter.cut(new StringBuilder("<p>\n</p>"),false).toString(),
+                "<p>\n"
         );
     }
 
@@ -149,7 +165,9 @@ public class TeiWriterTest {
         _teiWriter.serializeMorphosyntax(_morphologyOffsetIds);
         Assert.assertEquals(
                 "these two strings must be equals",
-                "",
+                String.join("\n", Files.readAllLines(
+                        Paths.get("src/test/resources/module/enrichment/exporter/morphologySerializer.xml"))
+                ),
                 getBufferWriter()
         );
     }
@@ -158,7 +176,7 @@ public class TeiWriterTest {
     public void serializeId() throws Exception {
         Assert.assertEquals(
                 "these two strings must be equals",
-                "",
+                "#t1 #t2 #t3",
                 _teiWriter.serializeId(Arrays.asList(new Integer[]{1,2,3}))
         );
 
