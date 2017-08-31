@@ -20,6 +20,13 @@ repositories {
     mavenCentral()
 }
 
+sourceSets {
+    integrationTest {
+        java.srcDirs 'src/integrationTest/java'
+        resources.srcDir 'src/integrationTest/resources'
+    }
+}
+
 compileTestJava {
     sourceCompatibility = 1.8
     targetCompatibility = 1.8
@@ -33,7 +40,6 @@ configurations.all {
 }
 
 dependencies {
-
     compile group: 'commons-cli', name: 'commons-cli', version: '1.2'
     compile group: 'commons-io', name: 'commons-io', version: '2.5'
     compile (group: 'fr.univ-nantes.termsuite', name: 'termsuite-core', version: '2.2'){
@@ -52,6 +58,10 @@ dependencies {
     compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.1.9'
     compile group: 'org.rosuda.REngine', name: 'Rserve', version: '1.8.1'
     compile group: 'com.h2database', name: 'h2', version: '1.4.193'
+    integrationTestCompile 'org.assertj:assertj-core:3.8.0'
+    integrationTestCompile 'junit:junit:4.12'
+
+
     compile (group: 'org.flowable', name: 'flowable-engine', version: '6.0.0'){
         exclude module:'slf4j-api'
         exclude module:'jackson-databind'
@@ -62,7 +72,10 @@ dependencies {
     testCompile group: 'xmlunit', name: 'xmlunit', version: '1.6'
     testCompile group: 'org.mockito', name: 'mockito-all', version: '2.0.2-beta'
 }
-
+configurations {
+    integrationTestCompile.extendsFrom testCompile
+    integrationTestRuntime.extendsFrom testRuntime
+}
 jar {
     exclude 'META-INF/*.SF', 'META-INF/*.DSA', 'META-INF/*.RSA', 'META-INF/*.MF'
     manifest {
@@ -75,6 +88,7 @@ jar {
         configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
     }
 }
+
 task deployJar << {
         tasks.jar.execute()
         ssh.run {
@@ -86,7 +100,7 @@ task deployJar << {
             }
         }
 }
-task checkTermithResources{
+task checkTermithResources {
     println(":checkTermithResources")
     def folder = new File("./src/main/resources/termith-resources")
     if( !folder.exists() ) {
@@ -102,7 +116,14 @@ task checkTermithResources{
         }
     }
 }
-
+tasks.withType(Test) {
+    reports.html.destination = file("${reporting.baseDir}/${name}")
+}
 test {
     testLogging.showStandardStreams = true
+}
+
+task integrationTest(type: Test) {
+    testClassesDir = sourceSets.integrationTest.output.classesDir
+    classpath = sourceSets.integrationTest.runtimeClasspath
 }
