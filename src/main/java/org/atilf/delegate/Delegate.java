@@ -39,6 +39,30 @@ public abstract class Delegate implements JavaDelegate{
      */
     protected void executeTasks() throws IOException, InterruptedException, ExecutionException {}
 
+    protected void setTermithIndex(TermithIndex termithIndex) {
+        _termithIndex = termithIndex;
+    }
+
+    protected void setEventBus(EventBus eventBus) {
+        _eventBus = eventBus;
+    }
+
+    protected void setExecution(DelegateExecution execution) {
+        _execution = execution;
+    }
+
+    protected void setExecutorService(ExecutorService executorService) {
+        _executorService = executorService;
+    }
+
+    protected void setTimePerformanceEvent(TimePerformanceEvent timePerformanceEvent) {
+        _timePerformanceEvent = timePerformanceEvent;
+    }
+
+    protected void setMemoryPerformanceEvent(MemoryPerformanceEvent memoryPerformanceEvent) {
+        _memoryPerformanceEvent = memoryPerformanceEvent;
+    }
+
     @Override
     public void execute(DelegateExecution execution) {
         try {
@@ -52,8 +76,6 @@ public abstract class Delegate implements JavaDelegate{
     }
 
     public void initialize(DelegateExecution execution){
-
-
         _execution = execution;
 
         _termithIndex = getFlowableVariable("termithIndex",null);
