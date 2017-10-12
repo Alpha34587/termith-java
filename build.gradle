@@ -60,6 +60,12 @@ dependencies {
     compile group: 'com.h2database', name: 'h2', version: '1.4.193'
     integrationTestCompile 'org.assertj:assertj-core:3.8.0'
     integrationTestCompile 'junit:junit:4.12'
+    integrationTestCompile (group: 'org.flowable', name: 'flowable-engine', version: '6.0.0'){
+        exclude module:'slf4j-api'
+        exclude module:'jackson-databind'
+        exclude module:'activation'
+    }
+    integrationTestCompile sourceSets.main.output
 
 
     compile (group: 'org.flowable', name: 'flowable-engine', version: '6.0.0'){
