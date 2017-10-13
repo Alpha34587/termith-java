@@ -22,7 +22,7 @@ import static org.atilf.runner.TermithResourceManager.*;
  */
 public class TxmXslTransformerDelegate extends Delegate {
     @Override
-    protected void executeTasks() throws IOException, InterruptedException, ExecutionException {
+    public void executeTasks() throws IOException, InterruptedException, ExecutionException {
         DisambiguationXslResources xslResources = new TxmXslResource(TermithResource.TXM_XSL.getPath());
         List<Future> futures = new ArrayList<>();
         /*

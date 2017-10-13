@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class HeuristicsContextFilterDelegate extends Delegate {
     @Override
-    protected void executeTasks() throws IOException, InterruptedException, ExecutionException {
+    public void executeTasks() throws IOException, InterruptedException, ExecutionException {
         _executorService.submit(new HeuristicsContextFilter(_termithIndex));
         _executorService.shutdown();
         _executorService.awaitTermination(1L, TimeUnit.DAYS);

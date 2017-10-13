@@ -19,7 +19,7 @@ import static org.atilf.resources.enrichment.LexicalResourceProjectionResources.
  */
 public class PhraseologyProjectorDelegate extends Delegate {
     @Override
-    protected void executeTasks() throws IOException, InterruptedException, ExecutionException {
+    public void executeTasks() throws IOException, InterruptedException, ExecutionException {
         if ( getFlowableVariable("lang",null).equals("fr")) {
             LexicalResourceProjectionResources lexicalResourceProjectionResources = new LexicalResourceProjectionResources(
                     getFlowableVariable("lang", null), PH_TYPE

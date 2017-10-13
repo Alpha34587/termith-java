@@ -37,9 +37,9 @@ public abstract class Delegate implements JavaDelegate{
      * @throws InterruptedException thrown if awaitTermination function is interrupted while waiting
      * @throws ExecutionException thrown a exception if a system process is interrupted
      */
-    protected void executeTasks() throws IOException, InterruptedException, ExecutionException {}
+    public void executeTasks() throws IOException, InterruptedException, ExecutionException {}
 
-    protected void setTermithIndex(TermithIndex termithIndex) {
+    public void setTermithIndex(TermithIndex termithIndex) {
         _termithIndex = termithIndex;
     }
 
@@ -51,7 +51,7 @@ public abstract class Delegate implements JavaDelegate{
         _execution = execution;
     }
 
-    protected void setExecutorService(ExecutorService executorService) {
+    public void setExecutorService(ExecutorService executorService) {
         _executorService = executorService;
     }
 
