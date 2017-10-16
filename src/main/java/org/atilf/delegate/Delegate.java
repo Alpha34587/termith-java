@@ -97,13 +97,13 @@ public abstract class Delegate implements JavaDelegate{
     }
 
     protected <T extends Object> T getFlowableVariable(String flowableName, T defaultValue){
-
-        T getVar = (T) _execution.getVariable(flowableName);
-
-        if (_execution.getVariable(flowableName) != null) {
-            return getVar;
-        } else {
-            return defaultValue;
+        if (_execution != null ) {
+            T getVar = (T) _execution.getVariable(flowableName);
+            if (_execution.getVariable(flowableName) != null ) {
+                return getVar;
+            }
         }
+        return defaultValue;
+
     }
 }

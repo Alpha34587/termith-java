@@ -4,10 +4,7 @@ import com.google.common.collect.HashMultiset;
 import com.google.common.collect.Multiset;
 import org.atilf.models.disambiguation.*;
 import org.atilf.resources.disambiguation.RResources;
-import org.junit.Assert;
-import org.junit.BeforeClass;
-import org.junit.ClassRule;
-import org.junit.Test;
+import org.junit.*;
 import org.junit.rules.TemporaryFolder;
 import org.rosuda.REngine.Rserve.RConnection;
 
@@ -95,6 +92,7 @@ public class SpecCoefficientInjectorTest {
     }
 
     @Test
+    @Ignore
     public void computeSpecCoeff() throws Exception {
         RResources.init("/termith-resources/all/r_script/specificities.R");
         RConnectionPool rConnectionPool = new RConnectionPool(1,_rLexicon);
