@@ -21,7 +21,7 @@ public class RResources {
 
     public static void init(String resourcePath){
         String script = null;
-        InputStream resourceAsStream = SpecCoefficientInjector.class.getResourceAsStream(resourcePath);
+        InputStream resourceAsStream = SpecCoefficientInjector.class.getClassLoader().getResourceAsStream(resourcePath);
         try {
             script = IOUtils.toString(resourceAsStream, "UTF-8");
         } catch (IOException e) {
