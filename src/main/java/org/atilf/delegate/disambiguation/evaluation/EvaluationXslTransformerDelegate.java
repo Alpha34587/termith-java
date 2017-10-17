@@ -7,6 +7,7 @@ import org.atilf.monitor.timer.TermithProgressTimer;
 
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Future;
@@ -21,6 +22,18 @@ import static org.atilf.runner.TermithResourceManager.*;
  */
 public class EvaluationXslTransformerDelegate extends Delegate {
 
+    Path _evaluationPath = getFlowableVariable("evaluationPath",null);
+    Path _learningPath = getFlowableVariable("learningPath",null);
+    Path _outputPath = getFlowableVariable("outputPath",null);
+
+    public void setEvaluationPath(Path evaluationPath) {
+        _evaluationPath = evaluationPath;
+    }
+
+    public void setOutputPath(Path outputPath) {
+        _outputPath = outputPath;
+    }
+
     @Override
     public void executeTasks() throws IOException, InterruptedException {
         DisambiguationXslResources xslResources = new DisambiguationXslResources(TermithResource.DISAMBIGUATION_XSL.getPath());
@@ -28,17 +41,16 @@ public class EvaluationXslTransformerDelegate extends Delegate {
         /*
         Transformation phase
          */
-        if (getFlowableVariable("learningPath",null) !=
-                getFlowableVariable("evaluationPath",null)) {
-            Files.list(getFlowableVariable("evaluationPath",null)).forEach(
+        if (_learningPath != _evaluationPath) {
+            Files.list(_evaluationPath).forEach(
                     p -> futures.add(_executorService.submit(
                             new DisambiguationXslTransformer(
                                     p.toFile(),
                                     _termithIndex,
                                     _termithIndex.getEvaluationTransformedFiles(),
                                     xslResources,
-                                    getFlowableVariable("out",null))
-                    ))
+                                    _outputPath
+                            )))
             );
         }
         new TermithProgressTimer(futures,EvaluationXslTransformerDelegate.class,_executorService).start();
