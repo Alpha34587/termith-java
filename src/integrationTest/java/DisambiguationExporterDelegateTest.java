@@ -47,6 +47,7 @@ public class DisambiguationExporterDelegateTest extends IntegrationTasks {
 
         _d.setEvaluationPath(Paths.get("src/integrationTest/resources/evaluation"));
         _d.setOutputPath(_temporaryFolder.getRoot().toPath());
+
     }
 
     @Test

@@ -15,7 +15,7 @@ public class EvaluationExtractorDelegate extends Delegate {
 
 
     /**
-     * this method is split in two parts. Firstly, for each file, the context is extract for each terms candidates.
+     * this method is split in two parts. Firstly, for each file, the context is extract for each terms candidates.write threshold integration test
      * Finally, each context is evaluated with the lexical associated in order to determine the terminology potentiality
      * of a term candidate.
      * @throws IOException thrown a IO exception if a file is not found or have a permission problem during the
