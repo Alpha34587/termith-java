@@ -2,7 +2,6 @@ import org.atilf.delegate.disambiguation.contextLexicon.LearnXslTransformerDeleg
 import org.atilf.runner.TermithResourceManager;
 import org.custommonkey.xmlunit.XMLAssert;
 import org.custommonkey.xmlunit.XMLUnit;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
