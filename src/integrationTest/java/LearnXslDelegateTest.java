@@ -30,7 +30,7 @@ public class LearnXslDelegateTest extends  IntegrationTasks {
         XMLAssert.assertXMLEqual(
                 "the content of file must be equals",
                 String.join("\n",Files.readAllLines(Paths.get(_temporaryFolder.getRoot().toString() + "/learn2.xml"))),
-                String.join("\n",Files.readAllLines(Paths.get("src/integrationTest/resources/output/test2.xml")))
+                String.join("\n",Files.readAllLines(Paths.get("src/integrationTest/resources/output/testLearn.xml")))
         );
     }
 }
