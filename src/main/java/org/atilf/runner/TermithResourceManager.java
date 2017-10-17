@@ -45,7 +45,7 @@ public class TermithResourceManager {
         PHRASEOLOGY("[LANG]/lexical_resources/PhraseologyResource.json"),
         LST("[LANG]/lexical_resources/TransdisciplinaryResource.json");
         private String _path;
-        private static String lang;
+        private static String lang = "en";
         TermithResource(String path) {
             _path = path;
         }

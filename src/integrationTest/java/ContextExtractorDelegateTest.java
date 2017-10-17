@@ -5,7 +5,7 @@ import org.junit.Test;
 
 import java.nio.file.Paths;
 
-public class ContextExtractorDelegateTest extends  IntegrationTasks {
+public class ContextExtractorDelegateTest extends IntegrationTasks {
     private ContextExtractorDelegate _c = new ContextExtractorDelegate();
     private String _lexicalEntryCorpus =
             "{0=article NOM, " +
