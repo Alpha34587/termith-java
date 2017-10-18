@@ -54,5 +54,4 @@ public class TxmExporterTest {
                 String.join("\n",Files.readAllLines(Paths.get(temporaryFolder.getRoot().toString() + "/test1.xml")))
         );
     }
-
 }
