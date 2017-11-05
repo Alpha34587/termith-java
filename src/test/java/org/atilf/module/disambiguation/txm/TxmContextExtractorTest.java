@@ -17,7 +17,6 @@ public class TxmContextExtractorTest {
 
     private static HashMap<String,List<TxmContext>> _observedTxmContexts = new HashMap<>();
     private static List<TxmContext> _expectedTxmContexts = new ArrayList<>();
-    private static List<String> includeElements = new ArrayList<>();
 
 
     @BeforeClass
