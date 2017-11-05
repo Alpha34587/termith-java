@@ -111,7 +111,7 @@ task checkTermithResources {
     if( !folder.exists() ) {
         exec {
             executable "sh"
-            args "-c", "git clone git@github.com:simonmeoni/termith-resources.git src/main/resources/termith-resources"
+            args "-c", "git clone https://github.com/simonmeoni/termith-resources.git src/main/resources/termith-resources"
         }
     }
     else {
