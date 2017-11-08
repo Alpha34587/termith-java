@@ -1,0 +1,67 @@
+{
+  "sdi": {
+    "uri": "file:/tmp/corpus4643594430485028504/txt/0B4A738BFF1E9CD2E041D19AFD5E6A3AD39D01D9.txt",
+    "off_in_s": 0,
+    "document_index": 20,
+    "nb_documents": 22,
+    "document_size": 55957,
+    "cumul_doc_size": 756236,
+    "corpus_size": 841314,
+    "last_segment": false,
+    "begin": 0,
+    "end": 55769
+  },
+  "word_annotations": [
+    {
+      "cat": "noun",
+      "lemma": "hearing",
+      "stem": "hear",
+      "tag": "NN",
+      "regexLabel": "N",
+      "begin": 22,
+      "end": 29
+    },
+    {
+      "cat": "noun",
+      "lemma": "research",
+      "stem": "research",
+      "tag": "N",
+      "regexLabel": "N",
+      "begin": 30,
+      "end": 38
+    },
+    {
+      "cat": "number",
+      "lemma": "125",
+      "stem": "125",
+      "tag": "CD",
+      "begin": 39,
+      "end": 42
+    }
+  ],
+  "term_occ_annotations": [
+    {
+      "pattern": "N N",
+      "spot_rule_name": "nn",
+      "term_key": "nn: hearing research",
+      "words": [
+        [22,29],
+        [30,38]
+      ],
+      "begin": 22,
+      "end": 38
+    },
+    {
+      "pattern": "N",
+      "spot_rule_name": "n",
+      "term_key": "n: hearing",
+      "words": [
+        [22,29]
+      ],
+      "begin": 22,
+      "end": 29
+    }
+  ],
+  "fixed_expressions": [],
+  "covered_text": "\n    \n      \n        \nHearing Research 125 "
+}

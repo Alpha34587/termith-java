@@ -8,11 +8,14 @@ import eu.project.ttc.tools.TermSuitePipeline;
 import eu.project.ttc.tools.cli.TermSuiteCLIUtils;
 import org.atilf.models.TermithIndex;
 import org.atilf.module.Module;
+import org.atilf.runner.TermithResourceManager;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+
+import static org.atilf.runner.TermithResourceManager.*;
 
 /**
  * build a termsuite pipeline and run it.
@@ -117,7 +120,9 @@ public class TermsuitePipelineBuilder extends Module {
      * @return the path of termsuite jar resource
      */
     private String exportResource(){
-        InputStream resourceAsStream = getClass().getClassLoader().getResourceAsStream("module/enrichment/analyze/termsuitePipelineBuilder/termsuite-resources.jar");
+        InputStream resourceAsStream = getClass().getClassLoader().getResourceAsStream(
+                String.valueOf(TermithResource.TERMSUITE_RESOURCE_PATH.getPath())
+        );
         try {
             Files.write(Paths.get(_outputPath +"/termsuite-resources.jar"), ByteStreams.toByteArray(resourceAsStream));
         } catch (IOException e) {
