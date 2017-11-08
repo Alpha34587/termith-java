@@ -21,13 +21,24 @@ public class TxmContext extends LexiconProfile{
         _target.add(target);
     }
 
-    public Map<String,String> getTxmWord() {
+    public Map<String,String> popTxmWord() {
         Map<String, String> resMap = new HashMap<>();
         if (!_lemma.isEmpty()) {
             resMap.put("lemma", _lemma.pop());
             resMap.put("pos", _pos.pop());
             resMap.put("word", _word.pop());
             resMap.put("target", _target.pop());
+        }
+        return resMap;
+    }
+
+    public Map<String,String> getTxmWord() {
+        Map<String, String> resMap = new HashMap<>();
+        if (!_lemma.isEmpty()) {
+            resMap.put("lemma", _lemma.peek());
+            resMap.put("pos", _pos.peek());
+            resMap.put("word", _word.peek());
+            resMap.put("target", _target.peek());
         }
         return resMap;
     }

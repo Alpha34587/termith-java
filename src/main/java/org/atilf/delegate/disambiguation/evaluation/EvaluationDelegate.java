@@ -32,7 +32,8 @@ public class EvaluationDelegate extends Delegate {
          */
         List<Future> futures = new ArrayList<>();
         _termithIndex.getEvaluationLexicon().forEach(
-                (p,value) -> futures.add(_executorService.submit(new Evaluation(p, _termithIndex))));
+                (p,value) -> futures.add(_executorService.submit(new Evaluation(p, _termithIndex)))
+        );
         _logger.info("Waiting EvaluationWorker executors to finish");
         new TermithProgressTimer(futures,this.getClass(),_executorService).start();
         _executorService.shutdown();

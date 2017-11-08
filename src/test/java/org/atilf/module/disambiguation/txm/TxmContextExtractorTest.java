@@ -64,7 +64,7 @@ public class TxmContextExtractorTest {
     }
 
     private String ToString(TxmContext txmContext){
-        Map<String,String> map = txmContext.getTxmWord();
+        Map<String,String> map = txmContext.popTxmWord();
         return txmContext.getFilename() +
                 " " + map.get("target") +
                 " " + map.get("lemma") +
