@@ -2,6 +2,7 @@ import org.atilf.delegate.disambiguation.txm.TxmContextExtractorDelegate;
 import org.atilf.models.disambiguation.TxmContext;
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.nio.file.Paths;
@@ -27,6 +28,7 @@ public class TxmContextDelegateTest extends  IntegrationTasks {
         _t.setAnnotation("#DM4");
     }
 
+    @Ignore
     @Test
     public void executeTasks() throws Exception {
         executeTasksTest(_t);

@@ -11,8 +11,10 @@ import org.atilf.module.enrichment.analyzer.TreeTaggerWorker;
 import org.atilf.module.enrichment.initializer.TextExtractor;
 import org.atilf.module.tools.FilesUtils;
 import org.atilf.monitor.timer.TermithProgressTimer;
+import org.atilf.runner.TermithResourceManager;
 
 import java.io.IOException;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -20,6 +22,8 @@ import java.util.Map;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
+
+import static org.atilf.runner.TermithResourceManager.*;
 
 /**
  * The TreeTaggerWorkerDelegate calls several modules classes which analyzer the morphology of each file in the corpus and the
@@ -31,6 +35,17 @@ import java.util.concurrent.TimeUnit;
  *         Created on 01/09/16.
  */
 public class TreeTaggerWorkerDelegate extends Delegate {
+
+    private String _lang = getFlowableVariable("lang",null);
+    private Path _outputPath = getFlowableVariable("out",null);
+
+    public void setLang(String lang) {
+        _lang = lang;
+    }
+
+    public void setOutputPath(Path outputPath) {
+        _outputPath = outputPath;
+    }
 
     /**
      * this method return the result of the InitializerThread.
@@ -71,11 +86,11 @@ public class TreeTaggerWorkerDelegate extends Delegate {
         Build Corpus analyzer
          */
         CorpusAnalyzer corpusAnalyzer = new CorpusAnalyzer(createTextHashMap());
-        TagNormalizer.initTag(getFlowableVariable("lang",null));
+        TagNormalizer.initTag(_lang);
         TreeTaggerParameter treeTaggerParameter =  new TreeTaggerParameter(
                 false,
-                getFlowableVariable("lang",null),
-                getFlowableVariable("treeTaggerHome",null)
+                _lang,
+                TermithResource.TREETAGGER_HOME.getPath()
         );
         List<Future> futures = new ArrayList<>();
 
@@ -87,7 +102,7 @@ public class TreeTaggerWorkerDelegate extends Delegate {
                         _termithIndex,
                         corpusAnalyzer,
                         key,
-                        getFlowableVariable("out",null).toString(),
+                        _outputPath.toString(),
                         treeTaggerParameter
                 )))
         );
