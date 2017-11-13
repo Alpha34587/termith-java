@@ -5,6 +5,7 @@ import org.atilf.module.enrichment.initializer.CorpusMapper;
 
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -13,6 +14,12 @@ import java.util.concurrent.TimeUnit;
  * Created on 25/07/16.
  */
 public class CorpusMapperDelegate extends Delegate {
+
+    private Path _base = getFlowableVariable("base",null);
+
+    public void setBase(Path base) {
+        _base = base;
+    }
 
     /**
      * executeTasks the extraction text task with the help of inner InitializerWorker class
@@ -24,9 +31,8 @@ public class CorpusMapperDelegate extends Delegate {
         /*
         extract the text and map the path of the corpus into hashMap with identifier
          */
-        Files.list(getFlowableVariable("base",null)).forEach(
+        Files.list(_base).forEach(
                 p -> _executorService.submit(new CorpusMapper(p, _termithIndex))
-
         );
         _logger.info("Waiting initCorpusWorker executors to finish");
         _logger.info("initCorpusWorker finished");
