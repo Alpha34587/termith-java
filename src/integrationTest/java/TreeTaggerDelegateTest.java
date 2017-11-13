@@ -49,6 +49,5 @@ public class TreeTaggerDelegateTest extends IntegrationTasks{
                 String.join("\n",Files.readAllLines(Paths.get("src/integrationTest/resources/treetaggerWorker/text1.json"))),
                 actualObj.get("word_annotations").toString()
                 );
-        int a = 0;
     }
 }

@@ -6,6 +6,7 @@ import org.atilf.module.enrichment.exporter.TeiWriter;
 import org.atilf.monitor.timer.TermithProgressTimer;
 import org.atilf.runner.TermithResourceManager.TermithResource;
 
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Future;
@@ -17,6 +18,12 @@ import java.util.concurrent.TimeUnit;
  *         Created on 19/09/16.
  */
 public class ExporterDelegate extends Delegate {
+
+    private Path _outputPath = getFlowableVariable("out",null);
+
+    public void setOutputPath(Path outputPath) {
+        _outputPath = outputPath;
+    }
 
     /**
      * this method export the result of process to the tei file format
@@ -35,7 +42,7 @@ public class ExporterDelegate extends Delegate {
          */
         _termithIndex.getXmlCorpus().forEach(
                 (key,value) -> futures.add(_executorService.submit(new TeiWriter(key, _termithIndex,
-                        getFlowableVariable("out",null).toString())))
+                        _outputPath.toString())))
         );
         new TermithProgressTimer(futures,this.getClass(),_executorService).start();
         _logger.info("Waiting exporters tasks to finish");

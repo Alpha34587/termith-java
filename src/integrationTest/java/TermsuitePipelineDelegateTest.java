@@ -21,6 +21,5 @@ public class TermsuitePipelineDelegateTest extends IntegrationTasks {
     @Test
     public void executeTasks() throws Exception {
         executeTasksTest(_t);
-        int a = 0;
     }
 }
