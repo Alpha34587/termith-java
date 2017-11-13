@@ -1,3 +1,4 @@
+import org.assertj.core.util.Strings;
 import org.atilf.delegate.enrichment.exporter.ExporterDelegate;
 import org.atilf.models.enrichment.MorphologyOffsetId;
 import org.atilf.models.enrichment.MultiWordsOffsetId;
@@ -107,12 +108,12 @@ public class ExporterDelegateTest extends IntegrationTasks {
     public void executeTasks() throws Exception {
         executeTasksTest(_e);
         Assert.assertEquals("these files must be equals",
-                Files.readAllLines(
+                String.join("\n",Files.readAllLines(
                         Paths.get("/home/smeoni/IdeaProjects/termITH/src/integrationTest/resources/exporterTei/test1.xml")
-                ),
-                Files.readAllLines(
+                )),
+                String.join("\n",Files.readAllLines(
                         Paths.get(_temporaryFolder.getRoot().toString() + "/test15.xml")
-                )
+                ))
                 );
     }
 

@@ -1,4 +1,4 @@
-<TEIxmlns:ns="http://standoff.proposal" >
+<TEI xmlns:ns="http://standoff.proposal" xmlns="https://tei-c.org">
 	<ns:standOff type="wordForms">
 		<teiHeader>
 		    <fileDesc>
