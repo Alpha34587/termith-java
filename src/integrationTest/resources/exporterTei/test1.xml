@@ -1,0 +1,375 @@
+<TEIxmlns:ns="http://standoff.proposal" >
+	<ns:standOff type="wordForms">
+		<teiHeader>
+		    <fileDesc>
+		        <titleStmt>
+		            <title>Annotations morphosyntaxiques</title>
+		            <author role="annotator">ATILF</author>
+		            <author role="annotator">LINA</author>
+		        </titleStmt>
+		        <publicationStmt>
+		            <distributor>ATILF (Analyse et Traitement Informatique de la Langue
+		                Française)</distributor>
+		            <availability>
+		                <licence target="http://creativecommons.org/licenses/by/4.0/" corresp="#licenceCC"/>
+		            </availability>
+		        </publicationStmt>
+		        <sourceDesc>
+		            <p>Annotation morphosyntaxique du document <ref target="#termithIdentifier"/> générée
+		                automatiquement dans le cadre du projet TermITH</p>
+		        </sourceDesc>
+		    </fileDesc>
+		    <encodingDesc>
+		        <projectDesc>
+		            <p>Les annotations morphosyntaxiques s'appliquent au texte intégral du document <ref target="#termithIdentifier"/> et plus précisément au text/body et
+		                text/back.</p>
+		            <p>Le texte est segmenté automatiquement en tokens par un module interne de
+		                TermSuite2.0.</p>
+		            <p>L'étiquetage morphosyntaxique est réalisé par l'étiqueteur TreeTagger. Les jeux
+		                d'étiquettes sont ensuite homogénéisé selon la norme MulText.</p>
+		            <p>Les sorties enrichies de TermSuite2.0 sont enfin projetées dans le texte
+		                intégral.</p>
+		            <p>Les informations morphosyntaxiques sont représentées dans des structures de traits
+		                (&lt;fs&gt;) qui contiennent deux traits pour le moment, l'un pour la forme
+		                lemmatisée f/@name="lemma" et l'autre pour l'étiquette grammaticale
+		                f/@name="pos". Les valeurs de ces traits sont respectivement indiquées
+		                dans un élément &lt;string/&gt; et &lt;symbol/&gt;</p>
+		        </projectDesc>
+		        <appInfo>
+		            <application ident="TermSuite" version="2.0">
+		                <label>TS2.0</label>
+		            </application>
+		        </appInfo>
+		    </encodingDesc>
+		</teiHeader>
+		
+		<ns:listAnnotation>
+			<span target="#t1">
+			    <fs>
+			        <f name="lemma">
+			            <string>"</string>
+			        </f>
+			        <f name="pos">
+			            <symbol value="PUN:cit"/>
+			        </f>
+			    </fs>
+			</span>
+			
+			<span target="#t2 #t3">
+			    <fs>
+			        <f name="lemma">
+			            <string>chez</string>
+			        </f>
+			        <f name="pos">
+			            <symbol value="PUN:cit"/>
+			        </f>
+			    </fs>
+			</span>
+			
+			<span target="#t4 #t5">
+			    <fs>
+			        <f name="lemma">
+			            <string>nous</string>
+			        </f>
+			        <f name="pos">
+			            <symbol value="PRO:PER"/>
+			        </f>
+			    </fs>
+			</span>
+			
+			<span target="#t6">
+			    <fs>
+			        <f name="lemma">
+			            <string>vivre</string>
+			        </f>
+			        <f name="pos">
+			            <symbol value="PUN:cit"/>
+			        </f>
+			    </fs>
+			</span>
+			
+			<span target="#t7 #t8">
+			    <fs>
+			        <f name="lemma">
+			            <string>un</string>
+			        </f>
+			        <f name="pos">
+			            <symbol value="DET:ART"/>
+			        </f>
+			    </fs>
+			</span>
+			
+			<span target="#t9">
+			    <fs>
+			        <f name="lemma">
+			            <string>poète</string>
+			        </f>
+			        <f name="pos">
+			            <symbol value="NOM"/>
+			        </f>
+			    </fs>
+			</span>
+			
+			<span target="#t10">
+			    <fs>
+			        <f name="lemma">
+			            <string>,</string>
+			        </f>
+			        <f name="pos">
+			            <symbol value="PUN"/>
+			        </f>
+			    </fs>
+			</span>
+			
+			<span target="#t11">
+			    <fs>
+			        <f name="lemma">
+			            <string>il</string>
+			        </f>
+			        <f name="pos">
+			            <symbol value="PRO:PER"/>
+			        </f>
+			    </fs>
+			</span>
+			
+			<span target="#t12 #t13">
+			    <fs>
+			        <f name="lemma">
+			            <string>avoir</string>
+			        </f>
+			        <f name="pos">
+			            <symbol value="VER:impf"/>
+			        </f>
+			    </fs>
+			</span>
+			
+		</ns:listAnnotation>
+	</ns:standOff>
+	<ns:standOff type="candidatsTermes">
+		<teiHeader>
+		    <fileDesc>
+		        <titleStmt>
+		            <title>Annotations en occurrences de candidats termes désambiguïsées</title>
+		            <author role="annotator">ATILF</author>
+		            <author role="term detection">LINA</author>
+		        </titleStmt>
+		        <publicationStmt>
+		            <distributor>ATILF (Analyse et Traitement Informatique de la Langue
+		                Française)</distributor>
+		            <availability>
+		                <licence target="http://creativecommons.org/licenses/by/4.0/" corresp="#licenceCC"/>
+		            </availability>
+		        </publicationStmt>
+		        <sourceDesc>
+		            <p>Annotation en occurrences de candidats termes désambiguïsées du document <ref
+		                    target="#termithIdentifier"/> générée automatiquement dans le cadre du projet
+		                TermITH</p>
+		        </sourceDesc>
+		    </fileDesc>
+		    <encodingDesc>
+		        <appInfo>
+		            <application ident="Termith" version="1.0">
+		                <label>atilf:termith:phase10:candidatsTermes</label>
+		            </application>
+		            <application version="2.0" ident="TermSuite">
+		                <label>TS2.0</label>
+		            </application>
+		            <application version="1.4" ident="TermSuite">
+		                <label>TS1.4</label>
+		            </application>
+		        </appInfo>
+		        <projectDesc>
+		            <p>Les candidats termes et la liste de leurs occurrences sont fournies par un module de la
+		                plateforme d'extraction terminologique TermSuite2.0 dans un fichier externe json.</p>
+		            <p>La liste des candidats termes uniquement est fournie par le même module en tbx.</p>
+		            <p>Une autre version du fichier tbx a été produite par une version antérieure de
+		                TermSuite, TermSuite1.4.</p>
+		            <p>Chaque &lt;span&gt; correspond à une occurrence de candidat terme.</p>
+		            <p>Pour chacune d'elles, l'attribut @target contient la liste des tokens qui composent
+		                l'occurrence de candidat terme décrite, l'attribut @corresp contient l'identifiant du
+		                candidat terme dans la terminologie produite par TermSuite2 #TS2.0-entry et dans la
+		                terminologie porduite par TermSuite1.4 le cas échéant #TS1.4-entry.</p>
+		            <p>a forme de chaque occurrence de candidat est encodée sous la forme d'une structure de
+		                traits &lt;fs&gt; qui contient uniquement un trait décrivant la forme de l'occurrence
+		                qu'on trouve dans le texte f/@name="inflexionWords" qui contient un élément
+		                &lt;string&gt;.</p>
+		            <p>Les résultats de désambiguïsation sont indiqués à l'aide l'attribut @ana.</p>
+		            <p>La signification de chacune des valeurs &lt;interp/&gt; est décrite dans l'élément
+		                &lt;interpGrp&gt;.</p>
+		            <p>Les valeurs de désambiguïsation manuelle commencent par #DM ou sont égales à #noDM
+		                lorsque l'occurrence n'a pas été désambiguïsée manuellement.</p>
+		            <p>Les valeurs de désambiguïsation automatique commencent par #DA ou sont égales à #noDA
+		                lorsque le système de désambiguïsation n'a pas fourni de réponse.</p>
+		        </projectDesc>
+		    </encodingDesc>
+		</teiHeader>
+		
+		<interpGrp>
+		    <interp xml:id="DM1">Occurrence du candidat terme validée seulement au niveau
+		        syntaxique</interp>
+		    <interp xml:id="DM2">Occurrence du candidat terme validée au niveau scientifique et
+		        syntaxique</interp>
+		    <interp xml:id="DM3">Occurrence du candidat terme validée au niveau disciplinaire,
+		        scientifique et syntaxique</interp>
+		    <interp xml:id="DM4">Occurrence du candidat terme validée sur tous les niveaux d'annotation.
+		        Elle est validée au niveau terminologique</interp>
+		    <interp xml:id="DM0">Occurrence du candidat terme rejetée dès le niveau syntaxique</interp>
+		</interpGrp>
+		<interpGrp>
+		    <interp xml:id="DAOn">Occurrence du candidat terme validée au niveau terminologique selon le
+		        système de désambiguïsation utilisé</interp>
+		    <interp xml:id="DAOff">Occurrence du candidat terme non valide par le système de
+		        désambiguïsation</interp>
+		</interpGrp>
+		
+		<ns:listAnnotation>
+			<span target="#t2 #t3 #t4 #t5 #t6" corresp="#TS2.0-entry-1457">
+			    <fs>
+			        <f name="inflexionWord">
+			            <string>chez nous vivre</string>
+			        </f>
+			    </fs>
+			</span>
+			
+			<span target="#t7 #t8 #t9" corresp="#TS2.0-entry-1400">
+			    <fs>
+			        <f name="inflexionWord">
+			            <string>un poète</string>
+			        </f>
+			    </fs>
+			</span>
+			
+		</ns:listAnnotation>
+	</ns:standOff>
+	<ns:standOff type="syntagmesDefinis">
+		<teiHeader>
+		    <fileDesc>
+		        <titleStmt>
+		            <title>Annotation en occurrences de syntagmes définis issus du TLFi</title>
+		            <author role="annotator">ATILF</author>
+		            <author role="detection">ATILF</author>
+		        </titleStmt>
+		        <publicationStmt>
+		            <distributor>ATILF (Analyse et Traitement Informatique de la Langue
+		                Française)</distributor>
+		            <availability>
+		                <licence target="http://creativecommons.org/licenses/by/4.0/" corresp="#licenceCC"/>
+		            </availability>
+		        </publicationStmt>
+		        <sourceDesc>
+		            <p>Annotation en occurrences de syntagmes définis du document <ref target="#termithIdentifier"/> générée automatiquement dans le cadre du projet
+		                TermITH</p>
+		        </sourceDesc>
+		    </fileDesc>
+		    <encodingDesc>
+		        <appInfo>
+		            <application ident="Termith" version="1.0">
+		                <label>atilf:termith:phase13:syntagmesDefinis</label>
+		            </application>
+		        </appInfo>
+		        <projectDesc>
+		            <p>Le lexique des syntagmes définis issus du TLFi, TLF'Phraseo, est actuellement
+		                disponible sur le site d'Ortolang <ref target="https://hdl.handle.net/11403/tlfphraseo"/>.</p>
+		            <p>TLF'Phraseo est le résultat d'un extraction des syntagmes encodés comme définis
+		                dans le TLFi dans une version normalisée mais non classifiée d'un point de vue
+		                phraséologique</p>
+		            <p>TLF'Phraseo a été projeté sur les documents du projet sur la base d'une
+		                reconnaissance en forme lemmatisée et étiquette grammaticale.</p>
+		            <p>Ces indications morphosyntaxiques sont encodées dans l'annotation &lt;ns:standOff
+		                type="wordForms"&gt;.</p>
+		            <p>Une occurrence de syntagme défini contient les mêmes éléments que le syntagme
+		                correspondant dans le lexique et les contient dans le même ordre.</p>
+		            <p>Chaque occurrence de syntagme défini est représentée par un élément &lt;span&gt;
+		                dont l'attribut @target a pour valeur les identifiants des tokens qui la constitue
+		                et l'attribut @corresp a pour valeur l'identifiant de la description du syntagme
+		                dans le lexique TLF'Phraseo.</p>
+		            <p>La forme d'une occurrence de syntagme défini est décrite par une structure de
+		                traits &lt;fs&gt; qui contient comme unique trait &lt;f&gt; la forme textuelle de
+		                l'occurrence intégrée dans un élément &lt;string&gt;.</p>
+		        </projectDesc>
+		    </encodingDesc>
+		</teiHeader>
+		
+		<ns:listAnnotation>
+			<span target="#t2 #t3 #t4 #t5 #t6" corresp="#phraseo-1457">
+			    <fs>
+			        <f name="inflexionWord">
+			            <string>chez nous vivre</string>
+			        </f>
+			    </fs>
+			</span>
+			
+		</ns:listAnnotation>
+	</ns:standOff>
+	<ns:standOff type="lexiquesTransdisciplinaires">
+		  <teiHeader>
+		    <fileDesc>
+		      <titleStmt>
+		        <title>Annotation en occurrences du lexique transdisciplinaire</title>
+		        <author role="annotator">ATILF</author>
+		        <author role="resource constituion">LIDILEM</author>
+		      </titleStmt>
+		      <publicationStmt>
+		        <distributor>ATILF (Analyse et Traitement Informatique de la Langue
+		                  Française)</distributor>
+		        <availability>
+		          <licence target="http://creativecommons.org/licenses/by/4.0/" corresp="#licenceCC"/>
+		        </availability>
+		      </publicationStmt>
+		      <sourceDesc>
+		        <p>Annotation en occurrences de lexèmes transdisciplinaires du document <ref target="#termithIdentifier"/> générée automatiquement dans le cadre du projet
+		                  TermITH</p>
+		      </sourceDesc>
+		    </fileDesc>
+		    <encodingDesc>
+		      <appInfo>
+		        <application ident="Termith" version="1.0">
+		          <label>atilf:termith:phase15:lexiqueTransdisciplinaire</label>
+		        </application>
+		      </appInfo>
+		      <projectDesc>
+		        <p>Le lexique trandisciplinaire a été mis à jour et enrichi dans le cadre du projet
+		                     <ref target="#TermITH-project"/>. </p>
+		        <p>Il est actuellement disponible pour les membres du projet sur le site privé du
+		                  projet.</p>
+		        <p>Les items simples et complexes du lexique transdisciplinaire ont été projetés sur
+		                  les documents du projet lorsque ces items étaient contigus et non ambigus.</p>
+		        <p>De plus, ces items sont projetés sur la base d'une reconnaissance en forme
+		                  lemmatisée et étiquette grammaticale.</p>
+		        <p>Ces indications morphosyntaxiques sont encodées dans l'annotation &lt;ns:standOff
+		                  type="wordForms"&gt;.</p>
+		        <p>Une occurrence d'item du lexique transdisciplinaire contient les mêmes éléments
+		                  que l'item correspondant dans le lexique et les contient dans le même ordre.</p>
+		        <p>Chaque occurrence d'item du lexique transdisciplinaire est représentée par un
+		                  élément &lt;span&gt; dont l'attribut @target a pour valeur les identifiants des
+		                  tokens qui la constitue et l'attribut @corresp a pour valeur l'identifiant de
+		                  l'item dans le lexique transdisciplinaire.</p>
+		        <p>La forme d'une occurrence d'un item du lexique transdisciplinaire est décrite par
+		                  une structure de traits &lt;fs&gt; qui contient comme unique trait &lt;f&gt; la
+		                  forme textuelle de l'occurrence intégrée dans un élément &lt;string&gt;.</p>
+		      </projectDesc>
+		    </encodingDesc>
+		  </teiHeader>
+		
+		<ns:listAnnotation>
+			<span target="#t2 #t3 #t4 #t5 #t6" corresp="#lst-1457">
+			    <fs>
+			        <f name="inflexionWord">
+			            <string>chez nous vivre</string>
+			        </f>
+			    </fs>
+			</span>
+			
+			<span target="#t7 #t8 #t9" corresp="#lst-1400">
+			    <fs>
+			        <f name="inflexionWord">
+			            <string>un poète</string>
+			        </f>
+			    </fs>
+			</span>
+			
+		</ns:listAnnotation>
+	</ns:standOff>
+<text><w xml:id="t1">"</w><w xml:id="t2">Chez</w> <w xml:id="t3">nous</w> <w xml:id="t4">vivait</w> <w xml:id="t5">un</w> <w xml:id="t6">poète</w><w xml:id="t7">,</w> <w xml:id="t8">il</w> <w xml:id="t9">avait</w> <w xml:id="t10">d'</w><w xml:id="t11">autres</w> <w xml:id="t12">yeux</w><w xml:id="t13">.</w><w xml:id="t14">"</w> <w xml:id="t15">Petr</w> <w xml:id="t16">Bezruč</w> <w xml:id="t17">(</w><w xml:id="t18">1867-1958</w><w xml:id="t19">)</w><w xml:id="t20">,</w> <w xml:id="t21">Chants</w> <w xml:id="t22">de</w> <w xml:id="t23">Silésie</w><w xml:id="t24">,</w> <w xml:id="t25">cit</w><w xml:id="t26">.</w> <w xml:id="t27">in</w> <w xml:id="t28">Marabout</w> <w xml:id="t29">Université</w> <w xml:id="t30">240</w><w xml:id="t31">.</w></text>
+
+</TEI>
