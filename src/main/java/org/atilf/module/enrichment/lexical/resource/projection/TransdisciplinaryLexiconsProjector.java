@@ -1,7 +1,7 @@
 package org.atilf.module.enrichment.lexical.resource.projection;
 
 import org.atilf.models.TermithIndex;
-import org.atilf.resources.enrichment.LexicalResourceProjectionResources;
+import org.atilf.resources.enrichment.ResourceProjection;
 import org.atilf.models.enrichment.MorphologyOffsetId;
 import org.atilf.models.enrichment.MultiWordsOffsetId;
 import org.atilf.module.tools.FilesUtils;
@@ -14,10 +14,10 @@ import java.util.List;
  */
 public class TransdisciplinaryLexiconsProjector extends PhraseologyProjector {
 
-    List<MultiWordsOffsetId> _transdisciplinaryOffsetIds = new ArrayList<>();
+    private List<MultiWordsOffsetId> _transdisciplinaryOffsetIds = new ArrayList<>();
 
     public TransdisciplinaryLexiconsProjector(String id, TermithIndex termithIndex,
-                                              LexicalResourceProjectionResources transdisciplinaryResource) {
+                                              ResourceProjection transdisciplinaryResource) {
         this(
                 id,
                 FilesUtils.readListObject(termithIndex.getMorphologyStandOff().get(id)),
@@ -26,10 +26,10 @@ public class TransdisciplinaryLexiconsProjector extends PhraseologyProjector {
         );
     }
 
-    protected TransdisciplinaryLexiconsProjector(String id, List<MorphologyOffsetId> morpho,
-                                                 List<MultiWordsOffsetId> transdisciplinaryOffsetIds,
-                                                 LexicalResourceProjectionResources lexicalResourceProjectionResources) {
-        super(id, morpho, null,lexicalResourceProjectionResources);
+    TransdisciplinaryLexiconsProjector(String id, List<MorphologyOffsetId> morpho,
+                                       List<MultiWordsOffsetId> transdisciplinaryOffsetIds,
+                                       ResourceProjection resourceProjection) {
+        super(id, morpho, null, resourceProjection);
         _transdisciplinaryOffsetIds = transdisciplinaryOffsetIds;
     }
 
@@ -43,7 +43,7 @@ public class TransdisciplinaryLexiconsProjector extends PhraseologyProjector {
                                List<Integer> ids, Integer entryId) {
         _transdisciplinaryOffsetIds.add(new MultiWordsOffsetId(listMorphologyOffsetId.get(0).getBegin(),
                 listMorphologyOffsetId.get(listMorphologyOffsetId.size() - 1).getEnd(), entryId,
-                _lexicalResourceProjectionResources.getMultiWordsMap().get(lemma),ids));
+                _resourceProjection.getMultiWordsMap().get(lemma),ids));
     }
 }
 

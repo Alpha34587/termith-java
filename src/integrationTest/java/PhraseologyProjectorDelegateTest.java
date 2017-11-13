@@ -1,32 +1,27 @@
-package org.atilf.module.enrichment.lexical.resource.projection;
-
-import org.atilf.resources.enrichment.ResourceProjection;
+import org.atilf.delegate.enrichment.lexical.resource.projection.PhraseologyProjectorDelegate;
 import org.atilf.models.enrichment.MorphologyOffsetId;
 import org.atilf.models.enrichment.MultiWordsOffsetId;
-import org.junit.Assert;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.atilf.module.tools.FilesUtils;
+import org.atilf.runner.TermithResourceManager;
+import org.junit.*;
+import org.junit.rules.TemporaryFolder;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.atilf.runner.TermithResourceManager.*;
+public class PhraseologyProjectorDelegateTest extends IntegrationTasks {
 
-/**
- * Created by Simon Meoni on 12/06/17.
- */
-public class PhraseologyProjectorTest {
-    private static ResourceProjection resourceProjection;
+    private PhraseologyProjectorDelegate _p = new PhraseologyProjectorDelegate();
     private static List<MorphologyOffsetId> morphologyOffsetIds = new ArrayList<>();
-    private static List<MultiWordsOffsetId> observedMultiWordsOffsetIds = new ArrayList<>();
 
+    @Rule
+    public TemporaryFolder _temporaryFolder = new TemporaryFolder();
 
-    @BeforeClass
-    public static void setUp() throws Exception {
-        TermithResource.setLang("fr");
-        addToClasspath("src/main/resources/termith-resources");
+    @Before
+    public void setUp() throws Exception {
+        TermithResourceManager.addToClasspath("src/main/resources/termith-resources");
+        TermithResourceManager.TermithResource.setLang("fr");
 
-        resourceProjection = new ResourceProjection(TermithResource.PHRASEOLOGY.getPath());
         morphologyOffsetIds.add(new MorphologyOffsetId(0,0,"le","",1));
         morphologyOffsetIds.add(new MorphologyOffsetId(0,0,"chat","",2));
         morphologyOffsetIds.add(new MorphologyOffsetId(0,0,"mange","",3));
@@ -40,16 +35,23 @@ public class PhraseologyProjectorTest {
         morphologyOffsetIds.add(new MorphologyOffsetId(0,0,"tout","",11));
         morphologyOffsetIds.add(new MorphologyOffsetId(0,0,"le","",12));
         morphologyOffsetIds.add(new MorphologyOffsetId(0,0,"moins","",13));
+        for(int i = 0; i < 20; i++){
+            _termithIndex.getMorphologyStandOff().put(
+                    "test"+i,
+                    FilesUtils.writeObject(morphologyOffsetIds, _temporaryFolder.getRoot().toPath())
+            );
+        }
     }
 
     @Test
     public void execute() throws Exception {
-        new PhraseologyProjector("", morphologyOffsetIds, observedMultiWordsOffsetIds, resourceProjection).execute();
+        executeTasksTest(_p);
+
         String expectedId = "[15303, 31180]";
         List<Integer> observedId = new ArrayList<>();
         String expectedMorphoId = "[6, 7, 8, 10, 11, 12, 13]";
         List<Integer> observedMorphoId = new ArrayList<>();
-        observedMultiWordsOffsetIds.forEach(
+        _termithIndex.getPhraseoOffsetId().get("test10").forEach(
                 el -> {
                     observedId.add(el.getTermId());
                     observedMorphoId.addAll(el.getIds());
@@ -60,7 +62,8 @@ public class PhraseologyProjectorTest {
         Assert.assertEquals("this two list of ids must be equals", observedId.toString(), expectedId);
         Assert.assertEquals("this two list of morphologies ids  must be  equals",
                 observedMorphoId.toString(),
-                expectedMorphoId);
+                expectedMorphoId
+        );
 
     }
 }

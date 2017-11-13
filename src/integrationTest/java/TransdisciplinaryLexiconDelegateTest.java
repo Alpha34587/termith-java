@@ -1,34 +1,29 @@
-package org.atilf.module.enrichment.lexical.resource.projection;
-
+import org.atilf.delegate.enrichment.lexical.resource.projection.PhraseologyProjectorDelegate;
+import org.atilf.delegate.enrichment.lexical.resource.projection.TransdisciplinaryLexiconsProjectorDelegate;
 import org.atilf.models.enrichment.MorphologyOffsetId;
-import org.atilf.models.enrichment.MultiWordsOffsetId;
-import org.atilf.resources.enrichment.ResourceProjection;
-import org.atilf.resources.enrichment.TransdisciplinaryResourceProjection;
+import org.atilf.module.tools.FilesUtils;
+import org.atilf.runner.TermithResourceManager;
 import org.junit.Assert;
-import org.junit.BeforeClass;
+import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.TemporaryFolder;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.atilf.runner.TermithResourceManager.TermithResource;
-import static org.atilf.runner.TermithResourceManager.addToClasspath;
+public class TransdisciplinaryLexiconDelegateTest extends IntegrationTasks{
 
-/**
- * Created by Simon Meoni on 13/06/17.
- */
-public class TransdisciplinaryLexiconsProjectorTest {
-
-    private static ResourceProjection resourceProjection;
+    private TransdisciplinaryLexiconsProjectorDelegate _p = new TransdisciplinaryLexiconsProjectorDelegate();
     private static List<MorphologyOffsetId> morphologyOffsetIds = new ArrayList<>();
-    private static List<MultiWordsOffsetId> transdisciplinaryOffsetIds = new ArrayList<>();
 
+    @Rule
+    public TemporaryFolder _temporaryFolder = new TemporaryFolder();
 
-    @BeforeClass
-    public static void setUp() throws Exception {
-        TermithResource.setLang("fr");
-        addToClasspath("src/main/resources/termith-resources");
-        resourceProjection = new TransdisciplinaryResourceProjection(TermithResource.LST.getPath());
+    @Before
+    public void setUp() throws Exception {
+        TermithResourceManager.addToClasspath("src/main/resources/termith-resources");
+        TermithResourceManager.TermithResource.setLang("fr");
 
         morphologyOffsetIds.add(new MorphologyOffsetId(0,0,"le","",1));
         morphologyOffsetIds.add(new MorphologyOffsetId(0,0,"chat","",2));
@@ -44,17 +39,23 @@ public class TransdisciplinaryLexiconsProjectorTest {
         morphologyOffsetIds.add(new MorphologyOffsetId(0,0,"il","",12));
         morphologyOffsetIds.add(new MorphologyOffsetId(0,0,"est","",13));
         morphologyOffsetIds.add(new MorphologyOffsetId(0,0,"absent","",14));
+        for(int i = 0; i < 20; i++){
+            _termithIndex.getMorphologyStandOff().put(
+                    "test"+i,
+                    FilesUtils.writeObject(morphologyOffsetIds, _temporaryFolder.getRoot().toPath())
+            );
+        }
     }
 
     @Test
     public void execute() throws Exception {
-        new TransdisciplinaryLexiconsProjector("", morphologyOffsetIds, transdisciplinaryOffsetIds, resourceProjection)
-                .execute();
+        executeTasksTest(_p);
+
         String expectedId = "[1, 39, 428]";
         List<Integer> observedId = new ArrayList<>();
         String expectedMorphoId = "[6, 7, 10, 11, 14]";
         List<Integer> observedMorphoId = new ArrayList<>();
-        transdisciplinaryOffsetIds.forEach(
+        _termithIndex.getTransdisciplinaryOffsetId().get("test17").forEach(
                 el -> {
                     observedId.add(el.getTermId());
                     observedMorphoId.addAll(el.getIds());
@@ -65,7 +66,8 @@ public class TransdisciplinaryLexiconsProjectorTest {
         Assert.assertEquals("this two list of ids must be equals", observedId.toString(), expectedId);
         Assert.assertEquals("this two list of morphologies ids  must be  equals",
                 observedMorphoId.toString(),
-                expectedMorphoId);
+                expectedMorphoId
+        );
 
     }
 }
