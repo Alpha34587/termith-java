@@ -5,6 +5,7 @@ import org.atilf.resources.enrichment.StandOffResources;
 import org.atilf.module.enrichment.exporter.TeiWriter;
 import org.atilf.monitor.timer.TermithProgressTimer;
 import org.atilf.runner.TermithResourceManager.TermithResource;
+import org.flowable.engine.delegate.DelegateExecution;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -19,10 +20,16 @@ import java.util.concurrent.TimeUnit;
  */
 public class ExporterDelegate extends Delegate {
 
-    private Path _outputPath = getFlowableVariable("out",null);
+    private Path _outputPath;
 
     public void setOutputPath(Path outputPath) {
         _outputPath = outputPath;
+    }
+
+    @Override
+    public void initialize(DelegateExecution execution) {
+        super.initialize(execution);
+        _outputPath = getFlowableVariable("out",null);
     }
 
     /**

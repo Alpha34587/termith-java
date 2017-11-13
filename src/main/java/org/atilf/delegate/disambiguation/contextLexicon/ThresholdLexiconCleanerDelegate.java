@@ -3,6 +3,7 @@ package org.atilf.delegate.disambiguation.contextLexicon;
 import org.atilf.delegate.Delegate;
 import org.atilf.module.disambiguation.evaluation.ThresholdLexiconCleaner;
 import org.atilf.monitor.timer.TermithProgressTimer;
+import org.flowable.engine.delegate.DelegateExecution;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -17,8 +18,8 @@ import java.util.concurrent.TimeUnit;
  */
 public class ThresholdLexiconCleanerDelegate extends Delegate {
 
-    private Integer _thresholdMin = getFlowableVariable("thresholdMin", 3);
-    private Integer _thresholdMax = getFlowableVariable("thresholdMax", 15);
+    private Integer _thresholdMin;
+    private Integer _thresholdMax;
 
     public void setThresholdMin(Integer thresholdMin) {
         _thresholdMin = thresholdMin;
@@ -26,6 +27,14 @@ public class ThresholdLexiconCleanerDelegate extends Delegate {
 
     public void setThresholdMax(Integer thresholdMax) {
         _thresholdMax = thresholdMax;
+    }
+
+    @Override
+    public void initialize(DelegateExecution execution) {
+        super.initialize(execution);
+        _thresholdMin = getFlowableVariable("thresholdMin", 3);
+        _thresholdMax = getFlowableVariable("thresholdMax", 15);
+
     }
 
     /**

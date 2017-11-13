@@ -2,10 +2,12 @@ package org.atilf.delegate.enrichment.initializer;
 
 import org.atilf.delegate.Delegate;
 import org.atilf.module.enrichment.initializer.CorpusMapper;
+import org.flowable.engine.delegate.DelegateExecution;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -15,10 +17,16 @@ import java.util.concurrent.TimeUnit;
  */
 public class CorpusMapperDelegate extends Delegate {
 
-    private Path _base = getFlowableVariable("base",null);
+    private Path _base;
 
     public void setBase(Path base) {
         _base = base;
+    }
+
+    @Override
+    public void initialize(DelegateExecution execution) {
+        super.initialize(execution);
+        _base = getFlowableVariable("base",null);
     }
 
     /**

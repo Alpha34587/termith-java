@@ -3,6 +3,7 @@ package org.atilf.delegate.disambiguation.disambiguationExporter;
 import org.atilf.delegate.Delegate;
 import org.atilf.module.disambiguation.disambiguationExporter.DisambiguationTeiWriter;
 import org.atilf.monitor.timer.TermithProgressTimer;
+import org.flowable.engine.delegate.DelegateExecution;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -20,8 +21,8 @@ import java.util.concurrent.TimeUnit;
 
 public class DisambiguationExporterDelegate extends Delegate {
 
-    Path _evaluationPath = getFlowableVariable("evaluationPath",null);
-    Path _outputPath = getFlowableVariable("out",null);
+    Path _evaluationPath;
+    Path _outputPath;
 
     public void setEvaluationPath(Path evaluationPath) {
         _evaluationPath = evaluationPath;
@@ -29,6 +30,14 @@ public class DisambiguationExporterDelegate extends Delegate {
 
     public void setOutputPath(Path outputPath) {
         _outputPath = outputPath;
+    }
+
+    @Override
+    public void initialize(DelegateExecution execution) {
+        super.initialize(execution);
+        _evaluationPath = getFlowableVariable("evaluationPath",null);
+        _outputPath = getFlowableVariable("out",null);
+
     }
 
     /**

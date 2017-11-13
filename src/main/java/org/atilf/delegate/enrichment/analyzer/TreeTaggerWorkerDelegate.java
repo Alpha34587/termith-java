@@ -12,6 +12,7 @@ import org.atilf.module.enrichment.initializer.TextExtractor;
 import org.atilf.module.tools.FilesUtils;
 import org.atilf.monitor.timer.TermithProgressTimer;
 import org.atilf.runner.TermithResourceManager;
+import org.flowable.engine.delegate.DelegateExecution;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -36,8 +37,8 @@ import static org.atilf.runner.TermithResourceManager.*;
  */
 public class TreeTaggerWorkerDelegate extends Delegate {
 
-    private String _lang = getFlowableVariable("lang",null);
-    private Path _outputPath = getFlowableVariable("out",null);
+    private String _lang;
+    private Path _outputPath;
 
     public void setLang(String lang) {
         _lang = lang;
@@ -45,6 +46,13 @@ public class TreeTaggerWorkerDelegate extends Delegate {
 
     public void setOutputPath(Path outputPath) {
         _outputPath = outputPath;
+    }
+
+    @Override
+    public void initialize(DelegateExecution execution) {
+        super.initialize(execution);
+        _lang = getFlowableVariable("lang",null);
+        _outputPath  = getFlowableVariable("out",null);
     }
 
     /**

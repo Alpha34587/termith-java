@@ -3,6 +3,7 @@ package org.atilf.delegate.disambiguation.txm;
 import org.atilf.delegate.Delegate;
 import org.atilf.module.disambiguation.txm.TxmExporter;
 import org.atilf.monitor.timer.TermithProgressTimer;
+import org.flowable.engine.delegate.DelegateExecution;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -15,10 +16,16 @@ import java.util.concurrent.TimeUnit;
  * Created by Simon Meoni on 19/04/17.
  */
 public class TxmExporterDelegate extends Delegate {
-    Path _outputPath = getFlowableVariable("out",null);
+    private Path _outputPath = getFlowableVariable("out",null);
 
     public void setOutputPath(Path outputPath) {
         _outputPath = outputPath;
+    }
+
+    @Override
+    public void initialize(DelegateExecution execution) {
+        super.initialize(execution);
+        _outputPath = getFlowableVariable("out",null);
     }
 
     @Override

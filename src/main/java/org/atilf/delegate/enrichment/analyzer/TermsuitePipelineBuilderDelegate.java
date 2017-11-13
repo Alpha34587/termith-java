@@ -5,6 +5,7 @@ import org.atilf.module.enrichment.analyzer.TerminologyParser;
 import org.atilf.module.enrichment.analyzer.TerminologyStandOff;
 import org.atilf.module.enrichment.analyzer.TermsuitePipelineBuilder;
 import org.atilf.module.enrichment.analyzer.TreeTaggerWorker;
+import org.flowable.engine.delegate.DelegateExecution;
 
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
@@ -20,8 +21,8 @@ import java.util.concurrent.TimeUnit;
  *         Created on 01/09/16.
  */
 public class TermsuitePipelineBuilderDelegate extends Delegate {
-    private String _outputPath = getFlowableVariable("out",null);
-    private String _lang = getFlowableVariable("lang",null);
+    private String _outputPath;
+    private String _lang;
 
     public void setOutputPath(String outputPath) {
         _outputPath = outputPath;
@@ -29,6 +30,13 @@ public class TermsuitePipelineBuilderDelegate extends Delegate {
 
     public void setLang(String lang) {
         _lang = lang;
+    }
+
+    @Override
+    public void initialize(DelegateExecution execution) {
+        super.initialize(execution);
+        _outputPath = getFlowableVariable("out",null).toString();
+        _lang = getFlowableVariable("lang",null);
     }
 
     /**

@@ -4,6 +4,7 @@ import org.atilf.delegate.Delegate;
 import org.atilf.resources.disambiguation.DisambiguationXslResources;
 import org.atilf.module.disambiguation.contextLexicon.DisambiguationXslTransformer;
 import org.atilf.monitor.timer.TermithProgressTimer;
+import org.flowable.engine.delegate.DelegateExecution;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -22,8 +23,8 @@ import static org.atilf.runner.TermithResourceManager.*;
  */
 public class LearnXslTransformerDelegate extends Delegate {
 
-    private Path _learningPath = getFlowableVariable("learningPath",null);
-    private Path _outputPath = getFlowableVariable("out",null);
+    private Path _learningPath;
+    private Path _outputPath;
 
     public void setLearningPath(Path learningPath) {
         _learningPath = learningPath;
@@ -31,6 +32,13 @@ public class LearnXslTransformerDelegate extends Delegate {
 
     public void setOutputPath(Path outputPath) {
         _outputPath = outputPath;
+    }
+
+    @Override
+    public void initialize(DelegateExecution execution) {
+        super.initialize(execution);
+        _learningPath = getFlowableVariable("learningPath",null);
+        _outputPath = getFlowableVariable("out",null);
     }
 
     @Override

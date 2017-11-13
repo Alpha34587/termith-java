@@ -4,6 +4,7 @@ import org.atilf.delegate.Delegate;
 import org.atilf.resources.enrichment.XslResources;
 import org.atilf.module.enrichment.initializer.TextExtractor;
 import org.atilf.monitor.timer.TermithProgressTimer;
+import org.flowable.engine.delegate.DelegateExecution;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -23,8 +24,8 @@ import static org.atilf.runner.TermithResourceManager.*;
 public class TextExtractorDelegate extends Delegate {
 
 
-    private Path _base = getFlowableVariable("base",null);
-    private Path _output = getFlowableVariable("out",null);
+    private Path _base;
+    private Path _output;
 
 
     public void setBase(Path base) {
@@ -33,6 +34,13 @@ public class TextExtractorDelegate extends Delegate {
 
     public void setOutput(Path output) {
         _output = output;
+    }
+
+    @Override
+    public void initialize(DelegateExecution execution) {
+        super.initialize(execution);
+        _base = getFlowableVariable("base",null);
+        _output = getFlowableVariable("out",null);
     }
 
     /**

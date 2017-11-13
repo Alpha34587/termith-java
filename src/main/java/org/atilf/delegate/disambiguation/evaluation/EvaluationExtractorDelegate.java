@@ -12,8 +12,6 @@ import java.util.concurrent.TimeUnit;
  *         Created on 12/10/16.
  */
 public class EvaluationExtractorDelegate extends Delegate {
-
-
     /**
      * this method is split in two parts. Firstly, for each file, the context is extract for each terms candidates.write threshold integration test
      * Finally, each context is evaluated with the lexical associated in order to determine the terminology potentiality

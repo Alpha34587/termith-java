@@ -3,6 +3,7 @@ package org.atilf.delegate.disambiguation.txm;
 import org.atilf.delegate.Delegate;
 import org.atilf.module.disambiguation.txm.TxmContextExtractor;
 import org.atilf.monitor.timer.TermithProgressTimer;
+import org.flowable.engine.delegate.DelegateExecution;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -17,9 +18,9 @@ import java.util.concurrent.TimeUnit;
  */
 public class TxmContextExtractorDelegate extends Delegate{
 
-    Path _outputPath = getFlowableVariable("out",null);
-    int _windows = getFlowableVariable("window",0);
-    String _annotation = getFlowableVariable("annotation","");
+    private Path _outputPath;
+    private int _windows;
+    private String _annotation;
 
     public void setOutputPath(Path outputPath) {
         _outputPath = outputPath;
@@ -31,6 +32,15 @@ public class TxmContextExtractorDelegate extends Delegate{
 
     public void setAnnotation(String annotation) {
         _annotation = annotation;
+    }
+
+    @Override
+    public void initialize(DelegateExecution execution) {
+        super.initialize(execution);
+        _outputPath = getFlowableVariable("out",null);
+        _windows = getFlowableVariable("window",0);
+        _annotation = getFlowableVariable("annotation","");
+
     }
 
     @Override

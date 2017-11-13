@@ -20,7 +20,7 @@ public class PhraseologyProjectorDelegate extends Delegate {
     @Override
     public void executeTasks() throws IOException, InterruptedException, ExecutionException {
             ResourceProjection resourceProjection = new ResourceProjection(
-                    TermithResourceManager.TermithResource.PHRASEOLOGY.getPath().toString()
+                    TermithResourceManager.TermithResource.PHRASEOLOGY.getPath()
             );
             List<Future> futures = new ArrayList<>();
             _termithIndex.getMorphologyStandOff().forEach(

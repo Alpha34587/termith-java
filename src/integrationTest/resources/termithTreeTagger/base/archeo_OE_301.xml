@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title level="a" type="main">Teneurs en carbone-13 du collagène de grands mammifères du site de Pont d’Ambon (Dordogne, France) : implications pour l’environnement et son exploitation au Tardiglaciaire dans le Sud-ouest de la France</title>
+        <title type="alt" xml:lang="en">Carbon-13 amounts of large mammals from Pont d’Ambon (Dordogne, France): implications for environment and human foraging in Tardiglacial of south-western France</title>
+        <author>
+          <persName>
+            <forename>Dorothée</forename>
+            <surname>Drucker</surname>
+          </persName>
+          <affiliation>
+            <s>Laboratoire de Paléontologie, ISEM, UMR 5554, Université Montpellier 2, case courrier 064, place Eugène Bataillon, 34095 Montpellier Cedex 05 - Equipe d’Archéologie Environnementale, UMR 7041, Maison René Ginouvès de l’Archéologie et de l’Ethnologie, case 023, 21 Allée de l’Université, 92023 Nanterre Cedex</s>
+          </affiliation>
+        </author>
+        <author>
+          <persName>
+            <forename>Guy</forename>
+            <surname>Célérier</surname>
+          </persName>
+          <affiliation>
+            <s>67 rue Combe-des-Dames, 24000 Périgueux</s>
+          </affiliation>
+        </author>
+      </titleStmt>
+      <publicationStmt>
+        <publisher/>
+        <date when="2010-05-26">2010-05-26</date>
+        <availability>
+          <p>© Tous droits réservés</p>
+        </availability>
+        <idno type="url">http://paleo.revues.org/1024</idno>
+      </publicationStmt>
+      <sourceDesc>
+        <biblFull>
+          <titleStmt>
+            <title/>
+            <respStmt>
+              <resp>auteur</resp>
+              <name>Dorothée Drucker</name>
+            </respStmt>
+            <respStmt>
+              <resp>auteur</resp>
+              <name>Guy Célérier</name>
+            </respStmt>
+          </titleStmt>
+          <publicationStmt>
+            <publisher/>
+            <date>2001-12-14</date>
+            <idno type="pp">145-158</idno>
+          </publicationStmt>
+        </biblFull>
+      </sourceDesc>
+    </fileDesc>
+    <encodingDesc>
+      <appInfo>
+        <application version="1.0" ident="Lodel">
+          <label>Lodel</label>
+          <desc>
+            <ref target="http://www.tei-c.org/">We use TEI</ref>
+          </desc>
+        </application>
+      </appInfo>
+      <tagsDecl>
+        <rendition xml:id="T1" scheme="css">text-decoration:line-through</rendition>
+        <rendition xml:id="T2" scheme="css">font-variant:small-caps;text-decoration:underline</rendition>
+        <rendition xml:id="T3" scheme="css">font-variant:small-caps</rendition>
+        <rendition xml:id="T4" scheme="css">text-transform:uppercase</rendition>
+        <rendition xml:id="T5" scheme="css">text-transform:uppercase;text-decoration:underline;</rendition>
+      </tagsDecl>
+    </encodingDesc>
+    <profileDesc>
+      <langUsage>
+        <language ident="fr">fr</language>
+      </langUsage>
+      <textClass>
+        <keywords scheme="keyword" xml:lang="fr">
+          <list>
+            <item>collagène</item>
+            <item>Tardiglaciaire</item>
+            <item>carbone-13</item>
+            <item>Ongulés</item>
+            <item>Pont d’Ambon</item>
+          </list>
+        </keywords>
+        <keywords scheme="keyword" xml:lang="en">
+          <list>
+            <item>collagen</item>
+            <item>Tardiglacial</item>
+            <item>carbon-13</item>
+            <item>Pont d’Ambon</item>
+            <item>Ungulates</item>
+          </list>
+        </keywords>
+      </textClass>
+    </profileDesc>
+  </teiHeader>
+  <text>
+    <front>
+      <div type="abstract" xml:lang="fr">
+        <p>Le site de Pont d’Ambon (Dordogne, France) présente une stratigraphie recouvrant les cultures de la fin du Magdalénien et de l’Azilien (environ 12800 à 9500 ans BP). Au sein des restes de grands mammifères, le Renne est remplacé à l’Azilien par le Cerf accompagné d’espèces réputées forestières comme le Chevreuil et le Sanglier. Le bon état de conservation du collagène a permis de réaliser des mesures isotopiques. Les teneurs en carbone-13, discriminantes entre les milieux ouverts de prairie ou de forêt clairsemée et les milieux fermés de forêt dense, ont été plus particulièrement examinées. Les valeurs de δ <hi rend="sup">13</hi>C des collagènes des rennes des couches inférieures de Pont d’Ambon sont représentatives de celles mesurées sur les derniers représentants de cette espèce dans le sud-ouest de la France. Ces valeurs sont significativement plus basses que celles du Magdalénien inférieur et moyen pour la même région et pourraient refléter un changement d’interaction entre le Renne et son environnement au Tardiglaciaire. L’ensemble des grands herbivores des couches aziliennes de Pont d’Ambon présente des signatures isotopiques de milieu ouvert, y compris le Chevreuil et le Sanglier. Concernant le Cerf, une valeur de δ <hi rend="sup">13</hi>C caractéristique d’un milieu forestier dense est trouvée pour un seul individu de la couche azilienne la plus récente. De ces résultats, il ressort que durant l’Azilien à Pont d’Ambon, les humains prélèvent les Ongulés préférentiellement dans un biotope de type ouvert. La présence d’un cerf de milieu forestier dans le cortège faunique à la fin de l’Azilien pourrait signifier l’apparition d’un nouvel habitat pour le cerf et/ou un changement dans le mode de prélèvement humain.</p>
+      </div>
+      <div type="abstract" xml:lang="en">
+        <p>The site of Pont d’Ambon (Dordogne, France) has yielded stratified layers that cover a time spanning final Magdalenian and Azilian culturs (about 12,800 to 9,500 years BP). Among mammal remains, Red Deer, in association with the usually considered forest dwelling species Roe Deer and Boar, replaced Reindeer during Azilian times. The well-preserved state of collagen allowed isotopic measurement. Carbon-13 amounts, that discriminate between open areas and closed-canopy areas in temperate environments, have been specifically examined. The collagen δ <hi rend="sup">13</hi>C values of reindeer from the lower levels from Pont d’Ambon are similar to those of the last reindeer individuals of southwestern France. These values are significantly lower than those in the Lower and Middle Magdalenian of the same country. It could be due to a changing interaction of the Reindeer with its environment in the Tardiglacial. All the large mammals from Pont d’Ambon azilian levels, including Roe Deer and Boar, provided open area isotopic signal. As far as Red Deer is concerned, a single individual from the most recent azilian level exhibits a forested area δ <hi rend="sup">13</hi>C value. As a result, it seems that azilian human people in Pont d’Ambon prefered to hunt ungulates in open biotopes. The occurrence of a forested red deer in the end of the Azilian could be due to a change of habitat for the Red Deer and/or a change in the way of human foraging.</p>
+      </div>
+      <div type="ack">
+        <p><hi rend="bold">Remerciements</hi><lb/> Ce travail a bénéficié du soutien financier du programme CNRS “Paléoenvironnements, Evolution des Hominidés“ et de l’association “Naturalia et Biologia“. Nous tenons à remercier Françoise Delpech pour la sélection des pièces archéologiques. Nous remercions également Daniel Billiou, Gérard Bardoux, Micheline Grably et Cyril Girardin pour leur assistance technique au laboratoire de Biogéochimie Isotopique de l’Université Paris 6 où ont été réalisées les analyses. Les relectures de Françoise Delpech et Pierre Guibert ont permis d’améliorer ce manuscrit.</p>
+      </div>
+    </front>
+    <body>
+      <div type="div1">
+        <head subtype="level1">Problématique et objectifs de l’étude</head>
+        <p>L’étude des teneurs en isotopes stables de restes fossiles est une méthode de reconstitution paléoécologique utilisée de plus en plus couramment pour les périodes préhistoriques. Le principe de base de ce type d’étude est que les rapports isotopiques du tissu osseux d’un animal rendent compte des rapports isotopiques de son alimentation. Les sources de nourriture se distinguent par des signatures isotopiques différentes selon leur origine (terrestre ou aquatique, végétale ou animale) et les conditions environnementales (température, humidité, latitude, altitude…). Ainsi, des études antérieures ont utilisé les teneurs en isotopes stables du collagène, protéine majoritaire de l’os, dans le but de cerner des changements majeurs d’alimentation et/ou d’environnement de populations humaines comme la dépendance plus ou moins marquée envers les produits marins durant la fin du Paléolithique supérieur (Hayden <hi rend="italic"> et al.</hi>, 1987 ; Drucker, 2001) et durant la transition du Mésolithique au Néolithique (par exemple Lubell <hi rend="italic"> et al.</hi>, 1994). </p>
+        <p>Concernant la faune des grands mammifères, les analyses isotopiques ont été réalisées soit pour définir le pôle de protéines d’origine terrestre consommées par les humains contemporains (Hayden <hi rend="italic"> et al.</hi>, 1987 ; Richards <hi rend="italic"> et al.</hi>, 2000), soit pour cerner les variations des conditions environnementales, essentiellement le taux d’humidité et le degré d’ouverture du milieu végétal (Iacumin <hi rend="italic"> et al.</hi>, 1997). Mais les potentialités des signatures isotopiques comme marqueurs de l’impact des changements climatiques et culturels sur l’habitat et le recrutement des animaux chassés par l’homme sont encore peu exploitées.</p>
+        <p>Ce dernier aspect a été examiné lors de l’étude isotopiques de la faune de grands mammifères du site de Pont d’Ambon. Ce gisement a fourni une stratigraphie couvrant les cultures de la fin du Magdalénien et de l’Azilien dans le contexte de réchauffement général (Djindjan <hi rend="italic">et al.</hi>, 1999) et de reconquête forestière (Bell et Walker, 1992 ; Fauquette <hi rend="italic">et al.</hi>, 1999) du Tardiglaciaire. La transition entre Magdalénien et Azilien voit également le remplacement de la grande faune glaciaire, où le Renne est omniprésent, par une association d’espèces réputées plus tempérées, comprenant le Cerf parmi les espèces majoritaires (Delpech, 1989). Cette évolution dans les spectres de faune chassée par l’homme est bien illustrée dans le site de Pont d’Ambon.</p>
+      </div>
+      <div type="div1">
+        <head subtype="level1">Le site de Pont d’Ambon</head>
+        <p>L’abri sous-roche de Pont d’Ambon s’inscrit dans un ensemble de gisements de pied de falaise calcaire, en bordure de la Dronne sur la commune de Bourdeilles (fig. 1). Fouillé de 1970 à 1990, ce site a fait l’objet d’études pluridisciplinaires dont les résultats ont été rassemblés et examinés dans des travaux synthétiques (Célérier, 1994, 1998). Les conclusions paléoenvironnementales et les correspondances avec les épisodes chronoclimatiques sont résumées dans le tableau 1.</p>
+        <p rend="figure-title">Figure 1 : Localisation géographique du site de Pont d’Ambon. <lb/><hi rend="italic">Figure 1 : Geographical location of Pont d’Ambon site.</hi></p>
+        <p>
+          <figure>
+            <graphic url="http://paleo.revues.org/docannexe/image/1024/img-1.png"/>
+          </figure>
+        </p>
+        <p rend="figure-title"><ref target="Image17Cgraphics"/> Tableau 1 : Récapitulatif des études réalisées à Pont d’Ambon. Les dates radiocarbone ont été calibrées avec le programme calib4.3 <lb/><hi rend="italic">Table 1: Summary of the studies performed on Pont d’Ambon. Calibration of the radiocarbon dates is based on calibration program 4.3 </hi></p>
+        <p>
+          <figure>
+            <graphic url="http://paleo.revues.org/docannexe/image/1024/img-2.png"/>
+          </figure>
+        </p>
+        <p rend="figure-legend"><ref target="Image27Cgraphics"/> (d’après Stuiver &amp; Reimer, 1993 et Stuiver et al., 1998). <lb/><hi rend="italic">(from Stuiver &amp; Reimer, 1993 and Stuiver et al., 1998).</hi></p>
+        <p>Concernant les Ongulés retrouvés sur le site (fig. 2), les couches du Magdalénien supérieur final (couches 6, 5 et 4 inf.) ne contiennent, pour les quelques spécimens déterminés (N = 5), que du Renne ( <hi rend="italic">Rangifer tarandus</hi>) (Delpech, 1983). Cette espèce disparaît à partir du niveau moyen de la couche 4 pour laisser place à une association où domine le Cerf ( <hi rend="italic">Cervus elaphus</hi>) suivi du Chevreuil ( <hi rend="italic">Capreolus capreolus</hi>) et du Sanglier ( <hi rend="italic">Sus scrofa</hi>), et accompagné de quelques restes de Boviné (plutôt <hi rend="italic">Bos primigenius</hi>) et de Cheval <hi rend="italic">(Equus caballus</hi>). Cette dernière association persiste jusque dans la couche 2 (Azilien) où le Cerf devient moins prépondérant pour finalement être dominé en nombre de restes par le Cheval et les Bovinés (Gilbert, 1984). Le Chevreuil et le Sanglier demeurent assez modestement représentés (fig. 2).</p>
+        <p rend="figure-title">Figure 2 : Composition de la faune des Ongulés du site de Pont d’Ambon. <lb/><hi rend="italic">Figure 2: Composition of the ungulate fauna from Pont d’Ambon.</hi></p>
+        <p>
+          <figure>
+            <graphic url="http://paleo.revues.org/docannexe/image/1024/img-3.png"/>
+          </figure>
+        </p>
+        <p><ref target="Image37Cgraphics"/> L’étude squelettochronologique de dents de cerf des couches 3B, 3A, 3 et 2 a conclu à un abattage en toutes saisons, sauf le plein hiver, et plutôt au détriment d’individus juvéniles (Pike-Tay, 1991). Les poissons retrouvés sur le site (couches 5 à 2) ont été capturés essentiellement pendant la belle saison (Le Gall dans Célérier, 1994). Le saumon a été privilégié au Magdalénien final (couches 5 et 4 inf). Les Cyprinidés et les anguilles ont été préférentiellement pêchés par les aziliens des couches 4 sup à 3. Enfin, les restes de la couche 2 témoignent d’une activité de pêche moins intense et moins spécialisée que pendant les périodes précédentes (Le Gall dans Célérier, 1994). Les études de saisonnalité sur le cerf et les poissons concordent avec une occupation de l’abri de Pont d’Ambon pendant la majeure partie de l’année par un ou des petits groupes humains qui y ramenaient et traitaient le produit de leur chasse et de leur pêche. </p>
+      </div>
+      <div type="div1">
+        <head subtype="level1">Étude géochimique des restes fossiles</head>
+        <div type="div2">
+          <head subtype="level2">Évaluation des conditions d’application</head>
+          <p>Des échantillons de pièces osseuses compactes et de dentine de Renne, Cerf, Sanglier, Chevreuil, Cheval et Boviné ont été prélevés pour l’analyse isotopique. La préservation quantitative du collagène a été estimée via la quantité élémentaire d’azote puisque l’azote de l’os provient essentiellement du collagène. Les rendements d’extraction sont effectivement corrélés aux quantités d’azote dans l’os ou la dentine (par exemple Bocherens <hi rend="italic"> et al.</hi>, 1997b). Les concentrations en azote (N <hi rend="sub">os</hi>) dans des échantillons actuels non dégradés varient en moyenne de 3,9 % à 4,9 % (Bocherens <hi rend="italic"> et al.</hi>, 1997b). Le protocole d’extraction (Bocherens <hi rend="italic"> et al.</hi>, 1991), inspiré de Longin (1971), comporte une étape de déminéralisation à l’acide chlorhydrique, puis une étape d’élimination des contaminants organiques par action de la soude. Enfin, le collagène est récupéré par solubilisation dans une solution légèrement acide chauffée à 100°C. La quantité d’azote extractible sous forme de collagène (N <hi rend="sub">extr</hi>) comparée à la quantité d’azote de l’os rend compte de l’état de conservation qualitative du collagène présent dans l’échantillon. En effet, l’efficacité de l’extraction dépend de l’état de conservation de la structure physico-chimique du collagène.</p>
+          <p>L’intégrité chimique et isotopique du collagène est contrôlée par les quantités d’azote et de carbone mesurées sur le résidu d’extraction. Les concentrations moyennes des collagènes, extraits selon le même protocole, d’os frais n’ayant pas subi d’altération sont de 42 % en carbone et 16 % en azote (Ambrose, 1998). Au-dessous de 8 % de carbone et 3 % d’azote, le collagène extrait n’est plus considéré comme fiable et ne peut être pris en compte dans le bilan isotopique (Ambrose, 1998). </p>
+          <p>La mesure des quantités d’azote et de carbone de l’os ou du collagène est réalisée par combustion de 5 à 7 mg de poudre d’os ou de 1 mg de collagène dans un analyseur élémentaire CHN (Carlo-Erba NA 1500). Les résultats sont exprimés en pourcentages pondéraux avec une précision de l’ordre de 0,1 % pour l’os, et de 0,3 % à 0,7 % pour, respectivement, l’azote et le carbone du collagène (Drucker <hi rend="italic"> et al.</hi>, 2000b).</p>
+          <p>L’analyse isotopique est effectuée sur 1 mg de collagène dans un spectromètre de masse isotopique en flux continu (VG-Optima) couplé à l’analyseur élémentaire (Bocherens <hi rend="italic"> et al.</hi>, 1997a). Les teneurs isotopiques sont exprimées sous la forme de valeurs d (delta) : δ <hi rend="sup">13</hi>C = ( <hi rend="sup">13</hi>C/ <hi rend="sup">12</hi>C <hi rend="sub">échantillon</hi>/ <hi rend="sup">13</hi>C/ <hi rend="sup">12</hi>C <hi rend="sub">standard</hi> - 1).1000 (‰). Le standard international est un carbonate marin (PDB) et la précision analytique est de 0,1‰ .</p>
+        </div>
+        <div type="div2">
+          <head subtype="level2">Paramètres pertinents des variations des teneurs en carbone-13 en milieu arctique et tempéré</head>
+          <p>Les teneurs en carbone-13 (δ <hi rend="sup">13</hi>C) des tissus d’un animal reflètent celles de la nourriture qui a été incorporée lors des dernières années de sa vie. Le collagène, protéine majoritaire de l’os, peut être utilisé comme support pour les analyses isotopiques pour des périodes remontant jusqu’à 120 000 ans (Bocherens <hi rend="italic"> et al.</hi>, 1999). Les nombreuses datations par mesure de l’isotope radioactif carbone-14 du collagène sur des ossements du Paléolithique supérieur du sud-ouest de la France ont montré que cette protéine était souvent disponible dans ces contextes archéologiques.</p>
+          <p>Pour les plantes, à la base de la chaîne alimentaire, leur mode de photosynthèse influe sur leurs teneurs en carbone-13. Les plantes de milieu arctique ou tempéré sont caractérisées par un mécanisme de photosynthèse dite en C <hi rend="sub">3</hi> (la première molécule formée comprend 3 atomes de carbone) à la différence des plantes herbacées tropicales dont la photosynthèse est dite en C <hi rend="sub">4</hi> (la première molécule formée comprend 4 atomes de carbone). Au vu des estimations de pluviométrie et de température pour le Paléolithique supérieur en Europe de l’ouest d’une part et des exigences écologiques des plantes en C <hi rend="sub">4</hi> d’autre part (Collatz <hi rend="italic"> et al.</hi>, 1998), la présence de plantes en C <hi rend="sub">4</hi> est hautement improbable.</p>
+          <p>Au sein des plantes en C <hi rend="sub">3</hi>, des variations des teneurs en <hi rend="sup">13</hi>C surviennent en fonction des conditions de la photosynthèse. En particulier, les plantes de sous-bois sont soumises à l’effet conjoint d’un recyclage du carbone plus intense et d’un ensoleillement plus faible que les plantes de milieu ouvert, c’est-à-dire dépourvu de canopée (van der Merwe &amp; Medina, 1991 ; Broadmeadow <hi rend="italic"> et al.</hi>, 1992 ; Brooks <hi rend="italic"> et al.</hi>, 1997). Cet état de fait s’exprime par des valeurs de δ <hi rend="sup">13</hi>C plus basses des mêmes plantes entre habitat forestier et habitat ouvert d’un même écosystème (voir Tieszen, 1991) ou entre des plantes de forêt boréale ou tempérée et des plantes de toundra ou de prairie (voir Drucker, 2001) (fig. 3). La présence d’une canopée dense aboutit à des valeurs de δ <hi rend="sup">13</hi>C des plantes de sous-bois généralement inférieures à –28‰. Des valeurs de δ <hi rend="sup">13</hi>C plus négatives sont généralement trouvées pour les plantes de forêt déciduale par rapport aux plantes de forêt sempervirente (par exemple entre forêt de peuplier et forêt de pin, Buchmann <hi rend="italic">et al.</hi>, 1997).</p>
+          <p rend="figure-title">Figure 3 : Synthèse des valeurs de δ <hi rend="sup">13</hi>C des plantes et de leurs consommateurs en fonction des écosystèmes de milieu arctique et tempéré. <lb/><hi rend="italic">Figure 3: Summary of </hi><hi rend="italic">δ</hi><hi rend="italic"><hi rend="sup">13</hi></hi><hi rend="italic">C values of plants and their consumers in arctic and temperate ecosystems.</hi></p>
+          <p>
+            <figure>
+              <graphic url="http://paleo.revues.org/docannexe/image/1024/img-4.png"/>
+            </figure>
+          </p>
+          <p rend="figure-legend"><ref target="Image47Cgraphics"/> (valeurs d’après Bocherens, 1992 ; Mole et al., 1994 ; Brooks et al., 1997 ; Buchmann et al., 1997). <lb/><hi rend="italic">(data from Bocherens, 1992; Mole et al., 1994; Brooks et al., 1997; Buchmann et al., 1997).</hi></p>
+          <p>Le collagène des grands herbivores sauvages enregistre les teneurs en carbone-13 des plantes avec un enrichissement relativement constant d’environ +5‰ (par exemple Vogel, 1978 ; Rodière <hi rend="italic"> et al.</hi>, 1996). Les valeurs de δ <hi rend="sup">13</hi>C des herbivores vont donc suivre le même schéma de variation que celui des végétaux qui sont consommés.</p>
+          <p>Les études isotopiques réalisées en contexte arctique ou tempéré sur des animaux forestiers actuels étudiés du point écologique sont encore rares. Elles concernent principalement des chevreuils de la forêt de Dourdan (France) et des chevreuils, des cerfs et des bisons de la forêt de Bialowieza (Pologne). Elles ont mis en évidence des valeurs de δ <hi rend="sup">13</hi>C du collagène inférieures à –22,5‰ à la suite de l’effet de la canopée (Rodière <hi rend="italic"> et al.</hi>, 1996 ; Bocherens, 2000) <hi rend="italic">.</hi> A Dourdan, les chevreuils abattus en lisière présentent des valeurs de δ <hi rend="sup">13</hi>C moins négatives que pour les animaux abattus en pleine forêt (Rodière, 1995). Ce résultat laisse à penser que les individus trouvés en lisière ont consommé un mélange de plantes de sous-bois et de plantes de milieu ouvert. Etant donnée la difficulté de sélectionner des animaux sauvages n’ayant eu accès à aucune plante cultivée par l’homme, il n’a pas encore été possible d’étudier plus finement l’influence du type de végétaux consommés en milieu forestier (feuilles, herbes, tubercules, fruits, graines).</p>
+        </div>
+      </div>
+      <div type="div1">
+        <head subtype="level1">Conservation de l’os et du collagène</head>
+        <div type="div2">
+          <head subtype="level2">Résultats</head>
+          <p>Les quantités d’azote présent dans les échantillons analysés varient de 0,5 % à 2,3 %, avec une moyenne de 1,1 %, indépendamment de l’espèce et de la couche stratigraphique considérée (tabl. 2). Les quantités d’azote extrait sous forme de collagène sont comprises entre 0,1 % et 1,3 % et ne dépendent pas non plus du taxon ou de la position stratigraphique de l’échantillon (tabl. 2). Enfin, les proportions d’azote extrait sous forme de collagène (N <hi rend="sub">extr</hi>/N <hi rend="sub">os</hi>) sont comprises entre 23 % et 94 % (tabl. 2). Cette fois, les échantillons de la couche 3A et 3B se distinguent par des valeurs de N <hi rend="sub">extr</hi>/N <hi rend="sub">os</hi> plus élevées que dans les autres couches. Les études sédimentaires ont mis en évidence une moindre influence des inondations de la rivière pour les niveaux archéologiques 3B, 3A et 2 (Célérier, 1994). Les ossements de ces niveaux ont pu être moins soumis que les autres au lessivage issu des battements de la nappe phréatique.</p>
+          <p rend="figure-title">Tableau 2 : Résultats des analyses réalisées sur les échantillons de Pont d’Ambon. <lb/><hi rend="italic">Table 2: Results of the analyses performed on the samples from Pont d’Ambon.</hi></p>
+          <p>
+            <figure>
+              <graphic url="http://paleo.revues.org/docannexe/image/1024/img-5.png"/>
+            </figure>
+          </p>
+          <p><ref target="Image57Cgraphics"/> L’analyse élémentaire des collagènes extraits a mis en évidence des quantités d’azote (N <hi rend="sub">coll</hi>) et de carbone (C <hi rend="sub">coll</hi>) variant respectivement de 11,9 % à 17,1 % et de 32,3 % à 43,9 % (tabl. 2). Les rapports atomiques C/N <hi rend="sub">coll</hi> sont compris entre 3,0 et 3,3 (tabl. 2). Ces données sont comparables à celles déterminées sur des os actuels non contaminés. La fiabilité chimique et géochimique du collagène est ainsi confirmée.</p>
+        </div>
+        <div type="div2">
+          <head subtype="level2">Discussion</head>
+          <p>Sur l’ensemble des échantillons traités, il est possible d’estimer qu’en moyenne un quart environ du collagène originel a été conservé et qu’un peu plus de la moitié de ce collagène résiduel a pu être extrait. Ainsi, l’ensemble des prélèvements a fourni du collagène. Enfin, la totalité des collagènes extraits présente un très bon état de conservation physico-chimique. Par rapport à d’autres sites du Paléolithique supérieur du sud-ouest de la France, Pont d’Ambon présente l’un des cas les plus favorables de la conservation du collagène (Drucker, 2001).</p>
+        </div>
+      </div>
+      <div type="div1">
+        <head subtype="level1">Teneurs en carbone-13 des collagènes extraits</head>
+        <div type="div2">
+          <head subtype="level2">Résultats</head>
+          <p>Les valeurs de δ <hi rend="sup">13</hi>C des collagènes extraits varient de –20,6‰ à –19,6‰ pour le Renne, de –23,4‰ à –19,9‰ pour le Cerf, de –21,0‰ à –20,3‰ pour le Chevreuil, de –20,6‰ à –20,1‰ pour le Boviné, de –21,3‰ à –20,1‰ pour le Sanglier et de –21,6‰ à –20,6‰ pour le Cheval (tabl. 2, fig. 4). Mis à part l’échantillon de Cerf dont la valeur de δ <hi rend="sup">13</hi>C du collagène est de –23,4‰, l’ensemble des échantillons a fourni du collagène dont la valeur de δ <hi rend="sup">13</hi>C est comprise entre –21,6‰ et –19,6‰. Cette gamme assez étroite correspond à la consommation de plantes de C <hi rend="sub">3</hi> de milieu dit ouvert (prairie, paysage de parc). Les valeurs de δ <hi rend="sup">13</hi>C les plus hautes sont retrouvées chez les rennes tandis que les valeurs de δ <hi rend="sup">13</hi>C les plus basses sont retrouvées chez les chevaux. Seul un cerf de la couche 2 se caractérise par une valeur de δ <hi rend="sup">13</hi>C caractéristique de la consommation de plantes de sous-bois. Pour les autres cerfs, aucune différence significative n’est relevable par les teneurs en carbone-13 du collagène en fonction de la position stratigraphique et donc de la situation chronologique (fig. 5). Par ailleurs, les valeurs de δ <hi rend="sup">13</hi>C du collagène des cerfs considérés ne sont pas liées de façon statistiquement significative à la quantité d’azote de l’os ou à la quantité d’azote extrait sous forme de collagène (fig. 6). Ainsi, les teneurs en carbone-13 mesurées ne dépendent pas de l’état de conservation quantitative ou qualitative du collagène analysé et sont effectivement représentatives de la signature isotopique enregistrée du vivant de l’animal.</p>
+          <p rend="figure-title">Figure 4 : Valeurs de δ <hi rend="sup">13</hi>C du collagène des Ongulés du site de Pont d’Ambon. La zone en gris correspond aux valeurs de δ <hi rend="sup">13</hi>C caractéristiques du milieu fermé de forêt dense. <lb/><hi rend="italic">Figure 4: Collagen </hi><hi rend="italic">δ</hi><hi rend="italic"><hi rend="sup">13</hi></hi><hi rend="italic">C values of the Ungulates from Pont d’Ambon. The grey zone corresponds to the </hi><hi rend="italic">δ</hi><hi rend="italic"><hi rend="sup">13</hi></hi><hi rend="italic">C values representative of the closed environment of dense forest.</hi></p>
+          <p>
+            <figure>
+              <graphic url="http://paleo.revues.org/docannexe/image/1024/img-6.png"/>
+            </figure>
+          </p>
+          <p rend="figure-title"><ref target="Image67Cgraphics"/> Figure 5 : Valeurs de δ <hi rend="sup">13</hi>C du collagène des Cerfs de Pont d’Ambon selon leur provenance stratigraphique. La zone en gris correspond aux valeurs de δ <hi rend="sup">13</hi>C caractéristiques du milieu fermé de forêt dense. <lb/><hi rend="italic">Figure 5: Collagen </hi><hi rend="italic">δ</hi><hi rend="italic"><hi rend="sup">13</hi></hi><hi rend="italic">C values of the red deers of Pont d’Ambon according to their stratigraphic occurrence. The grey zone corresponds to the </hi><hi rend="italic">δ</hi><hi rend="italic"><hi rend="sup">13</hi></hi><hi rend="italic">C values representative of the closed environment of dense forest.</hi></p>
+          <p>
+            <figure>
+              <graphic url="http://paleo.revues.org/docannexe/image/1024/img-7.png"/>
+            </figure>
+          </p>
+          <p rend="figure-title"><ref target="Image77Cgraphics"/> Figure 6 : Valeurs de δ <hi rend="sup">13</hi>C du collagène des cerfs de Pont d’Ambon comparées aux quantités d’azote de l’os et aux quantités d’azote extrait sous forme de collagène. <lb/><hi rend="italic">Figure 6: Collagen </hi><hi rend="italic">δ</hi><hi rend="italic"><hi rend="sup">13</hi></hi><hi rend="italic">C values of the red deer of Pont d’Ambon compared to the amounts of bone nitrogen and to the amounts of nitrogen extracted as collagen.</hi></p>
+          <p>
+            <figure>
+              <graphic url="http://paleo.revues.org/docannexe/image/1024/img-8.png"/>
+            </figure>
+          </p>
+        </div>
+        <div type="div2">
+          <head subtype="level2">Discussion</head>
+          <p>Les valeurs de δ <hi rend="sup">13</hi>C des rennes du Magdalénien final de Pont d’Ambon sont inférieures à celles qui ont été déterminées sur les rennes du Magdalénien inférieur et moyen de Dordogne (Drucker <hi rend="italic"> et al.</hi>, 2000a). Un renne analysé à l’abri Faustin (Magdalénien supérieur final, 12 370 ± 220 ans BP, Ly 2700) a fourni une valeur de δ <hi rend="sup">13</hi>C inférieure à –20‰ (Drucker, 2001). Les résultats de Hayden <hi rend="italic"> et al.</hi> (1987) pour les sites de La Gare de Couze (Dordogne, Magdalénien supérieur, 11 750 ± 310 ans, Ly 976, 12 430 ± 320 ans BP, Ly 975) et de Duruthy (Landes, Magdalénien VI, couche 3, 11 150 ± 220 ans BP, Ly 858) confirme la baisse des valeurs de δ <hi rend="sup">13</hi>C collagénique des rennes du Magdalénien supérieur par rapport aux périodes précédentes (tabl. 3, fig. 7).</p>
+          <p rend="figure-title">Tableau 3 : Origine des données isotopiques pour les rennes et les chevaux du Magdalénien du sud-ouest de la France. <lb/><hi rend="italic">Table 3: Origin of the isotopic data of magdalenian reindeer and horse from south-western France.</hi></p>
+          <p>
+            <figure>
+              <graphic url="http://paleo.revues.org/docannexe/image/1024/img-9.png"/>
+            </figure>
+          </p>
+          <p rend="figure-legend"><ref target="Image97Cgraphics"/> Les dates radiocarbone ont été calibrées avec le programme calib4.3 (d’après Stuiver et Reimer, 1993 et Stuiver <hi rend="italic">et al</hi>., 1998). <lb/><hi rend="italic">Calibration of the radiocarbon dates is based on calibration program 4.3 (from Stuiver &amp; Reimer, 1993 and Stuiver et al., 1998).</hi></p>
+          <p rend="figure-title">Figure 7 : Valeurs de δ <hi rend="sup">13</hi>C du collagène de Renne et de Cheval pour les différentes phases du Magdalénien dans le sud-ouest de la France. <hi rend="italic">Figure 7: Collagen </hi><hi rend="italic">δ</hi><hi rend="italic"><hi rend="sup">13</hi></hi><hi rend="italic">C values of Reindeer and Horse in the different phase of the Magdalenian in southwestern France.</hi></p>
+          <p>
+            <figure>
+              <graphic url="http://paleo.revues.org/docannexe/image/1024/img-10.png"/>
+            </figure>
+          </p>
+          <p rend="figure-legend"><ref target="Image107Cgraphics"/> Les valeurs isotopiques de Gare de Couze et de Duruthy sont tirées de Hayden et al. (1987), celles de l’Abri Faustin sont tirées de Drucker (2001) et celles des Jamblancs, de Laugerie Haute Est et de Flageolet II sont tirées de Drucker et al. (2000a). <lb/><hi rend="italic">The isotopic values of Gare de Couze and Duruthy are from Hayden et al. ( 1987), those of Abri Faustin from Drucker (2001) and those from Les Jamblancs, Laugerie-Haute Est and Le Flageolet II from Drucker et al. </hi><hi rend="italic">(2000a).</hi></p>
+          <p>L’évolution des signatures isotopiques du collagène du Renne à la fin du Magdalénien dans le sud-ouest de la France entraîne l’apparition de valeurs de δ <hi rend="sup">13</hi>C comparables entre les derniers représentants de cette espèce et les chevaux de la même période (fig. 7). Ce recouvrement dans les valeurs de δ <hi rend="sup">13</hi>C du collagène entre Renne et Cheval n’apparaissait pas lors des périodes antérieures du Paléolithique supérieur dans cette région (Drucker <hi rend="italic"> et al.</hi>, 2000a ; Drucker, 2001). Le Cheval présentait alors des teneurs en <hi rend="sup">13</hi>C systématiquement et significativement plus basses que celles du Renne. Les hautes teneurs en carbone-13 du Renne ont été interprétées comme le reflet de la consommation importante de lichens (Hayden <hi rend="italic"> et al.</hi>, 1987 ; Fizet, 1992 ; Drucker <hi rend="italic"> et al.</hi>, 2000a). Au cours du dernier Tardiglaciaire, la baisse de ces teneurs, spécifique au Renne parmi l’ensemble des cervidés, se réalise alors que l’aire de répartition de cette espèce se morcelle préalablement à sa disparition de la région (Delpech, 1983, 1999). L’évolution vers un climat plus tempéré et plus humide au cours de la phase de réchauffement du Bölling/Alleröd pourrait avoir privé les rennes de leurs ressources alimentaires spécifiques et les avoir exposés à la compétition croissante des autres cervidés (Drucker, 2001).</p>
+          <p>Les valeurs de δ <hi rend="sup">13</hi>C collagènique des cerfs de Pont d’Ambon varient peu d’une couche stratigraphique à l’autre à l’exception de l’individu de la couche 2. Les valeurs les moins négatives des cerfs aziliens de milieu « ouvert » sont similaires aux valeurs les plus négatives des rennes magdaléniens du site. Ceci viendrait confirmer la compétition entre ces deux espèces pour les mêmes ressources alimentaires. Les teneurs en carbone-13 du collagène de Sanglier et de Chevreuil caractéristiques d’un milieu “ non fermé ” viendraient confirmer la capacité, observée encore de nos jours, de ces animaux à subsister dans des milieux de taillis et de maquis donc en dehors de contexte forestier dense (Heptner <hi rend="italic"> et al.</hi>, 1989 ; Linnell <hi rend="italic"> et al.</hi>, 1998).</p>
+          <p>Le seul cerf qui présente une valeur de δ <hi rend="sup">13</hi>C caractéristique de consommation de plantes de sous-bois a été trouvé pour la couche 2. La signification statistique de la présence d’un cerf « forestier » dans l’Azilien terminal et de son absence dans les épisodes antérieurs est difficile à déterminer au vu du biais inévitable introduit par l’échantillonnage. Par ailleurs, la présence de ce cerf forestier est-elle le témoignage d’un changement du comportement humain, d’un changement d’habitat du Cerf à la suite de contraintes environnementales ? Pour aborder ces questions, il serait nécessaire de vérifier l’absence de cerf forestier durant les premières périodes de l’Azilien. Deux difficultés s’annoncent : la première est l’absence d’étude isotopique sur des accumulations de restes de cerfs d’origine naturelle pour cette période ; la seconde est la définition du degré de résolution de l’analyse isotopique. Un site d’accumulation naturelle nous permettrait de nous abstraire du biais pouvant être introduit par les choix de chasse des humains. Pour ce qui concerne les limites possibles de l’analyse isotopique, rappelons que les valeurs de δ <hi rend="sup">13</hi>C du collagène d’herbivore inférieures à –22,5‰ impliquent sans ambiguïté l’existence d’un couvert forestier dense. Par contre, les études de référence sur les plantes ont mis en évidence des valeurs de δ <hi rend="sup">13</hi>C comparables entre paysage de forêt clairsemée, type paysage de parc, et paysage ouvert de prairie ou de toundra. Ainsi, pour des animaux présentant des valeurs de δ <hi rend="sup">13</hi>C du collagène compris entre environ –20,5‰ et –22,5‰ il ne serait pas possible de trancher entre ces deux milieux. </p>
+          <p>L’étude palynologique menée à Pont d’Ambon a mis en évidence des pourcentages de pollens arboréens inférieurs à 55 % (Célérier, 1994) alors que la présence d’un milieu forestier ne peut être affirmée qu’à partir de 60-70 % de pollens d’arbres dans les prélèvements réalisés dans des gisements abrités (Bui-Thi-Maï <hi rend="italic"> et al.</hi>, 1985). Les résultats des analyses polliniques effectuées sur le site de Pont d’Ambon sont à considérer avec prudence à cause des biais introduits par les battements de la nappe phréatique encore présente à la base de la stratigraphie. Mais, par ailleurs, les études des séquences polliniques du Tardiglaciaire indiquent que, en dépit du reboisement, la steppe reste dominante et que l’établissement de la forêt tempérée sur le territoire français n’est significative à partir du Préboréal (voir Fauquette <hi rend="italic"> et al.</hi>, 1999). Ainsi, d’après ces derniers auteurs, il est raisonnable de considérer la présence d’un paysage très ouvert autour de Pont d’Ambon pendant la majeure partie de l’Azilien. A l’Azilien terminal, qui correspondrait au début du Préboréal (voir tabl. 1), il est possible d’envisager la présence de zone de forêt tempérée dans la région. </p>
+          <p>Un nombre significatif de silex d’origine allochtone a été signalé pour la couche 2 alors que les matières premières lithiques étaient précédemment surtout d’origine locale. Cette extension des aires d’approvisionnement et les caractéristiques technologiques conduisent à l’individualisation culturelle du ou des derniers groupes humains qui ont fréquenté l’abri. Les humains de l’Azilien terminal de Pont d’Ambon pourraient avoir également étendu leur aire d’activité cynégétique. Un scénario plausible serait l’abattage du cerf forestier de la couche 2 dans une zone boisée , si ce n’est aux alentours immédiat du site, du moins à une distance comprise dans l’aire d’activité des humains. Par ailleurs, la couche 2 est marquée par la dominance du Cheval et des Bovinés en nombre de restes au détriment du Cerf, espèce majoritaire dans les couches aziliennes inférieures. En outre, les cerfs de la couche 2 se caractérisent par une taille supérieure à celle de ses congénères des couches antérieures (Delpech, comm. perso., 1999). Le recrutement d’un cerf forestier pourrait répondre à une diminution de la disponibilité des cerfs de milieu ouvert.</p>
+        </div>
+      </div>
+      <div type="div1">
+        <head subtype="level1">Conclusions</head>
+        <p>A Pont d’Ambon, la transition du Magdalénien à l’Azilien est marquée par le remplacement du Renne par le Cerf comme espèce dominante dans le spectre de faune chassée. L’évolution significative des teneurs en carbone-13 du collagène des derniers rennes pour ce site et d’autres gisements de la région confirme l’impact du réchauffement climatique du Tardiglaciaire sur la physiologie de ces animaux. La disparition du Renne peut être interprétée non seulement comme une inadéquation entre les exigences biologiques de cet animal et de son nouvel environnement, mais également en termes de compétition avec d’autres cervidés et en particulier le Cerf. </p>
+        <p>Il ressort également de cette étude que l’association Cerf, Chevreuil et Sanglier dans le spectre de faune n’implique pas forcément une chasse en milieu de forêt dense. Pour le Nord et l’Est de la France, l’examen des spectres de faune chassée fait apparaître les zones de lisière et de forêt claire comme les biotopes les plus représentés à l’Epipaléolithique et au Mésolithique (Bridault, 1994). La préférence des chasseurs de l’Epipaléolithique pour les biotopes ouverts semble confirmée pour le site de Pont d’Ambon. Si la présence de ces espèces dans les restes archéologiques témoigne sans conteste d’un changement de l’environnement vers un contexte plus tempéré, les résultats isotopiques ne mettent pas en évidence de modification majeure dans les stratégies de chasse des Ongulés par les populations humaines de l’Azilien par rapport celles de la fin du Magdalénien.</p>
+        <p>Enfin, le seul Cerf de forêt dense analysé à Pont d’Ambon est trouvé à la période de transition vers l’Holocène marquée par un autre épisode d’amélioration climatique, le Préboréal. La forêt tempérée, présente alors sur l’ensemble du territoire français (Fauquette <hi rend="italic">et al.</hi>, 1999), apparaît comme un nouvel habitat pour le cerf et un nouveau territoire de chasse pour les humains de Pont d’Ambon. </p>
+        <p>La diminution de la représentation du Cerf dans le spectre de faune de la couche 2, concomitant à l’apparition du cerf forestier, est-elle représentative d’un changement de stratégie de chasse des aziliens ou est-elle la conséquence du changement de l’environnement ? La stabilité des teneurs en carbone-13 du Cerf pendant la majeure partie de l’Azilien est-elle le reflet d’une relative stabilité des paysages malgré la succession de différents épisodes chronoclimatiques (Bölling, Alleröd, Dryas récent) ou est-elle le reflet d’une constance dans les stratégies de chasse des humains ? Ces questions soulignent la difficulté à discriminer les effets d’une évolution de l’environnement et les effets d’un choix humain culturel sur la seule base de la faune d’apport anthropique. L’application de l’étude isotopique à d’autres sites de même contexte chronologique mais de régions différentes permettrait de vérifier si le schéma observé à Pont d’Ambon se répète et est donc plutôt issu de contraintes environnementales.</p>
+      </div>
+    </body>
+    <back>
+      <div type="bibliography">
+        <listBibl>
+          <bibl>AMBROSE S.H. 1998 - Prospects for stable isotopic analysis of Later Pleistocene hominid diets in West Asia and Europe. In: T. Akazawa, K. Aoki et O. Bar-Yosef (Eds.), <hi rend="italic">Origin of Neanderthals and Modern Humans in West Asia</hi>, New York: Plenum Press, 1998, p. 277-289.</bibl>
+          <bibl>BELL M. et WALKER M. J. C. 1992 - <hi rend="italic">Late quaternary environmental change. Physical and human perspectives</hi>. New York : Longman Scientific &amp; Technical, 1992, 273 p.</bibl>
+          <bibl>BOCHERENS H. 1992 - <hi rend="italic">Biogéochimie isotopique (13C, 15N, 18O) et paléontologie des vertébrés : applications à l’étude des réseaux trophiques révolus et des paléoenvironnements. </hi>Thèse de Doctorat, Paris : Université Paris 6, 1992, 193 p.</bibl>
+          <bibl>BOCHERENS H. 2000 - <hi rend="italic">Reconstitutions paléoenvironnementales et paléoalimentaires par le marquage isotopique naturel (13C, 15N, 18O) des vertébrés et des plantes fossiles en milieu continental. </hi>Habilitation à diriger des Recherches en Sciences Naturelles, Paris : Université Paris 6, 2000, 77 p. </bibl>
+          <bibl>BOCHERENS H., FIZET M., MARIOTTI A., LANGE-BADRÉ B., VANDERMEERSCH B., BOREL J.-P. et BELLON G. 1991 - Isotopic biogeochemistry ( <hi rend="sup">13</hi>C, <hi rend="sup">15</hi>N) of fossil vertebrate collagen: application to the study of a past food web including Neandertal man, <hi rend="italic">Journal of Human Evolution</hi>, 1991, 20, p. 481-492.</bibl>
+          <bibl>BOCHERENS H., BILLIOU D., PATOU-MATHIS M., BONJEAN D., OTTE M. et MARIOTTI A. 1997a - Paleobiological implications of the isotopic signatures ( <hi rend="sup">13</hi>C, <hi rend="sup">15</hi>N) of fossil mammal collagen in Scladina cave (Sclayn, Belgium), <hi rend="italic">Quaternary Research</hi>, 1997a, 48, p. 370-380.</bibl>
+          <bibl>BOCHERENS H., TRESSET A., WIEDEMANN F., GILIGNY F., LAFAGE F., LANCHON Y. et MARIOTTI A. 1997b - Diagenetic evolution of mammals bones in two French Neolithic sites, <hi rend="italic">Bulletin de la Société Géologique de France</hi>, 1997b, 168, 5, p. 555-564.</bibl>
+          <bibl>BOCHERENS H., BILLIOU D., MARIOTTI A., OTTE M., BONJEAN D. et TOUSSAINT M. 1999 - Palaeoenvironmental and palaeodietary implications of isotopic biogeochemistry of Last Interglacial neanderthal and mammal bones in Scladina cave (Belgium), <hi rend="italic">Journal of Archaeological Science</hi>, 1999, 26, p. 599-607.</bibl>
+          <bibl>BRIDAULT A. 1994 - Les économies de chasse épipaléolithiques et mésolithiques dans le nord et l’est de la France : nouvelles analyses, <hi rend="italic">Anthropozoologica</hi>, 1994, 19, p. 55-67.</bibl>
+          <bibl>BROADMEADOW M.S.J., GRIFFITHS H., MAXWELL C. et BORLAND A.M. 1992 - The carbon isotope ratio of plant organic material reflects temporal and spatial variations in CO <hi rend="sub">2</hi> within tropical forest formations in Trinidad, <hi rend="italic">Oecologia</hi>, 1992, 89, p. 435-441.</bibl>
+          <bibl>BROOKS J.R., FLANAGAN L.B., BUCHMANN N. et EHLERINGER J.R. 1997 - Carbon isotope composition of boreal plants: functional grouping of life forms, <hi rend="italic">Oecologia</hi>, 1997, 110, p. 301-311.</bibl>
+          <bibl>BUCHMANN N., WEN-YUAN K. et EHLERINGER J.R. 1997 - Influence of stand structure on carbon-13 of vegetation, soils, and canopy air within deciduous and evergreen forests in Utah, United States, <hi rend="italic">Oecologia</hi>, 1997, 110, p. 109-119.</bibl>
+          <bibl>BUI-THI-MAÏ, GIRARD M., RENAULT-MISKOVSKY J. et VISSET L. 1985 - Conclusions, in: J. Renault-Miskovsky, Bui-Thi-Maï et M. Girard (eds.), <hi rend="italic">Palynologie Archéologique</hi>, Notes et monographies techniques, vol. 17, Valbonne: Editions du CNRS, 1985, p. 491-495.</bibl>
+          <bibl>CÉLÉRIER G. 1994 - L’abri sous-roche de Pont d’Ambon à Bourdeilles (Dordogne), in : <hi rend="italic">Gallia Prehistoire</hi>, vol. 36, Paris : Editions du CNRS, 1994, p. 65-144.</bibl>
+          <bibl>CÉLÉRIER G. 1998 - L’abri sous-roche de Pont d’Ambon à Bourdeilles (Dordogne, France) - Perspective synthétique, <hi rend="italic">Paléo</hi>, 1998, 10, p. 233-264.</bibl>
+          <bibl>CÉLÉRIER G., TISNERAT N. et VALLADAS H. 1999 - Données nouvelles sur l’âge des vestiges de chien à Pont d’Ambon, Bourdeilles, (Dordogne), <hi rend="italic">Paléo</hi>, 1999, 11, p. 163-165.</bibl>
+          <bibl>COLLATZ G.J., BERRY J.A. et CLARK J.S. 1998 - Effects of climate and atmospheric CO <hi rend="sub">2</hi> partial pressure on the global distribution of C <hi rend="sub">4</hi> grasses: present, past and future, <hi rend="italic">Oecologia</hi>, 1998, 114, p. 441-454.</bibl>
+          <bibl>DELPECH F. 1983 - <hi rend="italic">Les faunes du Paléolithique supérieur dans le Sud-Ouest de la France</hi>, vol. 6, Bordeaux : Centre National de la Recherche Scientifique, 1983. 452 p.</bibl>
+          <bibl>DELPECH F. 1989 - L’environnement animal des magdaléniens. In : <hi rend="italic">Le Magdalénien en Europe, Actes du Colloque de Mayence 1987</hi>, Liège : ERAUL, 1989, p. 5-30.</bibl>
+          <bibl>DELPECH F. 1999 - Biomasse d’Ongulés au Paléolithique et inférences sur la démographie, <hi rend="italic">Paléo</hi>, 1999, 11, p. 19-42.</bibl>
+          <bibl>DJINDJAN F., KOSLOWSKI J. et OTTE M. 1999 - <hi rend="italic">Le Paléolithique supérieur en Europe</hi>. Paris : Armand Colin, 1999, 474 p.</bibl>
+          <bibl>DRUCKER D. 2001 - <hi rend="italic">Validation méthodologique de l’analyse isotopique d’ossements fossiles et apports aux reconstitutions paléoécologiques du Paléolithique supérieur du sud-ouest de la France. </hi>Thèse de Doctorat de géochimie, Paris : Université Paris 6, 2001, 222 p.</bibl>
+          <bibl>DRUCKER D., BOCHERENS H. et MARIOTTI A. 2000a - Contribution de la biogéochimie isotopique à l’étude de la paléobiologie des grands mammifères du Pléistocène supérieur : application aux rennes et aux chevaux magdaléniens et solutréens du sud-ouest de la France, <hi rend="italic">Mémoire de la Société Préhistorique Française</hi>, 2000a, 28, p. 13-27.</bibl>
+          <bibl>DRUCKER D., MADELAINE S., BOCHERENS H., CLEYET-MERLE J.-J. et MARIOTTI A. 2000b - Implications paléoenvironnementales de l’étude paléontologique et isotopique de la faune de grands mammifères des Jamblancs (Dordogne, France), <hi rend="italic">Paléo</hi>, 2000b, 12, p. 29-53.</bibl>
+          <bibl>FAUQUETTE S., GUIOT J., MENUT M., DE BEAULIEU J.-L., REILLE M. et GUENET P. 1999 - Vegetation and climate since the last interglacial in the Vienne area (France), <hi rend="italic">Global and Planetary Change</hi>, 1999, 20, p. 1-17.</bibl>
+          <bibl>FIZET M. 1992 - <hi rend="italic">Biogéochimie isotopique (13C et 15N) du collagène des vertébrés : contribution à l’étude d’un paléoécosystème anthropique du Pléistocène supérieur (Marillac, Charente). </hi>Thèse deDoctorat, Paris : Université de Paris 6, 1992, 151 p.</bibl>
+          <bibl>GILBERT A. 1984 - <hi rend="italic">Contribution à l’étude des faunes de la fin des temps glaciaires et du début des temps glaciaires.</hi> Doctorat, Bordeaux : Université de Bordeaux I, 1984, 322 p.</bibl>
+          <bibl>HAYDEN B., CHISHOLM B. et SCHWARCZ H.P. 1987 - Fishing and Foraging. Marine resources in the Upper Paleolithic of France, in: O. Soffer (ed.), <hi rend="italic">The Pleistocene Old World. Regional Perspectives</hi>. New York: Plenum Press, 1987, p. 279-291.</bibl>
+          <bibl>HEPTNER V.G., NASIMOVICH A.A. et BANNIKOV A.G. 1989 - <hi rend="italic">Mammals of the Soviet Union</hi>. Leiden: E. J. BRILL, 1989, 3 vol. </bibl>
+          <bibl>IACUMIN P., BOCHERENS H., DELGADO HUERTAS A., MARIOTTI A. et LONGINELLI A. 1997 - A stable isotope study of fossil mammal remains from the Paglicci cave, Southern Italy. N and C as palaeoenvironmental indicators, <hi rend="italic">Earth and Planetary Science Letters</hi>, 1997, 148, p. 349-357.</bibl>
+          <bibl>LIMONDIN N. 1990 - <hi rend="italic">Paysages et climats quaternaires par les mollusques continentaux. </hi>Thèse de Doctorat, Paris : Université de Paris I Panthéon-Sorbonne, 1990, p. 196-219.</bibl>
+          <bibl>LINNELL J.D.C., DUNCAN P. et ANDERSEN R. 1998 - The European roe deer: a portrait of a successful species, in: R. Andersen, P. Duncan et J. D. C. Linnell (eds.), <hi rend="italic">The European roe deer: the biology of success</hi>. Stockholm: Scandinavian University Press, 1998, p. 11-22.</bibl>
+          <bibl>LONGIN R. 1971 - New method of collagen extraction for radiocarbon dating, <hi rend="italic">Nature</hi>, 1971, 230, p. 241-242.</bibl>
+          <bibl>LUBELL D., JACKES M., SCHWARCZ H., KNYF M. et MEIKLEJOHN C. 1994 - The Mesolithic-Neolithic transition in Portugal: isotopic and dental evidence of diet, <hi rend="italic">Journal of Archaeological Science</hi>, 1994, 21, p. 201-216.</bibl>
+          <bibl>MARQUET J.-C. 1989 - <hi rend="italic">Paléoenvironnement et chronologie des sites du domaine atlantique français d’âge pléistocène moyen et supérieur d’après l’étude des Rongeurs. </hi>Doctorat d’Etat, Université de Bourgogne, 1989, 346 p.</bibl>
+          <bibl>MOLE S., JOERN A., O’LEARY M.H. et MADHAVAN S. 1994 - Spatial and temporal variation in carbon isotope discrimination in prairie graminoids, <hi rend="italic">Oecologia</hi>, 1994, 97, p. 316-321.</bibl>
+          <bibl>PIKE-TAY A. 1991 - Red deer hunting in the Upper Paleolithic of south-west France: a study in seasonality, <hi rend="italic">BAR International Series</hi>, 1991, 569, 183 p.</bibl>
+          <bibl>RICHARDS M.P., HEDGES R.E.M., JACOBI R., CURRENT A. et STRINGER C. 2000 - FOCUS: Gough’s Cave and Sun Hole Cave human stable isotope value indicate a high animal protein diet in the British Upper Palaeolithic, <hi rend="italic">Journal of Archaeological Science</hi>, 2000, 27, p. 1-3.</bibl>
+          <bibl>RODIÈRE E. 1995 - <hi rend="italic">Variations des abondances isotopiques naturelles au sein d’une population de chevreuils (</hi>Capreolus capreolus <hi rend="italic">L.)</hi>. DEA de de Génétique et Biodiversité, Paris : Université Paris 6, 1995, 36 p.</bibl>
+          <bibl>RODIÈRE E., BOCHERENS H., ANGIBAULT L.-M. et MARIOTTI A. 1996 - Particularités isotopiques de l’azote chez le chevreuil ( <hi rend="italic">Capreolus capreolus</hi> L.) : implications pour les reconstitutions paléoenvironnementales, <hi rend="italic">Comptes Rendus de l’Académie des Sciences de Paris</hi>, 1996, 323, II a, p. 179-185.</bibl>
+          <bibl><hi rendition="#T4">Stuiver, M. </hi>et <hi rendition="#T4"> Reimer, P.J.</hi> 1993 - Radiocarbon, 1993, 35, p. 215-230.</bibl>
+          <bibl><hi rendition="#T4">Stuiver, M., Reimer, P.J., Bard, E., Beck, J.W., Burr, G.S., Hughen, K.A., Kromer, B., McCormac, F.G., v.d. Plicht, J., </hi>et <hi rendition="#T4"> Spurk, M.</hi> 1998 - Radiocarbon, 1998, 40, p. 1041-1083.</bibl>
+          <bibl>TIESZEN L.L. 1991 - Natural variations in the carbon isotope values of plants: Implications for archaeology, ecology, and paleoecology, <hi rend="italic">Journal of Archaeological Science</hi>, 1991, 18, p. 227-248.</bibl>
+          <bibl>VAN DER MERWE N.J. et MEDINA E. 1991 - The canopy effect, carbon isotope ratios and foodwebs in Amazonia, <hi rend="italic">Journal of Archaeological Science</hi>, 1991, 18, p. 249-259. </bibl>
+          <bibl>VOGEL J.C. 1978 - Isotopic assessment of the dietary habits of ungulates, <hi rend="italic">South African Journal of Science</hi>, 1978, 74, p. 298-301.</bibl>
+        </listBibl>
+      </div>
+    </back>
+  </text>
+</TEI>

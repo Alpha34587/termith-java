@@ -6,6 +6,7 @@ import org.atilf.resources.disambiguation.DisambiguationXslResources;
 import org.atilf.resources.disambiguation.TxmXslResource;
 import org.atilf.module.disambiguation.contextLexicon.DisambiguationXslTransformer;
 import org.atilf.monitor.timer.TermithProgressTimer;
+import org.flowable.engine.delegate.DelegateExecution;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -22,8 +23,8 @@ import static org.atilf.runner.TermithResourceManager.*;
  * Created by Simon Meoni on 19/04/17.
  */
 public class TxmXslTransformerDelegate extends Delegate {
-    Path _txmInputPath = getFlowableVariable("txmInputPath",null);
-    Path _outputPath =  getFlowableVariable("out",null);
+    private Path _txmInputPath;
+    private Path _outputPath;
 
     public void setTxmInputPath(Path txmInputPath) {
         _txmInputPath = txmInputPath;
@@ -31,6 +32,14 @@ public class TxmXslTransformerDelegate extends Delegate {
 
     public void setOutputPath(Path outputPath) {
         _outputPath = outputPath;
+    }
+
+    @Override
+    public void initialize(DelegateExecution execution) {
+        super.initialize(execution);
+        _txmInputPath = getFlowableVariable("txmInputPath",null);
+        _outputPath =  getFlowableVariable("out",null);
+
     }
 
     @Override
