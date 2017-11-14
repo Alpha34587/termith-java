@@ -3,6 +3,7 @@ package org.atilf.delegate.disambiguation.contextLexicon;
 import org.atilf.delegate.Delegate;
 import org.atilf.module.disambiguation.evaluation.ThresholdLexiconCleaner;
 import org.atilf.monitor.timer.TermithProgressTimer;
+import org.flowable.engine.delegate.DelegateExecution;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -17,6 +18,25 @@ import java.util.concurrent.TimeUnit;
  */
 public class ThresholdLexiconCleanerDelegate extends Delegate {
 
+    private Integer _thresholdMin;
+    private Integer _thresholdMax;
+
+    public void setThresholdMin(Integer thresholdMin) {
+        _thresholdMin = thresholdMin;
+    }
+
+    public void setThresholdMax(Integer thresholdMax) {
+        _thresholdMax = thresholdMax;
+    }
+
+    @Override
+    public void initialize(DelegateExecution execution) {
+        super.initialize(execution);
+        _thresholdMin = getFlowableVariable("thresholdMin", 3);
+        _thresholdMax = getFlowableVariable("thresholdMax", 15);
+
+    }
+
     /**
      * this method is split in two parts. Firstly, for each file, the context is extract for each terms candidates.
      * Finally, each context is evaluated with the lexical associated in order to determine the terminology potentiality
@@ -30,20 +50,21 @@ public class ThresholdLexiconCleanerDelegate extends Delegate {
         /*
         Threshold cleaner
          */
-        Integer thresholdMin = getFlowableVariable("thresholdMin", 0);
-        Integer thresholdMax = getFlowableVariable("thresholdMax", 0);
-        if (thresholdMin != 0 || thresholdMax != 0) {
+        if (_thresholdMin != 0 || _thresholdMax != 0) {
             List<Future> futures = new ArrayList<>();
             _termithIndex.getContextLexicon().keySet().forEach(
                     key -> futures.add(_executorService.submit(new ThresholdLexiconCleaner(
                             key,
                             _termithIndex,
-                            getFlowableVariable("thresholdMin", 3),
-                            getFlowableVariable("thresholdMax", 15))
+                            _thresholdMin,
+                            _thresholdMax)
                     ))
             );
             new TermithProgressTimer(futures, this.getClass(), _executorService).start();
             _logger.info("Waiting ThresholdWorker executors to finish");
+        } else {
+            _logger.warn("the threshold cleaner has no effect on data because the two values of the threshold " +
+                    "have is equals to 0");
         }
         _executorService.shutdown();
         _executorService.awaitTermination(1L, TimeUnit.DAYS);

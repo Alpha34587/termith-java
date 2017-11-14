@@ -3,9 +3,11 @@ package org.atilf.delegate.disambiguation.disambiguationExporter;
 import org.atilf.delegate.Delegate;
 import org.atilf.module.disambiguation.disambiguationExporter.DisambiguationTeiWriter;
 import org.atilf.monitor.timer.TermithProgressTimer;
+import org.flowable.engine.delegate.DelegateExecution;
 
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Future;
@@ -19,6 +21,25 @@ import java.util.concurrent.TimeUnit;
 
 public class DisambiguationExporterDelegate extends Delegate {
 
+    private Path _evaluationPath;
+    private Path _outputPath;
+
+    public void setEvaluationPath(Path evaluationPath) {
+        _evaluationPath = evaluationPath;
+    }
+
+    public void setOutputPath(Path outputPath) {
+        _outputPath = outputPath;
+    }
+
+    @Override
+    public void initialize(DelegateExecution execution) {
+        super.initialize(execution);
+        _evaluationPath = getFlowableVariable("evaluationPath",null);
+        _outputPath = getFlowableVariable("out",null);
+
+    }
+
     /**
      * this method add to the stack of executorService a work that consist to inject the result of terms module.disambiguation
      * for each tei file in the corpus
@@ -26,15 +47,21 @@ public class DisambiguationExporterDelegate extends Delegate {
      * xsl transformation phase
      * @throws InterruptedException thrown if awaitTermination function is interrupted while waiting
      */
+
     @Override
     public void executeTasks() throws IOException, InterruptedException {
 
         List<Future> futures = new ArrayList<>();
-        Files.list(getFlowableVariable("evaluationPath",null)).forEach(
-                p -> futures.add(_executorService.submit(new DisambiguationTeiWriter(
-                        p.toString(),
-                        _termithIndex,
-                        getFlowableVariable("out",null).toString()))));
+        Files.list(_evaluationPath).forEach(
+                p -> futures.add(
+                        _executorService.submit(
+                                new DisambiguationTeiWriter(
+                                        p.toString(),
+                                        _termithIndex,
+                                        _outputPath.toString())
+                        )
+                )
+        );
         new TermithProgressTimer(futures,this.getClass(),_executorService).start();
         _logger.info("Waiting ContextExtractorWorker executors to finish");
         _executorService.shutdown();

@@ -1,0 +1,486 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title level="a" type="main">Les dents inférieures du néandertalien Regourdou 1 (site de Regourdou, commune de Montignac, Dordogne) : analyses métriques et comparatives</title>
+        <title type="alt" xml:lang="en">The mandibular dentition of the Regourdou 1 neandertal skeleton from Regourdou (Regourdou site, Montignac, Dordogne): metric and comparative analysis</title>
+        <author>
+          <persName>
+            <forename>Bruno</forename>
+            <surname>Maureille</surname>
+          </persName>
+          <affiliation>
+            <s>UMR 5809, CNRS, Laboratoire d’Anthropologie des populations du Passé, Université Bordeaux 1, Avenue des Facultés, 33405 Talence cedex, b.maureille@anthropologie.u-bordeaux.fr</s>
+          </affiliation>
+        </author>
+        <author>
+          <persName>
+            <forename>Hélène</forename>
+            <surname>Rougier</surname>
+          </persName>
+          <affiliation>
+            <s>UMR 5809, CNRS, Laboratoire d’Anthropologie des populations du Passé, Université Bordeaux 1, Avenue des Facultés, 33405 Talence cedex, h.rougier@anthropologie.u-bordeaux.fr</s>
+          </affiliation>
+        </author>
+        <author>
+          <persName>
+            <forename>Francis</forename>
+            <surname>Houët</surname>
+          </persName>
+          <affiliation>
+            <s>UMR 5809, CNRS, Laboratoire d’Anthropologie des populations du Passé, Université Bordeaux 1, Avenue des Facultés, 33405 Talence cedex, f.houet@anthropologie.u-bordeaux.fr‎</s>
+          </affiliation>
+        </author>
+        <author>
+          <persName>
+            <forename>Bernard</forename>
+            <surname>Vandermeersch</surname>
+          </persName>
+          <affiliation>
+            <s>UMR 5809, CNRS, Laboratoire d’Anthropologie des populations du Passé, Université Bordeaux 1, Avenue des Facultés, 33405 Talence cedex, mdgarralda@bio.ucm.es‎</s>
+          </affiliation>
+        </author>
+      </titleStmt>
+      <publicationStmt>
+        <publisher/>
+        <date when="2010-05-26">2010-05-26</date>
+        <availability>
+          <p>© Tous droits réservés</p>
+        </availability>
+        <idno type="url">http://paleo.revues.org/1043</idno>
+      </publicationStmt>
+      <sourceDesc>
+        <biblFull>
+          <titleStmt>
+            <title/>
+            <respStmt>
+              <resp>auteur</resp>
+              <name>Bruno Maureille</name>
+            </respStmt>
+            <respStmt>
+              <resp>auteur</resp>
+              <name>Hélène Rougier</name>
+            </respStmt>
+            <respStmt>
+              <resp>auteur</resp>
+              <name>Francis Houët</name>
+            </respStmt>
+            <respStmt>
+              <resp>auteur</resp>
+              <name>Bernard Vandermeersch</name>
+            </respStmt>
+          </titleStmt>
+          <publicationStmt>
+            <publisher/>
+            <date>2001-12-14</date>
+            <idno type="pp">183-200</idno>
+          </publicationStmt>
+        </biblFull>
+      </sourceDesc>
+    </fileDesc>
+    <encodingDesc>
+      <appInfo>
+        <application version="1.0" ident="Lodel">
+          <label>Lodel</label>
+          <desc>
+            <ref target="http://www.tei-c.org/">We use TEI</ref>
+          </desc>
+        </application>
+      </appInfo>
+      <tagsDecl>
+        <rendition xml:id="T1" scheme="css">text-decoration:line-through</rendition>
+        <rendition xml:id="T2" scheme="css">font-variant:small-caps;text-decoration:underline</rendition>
+        <rendition xml:id="T3" scheme="css">font-variant:small-caps</rendition>
+        <rendition xml:id="T4" scheme="css">text-transform:uppercase</rendition>
+        <rendition xml:id="T5" scheme="css">text-transform:uppercase;text-decoration:underline;</rendition>
+      </tagsDecl>
+    </encodingDesc>
+    <profileDesc>
+      <langUsage>
+        <language ident="fr">fr</language>
+      </langUsage>
+      <textClass>
+        <keywords scheme="keyword" xml:lang="fr">
+          <list>
+            <item>Moustérien</item>
+            <item>Néandertal</item>
+            <item>Regourdou</item>
+            <item>mandibule</item>
+            <item>dent</item>
+            <item>métrique</item>
+          </list>
+        </keywords>
+        <keywords scheme="keyword" xml:lang="en">
+          <list>
+            <item>Mousterian</item>
+            <item>Neandertal</item>
+            <item>Regourdou</item>
+            <item>mandible</item>
+            <item>tooth</item>
+            <item>metrics</item>
+          </list>
+        </keywords>
+      </textClass>
+    </profileDesc>
+  </teiHeader>
+  <text>
+    <front>
+      <div type="abstract" xml:lang="fr">
+        <p>Les principaux restes humains du Paléolithique moyen du site de Regourdou (commune de Montignac, Dordogne) ont été mis au jour en 1957. Plusieurs travaux leur ont été consacrés mais la publication de ceux de Piveteau (1959, 1963, 1964 et 1966) a été interrompue. Ainsi les diamètres et modules des couronnes des dents de Regourdou 1 n’étaient disponibles que sous la forme de diagrammes. <lb/> A partir d’une nouvelle étude originale du spécimen, nous proposons un travail comparatif uni- et multivarié sur les dimensions dentaires mandibulaires pour tenter de mettre en évidence les similitudes et les différences qui caractérisent Regourdou 1 en particulier, vis-à-vis des autres Néandertaliens würmiens. Ce fossile présente des dents plutôt de petite taille. Sa première prémolaire gauche a un diamètre mésio-distal qui l’exclut de 95 % de la variabilité néandertalienne, ce que nous interprétons comme un caractère individuel original.</p>
+      </div>
+      <div type="abstract" xml:lang="en">
+        <p>The Middle Palaeolithic main human remains from the Regourdou site (commune of Montignac, Dordogne) were discovered in 1957. Several studies have been carried out but the publication of the Piveteau researches on these remains has never been totally finished (Piveteau 1959, 1963, 1964, 1966). Metric features of this dental sample were available only through approximations from diagrams. <lb/> In this paper, uni- and multivariate analyses of the complete mandibular dental arcade are presented, based on a new original study of Regourdou 1. Discussion focuses on the similarities and differences between these teeth and a sample of Würm-age Neandertals. The Regourdou 1 teeth are quite small; the mesio-distal diameter of the left first premolar, for example, is outside of the 95% range of variability of this comparative sample. We interpret this as an unusual individual trait.</p>
+      </div>
+    </front>
+    <body>
+      <div type="div1">
+        <head subtype="level1">Introduction</head>
+        <p>Le site moustérien de Regourdou <note place="foot" n="1"><p rend="footnote"><ref target="ftn1">1</ref> Ce nom de lieu-dit n’a pas d’accent aigu sur le premier « e » et n’est pas précédé de l’article « le » ce qui explique que l’on doit écrire le site de Regourdou et non du Regourdou. Nous n’avons pas pu retrouver la signification précise de ce nom (Roux, comm. pers.)</p></note> (commune de Montignac, Dordogne) se situe à une altitude de 210-215 m sur une colline de la rive gauche de la Vézère (fig. 1). Ses coordonnées géographiques sont 45°03’ N et 1°11’ E (Vandermeersch 1971). Il s’agit d’une grotte effondrée sur elle-même, découverte par son propriétaire qui y « exploita » les niveaux archéologiques en creusant une galerie entre 1954 et 1957.</p>
+        <p rend="figure-title">Figure 1 - Localisation du gisement de Regourdou (carte M. Seurin, UMR 5809). <lb/><hi rend="italic">Figure 1 - Location of the Regourdou site (map after M. Seurin, UMR 5809).</hi></p>
+        <p>
+          <figure>
+            <graphic url="http://paleo.revues.org/docannexe/image/1043/img-1.png"/>
+          </figure>
+        </p>
+        <p><ref target="Image17Cgraphics"/> C’est à la fin du mois de septembre 1957 que les restes humains de Regourdou 1 ont été mis au jour dans des circonstances qui n’ont pas permis leur bonne conservation, Piveteau (1963) supposant d’ailleurs que des ossements ont été déplacés et que d’autres ont disparu.</p>
+        <p>Le sauvetage de ces vestiges a été assuré par F. Bordes, E. Bonifay et G. Laplace-Jauretche au début du mois d’octobre 1957. Ces derniers ont relevé d’indiscutables indices de l’existence d’une sépulture (Piveteau 1959). Les ossements les plus apparents ont été prélevés puis le gisement fermé, des éboulements de la galerie ne permettant pas de travailler dans des conditions acceptables. En 1960, E. Bonifay prit la direction des travaux jusqu’en 1965 (Bonifay 1965). Ceux-ci permirent de finir la fouille de la zone sépulcrale (en 1961 et 1962) et de déterminer la stratigraphie du remplissage de la cavité (fig. 2a et b). La position de l’inhumation au sein des couches moustériennes a pu ainsi être définie.</p>
+        <p rend="figure-title">Figure 2a - Les fouilles à Regourdou en 1964 : vue générale du site. <lb/><hi rend="italic">Figure 2a - The Regourdou’s excavations in 1964: general view of the site.</hi></p>
+        <p>
+          <figure>
+            <graphic url="http://paleo.revues.org/docannexe/image/1043/img-2.jpg"/>
+          </figure>
+        </p>
+        <p rend="figure-license"><ref target="Image27Cgraphics"/> Photo et © B. Vandermeersch. <lb/><hi rend="italic">Picture and © B. Vandemeersch.</hi></p>
+        <p rend="figure-title">Figure 2b - Les fouilles à Regourdou en 1964 : noter les niveaux supérieurs sus-jacents aux gros blocs d’effondrement. <lb/><hi rend="italic">Figure 2b - The Regourdou’s excavations in 1964: note the upper levels on the top of the big collapsed blocks.</hi></p>
+        <p>
+          <figure>
+            <graphic url="http://paleo.revues.org/docannexe/image/1043/img-3.jpg"/>
+          </figure>
+        </p>
+        <p rend="figure-license"><ref target="Image37Cgraphics"/> Photo et © B. Vandermeersch. <lb/><hi rend="italic">Picture and © B. Vandemeersch.</hi></p>
+        <p>Selon Piveteau (1963) et Bonifay (1965), l’interprétation stratigraphique de ce remplissage peut se résumer ainsi :</p>
+        <list type="unordered">
+          <item>
+            <p rend="puces">couche S : sables des plateaux plus matériel épars du Paléolithique supérieur,</p>
+          </item>
+          <item>
+            <p rend="puces">couche 1 : blocs d’effondrement du toit de la cavité,</p>
+          </item>
+          <item>
+            <p rend="puces">couche 2 : blocs et blocailles calcaires stratifiés dans une matrice limono-sableuse avec, au fond de la cavité, un ensemble nettement plus riche en cailloutis. Trois niveaux avec du matériel archéologique (Moustérien de type Quina) ont pu être individualisés,</p>
+          </item>
+          <item>
+            <p rend="puces">couche 3 : niveaux sableux rouges stratifiés,</p>
+          </item>
+          <item>
+            <p rend="puces">couche 4 : deux niveaux sableux et cendreux (riches en charbon de bois, cailloux brûlés et vestiges de faune tempérée portant également la trace de combustion). La structure funéraire provient de cette couche ; elle est associée à un Moustérien de type Quina,</p>
+          </item>
+          <item>
+            <p rend="puces">couche 5 : sables rouges avec traces cendreuses et débris d’os calcinés,</p>
+          </item>
+          <item>
+            <p rend="puces">couche 6 : sables verts peu épais,</p>
+          </item>
+          <item>
+            <p rend="puces">couche 7 : deux niveaux de sables rouges plus ou moins stratifiés,</p>
+          </item>
+          <item>
+            <p rend="puces">couche 8 : sables rouges lités assez épais,</p>
+          </item>
+          <item>
+            <p rend="puces">couche R : gros blocs d’effondrement constituant le substratum sur lequel repose la séquence moustérienne.</p>
+          </item>
+        </list>
+        <p>Selon Bonifay et Vandermeersch (1962), Piveteau (1963), et Bonifay (1965), la présence de rennes dans les restes fauniques permet de corréler la couche 2 à une période de froid intense du Würm ancien. En fonction des travaux sur la chronologie du Würm (Laville 1988 par exemple), cela rapporterait ce niveau au stade isotopique 4. Par suite, «  <hi rend="italic">les couches inférieures du Regourdou seraient donc plus anciennes et dateraient du début du Würm</hi> » (Vandermeersch 1965 p. 92).</p>
+        <p>Cette première analyse chronostratigraphique a été confirmée par Delpech (1996) dans son étude des Artiodactyles de trois sites périgourdins (Combe-Grenal, Grotte Vaufrey et Regourdou). Tout en soulignant les difficultés liées aux corrélations entre les niveaux de ces trois gisements, l’auteur propose de corréler la couche 4 de Regourdou, qui a livré la sépulture humaine, à la deuxième moitié du stade isotopique 5. Sur la base du même ensemble de données, Vandermeersch et Trinkaus (1995, p. 440) rapportent la couche 4 au Würm I ou au début du Würm I/II, donc plutôt au stade isotopique 4. Malheureusement aucune datation radiochronologique susceptible de préciser ces interprétations n’est disponible.</p>
+        <p>La fouille de l’espace sépulcral permit la mise au jour de plusieurs éléments squelettiques d’un même sujet : une mandibule presque intacte (fig. 2c), des vertèbres plus ou moins complètes, un fragment d’os coxal droit et de sacrum, des côtes incomplètes, le corps et le manubrium sternaux, les clavicules, les humérus, radius et ulnas droits et gauches, des ossements du carpe, des métacarpes et des phalanges des deux mains, des ossements du tarse des deux pieds, des métatarses droits et des phalanges droites et gauches. Néanmoins, les remarques récentes de Vandermeersch et Trinkaus (1995, p. 474) soulignent l’existence d’un deuxième individu (Regourdou 2) qui pourrait être représenté par un ou des ossements de pied.</p>
+        <p rend="figure-title">Figure 2c - Mandibule de Regourdou 1 en vue supérieure. Collection Musée du Périgord. <lb/><hi rend="italic">Figure 2c - The mandible of Regourdou 1 in superior view. </hi><hi rend="italic">Collection Musée du Périgord.</hi></p>
+        <p>
+          <figure>
+            <graphic url="http://paleo.revues.org/docannexe/image/1043/img-4.jpg"/>
+          </figure>
+        </p>
+        <p rend="figure-legend"><ref target="Image47Cgraphics"/> Photo F. Houët. <lb/><hi rend="italic">Picture F. Houët.</hi></p>
+        <p>L’étude de Regourdou 1 fut entreprise par Piveteau (1959, 1963, 1964, 1966) pour l’essentiel du squelette et par Vallois (1965) et Vallois et de Félice (1976) pour le sternum. Malheureusement, les recherches de Piveteau ne furent jamais intégralement publiées. Depuis, Gambier (1982), Ogilvie <hi rend="italic">et al.</hi> (1989) et Vandermeersch et Trinkaus (1995) assurèrent une partie de la description morphologique et de l’analyse métrique des vestiges osseux.</p>
+        <p>Dans l’étude sur la mandibule et l’arcade dentaire de Regourdou 1 (Piveteau 1963, 1964), nous pouvons noter que les diamètres et les modules des couronnes des dents ne sont fournis que par le biais de diagrammes. Depuis, les mesures dentaires de Regourdou 1 ont été utilisées par d’autres auteurs (Thoma et Vallois 1977 ; Frayer 1978 ; de Lumley 1987 par exemple) mais les valeurs données dans ces publications sont celles déduites des diagrammes (tabl. 1). Par exemple, Frayer ( <hi rend="italic">ibid.</hi>) écrit que, pour les fossiles du Paléolithique moyen, il a repris les mesures des dents des articles princeps. De Lumley ( <hi rend="italic">ibid.</hi>) signale que les valeurs de Regourdou 1 proviennent des publications de Piveteau ( <hi rend="italic">ibid.</hi>), mais ce n’est pas toujours le cas pour le module des couronnes (tab.2). Pour nous en assurer, nous avons déterminé les valeurs données par Piveteau ( <hi rend="italic">ibid.</hi>) à partir de ses diagrammes (tabl. 1 et 2) et nous les avons comparées à celles publiées par les auteurs cités plus haut. Comme on peut le lire dans les tableaux 1 et 2, il existe des différences de lecture des données de Piveteau ( <hi rend="italic">ibid</hi>) entre les auteurs ainsi que pour le calcul des modules.</p>
+        <p rend="figure-title">Tableau 1- Valeurs des deux diamètres des couronnes des dents de Regourdou 1 d’après différents auteurs. <lb/><hi rend="italic">Table 1 - Values of the crowns diameters of the Regourdou 1 teeth after different scholars.</hi></p>
+        <p>
+          <figure>
+            <graphic url="http://paleo.revues.org/docannexe/image/1043/img-5.png"/>
+          </figure>
+        </p>
+        <p rend="figure-legend"><ref target="Image57Cgraphics"/> D: droit, G: gauche, MD: mésio-distal, VL: vestibulo-lingual, (a): moyenne de D + G et (b): probablement moyenne de D + G. <lb/><hi rend="italic">D: right, G: left, MD: length, VL: breadth, (a): mean of the right and left sides and (b): probably mean of the right and left sides.</hi></p>
+        <p rend="figure-title">Tableau 2 - Valeurs de l’indice de robustesse et du module des couronnes des dents de Regourdou 1. <lb/><hi rend="italic">Table 2 - Values of the indexes and modules of the Regourdou 1 teeth.</hi></p>
+        <p>
+          <figure>
+            <graphic url="http://paleo.revues.org/docannexe/image/1043/img-6.png"/>
+          </figure>
+        </p>
+        <p rend="figure-legend"><ref target="Image67Cgraphics"/> Même légende que dans le tableau 1 et * : valeurs calculées en fonction des diamètres de Lumley (1987). <lb/><hi rend="italic">Same legend as in table 1 and * : values calculated with the diameters given by de Lumley (1987).</hi></p>
+      </div>
+      <div type="div1">
+        <head subtype="level1">Méthode et matériel</head>
+        <p>Plus de 40 ans après la découverte du spécimen, il nous a donc paru utile de revoir les valeurs des diamètres coronaires de Regourdou 1. Nous avons enregistré le diamètre mésio-distal (noté M81 selon Martin, repris par Bräuer 1988) et le vestibulo-lingual (M81(1)). L’indice coronaire (I74) égale le quotient multiplié par cent de M81(1) par M81. Le module de robustesse de la couronne ou surface de la couronne (I75) correspond à la multiplication des deux diamètres. Toutefois, dans les tableaux (et le texte) nous n’utiliserons pas ces symboles pour faciliter la lecture et la compréhension des données. Les diamètres mésio-distal et vestibulo-lingual seront respectivement représentés par MD- et VL-. A partir des mesures que nous avons prises sur le fossile, nous avons calculé l’indice coronaire et le module de robustesse de chaque dent (tabl. 1 et 2). Enfin, nous avons réalisé une étude comparative uni- et multivariée de ces données pour souligner les particularités métriques des couronnes de Regourdou 1 relativement à la variabilité néandertalienne, puis nous proposons des hypothèses explicatives quant aux caractéristiques métriques des dents de ce fossile.</p>
+        <p>L’enregistrement des diamètres des dents de Regourdou 1 a été fait indépendamment par deux d’entre nous (H.R. et B.M.). Les mesures ont été prises avec un pied à coulisse Hélios à cadran. La précision d’un tel instrument est de l’ordre du cinquantième de millimètre. Ce sont les moyennes de ces mesures qui ont été utilisées dans les traitements statistiques (tabl. 1).</p>
+        <p>Dans les travaux comparatifs, nous avons principalement utilisé deux échantillons. Le premier est composé d’un ensemble de fossiles du Paléolithique moyen, généralement considérés comme des Néandertaliens würmiens (tabl. 3). Le second constitue une série d’Hommes actuels, essentiellement européens. Il regroupe les mesures de trois populations sub-actuelles : Spitalfields (population anglaise du XVII <hi rend="sup">e</hi> au XIX <hi rend="sup">e</hi> siècle ; Molleson et Cox 1993), Poundtburry (population romano-anglaise) et Coxyde (groupe monacal de Coxyde en Belgique, XI <hi rend="sup">e</hi>-XII <hi rend="sup">e</hi> siècle ; Twiesselmann et Brabant 1967 ; Toussaint 1985) dont les dents sont assez petites). Ces données sur les Hommes récents nous ont été très amicalement transmises par P. Semal qui les a recueillies sur les spécimens originaux ou auprès de ceux qui les ont étudiés. Nous y avons ajouté quelques sujets d’Asie du Sud-Est (Bengale) et d’Europe (indéterminé), provenant des laboratoires d’Anthropologie des Universités de Paris 7 et de Bordeaux 1. Pour ces échantillons d’Hommes fossiles et d’individus actuels, nous avons essayé de rassembler le maximum d’informations et nous nous sommes intéressés à tous les sujets présentant des dents permanentes mesurables. Dans les traitements statistiques qui suivent, nous avons utilisé, pour les fossiles, les dents des deux côtés (donc un fossile peut être représenté par deux dents : la droite et la gauche). En revanche, pour les Hommes actuels, en raison de la constitution de nos échantillons, les spécimens sont représentés par la moyenne de leurs dents droite et gauche.</p>
+        <p rend="figure-title">Tableau 3 - Inventaire des sites ayant livré les fossiles utilisés dans les études comparatives. <lb/><hi rend="italic">Table 3 - Listing of the sites where the fossils used in the comparative studies come from.</hi></p>
+        <p>
+          <figure>
+            <graphic url="http://paleo.revues.org/docannexe/image/1043/img-7.png"/>
+          </figure>
+        </p>
+        <p rend="figure-legend"><ref target="Image77Cgraphics"/> Les données métriques proviennent soit de nos examens des pièces originales soit, pour la plus part d’entre-elles, des publications princeps qui ne peuvent être rappelées en bibliographie. <lb/><hi rend="italic">The metrical data come from our personal exams of the original fossils or, for most of them, from the publications which cannot be referred in the bibliography.</hi></p>
+        <p>Pour les analyses univariées (distances probabilistes), l’échantillon de comparaison est limité aux spécimens néandertaliens européens, de manière à situer chaque dent de Regourdou 1 par rapport à la variabilité de ce groupe. Considérant l’hypothèse que Regourdou 1 est un des plus vieux Néandertaliens würmiens européens (qui sont assez peu nombreux), nous avons préféré ne pas inclure dans ce groupe les Néandertaliens du Proche-Orient. En effet, pour certains auteurs (Condemi 1990-91 par exemple), ces derniers pourraient avoir conservé des caractéristiques héritées des Pré-néandertaliens européens. Si de tels traits existent sur les dents, cela pourrait augmenter la variabilité des Néandertaliens würmiens et masquer d’éventuelles particularités de Regourdou 1.</p>
+        <p>Les analyses bivariées (ellipses équiprobables) incluent notre échantillon d’Hommes actuels, ainsi que les Néandertaliens européens et proche-orientaux (tabl. 3). Pour que la forme d’une ellipse soit la plus pertinente, il est en effet préférable de prendre en compte l’échantillon de comparaison le plus large possible.</p>
+        <p>Enfin, pour les analyses multivariées (analyses discriminantes), nous avons considéré deux autres échantillons fossiles : les Hommes anatomiquement modernes de Qafzeh-Skhul (tous les individus disponibles) et un ensemble de spécimens du Paléolithique supérieur européen regroupant des individus rapportés aussi bien à l’Aurignacien qu’à l’Epipaléolithique (tabl. 3).</p>
+      </div>
+      <div type="div1">
+        <head subtype="level1">Etude morphologique </head>
+        <p>L’étude morphologique réalisée ne porte que sur l’usure dentaire dont l’amplitude influe sur les dimensions coronaires et particulièrement sur le diamètre mésio-distal (tabl. 4).</p>
+        <p rend="figure-title">Tableau 4 - Degrés d’usure de la surface occlusale des dents de Regourdou 1. <lb/><hi rend="italic">Table 4 - Occlusal wear degrees of the Regourdou 1 teeth.</hi></p>
+        <p>
+          <figure>
+            <graphic url="http://paleo.revues.org/docannexe/image/1043/img-8.png"/>
+          </figure>
+        </p>
+        <p rend="figure-legend"><ref target="Image87Cgraphics"/> Même légende que dans le tableau 1. <lb/><hi rend="italic">Same legend as in table 1.</hi></p>
+        <p>Nous avons remarqué que l’usure des dents de Regourdou 1 n’est pas trop importante (fig. 2c). En ce qui concerne les molaires, les deux diamètres sont déterminables sans que les facettes de contact entre les dents n’influencent beaucoup les valeurs de la longueur de la couronne. C’est également le cas pour les prémolaires et les canines. En revanche, au moins pour les incisives centrales et dans une moindre mesure pour les incisives latérales, l’usure du bord libre (qui est devenu une véritable face supplémentaire en raison de l’occlusion en bout à bout, Piveteau 1964) a entraîné une faible diminution de la hauteur de la couronne et de son diamètre mésio-distal. Malgré cette attrition, pour les traitements statistiques (tab. 1 et tab. 2), nous avons conservé les mesures prises sur les dents sans tenter d’estimer leur valeur avant toute perte de substance dentaire. En effet, nous acceptons l’hypothèse que l’utilisation de ces mesures ne modifie pas fondamentalement nos résultats. Enfin, nous avons noté que l’individu de Regourdou 1 a ses dents droites plus usées que celles du côté gauche, possible conséquence d’une activité masticatoire préférentielle à droite.</p>
+      </div>
+      <div type="div1">
+        <head subtype="level1">Etude métrique comparative univariée</head>
+        <p>Dans les tableaux 1 et 2, il ressort que les valeurs des diamètres coronaires pris sur l’original de Regourdou 1 par H.R. et B.M. ne diffèrent pas beaucoup entre elles. Dans tous les cas, la différence n’excède jamais 0,45 mm. Aussi considérons-nous la moyenne des mesures prises par ces deux auteurs comme étant les mesures des dents de Regourdou 1.</p>
+        <p>En revanche, ces valeurs originales diffèrent de celles que l’on peut déduire des diagrammes de Piveteau ( <hi rend="italic">ibid.</hi>), notamment pour certains diamètres (comme le diamètre vestibulo-lingual des deux incisives centrales, des canine et première molaire gauches, ainsi que le diamètre mésio-distal de la troisième molaire gauche ; la différence maximale étant de 0,76 mm). Naturellement, ces différences sont plus marquées encore lorsqu’on considère les indices et les modules des dents (tabl. 2).</p>
+        <p>Pour comparer les dimensions des dents de Regourdou 1 avec celles des autres Néandertaliens würmiens (excepté ceux du Proche-Orient), nous avons décidé d’utiliser la méthode de la distance/position probabiliste qui a été mise au point par l’un d’entre-nous (F.H. et voir annexe).</p>
+        <p>La méthode situe, pour une variable normale, un individu par rapport à l’estimation (à partir de l’échantillon) de la distribution d’une population (tabl. 5). L’avantage de cette méthode est qu’elle tient compte de la taille de l’échantillon ; elle est donc particulièrement adaptée aux faibles effectifs.</p>
+        <p rend="figure-title">Tableau 5 - Distances probabilistes et valeurs centrées réduites ajustées des données métriques des dents de Regourdou 1 (même légende que dans le tableau 1). <lb/><hi rend="italic">Table 5 - Probabilistic distances and adjusted modified Z-score of the metrical data of the Regourdou 1 teeth (same legend as in table 1).</hi></p>
+        <p>
+          <figure>
+            <graphic url="http://paleo.revues.org/docannexe/image/1043/img-9.png"/>
+          </figure>
+        </p>
+        <p><ref target="Image97Cgraphics"/> Pour la position probabiliste, la valeur de l’individu entre dans le calcul des paramètres de l’échantillon, alors que pour la distance probabiliste, la valeur de l’individu ne fait pas partie de l’échantillon. Position et distance probabilistes sont donc utilisées dans deux démarches différentes. La première sert à tester l’homogénéité d’un échantillon ; elle permet d’éliminer des valeurs aberrantes qui s’éloignent trop de la variation du groupe. La seconde teste l’éloignement d’un sujet par rapport à la distribution estimée d’une population à laquelle il n’appartient pas <hi rend="italic">a priori</hi>.</p>
+        <p>Le résultat d’une position/distance probabiliste s’exprimant sous forme de probabilité, il va être compris entre 0 et 1. Plus il est proche de 1, plus la valeur de l’individu est proche de la moyenne de l’échantillon de comparaison, plus il est faible et proche de 0, plus la valeur individuelle s’éloigne de cette moyenne. Si la probabilité obtenue est inférieure à 0,05, l’individu est exclu de 95 % de la variabilité de la population estimée à partir de l’échantillon.</p>
+        <p>Afin de visualiser clairement les résultats obtenus, nous avons ensuite fait appel à un autre concept, celui de valeur centrée réduite ajustée (cf. annexe). Celle-ci varie entre 0 et ± ∞, 95 % de la variabilité de la population de comparaison se situant entre + 1 et – 1.</p>
+        <p>Dans un premier temps, nous avons « expertisé » la population néandertalienne estimée à partir de l’échantillon fossile. Pour cela, nous avons calculé la position probabiliste de chaque fossile (cf. annexe), ce qui nous a permis de vérifier si cette dernière l’excluait de la variabilité de cette population. Cela n’a jamais été le cas, ce qui signifie qu’aucun spécimen de l’échantillon ne présente de diamètres coronaires anormalement grands ou petits.</p>
+        <p rend="figure-title">Figure 3 - Valeurs centrées réduites ajustées pour les diamètres des couronnes des dents de Regourdou 1. <lb/><hi rend="italic">Figure 3 - Modified Z-score by the adjustment to the sample size with Student t included in the calculation to account for variability for the Regourdou 1 teeth crowns diameters.</hi></p>
+        <p>
+          <figure>
+            <graphic url="http://paleo.revues.org/docannexe/image/1043/img-10.png"/>
+          </figure>
+        </p>
+        <p><ref target="Image107Cgraphics"/> L’étude des distances probabilistes obtenues pour les diamètres des dents de Regourdou 1 des deux côtés montre très clairement que les diamètres mésio-distaux se situent dans la moitié inférieure de la variabilité néandertalienne européenne, excepté ceux des M3 (tabl. 5 - fig. 3). Les diamètres vestibulo-linguaux sont dans la moitié supérieure pour I2 et C, à proximité de la moyenne pour I1, P1, M2 et M3, dans la moitié inférieure pour P2 et M1. Les résultats obtenus sur les diamètres mésio-distaux peuvent être la conséquence de l’étude de dents en place sur l’arcade. Ce diamètre est alors plus facilement sous-estimé pour une molaire et une prémolaire que pour une dent isolée de même rang. Enfin, trois particularités méritent d’être soulignées :</p>
+        <list type="ordered">
+          <item>
+            <p rend="puces">des deux côtés, l’incisive latérale et la canine montrent un fort diamètre vestibulo-lingual relativement au diamètre mésio-distal. Pour la première dent, ce trait est généralement considéré comme une caractéristique dérivée néandertalienne (Semal 1988 par exemple) ;</p>
+          </item>
+          <item>
+            <p rend="puces">alors que, dans l’ensemble, les valeurs des distances probabilistes sont assez proches lorsqu’on compare le côté gauche et le côté droit, la première prémolaire gauche se caractérise par un très faible diamètre mésio-distal qui est exclu de 95 % de la variabilité néandertalienne européenne. Pour ce diamètre, la différence entre côtés gauche et droit est presque de 1 mm, ce qui est supérieur à notre variabilité intra- et inter-observateurs (tabl. 1). Ce trait est probablement une particularité de l’individu. Une différence moindre mais allant dans le même sens existe pour le diamètre vestibulo-lingual des deuxièmes prémolaires ;</p>
+          </item>
+          <item>
+            <p rend="puces">dans un cas sur huit pour le diamètre vestibulo-lingual et deux sur huit pour le diamètre mésio-distal, le côté gauche est plus grand que le droit.</p>
+          </item>
+        </list>
+        <p>Les distances probabilistes calculées pour les indices et les modules des couronnes dentaires s’intègrent tous - sauf un - dans 95 % de la variabilité néandertalienne (tabl. 5 - fig. 4). Les modules sont dans l’ensemble petits (ceci étant particulièrement vrai pour les deux prémolaires, en raison de leurs faibles diamètres mésio-distaux) ou proches de la moyenne des Néandertaliens würmiens. Les indices traduisent des proportions relatives moyennes des diamètres coronaires. Seul l’indice de la première prémolaire gauche se caractérise par une valeur très forte qui est la conséquence du faible diamètre mésio-distal de cette dent.</p>
+        <p rend="figure-title">Figure 4 - Valeurs centrées réduites ajustées pour les indices et modules des dents de Regourdou 1. <lb/><hi rend="italic">Figure 4 - Modified Z-score by the adjustment to the sample size with Student t included in the calculation to account for variability for the indexes and modules of the Regourdou 1 teeth.</hi></p>
+        <p>
+          <figure>
+            <graphic url="http://paleo.revues.org/docannexe/image/1043/img-11.png"/>
+          </figure>
+        </p>
+      </div>
+      <div type="div1">
+        <head subtype="level1">Etude métrique comparative bivariée</head>
+        <p>En fonction des résultats obtenus précédemment, il est intéressant de représenter l’ellipse équiprobable (logiciel Statistica 5.1) traduisant 95 % de la variabilité des deux diamètres coronaires de la première prémolaire des Néandertaliens würmiens (fig. 5a) afin d’apprécier la position de la dent gauche de Regourdou 1.</p>
+        <p>Il ressort que la première prémolaire gauche de Regourdou 1 est exclue de 95 % de la variabilité néandertalienne (n = 40). Naturellement, cela est la conséquence de son faible diamètre mésio-distal auquel est associé un diamètre vestibulo-lingual moyen. Elle reste toutefois bien éloignée de 95 % de la variabilité actuelle par son diamètre vestibulo-lingual comparativement très important.</p>
+        <p>Si l’on considère l’ellipse équiprobable des prémolaires néandertaliennes gauches seulement (n = 19), alors les particularités métriques de cette dent chez Regourdou 1 ne sont pas assez importantes pour l’exclure de l’ellipse de 95 % de la variabilité néandertalienne (fig. 5b). Il faut faire l’ellipse traduisant 90 % de la variabilité néandertalienne pour y arriver.</p>
+        <p rend="figure-title">Figure 5a - Ellipse équiprobable (95 %) pour la première prémolaire. <lb/><hi rend="italic">Figure 5a - Bivariate scatter plots (95%) for the first premolar.</hi></p>
+        <p>
+          <figure>
+            <graphic url="http://paleo.revues.org/docannexe/image/1043/img-12.png"/>
+          </figure>
+        </p>
+        <p rend="figure-title"><ref target="Image127Cgraphics"/> Figure 5b - Ellipse équiprobable (95 %) pour la première prémolaire gauche. <lb/><hi rend="italic">Figure 5b - Bivariate scatter plots for the left first premolar.</hi></p>
+        <p>
+          <figure>
+            <graphic url="http://paleo.revues.org/docannexe/image/1043/img-13.png"/>
+          </figure>
+        </p>
+        <p><ref target="Image137Cgraphics"/> Nous pouvons également noter que la variabilité néandertalienne est nettement plus importante que celle d’un large échantillon d’Hommes actuels (n = 328). Ce n’est pas tant par le diamètre mésio-distal que cette différence s’exprime mais par le diamètre vestibulo-lingual. Plusieurs hypothèses peuvent être envisagées pour tenter d’expliquer ce résultat. Celles qui semblent les plus simples pourraient être la dispersion chronologique des fossiles et l’effectif de l’échantillon.</p>
+      </div>
+      <div type="div1">
+        <head subtype="level1">Etude métrique comparative multivariée</head>
+        <p>Enfin, pour tenter de positionner Regourdou 1 relativement à la variabilité des Hommes actuels, des Néandertaliens (et d’autres groupes fossiles : les Pré-néandertaliens, les Hommes anatomiquement modernes du Paléolithique moyen et des Hommes fossiles du Paléolithique supérieur) en fonction de l’ensemble des caractéristiques métriques de son arcade dentaire, nous avons réalisé une analyse discriminante (logiciel Statistica 5.1) en considérant les deux diamètres coronaires de toutes les dents.</p>
+        <p>La matrice de classification est assez bonne avec 100 % des Néandertaliens, Pré-néandertaliens et Hommes modernes du Paléolithique moyen bien classés et, respectivement 81 et 98 % pour les Hommes modernes du Paléolithique supérieur et les Hommes actuels. Pour cette analyse, le lambda de Wilks est de 0,1124 avec un risque d’erreur inférieur à 10 <hi rend="sup">-4</hi>. La figure représentant les deux premières variables canoniques traduit 86,5 % de la variance ce qui est un bon résultat étant donné le nombre de variables prises en comptes.</p>
+        <p>Sur la figure 6, on remarque la bonne discrimination des 5 groupes classificatoires utilisés (cf. <hi rend="italic">supra</hi>). Cela traduit, pour les fossiles, des combinaisons linéaires métriques nettement distinctes de celle des Hommes actuels. La racine canonique 1 discrimine la lignée des Hommes modernes de la lignée néandertalienne. De plus, la racine 2 distingue, au sein de cette dernière, les fossiles würmiens des spécimens antérieurs au stade isotopique 5.</p>
+        <p rend="figure-title">Figure 6 - Diagramme des racines canoniques 1 et 2 de l’analyse discriminante pour les diamètres coronaires de toutes les dents inférieures. <lb/><hi rend="italic">Figure 6 - Scatter diagram for the first and second canonical components of the discriminant analysis for the crowns diameters of all lower teeth.</hi></p>
+        <p>
+          <figure>
+            <graphic url="http://paleo.revues.org/docannexe/image/1043/img-14.png"/>
+          </figure>
+        </p>
+        <p><ref target="Image147Cgraphics"/> En ce qui concerne les Néandertaliens würmiens, leur distribution est complètement distincte de celle des Hommes actuels. Elle est bordée d’un côté par les Pré-néandertaliens, d’un autre par les premiers Hommes modernes du Proche-Orient. Regourdou 1 se situe presque au milieu (mais dans la moitié inférieure) de cette aire. C’est une conséquence de ses dimensions dentaires plutôt faibles.</p>
+        <p>On peut noter qu’entre les premiers Hommes modernes et les Hommes actuels, on trouve les fossiles du Paléolithique supérieur. Cette répartition souligne la réduction progressive de la puissance de l’arcade dentaire inférieure dans cette lignée. Un fossile du Paléolithique supérieur (Arène Candide 5) se situe à proximité des sujets modernes du Paléolithique moyen alors qu’un autre (Predmost 10) est intégré dans l’aire des Hommes actuels.</p>
+      </div>
+      <div type="div1">
+        <head subtype="level1">Conclusions</head>
+        <p>Jusqu’à présent, les mesures des dents de la mandibule de Regourdou 1 n’avaient été publiées que sous forme de diagrammes (Piveteau, 1963, 1964). Il était alors seulement possible d’obtenir une approximation des valeurs de ces mesures. Les indices étaient inédits. Deux d’entre-nous ont mesuré séparément ces dents sur la pièce originale. Ce sont les moyennes de ces données que nous avons analysées en développant une démarche statistique progressive.</p>
+        <p>Les dents de Regourdou 1 ne sont pas très grandes au sein des Néandertaliens würmiens. Elles se caractérisent par des diamètres vestibulo-linguaux moyens relativement au diamètres mésio-distaux. La première prémolaire gauche se distingue des autres dents par un petit diamètre mésio-distal. Cela traduit probablement un trait individuel de ce fossile qui n’avait pas été souligné par Piveteau ( <hi rend="italic">ibid.</hi>).</p>
+        <p>Les proportions relatives de cette dent sont telles qu’elle est exclue de 95 % de la variabilité des premières prémolaires inférieures droites et gauches néandertaliennes. Si nous ne considérons plus que les prémolaires gauches, Regourdou 1 est inclus dans 95 % de la variabilité des Hommes fossiles. De plus, notons que l’intervalle de variation du diamètre vestibulo-lingual est nettement plus important chez les Néandertaliens que chez les Hommes actuels (malgré le large échantillon considéré). </p>
+        <p>Une analyse discriminante à partir des deux diamètres de toutes les dents inférieures a été réalisée sur quatre groupes d’Hommes fossiles et un échantillon d’Hommes actuels. Elle nous a permis de distinguer tous les fossiles antérieurs au Paléolithique supérieur. Regourdou 1 se situe dans la moitié inférieure de l’aire occupée par les Néandertaliens. En fonction de la position des Pré-néandertaliens, ce résultat traduit les faibles dimensions de ses dents.</p>
+      </div>
+    </body>
+    <back>
+      <div type="bibliography">
+        <listBibl>
+          <bibl>Bonifay E. 1965 - Un ensemble rituel moustérien à la grotte du Régourdou. In : <hi rend="italic">Atti del VI congresso internazionale de la Scienza Prehistoriche e protohistoriche</hi>, vol II, 1965, Rome, p. 136-140.</bibl>
+          <bibl>Bonifay E. et Vandermeersch B. 1962 - Dépôts rituels d’ossements d’ours dans le gisement moustérien du Régourdou (Montignac, Dordogne). <hi rend="italic">Comptes Rendus de l’Académie des Sciences de Paris</hi>, 1962, 255, p. 1635-1636.</bibl>
+          <bibl>Brabant H. et Sahly A. 1962 - La paléostomatologie en Belgique et en France. Essai de synthèse de recherches personnelles <hi rend="italic">. Acta stomatologica Belgica</hi>, 1962, 59, p. 285-355.</bibl>
+          <bibl>Bräuer G. 1988 - Osteometry. In : R. Knussmann (Ed.), A <hi rend="italic">nthropologie, Handbuch der vergleichenden Biologie des Menschen</hi>. Stuttgart: Gustav Fischer Verlag, 1988, p. 160-232, ill.</bibl>
+          <bibl>Brothwell D. R. 1981 - <hi rend="italic">Digging up Bones (3rd edition)</hi>. British Museum (Natural History): Oxford University Press, 1981. 208 p.</bibl>
+          <bibl>Condemi S. 1990-91 – Is Guattari 1 a classic Neandertal? Remarks on its anatomic particularity. <hi rend="italic">Quaternaria Nova</hi>, 1990-91, 1, p. 107-112.</bibl>
+          <bibl>Delpech F. 1996 - L’environnement animal des Moustériens Quina du Périgord. <hi rend="italic">Paléo</hi>, 1996, 8, p. 31-46, tab.</bibl>
+          <bibl>Frayer D. W. 1978 - <hi rend="italic">Evolution of the Dentition in Upper Paleolithic and Mesolithic Europe. </hi>University of Kansas, Publications in Anthropology, 10. Laurens: Univ. of Kansas, 1978. 201 p. tab.</bibl>
+          <bibl>Gambier D. 1982 - Etude ostéométrique des astragales néandertaliens du Regourdou (Montignac, Dordogne). <hi rend="italic">Comptes Rendus de l’Académie des Sciences de Paris</hi>, 1982, sér. II, 295, p. 517-520, fig.</bibl>
+          <bibl>Laville H. 1988 - Recent Developments on the Chronostratigraphy of the Paleolithic in the Perigord. In: H. L. Dibble et A. Montet-White (Eds.), <hi rend="italic">Upper Pleistocene Prehistory of Western Eurasia</hi>. University Museum Symposium Series, vol. I. Philadelphia: University Museum Press, 1988, p. 147-160, ill. tab.</bibl>
+          <bibl>Lumley de M.-A. 1987 - Les restes humains néandertaliens de la brèche de Genay, Côte-d’Or, France. <hi rend="italic">L’Anthropologie (Paris)</hi>, 1987, 91, p. 119-162, fig. tab.</bibl>
+          <bibl>Molleson T. et Cox M. 1993 - <hi rend="italic"> The Spitalfields project. Volume 2 – The Anthropology, the middling sort.</hi> CBA research 86: York CBA Ed., 1993. 231 p. ill. tab.</bibl>
+          <bibl>Molnar S. 1971 - Human Tooth Wear, Tooth Function and Cultural Variability. <hi rend="italic">American Journal of Physical Anthropology</hi>, 1971, 34, p. 175-190.</bibl>
+          <bibl>Ogilvie M. D., Curran B. Y. et Trinkaus E. 1989 - Incidence and patterning of dental enamel hypoplasia among the Neandertals. <hi rend="italic">American Journal of Physical Anthropology</hi>, 1989, 79, p. 25-41, fig. tab.</bibl>
+          <bibl>Piveteau J. 1959 - Les restes humains de la grotte de Regourdou (Dordogne). <hi rend="italic"> Comptes Rendus de l’Académie des Sciences de Paris</hi>, 1959, sér. D, 248, p. 40-44, fig.</bibl>
+          <bibl>Piveteau J. 1963 - La grotte de Regourdou (Dordogne). Paléontologie humaine. <hi rend="italic">Annales de Paléontologie</hi>, 1963, XLIX, p. 285-304, fig. tab.</bibl>
+          <bibl>Piveteau J. 1964 - La grotte de Regourdou (Dordogne). Paléontologie humaine. <hi rend="italic"> Annales de Paléontologie (Vertébrés)</hi>, 1964, L, p. 155-194, fig. tab.</bibl>
+          <bibl>Piveteau J. 1966 - La grotte de Regourdou (Dordogne). Paléontologie humaine. <hi rend="italic">Annales de Paléontologie (Vertébrés)</hi>, 1966, LII, p. 163-194, fig. tab.</bibl>
+          <bibl>Semal P. 1988 – Evolution et variabilité des dimensions dentaires chez <hi rend="italic">Homo sapiens neanderthalensis</hi>. Artéfacts 5, Editions du C.E.D.Arc., 1988. 112 p.</bibl>
+          <bibl>Scott E. C. 1979 – Dental wear scoring technique. <hi rend="italic">American Journal of Physical Anthropology</hi>, 1979, 51, p. 213-217.</bibl>
+          <bibl>Smith B. H. 1984 - Patterns of molar wear in hunter-gatherers and agriculturalists. <hi rend="italic">American Journal of Physical Anthropology</hi>, 1984, 63, p. 39-56.</bibl>
+          <bibl>Thoma A. et Vallois H.-V. 1977 - Les dents de l’homme de Rabat. <hi rend="italic">Bulletins et Mémoires de la Société d’Anthropologie de Paris</hi>, 1977, sér. XIII, 4, p. 31-58, fig. tab.</bibl>
+          <bibl>Toussaint M. 1985 - Etude anthropologique de la nécropole médiévale de Coxyde (Belgique). <hi rend="italic">Bulletins de la Société Royale Belge d’Anthropologie et de Préhistoire</hi>, 1985, 96, p. 187-231, fig. tab.</bibl>
+          <bibl>Twiesselmann F. et Brabant H. 1967 - Observations sur les dents et les maxillaires d’une population ancienne d’âge franc de Coxyde. <hi rend="italic">Bulletins du Groupement International de Recherches en Sciences Stomatologiques</hi>, 1967, 3 et 4, p. 1-139.</bibl>
+          <bibl>Vallois H.-V. 1965 - Le sternum néandertalien du Regourdou. <hi rend="italic">Anthropologische Anzeitung</hi>, 1965, 29, p. 273-289, fig.</bibl>
+          <bibl>Vallois H.-V. et de Félice S. 1976 - Le sternum néandertalien du Regourdou. Note complémentaire. <hi rend="italic">Anthropologische Anzeitung</hi>, 1976, 35, p. 229-235, fig.</bibl>
+          <bibl>Vandermeersch B. 1965 - Position stratigraphique et chronologique relative des restes humains du Paléolithique moyen du Sud-Ouest de la France. <hi rend="italic">Annales de Paléontologie (Vertébrés)</hi>, 1965, LI, p. 69-126, fig. tab.</bibl>
+          <bibl>Vandermeersch B. 1971 - France, Middle Palaeolithic. In: K. P. Oakley, B. G. Campbell et T. Molleson (Eds.), <hi rend="italic">Catalogue of fossil hominids (Europe).</hi> London: Trustees of the British Museum (Natural History), 1971. 180p.</bibl>
+          <bibl>Vandermeersch B. et Trinkaus E. 1995 - The postcranial remains of the Régourdou 1 Neandertal: the shoulder and arm remains. <hi rend="italic">Journal of Human Evolution</hi>, 1995, 28, p. 439-476, fig. tab.</bibl>
+        </listBibl>
+      </div>
+      <div type="appendix">
+        <ab type="head" rend="appendix" subtype="level1">Limites de variation, distance (position) probabiliste et écart réduit ajusté <lb/> (par Francis Houët)</ab>
+        <ab type="head" rend="appendix" subtype="level2">Réflexions préliminaires</ab>
+        <p rend="appendix">De la simplicité naissent parfois les convictions de la recherche fondamentale.</p>
+        <p rend="appendix">La fonction de la Loi Normale est déterminée par la formule suivante : <lb/> f(x) = 1/[(2*pi) <hi rend="sup">1/2</hi> * s] * e**{-1/2*[(x-m)/s] <hi rend="sup">2</hi> } <lb/> où m est la moyenne, s est l’écart-type, e est la constante d’Euler (2.718...), pi est la constante Pi (3.14159...), Statistica v 5.1, StatSoft France (1998).</p>
+        <p rend="appendix">La distribution du t de Student a pour fonction de densité (pour <hi rend="bold">ddl</hi> = 1, 2, ...) : <lb/> f(x) = G[( <hi rend="bold">ddl</hi>+1)/2]/ G( <hi rend="bold">ddl</hi>/2) * ( <hi rend="bold">ddl</hi>*pi) <hi rend="sup">-1/2</hi> * [1 + (x <hi rend="sup">2</hi> / <hi rend="bold">ddl</hi>)] <hi rend="sup">-(</hi><hi rend="bold">ddl</hi><hi rend="sup">+1)/2</hi><lb/> où <hi rend="bold">ddl </hi>est le degré de liberté = <hi rend="bold">n</hi>-1, <hi rend="bold">n est le nombre d’observations, </hi>G est la fonction Gamma, pi est la constante Pi (3.14159...), Statistica v 5.1, StatSoft France (1998).</p>
+        <p rend="appendix">La Loi Normale, très utilisée dans l’analyse de l’inférence statistique, présuppose un échantillon infini (elle est donc indépendante de la taille réelle de ce dernier).</p>
+        <p rend="appendix">Par contre, la Loi de Student intègre comme paramètre le nombre d’observations composant l’échantillon. Ce paramètre, à travers le degré de liberté, apparaît 5 fois dans la formule (cf. supra). Ceci atteste de l’importance de ce facteur.</p>
+        <p rend="appendix">Le t de Student supérieur au z de la Loi Normale ( =1.95996…) décroît au fur et à mesure que l’effectif augmente et tend vers z quand l’échantillon tend vers l’infini (fig. 7).</p>
+        <p rend="figure-title">Figure 7 (annexe) - T de student et z de la loi Normale en fonction de l’effectif. <lb/><hi rend="italic">Figure 7 (annex) - Student t and z of the Normal distribution related to the size of the sample.</hi></p>
+        <p rend="appendix">
+          <figure>
+            <graphic url="http://paleo.revues.org/docannexe/image/1043/img-15.png"/>
+          </figure>
+        </p>
+        <p rend="appendix"><ref target="Image157Cgraphics"/> De nombreuses disciplines, dont la Paléo-anthropologie, n’ont accès qu’à des échantillons de faibles effectifs d’où l’idée de substituer à la Loi Normale la Loi de Student afin de cerner plus précisément certains paramètres d’analyse concernant des variables normales.</p>
+        <ab type="head" rend="appendix" subtype="level3">1) La variation et ses limites</ab>
+        <p rend="figure-title">Tableau 6 (annexe) - Equations des limites de la variation estimée de 95 % d’une population. <lb/><hi rend="italic">Table 6 (annex) - Equations of the limits of the valued variation of 95% of a population.</hi></p>
+        <p rend="appendix">
+          <figure>
+            <graphic url="http://paleo.revues.org/docannexe/image/1043/img-16.png"/>
+          </figure>
+        </p>
+        <p rend="appendix"><ref target="Image167Cgraphics"/> La surface totale sous chacune des deux courbes, générées par la Loi Normale et la Loi de Student, centrées et réduites, est égale à 1.</p>
+        <p rend="appendix">La surface comprise entre les limites inférieure et supérieure de la variation est égale à 0.95. La surface résiduelle, hors limites de variation, est donc égale à 1-0.95 soit 0.05.</p>
+        <p rend="appendix">Dans la procédure centrée réduite, les limites de variation estimées (fixes dans le cas de la Loi Normale), dépendent uniquement de l’effectif dans le protocole proposé (tab. 6).</p>
+        <ab type="head" rend="appendix" subtype="level3">2) La distance / position probabiliste (dpx / ppx)</ab>
+        <p rend="appendix">La question de l’estimation de la situation d’un individu par rapport à une population de référence est souvent posée.</p>
+        <p rend="appendix">La méthode classique, fondée sur la Loi Normale, utilise l’écart réduit (z score) : (x-m)/s. La situation de l’individu est donc exprimée en écart-type.</p>
+        <p rend="appendix">La distance / position probabilisterépond à la formule suivante :</p>
+        <p rend="appendix"><hi rend="bold">Loi.Student(Abs(x-m)/s;n-1;2) <lb/></hi><hi rend="bold">Abs</hi> : valeur absolue <lb/><hi rend="bold">m</hi>, <hi rend="bold">s</hi> : moyenne, écart-type estimés de la population à partir de l’échantillon <lb/><hi rend="bold">x</hi>  : valeur individuelle <lb/><hi rend="bold">2</hi>  : bilatéral <lb/><hi rend="bold">n</hi>  : effectif de l’échantillon</p>
+        <p rend="appendix">Elle situe, pour une variable normale, un individu par rapport à l’estimation de la distribution d’une population, estimée à partir de l’échantillon.</p>
+        <p rend="appendix">Elle varie de 0 (l’observation se trouve à une distance infinie de la population de référence) à 1 (l’observation se confond avec la moyenne.</p>
+        <p rend="figure-title">Figure 8 (annexe) - Fonction de densité de probabilité : y = Student(x ; ddl = 8). <lb/><hi rend="italic">Figure 8 (annex) - Probability density function: y= Student(x; df= 8).</hi></p>
+        <p rend="appendix">
+          <figure>
+            <graphic url="http://paleo.revues.org/docannexe/image/1043/img-17.png"/>
+          </figure>
+        </p>
+        <p rend="appendix"><ref target="Image177Cgraphics"/> L’expression : 1 - dpx (ou 1 - ppx) indique sur quelles limites de variation se trouve la valeur concernée. Pour p = 0.05, l’observation se situe sur l’une des deux limites de la variation estimée de 95 % de la population, à partir de l’échantillon (fig. 8).</p>
+        <p rend="appendix">Exemples de comportements de la distance probabiliste en fonction de divers paramètres (tab. 7) : </p>
+        <p rend="figure-title">Tableau 7 (annexe) - Exemples de comportements de la distance probabiliste en fonction de divers paramètres. <lb/><hi rend="italic">Table 7 (annex) - Modification of the value of the probabilistic distance in function of different parameters.</hi></p>
+        <p rend="appendix">
+          <figure>
+            <graphic url="http://paleo.revues.org/docannexe/image/1043/img-18.png"/>
+          </figure>
+        </p>
+        <p rend="appendix"><ref target="Image187Cgraphics"/> Les lignes a et b montrent une diminution de la distance probabiliste lorsque l’effectif augmente.</p>
+        <p rend="appendix">Les lignes a et c indiquent une diminution de la distance probabiliste lorsque l’écart-type diminue.</p>
+        <p rend="appendix">Les lignes a, e et d expriment l’augmentation de cette “ distance ” lorsque la valeur testée se rapproche de la moyenne.</p>
+        <p rend="appendix">La ligne d montre le cas particulier où la valeur de l’individu se confond avec la moyenne.</p>
+        <p rend="appendix">La ligne e exprime le cas particulier où la valeur de l’individu se confond avec l’une des deux limites de variation estimée de 95 % de la population.</p>
+        <p rend="appendix">Ecart réduit ajusté et écart réduit “ classique ” seront explicités plus loin.</p>
+        <p rend="appendix"><hi rend="bold">Distance probabiliste</hi> : la valeur de l’individu ne fait pas partie de l’échantillon (x n’entre pas dans le calcul de n, m, s).</p>
+        <p rend="appendix">La distance probabiliste situe donc la valeur d’une variable par rapport à un référent.</p>
+        <p rend="appendix">Bien sûr, cette notion est applicable pour évaluer la distance de moyennes, d’intervalles de confiance et de limites de variation entre des populations à étudier et une population de référence.</p>
+        <p rend="appendix"><hi rend="bold">Position probabiliste</hi> : la valeur de l’individu fait partie de l’échantillon (x entre dans le calcul de n, m, s).</p>
+        <p rend="appendix">La position probabiliste situe chaque élément du référent par rapport à ce référent.</p>
+        <p rend="appendix">Ce processus permet de détecter, lorsque ppx est très inférieure à 0.05, au sein de l’échantillon :</p>
+        <p rend="appendix">• des erreurs de mesures importantes, <lb/> • des individus n’appartenant pas à cet échantillon, <lb/> • des cas de marginalité excessive (pathologies, variations extrêmes …).</p>
+        <ab type="head" rend="appendix" subtype="level3">3) L’écart réduit ajusté</ab>
+        <p rend="appendix">répond à la formule suivante :</p>
+        <p rend="appendix">
+          <hi rend="bold">(x-m)/(Loi.Student.Inverse(0.05;n-1)*s)</hi>
+        </p>
+        <p rend="appendix">Cet ajustement par rapport à l’écart réduit classique (x-m)/s permet de tenir compte de l’effectif de l’échantillon.</p>
+        <p rend="appendix">Exemples de valeurs pour m = 9.5, s = 0.5 (tab. 8) :</p>
+        <p rend="figure-title">Tableau 8 (annexe) - Exemples de valeurs pour m = 9.5, s = 0.5. <lb/><hi rend="italic">Table 8 (annex) - Different values for m= 9.5, s= 0.5.</hi></p>
+        <p rend="appendix">
+          <figure>
+            <graphic url="http://paleo.revues.org/docannexe/image/1043/img-19.png"/>
+          </figure>
+        </p>
+        <p rend="appendix"><ref target="Image197Cgraphics"/> La visualisation graphique de ces deux méthodes permet les représentations suivantes :</p>
+        <p rend="figure-title">Figure 9 (annexe) - Ecart réduit ajusté. <lb/><hi rend="italic">Figure 9 (annex) - Adjusted Z-score.</hi></p>
+        <p rend="appendix">
+          <figure>
+            <graphic url="http://paleo.revues.org/docannexe/image/1043/img-20.png"/>
+          </figure>
+        </p>
+        <p rend="figure-title"><ref target="Image207Cgraphics"/> Figure 10 (annexe) - Ecart réduit « classique ». <lb/><hi rend="italic">Figure 10. (annex) - Classical Z-score.</hi></p>
+        <p rend="appendix">
+          <figure>
+            <graphic url="http://paleo.revues.org/docannexe/image/1043/img-21.png"/>
+          </figure>
+        </p>
+        <p rend="appendix"><ref target="Image217Cgraphics"/> Lim inf ic et Lim sup ic sont les limites inférieure et supérieure de l’intervalle de confiance de la moyenne (95 %).</p>
+        <p rend="appendix">Dans cette échelle de représentation, la variation estimée de 95 % de la population à partir de l’échantillon est comprise entre –1 et +1 (entre -1.96 et +1.96 pour l’écart réduit “ classique ”).</p>
+        <p rend="appendix">L’intervalle de confiance de la moyenne (95 %) se situe entre –1/racine carrée(n) et +1/racine carrée(n) ; (entre - 1.96/racine carrée (n) et + 1.96/racine carrée (n) pour l’écart réduit “ classique ”).</p>
+        <p rend="appendix">La moyenne a, pour les deux méthodes, la valeur 0.</p>
+        <p rend="appendix">Par rapport au système classique, nous remarquons (tab. 8, fig. 9 et 10) :</p>
+        <p rend="appendix">• la non linéarité des observations (variation des effectifs),</p>
+        <p rend="appendix">• les observations a, b et f ne sont plus exclues de la variation, ce qui engendre bien sûr une toute autre interprétation des résultats.</p>
+        <p rend="appendix">Le fait d’avoir divisé l’échelle par Loi.Student.Inverse(0.05 ;n-1) permettra, sur un même graphique, de représenter pour plusieurs variables :</p>
+        <p rend="appendix">plusieurs individus par rapport à une population de référence,</p>
+        <p rend="appendix">un individu par rapport à plusieurs populations de références (fig. 11),</p>
+        <p rend="appendix">plusieurs populations par rapport à une population de référence.</p>
+        <p rend="appendix">Bien sûr les éléments ci-dessus sont combinables dans la limite de la lisibilité graphique.</p>
+        <p rend="appendix">Exemple : un fossile comparé à 6 groupes anthropologiques fossiles, par 11 variables de la symphyse mandibulaire (fig. 11) :</p>
+        <p rend="figure-title">Figure 11 (annexe) - Mauer et l’écart réduit ajusté. <lb/><hi rend="italic">Figure 11 (annex) - Mauer and the adjusted Z-score.</hi></p>
+        <p rend="appendix">
+          <figure>
+            <graphic url="http://paleo.revues.org/docannexe/image/1043/img-22.png"/>
+          </figure>
+        </p>
+        <ab type="head" rend="appendix" subtype="level4"><ref target="Image227Cgraphics"/> Mauer et l’écart réduit ajusté</ab>
+        <p rend="appendix">Les groupes anthropologiques : 6 Australopithèques (Austr), 6 <hi rend="italic">Homo erectus</hi> (Herec), 5 Pré-Néandertaliens (PréN), 20 Néandertaliens (Néand), 6 <hi rend="italic">Homo sapiens sapiens</hi> du Paléolithique Moyen (HssPM), 24 <hi rend="italic">Homo sapiens sapiens</hi> du Paléolithique Supérieur (HssPS).</p>
+        <p rend="appendix">Les mesures et “ indices ” : angle symphysien / plan alvéolaire (Sa), angle symphysien / plan de base (Sb), angle mentonnier / plan alvéolaire (Ma), angle mentonnier / plan de base (Mb), hauteur de la symphyse (Hs), épaisseur de la symphyse (Es), épaisseur alvéolaire (Ea), épaisseur basilaire (Eb), 100*Es/Hs (EpH), Es+Hs (EsH), 100*Eb/Ea (BpA).</p>
+        <p rend="appendix">Ces données sont issues de nos travaux : “  <hi rend="italic">Etude de quelques caractères de la symphyse mandibulaire chez les Hominidés, essais d’interprétation des processus évolutifs</hi> ”, mémoire de DEA, Laboratoire d’Anthropologie de Bordeaux 1, 1988, inédit.</p>
+        <p rend="appendix">Dans ce graphique chaque point représente la valeur d’une variable de Mauer comparée à la moyenne et aux limites de variations estimées d’un groupe anthropologique. Par exemple pour la variable Sb (angle symphysien / plan basilaire) de haut en bas le 1 <hi rend="sup">er</hi> point représente la valeur de Mauer relativement à la variation des <hi rend="italic">Homo erectus ;</hi> le 2 <hi rend="sup">e</hi> point représente la même valeur de Mauer, mais cette fois ci relativement à la variation des Pré-Néandertaliens ; le 3 <hi rend="sup">e</hi> point, toujours cette même valeur par rapport à la variation des Australopithèques etc …</p>
+        <p rend="appendix">Pour l’ensemble des variables étudiées, seule la variabilité des Pré-Néandertaliens englobe toutes les données de Mauer. Nous pouvons donc envisager l’hypothèse que ce dernier puisse appartenir à ce groupe.</p>
+        <p rend="appendix">La lecture de ce genre de graphique permet également des considérations sur les relations entre les populations de référence. Par exemple, l’épaisseur basilaire (Eb) des Australopithèques (Austr) est nettement supérieure à celle des autres groupes. En effet, la valeur de cette variable pour Mauer est très faible relativement aux Australopithèques, et assez proche de la moyenne des autres groupes ; donc ces derniers présentent des valeurs faibles par rapport aux Australopithèques. De même l’angle symphysien par rapport au plan de base (Sb) et l’angle mentonnier par rapport au plan alvéolaire (Ma) sont beaucoup plus faibles chez <hi rend="italic">Homo erectus</hi> (Herec), comparativement aux autres groupes.</p>
+        <ab type="head" rend="appendix" subtype="level2">Conclusions</ab>
+        <p rend="appendix">On notera la facilité d’utilisation de ces méthodes dans la mesure où la plupart des tableurs actuels proposent les fonctions statistiques utilisées ici.</p>
+        <p rend="appendix">Les systèmes proposés permettent donc des comparaisons précises, pour des variables normales, entre individus et populations et ce, en tenant compte d’un nouveau paramètre : l’effectif de l’échantillon.</p>
+        <p rend="appendix">Cette démarche a pour objet d’essayer d’extraire au mieux la quintessence de données, surtout lorsque celles-ci se font rares.</p>
+      </div>
+    </back>
+  </text>
+</TEI>

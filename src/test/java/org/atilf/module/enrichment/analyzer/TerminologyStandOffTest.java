@@ -22,7 +22,7 @@ public class TerminologyStandOffTest {
 
     @BeforeClass
     public static void setUp(){
-        List<MorphologyOffsetId> morphology = new ArrayList<>();
+        List<MorphologyOffsetId> _morphology = new ArrayList<>();
         List<MultiWordsOffsetId> _termino = new ArrayList<>();
         List<MorphologyOffsetId> _multimorpho = new ArrayList<>();
         List<MultiWordsOffsetId> _multitermino = new ArrayList<>();
@@ -32,16 +32,16 @@ public class TerminologyStandOffTest {
         /*
         simple test
          */
-        morphology.add(new MorphologyOffsetId(0,10,"cuillière","N",0));
-        morphology.add(new MorphologyOffsetId(11,13,"en","DET",1));
-        morphology.add(new MorphologyOffsetId(14,18,"bois","N",2));
-        morphology.add(new MorphologyOffsetId(15,19,"rien","N",3));
-        morphology.add(new MorphologyOffsetId(20,26,"pierre","N",4));
+        _morphology.add(new MorphologyOffsetId(0,10,"cuillière","N",0));
+        _morphology.add(new MorphologyOffsetId(11,13,"en","DET",1));
+        _morphology.add(new MorphologyOffsetId(14,18,"bois","N",2));
+        _morphology.add(new MorphologyOffsetId(15,19,"rien","N",3));
+        _morphology.add(new MorphologyOffsetId(20,26,"pierre","N",4));
 
         _termino.add(new MultiWordsOffsetId(0,10,0,"cuillière"));
         _termino.add(new MultiWordsOffsetId(0,18,1,"cuillière en bois"));
         _termino.add(new MultiWordsOffsetId(20,26,2,"pierre"));
-        _observedSimpleStandOff = new TerminologyStandOff(morphology, _termino);
+        _observedSimpleStandOff = new TerminologyStandOff(_morphology, _termino);
 
         /*
         multi test
@@ -110,14 +110,13 @@ public class TerminologyStandOffTest {
 
         Assert.assertFalse("the list of index must be not empty",
                 _observedMultiStandOff.getTerminology().isEmpty());
-        
+
         _observedMultiStandOff.getTerminology().forEach(
                 ids -> Assert.assertEquals("_morphology ids must be equals",
                         expected.get(_observedMultiStandOff.getTerminology().indexOf(ids)),
                         ids.getIds().toString()
                 )
         );
-
     }
 
     @Test

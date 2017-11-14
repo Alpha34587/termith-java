@@ -32,6 +32,7 @@ public class TermithResourceManager {
 
     public enum TermithResource {
         TERMITH_TREETAGGER_BPMN_DIAGRAM("all/bpmn.20_schema/termithTreeTagger.bpmn20.xml"),
+        TREETAGGER_HOME(System.getenv("TREETAGGER_HOME")),
         DISAMBIGUATION_BPMN_DIAGRAM("all/bpmn.20_schema/disambiguation.bpmn20.xml"),
         CUSTOM_BPMN_DIAGRAM("all/bpmn.20_schema/"),
         DISAMBIGUATION_XSL("all/xsl_stylesheet/disambiguation.xsl"),
@@ -45,17 +46,18 @@ public class TermithResourceManager {
         PHRASEOLOGY("[LANG]/lexical_resources/PhraseologyResource.json"),
         LST("[LANG]/lexical_resources/TransdisciplinaryResource.json");
         private String _path;
-        private static String lang;
+        private static String _lang = "en";
+
         TermithResource(String path) {
             _path = path;
         }
 
         public String getPath() {
-            return _path.replace("[LANG]",lang);
+            return _path.replace("[LANG]",_lang);
         }
 
         public static void setLang(String lang) {
-            TermithResource.lang = lang;
+            TermithResource._lang = lang;
         }
     }
 }

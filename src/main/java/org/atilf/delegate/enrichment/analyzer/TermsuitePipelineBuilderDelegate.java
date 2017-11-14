@@ -5,6 +5,7 @@ import org.atilf.module.enrichment.analyzer.TerminologyParser;
 import org.atilf.module.enrichment.analyzer.TerminologyStandOff;
 import org.atilf.module.enrichment.analyzer.TermsuitePipelineBuilder;
 import org.atilf.module.enrichment.analyzer.TreeTaggerWorker;
+import org.flowable.engine.delegate.DelegateExecution;
 
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
@@ -20,6 +21,23 @@ import java.util.concurrent.TimeUnit;
  *         Created on 01/09/16.
  */
 public class TermsuitePipelineBuilderDelegate extends Delegate {
+    private String _outputPath;
+    private String _lang;
+
+    public void setOutputPath(String outputPath) {
+        _outputPath = outputPath;
+    }
+
+    public void setLang(String lang) {
+        _lang = lang;
+    }
+
+    @Override
+    public void initialize(DelegateExecution execution) {
+        super.initialize(execution);
+        _outputPath = getFlowableVariable("out",null).toString();
+        _lang = getFlowableVariable("lang",null);
+    }
 
     /**
      *  Firstly, the method create two timer inherited objects. These objects show the progress of the tokenization jobs
@@ -36,14 +54,15 @@ public class TermsuitePipelineBuilderDelegate extends Delegate {
      * @see TerminologyParser
      * @see TerminologyStandOff
      */
+
     @Override
     public void executeTasks() throws InterruptedException, IOException, ExecutionException {
-
         /*
         executeTasks termsuite
          */
         _executorService.submit(
-                new TermsuitePipelineBuilder(_termithIndex, getFlowableVariable("out",null).toString(),getFlowableVariable("lang",null)));
+                new TermsuitePipelineBuilder(_termithIndex, _outputPath, _lang)
+        );
 
         _executorService.shutdown();
         _executorService.awaitTermination(1L,TimeUnit.DAYS);

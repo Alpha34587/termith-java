@@ -4,9 +4,11 @@ import org.atilf.delegate.Delegate;
 import org.atilf.resources.disambiguation.DisambiguationXslResources;
 import org.atilf.module.disambiguation.contextLexicon.DisambiguationXslTransformer;
 import org.atilf.monitor.timer.TermithProgressTimer;
+import org.flowable.engine.delegate.DelegateExecution;
 
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Future;
@@ -21,6 +23,24 @@ import static org.atilf.runner.TermithResourceManager.*;
  */
 public class LearnXslTransformerDelegate extends Delegate {
 
+    private Path _learningPath;
+    private Path _outputPath;
+
+    public void setLearningPath(Path learningPath) {
+        _learningPath = learningPath;
+    }
+
+    public void setOutputPath(Path outputPath) {
+        _outputPath = outputPath;
+    }
+
+    @Override
+    public void initialize(DelegateExecution execution) {
+        super.initialize(execution);
+        _learningPath = getFlowableVariable("learningPath",null);
+        _outputPath = getFlowableVariable("out",null);
+    }
+
     @Override
     public void executeTasks() throws IOException, InterruptedException {
         DisambiguationXslResources xslResources = new DisambiguationXslResources(TermithResource.DISAMBIGUATION_XSL.getPath());
@@ -28,12 +48,12 @@ public class LearnXslTransformerDelegate extends Delegate {
         /*
         Transformation phase
          */
-        Files.list(getFlowableVariable("learningPath",null)).forEach(
+        Files.list(_learningPath).forEach(
                 p -> futures.add(_executorService.submit(new DisambiguationXslTransformer(
                         p.toFile(),
                         _termithIndex,
                         xslResources,
-                        getFlowableVariable("out",null)
+                        _outputPath
                         ))
                 )
         );

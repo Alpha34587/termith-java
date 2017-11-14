@@ -1,7 +1,7 @@
 package org.atilf.module.enrichment.lexical.resource.projection;
 
 import org.atilf.models.TermithIndex;
-import org.atilf.resources.enrichment.LexicalResourceProjectionResources;
+import org.atilf.resources.enrichment.ResourceProjection;
 import org.atilf.models.enrichment.MorphologyOffsetId;
 import org.atilf.models.enrichment.MultiWordsOffsetId;
 import org.atilf.module.Module;
@@ -18,19 +18,19 @@ public class PhraseologyProjector extends Module{
 
     private List<MorphologyOffsetId> _morphologyOffset;
     private List<MultiWordsOffsetId> _resourceProjectorOffsetIds;
-    LexicalResourceProjectionResources _lexicalResourceProjectionResources;
+    ResourceProjection _resourceProjection;
     private String _id;
 
-    public PhraseologyProjector(String id, TermithIndex termithIndex, LexicalResourceProjectionResources lexicalResourceProjectionResources) {
+    public PhraseologyProjector(String id, TermithIndex termithIndex, ResourceProjection resourceProjection) {
         this(id,FilesUtils.readListObject(termithIndex.getMorphologyStandOff().get(id)),termithIndex.getPhraseoOffsetId().get(id),
-                lexicalResourceProjectionResources);
+                resourceProjection);
     }
 
     PhraseologyProjector(String id, List<MorphologyOffsetId> morphologyOffset, List<MultiWordsOffsetId> resourceProjectorOffsetIds,
-                         LexicalResourceProjectionResources lexicalResourceProjectionResources){
+                         ResourceProjection resourceProjection){
         _id = id;
         _morphologyOffset = morphologyOffset;
-        _lexicalResourceProjectionResources = lexicalResourceProjectionResources;
+        _resourceProjection = resourceProjection;
         _resourceProjectorOffsetIds = resourceProjectorOffsetIds;
     }
 
@@ -57,10 +57,10 @@ public class PhraseologyProjector extends Module{
                         currentMorphologyOffsetId.add(_morphologyOffset.get(wordAfter));
                     }
                     String currentTrimmedLemma = currentLemma.toString().trim();
-                    if(_lexicalResourceProjectionResources.getResourceMap().containsKey(currentTrimmedLemma)){
+                    if(_resourceProjection.getResourceMap().containsKey(currentTrimmedLemma)){
                         _logger.debug("detection of expression : {}",currentLemma);
                         addToProjectedData(currentMorphologyOffsetId,
-                                _lexicalResourceProjectionResources.getResourceMap().get(currentTrimmedLemma));
+                                _resourceProjection.getResourceMap().get(currentTrimmedLemma));
                     }
                     currentWordSize++;
                 }
@@ -88,6 +88,6 @@ public class PhraseologyProjector extends Module{
     protected void addNewEntry(List<MorphologyOffsetId> listMorphologyOffsetId, String lemma, List<Integer> ids, Integer entryId) {
         _resourceProjectorOffsetIds.add(new MultiWordsOffsetId(listMorphologyOffsetId.get(0).getBegin(),
                 listMorphologyOffsetId.get(listMorphologyOffsetId.size() - 1).getEnd(), entryId,
-                _lexicalResourceProjectionResources.getMultiWordsMap().get(lemma),ids));
+                _resourceProjection.getMultiWordsMap().get(lemma),ids));
     }
 }

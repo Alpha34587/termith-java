@@ -4,9 +4,11 @@ import org.atilf.delegate.Delegate;
 import org.atilf.resources.enrichment.XslResources;
 import org.atilf.module.enrichment.initializer.TextExtractor;
 import org.atilf.monitor.timer.TermithProgressTimer;
+import org.flowable.engine.delegate.DelegateExecution;
 
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Future;
@@ -20,6 +22,26 @@ import static org.atilf.runner.TermithResourceManager.*;
  * Created on 25/07/16.
  */
 public class TextExtractorDelegate extends Delegate {
+
+
+    private Path _base;
+    private Path _output;
+
+
+    public void setBase(Path base) {
+        _base = base;
+    }
+
+    public void setOutput(Path output) {
+        _output = output;
+    }
+
+    @Override
+    public void initialize(DelegateExecution execution) {
+        super.initialize(execution);
+        _base = getFlowableVariable("base",null);
+        _output = getFlowableVariable("out",null);
+    }
 
     /**
      * executeTasks the extraction text task with the help of inner InitializerWorker class
@@ -36,10 +58,9 @@ public class TextExtractorDelegate extends Delegate {
         /*
         extract the text and map the path of the corpus into hashMap with identifier
          */
-        Files.list(getFlowableVariable("base",null)).forEach(
+        Files.list(_base).forEach(
                 p -> futures.add(_executorService.submit(new TextExtractor(p.toFile(), _termithIndex,
-                        getFlowableVariable("out",null),xslResources)))
-
+                        _output,xslResources)))
         );
         new TermithProgressTimer(futures,this.getClass(),_executorService).start();
         _logger.info("Waiting initCorpusWorker executors to finish");

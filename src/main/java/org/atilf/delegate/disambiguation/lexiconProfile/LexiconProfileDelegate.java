@@ -6,9 +6,11 @@ import org.atilf.models.disambiguation.RLexicon;
 import org.atilf.resources.disambiguation.RResources;
 import org.atilf.module.disambiguation.lexiconProfile.SpecCoefficientInjector;
 import org.atilf.runner.TermithResourceManager.TermithResource;
+import org.flowable.engine.delegate.DelegateExecution;
 
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.concurrent.TimeUnit;
 
 import static java.lang.Thread.currentThread;
@@ -20,12 +22,24 @@ import static java.lang.Thread.currentThread;
  *         Created on 12/10/16.
  */
 public class LexiconProfileDelegate extends Delegate {
-
     /**
      * this is the method who converts global corpus into a R variable and compute the specificity coefficient for each
      * words for each context of terms candidates entries (also known as lexical profile)
-     * @throws InterruptedException thrown if awaitTermination function is interrupted while waiting
      */
+
+    private Path _outputPath;
+
+    public void setOutputPath(Path outputPath) {
+        _outputPath = outputPath;
+    }
+
+    @Override
+    public void initialize(DelegateExecution execution) {
+        super.initialize(execution);
+        _outputPath = getFlowableVariable("out",null);
+
+    }
+
     @Override
     public void executeTasks() throws InterruptedException, IOException {
         /*
@@ -33,7 +47,7 @@ public class LexiconProfileDelegate extends Delegate {
          */
         RLexicon rLexicon = new RLexicon(
                 _termithIndex.getCorpusLexicon(),
-                getFlowableVariable("out",null).toString()
+                _outputPath.toString()
         );
         RResources.init(TermithResource.DISAMBIGUATION_R_SCRIPT.getPath());
         RConnectionPool rConnectionPool = new RConnectionPool(8,rLexicon);
@@ -42,7 +56,7 @@ public class LexiconProfileDelegate extends Delegate {
                         key,
                         _termithIndex,
                         rLexicon,
-                        getFlowableVariable("out",null).toString(),
+                        _outputPath.toString(),
                         rConnectionPool))
         );
 

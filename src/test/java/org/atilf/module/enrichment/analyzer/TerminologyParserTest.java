@@ -55,5 +55,4 @@ public class TerminologyParserTest {
     private String parse(MultiWordsOffsetId offset) {
         return offset.getBegin() + " " + offset.getEnd() + " " + offset.getWord() + " " + offset.getTermId();
     }
-
 }

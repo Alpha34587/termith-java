@@ -4,9 +4,11 @@ import org.atilf.delegate.Delegate;
 import org.atilf.resources.disambiguation.DisambiguationXslResources;
 import org.atilf.module.disambiguation.contextLexicon.DisambiguationXslTransformer;
 import org.atilf.monitor.timer.TermithProgressTimer;
+import org.flowable.engine.delegate.DelegateExecution;
 
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Future;
@@ -21,6 +23,26 @@ import static org.atilf.runner.TermithResourceManager.*;
  */
 public class EvaluationXslTransformerDelegate extends Delegate {
 
+    private Path _evaluationPath;
+    private Path _learningPath;
+    private Path _outputPath;
+    
+    public void setEvaluationPath(Path evaluationPath) {
+        _evaluationPath = evaluationPath;
+    }
+
+    public void setOutputPath(Path outputPath) {
+        _outputPath = outputPath;
+    }
+
+    @Override
+    public void initialize(DelegateExecution execution) {
+        super.initialize(execution);
+        _evaluationPath = getFlowableVariable("evaluationPath",null);
+        _learningPath = getFlowableVariable("learningPath",null);
+        _outputPath = getFlowableVariable("out",null);
+    }
+
     @Override
     public void executeTasks() throws IOException, InterruptedException {
         DisambiguationXslResources xslResources = new DisambiguationXslResources(TermithResource.DISAMBIGUATION_XSL.getPath());
@@ -28,17 +50,16 @@ public class EvaluationXslTransformerDelegate extends Delegate {
         /*
         Transformation phase
          */
-        if (getFlowableVariable("learningPath",null) !=
-                getFlowableVariable("evaluationPath",null)) {
-            Files.list(getFlowableVariable("evaluationPath",null)).forEach(
+        if (_learningPath != _evaluationPath) {
+            Files.list(_evaluationPath).forEach(
                     p -> futures.add(_executorService.submit(
                             new DisambiguationXslTransformer(
                                     p.toFile(),
                                     _termithIndex,
                                     _termithIndex.getEvaluationTransformedFiles(),
                                     xslResources,
-                                    getFlowableVariable("out",null))
-                    ))
+                                    _outputPath
+                            )))
             );
         }
         new TermithProgressTimer(futures,EvaluationXslTransformerDelegate.class,_executorService).start();

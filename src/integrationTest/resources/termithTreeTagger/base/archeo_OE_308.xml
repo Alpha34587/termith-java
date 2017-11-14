@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title level="a" type="main">Connotation fonctionnelle du mobilier funéraire en silex</title>
+        <title type="sub">Exemple de la Bulgarie</title>
+        <author>
+          <persName>
+            <forename>Maria</forename>
+            <surname>Gurova</surname>
+          </persName>
+          <affiliation>
+            <s>Département de Préhistoire, Institut National d’Archéologie et Musée, Académie Bulgare des Sciences, 2 rue Saborna, 1000 Sofia, Bulgarie — gurovam@yahoo.fr</s>
+          </affiliation>
+          <orgName>
+            <s>Département de Préhistoire, Institut National d’Archéologie et Musée, Académie Bulgare des Sciences, 2 rue Saborna, 1000 Sofia, Bulgarie</s>
+          </orgName>
+          <email>
+            <s>gurovam@yahoo.fr</s>
+          </email>
+        </author>
+      </titleStmt>
+      <publicationStmt>
+        <publisher/>
+        <date when="2009-11-15">2009-11-15</date>
+        <availability>
+          <p>Tous droits réservés</p>
+        </availability>
+        <idno type="url">http://pm.revues.org/356</idno>
+      </publicationStmt>
+      <sourceDesc>
+        <biblFull>
+          <titleStmt>
+            <title/>
+            <respStmt>
+              <resp>auteur</resp>
+              <name>Maria Gurova</name>
+            </respStmt>
+          </titleStmt>
+          <publicationStmt>
+            <publisher/>
+            <date>2008-12-20</date>
+            <idno type="pp">121-134</idno>
+          </publicationStmt>
+        </biblFull>
+      </sourceDesc>
+    </fileDesc>
+    <encodingDesc>
+      <appInfo>
+        <application version="1.0" ident="Lodel">
+          <label>Lodel</label>
+          <desc>
+            <ref target="http://www.tei-c.org/">We use TEI</ref>
+          </desc>
+        </application>
+      </appInfo>
+      <tagsDecl>
+        <rendition xml:id="T1" scheme="css">text-decoration:line-through</rendition>
+        <rendition xml:id="T2" scheme="css">font-variant:small-caps;text-decoration:underline</rendition>
+        <rendition xml:id="T3" scheme="css">font-variant:small-caps</rendition>
+        <rendition xml:id="T4" scheme="css">text-transform:uppercase</rendition>
+        <rendition xml:id="T5" scheme="css">text-transform:uppercase;text-decoration:underline;</rendition>
+      </tagsDecl>
+    </encodingDesc>
+    <profileDesc>
+      <langUsage>
+        <language ident="fr">fr</language>
+      </langUsage>
+      <textClass/>
+    </profileDesc>
+  </teiHeader>
+  <text>
+    <front>
+      <div type="abstract" xml:lang="en">
+        <p>This paper focuses on an issue evoked by one of the well-known cemeteries in northeast Bulgaria, at Durankulak, and so far the only one to be studied and published in detail. On the empirical basis of the functional determination of flint grave-goods, based on use-wear analysis of artifacts, some observations and interpretations are presented regarding the cognitive value of ritual flint objects from a ‘sacred’ context. Functional data provide the interpretative framework, and a clear dichotomy of functional meanings is revealed. The decoded utilitarian (profane) feature of flint grave-goods is only a first step towards a better understanding of the semiological value of lithics charged with the symbolic patterns of the mortuary context.</p>
+      </div>
+      <div type="abstract" xml:lang="fr">
+        <p>L’article fait le point sur la problématique dévoilée par une des nécropoles bien connues de la Bulgarie du nord-est, celle de Durankulak, l’unique qui soit étudiée et publiée entièrement. Sur la base empirique de la détermination fonctionnelle des mobiliers funéraires en silex, fondée sur l’analyse des traces d’utilisation des artefacts, quelques observations et réflexions sur la valeur cognitive de mobilier en silex sont présentées à propos d’objets de silex rituels provenant d’un contexte ‘sacré’. Ces résultats sont intégrés dans le contexte des données interprétatives et révèlent la dichotomie des connotations fonctionnelles des offrandes lithiques dont la partie évidente — la fonction utilitaire et profane — représente seulement une des trajectoires vers la considération adéquate de la valeur sémiologique du mobilier en silex dans le contexte mortuaire global.</p>
+      </div>
+    </front>
+    <body>
+      <div type="div1">
+        <head subtype="level1">Introduction</head>
+        <p>Dans notre lecture et notre compréhension du passé, l’analyse exhaustive du mobilier funéraire permet de concevoir le concept épistémologique de « sacré » <hi rend="italic">versus</hi> « profane et domestique ». La présence des objets en silex parmi le mobilier funéraire révèle autant leur statut symbolique secondaire, que l’importance de les considérer au même titre que les autres offrandes et objets personnels des dépôts rituels. Les besoins spirituels de nos ancêtres, concrétisés par des rites funéraires variés, représentent un domaine compliqué, où la lecture de faits archéologiques peut facilement être suivie d’interprétations spéculatives et non pertinentes. Il faut souligner l’importance des études complexes du mobilier et des pratiques funéraires issues de nécropoles préhistoriques, afin d’éviter une précarité gnoséologique, consistant en des reconstructions basées sur des données archéologiques insuffisamment fiables (c’est-à-dire isolées et anecdotiques). J’ai eu la possibilité d’accomplir une étude tracéologique du mobilier en silex de la nécropole Durankulak dont les résultats mettent en évidence une information supplémentaire sur la sélection et extraction (consciente ou fortuite) des artefacts en silex de leur contexte premier de fonctionnement, domestique, et leur transfert vers la sphère sacrée des offrandes funéraires. Beaucoup de questions liées avec cette problématique méritent une discussion approfondie.</p>
+        <p>La Bulgarie préhistorique est bien connue grâce aux trouvailles spectaculaires de ses nécropoles et surtout de la nécropole chalcolithique de Varna, ou le contexte funéraire manifeste une forte différentiation sociale et hiérarchique des défunts. Les signes de richesse et de hiérarchie à Varna, aussi bien que les objets présents suggèrent une spécialisation artisanale élaborée et un échange à grande échelle : faits qui sont récemment considérés par certains chercheurs comme des indices convaincants et significatifs pour qu’on puisse parler d’une proto-civilisation, mais ce débat n’est pas le sujet de l’article.</p>
+      </div>
+      <div type="div1">
+        <head subtype="level1">Durankulak – un phénomène archéologique</head>
+        <p>On dénombre sur le territoire de la Bulgarie 11 nécropoles préhistoriques (avec plus de 10 sépultures) surtout chalcolithiques. La plus connue est la nécropole de Varna, mais celle qui représente un vrai phénomène archéologique est la nécropole de Durankulak (carte ci-dessous).</p>
+        <p rend="figure-title">Carte de situation</p>
+        <p>
+          <figure>
+            <graphic url="http://pm.revues.org/docannexe/image/356/img-1.jpg"/>
+          </figure>
+        </p>
+        <p><ref target="Image17Cgraphics"/> Il convient de présenter ici dans un cadre général ce réel phénomène archéologique. Cette nécropole, en effet, est l’unique dont les restes archéologiques soient complètement étudiés et publiés (Todorova 2002). Bien qu’elle ait été éclipsée par la célébrité du cimetière de Varna, la nécropole de Durankulak possède quand même certains avantages proprement cognitifs. Située près de la frontière roumaine sur le littoral bulgare, elle illustre une séquence très importante du Néolithique récent jusqu’au Chalcolithique final, qui permet d’observer et de reconstituer de manière diachronique les pratiques funéraires (avec leurs caractères variables) de la communauté locale, dont le site d’habitat se trouve à 200 m au nord. Cette séquence représente un intervalle de temps de presque un millénaire, et une bonne illustration du développement des cultures Hamangia et Varna, qui se présentent de la manière suivante : <lb/> - Hamangia ancienne (phases I, II) – Néolithique récent <lb/> - Hamangia III – début du Chalcolithique <lb/> - Hamangia IV – Chalcolithique moyen, période de transition évolutive <lb/> - Varna – Chalcolithique final</p>
+        <p>Le cadre chronologique absolu des étapes culturelles est présenté ci-dessous (Bojadzhiev 2002a, 67) : <lb/> - Hamangia I - II 5250/5200 - 4950/4900 cal. BC <lb/> - Hamangia III 4950/4900 - 4650/4600 cal. BC <lb/> - Hamangia IV 4650/4600 - 4550/4500 cal. BC <lb/> - Varna I 4550/4500 - 4450/4400 cal. BC <lb/> - Varna II-II 4450/4400 - 4250/4150 cal. BC</p>
+      </div>
+      <div type="div1">
+        <head subtype="level1">Analyse tracéologique</head>
+        <p>La collection en silex de Durankulak, soumise à l’analyse tracéologique compte 184 artefacts dont 112 (60 %) avec des fonctions identifiées. Cela fait au total 133 sépultures étudiées (tabl. 1). L’analyse tracéologique a été effectuée à l’aide des microscopes MBS 10 (x100) et METAM P1 (x400) <note place="foot" n="1"><p rend="footnote"><ref target="ftn1">1</ref>  Les microphotos on été prises a l’aide du microscope métallographique WILD MPS 51 (au grossissement de x100) à l’Institut de minéralogie–BAS</p></note>.</p>
+        <p rend="figure-title">Tableau 1 - Tableau généralisant les données de la collection étudiée :</p>
+        <p>
+          <figure>
+            <graphic url="http://pm.revues.org/docannexe/image/356/img-2.jpg"/>
+          </figure>
+        </p>
+        <p rend="figure-legend"><ref target="Image27Cgraphics"/> - le nombre des tombes en relation des phases culturelles ; <lb/> - le nombre des artefacts en silex en provenant et le nombre des pièces utilisées</p>
+        <p>En ce qui concerne la confusion et l’opposition entre les déterminations des sépultures qui s’appuient sur la composition du mobilier et qui sont qualifiées d’« archéologiques », et les déterminations anthropologiques (un problème qui existe depuis toujours et qui est bien élucidé dans les travaux de Jeunesse 1997), je m’appuie sur les données publiées dans le catalogue de la nécropole (Todorova 2002). Ces données contiennent les identifications anthropologiques, si elles sont disponibles et dans le reste des cas - les déterminations archéologiques basées sur l’analyse méticuleuse du contexte : mobilier funéraire et l’agencement des structures sépulcrales. L’avantage pratique de ces données est qu’elles représentent une base standardisée et uniformisée pour la comparaison des résultats d’analyses supplémentaires. Le compromis méthodologique que j’ai fait un utilisant cette démarche est admissible, étant donné le fait que dans les cas des sépultures avec du mobilier en silex les confrontations entre les 2 types de déterminations ne sont qu’au nombre de 9.</p>
+        <p rend="figure-title">1 - Durankulak. Artefacts en silex</p>
+        <p>
+          <figure>
+            <graphic url="http://pm.revues.org/docannexe/image/356/img-3.jpg"/>
+          </figure>
+        </p>
+        <p rend="figure-license"><ref target="Image37Cgraphics"/> (d’après Sirakov 2002, fig. 14)</p>
+        <p>Dans les tableaux que j’ai cré pour illustrer les résultats de l’analyse tracéologique les catégories anthropologiques des garçons et des filles sont associées respectivement à des hommes et des femmes. Les enfants et les nouveau-nés sont traités séparément.</p>
+        <p>Pour la raison que l’étude fonctionnelle n’est pas complète (il y a des sépultures dont le mobilier en silex n’était pas disponible pour mon étude) on ne peut pas se permettre d’entreprendre une interprétation définitive et exhaustive. On peut néanmoins faire certaines constatations.</p>
+        <div type="div2">
+          <head subtype="level2">Généralités </head>
+          <p>- parmi les fonctions déterminées sur le total de pièces en silex de la nécropole les plus fréquentes sont la découpe de tissu carné (23 ex.) ; les armatures de faucille (15 ex.) et les pointes de projectile (flèche) (14 ex.). </p>
+          <p rend="figure-title">2 - Outils avec des traces d’utilisation</p>
+          <p rend="figure-legend">
+            <figure>
+              <graphic url="http://pm.revues.org/docannexe/image/356/img-4.jpg"/>
+            </figure>
+          </p>
+          <p rend="figure-legend"><ref target="Image47Cgraphics"/> 1 – grattoir - outil combiné (tombe 358) : découpe de plantes (roseaux) avec le bord droit ; raclage de bois avec le tranchant gauche et assouplissement de peau avec la partie basale. La microphoto montre l’usure de coupe de roseau (x100) - photo : M. Gurova ; 2 – grattoir - outil combiné (tombe 231) :grattage de peaux avec le front et raclage de bois avec les tranchants bilatéraux. La microphoto montre l’usure du grattage de peau (x100)</p>
+          <p rend="figure-license">photo : M. Gurova</p>
+          <p>Dans une moindre quantité sont présentées les fonctions comme la découpe de végétaux (roseaux) et le traitement de la peau (fig. 2) ; <lb/> - les outils (typologiques et fonctionnels) associés uniquement à des inhumations masculines sont les microlithes géométriques. La majorité de ces pièces (10 ex.) proviennent des sépultures de Hamangia I-II (4 ex.) et Hamangia III (6 ex.) : cela veut dire du début de la séquence de la nécropole ;- les armatures de faucilles (y compris les couteaux à moissonner) prédominent dans les sépultures féminines (8 ex.), mais il y en a aussi parmi les offrandes des hommes (5 ex.). À la différence des pointes de flèches, elles n’existent pas dans les sépultures du Néolithique récent, elles sont rares dans les sépultures de Hamangia III et IV (4 ex.) et beaucoup plus nombreuses pendant la phase Varna (11 ex.) qui correspond à la phase finale du Chalcolithique ; <lb/> - une fréquence pareille est valable pour les pièces servant à la découpe de tissu carné, mais contrairement aux armatures de faucilles, elles sont associées plutôt à des sépultures masculines (11 ex.) que féminines (6 ex.) ; <lb/> - à Durankulak il n’y a pas de « super lames » de 30 cm environ ou plus de longueur comme celles présentes à Varna. Il y a néanmoins 3 lames assez grandes et représentatives (entre 25 et 30 cm) dont 2 font partie du mobilier masculin (tombes 597 et 977), tandis que la troisième provient d’une sépulture féminine (tombe 1162 ; fig. 3).</p>
+          <p rend="figure-title">3 - Très grandes lames</p>
+          <p>
+            <figure>
+              <graphic url="http://pm.revues.org/docannexe/image/356/img-5.jpg"/>
+            </figure>
+          </p>
+          <p rend="figure-legend"><ref target="Image57Cgraphics"/> 1- tombe 597 ; 2 - tombe 1162 ; 3 - tombe 977</p>
+          <p rend="figure-license">(d’après Sirakov 2002, fig. 16)</p>
+          <p>Quant au ratio entre le nombre des artefacts en silex présentés et celui des pièces utilisées, la situation de Hamangia I-II est très proche de celle de Hamangia III. La période Hamangia IV se caractérise par une réduction quantitative du silex, mais à l’inverse, le nombre et le pourcentage des pièces usitées augmentent sensiblement (de 41 % à 71 %). Ce taux est identique pendant la phase finale du Chalcolithique Varna, qui marque en plus une augmentation proportionnelle du nombre de sépultures avec du mobilier en silex, des pièces en silex et des pièces utilisées. Il y en a 5 fois plus par rapport à l’étape précédente de Hamangia IV (Gurova 2002, 253-254).</p>
+        </div>
+      </div>
+      <div type="div1">
+        <head subtype="level1">« Outillage de tailleur de vêtements »</head>
+        <p>Il me semble intéressant de présenter ici la répartition de soi-disant « outillages/nécessaires de tailleur de vêtements », <hi rend="italic">a priori</hi> attribués à l’activité assez particulière et plutôt féminine (le terme et l’interprétation provisoire sont introduits par l’inventeur de la nécropole, H. Todorova). Un tel outillage consiste d’habitude en 3-4 types d’objets : artefact(s) en silex, poinçon (parfois aiguille) en os, petit galet (lissoir) en pierre et coquillage, mis dans un vase en céramique (fig. 4). Ces outillages sont au nombre de 51 et sont relevés dans 50 sépultures (dans la sépulture 518 il y en a 2). La détermination culturelle des outillages est la suivante : Hamangia IV – 8, Varna – 42 ; tandis que la détermination sexuelle et de l’âge est ainsi : homme – 13, femme – 27, enfant – 3, cénotaphe – 7.</p>
+        <p rend="figure-title">4 - Sépultures 577 et 286 : exemples des « outillages de tailleurs de vêtements ».</p>
+        <p>
+          <figure>
+            <graphic url="http://pm.revues.org/docannexe/image/356/img-6.jpg"/>
+          </figure>
+        </p>
+        <p rend="figure-license"><ref target="Image67Cgraphics"/> Illustration : M. Gurova (adaptée du catalogue publié dans H. Todorova 2002, 2/2)</p>
+        <p>En effet cet outillage ne représente pas un complexe cohérent : tout d’abord il y a la variation des différents composants. La combinaison la plus fréquente et stable consiste en une pièce de silex (le plus souvent une lame) et une aiguille en os. Cela semble être bien logique théoriquement et surtout dans une optique présumée que cet outillage représente un « nécessaire » contenant des outils efficaces : on sait qu’une lame en silex est un outil multifonctionnel, dont l’efficacité est concrètement complétée par un outil perçant comme une aiguille en os. Les artefacts en silex de ces outillages comptent 39 pièces dont 33 possèdent de traces d’utilisation. L’analyse plus détaillée de cet outillage a montré la variabilité fonctionnelle des éléments en silex (tabl. 2). Il est évident qu’il s’agit d’un outillage associé plutôt aux inhumations féminines et surtout au contexte de la culture Varna. Il est évident aussi qu’il n’y a pas de fonction prédominante au moins parmi les artefacts en silex.</p>
+        <p rend="figure-title">Tableau 2 - Analyse fonctionnelle des silex provenant « des outillages de tailleurs de vêtements »</p>
+        <p>
+          <figure>
+            <graphic url="http://pm.revues.org/docannexe/image/356/img-7.jpg"/>
+          </figure>
+        </p>
+        <p><ref target="Image77Cgraphics"/> Les actions les plus fréquentes sont longitudinales, sciage et découpe, suivies par le grattage et rarement le perçage. Quant aux matières travaillées, les plus courantes sont les tissus carnés, suivies par le bois végétal et les céréales. On peut constater que le traitement de la peau est bien représenté : il s’agit de différentes opérations et étapes de travail sur cette matière. La présence des armatures de faucille et des outils pour le traitement du bois complètent ce spectre des activités, liées aussi bien à la sphère domestique quotidienne («  <hi rend="italic">household</hi> »), qu’à la sphère de subsistance proprement dite – la moisson de céréales. Même parmi les tombes d’enfants il y a 3 de ces assortiments, dont un (sépulture 423) « nécessaire de tailleurs de vêtements », qui comprend un artefact en silex utilisé pour le travail de bois végétal. Les usures assez hétérogènes des éléments en silex n’évoquent pas une quelconque fonction précise de cet outillage. C’est plutôt une combinaison d’objets extraits de leur contexte domestique pour répondre aux besoins rituels. Elle est donc chargée d’une signification sacrée, dans laquelle les paramètres quotidiens de ces composants perdent leurs valeurs proprement utilitaire et domestique (Gurova 2006, 4-5).</p>
+        <p>Comment pouvons nous considérer et interpréter le sens originel de ces outillages ? Ils n’apparaissent qu’au sein des cultures Hamangia IV et Varna. On peut citer ici la conclusion d’un chercheur qui a été impliqué à chaque étape de travail sur la nécropole – Y. Bojadzhiev qui dit : ... «  <hi rend="italic">les changements des rites funéraires à la fin de la culture Hamangia reflètent un grave et profond changement social, spirituel et d’un certain degré même ethnique, qui a émergé à cette époque-là »</hi> (Bojadzhiev sous presse). Dans cette optique on peut lancer au moins 2 interprétations vraisemblables de cet « outillage » : <lb/> 1 - cet outillage pourrait signifier une parenté quelconque dans le cadre de la communauté. Cette hypothèse trouve une certaine confirmation dans la répartition spatiale particulière de ces outillages concentrés dans 3 regroupements majeurs au sud de la nécropole. Le fait que l’outillage prédomine dans les sépultures féminines pourrait être vu comme une tentative de souligner le statut des femmes menant la plupart des activités de la sphère domestique «  <hi rend="italic">household</hi> » ;2 - les outillages pourraient pourtant être considérés comme attribut de regroupement social ou professionnel des leurs possesseurs. Les composants des outillages suggèrent probablement une adhésion et/ou affiliation artisanale, où la distinction de l’âge et du sexe est parfois assez vague. Parce que si la guerre et la chasse sont encore considérées comme activités attribuables au domaine masculin, le début d’agriculture comme une priorité plutôt féminine, l’accomplissement des activités domestiques quotidiennes pourrait être considéré comme un privilège et une obligation communes et partagés.</p>
+        <p>Beaucoup de productions artisanales sont connues au Néolithique récent et au Chalcolithique et dans ce sens les femmes, les hommes, aussi bien que les enfants peuvent être présumés comme producteurs de poterie, industrie en silex et os, etc. Différentes issues théoriques et même spéculations sont bien possibles sur le débat de la division sexuelle du travail et des activités préhistoriques. Ce sujet de discussion n’est pas le but de l’article et pour cette raison je me contente de citer la constatation faite dans le compte rendu des volumes de Durankulak : «  <hi rend="italic">The potential for re-thinking established sex and gender trends in mortuary treatment in the Neolithic Balkans is huge »</hi> (Bailey &amp; Hofmann 2005, p. 221).</p>
+      </div>
+      <div type="div1">
+        <head subtype="level1">Sépultures de nouveau-nés et d’enfants</head>
+        <p>Dans la plupart des nécropoles de la Bulgarie du NE le nombre des tombes d’enfants est considérablement inférieur au nombre des tombes d’adultes. La détermination précise de l’âge des enfants décédés est assez rare et la distinction des groupes <hi rend="italic">Infans</hi> I et <hi rend="italic">Infans</hi> II varie d’une nécropole à l’autre. En règle générale, les données anthropologiques fiables sur les nouveau-nés (jusqu’à 1 an) sont plutôt exceptionnelles <note place="foot" n="2"><p rend="footnote"><ref target="ftn2">2</ref>  L’article plus détaillé sur les sépultures de nouveaux-nés et d’enfants de Durankulak est sous presse dans les Actes de XV Congres de UISPP, Lisbonne, 2006 (Y. Boyadziev, M. Gurova. Mobilier funéraire de nouveau-nés et d’enfants : cas d’étude de la Bulgarie)</p></note>. Cette situation factuelle est en contradiction avec la mortalité ordinaire des enfants à cette époque-là, qui est au plus haut chez les nouveau-nés et diminue graduellement avec l’âge. La nécropole de Durankulak nous offre une réponse plausible à ce paradoxe, issue du contexte même du terrain – l’utilisation d’une structure sépulcrale en pierre qui matérialise la fosse primaire. Cet aménagement des sépultures, y compris de nouveau-nés, en vigueur pendant la culture Varna, permet de constater la présence de tombes même s’il n’y a ni squelette, ni mobilier funéraire : un fait qui est très important relativement aux nouveau-nés et aux enfants dont les ossements sont les plus vulnérables aux altérations post-dépositionnelles.</p>
+        <p>L’analyse du contexte funéraire à Durankulak montre que les enfants ont été inhumés dans la nécropole comme les autres membres de la communauté, mais le nombre et la densité des tombes d’enfants varient d’une phase à l’autre. Par exemple, le nombre des sépultures d’enfants enregistrées à Hamangia I-III est de 29 (5,8 %), et il augmente progressivement pendant les périodes suivantes de Hamangia IV et Varna. À la différence de Hamangia, durant la phase Varna les ossements de nouveau-nés sont sûrement attestés et identifiés, mais les cas semblables ne sont pas nombreux. L’analyse des sépultures en total montre un taux très élevé de sépultures d’enfants (40 %). Il faut pourtant souligner que la plupart d’entre eux ne possèdent aucun reste osseux et que l’identification repose sur les données contextuelles – caractère du mobilier et agencement de la structure sépulcrale (Bojadzhiev2001 ; 2003, p. 56-57).</p>
+        <p>Presque la moitié des sépultures enfantines contiennent un certain spectre d’offrandes dans lequel on peut distinguer les catégories suivantes : <lb/> - objets considérés comme habituels et ordinaires pour un enfant : les récipients en argile qui sont présumés contenir de la nourriture et des effets personnels, comme de la parure par exemple <note place="foot" n="3"><p rend="footnote"><ref target="ftn3">3</ref>  La distinction offrande/effets personnels qu’on utilise est d’après J. et M. Lichardus (Lichardus &amp; Lichardus-Itten 1985)</p></note> ; <lb/> - à part ces objets, du mobilier peut être moins naturellement attribuable aux enfants : ce sont des éléments d’outillages en silex, pierre taillée et os, parmi lesquels des outils utilisés.</p>
+        <p>En règle générale les artefacts en silex sont (après la poterie bien sûr) parmi les objets les plus répandus dans le mobilier funéraire des enfants. C’est la raison pour laquelle on va se concentrer ici sur cette catégorie de mobilier.</p>
+      </div>
+      <div type="div1">
+        <head subtype="level1">Mobilier funéraire en silex</head>
+        <p>Les artefacts en silex sont rarement isolés dans le mobilier de la nécropole. C’est également valable pour les tombes d’enfants/nouveau-nés. Les combinaisons d’offrandes et d’effets personnels sont les moins nombreuses pendant les phases anciennes Hamangia I-III. Les plus nombreuses sont les combinaisons avec de la céramique. Pendant la phase Varna la diversité du mobilier funéraire augmente sensiblement, parallèlement à l’accroissement général du nombre des sépultures et de leur représentativité (sur le plan du mobilier et des pratiques funéraires).</p>
+        <p>À Durankulak il y a 7 tombes identifiées par un anthropologue comme tombes de nouveau-nés (tombes 525, 531, 719, 724, 876, 1194, 1194A), mais aucune d’elles ne contient d’artefacts en silex. Il n’y en a pas non plus parmi les tombes d’ <hi rend="italic">Infans</hi> I (1-7 ans), au nombre de 43. Le second groupe d’ <hi rend="italic">Infans</hi> II (7-14 ans) contient certaines sépultures avec du mobilier en silex (tombes 154, 236, 358, 433, 559 et 649) qui représentent un taux de 20 % de la totalité des tombes de ce groupe (tabl. 3).</p>
+        <p rend="figure-title">Tableau 3 - Sépultures d’enfants (Infans II 7-14 ans)</p>
+        <p>
+          <figure>
+            <graphic url="http://pm.revues.org/docannexe/image/356/img-8.jpg"/>
+          </figure>
+        </p>
+        <p><ref target="Image87Cgraphics"/> En règle générale il faut souligner le fait que les sépultures des groupes <hi rend="italic">Infans</hi> I et surtout <hi rend="italic">Infans</hi> II sont les plus significatives du point de vue de la compréhension (et de l’interprétation) adéquate des sépultures d’enfants. À cause du squelette conservé (dont la position est d’habitude allongé sur le dos - pour les garçons, et replié sur le flanc droit – pour les filles) on peut concevoir la sépulture comme un ensemble clos et intact, offrant une image fidèle du rituel funéraire et de ses suggestions symboliques et spirituelles. D’autre part (et on aborde ici le problème qui mérite la discussion épistémologique) la démarche interprétative doit se limiter à la considération et à la corrélation des faits étudiés (dans ce cas les sépultures) pour qu’ils gardent leur valeur adéquate au sein du contexte funéraire global.</p>
+        <p>Le tableau 3 montre le ratio 4/2 des tombes des différentes phases en faveur de celles de Varna. L’analyse des artefacts en silex révèle un petit assemblage hétérogène : les produits de débitage (lames et éclats bruts) aussi bien que les outils retouchés sont présents. Les usages déterminés sont variés autant du point de vue des matières travaillées que des actions, mais néanmoins la découpe prédomine parmi les gestes effectués. Il n’est pas exclu, mais il n’est pas certain non plus, que ces outils aient été utilisés par les défunts de leur vivant.</p>
+        <p>Les artefacts en silex sont attestés dans 8 sépultures sans ossements humains, mais les petites dimensions des structures sépulcrales en dalles de pierre incitent à les considérer comme des sépultures de nouveau-nés (tombes 415, 573, 700, 701, 716, 782, 234, 566 <note place="foot" n="4"><p rend="footnote"><ref target="ftn4">4</ref>  D’après les dimensions des agencements de pierres, les 2 dernières sépultures appartiennent probablement à des individus dont l’âge dépasse 1 an</p></note>) (tabl. 4 et fig. 5-1).</p>
+        <p rend="figure-title">Tableau 4 - Sépultures de nouveaux-nés déterminées d’après le contexte funéraire</p>
+        <p>
+          <figure>
+            <graphic url="http://pm.revues.org/docannexe/image/356/img-9.jpg"/>
+          </figure>
+        </p>
+        <p>Il est évident à l’examen du tableau 4, que dans le cas de nouveau-nés il n’y a pas de différence prononcée en comparaison des données déjà présentées pour les enfants du 2 <hi rend="sup">e</hi> groupe : il y a une variété de types d’artefacts aussi bien qu’une variété de fonctions. D’autre part, il faut souligner que les tombes attribuées aux phases de Hamangia et, surtout Hamangia IV prédominent largement par rapport aux sépultures de phase Varna, un fait qui ne corrobore pas le ratio diachronique des autres catégories de sépultures (y compris de celles d’enfants). L’explication repose probablement sur des difficultés réelles à distinguer les sépultures de nouveau-nés, dénuées d’ossements. De même, il n’est pas exclu que pendant les phases les plus anciennes de la nécropole, il y ait eu une préférence particulière pour les objets en silex en guise de dépôts funéraires pour l’inhumation de nouveau-nés.</p>
+        <p rend="figure-title">5 - Sépultures de nouveaux-nés (700 et 614 A) et d’enfant (217) – exemple de mobilier funéraire.</p>
+        <p>
+          <figure>
+            <graphic url="http://pm.revues.org/docannexe/image/356/img-10.jpg"/>
+          </figure>
+        </p>
+        <p rend="figure-license"><ref target="Image107Cgraphics"/> Illustration : M. Gurova (adaptée du catalogue publié dans H. Todorova 2002, 2/2)</p>
+        <p>Cinq sépultures (tombes 76, 217, 218, 365, 423) avec des artefacts en silex sont interprétées comme tombes d’enfants <hi rend="italic">lato sensu</hi> sur la base des dimensions de la fosse sépulcrale, de la présence de petits fragments osseux (y compris de dents) et du caractère du mobilier funéraire disponible (tabl. 5 et fig. 5-3).</p>
+        <p>Dans le contexte de la nécropole sont attestés 9 cas de découvertes d’artefacts en silex, soit isolés (tombes 50A et 837A), soit en combinaison avec d’autres types de mobilier : poteries (tombes 2A, 510A, 476A, 764A), parures (tombes 39A, 614A), les deux (tombes 571A). Malgré l’absence d’indices sûrs (ossements et construction sépulcrale), ces tombes sont interprétées dans la publication comme nouveau-nés/enfants (Todorova <hi rend="italic">et al. </hi>2002). D’un autre côté, il n’est pas exclu que certaines d’entre elles (et surtout les tombes de la phase Hamangia) soient des cénotaphes (Bojadzhiev 2004) (tabl. 5 et fig. 5-2).</p>
+        <p rend="figure-title">Tableau 5 - Sépultures d’enfants identifiées sans certitude</p>
+        <p>
+          <figure>
+            <graphic url="http://pm.revues.org/docannexe/image/356/img-11.jpg"/>
+          </figure>
+        </p>
+        <p><ref target="Image117Cgraphics"/> Malheureusement, et cela ressort de l’examen du tableau 5, l’information tirée des objets en silex de ces groupes de sépultures reste incomplète parce qu’un certain nombre des pièces n’ont pas été mis à disposition pour l’étude.</p>
+      </div>
+      <div type="div1">
+        <head subtype="level1">Conclusion</head>
+        <p>L’analyse des artefacts en silex met aussi en évidence le fait qu’il n’y a pas une préférence prononcée vis-à-vis des types de pièces en silex sélectionnées pour être déposées dans les tombes d’enfants. En général les silex-offrandes ne varient pas considérablement en fonction de l’âge et du sexe des défunts. Il y a quand même 2 exceptions : les pointes de projectile et les très grandes lames qui n’existent pas parmi le mobilier des enfants.</p>
+        <p>Il n’y a pas non plus un rapport direct entre les silex – offrandes et leur valeur utilitaire et domestique. Leur introduction dans le contexte mortuaire est évidemment chargée d’une connotation spirituelle et symbolique.</p>
+        <p>Le mobilier funéraire (considéré de manière égale dans un sens quantitatif et qualitatif) permet de supposer que les enfants ont été l’objet de rites cérémoniels de la même manière que les adultes. Ce fait les rend, malgré leur mort prématurée, respectés et considérés comme les membres normaux des réseaux familiaux et sociaux auxquels ils appartenaient. C’est une conclusion assez générale et peu spectaculaire, mais elle est pertinente, parce qu’elle ne cherche pas à révéler de valeurs symboliques exagérées des faits extraits de leur contexte.</p>
+        <p>Pour finir il est raisonnable de rappeler la conclusion d’un grand connaisseur du développement de la Bulgarie à la fin du Chalcolithique – John Chapman. Ses recherches le mènent à conclure que les nécropoles chalcolithiques de la Bulgarie de nord-est et leur mobilier funéraire représentent la plus forte et puissante «  <hi rend="italic">arène sociale</hi> » (Chapman 2000). Les offrandes mortuaires peuvent s’interpréter comme un ensemble d’objets qui transmet les relations et les conditions sociales. Notre objectif doit être de les dévoiler et de les élucider autant que possible.</p>
+      </div>
+      <div type="div1">
+        <head subtype="level1">Discussion</head>
+        <p>Chaque étude concrète sur le domaine mortuaire et funéraire pose des problèmes particuliers liés d’une part au contexte (pré) historique des documents archéologiques, et d’autre part au but et à l’ambition cognitive des chercheurs.</p>
+        <p>Les sujets du culte et de la religion ont été depuis toujours abordés par les archéologues. Néanmoins, une analyse véritablement épistémologique, effectuée récemment par T. Insoll, montre que l’archéologie de la religion doit surmonter beaucoup de préjugés et de difficultés méthodologiques (Insoll 2004). C’est le cadre le plus général de la problématique.</p>
+        <p>Depuis des décennies, dans les recherches sur les pratiques funéraires, un malentendu demeure et se reproduit : la détermination des sexes. Les déterminations qui s’appuient sur la composition du mobilier sont qualifiées d’« archéologiques » et elles s’opposent aux déterminations anthropologiques (Jeunesse 1997, p. 95). Ce problème a entraîné beaucoup de conséquences négatives, mais il persiste et, dans un certain sens, il semble être inévitable et insoluble.</p>
+        <p>Différemment, mais sûrement les problèmes mentionnés ci-dessus se projettent sur l’interprétation des données de la nécropole de Durankulak, malgré le fait qu’elle est soigneusement fouillée et documentée (voir note 2). Même un objectif assez précis et modeste - révéler les caractéristiques fonctionnelles d’un des éléments du mobilier funéraire, en l’occurrence, les silex – pose un faisceau de questions. La fonction des artefacts en silex du mobilier funéraire contient une dichotomie difficile à saisir et à expliquer de manière adéquate. L’analyse tracéologique (comme outil fiable de diagnostic) révèle la fonction utilitaire (= réelle et/ou profane) des pièces. Au-delà de cette approche fonctionnelle reste le problème de l’autre versant de la fonction – la fonction symbolique et/ou sacrée.</p>
+        <p>La compréhension de cette dichotomie et son interprétation correcte requièrent beaucoup plus que la singularisation fonctionnelle des pièces. Elles exigent une approche approfondie, systématique et contextuelle montrant la relation entre tous les éléments du mobilier afin d’explorer le système sémiologique auquel elles se réfèrent.</p>
+      </div>
+    </body>
+    <back>
+      <div type="bibliography">
+        <listBibl>
+          <bibl>Bailey &amp; Hofmann 2005, BAILEY D.W., HOFMANN D., [Book review] Henrieta Todorova (ed.). Die prähistorischen Gräberfelder (Durankulak II ; 2 volumes). 732 pages, figures, 209 plates, tables. 2002. Sofia : Deutsches Archäologisches Institut [...], <hi rend="italic">Antiquity</hi>, Oxford, 79, 303, 2005, p. 220-222.</bibl>
+          <bibl>Bojadzhiev 2001, BOJADZHIEV J., Pogrebalni saorazhenija v praistoricheskija nekropol pri selo Durankulak, <hi rend="italic">Godishnik na Arheologicheskija Institut s Musei</hi>, Sofia, 2001, p, 95-128 (en Bulgare).</bibl>
+          <bibl>Bojadzhiev 2002a, BOJADZHIEV J., Die absolute Chronologie der neo- und äneolithischen Gräberfelder von Durankulak, <hi rend="italic">in : Durankulak : die prähistorischen Gräberfelder</hi>, Todorova H. (Dir.), Sofia, Deutsches Archäologisches Institut, 2002, p. 67-69 (Durankulak ; 2/1).</bibl>
+          <bibl>Bojadzhiev 2002b, BOJADZHIEV J., Die Grabanlagen der prähistorischen Gräberfelder von Durankulak, <hi rend="italic">in : Durankulak : die prähistorischen Gräberfelder</hi>, Todorova H. (Dir.), Sofia, Deutsches Archäologisches Institut, 2002, p. 71-80 (Durankulak ; 2/1).</bibl>
+          <bibl>Bojadzhiev 2003, BOJADZHIEV J., Po vaprosa za mestopolozhenieto na detskite grobove prez neolita I halkolita, <hi rend="italic">Dobrudzha</hi>, Varna, 2003, p. 48-62 (en Bulgare).</bibl>
+          <bibl>Bojadzhiev 2004, BOJADZHIEV J., Über die frühesten symbolischen Bestattungen, <hi rend="italic">in : Von Domica bis Drama : Gedenkschrift für Jan Lichardus</hi>, Nikolov V., Bacvarov K. (Dir.), Sofia, Archäologisches Institut mit Museum, 2004, p. 73-77.</bibl>
+          <bibl>Bojadzhiev s.p., BOJADZHIEV J., Changes of the burial rites within the transition from Hamangia to Varna culture, <hi rend="italic">in : Varna Chalcolithic Cemetery and the Problems of the South-East Europe Prehistory</hi>, Slavchev V. (Dir.), s.p.</bibl>
+          <bibl>Bojadzhiev &amp; Gurova s.p., BOJADZHIEV J., GUROVA M., Mobilier funéraire de nouveaux-nés et d’enfants : cas d’étude de la Bulgarie, <hi rend="italic">in : [Actes] XV Congrès de l’Union internationale des Sciences préhistoriques et protohistoriques [4-9 septembre 2006, Lisbonne]</hi>, Oosterbeek L., Raposo J. (Dir.), [Tomar], [Instituto politécnico], s.p., 14 p., fig.</bibl>
+          <bibl>Gurova 2002, GUROVA M., Mobilier en silex de la nécropole Dourankulak : analyse fonctionnelle, <hi rend="italic">in : Durankulak. Die prähistorischen Gräberfelder</hi>, Todorova H. (Dir.), Sofia, Deutsches Archäologisches Institut, 2002, p. 247-256 (Durankulak ; 2/1).</bibl>
+          <bibl>Gurova 2006, GUROVA M., Prehistoric flints as grave goods/hoards : functional connotation, <hi rend="italic">Archaeologia bulgarica</hi>, Sofia, 1, 2006, p. 1-14.</bibl>
+          <bibl>Insoll 2004, INSOLL T.A., <hi rend="italic">Archaeology, ritual, religion</hi>, New York / London, Routledge, 2004, 184 p. (Themes in archaeology).</bibl>
+          <bibl>Jeunesse 1997, JEUNESSE C., <hi rend="italic">Pratiques funéraires au Néolithique ancien : sépultures et nécropoles des sociétés danubiennes (5500-4900 av. J.-C.)</hi>, Paris, Errance, 1997, 168 p. (Les Hespérides).</bibl>
+          <bibl>Lichardus <hi rend="italic"> et al.</hi> 1985, LICHARDUS J., LICHARDUS-ITTEN M., BAILLOUD J., CAUVIN J., <hi rend="italic">et al.</hi>, <hi rend="italic">La protohistoire de l’Europe : le Néolithique et le Chalcolithique entre la Méditerranée et la Mer Baltique</hi>, Paris, Presses universitaires de France, 1985, 640 p. (Nouvelle Clio : 1 bis).</bibl>
+          <bibl>Sirakov 2002, SIRAKOV N., 2002. Flint artifacts in prehistoric grave-good assemblages from the Durankulak cemetery, in : <hi rend="italic">Durankulak. Die prähistorischen Gräberfelder</hi>, Todorova, H. (Dir.), Sofia : Deutsches Archäologisches Institut, 2002, p.  213-247, (Durankulak ; 2/1) </bibl>
+          <bibl>Todorova 2002, TODOROVA H. Ed., <hi rend="italic">Durankulak. Die prähistorischen Gräberfelder</hi>, Sofia, Deutsches Archäologisches Institut, 2002, 732 p. (Durankulak ; 2)</bibl>
+          <bibl>Todorova <hi rend="italic"> et al.</hi> 2002, TODOROVA H., DIMOV T., BOJADZHIEV J., VAJSOV I., DIMITROV K., AVRAMOVA M., Katalog der prähistorischen Gräber von Durankulak, <hi rend="italic">in : Durankulak : die prähistorischen Gräberfelder</hi>, Todorova H. (Dir.), Sofia, Deutsches Archäologisches Institut, 2002, p. 31-135 (Durankulak ; 2/1).</bibl>
+        </listBibl>
+      </div>
+      <div type="appendix">
+        <p rend="appendix">L’analyse techno-typologique de l’assemblage en silex est faite et publiée par mon collègue N. Sirakov (Sirakov 2002). Sur la structure de l’ensemble on peut dire en bref qu’il y a très peu de nucleus et d’éclats. Il y en a, en revanche, assez de lames brutes avec différentes morphologies. Parmi les catégories typologiques il faut mentionner les lames retouchées et tronquées, les grattoirs, les burins et les microlithes géométriques (fig. 1).</p>
+      </div>
+    </back>
+  </text>
+</TEI>

@@ -46,6 +46,8 @@ public class DisambiguationCLI {
         Option thresholdMin = new Option("tmin","thresholdMin",true,"specificity profile threshold filter minimum");
         thresholdMin.setRequired(false);
         Option thresholdMax = new Option("tmax","thresholdMax",true,"specificity profile threshold filter maximum");
+        Option resource = new Option("r","resource",true,"set Resource path");
+
         thresholdMax.setRequired(false);
 
         options.addOption(learning);
@@ -54,6 +56,7 @@ public class DisambiguationCLI {
         options.addOption(thresholdMin);
         options.addOption(thresholdMax);
         options.addOption(debug);
+        options.addOption(resource);
 
         try {
             CommandLine line = parser.parse( options, args );
@@ -61,24 +64,64 @@ public class DisambiguationCLI {
             if (line.hasOption("debug")){
                 CLIUtils.setGlobalLogLevel(Level.DEBUG);
             }
-            RunnerBuilder runnerBuilder = new RunnerBuilder()
-                    .setLearningPath(line.getOptionValue("le"))
-                    .setBpmnDiagram("runner/disambiguation.bpmn20.xml")
-                    .setEvaluationPath(line.getOptionValue("e"))
-                    .setOut(line.getOptionValue("o"));
 
-            if (line.hasOption("thresholdMin") && line.hasOption("thresholdMax")){
-                runnerBuilder.setThresholds(
-                        Integer.parseInt(line.getOptionValue("tmin")),
-                        Integer.parseInt(line.getOptionValue("tmax"))
+            if (line.hasOption("tmin") && line.hasOption("tmax")){
+                run(
+                        line.getOptionValue("le"),
+                        line.getOptionValue("e"),
+                        line.getOptionValue("o"),
+                        line.getOptionValue("tmin"),
+                        line.getOptionValue("tmax"),
+                        line.getOptionValue("resource")
+                );
+
+            } else {
+                run(
+                        line.getOptionValue("le"),
+                        line.getOptionValue("e"),
+                        line.getOptionValue("o"),
+                        line.getOptionValue("resource")
                 );
             }
-            Runner runner = runnerBuilder.createRunner();
-            runner.execute();
+
+
         } catch (ParseException e) {
             LOGGER.error("There are some problems during running : ",e);
         } catch (Exception e) {
             LOGGER.error("There are some problems during the creation of runner : ",e);
         }
+    }
+
+    private static void run(String learningPath,
+                            String evaluationPath,
+                            String outputPath,
+                            String thresholdMin, String thresholdMax, String resource) throws Exception {
+        RunnerBuilder runnerBuilder = new RunnerBuilder()
+                .setLang("fr")
+                .setResourceManager(resource)
+                .setBpmnDiagram("runner/disambiguation.bpmn20.xml")
+                .setLearningPath(learningPath)
+                .setEvaluationPath(evaluationPath)
+                .setOut(outputPath)
+                .setThresholds(
+                        Integer.parseInt(thresholdMin),
+                        Integer.parseInt(thresholdMax)
+                );
+        Runner runner = runnerBuilder.createRunner();
+        runner.execute();
+    }
+
+    public static void run(String learningPath,
+                           String evaluationPath, String outputPath, String resource) throws Exception {
+        RunnerBuilder runnerBuilder = new RunnerBuilder()
+                .setLang("fr")
+                .setResourceManager(resource)
+                .setLearningPath(learningPath)
+                .setBpmnDiagram("disambiguation.bpmn20.xml")
+                .setEvaluationPath(evaluationPath)
+                .setOut(outputPath);
+
+        Runner runner = runnerBuilder.createRunner();
+        runner.execute();
     }
 }

@@ -1,0 +1,6539 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:ns="http://standoff.proposal" xmlns:ns2="http://standoff.proposal" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title level="a" type="main">
+          <hi xml:lang="fr">Recherches récentes sur l'oppidumd'Entremont à Aix-en-Provence(Bouches-du-Rhône): étude de la voirie et d'un atelier de forgeronde l'îlot 1 dans l'habitat 2</hi>
+        </title>
+        <author>
+          <persName>
+            <forename>Jean-Jacques</forename>
+            <surname>DUFRAIGNE</surname>
+          </persName>
+        </author>
+        <author>
+          <persName>
+            <forename>Philippe</forename>
+            <surname>CHAPON</surname>
+          </persName>
+        </author>
+        <author>
+          <persName>
+            <forename>Anne</forename>
+            <surname>RICHIER</surname>
+          </persName>
+        </author>
+      </titleStmt>
+      <publicationStmt>
+        <publisher/>
+        <date when="2013-09-18">2013-09-18</date>
+        <availability>
+          <p>Tous droits réservés</p>
+        </availability>
+        <idno type="url">http://dam.revues.org/1681</idno>
+      </publicationStmt>
+      <sourceDesc>  </sourceDesc>
+    </fileDesc>
+    <encodingDesc>
+      <appInfo>
+        <application ident="Lodel" version="1.0">
+          <label>Lodel</label>
+          <desc>
+            <ref target="http://www.tei-c.org/">We use TEI</ref>
+          </desc>
+        </application>
+      </appInfo>
+      <tagsDecl>
+        <rendition scheme="css" xml:id="T1">text-decoration:line-through</rendition>
+        <rendition scheme="css" xml:id="T2">font-variant:small-caps;text-decoration:underline</rendition>
+        <rendition scheme="css" xml:id="T3">font-variant:small-caps</rendition>
+        <rendition scheme="css" xml:id="T4">text-transform:uppercase</rendition>
+        <rendition scheme="css" xml:id="T5">text-transform:uppercase;text-decoration:underline;</rendition>
+      </tagsDecl>
+    </encodingDesc>
+    <profileDesc>
+      <langUsage>
+        <language ident="fr">fr</language>
+      </langUsage>
+      <textClass>
+        <keywords scheme="keyword" xml:lang="fr">
+          <list>
+            <item>Aix-en-Provence</item>
+            <item>Entremont</item>
+            <item>oppidum</item>
+            <item>IIes. av. J.-C.</item>
+            <item>forge</item>
+            <item>voie</item>
+            <item>céramique non tournée provençale</item>
+            <item>ateliers de Marseille</item>
+            <item>vernis noir de type A</item>
+            <item>amphore italique</item>
+            <item>influences gréco-italiques.</item>
+          </list>
+        </keywords>
+        <keywords scheme="keyword" xml:lang="en">
+          <list>
+            <item>Provence</item>
+            <item>Aix-en-Provence</item>
+            <item>Entremont</item>
+            <item>IInd c. BC</item>
+            <item>craft industry</item>
+            <item>roadway system</item>
+            <item>hand-thrown ceramics; Marseilles workshops</item>
+            <item>black varnish</item>
+            <item>Italic amphora</item>
+            <item>Greco-Italic influences.</item>
+          </list>
+        </keywords>
+      </textClass>
+    </profileDesc>
+  </teiHeader>
+  <ns:standOff type="wordForms">
+    <teiHeader>
+      <fileDesc>
+        <titleStmt>
+          <title>Annotations morphosyntaxiques</title>
+          <author role="annotator">ATILF</author>
+          <author role="annotator">LINA</author>
+        </titleStmt>
+        <publicationStmt>
+          <distributor>ATILF (Analyse et Traitement Informatique de la Langue
+                  Française)</distributor>
+          <availability>
+            <licence corresp="#licenceCC" target="http://creativecommons.org/licenses/by/4.0/"/>
+          </availability>
+        </publicationStmt>
+        <sourceDesc>
+          <p>Annotation morphosyntaxique du document <ref target="#termithIdentifier"/> générée
+                  automatiquement dans le cadre du projet TermITH</p>
+        </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+        <projectDesc>
+          <p>Les annotations morphosyntaxiques s'appliquent au texte intégral du document <ref target="#termithIdentifier"/> et plus précisément au text/body et
+                  text/back.</p>
+          <p>Le texte est segmenté automatiquement en tokens par un module interne de
+                  TermSuite2.0.</p>
+          <p>L'étiquetage morphosyntaxique est réalisé par l'étiqueteur TreeTagger. Les jeux
+                  d'étiquettes sont ensuite homogénéisé selon la norme MulText.</p>
+          <p>Les sorties enrichies de TermSuite2.0 sont enfin projetées dans le texte
+                  intégral.</p>
+          <p>Les informations morphosyntaxiques sont représentées dans des structures de traits
+                  (&lt;fs&gt;) qui contiennent deux traits pour le moment, l'un pour la forme
+                  lemmatisée f/@name="lemma" et l'autre pour l'étiquette grammaticale
+                  f/@name="pos". Les valeurs de ces traits sont respectivement indiquées
+                  dans un élément &lt;string/&gt; et &lt;symbol/&gt;</p>
+        </projectDesc>
+        <appInfo>
+          <application ident="TermSuite" version="2.0">
+            <label>TS2.0</label>
+          </application>
+        </appInfo>
+      </encodingDesc>
+    </teiHeader>
+    <ns:listAnnotation>
+      <span target="#t1">
+        <fs>
+          <f name="lemma">
+            <string>un</string>
+          </f>
+          <f name="pos">
+            <symbol value="DET:ART"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t2">
+        <fs>
+          <f name="lemma">
+            <string>opération</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t3">
+        <fs>
+          <f name="lemma">
+            <string>archéologique</string>
+          </f>
+          <f name="pos">
+            <symbol value="ADJ"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t4">
+        <fs>
+          <f name="lemma">
+            <string>causer</string>
+          </f>
+          <f name="pos">
+            <symbol value="VER:pper"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t5">
+        <fs>
+          <f name="lemma">
+            <string>par</string>
+          </f>
+          <f name="pos">
+            <symbol value="PRP"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t6">
+        <fs>
+          <f name="lemma">
+            <string>le</string>
+          </f>
+          <f name="pos">
+            <symbol value="DET:ART"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t7">
+        <fs>
+          <f name="lemma">
+            <string>travail</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t8">
+        <fs>
+          <f name="lemma">
+            <string>de</string>
+          </f>
+          <f name="pos">
+            <symbol value="PRP"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t9">
+        <fs>
+          <f name="lemma">
+            <string>préservation</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t10">
+        <fs>
+          <f name="lemma">
+            <string>du</string>
+          </f>
+          <f name="pos">
+            <symbol value="PRP:det"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t11">
+        <fs>
+          <f name="lemma">
+            <string>site</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t12">
+        <fs>
+          <f name="lemma">
+            <string>de</string>
+          </f>
+          <f name="pos">
+            <symbol value="PRP"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t13">
+        <fs>
+          <f name="lemma">
+            <string>entremont</string>
+          </f>
+          <f name="pos">
+            <symbol value="VER:futu"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t14">
+        <fs>
+          <f name="lemma">
+            <string>,</string>
+          </f>
+          <f name="pos">
+            <symbol value="PUN"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t15">
+        <fs>
+          <f name="lemma">
+            <string>à</string>
+          </f>
+          <f name="pos">
+            <symbol value="PRP"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t16">
+        <fs>
+          <f name="lemma">
+            <string>aix-en-provence</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t17">
+        <fs>
+          <f name="lemma">
+            <string>,</string>
+          </f>
+          <f name="pos">
+            <symbol value="PUN"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t18">
+        <fs>
+          <f name="lemma">
+            <string>par</string>
+          </f>
+          <f name="pos">
+            <symbol value="PRP"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t19">
+        <fs>
+          <f name="lemma">
+            <string>le</string>
+          </f>
+          <f name="pos">
+            <symbol value="DET:ART"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t20">
+        <fs>
+          <f name="lemma">
+            <string>conservation</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t21">
+        <fs>
+          <f name="lemma">
+            <string>du</string>
+          </f>
+          <f name="pos">
+            <symbol value="PRP:det"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t22">
+        <fs>
+          <f name="lemma">
+            <string>monument</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t23">
+        <fs>
+          <f name="lemma">
+            <string>historique</string>
+          </f>
+          <f name="pos">
+            <symbol value="ADJ"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t24">
+        <fs>
+          <f name="lemma">
+            <string>,</string>
+          </f>
+          <f name="pos">
+            <symbol value="PUN"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t25">
+        <fs>
+          <f name="lemma">
+            <string>avoir</string>
+          </f>
+          <f name="pos">
+            <symbol value="VER:pres"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t26">
+        <fs>
+          <f name="lemma">
+            <string>permettre</string>
+          </f>
+          <f name="pos">
+            <symbol value="VER:pper"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t27">
+        <fs>
+          <f name="lemma">
+            <string>de</string>
+          </f>
+          <f name="pos">
+            <symbol value="PRP"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t28">
+        <fs>
+          <f name="lemma">
+            <string>étudier</string>
+          </f>
+          <f name="pos">
+            <symbol value="VER:infi"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t29">
+        <fs>
+          <f name="lemma">
+            <string>en</string>
+          </f>
+          <f name="pos">
+            <symbol value="PRP"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t30">
+        <fs>
+          <f name="lemma">
+            <string>1999</string>
+          </f>
+          <f name="pos">
+            <symbol value="NUM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t31">
+        <fs>
+          <f name="lemma">
+            <string>,</string>
+          </f>
+          <f name="pos">
+            <symbol value="PUN"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t32">
+        <fs>
+          <f name="lemma">
+            <string>dans</string>
+          </f>
+          <f name="pos">
+            <symbol value="PRP"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t33">
+        <fs>
+          <f name="lemma">
+            <string>le</string>
+          </f>
+          <f name="pos">
+            <symbol value="DET:ART"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t34">
+        <fs>
+          <f name="lemma">
+            <string>habitat</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t35">
+        <fs>
+          <f name="lemma">
+            <string>2</string>
+          </f>
+          <f name="pos">
+            <symbol value="NUM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t36">
+        <fs>
+          <f name="lemma">
+            <string>,</string>
+          </f>
+          <f name="pos">
+            <symbol value="PUN"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t37">
+        <fs>
+          <f name="lemma">
+            <string>du</string>
+          </f>
+          <f name="pos">
+            <symbol value="PRP:det"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t38">
+        <fs>
+          <f name="lemma">
+            <string>secteur</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t39">
+        <fs>
+          <f name="lemma">
+            <string>de</string>
+          </f>
+          <f name="pos">
+            <symbol value="PRP"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t40">
+        <fs>
+          <f name="lemma">
+            <string>le</string>
+          </f>
+          <f name="pos">
+            <symbol value="DET:ART"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t41">
+        <fs>
+          <f name="lemma">
+            <string>rue</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t42">
+        <fs>
+          <f name="lemma">
+            <string>iv</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t43">
+        <fs>
+          <f name="lemma">
+            <string>et</string>
+          </f>
+          <f name="pos">
+            <symbol value="KON"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t44">
+        <fs>
+          <f name="lemma">
+            <string>de</string>
+          </f>
+          <f name="pos">
+            <symbol value="PRP"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t45">
+        <fs>
+          <f name="lemma">
+            <string>le</string>
+          </f>
+          <f name="pos">
+            <symbol value="DET:ART"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t46">
+        <fs>
+          <f name="lemma">
+            <string>îlot</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t47">
+        <fs>
+          <f name="lemma">
+            <string>1</string>
+          </f>
+          <f name="pos">
+            <symbol value="NUM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t48">
+        <fs>
+          <f name="lemma">
+            <string>adosser</string>
+          </f>
+          <f name="pos">
+            <symbol value="VER:pper"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t49">
+        <fs>
+          <f name="lemma">
+            <string>à</string>
+          </f>
+          <f name="pos">
+            <symbol value="PRP"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t50">
+        <fs>
+          <f name="lemma">
+            <string>le</string>
+          </f>
+          <f name="pos">
+            <symbol value="DET:ART"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t51">
+        <fs>
+          <f name="lemma">
+            <string>enceinte</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t52">
+        <fs>
+          <f name="lemma">
+            <string>.</string>
+          </f>
+          <f name="pos">
+            <symbol value="SENT"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t53">
+        <fs>
+          <f name="lemma">
+            <string>on</string>
+          </f>
+          <f name="pos">
+            <symbol value="PRO:PER"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t54">
+        <fs>
+          <f name="lemma">
+            <string>avoir</string>
+          </f>
+          <f name="pos">
+            <symbol value="VER:pres"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t55">
+        <fs>
+          <f name="lemma">
+            <string>pouvoir</string>
+          </f>
+          <f name="pos">
+            <symbol value="VER:pper"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t56">
+        <fs>
+          <f name="lemma">
+            <string>observer</string>
+          </f>
+          <f name="pos">
+            <symbol value="VER:infi"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t57">
+        <fs>
+          <f name="lemma">
+            <string>trois</string>
+          </f>
+          <f name="pos">
+            <symbol value="NUM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t58">
+        <fs>
+          <f name="lemma">
+            <string>phase</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t59">
+        <fs>
+          <f name="lemma">
+            <string>de</string>
+          </f>
+          <f name="pos">
+            <symbol value="PRP"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t60">
+        <fs>
+          <f name="lemma">
+            <string>aménagement</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t61">
+        <fs>
+          <f name="lemma">
+            <string>.</string>
+          </f>
+          <f name="pos">
+            <symbol value="SENT"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t62">
+        <fs>
+          <f name="lemma">
+            <string>le</string>
+          </f>
+          <f name="pos">
+            <symbol value="DET:ART"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t63">
+        <fs>
+          <f name="lemma">
+            <string>premier</string>
+          </f>
+          <f name="pos">
+            <symbol value="NUM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t64">
+        <fs>
+          <f name="lemma">
+            <string>,</string>
+          </f>
+          <f name="pos">
+            <symbol value="PUN"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t65">
+        <fs>
+          <f name="lemma">
+            <string>au</string>
+          </f>
+          <f name="pos">
+            <symbol value="PRP:det"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t66">
+        <fs>
+          <f name="lemma">
+            <string>milieu</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t67">
+        <fs>
+          <f name="lemma">
+            <string>du</string>
+          </f>
+          <f name="pos">
+            <symbol value="PRP:det"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t68">
+        <fs>
+          <f name="lemma">
+            <string>iies.av</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t69">
+        <fs>
+          <f name="lemma">
+            <string>.</string>
+          </f>
+          <f name="pos">
+            <symbol value="SENT"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t70">
+        <fs>
+          <f name="lemma">
+            <string>j.-c</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t71">
+        <fs>
+          <f name="lemma">
+            <string>(</string>
+          </f>
+          <f name="pos">
+            <symbol value="PUN"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t72">
+        <fs>
+          <f name="lemma">
+            <string>150-140/130</string>
+          </f>
+          <f name="pos">
+            <symbol value="NUM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t73">
+        <fs>
+          <f name="lemma">
+            <string>av.j.c</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t74">
+        <fs>
+          <f name="lemma">
+            <string>.</string>
+          </f>
+          <f name="pos">
+            <symbol value="SENT"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t75">
+        <fs>
+          <f name="lemma">
+            <string>)</string>
+          </f>
+          <f name="pos">
+            <symbol value="PUN"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t76">
+        <fs>
+          <f name="lemma">
+            <string>,</string>
+          </f>
+          <f name="pos">
+            <symbol value="PUN"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t77">
+        <fs>
+          <f name="lemma">
+            <string>être</string>
+          </f>
+          <f name="pos">
+            <symbol value="VER:pres"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t78">
+        <fs>
+          <f name="lemma">
+            <string>représenter</string>
+          </f>
+          <f name="pos">
+            <symbol value="VER:pper"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t79">
+        <fs>
+          <f name="lemma">
+            <string>par</string>
+          </f>
+          <f name="pos">
+            <symbol value="PRP"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t80">
+        <fs>
+          <f name="lemma">
+            <string>le</string>
+          </f>
+          <f name="pos">
+            <symbol value="DET:ART"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t81">
+        <fs>
+          <f name="lemma">
+            <string>niveau</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t82">
+        <fs>
+          <f name="lemma">
+            <string>de</string>
+          </f>
+          <f name="pos">
+            <symbol value="PRP"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t83">
+        <fs>
+          <f name="lemma">
+            <string>rue</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t84">
+        <fs>
+          <f name="lemma">
+            <string>le</string>
+          </f>
+          <f name="pos">
+            <symbol value="DET:ART"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t85">
+        <fs>
+          <f name="lemma">
+            <string>plus</string>
+          </f>
+          <f name="pos">
+            <symbol value="ADV"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t86">
+        <fs>
+          <f name="lemma">
+            <string>ancien</string>
+          </f>
+          <f name="pos">
+            <symbol value="ADJ"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t87">
+        <fs>
+          <f name="lemma">
+            <string>et</string>
+          </f>
+          <f name="pos">
+            <symbol value="KON"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t88">
+        <fs>
+          <f name="lemma">
+            <string>par</string>
+          </f>
+          <f name="pos">
+            <symbol value="PRP"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t89">
+        <fs>
+          <f name="lemma">
+            <string>un</string>
+          </f>
+          <f name="pos">
+            <symbol value="DET:ART"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t90">
+        <fs>
+          <f name="lemma">
+            <string>petit</string>
+          </f>
+          <f name="pos">
+            <symbol value="ADJ"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t91">
+        <fs>
+          <f name="lemma">
+            <string>atelier</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t92">
+        <fs>
+          <f name="lemma">
+            <string>de</string>
+          </f>
+          <f name="pos">
+            <symbol value="PRP"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t93">
+        <fs>
+          <f name="lemma">
+            <string>forgeron</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t94">
+        <fs>
+          <f name="lemma">
+            <string>.</string>
+          </f>
+          <f name="pos">
+            <symbol value="SENT"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t95">
+        <fs>
+          <f name="lemma">
+            <string>le</string>
+          </f>
+          <f name="pos">
+            <symbol value="DET:ART"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t96">
+        <fs>
+          <f name="lemma">
+            <string>deuxième</string>
+          </f>
+          <f name="pos">
+            <symbol value="NUM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t97">
+        <fs>
+          <f name="lemma">
+            <string>,</string>
+          </f>
+          <f name="pos">
+            <symbol value="PUN"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t98">
+        <fs>
+          <f name="lemma">
+            <string>dans</string>
+          </f>
+          <f name="pos">
+            <symbol value="PRP"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t99">
+        <fs>
+          <f name="lemma">
+            <string>le</string>
+          </f>
+          <f name="pos">
+            <symbol value="DET:ART"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t100">
+        <fs>
+          <f name="lemma">
+            <string>troisième</string>
+          </f>
+          <f name="pos">
+            <symbol value="NUM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t101">
+        <fs>
+          <f name="lemma">
+            <string>quart</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t102">
+        <fs>
+          <f name="lemma">
+            <string>du</string>
+          </f>
+          <f name="pos">
+            <symbol value="PRP:det"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t103">
+        <fs>
+          <f name="lemma">
+            <string>iies</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t104">
+        <fs>
+          <f name="lemma">
+            <string>.</string>
+          </f>
+          <f name="pos">
+            <symbol value="SENT"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t105">
+        <fs>
+          <f name="lemma">
+            <string>(</string>
+          </f>
+          <f name="pos">
+            <symbol value="PUN"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t106">
+        <fs>
+          <f name="lemma">
+            <string>140-130/125</string>
+          </f>
+          <f name="pos">
+            <symbol value="NUM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t107">
+        <fs>
+          <f name="lemma">
+            <string>av</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t108">
+        <fs>
+          <f name="lemma">
+            <string>.</string>
+          </f>
+          <f name="pos">
+            <symbol value="SENT"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t109">
+        <fs>
+          <f name="lemma">
+            <string>j</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t110">
+        <fs>
+          <f name="lemma">
+            <string>.</string>
+          </f>
+          <f name="pos">
+            <symbol value="SENT"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t111">
+        <fs>
+          <f name="lemma">
+            <string>c</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t112">
+        <fs>
+          <f name="lemma">
+            <string>)</string>
+          </f>
+          <f name="pos">
+            <symbol value="PUN"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t113">
+        <fs>
+          <f name="lemma">
+            <string>,</string>
+          </f>
+          <f name="pos">
+            <symbol value="PUN"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t114">
+        <fs>
+          <f name="lemma">
+            <string>voir</string>
+          </f>
+          <f name="pos">
+            <symbol value="VER:pres"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t115">
+        <fs>
+          <f name="lemma">
+            <string>du</string>
+          </f>
+          <f name="pos">
+            <symbol value="PRP:det"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t116">
+        <fs>
+          <f name="lemma">
+            <string>aménagement</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t117">
+        <fs>
+          <f name="lemma">
+            <string>important</string>
+          </f>
+          <f name="pos">
+            <symbol value="ADJ"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t118">
+        <fs>
+          <f name="lemma">
+            <string>de</string>
+          </f>
+          <f name="pos">
+            <symbol value="PRP"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t119">
+        <fs>
+          <f name="lemma">
+            <string>le</string>
+          </f>
+          <f name="pos">
+            <symbol value="DET:ART"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t120">
+        <fs>
+          <f name="lemma">
+            <string>rue</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t121">
+        <fs>
+          <f name="lemma">
+            <string>et</string>
+          </f>
+          <f name="pos">
+            <symbol value="KON"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t122">
+        <fs>
+          <f name="lemma">
+            <string>le</string>
+          </f>
+          <f name="pos">
+            <symbol value="DET:ART"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t123">
+        <fs>
+          <f name="lemma">
+            <string>création</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t124">
+        <fs>
+          <f name="lemma">
+            <string>de</string>
+          </f>
+          <f name="pos">
+            <symbol value="PRP"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t125">
+        <fs>
+          <f name="lemma">
+            <string>caniveau</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t126">
+        <fs>
+          <f name="lemma">
+            <string>daller</string>
+          </f>
+          <f name="pos">
+            <symbol value="VER:pper"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t127">
+        <fs>
+          <f name="lemma">
+            <string>conduire</string>
+          </f>
+          <f name="pos">
+            <symbol value="VER:ppre"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t128">
+        <fs>
+          <f name="lemma">
+            <string>le</string>
+          </f>
+          <f name="pos">
+            <symbol value="DET:ART"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t129">
+        <fs>
+          <f name="lemma">
+            <string>eau</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t130">
+        <fs>
+          <f name="lemma">
+            <string>à</string>
+          </f>
+          <f name="pos">
+            <symbol value="PRP"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t131">
+        <fs>
+          <f name="lemma">
+            <string>le</string>
+          </f>
+          <f name="pos">
+            <symbol value="DET:ART"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t132">
+        <fs>
+          <f name="lemma">
+            <string>extérieur</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t133">
+        <fs>
+          <f name="lemma">
+            <string>de</string>
+          </f>
+          <f name="pos">
+            <symbol value="PRP"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t134">
+        <fs>
+          <f name="lemma">
+            <string>le</string>
+          </f>
+          <f name="pos">
+            <symbol value="DET:ART"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t135">
+        <fs>
+          <f name="lemma">
+            <string>oppidum</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t136">
+        <fs>
+          <f name="lemma">
+            <string>.</string>
+          </f>
+          <f name="pos">
+            <symbol value="SENT"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t137">
+        <fs>
+          <f name="lemma">
+            <string>le</string>
+          </f>
+          <f name="pos">
+            <symbol value="DET:ART"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t138">
+        <fs>
+          <f name="lemma">
+            <string>dernier</string>
+          </f>
+          <f name="pos">
+            <symbol value="ADJ"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t139">
+        <fs>
+          <f name="lemma">
+            <string>phase</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t140">
+        <fs>
+          <f name="lemma">
+            <string>,</string>
+          </f>
+          <f name="pos">
+            <symbol value="PUN"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t141">
+        <fs>
+          <f name="lemma">
+            <string>entre</string>
+          </f>
+          <f name="pos">
+            <symbol value="PRP"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t142">
+        <fs>
+          <f name="lemma">
+            <string>le</string>
+          </f>
+          <f name="pos">
+            <symbol value="DET:ART"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t143">
+        <fs>
+          <f name="lemma">
+            <string>dernier</string>
+          </f>
+          <f name="pos">
+            <symbol value="ADJ"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t144">
+        <fs>
+          <f name="lemma">
+            <string>quart</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t145">
+        <fs>
+          <f name="lemma">
+            <string>du</string>
+          </f>
+          <f name="pos">
+            <symbol value="PRP:det"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t146">
+        <fs>
+          <f name="lemma">
+            <string>iies</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t147">
+        <fs>
+          <f name="lemma">
+            <string>.</string>
+          </f>
+          <f name="pos">
+            <symbol value="SENT"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t148">
+        <fs>
+          <f name="lemma">
+            <string>et</string>
+          </f>
+          <f name="pos">
+            <symbol value="KON"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t149">
+        <fs>
+          <f name="lemma">
+            <string>le</string>
+          </f>
+          <f name="pos">
+            <symbol value="DET:ART"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t150">
+        <fs>
+          <f name="lemma">
+            <string>début</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t151">
+        <fs>
+          <f name="lemma">
+            <string>du</string>
+          </f>
+          <f name="pos">
+            <symbol value="PRP:det"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t152">
+        <fs>
+          <f name="lemma">
+            <string>iers</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t153">
+        <fs>
+          <f name="lemma">
+            <string>.</string>
+          </f>
+          <f name="pos">
+            <symbol value="SENT"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t154">
+        <fs>
+          <f name="lemma">
+            <string>av</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t155">
+        <fs>
+          <f name="lemma">
+            <string>.</string>
+          </f>
+          <f name="pos">
+            <symbol value="SENT"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t156">
+        <fs>
+          <f name="lemma">
+            <string>j.-c</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t157">
+        <fs>
+          <f name="lemma">
+            <string>.</string>
+          </f>
+          <f name="pos">
+            <symbol value="SENT"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t158">
+        <fs>
+          <f name="lemma">
+            <string>(</string>
+          </f>
+          <f name="pos">
+            <symbol value="PUN"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t159">
+        <fs>
+          <f name="lemma">
+            <string>125-100/90</string>
+          </f>
+          <f name="pos">
+            <symbol value="NUM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t160">
+        <fs>
+          <f name="lemma">
+            <string>av</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t161">
+        <fs>
+          <f name="lemma">
+            <string>.</string>
+          </f>
+          <f name="pos">
+            <symbol value="SENT"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t162">
+        <fs>
+          <f name="lemma">
+            <string>j</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t163">
+        <fs>
+          <f name="lemma">
+            <string>.</string>
+          </f>
+          <f name="pos">
+            <symbol value="SENT"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t164">
+        <fs>
+          <f name="lemma">
+            <string>c</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t165">
+        <fs>
+          <f name="lemma">
+            <string>.</string>
+          </f>
+          <f name="pos">
+            <symbol value="SENT"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t166">
+        <fs>
+          <f name="lemma">
+            <string>)</string>
+          </f>
+          <f name="pos">
+            <symbol value="PUN"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t167">
+        <fs>
+          <f name="lemma">
+            <string>,</string>
+          </f>
+          <f name="pos">
+            <symbol value="PUN"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t168">
+        <fs>
+          <f name="lemma">
+            <string>être</string>
+          </f>
+          <f name="pos">
+            <symbol value="VER:pres"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t169">
+        <fs>
+          <f name="lemma">
+            <string>caractériser</string>
+          </f>
+          <f name="pos">
+            <symbol value="VER:pper"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t170">
+        <fs>
+          <f name="lemma">
+            <string>par</string>
+          </f>
+          <f name="pos">
+            <symbol value="PRP"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t171">
+        <fs>
+          <f name="lemma">
+            <string>un</string>
+          </f>
+          <f name="pos">
+            <symbol value="DET:ART"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t172">
+        <fs>
+          <f name="lemma">
+            <string>réfection</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t173">
+        <fs>
+          <f name="lemma">
+            <string>de</string>
+          </f>
+          <f name="pos">
+            <symbol value="PRP"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t174">
+        <fs>
+          <f name="lemma">
+            <string>le</string>
+          </f>
+          <f name="pos">
+            <symbol value="DET:ART"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t175">
+        <fs>
+          <f name="lemma">
+            <string>voirie</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t176">
+        <fs>
+          <f name="lemma">
+            <string>.</string>
+          </f>
+          <f name="pos">
+            <symbol value="SENT"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t177">
+        <fs>
+          <f name="lemma">
+            <string>ce</string>
+          </f>
+          <f name="pos">
+            <symbol value="PRO:DEM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t178">
+        <fs>
+          <f name="lemma">
+            <string>deux</string>
+          </f>
+          <f name="pos">
+            <symbol value="NUM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t179">
+        <fs>
+          <f name="lemma">
+            <string>dernier</string>
+          </f>
+          <f name="pos">
+            <symbol value="ADJ"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t180">
+        <fs>
+          <f name="lemma">
+            <string>phase</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t181">
+        <fs>
+          <f name="lemma">
+            <string>se</string>
+          </f>
+          <f name="pos">
+            <symbol value="PRO:PER"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t182">
+        <fs>
+          <f name="lemma">
+            <string>achever</string>
+          </f>
+          <f name="pos">
+            <symbol value="VER:pres"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t183">
+        <fs>
+          <f name="lemma">
+            <string>chacun</string>
+          </f>
+          <f name="pos">
+            <symbol value="PRO:IND"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t184">
+        <fs>
+          <f name="lemma">
+            <string>par</string>
+          </f>
+          <f name="pos">
+            <symbol value="PRP"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t185">
+        <fs>
+          <f name="lemma">
+            <string>du</string>
+          </f>
+          <f name="pos">
+            <symbol value="PRP:det"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t186">
+        <fs>
+          <f name="lemma">
+            <string>destruction</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t187">
+        <fs>
+          <f name="lemma">
+            <string>devoir</string>
+          </f>
+          <f name="pos">
+            <symbol value="VER:pper"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t188">
+        <fs>
+          <f name="lemma">
+            <string>à</string>
+          </f>
+          <f name="pos">
+            <symbol value="PRP"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t189">
+        <fs>
+          <f name="lemma">
+            <string>du</string>
+          </f>
+          <f name="pos">
+            <symbol value="PRP:det"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t190">
+        <fs>
+          <f name="lemma">
+            <string>attaque</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t191">
+        <fs>
+          <f name="lemma">
+            <string>militaire</string>
+          </f>
+          <f name="pos">
+            <symbol value="ADJ"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t192">
+        <fs>
+          <f name="lemma">
+            <string>qui</string>
+          </f>
+          <f name="pos">
+            <symbol value="PRO:REL"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t193">
+        <fs>
+          <f name="lemma">
+            <string>avoir</string>
+          </f>
+          <f name="pos">
+            <symbol value="VER:pres"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t194">
+        <fs>
+          <f name="lemma">
+            <string>provoquer</string>
+          </f>
+          <f name="pos">
+            <symbol value="VER:pper"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t195">
+        <fs>
+          <f name="lemma">
+            <string>le</string>
+          </f>
+          <f name="pos">
+            <symbol value="DET:ART"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t196">
+        <fs>
+          <f name="lemma">
+            <string>dispersion</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t197">
+        <fs>
+          <f name="lemma">
+            <string>de</string>
+          </f>
+          <f name="pos">
+            <symbol value="PRP"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t198">
+        <fs>
+          <f name="lemma">
+            <string>un</string>
+          </f>
+          <f name="pos">
+            <symbol value="DET:ART"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t199">
+        <fs>
+          <f name="lemma">
+            <string>abondant</string>
+          </f>
+          <f name="pos">
+            <symbol value="ADJ"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t200">
+        <fs>
+          <f name="lemma">
+            <string>mobilier</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t201">
+        <fs>
+          <f name="lemma">
+            <string>dans</string>
+          </f>
+          <f name="pos">
+            <symbol value="PRP"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t202">
+        <fs>
+          <f name="lemma">
+            <string>le</string>
+          </f>
+          <f name="pos">
+            <symbol value="DET:ART"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t203">
+        <fs>
+          <f name="lemma">
+            <string>rue</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t204">
+        <fs>
+          <f name="lemma">
+            <string>.</string>
+          </f>
+          <f name="pos">
+            <symbol value="SENT"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t205">
+        <fs>
+          <f name="lemma">
+            <string>le</string>
+          </f>
+          <f name="pos">
+            <symbol value="DET:ART"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t206">
+        <fs>
+          <f name="lemma">
+            <string>examen</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t207">
+        <fs>
+          <f name="lemma">
+            <string>de</string>
+          </f>
+          <f name="pos">
+            <symbol value="PRP"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t208">
+        <fs>
+          <f name="lemma">
+            <string>ce</string>
+          </f>
+          <f name="pos">
+            <symbol value="PRO:DEM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t209">
+        <fs>
+          <f name="lemma">
+            <string>découverte</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t210">
+        <fs>
+          <f name="lemma">
+            <string>replacer</string>
+          </f>
+          <f name="pos">
+            <symbol value="VER:pper"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t211">
+        <fs>
+          <f name="lemma">
+            <string>dans</string>
+          </f>
+          <f name="pos">
+            <symbol value="PRP"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t212">
+        <fs>
+          <f name="lemma">
+            <string>leur</string>
+          </f>
+          <f name="pos">
+            <symbol value="DET:POS"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t213">
+        <fs>
+          <f name="lemma">
+            <string>contexte</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t214">
+        <fs>
+          <f name="lemma">
+            <string>chrono-culturel</string>
+          </f>
+          <f name="pos">
+            <symbol value="ADJ"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t215">
+        <fs>
+          <f name="lemma">
+            <string>contribuer</string>
+          </f>
+          <f name="pos">
+            <symbol value="VER:pres"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t216">
+        <fs>
+          <f name="lemma">
+            <string>à</string>
+          </f>
+          <f name="pos">
+            <symbol value="PRP"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t217">
+        <fs>
+          <f name="lemma">
+            <string>montrer</string>
+          </f>
+          <f name="pos">
+            <symbol value="VER:infi"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t218">
+        <fs>
+          <f name="lemma">
+            <string>que</string>
+          </f>
+          <f name="pos">
+            <symbol value="KON"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t219">
+        <fs>
+          <f name="lemma">
+            <string>le</string>
+          </f>
+          <f name="pos">
+            <symbol value="DET:ART"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t220">
+        <fs>
+          <f name="lemma">
+            <string>salyens</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t221">
+        <fs>
+          <f name="lemma">
+            <string>de</string>
+          </f>
+          <f name="pos">
+            <symbol value="PRP"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t222">
+        <fs>
+          <f name="lemma">
+            <string>entremont</string>
+          </f>
+          <f name="pos">
+            <symbol value="VER:futu"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t223">
+        <fs>
+          <f name="lemma">
+            <string>rester</string>
+          </f>
+          <f name="pos">
+            <symbol value="VER:pres"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t224">
+        <fs>
+          <f name="lemma">
+            <string>attacher</string>
+          </f>
+          <f name="pos">
+            <symbol value="VER:pper"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t225">
+        <fs>
+          <f name="lemma">
+            <string>à</string>
+          </f>
+          <f name="pos">
+            <symbol value="PRP"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t226">
+        <fs>
+          <f name="lemma">
+            <string>du</string>
+          </f>
+          <f name="pos">
+            <symbol value="PRP:det"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t227">
+        <fs>
+          <f name="lemma">
+            <string>valeur</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t228">
+        <fs>
+          <f name="lemma">
+            <string>traditionnel</string>
+          </f>
+          <f name="pos">
+            <symbol value="ADJ"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t229">
+        <fs>
+          <f name="lemma">
+            <string>,</string>
+          </f>
+          <f name="pos">
+            <symbol value="PUN"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t230">
+        <fs>
+          <f name="lemma">
+            <string>mais</string>
+          </f>
+          <f name="pos">
+            <symbol value="KON"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t231">
+        <fs>
+          <f name="lemma">
+            <string>que</string>
+          </f>
+          <f name="pos">
+            <symbol value="PRO:REL"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t232">
+        <fs>
+          <f name="lemma">
+            <string>il</string>
+          </f>
+          <f name="pos">
+            <symbol value="PRO:PER"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t233">
+        <fs>
+          <f name="lemma">
+            <string>subir</string>
+          </f>
+          <f name="pos">
+            <symbol value="VER:pres"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t234">
+        <fs>
+          <f name="lemma">
+            <string>le</string>
+          </f>
+          <f name="pos">
+            <symbol value="DET:ART"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t235">
+        <fs>
+          <f name="lemma">
+            <string>fort</string>
+          </f>
+          <f name="pos">
+            <symbol value="ADJ"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t236">
+        <fs>
+          <f name="lemma">
+            <string>influence</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t237">
+        <fs>
+          <f name="lemma">
+            <string>du</string>
+          </f>
+          <f name="pos">
+            <symbol value="PRP:det"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t238">
+        <fs>
+          <f name="lemma">
+            <string>monde</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t239">
+        <fs>
+          <f name="lemma">
+            <string>gréco-italique</string>
+          </f>
+          <f name="pos">
+            <symbol value="ADJ"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t240">
+        <fs>
+          <f name="lemma">
+            <string>dont</string>
+          </f>
+          <f name="pos">
+            <symbol value="PRO:REL"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t241">
+        <fs>
+          <f name="lemma">
+            <string>il</string>
+          </f>
+          <f name="pos">
+            <symbol value="PRO:PER"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t242">
+        <fs>
+          <f name="lemma">
+            <string>dépendre</string>
+          </f>
+          <f name="pos">
+            <symbol value="VER:pres"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t243">
+        <fs>
+          <f name="lemma">
+            <string>économiquement</string>
+          </f>
+          <f name="pos">
+            <symbol value="ADV"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t244">
+        <fs>
+          <f name="lemma">
+            <string>.</string>
+          </f>
+          <f name="pos">
+            <symbol value="SENT"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t245">
+        <fs>
+          <f name="lemma">
+            <string>ce</string>
+          </f>
+          <f name="pos">
+            <symbol value="PRO:DEM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t246">
+        <fs>
+          <f name="lemma">
+            <string>situation</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t247">
+        <fs>
+          <f name="lemma">
+            <string>ne</string>
+          </f>
+          <f name="pos">
+            <symbol value="ADV"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t248">
+        <fs>
+          <f name="lemma">
+            <string>avoir</string>
+          </f>
+          <f name="pos">
+            <symbol value="VER:pres"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t249">
+        <fs>
+          <f name="lemma">
+            <string>pouvoir</string>
+          </f>
+          <f name="pos">
+            <symbol value="VER:pper"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t250">
+        <fs>
+          <f name="lemma">
+            <string>créer</string>
+          </f>
+          <f name="pos">
+            <symbol value="VER:infi"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t251">
+        <fs>
+          <f name="lemma">
+            <string>en</string>
+          </f>
+          <f name="pos">
+            <symbol value="PRP"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t252">
+        <fs>
+          <f name="lemma">
+            <string>leur</string>
+          </f>
+          <f name="pos">
+            <symbol value="DET:POS"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t253">
+        <fs>
+          <f name="lemma">
+            <string>sein</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t254">
+        <fs>
+          <f name="lemma">
+            <string>que</string>
+          </f>
+          <f name="pos">
+            <symbol value="KON"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t255">
+        <fs>
+          <f name="lemma">
+            <string>du</string>
+          </f>
+          <f name="pos">
+            <symbol value="PRP:det"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t256">
+        <fs>
+          <f name="lemma">
+            <string>conflit</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t257">
+        <fs>
+          <f name="lemma">
+            <string>attester</string>
+          </f>
+          <f name="pos">
+            <symbol value="VER:pper"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t258">
+        <fs>
+          <f name="lemma">
+            <string>par</string>
+          </f>
+          <f name="pos">
+            <symbol value="PRP"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t259">
+        <fs>
+          <f name="lemma">
+            <string>le</string>
+          </f>
+          <f name="pos">
+            <symbol value="DET:ART"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t260">
+        <fs>
+          <f name="lemma">
+            <string>auteur</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t261">
+        <fs>
+          <f name="lemma">
+            <string>antique</string>
+          </f>
+          <f name="pos">
+            <symbol value="ADJ"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t262">
+        <fs>
+          <f name="lemma">
+            <string>.</string>
+          </f>
+          <f name="pos">
+            <symbol value="SENT"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t263">
+        <fs>
+          <f name="lemma">
+            <string>the</string>
+          </f>
+          <f name="pos">
+            <symbol value="ADJ"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t264">
+        <fs>
+          <f name="lemma">
+            <string>conservation</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t265">
+        <fs>
+          <f name="lemma">
+            <string>du</string>
+          </f>
+          <f name="pos">
+            <symbol value="PRP:det"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t266">
+        <fs>
+          <f name="lemma">
+            <string>monument</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t267">
+        <fs>
+          <f name="lemma">
+            <string>historique</string>
+          </f>
+          <f name="pos">
+            <symbol value="ADJ"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t268">
+        <fs>
+          <f name="lemma">
+            <string>undertook</string>
+          </f>
+          <f name="pos">
+            <symbol value="ADJ"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t269">
+        <fs>
+          <f name="lemma">
+            <string>an</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t270">
+        <fs>
+          <f name="lemma">
+            <string>archaeo-logical</string>
+          </f>
+          <f name="pos">
+            <symbol value="ADJ"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t271">
+        <fs>
+          <f name="lemma">
+            <string>operation</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t272">
+        <fs>
+          <f name="lemma">
+            <string>in</string>
+          </f>
+          <f name="pos">
+            <symbol value="ADJ"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t273">
+        <fs>
+          <f name="lemma">
+            <string>1999</string>
+          </f>
+          <f name="pos">
+            <symbol value="NUM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t274">
+        <fs>
+          <f name="lemma">
+            <string>because</string>
+          </f>
+          <f name="pos">
+            <symbol value="PRP"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t275">
+        <fs>
+          <f name="lemma">
+            <string>of</string>
+          </f>
+          <f name="pos">
+            <symbol value="ADJ"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t276">
+        <fs>
+          <f name="lemma">
+            <string>conservation</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t277">
+        <fs>
+          <f name="lemma">
+            <string>work</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t278">
+        <fs>
+          <f name="lemma">
+            <string>at</string>
+          </f>
+          <f name="pos">
+            <symbol value="ADJ"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t279">
+        <fs>
+          <f name="lemma">
+            <string>entremont</string>
+          </f>
+          <f name="pos">
+            <symbol value="VER:futu"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t280">
+        <fs>
+          <f name="lemma">
+            <string>,</string>
+          </f>
+          <f name="pos">
+            <symbol value="PUN"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t281">
+        <fs>
+          <f name="lemma">
+            <string>in</string>
+          </f>
+          <f name="pos">
+            <symbol value="ADJ"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t282">
+        <fs>
+          <f name="lemma">
+            <string>aix-en-provence</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t283">
+        <fs>
+          <f name="lemma">
+            <string>.</string>
+          </f>
+          <f name="pos">
+            <symbol value="SENT"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t284">
+        <fs>
+          <f name="lemma">
+            <string>this</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t285">
+        <fs>
+          <f name="lemma">
+            <string>allowed</string>
+          </f>
+          <f name="pos">
+            <symbol value="ADJ"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t286">
+        <fs>
+          <f name="lemma">
+            <string>the</string>
+          </f>
+          <f name="pos">
+            <symbol value="VER:simp"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t287">
+        <fs>
+          <f name="lemma">
+            <string>study</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t288">
+        <fs>
+          <f name="lemma">
+            <string>of</string>
+          </f>
+          <f name="pos">
+            <symbol value="VER:subi"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t289">
+        <fs>
+          <f name="lemma">
+            <string>the</string>
+          </f>
+          <f name="pos">
+            <symbol value="VER:pper"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t290">
+        <fs>
+          <f name="lemma">
+            <string>area</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t291">
+        <fs>
+          <f name="lemma">
+            <string>of</string>
+          </f>
+          <f name="pos">
+            <symbol value="VER:subi"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t292">
+        <fs>
+          <f name="lemma">
+            <string>habitat</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t293">
+        <fs>
+          <f name="lemma">
+            <string>2</string>
+          </f>
+          <f name="pos">
+            <symbol value="NUM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t294">
+        <fs>
+          <f name="lemma">
+            <string>,</string>
+          </f>
+          <f name="pos">
+            <symbol value="PUN"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t295">
+        <fs>
+          <f name="lemma">
+            <string>in</string>
+          </f>
+          <f name="pos">
+            <symbol value="ADJ"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t296">
+        <fs>
+          <f name="lemma">
+            <string>the</string>
+          </f>
+          <f name="pos">
+            <symbol value="VER:futu"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t297">
+        <fs>
+          <f name="lemma">
+            <string>zone</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t298">
+        <fs>
+          <f name="lemma">
+            <string>of</string>
+          </f>
+          <f name="pos">
+            <symbol value="VER:subi"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t299">
+        <fs>
+          <f name="lemma">
+            <string>street</string>
+          </f>
+          <f name="pos">
+            <symbol value="ADJ"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t300">
+        <fs>
+          <f name="lemma">
+            <string>iv</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t301">
+        <fs>
+          <f name="lemma">
+            <string>,</string>
+          </f>
+          <f name="pos">
+            <symbol value="PUN"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t302">
+        <fs>
+          <f name="lemma">
+            <string>within</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t303">
+        <fs>
+          <f name="lemma">
+            <string>zone</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t304">
+        <fs>
+          <f name="lemma">
+            <string>1</string>
+          </f>
+          <f name="pos">
+            <symbol value="NUM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t305">
+        <fs>
+          <f name="lemma">
+            <string>backed-up</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t306">
+        <fs>
+          <f name="lemma">
+            <string>against</string>
+          </f>
+          <f name="pos">
+            <symbol value="ADJ"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t307">
+        <fs>
+          <f name="lemma">
+            <string>the</string>
+          </f>
+          <f name="pos">
+            <symbol value="VER:simp"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t308">
+        <fs>
+          <f name="lemma">
+            <string>defensive</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t309">
+        <fs>
+          <f name="lemma">
+            <string>wall</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t310">
+        <fs>
+          <f name="lemma">
+            <string>.</string>
+          </f>
+          <f name="pos">
+            <symbol value="SENT"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t311">
+        <fs>
+          <f name="lemma">
+            <string>three</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t312">
+        <fs>
+          <f name="lemma">
+            <string>phase</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t313">
+        <fs>
+          <f name="lemma">
+            <string>of</string>
+          </f>
+          <f name="pos">
+            <symbol value="VER:subi"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t314">
+        <fs>
+          <f name="lemma">
+            <string>construction</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t315">
+        <fs>
+          <f name="lemma">
+            <string>were</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t316">
+        <fs>
+          <f name="lemma">
+            <string>identified</string>
+          </f>
+          <f name="pos">
+            <symbol value="VER:pres"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t317">
+        <fs>
+          <f name="lemma">
+            <string>.</string>
+          </f>
+          <f name="pos">
+            <symbol value="SENT"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t318">
+        <fs>
+          <f name="lemma">
+            <string>the</string>
+          </f>
+          <f name="pos">
+            <symbol value="ADJ"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t319">
+        <fs>
+          <f name="lemma">
+            <string>first</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t320">
+        <fs>
+          <f name="lemma">
+            <string>,</string>
+          </f>
+          <f name="pos">
+            <symbol value="PUN"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t321">
+        <fs>
+          <f name="lemma">
+            <string>from</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t322">
+        <fs>
+          <f name="lemma">
+            <string>them</string>
+          </f>
+          <f name="pos">
+            <symbol value="ADJ"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t323">
+        <fs>
+          <f name="lemma">
+            <string>iddle</string>
+          </f>
+          <f name="pos">
+            <symbol value="VER:pres"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t324">
+        <fs>
+          <f name="lemma">
+            <string>of</string>
+          </f>
+          <f name="pos">
+            <symbol value="VER:pper"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t325">
+        <fs>
+          <f name="lemma">
+            <string>iind</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t326">
+        <fs>
+          <f name="lemma">
+            <string>c</string>
+          </f>
+          <f name="pos">
+            <symbol value="ADJ"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t327">
+        <fs>
+          <f name="lemma">
+            <string>.</string>
+          </f>
+          <f name="pos">
+            <symbol value="SENT"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t328">
+        <fs>
+          <f name="lemma">
+            <string>b</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t329">
+        <fs>
+          <f name="lemma">
+            <string>.</string>
+          </f>
+          <f name="pos">
+            <symbol value="SENT"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t330">
+        <fs>
+          <f name="lemma">
+            <string>(</string>
+          </f>
+          <f name="pos">
+            <symbol value="PUN"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t331">
+        <fs>
+          <f name="lemma">
+            <string>150-140/130</string>
+          </f>
+          <f name="pos">
+            <symbol value="NUM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t332">
+        <fs>
+          <f name="lemma">
+            <string>bc</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t333">
+        <fs>
+          <f name="lemma">
+            <string>)</string>
+          </f>
+          <f name="pos">
+            <symbol value="PUN"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t334">
+        <fs>
+          <f name="lemma">
+            <string>,</string>
+          </f>
+          <f name="pos">
+            <symbol value="PUN"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t335">
+        <fs>
+          <f name="lemma">
+            <string>is</string>
+          </f>
+          <f name="pos">
+            <symbol value="VER:simp"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t336">
+        <fs>
+          <f name="lemma">
+            <string>represented</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t337">
+        <fs>
+          <f name="lemma">
+            <string>by</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t338">
+        <fs>
+          <f name="lemma">
+            <string>the</string>
+          </f>
+          <f name="pos">
+            <symbol value="VER:subi"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t339">
+        <fs>
+          <f name="lemma">
+            <string>oldest</string>
+          </f>
+          <f name="pos">
+            <symbol value="ADJ"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t340">
+        <fs>
+          <f name="lemma">
+            <string>street</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t341">
+        <fs>
+          <f name="lemma">
+            <string>levels</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t342">
+        <fs>
+          <f name="lemma">
+            <string>and</string>
+          </f>
+          <f name="pos">
+            <symbol value="VER:subi"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t343">
+        <fs>
+          <f name="lemma">
+            <string>by</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t344">
+        <fs>
+          <f name="lemma">
+            <string>avoir</string>
+          </f>
+          <f name="pos">
+            <symbol value="VER:pres"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t345">
+        <fs>
+          <f name="lemma">
+            <string>small</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t346">
+        <fs>
+          <f name="lemma">
+            <string>blacksmith</string>
+          </f>
+          <f name="pos">
+            <symbol value="ADJ"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t347">
+        <fs>
+          <f name="lemma">
+            <string>workshop</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t348">
+        <fs>
+          <f name="lemma">
+            <string>.</string>
+          </f>
+          <f name="pos">
+            <symbol value="SENT"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t349">
+        <fs>
+          <f name="lemma">
+            <string>the</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t350">
+        <fs>
+          <f name="lemma">
+            <string>second</string>
+          </f>
+          <f name="pos">
+            <symbol value="NUM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t351">
+        <fs>
+          <f name="lemma">
+            <string>phase</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t352">
+        <fs>
+          <f name="lemma">
+            <string>,</string>
+          </f>
+          <f name="pos">
+            <symbol value="PUN"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t353">
+        <fs>
+          <f name="lemma">
+            <string>dated</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t354">
+        <fs>
+          <f name="lemma">
+            <string>to</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t355">
+        <fs>
+          <f name="lemma">
+            <string>the</string>
+          </f>
+          <f name="pos">
+            <symbol value="VER:subi"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t356">
+        <fs>
+          <f name="lemma">
+            <string>third</string>
+          </f>
+          <f name="pos">
+            <symbol value="ADJ"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t357">
+        <fs>
+          <f name="lemma">
+            <string>quarter</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t358">
+        <fs>
+          <f name="lemma">
+            <string>of</string>
+          </f>
+          <f name="pos">
+            <symbol value="VER:subi"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t359">
+        <fs>
+          <f name="lemma">
+            <string>iind</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t360">
+        <fs>
+          <f name="lemma">
+            <string>c</string>
+          </f>
+          <f name="pos">
+            <symbol value="ADJ"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t361">
+        <fs>
+          <f name="lemma">
+            <string>.</string>
+          </f>
+          <f name="pos">
+            <symbol value="SENT"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t362">
+        <fs>
+          <f name="lemma">
+            <string>bc</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t363">
+        <fs>
+          <f name="lemma">
+            <string>(</string>
+          </f>
+          <f name="pos">
+            <symbol value="PUN"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t364">
+        <fs>
+          <f name="lemma">
+            <string>140-130/125</string>
+          </f>
+          <f name="pos">
+            <symbol value="NUM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t365">
+        <fs>
+          <f name="lemma">
+            <string>bc</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t366">
+        <fs>
+          <f name="lemma">
+            <string>)</string>
+          </f>
+          <f name="pos">
+            <symbol value="PUN"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t367">
+        <fs>
+          <f name="lemma">
+            <string>saw</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t368">
+        <fs>
+          <f name="lemma">
+            <string>importer</string>
+          </f>
+          <f name="pos">
+            <symbol value="VER:ppre"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t369">
+        <fs>
+          <f name="lemma">
+            <string>route</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t370">
+        <fs>
+          <f name="lemma">
+            <string>way</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t371">
+        <fs>
+          <f name="lemma">
+            <string>construction</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t372">
+        <fs>
+          <f name="lemma">
+            <string>and</string>
+          </f>
+          <f name="pos">
+            <symbol value="VER:subi"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t373">
+        <fs>
+          <f name="lemma">
+            <string>the</string>
+          </f>
+          <f name="pos">
+            <symbol value="VER:pper"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t374">
+        <fs>
+          <f name="lemma">
+            <string>creation</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t375">
+        <fs>
+          <f name="lemma">
+            <string>of</string>
+          </f>
+          <f name="pos">
+            <symbol value="VER:subi"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t376">
+        <fs>
+          <f name="lemma">
+            <string>paved</string>
+          </f>
+          <f name="pos">
+            <symbol value="ADJ"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t377">
+        <fs>
+          <f name="lemma">
+            <string>gutters</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t378">
+        <fs>
+          <f name="lemma">
+            <string>draining</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t379">
+        <fs>
+          <f name="lemma">
+            <string>water</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t380">
+        <fs>
+          <f name="lemma">
+            <string>away</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t381">
+        <fs>
+          <f name="lemma">
+            <string>from</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t382">
+        <fs>
+          <f name="lemma">
+            <string>the</string>
+          </f>
+          <f name="pos">
+            <symbol value="VER:subi"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t383">
+        <fs>
+          <f name="lemma">
+            <string>oppidum</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t384">
+        <fs>
+          <f name="lemma">
+            <string>.</string>
+          </f>
+          <f name="pos">
+            <symbol value="SENT"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t385">
+        <fs>
+          <f name="lemma">
+            <string>the</string>
+          </f>
+          <f name="pos">
+            <symbol value="ADJ"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t386">
+        <fs>
+          <f name="lemma">
+            <string>last</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t387">
+        <fs>
+          <f name="lemma">
+            <string>phase</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t388">
+        <fs>
+          <f name="lemma">
+            <string>,</string>
+          </f>
+          <f name="pos">
+            <symbol value="PUN"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t389">
+        <fs>
+          <f name="lemma">
+            <string>between</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t390">
+        <fs>
+          <f name="lemma">
+            <string>the</string>
+          </f>
+          <f name="pos">
+            <symbol value="ADJ"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t391">
+        <fs>
+          <f name="lemma">
+            <string>final</string>
+          </f>
+          <f name="pos">
+            <symbol value="ADJ"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t392">
+        <fs>
+          <f name="lemma">
+            <string>quarter</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t393">
+        <fs>
+          <f name="lemma">
+            <string>of</string>
+          </f>
+          <f name="pos">
+            <symbol value="VER:subi"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t394">
+        <fs>
+          <f name="lemma">
+            <string>iind</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t395">
+        <fs>
+          <f name="lemma">
+            <string>c</string>
+          </f>
+          <f name="pos">
+            <symbol value="ADJ"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t396">
+        <fs>
+          <f name="lemma">
+            <string>.</string>
+          </f>
+          <f name="pos">
+            <symbol value="SENT"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t397">
+        <fs>
+          <f name="lemma">
+            <string>bc</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t398">
+        <fs>
+          <f name="lemma">
+            <string>and</string>
+          </f>
+          <f name="pos">
+            <symbol value="ADJ"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t399">
+        <fs>
+          <f name="lemma">
+            <string>the</string>
+          </f>
+          <f name="pos">
+            <symbol value="VER:simp"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t400">
+        <fs>
+          <f name="lemma">
+            <string>beginning</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t401">
+        <fs>
+          <f name="lemma">
+            <string>of</string>
+          </f>
+          <f name="pos">
+            <symbol value="VER:subi"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t402">
+        <fs>
+          <f name="lemma">
+            <string>ist</string>
+          </f>
+          <f name="pos">
+            <symbol value="ADJ"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t403">
+        <fs>
+          <f name="lemma">
+            <string>c</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t404">
+        <fs>
+          <f name="lemma">
+            <string>.</string>
+          </f>
+          <f name="pos">
+            <symbol value="SENT"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t405">
+        <fs>
+          <f name="lemma">
+            <string>bc</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t406">
+        <fs>
+          <f name="lemma">
+            <string>.</string>
+          </f>
+          <f name="pos">
+            <symbol value="SENT"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t407">
+        <fs>
+          <f name="lemma">
+            <string>(</string>
+          </f>
+          <f name="pos">
+            <symbol value="PUN"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t408">
+        <fs>
+          <f name="lemma">
+            <string>125-100/90bc</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t409">
+        <fs>
+          <f name="lemma">
+            <string>)</string>
+          </f>
+          <f name="pos">
+            <symbol value="PUN"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t410">
+        <fs>
+          <f name="lemma">
+            <string>,</string>
+          </f>
+          <f name="pos">
+            <symbol value="PUN"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t411">
+        <fs>
+          <f name="lemma">
+            <string>is</string>
+          </f>
+          <f name="pos">
+            <symbol value="VER:simp"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t412">
+        <fs>
+          <f name="lemma">
+            <string>characterized</string>
+          </f>
+          <f name="pos">
+            <symbol value="ADJ"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t413">
+        <fs>
+          <f name="lemma">
+            <string>by</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t414">
+        <fs>
+          <f name="lemma">
+            <string>the</string>
+          </f>
+          <f name="pos">
+            <symbol value="VER:subi"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t415">
+        <fs>
+          <f name="lemma">
+            <string>repair</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t416">
+        <fs>
+          <f name="lemma">
+            <string>of</string>
+          </f>
+          <f name="pos">
+            <symbol value="VER:subi"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t417">
+        <fs>
+          <f name="lemma">
+            <string>the</string>
+          </f>
+          <f name="pos">
+            <symbol value="VER:pper"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t418">
+        <fs>
+          <f name="lemma">
+            <string>roadway</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t419">
+        <fs>
+          <f name="lemma">
+            <string>system</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t420">
+        <fs>
+          <f name="lemma">
+            <string>.</string>
+          </f>
+          <f name="pos">
+            <symbol value="SENT"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t421">
+        <fs>
+          <f name="lemma">
+            <string>these</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t422">
+        <fs>
+          <f name="lemma">
+            <string>two</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t423">
+        <fs>
+          <f name="lemma">
+            <string>phase</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t424">
+        <fs>
+          <f name="lemma">
+            <string>were</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t425">
+        <fs>
+          <f name="lemma">
+            <string>brought</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t426">
+        <fs>
+          <f name="lemma">
+            <string>to</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t427">
+        <fs>
+          <f name="lemma">
+            <string>an</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t428">
+        <fs>
+          <f name="lemma">
+            <string>end</string>
+          </f>
+          <f name="pos">
+            <symbol value="VER:subi"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t429">
+        <fs>
+          <f name="lemma">
+            <string>by</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t430">
+        <fs>
+          <f name="lemma">
+            <string>the</string>
+          </f>
+          <f name="pos">
+            <symbol value="VER:subi"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t431">
+        <fs>
+          <f name="lemma">
+            <string>destruction</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t432">
+        <fs>
+          <f name="lemma">
+            <string>caused</string>
+          </f>
+          <f name="pos">
+            <symbol value="ADJ"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t433">
+        <fs>
+          <f name="lemma">
+            <string>by</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t434">
+        <fs>
+          <f name="lemma">
+            <string>military</string>
+          </f>
+          <f name="pos">
+            <symbol value="ADJ"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t435">
+        <fs>
+          <f name="lemma">
+            <string>attacks</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t436">
+        <fs>
+          <f name="lemma">
+            <string>that</string>
+          </f>
+          <f name="pos">
+            <symbol value="ADJ"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t437">
+        <fs>
+          <f name="lemma">
+            <string>led</string>
+          </f>
+          <f name="pos">
+            <symbol value="ADJ"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t438">
+        <fs>
+          <f name="lemma">
+            <string>to</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t439">
+        <fs>
+          <f name="lemma">
+            <string>the</string>
+          </f>
+          <f name="pos">
+            <symbol value="VER:subi"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t440">
+        <fs>
+          <f name="lemma">
+            <string>scattering</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t441">
+        <fs>
+          <f name="lemma">
+            <string>of</string>
+          </f>
+          <f name="pos">
+            <symbol value="VER:subi"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t442">
+        <fs>
+          <f name="lemma">
+            <string>much</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t443">
+        <fs>
+          <f name="lemma">
+            <string>material</string>
+          </f>
+          <f name="pos">
+            <symbol value="ADJ"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t444">
+        <fs>
+          <f name="lemma">
+            <string>along</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t445">
+        <fs>
+          <f name="lemma">
+            <string>the</string>
+          </f>
+          <f name="pos">
+            <symbol value="VER:subi"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t446">
+        <fs>
+          <f name="lemma">
+            <string>street</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t447">
+        <fs>
+          <f name="lemma">
+            <string>.</string>
+          </f>
+          <f name="pos">
+            <symbol value="SENT"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t448">
+        <fs>
+          <f name="lemma">
+            <string>the</string>
+          </f>
+          <f name="pos">
+            <symbol value="ADJ"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t449">
+        <fs>
+          <f name="lemma">
+            <string>examination</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t450">
+        <fs>
+          <f name="lemma">
+            <string>of</string>
+          </f>
+          <f name="pos">
+            <symbol value="VER:subi"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t451">
+        <fs>
+          <f name="lemma">
+            <string>these</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t452">
+        <fs>
+          <f name="lemma">
+            <string>discoveries</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t453">
+        <fs>
+          <f name="lemma">
+            <string>,</string>
+          </f>
+          <f name="pos">
+            <symbol value="PUN"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t454">
+        <fs>
+          <f name="lemma">
+            <string>situated</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t455">
+        <fs>
+          <f name="lemma">
+            <string>within</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t456">
+        <fs>
+          <f name="lemma">
+            <string>their</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t457">
+        <fs>
+          <f name="lemma">
+            <string>chrono-cultural</string>
+          </f>
+          <f name="pos">
+            <symbol value="ADJ"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t458">
+        <fs>
+          <f name="lemma">
+            <string>context</string>
+          </f>
+          <f name="pos">
+            <symbol value="VER:simp"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t459">
+        <fs>
+          <f name="lemma">
+            <string>,</string>
+          </f>
+          <f name="pos">
+            <symbol value="PUN"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t460">
+        <fs>
+          <f name="lemma">
+            <string>demonstrates</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t461">
+        <fs>
+          <f name="lemma">
+            <string>how</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t462">
+        <fs>
+          <f name="lemma">
+            <string>the</string>
+          </f>
+          <f name="pos">
+            <symbol value="VER:subi"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t463">
+        <fs>
+          <f name="lemma">
+            <string>salyens</string>
+          </f>
+          <f name="pos">
+            <symbol value="ADJ"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t464">
+        <fs>
+          <f name="lemma">
+            <string>at</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t465">
+        <fs>
+          <f name="lemma">
+            <string>entremont</string>
+          </f>
+          <f name="pos">
+            <symbol value="VER:futu"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t466">
+        <fs>
+          <f name="lemma">
+            <string>remained</string>
+          </f>
+          <f name="pos">
+            <symbol value="ADJ"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t467">
+        <fs>
+          <f name="lemma">
+            <string>attached</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t468">
+        <fs>
+          <f name="lemma">
+            <string>to</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t469">
+        <fs>
+          <f name="lemma">
+            <string>traditional</string>
+          </f>
+          <f name="pos">
+            <symbol value="ADJ"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t470">
+        <fs>
+          <f name="lemma">
+            <string>valoir</string>
+          </f>
+          <f name="pos">
+            <symbol value="VER:pper"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t471">
+        <fs>
+          <f name="lemma">
+            <string>,</string>
+          </f>
+          <f name="pos">
+            <symbol value="PUN"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t472">
+        <fs>
+          <f name="lemma">
+            <string>but</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t473">
+        <fs>
+          <f name="lemma">
+            <string>how</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t474">
+        <fs>
+          <f name="lemma">
+            <string>they</string>
+          </f>
+          <f name="pos">
+            <symbol value="ADJ"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t475">
+        <fs>
+          <f name="lemma">
+            <string>were</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t476">
+        <fs>
+          <f name="lemma">
+            <string>also</string>
+          </f>
+          <f name="pos">
+            <symbol value="ADJ"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t477">
+        <fs>
+          <f name="lemma">
+            <string>influenced</string>
+          </f>
+          <f name="pos">
+            <symbol value="ADJ"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t478">
+        <fs>
+          <f name="lemma">
+            <string>by</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t479">
+        <fs>
+          <f name="lemma">
+            <string>the</string>
+          </f>
+          <f name="pos">
+            <symbol value="VER:subi"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t480">
+        <fs>
+          <f name="lemma">
+            <string>greco-italic</string>
+          </f>
+          <f name="pos">
+            <symbol value="ADJ"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t481">
+        <fs>
+          <f name="lemma">
+            <string>world</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t482">
+        <fs>
+          <f name="lemma">
+            <string>upon</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t483">
+        <fs>
+          <f name="lemma">
+            <string>which</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t484">
+        <fs>
+          <f name="lemma">
+            <string>they</string>
+          </f>
+          <f name="pos">
+            <symbol value="ADJ"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t485">
+        <fs>
+          <f name="lemma">
+            <string>were</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t486">
+        <fs>
+          <f name="lemma">
+            <string>economically</string>
+          </f>
+          <f name="pos">
+            <symbol value="ADJ"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t487">
+        <fs>
+          <f name="lemma">
+            <string>dependent</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t488">
+        <fs>
+          <f name="lemma">
+            <string>.</string>
+          </f>
+          <f name="pos">
+            <symbol value="SENT"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t489">
+        <fs>
+          <f name="lemma">
+            <string>this</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t490">
+        <fs>
+          <f name="lemma">
+            <string>situation</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t491">
+        <fs>
+          <f name="lemma">
+            <string>could</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t492">
+        <fs>
+          <f name="lemma">
+            <string>haver</string>
+          </f>
+          <f name="pos">
+            <symbol value="VER:pres"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t493">
+        <fs>
+          <f name="lemma">
+            <string>led</string>
+          </f>
+          <f name="pos">
+            <symbol value="ADJ"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t494">
+        <fs>
+          <f name="lemma">
+            <string>to</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t495">
+        <fs>
+          <f name="lemma">
+            <string>conflicts</string>
+          </f>
+          <f name="pos">
+            <symbol value="ADJ"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t496">
+        <fs>
+          <f name="lemma">
+            <string>attested</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t497">
+        <fs>
+          <f name="lemma">
+            <string>by</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t498">
+        <fs>
+          <f name="lemma">
+            <string>the</string>
+          </f>
+          <f name="pos">
+            <symbol value="VER:subi"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t499">
+        <fs>
+          <f name="lemma">
+            <string>ancient</string>
+          </f>
+          <f name="pos">
+            <symbol value="ADJ"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t500">
+        <fs>
+          <f name="lemma">
+            <string>authors</string>
+          </f>
+          <f name="pos">
+            <symbol value="NOM"/>
+          </f>
+        </fs>
+      </span>
+      <span target="#t501">
+        <fs>
+          <f name="lemma">
+            <string>.</string>
+          </f>
+          <f name="pos">
+            <symbol value="SENT"/>
+          </f>
+        </fs>
+      </span>
+    </ns:listAnnotation>
+  </ns:standOff>
+  <ns:standOff type="candidatsTermes">
+    <teiHeader>
+      <fileDesc>
+        <titleStmt>
+          <title>Annotations en occurrences de candidats termes désambiguïsées</title>
+          <author role="annotator">ATILF</author>
+          <author role="term detection">LINA</author>
+        </titleStmt>
+        <publicationStmt>
+          <distributor>ATILF (Analyse et Traitement Informatique de la Langue
+                  Française)</distributor>
+          <availability>
+            <licence corresp="#licenceCC" target="http://creativecommons.org/licenses/by/4.0/"/>
+          </availability>
+        </publicationStmt>
+        <sourceDesc>
+          <p>Annotation en occurrences de candidats termes désambiguïsées du document <ref target="#termithIdentifier"/> générée automatiquement dans le cadre du projet
+                  TermITH</p>
+        </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+        <appInfo>
+          <application ident="Termith" version="1.0">
+            <label>atilf:termith:phase10:candidatsTermes</label>
+          </application>
+          <application ident="TermSuite" version="2.0">
+            <label>TS2.0</label>
+          </application>
+          <application ident="TermSuite" version="1.4">
+            <label>TS1.4</label>
+          </application>
+        </appInfo>
+        <projectDesc>
+          <p>Les candidats termes et la liste de leurs occurrences sont fournies par un module
+                  de la plateforme d'extraction terminologique TermSuite2.0 dans un fichier externe
+                  json.</p>
+          <p>La liste des candidats termes uniquement est fournie par le même module en
+                  tbx.</p>
+          <p>Une autre version du fichier tbx a été produite par une version antérieure de
+                  TermSuite, TermSuite1.4.</p>
+          <p>Chaque &lt;span&gt; correspond à une occurrence de candidat terme.</p>
+          <p>Pour chacune d'elles, l'attribut @target contient la liste des tokens qui
+                  composent l'occurrence de candidat terme décrite, l'attribut @corresp contient
+                  l'identifiant du candidat terme dans la terminologie produite par TermSuite2
+                  #TS2.0-entry et dans la terminologie porduite par TermSuite1.4 le cas échéant
+                  #TS1.4-entry.</p>
+          <p>a forme de chaque occurrence de candidat est encodée sous la forme d'une structure
+                  de traits &lt;fs&gt; qui contient uniquement un trait décrivant la forme de
+                  l'occurrence qu'on trouve dans le texte f/@name="inflexionWords" qui
+                  contient un élément &lt;string&gt;.</p>
+          <p>Les résultats de désambiguïsation sont indiqués à l'aide l'attribut @ana.</p>
+          <p>La signification de chacune des valeurs &lt;interp/&gt; est décrite dans l'élément
+                  &lt;interpGrp&gt;.</p>
+          <p>Les valeurs de désambiguïsation manuelle commencent par #DM ou sont égales à #noDM
+                  lorsque l'occurrence n'a pas été désambiguïsée manuellement.</p>
+          <p>Les valeurs de désambiguïsation automatique commencent par #DA ou sont égales à
+                  #noDA lorsque le système de désambiguïsation n'a pas fourni de réponse.</p>
+        </projectDesc>
+      </encodingDesc>
+    </teiHeader>
+    <ns:listAnnotation>
+      <interpGrp>
+        <interp xml:id="DM1">Occurrence du candidat terme validée seulement au niveau syntaxique</interp>
+        <interp xml:id="DM2">Occurrence du candidat terme validée au niveau scientifique et syntaxique</interp>
+        <interp xml:id="DM3">Occurrence du candidat terme validée au niveau disciplinaire, scientifique et syntaxique</interp>
+        <interp xml:id="DM4">Occurrence du candidat terme validée sur tous les niveaux d'annotation. Elle est validée au niveau terminologique</interp>
+        <interp xml:id="DM0">Occurrence du candidat terme rejetée dès le niveau syntaxique</interp>
+      </interpGrp>
+      <interpGrp>
+        <interp xml:id="DAOn">Occurrence du candidat terme validée au niveau terminologique selon le système de désambiguïsation utilisé</interp>
+        <interp xml:id="DAOff">Occurrence du candidat terme non valide par le système de désambiguïsation</interp>
+      </interpGrp>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-46230" target="#t2 #t3">
+        <fs>
+          <f name="inflexionsWord">
+            <string>opération archéologique</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-406" target="#t3">
+        <fs>
+          <f name="inflexionsWord">
+            <string>archéologique</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-3371" target="#t42">
+        <fs>
+          <f name="inflexionsWord">
+            <string>IV</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-66707" target="#t58 #t59 #t60">
+        <fs>
+          <f name="inflexionsWord">
+            <string>phases d'aménagements</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-68303" target="#t93">
+        <fs>
+          <f name="inflexionsWord">
+            <string>forgeron</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-6786" target="#t107">
+        <fs>
+          <f name="inflexionsWord">
+            <string>av</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-3152" target="#t135">
+        <fs>
+          <f name="inflexionsWord">
+            <string>oppidum</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-6786" target="#t154">
+        <fs>
+          <f name="inflexionsWord">
+            <string>av</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-6786" target="#t160">
+        <fs>
+          <f name="inflexionsWord">
+            <string>av</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-3765" target="#t172">
+        <fs>
+          <f name="inflexionsWord">
+            <string>réfection</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-4486" target="#t214">
+        <fs>
+          <f name="inflexionsWord">
+            <string>chrono-culturel</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-221" target="#t269">
+        <fs>
+          <f name="inflexionsWord">
+            <string>an</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-16777" target="#t271">
+        <fs>
+          <f name="inflexionsWord">
+            <string>operation</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-182" target="#t275">
+        <fs>
+          <f name="inflexionsWord">
+            <string>of</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-4565" target="#t277">
+        <fs>
+          <f name="inflexionsWord">
+            <string>work</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-16034" target="#t278">
+        <fs>
+          <f name="inflexionsWord">
+            <string>at</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-160" target="#t284">
+        <fs>
+          <f name="inflexionsWord">
+            <string>This</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-3188" target="#t285">
+        <fs>
+          <f name="inflexionsWord">
+            <string>allowed</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-185" target="#t287">
+        <fs>
+          <f name="inflexionsWord">
+            <string>study</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-1906" target="#t290">
+        <fs>
+          <f name="inflexionsWord">
+            <string>area</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-3371" target="#t300">
+        <fs>
+          <f name="inflexionsWord">
+            <string>IV</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-180" target="#t302">
+        <fs>
+          <f name="inflexionsWord">
+            <string>within</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-48906" target="#t306">
+        <fs>
+          <f name="inflexionsWord">
+            <string>against</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-3296" target="#t311">
+        <fs>
+          <f name="inflexionsWord">
+            <string>Three</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-241" target="#t315">
+        <fs>
+          <f name="inflexionsWord">
+            <string>were</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-3290" target="#t319">
+        <fs>
+          <f name="inflexionsWord">
+            <string>first</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-196" target="#t321">
+        <fs>
+          <f name="inflexionsWord">
+            <string>from</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-16488" target="#t322">
+        <fs>
+          <f name="inflexionsWord">
+            <string>them</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-56" target="#t332">
+        <fs>
+          <f name="inflexionsWord">
+            <string>BC</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-24109" target="#t336 #t337">
+        <fs>
+          <f name="inflexionsWord">
+            <string>represented by</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-13237" target="#t336">
+        <fs>
+          <f name="inflexionsWord">
+            <string>represented</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-245" target="#t337">
+        <fs>
+          <f name="inflexionsWord">
+            <string>by</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-90396" target="#t340">
+        <fs>
+          <f name="inflexionsWord">
+            <string>street</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-4536" target="#t341">
+        <fs>
+          <f name="inflexionsWord">
+            <string>levels</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-245" target="#t343">
+        <fs>
+          <f name="inflexionsWord">
+            <string>by</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-1159" target="#t345">
+        <fs>
+          <f name="inflexionsWord">
+            <string>small</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-16768" target="#t347">
+        <fs>
+          <f name="inflexionsWord">
+            <string>workshop</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-23677" target="#t353">
+        <fs>
+          <f name="inflexionsWord">
+            <string>dated</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-16137" target="#t356">
+        <fs>
+          <f name="inflexionsWord">
+            <string>third</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-47671" target="#t357">
+        <fs>
+          <f name="inflexionsWord">
+            <string>quarter</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-56" target="#t362">
+        <fs>
+          <f name="inflexionsWord">
+            <string>BC</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-56" target="#t365">
+        <fs>
+          <f name="inflexionsWord">
+            <string>BC</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-16114" target="#t370">
+        <fs>
+          <f name="inflexionsWord">
+            <string>way</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-90402" target="#t374">
+        <fs>
+          <f name="inflexionsWord">
+            <string>creation</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-42047" target="#t379">
+        <fs>
+          <f name="inflexionsWord">
+            <string>water</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-196" target="#t381">
+        <fs>
+          <f name="inflexionsWord">
+            <string>from</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-3152" target="#t383">
+        <fs>
+          <f name="inflexionsWord">
+            <string>oppidum</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-3187" target="#t389">
+        <fs>
+          <f name="inflexionsWord">
+            <string>between</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-47671" target="#t392">
+        <fs>
+          <f name="inflexionsWord">
+            <string>quarter</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-56" target="#t397">
+        <fs>
+          <f name="inflexionsWord">
+            <string>BC</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-3224" target="#t400">
+        <fs>
+          <f name="inflexionsWord">
+            <string>beginning</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-19958" target="#t402">
+        <fs>
+          <f name="inflexionsWord">
+            <string>Ist</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-56" target="#t405">
+        <fs>
+          <f name="inflexionsWord">
+            <string>BC</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-24156" target="#t412">
+        <fs>
+          <f name="inflexionsWord">
+            <string>characterized</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-245" target="#t413">
+        <fs>
+          <f name="inflexionsWord">
+            <string>by</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-59911" target="#t421 #t422">
+        <fs>
+          <f name="inflexionsWord">
+            <string>These two</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-6651" target="#t421">
+        <fs>
+          <f name="inflexionsWord">
+            <string>These</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-12385" target="#t422">
+        <fs>
+          <f name="inflexionsWord">
+            <string>two</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-241" target="#t424">
+        <fs>
+          <f name="inflexionsWord">
+            <string>were</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-26538" target="#t425">
+        <fs>
+          <f name="inflexionsWord">
+            <string>brought</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-221" target="#t427">
+        <fs>
+          <f name="inflexionsWord">
+            <string>an</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-245" target="#t429">
+        <fs>
+          <f name="inflexionsWord">
+            <string>by</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-245" target="#t433">
+        <fs>
+          <f name="inflexionsWord">
+            <string>by</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-6691" target="#t436">
+        <fs>
+          <f name="inflexionsWord">
+            <string>that</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-49868" target="#t437">
+        <fs>
+          <f name="inflexionsWord">
+            <string>led</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-16341" target="#t442">
+        <fs>
+          <f name="inflexionsWord">
+            <string>much</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-203" target="#t443">
+        <fs>
+          <f name="inflexionsWord">
+            <string>material</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-3213" target="#t444">
+        <fs>
+          <f name="inflexionsWord">
+            <string>along</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-90396" target="#t446">
+        <fs>
+          <f name="inflexionsWord">
+            <string>street</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-23996" target="#t449">
+        <fs>
+          <f name="inflexionsWord">
+            <string>examination</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-6651" target="#t451">
+        <fs>
+          <f name="inflexionsWord">
+            <string>these</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-33305" target="#t452">
+        <fs>
+          <f name="inflexionsWord">
+            <string>discoveries</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-3196" target="#t454">
+        <fs>
+          <f name="inflexionsWord">
+            <string>situated</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-180" target="#t455">
+        <fs>
+          <f name="inflexionsWord">
+            <string>within</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-4521" target="#t456">
+        <fs>
+          <f name="inflexionsWord">
+            <string>their</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-1692" target="#t457">
+        <fs>
+          <f name="inflexionsWord">
+            <string>chrono-cultural</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-16270" target="#t461">
+        <fs>
+          <f name="inflexionsWord">
+            <string>how</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-11313" target="#t464">
+        <fs>
+          <f name="inflexionsWord">
+            <string>at</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-6699" target="#t469">
+        <fs>
+          <f name="inflexionsWord">
+            <string>traditional</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-16270" target="#t473">
+        <fs>
+          <f name="inflexionsWord">
+            <string>how</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-6693" target="#t474">
+        <fs>
+          <f name="inflexionsWord">
+            <string>they</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-241" target="#t475">
+        <fs>
+          <f name="inflexionsWord">
+            <string>were</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-16495" target="#t476">
+        <fs>
+          <f name="inflexionsWord">
+            <string>also</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-245" target="#t478">
+        <fs>
+          <f name="inflexionsWord">
+            <string>by</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-272" target="#t483">
+        <fs>
+          <f name="inflexionsWord">
+            <string>which</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-6693" target="#t484">
+        <fs>
+          <f name="inflexionsWord">
+            <string>they</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-241" target="#t485">
+        <fs>
+          <f name="inflexionsWord">
+            <string>were</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-160" target="#t489">
+        <fs>
+          <f name="inflexionsWord">
+            <string>This</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-282" target="#t491">
+        <fs>
+          <f name="inflexionsWord">
+            <string>could</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-49868" target="#t493">
+        <fs>
+          <f name="inflexionsWord">
+            <string>led</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-35138" target="#t496">
+        <fs>
+          <f name="inflexionsWord">
+            <string>attested</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-245" target="#t497">
+        <fs>
+          <f name="inflexionsWord">
+            <string>by</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-19838" target="#t499">
+        <fs>
+          <f name="inflexionsWord">
+            <string>ancient</string>
+          </f>
+        </fs>
+      </span>
+      <span ana="#noDM #noDA" corresp="#TS2.0-entry-4518" target="#t500">
+        <fs>
+          <f name="inflexionsWord">
+            <string>authors</string>
+          </f>
+        </fs>
+      </span>
+    </ns:listAnnotation>
+  </ns:standOff>
+  <ns:standOff type="syntagmesDefinis">
+    <teiHeader>
+      <fileDesc>
+        <titleStmt>
+          <title>Annotation en occurrences de syntagmes définis issus du TLFi</title>
+          <author role="annotator">ATILF</author>
+          <author role="detection">ATILF</author>
+        </titleStmt>
+        <publicationStmt>
+          <distributor>ATILF (Analyse et Traitement Informatique de la Langue
+                  Française)</distributor>
+          <availability>
+            <licence corresp="#licenceCC" target="http://creativecommons.org/licenses/by/4.0/"/>
+          </availability>
+        </publicationStmt>
+        <sourceDesc>
+          <p>Annotation en occurrences de syntagmes définis du document <ref target="#termithIdentifier"/> générée automatiquement dans le cadre du projet
+                  TermITH</p>
+        </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+        <appInfo>
+          <application ident="Termith" version="1.0">
+            <label>atilf:termith:phase13:syntagmesDefinis</label>
+          </application>
+        </appInfo>
+        <projectDesc>
+          <p>Le lexique des syntagmes définis issus du TLFi, TLF'Phraseo, est actuellement
+                  disponible sur le site d'Ortolang <ref target="https://hdl.handle.net/11403/tlfphraseo"/>.</p>
+          <p>TLF'Phraseo est le résultat d'un extraction des syntagmes encodés comme définis
+                  dans le TLFi dans une version normalisée mais non classifiée d'un point de vue
+                  phraséologique</p>
+          <p>TLF'Phraseo a été projeté sur les documents du projet sur la base d'une
+                  reconnaissance en forme lemmatisée et étiquette grammaticale.</p>
+          <p>Ces indications morphosyntaxiques sont encodées dans l'annotation &lt;ns:standOff
+                  type="wordForms"&gt;.</p>
+          <p>Une occurrence de syntagme défini contient les mêmes éléments que le syntagme
+                  correspondant dans le lexique et les contient dans le même ordre.</p>
+          <p>Chaque occurrence de syntagme défini est représentée par un élément &lt;span&gt;
+                  dont l'attribut @target a pour valeur les identifiants des tokens qui la constitue
+                  et l'attribut @corresp a pour valeur l'identifiant de la description du syntagme
+                  dans le lexique TLF'Phraseo.</p>
+          <p>La forme d'une occurrence de syntagme défini est décrite par une structure de
+                  traits &lt;fs&gt; qui contient comme unique trait &lt;f&gt; la forme textuelle de
+                  l'occurrence intégrée dans un élément &lt;string&gt;.</p>
+        </projectDesc>
+      </encodingDesc>
+    </teiHeader>
+    <ns:listAnnotation>
+      <span corresp="#syntita-24700" target="#t22 #t23">
+        <fs>
+          <f name="inflexionsWord">
+            <string>monument historique</string>
+          </f>
+        </fs>
+      </span>
+      <span corresp="#syntita-24115" target="#t65 #t66">
+        <fs>
+          <f name="inflexionsWord">
+            <string>au milieu</string>
+          </f>
+        </fs>
+      </span>
+      <span corresp="#syntita-61211" target="#t187 #t188">
+        <fs>
+          <f name="inflexionsWord">
+            <string>dû à</string>
+          </f>
+        </fs>
+      </span>
+      <span corresp="#syntita-24700" target="#t266 #t267">
+        <fs>
+          <f name="inflexionsWord">
+            <string>monument historique</string>
+          </f>
+        </fs>
+      </span>
+    </ns:listAnnotation>
+  </ns:standOff>
+  <ns:standOff type="lexiquesTransdisciplinaires">
+    <teiHeader>
+      <fileDesc>
+        <titleStmt>
+          <title>Annotation en occurrences du lexique transdisciplinaire</title>
+          <author role="annotator">ATILF</author>
+          <author role="resource constituion">LIDILEM</author>
+        </titleStmt>
+        <publicationStmt>
+          <distributor>ATILF (Analyse et Traitement Informatique de la Langue
+                  Française)</distributor>
+          <availability>
+            <licence corresp="#licenceCC" target="http://creativecommons.org/licenses/by/4.0/"/>
+          </availability>
+        </publicationStmt>
+        <sourceDesc>
+          <p>Annotation en occurrences de lexèmes transdisciplinaires du document <ref target="#termithIdentifier"/> générée automatiquement dans le cadre du projet
+                  TermITH</p>
+        </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+        <appInfo>
+          <application ident="Termith" version="1.0">
+            <label>atilf:termith:phase15:lexiqueTransdisciplinaire</label>
+          </application>
+        </appInfo>
+        <projectDesc>
+          <p>Le lexique trandisciplinaire a été mis à jour et enrichi dans le cadre du projet
+                     <ref target="#TermITH-project"/>. </p>
+          <p>Il est actuellement disponible pour les membres du projet sur le site privé du
+                  projet.</p>
+          <p>Les items simples et complexes du lexique transdisciplinaire ont été projetés sur
+                  les documents du projet lorsque ces items étaient contigus et non ambigus.</p>
+          <p>De plus, ces items sont projetés sur la base d'une reconnaissance en forme
+                  lemmatisée et étiquette grammaticale.</p>
+          <p>Ces indications morphosyntaxiques sont encodées dans l'annotation &lt;ns:standOff
+                  type="wordForms"&gt;.</p>
+          <p>Une occurrence d'item du lexique transdisciplinaire contient les mêmes éléments
+                  que l'item correspondant dans le lexique et les contient dans le même ordre.</p>
+          <p>Chaque occurrence d'item du lexique transdisciplinaire est représentée par un
+                  élément &lt;span&gt; dont l'attribut @target a pour valeur les identifiants des
+                  tokens qui la constitue et l'attribut @corresp a pour valeur l'identifiant de
+                  l'item dans le lexique transdisciplinaire.</p>
+          <p>La forme d'une occurrence d'un item du lexique transdisciplinaire est décrite par
+                  une structure de traits &lt;fs&gt; qui contient comme unique trait &lt;f&gt; la
+                  forme textuelle de l'occurrence intégrée dans un élément &lt;string&gt;.</p>
+        </projectDesc>
+      </encodingDesc>
+    </teiHeader>
+    <ns:listAnnotation>
+      <span corresp="#transdisc-1632" target="#t131 #t132 #t133">
+        <fs>
+          <f name="inflexionsWord">
+            <string>l'extérieur de</string>
+          </f>
+        </fs>
+      </span>
+    </ns:listAnnotation>
+  </ns:standOff>
+  <text>
+    <front>
+      <div type="abstract" xml:lang="fr">
+        <p>
+          <w xml:id="t1">Une</w>
+          <w xml:id="t2">opération</w>
+          <w xml:id="t3">archéologique</w>
+          <w xml:id="t4">causée</w>
+          <w xml:id="t5">par</w>
+          <w xml:id="t6">les</w>
+          <w xml:id="t7">travaux</w>
+          <w xml:id="t8">de</w>
+          <w xml:id="t9">préservation</w>
+          <w xml:id="t10">du</w>
+          <w xml:id="t11">site</w>
+          <w xml:id="t12">d'</w>
+          <w xml:id="t13">Entremont</w>
+          <w xml:id="t14">,</w>
+          <w xml:id="t15">à</w>
+          <w xml:id="t16">Aix-en-Provence</w>
+          <w xml:id="t17">,</w>
+          <w xml:id="t18">par</w>
+          <w xml:id="t19">la</w>
+          <w xml:id="t20">Conservation</w>
+          <w xml:id="t21">des</w>
+          <w xml:id="t22">Monuments</w>
+          <w xml:id="t23">Historiques</w>
+          <w xml:id="t24">,</w>
+          <w xml:id="t25">a</w>
+          <w xml:id="t26">permis</w>
+          <w xml:id="t27">d'</w>
+          <w xml:id="t28">étudier</w>
+          <w xml:id="t29">en</w>
+          <w xml:id="t30">1999</w>
+          <w xml:id="t31">,</w>
+          <w xml:id="t32">dans</w>
+          <w xml:id="t33">l'</w>
+          <w xml:id="t34">habitat</w>
+          <w xml:id="t35">2</w>
+          <w xml:id="t36">,</w>
+          <w xml:id="t37">des</w>
+          <w xml:id="t38">secteurs</w>
+          <w xml:id="t39">de</w>
+          <w xml:id="t40">la</w>
+          <w xml:id="t41">rue</w>
+          <w xml:id="t42">IV</w>
+          <w xml:id="t43">et</w>
+          <w xml:id="t44">de</w>
+          <w xml:id="t45">l'</w>
+          <w xml:id="t46">îlot</w>
+          <w xml:id="t47">1</w>
+          <w xml:id="t48">adossé</w>
+          <w xml:id="t49">à</w>
+          <w xml:id="t50">l'</w>
+          <w xml:id="t51">enceinte</w>
+          <w xml:id="t52">.</w>
+          <w xml:id="t53">On</w>
+          <w xml:id="t54">a</w>
+          <w xml:id="t55">pu</w>
+          <w xml:id="t56">observer</w>
+          <w xml:id="t57">trois</w>
+          <w xml:id="t58">phases</w>
+          <w xml:id="t59">d'</w>
+          <w xml:id="t60">aménagements</w>
+          <w xml:id="t61">.</w>
+          <w xml:id="t62">La</w>
+          <w xml:id="t63">première</w>
+          <w xml:id="t64">,</w>
+          <w xml:id="t65">au</w>
+          <w xml:id="t66">milieu</w>
+          <w xml:id="t67">du</w>
+          <w xml:id="t68">IIes.av</w>
+          <w xml:id="t69">.</w>
+          <w xml:id="t70">J.-C</w>
+          <w xml:id="t71">(</w>
+          <w xml:id="t72">150-140/130</w>
+          <w xml:id="t73">av.J.C</w>
+          <w xml:id="t74">.</w>
+          <w xml:id="t75">)</w>
+          <w xml:id="t76">,</w>
+          <w xml:id="t77">est</w>
+          <w xml:id="t78">représentée</w>
+          <w xml:id="t79">par</w>
+          <w xml:id="t80">les</w>
+          <w xml:id="t81">niveaux</w>
+          <w xml:id="t82">de</w>
+          <w xml:id="t83">rue</w>
+          <w xml:id="t84">les</w>
+          <w xml:id="t85">plus</w>
+          <w xml:id="t86">anciens</w>
+          <w xml:id="t87">et</w>
+          <w xml:id="t88">par</w>
+          <w xml:id="t89">un</w>
+          <w xml:id="t90">petit</w>
+          <w xml:id="t91">atelier</w>
+          <w xml:id="t92">de</w>
+          <w xml:id="t93">forgeron</w>
+          <w xml:id="t94">.</w>
+          <w xml:id="t95">La</w>
+          <w xml:id="t96">deuxième</w>
+          <w xml:id="t97">,</w>
+          <w xml:id="t98">dans</w>
+          <w xml:id="t99">le</w>
+          <w xml:id="t100">troisième</w>
+          <w xml:id="t101">quart</w>
+          <w xml:id="t102">du</w>
+          <w xml:id="t103">IIes</w>
+          <w xml:id="t104">.</w>
+          <w xml:id="t105">(</w>
+          <w xml:id="t106">140-130/125</w>
+          <w xml:id="t107">av</w>
+          <w xml:id="t108">.</w>
+          <w xml:id="t109">J</w>
+          <w xml:id="t110">.</w>
+          <w xml:id="t111">C</w>
+          <w xml:id="t112">)</w>
+          <w xml:id="t113">,</w>
+          <w xml:id="t114">voit</w>
+          <w xml:id="t115">des</w>
+          <w xml:id="t116">aménagements</w>
+          <w xml:id="t117">importants</w>
+          <w xml:id="t118">de</w>
+          <w xml:id="t119">la</w>
+          <w xml:id="t120">rue</w>
+          <w xml:id="t121">et</w>
+          <w xml:id="t122">la</w>
+          <w xml:id="t123">création</w>
+          <w xml:id="t124">de</w>
+          <w xml:id="t125">caniveaux</w>
+          <w xml:id="t126">dallés</w>
+          <w xml:id="t127">conduisant</w>
+          <w xml:id="t128">les</w>
+          <w xml:id="t129">eaux</w>
+          <w xml:id="t130">à</w>
+          <w xml:id="t131">l'</w>
+          <w xml:id="t132">extérieur</w>
+          <w xml:id="t133">de</w>
+          <w xml:id="t134">l'</w>
+          <w xml:id="t135">oppidum</w>
+          <w xml:id="t136">.</w>
+          <w xml:id="t137">La</w>
+          <w xml:id="t138">dernière</w>
+          <w xml:id="t139">phase</w>
+          <w xml:id="t140">,</w>
+          <w xml:id="t141">entre</w>
+          <w xml:id="t142">le</w>
+          <w xml:id="t143">dernier</w>
+          <w xml:id="t144">quart</w>
+          <w xml:id="t145">du</w>
+          <w xml:id="t146">IIes</w>
+          <w xml:id="t147">.</w>
+          <w xml:id="t148">et</w>
+          <w xml:id="t149">le</w>
+          <w xml:id="t150">début</w>
+          <w xml:id="t151">du</w>
+          <w xml:id="t152">Iers</w>
+          <w xml:id="t153">.</w>
+          <w xml:id="t154">av</w>
+          <w xml:id="t155">.</w>
+          <w xml:id="t156">J.-C</w>
+          <w xml:id="t157">.</w>
+          <w xml:id="t158">(</w>
+          <w xml:id="t159">125-100/90</w>
+          <w xml:id="t160">av</w>
+          <w xml:id="t161">.</w>
+          <w xml:id="t162">J</w>
+          <w xml:id="t163">.</w>
+          <w xml:id="t164">C</w>
+          <w xml:id="t165">.</w>
+          <w xml:id="t166">)</w>
+          <w xml:id="t167">,</w>
+          <w xml:id="t168">est</w>
+          <w xml:id="t169">caractérisée</w>
+          <w xml:id="t170">par</w>
+          <w xml:id="t171">une</w>
+          <w xml:id="t172">réfection</w>
+          <w xml:id="t173">de</w>
+          <w xml:id="t174">la</w>
+          <w xml:id="t175">voirie</w>
+          <w xml:id="t176">.</w>
+          <w xml:id="t177">Ces</w>
+          <w xml:id="t178">deux</w>
+          <w xml:id="t179">dernières</w>
+          <w xml:id="t180">phases</w>
+          <w xml:id="t181">s'</w>
+          <w xml:id="t182">achèvent</w>
+          <w xml:id="t183">chacune</w>
+          <w xml:id="t184">par</w>
+          <w xml:id="t185">des</w>
+          <w xml:id="t186">destructions</w>
+          <w xml:id="t187">dues</w>
+          <w xml:id="t188">à</w>
+          <w xml:id="t189">des</w>
+          <w xml:id="t190">attaques</w>
+          <w xml:id="t191">militaires</w>
+          <w xml:id="t192">qui</w>
+          <w xml:id="t193">ont</w>
+          <w xml:id="t194">provoqué</w>
+          <w xml:id="t195">la</w>
+          <w xml:id="t196">dispersion</w>
+          <w xml:id="t197">d'</w>
+          <w xml:id="t198">un</w>
+          <w xml:id="t199">abondant</w>
+          <w xml:id="t200">mobilier</w>
+          <w xml:id="t201">dans</w>
+          <w xml:id="t202">la</w>
+          <w xml:id="t203">rue</w>
+          <w xml:id="t204">.</w>
+          <w xml:id="t205">L'</w>
+          <w xml:id="t206">examen</w>
+          <w xml:id="t207">de</w>
+          <w xml:id="t208">ces</w>
+          <w xml:id="t209">découvertes</w>
+          <w xml:id="t210">replacées</w>
+          <w xml:id="t211">dans</w>
+          <w xml:id="t212">leur</w>
+          <w xml:id="t213">contexte</w>
+          <w xml:id="t214">chrono-culturel</w>
+          <w xml:id="t215">contribue</w>
+          <w xml:id="t216">à</w>
+          <w xml:id="t217">montrer</w>
+          <w xml:id="t218">que</w>
+          <w xml:id="t219">les</w>
+          <w xml:id="t220">Salyens</w>
+          <w xml:id="t221">d'</w>
+          <w xml:id="t222">Entremont</w>
+          <w xml:id="t223">restent</w>
+          <w xml:id="t224">attachés</w>
+          <w xml:id="t225">à</w>
+          <w xml:id="t226">des</w>
+          <w xml:id="t227">valeurs</w>
+          <w xml:id="t228">traditionnelles</w>
+          <w xml:id="t229">,</w>
+          <w xml:id="t230">mais</w>
+          <w xml:id="t231">qu'</w>
+          <w xml:id="t232">ils</w>
+          <w xml:id="t233">subissent</w>
+          <w xml:id="t234">les</w>
+          <w xml:id="t235">fortes</w>
+          <w xml:id="t236">influences</w>
+          <w xml:id="t237">du</w>
+          <w xml:id="t238">monde</w>
+          <w xml:id="t239">gréco-italique</w>
+          <w xml:id="t240">dont</w>
+          <w xml:id="t241">ils</w>
+          <w xml:id="t242">dépendent</w>
+          <w xml:id="t243">économiquement</w>
+          <w xml:id="t244">.</w>
+          <w xml:id="t245">Cette</w>
+          <w xml:id="t246">situation</w>
+          <w xml:id="t247">n'</w>
+          <w xml:id="t248">a</w>
+          <w xml:id="t249">pu</w>
+          <w xml:id="t250">créer</w>
+          <w xml:id="t251">en</w>
+          <w xml:id="t252">leur</w>
+          <w xml:id="t253">sein</w>
+          <w xml:id="t254">que</w>
+          <w xml:id="t255">des</w>
+          <w xml:id="t256">conflits</w>
+          <w xml:id="t257">attestés</w>
+          <w xml:id="t258">par</w>
+          <w xml:id="t259">les</w>
+          <w xml:id="t260">auteurs</w>
+          <w xml:id="t261">antiques</w>
+          <w xml:id="t262">.</w>
+        </p>
+      </div>
+      <div type="abstract" xml:lang="en">
+        <p>
+          <hi xml:lang="en">
+            <w xml:id="t263">The</w>
+            <w xml:id="t264">Conservation</w>
+            <w xml:id="t265">des</w>
+            <w xml:id="t266">Monuments</w>
+            <w xml:id="t267">Historiques</w>
+            <w xml:id="t268">undertook</w>
+            <w xml:id="t269">an</w>
+            <w xml:id="t270">archaeo-logical</w>
+            <w xml:id="t271">operation</w>
+            <w xml:id="t272">in</w>
+            <w xml:id="t273">1999</w>
+            <w xml:id="t274">because</w>
+            <w xml:id="t275">of</w>
+            <w xml:id="t276">conservation</w>
+            <w xml:id="t277">work</w>
+            <w xml:id="t278">at</w>
+            <w xml:id="t279">Entremont</w>
+            <w xml:id="t280">,</w>
+            <w xml:id="t281">in</w>
+            <w xml:id="t282">Aix-en-Provence</w>
+            <w xml:id="t283">.</w>
+            <w xml:id="t284">This</w>
+            <w xml:id="t285">allowed</w>
+            <w xml:id="t286">the</w>
+            <w xml:id="t287">study</w>
+            <w xml:id="t288">of</w>
+            <w xml:id="t289">the</w>
+            <w xml:id="t290">area</w>
+            <w xml:id="t291">of</w>
+            <w xml:id="t292">habitat</w>
+            <w xml:id="t293">2</w>
+            <w xml:id="t294">,</w>
+            <w xml:id="t295">in</w>
+            <w xml:id="t296">the</w>
+            <w xml:id="t297">zone</w>
+            <w xml:id="t298">of</w>
+            <w xml:id="t299">street</w>
+            <w xml:id="t300">IV</w>
+            <w xml:id="t301">,</w>
+            <w xml:id="t302">within</w>
+            <w xml:id="t303">zone</w>
+            <w xml:id="t304">1</w>
+            <w xml:id="t305">backed-up</w>
+            <w xml:id="t306">against</w>
+            <w xml:id="t307">the</w>
+            <w xml:id="t308">defensive</w>
+            <w xml:id="t309">wall</w>
+            <w xml:id="t310">.</w>
+            <w xml:id="t311">Three</w>
+            <w xml:id="t312">phases</w>
+            <w xml:id="t313">of</w>
+            <w xml:id="t314">construction</w>
+            <w xml:id="t315">were</w>
+            <w xml:id="t316">identified</w>
+            <w xml:id="t317">.</w>
+            <w xml:id="t318">The</w>
+            <w xml:id="t319">first</w>
+            <w xml:id="t320">,</w>
+            <w xml:id="t321">from</w>
+            <w xml:id="t322">them</w>
+            <w xml:id="t323">iddle</w>
+            <w xml:id="t324">of</w>
+            <w xml:id="t325">IInd</w>
+            <w xml:id="t326">c</w>
+            <w xml:id="t327">.</w>
+            <w xml:id="t328">B</w>
+            <w xml:id="t329">.</w>
+            <w xml:id="t330">(</w>
+            <w xml:id="t331">150-140/130</w>
+            <w xml:id="t332">BC</w>
+            <w xml:id="t333">)</w>
+            <w xml:id="t334">,</w>
+            <w xml:id="t335">is</w>
+            <w xml:id="t336">represented</w>
+            <w xml:id="t337">by</w>
+            <w xml:id="t338">the</w>
+            <w xml:id="t339">oldest</w>
+            <w xml:id="t340">street</w>
+            <w xml:id="t341">levels</w>
+            <w xml:id="t342">and</w>
+            <w xml:id="t343">by</w>
+            <w xml:id="t344">a</w>
+            <w xml:id="t345">small</w>
+            <w xml:id="t346">blacksmith</w>
+            <w xml:id="t347">workshop</w>
+            <w xml:id="t348">.</w>
+            <w xml:id="t349">The</w>
+            <w xml:id="t350">second</w>
+            <w xml:id="t351">phase</w>
+            <w xml:id="t352">,</w>
+            <w xml:id="t353">dated</w>
+            <w xml:id="t354">to</w>
+            <w xml:id="t355">the</w>
+            <w xml:id="t356">third</w>
+            <w xml:id="t357">quarter</w>
+            <w xml:id="t358">of</w>
+            <w xml:id="t359">IInd</w>
+            <w xml:id="t360">c</w>
+            <w xml:id="t361">.</w>
+            <w xml:id="t362">BC</w>
+            <w xml:id="t363">(</w>
+            <w xml:id="t364">140-130/125</w>
+            <w xml:id="t365">BC</w>
+            <w xml:id="t366">)</w>
+            <w xml:id="t367">saw</w>
+            <w xml:id="t368">important</w>
+            <w xml:id="t369">route</w>
+            <w xml:id="t370">way</w>
+            <w xml:id="t371">construction</w>
+            <w xml:id="t372">and</w>
+            <w xml:id="t373">the</w>
+            <w xml:id="t374">creation</w>
+            <w xml:id="t375">of</w>
+            <w xml:id="t376">paved</w>
+            <w xml:id="t377">gutters</w>
+            <w xml:id="t378">draining</w>
+            <w xml:id="t379">water</w>
+            <w xml:id="t380">away</w>
+            <w xml:id="t381">from</w>
+            <w xml:id="t382">the</w>
+            <w xml:id="t383">oppidum</w>
+            <w xml:id="t384">.</w>
+            <w xml:id="t385">The</w>
+            <w xml:id="t386">last</w>
+            <w xml:id="t387">phase</w>
+            <w xml:id="t388">,</w>
+            <w xml:id="t389">between</w>
+            <w xml:id="t390">the</w>
+            <w xml:id="t391">final</w>
+            <w xml:id="t392">quarter</w>
+            <w xml:id="t393">of</w>
+            <w xml:id="t394">IInd</w>
+            <w xml:id="t395">c</w>
+            <w xml:id="t396">.</w>
+            <w xml:id="t397">BC</w>
+            <w xml:id="t398">and</w>
+            <w xml:id="t399">the</w>
+            <w xml:id="t400">beginning</w>
+            <w xml:id="t401">of</w>
+            <w xml:id="t402">Ist</w>
+            <w xml:id="t403">c</w>
+            <w xml:id="t404">.</w>
+            <w xml:id="t405">BC</w>
+            <w xml:id="t406">.</w>
+            <w xml:id="t407">(</w>
+            <w xml:id="t408">125-100/90BC</w>
+            <w xml:id="t409">)</w>
+            <w xml:id="t410">,</w>
+            <w xml:id="t411">is</w>
+            <w xml:id="t412">characterized</w>
+            <w xml:id="t413">by</w>
+            <w xml:id="t414">the</w>
+            <w xml:id="t415">repair</w>
+            <w xml:id="t416">of</w>
+            <w xml:id="t417">the</w>
+            <w xml:id="t418">roadway</w>
+            <w xml:id="t419">system</w>
+            <w xml:id="t420">.</w>
+            <w xml:id="t421">These</w>
+            <w xml:id="t422">two</w>
+            <w xml:id="t423">phases</w>
+            <w xml:id="t424">were</w>
+            <w xml:id="t425">brought</w>
+            <w xml:id="t426">to</w>
+            <w xml:id="t427">an</w>
+            <w xml:id="t428">end</w>
+            <w xml:id="t429">by</w>
+            <w xml:id="t430">the</w>
+            <w xml:id="t431">destruction</w>
+            <w xml:id="t432">caused</w>
+            <w xml:id="t433">by</w>
+            <w xml:id="t434">military</w>
+            <w xml:id="t435">attacks</w>
+            <w xml:id="t436">that</w>
+            <w xml:id="t437">led</w>
+            <w xml:id="t438">to</w>
+            <w xml:id="t439">the</w>
+            <w xml:id="t440">scattering</w>
+            <w xml:id="t441">of</w>
+            <w xml:id="t442">much</w>
+            <w xml:id="t443">material</w>
+            <w xml:id="t444">along</w>
+            <w xml:id="t445">the</w>
+            <w xml:id="t446">street</w>
+            <w xml:id="t447">.</w>
+            <w xml:id="t448">The</w>
+            <w xml:id="t449">examination</w>
+            <w xml:id="t450">of</w>
+            <w xml:id="t451">these</w>
+            <w xml:id="t452">discoveries</w>
+            <w xml:id="t453">,</w>
+            <w xml:id="t454">situated</w>
+            <w xml:id="t455">within</w>
+            <w xml:id="t456">their</w>
+            <w xml:id="t457">chrono-cultural</w>
+            <w xml:id="t458">context</w>
+            <w xml:id="t459">,</w>
+            <w xml:id="t460">demonstrates</w>
+            <w xml:id="t461">how</w>
+            <w xml:id="t462">the</w>
+            <w xml:id="t463">Salyens</w>
+            <w xml:id="t464">at</w>
+            <w xml:id="t465">Entremont</w>
+            <w xml:id="t466">remained</w>
+            <w xml:id="t467">attached</w>
+            <w xml:id="t468">to</w>
+            <w xml:id="t469">traditional</w>
+            <w xml:id="t470">values</w>
+            <w xml:id="t471">,</w>
+            <w xml:id="t472">but</w>
+            <w xml:id="t473">how</w>
+            <w xml:id="t474">they</w>
+            <w xml:id="t475">were</w>
+            <w xml:id="t476">also</w>
+            <w xml:id="t477">influenced</w>
+            <w xml:id="t478">by</w>
+            <w xml:id="t479">the</w>
+            <w xml:id="t480">Greco-Italic</w>
+            <w xml:id="t481">world</w>
+            <w xml:id="t482">upon</w>
+            <w xml:id="t483">which</w>
+            <w xml:id="t484">they</w>
+            <w xml:id="t485">were</w>
+            <w xml:id="t486">economically</w>
+            <w xml:id="t487">dependent</w>
+            <w xml:id="t488">.</w>
+            <w xml:id="t489">This</w>
+            <w xml:id="t490">situation</w>
+            <w xml:id="t491">could</w>
+            <w xml:id="t492">have</w>
+            <w xml:id="t493">led</w>
+            <w xml:id="t494">to</w>
+            <w xml:id="t495">conflicts</w>
+            <w xml:id="t496">attested</w>
+            <w xml:id="t497">by</w>
+            <w xml:id="t498">the</w>
+            <w xml:id="t499">ancient</w>
+            <w xml:id="t500">authors</w>
+            <w xml:id="t501">.</w>
+          </hi>
+        </p>
+      </div>
+    </front>
+    <body>
+      <p/>
+    </body>
+    <back>
+      <div type="notes"/>
+    </back>
+  </text>
+</TEI>

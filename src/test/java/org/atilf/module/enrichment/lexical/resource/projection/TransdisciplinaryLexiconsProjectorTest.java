@@ -1,8 +1,9 @@
 package org.atilf.module.enrichment.lexical.resource.projection;
 
-import org.atilf.resources.enrichment.LexicalResourceProjectionResources;
 import org.atilf.models.enrichment.MorphologyOffsetId;
 import org.atilf.models.enrichment.MultiWordsOffsetId;
+import org.atilf.resources.enrichment.ResourceProjection;
+import org.atilf.resources.enrichment.TransdisciplinaryResourceProjection;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -10,21 +11,25 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.atilf.resources.enrichment.LexicalResourceProjectionResources.LST_TYPE;
+import static org.atilf.runner.TermithResourceManager.TermithResource;
+import static org.atilf.runner.TermithResourceManager.addToClasspath;
 
 /**
  * Created by Simon Meoni on 13/06/17.
  */
 public class TransdisciplinaryLexiconsProjectorTest {
 
-    private static LexicalResourceProjectionResources lexicalResourceProjectionResources = new
-            LexicalResourceProjectionResources("termith-resources/fr/lexical_resources/TransdisciplinaryResource.json", LST_TYPE);
+    private static ResourceProjection resourceProjection;
     private static List<MorphologyOffsetId> morphologyOffsetIds = new ArrayList<>();
     private static List<MultiWordsOffsetId> transdisciplinaryOffsetIds = new ArrayList<>();
 
 
     @BeforeClass
-    public static void setUp(){
+    public static void setUp() throws Exception {
+        TermithResource.setLang("fr");
+        addToClasspath("src/main/resources/termith-resources");
+        resourceProjection = new TransdisciplinaryResourceProjection(TermithResource.LST.getPath());
+
         morphologyOffsetIds.add(new MorphologyOffsetId(0,0,"le","",1));
         morphologyOffsetIds.add(new MorphologyOffsetId(0,0,"chat","",2));
         morphologyOffsetIds.add(new MorphologyOffsetId(0,0,"mange","",3));
@@ -43,7 +48,7 @@ public class TransdisciplinaryLexiconsProjectorTest {
 
     @Test
     public void execute() throws Exception {
-        new TransdisciplinaryLexiconsProjector("", morphologyOffsetIds, transdisciplinaryOffsetIds, lexicalResourceProjectionResources)
+        new TransdisciplinaryLexiconsProjector("", morphologyOffsetIds, transdisciplinaryOffsetIds, resourceProjection)
                 .execute();
         String expectedId = "[1, 39, 428]";
         List<Integer> observedId = new ArrayList<>();
