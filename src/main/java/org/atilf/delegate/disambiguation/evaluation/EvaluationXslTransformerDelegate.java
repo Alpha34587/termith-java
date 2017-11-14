@@ -40,7 +40,7 @@ public class EvaluationXslTransformerDelegate extends Delegate {
         super.initialize(execution);
         _evaluationPath = getFlowableVariable("evaluationPath",null);
         _learningPath = getFlowableVariable("learningPath",null);
-        _outputPath = getFlowableVariable("outputPath",null);
+        _outputPath = getFlowableVariable("out",null);
     }
 
     @Override

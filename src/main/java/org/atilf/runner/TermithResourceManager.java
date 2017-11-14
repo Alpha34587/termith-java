@@ -47,6 +47,7 @@ public class TermithResourceManager {
         LST("[LANG]/lexical_resources/TransdisciplinaryResource.json");
         private String _path;
         private static String _lang = "en";
+
         TermithResource(String path) {
             _path = path;
         }

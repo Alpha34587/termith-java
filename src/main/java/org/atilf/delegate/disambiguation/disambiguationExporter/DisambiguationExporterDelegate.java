@@ -21,8 +21,8 @@ import java.util.concurrent.TimeUnit;
 
 public class DisambiguationExporterDelegate extends Delegate {
 
-    Path _evaluationPath;
-    Path _outputPath;
+    private Path _evaluationPath;
+    private Path _outputPath;
 
     public void setEvaluationPath(Path evaluationPath) {
         _evaluationPath = evaluationPath;
