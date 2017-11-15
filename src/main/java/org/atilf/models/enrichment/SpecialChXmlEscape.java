@@ -9,19 +9,19 @@ import java.util.concurrent.ConcurrentHashMap;
  *         Created on 29/09/16.
  */
 public class SpecialChXmlEscape {
-    protected final static Map<String, String> XML_SPEC_CH = new ConcurrentHashMap<>();
+    protected final static Map<String, String> SPEC_CH = new ConcurrentHashMap<>();
 
-    private SpecialChXmlEscape() {
+    SpecialChXmlEscape() {
         throw new IllegalAccessError("Utility class");
     }
 
     static {
-        XML_SPEC_CH.put("\"", "&quot;");
-        XML_SPEC_CH.put("&", "&amp;");
-        XML_SPEC_CH.put("'", "&apos;");
-        XML_SPEC_CH.put("<", "&lt;");
-        XML_SPEC_CH.put(">", "&gt;");
-        XML_SPEC_CH.put("<unknown>", "@unknown");
+        SPEC_CH.put("\"", "&quot;");
+        SPEC_CH.put("&", "&amp;");
+        SPEC_CH.put("'", "&apos;");
+        SPEC_CH.put("<", "&lt;");
+        SPEC_CH.put(">", "&gt;");
+        SPEC_CH.put("<unknown>", "@unknown");
     }
 
     /**
@@ -29,9 +29,9 @@ public class SpecialChXmlEscape {
      * @param ch the character
      * @return the converted character
      */
-    public static String replaceXmlChar(String ch){
+    public static String replaceChar(String ch){
         String res = "";
-        for (Map.Entry <String,String> entry : XML_SPEC_CH.entrySet()){
+        for (Map.Entry <String,String> entry : SPEC_CH.entrySet()){
             res = ch.replace(entry.getKey(),entry.getValue());
         }
         return res;

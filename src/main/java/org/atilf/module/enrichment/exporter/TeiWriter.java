@@ -1,7 +1,8 @@
 package org.atilf.module.enrichment.exporter;
 
 import org.atilf.models.TermithIndex;
-import org.atilf.models.enrichment.*;
+import org.atilf.models.enrichment.MorphologyOffsetId;
+import org.atilf.models.enrichment.MultiWordsOffsetId;
 import org.atilf.module.Module;
 import org.atilf.module.tools.FilesUtils;
 import org.atilf.resources.enrichment.StandOffResources;
@@ -15,7 +16,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
-import static org.atilf.models.enrichment.SpecialChXmlEscape.replaceXmlChar;
+import static org.atilf.models.enrichment.SpecialChXmlEscape.replaceChar;
 
 /**
  * export result to tei/standOff annotation
@@ -235,7 +236,7 @@ public class TeiWriter extends Module{
             StringBuilder entry = new StringBuilder(spanTemplate);
             replaceTemplate(entry,"@target", serializeId(token.getIds()));
             replaceTemplate(entry, "@corresp", String.valueOf(token.getTermId()));
-            replaceTemplate(entry, "@string", replaceXmlChar(token.getWord()));
+            replaceTemplate(entry, "@string", replaceChar(token.getWord()));
             _bufferedWriter.append(entry);
         }
         /*
@@ -301,7 +302,7 @@ public class TeiWriter extends Module{
              */
             StringBuilder entry = new StringBuilder(StandOffResources.MS_SPAN);
             replaceTemplate(entry, "@target", serializeId(token.getIds()));
-            replaceTemplate(entry, "@lemma", replaceXmlChar(token.getLemma()));
+            replaceTemplate(entry, "@lemma", replaceChar(token.getLemma()));
             replaceTemplate(entry, "@pos", token.getTag());
             _bufferedWriter.append(entry);
         }
