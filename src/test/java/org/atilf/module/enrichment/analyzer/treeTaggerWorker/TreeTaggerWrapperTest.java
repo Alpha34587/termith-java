@@ -1,14 +1,11 @@
 package org.atilf.module.enrichment.analyzer.treeTaggerWorker;
 
 import org.atilf.models.enrichment.TreeTaggerParameter;
-import org.junit.*;
+import org.junit.Assert;
+import org.junit.BeforeClass;
+import org.junit.ClassRule;
+import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
-
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.util.Map;
-
-import static org.junit.Assert.*;
 
 /**
  * Created by Simon Meoni on 20/07/17.
@@ -29,7 +26,6 @@ public class TreeTaggerWrapperTest {
         );
     }
 
-    @Ignore
     @Test
     public void execute() throws Exception {
         _treeTaggerWrapper.execute();

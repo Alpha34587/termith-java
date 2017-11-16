@@ -25,7 +25,7 @@ public class CorpusMapperDelegate extends Delegate {
     @Override
     public void initialize(DelegateExecution execution) {
         super.initialize(execution);
-        _outputPath = getFlowableVariable("output",null);
+        _outputPath = getFlowableVariable("out",null);
     }
 
     /**

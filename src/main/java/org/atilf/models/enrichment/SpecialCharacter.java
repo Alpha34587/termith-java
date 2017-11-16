@@ -26,12 +26,9 @@ public class SpecialCharacter extends SpecialChXmlEscape{
      */
     public static String replaceChar(String ch){
         String[] splitCh = ch.split("");
-        List<String> stringStream = Stream.of(splitCh).map(el -> {
-            if (SPEC_CH.containsKey(ByteBuffer.wrap(el.getBytes())))
-                return SPEC_CH.get(ByteBuffer.wrap(el.getBytes()));
-            else
-                return el;
-        }).collect(Collectors.toList());
+        List<String> stringStream = Stream.of(splitCh)
+                .map(el -> SPEC_CH.getOrDefault(ByteBuffer.wrap(el.getBytes()), el))
+                .collect(Collectors.toList());
 
         return String.join("",stringStream);
     }

@@ -21,7 +21,6 @@ public class TextExtractorDelegateTest extends IntegrationTasks {
     @Before
     public void setUp() throws Exception {
         TermithResourceManager.addToClasspath("src/main/resources/termith-resources");
-        _e.setBase(_temporaryFolder.getRoot().toPath());
         _e.setOutput(_temporaryFolder.getRoot().toPath());
         for (int i = 0; i < 100; i++ ){
             Files.copy(

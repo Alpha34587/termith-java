@@ -26,7 +26,7 @@ public class SpecialCharacterTranslatorDelegate extends Delegate {
     public void initialize(DelegateExecution execution) {
         super.initialize(execution);
         _base = getFlowableVariable("base",null);
-        _outputPath = getFlowableVariable("output",null);
+        _outputPath = getFlowableVariable("out",null);
     }
     /**
      * executeTasks the extraction text task with the help of inner InitializerWorker class
