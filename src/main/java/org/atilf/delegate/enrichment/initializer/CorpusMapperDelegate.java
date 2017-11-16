@@ -7,7 +7,6 @@ import org.flowable.engine.delegate.DelegateExecution;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -17,16 +16,16 @@ import java.util.concurrent.TimeUnit;
  */
 public class CorpusMapperDelegate extends Delegate {
 
-    private Path _base;
+    private Path _outputPath;
 
-    public void setBase(Path base) {
-        _base = base;
+    public void setOutputPath(Path outputPath) {
+        _outputPath = outputPath;
     }
 
     @Override
     public void initialize(DelegateExecution execution) {
         super.initialize(execution);
-        _base = getFlowableVariable("base",null);
+        _outputPath = getFlowableVariable("output",null);
     }
 
     /**
@@ -39,7 +38,7 @@ public class CorpusMapperDelegate extends Delegate {
         /*
         extract the text and map the path of the corpus into hashMap with identifier
          */
-        Files.list(_base).forEach(
+        Files.list(_outputPath).filter(el -> el.toString().contains(".xml")).forEach(
                 p -> _executorService.submit(new CorpusMapper(p, _termithIndex))
         );
         _logger.info("Waiting initCorpusWorker executors to finish");

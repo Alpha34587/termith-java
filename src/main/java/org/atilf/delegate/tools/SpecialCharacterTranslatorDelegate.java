@@ -39,7 +39,7 @@ public class SpecialCharacterTranslatorDelegate extends Delegate {
         /*
         extract the text and map the path of the corpus into hashMap with identifier
          */
-        Files.list(_base).forEach(
+        Files.list(_base).filter(el -> el.toString().contains(".xml")).forEach(
                 p -> _executorService.submit(new SpecialCharacterTranslator(p, _outputPath ,_termithIndex))
         );
         _logger.info("Waiting SpecialCharacterTranslator executors to finish");

@@ -28,7 +28,7 @@ public class SpecialCharacterTranslator extends Module {
             BufferedReader br = new BufferedReader(fr);
 
             while(br.ready()) {
-                fw.write(SpecialCharacter.replaceChar(br.readLine()));
+                fw.write(SpecialCharacter.replaceChar(br.readLine()) + "\n");
             }
 
             fw.close();

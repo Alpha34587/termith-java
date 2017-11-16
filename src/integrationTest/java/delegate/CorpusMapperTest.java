@@ -18,7 +18,7 @@ public class CorpusMapperTest extends IntegrationTasks {
 
     @Before
     public void setUp() throws Exception {
-        _c.setBase(Paths.get("/home/smeoni/IdeaProjects/termITH/src/integrationTest/resources/evaluationExtractor"));
+        _c.setOutputPath(Paths.get("/home/smeoni/IdeaProjects/termITH/src/integrationTest/resources/evaluationExtractor"));
     }
     @Test
     public void executeTasks() throws Exception {
