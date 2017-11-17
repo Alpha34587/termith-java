@@ -14,6 +14,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+import static org.atilf.module.tools.FilesUtils.FileToString;
+
 public class TermithTreeTaggerCLITest {
 
     @Rule
@@ -26,15 +28,17 @@ public class TermithTreeTaggerCLITest {
                 "src/integrationTest/resources/termithTreeTagger/base",
                 "fr",
                 _temporaryFolder.getRoot().toString()
-                );
+        );
 
-        Files.list(_temporaryFolder.getRoot().toPath()).filter(el -> el.endsWith(".xml")).forEach(file -> {
+        Files.list(Paths.get("src/integrationTest/resources/termithTreeTagger/out")).forEach(file -> {
             try {
-                XMLAssert.assertXMLEqual("these xml files must be equals",
-                        Files.readAllLines(file.toAbsolutePath()).toString(),
-                        Files.readAllLines(
-                                Paths.get("src/integrationTest/resources/termithTreeTagger/out/" + file.getFileName())
-                        ).toString());
+                XMLAssert.assertXMLEqual(
+                        "these xml files must be equals",
+                        FileToString(
+                                Paths.get(_temporaryFolder.getRoot().toString() +
+                                        "/" + file.getFileName().toString())
+                        ),
+                        FileToString(file.toAbsolutePath()));
             } catch (SAXException | IOException e) {
                 e.printStackTrace();
             }
@@ -55,13 +59,13 @@ public class TermithTreeTaggerCLITest {
                 resultPath.toString()
         );
 
-        Files.list(_temporaryFolder.getRoot().toPath()).filter(el -> el.endsWith(".xml")).forEach(file -> {
+        Files.list(Paths.get("src/integrationTest/resources/termithTreeTagger/base")).forEach(file -> {
             try {
-                XMLAssert.assertXMLEqual("these xml files must be equals",
-                        Files.readAllLines(file.toAbsolutePath()).toString(),
-                        Files.readAllLines(
-                                Paths.get("src/integrationTest/resources/termithTreeTagger/out/" + file.getFileName())
-                        ).toString());
+                XMLAssert.assertXMLEqual(
+                        "these xml files must be equals",
+                        FileToString(file.toAbsolutePath()),
+                        FileToString(Paths.get(_temporaryFolder.getRoot().toString() +
+                                        "/" + file.getFileName().toString())));
             } catch (SAXException | IOException e) {
                 e.printStackTrace();
             }

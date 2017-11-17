@@ -8,6 +8,7 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -202,5 +203,19 @@ public class FilesUtils {
             LOGGER.error("error during create folder method : ",e);
         }
 
+    }
+
+    public static String FileToString(Path path){
+        List<String> lines = new ArrayList<>();
+        String StringifyFile;
+        try {
+            lines = Files.readAllLines(path);
+        } catch (IOException e) {
+            LOGGER.error("cannot read file !",e);
+        }
+        finally {
+             StringifyFile = String.join("\n",lines);
+        }
+        return StringifyFile;
     }
 }
