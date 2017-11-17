@@ -1,9 +1,9 @@
 package org.atilf.delegate.enrichment.initializer;
 
 import org.atilf.delegate.Delegate;
-import org.atilf.resources.enrichment.XslResources;
 import org.atilf.module.enrichment.initializer.TextExtractor;
 import org.atilf.monitor.timer.TermithProgressTimer;
+import org.atilf.resources.enrichment.XslResources;
 import org.flowable.engine.delegate.DelegateExecution;
 
 import java.io.IOException;
@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
-import static org.atilf.runner.TermithResourceManager.*;
+import static org.atilf.runner.TermithResourceManager.TermithResource;
 
 /**
  * Extract the plain text of an xml file and retained the xml corpus file path into a map
@@ -23,14 +23,7 @@ import static org.atilf.runner.TermithResourceManager.*;
  */
 public class TextExtractorDelegate extends Delegate {
 
-
-    private Path _base;
     private Path _output;
-
-
-    public void setBase(Path base) {
-        _base = base;
-    }
 
     public void setOutput(Path output) {
         _output = output;
@@ -39,7 +32,6 @@ public class TextExtractorDelegate extends Delegate {
     @Override
     public void initialize(DelegateExecution execution) {
         super.initialize(execution);
-        _base = getFlowableVariable("base",null);
         _output = getFlowableVariable("out",null);
     }
 
@@ -58,7 +50,7 @@ public class TextExtractorDelegate extends Delegate {
         /*
         extract the text and map the path of the corpus into hashMap with identifier
          */
-        Files.list(_base).forEach(
+        Files.list(_output).filter(el -> el.toString().contains(".xml")).forEach(
                 p -> futures.add(_executorService.submit(new TextExtractor(p.toFile(), _termithIndex,
                         _output,xslResources)))
         );

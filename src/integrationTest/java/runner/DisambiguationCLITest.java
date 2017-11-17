@@ -11,6 +11,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
+import static org.atilf.module.tools.FilesUtils.FileToString;
+
 public class DisambiguationCLITest {
     @Rule
     public TemporaryFolder _temporaryFolder = new TemporaryFolder();
@@ -24,11 +26,12 @@ public class DisambiguationCLITest {
                 "src/main/resources/termith-resources");
         Files.list(_temporaryFolder.getRoot().toPath()).filter(el -> el.endsWith(".xml")).forEach(file -> {
             try {
-                XMLAssert.assertXMLEqual("these xml files must be equals",
-                        Files.readAllLines(file.toAbsolutePath()).toString(),
-                        Files.readAllLines(
-                                Paths.get("src/integrationTest/resources/disambiguation/out/" + file.getFileName())
-                        ).toString());
+                XMLAssert.assertXMLEqual(
+                        "these xml files must be equals",
+                        FileToString(file.toAbsolutePath()),
+                        FileToString(Paths.get("src/integrationTest/resources/disambiguation/out/"
+                                + file.getFileName()))
+                );
             } catch (SAXException | IOException e) {
                 e.printStackTrace();
             }

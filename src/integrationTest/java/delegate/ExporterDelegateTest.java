@@ -18,6 +18,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.atilf.module.tools.FilesUtils.FileToString;
+
 public class ExporterDelegateTest extends IntegrationTasks {
 
     private ExporterDelegate _e = new ExporterDelegate();
@@ -109,13 +111,12 @@ public class ExporterDelegateTest extends IntegrationTasks {
     public void executeTasks() throws Exception {
         executeTasksTest(_e);
         Assert.assertEquals("these files must be equals",
-                String.join("\n",Files.readAllLines(
+                FileToString(
                         Paths.get("/home/smeoni/IdeaProjects/termITH/src/integrationTest/resources/exporterTei/test1.xml")
-                )),
-                String.join("\n",Files.readAllLines(
+                ),
+                FileToString(
                         Paths.get(_temporaryFolder.getRoot().toString() + "/test15.xml")
-                ))
-                );
+                ));
     }
 
 }
