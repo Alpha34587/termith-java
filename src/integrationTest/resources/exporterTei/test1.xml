@@ -47,7 +47,7 @@
 			<span target="#t1">
 			    <fs>
 			        <f name="lemma">
-			            <string>"</string>
+			            <string>&quot;</string>
 			        </f>
 			        <f name="pos">
 			            <symbol value="PUN:cit"/>

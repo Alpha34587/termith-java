@@ -2,6 +2,7 @@ package org.atilf.models.enrichment;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.stream.Stream;
 
 /**
  * this is an equivalence table used during the exportation to tei file
@@ -21,19 +22,16 @@ public class SpecialChXmlEscape {
         SPEC_CH.put("'", "&apos;");
         SPEC_CH.put("<", "&lt;");
         SPEC_CH.put(">", "&gt;");
-        SPEC_CH.put("<unknown>", "@unknown");
     }
 
     /**
      * replace a special character to a xml escape characters
-     * @param ch the character
+     * @param s the character
      * @return the converted character
      */
-    public static String replaceChar(String ch){
-        String res = "";
-        for (Map.Entry <String,String> entry : SPEC_CH.entrySet()){
-            res = ch.replace(entry.getKey(),entry.getValue());
-        }
-        return res;
+    public static String replaceChar(String s){
+        return Stream.of(s.split(""))
+                .map(c -> SPEC_CH.getOrDefault(c, c))
+                .reduce("", String::concat);
     }
 }

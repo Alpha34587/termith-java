@@ -1,10 +1,8 @@
 package org.atilf.models.enrichment;
 
 import java.nio.ByteBuffer;
-import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class SpecialCharacter extends SpecialChXmlEscape{
@@ -21,16 +19,13 @@ public class SpecialCharacter extends SpecialChXmlEscape{
 
     /**
      * replace a special character to a xml escape characters
-     * @param ch the character
+     * @param s the character
      * @return the converted character
      */
-    public static String replaceChar(String ch){
-        String[] splitCh = ch.split("");
-        List<String> stringStream = Stream.of(splitCh)
+    public static String replaceChar(String s){
+        return Stream.of(s.split(""))
                 .map(el -> SPEC_CH.getOrDefault(ByteBuffer.wrap(el.getBytes()), el))
-                .collect(Collectors.toList());
-
-        return String.join("",stringStream);
+                .reduce("", String::concat);
     }
 }
 

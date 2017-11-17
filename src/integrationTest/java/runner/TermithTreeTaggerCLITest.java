@@ -59,13 +59,17 @@ public class TermithTreeTaggerCLITest {
                 resultPath.toString()
         );
 
-        Files.list(Paths.get("src/integrationTest/resources/termithTreeTagger/base")).forEach(file -> {
+        Files.list(Paths.get("src/integrationTest/resources/termithTreeTagger/out")).forEach(file -> {
             try {
                 XMLAssert.assertXMLEqual(
                         "these xml files must be equals",
                         FileToString(file.toAbsolutePath()),
-                        FileToString(Paths.get(_temporaryFolder.getRoot().toString() +
-                                        "/" + file.getFileName().toString())));
+                        FileToString(
+                                Paths.get(_temporaryFolder.getRoot().toString() +
+                                        "/result/" +
+                                        file.getFileName().toString())
+                        )
+                );
             } catch (SAXException | IOException e) {
                 e.printStackTrace();
             }
