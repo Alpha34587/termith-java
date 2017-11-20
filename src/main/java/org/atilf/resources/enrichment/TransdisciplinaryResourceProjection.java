@@ -14,10 +14,11 @@ public class TransdisciplinaryResourceProjection extends ResourceProjection {
 
     @Override
     protected void parseResource(String resourcePath) {
-        boolean inWords = false;
-        int memForm = 0;
-        String memWord = "";
-        String memLibelle = "";
+        boolean inTtComponents = false;
+        boolean inForm = false;
+        int memId = 0;
+        String memTt = "";
+        String memLemma = "";
         try {
 
             JsonFactory jFactory = new JsonFactory();
@@ -25,28 +26,32 @@ public class TransdisciplinaryResourceProjection extends ResourceProjection {
 
             while (jParser.nextToken() != null) {
 
-                if (Objects.equals(jParser.getCurrentName(), "formeId")) {
-                    memForm = jParser.nextIntValue(0);
+                if (Objects.equals(jParser.getCurrentName(), "form")) {
+                    inForm = true;
                 }
 
-                else if (Objects.equals(jParser.getCurrentName(), "libelle")) {
-                    memLibelle = jParser.nextTextValue();
+                if (inForm && Objects.equals(jParser.getCurrentName(), "id")) {
+                    memId = jParser.nextIntValue(0);
                 }
-                else if (Objects.equals(jParser.getCurrentName(), "words") && jParser.getCurrentToken() == JsonToken
-                        .START_ARRAY) {
-                    inWords = true;
-                    memWord = "";
+
+                else if (inForm && Objects.equals(jParser.getCurrentName(), "lemma")) {
+                    memLemma = jParser.nextTextValue();
                 }
-                else if (Objects.equals(jParser.getCurrentName(), "formeTreeTagger") && inWords) {
-                    inWords = true;
-                    memWord += jParser.nextTextValue() + " ";
+                else if (Objects.equals(jParser.getCurrentName(), "tree_tagger_components")
+                        && jParser.getCurrentToken() == JsonToken.START_ARRAY) {
+                    inTtComponents = true;
+                    inForm = false;
+                    memTt = "";
                 }
-                else if(inWords && jParser.getCurrentToken() == JsonToken.END_ARRAY) {
-                    inWords = false;
+                else if (Objects.equals(jParser.getCurrentName(), "lemma") && inTtComponents) {
+                    memTt += jParser.nextTextValue() + " ";
                 }
-                else if(!inWords && jParser.getCurrentToken() == JsonToken.END_OBJECT){
-                    inWords = false;
-                    addToPhraseologyMap(memForm, memWord, memLibelle);
+                else if (inTtComponents && jParser.getCurrentToken() == JsonToken.END_ARRAY) {
+                    inTtComponents = false;
+                }
+                else if (!inForm && !inTtComponents && jParser.getCurrentToken() == JsonToken.END_OBJECT){
+                    inTtComponents = false;
+                    addToPhraseologyMap(memId, memTt, memLemma);
                 }
             }
 

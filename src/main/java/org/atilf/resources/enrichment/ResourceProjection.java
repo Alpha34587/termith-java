@@ -14,7 +14,7 @@ import java.util.*;
  */
 public class ResourceProjection {
 
-    private Map<String,List<Integer>> phraseologyIdMap = new HashMap<>();
+    private Map<String,List<Integer>> entryIdMap = new HashMap<>();
     private Map<String,String> multiWordsMap = new HashMap<>();
     protected final Logger _logger = LoggerFactory.getLogger(getClass().getName());
 
@@ -23,7 +23,7 @@ public class ResourceProjection {
     }
 
     public Map<String, List<Integer>> getResourceMap() {
-        return phraseologyIdMap;
+        return entryIdMap;
     }
 
     public Map<String, String> getMultiWordsMap() {
@@ -70,13 +70,13 @@ public class ResourceProjection {
         }
     }
 
-    protected void addToPhraseologyMap(int memForm, String memWord, String memLibelle) {
-        if (!phraseologyIdMap.containsKey(memWord.trim())){
-            phraseologyIdMap.put(memWord.trim(),new ArrayList<>());
+    void addToPhraseologyMap(int memForm, String memWord, String memLibelle) {
+        if (!entryIdMap.containsKey(memWord.trim())){
+            entryIdMap.put(memWord.trim(),new ArrayList<>());
             multiWordsMap.put(memWord.trim(),memLibelle);
         }
-        if (!phraseologyIdMap.get(memWord.trim()).contains(memForm)){
-            phraseologyIdMap.get(memWord.trim()).add(memForm);
+        if (!entryIdMap.get(memWord.trim()).contains(memForm)){
+            entryIdMap.get(memWord.trim()).add(memForm);
         }
     }
 }
