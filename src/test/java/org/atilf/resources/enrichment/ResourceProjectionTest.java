@@ -25,7 +25,7 @@ public class ResourceProjectionTest {
     public void parseResource() throws Exception {
         Assert.assertEquals(
                 "the phraseo resource must have this size : ",
-                53347,
+                70957,
                 rp.getResourceMap().values().stream().mapToInt(List::size).sum()
         );
     }

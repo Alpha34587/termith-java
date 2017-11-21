@@ -47,7 +47,7 @@ public class ResourceProjection {
                     inForm = true;
                 }
 
-                if (Objects.equals(jParser.getCurrentName(), "id") && inForm) {
+                if (Objects.equals(jParser.getCurrentName(), "sense_id") && inForm) {
                     memId = jParser.nextIntValue(0);
                 }
                 else if (Objects.equals(jParser.getCurrentName(), "textual_treetagger_form")) {

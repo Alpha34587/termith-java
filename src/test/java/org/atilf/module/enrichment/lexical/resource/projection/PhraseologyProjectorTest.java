@@ -1,8 +1,8 @@
 package org.atilf.module.enrichment.lexical.resource.projection;
 
-import org.atilf.resources.enrichment.ResourceProjection;
 import org.atilf.models.enrichment.MorphologyOffsetId;
 import org.atilf.models.enrichment.MultiWordsOffsetId;
+import org.atilf.resources.enrichment.ResourceProjection;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -10,15 +10,16 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.atilf.runner.TermithResourceManager.*;
+import static org.atilf.runner.TermithResourceManager.TermithResource;
+import static org.atilf.runner.TermithResourceManager.addToClasspath;
 
 /**
  * Created by Simon Meoni on 12/06/17.
  */
 public class PhraseologyProjectorTest {
-    private static ResourceProjection resourceProjection;
-    private static List<MorphologyOffsetId> morphologyOffsetIds = new ArrayList<>();
-    private static List<MultiWordsOffsetId> observedMultiWordsOffsetIds = new ArrayList<>();
+    private static ResourceProjection _resourceProjection;
+    private static List<MorphologyOffsetId> _morphologyOffsetIds = new ArrayList<>();
+    private static List<MultiWordsOffsetId> _observedMultiWordsOffsetIds = new ArrayList<>();
 
 
     @BeforeClass
@@ -26,30 +27,30 @@ public class PhraseologyProjectorTest {
         TermithResource.setLang("fr");
         addToClasspath("src/main/resources/termith-resources");
 
-        resourceProjection = new ResourceProjection(TermithResource.PHRASEOLOGY.getPath());
-        morphologyOffsetIds.add(new MorphologyOffsetId(0,0,"le","",1));
-        morphologyOffsetIds.add(new MorphologyOffsetId(0,0,"chat","",2));
-        morphologyOffsetIds.add(new MorphologyOffsetId(0,0,"mange","",3));
-        morphologyOffsetIds.add(new MorphologyOffsetId(0,0,"une","",4));
-        morphologyOffsetIds.add(new MorphologyOffsetId(0,0,"pizza","",5));
-        morphologyOffsetIds.add(new MorphologyOffsetId(0,0,"à","",6));
-        morphologyOffsetIds.add(new MorphologyOffsetId(0,0,"défaut","",7));
-        morphologyOffsetIds.add(new MorphologyOffsetId(0,0,"de","",8));
-        morphologyOffsetIds.add(new MorphologyOffsetId(0,0,"tomates","",9));
-        morphologyOffsetIds.add(new MorphologyOffsetId(0,0,"à","",10));
-        morphologyOffsetIds.add(new MorphologyOffsetId(0,0,"tout","",11));
-        morphologyOffsetIds.add(new MorphologyOffsetId(0,0,"le","",12));
-        morphologyOffsetIds.add(new MorphologyOffsetId(0,0,"moins","",13));
+        _resourceProjection = new ResourceProjection(TermithResource.PHRASEOLOGY.getPath());
+        _morphologyOffsetIds.add(new MorphologyOffsetId(0,0,"le","",1));
+        _morphologyOffsetIds.add(new MorphologyOffsetId(0,0,"chat","",2));
+        _morphologyOffsetIds.add(new MorphologyOffsetId(0,0,"mange","",3));
+        _morphologyOffsetIds.add(new MorphologyOffsetId(0,0,"une","",4));
+        _morphologyOffsetIds.add(new MorphologyOffsetId(0,0,"pizza","",5));
+        _morphologyOffsetIds.add(new MorphologyOffsetId(0,0,"à","",6));
+        _morphologyOffsetIds.add(new MorphologyOffsetId(0,0,"défaut","",7));
+        _morphologyOffsetIds.add(new MorphologyOffsetId(0,0,"de","",8));
+        _morphologyOffsetIds.add(new MorphologyOffsetId(0,0,"tomates","",9));
+        _morphologyOffsetIds.add(new MorphologyOffsetId(0,0,"à","",10));
+        _morphologyOffsetIds.add(new MorphologyOffsetId(0,0,"tout","",11));
+        _morphologyOffsetIds.add(new MorphologyOffsetId(0,0,"le","",12));
+        _morphologyOffsetIds.add(new MorphologyOffsetId(0,0,"moins","",13));
     }
 
     @Test
     public void execute() throws Exception {
-        new PhraseologyProjector("", morphologyOffsetIds, observedMultiWordsOffsetIds, resourceProjection).execute();
-        String expectedId = "[15303, 31180]";
+        new PhraseologyProjector("", _morphologyOffsetIds, _observedMultiWordsOffsetIds, _resourceProjection).execute();
+        String expectedId = "[2, 789]";
         List<Integer> observedId = new ArrayList<>();
         String expectedMorphoId = "[6, 7, 8, 10, 11, 12, 13]";
         List<Integer> observedMorphoId = new ArrayList<>();
-        observedMultiWordsOffsetIds.forEach(
+        _observedMultiWordsOffsetIds.forEach(
                 el -> {
                     observedId.add(el.getTermId());
                     observedMorphoId.addAll(el.getIds());
