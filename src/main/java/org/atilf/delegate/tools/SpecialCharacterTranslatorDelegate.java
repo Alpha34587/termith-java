@@ -12,21 +12,16 @@ import java.util.concurrent.TimeUnit;
 public class SpecialCharacterTranslatorDelegate extends Delegate {
 
     private Path _base;
-    private Path _outputPath;
 
     public void setBase(Path base) {
         _base = base;
     }
 
-    public void setOutputPath(Path outputPath) {
-        _outputPath = outputPath;
-    }
 
     @Override
     public void initialize(DelegateExecution execution) {
         super.initialize(execution);
         _base = getFlowableVariable("base",null);
-        _outputPath = getFlowableVariable("out",null);
     }
     /**
      * executeTasks the extraction text task with the help of inner InitializerWorker class
@@ -40,7 +35,7 @@ public class SpecialCharacterTranslatorDelegate extends Delegate {
         extract the text and map the path of the corpus into hashMap with identifier
          */
         Files.list(_base).filter(el -> el.toString().contains(".xml")).forEach(
-                p -> _executorService.submit(new SpecialCharacterTranslator(p, _outputPath ,_termithIndex))
+                p -> _executorService.submit(new SpecialCharacterTranslator(p,_termithIndex))
         );
         _logger.info("Waiting SpecialCharacterTranslator executors to finish");
         _logger.info("initCorpusWorker finished");

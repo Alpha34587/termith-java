@@ -1,5 +1,6 @@
 package delegate;
 
+import org.apache.commons.io.FileUtils;
 import org.atilf.delegate.tools.SpecialCharacterTranslatorDelegate;
 import org.custommonkey.xmlunit.XMLAssert;
 import org.junit.Before;
@@ -7,6 +8,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
 
+import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
@@ -19,8 +21,11 @@ public class SpecialCharacterDelegateTest extends IntegrationTasks {
 
     @Before
     public void setUp() throws Exception {
-        _s.setBase(Paths.get("/home/smeoni/IdeaProjects/termITH/src/integrationTest/resources/specialCharacterTranslator"));
-        _s.setOutputPath(_temporaryFolder.getRoot().toPath());
+        FileUtils.copyDirectory(
+                new File("src/integrationTest/resources/specialCharacterTranslator"),
+                _temporaryFolder.getRoot()
+        );
+        _s.setBase(_temporaryFolder.getRoot().toPath());
     }
     @Test
     public void executeTasks() throws Exception {

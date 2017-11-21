@@ -9,7 +9,7 @@ import org.junit.rules.TemporaryFolder;
 
 import java.nio.file.Paths;
 
-public class CorpusMapperTest extends IntegrationTasks {
+public class CorpusInitializerTest extends IntegrationTasks {
 
     private CorpusMapperDelegate _c = new CorpusMapperDelegate();
 
@@ -18,7 +18,8 @@ public class CorpusMapperTest extends IntegrationTasks {
 
     @Before
     public void setUp() throws Exception {
-        _c.setOutputPath(Paths.get("/home/smeoni/IdeaProjects/termITH/src/integrationTest/resources/evaluationExtractor"));
+        _c.setBase(Paths.get("/home/smeoni/IdeaProjects/termITH/src/integrationTest/resources/evaluationExtractor"));
+        _c.setOutputPath(_temporaryFolder.getRoot().toPath());
     }
     @Test
     public void executeTasks() throws Exception {

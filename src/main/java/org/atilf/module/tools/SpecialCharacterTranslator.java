@@ -5,23 +5,23 @@ import org.atilf.models.enrichment.SpecialCharacter;
 import org.atilf.module.Module;
 
 import java.io.*;
+import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 
 public class SpecialCharacterTranslator extends Module {
     private final File _file;
-    private Path _outputPath;
     private final TermithIndex _termithIndex;
 
-    public SpecialCharacterTranslator(Path p, Path outputPath, TermithIndex termithIndex) {
+    public SpecialCharacterTranslator(Path p, TermithIndex termithIndex) {
         _file = new File(p.toString());
-        _outputPath = outputPath;
         _termithIndex = termithIndex;
     }
 
     @Override
     protected void execute() {
         try {
-            File newFile = new File(_outputPath.toString() + "/" + _file.getName());
+            File newFile = new File(_file.toString() + ".new");
             FileWriter fw = new FileWriter(newFile);
 
             Reader fr = new FileReader(_file);
@@ -34,6 +34,7 @@ public class SpecialCharacterTranslator extends Module {
             fw.close();
             br.close();
             fr.close();
+            Files.move(newFile.toPath(), _file.toPath(), StandardCopyOption.REPLACE_EXISTING);
         } catch (IOException e) {
             _logger.error("could not write or read file",e);
         }

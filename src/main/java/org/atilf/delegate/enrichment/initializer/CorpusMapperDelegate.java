@@ -1,7 +1,7 @@
 package org.atilf.delegate.enrichment.initializer;
 
 import org.atilf.delegate.Delegate;
-import org.atilf.module.enrichment.initializer.CorpusMapper;
+import org.atilf.module.enrichment.initializer.CorpusInitializer;
 import org.flowable.engine.delegate.DelegateExecution;
 
 import java.io.IOException;
@@ -17,15 +17,21 @@ import java.util.concurrent.TimeUnit;
 public class CorpusMapperDelegate extends Delegate {
 
     private Path _outputPath;
+    private Path _base;
 
     public void setOutputPath(Path outputPath) {
         _outputPath = outputPath;
+    }
+
+    public void setBase(Path base) {
+        _base = base;
     }
 
     @Override
     public void initialize(DelegateExecution execution) {
         super.initialize(execution);
         _outputPath = getFlowableVariable("out",null);
+        _base = getFlowableVariable("base",null);
     }
 
     /**
@@ -38,8 +44,8 @@ public class CorpusMapperDelegate extends Delegate {
         /*
         extract the text and map the path of the corpus into hashMap with identifier
          */
-        Files.list(_outputPath).filter(el -> el.toString().contains(".xml")).forEach(
-                p -> _executorService.submit(new CorpusMapper(p, _termithIndex))
+        Files.list(_base).filter(el -> el.toString().contains(".xml")).forEach(
+                p -> _executorService.submit(new CorpusInitializer(p, _outputPath,_termithIndex))
         );
         _logger.info("Waiting initCorpusWorker executors to finish");
         _logger.info("initCorpusWorker finished");

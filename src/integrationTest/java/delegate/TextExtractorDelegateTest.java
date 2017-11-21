@@ -10,6 +10,7 @@ import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
 
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class TextExtractorDelegateTest extends IntegrationTasks {
@@ -23,10 +24,12 @@ public class TextExtractorDelegateTest extends IntegrationTasks {
         TermithResourceManager.addToClasspath("src/main/resources/termith-resources");
         _e.setOutput(_temporaryFolder.getRoot().toPath());
         for (int i = 0; i < 100; i++ ){
+            Path xml = Paths.get(_temporaryFolder.getRoot() + "/test" + i + ".xml");
             Files.copy(
                     Paths.get("/home/smeoni/IdeaProjects/termITH/src/integrationTest/resources/textExtractor/test1.xml"),
-                    Paths.get(_temporaryFolder.getRoot() + "/test" + i + ".xml")
+                    xml
             );
+            _termithIndex.getXmlCorpus().put("test80", xml);
         }
     }
 

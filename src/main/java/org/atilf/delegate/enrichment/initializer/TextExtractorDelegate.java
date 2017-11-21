@@ -7,7 +7,6 @@ import org.atilf.resources.enrichment.XslResources;
 import org.flowable.engine.delegate.DelegateExecution;
 
 import java.io.IOException;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
@@ -50,8 +49,8 @@ public class TextExtractorDelegate extends Delegate {
         /*
         extract the text and map the path of the corpus into hashMap with identifier
          */
-        Files.list(_output).filter(el -> el.toString().contains(".xml")).forEach(
-                p -> futures.add(_executorService.submit(new TextExtractor(p.toFile(), _termithIndex,
+        _termithIndex.getXmlCorpus().forEach(
+                (key,value) -> futures.add(_executorService.submit(new TextExtractor(key, _termithIndex,
                         _output,xslResources)))
         );
         new TermithProgressTimer(futures,this.getClass(),_executorService).start();

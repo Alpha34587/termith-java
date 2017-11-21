@@ -1,9 +1,9 @@
 package org.atilf.module.enrichment.initializer;
 
 import org.atilf.models.TermithIndex;
-import org.atilf.resources.enrichment.XslResources;
 import org.atilf.module.Module;
 import org.atilf.module.tools.FilesUtils;
+import org.atilf.resources.enrichment.XslResources;
 
 import javax.xml.transform.Source;
 import javax.xml.transform.Transformer;
@@ -21,6 +21,7 @@ import java.nio.file.Path;
  * Created on 25/07/16.
  */
 public class TextExtractor extends Module {
+    private String _fileName;
     private File _file;
     private Path _out;
     private XslResources _xslResources;
@@ -28,14 +29,15 @@ public class TextExtractor extends Module {
 
     /**
      * constructor for textExtractor
-     * @param file Treated xml/tei _file
+     * @param fileName Treated xml/tei _file
      * @param xslResources contains the parsed xsl stylesheet
      * @param termithIndex the termithIndex of a process
      */
-    public TextExtractor(File file, TermithIndex termithIndex, Path out, XslResources xslResources) {
+    public TextExtractor(String fileName, TermithIndex termithIndex, Path out, XslResources xslResources) {
         super(termithIndex);
-        _file = file;
+        _file = termithIndex.getXmlCorpus().get(fileName).toFile();
         _out = out;
+        _fileName = fileName;
         _xslResources = xslResources;
     }
 
@@ -107,13 +109,14 @@ public class TextExtractor extends Module {
                 /*
                 put the result into the extractedText Map
                  */
-                _termithIndex.getExtractedText().put(FilesUtils.nameNormalizer(_file.toString()),
+                _termithIndex.getExtractedText().put(
+                        _fileName,
                         FilesUtils.writeObject(_extractedText, _out));
             }
 
             else {
                 _logger.info("{} has empty body",_file);
-                _termithIndex.getXmlCorpus().remove(FilesUtils.nameNormalizer(_file.toString()));
+                _termithIndex.getXmlCorpus().remove(_fileName);
             }
             _logger.debug("Extraction done for file: {}",_file);
         } catch (IOException e) {
