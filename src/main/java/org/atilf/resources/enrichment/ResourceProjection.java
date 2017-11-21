@@ -31,10 +31,11 @@ public class ResourceProjection {
     }
 
     protected void parseResource(String resourcePath) {
-        boolean inWords = false;
-        int memForm = 0;
-        String memWord = "";
-        String memLibelle = "";
+        boolean inTtComponents = false;
+        boolean inForm = false;
+        int memId = 0;
+        String memTtComponents = "";
+        String memTextualTt = "";
         try {
 
             JsonFactory jFactory = new JsonFactory();
@@ -42,28 +43,31 @@ public class ResourceProjection {
 
             while (jParser.nextToken() != null) {
 
-                if (Objects.equals(jParser.getCurrentName(), "phraseoEntryId")) {
-                    memForm = Integer.parseInt(jParser.nextTextValue().split("_")[1]);
+                if (Objects.equals(jParser.getCurrentName(), "form")) {
+                    inForm = true;
                 }
-                else if (Objects.equals(jParser.getCurrentName(), "libelle")) {
-                    memLibelle = jParser.nextTextValue();
+
+                if (Objects.equals(jParser.getCurrentName(), "id") && inForm) {
+                    memId = jParser.nextIntValue(0);
                 }
-                else if (Objects.equals(jParser.getCurrentName(), "words") && jParser.getCurrentToken() == JsonToken
+                else if (Objects.equals(jParser.getCurrentName(), "textual_treetagger_form")) {
+                    memTextualTt = jParser.nextTextValue();
+                }
+                else if (Objects.equals(jParser.getCurrentName(), "tree_tagger_components") && jParser.getCurrentToken() == JsonToken
                         .START_ARRAY) {
-                    inWords = true;
-                    memWord = "";
+                    inTtComponents = true;
+                    memTtComponents = "";
                 }
-                else if (Objects.equals(jParser.getCurrentName(), "formeTreeTagger") && inWords) {
-                    memWord += jParser.nextTextValue() + " ";
+                else if (Objects.equals(jParser.getCurrentName(), "lemma") && inTtComponents) {
+                    memTtComponents += jParser.nextTextValue() + " ";
                 }
-                else if(inWords && jParser.getCurrentToken() == JsonToken.END_ARRAY) {
-                    inWords = false;
-                    addToPhraseologyMap(memForm, memWord, memLibelle);
+                else if(inTtComponents && jParser.getCurrentToken() == JsonToken.END_ARRAY) {
+                    inForm = false;
+                    inTtComponents = false;
+                    addToPhraseologyMap(memId, memTtComponents, memTextualTt);
                 }
             }
-
             jParser.close();
-
         }
         catch (IOException e) {
             _logger.error("cannot parse json file",e);
