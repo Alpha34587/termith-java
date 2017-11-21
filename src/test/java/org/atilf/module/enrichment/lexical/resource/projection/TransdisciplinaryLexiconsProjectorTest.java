@@ -50,7 +50,7 @@ public class TransdisciplinaryLexiconsProjectorTest {
     public void execute() throws Exception {
         new TransdisciplinaryLexiconsProjector("", morphologyOffsetIds, transdisciplinaryOffsetIds, resourceProjection)
                 .execute();
-        String expectedId = "[1, 39, 428]";
+        String expectedId = "[1656, 1749, 2]";
         List<Integer> observedId = new ArrayList<>();
         String expectedMorphoId = "[6, 7, 10, 11, 14]";
         List<Integer> observedMorphoId = new ArrayList<>();
@@ -62,7 +62,7 @@ public class TransdisciplinaryLexiconsProjectorTest {
 
         );
 
-        Assert.assertEquals("this two list of ids must be equals", observedId.toString(), expectedId);
+        Assert.assertEquals("this two list of ids must be equals", expectedId, observedId.toString());
         Assert.assertEquals("this two list of morphologies ids  must be  equals",
                 observedMorphoId.toString(),
                 expectedMorphoId);

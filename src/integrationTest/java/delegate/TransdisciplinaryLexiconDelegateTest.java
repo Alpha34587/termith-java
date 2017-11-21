@@ -52,7 +52,7 @@ public class TransdisciplinaryLexiconDelegateTest extends IntegrationTasks{
     public void execute() throws Exception {
         executeTasksTest(_p);
 
-        String expectedId = "[1, 39, 428]";
+        String expectedId = "[1656, 1749, 2]";
         List<Integer> observedId = new ArrayList<>();
         String expectedMorphoId = "[6, 7, 10, 11, 14]";
         List<Integer> observedMorphoId = new ArrayList<>();

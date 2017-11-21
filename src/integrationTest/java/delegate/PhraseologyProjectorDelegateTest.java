@@ -4,7 +4,10 @@ import org.atilf.delegate.enrichment.lexical.resource.projection.PhraseologyProj
 import org.atilf.models.enrichment.MorphologyOffsetId;
 import org.atilf.module.tools.FilesUtils;
 import org.atilf.runner.TermithResourceManager;
-import org.junit.*;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Rule;
+import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
 
 import java.util.ArrayList;
@@ -48,7 +51,7 @@ public class PhraseologyProjectorDelegateTest extends IntegrationTasks {
     public void execute() throws Exception {
         executeTasksTest(_p);
 
-        String expectedId = "[15303, 31180]";
+        String expectedId = "[2, 789]";
         List<Integer> observedId = new ArrayList<>();
         String expectedMorphoId = "[6, 7, 8, 10, 11, 12, 13]";
         List<Integer> observedMorphoId = new ArrayList<>();
