@@ -26,6 +26,7 @@ public class MorphologySerializer {
     private String _jsonPath;
     private TextAnalyzer _textAnalyzer;
     private final Logger LOGGER = LoggerFactory.getLogger(MorphologySerializer.class.getName());
+    private TagNormalizer _tagNormalizer;
 
 
     /**
@@ -36,8 +37,9 @@ public class MorphologySerializer {
      * @param textAnalyzer the termsuite json metadata
      */
     public MorphologySerializer(StringBuilder treeTaggerOutput, String jsonPath, StringBuilder txt,
-                                TextAnalyzer textAnalyzer) {
+                                TextAnalyzer textAnalyzer, TagNormalizer tagNormalizer) {
         Collections.addAll(_tokenDeque, treeTaggerOutput.toString().split("\n"));
+        _tagNormalizer = tagNormalizer;
         _txt = txt;
         _jsonPath = jsonPath;
         _textAnalyzer = textAnalyzer;
@@ -160,7 +162,7 @@ public class MorphologySerializer {
      */
     private void addCat(String token, JsonGenerator jg) throws IOException {
         jg.writeFieldName("cat");
-        jg.writeString(TagNormalizer.normalize(token));
+        jg.writeString(_tagNormalizer.normalize(token));
     }
 
     /**
