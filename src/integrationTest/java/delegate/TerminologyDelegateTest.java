@@ -15,7 +15,7 @@ public class TerminologyDelegateTest extends IntegrationTasks {
 
     private TerminologyParserDelegate _t = new TerminologyParserDelegate();
     private List<String> _expectedFile = new ArrayList<>();
-    HashMap<String, List<String>> _expected = new HashMap<>();
+    private HashMap<String, List<String>> _expected = new HashMap<>();
 
     @Before
     public void setUp(){

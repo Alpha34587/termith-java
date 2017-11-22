@@ -54,10 +54,10 @@ public class TextExtractorDelegate extends Delegate {
                         _output,xslResources)))
         );
         new TermithProgressTimer(futures,this.getClass(),_executorService).start();
-        _logger.info("Waiting initCorpusWorker executors to finish");
-        _logger.info("initCorpusWorker finished");
+        _logger.info("Waiting text Extractor tasks executors to finish");
         _executorService.shutdown();
         _executorService.awaitTermination(1L, TimeUnit.DAYS);
+        _logger.info("Text Extractor tasks is finished");
     }
 
 }
