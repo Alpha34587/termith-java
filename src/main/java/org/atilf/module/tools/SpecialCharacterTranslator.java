@@ -6,15 +6,16 @@ import org.atilf.module.Module;
 
 import java.io.*;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 
 public class SpecialCharacterTranslator extends Module {
     private final File _file;
+    private final String _fileName;
     private final TermithIndex _termithIndex;
 
-    public SpecialCharacterTranslator(Path p, TermithIndex termithIndex) {
-        _file = new File(p.toString());
+    public SpecialCharacterTranslator(String fileName, TermithIndex termithIndex) {
+        _file = termithIndex.getXmlCorpus().get(fileName).toFile();
+        _fileName = fileName;
         _termithIndex = termithIndex;
     }
 
@@ -28,13 +29,14 @@ public class SpecialCharacterTranslator extends Module {
             BufferedReader br = new BufferedReader(fr);
 
             while(br.ready()) {
-                fw.write(SpecialCharacter.replaceChar(br.readLine()) + "\n");
+                fw.write(SpecialCharacter.replaceChar(br.readLine() + "\n"));
             }
 
             fw.close();
             br.close();
             fr.close();
             Files.move(newFile.toPath(), _file.toPath(), StandardCopyOption.REPLACE_EXISTING);
+            _logger.info("the task for file: {} is finished", _fileName);
         } catch (IOException e) {
             _logger.error("could not write or read file",e);
         }

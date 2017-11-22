@@ -25,7 +25,10 @@ public class SpecialCharacterDelegateTest extends IntegrationTasks {
                 new File("src/integrationTest/resources/specialCharacterTranslator"),
                 _temporaryFolder.getRoot()
         );
-        _s.setBase(_temporaryFolder.getRoot().toPath());
+        Files.list(Paths.get(_temporaryFolder.getRoot().toString()))
+                .filter(el -> el.toString().contains(".xml")).
+                forEach(el -> _termithIndex.getXmlCorpus().put(el.toString(), el.toAbsolutePath())
+        );
     }
     @Test
     public void executeTasks() throws Exception {
