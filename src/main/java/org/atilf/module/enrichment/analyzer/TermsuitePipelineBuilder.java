@@ -8,14 +8,13 @@ import eu.project.ttc.tools.TermSuitePipeline;
 import eu.project.ttc.tools.cli.TermSuiteCLIUtils;
 import org.atilf.models.TermithIndex;
 import org.atilf.module.Module;
-import org.atilf.runner.TermithResourceManager;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-import static org.atilf.runner.TermithResourceManager.*;
+import static org.atilf.runner.TermithResourceManager.TermithResource;
 
 /**
  * build a termsuite pipeline and run it.
@@ -57,11 +56,12 @@ public class TermsuitePipelineBuilder extends Module {
                 .setCollection(
                         TermSuiteCollection.JSON,
                         _jsonCorpus,
-                        "UTF-8")
-
+                        "UTF-8"
+                )
                 /*
                 find term candidate
                  */
+                .aeWordTokenizer()
                 .aeUrlFilter()
                 .aeStemmer()
                 .aeStopWordsFilter()
@@ -110,8 +110,8 @@ public class TermsuitePipelineBuilder extends Module {
      */
     private void init() {
 
-        _termithIndex.getTerminologies().add(Paths.get(_jsonCorpus.replace("json","") + "/" + "terminology.tbx"));
-        _termithIndex.getTerminologies().add(Paths.get(_jsonCorpus.replace("json","") + "/" + "terminology.json"));
+        _termithIndex.getTerminologies().add(Paths.get(_outputPath + "/" + "terminology.tbx"));
+        _termithIndex.getTerminologies().add(Paths.get(_outputPath + "/" + "terminology.json"));
     }
 
 
