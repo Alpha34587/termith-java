@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
  * @author Simon Meoni
  * Created on 25/07/16.
  */
-public class CorpusMapperDelegate extends Delegate {
+public class CorpusInitializerDelegate extends Delegate {
 
     private Path _outputPath;
     private Path _base;
@@ -48,9 +48,9 @@ public class CorpusMapperDelegate extends Delegate {
                 p -> _executorService.submit(new CorpusInitializer(p, _outputPath,_termithIndex))
         );
         _logger.info("Waiting initCorpusWorker executors to finish");
-        _logger.info("initCorpusWorker finished");
         _executorService.shutdown();
         _executorService.awaitTermination(1L, TimeUnit.DAYS);
+        _logger.info("initCorpusWorker finished");
     }
 
 }
