@@ -12,13 +12,12 @@ import org.junit.rules.TemporaryFolder;
  */
 public class TreeTaggerWrapperTest {
     private static TreeTaggerWrapper _treeTaggerWrapper;
-    private final static String TREETAGGERHOME =  "/opt/treetagger";
     @ClassRule
     public static TemporaryFolder _temporaryFolder = new TemporaryFolder();
     @BeforeClass
     public static void setUp() throws Exception {
         String getenv = System.getenv("TREETAGGER_HOME");
-        TreeTaggerParameter treeTaggerParameter = new TreeTaggerParameter(false, "fr", TREETAGGERHOME);
+        TreeTaggerParameter treeTaggerParameter = new TreeTaggerParameter(false, "fr", getenv);
         _treeTaggerWrapper = new TreeTaggerWrapper(
                 new StringBuilder("le chat"),
                 treeTaggerParameter,

@@ -63,6 +63,7 @@ public class MorphologySerializer {
         writeText(jg);
         jg.writeEndObject();
         jg.flush();
+        writer.flush();
         writer.close();
         LOGGER.debug("write file {}",_jsonPath);
     }
@@ -220,7 +221,7 @@ public class MorphologySerializer {
             }
         }
         catch (ArrayIndexOutOfBoundsException e){
-            LOGGER.error("problem : " + word, e);
+            LOGGER.error("problem with the word: " + word, e);
         }
         jGenerator.writeFieldName("begin");
         jGenerator.writeNumber(begin);
