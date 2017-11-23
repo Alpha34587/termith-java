@@ -61,7 +61,6 @@ public class TermsuitePipelineBuilder extends Module {
                 /*
                 find term candidate
                  */
-                .aeWordTokenizer()
                 .aeUrlFilter()
                 .aeStemmer()
                 .aeStopWordsFilter()
