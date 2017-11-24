@@ -1,0 +1,113 @@
+	<ns:standOff type="wordForms">
+		<teiHeader>
+		    <fileDesc>
+		        <titleStmt>
+		            <title>Annotations morphosyntaxiques</title>
+		            <author role="annotator">ATILF</author>
+		            <author role="annotator">LINA</author>
+		        </titleStmt>
+		        <publicationStmt>
+		            <distributor>ATILF (Analyse et Traitement Informatique de la Langue
+		                Française)</distributor>
+		            <availability>
+		                <licence target="http://creativecommons.org/licenses/by/4.0/" corresp="#licenceCC"/>
+		            </availability>
+		        </publicationStmt>
+		        <sourceDesc>
+		            <p>Annotation morphosyntaxique du document <ref target="#termithIdentifier"/> générée
+		                automatiquement dans le cadre du projet TermITH</p>
+		        </sourceDesc>
+		    </fileDesc>
+		    <encodingDesc>
+		        <projectDesc>
+		            <p>Les annotations morphosyntaxiques s'appliquent au texte intégral du document <ref target="#termithIdentifier"/> et plus précisément au text/body et
+		                text/back.</p>
+		            <p>Le texte est segmenté automatiquement en tokens par un module interne de
+		                TermSuite2.0.</p>
+		            <p>L'étiquetage morphosyntaxique est réalisé par l'étiqueteur TreeTagger. Les jeux
+		                d'étiquettes sont ensuite homogénéisé selon la norme MulText.</p>
+		            <p>Les sorties enrichies de TermSuite2.0 sont enfin projetées dans le texte
+		                intégral.</p>
+		            <p>Les informations morphosyntaxiques sont représentées dans des structures de traits
+		                (&lt;fs&gt;) qui contiennent deux traits pour le moment, l'un pour la forme
+		                lemmatisée f/@name="lemma" et l'autre pour l'étiquette grammaticale
+		                f/@name="pos". Les valeurs de ces traits sont respectivement indiquées
+		                dans un élément &lt;string/&gt; et &lt;symbol/&gt;</p>
+		        </projectDesc>
+		        <appInfo>
+		            <application ident="TermSuite" version="2.0">
+		                <label>TS2.0</label>
+		            </application>
+		        </appInfo>
+		    </encodingDesc>
+		</teiHeader>
+		
+		<ns:listAnnotation>
+			<span target="#t1">
+			    <fs>
+			        <f name="lemma">
+			            <string>au</string>
+			        </f>
+			        <f name="pos">
+			            <symbol value="PRP"/>
+			        </f>
+			    </fs>
+			</span>
+			
+			<span target="#t2">
+			    <fs>
+			        <f name="lemma">
+			            <string>moins</string>
+			        </f>
+			        <f name="pos">
+			            <symbol value="PRP"/>
+			        </f>
+			    </fs>
+			</span>
+			
+			<span target="#t3">
+			    <fs>
+			        <f name="lemma">
+			            <string>,</string>
+			        </f>
+			        <f name="pos">
+			            <symbol value="PUNC"/>
+			        </f>
+			    </fs>
+			</span>
+			
+			<span target="#t4">
+			    <fs>
+			        <f name="lemma">
+			            <string>le</string>
+			        </f>
+			        <f name="pos">
+			            <symbol value="DET"/>
+			        </f>
+			    </fs>
+			</span>
+			
+			<span target="#t5">
+			    <fs>
+			        <f name="lemma">
+			            <string>chat</string>
+			        </f>
+			        <f name="pos">
+			            <symbol value="NOM"/>
+			        </f>
+			    </fs>
+			</span>
+			
+			<span target="#t6">
+			    <fs>
+			        <f name="lemma">
+			            <string>dort</string>
+			        </f>
+			        <f name="pos">
+			            <symbol value="VERB"/>
+			        </f>
+			    </fs>
+			</span>
+			
+		</ns:listAnnotation>
+	</ns:standOff>

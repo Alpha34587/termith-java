@@ -2,6 +2,7 @@ package org.atilf.module.enrichment.analyzer;
 
 import org.atilf.models.TermithIndex;
 import org.atilf.models.enrichment.CorpusAnalyzer;
+import org.atilf.models.enrichment.TagNormalizer;
 import org.atilf.models.enrichment.TextAnalyzer;
 import org.atilf.models.enrichment.TreeTaggerParameter;
 import org.atilf.module.Module;
@@ -29,6 +30,7 @@ public class TreeTaggerWorker extends Module {
     private StringBuilder _xml;
     private TextAnalyzer _textAnalyzer;
     private String _outputPath;
+    private TagNormalizer _tagNormalizer;
     private final TreeTaggerParameter _treeTaggerParameter;
     private final static String JSON = ".json";
     /**
@@ -37,9 +39,11 @@ public class TreeTaggerWorker extends Module {
      * @param id the name of the file in the map who contains the extracted text of the xml file
      */
     public TreeTaggerWorker(TermithIndex termithIndex, CorpusAnalyzer corpusAnalyzer, String id, String outputPath,
+                            TagNormalizer tagNormalizer,
                             TreeTaggerParameter treeTaggerParameter) {
         super(termithIndex);
         _outputPath = outputPath;
+        _tagNormalizer = tagNormalizer;
         _treeTaggerParameter = treeTaggerParameter;
         _txt = FilesUtils.readObject(termithIndex.getExtractedText().get(id),StringBuilder.class);
         _jsonPath = outputPath + "/json/" + id + JSON;
@@ -86,7 +90,9 @@ public class TreeTaggerWorker extends Module {
                     treeTaggerWrapper.getTtOut(),
                     _jsonPath,
                     _txt,
-                    _textAnalyzer);
+                    _textAnalyzer,
+                    _tagNormalizer
+            );
             morphologySerializer.execute();
             _termithIndex.getSerializeJson().add(Paths.get(_jsonPath));
             _logger.debug("TreeTagger task finished for : {}",_id);

@@ -1,16 +1,20 @@
 package org.atilf.delegate.disambiguation.evaluation;
 
 import org.atilf.delegate.Delegate;
-import org.atilf.models.disambiguation.DisambiguationXslResources;
+import org.atilf.resources.disambiguation.DisambiguationXslResources;
 import org.atilf.module.disambiguation.contextLexicon.DisambiguationXslTransformer;
 import org.atilf.monitor.timer.TermithProgressTimer;
+import org.flowable.engine.delegate.DelegateExecution;
 
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
+
+import static org.atilf.runner.TermithResourceManager.*;
 
 /**
  * transform files of a corpus into working file format and extract context of the terminology entry of corpus
@@ -19,24 +23,43 @@ import java.util.concurrent.TimeUnit;
  */
 public class EvaluationXslTransformerDelegate extends Delegate {
 
+    private Path _evaluationPath;
+    private Path _learningPath;
+    private Path _outputPath;
+    
+    public void setEvaluationPath(Path evaluationPath) {
+        _evaluationPath = evaluationPath;
+    }
+
+    public void setOutputPath(Path outputPath) {
+        _outputPath = outputPath;
+    }
+
+    @Override
+    public void initialize(DelegateExecution execution) {
+        super.initialize(execution);
+        _evaluationPath = getFlowableVariable("evaluationPath",null);
+        _learningPath = getFlowableVariable("learningPath",null);
+        _outputPath = getFlowableVariable("out",null);
+    }
+
     @Override
     public void executeTasks() throws IOException, InterruptedException {
-        DisambiguationXslResources xslResources = new DisambiguationXslResources();
+        DisambiguationXslResources xslResources = new DisambiguationXslResources(TermithResource.DISAMBIGUATION_XSL.getPath());
         List<Future> futures = new ArrayList<>();
         /*
         Transformation phase
          */
-        if (getFlowableVariable("learningPath",null) !=
-                getFlowableVariable("evaluationPath",null)) {
-            Files.list(getFlowableVariable("evaluationPath",null)).forEach(
+        if (_learningPath != _evaluationPath) {
+            Files.list(_evaluationPath).forEach(
                     p -> futures.add(_executorService.submit(
                             new DisambiguationXslTransformer(
                                     p.toFile(),
                                     _termithIndex,
                                     _termithIndex.getEvaluationTransformedFiles(),
                                     xslResources,
-                                    getFlowableVariable("out",null))
-                    ))
+                                    _outputPath
+                            )))
             );
         }
         new TermithProgressTimer(futures,EvaluationXslTransformerDelegate.class,_executorService).start();

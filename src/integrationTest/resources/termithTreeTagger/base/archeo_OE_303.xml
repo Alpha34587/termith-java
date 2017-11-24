@@ -1,0 +1,911 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title level="a" type="main">Amincissement et débitage sur éclat : définitions, interprétations et discussion à partir d'industries lithiques du Paléolithique moyen des Préalpes du nord françaises</title>
+        <title type="alt" xml:lang="en">Thinning process and flake knapping: definitions, interpretations and discussion about middle Paleolithic lithics industries in french northern Prealps</title>
+        <author>
+          <persName>
+            <forename>Sébastien</forename>
+            <surname>Bernard-Guelle</surname>
+          </persName>
+          <affiliation>
+            <s>UMR 6636 du CNRS, ESEP, Institut Dolomieu, 15 rue Maurice Gignoux, 38031 Grenoble cedex.</s>
+          </affiliation>
+        </author>
+        <author>
+          <persName>
+            <forename>Guillaume</forename>
+            <surname>Porraz</surname>
+          </persName>
+          <affiliation>
+            <s>UMR 6636 du CNRS, ESEP, Institut Dolomieu, 15 rue Maurice Gignoux, 38031 Grenoble cedex.</s>
+          </affiliation>
+        </author>
+      </titleStmt>
+      <publicationStmt>
+        <publisher/>
+        <date when="2010-05-26">2010-05-26</date>
+        <availability>
+          <p>© Tous droits réservés</p>
+        </availability>
+        <idno type="url">http://paleo.revues.org/963</idno>
+      </publicationStmt>
+      <sourceDesc>
+        <biblFull>
+          <titleStmt>
+            <title/>
+            <respStmt>
+              <resp>auteur</resp>
+              <name>Sébastien Bernard-Guelle</name>
+            </respStmt>
+            <respStmt>
+              <resp>auteur</resp>
+              <name>Guillaume Porraz</name>
+            </respStmt>
+          </titleStmt>
+          <publicationStmt>
+            <publisher/>
+            <date>2001-12-14</date>
+            <idno type="pp">53-72</idno>
+          </publicationStmt>
+        </biblFull>
+      </sourceDesc>
+    </fileDesc>
+    <encodingDesc>
+      <appInfo>
+        <application version="1.0" ident="Lodel">
+          <label>Lodel</label>
+          <desc>
+            <ref target="http://www.tei-c.org/">We use TEI</ref>
+          </desc>
+        </application>
+      </appInfo>
+      <tagsDecl>
+        <rendition xml:id="T1" scheme="css">text-decoration:line-through</rendition>
+        <rendition xml:id="T2" scheme="css">font-variant:small-caps;text-decoration:underline</rendition>
+        <rendition xml:id="T3" scheme="css">font-variant:small-caps</rendition>
+        <rendition xml:id="T4" scheme="css">text-transform:uppercase</rendition>
+        <rendition xml:id="T5" scheme="css">text-transform:uppercase;text-decoration:underline;</rendition>
+      </tagsDecl>
+    </encodingDesc>
+    <profileDesc>
+      <langUsage>
+        <language ident="fr">fr</language>
+      </langUsage>
+      <textClass>
+        <keywords scheme="keyword" xml:lang="fr">
+          <list>
+            <item>amincissement</item>
+            <item>débitage sur éclat</item>
+            <item>Paléolithique moyen</item>
+            <item>Préalpes du nord françaises</item>
+          </list>
+        </keywords>
+        <keywords scheme="keyword" xml:lang="en">
+          <list>
+            <item>truncated-facetted pieces</item>
+            <item>cores on flake</item>
+            <item>middle Paleolithic</item>
+            <item>french northern Prealps</item>
+          </list>
+        </keywords>
+      </textClass>
+    </profileDesc>
+  </teiHeader>
+  <text>
+    <front>
+      <div type="abstract" xml:lang="fr">
+        <p>Pièces amincies et nucléus sur éclat relèvent d'opérations techniques très proches, leur présence est en outre fréquemment associée dans les sites du Paléolithique moyen. Leur distinction, souvent délicate et parfois même impossible, passe par la définition et l'acceptation, au préalable, de postulats plus ou moins objectifs. La présence quasi-permanente de ces pièces au sein des industries du massif du Vercors (Préalpes du nord françaises), nous amène à présenter et à reconsidérer leurs éléments descriptifs et interprétatifs. Cette étude vise tout autant à compléter les connaissances acquises sur ce problème, qu'à présenter et décrire des procédés techniques particuliers susceptibles d'être reconnus dans d'autres gisements.</p>
+      </div>
+      <div type="abstract" xml:lang="en">
+        <p>Truncated-facetted pieces and cores on flake are produced by very similar technical operations. One often finds both of them on middle Paleolithic sites. Differentiation of the two is often trickt, sometimes impossible, and to that extend, one has to assume more or less objective postulates. The fact that these artefacts are almost always present on Vercors sites (Prealps of the North) bring us to present and try to re-analyse their descriptive and interpretative features. This study aims to improve knowledge on this problem, as well as focus more precisely on some technical process which might be found in other sites.</p>
+      </div>
+    </front>
+    <body>
+      <div type="div1">
+        <head subtype="level1">1 - Introduction</head>
+        <p>Que nous parlions d'amincissement ou de débitage sur éclat, il est ici question d'appréhender du mieux possible les différentes réalités de l'éclat au Paléolithique moyen. Ces deux opérations - débitage et amincissement - réalisées sur supports déjà débités, s'intègrent dans une chaîne opératoire beaucoup plus vaste et traduisent une volonté de recycler ou d'aménager différents produits (éclats corticaux ou indifférenciés, outils retouchés cassés ou non, etc.). Il importe ainsi de les replacer dans des dynamiques opératoires suceptibles de mettre en évidence différents comportements et économies.</p>
+        <p>Si plusieurs études ont déjà traité de ce sujet (Newcomer et Hivernel-Guerre, 1974 ; Delagnes, 1992 ; Tixier et Turq, 1999), il nous a semblé intéressant de refaire le tour de la question en axant davantage notre approche sur les différents recoupements et distinctions qu'il était possible d'établir entre les pièces dites amincies et les nucléus sur éclat. Nous illustrerons ensuite notre propos par l'étude de pièces issues de contextes différents. </p>
+        <p>Il convient tout d'abord de s'entendre correctement sur les termes employés. Si le terme “nucléus sur éclat” semble bien défini (la finalité de l'exploitation est une production de support(s) : à un terme correspond une réalité), le terme “amincissement” semble quant à lui d'une utilisation plus ambiguë. Parler d'un éclat “aminci” suppose que l'on constate une action ayant diminué l'épaisseur d'un support en une zone donnée, sans pour cela forcément traduire la volonté du tailleur. Par amincissement, nous comprenons donc un procédé technique original, et non une finalité particulière.</p>
+      </div>
+      <div type="div1">
+        <head subtype="level1">2 - Présentation générale</head>
+        <div type="div2">
+          <head subtype="level2">2.1 - Les Amincissements</head>
+          <div type="div3">
+            <head subtype="level3">2.1.1 - Définition</head>
+            <p>Les amincissements sont une opération technique qui consiste à détacher des enlèvements (le plus fréquemment à partir d'une troncature) sur un éclat dont au moins un bord potentiellement utilisable a été préservé <note place="foot" n="1"><p rend="footnote"><ref target="ftn1">1</ref> Le fait qu'un bord ait été volontairement préservé n'implique pas que celui-ci entretienne forcément une relation fonctionnelle avec l'opération technique à proprement parler. Dans l'état actuel de nos connaissances, ces considérations ne peuvent être émises qu'en conclusion et non pas lors de la définition même de ces pièces.</p></note>.</p>
+            <p>Le fait que ce procédé technique soit plutôt standard n'exclue pas le fait qu'une certaine souplesse dans la réalisation puisse être constatée. Ainsi, par exemple, la troncature peut parfois être remplacée par une cassure volontaire (site de Champlost, dans l'Yonne - Lhomme, 1993) ou accidentelle. Il se peut également que la morphologie même du support (ce qui d'ailleurs constitue peut-être un critère de sélection) ne nécessite pas la réalisation d'une troncature (il semble préférable, pour ces opérations, de privilégier ce dernier terme à celui de plan de frappe, trop restrictif).</p>
+          </div>
+          <div type="div3">
+            <head subtype="level3">2.1.2 - Variabilité des types de pièces amincies</head>
+            <p>Dans la littérature, nous avons observé de nombreux exemples de pièces dites amincies sans qu'ils ne rentrent forcément dans un type bien défini (soit parce qu'ils se retrouvent isolés au sein d'un ensemble lithique, ou soit parce qu'ils sont qualitativement marqués par une certaine hétérogénéité). La variabilité de ces pièces reste donc très étendue, néanmoins il semble possible de reconnaître différents types d'amincissements décrits au Paléolithique moyen. Les pièces nahr ibrahim, reconnues pour la première fois sur le site de Nahr Ibrahim par R.L &amp; R.S Solecki (1970), se définissent par <hi rend="italic"> “l'aménagement d'un support débité par le détachement d'un ou plusieurs enlèvements depuis une troncature inverse</hi>” (Primault, 1998 p. 1). Ce type d'amincissement a également reçu les dénominations de “couteau de Kostienki” (Efimienko, 1958), de “truncated-facetted flakes” (Schroëder, 1969 ; Nishiaki, 1985), ou encore “de pièces à troncature inverse et enlèvements dorsaux” à l'abri Suard (Delagnes, 1992).</p>
+            <p>Il existe également les racloirs à dos aminci, seul type à être intégré dans la liste typologique de F. Bordes (1961), les pointes d'Emireh (pointe amincie à partir de la base sur les deux faces), ou encore les pièces amincies sur la face inférieure à partir d'une troncature directe (notamment dans le gisement de la Baume des Peyrards - Vaucluse -, Porraz, 2001). </p>
+            <p>Ces dernières pièces ont été distinguées des pièces type Nahr-Ibrahim principalement en fonction de la face de l'éclat concernée par l'amincissement. Il est fréquent de retrouver ces deux types de pièces associés dans un même ensemble ; cependant, le fait qu'une des deux pratiques soit toujours nettement dominante relève de contraintes (fonctionnelles, techniques…) qui méritent vraisemblablement d'être présentées et mises en évidence par une terminologie distincte.</p>
+            <p>Enfin, le seul cas d'amincissement anté-débitage que l'on peut rappeler mais qui ne concerne pas notre étude, est l'exemple des pointes Levallois du gisement de Umm el Tlel où une phase amincissante intégrée à part entière dans la chaîne de production a été mise en évidence (Bourguignon,1998).</p>
+            <div type="div4">
+              <head subtype="level4">Cadre géographique et chrono-culturel</head>
+              <p>Ce procédé technique a été reconnu dans des industries de périodes différentes, sur des aires géographiquement éloignées ainsi que dans des sites aux faciès économiques et “culturels” distincts.</p>
+              <p>Au Paléolithique moyen, ces types de pièces - dont l'importance numérique peut fortement varier - ont été identifiés sur une aire géographique très large (Europe, Proche et Moyen-Orient, Afrique), au sein de tous les facièsdéfinis par F. Bordes (1961). Ils se rencontrent aussi bien dans des sites à forte activité de débitage (Jiboui, Drôme) que dans des gisements davantage considérés comme des habitats (Baume des Peyrards), et ce quel que soit le type de site (en grotte, sous-abri ou en plein air).</p>
+              <p>Ces pièces ne sont pas non plus associées à un mode de débitage particulier. Pièces amincies et nucléus sur éclat sont aussi bien associés à des débitage Levallois (Jiboui, Baume des Peyrards) que discoïdes (Les Fendeux dans l'Allier – J.F.Pasty, rens. oral ; Champ-Grand dans la Loire – Slimak, 1999).</p>
+              <p>En nous en tenant à des considérations générales, il ne semble pas possible d'isoler des facteurs discriminants expliquant la présence ou l'absence de pièces amincies. Il semble nécessaire de réduire ces considérations aux seules industries comprenant des pièces amincies en nombre significatif, et qui ont fait l'objet d'études particulières. Ce travail s'inscrit dans cette démarche.</p>
+            </div>
+            <div type="div4">
+              <head subtype="level4">Quelles finalités pour ces amincissements ?</head>
+              <p>Les amincissements sont une opération technique structurée et hiérarchisée, qui doit avoir une finalité bien précise. L'interprétation la plus couramment attribuée à ce procédé est le rôle d'un amincissement lié à une forme de préhension ou d'emmanchement (Lumley, 1970 ; Anderson-Gerfaud et Helmer, 1984). La technique appliquée serait donc une technique destinée dans ce cas à aménager l'éclat, à rendre sa morphologie adéquate à la fonction qui lui est destinée. A partir de différentes études tracéologiques (Anderson-Gerfaud et Helmer, 1984 ; Beyries, 1984), nous savons désormais que si un aménagement, quel qu'il soit, peut s'avérer utile en vue d'un emmanchement, il n'est en aucun cas indispensable. Les amincissements seraient donc destinés, non pas à permettre un emmanchement, mais à faciliter, à renforcer celui-ci, ou bien à créer un type d'emmanchement particulier.</p>
+              <p>Dans cette hypothèse, les enlèvements détachés sont donc considérés comme des déchets, c'est-à-dire comme un moyen de réaliser une action. Ces considérations, principalement à la suite des travaux de Newcommer et Hivernel-Guerre (1967), puis de Goren-Inbar (1988), ont vu leur logique être renversée justement au profit de ces enlèvements qui deviennent dès lors des produits de plein débitage. Les amincissements seraient donc un type de débitage sur éclat. Si les dimensions des enlèvements obtenus lors d'amincissement ont souvent été considérées par les préhistoriens comme le principal écueil de cette hypothèse, la présence dans certaines industries de nucléus et d'éclats diminutifs nous montre que ce critère n'est pas forcément très pertinent (Pech de l'Azé IV – Dibble et Mc Pherron, 2000 ; St Marcel – Moncel, 1998).</p>
+            </div>
+          </div>
+        </div>
+        <div type="div2">
+          <head subtype="level2">2.2 - Le débitage à partir d'éclats supports</head>
+          <p>Le passage d'un débitage sur bloc à un débitage sur éclat a été identifié dans de nombreux sites du Paléolithique moyen ; on parle alors de chaîne opératoire secondaire. Ces nucléus sur éclat se retrouvent fréquemment dans les gisements et ce, en nombre plus ou moins important (27 % par exemple à Combe-Grenal, Dordogne - Geneste <hi rend="italic">et</hi><hi rend="italic">al.</hi>, 1997). Le débitage peut être alors pratiqué selon plusieurs méthodes (Tixier et Turq, 1999). L'exploitation la plus fréquemment mise en évidence est celle du volume inférieur (débitage Levallois, Kombewa…), puis celle du volume supérieur (Nahr-Ibrahim ?, débitage centripète…) et plus rarement dans l'épaisseur du support (Le Pucheuil - Delagnes, 1993). Il n'est pas toujours aisé de déterminer si ces comportements relèvent ou non de pratiques opportunistes. Nous pouvons citer par exemple le cas du gisement des Tares (Dordogne) où le mode de production, qui est plutôt de type Kombewa, est vu non pas comme une pratique opportuniste, mais comme une pratique intégrée à l'ensemble de l'économie de taille (Geneste <hi rend="italic">et al.</hi>, 1997 ; Tixier et Turq, 1999).</p>
+          <p>Les intérêts de la pratique du débitage sur éclat-support peuvent être très variés et nous citerons les plus couramment évoqués. Elle peut tout d'abord refléter un souci d'économie de la matière première, une exploitation maximale des ressources lithiques : l'utilisation d'éclats comme nucléus peut compléter une première phase de débitage qui n'exploiterait pas suffisamment la matière première (matière première difficilement accessible, peu abondante ou non disponible à proximité du site, ou encore utilisation intensive d'un matériau d'excellente qualité).</p>
+          <p>La pratique du débitage sur éclat peut également correspondre à des situations contraignantes de déplacements surtout dans des milieux pauvres en matière première. L'approvisionnement ne pouvant se faire au cours des déplacements ou sur le lieu de séjour, le transport d'éclats potentiellement transformables en nucléus, semble plus approprié que celui de blocs de silex (c'est donc une économie de transport en termes de poids). </p>
+          <p>Cette utilisation d'éclats comme nucléus peut également traduire une économie de mise en forme permettant un passage rapide aux phases de plein débitage. Les convexités naturelles des faces inférieures d'éclats permettent ainsi l'utilisation de raccourcis techniques comme cela a été constaté sur certains nucléus de l'abri Suard en Charente au sein d'un système de production Levallois (Delagnes, 1992).</p>
+          <p>Ce type de débitage peut aussi permettre l'obtention de supports spécifiques : éclats à bords biconvexes, pointes pseudo-Levallois à Asprochaliko (Papa-constantinou, 1989) et aux Champs de Bossuet (Bourguignon, rens. oral), éclats de type Pucheuil, mais également toute une panoplie de supports de petites dimensions que l'on a souvent eu tendance à négliger. </p>
+          <p>L'utilisation de l'éclat comme support au débitage est donc très courante au Paléolithique moyen. Les raisons de cette pratique peuvent être multiples voire combinées, elles révèlent en tous cas des comportements techno-économiques souples et modulables.</p>
+        </div>
+      </div>
+      <div type="div1">
+        <head subtype="level1">3 - Amincissement et débitage sur éclats : critères communs et distinctifs</head>
+        <p>La question du problème d'identification entre un nucléus sur éclat et un outil aminci ne se pose pas pour les éclats qui ont fait l'objet d'une exploitation Levallois ayant fourni des critères de reconnaissance bien précis. C'est également le cas pour les débitages qui affectent l'épaisseur du support et produisent des pièces très standardisées (Le Pucheuil, Champs de Bossuet). Par contre, la distinction devient parfois délicate lorsque les opérations techniques observées sur l'éclat-support sont peu élaborées (débitage Kombewa par exemple). Elle devient plutôt hasardeuse quand ces opérations se résument à une troncature et à quelques enlèvements (exploitation limitée d'une ou des deux faces) (Tabl. 1).</p>
+        <p rend="figure-title">Tabl. 1 : Récapitulatif des critères communs et distinctifs suivant les hypothèses considérées. <lb/><hi rend="italic">Table. 1: Similar and distinctive criterion according to the different hypothesis.</hi></p>
+        <table>
+          <row>
+            <cell>
+              <s>
+                <hi rend="bold">Critères communs et distinctifs</hi>
+              </s>
+            </cell>
+            <cell>
+              <s>
+                <hi rend="bold">Amincissement (hypothèse d'un aménagement)</hi>
+              </s>
+            </cell>
+            <cell>
+              <s>
+                <hi rend="bold">Débitage sur éclat</hi>
+              </s>
+            </cell>
+          </row>
+          <row>
+            <cell>
+              <s>Types de supports</s>
+            </cell>
+            <cell>
+              <s>- Des supports de grande dimension</s>
+            </cell>
+            <cell>
+              <s>- Des supports épais et de grande dimension</s>
+            </cell>
+          </row>
+          <row>
+            <cell>
+              <s>Plan de frappe -Troncature</s>
+            </cell>
+            <cell>
+              <s>- Troncature peut être remplacée</s>
+            </cell>
+            <cell>
+              <s>- Plan de frappe peut être remplacé</s>
+            </cell>
+          </row>
+          <row>
+            <cell>
+              <s>Nature du plan de frappe</s>
+            </cell>
+            <cell>
+              <s>
+                <hi rend="bold">- </hi>
+              </s>
+            </cell>
+            <cell>
+              <s>- Direct et/ou inverse</s>
+            </cell>
+          </row>
+          <row>
+            <cell>
+              <s>Angle du plan de frappe</s>
+            </cell>
+            <cell>
+              <s>
+                <hi rend="bold">- </hi>
+              </s>
+            </cell>
+            <cell>
+              <s>
+                <hi rend="bold">- </hi>
+              </s>
+            </cell>
+          </row>
+          <row>
+            <cell>
+              <s>Localisation du plan de frappe</s>
+            </cell>
+            <cell>
+              <s>
+                <hi rend="bold">- </hi>
+              </s>
+            </cell>
+            <cell>
+              <s>
+                <hi rend="bold">- </hi>
+              </s>
+            </cell>
+          </row>
+          <row>
+            <cell>
+              <s>Association</s>
+            </cell>
+            <cell>
+              <s>
+                <hi rend="bold">- </hi>
+              </s>
+            </cell>
+            <cell>
+              <s>
+                <hi rend="bold">- </hi>
+              </s>
+            </cell>
+          </row>
+          <row>
+            <cell>
+              <s>enlèvements associés</s>
+            </cell>
+            <cell>
+              <s>
+                <hi rend="bold">- </hi>
+              </s>
+            </cell>
+            <cell>
+              <s>
+                <hi rend="bold">- </hi>
+              </s>
+            </cell>
+          </row>
+          <row>
+            <cell>
+              <s>Enlèvements sur la face supérieure</s>
+            </cell>
+            <cell>
+              <s>
+                <hi rend="bold">- </hi>
+              </s>
+            </cell>
+            <cell>
+              <s>
+                <hi rend="bold">- </hi>
+              </s>
+            </cell>
+          </row>
+          <row>
+            <cell>
+              <s>Enlèvements sur la face inférieure</s>
+            </cell>
+            <cell>
+              <s>
+                <hi rend="bold">- </hi>
+              </s>
+            </cell>
+            <cell>
+              <s>
+                <hi rend="bold">- </hi>
+              </s>
+            </cell>
+          </row>
+          <row>
+            <cell>
+              <s>Dimensions des enlèvements détachés</s>
+            </cell>
+            <cell>
+              <s>
+                <hi rend="bold">- </hi>
+              </s>
+            </cell>
+            <cell>
+              <s>
+                <hi rend="bold">- </hi>
+              </s>
+            </cell>
+          </row>
+          <row>
+            <cell>
+              <s>Nombre d'enlèvements détachés</s>
+            </cell>
+            <cell>
+              <s>
+                <hi rend="bold">- </hi>
+              </s>
+            </cell>
+            <cell>
+              <s>
+                <hi rend="bold">- </hi>
+              </s>
+            </cell>
+          </row>
+          <row>
+            <cell>
+              <s>Homogénéité</s>
+            </cell>
+            <cell>
+              <s>
+                <hi rend="bold">- </hi>
+              </s>
+            </cell>
+            <cell>
+              <s>
+                <hi rend="bold">- </hi>
+              </s>
+            </cell>
+          </row>
+          <row>
+            <cell>
+              <s>Hétérogénéité</s>
+            </cell>
+            <cell>
+              <s>- Standardisation des supports n'est pas recherchée</s>
+            </cell>
+            <cell>
+              <s>- Production diversifiée</s>
+            </cell>
+          </row>
+          <row>
+            <cell>
+              <s>Répétition de l'opération</s>
+            </cell>
+            <cell>
+              <s>- L'aménagement recherché nécessite cette répétition</s>
+            </cell>
+            <cell>
+              <s>
+                <hi rend="bold">- </hi>
+              </s>
+            </cell>
+          </row>
+          <row>
+            <cell>
+              <s>Présence d'une retouche</s>
+            </cell>
+            <cell>
+              <s>
+                <hi rend="bold">- </hi>
+              </s>
+            </cell>
+            <cell>
+              <s>
+                <hi rend="bold">- </hi>
+              </s>
+            </cell>
+          </row>
+          <row>
+            <cell>
+              <s>Antériorité/</s>
+            </cell>
+            <cell>
+              <s>- Pertinence du critère reste à déterminer en fonction des ensembles pris en compte</s>
+            </cell>
+            <cell>
+              <s>
+                <hi rend="bold">- </hi>
+              </s>
+            </cell>
+          </row>
+        </table>
+      </div>
+      <div type="div1">
+        <head subtype="level1">4 - Débitage sur éclat et amincissement dans les industries du massif du Vercors</head>
+        <div type="div2">
+          <head subtype="level2">4.1 - Présentation</head>
+          <p>Le massif du Vercors est le plus méridional des massifs préalpins des Alpes françaises du nord. Massif de transition entre les Préalpes du nord et celles du sud, intercalé entre la cuvette grenobloise et la vallée du Rhône, ce massif calcaire d'une altitude moyenne de 1 200 m, recèle des biotopes nombreux et variés ainsi que d'importantes ressources siliceuses. Les recherches menées depuis quelques années, notamment par Th. Tillet (2000 ; 2001), ont permis de mettre en évidence une fréquentation humaine importante au cours du Paléolithique moyen. </p>
+          <p>L'étude des industries de plusieurs des sites reconnus (Fig. 1) montre une forte utilisation de l'éclat comme support au débitage quel que soit leur contexte (sites en grotte ou en plein air, proches ou éloignés des gîtes de matières premières). Par ailleurs, on constate la présence quasi-permanente au sein des assemblages lithiques de pièces dites “amincies”.</p>
+          <p rend="figure-title">Figure 1 : Localisation des sites du Paléolithique moyen des Préalpes du nord françaises. <lb/><hi rend="italic">Figure 1: Situation of the middle Paleolithic sites in french northern Prealps.</hi></p>
+          <p>
+            <figure>
+              <graphic url="http://paleo.revues.org/docannexe/image/963/img-1.png"/>
+            </figure>
+          </p>
+        </div>
+        <div type="div2">
+          <head subtype="level2">4.2 - L'exploitation de l'éclat-support : production ou amincissement ?</head>
+          <div type="div3">
+            <head subtype="level3">4.2.1 - Production de supports</head>
+            <p>En dépit de la richesse en matière première de ce massif, la sélection d'éclats en tant que supports à de futurs nucléus fut très utilisée dans ce milieu. Les raisons de cette utilisation peuvent aussi bien relever de facteurs d'ordre culturel, économique ou environnemental.</p>
+            <div type="div4">
+              <head subtype="level4">Production de supports dans des sites de plein air à proximité de gîtes de silex</head>
+              <p>A Jiboui (Drôme, 1620 m d'altitude) et aux Mourets (Isère, 1160 m), les éclats ordinaires mais surtout corticaux issus de différentes chaînes opératoires ont été fréquemment recyclés comme supports aux débitages Levallois et de type Kombewa <note place="foot" n="2"><p rend="footnote"><ref target="ftn2">2</ref> Dans ces industries, le débitage Kombewa semble à considérer comme une modalité Levallois à part entière.</p></note> (environ 50 % à Jiboui et &gt; 25 % aux Mourets).</p>
+              <p>Aux Mourets, le débitage Levallois est fréquemment pratiqué sur éclats. Un certain nombre de ces nucléus ont des particularités techniques déjà signalées à l'abri Suard (Delagnes, 1992) permettant une économie de l'entretien des convexités sur la surface de débitage, celle-ci faisant l'objet d'un investissement technique réduit. Cette forme de débitage pourrait être qualifié “d'opportuniste” puisqu'elle reflète une utilisation maximale des potentialités de l'éclat en tant que support.</p>
+              <p>A Jiboui, le débitage sur éclat est encore plus prononcé. Il est préférentiellement mis en œuvre par l'intermédiaire des méthodes Levallois à éclat préférentiel (Fig. 2 - n° 4), puis Levallois récurrente centripète et Kombewa. A la différence du gisement des Mourets, la phase de mise en forme des convexités des éclats-supports au débitage Levallois est soignée et quasi-systématique.</p>
+              <p rend="figure-title">Figure 2 : Nucléus sur éclats. <lb/><hi rend="italic">Figure 2 : Cores on flakes.</hi></p>
+              <p>
+                <figure>
+                  <graphic url="http://paleo.revues.org/docannexe/image/963/img-2.png"/>
+                </figure>
+              </p>
+              <p rend="figure-legend"><ref target="Image27Cgraphics"/> n° 1 : nucléus sur face inférieure (Prélétang), n° 2 et 5 : nucléus sur face supérieure (Prélétang), n° 3 : nucléus sur face supérieure (Jiboui) , n° 4 : nucléus Levallois (Jiboui), n° 6 : nucléus sur face inférieure à double patine (Jiboui). <hi rend="italic"><lb/> n° 1 : core on inverse flake surface (Prélétang), n° 2 et 5 : cores on dorsal flake surface (Prélétang), n° 3 : core on dorsal flake surface (Jiboui) , n° 4 : Levallois core (Jiboui), n° 6 : core on inverse flake surface with double patina (Jiboui). </hi></p>
+              <p rend="figure-license">Dessins et D.A.O.: Bernard-Guelle S. <lb/><hi rend="italic">Drawings and D.A.O. by: Bernard-Guelle S.</hi></p>
+              <p>Aux Mourets, la matière première est à proximité immédiate, en position primaire (banc de calcaire sénonien) ou secondaire (conglomérat de base du Miocène contenant des silex sénoniens repris dans des niveaux tertiaires) (Bernard-Guelle et Bressy, 2001). La récolte de rognons en position secondaire, d'accès plus aisé, y fut privilégiée mais le silex est souvent diaclasé et fissuré.</p>
+              <p>A Jiboui, les gîtes de silex sont proches, en position primaire, dans l'encaissant, et en position sub-primaire, dans les éboulis de pied de falaise. La récolte des blocs en position sub-primaire semble avoir été systématique. Ce silex est de bonne qualité.</p>
+              <p>Comment interpréter, malgré la présence de matière première, cette pratique fréquente du débitage sur éclat ?</p>
+              <p>Une économie du débitage peut être évoqué dans les deux cas.</p>
+              <list type="unordered">
+                <item>
+                  <p rend="puces">recyclage des sous-produits de débitage permettant un passage très rapide aux phases de production sur le site des Mourets.</p>
+                </item>
+                <item>
+                  <p rend="puces">recyclage des sous-produits de débitage pour une optimisation de la production à Jiboui.</p>
+                </item>
+              </list>
+              <p>Un souci de grande productivité dans un court laps de temps, pourrait s'expliquer sur ces sites d'altitude à fréquentation saisonnière limitée où les impératifs de rentabilité semblent essentiels.</p>
+              <p>Cette pratique pourrait également se justifier en termes d'économie de matière première. Les raisons d'une exploitation maximale des ressources lithiques pourraient s'expliquer par une matière première difficilement accessible (difficulté d'extraction), ce qui ne semble pas être le cas dans les deux sites, ou peu abondante (qualitativement ou quantitativement) ce qui est avéré aux Mourets. Par contre, à Jiboui, une utilisation intensive du silex qui est fréquemment d'excellente qualité est envisageable. Enfin, sur les deux sites, la qualité du silex en zone sous-corticale a pu être intentionnellement exploitée par les tailleurs. Aux Mourets, par exemple, les blocs de silex étant souvent impropres à la taille (gélifs, diaclasés…), le débitage à partir d'éclats de décorticage de ces blocs a pu servir de palliatif à leur mauvaise qualité.</p>
+              <p>Enfin, la volonté d'obtenir des produits particuliers (petite dimension, morphologie) pourrait également être une explication à la pratique du débitage sur éclat.</p>
+            </div>
+            <div type="div4">
+              <head subtype="level4">Production de supports dans les sites en grotte, à occupations brèves, à proximité ou non de gîtes de silex</head>
+              <p>Dans un tout autre contexte, les éclats sont fréquemment utilisés pour un débitage que l'on peut qualifier “d'expédient”, dans le sens où ils servent de supports à un débitage d'appoint ou complémentaire.</p>
+              <p>C'est le cas lorsque la matière première n'est pas disponible dans l'environnement proche du site. A la grotte de Prélétang, parmi les nombreux produits finis abandonnés sur le site (éclats Levallois et outils retouchés), seuls six nucléus ont été retrouvés. Au moins quatre d'entre eux sont réalisés sur éclats. Ils peuvent avoir joué le rôle de nucléus potentiels en situation de manque de matière première et de besoins immédiats d'éclats. Ces nucléus sur éclats ont été débités de différentes façons : le plus souvent à partir d'un plan de frappe préparé, le débitage est mené aussi bien sur la face inférieure que supérieure de l'éclat, avec des enlèvements parfois peu nombreux, de direction unipolaire ou centripète (Fig. 2 - n° 1, 2 et 5). On retrouve le procédé technique de l'amincissement, mais ici aucune confusion n'est possible, il s'agit bien de débitage puisque, outre le contexte du site (absence de ressources siliceuses), le support - dans une grande majorité des cas – ne présente fonctionnellement que peu d'aptitude à une utilisation (pièces corticales sans tranchants, par exemple). La polyvalence de l'éclat, à la fois outil et nucléus potentiel, s'exprime clairement dans ce type de contexte.</p>
+              <p>Dans la grotte de la Passagère (Méaudre), une industrie moustérienne numériquement très faible fut retrouvée (Bintz, 1973). Le silex est présent dans la grotte sous forme de rognons de qualité moyenne (Sénonien) et à proximité immédiate de la cavité dans un conglomérat miocène. Seul un nucléus est présent dans cette industrie, il s'agit d'un éclat à dos cortical débité sur sa face supérieure (Fig. 3 - n° 4) (Bernard-Guelle, 2000a). A notre avis, ce débitage relève d'une conception Levallois. Une troncature distale a été utilisée comme plan de frappe à partir duquel un éclat unique et envahissant a été débité profitant des convexités de la face supérieure de l'éclat support ; son axe de détachement est parallèle au plan d'intersection des deux surfaces. Les raisons de ce débitage ne semblent pas correspondre à une volonté d'amincir le support, ni a un manque de matière première. On peut envisager le besoin immédiat d'un produit particulier qui, grâce à ce procédé, est obtenu beaucoup plus facilement qu'à partir d'un rognon de silex et ceci dans un temps réduit.</p>
+              <p rend="figure-title">Figure 3. <lb/><hi rend="italic">Figure 3.</hi></p>
+              <p>
+                <figure>
+                  <graphic url="http://paleo.revues.org/docannexe/image/963/img-3.png"/>
+                </figure>
+              </p>
+              <p rend="figure-legend"><ref target="Image37Cgraphics"/> n° 1 : Nucléus Levallois sur éclat repris en racloir (Les Eugles) ; n° 2 : racloir convergent aminci (Les Mourets) ; n° 3 : racloir déjeté aminci (Les Mourets) ; n° 4 : nucléus sur face supérieure éclat (La Passagère) ; n° 5 : nucléus ou pièce amincie (Les Guillets). <lb/> n° 1 : Levallois core on a flake retouched to scraper (Les Eugles) ; n° 2 : <hi rend="italic">thinned convergent scraper (Les Mourets) ; n° 3 : thinned “déjeté” scraper (Les Mourets) ; n° 4 : core on dorsal flake surface (La Passagère) ; n° 5 : core or thinned artefact (Les Guillets).</hi></p>
+              <p rend="figure-license">Dessins: Papé (n° 1), Dérahprahamian G. (n° 2 et 3) et Bernard-Guelle S. (n° 4 et 5); D.A.O.: Bernard-Guelle S. et Porraz G. <lb/> Drawings by: Papé (n° 1), Dérahprahamian G. (n° 2 et 3) and Bernard-Guelle S. (n° 4 et 5); D.A.O. by: Bernard-Guelle S. and Porraz G.</p>
+            </div>
+          </div>
+          <div type="div3">
+            <head subtype="level3">4.2.2 - Amincissement de supports</head>
+            <p>Les industries du massif du Vercors sont également caractérisées par une présence, parfois faible mais systématique, de pièces que l'on peut qualifier d'amincies. </p>
+            <div type="div4">
+              <head subtype="level4">Supports retouchés</head>
+              <p>La plupart de ces pièces amincies sont des outils retouchés, la retouche étant le plus fréquemment étendue et convergente. Sauf quelques exceptions, elles sont généralement fabriquées dans un matériau d'origine allochtone. L'amincissement est le plus couramment réalisé à la base des pièces.</p>
+              <p>Aux Mourets, par exemple, les deux seules pièces intensément retouchées sont également amincies (Bernard-Guelle, 2000b). Ce sont deux racloirs (un déjeté et un convergent), en silex allochtone au site, qui ont été amincis selon un procédé technique identique, celui de la troncature inverse et des enlèvements postérieurs (Fig. 3 - n° 2 et 3). Sur l'une d'elles (n° 3), une fracture postérieure à la retouche a été mise à profit, jouant ainsi le rôle de plan de frappe, pour le débitage de petits enlèvements rasants sur la face supérieure de l'outil.</p>
+              <p>Sur le plateau de Vassieux (Drôme) et ses environs, région très riche en silex, de nombreux ramassages de surface ont mis en évidence de multiples gisements et indices du Paléolithique moyen (Bernard-Guelle et Malenfant, 2000). Parmi les quantités de pièces retrouvées, nous avons pu identifier au moins trois pièces amincies dont deux probablement en silex allochtones. Il s'agit de trois types de racloirs (déjeté, convergent et double) qui ont été amincis en zone proximale, par l'intermédiaire d'une troncature inverse et d'enlèvements dorsaux (Fig. 4 - n° 1, 3 et 4).</p>
+              <p rend="figure-title">Figure 4. <lb/> Figure 4.</p>
+              <p>
+                <figure>
+                  <graphic url="http://paleo.revues.org/docannexe/image/963/img-4.png"/>
+                </figure>
+              </p>
+              <p rend="figure-legend"><ref target="Image47Cgraphics"/> n° 1 : racloir déjeté aminci (Vassieux) ; n° 2 : pointe moustérienne amincie (Prélétang) ; n° 3 : racloir convergent aminci (Vassieux) ; n° 4 : racloir double aminci (Vassieux). <lb/> n° 1 : thinned “déjeté” scraper (Vassieux) ; n° 2 : thinned mousterian pointe (Prélétang) ; n° 3 : thinned convergent scraper (Vassieux) ; n° 4 : thinned double scraper (Vassieux). </p>
+              <p rend="figure-license">Dessins et D.A.O. : Bernard-Guelle S. et Porraz G. <lb/> Drawings and D.A.O. by : Bernard-Guelle S. and Porraz G.</p>
+              <p>A Prélétang, une seule pièce peut être qualifiée d'amincie. C'est une pointe moustérienne triangulaire à base amincie par enlèvements bifaciaux (Bernard-Guelle, 1995) (Fig. 4 - n° 2).</p>
+              <p>A Jiboui, les outils typologiques portant des stigmates d'amincissement sont en proportions importantes. Ils forment 19,4 % des outils retouchés soit 26 pièces sur 134. Ce sont avant tout des racloirs (n = 22, soit 84,6 %). Dans cet ensemble, une grande variété de types a été amincie (Tabl. 2). Même si les racloirs simples sont les mieux représentés (n = 14), les pièces convergentes sont également nombreuses (n = 9) avec deux pointes moustériennes et sept racloirs convergents. La catégorie des outils “divers” est composée d'une encoche à bord aminci et d'un fragment proximal d'éclat Levallois sur lequel on peut encore voir une retouche d'un bord et un amincissement de la face inverse.</p>
+              <p rend="figure-title">Tableau 2 : Jiboui - Familles d'outils amincis. <lb/><hi rend="italic">Table 2 : Jiboui - Thinned tools family.</hi></p>
+              <table>
+                <row>
+                  <cell cols="2">
+                    <s>
+                      <hi rend="bold">Types d'outils amincis</hi>
+                    </s>
+                  </cell>
+                </row>
+                <row>
+                  <cell>
+                    <s>Outils à bords convergents</s>
+                  </cell>
+                  <cell>
+                    <s>9 (34,6 %)</s>
+                  </cell>
+                </row>
+                <row>
+                  <cell>
+                    <s>Racloirs simples</s>
+                  </cell>
+                  <cell>
+                    <s>14 (53,8 %)</s>
+                  </cell>
+                </row>
+                <row>
+                  <cell>
+                    <s>Racloir double</s>
+                  </cell>
+                  <cell>
+                    <s>1 (3,8 %)</s>
+                  </cell>
+                </row>
+                <row>
+                  <cell>
+                    <s>Divers</s>
+                  </cell>
+                  <cell>
+                    <s>2 (7,7 %)</s>
+                  </cell>
+                </row>
+                <row>
+                  <cell>
+                    <s>Total</s>
+                  </cell>
+                  <cell>
+                    <s>26 (100 %)</s>
+                  </cell>
+                </row>
+              </table>
+              <p>Les supports de ces pièces sont variés (Tabl. 3), avec une forte représentation des supports indéterminables du fait de l'importance des aménagements subis.</p>
+              <p>Ce type de pièces a un taux de supports en matériaux allochtones particulièrement élevé (n = 12, soit 46,2 %).</p>
+              <p rend="figure-title">Tableau 3 : Jiboui - différents supports amincis. <lb/><hi rend="italic">Table 3: Jiboui - differents thinned blanks.</hi></p>
+              <table>
+                <row>
+                  <cell cols="2">
+                    <s>
+                      <hi rend="bold">Supports des outils amincis</hi>
+                    </s>
+                  </cell>
+                </row>
+                <row>
+                  <cell>
+                    <s>Produits corticaux</s>
+                  </cell>
+                  <cell>
+                    <s>4 (15,4 %)</s>
+                  </cell>
+                </row>
+                <row>
+                  <cell>
+                    <s>Produits non Levallois</s>
+                  </cell>
+                  <cell>
+                    <s>4 (15,4 %)</s>
+                  </cell>
+                </row>
+                <row>
+                  <cell>
+                    <s>Produits Levallois</s>
+                  </cell>
+                  <cell>
+                    <s>6 (23,1 %)</s>
+                  </cell>
+                </row>
+                <row>
+                  <cell>
+                    <s>Support indéterminables</s>
+                  </cell>
+                  <cell>
+                    <s>12 (46,1 %)</s>
+                  </cell>
+                </row>
+                <row>
+                  <cell>
+                    <s>Total</s>
+                  </cell>
+                  <cell>
+                    <s>26 (100 %)</s>
+                  </cell>
+                </row>
+              </table>
+              <p>Le procédé technique le plus fréquemment employé est la troncature suivie d'enlèvements sur l'autre face (n = 13 soit 57,7 % des pièces amincies). Cette troncature est généralement inverse (n = 10), plus rarement directe (n = 3), parfois superposée sur le même bord (n = 2) (Fig. 5 - n° 1) (Tabl. 4). Dans un seul cas, la troncature (directe) a servi à débiter un unique enlèvement envahissant (donc Kombewa) sans que l'on puisse dire si cette opération est antérieure ou non à la retouche du support (racloir aminci ?, nucléus Kombewa repris en racloir ou inversement ?) (Fig. 7 - n° 1).</p>
+              <p rend="figure-title">Figure 5. <lb/><hi rend="italic">Figure 5.</hi></p>
+              <p>
+                <figure>
+                  <graphic url="http://paleo.revues.org/docannexe/image/963/img-5.png"/>
+                </figure>
+              </p>
+              <p rend="figure-legend"><ref target="Image57Cgraphics"/> JIBOUI, n° 1, 4, 5 : racloirs latéraux convexes amincis ; n° 2 : pointe moustérienne amincie ; n° 3 : racloir convergent aminci. <lb/><hi rend="italic">JIBOUI, n° 1, 4, 5: thinned singles convex scrapers; n° 2: thinned mousterian pointe; n° 3: thinned convergent scraper.</hi></p>
+              <p rend="figure-license">Dessins: Renaut S.; D.A.O.: Bernard-Guelle S. et Porraz G. <lb/><hi rend="italic">Drawings by: Renaut S.; D.A.O. by: Bernard-Guelle S. and Porraz G.</hi></p>
+              <p rend="figure-title">Figure 6. <lb/><hi rend="italic">Figure 6.</hi></p>
+              <p>
+                <figure>
+                  <graphic url="http://paleo.revues.org/docannexe/image/963/img-6.png"/>
+                </figure>
+              </p>
+              <p rend="figure-legend"><ref target="Image67Cgraphics"/> JIBOUI, n° 1, 2, 3 : racloirs à dos amincis ; n° 4 : racloir convergent aminci. <lb/><hi rend="italic">JIBOUI, n° 1, 2, 3: scrapers with thinned back; n° 4: thinned convergent scraper.</hi></p>
+              <p rend="figure-license">Dessins: Renaut S. (n° 1) et Bernard-Guelle S. (n° 2 – 4); D.A.O.: Bernard-Guelle S. et Porraz G. <lb/><hi rend="italic">Drawings by: Renaut S. (n° 1) and Bernard-Guelle S. (n° 2 – 4); D.A.O. by: Bernard-Guelle S. and Porraz G.</hi></p>
+              <p rend="figure-title">Figure 7 <lb/><hi rend="italic">Figure 7</hi></p>
+              <p>
+                <figure>
+                  <graphic url="http://paleo.revues.org/docannexe/image/963/img-7.png"/>
+                </figure>
+              </p>
+              <p rend="figure-legend"><ref target="Image77Cgraphics"/> JIBOUI, n° 1 : racloir aminci ou nucléus kombewa repris en racloir ; n° 2 : racloir transversal aminci ; n° 3 : fragment distal de racloir aminci ou nucléus ; n° 4 : racloir double de type Nhar Ibrahim ; n° 5 : éclat Levallois aminci. <lb/><hi rend="italic">JIBOUI, n° 1: thinned scraper or Kombewa core retouched to scraper; n° 2: thinned transverse scraper; n° 3: distal fragment of thinned scraper or core; n° 4: double scraper with thinning Nhar Ibrahim type; n° 5: thinned Levallois flake.</hi></p>
+              <p rend="figure-license">Dessins: Renaut S. (n° 5 et 6) et Bernard-Guelle S. (n° 1 – 4); D.A.O.: Bernard-Guelle S. et Porraz G. <lb/><hi rend="italic">Drawings by: Renaut S. (n° 5 et 6) and Bernard-Guelle S. (n° 1 – 4); D.A.O. by: Bernard-Guelle S. and Porraz G.</hi></p>
+              <p rend="figure-title">Figure 8. <lb/><hi rend="italic">Figure 8.</hi></p>
+              <p>
+                <figure>
+                  <graphic url="http://paleo.revues.org/docannexe/image/963/img-8.png"/>
+                </figure>
+              </p>
+              <p rend="figure-legend"><ref target="Image87Cgraphics"/> JIBOUI, éclats bruts amincis ou nucléus sur éclat. <lb/><hi rend="italic">JIBOUI, thinned flakes or cores on flake.</hi></p>
+              <p rend="figure-license">Dessins : Picavet R. (n° 4) et Bernard-Guelle S. (n° 1 – 3) ; D.A.O. : Bernard-Guelle S. et Porraz G. <lb/> Drawings by: Picavet R. (n° 4) and Bernard-Guelle S. (n° 1 – 3); D.A.O. by: Bernard-Guelle S. and Porraz G.</p>
+              <p>Les outils ont quelquefois été amincis sans recourir à une troncature, par des enlèvements inverses (n = 3) (Fig. 5 - n° 5), bifaciaux (n = 2) (Fig. 5 - n° 4), directs (n = 1) ou alternants (n = 1). Cet amincissement est parfois réalisé à l'aide d'une simple retouche inverse permettant l'ablation du bulbe (n = 4).</p>
+              <p rend="figure-title">Tableau 4 : Jiboui - différents types d'amincissements. <lb/><hi rend="italic">Table 4: Jiboui - different thinning process types.</hi></p>
+              <table>
+                <row>
+                  <cell cols="2">
+                    <s>
+                      <hi rend="bold">Types d'amincissements</hi>
+                    </s>
+                  </cell>
+                </row>
+                <row>
+                  <cell>
+                    <s>Troncature inverse + enlèvements directs</s>
+                  </cell>
+                  <cell>
+                    <s>10 (38,5 %)</s>
+                  </cell>
+                </row>
+                <row>
+                  <cell>
+                    <s>Enlèvements directs </s>
+                  </cell>
+                  <cell>
+                    <s>1 (3,8 %)</s>
+                  </cell>
+                </row>
+                <row>
+                  <cell>
+                    <s>Troncature directe + enlèvements inverses</s>
+                  </cell>
+                  <cell>
+                    <s>3 (11,5 %)</s>
+                  </cell>
+                </row>
+                <row>
+                  <cell>
+                    <s>Enlèvements inverses</s>
+                  </cell>
+                  <cell>
+                    <s>3 (11,5 %)</s>
+                  </cell>
+                </row>
+                <row>
+                  <cell>
+                    <s>Succession des deux procédés (1 et 3) sur le même bord</s>
+                  </cell>
+                  <cell>
+                    <s>2 (7,7 %)</s>
+                  </cell>
+                </row>
+                <row>
+                  <cell>
+                    <s>Enlèvements bifaciaux </s>
+                  </cell>
+                  <cell>
+                    <s>2 (7,7 %)</s>
+                  </cell>
+                </row>
+                <row>
+                  <cell>
+                    <s>Enlèvements alternants</s>
+                  </cell>
+                  <cell>
+                    <s>1 (3,8 %)</s>
+                  </cell>
+                </row>
+                <row>
+                  <cell>
+                    <s>Retouche amincissante inverse</s>
+                  </cell>
+                  <cell>
+                    <s>4 (15,4 %)</s>
+                  </cell>
+                </row>
+                <row>
+                  <cell>
+                    <s>Total</s>
+                  </cell>
+                  <cell>
+                    <s>26 (100%)</s>
+                  </cell>
+                </row>
+              </table>
+              <p>L'amincissement est généralement pratiqué à la base de l'outil (base amincie = 81 % des cas, dont 14 % associés à un aménagement de l'extrémité distale) (Tabl. 5). On observe parfois des traces de répétition du procédé technique sur le même bord (n = 3) prouvant que la pièce a subi plusieurs phases d'amincissement, sans pouvoir estimer le laps de temps entre les deux opérations (Fig. 5 - n° 1 et 3, Fig. 7 - n° 3). Plus rarement, c'est le côté opposé au bord retouché qui est aminci par enlèvements inverses ou directs (dos aminci = 3) (Fig. 6 - n° 1 à 3). Pour un racloir convergent, c'est la partie apicale de l'outil qui a été amincie même si cela concerne la base du support. Enfin, pour l'encoche en bout, l'amincissement a eu lieu dans la partie proximo-latérale du support. Notons que le tranchant opposé à cet amincissement porte des ébréchures caractéristiques d'une utilisation.</p>
+              <p rend="figure-title">Tableau 5 : Jiboui - extension des amincissements par rapport aux zones retouchées. <lb/><hi rend="italic">Table 5: Jiboui - extension of thinning process according to retouched zones.</hi></p>
+              <table>
+                <row>
+                  <cell cols="2">
+                    <s>
+                      <hi rend="bold">Extension des amincissements</hi>
+                    </s>
+                  </cell>
+                </row>
+                <row>
+                  <cell>
+                    <s>Basal</s>
+                  </cell>
+                  <cell>
+                    <s>18 (69,2%)</s>
+                  </cell>
+                </row>
+                <row>
+                  <cell>
+                    <s>Basal + distal (ou apical)</s>
+                  </cell>
+                  <cell>
+                    <s>3 (11,5%)</s>
+                  </cell>
+                </row>
+                <row>
+                  <cell>
+                    <s>Apical</s>
+                  </cell>
+                  <cell>
+                    <s>1 (3,9%)</s>
+                  </cell>
+                </row>
+                <row>
+                  <cell>
+                    <s>Latéral</s>
+                  </cell>
+                  <cell>
+                    <s>1 (3,9 %)</s>
+                  </cell>
+                </row>
+                <row>
+                  <cell>
+                    <s>Dorsal</s>
+                  </cell>
+                  <cell>
+                    <s>3 (11,5 %)</s>
+                  </cell>
+                </row>
+                <row>
+                  <cell>
+                    <s>Total</s>
+                  </cell>
+                  <cell>
+                    <s>26 (100 %)</s>
+                  </cell>
+                </row>
+              </table>
+            </div>
+            <div type="div4">
+              <head subtype="level4">Supports bruts</head>
+              <p>Dans quelques cas, on observe un amincissement sur des supports bruts, généralement des éclats Levallois. </p>
+              <p>C'est le cas à Jiboui où trois pièces Levallois produites sur le site ont été amincies à leur base soit par troncature directe et enlèvements sur la face inférieure (n = 2) (Fig. 7 - n° 6), soit par enlèvements bifaciaux rasants (n = 1). Plus rarement, certains éclats non Levallois ont également été “amincis”. Néanmoins, lorsque le support n'est ni retouché ni Levallois et que le procédé technique est celui de la troncature suivie d'enlèvements, il devient très délicat de déterminer le but de l'opération. C'est en partie ce que nous décrivons dans les cas particuliers.</p>
+            </div>
+          </div>
+          <div type="div3">
+            <head subtype="level3">4.2.3 - Cas particuliers</head>
+            <p>Le gisement des Guillets (Isère) est un site de plein air où la matière première est locale. L'industrie récoltée lors d'un petit sondage (Malenfant, 1969) est numériquement faible, le débitage est Levallois et l'outillage retouché peu important. Au sein du matériel, un éclat cortical épais a été “aminci” à sa base par une troncature inverse (semi-abrupte) et des enlèvements postérieurs rasants sur sa face corticale. Ces opérations ont été effectuées de façon alternante et à plusieurs reprises (Fig. 3 - n° 5). On peut s'interroger sur le but de cette opération, il paraît vraisemblable de considérer cette pièce comme un nucléus.</p>
+            <p>La grotte des Eugles (Isère) est le seul site moustérien connu dans le massif voisin de la Chartreuse. Une industrie très pauvre numériquement y fut récoltée (Bocquet et Lequatre, 1973), la cavité ayant été entièrement fouillée. L'industrie se caractérise par la présence de produits de plein débitage (surtout Levallois) bruts ou parfois retouchés (Bernard-Guelle, 2000a) et par l'absence de nucléus si ce n'est la pièce décrite ci-dessous.</p>
+            <p>C'est un petit éclat qui a été transformé en nucléus sur sa face inférieure, puis retouché en racloir de type Quina sur sa face supérieure (Fig. 3 - n° 1). Dans un contexte assez semblable à celui de la grotte de Prélétang (absence de matière première, occupation de courte durée), cette pièce a donc subi plusieurs opérations bien distinctes. Cette pièce est morphologiquement un racloir à dos aminci mais une lecture des schémas diacritiques montre une autre réalité. Cette pièce fut d'abord un éclat qui a servi de support à un débitage Levallois avec préparation des convexités latérales de la future surface de débitage. Après obtention d'un premier éclat Levallois, une repréparation partielle de la surface est effectuée pour le débitage d'un second éclat Levallois. Ces pièces n'ont pas été retrouvées lors de la fouille et, dans l'hypothèse que le débitage a eu lieu sur place, il est probable qu'elles aient été emportées hors du site. La fonction première de cet éclat fut donc celle de nucléus. Celui-ci fut ensuite transformé en racloir par une retouche demi-Quina sur le bord opposé au plan de frappe. On peut penser qu'il a été utilisé sur le site puis abandonné. Nous avons donc là un éclat qui a servi de support pour deux actions complètement distinctes, mais qui ont pu, par la suite, être fonctionnellement associées.</p>
+            <p>Enfin, à Jiboui, sur certaines pièces classées comme nucléus sur éclat à enlèvements non envahissants, la reconnaissance des intentions est parfois problématique. Ces nucléus sont assez fréquents (n = 19, soit 12,3 % des nucléus reconnaissables), leurs supports sont préférentiellement des éclats corticaux (78,9 %). Ces nucléus sur éclat sont assez diversifiés et leurs niveaux d'exploitation correspondent soit à des stades différents d'arrêt du débitage dans des schémas opératoires reconnus dans le reste de l'industrie (essentiellement Levallois), soit à des finalités distinctes (nucléus dits “expédients”, pièces amincies).</p>
+            <p>La grande majorité de ces éclats est exploitée sur leur face inférieure. C'est un débitage de type Kombewa mais produisant plusieurs éclats sur une même face inférieure. Ces nucléus permettent la production rapide de petits éclats sans avoir à préparer la surface de débitage (économie de préparation).</p>
+            <p>Le débitage est de direction centripète, unipolaire ou plus rarement orthogonale et produit des éclats plus ou moins étendus sur la face inférieure. Lorsque l'exploitation est unipolaire à partir d'une troncature directe, le procédé technique étant le même que celui employé dans l'amincissement des outils (même si la face exploitée n'est pas la même), il serait tentant d'y voir une même finalité à partir de supports différents. Or, dans plusieurs cas, les supports ne semblent pas appropriés à une utilisation active (supports corticaux et sans aucun tranchant). Notons que l'un d'entre eux présente notamment une double patine illustrant une exploitation ultérieure de cet éclat, en l'occurrence en tant que support à un débitage (Fig. 2 - n° 6). Une autre pièce semble par contre appartenir à la catégorie des pièces amincies ; c'est un éclat triangulaire (à bords tranchants convergents) qui présente une troncature directe et de petits enlèvements inverses au niveau du bulbe (Fig. 8 - n° 3).</p>
+            <p>Quelques éclats sont exploités uniquement sur leur face supérieure (n = 3, soit 15,8 %), certainement en raison du manque de convexités de la face inférieure. Une ou plusieurs troncatures inverses servent alors de plan de frappe pour ces enlèvements. Ce procédé est assez rare au sein des nucléus ( <hi rend="italic">cf.</hi><hi rend="italic">supra</hi>) et se retrouve par contre souvent associé aux pièces retouchées alors qualifiées d'amincies.</p>
+            <p>Quand il n'y a ni retouche, ni bords tranchants associés, la volonté d'amincissement peut être exclue. Par contre, il est beaucoup plus difficile de se prononcer pour deux autres pièces de cet ensemble décrites ci-dessous. Dans les deux cas, une troncature inverse sert de plan de frappe au débitage d'enlèvements de direction unipolaire sur la face supérieure <hi rend="italic">.</hi> Il s'agit d'un grand éclat à longs tranchants latéraux sur son pourtour (Fig. 8 - n° 2), sur lequel une troncature inverse a été aménagée à sa base (comme cela est souvent le cas pour les pièces retouchées), qui a servi de plan de frappe pour quatre enlèvements assez envahissants sur la face supérieure. D'autre part, le remontage d'un petit enlèvement détaché à partir d'une troncature inverse sur un éclat cortical (Fig. 8 - n° 4), montre que l'opération a eu lieu sur place. Ceci pourrait accréditer la thèse du nucléus sur éclat puisque la plupart des outils amincis sont en matériaux allochtones et ont probablement été amincis ailleurs que sur le site (l'absence de remontage tendrait à le démontrer ?).</p>
+            <p>Enfin, une autre pièce est un fragment distal de racloir (Fig. 7 - n° 4) où une troncature inverse a été réalisée à partir de la cassure pour débiter trois petits enlèvements sur la face supérieure.</p>
+            <p>Chaque pièce constitue donc un cas particulier dont la lecture repose sur un certain nombre de postulats. A défaut de remontages et d'études tracéologiques, l'interprétation de ces pièces passe par leur description (type de support, présence ou non de retouche, procédé technique employé, incidence de celui-ci sur le support …), leur intégration aux modalités et objectifs de production du reste de l'industrie et du type de site dont elles sont issues (position des gîtes de matière première par rapport au site, fonction du gisement …).</p>
+            <p rend="figure-title">Tabl. 6 : Distinctions constatées entre amincissement et débitage sur éclats dans l'industrie de Jiboui. <lb/><hi rend="italic">Tabl. 6: Distinction between thinning process and flake knapping in Jiboui's industry.</hi></p>
+            <table>
+              <row>
+                <cell cols="3">
+                  <s>
+                    <hi rend="bold">Industrie de Jiboui</hi>
+                  </s>
+                </cell>
+              </row>
+              <row>
+                <cell>
+                  <s>
+                    <hi rend="bold">Tendances</hi>
+                  </s>
+                </cell>
+                <cell>
+                  <s>
+                    <hi rend="bold">Pièces amincies</hi>
+                  </s>
+                </cell>
+                <cell>
+                  <s>
+                    <hi rend="bold">Nucléus sur éclat</hi>
+                  </s>
+                </cell>
+              </row>
+              <row>
+                <cell>
+                  <s>Matière première</s>
+                </cell>
+                <cell>
+                  <s>Allochtone</s>
+                </cell>
+                <cell>
+                  <s>Locale</s>
+                </cell>
+              </row>
+              <row>
+                <cell>
+                  <s>Types de supports</s>
+                </cell>
+                <cell>
+                  <s>Levallois Retouchés</s>
+                </cell>
+                <cell>
+                  <s>Corticaux</s>
+                </cell>
+              </row>
+              <row>
+                <cell>
+                  <s>Plan de frappe / Troncature</s>
+                </cell>
+                <cell>
+                  <s>Inverse</s>
+                </cell>
+                <cell>
+                  <s>Directe</s>
+                </cell>
+              </row>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div type="div1">
+        <head subtype="level1">5 - Interprétation</head>
+        <div type="div2">
+          <head subtype="level2">5.1 - Synthèse des données</head>
+          <p>A l'echelle du site de Jiboui, une distinction entre débitage sur éclat et amincissement semble nettement se dégager (Tabl. 6). Sur ce site, les sous-produits de débitage de la chaîne opératoire principale (particulièrement les éclats corticaux) ont été largement exploités (Bernard-Guelle, à paraître). Le débitage est alors préférentiellement tourné vers la production d'éclats Levallois préférentiels aux dépens des faces inférieures des éclats-supports. Par contre, quelques éclats indifférenciés ont été exploités sur leur face supérieure selon le même procédé que celui mis en œuvre sur les pièces qualifiées d'amincies. La variabilité – certes peu importante - constatée dans le choix des différentes faces débitées pourrait s'expliquer en termes de contraintes techniques (la plus appropriée à un type de débitage, en l'occurrence Levallois). Quant à l'exploitation préférentielle des faces inférieures d'éclats corticaux, elle semble imposée par un choix d'ordre économique (récupération des sous-produits de la chaîne opératoire principale dans un souci de productivité).</p>
+          <p>Par contre, les pièces amincies ont subi une exploitation préférentiellement localisée sur la face supérieure. Sans que l'on soit vraiment en mesure de préciser si cette pratique dépend de critères techniques (propre à la morphologie du support sélectionné, par exemple) ou culturelles ( ?), nous pouvons cependant préciser qu'il ne semble pas s'agir de contraintes fonctionnelles puisque si l'amincissement a privilégié le détachement d'enlèvements dorsaux, la face inférieure a également - pour quelques pièces - été concernée.</p>
+          <p>Contrairement aux nucléus sur éclat, les supports amincis déterminables sont dans près de 43 % des cas issus d'une production Levallois. La sélection des supports, si nous la comparons à celle des nucléus sur éclat, s'est donc en partie tournée vers des produits plus “élaborés”.</p>
+          <p>De plus, alors que la matière première de ce site est à 99 % d'origine locale, celle des pièces amincies est quant à elle, dans près d'un cas sur deux, d'origine allochtone. Si nous limitons nos considérations à l'ensemble des outils retouchés de matière première allochtone, ceux qui sont amincis représentent environ 75 % de ce groupe. Les outils “importés” par les occupants de ce site étaient donc très majoritairement des pièces amincies. A une sélection particulière des types de support, se rajoute ici une donnée qui dénote l'intérêt que devaient porter les tailleurs à ce type d'outil.</p>
+          <p>La chronologie des opérations réalisées sur les outils retouchés amincis montre que la retouche précède généralement l'amincissement. Si l'échantillon demeure faible puisqu'il est fréquent que les deux opérations ne se recoupent pas ou qu'une cassure nuise à la lecture, nous pouvons tout de même remarquer que plus de 75 % des pièces ont été amincies après retouche du support (n = 7 sur 9). Deux autres pièces montrent une association des deux procédés. </p>
+          <p>Pour au moins deux pièces, l'amincissement a été probablement effectué dans le but d'emmancher les outils. Ce sont un racloir convergent convexe et une petite pointe moustérienne (27 mm de long) amincis sur la face supérieure à partir d'une troncature inverse semi-abrupte (Fig. 5 - n° 2). Les dimensions du support tout comme celles des enlèvements détachés le laissent en tout cas fortement supposer. De plus, ce sont deux pièces réalisées dans un silex (Sénonien) d'une provenance éloignée, donc probablement réaffûtées plusieurs fois avant d'être abandonnées.</p>
+        </div>
+        <div type="div2">
+          <head subtype="level2">5.2 - Considérations</head>
+          <p>Notre principal critère discriminant dans le choix d'isoler les pièces amincies des nucléus sur éclat a été la présence d'un (ou plusieurs) bord fonctionnel. Il s'agit donc d'une différence concernant le type de support (puisque celui-ci doit comporter au moins un bord utilisable) et aussi le type d'exploitation (périphérique pour les nucléus, “limitée” pour les pièces amincies). </p>
+          <p>Quand bien même ces deux types de pièces partageraient la même finalité (débitage), cette différence dans le type d'exploitation, puisqu'elle induit un comportement particulier et répété, suffit à établir une distinction terminologique.</p>
+          <p>Considérons l'hypothèse du débitage sur éclat pour les pièces amincies. Le fait de se servir d'un outil comme nucléus n'altère pas forcément les capacités fonctionnelles de celui-ci. Pour des raisons diverses, l'exploitation du volume d'un éclat en vue d'obtenir des supports a pu, dans certains groupes, être “systématiquement” appliquée et ce, sans que cela rende le support inutilisable (celui-ci peut à nouveau servir d'outil – cf. exemple de la pièce de la grotte du Coustal : Fonton <hi rend="italic">et al.</hi>, 1991).</p>
+          <p>Il se peut également que des outils, arrivés au terme de leur vie fonctionnelle (par choix ou par obligation), se soient vus exploités dans l'intention d'obtenir des supports. Une telle pratique ne correspondrait pas forcément à l'économie d'une matière première peu abondante, ce pourrait tout aussi bien n'être qu'une simple habitude culturelle, qu'un comportement “parcimonieux” habituel. Si l'association de la retouche et de l'amincissement, sur un nombre important de pièces, peut plaider en faveur d'un lien fonctionnel, ils peuvent très bien ne constituer que deux étapes distinctes appliquées à un même support et ce, quelle que soit leur succession chronologique. La pratique des amincissements correspondrait dans ce cas à un type de débitage sur éclat. Elle témoignerait donc d'économies relativement poussées qui seraient destinées à la fois à exploiter les capacités productives du support, mais aussi à utiliser ses capacités fonctionnelles. </p>
+          <p>Nucléus sur éclat et pièces amincies coexistent fréquemment dans les industries du Vercors. Si certains critères de distinctions semblent se dégager, Il reste difficile de déterminer la finalité de ces deux opérations. “ <hi rend="italic">Il faut envisager le fait qu'un même procédé technique ait pu répondre à des finalités distinctes selon le contexte. De la même façon, il est tout à fait possible que ce procédé englobe plusieurs finalités au sein d'un même assemblage</hi>” (Delagnes, 1992 p. 156). Le tailleur devait vraisemblablement avoir conscience de l'incidence (un amincissement) et de la conséquence (production de petits enlèvements) qu'une même technique pouvait avoir. A partir de là, pouvons-nous supposer qu'elles ont toutes deux, à un moment ou à un autre, pu être associées sur une même pièce. Il se peut très bien qu'une pièce aménagée par un amincissement ait vu ses enlèvements être utilisés et inversement (nucléus sur éclat reconsidéré comme un outil aminci). Cependant, ce genre de comportement serait davantage selon nous une pratique opportuniste dans la mesure où une première intention a dû guider ces opérations. </p>
+          <p>Les pièces amincies correspondent selon nous à un seul et même ensemble de pièces. La finalité de certaines d'entre elles semblent manifestement se démarquer d'un débitage. La matière première utilisée, le type de support sélectionné, l'agencement du procédé technique sur la pièce et ses conséquences sur la morphologie de celle-ci, sont des éléments récurrents et particuliers à certaines pièces. Ils vont dans le sens d'un aménagement de ces produits.</p>
+        </div>
+      </div>
+      <div type="div1">
+        <head subtype="level1">6. Conclusion</head>
+        <p>Au-delà d'une simple caractérisation, il est bien évidemment essentiel de réintégrer les pièces lithiques dans des suites d'opérations dont elles ne constituent que des étapes. Ainsi, l'obtention d'un éclat, tout en constituant la finalité d'une première opération (phase de production), n'est que le moyen d'une nouvelle action. Il peut s'agir soit d'une nouvelle phase de production (l'éclat va servir de nucléus), soit d'une phase d'utilisation (l'éclat va être retouché et/ou aminci, l'éclat ne va subir aucun aménagement). Nous avons porté notre attention, dans cette étude, sur deux opérations techniquement très proches intervenant toutes deux sur des supports déjà débités, elles dépendent donc des choix précédemment effectués. Ces deux opérations correspondent à une adaptation à cette première phase de production qu'est le débitage. L'amincissement serait destiné à modifier la morphologie (épaisseur, profil...) de supports obtenus lors d'un débitage nécessitant cette opération ou à prolonger la vie fonctionnelle d'un outil ; le débitage sur éclat serait la traduction de choix économiques (économie du débitage, de la matière première...) ou fonctionnels (obtention de supports particuliers). Nous voyons donc que quelle que soit la finalité, ces opérations semblent bien pouvoir être considérées comme une adaptation au débitage, adaptation par choix (investissement technologique porté en aval du débitage) ou par nécessité (soit le débitage n'est pas suffisamment maîtrisé, soit il ne permet pas d'obtenir un résultat satisfaisant). Il nous a semblé important d'étudier conjointement pièces amincies et nucléus sur éclat ; en effet, tous deux mettent en évidence des comportements semblables dans l'exploitation de l'éclat, tout en reflétant des finalités diverses (et donc des rôles différents joués par l'éclat).</p>
+        <p>Nous pouvons également nous demander dans quelle mesure les amincissements, tout comme l'ensemble de l'industrie dont ils font partie, peuvent être représentatifs de comportements humains particuliers, et par là, d'habitudes culturelles. La mise en évidence dans les industries du Vercors d'un nombre relativement important de pièces amincies nous amène à nous demander s'il est possible de voir une quelconque influence des régions avoisinantes, et plus particulièrement du couloir rhodanien pour lequel la présence d'un faciès particulier dit “oriental” ou “rhodanien” a souvent été évoquée (Lumley, 1970 ; Decroix-Bourhim <hi rend="italic">et al.</hi>, 1990). Ce faciès se caractérise, entre autre, par la présence toujours significative de pièces amincies. Nombreux sont les gisements qui ont été rapprochés d'un Moustérien de faciès oriental : le Champ Grand, l'abri Moula, la Baume des Peyrards, le Bau de l'Aubesier, le Figuier, l'Hortus, Carigüela... Plus proche de notre secteur géographique, les industries de la Baume de Gigny et, dans une moindre mesure, de Bas Guillotte (Buis-les-Baronnies) contiennent une part importante de pièces amincies. Il serait intéressant de revoir ces industries et de caractériser les différentes procédés d'amincissements afin d'identifier d'éventuelles influences régionales dans les traditions techniques. Dans les gisements de la Baume des Peyrards et de l'Hortus, par exemple, l'amincissement des éclats se fait en très grande majorité sur la face inférieure, les dos amincis sont fréquents. Par contre, dans les industries du Vercors, nous retrouvons très peu de racloirs à dos aminci, et les nombreuses bases amincies le sont essentiellement par une exploitation de la face supérieure. Dans quelle mesure la technique peut-elle être un critère discriminant à la distinction de groupes humains ? Les amincissements concourent à ce débat, ils participent à ce titre à la compréhension générale et à la définition des industries au Paléolithique moyen. </p>
+      </div>
+    </body>
+    <back>
+      <div type="bibliography">
+        <listBibl>
+          <bibl>ALIX P., PELEGRIN J. et M. DELOGE 1995 - Un débitage original de lamelles par pression au Magdalénien du Rocher-de-la-Caille (Loire). <hi rend="italic">PALEO</hi> n° 7, 1995, p. 187-200.</bibl>
+          <bibl>ANDERSON-GERFAUD P. et D. HELMER 1984 - L'emmanchement au Moustérien. La main et l'outil. Manches et emmanchements préhistoriques. <hi rend="italic">Travaux de la maison de l'Orient</hi> n° 15, 1984, p. 11-30.</bibl>
+          <bibl>BERNARD-GUELLE S. 1995 - <hi rend="italic">La grotte de Prélétang (Vercors) : étude d'une industrie moustérienne dans le contexte alpin et périalpin</hi>. Mémoire de D.E.A, Université de Provence (Aix-en-Provence), 1995. 115 p., 31 fig.</bibl>
+          <bibl>BERNARD-GUELLE S. 2000a - Etude de quelques séries lithiques (déposées à l'Institut Dolomieu de Grenoble). In : Th Tillet Ed., <hi rend="italic">Les Paléoalpins</hi>, Mélanges Pierre Bintz, Mémoire Hors Série de Géologie Alpine, n° 31, 2000, p. 107-115, Grenoble.</bibl>
+          <bibl>BERNARD-GUELLE S. 2000b -Le gisement moustérien de plein air des Mourets (Villard de Lans, Isère) : une nouvelle analyse de l'industrie <hi rend="italic">. Préhistoire Anthropologie Méditerranéennes</hi>, 1998-1999, t. 7-8, p. 53-61, Université de Provence.</bibl>
+          <bibl>BERNARD-GUELLE S. (à paraître) -Chaînes opératoires de débitage dans le gisement moustérien de Jiboui (Vercors, Préalpes françaises). <hi rend="italic">Session 5 du XIV Congrès UISPP</hi>, 2-8 septembre 2001, Liège.</bibl>
+          <bibl>BERNARD-GUELLE S. et C. BRESSY 2001 - L'exploitation du silex au Paléolithique moyen dans le Vercors (Préalpes françaises). In <hi rend="italic">Middle Palaeolithic and Middle Stone Age Settlement Systems</hi>, 2nd Conference of the U.I.S.P.P. Commission 27. Edited by N. J. Conard and A. W. Kandel, (in press). Tübingen, January 3-5, 1999, à paraître.</bibl>
+          <bibl>BERNARD-GUELLE S. et M. MALENFANT 2000 - Le Paléolithique moyen de Vassieux en Vercors (Drôme) : nouvel état des données. <hi rend="italic"> Bull. C.R.P.V</hi>., 2000,n° 14, p. 6-32.</bibl>
+          <bibl>BEYRIES S. 1984 - Quelques exemples de stigmates d'emmanchement observés sur des outils du Paléolithique moyen. La main et l'outil. Manches et emmanchements préhistoriques. <hi rend="italic">Travaux de la maison de l'Orient</hi>, 1984, n° 15,. p. 56-62.</bibl>
+          <bibl>BINTZ P. 1973 - Grotte de la Passagère à Méaudre (Isère) : campagne 1973. <hi rend="italic">Bull. Ass. Reg. Dévelop. Rech. Paléon. et Préh.</hi>, p. 24-25.</bibl>
+          <bibl>BOCQUET A. et P. LEQUATRE 1973 - Le Moustérien de la grotte des Eugles en Chartreuse, compte rendu préliminaire de fouilles. <hi rend="italic">Géologie Alpine</hi>, 1973, t. 44, p. 89-93.</bibl>
+          <bibl>BORDES F. 1961 - <hi rend="italic">Typologie du Paléolithique ancien et moyen</hi>. Presses du CNRS. (Réed. de 1988).</bibl>
+          <bibl>BOURGUIGNON L. 1998 - Les industries du Paléolithique intermédiaire d'Umm el Tlel : nouveaux éléments pour le passage entre Paléolithique moyen et Paléolithique supérieur. <hi rend="italic">Préhistoire d'Anatolie, Genèse des deux mondes</hi>, Liège. ERAUL 85, 1998, p. 709-730.</bibl>
+          <bibl>DECROIX-BOURHIM C., PAUTRAT Y., RAYNAL J.-P., VERJUX C. et J. COMBIER 1990 - Le Moustérien “Charentien” de la vallée du Rhône, du massif central et de Bourgogne. Colloque international Brive, 26-29 août 1990, résumé, 3 p. </bibl>
+          <bibl>DELAGNES A. 1992 - <hi rend="italic">L'organisation de la production lithique au Paléolithique moyen (Approche technologique à partir de l'industrie de la Chaise de Vouthon en Charentes).</hi> Thèse de doctorat de l'université de Paris X, 1992. 1 vol. , 386 p.</bibl>
+          <bibl>DELAGNES A. 1993 - Un mode de production inédit au Paléolithique moyen dans l'industrie du niveau 6 du Pucheuil (Seine-Maritime). <hi rend="italic">PALEO</hi> n° 5, 1993, p. 11-120.</bibl>
+          <bibl>DIBBLE H.L. et S. Mc PHERRON 2000 - <hi rend="italic">Truncated-faceted flakes: Hafting modification, Retouch or Cores?</hi> Abstracts of the 65th Annual Meeting. S.A.A. April 2000, Philadelphie.</bibl>
+          <bibl>EFIMIENKO P.P. 1958 - <hi rend="italic">Kostienki I</hi>, Moscou, 1958. 451 pages.</bibl>
+          <bibl>FONTON M., LHOMME V. et M. CHRISTENSEN 1991 - Un cas de ”réduction” et de ”transformation” d'outil au Paléolithique moyen. Un racloir déjeté de la grotte de Coustal à Noailles (Corrèze). <hi rend="italic">PALEO</hi>. n° 3, 1991, p. 43-47.</bibl>
+          <bibl>GENESTE J.M., JAUBERT J., LENOIR M., MEIGNEN L. et A. TURQ 1997 - Approche technologique des Moustériens Charentiens du Sud-Ouest de la France et du Languedoc oriental. <hi rend="italic">PALEO</hi> n° 9, 1997, p. 101-142.</bibl>
+          <bibl>GOREN-INBAR N. 1988 – Too small to be true? Reevaluation of cores on flakes in Levantine Mousterian assemblages. <hi rend="italic">Lithic technology</hi> 17 (1), p. 37-44.</bibl>
+          <bibl>KOSLOWSKI J.K. 1984 - Les lames aménagées par la “technique de Kostienki” dans le Périgordien supérieur de Corbiac. <hi rend="italic">Archeologia interregionalis</hi>. Wydawnictwa Uniwersytetu Warszawkiego, 1984, p. 31-78.</bibl>
+          <bibl>LHOMME V. 1993 - Approche du rôle de la fracturation dans l'industrie moustérienne de Champlost (Yonne). <hi rend="italic">Bull. S.P.F.</hi>, 1993, t. 90. p. 301-302.</bibl>
+          <bibl>LUMLEY-WOODYEAR H. de. 1970 - <hi rend="italic">Le paléolithique inférieur et moyen du midi méditerranéen dans son cadre géologique</hi>. Ed. CNRS, 1970.</bibl>
+          <bibl>MALENFANT M. 1969 -Découverte d'une industrie moustérienne de surface sur le plateau des Guillets (Isère). <hi rend="italic">C. R. Acad. Sc</hi>., 1969, Paris, t. 268, série D, p. 1380-1383.</bibl>
+          <bibl>MONCEL M.H. 1998 - Les niveaux moustériens de la grotte de St. Marcel (Ardèche). Fouilles R. Gilles. Reconnaissance de niveaux à débitage discoïde dans la vallée du Rhône. <hi rend="italic">Bull. S.P.F</hi>., 1998, t. 95, n° 2, p. 141-170.</bibl>
+          <bibl>NEWCOMER M.H. et F. HIVERNEL-GUERRE 1974 - Nucléus sur éclat : technologie et utilisation par différentes cultures préhistoriques. <hi rend="italic">Bull. S.P.F</hi>., 1974, t. 71. p. 119-127.</bibl>
+          <bibl>NISHIAKI Y. 1985 - Truncated-facetted flakes from Levantin mousterian assemblages <hi rend="italic">. </hi><hi rend="italic">Bull. department of archeology (University of Tokyo)</hi> 4, 1985, p. 215-226.</bibl>
+          <bibl>PAPACONSTANTINOU E. S. 1989 - Micromoustérien : les idées et les pierres. Asprochaliko (Grêce) et le problème des industries micolithiques du Moustérien. Thèse de l'Université de Paris X, 1989. 2 t.</bibl>
+          <bibl>PELEGRIN J. 1982 - <hi rend="italic">Approche expérimentale de la technique de production lamellaire d'Orville</hi>. Tailler ! Pour quoi faire : préhistoire et technologie lithique II. Studia Praehistorica Belgica. Edité par D. Cahen, 1982 p. 148-160.</bibl>
+          <bibl>PERLES C. 1982 - <hi rend="italic">Les “ outils d'Orville ” : des nucléus à lamelles</hi>. Tailler ! Pour quoi faire. Préhistoire et technologie lithique II. Studia Praehistorica Belgica. Edité par D. Cahen, 1982, p. 129-148.</bibl>
+          <bibl><hi rendition="#T4">Porraz </hi>G. 2001 – <hi rend="italic">Etude techno-morphologique des pièces “amincies” des couches 9 à 5 de la Baume des Peyrards (Vaucluse)</hi>. Mémoire de DEA. Université d'Aix-Marseille I. 150 p., 30 fig.</bibl>
+          <bibl>PRIMAULT J. 1998 - <hi rend="italic">Etude techno-fonctionnelle des Nahr Ibrahim des couches VIa' et VI3b'. Umm el Tlel.</hi> Article de DEA. Université de Paris X Nanterre, 1998. 1 vol. </bibl>
+          <bibl><hi rendition="#T4">Schroëder b.</hi><hi rendition="#T3"> (1969) – </hi><hi rend="italic">The lithic industries from Jerf Ajla and their bearing on the problem of Middle to Upper Paleolithic transition</hi>. Ph.D. dissertation: Columbia University.</bibl>
+          <bibl>SEMENOV S.A. 1964 - <hi rend="italic">Prehistoric technology (an experimental study of the oldest tools from traces of manufacture and wear</hi>), 1964 <hi rend="italic">. </hi>London : Cory, Adams &amp; Machay.</bibl>
+          <bibl>SLIMAK L. 1999 - <hi rend="italic">Pour une individualisation des Moustériens de type Quina oriental dans le sud est de la France.</hi> B.S.P.F., t. 96, 1999 p. 133-144.</bibl>
+          <bibl>SOLECKI R.S et R.L 1970 - A new secondary flaking technique at the Nahr Ibrahim Cave site, Lebanon. <hi rend="italic">Bull. du Musée de Beyrouth</hi> 23, 1970, p. 137-42.</bibl>
+          <bibl>TILLET T. 2000 - Le Moustérien d'altitude dans l'Arc alpin : complémentarité entre sites liés à une grotte et sites en plein air. <hi rend="italic">In</hi> : Th Tillet Ed., <hi rend="italic">Les Paléoalpins</hi>, Mélanges Pierre Bintz, Mémoire Hors Série de Géologie Alpine, n° 3, 2000, p. 99-106, Grenoble.</bibl>
+          <bibl>TILLET T. 2001 - Le Paléolithique moyen dans les Alpes et le Jura : exploitation de milieux de contraintes d'altitude. <hi rend="italic">In</hi>: N. J. Conard and A. W. Kandel edition. <hi rend="italic">Middle Palaeolithic and Middle Stone Age Settlement Systems</hi>, 2nd Conference of the U.I.S.P.P. Commission 27. Tübingen, January 3-5, 1999.</bibl>
+          <bibl>TIXIER J. et A. TURQ 1999 - Kombewa et alii. <hi rend="italic">PALEO</hi> n° 11, 1999, p. 135-144.</bibl>
+        </listBibl>
+      </div>
+    </back>
+  </text>
+</TEI>

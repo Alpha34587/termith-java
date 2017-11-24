@@ -1,6 +1,6 @@
 package org.atilf.module.enrichment.initializer;
 
-import org.atilf.models.enrichment.XslResources;
+import org.atilf.resources.enrichment.XslResources;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -19,7 +19,7 @@ public class TextExtractorTest {
     @BeforeClass
     public static void setUp(){
         _textExtractor = new TextExtractor(new File("src/test/resources/module/enrichment/" +
-                "initializer/textExtractor/file1.xml"), new XslResources());
+                "initializer/textExtractor/file1.xml"), new XslResources("termith-resources/all/xsl_stylesheet/extractText.xsl"));
     }
 
     @Test

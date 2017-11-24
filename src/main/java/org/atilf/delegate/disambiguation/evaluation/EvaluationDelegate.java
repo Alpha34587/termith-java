@@ -16,7 +16,6 @@ import java.util.concurrent.TimeUnit;
  *         Created on 12/10/16.
  */
 public class EvaluationDelegate extends Delegate {
-
     /**
      * this method is split in two parts. Firstly, for each file, the context is extract for each terms candidates.
      * Finally, each context is evaluated with the lexical associated in order to determine the terminology potentiality
@@ -32,7 +31,8 @@ public class EvaluationDelegate extends Delegate {
          */
         List<Future> futures = new ArrayList<>();
         _termithIndex.getEvaluationLexicon().forEach(
-                (p,value) -> futures.add(_executorService.submit(new Evaluation(p, _termithIndex))));
+                (p,value) -> futures.add(_executorService.submit(new Evaluation(p, _termithIndex)))
+        );
         _logger.info("Waiting EvaluationWorker executors to finish");
         new TermithProgressTimer(futures,this.getClass(),_executorService).start();
         _executorService.shutdown();

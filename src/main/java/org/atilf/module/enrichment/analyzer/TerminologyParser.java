@@ -4,7 +4,7 @@ import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonToken;
 import org.atilf.models.TermithIndex;
-import org.atilf.models.enrichment.TermOffsetId;
+import org.atilf.models.enrichment.MultiWordsOffsetId;
 import org.atilf.module.Module;
 import org.atilf.module.tools.FilesUtils;
 
@@ -16,7 +16,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import static eu.project.ttc.readers.JsonCasConstants.F_BEGIN;
 import static eu.project.ttc.readers.JsonCasConstants.F_END;
-import static org.atilf.models.enrichment.JsonTermResources.*;
+import static org.atilf.resources.enrichment.JsonTermResources.*;
 
 /**
  * parse termsuite json termsuite terminology
@@ -25,7 +25,7 @@ import static org.atilf.models.enrichment.JsonTermResources.*;
  */
 public class TerminologyParser extends Module {
     private Path _path;
-    private Map<String,List<TermOffsetId>> _standOffTerminology = new ConcurrentHashMap<>();
+    private Map<String,List<MultiWordsOffsetId>> _standOffTerminology = new ConcurrentHashMap<>();
     private Map<String,String> _idSource = new HashMap<>();
     private String _currentFile = "";
     private final JsonFactory _factory = new JsonFactory();
@@ -51,9 +51,9 @@ public class TerminologyParser extends Module {
 
     /**
      * getter for parsed terminology
-     * @return return Map<String, List<TermOffsetId>>
+     * @return return Map<String, List<MultiWordsOffsetId>>
      */
-    Map<String, List<TermOffsetId>> getStandOffTerminology() {
+    Map<String, List<MultiWordsOffsetId>> getStandOffTerminology() {
         return _standOffTerminology;
     }
 
@@ -78,7 +78,7 @@ public class TerminologyParser extends Module {
             test variables
              */
 
-            TermOffsetId offsetId = new TermOffsetId();
+            MultiWordsOffsetId offsetId = new MultiWordsOffsetId();
 
             while ((jsonToken = parser.nextToken()) != null) {
 
@@ -106,7 +106,7 @@ public class TerminologyParser extends Module {
         }
     }
 
-    private void writeTerms(JsonParser parser, JsonToken jsonToken, TermOffsetId offsetId) throws IOException {
+    private void writeTerms(JsonParser parser, JsonToken jsonToken, MultiWordsOffsetId offsetId) throws IOException {
         if (jsonToken == JsonToken.END_ARRAY && _inOcc) {
             _inOcc = false;
         } else if (jsonToken == JsonToken.END_OBJECT && _inOcc) {
@@ -125,10 +125,10 @@ public class TerminologyParser extends Module {
     }
 
     /**
-     * add a TermOffsetId object to _standoffTerminology
-     * @param offsetId the TermOffsetId that we want to add
+     * add a MultiWordsOffsetId object to _standoffTerminology
+     * @param offsetId the MultiWordsOffsetId that we want to add
      */
-    private void fillTerminology(TermOffsetId offsetId) {
+    private void fillTerminology(MultiWordsOffsetId offsetId) {
         /*
         the file concern by this adding
          */
@@ -138,12 +138,12 @@ public class TerminologyParser extends Module {
           create an new entry if the file identifier does not exist in _standoffTerminology
          */
         if (_standOffTerminology.containsKey(realId)){
-            _standOffTerminology.get(realId).add(new TermOffsetId(offsetId));
+            _standOffTerminology.get(realId).add(new MultiWordsOffsetId(offsetId));
         }
 
         else {
             _standOffTerminology.put(realId,new ArrayList<>(
-                    Collections.singletonList(new TermOffsetId(offsetId))));
+                    Collections.singletonList(new MultiWordsOffsetId(offsetId))));
         }
     }
 
@@ -151,11 +151,11 @@ public class TerminologyParser extends Module {
      * parse terms occurrences
      * @param jsonToken the current jsonToken
      * @param parser the current JsonParser
-     * @param offsetId set value of this TermOffsetId Object
+     * @param offsetId set value of this MultiWordsOffsetId Object
      * @throws IOException thrown an exception if parser meets some problems
      */
     private void extractTerm(JsonToken jsonToken, JsonParser parser,
-                             TermOffsetId offsetId) throws IOException {
+                             MultiWordsOffsetId offsetId) throws IOException {
         if (jsonToken.equals(JsonToken.FIELD_NAME)){
 
             switch (parser.getCurrentName()){

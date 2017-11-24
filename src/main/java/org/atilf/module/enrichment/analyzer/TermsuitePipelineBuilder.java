@@ -14,6 +14,8 @@ import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
+import static org.atilf.runner.TermithResourceManager.TermithResource;
+
 /**
  * build a termsuite pipeline and run it.
  * @author Simon Meoni
@@ -54,8 +56,8 @@ public class TermsuitePipelineBuilder extends Module {
                 .setCollection(
                         TermSuiteCollection.JSON,
                         _jsonCorpus,
-                        "UTF-8")
-
+                        "UTF-8"
+                )
                 /*
                 find term candidate
                  */
@@ -107,8 +109,8 @@ public class TermsuitePipelineBuilder extends Module {
      */
     private void init() {
 
-        _termithIndex.getTerminologies().add(Paths.get(_jsonCorpus.replace("json","") + "/" + "terminology.tbx"));
-        _termithIndex.getTerminologies().add(Paths.get(_jsonCorpus.replace("json","") + "/" + "terminology.json"));
+        _termithIndex.getTerminologies().add(Paths.get(_outputPath + "/" + "terminology.tbx"));
+        _termithIndex.getTerminologies().add(Paths.get(_outputPath + "/" + "terminology.json"));
     }
 
 
@@ -117,7 +119,9 @@ public class TermsuitePipelineBuilder extends Module {
      * @return the path of termsuite jar resource
      */
     private String exportResource(){
-        InputStream resourceAsStream = getClass().getClassLoader().getResourceAsStream("module/enrichment/analyze/termsuitePipelineBuilder/termsuite-resources.jar");
+        InputStream resourceAsStream = getClass().getClassLoader().getResourceAsStream(
+                String.valueOf(TermithResource.TERMSUITE_RESOURCE_PATH.getPath())
+        );
         try {
             Files.write(Paths.get(_outputPath +"/termsuite-resources.jar"), ByteStreams.toByteArray(resourceAsStream));
         } catch (IOException e) {

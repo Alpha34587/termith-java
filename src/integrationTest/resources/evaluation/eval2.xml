@@ -1,0 +1,447 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:ns="http://standoff.proposal">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title level="a" type="main">La pêche à l'âge du Bronze</title>
+                <title type="sub">les données archéoichtyofauniques de l'Abion (Martigues, Bouches-du-Rhône) et de Tonnerre I (Mauguio, Hérault)</title>
+                <author>
+                    <persName>
+                        <forename>Myriam</forename>
+                        <surname>Sternberg</surname>
+                    </persName>
+                    <affiliation>
+                        <s>Chargée de recherche 1, CNRS, UMR 6573, Centre Camille Jullian, 5 rue du Château de l'Horloge, BP 647, 13094 Aix-en-Provence, cedex 2</s>
+                    </affiliation>
+                </author>
+                <author>
+                    <persName>
+                        <forename>Mélanie</forename>
+                        <surname>Volle</surname>
+                    </persName>
+                </author>
+            </titleStmt>
+            <publicationStmt>
+                <publisher/>
+                <date when="2006-12-14">2006-12-14</date>
+                <availability>
+                    <p>Tous droits réservés</p>
+                </availability>
+                <idno type="url">http://dam.revues.org/668</idno>
+            </publicationStmt>
+            <sourceDesc/>
+        </fileDesc>
+        <encodingDesc>
+            <appInfo>
+                <application ident="Lodel" version="1.0">
+                    <label>Lodel</label>
+                    <desc>
+                        <ref target="http://www.tei-c.org/">We use TEI</ref>
+                    </desc>
+                </application>
+            </appInfo>
+            <tagsDecl>
+                <rendition scheme="css" xml:id="T1">text-decoration:line-through</rendition>
+                <rendition scheme="css" xml:id="T2">font-variant:small-caps;text-decoration:underline</rendition>
+                <rendition scheme="css" xml:id="T3">font-variant:small-caps</rendition>
+                <rendition scheme="css" xml:id="T4">text-transform:uppercase</rendition>
+                <rendition scheme="css" xml:id="T5">text-transform:uppercase;text-decoration:underline;</rendition>
+            </tagsDecl>
+        </encodingDesc>
+        <profileDesc>
+            <langUsage>
+                <language ident="fr">fr</language>
+            </langUsage>
+            <textClass>
+                <keywords scheme="geographical">
+                    <list>
+                        <item>Bouches-du-Rhône</item>
+                        <item>Abion</item>
+                        <item>Tonnerre</item>
+                        <item>Mauguio</item>
+                    </list>
+                </keywords>
+                <keywords scheme="chronological">
+                    <list>
+                        <item>âge du Bronze</item>
+                    </list>
+                </keywords>
+                <keywords scheme="keyword" xml:lang="en">
+                    <list>
+                        <item>Bronze age</item>
+                        <item>fish</item>
+                        <item>France</item>
+                        <item>Hérault</item>
+                        <item>archaeozoology</item>
+                        <item>Martigues</item>
+                    </list>
+                </keywords>
+                <keywords scheme="keyword" xml:lang="fr">
+                    <list>
+                        <item>âge du Bronze</item>
+                        <item>pêche</item>
+                        <item>Tonnerre I</item>
+                        <item>Abion</item>
+                        <item>archéozoologie</item>
+                    </list>
+                </keywords>
+            </textClass>
+        </profileDesc>
+    </teiHeader>
+    <ns:standOff type="wordForms">
+        <teiHeader>
+            <fileDesc>
+                <titleStmt>
+                    <title>Annotations morphosyntaxiques</title>
+                    <author role="annotator">ATILF</author>
+                    <author role="annotator">LINA</author>
+                </titleStmt>
+                <publicationStmt>
+                    <distributor>ATILF (Analyse et Traitement Informatique de la Langue
+                        Française)</distributor>
+                    <availability>
+                        <licence corresp="#licenceCC" target="http://creativecommons.org/licenses/by/4.0/"/>
+                    </availability>
+                </publicationStmt>
+                <sourceDesc>
+                    <p>Annotation morphosyntaxique du document <ref target="#termithIdentifier"/> générée
+                        automatiquement dans le cadre du projet TermITH</p>
+                </sourceDesc>
+            </fileDesc>
+            <encodingDesc>
+                <projectDesc>
+                    <p>Les annotations morphosyntaxiques s'appliquent au texte intégral du document <ref target="#termithIdentifier"/> et plus précisément au text/body et
+                        text/back.</p>
+                    <p>Le texte est segmenté automatiquement en tokens par un module interne de
+                        TermSuite2.0.</p>
+                    <p>L'étiquetage morphosyntaxique est réalisé par l'étiqueteur TreeTagger. Les jeux
+                        d'étiquettes sont ensuite homogénéisé selon la norme MulText.</p>
+                    <p>Les sorties enrichies de TermSuite2.0 sont enfin projetées dans le texte
+                        intégral.</p>
+                    <p>Les informations morphosyntaxiques sont représentées dans des structures de traits
+                        (&lt;fs&gt;) qui contiennent deux traits pour le moment, l'un pour la forme
+                        lemmatisée f/@name="lemma" et l'autre pour l'étiquette grammaticale
+                        f/@name="pos". Les valeurs de ces traits sont respectivement indiquées
+                        dans un élément &lt;string/&gt; et &lt;symbol/&gt;</p>
+                </projectDesc>
+                <appInfo>
+                    <application ident="TermSuite" version="2.0">
+                        <label>TS2.0</label>
+                    </application>
+                </appInfo>
+            </encodingDesc>
+        </teiHeader>
+        <ns:listAnnotation>
+            <span target="#t1">
+                <fs>
+                    <f name="lemma">
+                        <string>ce</string>
+                    </f>
+                    <f name="pos">
+                        <symbol value="PRO:DEM"/>
+                    </f>
+                </fs>
+            </span>
+            <span target="#t2">
+                <fs>
+                    <f name="lemma">
+                        <string>article</string>
+                    </f>
+                    <f name="pos">
+                        <symbol value="NOM"/>
+                    </f>
+                </fs>
+            </span>
+            <span target="#t3">
+                <fs>
+                    <f name="lemma">
+                        <string>présenter</string>
+                    </f>
+                    <f name="pos">
+                        <symbol value="VER:pres"/>
+                    </f>
+                </fs>
+            </span>
+            <span target="#t4">
+                <fs>
+                    <f name="lemma">
+                        <string>un</string>
+                    </f>
+                    <f name="pos">
+                        <symbol value="DET:ART"/>
+                    </f>
+                </fs>
+            </span>
+            <span target="#t5">
+                <fs>
+                    <f name="lemma">
+                        <string>étude</string>
+                    </f>
+                    <f name="pos">
+                        <symbol value="NOM"/>
+                    </f>
+                </fs>
+            </span>
+            <span target="#t6">
+                <fs>
+                    <f name="lemma">
+                        <string>comparer</string>
+                    </f>
+                    <f name="pos">
+                        <symbol value="VER:pper"/>
+                    </f>
+                </fs>
+            </span>
+            <span target="#t7">
+                <fs>
+                    <f name="lemma">
+                        <string>du</string>
+                    </f>
+                    <f name="pos">
+                        <symbol value="PRP:det"/>
+                    </f>
+                </fs>
+            </span>
+            <span target="#t8">
+                <fs>
+                    <f name="lemma">
+                        <string>donnée</string>
+                    </f>
+                    <f name="pos">
+                        <symbol value="NOM"/>
+                    </f>
+                </fs>
+            </span>
+            <span target="#t9">
+                <fs>
+                    <f name="lemma">
+                        <string>archéo-ichtyofauniques</string>
+                    </f>
+                    <f name="pos">
+                        <symbol value="ADJ"/>
+                    </f>
+                </fs>
+            </span>
+            <span target="#t10">
+                <fs>
+                    <f name="lemma">
+                        <string>livrer</string>
+                    </f>
+                    <f name="pos">
+                        <symbol value="VER:pper"/>
+                    </f>
+                </fs>
+            </span>
+            <span target="#t11">
+                <fs>
+                    <f name="lemma">
+                        <string>par</string>
+                    </f>
+                    <f name="pos">
+                        <symbol value="PRP"/>
+                    </f>
+                </fs>
+            </span>
+            <span target="#t12">
+                <fs>
+                    <f name="lemma">
+                        <string>deux</string>
+                    </f>
+                    <f name="pos">
+                        <symbol value="NUM"/>
+                    </f>
+                </fs>
+            </span>
+            <span target="#t13">
+                <fs>
+                    <f name="lemma">
+                        <string>site</string>
+                    </f>
+                    <f name="pos">
+                        <symbol value="NOM"/>
+                    </f>
+                </fs>
+            </span>
+            <span target="#t14">
+                <fs>
+                    <f name="lemma">
+                        <string>de</string>
+                    </f>
+                    <f name="pos">
+                        <symbol value="PRP"/>
+                    </f>
+                </fs>
+            </span>
+            <span target="#t15">
+                <fs>
+                    <f name="lemma">
+                        <string>le</string>
+                    </f>
+                    <f name="pos">
+                        <symbol value="DET:ART"/>
+                    </f>
+                </fs>
+            </span>
+            <span target="#t16">
+                <fs>
+                    <f name="lemma">
+                        <string>âge</string>
+                    </f>
+                    <f name="pos">
+                        <symbol value="NOM"/>
+                    </f>
+                </fs>
+            </span>
+            <span target="#t17">
+                <fs>
+                    <f name="lemma">
+                        <string>du</string>
+                    </f>
+                    <f name="pos">
+                        <symbol value="PRP:det"/>
+                    </f>
+                </fs>
+            </span>
+        </ns:listAnnotation>
+    </ns:standOff>
+    <ns:standOff type="candidatsTermes">
+        <teiHeader>
+            <fileDesc>
+                <titleStmt>
+                    <title>Annotations en occurrences de candidats termes désambiguïsées</title>
+                    <author role="annotator">ATILF</author>
+                    <author role="term detection">LINA</author>
+                </titleStmt>
+                <publicationStmt>
+                    <distributor>ATILF (Analyse et Traitement Informatique de la Langue
+                        Française)</distributor>
+                    <availability>
+                        <licence corresp="#licenceCC" target="http://creativecommons.org/licenses/by/4.0/"/>
+                    </availability>
+                </publicationStmt>
+                <sourceDesc>
+                    <p>Annotation en occurrences de candidats termes désambiguïsées du document <ref target="#termithIdentifier"/> générée automatiquement dans le cadre du projet
+                        TermITH</p>
+                </sourceDesc>
+            </fileDesc>
+            <encodingDesc>
+                <appInfo>
+                    <application ident="Termith" version="1.0">
+                        <label>atilf:termith:phase10:candidatsTermes</label>
+                    </application>
+                    <application ident="TermSuite" version="2.0">
+                        <label>TS2.0</label>
+                    </application>
+                    <application ident="TermSuite" version="1.4">
+                        <label>TS1.4</label>
+                    </application>
+                </appInfo>
+                <projectDesc>
+                    <p>Les candidats termes et la liste de leurs occurrences sont fournies par un module
+                        de la plateforme d'extraction terminologique TermSuite2.0 dans un fichier externe
+                        json.</p>
+                    <p>La liste des candidats termes uniquement est fournie par le même module en
+                        tbx.</p>
+                    <p>Une autre version du fichier tbx a été produite par une version antérieure de
+                        TermSuite, TermSuite1.4.</p>
+                    <p>Chaque &lt;span&gt; correspond à une occurrence de candidat terme.</p>
+                    <p>Pour chacune d'elles, l'attribut @target contient la liste des tokens qui
+                        composent l'occurrence de candidat terme décrite, l'attribut @corresp contient
+                        l'identifiant du candidat terme dans la terminologie produite par TermSuite2
+                        #TS2.0-entry et dans la terminologie porduite par TermSuite1.4 le cas échéant
+                        #TS1.4-entry.</p>
+                    <p>a forme de chaque occurrence de candidat est encodée sous la forme d'une structure
+                        de traits &lt;fs&gt; qui contient uniquement un trait décrivant la forme de
+                        l'occurrence qu'on trouve dans le texte f/@name="inflexionWords" qui
+                        contient un élément &lt;string&gt;.</p>
+                    <p>Les résultats de désambiguïsation sont indiqués à l'aide l'attribut @ana.</p>
+                    <p>La signification de chacune des valeurs &lt;interp/&gt; est décrite dans l'élément
+                        &lt;interpGrp&gt;.</p>
+                    <p>Les valeurs de désambiguïsation manuelle commencent par #DM ou sont égales à #noDM
+                        lorsque l'occurrence n'a pas été désambiguïsée manuellement.</p>
+                    <p>Les valeurs de désambiguïsation automatique commencent par #DA ou sont égales à
+                        #noDA lorsque le système de désambiguïsation n'a pas fourni de réponse.</p>
+                </projectDesc>
+            </encodingDesc>
+        </teiHeader>
+        <ns:listAnnotation>
+            <interpGrp type="desambiguisation_manuelle">
+                <interp xml:id="noDM">Occurrence du candidat terme non annotée</interp>
+                <interp xml:id="DM0">Occurrence du candidat terme rejetée dès le niveau syntaxique</interp>
+                <interp xml:id="DM1">Occurrence du candidat terme validée seulement au niveau syntaxique</interp>
+                <interp xml:id="DM3">Occurrence du candidat terme validée au niveau syntaxique et disciplinaire</interp>
+                <interp xml:id="DM4">Occurrence du candidat terme validée à tous les niveaux d'annotation. Cette occurrence est considérée comme terminologique</interp>
+            </interpGrp>
+            <span ana="#DM1" corresp="#entry-13471" target="#t13 #t14 #t15 #t16">
+                <fs>
+                    <f name="inflexionsWord">
+                        <string>sites de l'âge</string>
+                    </f>
+                </fs>
+            </span>
+            <span ana="#DM1" corresp="#entry-13471" target="#t16 #t17 #t18">
+                <fs>
+                    <f name="inflexionsWord">
+                        <string>âge du Bronze</string>
+                    </f>
+                </fs>
+            </span>
+            <span ana="#DM3" corresp="#entry-7263" target="#t30">
+                <fs>
+                    <f name="inflexionsWord">
+                        <string>côtière</string>
+                    </f>
+                </fs>
+            </span>
+            <span ana="#noDM" corresp="#entry-990" target="#t49">
+                <fs>
+                    <f name="inflexionsWord">
+                        <string>enfouissement</string>
+                    </f>
+                </fs>
+            </span>
+            <span ana="#noDM" corresp="#entry-1000" target="#t51">
+                <fs>
+                    <f name="inflexionsWord">
+                        <string>enfouissement</string>
+                    </f>
+                </fs>
+            </span>
+        </ns:listAnnotation>
+    </ns:standOff>
+    <text>
+        <front>
+            <div type="abstract" xml:lang="fr">
+                <p>
+                    <p>
+                        <w xml:id="t1">Cet</w>
+                        <w xml:id="t2">article</w>
+                        <w xml:id="t3">présente</w>
+                        <w xml:id="t4">une</w>
+                        <w xml:id="t5">étude</w>
+                        <w xml:id="t6">comparée</w>
+                        <w xml:id="t7">des</w>
+                        <w xml:id="t8">données</w>
+                        <w xml:id="t9">archéo-ichtyofauniques</w>
+                        <w xml:id="t10">livrées</w>
+                        <w xml:id="t11">par</w>
+                        <w xml:id="t12">deux</w>
+                    </p>
+                    <w xml:id="t13">sites</w>
+                    <w xml:id="t14">de</w>
+                    <head>
+                        <w xml:id="t15">l'</w>
+                        <w xml:id="t16">âge</w>
+                        <w xml:id="t17">du</w>
+                    </head>
+                </p>
+            </div>
+        </front>
+        <body>
+            <p/>
+        </body>
+        <back>
+            <div type="notes"/>
+        </back>
+    </text>
+</TEI>

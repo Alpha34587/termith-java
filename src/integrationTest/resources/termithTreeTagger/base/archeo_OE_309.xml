@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title level="a" type="main">Les grandes lames de silex du mobilier funéraire des proto-éleveurs du sud de l'Europe orientale</title>
+        <editor role="translator">
+          <persName>
+            <forename>Hugues</forename>
+            <surname>Plisson</surname>
+          </persName>
+        </editor>
+        <author>
+          <persName>
+            <forename>Natalia N.</forename>
+            <surname>Skakun</surname>
+          </persName>
+          <affiliation>
+            <s>Institute for the History of Material Culture of the Russian Academy of Sciences, St. Petersburg, Russia — skakunnatalia@yandex.ru</s>
+          </affiliation>
+          <orgName>
+            <s>Institute for the History of Material Culture of the Russian Academy of Sciences, St. Petersburg, Russia</s>
+          </orgName>
+          <email>
+            <s>skakunnatalia@yandex.ru</s>
+          </email>
+        </author>
+      </titleStmt>
+      <publicationStmt>
+        <publisher/>
+        <date when="2009-11-26">2009-11-26</date>
+        <availability>
+          <p>Tous droits réservés</p>
+        </availability>
+        <idno type="url">http://pm.revues.org/353</idno>
+      </publicationStmt>
+      <sourceDesc>
+        <biblFull>
+          <titleStmt>
+            <title/>
+            <respStmt>
+              <resp>traducteur</resp>
+              <name>Hugues Plisson</name>
+            </respStmt>
+            <respStmt>
+              <resp>auteur</resp>
+              <name>Natalia N. Skakun</name>
+            </respStmt>
+          </titleStmt>
+          <publicationStmt>
+            <publisher/>
+            <date/>
+          </publicationStmt>
+        </biblFull>
+      </sourceDesc>
+    </fileDesc>
+    <encodingDesc>
+      <appInfo>
+        <application version="1.0" ident="Lodel">
+          <label>Lodel</label>
+          <desc>
+            <ref target="http://www.tei-c.org/">We use TEI</ref>
+          </desc>
+        </application>
+      </appInfo>
+      <tagsDecl>
+        <rendition xml:id="T1" scheme="css">text-decoration:line-through</rendition>
+        <rendition xml:id="T2" scheme="css">font-variant:small-caps;text-decoration:underline</rendition>
+        <rendition xml:id="T3" scheme="css">font-variant:small-caps</rendition>
+        <rendition xml:id="T4" scheme="css">text-transform:uppercase</rendition>
+        <rendition xml:id="T5" scheme="css">text-transform:uppercase;text-decoration:underline;</rendition>
+      </tagsDecl>
+    </encodingDesc>
+    <profileDesc>
+      <langUsage>
+        <language ident="fr">fr</language>
+      </langUsage>
+      <textClass/>
+    </profileDesc>
+  </teiHeader>
+  <text>
+    <front>
+      <div type="abstract" xml:lang="en">
+        <p>Since the discovery of the burial complexes left by the early stock-breeders in the steppe areas on the left bank of the Dnieper river in Ukraine, the problem of their synchronization with various cultural Eneolithic stages distinguished in the Balkan-Danube region has been hotly debated, as well as the question of the role the stock-breeding populations played in the sudden disappearance of these cultures. One of the most interesting finds were the burials discovered at Lugansk in Ukraine. Flint artifacts constitute an important category of the burial inventory, and of particular interest among them are macroblades. The experiments carried out by different researchers show that the production of such blades was associated with some specific methods of splitting, such as the use of a lever mechanism. Ocher was found on the surface of all these blades. Most of the tools have identical use-wear traces similar to those characteristic of the knives that were used to cut meat. The shortage of data about the Eneolithic flint-working centers in the steppe zone of Ukraine makes it difficult to decide whether the blades from local burial complexes were produced in place or imported from outside. Some chance finds of hoards with blades (without cultural context), as well as single interments with blades and cores may be indicative of the existence of vagrant flintknappers.</p>
+      </div>
+      <div type="abstract" xml:lang="fr">
+        <p>Depuis la découverte des sites funéraires attribués aux éleveurs de la steppe de l'Ukraine sur la berge gauche du Dniepr, le problème de leur synchronisation avec les différentes communautés énéolithiques distinguées dans la région balkano-danubienne est vivement débattu, de même que la question de leur rôle dans la disparition soudaine de ces cultures. Les sépultures mises au jour dans la région de Lugansk en Ukraine sont parmi les découvertes les plus intéressantes. L'outillage de silex y constitue une part importante du mobilier funéraire, au sein duquel se distinguent de très grandes lames. Les expérimentations conduites par différents chercheurs montrent que la production de telles lames requérait des techniques de débitage particulières, telles que la pression au levier. Toutes ces lames sont ocrées et leur analyse tracéologique révèle des usures semblables à celles observées expérimentalement sur les couteaux à viande. Le manque de données sur des ateliers énéolithiques de taille du silex dans la steppe de l'Ukraine ne nous permet pas de dire si les lames qui composent le mobilier des sites funéraires par lesquels sont identifiés les éleveurs de la région ont été produites localement ou importées.</p>
+      </div>
+    </front>
+    <body>
+      <p>Les produits de silex sont l'une des composantes les plus répandues du mobilier funéraire dans différentes cultures de la préhistoire et des débuts de la métallurgie. En général, les chercheurs prêtent attention à ces produits, en soulignant leur caractère unique, mais, malheureusement, ils en donnent rarement les caractéristiques techniques et posent encore moins souvent la question de leur statut fonctionnel, alors que l'étude approfondie de ces objets peut renseigner sur leurs modes de fabrication et leurs fonctions, révéler des détails sur les rituels funéraires, préciser la chronologie et montrer le jeu des influences culturelles.</p>
+      <p>Tout cela s'applique largement au matériel des ensembles funéraires des premières communautés de pasteurs qui vécurent dans les régions steppiques comprises entre le Dniepr et le Don, à la fin du V <hi rend="sup">e</hi> et au début du IV <hi rend="sup">e</hi> millénaire. Dès le moment de la découverte de ces assemblages, les archéologues ont vivement discuté la question de leur synchronisation avec les différentes phases des cultures agricoles précoces de la région balkano-danubienne (Tripolje-Kukuteni en Ukraine, Moldavie et Roumanie ; Kodjadermen-Gumelnita-Karanovo VI en Roumanie et Bulgarie, et Varna en Bulgarie) et le rôle que prirent les migrations des nomades dans leur disparition soudaine et l'extension des Indo-européens en Europe (Dobrovolsky 1929 ; Danilenko 1959 ; Telegin 1991, Telegin 1973, Telegin <hi rend="italic">et al.</hi> 2001 ; Rassamakin 1999 ; Dergachev 2000, 2007 ; Manzura 2000 ; Todorova 1986, Todorova dir. 2002 ; Gimbutas 1991, Gimbutas 2006, etc. ; fig. 1). Les assemblages en question sont principalement connus par des sépultures et beaucoup moins par des sites d'habitat. Ils apparaissent dans la littérature archéologique dès le début du XX <hi rend="sup">e</hi> siècle sous le nom de la culture Srednij Stog II (Dobrovolsky 1929, Danilenko 1959, Telegin 1973), ou culture des Kourgans (Gimbutas 1956, Gimbutas 2006). Récemment, à la lumière de nouvelles données, certaines sépultures furent regroupées en une culture distincte dénommée Novodanilovka (fig. 2, Telegin <hi rend="italic">et al.</hi> 2001). Celle-ci, dont les sites sont dispersés dans toute l'aire steppique depuis le Don jusqu'au bas Danube, n'est connue que par ces sépultures. Elles sont caractérisées par des inhumations en fosse, avec les corps étendus sur le dos, jambes fléchies, la tête orientée soit à l'est soit au nord-est. Les os sont recouverts par une grande quantité d'ocre. Leur mobilier funéraire diffère de celui de la culture Srednij Stog par l'utilisation de dalles de pierre pour la construction de la tombe, l'abondance des objets en cuivre, dont de la parure, et par la présence de nombreuses pièces de silex remarquables par la perfection de leur facture.</p>
+      <p rend="figure-title">1 - Répartition des cultivateurs et des pasteurs énéolithiques dans le sud-est de l'Europe (1), et voies supposées (2) des invasions Indo- Européennes</p>
+      <p>
+        <figure>
+          <graphic url="http://pm.revues.org/docannexe/image/353/img-1.jpg"/>
+        </figure>
+      </p>
+      <p rend="figure-license"><ref target="Image17Cgraphics"/> (d'après Gimbutas 2006)</p>
+      <p>Les sépultures découvertes dans la ville de Lugansk, à l'est de l'Ukraine, sous un kourgan arasé, comptent parmi les sites les plus intéressants de la culture de Novodanilovka, Le diamètre du kourgan est de 25 mètres tandis que sa hauteur actuelle ne fait plus que 55 centimètres. En addition de la sépulture de type Novodanilovka, il y avait aussi une inhumation postérieure propre à la culture des Tombes en fosse, mais il est difficile de dire à laquelle des deux était associé le monticule (Pislariy <hi rend="italic">et al.</hi> 1976).</p>
+      <p rend="figure-title">2. Distribution des sites de la culture de Novodanilovka (d'après Telegin 2001)</p>
+      <p>
+        <figure>
+          <graphic url="http://pm.revues.org/docannexe/image/353/img-2.jpg"/>
+        </figure>
+      </p>
+      <p rend="figure-legend"><ref target="Image27Cgraphics"/> Sites mentionnés dans le texte : Lugansk-37 ; Petro-Svistunovo-20 ; Chapli-19 ; Staryi Orlik-15 ; Kreidyanka-33 ; Goncharovka-34 (Ukraine) ; Kainary-7 ; Djurjuleshty-8 (Moldavie) ; Reka Devnya-3 (Bulgarie) ; Mureshului-2 (Roumanie) ; Chongrad-1 (Hongrie)</p>
+      <p>La fosse de la tombe, de 2,7 m par 2,35 m, avait été creusée dans un sol vierge, à une profondeur de 0,92 m du sol actuel. Ses trois murs étaient recouverts de pièces de marne ; malheureusement, la partie nord-ouest de la fosse et l'un des squelettes furent partiellement détruits par la sépulture postérieure attribuée à la culture des Tombes en fosse (fig. 3), Trois squelettes d'hommes reposaient sur le dos, en position fléchie, la tête vers l'est, les bras le long du corps et les mains croisées sur le pelvis. Les os et le fond de la fosse étaient couverts d'ocre. Le matériel funéraire est composé d'objets en os, d'astragales, et de pièces lithiques, parmi lesquelles une meule, deux haches en ardoise et deux en silex, un grattoir sur éclat et 17 lames et fragments de lames. Ces lames, de grandes dimensions, dominent dans l'assemblage. Elles étaient disposées près des crânes et dans la partie supérieure du squelette post crânien, tandis qu'un spécimen était dans la main de l'un des inhumés. Jusqu'ici ce matériel n'a été décrit que de manière très globale, sans analyse des matières premières, des modes de débitage ni des traces d'usage. Pour combler cette lacune, nous avons entrepris une étude morphologique, technologique et tracéologique de 14 grandes lames en silex jaune miel, gris zoné et noir translucide.</p>
+      <p rend="figure-title">3 - Plan de la sépulture de Lugansk  (a - ocre ; b – objets)</p>
+      <p>
+        <figure>
+          <graphic url="http://pm.revues.org/docannexe/image/353/img-3.jpg"/>
+        </figure>
+      </p>
+      <p rend="figure-license"><ref target="Image37Cgraphics"/> (d'après Pislariy <hi rend="italic">et al. </hi>1976)</p>
+      <p>La plupart des spécialistes inclinent à penser que ces objets sont dans un silex local de haute qualité connu par les gisements et les mines énéolithiques du bassin du Don (Zweibel 1970). Il semble cependant prématuré de statuer sur les sources de silex en l'absence de données pétrographiques. En outre, le silex jaune est très semblable à celui de Dobrudja qui fut largement utilisé dans l' <hi rendition="#T4">é</hi>néolithique de Bulgarie (Nachev  <hi rend="italic">et al.</hi> 1981), tandis que les variétés grises zonées et noires ressemblent au silex de Volyn' au nord-ouest de l'Ukraine, qui était commun sur les sites de la culture de Trypolie. Il convient de souligner qu'au cours de l' <hi rendition="#T4">é</hi>néolithique ces deux types de silex furent intensivement utilisés et des produits finis furent exportés à de longues distances, dans des régions très éloignées des centres de production. En outre, des contacts intensifs entre les populations d'agriculteurs et d'éleveurs sont attestés par la présence d'objets importés en matières autres que le silex, telles que la céramique et le cuivre (Skakun 2004, 2006 ; Telegin <hi rend="italic">et al.</hi> 2001).</p>
+      <p>Pour des raisons pratiques, les lames étudiées de la sépulture de Lugansk sont divisées en trois groupes, selon leur couleur.</p>
+      <p>Le premier groupe consiste en 7 lames de silex jaune, 6 étant intactes et 1 figurant sous la forme d'un fragment proximal (fig. 4 et fig. 6 : 1, 2, 5, 7-10). Leur longueur est comprise entre 15 et 23 cm, leur largeur entre 2 et 3,8 cm et leur épaisseur entre 0,4 et 0,6 cm.</p>
+      <p rend="figure-title">4 - 1 à 7 : lames de la sépulture de Lugansk (silex jaune)</p>
+      <p>
+        <figure>
+          <graphic url="http://pm.revues.org/docannexe/image/353/img-4.jpg"/>
+        </figure>
+      </p>
+      <p><ref target="Image47Cgraphics"/> Elles ont un contour régulier, des pans latéraux parallèles avec des bords tranchants, une section triangulaire ou trapézoïdale basse, un profil droit ou courbe, une extrémité proximale épaissie par le bulbe de percussion, lequel, dans trois cas, porte une esquille bulbaire. Les talons sont minuscules, soit ellipsoïdaux ou en forme de trapèze irrégulier. Dans la plupart des cas la surface dorsale adjacente est légèrement abrasée et tous les surplombs ont été supprimés. Une des lames est restée brute de retouche (fig. 4 : 6 ; fig. 6 : 9), tandis que les 5 autres, désignées sous le terme de poignard, ont été façonnées par une retouche dorsale partielle. Sur 3 des lames intactes, les bords adjacents au talon portent une retouche abrupte, tandis que leur extrémité distale appointée a été renforcée par des enlèvements rasants (fig. 4 : 4, 5, 7 ; fig. 6 : 2, 8, 10). Sur la quatrième lame la retouche n'est pas seulement appliquée aux extrémités basales et apicales mais aussi sur l'un des bords (fig. 4 : 2 ; fig. 6 : 5) ; quant à la cinquième, seule l'apex est retouché (fig. 4 : 3 ; fig. 6 : 7). Le fragment n'est retouché qu'en bordure du talon (fig. 4 : 1 ; fig. 6 : 1). À en juger par la structure et la couleur du silex, toutes les lames entières pourraient avoir été débitées dans un même bloc. Pour trois d'entre elles une telle hypothèse est plus que vraisemblable, car leurs extrémités distales montrent une veine rouge-brun identique (fig. 4 : 3, 6, 7 ; fig. 6 : 6, 9, 10).</p>
+      <p>Le second groupe est celui des pièces en silex gris avec un motif en bandes qui suggère qu'elles ont aussi été tirées du même nucléus (fig. 5 : 1-3 ; fig. 6 : 3, 4, 6). Deux lames sont intactes ; elles mesurent 19,2 et 19 cm de long, 2,3 cm de large et 0,4 cm d'épaisseur. La troisième lame est représentée par un fragment distal (16 x 3,5 cm x 0,6 cm). Comme les lames en silex jaune, elles ont un contour régulier, des bords tranchants parallèles, une section triangulaire ou trapézoïdale aplatie, un profil courbe et un proximal épais. Leurs talons, petits, lisses et légèrement biseautés, ne montrent pas de trace d'abrasion mais les bords adjacents en sont retouchés. L'extrémité proximale de l'une d'elles est abattue par une retouche appliquée aux deux bords (fig. 5 : 3 ; fig. 6 : 4). Les autres lames ne sont pas du tout retouchées (fig. 5 : 2 ; fig. 6 : 6), tandis que le fragment porte une petite retouche sur ses deux bords (fig. 5 : 1 ; fig. 6 : 3).</p>
+      <p rend="figure-title">5 - 1 à 7 : lames de la sépulture de Lugansk (silex gris et noir)</p>
+      <p>
+        <figure>
+          <graphic url="http://pm.revues.org/docannexe/image/353/img-5.jpg"/>
+        </figure>
+      </p>
+      <p rend="figure-title"><ref target="Image57Cgraphics"/> 6 - Lames de la sépulture de Lugansk</p>
+      <p>
+        <figure>
+          <graphic url="http://pm.revues.org/docannexe/image/353/img-6.jpg"/>
+        </figure>
+      </p>
+      <p><ref target="Image67Cgraphics"/> Les lames et fragments décrits trouvent une forte similitude dans le matériel d'autres ensembles funéraires de la culture Novodanilovska examinés par l'auteur, tels que Petro-Svistunovo (fig. 9 : 1-6 ; fig. 10) et Chapli (fig. 11) en Ukraine, et Kainary et Djurdjuleshty en Moldavie. Les ressemblances sont autant dans la couleur (jaune) et la structure du silex, que dans les caractéristiques des lames qui signent leur mode de débitage. D'après la littérature, des objets semblables sont présents aussi dans les sépultures de Mureshului en Roumanie, Reka Devnya en Bulgarie, Chongrad en Hongrie orientale. En outre, des lames de même type proviennent de quelques dépôts connus dans la zone des cultures nomades des steppes, par exemple à Staryi Orlik, Goncharovka, Kreidyanka, etc. (Telegin <hi rend="italic">et al.</hi> 2001). Cependant, la qualité des publications ne permet pas de dire avec certitude si la technologie laminaire est dans tous les cas identiques. Les nucléus trouvés dans certaines des sépultures et des caches mentionnées sont de silhouette conique, à débitage unipolaire et table de débitage unique, avec un dos plat, pour une longueur comprise entre 11 et 18 cm. Ils ne sont pas complètement épuisés, mais leur exploitation semble avoir cessé lorsqu'ils n'avaient plus une longueur suffisante pour obtenir des lames de la dimension voulue. Le même phénomène peut être observé avec le matériel des ateliers de taille du silex des communautés agricoles de la région balkano-danubienne (Skakun 1996, 2004).</p>
+      <p>La comparaison des lames étudiées ici avec celles des cultures agricoles du sud-est de l'Europe, où la technologie du silex avait atteint un sommet de perfection (Skakun 1984, 1992, 1993, 1996, 2006), montre que d'un point de vue technique, le matériel de type Novodanilovka a davantage en commun avec les assemblages Kodjadermen-Gumelnita-Karanovo VI et Varna qu'avec le matériel de type Tripolje-Cucuteni. Les lames des sépultures de type Novodanilovka partagent avec celles des sites du complexe Kodjadermen-Gumelnita-Karanovo VI et Varna nombre de caractères qui signent la technologie du débitage : petit talon non facetté, abrasion de la corniche avant l'extraction, une notable courbure de l'extrémité proximale due à la présence d'un bulbe marqué, une face dorsale plate aux arêtes basses, une section régulière triangulaire ou trapézoïdale, des bords réguliers parallèles. Des séries d'expériences conduites par différents chercheurs ont montré que la production de telles lames requérait des moyens de débitage particuliers, dont le mécanisme du levier (Pelegrin 2006).</p>
+      <p>Cependant, il y a une différence notable dans le façonnage des supports. Aucune lame des ensembles Kodjadermen-Gumelnita-Karanovo VI et Varna n'est retouchée aux deux extrémités. Je n'en ai pas observé dans le matériel des nécropoles de Varna et Durandulak, que j'avais pour partie étudié, et il n'en est pas mentionné non plus dans les nouvelles publications (Kynchev 1978 ; Sirakov 2002 ; Manolakakis 2002). Il convient aussi de noter que la composition des assortiments d'outils dans les sépultures de type Novodanilovka diffère de celles de Varna et Durankulak. En plus des longues lames et de leurs fragments non retouchés, les « trousses à outils » dans les deux sites Bulgare comprennent des grattoirs, des perçoirs, des burins, des microlithes géométriques et des pointes de javelines. Dans les assemblages constituant le faciès Novodanilovka, les lames retouchées et non retouchées sont complétées par des armatures de flèches et de javelines, des haches et des grattoirs simples sur lame ou éclat.</p>
+      <p>Les lames de la culture Tripolje-Cucuteni sont plus massives et moins régulières. Souvent elles ont un profil courbe, une forme moins symétrique, un talon large et une extrémité proximale plus épaisse. D'après les expérimentateurs, ces différences sont dues au fait que les lames en contexte Kodjadermen-Gumelnita-Karanovo VI et Varna, et probablement celles de type Novodanilovka, furent débitées par la pression au levier, ce qui ne fut pas le cas de celles de type Tripolje-Cucuteni.</p>
+      <p>Les différences portent aussi sur le traitement secondaire. Tandis que les lames de l'entité Novodanilovka sont transformées en poignards par une retouche uniquement à leurs extrémités basales et apicales, les poignards de type Tripolje-Cucuteni ont une retouche dorsale continue ou intermittente qui couvre les bords et l'apex, créant une forme distincte dont les éléments de comparaison les plus proches sont à rechercher parmi les outils de la culture Srednij Stog (Skakun 2004 ; Telegin <hi rend="italic">et al. </hi>2001).</p>
+      <p>L'analyse tracéologique des deux premiers groupes a montré que la majorité des pièces étudiées, fragments de lames inclus, portait deux types de traces d'usage : l'un confiné aux bords et à l'apex, l'autre à l'extrémité proximale. Dans le premier cas, les traces d'usure sont présentes sous forme de petites ébréchures et de bandes étroites de poli sur les deux faces des bords formant la pointe. Parfois, elles sont accompagnées par des micro-traces linéaires sous forme de stries faiblement marquées plus ou moins parallèles au bord. Cette forme d'usure est similaire à celle caractéristique des couteaux utilisés pour couper la viande. Quelques lames ont des traces de frottement dans les zones adjacentes à leur talon qui pourraient être indicatives d'un emmanchement. En outre, toutes les lames ont une quantité variable d'ocre à leur surface, et dans plusieurs cas il ne s'agit pas de grains isolés provenant du remplissage de la tombe mais de larges bandes intentionnellement marquées, l'ocre ayant été par endroit frottée dans les facettes de retouche.</p>
+      <p>Les pièces du troisième groupe que nous avons distingué dans la sépulture de Lugansk sont en silex noir. Elles comprennent trois lames intactes retouchées en poignard (18 x 3,5 x 1,3 cm ; 14 x 2, 2 x 0,8 cm ; 12,5 x 2 x 0,8 cm, fig. 5 : 5-7 ; fig. 7 : 2-4) et un fragment de lame (10,5 x 3 x 0,5 cm, fig. 5 : 4 ; fig. 7 : 1). Ils diffèrent des lames en silex jaune et gris décrites ci-dessus. Les lames en silex noir sont plus courtes et plus massives, leur profil est courbe et l'épaisseur de la zone bulbaire moindre. Le talon, conservé sur deux spécimens, est large, sub-triangulaire, biseauté, lisse, avec abrasion de la corniche. La section est soit triangulaire, soit en trapèze irrégulier et les bords sont parallèles. Ces traits montrent que la technologie mise en œuvre, bien que parfaite, différait de celle utilisée pour produire les lames en silex jaune et gris. La technique de retouche aussi était distincte. La forme particulière des poignards était obtenue au moyen de longs enlèvements plats et étroits, probablement réalisés au moyen d'un retouchoir compresseur en cuivre (fig. 5 : 5-7 ; fig. 7 : 2-4). La surface dorsale de l'une de ces lames noires est complètement recouverte par cette retouche en ruban convergeant depuis les bords vers l'axe central de la pièce fig. 5 : 6 ; fig. 7 : 3). Une autre lame est travaillée de la même façon, à l'exception d'une petite zone non retouchée à l'extrémité basale (fig. 5 : 5 ; fig. 7 : 2). La troisième et plus grande lame a été transformée par une retouche directe marginale et un piquetage puis un polissage dorsal. La face ventrale de l'extrémité proximale est complètement couverte de larges enlèvements plats et le reste de la surface montre des traces de polissage (fig. 5 : 7 ; fig. 7 h 4 ; fig. 8 : 1-4). La forme de ces poignards est une lointaine réminiscence de celle de deux exemplaires du cimetière de Petro-Svistunovo (fig. 8 : 7, 8), qui appartient à la culture de Novodanilovka. Il n'y a rien d'équivalent dans le matériel de la culture Srednij Stog, ni dans celui de type Kodjadermen-Gumelnitsa-Koranovo VI et Varna. Quant aux sites du stade moyen du Tripolie, des fragments isolés de lames avec la face supérieure complètement couverte par une longue retouche sont connus dans le site de Bodaki qui était un centre spécialisé de taille du silex (Skakun 2004). Le quatrième objet est un fragment proximal de grande lame, avec un talon sub-triangulaire, biseauté, lisse, un profil droit, une section trapézoïdale et des bords parallèles (fig. 5 : 4 ; fig. 7 : 1) : des caractéristiques similaires à celles des autres lames du groupe.</p>
+      <p rend="figure-title">7 - Lames de la sépulture de Lugansk</p>
+      <p>
+        <figure>
+          <graphic url="http://pm.revues.org/docannexe/image/353/img-7.jpg"/>
+        </figure>
+      </p>
+      <p rend="figure-title"><ref target="Image77Cgraphics"/> 8 - Traces de piquetage et de polissage sur le poignard de la sépulture de Lugansk</p>
+      <p>
+        <figure>
+          <graphic url="http://pm.revues.org/docannexe/image/353/img-8.jpg"/>
+        </figure>
+      </p>
+      <p><ref target="Image87Cgraphics"/> L'analyse tracéologique des poignards a montré que deux d'entre eux (fig. 5 : 5, 6 ; fig. 7 : 2, 3) ont sur leur face ventrale des traces faiblement marquées de découpe de matière tendre, peut être de la viande. Les faces du troisième poignard (fig. 5 : 7 ; fig. 7 : 4), particulièrement la ventrale, ont des traces de piquetage, concassant la couche superficielle du silex et clairement visibles à l'œil nu, ainsi que des traces d'abrasion. Dans la partie médiane de la pièce l'abrasion est orientée selon son grand axe mais à son extrémité distale elle est transversale. Malheureusement, nous n'avons pas réussi à établir si ces traces résultaient d'une mise en forme de l'outil ou de son utilisation (fig. 8 : 1-4). Un des bords du fragment de lame (fig. 5 : 4 ; fig. 7 : 1) porte des ébréchures et un micro-poli caractéristiques des couteaux à viande. Tous les objets ont des traces d'ocre à leur surface.</p>
+      <p rend="figure-title">9 - Lames du tertre funéraire de Petro-Svistunovo</p>
+      <p>
+        <figure>
+          <graphic url="http://pm.revues.org/docannexe/image/353/img-9.jpg"/>
+        </figure>
+      </p>
+      <p><ref target="Image97Cgraphics"/> Ainsi, les grandes lames de la culture de Novodanilovka démontrent le plus haut degré d'accomplissement de la technologie du silex à l'énéolithique : nouvelles techniques de détachement des lames, incluant celles fondées sur l'application du levier, et l'usage du cuivre pour les compresseurs. L'absence de tout habitat de la culture de Novodanilovka et l'insuffisance des données relatives aux ateliers de taille du silex dans la zone steppique comprise entre le Dniepr, le Don et la Volga, ne permettent pas de déterminer s'il s'agit de découvertes techniques indépendantes ou d'emprunts. Il n'est pas non plus possible de dire quand apparurent les plus anciens centres de production de grandes lames. Cependant, l'opinion de M. Gimbutas, selon laquelle l'apparition du phénomène des grandes lames est liée à l'invasion des cultures des steppes, ne nous paraît pas suffisamment argumentée. Les cultures agricoles locales étaient le cadre de grands centres de production lithique qui exportaient de longues lames de silex sur d'importantes distances et les racines de ces technologies se trouvent déjà localement au début de l'énéolithique. Bien que les instruments pour la vie quotidienne et ceux destinés aux dépôts funéraires relevaient des mêmes technologies (Skakun 1996, 2004, 2006), il est intéressant de noter que les plus grands supports, probablement des objets de prestige, proviennent toujours des sépultures. Citons à titre d'exemple une lame unique de 44 cm trouvée dans la nécropole de Varna (Skakun 1996, Sirakov 2002, Manolakakis 2002). Le fait qu'à la fin du Néolithique des longues lames de silex étaient produites ailleurs en Europe (par exemple en Espagne, en France, en Belgique, en Pologne) doit nous mettre en garde sur toute conclusion prématurée à propos de la genèse et de la diffusion de cet important phénomène.</p>
+      <p rend="figure-title">10 - Lames du tertre funéraire de Petrovo-Svistunovo</p>
+      <p>
+        <figure>
+          <graphic url="http://pm.revues.org/docannexe/image/353/img-10.jpg"/>
+        </figure>
+      </p>
+      <p><ref target="Image107Cgraphics"/> L'étude tracéologique de lames de type Novodanilovka montre que leur utilisation comme couteau à viande est mineure. Leur homogénéité fonctionnelle et la présence d'ocre rouge à leur surface laissent supposer qu'elles jouaient un rôle important dans les cérémonies rituelles funéraires. Le même type d'usure fut identifié par K. Kynchev, M. Gurova et le présent auteur sur de grandes lames provenant des nécropoles énéolithiques de Varna et Durankulak en Bulgarie, qui livrèrent aussi des fragments de lames destinés à d'autres usages, tels que des armatures de faucilles (Kynchev 1978, Gurova 2002, Skakun 2006).</p>
+      <p rend="figure-title">11 - Une partie de la sépulture de Chapli (Ukraine)</p>
+      <p>
+        <figure>
+          <graphic url="http://pm.revues.org/docannexe/image/353/img-11.jpg"/>
+        </figure>
+      </p>
+      <p><ref target="Image117Cgraphics"/> Plusieurs faits rendent crédible l'hypothèse selon laquelle les sépultures de la culture de Novodanilovka appartenaient à des tailleurs de silex itinérants (Telegin 1985). Cette idée est en accord avec l'absence de tout site d'habitat connu pour cette culture, représentée exclusivement par des ensembles funéraires dispersés sur un large territoire du Danube au Don inférieur. La présence dans ces assemblages d'outils de silex divers de facture élaborée (poignards sur grandes lames, minuscules haches bifaciales, pointes de flèches et de javelines, nucléus), ainsi que les caches de longues lames trouvées par ailleurs, abondent dans le même sens. Cependant, une telle hypothèse ne nous aide pas à comprendre comment et par quelles voies les nouvelles façons de travailler le silex se diffusèrent durant l' <hi rendition="#T4">é</hi>néolithique. La résolution de cette importante question est l'un des objectifs de notre projet de recherche fondé sur les études typologiques, technologiques, pétrographiques et tracéologiques d'outils de silex de Russie, d'Ukraine, de Moldavie, ainsi que de Roumanie, de Bulgarie et de Pologne au début de l'âge des métaux, sur les sites ou apparurent les nouvelles méthodes de travail du silex menant à la production de grandes lames très régulières aux caractéristiques optimales.</p>
+    </body>
+    <back>
+      <div type="bibliography">
+        <listBibl>
+          <bibl>Danilenko 1959, DANILENKO V.N., 1956 archaeological works in the Chighirsky district [in russian], <hi rend="italic">Kratkie soobsenia Instituta arheologii</hi>, Kiev, 8, 1959.</bibl>
+          <bibl>Dergachev 2000, DERGACHEV V.A., Two essays in defense of the migrationist hypothesis [in russian], <hi rend="italic">Stratum Plus</hi>, Sankt-Peterburg, 2, 2000, p. 188-236.</bibl>
+          <bibl>Dergachev 2007, DERGACHEV V.A., <hi rend="italic">On scepters, horses, and war [in russian]</hi>, Sankt-Peterburg, Nestor Istorija, 2007, 486 p.</bibl>
+          <bibl>Dobrovolsky 1929, DOBROVOLSKY A.V., Archaeological explorations in the Dnepropetrovsk region in 1927 [in ukrainian], <hi rend="italic">Zbirnik Dnipropetrovs'kogo muzeu</hi>, Dnepropetrovsk.</bibl>
+          <bibl>Gimbutas 1956, GIMBUTAS M., <hi rend="italic">The prehistory of Eastern Europe. Part I : Mesolithic, Neolithic and Copper age cultures in Russia and the Baltic Area</hi>, Cambridge, Massachussetts, Peabody Museum, 1956, 241 p., 50 pl. h.-t. (American School of prehistoric Research Bulletin ; 20).</bibl>
+          <bibl>Gimbutas 1991, GIMBUTAS M., <hi rend="italic">The civilization of the goddess : the world of old Europe</hi>, San Francisco, Harper San Francisco 1991, xi + 529 p.</bibl>
+          <bibl>Gimbutas 2006, GIMBUTAS M., <hi rend="italic">Civilization of the Great Goddess : Live in Ancient Europe [in russian]</hi>, Moscow, ROSSPEN, 2006, 572 p.</bibl>
+          <bibl>Gurova 2002, GUROVA M., Mobilier en silex de la nécropole Dourankulak : analyse fonctionnelle, <hi rend="italic">in : Durankulak II : die prähistorischen Gräberfelder</hi>, Todorova H. (Dir.), Sofia / Berlin, Deutsches Archäologisches Institut, 2002, p. 247-256.</bibl>
+          <bibl>Kynchev 1978, KYNCHEV K., Micro-wear Studies of Weapons and Tools from Chalcolithic Necropolis at the City Varna <hi rend="italic">Studia praehistorica</hi>, Sofia, 1-2, 1978, p. 46-50.</bibl>
+          <bibl>Manolakakis 2002, MANOLAKAKIS L., Functions of blades from the Varna necropol [in bulgarian], <hi rend="italic">Arheologia</hi>, Sofia, 43, 3, 2002, p. 5-17.</bibl>
+          <bibl>Manzura 2000, MANZURA I.V., Those who possess scepters [in russian], <hi rend="italic">Stratum Plus</hi>, Sankt-Peterburg, 2, 2000, p. 237-295.</bibl>
+          <bibl>Nachev <hi rend="italic"> et al.</hi> 1981, NACHEV I., KANCHEV K., KOVNURKO G., Flint rocks in Bulgaria and their exploitation [in bulgarian], <hi rend="italic">Interdistsiplinarni Issledovania</hi>, Sofia, 7-8, 1981, p. 41-58.</bibl>
+          <bibl>Pelegrin 2006, PELEGRIN J., Long blade technology in the Old World : an experimental approach and some archaeological results, <hi rend="italic">in : Skilled production and social reproduction : aspects of traditional stone-tool technologies : proceedings of a symposium in Uppsala, August 20-24, 2003</hi>, Apel J., Knutsson K. (Dir.), Uppsala, Societas archaeologica Upsaliensis, 2006, p. 37-68 (SAU Stone studies ; 2).</bibl>
+          <bibl>Pislariy <hi rend="italic"> et al.</hi> 1976, PISLARIY I.A., KROTOVA A.A., KLOCHKO T.N., Eneolithic burial found in Voroshilovgrad [in russian], <hi rend="italic">in : The Eneolithic and Bronze Age of Ukraine</hi>, Kiev, Naukova Dumka, 1976, p. 53-64.</bibl>
+          <bibl>Rassamakin 1999, RASSAMAKIN Y., The Eneolithic of the Black Sea Steppe : Dynamics of Cultural and Economic Development 4500-2300 BC, <hi rend="italic">in : Late prehistoric exploitation of the Eurasian steppe</hi>, Levine M.G., Rassamakin Y., Kislenko A. <hi rend="italic"> et al.</hi> (Dir.), Cambridge, mcDonald Institute for archaeological Research, 1999, p. 59-182.</bibl>
+          <bibl>Sirakov 2002, SIRAKOV N., Flint artifacts in prehistoric grave-good assemblages from the Durankulak necropolis, <hi rend="italic">in : Durankulak II : die prahistorischen Graberfelder</hi>, Todorova H. (Dir.), Sofia / Berlin, Deutsches Archäologisches Institut, 2002, p. 213-246.</bibl>
+          <bibl>Skakun 1984, SKAKUN N.N., Flint working in the Early metal Period of Bulgaria [in russian], <hi rend="italic">in : IIIrd Seminar on Petroarchaeology : Plovdiv, 27-30 August, 1984, Bulgaria</hi>, Plovdiv Bulgarian Academy of Sciences, 1984, p. 83-92.</bibl>
+          <bibl>Skakun 1992, SKAKUN N.N., Évolution des techniques agricoles en Bulgarie chalcolithique (d'après les analyses tracéologiques), <hi rend="italic">in : Préhistoire de l'agriculture : nouvelles approches expérimentales et ethnographiques</hi>, Anderson P.C. (Dir.), Paris, Editions du CNRS, 1992, p. 289-303 (Monographie du CRA ; 6).</bibl>
+          <bibl>Skakun 1993, SKAKUN N.N., New implements and specialization of traditional industries in the Eneolithic of Bulgaria, <hi rend="italic">in : Traces et fonction : les gestes retrouvés</hi>, Anderson P.C., Beyries S., Otte M. <hi rend="italic"> et al.</hi> (Dir.), Valbonne / Liège, CRA du CNRS / Université de Liège, 1993, p. 139-145 ; 303-307 (Etudes et recherches archéologiques de l'Université de Liège ; 50).</bibl>
+          <bibl>Skakun 1996, SKAKUN N.N., To the question of the Eneolithic flint working in South-East Europe [in russian], <hi rend="italic">Arkheologia (Kiev)</hi>, 3, 1996, p. 124-128.</bibl>
+          <bibl>Skakun 2004, SKAKUN N.N., Preliminary results of the study of materials from the Tripolye settlement of Bodaki (flint working assemblages) [in russian], <hi rend="italic">in : Orudiya truda i sistemy zhizneobespechenia naselenia Evrazii : po materialam epoh paleolita – bronzy</hi>, Sankt-Peterburg, Evropeisky Dom, 2004, p. 57-79.</bibl>
+          <bibl>Skakun 2006, SKAKUN N.N., <hi rend="italic">Tools and economy of the Eneolithic farmers of the south-east of Europe [in russian]</hi>, Sankt-Peterburg, Nestor-Istoria, 2006, 223 p.</bibl>
+          <bibl>Telegin 1973, TELEGIN D.Y., <hi rend="italic">Srednij Stog culture of the Copper Period [in ukrainian]</hi>, Kiev, Naukova Dumka, 1973, 171 p.</bibl>
+          <bibl>Telegin 1991, TELEGIN D.Y., Graberfelder des Mariupol Types and Srednij Stog – Kultur in der Ukraine (mit Fundortkatalog), <hi rend="italic">in : Die Kupferzeit als historische Epoche 1</hi>, Lichardus J. (Dir.), Bonn, Habelt, 1991, p. 55-83.</bibl>
+          <bibl>Telegin <hi rend="italic"> et al.</hi> 2001, TELEGIN D.Y., NECHITAILO A.N., POTEKHINA I.D., PANCHENKO Y.V., <hi rend="italic">Srednij Stog and Novodanilovka Eneolithic cultures of the Azov - Black Sea region [in russian]</hi>, Lugansk, Shlyakh, 2001, 152 p.</bibl>
+          <bibl>Todorova 1986, TODOROVA H., <hi rend="italic">Eneolithic Period of Bulgaria [in bulgarian]</hi>, Sofia, Nauka i Iskustvo, 1986, 278 p.</bibl>
+          <bibl>Todorova 2002, TODOROVA H. Ed., <hi rend="italic">Durankulak II : die prahistorischen Graberfelder von Durankulak. T. 1</hi>, Sofia, Anubis / Deutsche Archäologische Institut, 2002, 359 p.</bibl>
+          <bibl>Zweibel 1970, ZWEIBEL D.S., Ancient flint mines near the village of Shirokoe in Donbass [in russian], <hi rend="italic">Sovetskaya Arkheologia</hi>, 1, 1970.</bibl>
+        </listBibl>
+      </div>
+    </back>
+  </text>
+</TEI>

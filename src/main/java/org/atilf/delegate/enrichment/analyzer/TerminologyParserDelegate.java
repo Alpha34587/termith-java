@@ -5,9 +5,13 @@ import org.atilf.module.enrichment.analyzer.TerminologyParser;
 import org.atilf.module.enrichment.analyzer.TerminologyStandOff;
 import org.atilf.module.enrichment.analyzer.TermsuitePipelineBuilder;
 import org.atilf.module.enrichment.analyzer.TreeTaggerWorker;
+import org.atilf.monitor.timer.TermithProgressTimer;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -39,8 +43,10 @@ public class TerminologyParserDelegate extends Delegate {
      */
     @Override
     public void executeTasks() throws InterruptedException, IOException, ExecutionException {
+        List<Future> futures = new ArrayList<>();
 
-        _executorService.submit(new TerminologyParser(_termithIndex));
+        futures.add(_executorService.submit(new TerminologyParser(_termithIndex)));
+        new TermithProgressTimer(futures,this.getClass(),_executorService).start();
 
         _executorService.shutdown();
         _executorService.awaitTermination(1L,TimeUnit.DAYS);

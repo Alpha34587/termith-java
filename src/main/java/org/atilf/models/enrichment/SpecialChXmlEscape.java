@@ -2,6 +2,7 @@ package org.atilf.models.enrichment;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.stream.Stream;
 
 /**
  * this is an equivalence table used during the exportation to tei file
@@ -9,30 +10,28 @@ import java.util.concurrent.ConcurrentHashMap;
  *         Created on 29/09/16.
  */
 public class SpecialChXmlEscape {
-    protected final static Map<String, String> XML_SPEC_CH = new ConcurrentHashMap<>();
+    protected final static Map<String, String> SPEC_CH = new ConcurrentHashMap<>();
 
-    private SpecialChXmlEscape() {
+    SpecialChXmlEscape() {
         throw new IllegalAccessError("Utility class");
     }
 
     static {
-        XML_SPEC_CH.put("\"", "&quot;");
-        XML_SPEC_CH.put("&", "&amp;");
-        XML_SPEC_CH.put("'", "&apos;");
-        XML_SPEC_CH.put("<", "&lt;");
-        XML_SPEC_CH.put(">", "&gt;");
+        SPEC_CH.put("\"", "&quot;");
+        SPEC_CH.put("&", "&amp;");
+        SPEC_CH.put("'", "&apos;");
+        SPEC_CH.put("<", "&lt;");
+        SPEC_CH.put(">", "&gt;");
     }
 
     /**
      * replace a special character to a xml escape characters
-     * @param ch the character
+     * @param s the character
      * @return the converted character
      */
-    public static String replaceXmlChar(String ch){
-        String res = "";
-        for (Map.Entry <String,String> entry : XML_SPEC_CH.entrySet()){
-            res = ch.replace(entry.getKey(),entry.getValue());
-        }
-        return res;
+    public static String replaceChar(String s){
+        return Stream.of(s.split(""))
+                .map(c -> SPEC_CH.getOrDefault(c, c))
+                .reduce("", String::concat);
     }
 }

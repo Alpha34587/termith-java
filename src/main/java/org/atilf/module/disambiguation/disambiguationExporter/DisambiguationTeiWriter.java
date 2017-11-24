@@ -1,7 +1,7 @@
 package org.atilf.module.disambiguation.disambiguationExporter;
 
 import org.atilf.models.TermithIndex;
-import org.atilf.models.disambiguation.AnnotationResources;
+import org.atilf.resources.disambiguation.AnnotationResources;
 import org.atilf.models.disambiguation.EvaluationProfile;
 import org.atilf.module.Module;
 import org.atilf.module.tools.FilesUtils;
@@ -23,8 +23,8 @@ import javax.xml.xpath.*;
 import java.io.IOException;
 import java.util.Map;
 
-import static org.atilf.models.disambiguation.DisambiguationExporterResource.NAMESPACE_CONTEXT;
-import static org.atilf.models.disambiguation.DisambiguationExporterResource.TEI_SPAN;
+import static org.atilf.resources.disambiguation.DisambiguationExporterResource.NAMESPACE_CONTEXT;
+import static org.atilf.resources.disambiguation.DisambiguationExporterResource.TEI_SPAN;
 
 /**
  * Write the result of module.disambiguation in tei file format

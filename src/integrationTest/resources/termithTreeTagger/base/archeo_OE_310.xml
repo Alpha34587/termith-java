@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title level="a" type="main">Un dépôt associé à une sépulture de la fin du Néolithique ancien à Buthiers-Boulancourt (Seine-et-Marne, France)</title>
+        <title type="sub">Approche tracéologique et techno-fonctionnelle du mobilier lithique</title>
+        <author>
+          <persName>
+            <forename>Renaud</forename>
+            <surname>Gosselin</surname>
+          </persName>
+          <affiliation>
+            <s>INRAP - 32, rue Delizy 93000 Pantin, France — renaud.gosselin@inrap.fr</s>
+          </affiliation>
+          <orgName>
+            <s>INRAP - 32, rue Delizy 93000 Pantin, France</s>
+          </orgName>
+          <email>
+            <s>renaud.gosselin@inrap.fr</s>
+          </email>
+        </author>
+        <author>
+          <persName>
+            <forename>Anaïck</forename>
+            <surname>Samzun</surname>
+          </persName>
+          <affiliation>
+            <s>INRAP - 32, rue Delizy 93000 Pantin, France/UMR 7041 - Protohistoire européenne - Nanterre, France — anaick.samzun@inrap.fr</s>
+          </affiliation>
+          <orgName>
+            <s>INRAP - 32, rue Delizy 93000 Pantin, France/UMR 7041 - Protohistoire européenne - Nanterre, France</s>
+          </orgName>
+          <email>
+            <s>anaick.samzun@inrap.fr</s>
+          </email>
+        </author>
+      </titleStmt>
+      <publicationStmt>
+        <publisher/>
+        <date when="2009-11-15">2009-11-15</date>
+        <availability>
+          <p>Tous droits réservés</p>
+        </availability>
+        <idno type="url">http://pm.revues.org/350</idno>
+      </publicationStmt>
+      <sourceDesc>
+        <biblFull>
+          <titleStmt>
+            <title/>
+            <respStmt>
+              <resp>auteur</resp>
+              <name>Renaud Gosselin</name>
+            </respStmt>
+            <respStmt>
+              <resp>auteur</resp>
+              <name>Anaïck Samzun</name>
+            </respStmt>
+          </titleStmt>
+          <publicationStmt>
+            <publisher/>
+            <date>2008-12-20</date>
+            <idno type="pp">91-104</idno>
+          </publicationStmt>
+        </biblFull>
+      </sourceDesc>
+    </fileDesc>
+    <encodingDesc>
+      <appInfo>
+        <application version="1.0" ident="Lodel">
+          <label>Lodel</label>
+          <desc>
+            <ref target="http://www.tei-c.org/">We use TEI</ref>
+          </desc>
+        </application>
+      </appInfo>
+      <tagsDecl>
+        <rendition xml:id="T1" scheme="css">text-decoration:line-through</rendition>
+        <rendition xml:id="T2" scheme="css">font-variant:small-caps;text-decoration:underline</rendition>
+        <rendition xml:id="T3" scheme="css">font-variant:small-caps</rendition>
+        <rendition xml:id="T4" scheme="css">text-transform:uppercase</rendition>
+        <rendition xml:id="T5" scheme="css">text-transform:uppercase;text-decoration:underline;</rendition>
+      </tagsDecl>
+    </encodingDesc>
+    <profileDesc>
+      <langUsage>
+        <language ident="fr">fr</language>
+      </langUsage>
+      <textClass/>
+    </profileDesc>
+  </teiHeader>
+  <text>
+    <front>
+      <div type="abstract" xml:lang="en">
+        <p>An Early Neolithic burial (post LBK or VSG culture, 4900-4600 BC) has been discovered in the Neolithic site of Buthiers-Boulancourt (Seine-et-Marne, France). Its funerary deposit consists of few flint lithic tools (4 scrapers, 1 burin, and 6 flakes) and a turtle shell. These kinds of objects are rather rare in tombs of this period, in which ceramic, schist bracelets and shell ornaments predominate. After a presentation of the site, the burial and its sepulchral objects, a typo-functional and traceological analysis of the lithic assemblage and a comparison with the material collected in the dwelling structures (dumping pits, structures linked with combustion) of the site, are proposed. If the lithic assemblage linked with the skeleton is characteristic of this phase of the Neolithic (scrapers are preponderant), it differs from the flint tools found in the dumping pits in morphology, dimensions and the fact that the grave's objects have not or little been used.</p>
+      </div>
+      <div type="abstract" xml:lang="fr">
+        <p>Une sépulture de la fin du VSG (4900-4600 av. n. è.) mise au jour sur le site de Buthiers-Boulancourt (Seine-et-Marne, France) était accompagnée d'un dépôt funéraire comprenant une carapace de tortue et plusieurs pièces lithiques (4 grattoirs, un racloir et six pièces non retouchées). Il convient de rappeler que ce type de mobilier est assez rare dans les tombes de la fin du Néolithique ancien dans lesquelles céramiques, bracelets en schiste et parure en coquillage prédominent. Après une présentation du site, de la sépulture et de son mobilier sépulcral, une analyse typo-fonctionnelle et tracéologique du mobilier lithique ainsi qu'une comparaison avec l'assemblage lithique recueilli dans les structures d'habitat (fosses dépotoirs, structures liées à la combustion) du site sont proposées. L'assemblage lithique et en particulier l'outillage associé à la tombe est caractéristique de cette étape du Néolithique avec une majorité de grattoirs mais il diffère sensiblement de celui des fosses détritiques par les dimensions des pièces et le fait qu'elles ont été peu ou pas utilisées.</p>
+      </div>
+    </front>
+    <body>
+      <p>Le corpus des sépultures assignables au Villeneuve-Saint-Germain est relativement réduit, en particulier pour l'étape récente et finale de cette culture, puisque l'on en compte à peine une cinquantaine répartie principalement dans la moitié nord de la France (Dubouloz <hi rend="italic">et al.</hi> 2005). Nous avons choisi de présenter l'une d'entre elles récemment découverte sur le site d'habitat de Buthiers-Boulancourt dans le sud-ouest de la Seine-et-Marne, en raison d'une part, de son mobilier funéraire plutôt atypique pour le VSG et d'autre part, en raison de l'absence de sépulture remontant au Néolithique ancien dans tout ce secteur géographique localisé dans le sud du Bassin parisien. Cette région est en revanche bien connue pour les sépultures sous dalle dites de Malesherbes, attribuées à l'étape suivante du Néolithique moyen I (culture Cerny) pour les plus anciennes (Simonin <hi rend="italic">et al.</hi> 1997).</p>
+      <div type="div1">
+        <head subtype="level1">Le site de Buthiers-Boulancourt</head>
+        <p>Le site de Buthiers-Boulancourt a été repéré en 2003 au cours d'un diagnostic en archéologie préventive dans le cadre de l'extension d'une carrière de sable. L'occupation est localisée à environ 75 km au sud de Paris, dans le Gâtinais occidental, en contexte de plateau (Samzun <hi rend="italic">et al.</hi> 2006 ; fig. 1).</p>
+        <p rend="figure-title">1 - Localisation du site de Buthiers-Boulancourt</p>
+        <p>
+          <figure>
+            <graphic url="http://pm.revues.org/docannexe/image/350/img-1.jpg"/>
+          </figure>
+        </p>
+        <p><ref target="Image17Cgraphics"/> Deux secteurs d'habitats (fig. 2) ont été reconnus au cours de deux campagnes de fouilles en 2003 et 2005 : l'un, le plus important en surface (environ 1 ha) comprend sept maisons danubiennes (dénommées « UA » ou unités architecturales sur le plan) probables, principalement représentées par des fosses latérales et est attribué au Néolithique ancien (groupe VSG récent, avec céramique à “cordon”, 4900-4600 BC). L'autre secteur, plus restreint, remonte au Néolithique moyen I (culture Cerny, 4600-4200 BC) et comprend pour l'essentiel, un tronçon de fossé, quelques trous de poteau et deux fosses dont l'une a livré presque 10 kg de céramique (Durand <hi rend="italic">et al.</hi> à paraître). Un polissoir en grès isolé situé à une cinquantaine de mètres des occupations néolithiques a également été mis au jour mais son attribution chronologique reste incertaine faute de vestige mobilier et immobilier associé. On peut cependant envisager l'hypothèse selon laquelle il a pu avoir été associé antérieurement à des inhumations comme c'est le cas à Orville « les Fiefs » localisé à proximité immédiate de Buthiers-Boulancourt, où une nécropole Cerny et une sépulture sous dalle ont été mises au jour (Simonin <hi rend="italic">et al.</hi> 1997).</p>
+        <p rend="figure-title">2 - Plan du site et localisation des sépultures</p>
+        <p>
+          <figure>
+            <graphic url="http://pm.revues.org/docannexe/image/350/img-2.jpg"/>
+          </figure>
+        </p>
+        <p rend="figure-license"><ref target="Image27Cgraphics"/> (DAO L. Manolova et A. Samzun)</p>
+        <p>L'occupation VSG a également livré plusieurs structures liées à la combustion, fait assez inhabituel en Ile-de-France, parmi lesquelles un petit foyer en creux à pierres chauffées localisé dans une des maisons (UA 6), des fours domestiques creusés en sape dans le limon avec sole et cendrier (Samzun <hi rend="italic">et al.</hi> 2007), une structure de type “brasero” ainsi qu'un four dit “polynésien”. </p>
+        <p>De plus, deux petits ensembles sépulcraux ont également été repérés et fouillés, incluant pour le n° 1 situé à proximité de l'occupation Cerny, deux sépultures et pour le n° 2, au moins trois inhumations individuelles. </p>
+        <p>Enfin, à l'est de l'UA 6, une incinération accompagnée d'ocre et d'un vase à fond rond et bouton à dépression centrale, très rarement attestée en France pour le Néolithique ancien, complète ces données. Quatre de ces inhumations y compris l'incinération, ont été datées au <hi rend="sup">14</hi>C et elles sont toutes rattachées à l'étape finale du VSG, puisque les datations s'échelonnent entre 4900 et 4600 cal. BC <note place="foot" n="1"><p rend="footnote"><ref target="ftn1">1</ref>  Centre for Isotope Research, Groningen. Les datations sur les sépultures obtenues sont les suivantes : <lb/> - groupe sépulcral n° 1 : <hi rend="italic">Sép. 1 </hi>: GrA-30904 : 5870+-40 BP : 4840-4650 cal. BC <lb/> - incinération (st 198) : GrA-30823 : 5980+-50 BP : 5000-4720 cal. BC <lb/> - groupe sépulcral n° 2 : <hi rend="italic">Sép. 269 </hi>: GrA-31022 : 5860+-40 BP : 4830-4610 cal BC / <hi rend="italic">Sép. 416 </hi>: GrA-30913 : 5920+-40 BP : 4910-4700 cal BC</p></note>.</p>
+        <p>Dans l'ensemble sépulcral n° 2 situé dans le secteur central, le mieux conservé du site, à quelques mètres de la zone des fours et au sud-ouest d'une longue fosse latérale liée à l'UA 4 (St 259), une sépulture en assez bon état de préservation a particulièrement retenu notre attention.</p>
+      </div>
+      <div type="div1">
+        <head subtype="level1">La sépulture 269 (fig <hi rendition="#T4">. 3</hi>)</head>
+        <p>Cette inhumation se trouve à proximité d'au moins deux autres sépultures, st 268 et 416. En effet, une fosse ovalaire, st 268 (dimensions : 1,70 m x 1,25 m x 0,15 m), renfermant un squelette en position fléchie, mal conservé, accompagné d'ocre et sans mobilier associé a été mise au jour à l'est de la sépulture 269. Une quatrième sépulture, st 416, se trouve au sud de la st 269. Plus à l'est, une fosse vide, de dimensions analogues (st 270), correspond vraisemblablement à une tombe détruite par les travaux de labours.</p>
+        <p rend="figure-title">3 - La sépulture 269, vue générale</p>
+        <p>
+          <figure>
+            <graphic url="http://pm.revues.org/docannexe/image/350/img-3.jpg"/>
+          </figure>
+        </p>
+        <p rend="figure-license"><ref target="Image37Cgraphics"/> (photo : équipe INRAP)</p>
+        <p>Ces petits groupements de sépultures à proximité d'un secteur d'habitat sont caractéristiques de l'aire VSG (Jeunesse 1997).</p>
+        <p>La sépulture 269 consiste en un sujet âgé de sexe féminin <note place="foot" n="2"><p rend="footnote"><ref target="ftn2">2</ref>  Fouillée par F. Nicolle†, Inrap</p></note> qui était déposé dans une fosse sub-circulaire assez large et peu profonde (1,80 m x 170 m x 0,30 m) au comblement limono-sableux brun-roux enchâssé dans le calcaire induré. D'après l'analyse anthropologique conduite par I. Le Goff (INRAP/UMR7041 « Ethnologie préhistorique »), il n'est pas impossible que le cadavre ait été placé dans une enveloppe souple. Orientée est ouest, tête à l'est et regardant vers le sud, l'inhumée reposait en position fléchie, hormis le bras gauche, le long du flanc gauche. Cette posture des inhumés est caractéristique dans l'aire rubanée et post-rubanée (Jeunesse1997). La défunte était déposée sur une épaisse couche d'ocre qui scellait une couche blanchâtre indurée et homogène. Les analyses de phytolithes par P. Verdin (Inrap-CEPAM) et le test palynologique de M. Boulen (Inrap-UMR 7041 « Protohistoire européenne ») n'ont pas permis de valider l'hypothèse de la présence d'une éventuelle « litière ».</p>
+      </div>
+      <div type="div1">
+        <head subtype="level1">Le dépôt sépulcral (fig <hi rendition="#T4">. 4</hi>)</head>
+        <p>Dans le comblement de la fosse dont la partie supérieure a été partiellement entamée par les labours, et d'après l'étude céramologique (Durand <hi rend="italic">et al.</hi> à paraître), on a constaté que sept tessons dont quatre comportent un motif décoratif (lignes imprimées sous le bord avec un poinçon, présence d'un cordon et d'un bouton sous le bord) et présentent un dégraissant composé de calcaire qui est par ailleurs très rarement rencontré sur le site avec seulement deux autres exemplaires. Tous ces tessons sont caractéristiques du VSG et paraissent constituer un dépôt volontaire de vases « importés » ou produits pour cette occasion et ont été vraisemblablement endommagés par les remaniements postérieurs.</p>
+        <p>Placé près du crâne à la gauche de l'inhumée, le mobilier funéraire était composé d'une carapace de tortue et de plusieurs pièces lithiques toutes en silex secondaire.</p>
+        <p>Le dépôt paraît avoir été partiellement endommagé, voire légèrement déplacé, probablement en partie en raison des travaux de labours et peut-être aussi par les fouisseurs dont les terriers étaient visibles au cours de la fouille.</p>
+        <p rend="figure-title">4 - Détail du dépôt funéraire : carapace de tortue et mobilier lithique</p>
+        <p>
+          <figure>
+            <graphic url="http://pm.revues.org/docannexe/image/350/img-4.jpg"/>
+          </figure>
+        </p>
+        <p rend="figure-license"><ref target="Image47Cgraphics"/> (photo : équipe INRAP)</p>
+        <div type="div2">
+          <head subtype="level2">La carapace de tortue</head>
+          <p>D'après l'étude archéozoologique de C. Bemilli (Inrap-MNHN-UMR 5197), il s'agit d'une tortue commune européenne appelée cystude ( <hi rend="italic">Emys orbicularis</hi>). Elle est au trois-quarts complète (dimensions : 15 cm x 10 cm) et nous avons vérifié à la binoculaire (grossissement 120 mm) si d'éventuels stigmates de décarnisation ou de découpe ou autre étaient éventuellement visibles, ce qui n'était pas le cas. Aucun os du squelette de l'animal n'était présent. Il s'agit d'un type de dépôt rarement rencontré dans les sépultures. À Balloy/les Réaudins en Seine-et-Marne, associée à l'une des inhumations du Néolithique Moyen I probable (sép. 47, sujet de sexe féminin en posture allongée), une carapace était placée contre l'épaule droite, l'ouverture vers le haut. D. Mordant suggère une interprétation qui se baserait sur sa position contre la face de l'inhumée : l'objet suivant la bascule du crâne aurait donc pu être placé sur celui-ci comme un masque (Mordant 1997).</p>
+          <p>Une carapace de tortue nous a également été signalée dans la sépulture datée du Mésolithique tardif (VI <hi rend="sup">e</hi> mil.) à Bad Dürrenberg dans l'Est de l'Allemagne par R.-M. Arbogast. </p>
+          <p>La fonction de ce type de dépôt pose question : peut-il s'agir d'un bien personnel, d'un dépôt symbolique, ou un simple contenant pour une offrande alimentaire ?</p>
+        </div>
+        <div type="div2">
+          <head subtype="level2">L'assemblage lithique</head>
+          <p>L'effectif des pièces recueillies dans la fosse de la sépulture est de 36 (poids total : 516 g ; tabl. 1), y compris les outils qui sont au nombre de six. Parmi les produits de débitage, seules trois pièces comprenant un éclat (flanc de nucleus, n° 7), et deux éclats laminaires (n° 8 et 9) paraissent clairement associées au dépôt sépulcral. Les autres pièces ont été collectées dans le comblement de la fosse à des altitudes différentes. Nous ne prenons donc en compte comme dépôt intentionnel que les artefacts reposant près du crâne et de la carapace de tortue, car certaines pièces ont manifestement été bougées et le dépôt sépulcral perturbé. Cinq des six outils (quatre grattoirs dont un double n ° 2-4, un racloir et une pièce composite de type grattoir et burin) étaient rassemblés et clairement associés au dépôt funéraire. Un grattoir de petites dimensions (n° 11) se trouvait dans le comblement de la fosse.</p>
+          <p rend="figure-title">Tableau 1 - Inventaire du débitage et de l'outillage de la sépulture 269 (silex S = silex secondaire)</p>
+          <p>
+            <figure>
+              <graphic url="http://pm.revues.org/docannexe/image/350/img-5.jpg"/>
+            </figure>
+          </p>
+          <p><ref target="Image57Cgraphics"/> Les pièces du dépôt funéraire ont toutes été débitées au percuteur dur sans soin particulier dans un silex secondaire local de couleur gris-beige à jaune clair, translucide, à grain assez fin et comportant des impuretés. Sa provenance pourrait se situer, à l'instar du site d'Échilleuses, « Les Dépendances de Digny » (Loiret), dans la vallée du Loing (Simonin 1988). </p>
+          <p>Les outils sont sur supports d'éclats (quatre pièces) ou d'éclats laminaires entièrement corticaux à partiellement corticaux. Les talons des pièces sont lisses et épais à l'exception de l'un d'entre eux qui est retouché. Leurs bulbes sont fréquemment esquillés. Leurs retouches sont abruptes à semi-abruptes. Ces outils paraissent tous liés au travail du grattage et du raclage.</p>
+          <p>L'ensemble de ces pièces porte une patine particulière que nous n'avons pas observée sur le mobilier livré par les structures liées à l'habitat où le silex est presque constamment d'apparence fraîche. La patine se présente sous forme de points blanchâtres qui envahissent toute la surface ou partiellement les artefacts. Est-ce parce que la fosse de l'inhumation constitue un ensemble clos et que les phénomènes taphonomiques ont pu ainsi agir de façon homogène sur le silex ou pourrait-il s'agir de l'action des effluents du cadavre ?</p>
+        </div>
+      </div>
+      <div type="div1">
+        <head subtype="level1">Les caractéristiques de la production lithique VSG à Buthiers-Boulancourt (tabl <hi rendition="#T4">. 2</hi>)</head>
+        <p>L'assemblage lithique de la sépulture, quoique peu abondant, reflète bien celui recueilli dans les fosses détritiques de l'occupation (silex secondaire de provenance locale), et est comparable aux assemblages des sites du Villeneuve-Saint-Germain, avec un débitage majoritaire d'éclats et un outillage qui se compose principalement de grattoirs sur éclats et éclats laminaires. Le mobilier recueilli dans les fosses dépotoirs du site même est en revanche assez indigent par comparaison à celui de certains sites VSG tels qu'Échilleuses (Loiret) (Simonin 1988), Poses, « Sur-la-Mare » (Eure) (Bostyn <hi rend="italic">et al.</hi> 2003) ou Jablines, « La Pente de Croupeton » (Bostyn <hi rend="italic">et al.</hi> 1991) qui peut atteindre plusieurs centaines de kg. La raison en est principalement les phénomènes érosifs, importants en contexte de plateau, et les labours qui ont largement contribué à la destruction des couches sommitales des structures.</p>
+        <p rend="figure-title">Tableau 2 - Effectif de l'assemblage lithique de l'occupation VSG</p>
+        <p>
+          <figure>
+            <graphic url="http://pm.revues.org/docannexe/image/350/img-6.jpg"/>
+          </figure>
+        </p>
+        <p rend="figure-legend"><ref target="Image67Cgraphics"/> (les fosses des « maisons » ou UA, les structures de combustion et les sépultures)</p>
+        <p>L'effectif totalise en effet seulement 2406 pièces, y compris les déchets pour un poids total d'un peu plus de 16 kg, pour l'occupation du Néolithique ancien. Il s'agit principalement d'une production d'éclats. La production laminaire est également peu abondante et ne représente guère que 184 lames, soit à peine 5 % de l'assemblage. Quant au silex tertiaire, il est plutôt rare et n'est manifestement pas débité localement : il comprend au total seulement 32 pièces et représente un peu plus de 1 % de la totalité du corpus lithique. Ces pièces en silex tertiaire comprennent généralement des grandes lames, des armatures de flèches et de faucilles. </p>
+        <p>Les outils représentent environ 10 % de la production totale et les grattoirs et les denticulés sont majoritaires. </p>
+        <p>Concernant le dépôt funéraire de la sépulture 269, il s'agissait alors de déterminer si les pièces avaient été spécialement débitées et retouchées pour le défunt ou si les Néolithiques avaient éventuellement réemployé des artefacts à cet usage. C'est à ces questions que va tenter de répondre l'analyse tracéologique de ces artefacts.</p>
+        <div type="div2">
+          <head subtype="level2">L'approche tracéologique</head>
+          <p>Une analyse tracéologique a été réalisée sur vingt-cinq artefacts en silex provenant du site. Cette série est composée principalement de grattoirs (19 pièces), mais aussi d'un racloir et de quelques éclats (cinq pièces). Onze des artefacts étudiés ont été découverts en contexte sépulcral. Parmi ces supports, quatre grattoirs ainsi que le racloir se trouvaient à proximité immédiate du squelette inhumé dans la sépulture 269, tandis que cinq autres éclats et un grattoir proviennent du comblement de cette même sépulture. Les quatorze autres artefacts, tous des grattoirs, ont été découverts dans huit fosses domestiques.</p>
+          <p>Quelles que soient la culture et la période de la Préhistoire prises en considération, l'usage des grattoirs en silex est étroitement associé au travail de la peau, et aux processus qui conduisent à la transformation de ce matériau en cuir (Gosselin 2005). Toutefois, le corroyage des peaux n'est pas la seule activité réalisée à l'aide des grattoirs. Ainsi, un pourcentage important des grattoirs étudiés par H. Juel-Jensen sur le site mésolithique de Ringkloster, au Danemark, porte des traces d'usure relatives au travail du bois (Juel-Jensen 1982). En contexte néolithique, l'étude réalisée par J.-P. Caspar et L. Burnez-Lanotte (Burnez &amp; Lanotte 1996, Caspard 1997) sur les grattoirs blicquiens du site de Vaux et Borset « Gibour », en Belgique révèle que certains grattoirs particulièrement massifs ont été utilisés au travail du bois et ont été qualifiés de « grattoirs-herminettes » par les auteurs. Ce même type de grattoir et d'usage, a également été observé par Sylvie Philibert sur le site « Le Moulin de Lettrée » de Neauphle-le-Vieux (Yvelines) (Philibert 1997). Enfin, à Vignely « La Noue Fenard », gisement néolithique de Seine-et-Marne, nous avons pu observer (Cottiaux <hi rend="italic">et al.</hi> à paraître) qu'un quart des grattoirs a été utilisé au travail des matières dures animales (peut-être pour la décarnisation des os frais).</p>
+          <p>Le premier objectif de cette étude consistait, donc, à s'interroger sur l'utilisation potentielle de l'outillage associé à la défunte de la sépulture 269 et, le cas échéant, de déterminer la nature des activités réalisées à l'aide de ces supports. C'est la première fois, à notre connaissance, que l'on analyse en tracéologie du mobilier lithique associé à une inhumation remontant au Néolithique ancien, ce qui confère à la démarche et à ses résultats un caractère original. Sur la base des observations faites lors de cette première étape, un second objectif fut d'établir une comparaison entre la fonction des grattoirs découverts en contexte sépulcral et celle des grattoirs découverts dans les fosses domestiques. L'observation de microtraces d'usure a permis d'établir quelques différences au cours de cette comparaison. L'étude des traces a donc été complétée par la prise en compte de critères morphométriques et morphologiques des supports analysés afin de vérifier et de mieux établir, si possible, la valeur fonctionnelle des outils.</p>
+        </div>
+        <div type="div2">
+          <head subtype="level2">Résultats <hi rendition="#T3">(</hi>fig <hi rendition="#T3">. 4-7)</hi></head>
+          <p>L'analyse des artefacts a été effectuée au microscope métallographique à fond clair, à des grossissements compris entre x50 et x400. Les pièces ont été observées selon les protocoles propres à la discipline (Keeley 1980 ; Plisson 1985), après avoir été nettoyées à l'alcool à 90°. Des photographies des traces d'utilisation ont pu être obtenues à l'aide d'une caméra numérique adaptée au microscope, et reliée à un ordinateur. L'aspect de surface des silex était encourageant, et leur bon état de conservation a été confirmé sous le microscope, malgré la présence d'un fin liseré de patine qui affecte tous les silex issus de la structure 269. Par prudence, deux pièces présentant des marques d'altération ont été exclues des résultats de l'étude.</p>
+          <p>Sur les 23 autres supports, 31 zones usées (ZU) ont été observées. Parmi ces dernières, cinq ont été observées sur les tranchants de grattoirs associés à la défunte de la sépulture 269. Elles résultent, pour trois ZU, du travail de la peau (fig. 5 et 7, pièces n° 1 et 4) en action transversale (sens du travail perpendiculaire au tranchant actif). Des pigments rouges, interprétés comme étant de l'ocre, ont été observés sur la pièce n° 1, mais le poli observé sur le front de ce grattoir ne permet pas d'affirmer que l'ocre a été utilisée comme agent abrasif. Il peut également s'agir d'ocre lié à la sépulture. Un grattoir (fig. 5 et 7, pièce n° 9) présente un poli relatif au travail d'une matière végétale en action longitudinale (sens du travail parallèle au tranchant actif). Sur la même pièce, une trace générée par un contact avec une matière dure indéterminée pourrait être relative à un dispositif d'emmanchement.</p>
+          <p rend="figure-title">5 - Microtraces d'utilisation sur le mobilier associé à la sépulture 269</p>
+          <p>
+            <figure>
+              <graphic url="http://pm.revues.org/docannexe/image/350/img-7.jpg"/>
+            </figure>
+          </p>
+          <p><ref target="Image77Cgraphics"/> Trois des six autres artefacts découverts, cette fois, dans le remplissage de la sépulture 269 portent également des zones usées dont le poli correspond au travail de la peau. Une pièce semble, en outre, avoir travaillé une matière dure animale, probablement de l'os (fig. 5 et 7, pièce n° 8).</p>
+          <p>Vingt-deux zones usées ont été observées sur les grattoirs des fosses domestiques. Près de la moitié d'entre elles (10 ZU) correspondent à des traces relatives au traitement des peaux avec, pour certaines, l'usage éventuel d'un abrasif tel que l'ocre. Les autres ZU, lorsqu'elles ont pu être déterminées, ne renvoient pas à une activité à proprement parler, mais à la façon dont les grattoirs ont été utilisés. Il s'agit de traces qui témoignent, de façon au moins probable, de l'usage d'un système d'emmanchement réalisé à l'aide de matières dures animales (os, bois de cervidé) et/ou d'un manchon en tissu carné (cuir).</p>
+          <p rend="figure-title">6 - Microtraces d'utilisation sur le mobilier des fosses-dépotoirs</p>
+          <p>
+            <figure>
+              <graphic url="http://pm.revues.org/docannexe/image/350/img-8.jpg"/>
+            </figure>
+          </p>
+        </div>
+        <div type="div2">
+          <head subtype="level2"><ref target="Image87Cgraphics"/> Interprétations</head>
+          <p>Comme on peut le constater, quel que soit le contexte de découverte, comblement de sépulture ou fosse domestique, les grattoirs présentent des traces d'usure qui se rapportent, pour la très grande majorité d'entre elles, au traitement des peaux. Les autres utilisations semblent marginales et concernent des supports qui peuvent être classés typologiquement comme des éclats ou des éclats laminaires. En ce qui concerne les stigmates associés au travail de matières dures animales, il convient de préciser qu'ils n'entretiennent aucune relation avec la présence de la carapace de tortue dans la sépulture.</p>
+          <p>Si l'usage des grattoirs est homogène, une première distinction s'opère toutefois et qui concerne la durée d'utilisation de ces outils. En effet, les microtraces d'usure affectant les zones actives des grattoirs des fosses domestiques sont généralement bien marquées et traduisent une durée d'utilisation assez longue. À l'inverse, les polis de peau observés sur les grattoirs associés à la sépulture sont plus ténus et témoignent du fait que la durée de leur ultime utilisation (peut-être la première ?) semble avoir été assez brève. Une autre distinction importante repose sur l'absence de traces d'emmanchement certaines ou probables sur les pièces lithiques de la sépulture, alors qu'elles sont nombreuses sur les grattoirs des fosses domestiques. On peut émettre l'hypothèse selon laquelle, soit les outils de la structure 269 n'ont jamais été emmanchés, soit leur utilisation a été trop courte pour que cet emmanchement puisse laisser des traces observables.</p>
+          <p>Puisque les microtraces d'utilisation favorisent une distinction entre les supports en fonction de leur contexte de découverte, nous avons cherché à vérifier si cette distinction pouvait être perçue à l'échelle macroscopique et sur la base de caractères morphométriques et morphologiques. Les résultats de cette démarche ont conforté ceux de l'approche tracéologique au-delà de nos espérances. En effet, on observe deux faits qui renforcent l'hypothèse d'une considération différente à l'égard des pièces lithiques selon qu'elles ont été déposées en milieu sépulcral ou abandonnées dans les structures domestiques. Ces faits sont associés, d'une part, à la forme des zones usées et, d'autre part, à la longueur des supports (fig. 7). La superposition des délinéations des parties actives associées au traitement des peaux révèle que la forme des zones usées des outils de la sépulture 269 est convexe, présentant un arc de cercle qui paraît très régulier. En revanche, la forme des parties actives des grattoirs mis au jour dans les structures domestiques est surbaissée ou sinueuse dans la très grande majorité des cas.</p>
+          <p rend="figure-title">7 - Stigmates d'usure et morphométrie des supports étudiés</p>
+          <p>
+            <figure>
+              <graphic url="http://pm.revues.org/docannexe/image/350/img-9.jpg"/>
+            </figure>
+          </p>
+          <p><ref target="Image97Cgraphics"/> La distinction établie entre les pièces lithiques selon leur contexte de découverte devient encore plus flagrante si on prend en compte la longueur des supports. On observe, en effet, que deux groupes de pièces se distinguent nettement de part et d'autre d'une frontière qui se situe entre 4 et 5 cm de longueur. Ainsi, dans la sépulture 269, la plupart des artefacts ont une longueur supérieure à 5 cm. Dans les fosses dépotoirs, au contraire, les pièces lithiques ont une longueur qui excède rarement les 4,5 cm et est bien souvent inférieure à 4 cm. Ce constat renforce l'hypothèse émise précédemment selon laquelle les artefacts découverts en contexte sépulcral ont été enfouis alors qu'ils n'avaient été que peu (ou pas pour certains ?) utilisés.</p>
+          <p>Ainsi, et pour résumer, les caractères macroscopiques que sont la délinéation des parties actives et la longueur des artefacts répondent aux observations microscopiques (nature, degrés des usures) et confèrent aux artefacts lithiques découverts à proximité immédiate de la défunte une valeur toute particulière qu'il reste néanmoins à comprendre.</p>
+        </div>
+      </div>
+      <div type="div1">
+        <head subtype="level1">Comparaisons et attribution chrono-culturelle</head>
+        <p>La sépulture 269 peut-être rapprochée d'une autre inhumation repérée à proximité et qui appartient également au groupe sépulcral n° 2. Il s'agit de la structure 416 située à quelques mètres qui comprend un sujet adulte également âgé, de sexe masculin, inhumé dans une fosse oblongue, particulièrement large et profonde (dimensions : 2,50 m x 1,80 m x 1,50 m). Le squelette est également orienté est ouest et en position fléchie. L'ocre était surtout présent sur le crâne et d'après l'analyse anthropologique de C. Buquet (Inrap-UMR 5199-PACEA), le corps était selon toute vraisemblance, enseveli dans un coffrage qui a probablement été calé par un fragment de meule en grès. L'inhumé est associé à un mobilier exceptionnel comprenant un très jeune ovin-caprin déposé à ses pieds, une longue hache en schiste placée à l'arrière du crâne (longueur de la hache : 20 cm), et un pic bifacial en silex secondaire partiellement poli de grandes dimensions (30 cm de longueur) (Samzun <hi rend="italic">et al.</hi> à paraître). Malgré un mobilier sépulcral plus riche et vraisemblablement très rare à cette période, on peut observer un parallèle à la sépulture 269, avec un dépôt animal (même s'il s'agit ici d'un animal domestique) et des artefacts lithiques (même s'ils sont plus élaborés). L'analyse tracéologique n'a pas encore été tentée sur la hache et le pic, mais ils paraissent l'un et l'autre pratiquement intacts et à l'état « neuf ».</p>
+        <p>Les datations radiocarbones et la présence de céramique caractéristique permettent une attribution au VSG qui est renforcée par le fait que l'inhumation 269 se trouve à proximité de deux autres sépultures (dont une, la 416, est datée entre 4900-4700 cal BC) et que ce petit ensemble s'étend au sud de la grande fosse latérale sud (st 259) de l'UA 4. </p>
+        <p>Le mobilier associé à la sépulture 269 nous paraît relativement atypique pour la fin du Néolithique ancien. En effet, les dépôts lithiques mais également d'animaux sont très rarement rencontrés dans les sépultures RRBP et post-rubanées auxquelles sont principalement associées des parures de coquillage, des céramiques, et des bracelets de pierre. Cependant à Fresnes-sur-Marne (Seine-et-Marne), Y. Lanchon signale la présence de trois lames de silex sur le bras gauche dans une sépulture attribuée au VSG (Bouchet <hi rend="italic">et al.</hi> 1996). Les pièces lithiques font surtout leur apparition dans les tombes au cours de l'étape suivante, le Néolithique moyen I (Cerny). Ainsi, les sépultures allongées des nécropoles de type Passy dans l'Yonne et en Bassée (Müller <hi rend="italic">et al. </hi>1997, Mordant 1997), mais celles qui sont également proches du secteur géographique du site de Buthiers-Boulancourt, comme les sépultures sous dalle d'Orville et de Malesherbes, où presque tous les corps sont en posture fléchie (Simonin <hi rend="italic">et al.</hi> 1997) renferment des armatures de flèches perçantes ou tranchantes, des lames, quelques haches, tranchets et pics de petites dimensions et des parures de dentales et de dents d'animaux. Elles peuvent également contenir des dépôts partiels d'animaux tels que mandibules ou cuissots de porcs. </p>
+        <p>Il convient de rappeler que la majorité des inhumations VSG ont été mises au jour dans le fond des vallées alluviales et peu d'entre elles sont connues en contexte de plateau. Enfin, les tombes remontant à la fin du Néolithique ancien ne sont guère attestées dans le sud-ouest de la Seine-et-Marne, ni même en région Centre et nous manquons de corpus de référence fiable. Les sépultures de Buthiers-Boulancourt restent donc quelque peu isolées pour en tirer des généralités. </p>
+        <p>Cependant, la présence de plusieurs tessons décorés dans le comblement de la sépulture 269 associés à du mobilier lithique et un dépôt d'animal, permet d'envisager que cette sépulture appartient à une étape du Néolithique au cours de laquelle on constate à la fois une continuité (abondance de l'ocre, présence vraisemblable de céramique liée à l'inhumation qui correspondent à des traits caractéristiques des phases ancienne et moyenne du VSG) mais où apparaissent également des changements dans les pratiques funéraires (apparition de dépôts animaux et de mobilier lithique) qui semblent d'avantage liés au Néolithique moyen I.</p>
+      </div>
+      <div type="div1">
+        <head subtype="level1">Conclusion et perspectives</head>
+        <p>Dans le cas de ces deux sépultures, la 269 et la 416, on constate une différence qualitative entre le mobilier contenu dans les fosses domestiques (pièces généralement peu élaborées et très utilisées) et celui associé aux sépultures (pièces de dimensions plus importantes, stigmates d'usures peu présentes et rares dans le cas de la 416). Dans le cas de la sépulture 269, les pièces principalement liées au grattage et au raclage des peaux représentent-elles un bien personnel, pourraient-elles éventuellement indiquer la fonction de l'inhumée au sein de son groupe ? Auquel cas, le dépôt sépulcral constituerait-il un viatique ?</p>
+        <p>Il serait également pertinent de mettre en parallèle le mobilier lithique de la sépulture 269 avec d'autres ensembles remontant au Néolithique pour valider l'hypothèse d'artefacts peu ou pas utilisés associés aux sépultures. À l'instar de quelques exemples connus au Néolithique (Melis &amp; Cappai, <hi rend="italic">Signe et fonction des objets lithiques préhistoriques en Sardaigne</hi>, ce même volume), s'agirait-il de débitage et d'outillage réalisés dans le cadre de rituels funéraires et donc d'une production spécifique pour les morts ?</p>
+        <p>
+          <hi rend="italic">Nous dédions ce travail à la mémoire de Fabrice Nicolle, récemment disparu.</hi>
+        </p>
+      </div>
+    </body>
+    <back>
+      <div type="bibliography">
+        <listBibl>
+          <bibl>Beugnier 1999, BEUGNIER V., Balloy « Les Réaudins » (Seine-et-Marne) : analyse fonctionnelle de l'industrie en silex, in : Fonction des outillages lithiques dans le Bassin parisien au Néolithique : programme collectif de recherche, rapport intermédiaire 3ème année, Giligny F., (Resp.), Augereau A. et al. (Dir.), [Nanterre], [UMR7041 « Archéologies et Sciences de l'Antiquité (ArScAn) »], 1999, p. 14-24.</bibl>
+          <bibl>Bostyn <hi rend="italic"> et al.</hi> 1991, BOSTYN F., HACHEM L., LANCHON Y., Le site néolithique de « la Pente de Croupeton » à Jablines (Seine-et-Marne) : premiers résultats, <hi rend="italic">in : Actes du 15ème Colloque interrégional sur le Néolithique, Châlons-sur-Marne, octobre 1988</hi>, Voipreux, Association Régionale pour la Protection et l'Etude du Patrimoine Historique, 1991, p. 45-81.</bibl>
+          <bibl>Bostyn <hi rend="italic"> et al.</hi> 2003, BOSTYN F., dir. avec des contributions de BEURION C., BILLARD C., GUILLON M., HACHEM L., HAMON C., LANCHON Y., PRAUD I., RECKINGER F., ROPARS A., MUNAUT A. V. Eds., <hi rend="italic">Néolithique ancien en Haute-Normandie : Le village Villeneuve-Saint-Germain de Poses « Sur la Mare » et les sites de la boucle du Vaudreuil</hi>, Paris, Société préhistorique française, 2003, 342 p. (Travaux ; 4).</bibl>
+          <bibl>Bouchet <hi rend="italic"> et al.</hi> 1996, BOUCHET M., BRUNET P., JACOBIESKI G., LANCHON Y. Eds., <hi rend="italic">Il y a 7000 ans en Vallée de Marne... premiers labours, premiers villages : catalogue réalisé par la Société d'Histoire et d'Archéologie de Lagny et Environs (S.H.A.L.E.)</hi>, Lagny-sur-Marne, Musée municipal Gatien Bonnet, 1996, 48 p.</bibl>
+          <bibl>Cahen &amp; Caspar 1984, CAHEN D., CASPAR J.-P., Les traces d'utilisation des outils préhistoriques, <hi rend="italic">L'Anthropologie (Paris)</hi>, 88, 3, 1984, p. 277-308.</bibl>
+          <bibl>Caspar 1997, CASPAR J.-P., Analyse tracéologique de séries Villeneuve-St-Germain de Haute-Normandie : les sites de Poses, Léry et Incarville (Eure), <hi rend="italic">in : Fonction des outillages lithiques dans le Bassin parisien au Néolithique : programme collectif de recherche, rapport intermédiaire 3ème année</hi>, Giligny F., (Resp.), Augereau A. <hi rend="italic"> et al.</hi> (Dir.), [Nanterre], [UMR7041 « Archéologies et Sciences de l'Antiquité (ArScAn) »], 1997, p. 4-8.</bibl>
+          <bibl>Caspar &amp; Burnez-Lanotte 1996, CASPAR J.-P., BURNEZ-LANOTTE L., Groupe de Blicquy-Villeneuve-Saint-Germain, nouveaux outils : le grattoir-herminette et le foret, <hi rend="italic">Bulletin de la Société préhistorique française</hi>, Paris, 93, 2, 1996, p. 235-238.</bibl>
+          <bibl>Cottiaux s.p., COTTIAUX R. Ed., <hi rend="italic">Les données sur l'habitat au Néolithique récent dans la basse vallée de la Marne</hi>, Dijon, Revue archéologique de l'Est, s.p.,</bibl>
+          <bibl>Dubouloz <hi rend="italic"> et al.</hi> 2005, DUBOULOZ J., BOSTYN F., CHARTIER M., COTTIAUX R., LEBOLLOCH' M., La recherche archéologique sur le Néolithique en Picardie, <hi rend="italic">in : La recherche archéologique en Picardie : bilans et perspectives : journées d'études tenues à Amiens les 21 et 22 mars 2005</hi>, Amiens, Picardie. Direction régionale des antiquités historiques, 2005, p. 63-98 (Revue archéologique de Picardie ; 3-4).</bibl>
+          <bibl>Durand <hi rend="italic"> et al.</hi> s.p., DURAND S., NICOLLE F., SAMZUN A., Le site néolithique de Buthiers-Boulancourt (Seine-et-Marne, France) : deux occupations VSG Récent et Cerny : présentation des assemblages lithique et céramique et proposition pour une chronologie, <hi rend="italic">in : Colloque en hommage à Claude Constantin, Namur, novembre 2006</hi>, Burnez-Lanotte L., Ilett M. (Dir.), s.p.</bibl>
+          <bibl>Giligny <hi rend="italic"> et al.</hi> 1999, GILIGNY F., (Resp.), AUGEREAU A., BOSTYN F., GILIGNY F., (coord.), <hi rend="italic">Fonction des outillages lithiques dans le Bassin parisien au Néolithique : programme collectif de recherche, rapport intermédiaire 3ème année</hi>, [Nanterre], [UMR7041 « Archéologies et Sciences de l'Antiquité (ArScAn) »], 1999.</bibl>
+          <bibl>Gosselin 2005, GOSSELIN R., La transition Magdalénien/Azilien, observée à travers la fonction des grattoirs du Bois-Ragot, <hi rend="italic">in : La grotte du Bois-Ragot à Gouex (Vienne) : Magdalénien et Azilien : essais sur les hommes et leurs environnements</hi>, Chollet A., Dujardin V. (Dir.), Paris, Société préhistorique française, 2005, p. 191-219 (Mémoires de la Société préhistorique française ; 38).</bibl>
+          <bibl>Jeunesse 1997, JEUNESSE C., <hi rend="italic">Pratiques funéraires au Néolithique ancien : sépultures et nécropoles des sociétés danubiennes (5500-4900 av. J.-C.)</hi>, Paris, Errance, 1997, 168 p. (Les Hespérides).</bibl>
+          <bibl>Juel Jensen 1982, JUEL JENSEN H., A preliminary analysis of blade scrapers from Ringkloster, a Danish Late Mesolithic site, <hi rend="italic">in : Tailler ! pour quoi faire : recent progress in microwear studies</hi>, Cahen D., CNRS - URA 28 (Dir.), Tervuren, Musée royal de l'Afrique centrale, 1982, p. 323-327 (Studia praehistorica belgica ; 2).</bibl>
+          <bibl>Keeley 1980, KEELEY L.H., <hi rend="italic">Experimental determination of stone tool uses : a microwear analysis</hi>, Chicago, University of Chicago Press, 1980, xiii + 212 p. (Prehistory, Archaeology and Ecology Series).</bibl>
+          <bibl>Mordant 1997, MORDANT D., Le complexe des Réaudins à Balloy : enceinte et nécropole monumentale, <hi rend="italic">in : La Culture de Cerny : nouvelle économie, nouvelle société au Néolithique</hi>, Constantin C., Mordant D., Simonin D. (Dir.), Nemours, APRAIF, 1997, p. 449-479 (Mémoire du Musée de Préhistoire d'Ile-de-France ; 6).</bibl>
+          <bibl>Müller <hi rend="italic"> et al.</hi> 1997, MÜLLER F., DUHAMEL P., AUGEREAU A., DEPIERRE G., Une nouvelle nécropole monumentale Cerny à Gron « Les Sablons » (Yonne), <hi rend="italic">in : Le Néolithique danubien et ses marges entre Rhin et Seine</hi>, Jeunesse C. (Dir.), Zimmersheim, Association pour la Promotion de la Recherche archéologique en Alsace, 1997, p. 103-133 (22ème Colloque interrégional sur le Néolithique, Strasbourg 1995).</bibl>
+          <bibl>Philibert 1997, PHILIBERT S., Analyse techno-fonctionnelle de l'outillage lithique du site de Neauphle-le-Vieux « Le Moulin de Lettrée » (Yvelines), <hi rend="italic">in : Fonction des outillages lithiques dans le Bassin parisien au Néolithique : programme collectif de recherche, rapport intermédiaire 3ème année</hi>, Giligny F., (Resp.), Augereau A. <hi rend="italic"> et al.</hi> (Dir.), [Nanterre], [UMR7041 « Archéologies et Sciences de l'Antiquité (ArScAn) »], 1997, p. 249-290.</bibl>
+          <bibl>Plisson 1985, PLISSON H., <hi rend="italic">Etude fonctionnelle d'outillages lithiques préhistoriques par l'analyse des micro-usures : recherche méthodologique et archéologique</hi>, Université Paris I, 1985, Thèse doctorat : Sciences humaines, x + 357 p., 47 tabl., 71 fig., 110 photogr.</bibl>
+          <bibl>Samzun <hi rend="italic"> et al.</hi> 2006, SAMZUN A., DURAND S., NICOLLE F., Le site néolithique de Buthiers et Boulancourt « Le Chemin de Malesherbes « (Seine-et-Marne) : résultats préliminaires, <hi rend="italic">Internéo</hi>, Saint-Germain-en-Laye, 6, 2006, p. 45-53.</bibl>
+          <bibl>Samzun <hi rend="italic">et al.</hi> 2007, SAMZUN A., DURAND J., NICOLLE F., Découverte d'un four néolithique à Buthiers et Boulancourt « Le Chemin de Malesherbes » (Seine-et-Marne, France), <hi rend="italic">in : Sociétés néolithiques : des faits archéologiques aux fonctionnements socio-économiques : actes du 27ème Colloque interrégional sur le Néolithique (Neuchâtel, 1 et 2 octobre 2005)</hi>, Besse M. (Dir.), Lausanne, Cahiers d'archéologie romande, 2007, p. 321-328 (Cahiers d'archéologie romande ; 108).</bibl>
+          <bibl>Samzun <hi rend="italic"> et al.</hi> s.p., SAMZUN A., PÉTREQUIN P., GAUTHIER E., Une imitation de hache alpine type Bégude à Buthiers-Boulancourt (Seine-et-Marne) au début du Ve millénaire ? <hi rend="italic">in : Produire des haches au Néolithique, de la matière première à l'abandon : Séance SPF, Saint-Germain en Laye, 16 au 16 mars 2007</hi>, Labriffe (de) P.-A., Thirault E. (Dir.), Paris, Société préhistorique française, s.p.</bibl>
+          <bibl>Simonin 1988, SIMONIN D., L'habitat néolithique des Dépendances de Digny I à Échilleuses (Loiret) : premiers résultats, <hi rend="italic">in : Du Néolithique moyen II au Néolithique final au Nord-Ouest des Alpes : actes du 12e colloque interrégional sur le Néolithique de l'Est de la France, Lons-le-Saunier, 11 au 11 octobre 1985</hi>, Pétrequin P. (Dir.), Lons-le-Saunier, Cercle Girardot, 1988, p. 221-233.</bibl>
+          <bibl>Simonin <hi rend="italic"> et al.</hi> 1997, SIMONIN D., BACH S., RICHARD G., VINTROU J., Les sépultures sous dalle de type Malesherbes et la nécropole d'Orville, <hi rend="italic">in : La Culture de Cerny : nouvelle économie, nouvelle société au Néolithique</hi>, Constantin C., Mordant D., Simonin D. (Dir.), Nemours, APRAIF, 1997, p. 341-380 (Mémoire du Musée de Préhistoire d'Ile-de-France ; 6).</bibl>
+        </listBibl>
+      </div>
+    </back>
+  </text>
+</TEI>

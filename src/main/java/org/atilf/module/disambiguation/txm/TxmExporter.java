@@ -59,7 +59,7 @@ public class TxmExporter extends Module {
             writer.writeAttribute("n",String.valueOf(_TxmContext.indexOf(txmContext)+1));
             writer.writeAttribute("id",txmContext.getFilename());
             while (!txmContext.isEmpty()){
-                Map<String,String> map = txmContext.getTxmWord();
+                Map<String,String> map = txmContext.popTxmWord();
                 writer.writeStartElement("w");
                 writer.writeAttribute("id","w_" + _p + "_" + map.get(TARGET));
                 writer.writeAttribute("n",map.get(TARGET));

@@ -10,6 +10,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+import static org.atilf.runner.TermithResourceManager.*;
+
 public class RunnerBuilder {
 
     String _annotation;
@@ -18,6 +20,7 @@ public class RunnerBuilder {
     int _thresholdMin = 0;
     TermithIndex _termithIndex = new TermithIndex();
     String _bpmnDiagram;
+
 
     /*
     remove maybe
@@ -60,8 +63,14 @@ public class RunnerBuilder {
         return this;
     }
 
-    public RunnerBuilder setBpmnDiagram(String bpmnDiagram) {
-        _bpmnDiagram = bpmnDiagram;
+    public RunnerBuilder setBpmnDiagram(String bpmnDiagramFilename) {
+        _bpmnDiagram = TermithResource.CUSTOM_BPMN_DIAGRAM.getPath() + bpmnDiagramFilename;
+        return this;
+    }
+
+    public RunnerBuilder setResourceManager(String resourceManager) throws Exception {
+        TermithResource.setLang(_lang);
+        addToClasspath(resourceManager);
         return this;
     }
 
@@ -130,7 +139,6 @@ public class RunnerBuilder {
     }
 
     public Runner createRunner() throws Exception {
-            return new Runner(this);
+        return new Runner(this);
     }
-
 }

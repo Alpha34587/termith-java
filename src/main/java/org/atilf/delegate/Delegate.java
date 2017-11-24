@@ -37,7 +37,31 @@ public abstract class Delegate implements JavaDelegate{
      * @throws InterruptedException thrown if awaitTermination function is interrupted while waiting
      * @throws ExecutionException thrown a exception if a system process is interrupted
      */
-    protected void executeTasks() throws IOException, InterruptedException, ExecutionException {}
+    public void executeTasks() throws IOException, InterruptedException, ExecutionException {}
+
+    public void setTermithIndex(TermithIndex termithIndex) {
+        _termithIndex = termithIndex;
+    }
+
+    protected void setEventBus(EventBus eventBus) {
+        _eventBus = eventBus;
+    }
+
+    protected void setExecution(DelegateExecution execution) {
+        _execution = execution;
+    }
+
+    public void setExecutorService(ExecutorService executorService) {
+        _executorService = executorService;
+    }
+
+    protected void setTimePerformanceEvent(TimePerformanceEvent timePerformanceEvent) {
+        _timePerformanceEvent = timePerformanceEvent;
+    }
+
+    protected void setMemoryPerformanceEvent(MemoryPerformanceEvent memoryPerformanceEvent) {
+        _memoryPerformanceEvent = memoryPerformanceEvent;
+    }
 
     @Override
     public void execute(DelegateExecution execution) {
@@ -52,8 +76,6 @@ public abstract class Delegate implements JavaDelegate{
     }
 
     public void initialize(DelegateExecution execution){
-
-
         _execution = execution;
 
         _termithIndex = getFlowableVariable("termithIndex",null);
@@ -75,13 +97,13 @@ public abstract class Delegate implements JavaDelegate{
     }
 
     protected <T extends Object> T getFlowableVariable(String flowableName, T defaultValue){
-
-        T getVar = (T) _execution.getVariable(flowableName);
-
-        if (_execution.getVariable(flowableName) != null) {
-            return getVar;
-        } else {
-            return defaultValue;
+        if (_execution != null ) {
+            T getVar = (T) _execution.getVariable(flowableName);
+            if (_execution.getVariable(flowableName) != null ) {
+                return getVar;
+            }
         }
+        return defaultValue;
+
     }
 }

@@ -9,11 +9,13 @@ import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
 
 import java.io.File;
-import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
+
+import static org.atilf.runner.TermithResourceManager.TermithResource;
+import static org.atilf.runner.TermithResourceManager.addToClasspath;
 
 /**
  * @author Simon Meoni
@@ -28,8 +30,11 @@ public class MorphologySerializerTest {
     public static TemporaryFolder temporaryFolder = new TemporaryFolder();
     
     @BeforeClass
-    public static void setUp() throws IOException {
-        TagNormalizer.initTag("en");
+    public static void setUp() throws Exception {
+        TermithResource.setLang("en");
+        addToClasspath("src/main/resources/termith-resources/");
+        TagNormalizer tagNormalizer = new TagNormalizer(TermithResource.TREE_TAGGER_MULTEX.getPath());
+
         Map<String,StringBuilder> textExtracted = new HashMap<>();
         textExtracted.put("1",new StringBuilder("\n \n \nJournal of Gerontology: " +
                 "PSYCHOLOGICAL patient (1998@)"));
@@ -51,7 +56,7 @@ public class MorphologySerializerTest {
         _jsonResFile = temporaryFolder.newFile("test1.json");
 
         _morphologySerializerLemma = new MorphologySerializer(tokenLemma, _jsonResFile.getAbsolutePath(),
-                lemma, corpusAnalyzer.getAnalyzedTexts().get("1"));
+                lemma, corpusAnalyzer.getAnalyzedTexts().get("1"),tagNormalizer);
     }
 
     @Test

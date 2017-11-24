@@ -1,6 +1,6 @@
 package org.atilf.module.enrichment.analyzer;
 
-import org.atilf.models.enrichment.TermOffsetId;
+import org.atilf.models.enrichment.MultiWordsOffsetId;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -52,8 +52,7 @@ public class TerminologyParserTest {
 
     }
 
-    private String parse(TermOffsetId offset) {
+    private String parse(MultiWordsOffsetId offset) {
         return offset.getBegin() + " " + offset.getEnd() + " " + offset.getWord() + " " + offset.getTermId();
     }
-
 }

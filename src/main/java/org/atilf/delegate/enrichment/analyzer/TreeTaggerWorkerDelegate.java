@@ -11,8 +11,10 @@ import org.atilf.module.enrichment.analyzer.TreeTaggerWorker;
 import org.atilf.module.enrichment.initializer.TextExtractor;
 import org.atilf.module.tools.FilesUtils;
 import org.atilf.monitor.timer.TermithProgressTimer;
+import org.flowable.engine.delegate.DelegateExecution;
 
 import java.io.IOException;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -20,6 +22,8 @@ import java.util.Map;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
+
+import static org.atilf.runner.TermithResourceManager.TermithResource;
 
 /**
  * The TreeTaggerWorkerDelegate calls several modules classes which analyzer the morphology of each file in the corpus and the
@@ -31,6 +35,24 @@ import java.util.concurrent.TimeUnit;
  *         Created on 01/09/16.
  */
 public class TreeTaggerWorkerDelegate extends Delegate {
+
+    private String _lang;
+    private Path _outputPath;
+
+    public void setLang(String lang) {
+        _lang = lang;
+    }
+
+    public void setOutputPath(Path outputPath) {
+        _outputPath = outputPath;
+    }
+
+    @Override
+    public void initialize(DelegateExecution execution) {
+        super.initialize(execution);
+        _lang = getFlowableVariable("lang",null);
+        _outputPath  = getFlowableVariable("out",null);
+    }
 
     /**
      * this method return the result of the InitializerThread.
@@ -70,16 +92,15 @@ public class TreeTaggerWorkerDelegate extends Delegate {
         /*
         Build Corpus analyzer
          */
+
         CorpusAnalyzer corpusAnalyzer = new CorpusAnalyzer(createTextHashMap());
-        TagNormalizer.initTag(getFlowableVariable("lang",null));
+        TagNormalizer tagNormalizer = new TagNormalizer(TermithResource.TREE_TAGGER_MULTEX.getPath());
         TreeTaggerParameter treeTaggerParameter =  new TreeTaggerParameter(
                 false,
-                getFlowableVariable("lang",null),
-                getFlowableVariable("treeTaggerHome",null),
-                getFlowableVariable("out",null).toString()
+                _lang,
+                TermithResource.TREETAGGER_HOME.getPath()
         );
         List<Future> futures = new ArrayList<>();
-
         /*
         Write morphology json file
          */
@@ -88,7 +109,8 @@ public class TreeTaggerWorkerDelegate extends Delegate {
                         _termithIndex,
                         corpusAnalyzer,
                         key,
-                        getFlowableVariable("out",null).toString(),
+                        _outputPath.toString(),
+                        tagNormalizer,
                         treeTaggerParameter
                 )))
         );
