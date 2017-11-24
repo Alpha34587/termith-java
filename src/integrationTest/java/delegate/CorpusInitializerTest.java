@@ -1,6 +1,6 @@
 package delegate;
 
-import org.atilf.delegate.enrichment.initializer.CorpusMapperDelegate;
+import org.atilf.delegate.enrichment.initializer.CorpusInitializerDelegate;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Rule;
@@ -11,7 +11,7 @@ import java.nio.file.Paths;
 
 public class CorpusInitializerTest extends IntegrationTasks {
 
-    private CorpusMapperDelegate _c = new CorpusMapperDelegate();
+    private CorpusInitializerDelegate _c = new CorpusInitializerDelegate();
 
     @Rule
     public TemporaryFolder _temporaryFolder = new TemporaryFolder();

@@ -2,19 +2,15 @@ package runner;
 
 import org.apache.commons.io.FileUtils;
 import org.atilf.cli.enrichment.TermithTreeTaggerCLI;
-import org.custommonkey.xmlunit.XMLAssert;
+import org.atilf.module.tools.FilesUtils;
+import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
-import org.xml.sax.SAXException;
 
 import java.io.File;
-import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
-
-import static org.atilf.module.tools.FilesUtils.FileToString;
 
 public class TermithTreeTaggerCLITest {
 
@@ -30,18 +26,25 @@ public class TermithTreeTaggerCLITest {
                 _temporaryFolder.getRoot().toString()
         );
 
-        Files.list(Paths.get("src/integrationTest/resources/termithTreeTagger/out")).forEach(file -> {
-            try {
-                XMLAssert.assertXMLEqual(
-                        "these xml files must be equals",
-                        FileToString(
-                                Paths.get(_temporaryFolder.getRoot().toString() +
-                                        "/" + file.getFileName().toString())
-                        ),
-                        FileToString(file.toAbsolutePath()));
-            } catch (SAXException | IOException e) {
-                e.printStackTrace();
-            }
+        Files.list(_temporaryFolder.getRoot().toPath()).filter(el -> el.toString().contains(".xml")).forEach(file -> {
+            String xml = FilesUtils.FileToString(file);
+            Assert.assertTrue(
+                    "the xml must contains a wordforms element ",
+                    xml.contains("<ns:standOff type=\"wordForms\">")
+            );
+            Assert.assertTrue(
+                    "the xml must contains a candidatsTermes element ",
+                    xml.contains("<ns:standOff type=\"candidatsTermes\">")
+            );
+            Assert.assertTrue(
+                    "the xml must contains a Syn element ",
+                    xml.contains("<ns:standOff type=\"syntagmesDefinis\">")
+            );
+            Assert.assertTrue(
+                    "the xml must contains a wordforms element ",
+                    xml.contains("<ns:standOff type=\"lexiquesTransdisciplinaires\">")
+            );
+
         });
     }
 
@@ -59,20 +62,25 @@ public class TermithTreeTaggerCLITest {
                 resultPath.toString()
         );
 
-        Files.list(Paths.get("src/integrationTest/resources/termithTreeTagger/out")).forEach(file -> {
-            try {
-                XMLAssert.assertXMLEqual(
-                        "these xml files must be equals",
-                        FileToString(file.toAbsolutePath()),
-                        FileToString(
-                                Paths.get(_temporaryFolder.getRoot().toString() +
-                                        "/result/" +
-                                        file.getFileName().toString())
-                        )
-                );
-            } catch (SAXException | IOException e) {
-                e.printStackTrace();
-            }
+        Files.list(_temporaryFolder.getRoot().toPath()).filter(el -> el.toString().contains(".xml")).forEach(file -> {
+            String xml = FilesUtils.FileToString(file);
+            Assert.assertTrue(
+                    "the xml must contains a wordforms element ",
+                    xml.contains("<ns:standOff type=\"wordForms\">")
+            );
+            Assert.assertTrue(
+                    "the xml must contains a candidatsTermes element ",
+                    xml.contains("<ns:standOff type=\"candidatsTermes\">")
+            );
+            Assert.assertTrue(
+                    "the xml must contains a Syn element ",
+                    xml.contains("<ns:standOff type=\"syntagmesDefinis\">")
+            );
+            Assert.assertTrue(
+                    "the xml must contains a wordforms element ",
+                    xml.contains("<ns:standOff type=\"lexiquesTransdisciplinaires\">")
+            );
+
         });
     }
 }

@@ -11,7 +11,6 @@ import org.atilf.module.enrichment.analyzer.TreeTaggerWorker;
 import org.atilf.module.enrichment.initializer.TextExtractor;
 import org.atilf.module.tools.FilesUtils;
 import org.atilf.monitor.timer.TermithProgressTimer;
-import org.atilf.runner.TermithResourceManager;
 import org.flowable.engine.delegate.DelegateExecution;
 
 import java.io.IOException;
@@ -24,7 +23,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
-import static org.atilf.runner.TermithResourceManager.*;
+import static org.atilf.runner.TermithResourceManager.TermithResource;
 
 /**
  * The TreeTaggerWorkerDelegate calls several modules classes which analyzer the morphology of each file in the corpus and the
@@ -93,15 +92,15 @@ public class TreeTaggerWorkerDelegate extends Delegate {
         /*
         Build Corpus analyzer
          */
+
         CorpusAnalyzer corpusAnalyzer = new CorpusAnalyzer(createTextHashMap());
-        TagNormalizer.initTag(_lang);
+        TagNormalizer tagNormalizer = new TagNormalizer(TermithResource.TREE_TAGGER_MULTEX.getPath());
         TreeTaggerParameter treeTaggerParameter =  new TreeTaggerParameter(
                 false,
                 _lang,
                 TermithResource.TREETAGGER_HOME.getPath()
         );
         List<Future> futures = new ArrayList<>();
-
         /*
         Write morphology json file
          */
@@ -111,6 +110,7 @@ public class TreeTaggerWorkerDelegate extends Delegate {
                         corpusAnalyzer,
                         key,
                         _outputPath.toString(),
+                        tagNormalizer,
                         treeTaggerParameter
                 )))
         );

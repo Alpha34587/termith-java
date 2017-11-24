@@ -155,7 +155,7 @@ public class TeiWriter extends Module{
      * insert morphology and terminology standOff
      * @throws IOException thrown an exception if _bufferedWriter fields throws an error during writing
      */
-    void insertStandOff() throws IOException {
+    private void insertStandOff() throws IOException {
         /*
          * retrieve index of the text element
          */

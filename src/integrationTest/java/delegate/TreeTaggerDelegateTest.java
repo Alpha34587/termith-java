@@ -15,6 +15,8 @@ import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
+import static org.atilf.runner.TermithResourceManager.TermithResource;
+
 public class TreeTaggerDelegateTest extends IntegrationTasks{
     private TreeTaggerWorkerDelegate _t = new TreeTaggerWorkerDelegate();
     private StringBuilder text = new StringBuilder("\"Chez nous vivait un poète, il avait d'autres yeux.\" " +
@@ -24,7 +26,13 @@ public class TreeTaggerDelegateTest extends IntegrationTasks{
 
     @Before
     public void setUp() throws Exception {
+        TermithResourceManager.addToClasspath("src/main/resources/termith-resources");
+        TermithResource.setLang("fr");
+        _t.setLang("fr");
+        _t.setOutputPath(_temporaryFolder.getRoot().toPath());
+
         for (int i = 1; i < 100; i++) {
+
             String id = "text" + i;
             Files.copy(
                     Paths.get("src/integrationTest/resources/treetaggerWorker/text1.xml"),
@@ -35,9 +43,7 @@ public class TreeTaggerDelegateTest extends IntegrationTasks{
             );
             _termithIndex.getXmlCorpus().put(id, Paths.get(_temporaryFolder.getRoot() + "/"+id+".xml"));
         }
-        TermithResourceManager.TermithResource.setLang("fr");
-        _t.setLang("fr");
-        _t.setOutputPath(_temporaryFolder.getRoot().toPath());
+
     }
     @Test
     public void executeTasks() throws Exception {

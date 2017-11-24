@@ -19,7 +19,7 @@ public class SpecialCharacter extends SpecialChXmlEscape{
 
     /**
      * replace a special character to a xml escape characters
-     * @param s the character
+     * @param s the line with special character to replace
      * @return the converted character
      */
     public static String replaceChar(String s){
