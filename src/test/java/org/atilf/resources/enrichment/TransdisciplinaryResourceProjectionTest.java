@@ -25,7 +25,7 @@ public class TransdisciplinaryResourceProjectionTest {
     public void parseResource() throws Exception {
         Assert.assertEquals(
                 "the lst resource must have this size : ",
-                1926,
+                1851,
                 trp.getResourceMap().values().stream().mapToInt(List::size).sum()
         );
     }
