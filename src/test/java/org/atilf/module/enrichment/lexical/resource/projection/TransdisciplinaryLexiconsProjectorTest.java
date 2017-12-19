@@ -50,7 +50,7 @@ public class TransdisciplinaryLexiconsProjectorTest {
     public void execute() throws Exception {
         new TransdisciplinaryLexiconsProjector("", morphologyOffsetIds, transdisciplinaryOffsetIds, resourceProjection)
                 .execute();
-        String expectedId = "[1656, 1749, 2]";
+        String expectedId = "[463, 605, 3]";
         List<Integer> observedId = new ArrayList<>();
         String expectedMorphoId = "[6, 7, 10, 11, 14]";
         List<Integer> observedMorphoId = new ArrayList<>();
