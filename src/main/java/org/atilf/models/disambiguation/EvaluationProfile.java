@@ -12,8 +12,9 @@ import static org.atilf.resources.disambiguation.AnnotationResources.NO_DA;
  * @author Simon Meoni
  *         Created on 24/10/16.
  */
-public class EvaluationProfile extends Lexicon {
+public class EvaluationProfile extends LexiconProfile {
     private AnnotationResources _automaticAnnotation = NO_DA;
+
 
     /**
      * a constructor for evaluationProfile

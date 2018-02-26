@@ -29,15 +29,15 @@ import static org.atilf.resources.disambiguation.AnnotationResources.LEX_ON;
  *         Created on 21/10/16.
  */
 public class SpecCoefficientInjector extends Module {
-    private RConnection _rConnection;
-    private RConnectionPool _rConnectionPool;
-    private LexiconProfile _lexiconProfile;
-    private RLexicon _rLexicon;
-    private CorpusLexicon _corpusLexicon;
-    private boolean _computeSpecificities = true;
-    private RLexicon _rContextLexicon;
-    private String _id;
-    private String _rResultPath;
+    RConnection _rConnection;
+    RConnectionPool _rConnectionPool;
+    LexiconProfile _lexiconProfile;
+    RLexicon _rLexicon;
+    CorpusLexicon _corpusLexicon;
+    boolean _computeSpecificities = true;
+    RLexicon _rContextLexicon;
+    String _id;
+    String _rResultPath;
 
     /**
      *  constructor of SpecCoefficientInjector
@@ -97,6 +97,8 @@ public class SpecCoefficientInjector extends Module {
         _rConnectionPool = rConnectionPool;
     }
 
+    SpecCoefficientInjector() {}
+
     private boolean isLexiconPresent(TermithIndex termithIndex, String id) {
         String on = id.split("_")[0] + LEX_ON.getValue();
         String off = id.split("_")[0] + LEX_OFF.getValue();
@@ -131,7 +133,7 @@ public class SpecCoefficientInjector extends Module {
      * @param specificityCoefficient this float array contains specificities coefficients for all words
      *                               of a lexical profile
      */
-    private void reduceToLexicalProfile(List<Float> specificityCoefficient) {
+    void reduceToLexicalProfile(List<Float> specificityCoefficient) {
         int cnt = 0;
         for (String id : _rContextLexicon.getIdContextLexicon()) {
             _lexiconProfile.addCoefficientSpec(
