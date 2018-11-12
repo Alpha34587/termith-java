@@ -11,7 +11,7 @@ public enum AnnotationResources {
     DM0("#DM0", DA_OFF),
     DM1("#DM1", DA_OFF),
     DM2("#DM2", DA_OFF),
-    DM3("#DM3", DA_OFF),
+    DM3("#DM3", DA_ON),
     DM4("#DM4", DA_ON),
     LEX_ON("_lexOn"),
     LEX_OFF("_lexOff");
