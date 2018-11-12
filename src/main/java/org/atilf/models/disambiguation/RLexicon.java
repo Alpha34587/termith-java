@@ -102,8 +102,10 @@ public class RLexicon {
      * @param word a word
      */
     private void convertToRContext(String word) {
-        _rName.append(_corpus.getIdEntry(word)).append(",");
-        _rOcc.append(_lexiconProfile.count(word)).append(",");
-        _idContextLexicon.add(_corpus.getIdEntry(word));
+        if (_corpus.getLexicalTable().contains(word)) {
+            _rName.append(_corpus.getIdEntry(word)).append(",");
+            _rOcc.append(_lexiconProfile.count(word)).append(",");
+            _idContextLexicon.add(_corpus.getIdEntry(word));
+        }
     }
 }
